@@ -1,0 +1,37 @@
+---
+import type { Family } from '../lib/catalog.js';
+import { entryUrl } from '../lib/site.js';
+import { renderMath } from '../lib/katex.js';
+import { slugify } from '../lib/slug.js';
+import TrustLabel from './TrustLabel.astro';
+
+interface Props {
+  family: Family;
+  explained: boolean;
+}
+const { family: f, explained } = Astro.props;
+const strip = (s: string) => s.replace(/<[^>]+>/g, ' ');
+const searchText = `${f.id} ${strip(f.title)} ${strip(f.summary)} ${f.subject}`;
+---
+<li
+  class="row"
+  data-row
+  data-id={f.id}
+  data-trust={f.trust}
+  data-field={slugify(f.subject)}
+  data-explained={explained ? '1' : '0'}
+  data-search={searchText}
+>
+  <a class="row-link" href={entryUrl(f)}>
+    <span class="row-id nums">{f.id}</span>
+    <span>
+      <span class="row-title">
+        <span set:html={renderMath(f.title)} />{explained && <span class="tag-explained">Explained</span>}
+      </span>
+      <span class="row-summary" set:html={renderMath(f.summary)} />
+    </span>
+    <span class="row-trust">
+      <TrustLabel trust={f.trust} short />
+    </span>
+  </a>
+</li>

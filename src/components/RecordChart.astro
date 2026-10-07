@@ -1,0 +1,50 @@
+---
+interface Point {
+  year: number;
+  value: number;
+  who: string;
+  claim?: boolean;
+  source: number;
+}
+interface Props {
+  title: string;
+  note?: string;
+  points: Point[];
+}
+const { title, note, points } = Astro.props;
+const max = Math.max(...points.map((p) => p.value));
+---
+<figure>
+  <figcaption class="ui">{title}{note && <span> · {note}</span>}</figcaption>
+  <ul class="chart" aria-hidden="true">
+    {points.map((p) => (
+      <li class="chart-item">
+        <span class="chart-value nums">{p.value}</span>
+        <span
+          class={`chart-bar${p.claim ? ' chart-bar-claim' : ''}`}
+          style={`block-size: ${(p.value / max) * 120}px`}
+        />
+        <span class="chart-who">{p.year} · {p.who}</span>
+      </li>
+    ))}
+  </ul>
+  <table class="visually-hidden">
+    <caption>{title}</caption>
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Value</th>
+        <th>Who</th>
+      </tr>
+    </thead>
+    <tbody>
+      {points.map((p) => (
+        <tr>
+          <td>{p.year}</td>
+          <td>{p.value}</td>
+          <td>{p.who}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</figure>

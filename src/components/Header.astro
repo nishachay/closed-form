@@ -1,0 +1,18 @@
+---
+// Site-wide header. Lab-neutral per §0: no lab or collection names here.
+import { appUrl } from '../lib/site.js';
+const github = 'https://github.com/nishachay/closed-form';
+---
+<header class="site-header">
+  <div class="wrap site-header-inner">
+    <a class="brand" href={appUrl('/')} aria-label="Closed Form home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Closed Form</span>
+    </a>
+    <nav class="site-nav ui" aria-label="Site">
+      <a href={appUrl('/archive/')}>Archive</a>
+      <a href={appUrl('/about/')}>About</a>
+      <a href={github}>GitHub</a>
+    </nav>
+  </div>
+</header>

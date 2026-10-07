@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import ArchiveBrowser from '../components/ArchiveBrowser.astro';
+import { catalog, families } from '../lib/site.js';
+---
+<Base title="Archive" description="All results with search and trust filters.">
+  <div class="wrap">
+    <p class="kicker">The archive</p>
+    <h1 class="page">All {catalog.families.length} results</h1>
+    <p class="measure">Every result in one place. Search, filter, open.</p>
+    <ArchiveBrowser families={families} />
+  </div>
+</Base>

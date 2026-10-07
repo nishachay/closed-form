@@ -1,16 +1,87 @@
 ---
-// Phase 1 placeholder. Phase 2 builds home + map per §13.
+import Base from '../layouts/Base.astro';
+import ResultMap from '../components/ResultMap.astro';
+import TrustLabel from '../components/TrustLabel.astro';
+import { catalog, computeStats, entryUrl, appUrl, familiesById, loadExplained } from '../lib/site.js';
+import { TRUST_LADDER } from '../lib/trust.js';
+
+const stats = computeStats();
+const explainedById = await loadExplained();
+const explainedIds = new Set(explainedById.keys());
+const explained = [...explainedById.values()].sort((a, b) => a.id.localeCompare(b.id));
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Closed Form — AI mathematics, explained</title>
-  </head>
-  <body>
-    <main>
-      <p>Kicker: Vol. 1 · The OpenAI collection · October 2026</p>
-      <h1>Every problem AI has solved, explained for everyone.</h1>
-      <p>Phase 1 scaffold. Phase 2 builds the site.</p>
-    </main>
-  </body>
-</html>
+<Base
+  title="AI mathematics, explained"
+  description="Every discovery AI makes, explained and checked. Plain words, honest trust labels."
+>
+  <div class="wrap">
+    <p class="kicker hero-in">Vol. 1 · October 2026</p>
+    <h1 class="display hero-in hero-in-2">
+      Every discovery AI makes,<br />
+      <span style="color: var(--color-text-tertiary)">explained and checked.</span>
+    </h1>
+    <p class="measure hero-in hero-in-3">
+      Closed Form turns AI-made mathematics into pages a curious adult can read in three minutes:
+      what is claimed, how sure we can be, and where the question came from.
+    </p>
+    <div class="actions hero-in hero-in-3">
+      <a class="button-primary" href={appUrl('/archive/')}>Browse all {stats.results} results</a>
+      <a class="quiet-link" href={appUrl('/about/')}>How trust labels work</a>
+    </div>
+
+    <ul class="stats" aria-label="Collection statistics">
+      <li>
+        <div class="stat-number">{stats.papers}</div>
+        <div class="stat-label">papers</div>
+      </li>
+      <li>
+        <div class="stat-number">{stats.results}</div>
+        <div class="stat-label">results</div>
+      </li>
+      <li>
+        <div class="stat-number">{stats.formalPapers}</div>
+        <div class="stat-label">papers with formal proof</div>
+      </li>
+      <li>
+        <div class="stat-number">{explained.length}</div>
+        <div class="stat-label">explained so far</div>
+      </li>
+    </ul>
+
+    <h2>The map</h2>
+    <ul class="map-legend" aria-label="Trust legend">
+      {TRUST_LADDER.map((t) => (
+        <li>
+          <TrustLabel trust={t.key} />
+        </li>
+      ))}
+    </ul>
+    <ResultMap explainedIds={explainedIds} />
+
+    <h2>Explained so far</h2>
+    <ul class="rows">
+      {explained.map((e) => (
+        <li class="row">
+          <a class="row-link" href={entryUrl({ id: e.id })}>
+            <span class="row-id nums">{e.id}</span>
+            <span>
+              <span class="row-title">{e.headline}</span>
+            </span>
+            <span class="row-trust">
+              <TrustLabel trust={familiesById.get(e.id)?.trust ?? 'claimed'} short />
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p>
+      <a href={appUrl('/archive/')}>Full archive →</a>
+    </p>
+
+    <h2>The collection</h2>
+    <p class="measure">
+      Vol. 1 holds {stats.results} results in {catalog.subjects.length} fields. Lab: {catalog.lab} ·
+      Science: {catalog.science} · <a href={appUrl(`/collection/${catalog.collection}/`)}>Open the collection →</a>
+    </p>
+  </div>
+</Base>

@@ -1,0 +1,12 @@
+---
+import { trustClass, trustLevel } from '../lib/trust.js';
+
+interface Props {
+  trust: string;
+  /** Long ladder label (default) or compact short label. */
+  short?: boolean;
+}
+const { trust, short = false } = Astro.props;
+const level = trustLevel(trust);
+---
+<span><span class={`dot dot-${trustClass(trust)}`} aria-hidden="true"></span>{short ? level.short : level.label}</span>
