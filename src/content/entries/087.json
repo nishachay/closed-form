@@ -1,0 +1,187 @@
+{
+  "id": "087",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-symmetric-Mahler-conjecture-and-its-equality-cases-September-22-2026/paper.pdf",
+      "label": "The symmetric Mahler conjecture and its equality cases"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Mahler-Conjecture-for-General-Convex-Bodies-September-22-2026/paper.pdf",
+      "label": "The Mahler Conjecture for General Convex Bodies"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Symplectic-Balls-in-Symmetric-Polar-Products-September-22-2026/paper.pdf",
+      "label": "Symplectic Balls in Symmetric Polar Products"
+    },
+    {
+      "kind": "trace",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/symmetric-and-general-mahler-conjectures.pdf",
+      "label": "Reasoning summary"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/087.md",
+      "label": "Lean doc (formal proof listed)",
+      "note": "Comparator statements for the symmetric, general and symplectic claims; functional inequalities are outside the formalized statements."
+    }
+  ],
+  "headline": "Symmetric convex bodies cannot beat Mahler's volume bound.",
+  "scope": "The headline bound needs origin symmetry; the companion papers drop that assumption.",
+  "plain": "Every symmetric convex body (a solid centered on the origin) has a polar body (the set of directions it bounds). Their volumes multiply to a number called the volume product. The paper proves this product never drops below 4^n/n!, and that only linear images of Hanner polytopes (cube-like shapes built from intervals) reach the floor. Companion papers prove the nonsymmetric version, sharp functional forms (inequalities about functions instead of shapes), and a matching symplectic width (the largest ball that fits).",
+  "doesNot": "This does not compute the volume product of any specific body.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1939",
+    "firstStepBy": "Kurt Mahler, the volume-product problem",
+    "field": "Convex and metric geometry",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle an 87-year-old central problem in convex geometry."
+  },
+  "sections": [
+    {
+      "title": "The story",
+      "body": "In 1939, Kurt Mahler asked how small the volume product of a symmetric convex body and its polar could be. In 1956, Olof Hanner built the cube-like shapes that later became the conjectured minimizers. In 1981, Jean Saint-Raymond proved the sharp bound for unconditional bodies (those symmetric under sign flips of coordinates). In 1987, Jean Bourgain and Vitali Milman proved the first dimension-free exponential lower bound. In 2020, Hiroshi Iriyeh and Masataka Shibata settled the three-dimensional case with equality. These papers prove the bound in every dimension and classify all equality cases."
+    },
+    {
+      "title": "Why it matters",
+      "body": "The volume product is unchanged by linear maps, so the bound is a universal law of shape, not an accident of coordinates. Equality goes exactly to linear Hanner bodies, and the companion nonsymmetric bound crowns the simplex."
+    },
+    {
+      "title": "Where it leads",
+      "body": "The same circle of ideas gives sharp functional inequalities and a symplectic width of 4 for polar products. The methods may extend to stability versions that measure how near-minimizers must look like Hanner bodies."
+    },
+    {
+      "title": "What it says about AI",
+      "body": "The manuscripts list OpenAI as author, and the repository states that an internal model produced them. The reasoning summary shows the model testing routes from Kuperberg's linking integrals to Klartag's covariance framework. The Lean catalogue lists formalizations of the symmetric, general and symplectic claims."
+    }
+  ],
+  "hypeCheck": "Listed but unreviewed: the catalogue records proofs without certifying them, and specialists have not checked the arguments.",
+  "glossary": [
+    {
+      "term": "Convex body",
+      "meaning": "A solid shape with no dents and a well-defined volume."
+    },
+    {
+      "term": "Polar body",
+      "meaning": "The set of directions bounded by a given body."
+    },
+    {
+      "term": "Volume product",
+      "meaning": "A body's volume times its polar's volume, unchanged by linear maps."
+    },
+    {
+      "term": "Hanner polytope",
+      "meaning": "A cube-like shape built from intervals by products and joins."
+    },
+    {
+      "term": "Simplex",
+      "meaning": "The simplest closed shape in its dimension, like a triangle or tetrahedron."
+    },
+    {
+      "term": "Functional inequality",
+      "meaning": "An inequality about functions instead of shapes."
+    },
+    {
+      "term": "Symplectic width",
+      "meaning": "The largest ball that fits inside a symplectic shape."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "K. Mahler, “Ein Übertragungsprinzip für konvexe Körper”, Časopis pro pěstování matematiky a fysiky 68 (1939)"
+    },
+    {
+      "id": 2,
+      "cite": "O. Hanner, “Intersections of translates of convex bodies”, Mathematica Scandinavica 4 (1956)"
+    },
+    {
+      "id": 3,
+      "cite": "J. Saint-Raymond, “Sur le volume des corps convexes symétriques”, Séminaire d'initiation à l'analyse, Paris VI (1981)"
+    },
+    {
+      "id": 4,
+      "cite": "J. Bourgain and V. D. Milman, “New volume ratio properties for convex symmetric bodies”, Inventiones Mathematicae 88 (1987)",
+      "url": "https://doi.org/10.1007/BF01388911"
+    },
+    {
+      "id": 5,
+      "cite": "H. Iriyeh and M. Shibata, “Symmetric Mahler's conjecture for the volume product in the 3-dimensional case”, Duke Mathematical Journal 169 (2020)",
+      "url": "https://doi.org/10.1215/00127094-2019-0072"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, family 087 manuscripts (2026)",
+      "url": "https://github.com/openai/math"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean doc for family 087 (listed formalizations)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/087.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, reasoning summary for family 087 (2026)",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/symmetric-and-general-mahler-conjectures.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Every origin-symmetric convex body satisfies |K||K°| ≥ 4^n/n!, with equality exactly for linear Hanner bodies.",
+      "verdict": "supported",
+      "sourceLine": "For every integer n≥1 and every origin-symmetric convex body K: |K||K°| ≥ 4^n/n!. Equality holds if and only if K is a linear Hanner body."
+    },
+    {
+      "text": "Mahler posed the volume-product problem in 1939.",
+      "verdict": "supported",
+      "sourceLine": "Mahler introduced the volume-product problem in his work on convex bodies and transference in the geometry of numbers [Mahler1939]."
+    },
+    {
+      "text": "Saint-Raymond proved the sharp bound for unconditional bodies; Bourgain and Milman gave exponential bounds.",
+      "verdict": "supported",
+      "sourceLine": "Saint-Raymond proved the sharp inequality for unconditional bodies [SaintRaymond1981]. Bourgain and Milman established such a reverse Blaschke-Santalo inequality [BourgainMilman]."
+    },
+    {
+      "text": "Iriyeh and Shibata proved the three-dimensional symmetric theorem with equality.",
+      "verdict": "supported",
+      "sourceLine": "Iriyeh and Shibata proved the complete three-dimensional symmetric theorem, including equality [Theorem 1.1][IriyehShibata]."
+    },
+    {
+      "text": "Companion papers cover the general nonsymmetric bound, functional inequalities and symplectic width 4.",
+      "verdict": "supported",
+      "sourceLine": "The corresponding sharp functional Mahler inequalities also hold. For n ≥ 2, every symmetric polar product K×K° in dimension 2n has Gromov width 4."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "The Lean catalogue lists formalizations of the symmetric, general and symplectic claims.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "The reasoning summary shows the model testing conformal-map and transport routes against the literature.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "a254f5bfe408d1d66cb2c20c44ee9debc3db5445531f8711ef3a846bca8d2d61",
+  "sourceCommit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a"
+}

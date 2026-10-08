@@ -8,7 +8,7 @@ test('home shows 372 map cells, stats and field deep-links', async ({ page }) =>
   await page.goto('./');
   await expect(page.locator('.map-cell')).toHaveCount(372);
   const stats = await page.locator('.stat-number').allTextContents();
-  expect(stats.map((s) => s.trim())).toEqual(['722', '372', '162', '1']);
+  expect(stats.map((s) => s.trim())).toEqual(['722', '372', '162', '4']);
   const href = await page.locator('.map-field-title a').first().getAttribute('href');
   expect(href).toContain('/archive/?field=');
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveCount(1);

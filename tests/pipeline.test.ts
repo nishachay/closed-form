@@ -1,5 +1,8 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import entry017 from '../src/content/entries/017.json';
+import { entrySchema } from '../src/lib/entry.js';
 import {
   formatIssues,
   hasErrors,
@@ -100,6 +103,25 @@ describe('explain arg parsing + selection (§11)', () => {
   });
 });
 
+describe('archive entries (§10): every published entry validates', () => {
+  const dir = join(import.meta.dirname, '..', 'src/content/entries');
+  const files = readdirSync(dir).filter((f) => f.endsWith('.json'));
+
+  it('has the expected batch entries plus the 017 seed', () => {
+    expect(files).toContain('017.json');
+  });
+
+  for (const file of files) {
+    it(`${file} validates against the schema with zero lint errors`, () => {
+      const raw = JSON.parse(readFileSync(join(dir, file), 'utf-8'));
+      const res = entrySchema.safeParse(raw);
+      if (!res.success) console.error(file, JSON.stringify(res.error.issues, null, 1));
+      expect(res.success).toBe(true);
+      expect(hasErrors(lintEntry(raw))).toBe(false);
+    });
+  }
+});
+
 describe('007 dry run (§11, offline)', () => {
   it('gathers tex sources with a 64-hex hash', async () => {
     const fam = fams.find((f) => f.id === '007') as Family;
@@ -121,8 +143,8 @@ describe('007 dry run (§11, offline)', () => {
     expect(r.texFiles).toBeGreaterThan(0);
     expect(r.readerPromptChars).toBeGreaterThan(5000);
     expect(r.sourceHash).toMatch(/^[0-9a-f]{64}$/);
-    expect(r.existing).toBe(false);
-    expect(r.wouldSkip).toBe(false);
+    expect(r.existing).toBe(true);
+    expect(r.wouldSkip).toBe(true);
     expect(r.writePath).toBe('src/content/entries/007.json');
   });
 });

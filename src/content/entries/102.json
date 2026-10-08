@@ -1,0 +1,192 @@
+{
+  "id": "102",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf",
+      "label": "The Unique Games Theorem"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Direct-Proof-of-Optimal-Max-Cut-Hardness-September-23-2026/paper.pdf",
+      "label": "A Direct Proof of Optimal Max-Cut Hardness"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Factor-Two-Hardness-Threshold-for-Vertex-Cover-September-23-2026/paper.pdf",
+      "label": "The Factor-Two Hardness Threshold for Vertex Cover"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Constant-factor-hardness-of-Min-UnCut-September-23-2026/paper.pdf",
+      "label": "Constant-factor hardness of Min-UnCut"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Constant-factor-hardness-of-directed-feedback-vertex-set-September-23-2026/paper.pdf",
+      "label": "Constant-factor hardness of directed feedback vertex set"
+    },
+    {
+      "kind": "trace",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/basic-semidefinite-threshold-np-hardness.pdf",
+      "label": "Reasoning summary"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/102.md",
+      "label": "Lean doc (formal proof listed)",
+      "note": "Comparator statements for the Unique Games gap and all four hardness consequences."
+    }
+  ],
+  "headline": "Telling almost-solvable puzzles from hopeless ones can be impossibly hard.",
+  "scope": "The proof covers the edge-value form with fixed errors; the alphabet is fixed after the errors.",
+  "plain": "A unique game is a matching puzzle (every answer forces exactly one reply at the other end). In 2002, Subhash Khot conjectured that telling nearly solvable instances from nearly worthless ones stays hard for computers. This paper claims to prove the conjecture by translating logic puzzles into matching puzzles. Companion papers then establish the best possible ratios for Max-Cut, Vertex Cover, Min-UnCut and directed feedback.",
+  "doesNot": "This does not give a fast algorithm for any of these problems.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2002",
+    "firstStepBy": "Subhash Khot, the Unique Games Conjecture",
+    "field": "Theoretical computer science",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they close the central open problem of approximation hardness."
+  },
+  "sections": [
+    {
+      "title": "The story",
+      "body": "In 2002, Subhash Khot conjectured that matching puzzles stay hard to approximate even when almost solvable. In 1995, Michel Goemans and David Williamson gave a celebrated cutting algorithm whose ratio became the target to beat. In 2007, Khot and coauthors showed that beating it would refute the conjecture. In 2008, Prasad Raghavendra extended the pattern: the conjecture would fix the best ratio for every constraint problem. These papers prove the conjecture by translating logic puzzles into matching puzzles with no good approximation."
+    },
+    {
+      "title": "Why it matters",
+      "body": "Settling the conjecture turns dozens of conditional hardness results into unconditional ones. In this language, completeness is the nearly solvable side and soundness is the nearly worthless side. The companion papers do this directly for Max-Cut, Vertex Cover, Min-UnCut and directed feedback."
+    },
+    {
+      "title": "Where it leads",
+      "body": "The same framework now applies to every fixed constraint language via the basic semidefinite threshold (the limit of a standard equation-solving method). The proofs also separate deterministic from randomized guarantees, claiming nothing about the latter."
+    },
+    {
+      "title": "What it says about AI",
+      "body": "The manuscripts list OpenAI as author, and the repository states that an internal model produced them. The published reasoning summary shows the model moving from failed gadget ideas to a rank-one noise construction. The Lean catalogue lists formalizations of the Unique Games gap and all four hardness consequences."
+    }
+  ],
+  "hypeCheck": "Formally listed but unreviewed: Lean records the reductions without certifying compilation, and specialists have not weighed in.",
+  "glossary": [
+    {
+      "term": "Unique game",
+      "meaning": "A matching puzzle where every answer forces exactly one reply."
+    },
+    {
+      "term": "Max-Cut",
+      "meaning": "Splitting a network into two sides to cut the most links."
+    },
+    {
+      "term": "Vertex cover",
+      "meaning": "A set of hubs touching every link in a network."
+    },
+    {
+      "term": "Completeness",
+      "meaning": "How much of a nearly solvable puzzle a solution recovers."
+    },
+    {
+      "term": "Soundness",
+      "meaning": "How little a solution gets from a hopeless puzzle."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. Khot, “On the Power of Unique 2-Prover 1-Round Games”, STOC (2002)",
+      "url": "https://doi.org/10.1145/509907.510017"
+    },
+    {
+      "id": 2,
+      "cite": "M. X. Goemans and D. P. Williamson, “Improved Approximation Algorithms for Maximum Cut and Satisfiability Problems Using Semidefinite Programming”, Journal of the ACM 42 (1995)",
+      "url": "https://doi.org/10.1145/227683.227684"
+    },
+    {
+      "id": 3,
+      "cite": "S. Khot, G. Kindler, E. Mossel and R. O'Donnell, “Optimal Inapproximability Results for MAX-CUT and Other 2-Variable CSPs?”, SIAM Journal on Computing 37 (2007)",
+      "url": "https://doi.org/10.1137/S0097539705447372"
+    },
+    {
+      "id": 4,
+      "cite": "P. Raghavendra, “Optimal Algorithms and Inapproximability Results for Every CSP?”, STOC (2008)",
+      "url": "https://doi.org/10.1145/1374376.1374414"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, family 102 manuscripts (2026)",
+      "url": "https://github.com/openai/math"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean doc for family 102 (listed formalizations)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/102.md"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, reasoning summary for family 102 (2026)",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/basic-semidefinite-threshold-np-hardness.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For fixed errors there is a polynomial-time reduction from 3SAT to unique games separating value 1-eps from delta.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed eps,delta in (0,1/2), there are s>=1 and a deterministic polynomial-time reduction from 3SAT to explicit unweighted Unique Games instances with val >= 1-eps on satisfiable and <= delta on unsatisfiable inputs."
+    },
+    {
+      "text": "This resolves the Unique Games Conjecture in its usual edge-value formulation.",
+      "verdict": "supported",
+      "sourceLine": "Thus the result resolves the Unique Games Conjecture positively in its usual edge-value formulation [Conjecture 2.5][Khot10]."
+    },
+    {
+      "text": "Khot introduced the conjecture in 2002.",
+      "verdict": "supported",
+      "sourceLine": "Khot introduced the Unique Games Conjecture in 2002 and gave an algorithm based on semidefinite rounding [Khot02]."
+    },
+    {
+      "text": "Goemans and Williamson gave the celebrated cutting algorithm; Khot et al. tied beating it to the conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Theorem supplies the Unique Games hypothesis in earlier hardness reductions for cut, covering, constraint-satisfaction problems [KKMO07, KhotRegev2008, Raghavendra08]."
+    },
+    {
+      "text": "The errors are prescribed before the alphabet, which may be large and fixed.",
+      "verdict": "supported",
+      "sourceLine": "The two errors are prescribed independently, before the alphabet is chosen."
+    },
+    {
+      "text": "Companion papers establish Max-Cut, Vertex Cover, Min-UnCut and directed feedback thresholds directly.",
+      "verdict": "external",
+      "sourceId": 5
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "The Lean catalogue lists formalizations of the gap and all four consequences.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "The reasoning summary shows the model moving from failed gadgets to a rank-one noise construction.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "92a17d7becffa280235011ac6d1d7f03547eaa9b3be1f9416cf1e3ac8126d720",
+  "sourceCommit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a"
+}

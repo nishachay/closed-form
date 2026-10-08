@@ -1,0 +1,187 @@
+{
+  "id": "007",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ordinary-two-point-correlations-of-multiplicative-functions-September-24-2026/final.pdf",
+      "label": "Ordinary two-point correlations of multiplicative functions"
+    },
+    {
+      "kind": "trace",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/ordinary-two-point-correlations.pdf",
+      "label": "Reasoning summary"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/007.md",
+      "label": "Lean doc (partial formalization)",
+      "note": "Comparator statements only; the full proof is outside the formalized statements."
+    }
+  ],
+  "headline": "Neighboring numbers stop agreeing on prime-factor parity.",
+  "scope": "The bound covers fixed shifts and fixed nonproportional affine forms (straight-line schedules like 3n + 2) only.",
+  "plain": "Every whole number has a prime-factor parity (whether its total number of prime factors, counted with repeats, is even or odd). Chowla's conjecture says these parities become uncorrelated between a number and its fixed shifts. This paper claims to prove that for pairs of shifts, using plain averages that weigh every number equally. For the classic parity function it also gives an explicit rate at which the correlation fades.",
+  "doesNot": "This does not settle the conjecture for three or more shifts at once.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Sarvadaman Chowla, the correlation conjecture",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it closes the two-point case that resisted plain averaging for sixty years."
+  },
+  "sections": [
+    {
+      "title": "The story",
+      "body": "In 1965, Sarvadaman Chowla conjectured that the Liouville parity (the even-or-odd status of prime-factor counts) of a number and its shifts becomes uncorrelated. In 1992, Peter Elliott extended the question to all bounded multiplicative functions (functions fixed by their values on primes). In 2016, Kaisa Matomaki and Maksym Radziwill proved the first fixed-shift bound, showing the correlation stays below one by a shift-dependent margin. Terence Tao then proved the logarithmically averaged version (which weighs small numbers more heavily). Cedric Pilatte sharpened the logarithmic bound in 2026, but the logarithmic weight remained. This paper claims the first bound for plain averages at every cutoff."
+    },
+    {
+      "title": "Why it matters",
+      "body": "Plain averages count every whole number equally, so the result speaks about the numbers themselves rather than a weighted shadow of them. It also covers a wide class of multiplicative functions, including complex-valued ones, under one nonpretentiousness condition (the function refuses to imitate simple wave-like patterns)."
+    },
+    {
+      "title": "Where it leads",
+      "body": "The conjecture for three or more shifts stays open, as does any rate for the general functions. The paper also claims no uniformity when the coefficients grow with the cutoff."
+    },
+    {
+      "title": "What it says about AI",
+      "body": "The manuscript lists OpenAI as author, and the repository states that an internal model produced it. The published reasoning summary shows the model testing its graph ideas against the sieve literature before committing to them. The Lean catalogue carries comparator statements (simplified formal versions of the claims), not a full machine-checked proof."
+    }
+  ],
+  "hypeCheck": "Partly formalized and unreviewed: the Lean files state comparator versions of the claims, and no specialist has published a check of the full argument.",
+  "glossary": [
+    {
+      "term": "Liouville function",
+      "meaning": "A rule that gives 1 when a number has evenly many prime factors and -1 otherwise."
+    },
+    {
+      "term": "Multiplicative function",
+      "meaning": "A function fixed by its values on prime numbers."
+    },
+    {
+      "term": "Ordinary average",
+      "meaning": "An average that gives every whole number equal weight."
+    },
+    {
+      "term": "Logarithmic average",
+      "meaning": "An average that gives smaller numbers more weight."
+    },
+    {
+      "term": "Nonpretentious",
+      "meaning": "A function that refuses to imitate any simple wave-like pattern."
+    },
+    {
+      "term": "Affine form",
+      "meaning": "A straight-line schedule such as 3n + 2."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A simplified formal statement used to check part of a proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. Chowla, “The Riemann Hypothesis and Hilbert's Tenth Problem”, Gordon and Breach, New York (1965)"
+    },
+    {
+      "id": 2,
+      "cite": "P. D. T. A. Elliott, “On the correlation of multiplicative functions”, Notas Soc. Mat. Chile 11 (1992)"
+    },
+    {
+      "id": 3,
+      "cite": "K. Matomaki and M. Radziwill, “Multiplicative functions in short intervals”, Annals of Mathematics 183 (2016)"
+    },
+    {
+      "id": 4,
+      "cite": "T. Tao, “The logarithmically averaged Chowla and Elliott conjectures for two-point correlations”, Forum of Mathematics, Pi 4 (2016), e8",
+      "url": "https://arxiv.org/abs/1509.05422v4"
+    },
+    {
+      "id": 5,
+      "cite": "C. Pilatte, “Improved bounds for the two-point logarithmic Chowla conjecture”, Journal of the American Mathematical Society (2026)",
+      "url": "https://arxiv.org/abs/2310.19357v3"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, family 007 manuscripts (2026)",
+      "url": "https://github.com/openai/math"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean doc for family 007 (comparator statements)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/007.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, reasoning summary for family 007 (2026)",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/ordinary-two-point-correlations.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The paper proves a logarithmic saving for affine Liouville correlations at every cutoff.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute constant c>0 such that ... |sum lambda(a1 n+b1) lambda(a2 n+b2)| <= C X/(log X)^c (X>=3)."
+    },
+    {
+      "text": "For fixed shifts this resolves the ordinary two-point Chowla conjecture.",
+      "verdict": "supported",
+      "sourceLine": "For a1=a2=1 and b1=0, b2=h>0, this resolves the ordinary two-point Chowla conjecture, with a logarithmic saving."
+    },
+    {
+      "text": "Chowla conjectured vanishing correlations in 1965.",
+      "verdict": "supported",
+      "sourceLine": "Chowla's conjecture predicts vanishing Liouville correlations at every fixed collection of distinct shifts [Chowla65,MRT15]."
+    },
+    {
+      "text": "Elliott extended the problem to bounded multiplicative functions.",
+      "verdict": "supported",
+      "sourceLine": "Elliott extended the correlation problem to bounded multiplicative functions [Elliott92]."
+    },
+    {
+      "text": "Matomaki and Radziwill gave the first fixed-shift bound below one.",
+      "verdict": "supported",
+      "sourceLine": "They also obtained a nontrivial bound for each fixed-shift Liouville correlation: the normalized absolute value is at most 1-delta(h) [Corollary 2][MR16]."
+    },
+    {
+      "text": "Tao proved the logarithmically averaged version; Pilatte sharpened the logarithmic bound in 2026.",
+      "verdict": "supported",
+      "sourceLine": "Tao proved the logarithmically averaged binary corrected Elliott theorem [Tao16]. Pilatte improved this bound to (log x)^{1-c0} [Theorem 1.1][Pilatte26]."
+    },
+    {
+      "text": "No uniformity is claimed for coefficients growing with X.",
+      "verdict": "supported",
+      "sourceLine": "The implied constants need not be effective, and no uniformity for coefficients growing with X is asserted."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "The Lean catalogue carries comparator statements, not a full proof.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "The reasoning summary shows the model testing graph ideas against sieve literature.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "aac4acd278ffe595e4b5797a5fd6b4bff0101c21a59fb4d86d908e9cd0d5f407",
+  "sourceCommit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a"
+}
