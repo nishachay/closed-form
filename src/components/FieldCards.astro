@@ -1,0 +1,47 @@
+---
+import { entryUrl, fieldUrl } from '../lib/site.js';
+import { TRUST_LADDER } from '../lib/trust.js';
+import type { Catalog } from '../lib/catalog.js';
+
+interface Props {
+  subjects: Catalog['subjects'];
+  families: Catalog['families'];
+  explainedIds: Set<string>;
+}
+const { subjects, families, explainedIds } = Astro.props;
+
+const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
+---
+<>
+  {subjects.map((subject) => {
+    const items = families
+      .filter((f) => f.subject === subject)
+      .sort((a, b) => (order[a.trust] ?? 9) - (order[b.trust] ?? 9) || a.id.localeCompare(b.id));
+    if (items.length === 0) return null;
+    const formal = items.filter((f) => f.trust === 'formal').length;
+    return (
+      <li class="fcard">
+        <h3 class="fc-t"><a href={fieldUrl(subject)}>{subject}</a></h3>
+        <ul class="cells">
+          {items.map((f) => {
+            const plain = f.title.replace(/<[^>]+>/g, '');
+            return (
+              <li>
+                <a
+                  class={`cell c-${f.trust}${explainedIds.has(f.id) ? ' ex' : ''}`}
+                  href={entryUrl(f)}
+                  aria-label={`Entry ${f.id}, ${plain}, ${TRUST_LADDER.find((t) => t.key === f.trust)?.label}${explainedIds.has(f.id) ? ', explained' : ''}`}
+                  title={`${f.id} · ${plain}`}
+                />
+              </li>
+            );
+          })}
+        </ul>
+        <p class="fc-n">
+          <span><b class="num">{items.length}</b> results</span>
+          <span><b class="num">{formal}</b> with formal proof</span>
+        </p>
+      </li>
+    );
+  })}
+</>

@@ -1,34 +1,31 @@
 ---
 import type { Family } from '../lib/catalog.js';
+import { formatLongDay } from '../lib/dates.js';
 
 interface Props {
   family: Family;
 }
 const { family: f } = Astro.props;
-
-function dateLabel(iso: string | null): string {
-  return iso ?? 'date unknown';
-}
+const leanHref = f.leanDoc
+  ? f.leanDoc.startsWith('http')
+    ? f.leanDoc
+    : `https://github.com/openai/math/blob/main/${f.leanDoc}`
+  : '';
 ---
 <section aria-labelledby="the-original">
   <h2 id="the-original">The original</h2>
-  <ul class="original">
+  <ul class="papers">
     {f.papers.map((p) => (
       <li>
-        <a href={p.pdf}>{p.title}</a>
-        <span> · {dateLabel(p.date)}</span>
-        {p.lean && <span class="lean-badge">Lean proof listed</span>}
+        <a href={p.pdf} target="_blank" rel="noopener">{p.title}</a>
+        <div class="d">
+          {formatLongDay(p.date)}{p.lean ? ' · formal proof listed' : ''}
+        </div>
       </li>
     ))}
   </ul>
-  {f.leanDoc && (
-    <p>
-      <a href={`https://github.com/openai/math/blob/main/${f.leanDoc}`}>Lean notes for this family</a>
-    </p>
-  )}
-  {f.trace && (
-    <p>
-      <a href={f.trace}>Published reasoning summary (PDF)</a>
-    </p>
-  )}
+  <div class="links">
+    {f.leanDoc && <a href={leanHref} target="_blank" rel="noopener">Lean notes ↗</a>}
+    {f.trace && <a href={f.trace} target="_blank" rel="noopener">Model's reasoning summary ↗</a>}
+  </div>
 </section>

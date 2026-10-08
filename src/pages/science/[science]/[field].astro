@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import ArchiveBrowser from '../../../components/ArchiveBrowser.astro';
-import { appUrl, catalog, fieldUrl } from '../../../lib/site.js';
+import { catalog } from '../../../lib/site.js';
 import { slugify } from '../../../lib/slug.js';
 
 export function getStaticPaths() {
@@ -15,15 +15,15 @@ const subject = catalog.subjects.find((s) => slugify(s) === field);
 if (!subject) throw new Error(`Unknown field: ${field}`);
 const list = catalog.families.filter((f) => f.subject === subject);
 ---
-<Base title={subject} description={`${list.length} AI-made results in ${subject}, explained in plain words.`} ogImage={`/og/field-${field}.png`}>
-  <div class="wrap">
-    <p class="kicker">
-      Field · {subject} · <a href={appUrl(`/science/${catalog.science}/`)}>{catalog.science}</a>
-    </p>
-    <h1 class="page">{subject}</h1>
-    <p class="measure">
-      {list.length} results in {catalog.collection} · <a href={fieldUrl(subject)}>permalink</a>
-    </p>
-    <ArchiveBrowser families={list} />
-  </div>
+<Base
+  title={subject}
+  description={`${list.length} AI-made results in ${subject}, explained in plain words.`}
+  ogImage={`/og/field-${field}.png`}
+>
+    <section class="wrap arch-head">
+      <div class="label">Field · {subject}</div>
+      <h1>{subject}</h1>
+      <p class="lede">{list.length} results in {catalog.collection}.</p>
+    </section>
+    <ArchiveBrowser families={list} lockField={slugify(subject)} />
 </Base>

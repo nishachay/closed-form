@@ -27,16 +27,6 @@ const { prev, next } = neighbors(family.id);
 
 const reviewNote =
   entry && entry.status !== 'reviewed' ? 'This entry has not been reviewed by a person yet.' : null;
-const reviewKind =
-  entry?.status === 'sample'
-    ? 'Sample entry, written by hand'
-    : entry?.status === 'ai-draft'
-      ? 'AI draft — not checked yet'
-      : entry?.status === 'ai-checked'
-        ? 'Checked by AI against the paper — not yet reviewed by a person'
-        : entry?.status === 'reviewed'
-          ? `Reviewed by a person${entry.reviewedBy ? ` (${entry.reviewedBy})` : ''}`
-          : null;
 
 const shareText = entry
   ? `${entry.scorecard.firstStep ? `Open since ${entry.scorecard.firstStep}. ` : ''}${entry.headline} ∎ ${absoluteUrl(entryUrl(family))}`
@@ -44,7 +34,7 @@ const shareText = entry
 const shareHref = `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`;
 const reportHref =
   `https://github.com/nishachay/closed-form/issues/new?template=report-error.yml` +
-  `&labels=entry-error&title=${encodeURIComponent(`[entry ${gid}] `)}`;
+  `&labels=entry-error&title=${encodeURIComponent(`[entry ${family.id}] `)}`;
 
 const toc = entry
   ? [
@@ -63,121 +53,112 @@ const title = `${family.id} · ${family.title.replace(/<[^>]+>/g, '')}`;
 const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 ---
 <Base title={title} description={entry?.headline ?? family.summary.replace(/<[^>]+>/g, '')} ogImage={ogImage}>
-  <div class="wrap">
-    <p class="kicker">
-      Entry {family.id} · {family.subject}
-    </p>
-    <h1 class="page" set:html={renderMath(family.title)} />
+  <div class="entry-wrap">
+    <article class="entry">
+      <div class="label">Entry <span class="num">{family.id}</span> · {family.subject}</div>
+      <h1 set:html={renderMath(family.title)} />
 
-    {entry ? (
-      <div class="entry-grid">
-        <article class="measure">
+      {entry ? (
+        <>
           <p class="headline">{entry.headline}</p>
-          <p class="scope">{entry.scope}</p>
-          <p>{entry.plain}</p>
+          <p set:html={renderMath(entry.plain)} />
           {reviewNote && <Notice text={reviewNote} />}
-          {reviewKind && <p class="ui">{reviewKind}</p>}
-          <Scorecard entry={entry} trust={family.trust} />
+          <Scorecard entry={entry} trust={family.trust} papers={family.papers.length} />
           {entry.visual && (
             <RecordChart title={entry.visual.title} note={entry.visual.note} points={entry.visual.points} />
           )}
           {entry.sections.map((s) => (
             <section aria-label={s.title}>
               <h2 id={s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>{s.title}</h2>
-              <p>{s.body}</p>
+              <p set:html={renderMath(s.body)} />
               {s.title === 'Why it matters' && <p>{entry.doesNot}</p>}
               {s.title === 'What it says about AI' && <p>{entry.origin}</p>}
             </section>
           ))}
           <section aria-labelledby="hype-check">
             <h2 id="hype-check">Hype check</h2>
-            <p>{entry.hypeCheck}</p>
+            <p class="hype">{entry.hypeCheck}</p>
           </section>
           <Glossary items={entry.glossary} />
           <section aria-labelledby="sources">
             <h2 id="sources">Sources</h2>
-            <ol class="sources">
+            <ul class="papers">
               {entry.sources.map((s) => (
                 <li>
-                  {s.url ? <a href={s.url}>{s.cite}</a> : s.cite}
-                  {s.quote && <span> — “{s.quote}”</span>}
+                  {s.url ? <a href={s.url} target="_blank" rel="noopener">{s.cite}</a> : s.cite}
+                  {s.quote && <div class="d">“{s.quote}”</div>}
                 </li>
               ))}
-            </ol>
+            </ul>
           </section>
           <OriginalPapers family={family} />
-          <nav class="pager" aria-label="More entries">
-            <span>{prev && <a href={entryUrl(prev)}>← {prev.id} · <span set:html={prev.title.replace(/\$[^$]+\$/g, '')} /></a>}</span>
-            <span>{next && <a href={entryUrl(next)}>{next.id} · <span set:html={next.title.replace(/\$[^$]+\$/g, '')} /> →</a>}</span>
+          <nav class="pn" aria-label="Previous and next entries">
+            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{prev.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
+            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{next.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
           </nav>
-        </article>
-        <aside class="entry-side" aria-label="On this page">
-          <p class="label">On this page</p>
-          <ul>
-            {toc.map((t) => (
-              <li>
-                <a href={t.href}>{t.label}</a>
-              </li>
-            ))}
-          </ul>
-          <p class="label">Share</p>
-          <p>
-            <a href={shareHref}>Share on X</a>
-          </p>
-          <p class="label">Trust</p>
-          <p>
+        </>
+      ) : (
+        <>
+          <div class="claimbox">
+            <div class="label">What the paper claims, in its own words</div>
+            <p set:html={renderMath(family.summary)} />
             <TrustLabel trust={family.trust} />
-          </p>
-          <p class="label">Feedback</p>
-          <p>
-            <a href={reportHref}>Report an error</a>
-          </p>
-        </aside>
-      </div>
-    ) : (
-      <div class="entry-grid">
-        <article class="measure">
-          <h2 class="headline">What the paper claims, in its own words</h2>
-          <p set:html={renderMath(family.summary)} />
-          <p>
-            <TrustLabel trust={family.trust} />
-          </p>
+          </div>
           <Notice text="The plain-language explainer for this entry is still coming." />
           <OriginalPapers family={family} />
-          <nav class="pager" aria-label="More entries">
-            <span>{prev && <a href={entryUrl(prev)}>← {prev.id}</a>}</span>
-            <span>{next && <a href={entryUrl(next)}>{next.id} →</a>}</span>
+          <nav class="pn" aria-label="Previous and next entries">
+            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{prev.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
+            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{next.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
           </nav>
-        </article>
-        <aside class="entry-side" aria-label="On this page">
-          <p class="label">On this page</p>
-          <ul>
-            {toc.map((t) => (
-              <li>
-                <a href={t.href}>{t.label}</a>
-              </li>
-            ))}
-          </ul>
-          <p class="label">Share</p>
-          <p>
-            <a href={shareHref}>Share on X</a>
-          </p>
-          <p class="label">Trust</p>
-          <p>
-            <TrustLabel trust={family.trust} />
-          </p>
-          <p class="label">Feedback</p>
-          <p>
-            <a href={reportHref}>Report an error</a>
-          </p>
-        </aside>
+        </>
+      )}
+    </article>
+    <aside class="side" aria-label="On this page">
+      <div class="blk toc">
+        <div class="label" style="margin-block-end:.375rem">On this page</div>
+        {toc.map((t) => (
+          <a href={t.href} data-h={t.href.slice(1)}>{t.label}</a>
+        ))}
       </div>
-    )}
-
+      <div class="blk">
+        <a class="share" href={shareHref} target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.3L6.4 22H3.3l7.3-8.3L1 2h6.3l4.4 5.8zm-1.1 18h1.7L6.3 3.9H4.5z" /></svg>Share on X
+        </a>
+      </div>
+      <div class="blk">
+        <div class="label" style="margin-block-end:.375rem">Feedback</div>
+        <a href={reportHref}>Report an error</a>
+      </div>
+    </aside>
+  </div>
+  <div class="wrap">
     <p class="ui" style="margin-block-start: var(--space-8)">
       Collection: <a href={appUrl(`/collection/${catalog.collection}/`)}>{catalog.collection}</a> · Lab:{' '}
       <a href={appUrl(`/lab/${catalog.lab}/`)}>{catalog.lab}</a> · Science:{' '}
       <a href={appUrl(`/science/${catalog.science}/`)}>{catalog.science}</a>
     </p>
   </div>
+  <script>
+    const tocLinks = [...document.querySelectorAll('.side .toc a')] as HTMLAnchorElement[];
+    tocLinks.forEach((a) => {
+      a.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        document
+          .getElementById(a.dataset.h ?? '')
+          ?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    });
+    const io = new IntersectionObserver(
+      (es) => es.forEach((x) => {
+        if (x.isIntersecting) {
+          tocLinks.forEach((l) => (l.dataset.h === (x.target as HTMLElement).id ? l.setAttribute('aria-current', 'true') : l.removeAttribute('aria-current')));
+        }
+      }),
+      { rootMargin: '-20% 0px -70% 0px' },
+    );
+    tocLinks.forEach((l) => {
+      const t = document.getElementById(l.dataset.h ?? '');
+      if (t) io.observe(t);
+    });
+  </script>
 </Base>

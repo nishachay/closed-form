@@ -2,21 +2,19 @@
 import { absoluteUrl, appUrl } from '../lib/site.js';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/tokens.css';
-import '../styles/base.css';
-import '../styles/components.css';
+import '../styles/closed-form.css';
 import 'katex/dist/katex.min.css';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  current?: 'archive' | 'about';
 }
-const { title, description = 'AI mathematics, explained. Honest trust labels, plain words.', ogImage = '/og/home.png' } = Astro.props;
-const base = appUrl('/');
-const font = (w: number) => `${base}fonts/schibsted-grotesk-${w}.woff2`;
-const ogAbsolute = absoluteUrl(ogImage);
+const { title, description = 'AI mathematics, explained. Honest trust labels, plain words.', ogImage = '/og/home.png', current } = Astro.props;
 const rss = appUrl('/feed.xml');
+const ogAbsolute = absoluteUrl(ogImage);
+const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22><rect x=%222%22 y=%222%22 width=%226%22 height=%226%22 fill=%22%23cd391b%22/></svg>';
 ---
 <!doctype html>
 <html lang="en">
@@ -36,13 +34,11 @@ const rss = appUrl('/feed.xml');
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogAbsolute} />
     <link rel="alternate" type="application/rss+xml" title="Closed Form — newly explained entries" href={rss} />
-    <link rel="preload" href={font(400)} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font(500)} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={font(600)} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href={favicon} />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
+    <a class="skip" href="#main">Skip to content</a>
+    <Header current={current} />
     <main id="main">
       <slot />
     </main>

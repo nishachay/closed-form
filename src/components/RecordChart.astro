@@ -13,40 +13,42 @@ interface Props {
 }
 const { title, note, points } = Astro.props;
 const max = Math.max(...points.map((p) => p.value));
+const titled = title.split(/([\u0370-\u03ff]+)/g);
 ---
-<figure>
-  <figcaption class="ui">{title}{note && <span> · {note}</span>}</figcaption>
-  <ul class="chart" aria-hidden="true">
+<figure class="fig">
+  <figcaption class="label">{titled.map((run, i) => (i % 2 === 1 ? <span class="nc">{run}</span> : run))}</figcaption>
+  <div class="bars" aria-hidden="true">
     {points.map((p) => (
-      <li class="chart-item">
-        <span class="chart-value nums">{p.value}</span>
-        <span
-          class={`chart-bar${p.claim ? ' chart-bar-claim' : ''}`}
-          style={`block-size: ${(p.value / max) * 120}px`}
-        />
-        <span class="chart-who">{p.year} · {p.who}</span>
-      </li>
+      <div class={`bar-col${p.claim ? ' claim' : ''}`}>
+        <div class="bar-track">
+          <span class="bar" style={`block-size: ${(100 * p.value) / max}%`}>
+            <span class="bar-val">{p.value}</span>
+          </span>
+        </div>
+        <span class="bar-yr">{p.year}</span>
+        <span class="bar-who">{p.who}</span>
+      </div>
     ))}
-  </ul>
-  <div class="visually-hidden">
+  </div>
+  <div class="sr">
     <table>
-      <caption>{title}</caption>
       <thead>
         <tr>
           <th>Year</th>
-          <th>Value</th>
           <th>Who</th>
+          <th>Value</th>
         </tr>
       </thead>
       <tbody>
         {points.map((p) => (
           <tr>
             <td>{p.year}</td>
-            <td>{p.value}</td>
             <td>{p.who}</td>
+            <td>{p.value}</td>
           </tr>
         ))}
       </tbody>
     </table>
   </div>
+  {note && <p class="figcap">{note}</p>}
 </figure>

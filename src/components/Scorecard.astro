@@ -5,34 +5,28 @@ import TrustLabel from './TrustLabel.astro';
 interface Props {
   entry: Entry;
   trust: string;
+  papers: number;
 }
-const { entry, trust } = Astro.props;
+const { entry, trust, papers } = Astro.props;
 ---
-<dl class="scorecard">
+<div class="score">
   <div>
-    <dt>First step</dt>
-    <dd>
-      {entry.scorecard.firstStep ? (
-        <>{entry.scorecard.firstStep}{entry.scorecard.firstStepBy ? ` · ${entry.scorecard.firstStepBy}` : ''}</>
-      ) : (
-        '—'
-      )}
-    </dd>
+    <div class="label">First step</div>
+    <div class="v">{entry.scorecard.firstStep ?? '—'}</div>
+    {entry.scorecard.firstStepBy && <div class="m">{entry.scorecard.firstStepBy}</div>}
   </div>
   <div>
-    <dt>Field</dt>
-    <dd>{entry.scorecard.field}</dd>
+    <div class="label">Significance</div>
+    <div class="v">{entry.scorecard.significance}</div>
+    <div class="m">{entry.scorecard.significanceWhy}</div>
   </div>
   <div>
-    <dt>Significance</dt>
-    <dd>
-      {entry.scorecard.significance} <span>· {entry.scorecard.significanceWhy}</span>
-    </dd>
+    <div class="label">Trust</div>
+    <div class="v"><TrustLabel trust={trust} /></div>
   </div>
   <div>
-    <dt>Trust</dt>
-    <dd>
-      <TrustLabel trust={trust} />
-    </dd>
+    <div class="label">Field</div>
+    <div class="v">{entry.scorecard.field}</div>
+    <div class="m">{papers} paper{papers === 1 ? '' : 's'}</div>
   </div>
-</dl>
+</div>

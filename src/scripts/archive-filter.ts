@@ -1,6 +1,9 @@
 /**
- * Archive search + filters (§13). Vanilla, no framework.
+ * Archive search + filters (v5 sidebar + sort). Vanilla, no framework.
  * Bundled by Astro from ArchiveBrowser.astro; runs once per page.
+ *
+ * Rows are moved, never re-rendered: grouped sections for "by field",
+ * one flat list otherwise. KaTeX set at build time survives untouched.
  */
 const GREEK: Record<string, string> = {
   π: 'pi',
@@ -44,114 +47,205 @@ function el<T extends HTMLElement>(id: string): T | null {
   return document.getElementById(id) as T | null;
 }
 
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c] ?? c);
+}
+
+const TRUST_ORDER: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
+
 function init(): void {
   const q = el<HTMLInputElement>('q');
-  const field = el<HTMLSelectElement>('field');
-  const group = el<HTMLElement>('trust-group');
-  const count = el<HTMLElement>('live-count');
+  const seg = el<HTMLElement>('seg');
+  const chips = el<HTMLElement>('chips');
+  const sortEl = el<HTMLSelectElement>('sort');
+  const count = el<HTMLElement>('count');
   const reset = el<HTMLButtonElement>('reset');
-  const empty = el<HTMLElement>('empty');
-  const emptyText = el<HTMLElement>('empty-text');
-  const emptyClear = el<HTMLButtonElement>('empty-clear');
-  if (!q || !field || !group || !count || !reset || !empty || !emptyText || !emptyClear) return;
-  const qEl: HTMLInputElement = q;
-  const fieldEl: HTMLSelectElement = field;
-  const groupEl: HTMLElement = group;
-  const countEl: HTMLElement = count;
-  const resetEl: HTMLButtonElement = reset;
-  const emptyEl: HTMLElement = empty;
-  const emptyTextEl: HTMLElement = emptyText;
-  const emptyClearEl: HTMLButtonElement = emptyClear;
+  const list = el<HTMLElement>('list');
+  const groupsBox = el<HTMLElement>('groups');
+  if (!q || !seg || !sortEl || !count || !reset || !list || !groupsBox) return;
+  const qEl = q;
+  const sortSel = sortEl;
+  const countEl = count;
+  const resetEl = reset;
+  const listEl = list;
+  const groupsEl = groupsBox;
 
-  const rows = [...document.querySelectorAll<HTMLElement>('[data-row]')];
-  const sections = [...document.querySelectorAll<HTMLElement>('[data-group]')];
-  const segBtns = [...groupEl.querySelectorAll<HTMLButtonElement>('button')];
-  let trust = '';
+  const lockField = listEl.dataset.lockfield || '';
+  const rows = [...listEl.querySelectorAll<HTMLElement>('[data-row]')];
+  const sections = [...listEl.querySelectorAll<HTMLElement>('[data-group]')];
+  const homeOf = new Map<HTMLElement, HTMLElement>();
+  for (const s of sections) {
+    const ul = s.querySelector('ul');
+    if (!ul) continue;
+    for (const r of [...ul.querySelectorAll<HTMLElement>('[data-row]')]) homeOf.set(r, ul);
+  }
+  const flat = document.createElement('ul');
+  flat.className = 'rlist rlist-flat';
+
+  let trust = 'all';
+  let field = lockField ? '__locked__' : 'All';
+  let sort: string = 'cat';
 
   const params = new URLSearchParams(location.search);
-  const pq = params.get('q');
-  const pf = params.get('field');
-  const pt = params.get('trust');
+  const pq = params.get('q') ?? '';
+  const pf = params.get('field') ?? '';
+  const pt = params.get('trust') ?? '';
+  const ps = params.get('sort') ?? '';
   if (pq) qEl.value = pq;
-  if (pf && fieldEl.querySelector('option[value="' + pf + '"]')) fieldEl.value = pf;
+  if (!lockField && pf) field = pf;
   if (pt) trust = pt;
+  if (ps === 'new' || ps === 'trust') sort = ps;
+  sortSel.value = sort;
 
-  const syncSeg = (): void => {
-    for (const b of segBtns) b.setAttribute('aria-pressed', String((b.dataset.trust ?? '') === trust));
+  const syncSide = (): void => {
+    for (const b of seg.querySelectorAll<HTMLButtonElement>('.fopt')) {
+      b.setAttribute('aria-pressed', String(b.dataset.v === trust));
+    }
+    if (chips) {
+      for (const b of chips.querySelectorAll<HTMLButtonElement>('.fopt')) {
+        b.setAttribute('aria-pressed', String(b.dataset.v === field));
+      }
+    }
   };
+
+  function matching(): HTMLElement[] {
+    const qv = qEl.value;
+    return rows.filter((r) => {
+      if (field !== 'All' && field !== '__locked__' && r.dataset.field !== field) return false;
+      if (lockField && r.dataset.field !== lockField) return false;
+      if (trust !== 'all') {
+        if (trust === 'explained' ? r.dataset.explained !== '1' : r.dataset.trust !== trust) return false;
+      }
+      return matchQuery(r.dataset.search ?? '', qv);
+    });
+  }
 
   function apply(): void {
     const qv = qEl.value;
-    const fv = fieldEl.value;
-    let n = 0;
-    for (const r of rows) {
-      const okQ = matchQuery(r.dataset.search ?? '', qv);
-      const okF = !fv || r.dataset.field === fv;
-      const okT = !trust || (trust === 'explained' ? r.dataset.explained === '1' : r.dataset.trust === trust);
-      const show = okQ && okF && okT;
-      r.hidden = !show;
-      if (show) n++;
+    const shown = matching();
+    const flatMode = sort !== 'cat';
+    if (flatMode) {
+      const ordered = [...shown].sort(
+        sort === 'new'
+          ? (a, b) => Number(b.dataset.date || 0) - Number(a.dataset.date || 0) || (a.dataset.id ?? '').localeCompare(b.dataset.id ?? '')
+          : (a, b) => (TRUST_ORDER[a.dataset.trust ?? ''] ?? 9) - (TRUST_ORDER[b.dataset.trust ?? ''] ?? 9) || (a.dataset.id ?? '').localeCompare(b.dataset.id ?? ''),
+      );
+      for (const r of ordered) {
+        r.hidden = false;
+        r.querySelector('.res-f-n')?.removeAttribute('hidden');
+        flat.append(r);
+      }
+      for (const r of rows) {
+        if (!ordered.includes(r)) r.hidden = true;
+      }
+      if (!flat.isConnected) listEl.append(flat);
+      groupsEl.hidden = true;
+    } else {
+      if (flat.isConnected) flat.remove();
+      groupsEl.hidden = false;
+      for (const r of rows) {
+        const show = shown.includes(r);
+        r.hidden = !show;
+        r.querySelector('.res-f-n')?.setAttribute('hidden', '');
+        homeOf.get(r)?.append(r);
+      }
+      for (const s of sections) {
+        const any = [...s.querySelectorAll('[data-row]')].some((r) => !(r as HTMLElement).hidden);
+        s.hidden = !any;
+      }
     }
-    for (const s of sections) {
-      const any = [...s.querySelectorAll('[data-row]')].some((r) => !(r as HTMLElement).hidden);
-      s.hidden = !any;
-    }
-    const fname = fv ? fieldEl.options[fieldEl.selectedIndex].text.replace(/\s\(\d+\)$/, '') : '';
-    countEl.textContent = fv
-      ? n + ' of ' + rows.length + ' results in ' + fname
-      : n + ' of ' + rows.length + ' results';
-    resetEl.hidden = !(qv || fv || trust);
-    emptyEl.hidden = n !== 0;
-    if (n === 0) {
-      emptyTextEl.textContent =
-        'No results match' + (qv ? ' \u201C' + qv + '\u201D' : '') + (fname ? ' in ' + fname : '') + '.';
+    const total = rows.length;
+    countEl.innerHTML =
+      shown.length === total
+        ? `<b>${total}</b> results`
+        : `<b>${shown.length}</b> of ${total} results`;
+    resetEl.hidden = !(qv || (!lockField && field !== 'All') || trust !== 'all' || sort !== 'cat');
+    let emptyEl = listEl.querySelector<HTMLElement>('.empty');
+    if (shown.length === 0) {
+      const fname =
+        !lockField && field !== 'All'
+          ? chips?.querySelector(`[data-v="${CSS.escape(field)}"] .fo-l`)?.textContent?.trim() ?? field
+          : '';
+      if (!emptyEl) {
+        emptyEl = document.createElement('div');
+        emptyEl.className = 'empty';
+        listEl.append(emptyEl);
+      }
+      emptyEl.hidden = false;
+      emptyEl.innerHTML = `No results match${qv ? ` “${escapeHtml(qv)}”` : ''}${fname ? ` in ${escapeHtml(fname)}` : ''}. Try a broader word, like “prime” or “graph”, or <button type="button" id="clear">clear all filters</button>.`;
+      emptyEl.querySelector('#clear')?.addEventListener('click', clearAll);
+    } else if (emptyEl) {
+      emptyEl.hidden = true;
     }
     const p = new URLSearchParams();
     if (qv) p.set('q', qv);
-    if (fv) p.set('field', fv);
-    if (trust) p.set('trust', trust);
+    if (!lockField && field !== 'All') p.set('field', field);
+    if (trust !== 'all') p.set('trust', trust);
+    if (sort !== 'cat') p.set('sort', sort);
     const qs = p.toString();
     history.replaceState(null, '', qs ? '?' + qs : location.pathname);
+    syncSide();
   }
 
   function clearAll(): void {
     qEl.value = '';
-    fieldEl.value = '';
-    trust = '';
-    syncSeg();
+    if (!lockField) field = 'All';
+    trust = 'all';
+    sort = 'cat';
+    sortSel.value = sort;
     apply();
+    qEl.focus();
   }
 
   qEl.addEventListener('input', apply);
-  fieldEl.addEventListener('change', apply);
-  groupEl.addEventListener('click', (e: Event) => {
-    const b = (e.target as HTMLElement).closest('button');
-    if (!b) return;
-    trust = b.dataset.trust ?? '';
-    syncSeg();
+  sortSel.addEventListener('change', () => {
+    sort = sortSel.value;
     apply();
   });
+  seg.addEventListener('click', (e: Event) => {
+    const b = (e.target as HTMLElement).closest('button');
+    if (!b || !b.dataset.v) return;
+    trust = b.dataset.v;
+    apply();
+  });
+  if (chips) {
+    chips.addEventListener('click', (e: Event) => {
+      const b = (e.target as HTMLElement).closest('button');
+      if (!b || b.dataset.v === undefined) return;
+      field = b.dataset.v;
+      apply();
+    });
+  }
   resetEl.addEventListener('click', clearAll);
-  emptyClearEl.addEventListener('click', clearAll);
 
   const visibleLinks = (): HTMLAnchorElement[] =>
-    rows.filter((r) => !r.hidden).map((r) => r.querySelector('a')).filter((a): a is HTMLAnchorElement => a !== null);
+    rows
+      .filter((r) => !r.hidden)
+      .map((r) => r.querySelector('a'))
+      .filter((a): a is HTMLAnchorElement => a !== null);
 
   document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.metaKey || e.ctrlKey || e.altKey || !listEl.offsetParent) return;
     const tag = document.activeElement?.tagName ?? '';
     const inField = tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA';
-    if (e.key === '/' && !inField) {
+    if (document.activeElement === qEl) {
+      if (e.key === 'Escape') {
+        if (qEl.value) {
+          qEl.value = '';
+          apply();
+        } else qEl.blur();
+      } else if (e.key === 'ArrowDown' && visibleLinks().length > 0) {
+        e.preventDefault();
+        visibleLinks()[0].focus();
+      }
+      return;
+    }
+    if (inField) return;
+    if (e.key === '/') {
       e.preventDefault();
       qEl.focus();
-      return;
-    }
-    if (e.key === 'Escape' && document.activeElement === qEl) {
-      qEl.value = '';
-      apply();
-      qEl.blur();
-      return;
-    }
-    if ((e.key === 'j' || e.key === 'k' || e.key === 'ArrowDown' || e.key === 'ArrowUp') && !inField) {
+      qEl.select();
+    } else if (e.key === 'j' || e.key === 'k' || e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       const links = visibleLinks();
       if (links.length === 0) return;
       e.preventDefault();
@@ -163,13 +257,13 @@ function init(): void {
     }
   });
 
-  // Cold load with no params matches the SSR state exactly (nothing hidden,
-  // "All" pressed, full count pre-rendered), so skip the full pass: touching
-  // all 372 rows would force layout of every offscreen section and defeat
-  // content-visibility. Deep links still filter immediately.
-  if (pq || pf || pt) {
-    syncSeg();
+  // Cold load with no params matches the SSR state exactly, so skip the full
+  // pass: touching all rows would force layout of every offscreen section and
+  // defeat content-visibility. Deep links still filter immediately.
+  if (pq || pf || pt || ps) {
     apply();
+  } else {
+    syncSide();
   }
 }
 

@@ -9,4 +9,4 @@ interface Props {
 const { trust, short = false } = Astro.props;
 const level = trustLevel(trust);
 ---
-<span><span class={`dot dot-${trustClass(trust)}`} aria-hidden="true"></span>{short ? level.short : level.label}</span>
+<span class="trust"><i class={`dot c-${trustClass(trust)}`} aria-hidden="true"></i>{short ? level.short : level.label}</span>

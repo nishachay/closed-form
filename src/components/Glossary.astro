@@ -10,7 +10,7 @@ const { items } = Astro.props;
 ---
 <section aria-labelledby="words-used">
   <h2 id="words-used">Words used</h2>
-  <dl class="glossary">
+  <dl class="gl">
     {items.map((g) => (
       <>
         <dt>{g.term}</dt>

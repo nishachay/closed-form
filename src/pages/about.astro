@@ -1,116 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-import { appUrl } from '../lib/site.js';
-import { TRUST_LADDER } from '../lib/trust.js';
-
-const reportError = 'https://github.com/nishachay/closed-form/issues/new';
 ---
-<Base title="About" description="Why Closed Form exists, what the trust labels mean, and how entries are made.">
-  <div class="wrap">
-    <div class="wrap-article" style="margin-inline: 0">
-      <p class="kicker">About</p>
-      <h1 class="page">AI mathematics, explained — honestly.</h1>
-
-      <h2>Why Closed Form exists</h2>
-      <p class="measure">
-        AI systems now produce mathematics faster than anyone can read it. The papers are written for
-        specialists, while the public sees only headlines. Closed Form is a calm public archive that turns
-        each result into a page a curious adult can read in three minutes: what it claims, how sure we can
-        be, where the question came from, and what changes if it is true.
-      </p>
-
-      <h2>The trust labels</h2>
-      <p class="measure">
-        Every entry carries a trust label, computed from the source data — never written by AI, never
-        hidden, never softened.
-      </p>
-      <ul class="rows">
-        {TRUST_LADDER.map((t) => (
-          <li class="row">
-            <div class="row-link" style="cursor: default">
-              <span class="row-id" />
-              <span>
-                <span class="row-title">{t.label}</span>
-                <span class="row-summary">
-                  {t.key === 'formal' &&
-                    'At least one paper in the family is listed in the Lean formalization catalogue.'}
-                  {t.key === 'partial' &&
-                    'No listed formal proof, but the family has Lean notes.'}
-                  {t.key === 'claimed' && 'Neither — the claim has not been machine-checked.'}
-                </span>
-              </span>
-              <span class="row-trust" />
-            </div>
-          </li>
-        ))}
-      </ul>
-      <p class="measure">
-        “Formal proof listed” means the repository lists a formalization — not that it compiles, and not
-        that the Lean statement matches the paper. That is why the label says <em>listed</em>, not{' '}
-        <em>verified</em>.
-      </p>
-
-      <h2>Review status</h2>
-      <ul class="measure">
-        <li>Sample entry, written by hand</li>
-        <li>AI draft — not checked yet (never published)</li>
-        <li>Checked by AI against the paper — not yet reviewed by a person</li>
-        <li>Reviewed by a person, with a name and date</li>
-      </ul>
-      <p class="measure">
-        Any entry not marked reviewed carries the notice: “This entry has not been reviewed by a person
-        yet.” An AI never marks an entry reviewed — only a person does.
-      </p>
-
-      <h2>How entries are made</h2>
-      <p class="measure">
-        A deterministic ingest reads the source manuscripts and builds the catalogue. A reader model drafts
-        each explainer from the paper itself; a second model checks every factual claim against the source
-        and deletes what it cannot support. Validation enforces the writing rules, and a person reviews
-        before any entry counts as reviewed.
-      </p>
-
-      <h2>What we don’t do</h2>
-      <p class="measure">
-        No proof sketches. No hype. No calling a result true because a company published it. No impact the
-        paper doesn’t support. The original papers are always one click away — the explainer is a
-        translation, not a replacement.
-      </p>
-
-      <h2>Report an error</h2>
-      <p class="measure">
-        Found a mistake? <a href={reportError}>Report an error on GitHub</a> — it is the cheapest form of
-        human review.
-      </p>
-
-      <h2>Credits and license</h2>
-      <p class="measure">
-        Our explanations are published under CC BY 4.0. Source papers come from openai/math (Apache-2.0)
-        and remain under their own license. Closed Form is not affiliated with OpenAI.
-      </p>
-
-      <h2>Public data</h2>
-      <p class="measure">
-        Everything explained on this site is available as JSON, newest first in{' '}
-        <a href={appUrl('/feed.xml')}>the RSS feed</a>. Our text is CC BY 4.0; the source
-        papers remain Apache-2.0.
-      </p>
-      <ul class="measure">
-        <li>
-          <a href={appUrl('/data/catalog.json')}>catalog.json</a> — all 372 result families
-          with papers, subjects and trust labels (source papers Apache-2.0).
-        </li>
-        <li>
-          <a href={appUrl('/data/entries.json')}>entries.json</a> — every explained entry in
-          full, including <code>collection</code>, <code>lab</code>, <code>science</code>,{' '}
-          <code>field</code>, <code>aiRole</code> and <code>evidence[]</code>.
-        </li>
-        <li>
-          <a href={appUrl('/data/fields.json')}>fields.json</a> — the 17 fields with{' '}
-          <code>collection</code>, <code>lab</code>, <code>science</code>, result and paper
-          counts, and the trust split.
-        </li>
-      </ul>
-    </div>
+<Base title="About" description="Why Closed Form exists, what the trust labels mean, and how entries are made." current="about">
+  <div class="entry-wrap" style="grid-template-columns:minmax(0,1fr)">
+    <article class="entry"><div class="label">About</div><h1>Why Closed Form exists</h1>
+<p class="headline">AI now writes research mathematics faster than people can read it. We translate it.</p>
+<p>Each entry explains one result in plain words. It covers what the result proves, who asked the question first, why it matters, what it could lead to and what it shows about AI. We write in a controlled, simple English based on ASD-STE100.</p>
+<h2>Trust labels</h2>
+<dl class="tl"><dt><i class="dot c-formal" aria-hidden="true"></i>Formal proof listed</dt><dd>At least one paper in the result has a main theorem listed in the repository’s Lean catalogue. A listing is not the same as an independent check.</dd><dt><i class="dot c-partial" aria-hidden="true"></i>Partly formalized</dt><dd>The result links to Lean notes, but no main theorem is listed as formally proved.</dd><dt><i class="dot c-claimed" aria-hidden="true"></i>Claimed, not checked</dt><dd>Only the written paper exists. It could contain errors.</dd></dl>
+<h2>What we don’t do</h2>
+<p>We don’t call a result true because a company published it. Many mathematicians, including Fields medalists, have asked for careful review of AI results, and we agree. Every entry has a hype check and a link to the original paper.</p>
+<h2>How entries are made</h2>
+<p>An AI reader drafts each entry from the paper’s source. A second, separate AI checks every claim against the paper. A person reviews the draft before it gets published.</p></article>
   </div>
 </Base>
