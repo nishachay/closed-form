@@ -117,3 +117,11 @@ const trustCounts = Object.fromEntries(TRUST_LADDER.map((t) => [t.key, list.filt
 </div>
 
 <script src="../scripts/archive-filter.ts"></script>
+<script>
+  for (const row of document.querySelectorAll<HTMLElement>('.fopts')) {
+    const upd = () => row.classList.toggle('at-end', row.scrollLeft + row.clientWidth >= row.scrollWidth - 4);
+    row.addEventListener('scroll', upd, { passive: true });
+    addEventListener('resize', upd);
+    upd();
+  }
+</script>
