@@ -128,3 +128,16 @@ test('entry 032 shows its withdrawn papers without counting them', async ({ page
   await expect(page.locator('.withdrawn li')).toHaveCount(3);
   await expect(page.locator('.orig li')).toHaveCount(5);
 });
+
+test('archive field filter works on desktop chips and phone pickers', async ({ page }) => {
+  await page.goto('./archive/');
+  await page.click('#chips .fopt[title="Algebra"]');
+  await expect(page.locator('#count')).toContainText('18 of');
+  await page.setViewportSize({ width: 375, height: 760 });
+  await page.goto('./archive/');
+  await page.selectOption('select[data-group=chips]', 'number-theory');
+  await page.selectOption('select[data-group=seg]', 'formal');
+  await expect(page.locator('#count')).toContainText('of 372');
+  await expect(page.locator('.group:not([hidden]) .group-h .num').first()).not.toHaveText('31');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
+});
