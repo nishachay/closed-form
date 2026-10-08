@@ -2,29 +2,27 @@
 import Base from '../../layouts/Base.astro';
 import FieldCards from '../../components/FieldCards.astro';
 import ArchiveBrowser from '../../components/ArchiveBrowser.astro';
-import { appUrl, catalog, computeStats, families, loadExplainedIds } from '../../lib/site.js';
+import { appUrl, catalog, collectionName, computeStats, families, labName, scienceName } from '../../lib/site.js';
 
 export function getStaticPaths() {
   return [{ params: { collection: catalog.collection } }];
 }
 
 const stats = computeStats();
-const explainedIds = await loadExplainedIds();
+const name = collectionName();
 ---
 <Base
-  title={`Collection ${catalog.collection}`}
+  title={name}
   description={`${stats.results} results, ${stats.papers} papers, honest trust labels.`}
   ogImage={`/og/collection-${catalog.collection}.png`}
 >
   <div class="wrap">
     <section class="arch-head">
-      <div class="label">Collection · {catalog.collection}</div>
-      <h1>The {catalog.collection} collection</h1>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl(`/science/${catalog.science}/`)}>{scienceName()}</a><span aria-hidden="true">/</span><a href={appUrl(`/lab/${catalog.lab}/`)}>{labName()}</a><span aria-hidden="true">/</span><span aria-current="page">Collection</span></nav>
+      <h1>{name}</h1>
       <p class="lede">
         {stats.results} results in {stats.papers} papers across {catalog.subjects.length} fields.
-        Lab: <a href={appUrl(`/lab/${catalog.lab}/`)}>{catalog.lab}</a> · Science:{' '}
-        <a href={appUrl(`/science/${catalog.science}/`)}>{catalog.science}</a> · Source:{' '}
-        {catalog.source.repo} (Apache-2.0).
+        Released by {labName()} in the <a href={`https://github.com/${catalog.source.repo}`} target="_blank" rel="noopener">{catalog.source.repo}</a> repository.
       </p>
     </section>
     <div class="stats" style="margin-block-start:2rem">
@@ -41,15 +39,15 @@ const explainedIds = await loadExplainedIds();
         <div class="n num">{stats.formalPapers}</div>
       </div>
       <div class="stat">
-        <div class="label">Explained</div>
-        <div class="n"><span class="num">{explainedIds.size}</span><span class="of">/{stats.results}</span></div>
+        <div class="label">Fields</div>
+        <div class="n num">{catalog.subjects.length}</div>
       </div>
     </div>
     <section class="map" aria-labelledby="map-h">
       <div class="sec-head">
         <h2 class="label" id="map-h">Browse by field · one square per result</h2>
       </div>
-      <ul class="fields"><FieldCards subjects={catalog.subjects} families={families} explainedIds={explainedIds} /></ul>
+      <ul class="fields"><FieldCards subjects={catalog.subjects} families={families} explainedIds={new Set()} /></ul>
     </section>
     <h2 class="label" id="all-results">All results in this collection</h2>
     <ArchiveBrowser families={families} />

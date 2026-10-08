@@ -803,3 +803,100 @@ footer.site-footer .ft-by a{color:var(--color-text);font-weight:500;text-decorat
 }
 @media (max-width:22.5rem){.top .top-in{gap:.5rem}.top .top-nav{padding-inline-start:0}.top .top-nav a{padding-inline:.5rem}.top .logo{gap:.5rem}}
 @media (max-width:22.5rem){.top .top-gh{display:none}}
+
+/* =====================================================================
+   Polish 3 (Oct 2026): header, logo, entry page as an article
+   ===================================================================== */
+
+/* Logo: wordmark ending in the tombstone ∎, the mark that closes a proof. */
+.logo{display:inline-flex;align-items:baseline;gap:.3em}
+.logo i{display:inline-block;flex:none;inline-size:.5em;block-size:.62em;background:var(--color-accent);border-radius:0;transform:translateY(.02em)}
+.top .logo{gap:.3em;align-items:baseline;line-height:2.75rem}
+
+/* Header: brand left, everything you do on the right, one cluster. */
+.top .top-in{justify-content:space-between;gap:1rem}
+.top-r{gap:.25rem}
+.top .top-nav{padding:0;border:0;block-size:auto;gap:.125rem}
+.top-sep{inline-size:1px;block-size:1.25rem;background:var(--color-border-strong);margin-inline:.5rem}
+.top-search{min-inline-size:0;inline-size:auto;gap:.5rem;padding-inline:.75rem .375rem;margin-inline-end:.125rem}
+.top-search .ts-t{margin-inline-end:.75rem}
+@media (max-width:48rem){.top-search{padding:0}.top-search .ts-t{margin:0}}
+@media (max-width:36rem){.top-sep{margin-inline:.25rem}.top .top-nav a{padding-inline:.625rem}}
+@media (max-width:22.5rem){.top-sep{display:none}}
+
+/* ---------- Entry: header ---------- */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;font-size:.8125rem;color:var(--color-text-tertiary)}
+.crumbs a{color:var(--color-text-secondary);text-decoration:none}
+@media (hover:hover){.crumbs a:hover{color:var(--color-text)}}
+.crumbs span[aria-hidden]{opacity:.5}
+.entry .crumbs + h1{margin-block-start:1rem}
+.entry .headline{margin-block-end:1.25rem}
+.e-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem;font-size:.875rem;color:var(--color-text-tertiary);padding-block-end:1.75rem;margin-block-end:1.75rem;border-block-end:1px solid var(--color-border)}
+.e-meta .trust{font-size:.875rem}
+.e-pill{display:inline-flex;align-items:center;gap:.4375rem;padding:.1875rem .625rem;border-radius:999px;border:1px solid var(--color-border-strong);color:var(--color-text-secondary);font-size:.8125rem}
+.e-pill::before{content:"";inline-size:.375rem;block-size:.375rem;border-radius:50%;background:var(--color-trust-partial)}
+.entry .e-lead{font-size:1.1875rem;line-height:1.65;color:var(--color-text);margin-block-end:2rem}
+.entry .wd-note{margin-block:0 1.75rem}
+
+/* ---------- Entry: article sections ---------- */
+.entry .e-sec h2{display:flex;align-items:baseline;gap:.75rem;font-size:1.5rem;line-height:1.25;font-weight:500;letter-spacing:-.015em;text-transform:none;color:var(--color-text);margin:3.5rem 0 1rem;padding:0;border:0}
+.entry .e-sec h2::before{display:none}
+.e-n{font-size:.875rem;font-weight:500;letter-spacing:0;color:var(--color-accent)}
+.entry .e-sec p{color:var(--color-text-secondary)}
+.entry .e-sec p:first-of-type{color:var(--color-text)}
+.entry .e-limit{margin-block-start:1.25rem;padding:1rem 1.25rem;border-radius:var(--r-in,10px);background:var(--color-bg-surface);border:1px solid var(--color-border);font-size:.9375rem;line-height:1.6}
+.e-limit b{font-weight:600;color:var(--color-text)}
+
+/* Apparatus sections share one small heading style. */
+.entry .e-ai h2,.entry .e-hype h2,.entry .e-gl h2,.entry .e-refs h2,.entry section[aria-labelledby=the-original] > h2{display:flex;align-items:center;gap:.5rem;font-size:.75rem;line-height:1.3;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin:0 0 1rem;padding:0;border:0}
+
+/* What it says about AI: a distinct aside. */
+.e-ai{margin-block-start:3.5rem;padding:1.5rem;border-radius:var(--r-card,14px);background:linear-gradient(180deg,color-mix(in oklab,var(--color-accent) 7%,var(--color-bg-surface)),var(--color-bg-surface));border:1px solid color-mix(in oklab,var(--color-accent) 22%,var(--color-border))}
+.entry .e-ai h2{color:var(--color-accent)}
+.entry .e-ai p{margin:0;color:var(--color-text)}
+.entry .e-ai .e-ai-o{margin-block-start:.875rem;padding-block-start:.875rem;border-block-start:1px solid var(--color-border);font-size:.875rem;color:var(--color-text-tertiary)}
+
+/* Hype check: the verdict. */
+.e-hype{margin-block-start:3.5rem;padding-block:1.75rem;border-block:1px solid var(--color-border-strong)}
+.entry .e-hype p{margin:0;font-size:clamp(1.25rem,1.1rem + .5vw,1.5rem);line-height:1.4;font-weight:500;letter-spacing:-.015em;color:var(--color-text);text-wrap:balance}
+.entry .e-hype p::after{content:"";display:inline-block;inline-size:.45em;block-size:.56em;margin-inline-start:.35em;background:var(--color-accent)}
+
+/* Words used: a glossary of small cards. */
+.e-gl{margin-block-start:3.5rem}
+.entry .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:.625rem;margin:0}
+.entry .gl > div{padding:1rem 1.125rem;border-radius:var(--r-in,10px);background:var(--color-bg-surface);border:1px solid var(--color-border)}
+.entry .gl dt{font-size:.9375rem;font-weight:600;color:var(--color-text);margin:0 0 .25rem}
+.entry .gl dd{margin:0;font-size:.875rem;line-height:1.55;color:var(--color-text-secondary)}
+
+/* The original: the primary way out. */
+.entry section[aria-labelledby=the-original]{margin-block-start:3.5rem}
+
+/* Sources: compact references, like the back of a paper. */
+.e-refs{margin-block-start:3rem}
+.e-refs-n{display:flex;align-items:center;gap:.5rem;margin:0 0 .75rem !important;font-size:.8125rem;color:var(--color-text-tertiary)}
+.e-refs-n i,.ref-u{display:inline-block;inline-size:.375rem;block-size:.375rem;border-radius:50%;background:var(--color-trust-partial);flex:none}
+.ref-u{margin-inline-start:.4375rem;vertical-align:.1875rem}
+.refs{list-style:none;counter-reset:ref;margin:0;padding:0;display:grid;gap:.625rem}
+.refs li{counter-increment:ref;display:grid;grid-template-columns:1.75rem minmax(0,1fr);font-size:.875rem;line-height:1.55;color:var(--color-text-secondary)}
+.refs li::before{content:"[" counter(ref) "]";font-variant-numeric:tabular-nums;color:var(--color-text-tertiary);font-size:.8125rem}
+.refs li > *{grid-column:2}
+.refs a{color:var(--color-text-secondary);text-decoration-line:underline;text-decoration-color:var(--color-border-strong);text-decoration-thickness:from-font;text-underline-offset:.2em}
+@media (hover:hover){.refs a:hover{color:var(--color-text);text-decoration-color:var(--color-accent)}}
+.refs q{display:block;margin-block-start:.25rem;font-size:.8125rem;color:var(--color-text-tertiary)}
+
+/* Previous / next: two cards. */
+.entry .pn{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-block-start:4.5rem;padding:0;border:0}
+.entry .pn a{display:flex;flex-direction:column;gap:.375rem;padding:1rem 1.25rem;border-radius:var(--r-card,14px);border:1px solid var(--color-border);background:var(--color-bg-surface);text-decoration:none;transition:border-color .15s var(--ease-out)}
+.entry .pn .pn-next{text-align:end;align-items:flex-end}
+.entry .pn .t{margin:0;font-size:.9375rem;line-height:1.4;color:var(--color-text);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+@media (hover:hover){.entry .pn a:hover{border-color:var(--color-border-control)}.entry .pn a:hover .t{text-decoration:none}}
+@media (max-width:36rem){.entry .pn{grid-template-columns:minmax(0,1fr)}.entry .pn .pn-next{text-align:start;align-items:flex-start}.e-ai{padding:1.125rem}.entry .e-sec h2{font-size:1.3125rem}}
+/* Hub pages (lab, science, collection) */
+.arch-head .crumbs + h1{margin-block-start:1rem}
+.hub-h{margin-block:3rem 1rem}
+.hub-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.25rem 1rem;padding:1.25rem 1.5rem;border-radius:var(--r-card,14px);border:1px solid var(--color-border);background:var(--color-bg-surface);text-decoration:none;transition:border-color .15s var(--ease-out)}
+.hub-t{font-size:1.125rem;font-weight:500;color:var(--color-text)}
+.hub-m{grid-column:1;font-size:.875rem;color:var(--color-text-tertiary)}
+.hub-go{grid-row:1 / span 2;grid-column:2;font-size:.875rem;color:var(--color-text-secondary)}
+@media (hover:hover){.hub-card:hover{border-color:var(--color-border-control)}.hub-card:hover .hub-go{color:var(--color-text)}}
+@media (max-width:48rem){.top-search{inline-size:2.25rem;min-inline-size:2.25rem;justify-content:center;border-radius:999px}}

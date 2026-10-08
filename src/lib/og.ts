@@ -4,7 +4,7 @@
  * 1200×630 PNGs built at build time with hand-built SVG + @resvg/resvg-js.
  * (Spec names Satori + resvg; see PR_NOTES.md for why Satori was skipped.)
  *
- * Card content per §14.6: light bg, top-left ∎ Closed Form, large
+ * Card content per §14.6: dark bg, top-left "Closed Form ∎" wordmark, large
  * "Open since {firstStep}." (or "Entry NNN") line, headline (max 3 lines),
  * bottom trust dot + label · field. Home card is lab-neutral.
  */
@@ -132,8 +132,8 @@ export function ogSvg(card: OgCard): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${OG_WIDTH}" height="${OG_HEIGHT}" viewBox="0 0 ${OG_WIDTH} ${OG_HEIGHT}">
 <rect width="1200" height="630" fill="${BG}"/>
 <rect x="24" y="24" width="1152" height="582" rx="28" fill="${SURFACE}" stroke="${BORDER}" stroke-width="2"/>
-<rect x="72" y="76" width="22" height="22" fill="${ACCENT}"/>
-<text x="110" y="98" font-family="${FONT}" font-size="30" font-weight="600" fill="${INK}" letter-spacing="-0.5">Closed Form</text>
+<text x="72" y="98" font-family="${FONT}" font-size="30" font-weight="600" fill="${INK}" letter-spacing="-0.5">Closed Form</text>
+<rect x="${(72 + wordmarkWidth() + 9).toFixed(1)}" y="80" width="15" height="18.6" fill="${ACCENT}"/>
 ${card.tag ? `<text x="1128" y="100" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="500" fill="${TERTIARY}">${escapeXml(card.tag)}</text>` : ''}
 <text x="72" y="${kickerY}" font-family="${FONT}" font-size="22" font-weight="500" letter-spacing="2.5" fill="${ACCENT}">${escapeXml(card.kicker.toUpperCase())}</text>
 ${rendered}
@@ -143,6 +143,21 @@ ${dot ? `<circle cx="84" cy="555" r="9" fill="${dot}"/>` : ''}
 <text x="${dot ? '104' : '72'}" y="564" font-family="${FONT}" font-size="25" font-weight="500" fill="${SECONDARY}">${escapeXml(card.footer)}</text>
 <text x="1128" y="564" text-anchor="end" font-family="${FONT}" font-size="22" fill="${TERTIARY}">AI mathematics, explained</text>
 </svg>`;
+}
+
+let _wm: number | null = null;
+/** Rendered width of the "Closed Form" wordmark, so the ∎ sits right after it. */
+function wordmarkWidth(): number {
+  if (_wm !== null) return _wm;
+  try {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="60"><text x="0" y="40" font-family="${FONT}" font-size="30" font-weight="600" fill="#000" letter-spacing="-0.5">Closed Form</text></svg>`;
+    const r = new Resvg(svg, { font: { loadSystemFonts: true, fontFiles: FONT_FILES, defaultFontFamily: 'Schibsted Grotesk' } });
+    const bb = r.getBBox();
+    _wm = bb ? bb.x + bb.width : 170;
+  } catch {
+    _wm = 170;
+  }
+  return _wm;
 }
 
 export function ogPng(svg: string): Uint8Array {

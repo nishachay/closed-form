@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { catalog, computeStats, familiesById } from '../../lib/site.js';
+import { catalog, collectionName, computeStats, familiesById } from '../../lib/site.js';
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
 import { slugify } from '../../lib/slug.js';
 import { trustLevel } from '../../lib/trust.js';
@@ -43,8 +43,8 @@ export const GET: APIRoute = async ({ params }) => {
     };
   } else if (key === `collection-${catalog.collection}`) {
     card = {
-      kicker: `Collection · ${catalog.collection}`,
-      headlineLines: wrapHeadline(`The ${catalog.collection} collection.`),
+      kicker: 'Collection',
+      headlineLines: wrapHeadline(`${collectionName()}.`),
       footer: `${stats.results} results · ${stats.papers} papers · ${catalog.subjects.length} fields`,
     };
   } else if (key === `lab-${catalog.lab}`) {

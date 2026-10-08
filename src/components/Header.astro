@@ -10,17 +10,18 @@ const github = 'https://github.com/nishachay/closed-form';
 <header class="top">
   <div class="wrap top-in">
     <a class="logo" href={appUrl('/')} aria-label="Closed Form, home">
-      <i aria-hidden="true"></i>Closed Form
+      <span>Closed Form</span><i aria-hidden="true"></i>
     </a>
-    <nav class="top-nav" aria-label="Primary">
-      <a href={appUrl('/archive/')} aria-current={current === 'archive' ? 'page' : undefined}>Archive</a>
-      <a href={appUrl('/about/')} aria-current={current === 'about' ? 'page' : undefined}>About</a>
-    </nav>
     <div class="top-r">
+      <nav class="top-nav" aria-label="Primary">
+        <a href={appUrl('/archive/')} aria-current={current === 'archive' ? 'page' : undefined}>Archive</a>
+        <a href={appUrl('/about/')} aria-current={current === 'about' ? 'page' : undefined}>About</a>
+      </nav>
+      <span class="top-sep" aria-hidden="true"></span>
       {current !== 'archive' && current !== 'home' && (
         <a class="top-search" href={appUrl('/archive/#q')} aria-label="Search the archive">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
-          <span class="ts-t">Search results</span>
+          <span class="ts-t">Search</span>
           <kbd aria-hidden="true">/</kbd>
         </a>
       )}

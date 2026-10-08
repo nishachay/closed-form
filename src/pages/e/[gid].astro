@@ -8,7 +8,7 @@ import Notice from '../../components/Notice.astro';
 import Glossary from '../../components/Glossary.astro';
 import OriginalPapers from '../../components/OriginalPapers.astro';
 import TrustLabel from '../../components/TrustLabel.astro';
-import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, loadExplained, neighbors } from '../../lib/site.js';
+import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, fieldUrl, loadExplained, neighbors } from '../../lib/site.js';
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
 import { renderMath } from '../../lib/katex.js';
 
@@ -46,8 +46,8 @@ const toc = entry
       })),
       { href: '#hype-check', label: 'Hype check' },
       { href: '#words-used', label: 'Words used' },
-      { href: '#sources', label: 'Sources' },
       { href: '#the-original', label: 'The original' },
+      { href: '#sources', label: 'Sources' },
     ]
   : [{ href: '#the-original', label: 'The original' }];
 
@@ -61,13 +61,27 @@ const cleanCite = (cite: string) => {
 };
 const withdrawnCount = family.withdrawn?.length ?? 0;
 const withdrawnOn = family.withdrawn?.[0]?.withdrawnOn ?? null;
+const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const anyUnchecked = !!entry && entry.status !== 'reviewed' && entry.sources.some((x) => /†\s*$/.test(x.cite));
+const firstDate = family.papers.map((p) => p.date).filter(Boolean).sort()[0] ?? null;
 const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 ---
 <Base title={title} description={clip(toPlain(entry?.headline ?? family.summary), 200)} ogImage={ogImage}>
   <div class="entry-wrap">
     <article class="entry">
-      <div class="label">Entry <span class="num">{family.id}</span> · {family.subject}</div>
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={appUrl('/archive/')}>Archive</a><span aria-hidden="true">/</span>
+        <a href={fieldUrl(family.subject)}>{family.subject}</a><span aria-hidden="true">/</span>
+        <span class="num" aria-current="page">Entry {family.id}</span>
+      </nav>
       <h1 set:html={renderMath(family.title)} />
+      {entry && <p class="headline">{entry.headline}</p>}
+      <div class="e-meta">
+        {!entry && <TrustLabel trust={family.trust} />}
+        <span>{family.papers.length} paper{family.papers.length === 1 ? '' : 's'}</span>
+        {firstDate && <span>{formatLongDay(firstDate)}</span>}
+        {reviewNote && <span class="e-pill" title={reviewNote}>Not yet reviewed by a person</span>}
+      </div>
       {withdrawnCount > 0 && (
         <p class="wd-note" role="note">
           <span class="wd-badge">Update</span>
@@ -77,63 +91,62 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 
       {entry ? (
         <>
-          <p class="headline">{entry.headline}</p>
-          <p set:html={renderMath(entry.plain)} />
-          {reviewNote && <Notice text={reviewNote} />}
+          <p class="e-lead" set:html={renderMath(entry.plain)} />
           <Scorecard entry={entry} trust={family.trust} papers={family.papers.length} />
           {entry.visual && (
             <RecordChart title={entry.visual.title} note={entry.visual.note} points={entry.visual.points} />
           )}
-          {entry.sections.map((s) => (
-            <section aria-label={s.title}>
-              <h2 id={s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>{s.title}</h2>
+          {entry.sections.filter((s) => s.title !== 'What it says about AI').map((s, i) => (
+            <section class="e-sec" aria-labelledby={slug(s.title)}>
+              <h2 id={slug(s.title)}><span class="e-n num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{s.title}</h2>
               <p set:html={renderMath(s.body)} />
-              {s.title === 'Why it matters' && <p>{entry.doesNot}</p>}
-              {s.title === 'What it says about AI' && <p>{entry.origin}</p>}
+              {s.title === 'Why it matters' && <p class="e-limit"><b>What it doesn't show.</b> {entry.doesNot}</p>}
             </section>
           ))}
-          <section aria-labelledby="hype-check">
+          {entry.sections.filter((s) => s.title === 'What it says about AI').map((s) => (
+            <section class="e-ai" aria-labelledby={slug(s.title)}>
+              <h2 id={slug(s.title)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg>{s.title}</h2>
+              <p set:html={renderMath(s.body)} />
+              <p class="e-ai-o">{entry.origin}</p>
+            </section>
+          ))}
+          <section class="e-hype" aria-labelledby="hype-check">
             <h2 id="hype-check">Hype check</h2>
-            <p class="hype">{entry.hypeCheck}</p>
+            <p>{entry.hypeCheck}</p>
           </section>
           <Glossary items={entry.glossary} />
-          <section aria-labelledby="sources">
+          <OriginalPapers family={family} />
+          <section class="e-refs" aria-labelledby="sources">
             <h2 id="sources">Sources</h2>
-            <ol class="srcs">
+            {anyUnchecked && <p class="e-refs-n"><i aria-hidden="true"></i>Marked sources have not yet been checked against the original text.</p>}
+            <ol class="refs">
               {entry.sources.map((s) => {
                 const c = cleanCite(s.cite);
                 const href = s.url ?? c.href;
                 return (
                   <li>
-                    <span class="src-t">{href ? <a href={href} target="_blank" rel="noopener">{c.text}</a> : c.text}</span>
-                    {c.unchecked && entry.status !== 'reviewed' && <span class="src-flag">Not yet checked against the source</span>}
-                    {s.quote && <span class="src-q">“{s.quote}”</span>}
+                    <span>{href ? <a href={href} target="_blank" rel="noopener">{c.text}</a> : c.text}{c.unchecked && entry.status !== 'reviewed' && <i class="ref-u" role="img" aria-label="Not yet checked against the source"></i>}</span>
+                    {s.quote && <q>{s.quote}</q>}
                   </li>
                 );
               })}
             </ol>
           </section>
-          <OriginalPapers family={family} />
-          <nav class="pn" aria-label="Previous and next entries">
-            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{toPlain(prev.title)}</div></a>}</span>
-            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{toPlain(next.title)}</div></a>}</span>
-          </nav>
         </>
       ) : (
         <>
           <div class="claimbox">
             <div class="label">What the paper claims, in its own words</div>
             <p set:html={renderMath(family.summary)} />
-            <TrustLabel trust={family.trust} />
           </div>
           <Notice text="The plain-language explainer for this entry is still coming." />
           <OriginalPapers family={family} />
-          <nav class="pn" aria-label="Previous and next entries">
-            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{toPlain(prev.title)}</div></a>}</span>
-            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{toPlain(next.title)}</div></a>}</span>
-          </nav>
         </>
       )}
+      <nav class="pn" aria-label="Previous and next entries">
+        {prev ? <a class="pn-prev" href={entryUrl(prev)}><span class="label">← Previous · <span class="num">{prev.id}</span></span><span class="t">{toPlain(prev.title)}</span></a> : <span />}
+        {next ? <a class="pn-next" href={entryUrl(next)}><span class="label">Next · <span class="num">{next.id}</span> →</span><span class="t">{toPlain(next.title)}</span></a> : <span />}
+      </nav>
     </article>
     <aside class="side" aria-label="On this page">
       <div class="blk toc">
@@ -152,13 +165,6 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
         <a href={reportHref}>Report an error</a>
       </div>
     </aside>
-  </div>
-  <div class="wrap">
-    <p class="ui" style="margin-block-start: var(--space-8)">
-      Collection: <a href={appUrl(`/collection/${catalog.collection}/`)}>{catalog.collection}</a> · Lab:{' '}
-      <a href={appUrl(`/lab/${catalog.lab}/`)}>{catalog.lab}</a> · Science:{' '}
-      <a href={appUrl(`/science/${catalog.science}/`)}>{catalog.science}</a>
-    </p>
   </div>
   <script>
     const tocLinks = [...document.querySelectorAll('.side .toc a')] as HTMLAnchorElement[];
