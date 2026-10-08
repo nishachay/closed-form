@@ -139,7 +139,7 @@ describe('007 dry run (§11, offline)', () => {
     const r = rows[0];
     expect(r.id).toBe('007');
     expect(r.subject).toBe('Number theory');
-    expect(r.trust).toBe('partial');
+    expect(r.trust).toBe('formal');
     expect(r.texFiles).toBeGreaterThan(0);
     expect(r.readerPromptChars).toBeGreaterThan(5000);
     expect(r.sourceHash).toMatch(/^[0-9a-f]{64}$/);

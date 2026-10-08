@@ -3,12 +3,18 @@ import catalog from '../src/data/catalog.json';
 import {
   cleanInlineHtml,
   extractLeanDoc,
+  detectLean,
   mapTrust,
   parseDateFromDir,
+  parseDocComparatorLinks,
+  parseSupportOnly,
   parseWithdrawalReadme,
 } from '../ingest/openai-math.js';
+import type { Family } from '../ingest/types.js';
 
-// Ingest counts at openai/math fd4aeeb (Oct 8, 2026 update): 372 / 719 / 172 / 17 and 135 / 107 / 130.
+// Ingest counts at openai/math fd4aeeb (Oct 8, 2026 update): 372 / 719 / 172 / 17 and 242 / 0 / 130.
+// Trust was 135 / 107 / 130 before Lean docs + Comparator challenges counted as formal (all 107 'partial'
+// families have a Lean doc linking a main-result Comparator challenge).
 // The Oct 7 withdrawals removed 3 papers (722 → 719); they live on in family 032's `withdrawn` list.
 describe('catalog counts (§9, §18)', () => {
   it('has 372 families', () => {
@@ -31,10 +37,10 @@ describe('catalog counts (§9, §18)', () => {
     expect(catalog.subjects).toHaveLength(17);
   });
 
-  it('trust split is 135 / 107 / 130', () => {
+  it('trust split is 242 / 0 / 130', () => {
     const count = (t: string) => catalog.families.filter((f: { trust: string }) => f.trust === t).length;
-    expect(count('formal')).toBe(135);
-    expect(count('partial')).toBe(107);
+    expect(count('formal')).toBe(242);
+    expect(count('partial')).toBe(0);
     expect(count('claimed')).toBe(130);
   });
 
@@ -58,6 +64,8 @@ describe('catalog integrity (computed, never hard-coded)', () => {
       lean: number;
       trust: string;
       leanDoc: string | null;
+      leanDocUrl: string | null;
+      comparator: { file: string; url: string; support: boolean }[];
     }[]) {
       expect(f.id).toMatch(/^\d{3}$/);
       expect(subjects.has(f.subject)).toBe(true);
@@ -68,17 +76,23 @@ describe('catalog integrity (computed, never hard-coded)', () => {
       }
       const leanCount = f.papers.filter((p) => p.lean).length;
       expect(f.lean).toBe(leanCount);
-      expect(f.trust).toBe(mapTrust(f.lean, f.leanDoc));
+      expect(f.trust).toBe(mapTrust(f.lean, f.leanDoc, f.comparator.filter((c) => !c.support).length));
       if (f.leanDoc) expect(f.leanDoc).toMatch(/^lean\/docs\/\d{3}\.md$/);
+      expect(f.leanDocUrl).toBe(f.leanDoc ? `https://github.com/openai/math/blob/main/${f.leanDoc}` : null);
+      if (!f.leanDoc) expect(f.comparator).toEqual([]);
+      for (const c of f.comparator) {
+        expect(c.file).toMatch(/^lean\/ComparatorChallenges\/[A-Za-z0-9_]+\.json$/);
+        expect(c.url).toBe(`https://github.com/openai/math/blob/main/${c.file}`);
+      }
     }
   });
 
-  it('017 is Number theory + partial with trace', () => {
+  it('017 is Number theory + formal (Lean doc + Comparator) with trace', () => {
     const f = (catalog.families as { id: string; subject: string; trust: string; trace?: string }[]).find(
       (x) => x.id === '017',
     );
     expect(f?.subject).toBe('Number theory');
-    expect(f?.trust).toBe('partial');
+    expect(f?.trust).toBe('formal');
     expect(f?.trace).toContain('reasoning_traces/irrationality-exponent-of-pi.pdf');
   });
 });
@@ -97,6 +111,81 @@ describe('adapter units', () => {
     expect(mapTrust(2, 'lean/docs/003.md')).toBe('formal');
     expect(mapTrust(0, 'lean/docs/017.md')).toBe('partial');
     expect(mapTrust(0, null)).toBe('claimed');
+  });
+
+  it('trust rule: yaml listing OR Lean doc + a main-result Comparator challenge', () => {
+    expect(mapTrust(0, 'lean/docs/007.md', 1)).toBe('formal');
+    expect(mapTrust(0, 'lean/docs/007.md', 0)).toBe('partial');
+    // A Comparator challenge without a Lean doc is not enough on its own.
+    expect(mapTrust(0, null, 2)).toBe('claimed');
+    expect(mapTrust(1, null, 0)).toBe('formal');
+  });
+
+  it('007 is formal from its Lean doc + Comparator challenges (not yaml-listed)', () => {
+    const f = (catalog.families as unknown as Family[]).find((x) => x.id === '007')!;
+    expect(f.lean).toBe(0);
+    expect(f.trust).toBe('formal');
+    expect(f.leanDocUrl).toBe('https://github.com/openai/math/blob/main/lean/docs/007.md');
+    expect(f.comparator.map((c) => c.file)).toContain('lean/ComparatorChallenges/OrdinaryTwoPointCorrelations.json');
+    expect(f.comparator.find((c) => c.file.endsWith('OrdinaryTwoPointCorrelations.json'))?.theorems).toEqual([
+      'OAI.OrdinaryTwoPointCorrelations.liouville_log_saving',
+      'OAI.OrdinaryTwoPointCorrelations.binary_corrected_elliott',
+      'OAI.OrdinaryTwoPointCorrelations.affine_corrected_elliott',
+    ]);
+  });
+
+  it('102 records all five Comparator challenges its Lean doc links', () => {
+    const f = (catalog.families as unknown as Family[]).find((x) => x.id === '102')!;
+    expect(f.comparator).toHaveLength(5);
+    expect(f.comparator.every((c) => !c.support)).toBe(true);
+  });
+
+  it('parses Comparator links from a Lean doc, deduped, in order', () => {
+    const md = [
+      '| Result | Comparator statement |',
+      '| A | [A.lean](../ComparatorChallenges/A.lean) |',
+      '| B | [B.json](../ComparatorChallenges/B.json) |',
+      '| A again | [A.lean](../ComparatorChallenges/A.lean) |',
+      'See [the paper](../../preprints/X/paper.pdf).',
+    ].join('\n');
+    expect(parseDocComparatorLinks(md)).toEqual(['A', 'B']);
+    expect(parseDocComparatorLinks('no links')).toEqual([]);
+  });
+
+  it('reads supporting-result-only setups from the Comparator README', () => {
+    const md = [
+      '# Comparator challenges',
+      '## Supporting-result comparisons',
+      '- `FooSupport.json`: compatibility of x.',
+      '- `BarSupport.json`: compactness.',
+      '',
+      'See the scope notes.',
+      '## Other',
+      '- `NotThis.json`: no.',
+    ].join('\n');
+    expect([...parseSupportOnly(md)]).toEqual(['FooSupport', 'BarSupport']);
+    expect(parseSupportOnly('# none').size).toBe(0);
+  });
+
+  it('detectLean skips linked challenges with no JSON file and flags support-only ones', async () => {
+    const { mkdtemp, mkdir, writeFile } = await import('node:fs/promises');
+    const { tmpdir } = await import('node:os');
+    const { join } = await import('node:path');
+    const dir = await mkdtemp(join(tmpdir(), 'cf-lean-'));
+    await mkdir(join(dir, 'lean/docs'), { recursive: true });
+    await mkdir(join(dir, 'lean/ComparatorChallenges'), { recursive: true });
+    await writeFile(
+      join(dir, 'lean/docs/001.md'),
+      '[Main](../ComparatorChallenges/Main.lean) [Sup](../ComparatorChallenges/SupSupport.lean) [Gone](../ComparatorChallenges/Gone.lean)',
+    );
+    await writeFile(join(dir, 'lean/ComparatorChallenges/Main.json'), JSON.stringify({ theorem_names: ['OAI.main'] }));
+    await writeFile(join(dir, 'lean/ComparatorChallenges/SupSupport.json'), JSON.stringify({ theorem_names: [] }));
+    const refs = await detectLean(dir, 'lean/docs/001.md', new Set(['SupSupport']));
+    expect(refs.map((r) => [r.file, r.support, r.theorems])).toEqual([
+      ['lean/ComparatorChallenges/Main.json', false, ['OAI.main']],
+      ['lean/ComparatorChallenges/SupSupport.json', true, []],
+    ]);
+    expect(await detectLean(dir, null, new Set())).toEqual([]);
   });
 
   it('cleans LaTeX + keeps only allowed tags + unescapes', () => {

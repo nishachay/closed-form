@@ -17,6 +17,9 @@ const sourceDir = process.env.CF_SOURCE_DIR ?? join(root, 'source/openai-math');
 const outPath = join(root, 'src/data/catalog.json');
 
 function sourceCommit(): string {
+  // CF_SOURCE_COMMIT lets a non-git mirror of the pinned commit (e.g. files fetched
+  // from raw.githubusercontent.com when the submodule cannot clone) record its commit.
+  if (process.env.CF_SOURCE_COMMIT) return process.env.CF_SOURCE_COMMIT;
   try {
     return execSync('git rev-parse HEAD', { cwd: sourceDir, encoding: 'utf-8' }).trim();
   } catch {
@@ -80,6 +83,8 @@ async function main(): Promise<void> {
   };
 
   console.log(`families=${families.length} papers=${papers.length} leanPapers=${leanPapers} subjects=${subjects.length}`);
+  const viaComparator = families.filter((f) => f.lean === 0 && f.trust === 'formal').length;
+  console.log(`lean docs=${families.filter((f) => f.leanDoc).length} with comparator=${families.filter((f) => f.comparator.length > 0).length} formal-via-comparator=${viaComparator}`);
   console.log(`trust formal=${trust.formal} partial=${trust.partial} claimed=${trust.claimed}`);
   console.log(`withdrawn=${families.reduce((n, f) => n + (f.withdrawn?.length ?? 0), 0)}`);
   console.log(`commit=${commit}`);

@@ -21,6 +21,13 @@ Do this:
    Also define each term in brackets the first time you use it.
 9. Match the claim wording to the trust status:
    formal → "proves … (Lean proof listed)"; partial/claimed → "claims to prove …".
+10. Lean status comes ONLY from the LEAN FACTS block in the task (computed from repo
+   files). Do not say any theorem is or is not formalized or Comparator-checked beyond
+   those facts. The pipeline overwrites every `evidence` item of kind "lean" afterwards.
+11. Every `sources` item needs a `url`. Only if no online copy exists, set `noUrl: true`
+   and end `cite` with "(no online copy found)".
+12. Get every implication the right way round ("A implies B", "stronger than"), use the
+   paper's own definitions, and include the prior work the introduction names as closest.
 
 Rules: sentences ≤20 words; one idea per sentence; active voice; common words; no hype
 words; no proof sketches; the official abstract is NOT plain language; never add impact

@@ -6,8 +6,8 @@ import { TRUST_LADDER } from '../lib/trust.js';
 const count = (k: string) => families.filter((f) => f.trust === k).length;
 const meaning: Record<string, string> = {
   formal:
-    'At least one paper in the result has a main theorem listed in the repository’s Lean catalogue, a computer-checkable proof. A listing is not the same as an independent check.',
-  partial: 'The result links to Lean notes, but not every main claim is covered by a formal proof.',
+    'At least one paper in the result is listed in the repository’s Lean catalogue, or its Lean notes link a Comparator challenge for a main result: a computer-checkable proof. A listing is not the same as an independent check.',
+  partial: 'The result links to Lean notes, but no listed proof or Comparator challenge for a main result.',
   claimed: 'Only the written paper exists. No computer has checked it, and it could contain errors.',
 };
 const toc = [
