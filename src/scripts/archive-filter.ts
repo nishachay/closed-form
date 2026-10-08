@@ -339,3 +339,21 @@ function init(): void {
 }
 
 init();
+
+// Sticky filter sidebar without an inner scrollbar: stick under the header when it fits,
+// otherwise stick by its bottom edge so every filter stays reachable by scrolling the page.
+(() => {
+  const side = document.querySelector<HTMLElement>('.filters');
+  const header = document.querySelector<HTMLElement>('header.top');
+  if (!side) return;
+  const fit = () => {
+    const hh = header?.offsetHeight ?? 56;
+    const gap = 16;
+    const h = side.offsetHeight;
+    const top = h + hh + gap * 2 <= innerHeight ? hh + gap : innerHeight - h - gap;
+    side.style.setProperty('--side-top', `${Math.round(top)}px`);
+  };
+  fit();
+  addEventListener('resize', fit, { passive: true });
+  if ('ResizeObserver' in window) new ResizeObserver(fit).observe(side);
+})();

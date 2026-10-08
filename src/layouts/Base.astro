@@ -9,7 +9,7 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
-  current?: 'archive' | 'about';
+  current?: 'home' | 'archive' | 'about';
 }
 const { title, description = 'AI mathematics, explained. Honest trust labels, plain words.', ogImage = '/og/home.png', current } = Astro.props;
 const rss = appUrl('/feed.xml');

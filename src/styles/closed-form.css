@@ -679,9 +679,6 @@ footer{font-size:.8125rem;padding-block:2rem}
 .top{background:color-mix(in oklab,var(--color-bg) 78%,transparent);-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);border-block-end:1px solid color-mix(in oklab,var(--color-border) 80%,transparent)}
 .top .top-in{justify-content:flex-start;gap:1.25rem}
 .top .logo{white-space:nowrap;gap:.625rem;font-size:1rem;font-weight:600;letter-spacing:-.015em;min-block-size:2.75rem}
-.logo-mark{display:grid;place-items:center;inline-size:1.5rem;block-size:1.5rem;border-radius:6px;background:var(--color-accent);flex:none;transition:rotate .3s var(--ease-out)}
-.logo .logo-mark i{inline-size:.4375rem;block-size:.4375rem;background:var(--color-bg);border-radius:1px}
-@media (hover:hover) and (prefers-reduced-motion:no-preference){.logo:hover .logo-mark{rotate:90deg}}
 .top .top-nav{display:flex;align-items:center;gap:.125rem;padding-inline-start:1.25rem;border-inline-start:1px solid var(--color-border-strong);block-size:1.25rem}
 .top .top-nav a{min-block-size:2rem;padding-inline:.75rem;border-radius:999px;font-size:.875rem;font-weight:500;color:var(--color-text-secondary);transition:color .15s var(--ease-out),background-color .15s var(--ease-out)}
 .top .top-nav a[aria-current=page]{color:var(--color-text);background:color-mix(in oklab,var(--color-text) 9%,transparent)}
@@ -695,7 +692,7 @@ footer{font-size:.8125rem;padding-block:2rem}
 .top a:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
 @media (max-width:48rem){.top-search{min-inline-size:0;inline-size:2.25rem;padding:0;justify-content:center}.top-search .ts-t,.top-search kbd{display:none}}
 @media (max-width:36rem){.top .top-in{gap:.75rem}.top .top-nav{padding-inline-start:.5rem;border:0}.top .top-nav a{padding-inline:.625rem}.top .logo-word{font-size:.9375rem}}
-@media (max-width:24rem){.top .logo-word{display:none}}
+
 
 .sortmenu{position:relative}
 .sm-native{position:absolute;inline-size:1px;block-size:1px;opacity:0;pointer-events:none;inset:0}
@@ -761,3 +758,48 @@ footer{font-size:.8125rem;padding-block:2rem}
 .nf-links{display:flex;gap:1.5rem;margin-block-start:1.5rem;font-weight:500}
 .nf-links a{color:var(--color-text-secondary)}
 @media (hover:hover){.nf-links a:hover{color:var(--color-text)}}
+
+/* ===== Logo: the Q.E.D. tombstone (∎) — a proof, closed. Same mark in header, footer and share cards. ===== */
+.logo i{flex:none;inline-size:.6875rem;block-size:.6875rem;background:var(--color-accent);border-radius:0}
+
+/* ===== Archive sidebar: sticky with no inner scrollbar.
+   It sticks under the header when it fits the screen; on short screens it scrolls with the page
+   until its last item is in view, then sticks by its bottom edge (JS sets --side-top). ===== */
+@media (min-width:56.0625rem){
+  .filters{max-block-size:none;overflow:visible;inset-block-start:var(--side-top,calc(var(--header-h) + 1rem))}
+  .fopt{min-block-size:2rem}
+}
+
+/* ===== Footer ===== */
+footer.site-footer{margin-block-start:6rem;padding-block:3.5rem 2rem;border-block-start:1px solid var(--color-border);font-size:.9375rem;color:var(--color-text-tertiary)}
+.ft{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);grid-template-areas:"brand cols" "made made" "legal legal";gap:2.5rem 3rem}
+.ft-brand{grid-area:brand}
+.ft-brand .logo{color:var(--color-text);text-decoration:none;min-block-size:auto}
+.ft-tag{margin:.75rem 0 0;max-inline-size:22rem;color:var(--color-text-secondary);line-height:1.5}
+.ft-cols{grid-area:cols;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
+.ft-col h2{margin:0 0 .75rem}
+.ft-col ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+footer.site-footer a{color:var(--color-text-secondary);text-decoration:none;transition:color .15s var(--ease-out)}
+@media (hover:hover){footer.site-footer a:hover{color:var(--color-text)}}
+.ft-made{grid-area:made;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block-start:1.5rem;border-block-start:1px solid var(--color-border)}
+.ft-by{margin:0;color:var(--color-text-secondary)}
+footer.site-footer .ft-by a{color:var(--color-text);font-weight:500;text-decoration:underline;text-decoration-color:var(--color-border-strong);text-underline-offset:.2em}
+@media (hover:hover){footer.site-footer .ft-by a:hover{text-decoration-color:var(--color-accent)}}
+.ft-heart{display:inline-block;color:var(--color-accent);transform-origin:50% 60%}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){.ft-by:hover .ft-heart{animation:ft-beat .9s var(--ease-out) infinite}}
+@keyframes ft-beat{0%,100%{transform:scale(1)}20%{transform:scale(1.25)}40%{transform:scale(1)}60%{transform:scale(1.15)}}
+.ft-social{display:flex;gap:.5rem}
+.ft-social a{display:grid;place-items:center;inline-size:2.5rem;block-size:2.5rem;border:1px solid var(--color-border);border-radius:var(--r-ctl,8px)}
+@media (hover:hover){footer.site-footer .ft-social a:hover{border-color:var(--color-border-strong);background:var(--color-bg-surface)}}
+.ft-legal{grid-area:legal;margin:0;max-inline-size:none;font-size:.8125rem;line-height:1.6}
+@media (max-width:40rem){
+  footer.site-footer{margin-block-start:4rem;padding-block:2.5rem 1.5rem}
+  .ft{grid-template-columns:minmax(0,1fr);grid-template-areas:"brand" "cols" "made" "legal";gap:2rem}
+}
+@media (min-width:56.0625rem){
+  .filters{padding-block:.5rem}
+  .fopt{min-block-size:1.875rem;padding-block:.3125rem}
+  .fgroup+.fgroup{margin-block-start:.625rem;padding-block-start:.625rem}
+}
+@media (max-width:22.5rem){.top .top-in{gap:.5rem}.top .top-nav{padding-inline-start:0}.top .top-nav a{padding-inline:.5rem}.top .logo{gap:.5rem}}
+@media (max-width:22.5rem){.top .top-gh{display:none}}

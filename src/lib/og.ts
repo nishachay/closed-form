@@ -132,9 +132,8 @@ export function ogSvg(card: OgCard): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${OG_WIDTH}" height="${OG_HEIGHT}" viewBox="0 0 ${OG_WIDTH} ${OG_HEIGHT}">
 <rect width="1200" height="630" fill="${BG}"/>
 <rect x="24" y="24" width="1152" height="582" rx="28" fill="${SURFACE}" stroke="${BORDER}" stroke-width="2"/>
-<rect x="72" y="70" width="40" height="40" rx="10" fill="${ACCENT}"/>
-<rect x="85" y="83" width="14" height="14" rx="2" fill="${BG}"/>
-<text x="128" y="100" font-family="${FONT}" font-size="30" font-weight="600" fill="${INK}" letter-spacing="-0.5">Closed Form</text>
+<rect x="72" y="76" width="22" height="22" fill="${ACCENT}"/>
+<text x="110" y="98" font-family="${FONT}" font-size="30" font-weight="600" fill="${INK}" letter-spacing="-0.5">Closed Form</text>
 ${card.tag ? `<text x="1128" y="100" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="500" fill="${TERTIARY}">${escapeXml(card.tag)}</text>` : ''}
 <text x="72" y="${kickerY}" font-family="${FONT}" font-size="22" font-weight="500" letter-spacing="2.5" fill="${ACCENT}">${escapeXml(card.kicker.toUpperCase())}</text>
 ${rendered}
