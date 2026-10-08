@@ -1,0 +1,28 @@
+name: Report an entry error
+description: Flag a wrong date, name, claim wording or trust label on an entry.
+title: "[entry ] "
+labels: [entry-error]
+body:
+  - type: input
+    id: entry-id
+    attributes:
+      label: Entry id
+      description: The 3-digit id from the entry page (e.g. 017).
+      placeholder: "017"
+    validations:
+      required: true
+  - type: input
+    id: entry-url
+    attributes:
+      label: Entry URL
+      description: Paste the page address.
+      placeholder: https://nishachay.github.io/closed-form/e/openai-math-2026-017/
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+      description: Quote the sentence and say what it should say, with a source if you have one.
+    validations:
+      required: true

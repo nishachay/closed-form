@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.github.io/closed-form/schema/entry.schema.json",
+  "title": "Closed Form entry (§10 + collection extension)",
+  "type": "object",
+  "required": [
+    "id",
+    "status",
+    "collection",
+    "lab",
+    "science",
+    "field",
+    "aiRole",
+    "evidence",
+    "headline",
+    "scope",
+    "plain",
+    "doesNot",
+    "origin",
+    "scorecard",
+    "sections",
+    "hypeCheck",
+    "glossary",
+    "sources",
+    "sourceHash",
+    "sourceCommit"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^\\d{3}$" },
+    "status": { "enum": ["sample", "ai-draft", "ai-checked", "reviewed"] },
+    "reviewedBy": { "type": "string" },
+    "reviewedAt": { "type": "string" },
+    "collection": { "type": "string", "minLength": 1, "example": "openai-math-2026" },
+    "lab": { "type": "string", "minLength": 1, "example": "openai" },
+    "science": { "type": "string", "minLength": 1, "example": "mathematics" },
+    "field": { "type": "string", "minLength": 1, "description": "Must equal the family's catalog subject and scorecard.field." },
+    "aiRole": { "enum": ["autonomous", "ai-led", "ai-assisted"] },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["kind", "url"],
+        "properties": {
+          "kind": { "enum": ["paper", "lean", "trace", "other"] },
+          "url": { "type": "string", "format": "uri" },
+          "label": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "headline": { "type": "string", "maxLength": 120 },
+    "scope": { "type": "string" },
+    "plain": { "type": "string" },
+    "doesNot": { "type": "string", "pattern": "^This does not" },
+    "origin": {
+      "type": "string",
+      "const": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026."
+    },
+    "scorecard": {
+      "type": "object",
+      "required": ["field", "significance", "significanceWhy"],
+      "properties": {
+        "firstStep": { "type": "string" },
+        "firstStepBy": { "type": "string" },
+        "field": { "type": "string" },
+        "significance": { "enum": ["Landmark", "Major", "Solid", "Niche"] },
+        "significanceWhy": { "type": "string" }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "required": ["type", "title", "points"],
+      "properties": {
+        "type": { "const": "record" },
+        "title": { "type": "string" },
+        "note": { "type": "string" },
+        "lowerIsBetter": { "type": "boolean" },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["year", "value", "who", "source"],
+            "properties": {
+              "year": { "type": "integer" },
+              "value": { "type": "number" },
+              "who": { "type": "string" },
+              "claim": { "type": "boolean" },
+              "source": { "type": "integer" }
+            }
+          }
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["title", "body"],
+        "properties": {
+          "title": { "type": "string" },
+          "body": { "type": "string" }
+        }
+      }
+    },
+    "hypeCheck": { "type": "string" },
+    "glossary": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["term", "meaning"],
+        "properties": {
+          "term": { "type": "string" },
+          "meaning": { "type": "string" }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "cite"],
+        "properties": {
+          "id": { "type": "integer" },
+          "cite": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "quote": { "type": "string" }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["text", "verdict"],
+        "properties": {
+          "text": { "type": "string" },
+          "verdict": { "enum": ["supported", "external"] },
+          "sourceLine": { "type": "string" },
+          "sourceId": { "type": "integer" }
+        }
+      }
+    },
+    "sourceHash": { "type": "string" },
+    "sourceCommit": { "type": "string" },
+    "model": {
+      "type": "object",
+      "required": ["reader", "checker", "date"],
+      "properties": {
+        "reader": { "type": "string" },
+        "checker": { "type": "string" },
+        "date": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+---
+import type { Entry } from '../lib/entry.js';
+import TrustLabel from './TrustLabel.astro';
+
+interface Props {
+  entry: Entry;
+  trust: string;
+}
+const { entry, trust } = Astro.props;
+---
+<dl class="scorecard">
+  <div>
+    <dt>First step</dt>
+    <dd>
+      {entry.scorecard.firstStep ? (
+        <>{entry.scorecard.firstStep}{entry.scorecard.firstStepBy ? ` · ${entry.scorecard.firstStepBy}` : ''}</>
+      ) : (
+        '—'
+      )}
+    </dd>
+  </div>
+  <div>
+    <dt>Field</dt>
+    <dd>{entry.scorecard.field}</dd>
+  </div>
+  <div>
+    <dt>Significance</dt>
+    <dd>
+      {entry.scorecard.significance} <span>· {entry.scorecard.significanceWhy}</span>
+    </dd>
+  </div>
+  <div>
+    <dt>Trust</dt>
+    <dd>
+      <TrustLabel trust={trust} />
+    </dd>
+  </div>
+</dl>

@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import ResultMap from '../../components/ResultMap.astro';
+import ArchiveBrowser from '../../components/ArchiveBrowser.astro';
+import TrustLabel from '../../components/TrustLabel.astro';
+import { appUrl, catalog, computeStats, families, loadExplainedIds } from '../../lib/site.js';
+import { TRUST_LADDER } from '../../lib/trust.js';
+
+export function getStaticPaths() {
+  return [{ params: { collection: catalog.collection } }];
+}
+
+const stats = computeStats();
+const explainedIds = await loadExplainedIds();
+---
+<Base title={`Collection ${catalog.collection}`} description={`${stats.results} results, ${stats.papers} papers, honest trust labels.`} ogImage={`/og/collection-${catalog.collection}.png`}>
+  <div class="wrap">
+    <p class="kicker">Collection · {catalog.collection}</p>
+    <h1 class="page">The {catalog.collection} collection</h1>
+    <p class="measure">
+      {stats.results} results in {stats.papers} papers across {catalog.subjects.length} fields. Lab:{' '}
+      <a href={appUrl(`/lab/${catalog.lab}/`)}>{catalog.lab}</a> · Science:{' '}
+      <a href={appUrl(`/science/${catalog.science}/`)}>{catalog.science}</a> · Source: {catalog.source.repo}{' '}
+      (Apache-2.0).
+    </p>
+
+    <ul class="stats" aria-label="Collection statistics">
+      <li>
+        <div class="stat-number">{stats.papers}</div>
+        <div class="stat-label">papers</div>
+      </li>
+      <li>
+        <div class="stat-number">{stats.results}</div>
+        <div class="stat-label">results</div>
+      </li>
+      <li>
+        <div class="stat-number">{stats.formalPapers}</div>
+        <div class="stat-label">papers with formal proof</div>
+      </li>
+      <li>
+        <div class="stat-number">{explainedIds.size}</div>
+        <div class="stat-label">explained so far</div>
+      </li>
+    </ul>
+
+    <h2>The map</h2>
+    <ul class="map-legend" aria-label="Trust legend">
+      {TRUST_LADDER.map((t) => (
+        <li>
+          <TrustLabel trust={t.key} />
+        </li>
+      ))}
+    </ul>
+    <ResultMap explainedIds={explainedIds} />
+
+    <h2>All results in this collection</h2>
+    <ArchiveBrowser families={families} />
+  </div>
+</Base>

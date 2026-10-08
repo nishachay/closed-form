@@ -1,0 +1,231 @@
+/* Base type + elements (§14.1, §15). One family: Schibsted Grotesk.
+   Font paths couple to `base` in astro.config.mjs (GH Pages project path). */
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/closed-form/fonts/schibsted-grotesk-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/closed-form/fonts/schibsted-grotesk-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/closed-form/fonts/schibsted-grotesk-600.woff2") format("woff2");
+}
+
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light dark;
+  scroll-padding-block-start: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "DejaVu Sans", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-wrap: break-word;
+}
+
+/* No italics shipped: never synthesize them. */
+i,
+em {
+  font-style: normal;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin-block: 0;
+}
+
+h1.display {
+  font-size: clamp(2.5rem, 1.4rem + 4.6vw, 5.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+h1.page {
+  font-size: clamp(2rem, 1.3rem + 2.8vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin-block: 0 var(--space-4);
+  text-wrap: pretty;
+}
+
+.measure {
+  max-inline-size: 42rem;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.2em;
+}
+
+@media (hover: hover) {
+  a:hover {
+    text-decoration-color: var(--color-accent);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+h1:focus {
+  outline: none;
+}
+
+img,
+svg {
+  max-inline-size: 100%;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--space-4);
+  inset-block-start: -100px;
+  z-index: 100;
+  background: var(--color-ink);
+  color: var(--color-ink-text);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-control);
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  inset-block-start: var(--space-2);
+}
+
+.kicker {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+  margin-block-end: var(--space-3);
+}
+
+/* Uppercase labels must not uppercase Greek runs. */
+.nc {
+  text-transform: none;
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ui {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-number {
+  font-size: 2.25rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.headline {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.row-title {
+  font-size: 1.125rem;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Motion: hero fade-up only, everything off under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-in {
+    animation: hero-up 400ms ease-out both;
+  }
+
+  .hero-in-2 {
+    animation-delay: 100ms;
+  }
+
+  .hero-in-3 {
+    animation-delay: 200ms;
+  }
+
+  @keyframes hero-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  a,
+  button {
+    transition:
+      color 120ms ease-out,
+      background-color 150ms ease-out,
+      transform 150ms ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none;
+    transition: none;
+  }
+}

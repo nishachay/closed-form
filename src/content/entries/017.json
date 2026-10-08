@@ -1,0 +1,84 @@
+{
+  "id": "017",
+  "status": "sample",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-irrationality-exponent-of-pi-is-2-September-24-2026/paper.pdf",
+      "label": "The irrationality exponent of pi is 2"
+    },
+    {
+      "kind": "trace",
+      "url": "https://github.com/openai/math/blob/main/reasoning_traces/irrationality-exponent-of-pi.pdf",
+      "label": "Reasoning summary"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/017.md",
+      "label": "Lean doc (partial formalization)",
+      "note": "Comparator statement only; Flint-Hills consequence is outside the formalized statement."
+    }
+  ],
+  "headline": "Fractions can never get unusually close to π.",
+  "scope": "The result is about π only. It does not cover other constants.",
+  "plain": "Every number can be approached by fractions. For most numbers, the closest fractions miss by about 1 divided by the square of their bottom number. This paper claims to prove that π behaves like most numbers. No fraction gets much closer to π than that rule allows.",
+  "doesNot": "This does not prove that π is irrational or transcendental. Those facts were proved in the 1760s and in 1882.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1953",
+    "firstStepBy": "Kurt Mahler, first proven limit",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It ends a 70-year chain of better and better limits on a famous constant."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven limit on π’s irrationality exponent",
+    "note": "Smaller is better. 2 is the lowest possible value.",
+    "lowerIsBetter": true,
+    "points": [
+      { "year": 1953, "value": 42, "who": "Mahler", "source": 1 },
+      { "year": 2008, "value": 7.6063, "who": "Salikhov", "source": 2 },
+      { "year": 2020, "value": 7.1032, "who": "Zeilberger and Zudilin", "source": 3 },
+      { "year": 2026, "value": 2, "who": "This paper", "claim": true, "source": 5 }
+    ]
+  },
+  "sections": [
+    {
+      "title": "The story",
+      "body": "In 1953, Kurt Mahler proved that the irrationality exponent (a score for how closely fractions can approximate a number) of π is at most 42. Since then, mathematicians made this limit smaller step by step. Salikhov reached about 7.61 in 2008. Zeilberger and Zudilin reached about 7.10 in 2020. Most experts expected the true value to be 2, but no one could prove it."
+    },
+    {
+      "title": "Why it matters",
+      "body": "A value of 2 means π is not special in this way. The paper also settles a well-known puzzle: the Flint Hills series, the sum of 1 / (n³ sin²n). Alekseyev showed in 2011 that this sum converges (approaches a fixed value) if the exponent is small enough. This result is small enough."
+    },
+    {
+      "title": "Where it leads",
+      "body": "The same methods could apply to other constants, such as log 2 or ζ(3), where the known limits are still far above 2. Family 017 is one of 10 results with a published reasoning summary, so mathematicians can study how the model found the proof."
+    },
+    {
+      "title": "What it says about AI",
+      "body": "Strong human experts worked on this problem for decades. If the proof holds, it shows that AI can finish a long line of human work on a classical question. The repository does not list a formal Lean proof for the main paper yet."
+    }
+  ],
+  "hypeCheck": "Major if the proof holds. It is not yet machine-checked, and specialists have not yet published a review.",
+  "glossary": [
+    { "term": "Irrational number", "meaning": "A number that is not a fraction of two whole numbers, like π." },
+    { "term": "Irrationality exponent", "meaning": "A score for how closely fractions can approximate a number. The lowest possible score is 2." },
+    { "term": "Converge", "meaning": "When the sum of an endless list of numbers approaches a fixed value." }
+  ],
+  "sources": [
+    { "id": 1, "cite": "K. Mahler, “On the approximation of π”, Indagationes Mathematicae 15 (1953) †" },
+    { "id": 2, "cite": "V. Kh. Salikhov, “On the irrationality measure of π”, Russian Mathematical Surveys 63 (2008) †" },
+    { "id": 3, "cite": "D. Zeilberger and W. Zudilin, “The irrationality measure of π is at most 7.103205334137…”, Moscow Journal of Combinatorics and Number Theory 9 (2020) †" },
+    { "id": 4, "cite": "M. A. Alekseyev, “On convergence of the Flint Hills series”, arXiv:1104.5100 (2011) †" },
+    { "id": 5, "cite": "openai/math, family 017 manuscripts (2026)", "url": "https://github.com/openai/math" }
+  ],
+  "sourceHash": "818d3f525a41d55f6a2dcde0092cd8e7fc5ba315033bd6ad2abec1d600bdb8cd",
+  "sourceCommit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a"
+}

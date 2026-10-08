@@ -1,0 +1,76 @@
+---
+import type { Family } from '../lib/catalog.js';
+import { catalog, loadExplainedIds } from '../lib/site.js';
+import ArchiveRow from './ArchiveRow.astro';
+import { TRUST_LADDER } from '../lib/trust.js';
+import { slugify } from '../lib/slug.js';
+
+interface Props {
+  families: Family[];
+}
+const { families: list } = Astro.props;
+
+const explainedIds = await loadExplainedIds();
+
+const groups = catalog.subjects
+  .map((subject) => ({ subject, items: list.filter((f) => f.subject === subject) }))
+  .filter((g) => g.items.length > 0);
+
+const trustCounts = Object.fromEntries(TRUST_LADDER.map((t) => [t.key, list.filter((f) => f.trust === t.key).length]));
+const explainedCount = list.filter((f) => explainedIds.has(f.id)).length;
+---
+<div class="tools" role="search">
+  <div class="tools-row">
+    <label class="visually-hidden" for="q">Search results</label>
+    <input
+      class="search"
+      id="q"
+      name="q"
+      type="search"
+      autocomplete="off"
+      placeholder={`Search ${list.length} results — try pi`}
+    />
+    <label class="visually-hidden" for="field">Field</label>
+    <select class="field-select" id="field" name="field">
+      <option value="">All fields</option>
+      {catalog.subjects.map((s) => {
+        const n = list.filter((f) => f.subject === s).length;
+        return n > 0 ? <option value={slugify(s)}>{s} ({n})</option> : null;
+      })}
+    </select>
+  </div>
+  <div class="tools-row">
+    <div class="segmented" role="group" aria-label="Trust filter" id="trust-group">
+      <button type="button" data-trust="" aria-pressed="true">All ({list.length})</button>
+      {TRUST_LADDER.map((t) => (
+        <button type="button" data-trust={t.key} aria-pressed="false">
+          {t.label} ({trustCounts[t.key] ?? 0})
+        </button>
+      ))}
+      <button type="button" data-trust="explained" aria-pressed="false">Explained ({explainedCount})</button>
+    </div>
+    <span class="live-count" role="status" id="live-count" aria-live="polite">{list.length} of {list.length} results</span>
+    <button class="quiet-link" type="button" id="reset" hidden>Reset</button>
+  </div>
+</div>
+
+<div id="groups">
+  {groups.map((g) => (
+    <section data-group={slugify(g.subject)}>
+      <h2 class="group-header">
+        {g.subject} · <span class="nums">{g.items.length}</span>
+      </h2>
+      <ul class="rows">
+        {g.items.map((f) => (
+          <ArchiveRow family={f} explained={explainedIds.has(f.id)} />
+        ))}
+      </ul>
+    </section>
+  ))}
+</div>
+<div class="empty-state" id="empty" hidden>
+  <p id="empty-text">No results match.</p>
+  <button class="button-primary" type="button" id="empty-clear">Clear all filters</button>
+</div>
+
+<script src="../scripts/archive-filter.ts"></script>

@@ -1,0 +1,35 @@
+{
+  "name": "closed-form",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "ingest": "tsx scripts/ingest.ts",
+    "explain": "tsx scripts/explain.ts",
+    "calibrate": "tsx scripts/calibrate.ts",
+    "lint-ste": "tsx scripts/lint-ste.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^5.13.0",
+    "katex": "^0.16.21",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^22.7.0",
+    "lighthouse": "^13.5.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.3",
+    "yaml": "^2.6.0"
+  }
+}
