@@ -1,18 +1,36 @@
 ---
-// Site-wide header. Lab-neutral per §0: no lab or collection names here.
 import { appUrl } from '../lib/site.js';
+
+interface Props {
+  current?: 'archive' | 'about';
+}
+const { current } = Astro.props;
 const github = 'https://github.com/nishachay/closed-form';
 ---
-<header class="site-header">
-  <div class="wrap site-header-inner">
-    <a class="brand" href={appUrl('/')} aria-label="Closed Form home">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span>Closed Form</span>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href={appUrl('/')} aria-label="Closed Form, home">
+      <i aria-hidden="true"></i>Closed Form
     </a>
-    <nav class="site-nav ui" aria-label="Site">
-      <a href={appUrl('/archive/')}>Archive</a>
-      <a href={appUrl('/about/')}>About</a>
-      <a href={github}>GitHub</a>
+    <nav aria-label="Primary">
+      <a href={appUrl('/archive/')} aria-current={current === 'archive' ? 'page' : undefined}>Archive</a>
+      <a href={appUrl('/about/')} aria-current={current === 'about' ? 'page' : undefined}>About</a>
+      <a
+        class="ext"
+        href={github}
+        target="_blank"
+        rel="noopener">GitHub<svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.4"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"><path d="M3 2h5v5M8 2 2 8" /></svg
+        ><span class="sr"> (opens in a new tab)</span></a
+      >
     </nav>
   </div>
 </header>

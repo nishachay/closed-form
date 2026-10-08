@@ -1,6 +1,7 @@
 ---
 import type { Family } from '../lib/catalog.js';
 import { entryUrl } from '../lib/site.js';
+import { familyTime, formatDay } from '../lib/dates.js';
 import { renderMath } from '../lib/katex.js';
 import { slugify } from '../lib/slug.js';
 import TrustLabel from './TrustLabel.astro';
@@ -12,26 +13,37 @@ interface Props {
 const { family: f, explained } = Astro.props;
 const strip = (s: string) => s.replace(/<[^>]+>/g, ' ');
 const searchText = `${f.id} ${strip(f.title)} ${strip(f.summary)} ${f.subject}`;
+const t = familyTime(f);
+const date = Number.isNaN(t) ? '' : formatDay(new Date(t).toISOString().slice(0, 10));
+const leanHref = f.leanDoc
+  ? f.leanDoc.startsWith('http')
+    ? f.leanDoc
+    : `https://github.com/openai/math/blob/main/${f.leanDoc}`
+  : '';
 ---
 <li
-  class="row"
+  class="res"
   data-row
   data-id={f.id}
   data-trust={f.trust}
   data-field={slugify(f.subject)}
   data-explained={explained ? '1' : '0'}
   data-search={searchText}
+  data-date={Number.isNaN(t) ? '' : String(t)}
 >
-  <a class="row-link" href={entryUrl(f)}>
-    <span class="row-id nums">{f.id}</span>
-    <span>
-      <span class="row-title">
-        <span set:html={renderMath(f.title)} />{explained && <span class="tag-explained">Explained</span>}
-      </span>
-      <span class="row-summary" set:html={renderMath(f.summary)} />
-    </span>
-    <span class="row-trust">
-      <TrustLabel trust={f.trust} short />
-    </span>
-  </a>
+  <div class="res-meta">
+    <span class="badge">{f.id}</span>{date && <span>{date}</span>}
+    <span class="res-f-n" hidden>{f.subject}</span>{explained && <span class="ex-tag">Explained</span>}
+  </div>
+  <h4 class="res-t">
+    <a class="rc-link" href={entryUrl(f)}><span set:html={renderMath(f.title)} /></a>
+  </h4>
+  {f.summary && <p class="res-s"><span set:html={renderMath(f.summary)} /></p>}
+  <div class="res-foot">
+    <TrustLabel trust={f.trust} />
+    <div class="res-links">
+      <a href={f.papers[0].pdf} target="_blank" rel="noopener">Paper<span class="sr"> PDF, opens in a new tab</span></a>
+      {leanHref && <a href={leanHref} target="_blank" rel="noopener">Lean<span class="sr"> notes, opens in a new tab</span></a>}
+    </div>
+  </div>
 </li>

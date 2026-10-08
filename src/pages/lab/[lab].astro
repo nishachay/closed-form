@@ -9,28 +9,25 @@ export function getStaticPaths() {
 const stats = computeStats();
 const { lab } = Astro.params;
 ---
-<Base title={`Lab: ${lab}`} description={`AI-made mathematics from ${lab}, explained with honest trust labels.`} ogImage={`/og/lab-${lab}.png`}>
+<Base
+  title={`Lab: ${lab}`}
+  description={`AI-made mathematics from ${lab}, explained with honest trust labels.`}
+  ogImage={`/og/lab-${lab}.png`}
+>
   <div class="wrap">
-    <p class="kicker">Lab · {lab}</p>
-    <h1 class="page">{lab === 'openai' ? 'OpenAI' : lab}</h1>
-    <p class="measure">
-      {stats.results} results in {stats.papers} papers across {catalog.subjects.length} fields of{' '}
-      {catalog.science}.
-    </p>
-
-    <h2>Collections</h2>
-    <ul class="rows">
-      <li class="row">
-        <a class="row-link" href={appUrl(`/collection/${catalog.collection}/`)}>
-          <span class="row-id nums">Vol. 1</span>
-          <span>
-            <span class="row-title">{catalog.collection}</span>
-            <span class="row-summary">
-              Science: {catalog.science} · {stats.results} results · {stats.papers} papers
-            </span>
-          </span>
-          <span class="row-trust" />
-        </a>
+    <section class="arch-head">
+      <div class="label">Lab · {lab}</div>
+      <h1>{lab === 'openai' ? 'OpenAI' : lab}</h1>
+      <p class="lede">
+        {stats.results} results in {stats.papers} papers across {catalog.subjects.length} fields of{' '}
+        {catalog.science}.
+      </p>
+    </section>
+    <h2 class="label">Collections</h2>
+    <ul class="papers">
+      <li>
+        <a href={appUrl(`/collection/${catalog.collection}/`)}>{catalog.collection}</a>
+        <div class="d">Science: {catalog.science} · {stats.results} results · {stats.papers} papers</div>
       </li>
     </ul>
   </div>
