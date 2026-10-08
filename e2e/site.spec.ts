@@ -82,7 +82,7 @@ test('field page filters to its subject with its own OG card', async ({ page }) 
 
 test('about documents trust labels', async ({ page }) => {
   await page.goto('about/');
-  await expect(page.locator('dl.tl dt', { hasText: 'Formal proof listed' })).toBeVisible();
+  await expect(page.locator('.ab-trust li', { hasText: 'Formal proof listed' })).toBeVisible();
   await expect(page.locator('h2', { hasText: 'How entries are made' })).toBeVisible();
 });
 

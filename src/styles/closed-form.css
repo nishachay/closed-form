@@ -949,3 +949,15 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 }
 @media (max-width:40rem){.ft-sep{display:none}}
 @media (max-width:22.5rem){.top .logo{font-size:1rem}.top .top-nav a{padding-inline:.4375rem}.top-r{gap:.125rem}}
+/* About page: same article system as entries */
+.ab-trust{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:.625rem}
+.ab-trust li{padding:1rem 1.25rem;border-radius:var(--r-in,10px);background:var(--color-bg-surface);border:1px solid var(--color-border)}
+.ab-t-h{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-block-end:.375rem}
+.ab-trust .trust{font-size:.9375rem;font-weight:600;color:var(--color-text)}
+.ab-t-n{font-size:.8125rem;color:var(--color-text-tertiary);text-decoration:none;white-space:nowrap}
+@media (hover:hover){.ab-t-n:hover{color:var(--color-text)}}
+.entry .ab-trust p{margin:0;font-size:.9375rem;line-height:1.6;color:var(--color-text-secondary)}
+.ab-steps{list-style:none;counter-reset:st;margin:0;padding:0;display:grid;gap:.625rem}
+.ab-steps li{counter-increment:st;display:grid;grid-template-columns:2rem minmax(0,1fr);align-items:baseline;padding:1rem 1.25rem;border-radius:var(--r-in,10px);background:var(--color-bg-surface);border:1px solid var(--color-border);font-size:.9375rem;line-height:1.6;color:var(--color-text-secondary)}
+.ab-steps li::before{content:counter(st);font-size:.875rem;font-weight:500;color:var(--color-accent);font-variant-numeric:tabular-nums}
+.ab-steps b{color:var(--color-text);font-weight:600}

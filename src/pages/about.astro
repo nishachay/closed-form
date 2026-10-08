@@ -1,16 +1,70 @@
 ---
 import Base from '../layouts/Base.astro';
+import { appUrl, families } from '../lib/site.js';
+import { TRUST_LADDER } from '../lib/trust.js';
+
+const count = (k: string) => families.filter((f) => f.trust === k).length;
+const meaning: Record<string, string> = {
+  formal:
+    'At least one paper in the result has a main theorem listed in the repository’s Lean catalogue, a computer-checkable proof. A listing is not the same as an independent check.',
+  partial: 'The result links to Lean notes, but not every main claim is covered by a formal proof.',
+  claimed: 'Only the written paper exists. It has not been checked by a computer or a reviewer, and it could contain errors.',
+};
+const toc = [
+  { href: '#trust-labels', label: 'Trust labels' },
+  { href: '#what-we-dont-do', label: 'What we don’t do' },
+  { href: '#how-entries-are-made', label: 'How entries are made' },
+];
 ---
 <Base title="About" description="Why Closed Form exists, what the trust labels mean, and how entries are made." current="about">
-  <div class="entry-wrap" style="grid-template-columns:minmax(0,1fr)">
-    <article class="entry"><div class="label">About</div><h1>Why Closed Form exists</h1>
-<p class="headline">AI now writes research mathematics faster than people can read it. We translate it.</p>
-<p>Each entry explains one result in plain words. It covers what the result proves, who asked the question first, why it matters, what it could lead to and what it shows about AI. We write in a controlled, simple English based on ASD-STE100.</p>
-<h2>Trust labels</h2>
-<dl class="tl"><dt><i class="dot c-formal" aria-hidden="true"></i>Formal proof listed</dt><dd>At least one paper in the result has a main theorem listed in the repository’s Lean catalogue. A listing is not the same as an independent check.</dd><dt><i class="dot c-partial" aria-hidden="true"></i>Partly formalized</dt><dd>The result links to Lean notes, but no main theorem is listed as formally proved.</dd><dt><i class="dot c-claimed" aria-hidden="true"></i>Claimed, not checked</dt><dd>Only the written paper exists. It could contain errors.</dd></dl>
-<h2>What we don’t do</h2>
-<p>We don’t call a result true because a company published it. Many mathematicians have asked for careful review of AI results, and we agree. Every entry has a hype check and a link to the original paper.</p>
-<h2>How entries are made</h2>
-<p>An AI reader drafts each entry from the paper’s source. A second, separate AI checks every claim against the paper. A person then reviews it. Until that happens, the entry says so at the top.</p></article>
+  <div class="entry-wrap">
+    <article class="entry">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl('/')}>Home</a><span aria-hidden="true">/</span><span aria-current="page">About</span></nav>
+      <h1>Why Closed Form exists</h1>
+      <p class="headline">AI now writes research mathematics faster than people can read it. We translate it.</p>
+      <div class="e-meta"><span>Plain English based on ASD-STE100</span><span>Honest trust labels</span><span>Every claim linked to its source</span></div>
+      <p class="e-lead">
+        Each entry explains one result in plain words: what it proves, who asked the question first, why it
+        matters, what it could lead to and what it shows about AI.
+      </p>
+
+      <section class="e-sec" aria-labelledby="trust-labels">
+        <h2 id="trust-labels"><span class="e-n num" aria-hidden="true">01</span>Trust labels</h2>
+        <p>Every result carries one label. It tells you how much checking stands behind the claim, not how important it is.</p>
+        <ul class="ab-trust">
+          {TRUST_LADDER.map((t) => (
+            <li>
+              <div class="ab-t-h"><span class="trust"><i class={`dot c-${t.key}`} aria-hidden="true"></i>{t.label}</span><a class="ab-t-n" href={appUrl(`/archive/?trust=${t.key}`)}><span class="num">{count(t.key)}</span> results →</a></div>
+              <p>{meaning[t.key]}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="e-sec" aria-labelledby="what-we-dont-do">
+        <h2 id="what-we-dont-do"><span class="e-n num" aria-hidden="true">02</span>What we don’t do</h2>
+        <p>We don’t call a result true because a company published it. Many mathematicians have asked for careful review of AI results, and we agree.</p>
+        <p class="e-limit"><b>On every entry.</b> A hype check that says plainly how far the claim has been checked, and a direct link to the original paper.</p>
+      </section>
+
+      <section class="e-sec" aria-labelledby="how-entries-are-made">
+        <h2 id="how-entries-are-made"><span class="e-n num" aria-hidden="true">03</span>How entries are made</h2>
+        <ol class="ab-steps">
+          <li><span><b>Draft.</b> An AI reader writes the entry from the paper’s source.</span></li>
+          <li><span><b>Check.</b> A second, separate AI checks every claim against the paper.</span></li>
+          <li><span><b>Review.</b> A person reviews it. Until then, the entry is marked “Not yet reviewed by a person”.</span></li>
+        </ol>
+      </section>
+    </article>
+    <aside class="side" aria-label="On this page">
+      <div class="blk toc">
+        <div class="label" style="margin-block-end:.375rem">On this page</div>
+        {toc.map((t) => <a href={t.href}>{t.label}</a>)}
+      </div>
+      <div class="blk">
+        <div class="label" style="margin-block-end:.375rem">Feedback</div>
+        <a href="https://github.com/nishachay/closed-form/issues/new" target="_blank" rel="noopener">Report a problem</a>
+      </div>
+    </aside>
   </div>
 </Base>
