@@ -28,7 +28,7 @@ const entry = explained.get(family.id) ?? null;
 const { prev, next } = neighbors(family.id);
 
 const reviewNote =
-  entry && entry.status !== 'reviewed' ? 'This entry has not been reviewed by a person yet.' : null;
+  entry && entry.status !== 'reviewed' ? 'Drafted by one AI model and checked sentence by sentence against the paper by a different one. Spot a mistake? Report an error.' : null;
 
 const shareText = entry
   ? `${entry.scorecard.firstStep ? `Open since ${entry.scorecard.firstStep}. ` : ''}${entry.headline} ∎ ${absoluteUrl(entryUrl(family))}`
@@ -80,7 +80,7 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
         {!entry && <TrustLabel trust={family.trust} />}
         <span>{family.papers.length} paper{family.papers.length === 1 ? '' : 's'}</span>
         {firstDate && <span>{formatLongDay(firstDate)}</span>}
-        {reviewNote && <span class="e-pill" title={reviewNote}>Not yet reviewed by a person</span>}
+        {reviewNote && <span class="e-pill" title={reviewNote}>Explained by AI</span>}
       </div>
       {withdrawnCount > 0 && (
         <p class="wd-note" role="note">

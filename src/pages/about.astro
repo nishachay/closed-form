@@ -8,7 +8,7 @@ const meaning: Record<string, string> = {
   formal:
     'At least one paper in the result has a main theorem listed in the repository’s Lean catalogue, a computer-checkable proof. A listing is not the same as an independent check.',
   partial: 'The result links to Lean notes, but not every main claim is covered by a formal proof.',
-  claimed: 'Only the written paper exists. It has not been checked by a computer or a reviewer, and it could contain errors.',
+  claimed: 'Only the written paper exists. No computer has checked it, and it could contain errors.',
 };
 const toc = [
   { href: '#trust-labels', label: 'Trust labels' },
@@ -50,9 +50,9 @@ const toc = [
       <section class="e-sec" aria-labelledby="how-entries-are-made">
         <h2 id="how-entries-are-made"><span class="e-n num" aria-hidden="true">03</span>How entries are made</h2>
         <ol class="ab-steps">
-          <li><span><b>Draft.</b> An AI reader writes the entry from the paper’s source.</span></li>
-          <li><span><b>Check.</b> A second, separate AI checks every claim against the paper.</span></li>
-          <li><span><b>Review.</b> A person reviews it. Until then, the entry is marked “Not yet reviewed by a person”.</span></li>
+          <li><span><b>Draft.</b> One AI model writes the entry from the paper’s source and the published release.</span></li>
+          <li><span><b>Check.</b> A different AI model matches every sentence to a line in the paper. Anything it can’t match is cut.</span></li>
+          <li><span><b>Correct.</b> Anyone can report an error. Fixes are made in the open on GitHub.</span></li>
         </ol>
       </section>
     </article>

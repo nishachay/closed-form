@@ -32,7 +32,9 @@ const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
                   class={`cell c-${f.trust}${explainedIds.has(f.id) ? ' ex' : ''}`}
                   href={entryUrl(f)}
                   aria-label={`Entry ${f.id}, ${plain}, ${TRUST_LADDER.find((t) => t.key === f.trust)?.label}${explainedIds.has(f.id) ? ', explained' : ''}`}
-                  title={`${f.id} · ${plain}`}
+                  data-id={f.id}
+                  data-tip={`${plain}`}
+                  data-trust={TRUST_LADDER.find((t) => t.key === f.trust)?.label}
                 />
               </li>
             );
@@ -46,3 +48,36 @@ const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
     );
   })}
 </>
+<script>
+  if (matchMedia('(hover: hover)').matches) {
+    const tip = document.createElement('div');
+    tip.className = 'cell-tip';
+    tip.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(tip);
+    let cur: HTMLElement | null = null;
+    const place = (el: HTMLElement) => {
+      const r = el.getBoundingClientRect();
+      const t = tip.getBoundingClientRect();
+      let x = r.left + r.width / 2 - t.width / 2;
+      x = Math.max(8, Math.min(x, innerWidth - t.width - 8));
+      let y = r.top - t.height - 8;
+      if (y < 8) y = r.bottom + 8;
+      tip.style.left = `${x}px`;
+      tip.style.top = `${y}px`;
+    };
+    document.addEventListener('pointerover', (e) => {
+      const el = (e.target as HTMLElement).closest<HTMLElement>('.fcard .cell');
+      if (!el) { if (cur) { tip.classList.remove('on'); cur = null; } return; }
+      if (el === cur) return;
+      cur = el;
+      tip.innerHTML = '';
+      const id = document.createElement('span');
+      id.className = 'ct-id';
+      id.textContent = `${el.dataset.id} · ${el.dataset.trust}`;
+      tip.append(id, document.createTextNode(el.dataset.tip ?? ''));
+      place(el);
+      tip.classList.add('on');
+    });
+    addEventListener('scroll', () => { tip.classList.remove('on'); cur = null; }, { passive: true });
+  }
+</script>

@@ -961,3 +961,17 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 .ab-steps li{counter-increment:st;display:grid;grid-template-columns:2rem minmax(0,1fr);align-items:baseline;padding:1rem 1.25rem;border-radius:var(--r-in,10px);background:var(--color-bg-surface);border:1px solid var(--color-border);font-size:.9375rem;line-height:1.6;color:var(--color-text-secondary)}
 .ab-steps li::before{content:counter(st);font-size:.875rem;font-weight:500;color:var(--color-accent);font-variant-numeric:tabular-nums}
 .ab-steps b{color:var(--color-text);font-weight:600}
+/* Field map: each square is its own target, the card is not */
+.fcard .cells{position:relative;z-index:1}
+.fcard .cell{transition:opacity .12s ease,transform .12s ease}
+.fcard .cell::before{content:"";position:absolute;inset:-1.5px}
+.fcard .cell:focus-visible{outline:2px solid var(--color-accent);outline-offset:1.5px}
+@media (hover:hover){
+  .fcard:has(.cell:hover){border-color:var(--color-border)}
+  .fcard:has(.cell:hover) .fc-t a{text-decoration:none}
+  .fcard .cells:has(.cell:hover) .cell:not(:hover){opacity:.4}
+  .fcard .cell:hover{outline:1.5px solid var(--color-text);outline-offset:1.5px;transform:scale(1.15)}
+}
+.cell-tip{position:fixed;z-index:60;max-inline-size:18rem;padding:.4375rem .625rem;border-radius:8px;background:var(--color-bg-surface);border:1px solid var(--color-border-strong);color:var(--color-text);font-size:.8125rem;line-height:1.4;pointer-events:none;opacity:0;transform:translateY(2px);transition:opacity .1s ease,transform .1s ease;box-shadow:0 6px 20px rgb(0 0 0/.18)}
+.cell-tip.on{opacity:1;transform:none}
+.cell-tip .ct-id{display:block;margin-block-end:.125rem;font-size:.75rem;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums}
