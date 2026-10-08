@@ -7,6 +7,9 @@ import type { Catalog, Family } from './catalog.js';
 import type { Entry } from './entry.js';
 import { globalIdFor } from './ids.js';
 import { slugify } from './slug.js';
+import { appUrl } from './urls.js';
+
+export { absoluteUrl, appUrl } from './urls.js';
 
 export const catalog = catalogJson as Catalog;
 
@@ -53,19 +56,6 @@ export function fieldSlug(subject: string): string {
 /** Resolve `/science/mathematics/<field-slug>/` back to the subject name. */
 export function subjectBySlug(slug: string): string | null {
   return catalog.subjects.find((s) => slugify(s) === slug) ?? null;
-}
-
-/** Prefix an app-absolute path with the configured base (GH Pages safe). */
-export function appUrl(path: string): string {
-  const base = import.meta.env.BASE_URL || '/';
-  const b = base.endsWith('/') ? base.slice(0, -1) : base;
-  return `${b}${path.startsWith('/') ? path : `/${path}`}`;
-}
-
-/** Absolute URL for share links and canonical tags. */
-export function absoluteUrl(path: string): string {
-  const site = (import.meta.env.SITE as string | undefined) ?? 'https://example.github.io';
-  return `${site.replace(/\/$/, '')}${appUrl(path)}`;
 }
 
 export function entryUrl(family: Pick<Family, 'id'>, collection: string = catalog.collection): string {

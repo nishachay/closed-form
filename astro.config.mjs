@@ -4,6 +4,6 @@ import { defineConfig } from 'astro/config';
 // Static output for GitHub Pages durability (§4.8, §16).
 export default defineConfig({
   output: 'static',
-  site: 'https://example.github.io',
+  site: 'https://nishachay.github.io',
   base: '/closed-form',
 });

@@ -5,7 +5,7 @@ import type { Entry } from '../lib/entry.js';
 import { buildFeedItems, buildFeedXml } from '../lib/share.js';
 
 export const GET: APIRoute = async () => {
-  const site = import.meta.env.SITE ?? 'https://example.github.io';
+  const site = import.meta.env.SITE ?? 'https://nishachay.github.io';
   const base = import.meta.env.BASE_URL ?? '/';
   const raw: Array<{ data: Entry }> = await getCollection('entries');
   const items = buildFeedItems(

@@ -9,6 +9,7 @@ import {
   entryAbsoluteUrl,
   shareTextFor,
 } from '../src/lib/share.js';
+import { absoluteUrl, appUrl } from '../src/lib/urls.js';
 import type { Entry } from '../src/lib/entry.js';
 
 const SITE = 'https://example.github.io';
@@ -79,6 +80,17 @@ describe('share links (§13, §0 urls)', () => {
     expect(shareTextFor('Headline here.', undefined, 'https://x/e/')).toBe(
       'Headline here. ∎ https://x/e/',
     );
+  });
+});
+
+describe('production domain defaults (§20 fix)', () => {
+  it('absoluteUrl falls back to the production site, never the placeholder', () => {
+    expect(absoluteUrl('/og/home.png')).toBe('https://nishachay.github.io/og/home.png');
+    expect(absoluteUrl('/og/home.png')).not.toContain('example.');
+  });
+
+  it('appUrl prefixes the configured base once', () => {
+    expect(appUrl('/archive/').split('/').filter(Boolean)[0]).toBe('archive');
   });
 });
 

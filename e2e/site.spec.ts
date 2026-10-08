@@ -90,6 +90,16 @@ test('about documents trust, data files and error reporting', async ({ page }) =
   await expect(page.locator('a[href$="/feed.xml"]')).toHaveCount(1);
 });
 
+test('production domain on feed and og:image', async ({ page, request }) => {
+  const feed = await (await request.get('feed.xml')).text();
+  expect(feed).toContain('<link>https://nishachay.github.io/closed-form/</link>');
+  await page.goto('e/openai-math-2026-017/');
+  const og = await page.locator('meta[property="og:image"]').getAttribute('content');
+  expect(og?.startsWith('https://nishachay.github.io/closed-form/')).toBe(true);
+  const share = await page.locator('.entry-side a[href*="x.com/intent"]').getAttribute('href');
+  expect(share).toContain(encodeURIComponent('https://nishachay.github.io/closed-form/e/openai-math-2026-017/'));
+});
+
 test('no horizontal scroll at 390x844 and 320x640', async ({ page }) => {
   for (const [w, h] of [[390, 844], [320, 640]] as const) {
     await page.setViewportSize({ width: w, height: h });
