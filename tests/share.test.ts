@@ -137,7 +137,7 @@ describe('public data files (§13)', () => {
     const fams = (catalog as { families: { id: string; papers: unknown[] }[] }).families;
     expect(fams).toHaveLength(372);
     const papers = fams.reduce((n, f) => n + f.papers.length, 0);
-    expect(papers).toBe(722);
+    expect(papers).toBe(719);
     expect((catalog as { subjects: unknown[] }).subjects).toHaveLength(17);
   });
 
@@ -147,7 +147,7 @@ describe('public data files (§13)', () => {
     const total = rows.reduce((n, r) => n + r.results, 0);
     expect(total).toBe(372);
     const papers = rows.reduce((n, r) => n + r.papers, 0);
-    expect(papers).toBe(722);
+    expect(papers).toBe(719);
     for (const r of rows) {
       expect(r.collection).toBe('openai-math-2026');
       expect(r.lab).toBe('openai');

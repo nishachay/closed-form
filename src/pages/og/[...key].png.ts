@@ -1,10 +1,11 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
-import { catalog, computeStats, familiesById } from '../../lib/site.js';
+import { catalog, collectionName, computeStats, familiesById } from '../../lib/site.js';
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
 import { slugify } from '../../lib/slug.js';
 import { trustLevel } from '../../lib/trust.js';
 import { OG_HEIGHT, OG_WIDTH, ogPng, ogSvg, wrapHeadline } from '../../lib/og.js';
+import { toPlain } from '../../lib/plain.js';
 import type { Entry } from '../../lib/entry.js';
 
 export async function getStaticPaths() {
@@ -19,6 +20,10 @@ export async function getStaticPaths() {
   return keys.map((key) => ({ params: { key } }));
 }
 
+const ORDER: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
+const sortedCells = (fams: Array<{ trust: string }>) =>
+  fams.map((f) => f.trust).sort((a, b) => (ORDER[a] ?? 3) - (ORDER[b] ?? 3));
+
 const stripTags = (s: string) => s.replace(/<[^>]+>/g, '');
 
 export const GET: APIRoute = async ({ params }) => {
@@ -31,14 +36,15 @@ export const GET: APIRoute = async ({ params }) => {
   if (key === 'home') {
     // Lab-neutral home card (§0): no lab or collection names.
     card = {
-      kicker: 'AI mathematics, explained',
-      headlineLines: wrapHeadline('Every discovery AI makes, explained and checked.'),
+      kicker: 'Every result, plain words',
+      headlineLines: wrapHeadline('Every problem AI has solved, explained for everyone.', 22),
       footer: `${stats.results} results · ${stats.papers} papers · honest trust labels`,
+      cells: sortedCells(catalog.families),
     };
   } else if (key === `collection-${catalog.collection}`) {
     card = {
-      kicker: `Collection · ${catalog.collection}`,
-      headlineLines: wrapHeadline(`The ${catalog.collection} collection.`),
+      kicker: 'Collection',
+      headlineLines: wrapHeadline(`${collectionName()}.`),
       footer: `${stats.results} results · ${stats.papers} papers · ${catalog.subjects.length} fields`,
     };
   } else if (key === `lab-${catalog.lab}`) {
@@ -61,9 +67,10 @@ export const GET: APIRoute = async ({ params }) => {
     if (!subject) return new Response('Unknown OG card', { status: 404 });
     const n = catalog.families.filter((f) => f.subject === subject).length;
     card = {
-      kicker: `Field · ${subject}`,
-      headlineLines: wrapHeadline(`${subject}.`),
-      footer: `${n} results · ${catalog.collection}`,
+      kicker: 'Field',
+      headlineLines: wrapHeadline(`${subject}.`, 22),
+      footer: `${n} results · ${catalog.families.filter((f) => f.subject === subject && f.trust === 'formal').length} with a formal proof`,
+      cells: sortedCells(catalog.families.filter((f) => f.subject === subject)),
     };
   } else if (key.startsWith('entry-')) {
     const gid = key.slice('entry-'.length);
@@ -71,13 +78,14 @@ export const GET: APIRoute = async ({ params }) => {
     const family = parsed ? familiesById.get(parsed.id) : undefined;
     if (!family) return new Response('Unknown entry', { status: 404 });
     const entry = explained.get(family.id) ?? null;
-    const headline = entry?.headline ?? stripTags(family.title);
+    const headline = toPlain(entry?.headline ?? stripTags(family.title));
     card = {
       kicker: entry?.scorecard.firstStep
         ? `Open since ${entry.scorecard.firstStep}`
-        : `Entry ${family.id}`,
-      headlineLines: wrapHeadline(headline),
-      footer: `${trustLevel(family.trust).label} · ${family.subject}`,
+        : family.subject,
+      headlineLines: wrapHeadline(headline, 30),
+      footer: `${trustLevel(family.trust).label} · ${family.papers.length} ${family.papers.length === 1 ? 'paper' : 'papers'}`,
+      tag: `Entry ${family.id}`,
       trust: family.trust,
     };
   } else {

@@ -1,34 +1,34 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { appUrl, catalog, computeStats } from '../../lib/site.js';
+import FieldCards from '../../components/FieldCards.astro';
+import { appUrl, catalog, collectionName, computeStats, labName, scienceName } from '../../lib/site.js';
 
 export function getStaticPaths() {
   return [{ params: { lab: catalog.lab } }];
 }
 
 const stats = computeStats();
-const { lab } = Astro.params;
+const name = labName();
 ---
 <Base
-  title={`Lab: ${lab}`}
-  description={`AI-made mathematics from ${lab}, explained with honest trust labels.`}
-  ogImage={`/og/lab-${lab}.png`}
+  title={name}
+  description={`AI-made mathematics from ${labName()}, explained in plain words with honest trust labels.`}
+  ogImage={`/og/lab-${catalog.lab}.png`}
 >
   <div class="wrap">
     <section class="arch-head">
-      <div class="label">Lab · {lab}</div>
-      <h1>{lab === 'openai' ? 'OpenAI' : lab}</h1>
+      <div class="label">Lab</div>
+      <h1>{name}</h1>
       <p class="lede">
-        {stats.results} results in {stats.papers} papers across {catalog.subjects.length} fields of{' '}
-        {catalog.science}.
+        <span class="num">{stats.results}</span> results from <span class="num">{stats.papers}</span> papers across <span class="num">{catalog.subjects.length}</span> fields of {scienceName().toLowerCase()}.
       </p>
     </section>
-    <h2 class="label">Collections</h2>
-    <ul class="papers">
-      <li>
-        <a href={appUrl(`/collection/${catalog.collection}/`)}>{catalog.collection}</a>
-        <div class="d">Science: {catalog.science} · {stats.results} results · {stats.papers} papers</div>
-      </li>
-    </ul>
+    <h2 class="label hub-h">Collections</h2>
+    <a class="hub-card" href={appUrl(`/collection/${catalog.collection}/`)}>
+      <span class="hub-t">{collectionName()}</span>
+      <span class="hub-m">{labName()} · {scienceName()} · <span class="num">{stats.results}</span> results · <span class="num">{stats.papers}</span> papers</span>
+      <span class="hub-go" aria-hidden="true">Open →</span>
+    </a>
+    
   </div>
 </Base>

@@ -5,35 +5,37 @@ import {
   extractLeanDoc,
   mapTrust,
   parseDateFromDir,
+  parseWithdrawalReadme,
 } from '../ingest/openai-math.js';
 
-// §18: ingest counts 372 / 722 / 162 / 17 and 127 / 108 / 137.
+// Ingest counts at openai/math fd4aeeb (Oct 8, 2026 update): 372 / 719 / 172 / 17 and 135 / 107 / 130.
+// The Oct 7 withdrawals removed 3 papers (722 → 719); they live on in family 032's `withdrawn` list.
 describe('catalog counts (§9, §18)', () => {
   it('has 372 families', () => {
     expect(catalog.families).toHaveLength(372);
   });
 
-  it('has 722 papers', () => {
+  it('has 719 papers', () => {
     const n = catalog.families.reduce((acc: number, f: { papers: unknown[] }) => acc + f.papers.length, 0);
-    expect(n).toBe(722);
+    expect(n).toBe(719);
   });
 
-  it('has 162 Lean-listed papers', () => {
+  it('has 172 Lean-listed papers', () => {
     const n = catalog.families
       .flatMap((f: { papers: { lean: boolean }[] }) => f.papers)
       .filter((p) => p.lean).length;
-    expect(n).toBe(162);
+    expect(n).toBe(172);
   });
 
   it('has 17 subjects', () => {
     expect(catalog.subjects).toHaveLength(17);
   });
 
-  it('trust split is 127 / 108 / 137', () => {
+  it('trust split is 135 / 107 / 130', () => {
     const count = (t: string) => catalog.families.filter((f: { trust: string }) => f.trust === t).length;
-    expect(count('formal')).toBe(127);
-    expect(count('partial')).toBe(108);
-    expect(count('claimed')).toBe(137);
+    expect(count('formal')).toBe(135);
+    expect(count('partial')).toBe(107);
+    expect(count('claimed')).toBe(130);
   });
 
   it('carries collection identity + source version', () => {
@@ -110,5 +112,40 @@ describe('adapter units', () => {
     expect(summary).toBe('Proves X.');
     const plain = extractLeanDoc('Proves Y.');
     expect(plain.leanDoc).toBeNull();
+  });
+});
+
+describe('withdrawals', () => {
+  it('keeps the 3 Oct 2026 withdrawals on family 032, outside the paper counts', () => {
+    const f = (catalog.families as Array<{ id: string; papers: { title: string }[]; withdrawn?: { title: string; withdrawnOn: string | null; archivedPdf: string | null }[] }>).find((x) => x.id === '032');
+    expect(f?.withdrawn).toHaveLength(3);
+    for (const w of f!.withdrawn!) {
+      expect(w.withdrawnOn).toBe('2026-10-06');
+      expect(w.archivedPdf).toMatch(/^https:\/\/github\.com\/openai\/math\/blob\/[0-9a-f]{40}\//);
+      expect(f!.papers.some((p) => p.title === w.title)).toBe(false);
+    }
+  });
+
+  it('parses a lab withdrawal notice README', () => {
+    const md = [
+      '# [Withdrawal notice: A title](paper.pdf)',
+      '',
+      'OpenAI  ',
+      '**Withdrawn on October 6, 2026.**',
+      '',
+      'A gap in [another paper](https://x) breaks the proof.',
+      '',
+      'This withdrawal concerns the proof; it does not assert that the mathematical statement is false.',
+      '',
+      '## Archived manuscript',
+      '',
+      '[Pre-withdrawal PDF](https://github.com/openai/math/blob/abc/preprints/A/paper.pdf)  ',
+    ].join('\n');
+    const w = parseWithdrawalReadme('A-title-October-1-2026', md);
+    expect(w?.title).toBe('A title');
+    expect(w?.withdrawnOn).toBe('2026-10-06');
+    expect(w?.reason).toBe('A gap in another paper breaks the proof. This withdrawal concerns the proof; it does not assert that the mathematical statement is false.');
+    expect(w?.archivedPdf).toBe('https://github.com/openai/math/blob/abc/preprints/A/paper.pdf');
+    expect(parseWithdrawalReadme('x', '# [Normal paper](p.pdf)')).toBeNull();
   });
 });

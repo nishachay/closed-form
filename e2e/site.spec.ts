@@ -8,7 +8,7 @@ test('home shows 372 map cells, stats and field deep-links', async ({ page }) =>
   await page.goto('./');
   await expect(page.locator('.fields .cell')).toHaveCount(372);
   const stats = await page.locator('.stats .stat .n').allTextContents();
-  expect(stats.map((s) => s.trim().split('/')[0])).toEqual(['722', '372', '162', '1']);
+  expect(stats.map((s) => s.trim().split('/')[0])).toEqual(['719', '372', '172', '17']);
   const href = await page.locator('.fc-t a').first().getAttribute('href');
   expect(href).toContain('/science/mathematics/');
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveCount(1);
@@ -28,7 +28,7 @@ test('archive has 372 rows in 17 groups with search, filters and URL sync', asyn
 
   await page.locator('#q').fill('');
   await page.locator('#seg button[data-v="formal"]').click();
-  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(127);
+  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(135);
   expect(page.url()).toContain('trust=formal');
 
   await page.locator('#reset').click();
@@ -58,7 +58,7 @@ test('explained entry 017 shows scorecard, chart, hype check, sources, notice', 
   await expect(page.locator('.bars .bar-col')).toHaveCount(4);
   await expect(page.locator('#hype-check')).toBeVisible();
   await expect(page.locator('section[aria-labelledby="sources"] li')).not.toHaveCount(0);
-  await expect(page.locator('.notice')).toContainText('not been reviewed by a person');
+  await expect(page.locator('.e-pill')).toContainText('Explained by AI');
   await expect(page.locator('.side a[href*="x.com/intent"]')).toHaveCount(1);
   const report = await page.locator('a[href*="github.com"][href*="issues/new"]').first().getAttribute('href');
   expect(report).toContain('017');
@@ -82,7 +82,7 @@ test('field page filters to its subject with its own OG card', async ({ page }) 
 
 test('about documents trust labels', async ({ page }) => {
   await page.goto('about/');
-  await expect(page.locator('dl.tl dt', { hasText: 'Formal proof listed' })).toBeVisible();
+  await expect(page.locator('.ab-trust li', { hasText: 'Formal proof listed' })).toBeVisible();
   await expect(page.locator('h2', { hasText: 'How entries are made' })).toBeVisible();
 });
 
@@ -105,4 +105,26 @@ test('no horizontal scroll at 390x844 and 320x640', async ({ page }) => {
       expect(overflow, `${url} at ${w}px`).toBeLessThanOrEqual(1);
     }
   }
+});
+
+test('archive sort menu works by mouse and keyboard', async ({ page }) => {
+  await page.goto('archive/');
+  await page.locator('#sort-btn').click();
+  await expect(page.locator('#sort-list')).toBeVisible();
+  await page.locator('#sort-list [data-v="trust"]').click();
+  await expect(page.locator('#sort-list')).toBeHidden();
+  await expect(page.locator('#sort-lbl')).toHaveText('Most trusted first');
+  await expect(page).toHaveURL(/sort=trust/);
+  await page.locator('#sort-btn').focus();
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Home');
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#sort-lbl')).toHaveText('By field');
+});
+
+test('entry 032 shows its withdrawn papers without counting them', async ({ page }) => {
+  await page.goto('e/openai-math-2026-032/');
+  await expect(page.locator('.wd-note')).toContainText('withdrew 3 papers');
+  await expect(page.locator('.withdrawn li')).toHaveCount(3);
+  await expect(page.locator('.orig li')).toHaveCount(5);
 });

@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import ArchiveBrowser from '../../../components/ArchiveBrowser.astro';
-import { catalog } from '../../../lib/site.js';
+import { appUrl, catalog, collectionName, scienceName } from '../../../lib/site.js';
 import { slugify } from '../../../lib/slug.js';
 
 export function getStaticPaths() {
@@ -21,9 +21,9 @@ const list = catalog.families.filter((f) => f.subject === subject);
   ogImage={`/og/field-${field}.png`}
 >
     <section class="wrap arch-head">
-      <div class="label">Field · {subject}</div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl('/archive/')}>Archive</a><span aria-hidden="true">/</span><a href={appUrl(`/science/${catalog.science}/`)}>{scienceName()}</a><span aria-hidden="true">/</span><span aria-current="page">Field</span></nav>
       <h1>{subject}</h1>
-      <p class="lede">{list.length} results in {catalog.collection}.</p>
+      <p class="lede"><span class="num">{list.length}</span> results in {collectionName()}.</p>
     </section>
     <ArchiveBrowser families={list} lockField={slugify(subject)} />
 </Base>

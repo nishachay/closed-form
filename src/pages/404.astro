@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { appUrl, computeStats } from '../lib/site.js';
+const stats = computeStats();
+---
+<Base title="Page not found" description="This page does not exist on Closed Form.">
+  <section class="nf wrap">
+    <div class="label">404</div>
+    <h1>This page doesn't exist.</h1>
+    <p class="lede">The link may be old, or the result may have moved. Every result is still in the archive.</p>
+    <form class="hero-search" role="search" action={appUrl('/archive/')} method="get">
+      <div class="sbox sbox-lg">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+        <label for="nfq" class="sr">Search all results</label>
+        <input id="nfq" name="q" class="search" type="search" placeholder={`Search ${stats.results} results`} autocomplete="off" />
+        <button class="btn-in" type="submit">Search</button>
+      </div>
+    </form>
+    <p class="nf-links"><a href={appUrl('/')}>Home</a><a href={appUrl('/archive/')}>Archive</a><a href={appUrl('/about/')}>About</a></p>
+  </section>
+</Base>

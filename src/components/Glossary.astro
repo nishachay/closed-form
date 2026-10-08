@@ -8,14 +8,14 @@ interface Props {
 }
 const { items } = Astro.props;
 ---
-<section aria-labelledby="words-used">
+<section class="e-gl" aria-labelledby="words-used">
   <h2 id="words-used">Words used</h2>
   <dl class="gl">
     {items.map((g) => (
-      <>
+      <div>
         <dt>{g.term}</dt>
         <dd>{g.meaning}</dd>
-      </>
+      </div>
     ))}
   </dl>
 </section>

@@ -4,26 +4,44 @@
  * 1200×630 PNGs built at build time with hand-built SVG + @resvg/resvg-js.
  * (Spec names Satori + resvg; see PR_NOTES.md for why Satori was skipped.)
  *
- * Card content per §14.6: light bg, top-left ∎ Closed Form, large
+ * Card content per §14.6: dark bg, top-left "Closed Form ∎" wordmark, large
  * "Open since {firstStep}." (or "Entry NNN") line, headline (max 3 lines),
  * bottom trust dot + label · field. Home card is lab-neutral.
  */
 
 import { Resvg } from '@resvg/resvg-js';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+// Schibsted Grotesk (SIL OFL 1.1), static instances cut from the site's variable font,
+// so share cards use the same type as the site instead of whatever the build machine has.
+const FONT_DIR = join(process.cwd(), 'src/assets/og-fonts');
+const FONT_FILES = [400, 500, 600]
+  .map((w) => join(FONT_DIR, `SchibstedGrotesk-${w}.ttf`))
+  .filter((p) => existsSync(p));
 
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
 
-const INK = '#211c16';
-const SECONDARY = '#6f665c';
-const BG = '#ffffff';
-const RULE = '#e5ded3';
-const VERMILION = '#c2410c';
+// v5 dark palette (matches the site's dark theme).
+const BG = '#0f0e0b';
+const SURFACE = '#191714';
+const INK = '#efece8';
+const SECONDARY = '#bdbab5';
+const TERTIARY = '#95928c';
+const BORDER = '#2b2924';
+const ACCENT = '#ef704e';
 const TRUST_DOT: Record<string, string> = {
-  formal: '#1b7a4d',
-  partial: '#a86a00',
-  claimed: '#8a837c',
+  formal: '#57bc8a',
+  partial: '#e6b055',
+  claimed: '#95928c',
 };
+const TRUST_CELL: Record<string, string> = {
+  formal: '#57bc8a',
+  partial: '#e6b055',
+  claimed: '#4a4742',
+};
+const FONT = "'Schibsted Grotesk', 'DejaVu Sans', sans-serif";
 
 export function escapeXml(s: string): string {
   return s
@@ -69,35 +87,87 @@ export interface OgCard {
   headlineLines: string[];
   footer: string;
   trust?: string;
+  /** Optional mosaic: one trust key per result, drawn as the site's field squares. */
+  cells?: string[];
+  /** Optional small label at top right (e.g. "Entry 017"). */
+  tag?: string;
+}
+
+function mosaic(cells: string[], x: number, y: number, w: number, h: number): string {
+  const n = cells.length;
+  if (!n) return '';
+  // Pick the column count that best fills the box with square cells.
+  let best = { cols: 1, size: 0 };
+  for (let cols = 1; cols <= n; cols++) {
+    const rows = Math.ceil(n / cols);
+    const size = Math.min(w / cols, h / rows);
+    if (size > best.size) best = { cols, size };
+  }
+  const gap = Math.max(2, Math.round(best.size * 0.18));
+  const s = best.size - gap;
+  return cells
+    .map((t, i) => {
+      const cx = x + (i % best.cols) * best.size;
+      const cy = y + Math.floor(i / best.cols) * best.size;
+      return `<rect x="${cx.toFixed(1)}" y="${cy.toFixed(1)}" width="${s.toFixed(1)}" height="${s.toFixed(1)}" rx="${Math.max(1, s * 0.18).toFixed(1)}" fill="${TRUST_CELL[t] ?? TRUST_CELL.claimed}"/>`;
+    })
+    .join('');
 }
 
 export function ogSvg(card: OgCard): string {
   const dot = card.trust ? (TRUST_DOT[card.trust] ?? TRUST_DOT.claimed) : null;
   const lines = card.headlineLines.slice(0, 3);
-  const startY = 268;
-  const lineH = 76;
+  const hasMosaic = !!card.cells?.length;
+  const size = hasMosaic ? 56 : lines.length >= 3 ? 60 : 68;
+  const lineH = Math.round(size * 1.14);
+  const blockH = lines.length * lineH;
+  const startY = Math.round(330 - blockH / 2 + size * 0.8);
   const rendered = lines
     .map(
       (l, i) =>
-        `<text x="64" y="${startY + i * lineH}" font-family="'Schibsted Grotesk', system-ui, sans-serif" font-size="62" font-weight="500" fill="${INK}" letter-spacing="-1">${escapeXml(l)}</text>`,
+        `<text x="72" y="${startY + i * lineH}" font-family="${FONT}" font-size="${size}" font-weight="600" fill="${INK}" letter-spacing="-1.5">${escapeXml(l)}</text>`,
     )
     .join('\n');
+  const kickerY = startY - size - 18;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${OG_WIDTH}" height="${OG_HEIGHT}" viewBox="0 0 ${OG_WIDTH} ${OG_HEIGHT}">
 <rect width="1200" height="630" fill="${BG}"/>
-<rect x="64" y="56" width="26" height="26" fill="${VERMILION}"/>
-<text x="102" y="78" font-family="'Schibsted Grotesk', system-ui, sans-serif" font-size="30" font-weight="500" fill="${INK}">Closed Form</text>
-<text x="64" y="196" font-family="system-ui, sans-serif" font-size="28" font-weight="500" letter-spacing="2" fill="${SECONDARY}">${escapeXml(card.kicker.toUpperCase())}</text>
+<rect x="24" y="24" width="1152" height="582" rx="28" fill="${SURFACE}" stroke="${BORDER}" stroke-width="2"/>
+<text x="72" y="98" font-family="${FONT}" font-size="30" font-weight="600" fill="${INK}" letter-spacing="-0.5">Closed Form</text>
+<rect x="${(72 + wordmarkWidth() + 9).toFixed(1)}" y="80" width="15" height="18.6" fill="${ACCENT}"/>
+${card.tag ? `<text x="1128" y="100" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="500" fill="${TERTIARY}">${escapeXml(card.tag)}</text>` : ''}
+<text x="72" y="${kickerY}" font-family="${FONT}" font-size="22" font-weight="500" letter-spacing="2.5" fill="${ACCENT}">${escapeXml(card.kicker.toUpperCase())}</text>
 ${rendered}
-<line x1="64" y1="540" x2="1136" y2="540" stroke="${RULE}" stroke-width="1"/>
-${dot ? `<circle cx="76" cy="576" r="10" fill="${dot}"/>` : ''}
-<text x="${dot ? '98' : '64'}" y="586" font-family="system-ui, sans-serif" font-size="26" fill="${SECONDARY}">${escapeXml(card.footer)}</text>
+${hasMosaic ? mosaic(card.cells!, 760, 170, 368, 300) : ''}
+<line x1="72" y1="516" x2="1128" y2="516" stroke="${BORDER}" stroke-width="2"/>
+${dot ? `<circle cx="84" cy="555" r="9" fill="${dot}"/>` : ''}
+<text x="${dot ? '104' : '72'}" y="564" font-family="${FONT}" font-size="25" font-weight="500" fill="${SECONDARY}">${escapeXml(card.footer)}</text>
+<text x="1128" y="564" text-anchor="end" font-family="${FONT}" font-size="22" fill="${TERTIARY}">AI mathematics, explained</text>
 </svg>`;
+}
+
+let _wm: number | null = null;
+/** Rendered width of the "Closed Form" wordmark, so the ∎ sits right after it. */
+function wordmarkWidth(): number {
+  if (_wm !== null) return _wm;
+  try {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="60"><text x="0" y="40" font-family="${FONT}" font-size="30" font-weight="600" fill="#000" letter-spacing="-0.5">Closed Form</text></svg>`;
+    const r = new Resvg(svg, { font: { loadSystemFonts: true, fontFiles: FONT_FILES, defaultFontFamily: 'Schibsted Grotesk' } });
+    const bb = r.getBBox();
+    _wm = bb ? bb.x + bb.width : 170;
+  } catch {
+    _wm = 170;
+  }
+  return _wm;
 }
 
 export function ogPng(svg: string): Uint8Array {
   const r = new Resvg(svg, {
     fitTo: { mode: 'width', value: OG_WIDTH },
-    font: { loadSystemFonts: true },
+    font: {
+      loadSystemFonts: true,
+      fontFiles: FONT_FILES,
+      defaultFontFamily: 'Schibsted Grotesk',
+    },
   });
   return r.render().asPng();
 }

@@ -19,7 +19,6 @@ const groups = catalog.subjects
   .filter((g) => g.items.length > 0);
 
 const trustCounts = Object.fromEntries(TRUST_LADDER.map((t) => [t.key, list.filter((f) => f.trust === t.key).length]));
-const explainedCount = list.filter((f) => explainedIds.has(f.id)).length;
 ---
 <div class="wrap arch">
   <aside class="filters" aria-label="Filters">
@@ -35,10 +34,6 @@ const explainedCount = list.filter((f) => explainedIds.has(f.id)).length;
             <span class="c">{trustCounts[t.key] ?? 0}</span>
           </button>
         ))}
-        <button type="button" class="seg-b fopt" data-v="explained" aria-pressed="false">
-          <span class="fo-l"><i class="dot dot-ex" aria-hidden="true"></i>Explained</span>
-          <span class="c">{explainedCount}</span>
-        </button>
       </div>
     </div>
     {!lockField && (
@@ -81,14 +76,22 @@ const explainedCount = list.filter((f) => explainedIds.has(f.id)).length;
         <p class="count" id="count" role="status"><b>{list.length}</b> results</p>
         <div class="tb-r">
           <button class="reset" type="button" id="reset" hidden>Clear filters</button>
-          <div class="selbox sort">
+          <div class="sortmenu" id="sortmenu">
             <label for="sort" class="sr">Sort</label>
-            <select id="sort" class="select select-sm">
+            <select id="sort" class="sm-native" tabindex="-1" aria-hidden="true">
               <option value="cat">By field</option>
               <option value="new">Newest first</option>
               <option value="trust">Most trusted first</option>
             </select>
-            <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+            <button type="button" class="sm-btn" id="sort-btn" aria-haspopup="listbox" aria-expanded="false" aria-controls="sort-list">
+              <span class="sm-k">Sort</span><span class="sm-v" id="sort-lbl">By field</span>
+              <svg class="sm-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+            </button>
+            <ul class="sm-list" id="sort-list" role="listbox" aria-label="Sort results" tabindex="-1" hidden>
+              <li role="option" data-v="cat" aria-selected="true"><span>By field</span><small>Grouped by area of maths</small></li>
+              <li role="option" data-v="new" aria-selected="false"><span>Newest first</span><small>Latest papers at the top</small></li>
+              <li role="option" data-v="trust" aria-selected="false"><span>Most trusted first</span><small>Formal proofs at the top</small></li>
+            </ul>
           </div>
         </div>
       </div>

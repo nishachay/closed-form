@@ -75,3 +75,14 @@ export function neighbors(id: string): { prev: Family | null; next: Family | nul
     next: i < families.length - 1 ? families[i + 1] : null,
   };
 }
+
+/** Human names for hub pages (slugs stay in URLs only). */
+export const LAB_NAMES: Record<string, string> = { openai: 'OpenAI' };
+export const labName = (lab: string = catalog.lab) => LAB_NAMES[lab] ?? lab;
+export const scienceName = (s: string = catalog.science) => s.charAt(0).toUpperCase() + s.slice(1);
+/** "openai-math-2026" → "OpenAI Math 2026". */
+export const collectionName = (c: string = catalog.collection) =>
+  c
+    .split('-')
+    .map((w) => LAB_NAMES[w] ?? (/^\d+$/.test(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ');

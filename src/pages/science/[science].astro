@@ -1,45 +1,37 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { appUrl, catalog, computeStats, fieldUrl } from '../../lib/site.js';
+import FieldCards from '../../components/FieldCards.astro';
+import { appUrl, catalog, collectionName, computeStats, labName, scienceName } from '../../lib/site.js';
 
 export function getStaticPaths() {
   return [{ params: { science: catalog.science } }];
 }
 
 const stats = computeStats();
-const { science } = Astro.params;
+const name = scienceName();
 ---
 <Base
-  title={`Science: ${science}`}
-  description={`AI-made ${science}, explained with honest trust labels.`}
-  ogImage={`/og/science-${science}.png`}
+  title={name}
+  description={`AI-made ${scienceName().toLowerCase()}, explained in plain words with honest trust labels.`}
+  ogImage={`/og/science-${catalog.science}.png`}
 >
   <div class="wrap">
     <section class="arch-head">
-      <div class="label">Science · {science}</div>
-      <h1>{science === 'mathematics' ? 'Mathematics' : science}</h1>
+      <div class="label">Science</div>
+      <h1>{name}</h1>
       <p class="lede">
-        {stats.results} results in {stats.papers} papers across {catalog.subjects.length} fields.
+        <span class="num">{stats.results}</span> results from <span class="num">{stats.papers}</span> papers across <span class="num">{catalog.subjects.length}</span> fields.
       </p>
     </section>
-    <h2 class="label">Collections</h2>
-    <ul class="papers">
-      <li>
-        <a href={appUrl(`/collection/${catalog.collection}/`)}>{catalog.collection}</a>
-        <div class="d">Lab: {catalog.lab} · {stats.results} results · {stats.papers} papers</div>
-      </li>
-    </ul>
-    <h2 class="label" style="margin-block-start:2rem">Fields</h2>
-    <ul class="papers">
-      {catalog.subjects.map((s) => {
-        const n = catalog.families.filter((f) => f.subject === s).length;
-        return (
-          <li>
-            <a href={fieldUrl(s)}>{s}</a>
-            <div class="d"><span class="num">{n}</span> results</div>
-          </li>
-        );
-      })}
-    </ul>
+    <h2 class="label hub-h">Collections</h2>
+    <a class="hub-card" href={appUrl(`/collection/${catalog.collection}/`)}>
+      <span class="hub-t">{collectionName()}</span>
+      <span class="hub-m">{labName()} · {scienceName()} · <span class="num">{stats.results}</span> results · <span class="num">{stats.papers}</span> papers</span>
+      <span class="hub-go" aria-hidden="true">Open →</span>
+    </a>
+    <section class="map" aria-labelledby="map-h">
+      <div class="sec-head"><h2 class="label" id="map-h">Fields · one square per result</h2></div>
+      <ul class="fields"><FieldCards subjects={catalog.subjects} families={catalog.families} explainedIds={new Set()} /></ul>
+    </section>
   </div>
 </Base>
