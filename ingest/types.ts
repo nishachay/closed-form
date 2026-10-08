@@ -49,6 +49,20 @@ export interface Family {
   /** Full GitHub URL to reasoning trace PDF, if any. */
   trace?: string;
   trust: TrustKey;
+  /** Papers the lab withdrew from this family. Kept so readers see what changed; never counted. */
+  withdrawn?: WithdrawnPaper[];
+}
+
+export interface WithdrawnPaper {
+  title: string;
+  /** ISO date YYYY-MM-DD the lab withdrew it. */
+  withdrawnOn: string | null;
+  /** The lab's own explanation, plain text. */
+  reason: string;
+  /** Lab's withdrawal notice page. */
+  notice: string;
+  /** Archived pre-withdrawal PDF, if linked. */
+  archivedPdf: string | null;
 }
 
 export interface CatalogSource {

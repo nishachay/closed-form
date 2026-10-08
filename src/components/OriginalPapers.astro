@@ -1,6 +1,7 @@
 ---
 import type { Family } from '../lib/catalog.js';
 import { formatLongDay } from '../lib/dates.js';
+import { toPlain } from '../lib/plain.js';
 
 interface Props {
   family: Family;
@@ -11,21 +12,49 @@ const leanHref = f.leanDoc
     ? f.leanDoc
     : `https://github.com/openai/math/blob/main/${f.leanDoc}`
   : '';
+const withdrawn = f.withdrawn ?? [];
+/** First sentence of the lab's reason, plus its "does not assert false" caveat when present. */
+const shortReason = (r: string) => {
+  const plain = toPlain(r);
+  const first = plain.split(/(?<=\.)\s+/)[0] ?? plain;
+  const caveat = /This withdrawal concerns the proof[^.]*\./.exec(plain)?.[0];
+  return caveat && caveat !== first ? `${first} ${caveat}` : first;
+};
 ---
 <section aria-labelledby="the-original">
-  <h2 id="the-original">The original</h2>
-  <ul class="papers">
+  <h2 id="the-original">The original {f.papers.length === 1 ? 'paper' : `papers (${f.papers.length})`}</h2>
+  <ul class="orig">
     {f.papers.map((p) => (
       <li>
-        <a href={p.pdf} target="_blank" rel="noopener">{p.title}</a>
-        <div class="d">
-          {formatLongDay(p.date)}{p.lean ? ' · formal proof listed' : ''}
+        <a class="orig-t" href={p.pdf} target="_blank" rel="noopener">{toPlain(p.title)}<span aria-hidden="true"> ↗</span><span class="sr"> (PDF, opens in a new tab)</span></a>
+        <div class="orig-m">
+          {p.date && <span>{formatLongDay(p.date)}</span>}
+          {p.lean && <span class="orig-lean"><i class="dot c-formal" aria-hidden="true"></i>Formal proof listed</span>}
         </div>
       </li>
     ))}
   </ul>
-  <div class="links">
-    {f.leanDoc && <a href={leanHref} target="_blank" rel="noopener">Lean notes ↗</a>}
-    {f.trace && <a href={f.trace} target="_blank" rel="noopener">Model's reasoning summary ↗</a>}
-  </div>
+  {(f.leanDoc || f.trace) && (
+    <div class="orig-links">
+      {f.leanDoc && <a class="act" href={leanHref} target="_blank" rel="noopener">Lean notes <span aria-hidden="true">↗</span></a>}
+      {f.trace && <a class="act" href={f.trace} target="_blank" rel="noopener">Model's reasoning summary <span aria-hidden="true">↗</span></a>}
+    </div>
+  )}
+  {withdrawn.length > 0 && (
+    <div class="withdrawn" id="withdrawn">
+      <h3>Withdrawn by OpenAI</h3>
+      <ul>
+        {withdrawn.map((w) => (
+          <li>
+            <div class="wd-t"><span class="wd-badge">Withdrawn{w.withdrawnOn ? ` ${formatLongDay(w.withdrawnOn)}` : ''}</span><s>{w.title}</s></div>
+            <p>{shortReason(w.reason)}</p>
+            <div class="wd-links">
+              <a href={w.notice} target="_blank" rel="noopener">Withdrawal notice ↗</a>
+              {w.archivedPdf && <a href={w.archivedPdf} target="_blank" rel="noopener">Archived PDF ↗</a>}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
 </section>

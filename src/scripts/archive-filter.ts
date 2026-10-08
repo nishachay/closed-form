@@ -96,6 +96,7 @@ function init(): void {
   if (pt) trust = pt;
   if (ps === 'new' || ps === 'trust') sort = ps;
   sortSel.value = sort;
+  syncSortMenu();
 
   const syncSide = (): void => {
     for (const b of seg.querySelectorAll<HTMLButtonElement>('.fopt')) {
@@ -187,12 +188,75 @@ function init(): void {
     syncSide();
   }
 
+  function syncSortMenu(): void {
+    const lbl = document.getElementById('sort-lbl');
+    const opt = sortSel.selectedOptions[0];
+    if (lbl && opt) lbl.textContent = opt.textContent;
+    document.querySelectorAll<HTMLElement>('#sort-list [role=option]').forEach((li) => {
+      li.setAttribute('aria-selected', String(li.dataset.v === sortSel.value));
+    });
+  }
+
+  function setupSortMenu(): void {
+    const btn = document.getElementById('sort-btn');
+    const menu = document.getElementById('sort-list');
+    if (!btn || !menu) return;
+    const opts = () => [...menu.querySelectorAll<HTMLElement>('[role=option]')];
+    let active = 0;
+    const mark = (i: number) => {
+      const o = opts();
+      active = (i + o.length) % o.length;
+      o.forEach((li, k) => li.classList.toggle('is-active', k === active));
+      menu.setAttribute('aria-activedescendant', o[active].id);
+    };
+    opts().forEach((li, k) => (li.id = 'sort-opt-' + k));
+    const open = () => {
+      menu.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+      mark(Math.max(0, opts().findIndex((li) => li.dataset.v === sortSel.value)));
+      menu.focus();
+    };
+    const close = (focusBtn = true) => {
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      if (focusBtn) btn.focus();
+    };
+    const choose = (li: HTMLElement | undefined) => {
+      if (!li || !li.dataset.v) return;
+      sortSel.value = li.dataset.v;
+      sortSel.dispatchEvent(new Event('change'));
+      close();
+    };
+    btn.addEventListener('click', () => (menu.hidden ? open() : close()));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); e.stopPropagation(); open(); }
+    });
+    menu.addEventListener('click', (e) => choose((e.target as HTMLElement).closest<HTMLElement>('[role=option]') ?? undefined));
+    menu.addEventListener('mousemove', (e) => {
+      const li = (e.target as HTMLElement).closest<HTMLElement>('[role=option]');
+      if (li) mark(opts().indexOf(li));
+    });
+    menu.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); mark(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); mark(active - 1); }
+      else if (e.key === 'Home') { e.preventDefault(); mark(0); }
+      else if (e.key === 'End') { e.preventDefault(); mark(-1); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(opts()[active]); }
+      else if (e.key === 'Escape' || e.key === 'Tab') { close(e.key === 'Escape'); }
+      e.stopPropagation();
+    });
+    document.addEventListener('click', (e) => {
+      if (!menu.hidden && !(e.target as HTMLElement).closest('#sortmenu')) close(false);
+    });
+  }
+
   function clearAll(): void {
     qEl.value = '';
     if (!lockField) field = 'All';
     trust = 'all';
     sort = 'cat';
     sortSel.value = sort;
+    syncSortMenu();
     apply();
     qEl.focus();
   }
@@ -200,8 +264,15 @@ function init(): void {
   qEl.addEventListener('input', apply);
   sortSel.addEventListener('change', () => {
     sort = sortSel.value;
+    syncSortMenu();
     apply();
   });
+  setupSortMenu();
+  if (location.hash === '#q') {
+    history.replaceState(null, '', location.pathname + location.search);
+    scrollTo(0, 0);
+    qEl.focus();
+  }
   seg.addEventListener('click', (e: Event) => {
     const b = (e.target as HTMLElement).closest('button');
     if (!b || !b.dataset.v) return;
@@ -240,7 +311,7 @@ function init(): void {
       }
       return;
     }
-    if (inField) return;
+    if (inField || (document.activeElement as HTMLElement | null)?.closest('#sortmenu')) return;
     if (e.key === '/') {
       e.preventDefault();
       qEl.focus();

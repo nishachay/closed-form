@@ -1,4 +1,5 @@
 ---
+import { toPlain } from '../lib/plain.js';
 import Base from '../layouts/Base.astro';
 import FieldCards from '../components/FieldCards.astro';
 import TrustLabel from '../components/TrustLabel.astro';
@@ -39,10 +40,6 @@ const range = collectionRange(catalog.families);
             <button class="btn-in" type="submit">Search</button>
           </div>
         </form>
-        <div class="hero-cta">
-          <a class="btn" href={appUrl('/archive/')}><span>Browse all <span class="num">{stats.results}</span> results</span><span aria-hidden="true">→</span></a>
-          <a class="btn-q" href={appUrl('/about/')}>How trust labels work <span aria-hidden="true">→</span></a>
-        </div>
         <div class="stats" id="stats">
           <div class="stat">
             <div class="label">Papers</div>
@@ -62,45 +59,11 @@ const range = collectionRange(catalog.families);
           <div class="stat">
             <div class="label">Explained</div>
             <div class="n"><span class="num">{explained.length}</span><span class="of">/{stats.results}</span></div>
-            <div class="m">reviewed in plain words</div>
+            <div class="m">in plain words so far</div>
           </div>
         </div>
       </div>
 
-
-    <section class="home-ex" aria-labelledby="ex-h">
-      <div class="sec-head">
-        <h2 id="ex-h" class="label">Explained so far</h2>
-        <a class="more" href={appUrl('/archive/?trust=explained')}>All explained →</a>
-      </div>
-      <ul class="ex-cards" id="explained">
-        {explained.map((e) => {
-          const fam = familiesById.get(e.id);
-          if (!fam) return null;
-          return (
-            <li class="xcard">
-              <div class="label">Entry <span class="num">{e.id}</span> · {fam.subject}</div>
-              <h3 class="xc-t"><a href={entryUrl(fam)}>{fam.title.replace(/<[^>]+>/g, '')}</a></h3>
-              <p class="xc-h">{e.headline}</p>
-              <div class="xc-f">
-                <TrustLabel trust={fam.trust} />
-                <span class="xc-go" aria-hidden="true">Read →</span>
-              </div>
-            </li>
-          );
-        })}
-        {explained.length < 4 && (
-          <li class="xcard xcard-soon">
-            <div class="label">Coming next</div>
-            <p class="xc-h">
-              More explanations are being written and checked. Every one is reviewed by a person
-              before it goes up.
-            </p>
-            <div class="xc-f"><a class="more" href={appUrl('/archive/')}>Browse the archive →</a></div>
-          </li>
-        )}
-      </ul>
-    </section>
 
     <section class="map" aria-labelledby="map-h">
       <div class="sec-head">
@@ -121,6 +84,41 @@ const range = collectionRange(catalog.families);
         </li>
       </ul>
     </section>
+
+    {explained.length >= 6 && (
+    <section class="home-ex" aria-labelledby="ex-h">
+      <div class="sec-head">
+        <h2 id="ex-h" class="label">Explained so far</h2>
+        <a class="more" href={appUrl('/archive/?trust=explained')}>All explained →</a>
+      </div>
+      <ul class="ex-cards" id="explained">
+        {explained.map((e) => {
+          const fam = familiesById.get(e.id);
+          if (!fam) return null;
+          return (
+            <li class="xcard">
+              <div class="label">Entry <span class="num">{e.id}</span> · {fam.subject}</div>
+              <h3 class="xc-t"><a href={entryUrl(fam)}>{toPlain(fam.title)}</a></h3>
+              <p class="xc-h">{e.headline}</p>
+              <div class="xc-f">
+                <TrustLabel trust={fam.trust} />
+                <span class="xc-go" aria-hidden="true">Read →</span>
+              </div>
+            </li>
+          );
+        })}
+        {explained.length < 4 && (
+          <li class="xcard xcard-soon">
+            <div class="label">Coming next</div>
+            <p class="xc-h">
+              More explanations are being written and checked.
+            </p>
+            <div class="xc-f"><a class="more" href={appUrl('/archive/')}>Browse the archive →</a></div>
+          </li>
+        )}
+      </ul>
+    </section>
+    )}
   </section>
   <script>
     const hq = document.getElementById('hq') as HTMLInputElement | null;

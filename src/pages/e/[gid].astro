@@ -1,4 +1,6 @@
 ---
+import { clip, toPlain } from '../../lib/plain.js';
+import { formatLongDay } from '../../lib/dates.js';
 import Base from '../../layouts/Base.astro';
 import Scorecard from '../../components/Scorecard.astro';
 import RecordChart from '../../components/RecordChart.astro';
@@ -30,7 +32,7 @@ const reviewNote =
 
 const shareText = entry
   ? `${entry.scorecard.firstStep ? `Open since ${entry.scorecard.firstStep}. ` : ''}${entry.headline} ∎ ${absoluteUrl(entryUrl(family))}`
-  : `${family.title.replace(/<[^>]+>/g, '')} ∎ ${absoluteUrl(entryUrl(family))}`;
+  : `${toPlain(family.title)} ∎ ${absoluteUrl(entryUrl(family))}`;
 const shareHref = `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`;
 const reportHref =
   `https://github.com/nishachay/closed-form/issues/new?template=report-error.yml` +
@@ -49,14 +51,29 @@ const toc = entry
     ]
   : [{ href: '#the-original', label: 'The original' }];
 
-const title = `${family.id} · ${family.title.replace(/<[^>]+>/g, '')}`;
+const title = `${family.id} · ${toPlain(family.title)}`;
+/** Source citations: strip the internal † "check me" marker and link arXiv ids. */
+const cleanCite = (cite: string) => {
+  const unchecked = /†\s*$/.test(cite);
+  const text = cite.replace(/\s*†\s*$/, '');
+  const arxiv = /arXiv:(\d{4}\.\d{4,5})/.exec(text);
+  return { text, unchecked, href: arxiv ? `https://arxiv.org/abs/${arxiv[1]}` : undefined };
+};
+const withdrawnCount = family.withdrawn?.length ?? 0;
+const withdrawnOn = family.withdrawn?.[0]?.withdrawnOn ?? null;
 const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 ---
-<Base title={title} description={entry?.headline ?? family.summary.replace(/<[^>]+>/g, '')} ogImage={ogImage}>
+<Base title={title} description={clip(toPlain(entry?.headline ?? family.summary), 200)} ogImage={ogImage}>
   <div class="entry-wrap">
     <article class="entry">
       <div class="label">Entry <span class="num">{family.id}</span> · {family.subject}</div>
       <h1 set:html={renderMath(family.title)} />
+      {withdrawnCount > 0 && (
+        <p class="wd-note" role="note">
+          <span class="wd-badge">Update</span>
+          OpenAI withdrew {withdrawnCount === 1 ? 'one paper' : `${withdrawnCount} papers`} from this result{withdrawnOn ? ` on ${formatLongDay(withdrawnOn)}` : ''} after finding a gap in a proof. <a href="#withdrawn">What changed</a>
+        </p>
+      )}
 
       {entry ? (
         <>
@@ -82,19 +99,24 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <Glossary items={entry.glossary} />
           <section aria-labelledby="sources">
             <h2 id="sources">Sources</h2>
-            <ul class="papers">
-              {entry.sources.map((s) => (
-                <li>
-                  {s.url ? <a href={s.url} target="_blank" rel="noopener">{s.cite}</a> : s.cite}
-                  {s.quote && <div class="d">“{s.quote}”</div>}
-                </li>
-              ))}
-            </ul>
+            <ol class="srcs">
+              {entry.sources.map((s) => {
+                const c = cleanCite(s.cite);
+                const href = s.url ?? c.href;
+                return (
+                  <li>
+                    <span class="src-t">{href ? <a href={href} target="_blank" rel="noopener">{c.text}</a> : c.text}</span>
+                    {c.unchecked && entry.status !== 'reviewed' && <span class="src-flag">Not yet checked against the source</span>}
+                    {s.quote && <span class="src-q">“{s.quote}”</span>}
+                  </li>
+                );
+              })}
+            </ol>
           </section>
           <OriginalPapers family={family} />
           <nav class="pn" aria-label="Previous and next entries">
-            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{prev.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
-            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{next.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
+            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{toPlain(prev.title)}</div></a>}</span>
+            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{toPlain(next.title)}</div></a>}</span>
           </nav>
         </>
       ) : (
@@ -107,8 +129,8 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <Notice text="The plain-language explainer for this entry is still coming." />
           <OriginalPapers family={family} />
           <nav class="pn" aria-label="Previous and next entries">
-            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{prev.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
-            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{next.title.replace(/<[^>]+>/g, '')}</div></a>}</span>
+            <span>{prev && <a href={entryUrl(prev)}><div class="label">← {prev.id}</div><div class="t">{toPlain(prev.title)}</div></a>}</span>
+            <span>{next && <a href={entryUrl(next)}><div class="label">{next.id} →</div><div class="t">{toPlain(next.title)}</div></a>}</span>
           </nav>
         </>
       )}

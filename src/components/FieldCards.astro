@@ -1,4 +1,5 @@
 ---
+import { toPlain } from '../lib/plain.js';
 import { entryUrl, fieldUrl } from '../lib/site.js';
 import { TRUST_LADDER } from '../lib/trust.js';
 import type { Catalog } from '../lib/catalog.js';
@@ -24,7 +25,7 @@ const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
         <h3 class="fc-t"><a href={fieldUrl(subject)}>{subject}</a></h3>
         <ul class="cells">
           {items.map((f) => {
-            const plain = f.title.replace(/<[^>]+>/g, '');
+            const plain = toPlain(f.title);
             return (
               <li>
                 <a

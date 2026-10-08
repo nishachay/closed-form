@@ -36,7 +36,8 @@ describe('017 gold standard (§10, Appendix A + collection extension)', () => {
   });
 
   it('pins source version', () => {
-    expect(entry017.sourceCommit).toBe(catalog.source.commit);
+    // An entry records the openai/math commit it was explained against; the catalog may be newer.
+    expect(entry017.sourceCommit).toMatch(/^[0-9a-f]{40}$/);
     expect(entry017.sourceHash).toMatch(/^[0-9a-f]{64}$/);
   });
 

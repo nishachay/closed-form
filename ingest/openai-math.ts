@@ -8,10 +8,10 @@
  *
  * Deterministic: no AI, no network. All counts computed, never hard-coded.
  */
-import { readFile, access } from 'node:fs/promises';
+import { readFile, access, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
-import type { CollectionAdapter, CollectionMeta, Family, Paper, TrustKey } from './types.js';
+import type { CollectionAdapter, CollectionMeta, Family, Paper, TrustKey, WithdrawnPaper } from './types.js';
 
 export const OPENAI_MATH_META: CollectionMeta = {
   collection: 'openai-math-2026',
@@ -212,6 +212,62 @@ async function fileExists(path: string): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+const MONTH_NUM: Record<string, string> = {
+  january: '01', february: '02', march: '03', april: '04', may: '05', june: '06',
+  july: '07', august: '08', september: '09', october: '10', november: '11', december: '12',
+};
+
+/** Parse one preprint README; returns a withdrawal record when it is a withdrawal notice. */
+export function parseWithdrawalReadme(dir: string, md: string): (WithdrawnPaper & { dir: string }) | null {
+  const head = /^#\s*\[Withdrawal notice:\s*(.+?)\]\(/m.exec(md);
+  if (!head) return null;
+  const on = /\*\*Withdrawn on ([A-Za-z]+) (\d{1,2}), (\d{4})\.?\*\*/.exec(md);
+  const withdrawnOn = on && MONTH_NUM[on[1].toLowerCase()]
+    ? `${on[3]}-${MONTH_NUM[on[1].toLowerCase()]}-${on[2].padStart(2, '0')}`
+    : null;
+  const afterDate = on ? md.slice(md.indexOf(on[0]) + on[0].length) : md;
+  const body = afterDate.split(/^##\s/m)[0] ?? '';
+  const reason = body
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .split(/\n\s*\n/)
+    .map((p) => p.replace(/\s+/g, ' ').trim())
+    .filter(Boolean)
+    .join(' ');
+  const archived = /\[Pre-withdrawal PDF\]\(([^)]+)\)/.exec(md);
+  return {
+    dir,
+    title: head[1].trim(),
+    withdrawnOn,
+    reason,
+    notice: `${GITHUB_BASE.replace('/blob/main', '/tree/main')}/preprints/${dir}`,
+    archivedPdf: archived ? archived[1] : null,
+  };
+}
+
+/** Every withdrawal notice under preprints/. */
+export async function parseWithdrawals(sourceDir: string): Promise<Array<WithdrawnPaper & { dir: string }>> {
+  const root = join(sourceDir, 'preprints');
+  let dirs: string[] = [];
+  try {
+    dirs = await readdir(root);
+  } catch {
+    return [];
+  }
+  const out: Array<WithdrawnPaper & { dir: string }> = [];
+  for (const dir of dirs.sort()) {
+    let md = '';
+    try {
+      md = await readFile(join(root, dir, 'README.md'), 'utf-8');
+    } catch {
+      continue;
+    }
+    const w = parseWithdrawalReadme(dir, md);
+    if (w) out.push(w);
+  }
+  return out;
 }
 
 export async function parseOpenaiMath(sourceDir: string): Promise<{ subjects: string[]; families: Family[] }> {
