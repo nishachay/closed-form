@@ -26,7 +26,7 @@ const shortReason = (r: string) => {
   <ul class="orig">
     {f.papers.map((p) => (
       <li>
-        <a class="orig-t" href={p.pdf} target="_blank" rel="noopener">{toPlain(p.title)}<span aria-hidden="true"> ↗</span><span class="sr"> (PDF, opens in a new tab)</span></a>
+        <a class="orig-t" href={p.pdf} target="_blank" rel="noopener">{toPlain(p.title)}<span aria-hidden="true">&nbsp;↗</span><span class="sr"> (PDF, opens in a new tab)</span></a>
         <div class="orig-m">
           {p.date && <span>{formatLongDay(p.date)}</span>}
           {p.lean && <span class="orig-lean"><i class="dot c-formal" aria-hidden="true"></i>Formal proof listed</span>}
