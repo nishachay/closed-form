@@ -156,8 +156,9 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
         ))}
       </div>
       <div class="blk">
-        <a class="share" href={shareHref} target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.3L6.4 22H3.3l7.3-8.3L1 2h6.3l4.4 5.8zm-1.1 18h1.7L6.3 3.9H4.5z" /></svg>Share on X
+        <a class="share" href={shareHref} target="_blank" rel="noopener" aria-label="Share on X (opens in a new tab)">
+          <span aria-hidden="true">Share on</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.3L6.4 22H3.3l7.3-8.3L1 2h6.3l4.4 5.8zm-1.1 18h1.7L6.3 3.9H4.5z" /></svg>
         </a>
       </div>
       <div class="blk">

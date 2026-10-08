@@ -900,3 +900,52 @@ footer.site-footer .ft-by a{color:var(--color-text);font-weight:500;text-decorat
 .hub-go{grid-row:1 / span 2;grid-column:2;font-size:.875rem;color:var(--color-text-secondary)}
 @media (hover:hover){.hub-card:hover{border-color:var(--color-border-control)}.hub-card:hover .hub-go{color:var(--color-text)}}
 @media (max-width:48rem){.top-search{inline-size:2.25rem;min-inline-size:2.25rem;justify-content:center;border-radius:999px}}
+
+/* =====================================================================
+   Polish 4 (Oct 2026): one control system, trust squares, compact footer
+   Controls: 2.25rem tall, --r-ctl corners, everywhere (header, search, sort, buttons).
+   Trust squares: .625rem in the map, .5625rem beside text; always 2px corners.
+   ===================================================================== */
+.top{--header-h:3.75rem}
+:root{--header-h:3.75rem}
+.top .top-in{min-block-size:var(--header-h)}
+.top .logo{font-size:1.0625rem;font-weight:600;letter-spacing:-.02em;line-height:var(--header-h);min-block-size:0}
+.top .top-nav a{min-block-size:2.25rem;padding-inline:.75rem;border-radius:var(--r-ctl);font-size:.875rem}
+.top-search{block-size:2.25rem;border-radius:var(--r-ctl)}
+.top-search kbd{border-radius:var(--r-in)}
+.top-gh{inline-size:2.25rem;block-size:2.25rem;border-radius:var(--r-ctl)}
+.share{min-block-size:2.25rem;padding-inline:.875rem;gap:.4375rem;font-size:.875rem;border-radius:var(--r-ctl)}
+.share svg{inline-size:.8125rem;block-size:.8125rem}
+
+/* Trust squares */
+.fcard .cells{gap:3px}
+.fcard .cell{inline-size:.625rem;block-size:.625rem;border-radius:2px}
+.legend .dot{inline-size:.625rem;block-size:.625rem;border-radius:2px}
+.fopt .dot,.res-side .dot,.res-foot .dot,.claimbox .dot,.trust .dot,.e-meta .dot{inline-size:.5625rem;block-size:.5625rem;border-radius:2px}
+@media (max-width:36rem){.fcard .cells{gap:2px}.fcard .cell{inline-size:.5rem;block-size:.5rem}}
+
+/* Footer: one quiet band, same rhythm as the header */
+footer.site-footer{margin-block-start:5rem;padding-block:0;border-block-start:1px solid var(--color-border);font-size:.875rem}
+.ft{display:block}
+.ft-top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem 3rem;flex-wrap:wrap;padding-block:2rem 1.75rem}
+.ft-brand{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.ft-brand .logo{font-size:1.0625rem;font-weight:600;letter-spacing:-.02em}
+.ft-tag{margin:0;max-inline-size:none;font-size:.875rem;color:var(--color-text-tertiary)}
+.ft-links{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem}
+footer.site-footer .ft-links a{color:var(--color-text-secondary)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem 1.5rem;border-block-start:1px solid var(--color-border)}
+.ft-by{margin:0;max-inline-size:none;font-size:.8125rem;color:var(--color-text-tertiary)}
+footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
+.ft-legal{color:var(--color-text-tertiary)}
+.ft-social{display:flex;gap:.25rem}
+.ft-social a{inline-size:2.25rem;block-size:2.25rem;border:0;border-radius:var(--r-ctl);color:var(--color-text-secondary)}
+@media (hover:hover){footer.site-footer .ft-social a:hover{background:color-mix(in oklab,var(--color-text) 6%,transparent);border:0;color:var(--color-text)}}
+@media (max-width:40rem){
+  footer.site-footer{margin-block-start:4rem}
+  .ft-top{flex-direction:column;align-items:flex-start;padding-block:1.75rem 1.5rem}
+  .ft-brand{flex-direction:column;gap:.375rem}
+  .ft-bot{align-items:flex-start}
+  .ft-legal{display:block;margin-block-start:.25rem}
+}
+@media (max-width:40rem){.ft-sep{display:none}}
+@media (max-width:22.5rem){.top .logo{font-size:1rem}.top .top-nav a{padding-inline:.4375rem}.top-r{gap:.125rem}}
