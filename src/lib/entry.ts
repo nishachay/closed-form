@@ -123,6 +123,8 @@ export const sourceSchema = z.object({
   cite: z.string().min(1),
   url: z.string().url().optional(),
   quote: z.string().optional(),
+  /** Explicit marker that no online copy exists (lint-ste fails a url-less source without it or "no online copy" in cite). */
+  noUrl: z.literal(true).optional(),
 });
 
 export const claimSchema = z.object({

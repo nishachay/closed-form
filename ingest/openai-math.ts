@@ -11,7 +11,7 @@
 import { readFile, access, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
-import type { CollectionAdapter, CollectionMeta, Family, Paper, TrustKey, WithdrawnPaper } from './types.js';
+import type { CollectionAdapter, CollectionMeta, ComparatorRef, Family, Paper, TrustKey, WithdrawnPaper } from './types.js';
 
 export const OPENAI_MATH_META: CollectionMeta = {
   collection: 'openai-math-2026',
@@ -105,10 +105,68 @@ export function extractLeanDoc(summary: string): { summary: string; leanDoc: str
   return { summary: rest, leanDoc };
 }
 
-export function mapTrust(leanCount: number, leanDoc: string | null): TrustKey {
+/**
+ * Trust rule (deterministic, from repo files only):
+ * - formal: a paper is listed in lean/formalization.yaml, OR the family has a
+ *   lean/docs/<id>.md AND that doc links at least one Comparator challenge that
+ *   checks main results (not a supporting-result-only setup);
+ * - partial: a Lean doc exists but neither of the above holds;
+ * - claimed: no Lean doc and nothing listed.
+ */
+export function mapTrust(leanCount: number, leanDoc: string | null, mainComparators = 0): TrustKey {
   if (leanCount > 0) return 'formal';
+  if (leanDoc && mainComparators > 0) return 'formal';
   if (leanDoc) return 'partial';
   return 'claimed';
+}
+
+/** Comparator challenge basenames a Lean doc links to (`../ComparatorChallenges/X.lean|json`), in doc order. */
+export function parseDocComparatorLinks(docMd: string): string[] {
+  const out: string[] = [];
+  const re = /\]\((?:\.\.\/)?(?:lean\/)?ComparatorChallenges\/([A-Za-z0-9_]+)\.(?:lean|json)\)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(docMd)) !== null) if (!out.includes(m[1])) out.push(m[1]);
+  return out;
+}
+
+/** Basenames the Comparator README lists under "Supporting-result comparisons". */
+export function parseSupportOnly(readmeMd: string): Set<string> {
+  const set = new Set<string>();
+  const sec = /^##\s*Supporting-result comparisons\s*$([\s\S]*?)(?=^##\s|(?![\s\S]))/m.exec(readmeMd);
+  if (!sec) return set;
+  for (const m of sec[1].matchAll(/^\s*-\s*`([A-Za-z0-9_]+)\.json`/gm)) set.add(m[1]);
+  return set;
+}
+
+/**
+ * Lean facts for one family from repo files: the doc (if any) and every Comparator
+ * challenge JSON it links to that exists in lean/ComparatorChallenges/.
+ */
+export async function detectLean(
+  sourceDir: string,
+  leanDoc: string | null,
+  supportOnly: Set<string>,
+): Promise<ComparatorRef[]> {
+  if (!leanDoc) return [];
+  let md = '';
+  try {
+    md = await readFile(join(sourceDir, leanDoc), 'utf-8');
+  } catch {
+    return [];
+  }
+  const refs: ComparatorRef[] = [];
+  for (const name of parseDocComparatorLinks(md)) {
+    const file = `lean/ComparatorChallenges/${name}.json`;
+    let theorems: string[] = [];
+    try {
+      const j = JSON.parse(await readFile(join(sourceDir, file), 'utf-8')) as { theorem_names?: unknown };
+      theorems = Array.isArray(j.theorem_names) ? j.theorem_names.map(String) : [];
+    } catch {
+      continue; // linked but no challenge file: not evidence
+    }
+    refs.push({ file, url: `${GITHUB_BASE}/${file}`, theorems, support: supportOnly.has(name) });
+  }
+  return refs;
 }
 
 interface RawPaper {
@@ -282,6 +340,13 @@ export async function parseOpenaiMath(sourceDir: string): Promise<{ subjects: st
   const { subjects, idToSubject } = parseSubjects(overviewTex);
   const leanDirs = parseFormalization(formalYaml);
   const traces = parseTraces(readmeMd);
+  let comparatorReadme = '';
+  try {
+    comparatorReadme = await readFile(join(sourceDir, 'lean/ComparatorChallenges/README.md'), 'utf-8');
+  } catch {
+    comparatorReadme = '';
+  }
+  const supportOnly = parseSupportOnly(comparatorReadme);
 
   const families: Family[] = [];
   for (const rf of rawFamilies) {
@@ -304,6 +369,8 @@ export async function parseOpenaiMath(sourceDir: string): Promise<{ subjects: st
     });
 
     const lean = papers.filter((p) => p.lean).length;
+    const comparator = await detectLean(sourceDir, leanDoc, supportOnly);
+    const mainComparators = comparator.filter((c) => !c.support).length;
     const tracePath = traces.get(rf.id);
     families.push({
       id: rf.id,
@@ -313,8 +380,10 @@ export async function parseOpenaiMath(sourceDir: string): Promise<{ subjects: st
       papers,
       lean,
       leanDoc,
+      leanDocUrl: leanDoc ? `${GITHUB_BASE}/${leanDoc}` : null,
+      comparator,
       ...(tracePath ? { trace: `${GITHUB_BASE}/${tracePath}` } : {}),
-      trust: mapTrust(lean, leanDoc),
+      trust: mapTrust(lean, leanDoc, mainComparators),
     });
   }
 

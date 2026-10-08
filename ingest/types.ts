@@ -46,11 +46,30 @@ export interface Family {
   lean: number;
   /** Relative path like "lean/docs/017.md", or null. */
   leanDoc: string | null;
+  /** Full GitHub URL of `leanDoc`, or null. Detected from repo files, never from AI. */
+  leanDocUrl: string | null;
+  /**
+   * Comparator challenge files the Lean doc links to (deterministic, from repo files).
+   * `support: true` marks setups the Comparator README lists as checking supporting
+   * results only, not a paper's main theorems; those never raise trust.
+   */
+  comparator: ComparatorRef[];
   /** Full GitHub URL to reasoning trace PDF, if any. */
   trace?: string;
   trust: TrustKey;
   /** Papers the lab withdrew from this family. Kept so readers see what changed; never counted. */
   withdrawn?: WithdrawnPaper[];
+}
+
+export interface ComparatorRef {
+  /** Relative path like "lean/ComparatorChallenges/OrdinaryTwoPointCorrelations.json". */
+  file: string;
+  /** Full GitHub URL of `file`. */
+  url: string;
+  /** `theorem_names` from the challenge JSON. */
+  theorems: string[];
+  /** Listed under "Supporting-result comparisons" in the Comparator README. */
+  support: boolean;
 }
 
 export interface WithdrawnPaper {

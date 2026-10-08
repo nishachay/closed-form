@@ -28,7 +28,8 @@ test('archive has 372 rows in 17 groups with search, filters and URL sync', asyn
 
   await page.locator('#q').fill('');
   await page.locator('#seg button[data-v="formal"]').click();
-  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(135);
+  // 242 formal since Lean docs + Comparator challenges count (was 135).
+  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(242);
   expect(page.url()).toContain('trust=formal');
 
   await page.locator('#reset').click();

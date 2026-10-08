@@ -130,7 +130,8 @@
           "id": { "type": "integer" },
           "cite": { "type": "string" },
           "url": { "type": "string", "format": "uri" },
-          "quote": { "type": "string" }
+          "quote": { "type": "string" },
+          "noUrl": { "const": true, "description": "Only when no online copy exists; end cite with \"(no online copy found)\". Every other source needs a url." }
         }
       }
     },

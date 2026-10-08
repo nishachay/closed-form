@@ -35,3 +35,6 @@ Rules for the corrected entry:
   unprecedented, breakthrough, stunning, mind-blowing, historic, finally, solves forever).
 - If a correction from the pipeline is attached (validation errors), fix exactly those
   errors and nothing else.
+- The pipeline appends a stricter rubric (`CHECKER_RUBRIC` in scripts/explain.ts):
+  implication direction, closest prior work, definitions, Lean facts, verbatim quotes,
+  source urls. Apply all of it.
