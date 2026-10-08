@@ -1,0 +1,130 @@
+import { describe, expect, it } from 'vitest';
+import entry017 from '../src/content/entries/017.json';
+import {
+  formatIssues,
+  hasErrors,
+  lintEntry,
+  lintText,
+} from '../scripts/lint-ste.js';
+import { calibratePlan } from '../scripts/calibrate.js';
+import {
+  gatherFamily,
+  loadConfig,
+  parseExplainArgs,
+  runDryRun,
+  selectFamilies,
+} from '../scripts/explain.js';
+import catalog from '../src/data/catalog.json';
+import type { Family } from '../ingest/types.js';
+
+const fams = (catalog as unknown as { families: Family[] }).families;
+
+describe('lint-ste (§8)', () => {
+  it('passes the 017 gold entry with zero errors', () => {
+    const issues = lintEntry(entry017 as unknown as Record<string, unknown>);
+    expect(hasErrors(issues)).toBe(false);
+  });
+
+  it('flags long sentences and hype words', () => {
+    const long =
+      'This is a deliberately overlong sentence with far more than twenty five words in it to trigger the hard failure rule for testing purposes only here now today.';
+    const issues = lintText(long, 'plain');
+    expect(issues.some((i) => i.kind === 'long-sentence')).toBe(true);
+    expect(hasErrors(lintText('A revolutionary breakthrough in pi theory.', 'headline'))).toBe(true);
+    expect(hasErrors(lintText('Fractions can never get unusually close to pi.', 'headline'))).toBe(false);
+  });
+
+  it('warns (not errors) between 20 and 25 words', () => {
+    const issues = lintText(
+      'Salikhov reached about seven point six in two thousand eight after long work.',
+      'plain',
+    );
+    expect(hasErrors(issues)).toBe(false);
+  });
+
+  it('formats issues with the entry id', () => {
+    const s = formatIssues('007', lintText('A revolutionary claim here.', 'headline'));
+    expect(s).toContain('007');
+    expect(s).toContain('hype');
+  });
+});
+
+describe('explain arg parsing + selection (§11)', () => {
+  it('parses --ids and flags', () => {
+    const a = parseExplainArgs(['--ids', '007,017', '--concurrency', '3']);
+    expect(a.ids).toEqual(['007', '017']);
+    expect(a.concurrency).toBe(3);
+    expect(a.dryRun).toBe(false);
+  });
+
+  it('selects explicit ids even when an entry exists', () => {
+    const existing = new Map([['017', { sourceHash: 'x' }]]);
+    const sel = selectFamilies(
+      catalog as never,
+      existing,
+      { ids: ['017'], batch: null, traces: false, all: false, concurrency: 1, dryRun: true },
+    );
+    expect(sel.map((f) => f.id)).toEqual(['017']);
+  });
+
+  it('rejects unknown ids', () => {
+    expect(() =>
+      selectFamilies(
+        catalog as never,
+        new Map(),
+        { ids: ['999'], batch: null, traces: false, all: false, concurrency: 1, dryRun: true },
+      ),
+    ).toThrow('Unknown family id: 999');
+  });
+
+  it('fails clearly when LLM keys are missing', () => {
+    expect(() => loadConfig({} as NodeJS.ProcessEnv)).toThrow('LLM_API_KEY');
+    expect(() => loadConfig({} as NodeJS.ProcessEnv)).toThrow('READER_MODEL');
+  });
+});
+
+describe('007 dry run (§11, offline)', () => {
+  it('gathers tex sources with a 64-hex hash', async () => {
+    const fam = fams.find((f) => f.id === '007') as Family;
+    const g = await gatherFamily('source/openai-math', fam, fam.summary);
+    expect(g.texFiles.length).toBeGreaterThan(0);
+    expect(g.texChars).toBeGreaterThan(1000);
+    expect(g.sourceHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(g.evidence.some((e) => e.kind === 'trace')).toBe(true);
+    expect(g.evidence.some((e) => e.kind === 'paper')).toBe(true);
+  });
+
+  it('dry run writes nothing but reports the full plan', async () => {
+    const rows = await runDryRun(['007']);
+    expect(rows).toHaveLength(1);
+    const r = rows[0];
+    expect(r.id).toBe('007');
+    expect(r.subject).toBe('Number theory');
+    expect(r.trust).toBe('partial');
+    expect(r.texFiles).toBeGreaterThan(0);
+    expect(r.readerPromptChars).toBeGreaterThan(5000);
+    expect(r.sourceHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(r.existing).toBe(false);
+    expect(r.wouldSkip).toBe(false);
+    expect(r.writePath).toBe('src/content/entries/007.json');
+  });
+});
+
+describe('calibrate (§6.3, §11.5)', () => {
+  it('matches target spread on a balanced set', () => {
+    const mk = (n: number, sig: string) =>
+      Array.from({ length: n }, (_, i) => ({ id: `${sig}-${i}`, significance: sig }));
+    const plan = calibratePlan([...mk(1, 'Landmark'), ...mk(4, 'Major'), ...mk(9, 'Solid'), ...mk(6, 'Niche')]);
+    expect(plan.total).toBe(20);
+    expect(plan.moves).toHaveLength(0);
+  });
+
+  it('proposes moves toward the target, deterministically', () => {
+    const plan = calibratePlan([{ id: '017', significance: 'Major' }]);
+    expect(plan.total).toBe(1);
+    expect(plan.target).toEqual({ Landmark: 0, Major: 0, Solid: 1, Niche: 0 });
+    expect(plan.moves).toEqual([{ id: '017', from: 'Major', to: 'Solid' }]);
+    const again = calibratePlan([{ id: '017', significance: 'Major' }]);
+    expect(again).toEqual(plan);
+  });
+});

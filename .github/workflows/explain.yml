@@ -1,0 +1,48 @@
+name: explain
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: 'Comma-separated family ids (e.g. 007,017). Leave empty to use batch.'
+        required: false
+        default: ''
+      batch:
+        description: 'How many families needing work to take when ids is empty.'
+        required: false
+        default: '10'
+
+jobs:
+  explain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.0.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Explain entries
+        run: |
+          if [ -n "${{ inputs.ids }}" ]; then
+            pnpm explain --ids "${{ inputs.ids }}"
+          else
+            pnpm explain --batch "${{ inputs.batch }}"
+          fi
+        env:
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          READER_MODEL: ${{ secrets.READER_MODEL }}
+          CHECK_MODEL: ${{ secrets.CHECK_MODEL }}
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: entries/${{ inputs.ids || 'batch' }}
+          title: 'Entries: ${{ inputs.ids || inputs.batch }}'
+          body-path: pipeline/last-run.md
+          commit-message: 'Entries: AI-checked batch'
