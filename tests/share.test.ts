@@ -121,6 +121,14 @@ describe('rss feed (§13)', () => {
 });
 
 describe('public data files (§13)', () => {
+  it('catalog.json ships all families', () => {
+    const fams = (catalog as { families: { id: string; papers: unknown[] }[] }).families;
+    expect(fams).toHaveLength(372);
+    const papers = fams.reduce((n, f) => n + f.papers.length, 0);
+    expect(papers).toBe(722);
+    expect((catalog as { subjects: unknown[] }).subjects).toHaveLength(17);
+  });
+
   it('fields.json has 17 fields with collection/lab/science + counts', () => {
     const rows = buildFieldsJson(catalog as never);
     expect(rows).toHaveLength(17);

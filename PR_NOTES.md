@@ -30,9 +30,3 @@
   entries" newest-first, but entries carry no publish date (only optional
   `reviewedAt`). Feed sorts `reviewedAt` desc when present, else numeric id desc.
   With one explained entry (017) this is a single-item feed.
-- **Public data routes.** Spec §13 lists `/data/catalog.json, /data/entries.json`.
-  Built: `/data/entries.json` (explained entries, full schema) and
-  `/data/fields.json` (17 fields with collection/lab/science + counts + trust
-  split). Full catalog (372 families + papers) stays in the repo at
-  `src/data/catalog.json`, not re-exposed, to avoid shipping a duplicate 9k-line
-  file. Both public files documented on `/about/`.
