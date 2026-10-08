@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const stats = computeStats();
 const explainedIds = await loadExplainedIds();
 ---
-<Base title={`Collection ${catalog.collection}`} description={`${stats.results} results, ${stats.papers} papers, honest trust labels.`}>
+<Base title={`Collection ${catalog.collection}`} description={`${stats.results} results, ${stats.papers} papers, honest trust labels.`} ogImage={`/og/collection-${catalog.collection}.png`}>
   <div class="wrap">
     <p class="kicker">Collection · {catalog.collection}</p>
     <h1 class="page">The {catalog.collection} collection</h1>

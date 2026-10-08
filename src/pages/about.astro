@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { appUrl } from '../lib/site.js';
 import { TRUST_LADDER } from '../lib/trust.js';
 
 const reportError = 'https://github.com/nishachay/closed-form/issues/new';
@@ -87,6 +88,25 @@ const reportError = 'https://github.com/nishachay/closed-form/issues/new';
         Our explanations are published under CC BY 4.0. Source papers come from openai/math (Apache-2.0)
         and remain under their own license. Closed Form is not affiliated with OpenAI.
       </p>
+
+      <h2>Public data</h2>
+      <p class="measure">
+        Everything explained on this site is available as JSON, newest first in{' '}
+        <a href={appUrl('/feed.xml')}>the RSS feed</a>. Our text is CC BY 4.0; the source
+        papers remain Apache-2.0.
+      </p>
+      <ul class="measure">
+        <li>
+          <a href={appUrl('/data/entries.json')}>entries.json</a> — every explained entry in
+          full, including <code>collection</code>, <code>lab</code>, <code>science</code>,{' '}
+          <code>field</code>, <code>aiRole</code> and <code>evidence[]</code>.
+        </li>
+        <li>
+          <a href={appUrl('/data/fields.json')}>fields.json</a> — the 17 fields with{' '}
+          <code>collection</code>, <code>lab</code>, <code>science</code>, result and paper
+          counts, and the trust split.
+        </li>
+      </ul>
     </div>
   </div>
 </Base>

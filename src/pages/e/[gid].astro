@@ -57,8 +57,9 @@ const toc = entry
   : [{ href: '#the-original', label: 'The original' }];
 
 const title = `${family.id} · ${family.title.replace(/<[^>]+>/g, '')}`;
+const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 ---
-<Base title={title} description={entry?.headline ?? family.summary.replace(/<[^>]+>/g, '')}>
+<Base title={title} description={entry?.headline ?? family.summary.replace(/<[^>]+>/g, '')} ogImage={ogImage}>
   <div class="wrap">
     <p class="kicker">
       Entry {family.id} · {family.subject}
@@ -150,6 +151,14 @@ const title = `${family.id} · ${family.title.replace(/<[^>]+>/g, '')}`;
               </li>
             ))}
           </ul>
+          <p class="label">Share</p>
+          <p>
+            <a href={shareHref}>Share on X</a>
+          </p>
+          <p class="label">Trust</p>
+          <p>
+            <TrustLabel trust={family.trust} />
+          </p>
         </aside>
       </div>
     )}

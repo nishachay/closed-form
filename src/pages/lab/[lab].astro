@@ -9,7 +9,7 @@ export function getStaticPaths() {
 const stats = computeStats();
 const { lab } = Astro.params;
 ---
-<Base title={`Lab: ${lab}`} description={`AI-made mathematics from ${lab}, explained with honest trust labels.`}>
+<Base title={`Lab: ${lab}`} description={`AI-made mathematics from ${lab}, explained with honest trust labels.`} ogImage={`/og/lab-${lab}.png`}>
   <div class="wrap">
     <p class="kicker">Lab · {lab}</p>
     <h1 class="page">{lab === 'openai' ? 'OpenAI' : lab}</h1>
