@@ -662,3 +662,15 @@ footer{font-size:.8125rem;padding-block:2rem}
 
 /* Fix carried-over v5 bug: the late 16.5rem .arch rule overrode the mobile one-column layout (134px horizontal scroll at 390px). */
 @media (max-width:56rem){.arch{grid-template-columns:minmax(0,1fr)}}
+
+/* Field-card squares are a real list in Astro (links per result); v5 used a div, so reset list styling. */
+.cells{list-style:none;margin:0;padding:0}.cells li{display:contents}
+
+/* Archive scroll polish (user review, Oct 2026): keep the filter panel in view on desktop
+   instead of letting it scroll off half-cut, and give the sticky search bar a clean bottom edge
+   so cards no longer look chopped as they slide under it. */
+@media (min-width:56.0625rem){
+  .filters{position:sticky;inset-block-start:calc(var(--header-h) + 1rem);max-block-size:calc(100dvh - var(--header-h) - 2rem);overflow-y:auto;scrollbar-width:thin}
+  .arch-main .tools{box-shadow:0 1px 0 var(--color-border)}
+  .arch-main .toolbar{padding-block-end:.75rem}
+}

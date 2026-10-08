@@ -13,8 +13,7 @@ const explained = [...explainedById.values()].sort((a, b) => a.id.localeCompare(
 const range = collectionRange(catalog.families);
 ---
 <Base title="AI mathematics, explained" description="Every discovery AI makes, explained and checked. Plain words, honest trust labels.">
-  <div class="wrap">
-    <section class="mast">
+  <section class="mast wrap">
       <div class="stage">
         <div class="label">The OpenAI collection · {range}</div>
         <h1>Every problem AI has solved, <span>explained for everyone.</span></h1>
@@ -44,7 +43,7 @@ const range = collectionRange(catalog.families);
           <a class="btn" href={appUrl('/archive/')}><span>Browse all <span class="num">{stats.results}</span> results</span><span aria-hidden="true">→</span></a>
           <a class="btn-q" href={appUrl('/about/')}>How trust labels work <span aria-hidden="true">→</span></a>
         </div>
-        <div class="stats">
+        <div class="stats" id="stats">
           <div class="stat">
             <div class="label">Papers</div>
             <div class="n num">{stats.papers}</div>
@@ -67,14 +66,14 @@ const range = collectionRange(catalog.families);
           </div>
         </div>
       </div>
-    </section>
+
 
     <section class="home-ex" aria-labelledby="ex-h">
       <div class="sec-head">
         <h2 id="ex-h" class="label">Explained so far</h2>
         <a class="more" href={appUrl('/archive/?trust=explained')}>All explained →</a>
       </div>
-      <ul class="ex-cards">
+      <ul class="ex-cards" id="explained">
         {explained.map((e) => {
           const fam = familiesById.get(e.id);
           if (!fam) return null;
@@ -113,7 +112,7 @@ const range = collectionRange(catalog.families);
           <li><i class="dot dot-ex" aria-hidden="true"></i>Explained</li>
         </ul>
       </div>
-      <ul class="fields">
+      <ul class="fields" id="grid">
         <FieldCards subjects={catalog.subjects} families={catalog.families} explainedIds={explainedIds} />
         <li class="fcard fcard-all">
           <h3 class="fc-t"><a href={appUrl('/archive/')}>All fields</a></h3>
@@ -122,7 +121,7 @@ const range = collectionRange(catalog.families);
         </li>
       </ul>
     </section>
-  </div>
+  </section>
   <script>
     const hq = document.getElementById('hq') as HTMLInputElement | null;
     if (hq) {
