@@ -27,16 +27,6 @@ const { prev, next } = neighbors(family.id);
 
 const reviewNote =
   entry && entry.status !== 'reviewed' ? 'This entry has not been reviewed by a person yet.' : null;
-const reviewKind =
-  entry?.status === 'sample'
-    ? 'Sample entry, written by hand'
-    : entry?.status === 'ai-draft'
-      ? 'AI draft — not checked yet'
-      : entry?.status === 'ai-checked'
-        ? 'Checked by AI against the paper — not yet reviewed by a person'
-        : entry?.status === 'reviewed'
-          ? `Reviewed by a person${entry.reviewedBy ? ` (${entry.reviewedBy})` : ''}`
-          : null;
 
 const shareText = entry
   ? `${entry.scorecard.firstStep ? `Open since ${entry.scorecard.firstStep}. ` : ''}${entry.headline} ∎ ${absoluteUrl(entryUrl(family))}`
@@ -71,10 +61,8 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
       {entry ? (
         <>
           <p class="headline">{entry.headline}</p>
-          <p class="scope">{entry.scope}</p>
           <p set:html={renderMath(entry.plain)} />
           {reviewNote && <Notice text={reviewNote} />}
-          {reviewKind && <p class="ui review-kind">{reviewKind}</p>}
           <Scorecard entry={entry} trust={family.trust} papers={family.papers.length} />
           {entry.visual && (
             <RecordChart title={entry.visual.title} note={entry.visual.note} points={entry.visual.points} />
@@ -114,10 +102,7 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <div class="claimbox">
             <div class="label">What the paper claims, in its own words</div>
             <p set:html={renderMath(family.summary)} />
-            <div class="claim-foot">
-              <TrustLabel trust={family.trust} />
-              <a href={family.papers[0].pdf} target="_blank" rel="noopener">Read the paper →</a>
-            </div>
+            <TrustLabel trust={family.trust} />
           </div>
           <Notice text="The plain-language explainer for this entry is still coming." />
           <OriginalPapers family={family} />
@@ -139,10 +124,6 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
         <a class="share" href={shareHref} target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.8-6.3L6.4 22H3.3l7.3-8.3L1 2h6.3l4.4 5.8zm-1.1 18h1.7L6.3 3.9H4.5z" /></svg>Share on X
         </a>
-      </div>
-      <div class="blk">
-        <div class="label" style="margin-block-end:.375rem">Trust</div>
-        <TrustLabel trust={family.trust} />
       </div>
       <div class="blk">
         <div class="label" style="margin-block-end:.375rem">Feedback</div>

@@ -20,7 +20,7 @@ const VIEWPORTS = [
 
 const THEMES = ['light', 'dark'];
 
-const b = await chromium.launch();
+const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
 for (const theme of THEMES) {
   for (const vp of VIEWPORTS) {
     for (const s of SHOTS) {

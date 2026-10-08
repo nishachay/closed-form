@@ -1,5 +1,6 @@
 ---
 import type { Family } from '../lib/catalog.js';
+import { formatLongDay } from '../lib/dates.js';
 
 interface Props {
   family: Family;
@@ -18,7 +19,7 @@ const leanHref = f.leanDoc
       <li>
         <a href={p.pdf} target="_blank" rel="noopener">{p.title}</a>
         <div class="d">
-          {p.date ?? ''}{p.lean ? ' · formal proof listed' : ''}
+          {formatLongDay(p.date)}{p.lean ? ' · formal proof listed' : ''}
         </div>
       </li>
     ))}

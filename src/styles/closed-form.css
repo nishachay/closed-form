@@ -632,7 +632,7 @@ footer{font-size:.8125rem;padding-block:2rem}
 }
 /* v5 detail pass */
 .mast .lede{max-inline-size:37rem}
-.ex-cards{grid-template-columns:repeat(auto-fit,minmax(19rem,1fr))}
+.ex-cards{grid-template-columns:repeat(auto-fit,minmax(min(19rem,100%),1fr))}
 .xc-go{color:var(--color-text-secondary)}
 @media (hover:hover){.xcard:hover .xc-go{color:var(--color-text)}}
 .fcard{min-block-size:9rem}
@@ -656,3 +656,9 @@ footer{font-size:.8125rem;padding-block:2rem}
 .claimbox>.trust{display:flex;padding-block-start:.875rem;border-block-start:1px solid var(--color-border);font-size:.8125rem}
 .claimbox .dot{inline-size:.5rem;block-size:.5rem}
 .claimbox .label{font-size:.75rem}
+
+/* Astro port: pages that nest a .wrap inside another .wrap (collection, lab, science) must not double the gutter. */
+.wrap .wrap{max-width:none;padding-inline:0}
+
+/* Fix carried-over v5 bug: the late 16.5rem .arch rule overrode the mobile one-column layout (134px horizontal scroll at 390px). */
+@media (max-width:56rem){.arch{grid-template-columns:minmax(0,1fr)}}

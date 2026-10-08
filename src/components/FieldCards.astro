@@ -12,7 +12,7 @@ const { subjects, families, explainedIds } = Astro.props;
 
 const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
 ---
-<ul class="fields">
+<>
   {subjects.map((subject) => {
     const items = families
       .filter((f) => f.subject === subject)
@@ -44,4 +44,4 @@ const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
       </li>
     );
   })}
-</ul>
+</>

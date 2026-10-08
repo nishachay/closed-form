@@ -37,3 +37,10 @@ export function collectionRange(families: Family[]): string {
     d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
   return `${m(lo)} – ${m(hi)}, ${hi.getUTCFullYear()}`;
 }
+
+/** "September 23, 2026" in UTC, as the v5 prototype prints paper dates. Falls back to the raw value. */
+export function formatLongDay(iso: string | null): string {
+  const t = paperTime(iso);
+  if (Number.isNaN(t)) return iso ?? '';
+  return new Date(t).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+}

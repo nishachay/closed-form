@@ -4,8 +4,7 @@ import ArchiveBrowser from '../components/ArchiveBrowser.astro';
 import { families } from '../lib/site.js';
 ---
 <Base title="Archive" description="All results with search and trust filters." current="archive">
-  <div class="wrap">
-    <section class="arch-head">
+    <section class="wrap arch-head">
       <div class="label">The archive</div>
       <h1>All results</h1>
       <p class="lede">
@@ -14,5 +13,4 @@ import { families } from '../lib/site.js';
       </p>
     </section>
     <ArchiveBrowser families={families} />
-  </div>
 </Base>

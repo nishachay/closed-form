@@ -49,7 +49,7 @@ const explainedIds = await loadExplainedIds();
       <div class="sec-head">
         <h2 class="label" id="map-h">Browse by field · one square per result</h2>
       </div>
-      <FieldCards subjects={catalog.subjects} families={families} explainedIds={explainedIds} />
+      <ul class="fields"><FieldCards subjects={catalog.subjects} families={families} explainedIds={explainedIds} /></ul>
     </section>
     <h2 class="label" id="all-results">All results in this collection</h2>
     <ArchiveBrowser families={families} />

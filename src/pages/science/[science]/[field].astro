@@ -20,12 +20,10 @@ const list = catalog.families.filter((f) => f.subject === subject);
   description={`${list.length} AI-made results in ${subject}, explained in plain words.`}
   ogImage={`/og/field-${field}.png`}
 >
-  <div class="wrap">
-    <section class="arch-head">
+    <section class="wrap arch-head">
       <div class="label">Field · {subject}</div>
       <h1>{subject}</h1>
       <p class="lede">{list.length} results in {catalog.collection}.</p>
     </section>
     <ArchiveBrowser families={list} lockField={slugify(subject)} />
-  </div>
 </Base>
