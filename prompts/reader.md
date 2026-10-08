@@ -31,7 +31,10 @@ Fixed fields (copy exactly / fill as directed):
   published in the openai/math release on 6 October 2026."
 - `collection`, `lab`, `science`, `field` are given in the task — copy them unchanged.
   `scorecard.field` must equal `field`.
-- `aiRole` is "autonomous" unless the task says otherwise.
+- `aiRole` comes ONLY from what the source papers say about AI involvement:
+  "autonomous" (the papers show the model worked alone), "ai-led", or "ai-assisted".
+  If the sources are silent about AI involvement, omit `aiRole` — do not guess.
+  (The entry then fails validation and goes to `failures.jsonl` for a human.)
 - `evidence` is given in the task — copy it unchanged.
 - `status` must be "ai-draft". Never set "reviewed".
 - `sourceHash` and `sourceCommit` are given in the task — copy them unchanged.

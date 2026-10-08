@@ -17,10 +17,41 @@ import { createHash } from 'node:crypto';
 import { appendFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { entrySchema, type Entry } from '../src/lib/entry.js';
+import { entrySchema, AI_ROLES, type Entry } from '../src/lib/entry.js';
 import { hasErrors, lintEntry } from './lint-ste.js';
 import type { Catalog, Family } from '../ingest/types.js';
 import { OPENAI_MATH_META } from '../ingest/openai-math.js';
+
+/**
+ * Structural aiRole gate (the substantive check is the checker's job — see
+ * prompts/checker.md). aiRole must come from the sources, never guessed:
+ * missing/invalid role, empty evidence, or no paper evidence fails the entry
+ * to failures.jsonl for a human.
+ */
+export function verifyAiRole(entry: {
+  aiRole?: unknown;
+  evidence?: { kind?: unknown }[];
+}): string[] {
+  const errors: string[] = [];
+  if (!(AI_ROLES as readonly string[]).includes(String(entry.aiRole))) {
+    errors.push(`aiRole missing or invalid (must be one of ${AI_ROLES.join(', ')}, from the sources — never guessed)`);
+  }
+  if (!Array.isArray(entry.evidence) || entry.evidence.length === 0) {
+    errors.push('evidence must list at least the source paper');
+  } else if (!entry.evidence.some((e) => e.kind === 'paper')) {
+    errors.push('evidence must include the source paper the aiRole claim rests on');
+  }
+  return errors;
+}
+
+async function failToHuman(id: string, error: unknown): Promise<never> {
+  await mkdir(pipelineDir, { recursive: true });
+  await appendFile(
+    join(pipelineDir, 'failures.jsonl'),
+    JSON.stringify({ id, error }) + '\n',
+  );
+  throw new Error(`Entry ${id} failed for human review: ${JSON.stringify(error).slice(0, 200)}`);
+}
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const entriesDir = join(root, 'src/content/entries');
@@ -431,7 +462,10 @@ async function processFamily(
     ),
   );
 
-  let parsed = JSON.parse(checkedRaw) as { claims?: unknown; entry?: unknown };
+  let parsed = JSON.parse(checkedRaw) as { claims?: unknown; entry?: unknown; failed?: unknown; reason?: unknown };
+  if (parsed.failed === true) {
+    await failToHuman(family.id, `checker failed entry: ${String(parsed.reason ?? 'aiRole or claim unsupported by sources')}`);
+  }
   let entry = parsed.entry;
   let attempt = 0;
   for (;;) {
@@ -466,11 +500,18 @@ async function processFamily(
         true,
       ),
     );
-    parsed = JSON.parse(fix) as { claims?: unknown; entry?: unknown };
+    parsed = JSON.parse(fix) as { claims?: unknown; entry?: unknown; failed?: unknown; reason?: unknown };
+    if (parsed.failed === true) {
+      await failToHuman(family.id, `checker failed entry on retry: ${String(parsed.reason ?? 'unsupported')}`);
+    }
     entry = parsed.entry;
   }
 
   const final = entry as Entry;
+  const roleErrors = verifyAiRole(final as { aiRole?: unknown; evidence?: { kind?: unknown }[] });
+  if (roleErrors.length > 0) {
+    await failToHuman(family.id, roleErrors);
+  }
   final.status = 'ai-checked';
   final.model = { reader: cfg.readerModel, checker: cfg.checkerModel, date: new Date().toISOString().slice(0, 10) };
 

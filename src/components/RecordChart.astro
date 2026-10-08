@@ -28,23 +28,25 @@ const max = Math.max(...points.map((p) => p.value));
       </li>
     ))}
   </ul>
-  <table class="visually-hidden">
-    <caption>{title}</caption>
-    <thead>
-      <tr>
-        <th>Year</th>
-        <th>Value</th>
-        <th>Who</th>
-      </tr>
-    </thead>
-    <tbody>
-      {points.map((p) => (
+  <div class="visually-hidden">
+    <table>
+      <caption>{title}</caption>
+      <thead>
         <tr>
-          <td>{p.year}</td>
-          <td>{p.value}</td>
-          <td>{p.who}</td>
+          <th>Year</th>
+          <th>Value</th>
+          <th>Who</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {points.map((p) => (
+          <tr>
+            <td>{p.year}</td>
+            <td>{p.value}</td>
+            <td>{p.who}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 </figure>

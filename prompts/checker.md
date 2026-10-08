@@ -16,6 +16,14 @@ new facts. If firstStep/firstStepBy are unsupported, delete them. Check that the
 wording matches the trust status. Check that the hype check does not overstate.
 Set status to "ai-checked". Output JSON: { claims: [...], entry: {...} }.
 
+Verify `aiRole` against the evidence and sources: the claimed AI role must be stated
+or clearly shown by the source papers (e.g. the paper says the model proved the result
+alone vs with human guidance). `aiRole` is structural — it cannot be deleted like a
+bad sentence. If the sources do not support any AI-role claim, do NOT guess and do NOT
+downgrade silently: fail the whole entry by returning { failed: true, reason } with a
+one-sentence reason naming what is missing. A failed entry goes to a human, never to
+the archive.
+
 Rules for the corrected entry:
 - `claims` lists ONLY the surviving claims, each with verdict "supported" or "external"
   (unsupported statements are removed from the entry, not listed).

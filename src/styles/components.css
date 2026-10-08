@@ -107,7 +107,7 @@
   list-style: none;
 }
 
-@media (max-inline-size: 56rem) {
+@media (max-width: 56rem) {
   .stats {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -134,6 +134,9 @@
 .map-field-title a {
   text-decoration: none;
   color: inherit;
+  /* 24px tap target with no visual shift. */
+  padding-block: 4px;
+  margin-block: -4px;
 }
 
 .map-cells {
@@ -313,6 +316,13 @@
   border-block-end: 1px solid var(--color-rule);
 }
 
+/* Long static lists skip offscreen layout; rendering resumes on
+   scroll, focus, find-in-page or filter changes. */
+#groups > section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 40rem;
+}
+
 .row-link {
   display: grid;
   grid-template-columns: 3.5rem 1fr auto;
@@ -369,7 +379,7 @@
   align-items: start;
 }
 
-@media (max-inline-size: 56rem) {
+@media (max-width: 56rem) {
   .entry-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -382,7 +392,7 @@
   color: var(--color-text-secondary);
 }
 
-@media (max-inline-size: 56rem) {
+@media (max-width: 56rem) {
   .entry-side {
     position: static;
   }
@@ -420,7 +430,7 @@
   margin-block: var(--space-6);
 }
 
-@media (max-inline-size: 56rem) {
+@media (max-width: 56rem) {
   .scorecard {
     grid-template-columns: repeat(2, 1fr);
   }

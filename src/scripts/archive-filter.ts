@@ -163,8 +163,14 @@ function init(): void {
     }
   });
 
-  syncSeg();
-  apply();
+  // Cold load with no params matches the SSR state exactly (nothing hidden,
+  // "All" pressed, full count pre-rendered), so skip the full pass: touching
+  // all 372 rows would force layout of every offscreen section and defeat
+  // content-visibility. Deep links still filter immediately.
+  if (pq || pf || pt) {
+    syncSeg();
+    apply();
+  }
 }
 
 init();

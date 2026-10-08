@@ -1,5 +1,37 @@
 # PR notes — collected deviations for the v1-site PR description
 
+## Phase 4 fix (aiRole)
+
+- `prompts/reader.md` no longer defaults `aiRole` to "autonomous" (nothing in the
+  spec backed that). The reader sets `aiRole` only from what the sources say, or
+  omits it; the checker verifies it against the evidence and fails the whole entry
+  (`{failed:true}` → `failures.jsonl`, never the archive) when the sources are
+  silent. `verifyAiRole` in `scripts/explain.ts` enforces the structural side
+  (valid role + paper evidence). Covered by new unit tests.
+
+## Phase 5 notes
+
+- **Real bugs fixed by the better-interface review + e2e (all applied):**
+  `@media (max-inline-size: …)` is not a valid media feature, so all three
+  responsive breakpoints were dead code (4-col stats/scorecard and 2-col entry
+  grid at every width); now `max-width`. The chart's visually-hidden data table
+  carried the hiding class itself, and `overflow:hidden` does not contain table
+  layout — it forced 22px of horizontal scroll on entries at 390px; the table is
+  now wrapped in a hiding `<div>`. Archive cold load touched all 372 rows,
+  defeating `content-visibility` — the filter pass now runs only with URL params
+  (SSR pre-renders the full count).
+- **Accepted residual (MEDIUM):** 13px map cells fail the 24px target-size audit
+  (home accessibility 95). Deliberate §14.4 design; every destination is
+  redundantly reachable via full-size archive rows, all cells are keyboard
+  focusable with names. Field-title links got a 24px tap area with no visual
+  shift.
+- **Lighthouse (mobile, final):** home 100/95/100, archive 92/100/100,
+  017 100/100/100, 003 98/100/100, field 93–99/100/100, about 100/100/100
+  (performance/accessibility/SEO). Archive TBT 1680ms→~150ms.
+- **Spec gap closed:** every entry page now has a "Report an error" link prefilled
+  with the entry id (spec §13) backed by `report-error.yml`; `deploy.yml` ships
+  `main` to Pages. Playwright: 8 tests green (`e2e/`).
+
 ## Phase 2 deviations (from commit 6033908)
 
 1. **§0 routes instead of §13 routes.** Spec §13/§17 says `/entry/NNN/`,
@@ -32,8 +64,6 @@
   (18 tex files, truncated flag set in the gather record). Spec asks the reader to
   read abstract/introduction/theorem/remarks and skip proof machinery; the cap is
   the enforcement until section-aware extraction exists.
-- **`aiRole` defaults to `autonomous`.** Matches the fixed origin template (one
-  unreleased model produced the result); reviewer can override per entry.
 - **No new runtime dependencies.** Concurrency uses a tiny inline limiter and the
   LLM client is plain `fetch` against an OpenAI-compatible `/chat/completions`
   endpoint (works with any provider via `LLM_BASE_URL`). No paid API was called in

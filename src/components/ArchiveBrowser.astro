@@ -49,7 +49,7 @@ const explainedCount = list.filter((f) => explainedIds.has(f.id)).length;
       ))}
       <button type="button" data-trust="explained" aria-pressed="false">Explained ({explainedCount})</button>
     </div>
-    <span class="live-count" role="status" id="live-count" aria-live="polite" />
+    <span class="live-count" role="status" id="live-count" aria-live="polite">{list.length} of {list.length} results</span>
     <button class="quiet-link" type="button" id="reset" hidden>Reset</button>
   </div>
 </div>

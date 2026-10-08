@@ -42,6 +42,9 @@ const shareText = entry
   ? `${entry.scorecard.firstStep ? `Open since ${entry.scorecard.firstStep}. ` : ''}${entry.headline} ∎ ${absoluteUrl(entryUrl(family))}`
   : `${family.title.replace(/<[^>]+>/g, '')} ∎ ${absoluteUrl(entryUrl(family))}`;
 const shareHref = `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`;
+const reportHref =
+  `https://github.com/nishachay/closed-form/issues/new?template=report-error.yml` +
+  `&labels=entry-error&title=${encodeURIComponent(`[entry ${gid}] `)}`;
 
 const toc = entry
   ? [
@@ -125,6 +128,10 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <p>
             <TrustLabel trust={family.trust} />
           </p>
+          <p class="label">Feedback</p>
+          <p>
+            <a href={reportHref}>Report an error</a>
+          </p>
         </aside>
       </div>
     ) : (
@@ -158,6 +165,10 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <p class="label">Trust</p>
           <p>
             <TrustLabel trust={family.trust} />
+          </p>
+          <p class="label">Feedback</p>
+          <p>
+            <a href={reportHref}>Report an error</a>
           </p>
         </aside>
       </div>

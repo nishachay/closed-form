@@ -13,6 +13,7 @@ import {
   parseExplainArgs,
   runDryRun,
   selectFamilies,
+  verifyAiRole,
 } from '../scripts/explain.js';
 import catalog from '../src/data/catalog.json';
 import type { Family } from '../ingest/types.js';
@@ -75,6 +76,22 @@ describe('explain arg parsing + selection (§11)', () => {
         { ids: ['999'], batch: null, traces: false, all: false, concurrency: 1, dryRun: true },
       ),
     ).toThrow('Unknown family id: 999');
+  });
+
+  it('rejects a missing aiRole (never guessed)', async () => {
+    const { entrySchema } = await import('../src/lib/entry.js');
+    const copy = JSON.parse(JSON.stringify(entry017));
+    delete copy.aiRole;
+    expect(entrySchema.safeParse(copy).success).toBe(false);
+    expect(verifyAiRole(copy).length).toBeGreaterThan(0);
+    expect(verifyAiRole(copy)[0]).toMatch('aiRole');
+  });
+
+  it('rejects evidence without the source paper', () => {
+    const copy = JSON.parse(JSON.stringify(entry017));
+    copy.evidence = [{ kind: 'trace', url: 'https://example.com/t.pdf' }];
+    expect(verifyAiRole(copy).length).toBeGreaterThan(0);
+    expect(verifyAiRole(entry017 as never)).toEqual([]);
   });
 
   it('fails clearly when LLM keys are missing', () => {
