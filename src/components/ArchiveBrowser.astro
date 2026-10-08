@@ -35,6 +35,14 @@ const trustCounts = Object.fromEntries(TRUST_LADDER.map((t) => [t.key, list.filt
           </button>
         ))}
       </div>
+      <label class="fsel">
+        <span class="fsel-k">Trust</span>
+        <select class="fsel-s" data-group="seg" aria-label="Filter by trust">
+          <option value="all">All · {list.length}</option>
+          {TRUST_LADDER.map((t) => (<option value={t.key}>{t.label} · {trustCounts[t.key] ?? 0}</option>))}
+        </select>
+        <svg class="sm-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+      </label>
     </div>
     {!lockField && (
       <div class="fgroup">
@@ -46,12 +54,23 @@ const trustCounts = Object.fromEntries(TRUST_LADDER.map((t) => [t.key, list.filt
           {catalog.subjects.map((s) => {
             const n = list.filter((f) => f.subject === s).length;
             return n > 0 ? (
-              <button type="button" class="chip fopt" data-v={s} aria-pressed="false" title={s}>
+              <button type="button" class="chip fopt" data-v={slugify(s)} aria-pressed="false" title={s}>
                 <span class="fo-l">{s}</span><span class="c">{n}</span>
               </button>
             ) : null;
           })}
         </div>
+        <label class="fsel">
+          <span class="fsel-k">Field</span>
+          <select class="fsel-s" data-group="chips" aria-label="Filter by field">
+            <option value="All">All · {list.length}</option>
+            {catalog.subjects.map((s) => {
+              const n = list.filter((f) => f.subject === s).length;
+              return n > 0 ? <option value={slugify(s)}>{s} · {n}</option> : null;
+            })}
+          </select>
+          <svg class="sm-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
+        </label>
       </div>
     )}
   </aside>
@@ -118,10 +137,18 @@ const trustCounts = Object.fromEntries(TRUST_LADDER.map((t) => [t.key, list.filt
 
 <script src="../scripts/archive-filter.ts"></script>
 <script>
-  for (const row of document.querySelectorAll<HTMLElement>('.fopts')) {
-    const upd = () => row.classList.toggle('at-end', row.scrollLeft + row.clientWidth >= row.scrollWidth - 4);
-    row.addEventListener('scroll', upd, { passive: true });
-    addEventListener('resize', upd);
-    upd();
+  // Phone filters: native selects mirror the button groups (the buttons stay the source of truth).
+  for (const sel of document.querySelectorAll<HTMLSelectElement>('.fsel-s')) {
+    const group = document.getElementById(sel.dataset.group ?? '');
+    if (!group) continue;
+    sel.addEventListener('change', () => {
+      group.querySelector<HTMLButtonElement>(`.fopt[data-v="${CSS.escape(sel.value)}"]`)?.click();
+    });
+    const sync = () => {
+      const on = group.querySelector<HTMLButtonElement>('.fopt[aria-pressed="true"]');
+      if (on?.dataset.v && sel.value !== on.dataset.v) sel.value = on.dataset.v;
+    };
+    new MutationObserver(sync).observe(group, { subtree: true, attributes: true, attributeFilter: ['aria-pressed'] });
+    sync();
   }
 </script>

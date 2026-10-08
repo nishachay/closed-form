@@ -151,8 +151,10 @@ function init(): void {
         homeOf.get(r)?.append(r);
       }
       for (const s of sections) {
-        const any = [...s.querySelectorAll('[data-row]')].some((r) => !(r as HTMLElement).hidden);
-        s.hidden = !any;
+        const n = [...s.querySelectorAll('[data-row]')].filter((r) => !(r as HTMLElement).hidden).length;
+        s.hidden = n === 0;
+        const num = s.querySelector('.group-h .num');
+        if (num) num.textContent = String(n);
       }
     }
     const total = rows.length;
