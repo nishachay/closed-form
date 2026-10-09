@@ -1,0 +1,341 @@
+{
+  "id": "156",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-nine-dimensional-counterexample-to-Borsuks-covering-assertion-September-23-2026/paper.pdf",
+      "label": "A nine-dimensional counterexample to Borsuk's covering assertion"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/156.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A set in nine-dimensional space cannot be cut into ten smaller pieces, so Borsuk's conjecture fails there.",
+  "scope": "The result is one compact set in nine-dimensional space, which the paper also claims extends to every higher dimension. It does not settle dimensions below nine.",
+  "plain": "Borsuk asked whether every bounded set in d-dimensional space can be cut into d + 1 pieces of smaller diameter. This paper proves the answer is no in nine dimensions (Lean proof listed). Its set turns each line through the center of four-dimensional space into a 4-by-4 table. Ten pieces of smaller diameter can never cover all these tables. The previous lowest dimension for such a set was 63.",
+  "doesNot": "This does not find the smallest dimension where Borsuk's conjecture fails, or the exact number of pieces the set needs.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1993",
+    "firstStepBy": "Jeff Kahn and Gil Kalai, first counterexample",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It lowers the smallest known failing dimension of a 1933 question from 63 to 9."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Lowest dimension with a known counterexample to Borsuk's conjecture",
+    "note": "Lower is better. The 1993 counterexample was in very high dimension.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1997,
+        "value": 561,
+        "who": "Raigorodskii",
+        "source": 3
+      },
+      {
+        "year": 2000,
+        "value": 560,
+        "who": "Weissbach",
+        "source": 4
+      },
+      {
+        "year": 2002,
+        "value": 323,
+        "who": "Hinrichs",
+        "source": 5
+      },
+      {
+        "year": 2002,
+        "value": 321,
+        "who": "Pikhurko",
+        "source": 6
+      },
+      {
+        "year": 2003,
+        "value": 298,
+        "who": "Hinrichs and Richter",
+        "source": 7
+      },
+      {
+        "year": 2014,
+        "value": 65,
+        "who": "Bondarenko",
+        "source": 8
+      },
+      {
+        "year": 2014,
+        "value": 64,
+        "who": "Jenrich and Brouwer",
+        "source": 9
+      },
+      {
+        "year": 2026,
+        "value": 63,
+        "who": "Grinsztajn",
+        "source": 10
+      },
+      {
+        "year": 2026,
+        "value": 9,
+        "who": "This paper",
+        "claim": true,
+        "source": 11
+      }
+    ]
+  },
+  "explanation": "Draw an equilateral triangle with sides of length 1. Its diameter, the largest distance between two of its points, is 1. Now cut it into pieces, each with a diameter smaller than 1. Two pieces cannot work. One piece would get two corners, and those sit 1 apart. Three pieces do work. Cut from the center to the middle of each side. Each piece is then only about 0.58 across.\n\nKarol Borsuk asked in 1933 whether this is the worst that can happen. Take any bounded set in d-dimensional space. Can it always be cut into d + 1 pieces of smaller diameter? The triangle shows that the plane, with d = 2, sometimes needs all three. This paper builds a set in nine-dimensional space that ten pieces cannot handle. It is a counterexample, a single case where the general claim fails.\n\nThe set is built from lines. Take a line through the center of four-dimensional space. Pick a direction u along it, of length 1. Form a 4-by-4 table whose entry in row i and column j is u_i times u_j. Flipping u to the opposite direction gives the same table. So each line becomes exactly one table, called its projector. The distance between two tables comes from their 16 entries. Square each difference, add them up, and take the square root.\n\nHere are real numbers. The lines along the first two axes give tables that differ in two entries, each by 1. Their distance is the square root of 2, about 1.414. The line along (1, 1, 0, 0) gives a table with 1/2 in a 2-by-2 block at the top left. Its distance from the first axis is exactly 1. The line along (1, 1, 1, 1) sits about 1.22 from the first axis. The paper gives the general rule. The squared distance is 2 minus twice the squared cosine of the angle between the lines. So two tables are as far apart as possible, about 1.414, exactly when their lines meet at a right angle.\n\nWhy nine dimensions? A symmetric 4-by-4 table is fixed by its 10 entries on or above the diagonal. For every projector, the diagonal entries add up to 1. That one condition leaves a flat space of nine dimensions, with ordinary distances. Borsuk's question therefore allows ten pieces. The paper proves that ten pieces of diameter below about 1.414 can never cover all the projectors.\n\nThe record before this was far higher. Jeff Kahn and Gil Kalai first disproved Borsuk's claim in 1993, in very high dimensions. Later work brought the dimension down to 946, then 561, then 560. Methods based on spherical codes, carefully placed points on a sphere, reached 323, then 321, then 298 by 2003. Andriy Bondarenko reached 65 in 2014, and Thomas Jenrich and Andries Brouwer reached 64. A 2026 note by Max Grinsztajn gives a finite set of points in dimension 63. The projector set itself was already known to experts. What is new is the proof that ten pieces fail.\n\nThe hard part is that the set is infinite and smoothly curved. Its shape is the space of all lines through the center of four-dimensional space. Suppose ten good pieces existed. The paper turns them into ten smooth weights on the lines, adding up to 1. Two lines at right angles never share a positive weight. The paper records which groups of weights are positive together. Known facts about this space concern tidy triangulations, meshes of triangles and their higher versions. The recorded pattern is not one, so those facts do not apply directly. The paper extracts enough structure from the weights themselves, using topology. A finite argument about the ten labels then gives a contradiction.\n\nSo split all these lines into any ten groups you like. Some group will always stretch the full 1.414 across. For the triangle, one more piece fixed the problem. Here the paper does not say whether eleven pieces suffice. It does not find the exact number of pieces this set needs. It also does not find the smallest dimension where Borsuk's claim fails. It does claim to extend the example to every dimension from 9 upward, by adding extra points.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. That statement covers the nine-dimensional projector set, its diameter, and the failure of ten arbitrary pieces. The Lean scope note does not mention the extension to higher dimensions. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean checks a formal version of the nine-dimensional theorem. The higher-dimension extension is not in the scope note. No specialist review is published, and the smallest failing dimension stays open.",
+  "glossary": [
+    {
+      "term": "Diameter",
+      "meaning": "The largest distance between two points of a set."
+    },
+    {
+      "term": "Borsuk's conjecture",
+      "meaning": "The 1933 question of whether every bounded set in d-dimensional space can be cut into d + 1 pieces of smaller diameter."
+    },
+    {
+      "term": "Counterexample",
+      "meaning": "A single case that shows a general claim is false."
+    },
+    {
+      "term": "Projector",
+      "meaning": "Here, the 4-by-4 table built from a line, with entry u_i times u_j for a unit direction u along the line."
+    },
+    {
+      "term": "Frobenius distance",
+      "meaning": "The distance between two tables: square the entry differences, add them, and take the square root."
+    },
+    {
+      "term": "Triangulation",
+      "meaning": "A way of building a shape from triangles and their higher-dimensional versions, glued along faces."
+    },
+    {
+      "term": "Spherical code",
+      "meaning": "A set of points on a sphere chosen so that their distances follow strict rules."
+    },
+    {
+      "term": "Topology",
+      "meaning": "The study of shapes by the properties that survive stretching and bending."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "K. Borsuk, “Drei Sätze über die n-dimensionale euklidische Sphäre”, Fundamenta Mathematicae 20 (1933), 177–190",
+      "url": "https://doi.org/10.4064/fm-20-1-177-190"
+    },
+    {
+      "id": 2,
+      "cite": "J. Kahn and G. Kalai, “A counterexample to Borsuk's conjecture”, Bulletin of the AMS 29 (1993), 60–62",
+      "url": "https://doi.org/10.1090/S0273-0979-1993-00398-7"
+    },
+    {
+      "id": 3,
+      "cite": "A. M. Raigorodskii, “On the dimension in Borsuk's problem”, Russian Mathematical Surveys 52 (1997), 1324–1325",
+      "url": "https://doi.org/10.1070/RM1997v052n06ABEH002184"
+    },
+    {
+      "id": 4,
+      "cite": "B. Weißbach, “Sets with Large Borsuk Number”, Beiträge zur Algebra und Geometrie 41 (2000), 417–423",
+      "url": "https://ftp.gwdg.de/pub/misc/EMIS/journals/BAG/vol.41/no.2/11.html"
+    },
+    {
+      "id": 5,
+      "cite": "A. Hinrichs, “Spherical codes and Borsuk's conjecture”, Discrete Mathematics 243 (2002), 253–256",
+      "url": "https://doi.org/10.1016/S0012-365X(01)00202-3"
+    },
+    {
+      "id": 6,
+      "cite": "O. Pikhurko, “Borsuk's Conjecture Fails in Dimensions 321 and 322”, arXiv:math/0202112 (2002)",
+      "url": "https://arxiv.org/abs/math/0202112v1"
+    },
+    {
+      "id": 7,
+      "cite": "A. Hinrichs and C. Richter, “New sets with large Borsuk numbers”, Discrete Mathematics 270 (2003), 137–147",
+      "url": "https://doi.org/10.1016/S0012-365X(02)00833-6"
+    },
+    {
+      "id": 8,
+      "cite": "A. V. Bondarenko, “On Borsuk's conjecture for two-distance sets”, Discrete & Computational Geometry 51 (2014), 509–515",
+      "url": "https://doi.org/10.1007/s00454-014-9579-4"
+    },
+    {
+      "id": 9,
+      "cite": "T. Jenrich and A. E. Brouwer, “A 64-dimensional counterexample to Borsuk's conjecture”, Electronic Journal of Combinatorics 21(4) (2014), P4.29",
+      "url": "https://doi.org/10.37236/4069"
+    },
+    {
+      "id": 10,
+      "cite": "M. Grinsztajn, “A 63-dimensional counterexample to Borsuk's conjecture”, author manuscript (May 2026)",
+      "url": "https://github.com/maaxgrin/borsuk-63-counterexample/blob/cdcdbeac2e692b8641218c70ce9f414522e125e5/borsuk_63_counterexample.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, family 156: “A nine-dimensional counterexample to Borsuk's covering assertion” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-nine-dimensional-counterexample-to-Borsuks-covering-assertion-September-23-2026/paper.pdf",
+      "quote": "cannot be covered\nby ten subsets of diameter strictly less than $\\sqrt2$."
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, Lean scope note for family 156 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/156.md",
+      "quote": "It lies in the nine-dimensional affine space of trace-one symmetric matrices, has diameter $\\sqrt2$, and cannot be covered by ten arbitrary sets of smaller diameter."
+    },
+    {
+      "id": 13,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Borsuk asked whether every bounded set in d-dimensional space can be covered by d+1 subsets of smaller diameter.",
+      "verdict": "supported",
+      "sourceLine": "Borsuk's partition problem asks whether every bounded set of positive",
+      "sourceId": 11
+    },
+    {
+      "text": "Borsuk posed the question in 1933.",
+      "verdict": "supported",
+      "sourceLine": "Borsuk posed the partition question in 1933",
+      "sourceId": 11
+    },
+    {
+      "text": "For a unit vector u, the table uu^T is the projector onto the line spanned by u.",
+      "verdict": "supported",
+      "sourceLine": "the matrix $uu^{\\mathsf T}$ is the orthogonal projector onto the line",
+      "sourceId": 11
+    },
+    {
+      "text": "Replacing u by -u leaves the table unchanged, so each line gives one table.",
+      "verdict": "supported",
+      "sourceLine": "The formula $uu^{\\mathsf T}$ is unchanged when $u$ is replaced by $-u$,",
+      "sourceId": 11
+    },
+    {
+      "text": "The squared distance is 2 minus twice the squared inner product of the unit directions.",
+      "verdict": "supported",
+      "sourceLine": "\\|P_x-P_y\\|_F^2=2-2\\langle u,v\\rangle^2.",
+      "sourceId": 11
+    },
+    {
+      "text": "The diameter is the square root of 2, reached exactly when the lines are orthogonal.",
+      "verdict": "supported",
+      "sourceLine": "Consequently $\\operatorname{diam}(X_k)=\\sqrt2$, and two projectors are at",
+      "sourceId": 11
+    },
+    {
+      "text": "The trace-one space of symmetric 4-by-4 tables is a nine-dimensional Euclidean space.",
+      "verdict": "supported",
+      "sourceLine": "Its trace-one affine hyperplane is",
+      "sourceId": 11
+    },
+    {
+      "text": "Ten subsets of diameter below the square root of 2 cannot cover the projector set.",
+      "verdict": "supported",
+      "sourceLine": "by ten subsets of diameter strictly less than $\\sqrt2$.",
+      "sourceId": 11
+    },
+    {
+      "text": "Kahn and Kalai disproved Borsuk's claim in high dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Kahn and Kalai disproved it in high dimensions \\cite{KahnKalai1993},",
+      "sourceId": 11
+    },
+    {
+      "text": "Kahn and Kalai's counterexample appeared in 1993.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "Earlier reductions reached 946 (Nilli), 561 (Raigorodskii) and 560 (Weissbach).",
+      "verdict": "supported",
+      "sourceLine": "Early reductions in counterexample dimension include $946$",
+      "sourceId": 11
+    },
+    {
+      "text": "Spherical codes gave 323 (Hinrichs), 321 (Pikhurko) and 298 (Hinrichs and Richter, 2003).",
+      "verdict": "supported",
+      "sourceLine": "Hinrichs and Richter published their bound $298$ in 2003",
+      "sourceId": 11
+    },
+    {
+      "text": "Bondarenko reached dimension 65 and Jenrich and Brouwer dimension 64.",
+      "verdict": "supported",
+      "sourceLine": "Bondarenko constructed a two-distance counterexample in dimension $65$",
+      "sourceId": 11
+    },
+    {
+      "text": "Grinsztajn's public note gives a finite counterexample in dimension 63.",
+      "verdict": "supported",
+      "sourceLine": "Grinsztajn's public proof note gives a",
+      "sourceId": 11
+    },
+    {
+      "text": "The projector embedding is classical; the contribution is the covering obstruction.",
+      "verdict": "supported",
+      "sourceLine": "Our contribution is the covering obstruction for the projector set",
+      "sourceId": 11
+    },
+    {
+      "text": "A cover by ten pieces gives nonnegative smooth functions summing to one, with orthogonal lines having disjoint positive coordinates.",
+      "verdict": "supported",
+      "sourceLine": "on $\\mathbb{RP}^3$, with sum one, such that orthogonal lines have disjoint",
+      "sourceId": 11
+    },
+    {
+      "text": "Known triangulation results cannot be applied directly, because the faces are supports of a map, not simplices of a triangulation.",
+      "verdict": "supported",
+      "sourceLine": "These results cannot be",
+      "sourceId": 11
+    },
+    {
+      "text": "The central difficulty is to derive enough face structure from the map itself.",
+      "verdict": "supported",
+      "sourceLine": "The central difficulty is to derive enough of its face structure from",
+      "sourceId": 11
+    },
+    {
+      "text": "The last stage is a finite combinatorial obstruction.",
+      "verdict": "supported",
+      "sourceLine": "The last stage converts this topological information into a finite",
+      "sourceId": 11
+    },
+    {
+      "text": "The theorem does not determine the smallest failing dimension or the exact number of pieces.",
+      "verdict": "supported",
+      "sourceLine": "The theorem does not",
+      "sourceId": 11
+    },
+    {
+      "text": "The construction extends to compact counterexamples in every dimension d of at least 9.",
+      "verdict": "supported",
+      "sourceLine": "extends the construction to compact counterexamples in every dimension",
+      "sourceId": 11
+    },
+    {
+      "text": "The Lean formalization covers the nine-dimensional projector set, its diameter and the failure of ten arbitrary pieces.",
+      "verdict": "external",
+      "sourceId": 12
+    },
+    {
+      "text": "The results were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 13
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

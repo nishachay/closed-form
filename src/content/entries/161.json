@@ -1,0 +1,252 @@
+{
+  "id": "161",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Sidorenkos-conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to Sidorenko's conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/161.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A 35-vertex bipartite pattern appears less often in some graph than random would predict.",
+  "scope": "The result concerns one fixed pattern and proves a suitable host graph exists. The forcing failure is shown at one density only.",
+  "plain": "Sidorenko's conjecture said a bipartite pattern appears at least as often as in a random graph. Here the random graph has the same edge density. This paper proves it false with one pattern of 35 vertices and 66 edges. Some finite graph has fewer copies of it than the random count. The same pattern also gives a counterexample to the forcing conjecture at one density.",
+  "doesNot": "This does not give the host graph explicitly or say which other bipartite patterns fail.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1991",
+    "firstStepBy": "Alexander Sidorenko, inequalities formulated",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It disproves a well-studied conjecture that many papers had confirmed for special classes of patterns."
+  },
+  "explanation": "Draw a square: four corners, four sides. Call it the pattern. Now take a tiny host graph, a path of three dots a, b, c joined by two lines. Send each corner of the square to a dot, repeats allowed. The map counts if every side of the square lands on a line of the path. Out of 3⁴ = 81 maps, exactly 8 count. So the square's density in the path is 8/81, about 0.099.\n\nCompare that with a random graph. The path links 4 of its 9 ordered pairs of dots, so its edge density is 4/9. In a random graph with that density, each side of the square is present with chance 4/9. All four together give (4/9)⁴ = 256/6561, about 0.039. The path holds about 2.5 times more squares than this random benchmark.\n\nHere a map like this is called a homomorphism. Its share among all maps is the homomorphism density. A graph is bipartite when its dots split into two sides and every line crosses between them. The square is bipartite. Sidorenko's conjecture says a bipartite pattern never does worse than random. For every host graph, its density should be at least the edge density raised to the number of pattern lines. The bipartite condition matters. A triangle is not bipartite, and the four-dot graph with two dots on each side holds no triangles. Its edge density is 1/2, so random would predict (1/2)³ = 1/8.\n\nThe question grew out of a classical theme. Once a host has many lines, how many copies of a fixed bipartite pattern must it contain? Sidorenko formulated the inequalities in papers from 1991 and 1993. Trees, even cycles and complete bipartite graphs were basic positive cases. Conlon, Fox and Sudakov proved it in 2010 when one dot touches the whole other side. Hatami's 2010 graph-norm method covered the hypercube and other highly structured patterns. Many later papers added classes by gluing, entropy, tree decompositions and degree counts.\n\nThis paper proves the conjecture false. Its pattern starts from 13 points and 22 chosen triples of them. The pattern has one dot per point and one per triple. A point joins each triple that contains it. That gives 35 dots and 66 lines. Each of the 33 point pairs used sits in exactly two triples. The paper shows some finite host graph has fewer copies of this pattern than the random benchmark predicts.\n\nThe obstacle is that random is very hard to beat. Lovász had shown that hosts close enough to random always obey the inequality. Known proofs also covered most patterns with clean structure. This pattern was chosen to dodge those tools. No dot touches the whole other side, its degrees are uneven, and every dot has at least three lines. The paper builds a weighted host from matrices of numbers modulo a large prime. Each point pair gets a random sign, and each point-triple link gets a sign too. Because each point pair lies in two triples, the pair's random sign averages out. What survives is a link between four signs, two from each triple. The construction makes that link tilt the count below random. A random sampling step then turns the weighted host into an ordinary graph.\n\nSo the square's comfortable margin over random does not hold for every bipartite pattern. Taking repeated products of the host even pushes the ratio below any fixed fraction, for this pattern. The host graph is not written down, though. The paper proves it exists and does not state its size.\n\nThe same pattern also breaks a second conjecture. A sequence of graphs is quasirandom when every small pattern appears at its random rate. In 1989 Chung, Graham and Wilson showed that matching random on lines and squares forces this. Skokan and Thoma asked which bipartite patterns can replace the square. Conlon, Fox and Sudakov conjectured an answer: a pattern can, exactly when it is bipartite and contains a cycle. The paper claims to prove this fails at one density. It builds graphs whose line and pattern densities approach random rates. Yet their square density stays above random. It does not claim failure at every density.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. That statement fixes the 35-dot, 66-line pattern and gives a finite simple host graph with too few copies. The forcing consequence is outside that check. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds. Lean checks a formal version of the main counterexample. The forcing consequence is outside that check. The host graph is not explicit, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Homomorphism",
+      "meaning": "A map from the pattern's dots to the host's dots that sends every line to a line; repeats are allowed."
+    },
+    {
+      "term": "Homomorphism density",
+      "meaning": "The share of all maps from pattern to host that are homomorphisms."
+    },
+    {
+      "term": "Edge density",
+      "meaning": "Here, the share of ordered pairs of host dots that are joined by a line."
+    },
+    {
+      "term": "Bipartite graph",
+      "meaning": "A graph whose dots split into two sides, with every line crossing between them."
+    },
+    {
+      "term": "Sidorenko's conjecture",
+      "meaning": "The claim that every bipartite pattern with a line has density at least the edge density to the power of its line count."
+    },
+    {
+      "term": "Quasirandom",
+      "meaning": "Describes a sequence of graphs in which every fixed small pattern appears at its random rate in the limit."
+    },
+    {
+      "term": "Forcing conjecture",
+      "meaning": "The claim that a pattern's random count forces quasirandomness exactly when it is bipartite and has a cycle."
+    },
+    {
+      "term": "Graphon",
+      "meaning": "A weighted recipe for random graphs: it gives the chance that two dots of given types are joined."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “A counterexample to Sidorenko's conjecture” (September 23, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Sidorenkos-conjecture-September-23-2026/paper.pdf",
+      "quote": "We disprove this conjecture."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 161 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/161.md"
+    },
+    {
+      "id": 3,
+      "cite": "A. F. Sidorenko, “Inequalities for functionals generated by bipartite graphs”, Diskretnaya Matematika 3(3) (1991), 50–65",
+      "url": "https://www.mathnet.ru/eng/dm804"
+    },
+    {
+      "id": 4,
+      "cite": "A. Sidorenko, “A correlation inequality for bipartite graphs”, Graphs and Combinatorics 9 (1993), 201–204",
+      "url": "https://doi.org/10.1007/BF02988307"
+    },
+    {
+      "id": 5,
+      "cite": "D. Conlon, J. Fox and B. Sudakov, “An approximate version of Sidorenko's conjecture”, Geometric and Functional Analysis 20 (2010), 1354–1366",
+      "url": "https://doi.org/10.1007/s00039-010-0097-0"
+    },
+    {
+      "id": 6,
+      "cite": "H. Hatami, “Graph norms and Sidorenko's conjecture”, Israel Journal of Mathematics 175 (2010), 125–150",
+      "url": "https://arxiv.org/abs/0806.0047"
+    },
+    {
+      "id": 7,
+      "cite": "F. R. K. Chung, R. L. Graham and R. M. Wilson, “Quasi-random graphs”, Combinatorica 9 (1989), 345–362",
+      "url": "https://doi.org/10.1007/BF02125347"
+    },
+    {
+      "id": 8,
+      "cite": "J. Skokan and L. Thoma, “Bipartite subgraphs and quasi-randomness”, Graphs and Combinatorics 20 (2004), 255–262",
+      "url": "https://doi.org/10.1007/s00373-004-0556-1"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Sidorenko's conjecture asserts t(H,G) ≥ p(G)^|E(H)| for bipartite H with at least one edge, counting all homomorphisms.",
+      "verdict": "supported",
+      "sourceLine": "where \\(\\Hom(H,G)\\) counts every edge-preserving map, including noninjective maps. Sidorenko's conjecture asserts that",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper disproves the conjecture.",
+      "verdict": "supported",
+      "sourceLine": "We disprove this conjecture.",
+      "sourceId": 1
+    },
+    {
+      "text": "The pattern is the incidence graph of 22 triples on 13 points, with 35 vertices and 66 edges.",
+      "verdict": "supported",
+      "sourceLine": "Let \\(H\\) be the incidence graph of the \\(22\\) triples on \\(13\\) points",
+      "sourceId": 1
+    },
+    {
+      "text": "Each of the 33 point pairs belongs to exactly two faces.",
+      "verdict": "supported",
+      "sourceLine": "Each of its \\(33\\) point pairs belongs to exactly two faces.",
+      "sourceId": 1
+    },
+    {
+      "text": "The construction specifies H explicitly and proves existence of G.",
+      "verdict": "supported",
+      "sourceLine": "route specifies \\(H\\) explicitly and proves existence of \\(G\\)",
+      "sourceId": 1
+    },
+    {
+      "text": "The conjecture grew out of supersaturation questions.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture grew out of questions about supersaturation",
+      "sourceId": 1
+    },
+    {
+      "text": "Sidorenko formulated the inequalities.",
+      "verdict": "supported",
+      "sourceLine": "Sidorenko formulated the associated inequalities for functionals of nonnegative kernels",
+      "sourceId": 1
+    },
+    {
+      "text": "Trees, even cycles and complete bipartite graphs are basic positive examples.",
+      "verdict": "supported",
+      "sourceLine": "Trees, even cycles, and complete bipartite graphs are basic positive examples",
+      "sourceId": 1
+    },
+    {
+      "text": "Conlon, Fox and Sudakov proved the conjecture when one vertex is adjacent to the entire opposite part.",
+      "verdict": "supported",
+      "sourceLine": "Fox, and Sudakov proved the conjecture when one vertex is adjacent to",
+      "sourceId": 1
+    },
+    {
+      "text": "Hatami developed the graph-norm approach and proved the hypercube case.",
+      "verdict": "supported",
+      "sourceLine": "Hatami developed the graph-norm approach",
+      "sourceId": 1
+    },
+    {
+      "text": "Lovász proved the inequality for kernels close enough to constant.",
+      "verdict": "supported",
+      "sourceLine": "Thus the constant kernel has a neighborhood on which the inequality holds.",
+      "sourceId": 1
+    },
+    {
+      "text": "The pattern has no vertex adjacent to the whole opposite part.",
+      "verdict": "supported",
+      "sourceLine": "It therefore has no vertex adjacent to the whole opposite part.",
+      "sourceId": 1
+    },
+    {
+      "text": "Its minimum degree is 3.",
+      "verdict": "supported",
+      "sourceLine": "Its minimum degree is $3$",
+      "sourceId": 1
+    },
+    {
+      "text": "The matrix model works over a finite field with q an odd prime.",
+      "verdict": "supported",
+      "sourceLine": "For a symmetric matrix difference over \\(\\F_q\\), with \\(q\\) an odd prime",
+      "sourceId": 1
+    },
+    {
+      "text": "Double occurrence of each pair converts a local sign constraint into a correlation, which the kernel construction makes negative.",
+      "verdict": "supported",
+      "sourceLine": "This is the finite correlation that the kernel construction turns negative.",
+      "sourceId": 1
+    },
+    {
+      "text": "Tensor powers make t(H,F)/p(F)^66 arbitrarily small.",
+      "verdict": "supported",
+      "sourceLine": "Tensor powers make \\(t(H,F)/p(F)^{66}\\) arbitrarily small",
+      "sourceId": 1
+    },
+    {
+      "text": "Chung, Graham and Wilson gave the edge-and-four-cycle characterization; Skokan and Thoma studied replacing the four-cycle.",
+      "verdict": "supported",
+      "sourceLine": "Skokan and Thoma studied which bipartite patterns can replace the four-cycle",
+      "sourceId": 1
+    },
+    {
+      "text": "The forcing conjecture: a graph is forcing iff it is bipartite and contains a cycle.",
+      "verdict": "supported",
+      "sourceLine": "Conlon, Fox, and Sudakov formulate the forcing conjecture: a graph is forcing if and only if it is bipartite and contains a cycle",
+      "sourceId": 1
+    },
+    {
+      "text": "Sampled graphs match edge and H-densities in the limit while four-cycle density stays above p^4.",
+      "verdict": "supported",
+      "sourceLine": "to these values while their four-cycle density has a limit strictly",
+      "sourceId": 1
+    },
+    {
+      "text": "The argument supplies one density and does not assert failure at every density.",
+      "verdict": "supported",
+      "sourceLine": "The argument supplies one density $p\\in(0,1)$ and does not assert failure of $p$-forcing at every density.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the counterexample for the fixed 35-vertex, 66-edge graph; the forcing consequence is outside it.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

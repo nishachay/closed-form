@@ -1,0 +1,168 @@
+{
+  "id": "013",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026/paper.pdf",
+      "label": "The additive indecomposability of the primes"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/013.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The primes cannot be built by adding two sets of whole numbers.",
+  "scope": "Both sets must hold at least two nonnegative whole numbers; finitely many mismatches with the primes are allowed.",
+  "plain": "Pick two sets of whole numbers and add every member of one to every member of the other. Ostmann asked in 1956 whether the sums could ever be exactly the primes, up to finitely many mistakes. Each set must hold at least two numbers. This paper proves that no such pair exists. A Lean formalization of the statement is listed.",
+  "doesNot": "This does not prove the inverse-sieve conjecture of Green and Harper. It shows only that the primes are not a sum of two such sets.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1956",
+    "firstStepBy": "Hans-Heinrich Ostmann, conjecture",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It settles a 70-year-old conjecture about the additive structure of the primes, if the proof holds."
+  },
+  "explanation": "Take two small sets of whole numbers, A = {0, 2} and B = {3, 5, 11, 17, 29, 41}. Add every number in A to every number in B. You get 3, 5, 7, 11, 13, 17, 19, 29, 31, 41 and 43. Every one of those sums is prime. Yet the list skips three primes below 43: 2, 23 and 37. Could some cleverer pair of sets produce the primes, and nothing else?\n\nThe question is the inverse of Goldbach's. Goldbach asked which numbers are sums of primes. Here we ask whether the primes themselves are a set of sums. Some care is needed to make it fair. With A = {0} and B equal to all the primes, the answer is trivially yes. So both sets must hold at least two numbers. The question also forgives finitely many mistakes. A few missing primes, or a few stray non-primes, are allowed. Only the long run counts.\n\nThe missing prime 23 shows why this is hard to arrange. To make 23 with A = {0, 2}, B would need 21 or 23. But 21 + 0 = 21 is not prime, and 23 + 2 = 25 is not prime. Adding either one breaks the rule.\n\nHans-Heinrich Ostmann conjectured in 1956 that no such pair of sets exists. This is also called the inverse Goldbach problem. In 1964, Laffer and Mann showed that a pair would need both sets to be infinite. Elsholtz later ruled out splitting the primes into three summed sets. Elsholtz and Harper showed that each set would have roughly √x members up to x, apart from small factors.\n\nCounting alone cannot settle it. Below one million there are 78,498 primes. Two sets with 1,000 members each produce up to a million sums. That is plenty of room. So the obstacle has to come from somewhere other than size.\n\nThe real pressure comes from remainders. Divide by 3, for example. Suppose a large number in A leaves remainder 1 and a large number in B leaves remainder 2. Then their sum is a multiple of 3, so it is not prime. The same holds for every prime divisor at once. Green and Harper showed in 2014 that an unproved conjecture about such sets would imply Ostmann's. That conjecture says these sets must look like the values of a quadratic formula. Later work found large overlaps with such formulas, but not enough to finish.\n\nThis paper takes a direct route. It uses the remainder restrictions at all primes together with the demand that every large prime appear. It does not need the unproved conjecture, and it does not prove it either. The paper spells out one consequence. Take two sets that each hold at least two numbers. If their sums include every large enough prime, they must also include infinitely many non-primes.\n\nSo no pair like our example can ever work, however clever. Forgiving finitely many mistakes does not help. Any two sets, each with at least two numbers, miss infinitely many primes or hit infinitely many non-primes.\n\nHow sure is this? A computer proof checker called Lean has a formal version of the full statement listed. It covers the main conjecture and the case where both sets are infinite. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. A Lean formalization of the full statement is listed, but no specialist has published a review of the paper.",
+  "glossary": [
+    {
+      "term": "Prime",
+      "meaning": "A whole number above 1 whose only divisors are 1 and itself."
+    },
+    {
+      "term": "Sumset",
+      "meaning": "The set of all sums a + b, with a from one set and b from another."
+    },
+    {
+      "term": "Remainder",
+      "meaning": "What is left over when one whole number is divided by another."
+    },
+    {
+      "term": "Goldbach's conjecture",
+      "meaning": "The open claim that every even number above 2 is a sum of two primes."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks mathematical proofs step by step."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "H.-H. Ostmann, “Additive Zahlentheorie. Erster Teil: Allgemeine Untersuchungen” (Springer, 1956)",
+      "url": "https://doi.org/10.1007/978-3-662-11030-0"
+    },
+    {
+      "id": 2,
+      "cite": "W. B. Laffer and H. B. Mann, “Decomposition of sets of group elements”, Pacific Journal of Mathematics 14 (1964), 547–558",
+      "url": "https://doi.org/10.2140/pjm.1964.14.547"
+    },
+    {
+      "id": 3,
+      "cite": "B. Green and A. J. Harper, “Inverse questions for the large sieve”, Geometric and Functional Analysis 24 (2014), 1167–1203",
+      "url": "https://doi.org/10.1007/s00039-014-0288-1"
+    },
+    {
+      "id": 4,
+      "cite": "C. Elsholtz and A. J. Harper, “Additive decompositions of sets with restricted prime factors”, Transactions of the AMS 367 (2015), 7403–7427",
+      "url": "https://doi.org/10.1090/S0002-9947-2014-06384-8"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “The additive indecomposability of the primes” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for Ostmann’s inverse Goldbach conjecture (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/013.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Ostmann's conjecture goes back to his 1956 treatise.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture goes back to his 1956 treatise"
+    },
+    {
+      "text": "It is also known as the inverse Goldbach problem.",
+      "verdict": "supported",
+      "sourceLine": "It is also known as the inverse Goldbach problem."
+    },
+    {
+      "text": "Both summands must contain at least two elements, and finitely many differences are allowed.",
+      "verdict": "supported",
+      "sourceLine": "Two subsets of … are asymptotically equal if their symmetric difference is finite."
+    },
+    {
+      "text": "Laffer and Mann showed that a decomposition must have two infinite summands.",
+      "verdict": "supported",
+      "sourceLine": "Laffer and Mann showed that a hypothetical decomposition must have two infinite summands"
+    },
+    {
+      "text": "Elsholtz ruled out a decomposition into three nontrivial summands.",
+      "verdict": "supported",
+      "sourceLine": "ruled out a decomposition into three nontrivial summands"
+    },
+    {
+      "text": "Elsholtz and Harper sharpened the counting bounds to about the square-root scale.",
+      "verdict": "supported",
+      "sourceLine": "Elsholtz and Harper sharpened the binary counting bounds to"
+    },
+    {
+      "text": "Counting bounds alone do not exclude a decomposition.",
+      "verdict": "supported",
+      "sourceLine": "and therefore do not by themselves exclude a decomposition."
+    },
+    {
+      "text": "A common remainder modulo p would make a sum a large multiple of p, so not prime.",
+      "verdict": "supported",
+      "sourceLine": "Indeed, a common residue would make … a positive multiple of … larger than … and … although … must be prime."
+    },
+    {
+      "text": "Green and Harper proved that an inverse-sieve conjecture would imply Ostmann's conjecture.",
+      "verdict": "supported",
+      "sourceLine": "proved that a suitable inverse-sieve conjecture would imply Ostmann's conjecture"
+    },
+    {
+      "text": "That conjecture proposes a quadratic description of such sets.",
+      "verdict": "supported",
+      "sourceLine": "Their conjecture proposes a quadratic description of sets near the square-root sieve bound."
+    },
+    {
+      "text": "Later large overlaps with quadratic images fall short of what Green and Harper's route needs.",
+      "verdict": "supported",
+      "sourceLine": "These large intersections with quadratic images fall short of the near-containment required by Green and Harper's conditional route."
+    },
+    {
+      "text": "The proof uses residue restrictions and coverage of every large prime, without such a classification.",
+      "verdict": "supported",
+      "sourceLine": "Our proof uses the simultaneous residue restrictions and coverage of every sufficiently large prime to reach a contradiction without such a classification."
+    },
+    {
+      "text": "The argument does not require the inverse-sieve conjecture and does not assert it.",
+      "verdict": "supported",
+      "sourceLine": "The argument does not require the general inverse-sieve conjecture of … and no such general classification theorem is asserted here."
+    },
+    {
+      "text": "If both sets have at least two elements and A+B contains every large prime, it contains infinitely many composite numbers.",
+      "verdict": "supported",
+      "sourceLine": "In particular, if … and … contains every sufficiently large prime, then it contains infinitely many composite numbers."
+    },
+    {
+      "text": "The Lean formalization covers the full conjecture and its two-infinite-summands case.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}
