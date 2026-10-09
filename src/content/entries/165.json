@@ -1,0 +1,227 @@
+{
+  "id": "165",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-crossing-number-of-complete-graphs-September-23-2026/paper.pdf",
+      "label": "The crossing number of complete graphs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-crossing-number-of-complete-bipartite-graphs-September-23-2026/paper.pdf",
+      "label": "The crossing number of complete bipartite graphs"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/165.md",
+      "label": "Lean scope doc",
+      "note": "2 papers of 2 listed in lean/formalization.yaml. The scope doc links 2 Comparator challenges for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/CompleteCrossing.json",
+      "label": "Comparator challenge CompleteCrossing.json",
+      "note": "Names 1 theorem: OAI.Paper170.complete_graph_crossing_number."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/BipartiteCrossing.json",
+      "label": "Comparator challenge BipartiteCrossing.json",
+      "note": "Names 1 theorem: OAI.Zarankiewicz.mainTarget_proof."
+    }
+  ],
+  "headline": "The classic crossing formulas for drawing complete networks are exact.",
+  "scope": "The formulas count every crossing point in drawings with curved edges allowed. Other crossing counts and straight-line drawings are separate questions.",
+  "plain": "Join every pair of n dots with a line, and some lines must cross. Harary and Hill conjectured in 1963 a formula for the fewest crossings. Zarankiewicz proposed a similar formula for two groups of dots, each dot joined to every dot of the other group. These two papers prove both formulas for every size.",
+  "doesNot": "This does not settle the crossing numbers of drawings that must use straight lines.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1960",
+    "firstStepBy": "Richard Guy, first published upper bound",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles two well-known exact formulas that were proved only for small cases or restricted drawings."
+  },
+  "explanation": "Put five dots on a page and join every pair with a line. That makes ten lines. Lines may curve, but however you route them, at least two must cross somewhere. One crossing is enough. With six dots and fifteen lines, the best drawing has three crossings. With seven dots it has nine. How does that number grow?\n\nThe guess has a precise form. Write n for the number of dots. Take n/2, (n−1)/2, (n−2)/2 and (n−3)/2, round each one down, multiply them, and divide by 4. For 5 dots that gives 2 × 2 × 1 × 1 / 4 = 1. For 11 dots it gives 100. Richard Guy published a drawing with this many crossings in 1960. In 1963, Frank Harary and Anthony Hill stated the conjecture: no drawing does better.\n\nDrawings with that count were known. The hard part was the other direction. A drawing can route its lines in endless ways. Showing that nothing beats the formula means ruling out every one of them. Progress came in pieces. In 2007, Shengjun Pan and R. Bruce Richter used a computer to prove the formula for 11 dots, which gives exactly 100. Oswin Aichholzer reported a computer-assisted proof for 13 dots in 2021, giving 225. For large n, the best general bound reached more than 0.98559895 times the formula in 2019. Other proofs worked only when the drawing was restricted, for example with every dot on one line.\n\nA second puzzle has the same shape. Paul Turán traced it to a brick factory near Budapest in 1944, with rail lines joining kilns to storage yards. In graph terms, every one of m dots on one side joins every one of n dots on the other. Casimir Zarankiewicz drew a layout with a matching formula, but his published proof that it was best had a gap. For three dots on each side, the formula gives one crossing. Daniel Kleitman proved the formula in 1970 when one side has at most six dots.\n\nThese two papers prove both formulas for every size, with any curved lines allowed. The single difficulty, ruling out every drawing, is removed by turning a drawing into algebra. Each crossing gets a sign that records which way the lines pass. The paper also records the order in which lines leave each dot. For closed loops in the plane, these signed counts always cancel to zero. That fact is turned into a statement about polynomials, formulas in several variables.\n\nTake an odd number of dots. The paper builds a family of polynomials whose number of independent members is exactly the conjectured count. It shows that the crossings of a drawing carry enough information to pin down every member. A counting argument from linear algebra then shows the drawing needs at least that many crossings. Removing one dot handles even numbers. Known drawings show the count is reached.\n\nThe theorems count every crossing point. If two lines cross three times, that is three crossings. Other ways of counting, such as counting each crossing pair of lines once, are different questions. Drawings that must use straight lines are also a separate question. The formula now holds for every number of dots, not only the cases computers could check.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both formulas, including drawings that reach them. Those formal versions count crossings as points, as the papers do. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean checks formal versions of both formulas and matching drawings; no specialist review of either paper is published.",
+  "glossary": [
+    {
+      "term": "Complete graph",
+      "meaning": "A set of dots with a line joining every pair."
+    },
+    {
+      "term": "Complete bipartite graph",
+      "meaning": "Two groups of dots, with every dot of one group joined to every dot of the other."
+    },
+    {
+      "term": "Crossing number",
+      "meaning": "The fewest crossing points any drawing of a graph can have."
+    },
+    {
+      "term": "Polynomial",
+      "meaning": "A formula built from variables by adding and multiplying, such as x²y + 3."
+    },
+    {
+      "term": "Two-page drawing",
+      "meaning": "A drawing with every dot on one line and each edge on one side of it."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. K. Guy, “A combinatorial problem”, Nabla (Bulletin of the Malayan Mathematical Society) 7 (1960), 68–72 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 2,
+      "cite": "F. Harary and A. Hill, “On the Number of Crossings in a Complete Graph”, Proceedings of the Edinburgh Mathematical Society 13(4) (1963), 333–338",
+      "url": "https://doi.org/10.1017/S0013091500025645"
+    },
+    {
+      "id": 3,
+      "cite": "S. Pan and R. B. Richter, “The crossing number of K11 is 100”, Journal of Graph Theory 56(2) (2007), 128–134",
+      "url": "https://doi.org/10.1002/jgt.20249"
+    },
+    {
+      "id": 4,
+      "cite": "O. Aichholzer, “Another Small but Long Step for Crossing Numbers: cr(13)=225 and cr(14)=315”, Proceedings of the 33rd Canadian Conference on Computational Geometry (2021), 72–77",
+      "url": "https://cccg.ca/proceedings/2021/CCCG2021.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "J. Balogh, B. Lidický and G. Salazar, “Closing in on Hill’s Conjecture”, SIAM Journal on Discrete Mathematics 33(3) (2019), 1261–1276",
+      "url": "https://doi.org/10.1137/17M1158859"
+    },
+    {
+      "id": 6,
+      "cite": "B. M. Ábrego, O. Aichholzer, S. Fernández-Merchant, P. Ramos and G. Salazar, “The 2-Page Crossing Number of Kn”, Discrete & Computational Geometry 49(4) (2013), 747–777",
+      "url": "https://doi.org/10.1007/s00454-013-9514-0"
+    },
+    {
+      "id": 7,
+      "cite": "P. Turán, “A note of welcome”, Journal of Graph Theory 1(1) (1977), 7–9",
+      "url": "https://doi.org/10.1002/jgt.3190010105"
+    },
+    {
+      "id": 8,
+      "cite": "C. Zarankiewicz, “On a problem of P. Turan concerning graphs”, Fundamenta Mathematicae 41(1) (1955), 137–145",
+      "url": "https://doi.org/10.4064/fm-41-1-137-145"
+    },
+    {
+      "id": 9,
+      "cite": "D. J. Kleitman, “The crossing number of K5,n”, Journal of Combinatorial Theory 9(4) (1970), 315–323",
+      "url": "https://doi.org/10.1016/S0021-9800(70)80087-4"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, family 165: “The crossing number of complete graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-crossing-number-of-complete-graphs-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, family 165: “The crossing number of complete bipartite graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-crossing-number-of-complete-bipartite-graphs-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, Lean doc for family 165 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/165.md"
+    },
+    {
+      "id": 13,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Crossings are counted as points, so repeated crossings of two edges count separately.",
+      "verdict": "supported",
+      "sourceLine": "counting every crossing when two edges meet repeatedly."
+    },
+    {
+      "text": "Harary and Hill stated the conjectured formula and credited Guy’s 1960 note with the first published upper bound.",
+      "verdict": "supported",
+      "sourceLine": "They credited Guy's 1960 note with the first published upper bound"
+    },
+    {
+      "text": "Pan and Richter’s computer-assisted proof gave cr(K11) = 100.",
+      "verdict": "supported",
+      "sourceLine": "Pan and Richter's computer-assisted proof gave"
+    },
+    {
+      "text": "Aichholzer reported a computer-assisted proof of cr(K13) = 225.",
+      "verdict": "supported",
+      "sourceLine": "Aichholzer subsequently reported a computer-assisted proof of"
+    },
+    {
+      "text": "Balogh, Lidický and Salazar proved the asymptotic ratio exceeds 0.98559895.",
+      "verdict": "supported",
+      "sourceLine": "later proved that this ratio has limit greater than"
+    },
+    {
+      "text": "Earlier results establish the lower bound under constraints on the drawing.",
+      "verdict": "supported",
+      "sourceLine": "These results establish the lower bound under constraints on the drawing."
+    },
+    {
+      "text": "For every n ≥ 3 the crossing number of K_n equals Z(n).",
+      "verdict": "supported",
+      "sourceLine": "Thus Theorem … resolves the Harary--Hill conjecture positively."
+    },
+    {
+      "text": "For odd n the polynomial space has dimension Z(2s+1).",
+      "verdict": "supported",
+      "sourceLine": "This space has dimension"
+    },
+    {
+      "text": "Vertex deletion gives the even case.",
+      "verdict": "supported",
+      "sourceLine": "Vertex deletion gives the even case."
+    },
+    {
+      "text": "Turán described the origin at a brick factory near Budapest in 1944.",
+      "verdict": "supported",
+      "sourceLine": "described the problem's origin in rail connections between kilns and storage yards at a brick factory near Budapest in 1944"
+    },
+    {
+      "text": "Zarankiewicz’s published optimality argument contained a gap.",
+      "verdict": "supported",
+      "sourceLine": "Zarankiewicz supplied the balanced-axis construction, but the published argument for its optimality contained a gap"
+    },
+    {
+      "text": "Kleitman established the formula when one class has at most six vertices.",
+      "verdict": "supported",
+      "sourceLine": "Kleitman established the exact formula when one vertex class has at most six vertices"
+    },
+    {
+      "text": "Algebraic intersections of closed plane curves vanish.",
+      "verdict": "supported",
+      "sourceLine": "The vanishing of algebraic intersections of closed plane curves"
+    },
+    {
+      "text": "For all positive m, n the crossing number of K_{m,n} is d_m d_n.",
+      "verdict": "supported",
+      "sourceLine": "For all positive integers"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 13
+    },
+    {
+      "text": "Lean formalizes both formulas with matching drawings, counting crossings as points.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ],
+  "sourceHash": "f508d93be5009139c772315a11711d25b08c49cab99d9fcabc71256a79b06431",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

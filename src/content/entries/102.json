@@ -56,24 +56,7 @@
     "significance": "Landmark",
     "significanceWhy": "If the proofs hold, they close the central open problem of approximation hardness."
   },
-  "sections": [
-    {
-      "title": "The story",
-      "body": "In 1995, Michel Goemans and David Williamson gave a celebrated cutting algorithm whose ratio became the target to beat. In 2002, Subhash Khot conjectured that matching puzzles stay hard to approximate even when almost solvable. In 2007, Khot, Guy Kindler, Elchanan Mossel and Ryan O'Donnell showed that beating that ratio would refute the conjecture. Their proof uses the Majority Is Stablest theorem of Mossel, O'Donnell and Krzysztof Oleszkiewicz. In 2008, Khot and Oded Regev showed that the conjecture makes Vertex Cover hard to approximate below factor 2. Also in 2008, Prasad Raghavendra showed that the conjecture would fix the best ratio for every constraint problem. In 2018, Khot, Dor Minzer and Muli Safra completed the proof of the 2-to-2 Games Theorem. It gave a unique games gap with completeness near one half, and Vertex Cover hardness below √2. Only the paper “The Unique Games Theorem” proves the conjecture itself, with completeness near one. The four companion papers bypass the conjecture with direct reductions."
-    },
-    {
-      "title": "Why it matters",
-      "body": "Settling the conjecture turns earlier conditional hardness results into NP-hardness results. Such a result rules out fast approximation only if P ≠ NP. The main paper lists about six problem families that gain this status. In this language, completeness is the nearly solvable side and soundness is the nearly worthless side. The companion papers reach Max-Cut, Vertex Cover, Min-UnCut and directed feedback vertex set by independent direct reductions."
-    },
-    {
-      "title": "Where it leads",
-      "body": "With Raghavendra's reduction, the theorem fixes the best ratio for every fixed constraint language, up to an arbitrarily small error. That ratio is the basic semidefinite threshold, the limit of a standard semidefinite-programming relaxation. If P ≠ NP, the results rule out deterministic fast approximations at these thresholds. They claim nothing about randomized algorithms."
-    },
-    {
-      "title": "What it says about AI",
-      "body": "The manuscripts list OpenAI as author, and the repository states that an internal model produced them. The published reasoning summary shows the model moving from failed gadget ideas to a nonlinear, recursive quadratic noise gadget. The proof uses that gadget with a rank-one matrix test. The Lean scope note lists formal proofs of all five main statements, each with a Comparator statement. These are the Unique Games gap and the four companion hardness results. The repository's formalization catalogue lists only three of them: Unique Games, Max-Cut and Vertex Cover. The other consequences in section 8 of the main paper are not in the Lean scope note."
-    }
-  ],
+  "explanation": "Here is a small puzzle. Three players, A, B and C, each pick a number 0, 1 or 2. B must pick the same as A. C must pick the same as B. A must pick C's number plus 1, counting round a clock of three, so 2 plus 1 is 0. Each rule has a special shape. Whatever one player picks, the rule allows exactly one reply from the other. A puzzle built only from such rules is called a unique game.\n\nThis one cannot be fully solved. Follow the rules round the triangle and A would have to equal A plus 1. But any two rules can be kept. Setting everyone to 0 keeps the first two. Trying all 27 choices confirms that two out of three is the best score. The score of a unique game is the largest share of rules any choice can keep.\n\nIn 2002, Subhash Khot conjectured that scores are hard to estimate. Take any two small error levels, such as 1 percent each. His Unique Games Conjecture says no fast method can always separate two kinds of puzzle. Some score at least 99 percent, others at most 1 percent. \"Fast\" here means a running time that grows like a fixed power of the puzzle's size. \"No fast method\" means none exists unless every problem in a large class called NP has one.\n\nThe conjecture matters because many other limits were proved from it. One is Max-Cut: split a network's points into two groups so that as many links as possible cross between them. A ring of five points allows at most four crossing links out of five. In 1995, Michel Goemans and David Williamson gave a fast method. On average it gets 0.878567… of the best possible split. In 2007, Khot, Guy Kindler, Elchanan Mossel and Ryan O'Donnell showed that beating that ratio would break the conjecture. Without the conjecture, the proven barrier for Max-Cut stood at 16/17, about 0.941. The gap between 0.879 and 0.941 stayed open. Similar conditional limits followed. Khot and Oded Regev covered Vertex Cover in 2008. Prasad Raghavendra covered every problem of a broad type.\n\nThis paper proves the conjecture. It turns any logic puzzle of a standard kind into a unique game, quickly. Puzzles that can be solved become unique games scoring at least 99 percent. Puzzles that cannot become unique games scoring at most 1 percent. The same holds for any two error levels below one half, chosen in advance.\n\nThe single difficulty was keeping the score near 100 percent when every answer allows only one reply. The closest earlier work was finished by Khot, Dor Minzer and Muli Safra in 2018. It kept the score only near 50 percent. The paper shows why with one test. A player's answer is checked against a slightly jiggled version of the same question. Under the old jiggle, even an honest answer keeps its value only about half the time. The paper builds a new jiggle from squared, nonlinear building blocks. Honest answers almost always survive it. Yet broad families of simple linear checks still notice it at least one time in eight. That keeps cheating answers from passing.\n\nRead through the earlier work, the theorem now makes those conditional limits ordinary hardness results. Four companion papers also reach Max-Cut, Vertex Cover and two other problems by direct routes, without the conjecture. For Max-Cut, no fast method can beat 0.878567… unless every NP problem has a fast method. The results concern ordinary step-by-step methods, not methods that flip coins. They also give no new algorithm for any of these problems.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of all five main statements. They are the unique games result and the four companion hardness results. Each is matched against a fixed reference statement by a tool called Comparator. The paper's other listed consequences are not in the Lean scope note. Specialists have begun to comment in public, but no independent review of the proofs has been published.",
   "hypeCheck": "The five main statements have Lean proofs with Comparator checks that permit only standard axioms. Specialists have begun to comment in public, but no independent check of the proofs is published.",
   "glossary": [
     {
@@ -239,6 +222,46 @@
       "text": "The reasoning summary shows the model moving from failed gadgets to a recursive quadratic noise gadget with a rank-one test.",
       "verdict": "external",
       "sourceId": 8
+    },
+    {
+      "text": "Each permutation constraint allows exactly one label at one endpoint for each label at the other.",
+      "verdict": "supported",
+      "sourceLine": "A permutation constraint prescribes exactly one label at one endpoint for each label at the other."
+    },
+    {
+      "text": "Goemans and Williamson's method has expected ratio approaching 0.878567…",
+      "verdict": "supported",
+      "sourceLine": "for Max-Cut, with expected approximation ratio approaching"
+    },
+    {
+      "text": "Without the conjecture, Håstad's theorem with known gadgets ruled out ratios above 16/17.",
+      "verdict": "supported",
+      "sourceLine": "combined with the gadgets of Trevisan, Sorkin, Sudan, and Williamson rules out ratios greater than"
+    },
+    {
+      "text": "The central difficulty is keeping completeness near one with one reply per label.",
+      "verdict": "supported",
+      "sourceLine": "The central difficulty is to retain completeness near one when every label permits only one reply."
+    },
+    {
+      "text": "Earlier 2-to-2 results gave a Unique Games gap with completeness near one half.",
+      "verdict": "supported",
+      "sourceLine": "a Unique Games gap with completeness close to one half and arbitrarily small soundness"
+    },
+    {
+      "text": "Under the uniform rank-one test an honest evaluation keeps its value with probability close to one half.",
+      "verdict": "supported",
+      "sourceLine": "this evaluation keeps its value with probability … close to one half"
+    },
+    {
+      "text": "The new noise is built from quadratic blocks; large-rank linear observations detect it with probability at least 1/8.",
+      "verdict": "supported",
+      "sourceLine": "whose restrictions to … have sufficiently large rank detects … with probability at least"
+    },
+    {
+      "text": "The two errors are prescribed before the alphabet is chosen.",
+      "verdict": "supported",
+      "sourceLine": "The two errors are prescribed independently, before the alphabet is chosen."
     }
   ],
   "sourceHash": "92a17d7becffa280235011ac6d1d7f03547eaa9b3be1f9416cf1e3ac8126d720",

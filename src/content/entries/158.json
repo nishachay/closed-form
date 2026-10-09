@@ -1,0 +1,244 @@
+{
+  "id": "158",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf",
+      "label": "The Euclidean plane is not five-colorable"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/158.md",
+      "label": "Lean scope doc",
+      "note": "1 paper of 1 listed in lean/formalization.yaml. The scope doc links 2 Comparator challenges for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/EuclideanFiveColor.json",
+      "label": "Comparator challenge EuclideanFiveColor.json",
+      "note": "Names 1 theorem: OAI.EuclideanFiveColor.no_proper_five_coloring."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/PlaneColoring.json",
+      "label": "Comparator challenge PlaneColoring.json",
+      "note": "Names 1 theorem: OAI.Problem160.properColoring_seven."
+    }
+  ],
+  "headline": "No way of coloring the plane with five colors keeps every unit-distance pair apart.",
+  "scope": "The result covers every coloring, with no smoothness or area assumption. It leaves open whether six or seven colors are needed.",
+  "plain": "Color the plane so that any two points exactly one unit apart get different colors. The fewest colors that can do this is called the chromatic number of the plane. Since 2018 it was known to be between five and seven. This paper proves that five colors never work, so the answer is six or seven.",
+  "doesNot": "This does not decide whether the answer is six or seven.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1950",
+    "firstStepBy": "Edward Nelson, lower bound four",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It raises a lower bound that stood at five since 2018 on a famous open problem."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven lower bound on the chromatic number of the plane",
+    "note": "Higher is better. The upper bound has been seven since the problem began.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 1950,
+        "value": 4,
+        "who": "Nelson",
+        "source": 1
+      },
+      {
+        "year": 2018,
+        "value": 5,
+        "who": "de Grey",
+        "source": 4
+      },
+      {
+        "year": 2026,
+        "value": 6,
+        "who": "This paper",
+        "claim": true,
+        "source": 9
+      }
+    ]
+  },
+  "explanation": "Color every point of a flat plane, using a small set of colors. There is one rule: two points exactly one unit apart must get different colors. How few colors can work? This is the Hadwiger–Nelson problem, and the answer is called the chromatic number of the plane.\n\nSeven colors are enough. Tile the plane with hexagons whose corners sit 0.4 units from their centers. Two points in one hexagon are at most 0.8 apart, so they never clash. Give the tiles seven colors in a repeating pattern, so that same-colored tiles stay far apart. Points in two different same-colored tiles are then more than 1.03 units apart. No unit pair shares a color.\n\nThree colors are not enough. The Moser spindle, from 1961, is a set of seven points with eleven unit-distance pairs among them. Checking all 2,187 ways to color it with three colors shows that every one breaks the rule. A spindle needs four. Edward Nelson posed the problem in 1950 and found the lower bound of four. John Isbell found the seven.\n\nFor almost 70 years the answer sat somewhere between four and seven. In 2018, Aubrey de Grey built a finite set of points that cannot be colored with four colors. His corrected example has 1,581 points. Later work shrank such examples to 553 points, then 509. The lower bound became five. Separately, in 1981, K. J. Falconer had shown that tame colorings need at least five colors. A coloring is tame here when each color covers a region with a well-defined area.\n\nThis paper proves that five colors never work, for any coloring at all. Together with the hexagon tiling, the answer is now six or seven. The paper does not decide between them.\n\nThe single difficulty is that a coloring can be wild. Its color classes need not have any area, so the tools that worked for tame colorings have nothing to grip. The paper removes this in two steps. First it shows that if some coloring with a given number of colors exists, a tame one exists too. The tame version may break the rule, but only on a negligible set of pairs. It is built by averaging the wild coloring over many shifts and rotations of the plane. Then the paper shows that no tame five-coloring exists, even allowing those negligible exceptions.\n\nThat second step tracks where colors meet. Around one well-chosen point, the paper finds connected boundary pieces between pairs of colors. Each piece bars its two colors from a band about one unit away from it. With five colors, these forbidden zones run into each other. In the last case left, some region uses only three colors. The paper places a whole Moser spindle inside it. Three colors cannot color a spindle, which gives the contradiction.\n\nThe proof gives no picture to check by hand. A classical compactness theorem from 1951 says some finite set of points must already defeat five colors. The paper does not exhibit such a set, so its size is unknown. The earlier five-color bound, by contrast, came with explicit point sets.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both statements. No coloring with five colors exists, and a seven-color one does. The five-color statement covers arbitrary colorings, with no smoothness assumed. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean checks formal versions of the five-color and seven-color statements; no specialist review is published, and no explicit finite example is given.",
+  "glossary": [
+    {
+      "term": "Proper coloring",
+      "meaning": "A coloring of the plane where no two points exactly one unit apart share a color."
+    },
+    {
+      "term": "Chromatic number of the plane",
+      "meaning": "The fewest colors a proper coloring of the plane can use."
+    },
+    {
+      "term": "Moser spindle",
+      "meaning": "A set of seven points with eleven unit-distance pairs that cannot be properly colored with three colors."
+    },
+    {
+      "term": "Tame coloring",
+      "meaning": "Here, a coloring whose color classes have a well-defined area (a measurable coloring)."
+    },
+    {
+      "term": "Compactness theorem",
+      "meaning": "The 1951 result that an infinite graph can be colored with k colors exactly when every finite part can."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. Soifer, “The 50th Anniversary of One Problem: The Chromatic Number of the Plane & Its Relatives. Part 1”, Mathematics Competitions 16(1) (2003), 9–41",
+      "url": "https://www.wfnmc.org/Journal%202003%201.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "H. Hadwiger, “Ungelöste Probleme Nr. 40”, Elemente der Mathematik 16 (1961), 103–104",
+      "url": "https://www.e-periodica.ch/cntmng?pid=edm-001%3A1961%3A16%3A%3A215"
+    },
+    {
+      "id": 3,
+      "cite": "L. Moser and W. Moser, “Solution to Problem 10”, Canadian Mathematical Bulletin 4(2) (1961), 187–189",
+      "url": "https://doi.org/10.1017/S0008439500025765"
+    },
+    {
+      "id": 4,
+      "cite": "A. D. N. J. de Grey, “The Chromatic Number of the Plane Is at Least 5”, Geombinatorics 28(1) (2018), 18–31, arXiv:1804.02385",
+      "url": "https://arxiv.org/abs/1804.02385"
+    },
+    {
+      "id": 5,
+      "cite": "M. J. H. Heule, “Computing Small Unit-Distance Graphs with Chromatic Number 5”, Geombinatorics 28(1) (2018), 32–50, arXiv:1805.12181",
+      "url": "https://arxiv.org/abs/1805.12181"
+    },
+    {
+      "id": 6,
+      "cite": "J. Parts, “Graph Minimization, Focusing on the Example of 5-Chromatic Unit-Distance Graphs in the Plane”, Geombinatorics 29(4) (2020), 137–166, arXiv:2010.12665",
+      "url": "https://arxiv.org/abs/2010.12665"
+    },
+    {
+      "id": 7,
+      "cite": "K. J. Falconer, “The Realization of Distances in Measurable Subsets Covering ℝⁿ”, Journal of Combinatorial Theory, Series A 31(2) (1981), 184–189",
+      "url": "https://doi.org/10.1016/0097-3165(81)90014-5"
+    },
+    {
+      "id": 8,
+      "cite": "N. G. de Bruijn and P. Erdős, “A colour problem for infinite graphs and a problem in the theory of relations”, Indagationes Mathematicae 13 (1951), 371–373",
+      "url": "https://users.renyi.hu/~p_erdos/1951-01.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 158: “The Euclidean plane is not five-colorable” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Euclidean-plane-is-not-five-colorable-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean doc for family 158 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/158.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A proper coloring gives different colors to points at distance one; the least number of colors is the chromatic number of the plane.",
+      "verdict": "supported",
+      "sourceLine": "The Hadwiger--Nelson problem asks for the least such"
+    },
+    {
+      "text": "The problem dates to Nelson in 1950; Nelson found the lower bound four and Isbell the upper bound seven.",
+      "verdict": "supported",
+      "sourceLine": "The problem dates to Edward Nelson in 1950. Nelson obtained the lower bound four, and John Isbell found the upper bound seven by a hexagonal coloring"
+    },
+    {
+      "text": "The Moser spindle from 1961 is a small finite obstruction to three colors.",
+      "verdict": "supported",
+      "sourceLine": "now called the Moser spindle, gives a particularly small finite obstruction to three colors."
+    },
+    {
+      "text": "In 2018 de Grey built a finite unit-distance graph that is not four-colorable; the corrected one has 1,581 vertices.",
+      "verdict": "supported",
+      "sourceLine": "constructed a finite unit-distance graph that is not four-colorable in 2018. His corrected construction has 1,581 vertices."
+    },
+    {
+      "text": "Later examples had 553 and then 509 vertices.",
+      "verdict": "supported",
+      "sourceLine": "to obtain 553-vertex examples, and"
+    },
+    {
+      "text": "Falconer proved that measurable colorings need at least five colors.",
+      "verdict": "supported",
+      "sourceLine": "using density points and rotations."
+    },
+    {
+      "text": "The plane has no proper five-coloring, even with arbitrary color classes, so 6 ≤ χ ≤ 7.",
+      "verdict": "supported",
+      "sourceLine": "The Euclidean plane has no proper five-coloring, even when arbitrary color classes are allowed."
+    },
+    {
+      "text": "Six and seven remain unresolved.",
+      "verdict": "supported",
+      "sourceLine": "The remaining alternatives six and seven are unresolved."
+    },
+    {
+      "text": "Hexagons of circumradius 2/5 colored by seven cosets give a proper seven-coloring.",
+      "verdict": "supported",
+      "sourceLine": "This is a proper seven-coloring, including all boundaries."
+    },
+    {
+      "text": "Arbitrary colorings give no density-point structure to use.",
+      "verdict": "supported",
+      "sourceLine": "A coloring with arbitrary classes provides no density-point structure to use"
+    },
+    {
+      "text": "A proper k-coloring exists exactly when a weak measurable k-coloring exists.",
+      "verdict": "supported",
+      "sourceLine": "a proper $k$-coloring of $\\R^2$ exists"
+    },
+    {
+      "text": "The weak definition permits exceptional unit pairs.",
+      "verdict": "supported",
+      "sourceLine": "This definition permits exceptional unit pairs."
+    },
+    {
+      "text": "The transfer averages translates and rotations of the coloring.",
+      "verdict": "supported",
+      "sourceLine": "Restricting a proper coloring to the countable set"
+    },
+    {
+      "text": "In the three-cycle case a placement certificate puts all seven Moser vertices in a three-label region.",
+      "verdict": "supported",
+      "sourceLine": "a rational placement certificate puts all seven vertices of the Moser obstruction in that region."
+    },
+    {
+      "text": "The finite graph and constant from compactness are existential.",
+      "verdict": "supported",
+      "sourceLine": "The graph and the positive constant here are existential."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "Lean formalizes that five colors do not suffice and seven do, for arbitrary colorings.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "445b6aedc03b96f769ab6c58eae9faedd3d21a420cfeeb352f4be6e6438b1dbe",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

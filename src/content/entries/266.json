@@ -1,0 +1,197 @@
+{
+  "id": "266",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf",
+      "label": "The maximum number of mutually unbiased bases in dimension six"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-Fourier-certificates-for-complex-Hadamard-matrices-of-order-six-September-24-2026/Exact-Fourier-certificates-for-complex-Hadamard-matrices-of-order-six-September-24-2026.pdf",
+      "label": "Exact Fourier certificates for complex Hadamard matrices of order six"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/266.md",
+      "label": "Lean scope doc",
+      "note": "No paper listed in lean/formalization.yaml. The scope doc links 2 Comparator challenges for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/MUBSix.json",
+      "label": "Comparator challenge MUBSix.json",
+      "note": "Names 1 theorem: OAI.MUB6.fourier_and_family_bound."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/HadamardCubeFiber.json",
+      "label": "Comparator challenge HadamardCubeFiber.json",
+      "note": "Names 1 theorem: OAI.HadamardSix.rowRatio_cubeFiber_sum_zero."
+    }
+  ],
+  "headline": "Dimension six fits only three mutually unbiased bases, by a computer-assisted search.",
+  "scope": "The bound of three rests on a documented computer search under stated arithmetic and compiler conditions. Lean checks only a weaker bound of five.",
+  "plain": "Two sets of directions are mutually unbiased when each direction in one meets each direction in the other at one fixed angle. In dimension six, three such sets are known, and Zauner conjectured in 1991 that no fourth exists. This paper claims to prove it with a certified computer search over every possible second set. A companion paper proves a weaker bound of five with exact arithmetic.",
+  "doesNot": "This does not settle the maximum number of such sets in any other dimension that is not a prime power.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1991",
+    "firstStepBy": "Gerhard Zauner, diploma thesis conjecture",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It answers the first open case of a well-known question in quantum information, by a computer-assisted proof."
+  },
+  "explanation": "Start with two directions on a flat page, straight across and straight up. In quantum physics, a pair like this can stand for a measurement with two outcomes. Now tilt both by 45 degrees. Each tilted direction makes the same angle with each original one. Prepare a state along one set and measure with the other, and both outcomes are equally likely, one half each. Two such sets are called mutually unbiased bases.\n\nIn two dimensions you can fit three sets that are all unbiased with each other. The third uses complex numbers: the directions (1, i) and (1, −i), scaled down by √2. A check of every pair of vectors from different sets gives exactly one half each time. In d dimensions, at most d + 1 such sets can exist. In 1989, William Wootters and Brian Fields built d + 1 sets whenever d is a prime or a power of one.\n\nSix is the first dimension that is neither. Combining the three sets for dimension 2 with three sets for dimension 3 gives three sets for dimension 6. A computer check confirms that every pair of vectors from different sets there gives 1/6, as it should. Can a fourth set be added? Gerhard Zauner conjectured in his 1991 thesis that it cannot, so the answer is three. Numerical searches agreed, but searches cannot cover every case. Earlier proofs excluded a fourth set only for special families of second bases.\n\nThe single difficulty is that the second set can be anything. After a change of view, the first set is the plain axes. The second set becomes a 6 by 6 table of complex numbers, all of size one. That table can vary in many directions at once, including ones outside every studied family. So a proof must rule out two more sets for every possible second set, not only the known ones.\n\nThis paper claims to do that with a computer-assisted search. It covers every possible second set by a finite list of small balls. For each ball, it bounds how far any true solution inside can move. Then it searches for vectors unbiased to the first two sets. It shows that no two further sets can be built from them anywhere in the ball. Every rejection uses a test with an explicit safety margin, so rounding cannot hide a real solution. The search finished with no region left unresolved.\n\nThat makes the certainty statement unusual. The result holds under stated conditions on the computer arithmetic and compiler, for the complete run the paper documents. A companion paper takes a different route with exact whole-number arithmetic. It rules out seven sets. With an earlier theorem of Mihály Weiner, that gives at most five. It also settles a related conjecture of Matolcsi, Ruzsa and Weiner about certain sums over these tables.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the bound of five and of that related conjecture. It has not checked the main claim that three is the maximum. That claim rests on the documented computer search, and no specialist review has been published.",
+  "hypeCheck": "Solid if the computation holds. The bound of three depends on a documented computer run. Lean checks only the weaker bound of five, and no review is published.",
+  "glossary": [
+    {
+      "term": "Orthonormal basis",
+      "meaning": "A full set of perpendicular directions of length one."
+    },
+    {
+      "term": "Mutually unbiased bases",
+      "meaning": "Sets of directions where each direction in one set makes the same angle with each direction in another."
+    },
+    {
+      "term": "Complex Hadamard matrix",
+      "meaning": "A square table of complex numbers of size one whose rows are perpendicular."
+    },
+    {
+      "term": "Prime power",
+      "meaning": "A number like 4, 8 or 9 that is a power of a single prime."
+    },
+    {
+      "term": "Computer-assisted proof",
+      "meaning": "A proof in which a step is a documented computation rather than a written argument."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "W. K. Wootters and B. D. Fields, “Optimal state-determination by mutually unbiased measurements”, Annals of Physics 191 (1989), 363–381",
+      "url": "https://doi.org/10.1016/0003-4916(89)90322-9"
+    },
+    {
+      "id": 2,
+      "cite": "S. Bandyopadhyay, P. O. Boykin, V. Roychowdhury and F. Vatan, “A New Proof for the Existence of Mutually Unbiased Bases”, Algorithmica 34 (2002), 512–528",
+      "url": "https://doi.org/10.1007/s00453-002-0980-7"
+    },
+    {
+      "id": 3,
+      "cite": "A. Klappenecker and M. Rötteler, “Constructions of Mutually Unbiased Bases”, Finite Fields and Applications, LNCS 2948 (2004), 137–144",
+      "url": "https://doi.org/10.1007/978-3-540-24633-6_10"
+    },
+    {
+      "id": 4,
+      "cite": "G. Zauner, “Orthogonale lateinische Quadrate und Anordnungen, verallgemeinerte Hadamard-Matrizen und Unabhängigkeit in der Quanten-Wahrscheinlichkeitstheorie”, diploma thesis, Universität Wien (1991)",
+      "url": "https://www.gerhardzauner.at/documents/gzdiplthd.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "M. Grassl, “On SIC-POVMs and MUBs in Dimension 6” (2004), arXiv:quant-ph/0406175",
+      "url": "https://arxiv.org/abs/quant-ph/0406175v2"
+    },
+    {
+      "id": 6,
+      "cite": "P. Jaming, M. Matolcsi, P. Móra, F. Szöllősi and M. Weiner, “A generalized Pauli problem and an infinite family of MUB-triplets in dimension 6”, Journal of Physics A 42 (2009), 245305",
+      "url": "https://doi.org/10.1088/1751-8113/42/24/245305"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 266: “The maximum number of mutually unbiased bases in dimension six” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 266: “Exact Fourier certificates for complex Hadamard matrices of order six” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-Fourier-certificates-for-complex-Hadamard-matrices-of-order-six-September-24-2026/Exact-Fourier-certificates-for-complex-Hadamard-matrices-of-order-six-September-24-2026.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean doc for family 266 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/266.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Mutually unbiased bases give uniform outcome distributions in every other basis.",
+      "verdict": "supported",
+      "sourceLine": "Mutually unbiased bases describe projective measurements for which a state from one basis produces the uniform outcome distribution in every other basis."
+    },
+    {
+      "text": "Wootters and Fields constructed complete sets in every prime-power dimension.",
+      "verdict": "supported",
+      "sourceLine": "proved the statistical optimality of complete sets for state determination and constructed them in every prime-power dimension"
+    },
+    {
+      "text": "Dimension six is the first dimension outside the prime-power class.",
+      "verdict": "supported",
+      "sourceLine": "Dimension six is the first dimension outside the prime-power class."
+    },
+    {
+      "text": "The tensor-product construction gives three bases in C⁶.",
+      "verdict": "supported",
+      "sourceLine": "The tensor-product construction gives three bases in"
+    },
+    {
+      "text": "Zauner’s conjecture is traced to his 1991 diploma thesis.",
+      "verdict": "supported",
+      "sourceLine": "Its origin is traced to his 1991 diploma thesis"
+    },
+    {
+      "text": "Numerical searches supplied evidence for the conjecture.",
+      "verdict": "supported",
+      "sourceLine": "supplied evidence for the conjecture."
+    },
+    {
+      "text": "Jaming and coauthors excluded four bases for the standard basis with any member of the Fourier family.",
+      "verdict": "supported",
+      "sourceLine": "They proved that the standard basis together with any member of the two-parameter Fourier family cannot be extended to four bases"
+    },
+    {
+      "text": "The argument covers arbitrary complex Hadamard matrices, including those outside studied families.",
+      "verdict": "supported",
+      "sourceLine": "including those outside previously studied families."
+    },
+    {
+      "text": "Under stated arithmetic and compiler conditions the documented execution excludes four bases, so N(6) = 3.",
+      "verdict": "supported",
+      "sourceLine": "certifies that there are no four pairwise mutually unbiased orthonormal bases in"
+    },
+    {
+      "text": "Every rejection uses a necessary condition with an explicit safety margin.",
+      "verdict": "supported",
+      "sourceLine": "Every rejection uses a necessary condition with an explicit safety margin."
+    },
+    {
+      "text": "The companion paper proves the Matolcsi–Ruzsa–Weiner Fourier-vanishing conjecture and excludes seven bases, giving at most five.",
+      "verdict": "supported",
+      "sourceLine": "We also give an exact certificate excluding seven mutually unbiased bases in"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "Lean formalizes the five-basis bound and Fourier vanishing, not the bound of three.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "bf7a9a0e91159c7c1d4ba86c42b3331d54a5eb1b4fe63b974c6d79dcb2c9fb89",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

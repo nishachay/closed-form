@@ -376,6 +376,9 @@ export const CHECKER_RUBRIC = [
   '    (whitespace may differ; use "…" only to skip a formula). Each external claim needs a `sourceId`.',
   '(f) SOURCES. Every `sources` item needs a `url`, unless no online copy exists: then set `noUrl: true`',
   '    and end `cite` with "(no online copy found)".',
+  '(g) EXPLANATION. Check every sentence of `explanation` like any other text. Recompute each number in',
+  '    its worked example; drop or fix any you cannot reproduce. Bounds must match the source digits exactly.',
+  '    Certainty wording must come from the LEAN FACTS only, and the word "verified" is not allowed.',
 ].join('\n');
 
 
@@ -608,6 +611,16 @@ function pLimit(n: number) {
   };
 }
 
+/**
+ * Writer system prompt: prompts/reader.md (fields, provenance, sources) followed by
+ * prompts/explainer.md (how to write the prose `explanation` body).
+ */
+export async function readReaderPrompt(): Promise<string> {
+  const reader = await readFile(join(root, 'prompts/reader.md'), 'utf-8');
+  const explainer = await readFile(join(root, 'prompts/explainer.md'), 'utf-8');
+  return `${reader}\n\n---\n\nEXPLAINER RULES (prompts/explainer.md):\n\n${explainer}`;
+}
+
 async function loadCatalog(): Promise<Catalog> {
   const raw = await readFile(join(root, 'src/data/catalog.json'), 'utf-8');
   return JSON.parse(raw) as Catalog;
@@ -696,7 +709,7 @@ export async function runDryRun(ids: string[]): Promise<DryRunRow[]> {
     concurrency: 1,
     dryRun: true,
   });
-  const readerMd = await readFile(join(root, 'prompts/reader.md'), 'utf-8');
+  const readerMd = await readReaderPrompt();
   const schemaText = await readFile(join(root, 'schema/entry.schema.json'), 'utf-8');
   const example017 = await readFile(join(entriesDir, '017.json'), 'utf-8');
   const sourceDir = join(root, 'source/openai-math');
@@ -882,7 +895,7 @@ async function main(): Promise<void> {
   }
   const selected = selectFamilies(catalog, existing, args, pendingHashes);
 
-  const readerMd = await readFile(join(root, 'prompts/reader.md'), 'utf-8');
+  const readerMd = await readReaderPrompt();
   const checkerMd = (await readFile(join(root, 'prompts/checker.md'), 'utf-8')) + '\n\n' + CHECKER_RUBRIC + '\n';
   const schemaText = await readFile(join(root, 'schema/entry.schema.json'), 'utf-8');
   const example017 = await readFile(join(entriesDir, '017.json'), 'utf-8');

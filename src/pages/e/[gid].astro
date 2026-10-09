@@ -38,12 +38,23 @@ const reportHref =
   `https://github.com/nishachay/closed-form/issues/new?template=report-error.yml` +
   `&labels=entry-error&title=${encodeURIComponent(`[entry ${family.id}] `)}`;
 
+/** Prose body (entry.explanation): paragraphs split on blank lines. Replaces the four sections. */
+const paragraphs = entry?.explanation
+  ? entry.explanation.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
+  : [];
+const sections = entry?.explanation ? [] : (entry?.sections ?? []);
+const aiSection = (entry?.sections ?? []).find((s) => s.title === 'What it says about AI') ?? null;
 const toc = entry
   ? [
-      ...entry.sections.map((s) => ({
-        href: `#${s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
-        label: s.title,
-      })),
+      ...(paragraphs.length > 0
+        ? [
+            { href: '#the-explanation', label: 'The explanation' },
+            { href: '#where-it-came-from', label: 'Where it came from' },
+          ]
+        : sections.map((s) => ({
+            href: `#${s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+            label: s.title,
+          }))),
       { href: '#hype-check', label: 'Hype check' },
       { href: '#words-used', label: 'Words used' },
       { href: '#the-original', label: 'The original' },
@@ -96,14 +107,34 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           {entry.visual && (
             <RecordChart title={entry.visual.title} note={entry.visual.note} points={entry.visual.points} />
           )}
-          {entry.sections.filter((s) => s.title !== 'What it says about AI').map((s, i) => (
+          {paragraphs.length > 0 && (
+            <section class="e-sec e-prose" aria-labelledby="the-explanation">
+              <h2 id="the-explanation">The explanation</h2>
+              {paragraphs.map((p) => <p set:html={renderMath(p)} />)}
+              <p class="e-limit"><b>What it doesn't show.</b> {entry.doesNot}</p>
+            </section>
+          )}
+          {paragraphs.length > 0 && (
+            <section class="e-ai" aria-labelledby="where-it-came-from">
+              <h2 id="where-it-came-from"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg>Where it came from</h2>
+              {aiSection ? (
+                <>
+                  <p set:html={renderMath(aiSection.body)} />
+                  <p class="e-ai-o">{entry.origin}</p>
+                </>
+              ) : (
+                <p class="e-ai-solo">{entry.origin}</p>
+              )}
+            </section>
+          )}
+          {sections.filter((s) => s.title !== 'What it says about AI').map((s, i) => (
             <section class="e-sec" aria-labelledby={slug(s.title)}>
               <h2 id={slug(s.title)}><span class="e-n num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{s.title}</h2>
               <p set:html={renderMath(s.body)} />
               {s.title === 'Why it matters' && <p class="e-limit"><b>What it doesn't show.</b> {entry.doesNot}</p>}
             </section>
           ))}
-          {entry.sections.filter((s) => s.title === 'What it says about AI').map((s) => (
+          {sections.filter((s) => s.title === 'What it says about AI').map((s) => (
             <section class="e-ai" aria-labelledby={slug(s.title)}>
               <h2 id={slug(s.title)}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg>{s.title}</h2>
               <p set:html={renderMath(s.body)} />

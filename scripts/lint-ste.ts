@@ -2,7 +2,8 @@
  * STE lint (§8) as a runnable script + importable module.
  *
  * Checks the writing rules over entry JSON: sentences ≤25 words (20 is the
- * target, 25 is the hard fail), no hype words. Exit 1 on errors.
+ * target, 25 is the hard fail), no hype words. Exit 1 on errors. The optional
+ * prose `explanation` gets the same rules, plus no "verified" (prompts/explainer.md).
  *
  * Also deterministic source checks (errors):
  * - every `sources` item has a `url`, unless marked `noUrl: true` or its cite says
@@ -24,7 +25,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export interface LintIssue {
   field: string;
-  kind: 'long-sentence' | 'hype' | 'warning-long-sentence' | 'source-no-url' | 'claim-not-verbatim';
+  kind: 'long-sentence' | 'hype' | 'warning-long-sentence' | 'source-no-url' | 'claim-not-verbatim' | 'banned-word';
   message: string;
 }
 
@@ -67,6 +68,14 @@ export function lintEntry(entry: Record<string, unknown>): LintIssue[] {
       out.push(...lintText(sc.significanceWhy, 'scorecard.significanceWhy'));
     }
   }
+  // Prose explanation (prompts/explainer.md): same sentence and hype rules, and never "verified":
+  // certainty is stated from the Lean doc in plain words, not with that label.
+  if (typeof entry.explanation === 'string') {
+    out.push(...lintText(entry.explanation, 'explanation'));
+    if (/\bverified\b/i.test(entry.explanation)) {
+      out.push({ field: 'explanation', kind: 'banned-word', message: 'explanation uses the word "verified"; state what Lean checks instead' });
+    }
+  }
   const sections = (entry as { sections?: { title?: unknown; body?: unknown }[] }).sections ?? [];
   sections.forEach((s, i) => {
     if (typeof s.body === 'string') {
@@ -81,6 +90,7 @@ const ERROR_KINDS: ReadonlySet<LintIssue['kind']> = new Set([
   'long-sentence',
   'source-no-url',
   'claim-not-verbatim',
+  'banned-word',
 ]);
 
 export function isError(i: LintIssue): boolean {

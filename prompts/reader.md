@@ -13,8 +13,8 @@ Do this:
 4. Build the history ONLY from references the paper itself makes (prior results, years,
    authors), or from standard references you can cite exactly. Put each in `sources`.
    If you cannot cite it, leave it out. Never guess a year or a name.
-5. Write the four sections in this order: The story; Why it matters; Where it leads;
-   What it says about AI.
+5. Write the main body as `explanation`: continuous prose that follows the EXPLAINER
+   rules appended below (prompts/explainer.md). Leave `sections` out.
 6. Write one "This does not …" sentence.
 7. Write the hype check. It must be more cautious than everything else.
 8. List every technical term you used in the glossary, each with one plain sentence.
@@ -29,8 +29,8 @@ Do this:
 12. Get every implication the right way round ("A implies B", "stronger than"), use the
    paper's own definitions, and include the prior work the introduction names as closest.
 
-Rules: sentences ≤20 words; one idea per sentence; active voice; common words; no hype
-words; no proof sketches; the official abstract is NOT plain language; never add impact
+Rules: sentences ≤20 words (25 hard limit); one idea per sentence; active voice; common
+words; no hype words; no proof sketches; the official abstract is NOT plain language; never add impact
 the paper does not support.
 
 Fixed fields (copy exactly / fill as directed):
@@ -45,8 +45,8 @@ Fixed fields (copy exactly / fill as directed):
 - `evidence` is given in the task — copy it unchanged.
 - `status` must be "ai-draft". Never set "reviewed".
 - `sourceHash` and `sourceCommit` are given in the task — copy them unchanged.
-- `sections` must have exactly these 4 titles in this order:
-  "The story", "Why it matters", "Where it leads", "What it says about AI".
+- `explanation` is required: paragraphs separated by one blank line, no headings or
+  bullets. Omit `sections` (the legacy four-section body is only for old entries).
 - `glossary` must have 3–8 terms. `sources` must have at least one entry, and every
   `visual.points[].source` must match a `sources` id.
 - Never use these hype words: revolutionary, groundbreaking, game-changing,

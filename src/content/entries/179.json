@@ -1,0 +1,198 @@
+{
+  "id": "179",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-circulant-Hadamard-conjecture-September-23-2026/paper.pdf",
+      "label": "The circulant Hadamard conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/179.md",
+      "label": "Lean scope doc",
+      "note": "1 paper of 1 listed in lean/formalization.yaml. The scope doc links 2 Comparator challenges for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/CirculantHadamard.json",
+      "label": "Comparator challenge CirculantHadamard.json",
+      "note": "Names 1 theorem: OAI.CirculantHadamard.exists_iff_order_one_or_four."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/EvenBarker.json",
+      "label": "Comparator challenge EvenBarker.json",
+      "note": "Names 1 theorem: OAI.CirculantHadamard.Barker.even_length_eq_two_or_four."
+    }
+  ],
+  "headline": "Circulant Hadamard matrices exist only in sizes 1 and 4.",
+  "scope": "The result is about real matrices of plus and minus ones built by shifting one row. It covers every size.",
+  "plain": "A Hadamard matrix is a square table of plus and minus ones whose rows all cancel against each other. A circulant one is built by shifting a single row. Ryser is credited with the conjecture that only sizes 1 and 4 are possible. This paper proves it, which also completes the list of Barker sequence lengths.",
+  "doesNot": "This does not rule out circulant sign tables that only approximately cancel.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Richard J. Turyn, first size restrictions",
+    "field": "Combinatorics",
+    "significance": "Solid",
+    "significanceWhy": "It closes a long-studied conjecture on sign matrices and completes a classic list of sequence lengths."
+  },
+  "explanation": "Write down four signs: −, +, +, +. Make a square table from them. The first row is the four signs. Each next row is the row above, shifted one place right. The last sign wraps round to the front. Now compare any two different rows, position by position. They agree twice and disagree twice. So multiply matching entries and add, and you always get 0. A square table of plus and minus ones whose rows all cancel like this is called a Hadamard matrix. One built by shifting a single row is called circulant.\n\nHow big can a circulant Hadamard matrix be? A single + is a trivial example of size 1. The table above has size 4. Try size 16. There are 65,536 choices of first row, and a computer check shows none of them works. Herbert Ryser is traditionally credited with the conjecture that 1 and 4 are the only sizes.\n\nThe question is old and was cut down a lot. In 1965, Richard J. Turyn showed that any larger size must be 4 times the square of an odd number. That odd number cannot be a power of a single prime. Bernhard Schmidt, Ka Hin Leung and others later ruled out more sizes, using the arithmetic of roots of unity. In 2017, Brooke Logan and Michael Mossinghoff ran a computer search up to 4 followed by 30 zeros. They excluded all but 4,489 sizes in that range. Those 4,489 stayed open, and nothing covered the sizes beyond.\n\nThis paper proves that 1 and 4 are the only sizes. The difficulty was that each known test removed some sizes, but none removed all of them. The paper finds one quantity that ties all the odd prime factors of the size together. It evaluates the first row in several ways, using roots of unity. Then it multiplies those values with alternating powers +1 and −1. That product turns out to be a root of unity, a number some power of which equals 1. Looking at the same numbers modulo 2 then shows it must equal 1 exactly. Expanding it one step further gives a sum where all terms but one vanish. One nonzero term cannot add up to zero, and that is the contradiction.\n\nThere is a well-known consequence. A Barker sequence is a list of signs that barely matches shifted copies of itself. Slide the list along itself by any amount, multiply the overlapping signs and add. The total must be −1, 0 or 1. The list + + + + + − − + + − + − + of length 13 is one. Barker sequences exist at lengths 2, 3, 4, 5, 7, 11 and 13. Turyn and Storer had ruled out odd lengths above 13 in 1961. For even lengths above 2, a Barker sequence would give a circulant Hadamard matrix of the same size. So the new theorem leaves only 2 and 4 among even lengths, and the list of seven lengths is complete.\n\nThe theorem is exact, not a statement about large sizes only. It also says nothing about approximate versions. In 2024, Stefan Steinerberger showed that every size has a circulant sign table within fixed factors of the exact case. Exact cancellation is what fails.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It includes explicit examples of sizes 1 and 4. It has also checked the even-length Barker statement. The odd-length list, which relies on earlier work, is outside that check. Several earlier claimed proofs exist, and no specialist review of this one has been published.",
+  "hypeCheck": "Lean checks formal versions of the main theorem and the even Barker lengths. The odd lengths rest on earlier work, other proofs have been claimed before, and no review is published.",
+  "glossary": [
+    {
+      "term": "Hadamard matrix",
+      "meaning": "A square table of plus and minus ones in which every two different rows cancel when multiplied entry by entry and added."
+    },
+    {
+      "term": "Circulant",
+      "meaning": "A table where each row is the row above shifted one place, wrapping around."
+    },
+    {
+      "term": "Barker sequence",
+      "meaning": "A list of signs whose overlap with any shifted copy of itself adds to −1, 0 or 1."
+    },
+    {
+      "term": "Root of unity",
+      "meaning": "A number some whole power of which equals 1."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "H. J. Ryser, Combinatorial Mathematics, Carus Mathematical Monographs 14, Mathematical Association of America (1963)",
+      "url": "https://doi.org/10.5948/UPO9781614440147"
+    },
+    {
+      "id": 2,
+      "cite": "R. Turyn and J. Storer, “On binary sequences”, Proceedings of the American Mathematical Society 12(3) (1961), 394–399",
+      "url": "https://doi.org/10.1090/S0002-9939-1961-0125026-2"
+    },
+    {
+      "id": 3,
+      "cite": "R. J. Turyn, “Character sums and difference sets”, Pacific Journal of Mathematics 15(1) (1965), 319–346",
+      "url": "https://doi.org/10.2140/pjm.1965.15.319"
+    },
+    {
+      "id": 4,
+      "cite": "B. Schmidt, “Cyclotomic integers and finite geometry”, Journal of the American Mathematical Society 12(4) (1999), 929–952",
+      "url": "https://doi.org/10.1090/S0894-0347-99-00298-2"
+    },
+    {
+      "id": 5,
+      "cite": "K. H. Leung and B. Schmidt, “The field descent method”, Designs, Codes and Cryptography 36(2) (2005), 171–188",
+      "url": "https://doi.org/10.1007/s10623-004-1703-7"
+    },
+    {
+      "id": 6,
+      "cite": "B. Logan and M. J. Mossinghoff, “Double Wieferich pairs and circulant Hadamard matrices”, Journal of Combinatorial Mathematics and Combinatorial Computing 101 (2017), 145–156",
+      "url": "https://combinatorialpress.com/jcmcc-articles/volume-101/double-wieferich-pairs-and-circulant-hadamard-matrices/"
+    },
+    {
+      "id": 7,
+      "cite": "S. Steinerberger, “A note on approximate Hadamard matrices”, Designs, Codes and Cryptography 92 (2024), 3125–3131",
+      "url": "https://doi.org/10.1007/s10623-024-01430-w"
+    },
+    {
+      "id": 8,
+      "cite": "K.-U. Schmidt and J. Willms, “Barker sequences of odd length”, Designs, Codes and Cryptography 80(2) (2016), 409–414",
+      "url": "https://arxiv.org/abs/1501.06035"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 179: “The circulant Hadamard conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-circulant-Hadamard-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean doc for family 179 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/179.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A real Hadamard matrix has entries ±1 and HHᵀ = nI; circulant means every row is a cyclic shift of the first.",
+      "verdict": "supported",
+      "sourceLine": "Thus every row is a cyclic shift of the first."
+    },
+    {
+      "text": "The conjecture is traditionally attributed to Ryser.",
+      "verdict": "supported",
+      "sourceLine": "The circulant Hadamard conjecture, traditionally attributed to Ryser"
+    },
+    {
+      "text": "A circulant Hadamard matrix of order n exists if and only if n is 1 or 4.",
+      "verdict": "supported",
+      "sourceLine": "a real circulant Hadamard matrix of order … exists if and only if"
+    },
+    {
+      "text": "Turyn showed a larger order must be 4u² with u odd and not a prime power.",
+      "verdict": "supported",
+      "sourceLine": "where … is odd and not a prime power"
+    },
+    {
+      "text": "Logan and Mossinghoff’s 2017 computation left 4,489 candidates up to 4·10³⁰.",
+      "verdict": "supported",
+      "sourceLine": "These … integers remained as candidates under those tests."
+    },
+    {
+      "text": "Steinerberger showed every order has a sign circulant with singular values within fixed multiples of √n.",
+      "verdict": "supported",
+      "sourceLine": "to show that in every order there is a real sign circulant whose singular values lie between two fixed positive multiples of"
+    },
+    {
+      "text": "Complete proofs have been claimed before.",
+      "verdict": "supported",
+      "sourceLine": "Complete proofs of the conjecture have also been claimed in"
+    },
+    {
+      "text": "The alternating product is an algebraic integer of absolute value one, hence a root of unity by Kronecker.",
+      "verdict": "supported",
+      "sourceLine": "Kronecker's criterion makes it a root of unity"
+    },
+    {
+      "text": "Residues above two and odd order make the ratio products exactly one.",
+      "verdict": "supported",
+      "sourceLine": "their odd order makes them exactly one."
+    },
+    {
+      "text": "The final alternating sum has one nonzero term, a contradiction.",
+      "verdict": "supported",
+      "sourceLine": "The resulting alternating sum therefore has one nonzero term, which is the contradiction."
+    },
+    {
+      "text": "Turyn and Storer proved odd-length nonexistence; for even length above two the Barker inequalities force vanishing periodic autocorrelations.",
+      "verdict": "supported",
+      "sourceLine": "For even length greater than two, the Barker inequalities imply that all nontrivial periodic autocorrelations vanish"
+    },
+    {
+      "text": "Barker sequences exist exactly at lengths 2, 3, 4, 5, 7, 11 and 13.",
+      "verdict": "supported",
+      "sourceLine": "a Barker sequence of length … exists if and only if"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "Lean formalizes the main theorem with witnesses and the even Barker lengths; odd lengths are outside.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "055e41c9f843ed62271af6fc2a6c897bce59b5ab875981c7cdab2d43b98dd51b",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

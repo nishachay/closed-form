@@ -157,7 +157,13 @@ export const entrySchema = z
     origin: z.literal(ORIGIN_TEMPLATE),
     scorecard: scorecardSchema,
     visual: visualSchema.optional(),
-    sections: z.array(sectionSchema).length(4),
+    /**
+     * Continuous-prose explanation (prompts/explainer.md): paragraphs separated by a
+     * blank line, no headings or bullets. When present it is the entry's main body and
+     * replaces the four fixed `sections`, which may then be omitted or empty.
+     */
+    explanation: noHypeAndSentenceLength('explanation').optional(),
+    sections: z.array(sectionSchema).optional(),
     hypeCheck: noHypeAndSentenceLength('hypeCheck'),
     glossary: z.array(glossarySchema).min(3).max(8),
     sources: z.array(sourceSchema).min(1),
@@ -176,8 +182,27 @@ export const entrySchema = z
         ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'reviewedAt required when status=reviewed', path: ['reviewedAt'] });
       }
     }
+    // Body: either a prose explanation, or exactly the four fixed sections.
+    const sections = val.sections ?? [];
+    if (val.explanation !== undefined) {
+      if (val.explanation.trim().length === 0) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'explanation must not be empty', path: ['explanation'] });
+      }
+      if (/^\s*(#|[-*•]\s|\d+\.\s)/m.test(val.explanation)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'explanation is continuous prose: no headings or bullets', path: ['explanation'] });
+      }
+    }
+    if (val.explanation === undefined || sections.length > 0) {
+      if (sections.length !== 4) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `sections must have exactly 4 items (or be empty when explanation is present), got ${sections.length}`,
+          path: ['sections'],
+        });
+      }
+    }
     // Section titles exact + order.
-    val.sections.forEach((s, i) => {
+    sections.forEach((s, i) => {
       if (s.title !== sectionTitles[i]) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,

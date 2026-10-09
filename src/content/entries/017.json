@@ -69,24 +69,7 @@
       }
     ]
   },
-  "sections": [
-    {
-      "title": "The story",
-      "body": "In 1953, Kurt Mahler proved that the irrationality exponent (a score for how closely fractions can approximate a number) of π is at most 42. Since then, mathematicians made this limit smaller step by step. Salikhov reached about 7.61 in 2008, and Zeilberger and Zudilin about 7.10 in 2020. In September 2026, two weeks before this paper, Yufei Bai trimmed it to about 7.102. Most experts expected the true value to be 2, but no one could prove it."
-    },
-    {
-      "title": "Why it matters",
-      "body": "A value of 2 means π is not special in this way. The paper also settles a well-known puzzle: the Flint Hills series, the sum of 1 / (n³ sin²n). Alekseyev showed in 2011 that whether this sum converges (approaches a fixed value) is tied to π's irrationality exponent, with the dividing line at 2.5. An exponent of 2 is below that line, so the sum converges."
-    },
-    {
-      "title": "Where it leads",
-      "body": "The same methods could apply to other constants, such as log 2 or ζ(3), where the known limits are still far above 2. This is one of 10 results with a published reasoning summary, so mathematicians can study how the model found the proof."
-    },
-    {
-      "title": "What it says about AI",
-      "body": "Strong human experts worked on this problem for decades. If the proof holds, it shows that AI can finish a long line of human work on a classical question. The main theorem has a Lean formalization listed, a computer-checkable version of the statement and proof, but the Flint–Hills part is not covered."
-    }
-  ],
+  "explanation": "Write π as a fraction and you will always be a little wrong. 22/7 misses by about 0.0013. 355/113 misses by about 0.00000027. Bigger bottom numbers buy better accuracy. The real question is how fast that accuracy can improve.\n\nThere is a basic yardstick. Take any number that is not a fraction. A simple counting argument guarantees endless fractions p/q that miss it by less than 1/q². Count the misses for q = 113 in millionths. The 1/q² yardstick allows 78 millionths. The much stricter 1/q³ allows 0.69 millionths. The actual miss of 355/113 is 0.27 millionths. That is about 290 times better than the basic yardstick, and it beats the strict one too. So π has at least one lucky fraction.\n\nMathematicians measure this luck with one number, the irrationality exponent. If a number keeps producing fractions that beat 1/q³ forever, its exponent is at least 3. An exponent of 2 means the opposite. Pick any power a little above 2, such as 2.01. Then only finitely many fractions beat 1/q^2.01, and past some size of bottom number the lucky streak is over. No number that is not a fraction can go below 2. Experts expected π to sit exactly there.\n\nKnowing that π is not a fraction puts no limit on its luck at all. The earliest limit this paper cites is Kurt Mahler's, from 1953: the exponent is at most 42. Later work cut it down. Salikhov reached 7.606308… in 2008. Zeilberger and Zudilin reached 7.103205334137… in 2020. In September 2026, a preprint by Yufei Bai claimed µ(π) < 7.101862832357, where µ(π) is π's exponent. Each step came from a cleverer special integral built for the job. The gains had shrunk to the third decimal place, while the expected answer, 2, sat about 5 lower.\n\nThis paper proves the full answer: π's exponent is exactly 2. It does not shave the old bound. The earlier bounds are context, not inputs to its proof.\n\nThe argument runs by contradiction. Suppose π had endless fractions that beat 1/q^ν for some power ν above 2. Pick several of them, one after another. Use them to fill a large square grid of numbers. Then compute one number from the whole grid, called its determinant. The determinant works like a trap. Once fractions are cleared, it is built from whole numbers. So if it is not zero, it cannot be tinier than a size the proof can write down. Yet fractions that sit very close to π force it to be tiny. For large enough choices, both cannot be true. So the too-good fractions cannot exist.\n\nThe hard part is making sure the determinant is not zero. A zero would spring no trap, and the argument would collapse. The longest part of the paper is a new theorem that rules this out. It shows that certain polynomials can match any requested values and slopes at several chosen points at once. The proof must also avoid a circle. The grid's design is fixed before anyone knows where the lucky fractions are. Only then are the fractions chosen to fit it.\n\nSo the theorem forbids endless luck of the 355/113 kind, even luck as mild as beating 1/q^2.01. It still allows finitely many lucky fractions for each power above 2. The proof shows that a last lucky fraction exists. It gives no way to compute how large its bottom number is. It says the streak ends. It does not say when.\n\nA side effect settles an old puzzle, the Flint–Hills series. It adds up 1/(n³·sin²n) for n = 1, 2, 3 and onward. Whole numbers that land very close to a multiple of π make sin n tiny and the terms large. In 2022, Alex Meiburg showed that the sum converges if π's exponent is below 2.5. Converging means it settles to a finite total. An exponent of 2 clears that line, so the sum converges.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem: the exponent is exactly 2. The Flint–Hills step is outside that check. No specialists have published a review yet.",
   "hypeCheck": "Major if the proof holds. The main theorem has a Lean formalization listed, but the Flint–Hills step is not machine-checked and specialists have not yet published a review.",
   "glossary": [
     {
@@ -132,8 +115,90 @@
       "id": 6,
       "cite": "openai/math, “The irrationality exponent of pi is 2” and Lean scope note (2026)",
       "url": "https://github.com/openai/math/blob/main/lean/docs/017.md"
+    },
+    {
+      "id": 7,
+      "cite": "A. Meiburg, “Bounds on irrationality measures and the Flint-Hills series” (2022), arXiv:2208.13356",
+      "url": "https://arxiv.org/abs/2208.13356v1"
     }
   ],
   "sourceHash": "818d3f525a41d55f6a2dcde0092cd8e7fc5ba315033bd6ad2abec1d600bdb8cd",
-  "sourceCommit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a"
+  "sourceCommit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "claims": [
+    {
+      "text": "The pigeonhole principle gives an exponent of at least 2 for every irrational number.",
+      "verdict": "supported",
+      "sourceLine": "The pigeonhole principle gives"
+    },
+    {
+      "text": "Irrationality alone gives no finite upper bound on the exponent.",
+      "verdict": "supported",
+      "sourceLine": "irrationality alone supplies no finite upper bound"
+    },
+    {
+      "text": "The expected value of π's exponent is 2.",
+      "verdict": "supported",
+      "sourceLine": "The expected value for the usual positive circle constant is"
+    },
+    {
+      "text": "Mahler's 1953 paper gave the explicit exponent 42.",
+      "verdict": "supported",
+      "sourceLine": "It gave the explicit exponent"
+    },
+    {
+      "text": "Salikhov's method gave 7.606308…",
+      "verdict": "supported",
+      "sourceLine": "Salikhov's symmetric-integral method improved it to"
+    },
+    {
+      "text": "Zeilberger and Zudilin obtained 7.103205334137…",
+      "verdict": "supported",
+      "sourceLine": "Zeilberger and Zudilin combined parameter experiments with a rigorous arithmetic and asymptotic analysis to obtain"
+    },
+    {
+      "text": "Bai's September 2026 preprint claims µ(π) < 7.101862832357.",
+      "verdict": "supported",
+      "sourceLine": "Bai's September 2026 preprint claims the further bound"
+    },
+    {
+      "text": "The earlier bounds are context, not inputs to the proof.",
+      "verdict": "supported",
+      "sourceLine": "These quantitative bounds are context, not inputs to our proof."
+    },
+    {
+      "text": "The threshold depends on ν and the argument does not give it effectively.",
+      "verdict": "supported",
+      "sourceLine": "The threshold may depend on … and the argument does not give it effectively."
+    },
+    {
+      "text": "The approximations are chosen successively and give a matrix whose full minor is nonzero.",
+      "verdict": "supported",
+      "sourceLine": "A square minor using all rows is nonzero. Clearing its denominators gives an arithmetic lower bound."
+    },
+    {
+      "text": "A nonzero Gaussian integer has modulus at least one.",
+      "verdict": "supported",
+      "sourceLine": "A nonzero Gaussian integer has modulus at least one"
+    },
+    {
+      "text": "Choosing the design independently of the centers prevents a circular choice.",
+      "verdict": "supported",
+      "sourceLine": "Their independence from centers prevents a circular choice."
+    },
+    {
+      "text": "Integers close to multiples of π make individual Flint–Hills denominators small.",
+      "verdict": "supported",
+      "sourceLine": "Integers very close to multiples of … make individual denominators small."
+    },
+    {
+      "text": "Meiburg proved that an exponent below 5/2 is sufficient for convergence.",
+      "verdict": "supported",
+      "sourceLine": "Meiburg proved the sufficient strict condition"
+    },
+    {
+      "text": "The Lean formalization covers the exponent-two theorem; the Flint–Hills consequence is outside it.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
 }

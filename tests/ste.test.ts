@@ -10,8 +10,9 @@ describe('STE lint (§8, §18)', () => {
     ['plain', entry017.plain],
     ['doesNot', entry017.doesNot],
     ['hypeCheck', entry017.hypeCheck],
-    ...entry017.sections.map(
-      (s: { title: string; body: string }) => [`sections:${s.title}`, s.body] as [string, string],
+    ['explanation', entry017.explanation],
+    ...((entry017 as { sections?: { title: string; body: string }[] }).sections ?? []).map(
+      (s) => [`sections:${s.title}`, s.body] as [string, string],
     ),
   ];
 
