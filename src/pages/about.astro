@@ -11,6 +11,7 @@ const meaning: Record<string, string> = {
   claimed: 'Only the written paper exists. No computer has checked it, and it could contain errors.',
 };
 const toc = [
+  { href: '#how-we-explain', label: 'How we explain' },
   { href: '#trust-labels', label: 'Trust labels' },
   { href: '#what-we-dont-do', label: 'What we don’t do' },
   { href: '#how-entries-are-made', label: 'How entries are made' },
@@ -24,12 +25,20 @@ const toc = [
       <p class="headline">AI now writes research mathematics faster than people can read it. We translate it.</p>
       <div class="e-meta"><span>Plain English based on ASD-STE100</span><span>Honest trust labels</span><span>Every claim linked to its source</span></div>
       <p class="e-lead">
-        Each entry explains one result in plain words: what it proves, who asked the question first, why it
-        matters, what it could lead to and what it shows about AI.
+        Each entry explains one result in plain words. It is not a summary. It tries to make you understand
+        what the result says and why it was hard, starting from an example you can check yourself.
       </p>
 
+      <section class="e-sec" aria-labelledby="how-we-explain">
+        <h2 id="how-we-explain"><span class="e-n num" aria-hidden="true">01</span>How we explain</h2>
+        <p>Every explanation is one piece of continuous prose, not a form with fixed headings. It starts small: real numbers, a shape, or the simplest case where the claim already bites. Then it shows what people knew before and where they got stuck.</p>
+        <p>Next it names the one difficulty that made the problem hard, and says in ordinary words how the paper gets around it. We leave out the proof machinery. Any technical word is explained the first time it appears.</p>
+        <p>It ends with what the result does not say, and how far it has been checked. If we cannot make an idea clear without inventing something, we say so and stop.</p>
+        <p class="e-limit"><b>Around every explanation.</b> The facts stay separate and checkable: numbered sources, quotes matched word for word to the paper, a glossary, and a hype check.</p>
+      </section>
+
       <section class="e-sec" aria-labelledby="trust-labels">
-        <h2 id="trust-labels"><span class="e-n num" aria-hidden="true">01</span>Trust labels</h2>
+        <h2 id="trust-labels"><span class="e-n num" aria-hidden="true">02</span>Trust labels</h2>
         <p>Every result carries one label. It tells you how much checking stands behind the claim, not how important it is.</p>
         <ul class="ab-trust">
           {TRUST_LADDER.map((t) => (
@@ -42,16 +51,16 @@ const toc = [
       </section>
 
       <section class="e-sec" aria-labelledby="what-we-dont-do">
-        <h2 id="what-we-dont-do"><span class="e-n num" aria-hidden="true">02</span>What we don’t do</h2>
+        <h2 id="what-we-dont-do"><span class="e-n num" aria-hidden="true">03</span>What we don’t do</h2>
         <p>We don’t call a result true because a company published it. Many mathematicians have asked for careful review of AI results, and we agree.</p>
         <p class="e-limit"><b>On every entry.</b> A hype check that says plainly how far the claim has been checked, and a direct link to the original paper.</p>
       </section>
 
       <section class="e-sec" aria-labelledby="how-entries-are-made">
-        <h2 id="how-entries-are-made"><span class="e-n num" aria-hidden="true">03</span>How entries are made</h2>
+        <h2 id="how-entries-are-made"><span class="e-n num" aria-hidden="true">04</span>How entries are made</h2>
         <ol class="ab-steps">
-          <li><span><b>Draft.</b> One AI model writes the entry from the paper’s source and the published release.</span></li>
-          <li><span><b>Check.</b> A different AI model matches every sentence to a line in the paper. Anything it can’t match is cut.</span></li>
+          <li><span><b>Draft.</b> One AI model writes the explanation from the paper’s source and the published release. Every number in a worked example is computed, not guessed.</span></li>
+          <li><span><b>Check.</b> A different AI model matches every fact to a line in the paper and recomputes the examples. Anything it can’t match is cut.</span></li>
           <li><span><b>Correct.</b> Anyone can report an error. Fixes are made in the open on GitHub.</span></li>
         </ol>
       </section>
