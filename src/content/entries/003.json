@@ -1,0 +1,324 @@
+{
+  "id": "003",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf",
+      "label": "The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s > 7/8"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/paper2.pdf",
+      "label": "The Quasi-Riemann Hypothesis (alternate 11/12 proof)"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026/paper.pdf",
+      "label": "Uniform exclusion of Landau–Siegel zeros"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/003.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "No zero of Riemann's zeta function, or of any Dirichlet L-function, lies to the right of real part 7/8.",
+  "scope": "The 7/8 wall holds for every Dirichlet L-function at every height. It also holds for finite-order Hecke L-functions over the Eisenstein integers.",
+  "plain": "Riemann's zeta function and its relatives, the Dirichlet L-functions, have zeros that control how primes are spread out. The quasi-Riemann hypothesis asks for one fixed wall below 1 with no zeros to its right. This paper proves such a wall at 7/8 (Lean proof listed). It is not the Riemann hypothesis, which needs every zero at real part exactly 1/2. Two companion papers add a separate wall at 11/12 and a uniform gap for Landau–Siegel zeros.",
+  "doesNot": "This does not prove the Riemann hypothesis: zeros may still lie anywhere from 1/8 to 7/8, not only at 1/2.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1896",
+    "firstStepBy": "Hadamard and de la Vallée Poussin, no zeros on the line Re s = 1",
+    "field": "Number theory",
+    "significance": "Landmark",
+    "significanceWhy": "Every zero-free zone known before narrowed with height. This gives a fixed one and rules out Landau–Siegel zeros above 7/8."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Fixed wall with no zeros of ζ to its right",
+    "note": "Lower is better. Before 2026 no fixed wall below 1 was known; 1/2 is the most the Riemann hypothesis would give.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1896,
+        "value": 1,
+        "who": "Hadamard; de la Vallée Poussin (no zeros on Re s = 1)",
+        "source": 1
+      },
+      {
+        "year": 2026,
+        "value": 0.9167,
+        "who": "11/12 (companion paper)",
+        "claim": true,
+        "source": 11
+      },
+      {
+        "year": 2026,
+        "value": 0.875,
+        "who": "7/8 (this paper)",
+        "claim": true,
+        "source": 10
+      }
+    ]
+  },
+  "explanation": "Add 1 + 1/4 + 1/9 + 1/16 and keep going, using one over every square number. The total settles at π²/6, about 1.6449. Replace the power 2 by any number s and you get Riemann's zeta function, written ζ(s). A standard extension lets s be a complex number, with a real part and an imaginary part. Call the imaginary part the height. The first zero of ζ, a point where it equals 0, has real part 1/2 and height about 14.1347. The next two also have real part 1/2, at heights about 21.0220 and 25.0109.\n\nThe real part of each zero is what matters here. The zeros of interest all have real part between 0 and 1, a band called the critical strip. The Riemann hypothesis says every one of them has real part exactly 1/2. It is still open, and this work does not change that. The quasi-Riemann hypothesis is a much weaker wish. It asks for one fixed wall below 1, such as 0.99. No zero may lie to the right of that wall, at any height. It says nothing about where the zeros sit, only that they keep a fixed distance from 1.\n\nZeros near real part 1 matter. In 1859, Riemann tied the zeros of ζ to how primes are spread out. In 1896, Hadamard and de la Vallée Poussin showed that no zero has real part exactly 1. That gave the prime number theorem, which counts primes up to a given size. Later work cleared a thin zone just left of the line at real part 1. But every such zone narrows as the height grows. In 1958, Vinogradov and Korobov found a different zone, and it narrows too. No fixed wall was known.\n\nThe same question covers a wider family. Take 1 − 1/3 + 1/5 − 1/7 and so on. Each odd number gets + or − by its remainder after dividing by 4. The total is π/4, about 0.7854. That sign pattern is a Dirichlet character: a rule that repeats with some period and respects multiplication. Each character gives its own Dirichlet L-function, and ζ is the case where every sign is +. Dirichlet built these in 1837 to find primes in arithmetic progressions, such as 1, 5, 9, 13 and so on. For them the classical zones narrow as the height or the period grows. They also allow one possible exception. That is a single real zero very close to 1. It can occur only for a character with values 0, 1 and −1. Such a zero is called a Landau–Siegel zero, and nobody could rule it out.\n\nThe first paper, dated 30 September 2026, proves that the wall exists and puts it at 7/8, or 0.875. No Dirichlet L-function, ζ included, has a zero with real part above 7/8. The same wall holds for every character, every period and every height. The line at 7/8 itself is not covered. Any Landau–Siegel zero above 7/8 is ruled out as well. For the basic, so-called primitive L-functions, a mirror symmetry then keeps every such zero between 1/8 and 7/8. That still allows zeros at real part 0.6 or 0.8, which the Riemann hypothesis forbids.\n\nThe one obstacle was that classical methods lose strength as the height and the period grow. A fixed wall needs an argument whose margin is the same for every function. The paper gets this by working in a larger number system, the Eisenstein integers. These are numbers a + bω, with a and b whole numbers. Here ω is a cube root of 1 other than 1. It proves the wall for a whole family of functions built there, called Hecke L-functions. The whole family is needed even for ζ, because the method keeps producing twisted relatives of the function under study. It draws on a cubic version of the theta series, from S. J. Patterson in 1977.\n\nThe core move bounds one carefully weighted sum directly. It also compares that sum with an integral containing 1 divided by the L-function. If some zero lay past the wall, take the rightmost possible zeros. The two computations would show that this reciprocal stays well behaved a fixed distance left of them. A reciprocal cannot stay well behaved at a zero, so no such zero exists. A first pass gives a wall at 11/12, about 0.9167, and a refined pass reaches 7/8. Each Dirichlet L-function, times a partner, matches a Hecke L-function up to finitely many harmless factors. So the wall passes down to every Dirichlet L-function.\n\nTwo companion papers sit beside it. One, dated 5 October 2026, claims to prove the 11/12 wall by itself, as a shorter intermediate step. The other, dated 1 October 2026, takes a separate, mostly algebraic route aimed only at Landau–Siegel zeros. It proves that one constant c > 0 works for every such character with period q of at least 3. Each real zero β of such a function then satisfies (1 − β) × log q ≥ c. It gives no value for c. The first paper also draws consequences. One concerns the smallest remainder that is not a perfect square, modulo a prime. Modulo 7, squares leave remainders 1, 2 and 4, so that smallest non-square is 3. The paper claims this number is at most a fixed power of log p for every odd prime p.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the 7/8 wall. They cover ζ and every Dirichlet L-function, with one wall for all of them. They also cover the Hecke L-functions over the Eisenstein integers. Lean has also checked the uniform gap for real zeros from the 1 October paper, with no explicit c. The paper's later applications, such as the non-square bound, are outside that check. The 11/12 companion is not in the Lean scope note. No specialist review has been published.",
+  "hypeCheck": "Landmark if it holds. Lean checks formal versions of the 7/8 wall and the real-zero gap. No specialist review is published, the applications are unchecked, and the Riemann hypothesis stays open.",
+  "glossary": [
+    {
+      "term": "Riemann zeta function",
+      "meaning": "The function ζ(s) = 1 + 1/2^s + 1/3^s + …, extended to complex numbers s."
+    },
+    {
+      "term": "Zero",
+      "meaning": "A complex number where the function equals 0."
+    },
+    {
+      "term": "Riemann hypothesis",
+      "meaning": "The open conjecture that every zero in the critical strip has real part exactly 1/2."
+    },
+    {
+      "term": "Quasi-Riemann hypothesis",
+      "meaning": "The weaker claim that some fixed number below 1 has no zeros to its right, at any height."
+    },
+    {
+      "term": "Dirichlet character",
+      "meaning": "A repeating rule assigning values to whole numbers that respects multiplication, used to sort primes by remainder."
+    },
+    {
+      "term": "Dirichlet L-function",
+      "meaning": "The sum of a Dirichlet character's value at n divided by n^s, over all n; ζ is the simplest one."
+    },
+    {
+      "term": "Landau–Siegel zero",
+      "meaning": "A possible single real zero very close to 1, for a character with values 0, 1 and −1."
+    },
+    {
+      "term": "Hecke L-function",
+      "meaning": "An analogue of a Dirichlet L-function built over a larger number system, here the Eisenstein integers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Hadamard, “Sur la distribution des zéros de la fonction ζ(s) et ses conséquences arithmétiques”, Bull. Soc. Math. France 24 (1896), 199–220",
+      "url": "https://doi.org/10.24033/bsmf.545"
+    },
+    {
+      "id": 2,
+      "cite": "C.-J. de la Vallée Poussin, “Recherches analytiques sur la théorie des nombres premiers”, Ann. Soc. Sci. Bruxelles 20 (1896), 183–256",
+      "url": "https://books.google.com/books?id=7e0GAAAAYAAJ"
+    },
+    {
+      "id": 3,
+      "cite": "B. Riemann, “Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse” (1859)",
+      "url": "https://www.claymath.org/library/historical/riemann/r.html"
+    },
+    {
+      "id": 4,
+      "cite": "P. G. L. Dirichlet (1837), on primes in arithmetic progressions; English translation by R. Stephan, arXiv:0808.1408",
+      "url": "https://arxiv.org/abs/0808.1408"
+    },
+    {
+      "id": 5,
+      "cite": "I. M. Vinogradov, “A new estimate of the function ζ(1+it)”, Izv. Akad. Nauk SSSR Ser. Mat. 22 (1958), 161–164",
+      "url": "https://www.mathnet.ru/eng/im3962"
+    },
+    {
+      "id": 6,
+      "cite": "N. M. Korobov, “Estimates of trigonometric sums and their applications”, Uspekhi Mat. Nauk 13 (1958), 185–192",
+      "url": "https://www.mathnet.ru/eng/rm7458"
+    },
+    {
+      "id": 7,
+      "cite": "S. J. Patterson, “A cubic analogue of the theta series”, J. reine angew. Math. 296 (1977), 125–161",
+      "url": "https://doi.org/10.1515/crll.1977.296.125"
+    },
+    {
+      "id": 8,
+      "cite": "Clay Mathematics Institute, Riemann Hypothesis, Millennium Prize Problems",
+      "url": "https://www.claymath.org/millennium/riemann-hypothesis/"
+    },
+    {
+      "id": 9,
+      "cite": "T. Tao, “The Elliott–Halberstam conjecture implies the Vinogradov least quadratic nonresidue conjecture”, Algebra & Number Theory 9 (2015), 1005–1034",
+      "url": "https://doi.org/10.2140/ant.2015.9.1005"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re s > 7/8” (30 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “The Quasi-Riemann Hypothesis” (alternate 11/12 proof, 5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/paper2.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, “Uniform exclusion of Landau–Siegel zeros” (1 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-exclusion-of-Landau-Siegel-zeros-October-1-2026/paper.pdf"
+    },
+    {
+      "id": 13,
+      "cite": "openai/math, Lean scope note for family 003",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/003.md"
+    },
+    {
+      "id": 14,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For ζ alone, a fixed σ0 < 1 with no zeros in Re s > σ0 is called the quasi-Riemann hypothesis; it asks for one gap valid at every height.",
+      "verdict": "supported",
+      "sourceLine": "It asks for one gap valid at every height, not merely nonvanishing on"
+    },
+    {
+      "text": "The Riemann hypothesis places nontrivial zeros on Re s = 1/2 and remains open; the theorem does not establish it.",
+      "verdict": "supported",
+      "sourceLine": "The theorem does not establish the"
+    },
+    {
+      "text": "The Riemann hypothesis remains open.",
+      "verdict": "supported",
+      "sourceLine": "The Riemann hypothesis remains open"
+    },
+    {
+      "text": "Riemann's 1859 memoir related the zeros of ζ to the distribution of primes.",
+      "verdict": "supported",
+      "sourceLine": "Riemann's 1859 memoir related the zeros of"
+    },
+    {
+      "text": "Hadamard and de la Vallée Poussin proved in 1896 that ζ has no zero on Re s = 1, giving the prime number theorem.",
+      "verdict": "supported",
+      "sourceLine": "Vall\\'ee Poussin independently proved in 1896 that"
+    },
+    {
+      "text": "Even for fixed conductor, the classical zero-free region's width tends to zero with the height.",
+      "verdict": "supported",
+      "sourceLine": "Even when $q$ is fixed, its width tends to zero with the height."
+    },
+    {
+      "text": "Vinogradov and Korobov developed methods giving a zero-free region for ζ that also shrinks with height.",
+      "verdict": "supported",
+      "sourceLine": "Vinogradov and Korobov developed methods"
+    },
+    {
+      "text": "Dirichlet's 1837 proof of primes in progressions introduced the character L-series.",
+      "verdict": "supported",
+      "sourceLine": "Dirichlet's 1837 proof of infinitude of primes in every"
+    },
+    {
+      "text": "The character modulo 1 gives the Riemann zeta function.",
+      "verdict": "supported",
+      "sourceLine": "the character modulo $1$ gives the"
+    },
+    {
+      "text": "Classical regions approach Re s = 1 as conductor or height grows and can allow one simple real exceptional zero.",
+      "verdict": "supported",
+      "sourceLine": "can allow one simple real exceptional zero"
+    },
+    {
+      "text": "Any exception is a simple real zero, can occur only for quadratic χ, and is called a Landau–Siegel zero.",
+      "verdict": "supported",
+      "sourceLine": "Any exception is a simple real zero, can occur only if"
+    },
+    {
+      "text": "Every Dirichlet L-function, including ζ, has no zero in Re s > 7/8, as do finite-order Hecke L-functions over Q(√−3).",
+      "verdict": "supported",
+      "sourceLine": "The same holds for every Dirichlet $L$-function, including $\\zeta(s)$."
+    },
+    {
+      "text": "The boundary Re s = 7/8 is not included, and any exceptional real zero in (7/8, 1) is excluded.",
+      "verdict": "supported",
+      "sourceLine": "The boundary $\\Re s=7/8$ is not included, while any exceptional"
+    },
+    {
+      "text": "By the functional equation, nontrivial zeros of every primitive Dirichlet L-function lie in 1/8 ≤ Re s ≤ 7/8.",
+      "verdict": "supported",
+      "sourceLine": "zeros of every primitive Dirichlet $L$-function lie in"
+    },
+    {
+      "text": "The constant must be independent of the character, its conductor, and the height.",
+      "verdict": "supported",
+      "sourceLine": "to find a constant $\\sigma_0<1$, independent of the character, its"
+    },
+    {
+      "text": "The Eisenstein integers are Z[ω] with ω = e^{2πi/3}.",
+      "verdict": "supported",
+      "sourceLine": "Write $\\OO=\\OO_K=\\mathbb Z[\\omega]$, where $\\omega=e^{2\\pi\\mathrm i/3}$."
+    },
+    {
+      "text": "The entire Hecke family is needed even for ζ, because the Poisson rows introduce Hecke twists of the target.",
+      "verdict": "supported",
+      "sourceLine": "The entire family is needed even for the"
+    },
+    {
+      "text": "Kubota's metaplectic theory and Patterson's cubic theta series provide the automorphic setting.",
+      "verdict": "supported",
+      "sourceLine": "Kubota's metaplectic theory and Patterson's cubic theta series provide"
+    },
+    {
+      "text": "A character sum is bounded directly and compared with an integral containing the reciprocal of the L-function; this continues the reciprocal across the rightmost possible zeros.",
+      "verdict": "supported",
+      "sourceLine": "A power saving in both comparisons"
+    },
+    {
+      "text": "The first part proves the 11/12 assertion; the second starts from it and reaches 7/8.",
+      "verdict": "supported",
+      "sourceLine": "Part~\\ref{part:seven-eighths} starts from that conclusion and introduces"
+    },
+    {
+      "text": "Away from finitely many Euler factors, the Hecke L-function of χ composed with the norm is L(s,χ)L(s,χχ−3); the omitted factors are nonzero.",
+      "verdict": "supported",
+      "sourceLine": "The omitted factors are nonzero in"
+    },
+    {
+      "text": "The 11/12 paper isolates a natural intermediate step toward the 7/8 region.",
+      "verdict": "supported",
+      "sourceLine": "is a natural intermediate step toward the stronger zero-free region"
+    },
+    {
+      "text": "There is an absolute c > 0 with (1 − β) log q ≥ c for every real zero of every primitive nonprincipal real Dirichlet L-function of conductor q ≥ 3.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute constant $c>0$ such that every real zero"
+    },
+    {
+      "text": "The Landau–Siegel paper's remaining argument is algebraic, using a determinant comparison.",
+      "verdict": "supported",
+      "sourceLine": "The remaining argument is algebraic."
+    },
+    {
+      "text": "The least quadratic nonresidue n(p) satisfies n(p) ≤ C(log p)^A for every odd prime p.",
+      "verdict": "supported",
+      "sourceLine": "the least positive quadratic nonresidue $n(p)$ satisfies"
+    },
+    {
+      "text": "Lean formalizes the 7/8 bound for ζ, every Dirichlet L-function uniformly, and finite-order Hecke L-functions over Q(√−3); the paper's later applications are not included.",
+      "verdict": "external",
+      "sourceId": 13
+    },
+    {
+      "text": "Lean formalizes the uniform logarithmic real-zero gap with no explicit c.",
+      "verdict": "external",
+      "sourceId": 13
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 14
+    }
+  ]
+}
