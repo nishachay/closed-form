@@ -1,0 +1,176 @@
+{
+  "id": "369",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026/main.pdf",
+      "label": "Strict hot spots and absence of interior critical points on smooth simply connected planar domains"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/369.md",
+      "label": "Lean scope doc",
+      "note": "No paper listed in lean/formalization.yaml. The scope doc links 1 Comparator challenge for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/HotSpots.json",
+      "label": "Comparator challenge HotSpots.json",
+      "note": "Names 1 theorem: OAI.StrictHotSpots.main_theorem."
+    }
+  ],
+  "headline": "On smooth flat shapes without holes, the lasting hot and cold spots lie on the edge.",
+  "scope": "The shape must be flat, bounded, smooth-edged and without holes. Shapes with corners and higher dimensions are not covered.",
+  "plain": "Heat an insulated flat plate unevenly and wait; the temperature settles into one slowly fading pattern. The hot spots conjecture says that pattern is hottest and coldest on the edge. Counterexamples exist for shapes with holes. This paper proves a strict form for every smooth shape without holes: the pattern has no flat point inside at all.",
+  "doesNot": "This does not cover shapes with corners, shapes with holes, or higher dimensions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Jeffrey Rauch, problem raised",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It settles the smooth simply connected planar case of a well-known problem, where proofs needed symmetry or special shapes."
+  },
+  "explanation": "Take a thin metal plate with insulated edges, so no heat escapes. Heat it unevenly and wait. The temperature evens out, but slowly, and for a long time it keeps one basic shape. The question is where the hottest and coldest points of that lasting shape sit. The hot spots conjecture says they sit on the edge, never inside.\n\nA rectangle 2 units long and 1 unit wide shows the idea. Its slowest-fading temperature shape is cos(πx/2), which runs from hot at one short end to cold at the other. Its decay rate is π²/4, about 2.47. The next shape across the width decays at π², about 9.87, so the lengthwise one lasts longest. Its hottest and coldest points lie on the two short ends. A rectangle has corners, so it is only a warm-up for the smooth shapes in this paper.\n\nA round plate is smooth. There the lasting shape is a Bessel function times cos θ. For a disc of radius 1, its decay rate is about 3.39. It grows steadily from the centre outward, so again the extremes lie on the rim. A disc also has a twist: the same shape turned by 90 degrees fades at exactly the same rate. Then there is a whole family of lasting shapes, not just one, and each must be checked.\n\nIn mathematical terms, these lasting shapes are eigenfunctions for the first positive Neumann eigenvalue. Jeffrey Rauch raised the problem in 1975. It is false in general. In 1999, Krzysztof Burdzy and Wendelin Werner built a flat counterexample with two holes. Burdzy later needed only one hole. So the conjecture is about shapes with no holes. Proofs existed only for special classes. These include convex shapes with two mirror symmetries, the so-called lip domains, and every triangle.\n\nThis paper proves a strict form for every smooth flat shape without holes. Every lasting shape has a nonzero slope at every inside point. So it has no peak, no valley and no saddle point inside. Its maximum and minimum lie on the edge. This holds for every member of the family when there is more than one.\n\nThe single difficulty is that the slope has no preferred direction. In a rectangle you can watch the slope along its length. A general shape gives you nothing like that. The insulated edge does give one fact: at the boundary, the slope runs along the edge, never across it. The paper builds an energy that is zero exactly for slopes of lasting shapes. It then reweights the boundary values in a way that keeps that energy zero. If some inside point had zero slope, these reweightings would create too many independent lasting shapes. That breaks a limit the paper proves on how many there can be, so no such point exists.\n\nThe result needs a smooth edge, so it does not cover shapes with corners, such as polygons. It also stays in two dimensions and assumes no holes, which the counterexamples show is necessary.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. The slope is never zero inside, for every lasting shape in the family. A tool called Comparator matches it against a fixed reference statement. No specialist review of the paper has been published.",
+  "hypeCheck": "Lean checks a formal version of the main theorem. The result is limited to smooth flat shapes without holes, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Neumann eigenfunction",
+      "meaning": "A temperature pattern on an insulated plate that keeps its shape while fading at a fixed rate."
+    },
+    {
+      "term": "Eigenvalue",
+      "meaning": "The fixed fading rate of such a pattern."
+    },
+    {
+      "term": "Critical point",
+      "meaning": "A point where the slope is zero, such as a peak, a valley or a saddle."
+    },
+    {
+      "term": "Simply connected",
+      "meaning": "A shape with no holes."
+    },
+    {
+      "term": "Multiplicity",
+      "meaning": "How many independent patterns share the same fading rate."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Rauch, “Lecture #1. Five problems: An introduction to the qualitative theory of partial differential equations”, Partial Differential Equations and Related Topics, Lecture Notes in Mathematics 446, Springer (1975), 355–369",
+      "url": "https://doi.org/10.1007/BFb0070610"
+    },
+    {
+      "id": 2,
+      "cite": "K. Burdzy and W. Werner, “A counterexample to the “hot spots” conjecture”, Annals of Mathematics 149 (1999), 309–317",
+      "url": "https://doi.org/10.2307/121027"
+    },
+    {
+      "id": 3,
+      "cite": "K. Burdzy, “The hot spots problem in planar domains with one hole”, Duke Mathematical Journal 129(3) (2005), 481–502",
+      "url": "https://doi.org/10.1215/S0012-7094-05-12932-5"
+    },
+    {
+      "id": 4,
+      "cite": "D. Jerison and N. Nadirashvili, “The “hot spots” conjecture for domains with two axes of symmetry”, Journal of the American Mathematical Society 13(4) (2000), 741–772",
+      "url": "https://doi.org/10.1090/S0894-0347-00-00346-5"
+    },
+    {
+      "id": 5,
+      "cite": "R. Atar and K. Burdzy, “On Neumann eigenfunctions in lip domains”, Journal of the American Mathematical Society 17(2) (2004), 243–265",
+      "url": "https://doi.org/10.1090/S0894-0347-04-00453-9"
+    },
+    {
+      "id": 6,
+      "cite": "C. Judge and S. Mondal, “Euclidean triangles have no hot spots”, Annals of Mathematics 191 (2020), 167–211",
+      "url": "https://doi.org/10.4007/annals.2020.191.1.3"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 369: “Strict hot spots and absence of interior critical points on smooth simply connected planar domains” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean doc for family 369 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/369.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The problem arose from Rauch’s discussion of long-time heat flow with insulating boundary conditions.",
+      "verdict": "supported",
+      "sourceLine": "The hot-spots problem arose from Rauch's discussion of the long-time behavior of heat flow with insulating boundary conditions"
+    },
+    {
+      "text": "Every nonzero first-positive Neumann eigenfunction has nonzero gradient inside, so extrema lie on the boundary.",
+      "verdict": "supported",
+      "sourceLine": "The theorem imposes no convexity or symmetry condition."
+    },
+    {
+      "text": "The result applies to every eigenfunction, including when the eigenvalue is multiple, and rules out interior saddle points.",
+      "verdict": "supported",
+      "sourceLine": "since it also rules out interior saddle points."
+    },
+    {
+      "text": "Burdzy and Werner built a planar counterexample with two holes.",
+      "verdict": "supported",
+      "sourceLine": "Burdzy and Werner constructed a planar counterexample with two holes"
+    },
+    {
+      "text": "Burdzy later obtained interior extrema with one hole.",
+      "verdict": "supported",
+      "sourceLine": "Burdzy subsequently obtained this behavior with just one hole"
+    },
+    {
+      "text": "Jerison and Nadirashvili treated convex domains with two reflection symmetries.",
+      "verdict": "supported",
+      "sourceLine": "on convex planar domains with two orthogonal reflection symmetries"
+    },
+    {
+      "text": "Judge and Mondal excluded interior critical points on every triangle.",
+      "verdict": "supported",
+      "sourceLine": "excluded interior critical points for every first-positive Neumann eigenfunction on every Euclidean triangle"
+    },
+    {
+      "text": "The difficulty is controlling the gradient without a preferred direction; the Neumann condition makes the gradient tangent to the boundary.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to control the gradient without a preferred direction in the domain."
+    },
+    {
+      "text": "A nonnegative quadratic form has nullspace exactly the eigenfunction gradients.",
+      "verdict": "supported",
+      "sourceLine": "We use that constraint through a nonnegative quadratic form whose nullspace consists exactly of first-positive eigenfunction gradients."
+    },
+    {
+      "text": "A critical point would produce too many eigenfunction gradients, a contradiction.",
+      "verdict": "supported",
+      "sourceLine": "A critical point would thus produce too many eigenfunction gradients, contradicting the planar multiplicity bound or boundary uniqueness."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "Lean formalizes nonvanishing gradient for every first-positive eigenfunction on smooth bounded simply connected planar domains.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "7c13da4bb95ac33fe1f0bf6067a7f6011bf954921ff12843bd316f4088165f2d",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

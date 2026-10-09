@@ -46,24 +46,7 @@
     "significance": "Landmark",
     "significanceWhy": "If the proofs hold, they settle an 87-year-old central problem in convex geometry."
   },
-  "sections": [
-    {
-      "title": "The story",
-      "body": "In 1939, Kurt Mahler asked how small the volume product of a symmetric convex body and its polar could be. He proved the planar case himself. In 1956, Olof Hanner built the cube-like shapes that later became the conjectured minimizers. In 1981, Jean Saint-Raymond proved the sharp bound for unconditional bodies (those symmetric under sign flips of coordinates). In 1985 and 1986, Shlomo Reisner proved the sharp bound for zonoids. In 1987, Jean Bourgain and Vitali Milman proved a dimension-free exponential lower bound. In 2008, Greg Kuperberg made that bound explicit and stronger with Gauss linking integrals. In 2014, Shiri Artstein-Avidan, Roman Karasev and Yaron Ostrover linked the problem to symplectic capacity. In 2020, Hiroshi Iriyeh and Masataka Shibata settled the three-dimensional symmetric case with equality. In 2022, Fradelizi, Hubard, Meyer, Roldán-Pensado and Zvavitch gave a shorter proof of that case, with stability. For general bodies, Mathieu Meyer and Reisner (2006) and Jaegil Kim and Reisner (2011) gave partial results. In 2026, Shibing Chen, Yuanyuan Li, Dongmeng Xi and Zhe-Feng Xu solved the general three-dimensional case. These papers prove the bound in every dimension and classify all equality cases."
-    },
-    {
-      "title": "Why it matters",
-      "body": "The volume product is unchanged by linear maps, so the bound is a universal law of shape, not an accident of coordinates. Equality goes exactly to linear Hanner bodies, and the companion nonsymmetric bound crowns the simplex."
-    },
-    {
-      "title": "Where it leads",
-      "body": "A companion paper proves a stronger statement for n ≥ 2. The product of any symmetric body with its polar, K × K°, has Gromov width 4. That fact by itself implies the symmetric volume bound. The papers also derive sharp functional versions. Stability, meaning how close near-minimizers are to Hanner bodies, is a possible next step that the papers do not claim."
-    },
-    {
-      "title": "What it says about AI",
-      "body": "The manuscripts list OpenAI as author, and the repository states that an internal model produced them. The reasoning summary covers three separate attempts: the symmetric bound, its equality cases and the general case. It shows the model testing routes from Kuperberg's linking integrals to Klartag's covariance framework. The Lean scope note describes formal proofs of four results. They are the symmetric bound, its equality cases, the general simplex bound and the symplectic width 4. Each has a Comparator statement. The functional inequalities are not formalized, and an embedding at capacity exactly 4 is not asserted."
-    }
-  ],
+  "explanation": "Start with a square whose corners are (±1, ±1). Its area is 4. Now collect every point y with x·y ≤ 1 for all points x of the square. Here x·y means x₁y₁ + x₂y₂. Checking the four corners is enough, and they carve out a diamond with corners at (±1, 0) and (0, ±1). Its area is 2. This diamond is the square's polar, a partner shape that every symmetric shape has. Multiply the two areas and you get 8. That number is the volume product.\n\nThe product ignores size. Double the square's side and its area becomes 16, while its diamond shrinks to area 1/2. The product is still 8. Stretching or tilting the square does not change it either, so the product measures shape alone. Now try a disc of radius 1. Its polar is the same disc, so the product is π × π, about 9.87. The disc scores higher than the square.\n\nIn 1939, Kurt Mahler asked how low this product can go. He meant convex bodies, solid shapes with no dents, that are symmetric about their centre. He settled flat shapes himself. The expected answer in n dimensions is 4^n/n!, the score of a cube and its polar. In two dimensions that is 16/2 = 8, our square again. In three dimensions, a cube with corners (±1, ±1, ±1) has volume 8, and its polar octahedron has volume 4/3. Their product is 32/3, which matches 4³/3!.\n\nThe single difficulty is that the lowest score is shared. The octahedron also scores 32/3, and so do a prism on a diamond and a double pyramid on a square. All of these are Hanner shapes. They are built from line segments by two moves: taking products, and joining shapes at the centre. The family grows with dimension, and a proof must let every member tie at once. Earlier methods reached the sharp bound only for special classes. Jean Saint-Raymond did it in 1981 for shapes unchanged by flipping the sign of any coordinate. Shlomo Reisner did it for zonoids. In 2020, Hiroshi Iriyeh and Masataka Shibata settled three dimensions. In 1987, Jean Bourgain and Vitali Milman proved a floor of a^n/n! in every dimension, for some fixed a above zero. Raising a all the way to 4 stayed open.\n\nThis paper proves the floor 4^n/n! in every dimension and finds every shape that reaches it. The idea is to count one total in two ways. First replace the shape by one cut out by flat slabs. Its polar is then the smallest convex shape holding a finite list of points. For each point of the original shape, the paper picks out small pointed pieces. Each has one corner at the centre and the rest at listed points. All of them sit inside the polar. So adding up their volumes, across the whole shape, gives at most the shape's volume times the polar's volume.\n\nThe new step shows the same total is at least 4^n/n!. It comes from a random experiment. Pick angles on a circle at random. Send them through a special map from a disc onto a lens shape. Then ask how often the result lands in the right place. A calculation from complex analysis shows these chances add up to at least 1. That is exactly the floor. Approximation then carries the result from slab shapes to every symmetric convex body.\n\nFor the shapes that tie, the paper finds a hidden property. Measure distance using the polar as the unit ball. Then any three balls that overlap in pairs share a common point. A known theorem of Hansen and Lima says only Hanner shapes, and their stretched or tilted copies, have this property. So the square, the cube and their relatives are the only shapes on the floor, up to linear changes.\n\nThe floor needs symmetry. A companion paper drops it and measures each shape from its best interior point. There the floor is (n+1)^(n+1)/(n!)², reached exactly by simplices such as triangles. For a triangle it is 27/4 = 6.75, below the square's 8. A second companion paper proves a statement in symplectic geometry, the geometry of position and momentum. That statement implies the symmetric floor by itself. The paper also derives a sharp version for functions instead of shapes.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of four results. They are the symmetric floor, its equality cases, the general simplex floor and the symplectic statement. The functional inequalities are outside that check. No independent expert review has been published.",
   "hypeCheck": "The main geometric statements have Lean formal proofs that can be checked with Comparator. The functional corollaries do not, and the repository reports no independent expert review.",
   "glossary": [
     {
@@ -249,6 +232,91 @@
       "text": "The reasoning summary shows the model testing conformal-map and transport routes against the literature.",
       "verdict": "external",
       "sourceId": 9
+    },
+    {
+      "text": "The conjectured symmetric minimum 4^n/n! is the volume product of a cube and its polar cross-polytope.",
+      "verdict": "supported",
+      "sourceLine": "The conjectured value is … the product of a cube and its polar cross-polytope."
+    },
+    {
+      "text": "The volume product does not change under an invertible linear map.",
+      "verdict": "supported",
+      "sourceLine": "The two determinant factors cancel under an invertible linear change of coordinates"
+    },
+    {
+      "text": "The planar inequality goes back to Mahler.",
+      "verdict": "supported",
+      "sourceLine": "the planar inequality also goes back to him"
+    },
+    {
+      "text": "Hanner polytopes include cubes, cross-polytopes and mixed recursive sums built by products and joins.",
+      "verdict": "supported",
+      "sourceLine": "This class contains cubes, cross-polytopes, and mixed recursive sums."
+    },
+    {
+      "text": "Bourgain and Milman gave a lower bound a^n/n! with a fixed a > 0; the sharp target is 4^n/n!.",
+      "verdict": "supported",
+      "sourceLine": "Bourgain and Milman's asymptotic reverse Santaló inequality gives a lower bound … for some … independent of dimension"
+    },
+    {
+      "text": "For a body cut out by symmetric slabs, the polar is the convex hull of the points ±b_i.",
+      "verdict": "supported",
+      "sourceLine": "where the nonzero, pairwise nonproportional rows"
+    },
+    {
+      "text": "Simplices with a corner at 0 and corners at signed rows lie inside the polar.",
+      "verdict": "supported",
+      "sourceLine": "take the convex hull of … and those signed rows. Let … be the union of these simplices. It lies in"
+    },
+    {
+      "text": "Approximation extends the bound from slab polytopes to all origin-symmetric bodies.",
+      "verdict": "supported",
+      "sourceLine": "Approximation extends the inequality to all origin-symmetric convex bodies."
+    },
+    {
+      "text": "The analytic tool is a conformal map of the disk sending uniform boundary angles to a uniform imaginary coordinate.",
+      "verdict": "supported",
+      "sourceLine": "The analytic ingredient is a conformal map of the disk for which uniform angular measure on the boundary maps to a uniform imaginary coordinate."
+    },
+    {
+      "text": "The integrated simplex volume is bounded below analytically and above by the inclusion in the polar.",
+      "verdict": "supported",
+      "sourceLine": "The first inequality is analytic; the last is the inclusion just described."
+    },
+    {
+      "text": "The equality argument leads to the property that any three pairwise-intersecting balls share a point.",
+      "verdict": "supported",
+      "sourceLine": "The equality argument leads to a classical property of normed spaces: any three pairwise-intersecting closed balls have a common point."
+    },
+    {
+      "text": "The Hansen–Lima theorem identifies the equality bodies as linear Hanner bodies.",
+      "verdict": "supported",
+      "sourceLine": "The Hansen--Lima theorem then identifies … and hence … as a linear Hanner body"
+    },
+    {
+      "text": "For general convex bodies, simplices are exactly the minimizers, with constant (n+1)^(n+1)/(n!)^2.",
+      "verdict": "supported",
+      "sourceLine": "with equality exactly for simplices."
+    },
+    {
+      "text": "The general constant is smaller than the symmetric one for n ≥ 2.",
+      "verdict": "supported",
+      "sourceLine": "Its conjectured constant … is smaller than the symmetric constant for"
+    },
+    {
+      "text": "The symplectic paper places K in position coordinates and its polar in momentum coordinates.",
+      "verdict": "supported",
+      "sourceLine": "We place … in the position coordinates and … in the conjugate momentum coordinates"
+    },
+    {
+      "text": "Symplectic embeddings preserve volume, so width 4 gives the volume bound.",
+      "verdict": "supported",
+      "sourceLine": "Symplectic embeddings preserve volume"
+    },
+    {
+      "text": "Every Hanner body has volume product exactly 4^n/n!, by the norm-sum formulas.",
+      "verdict": "supported",
+      "sourceLine": "They show that every Hanner body has the stated volume product."
     }
   ],
   "sourceHash": "a254f5bfe408d1d66cb2c20c44ee9debc3db5445531f8711ef3a846bca8d2d61",

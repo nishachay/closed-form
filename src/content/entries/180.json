@@ -1,0 +1,190 @@
+{
+  "id": "180",
+  "status": "ai-checked",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Paired-states-and-Hamiltonian-cycles-in-cubic-bipartite-planar-graphs-September-24-2026/paper.pdf",
+      "label": "Paired states and Hamiltonian cycles in cubic bipartite planar graphs"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/180.md",
+      "label": "Lean scope doc",
+      "note": "No paper listed in lean/formalization.yaml. The scope doc links 1 Comparator challenge for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/BarnetteHamiltonian.json",
+      "label": "Comparator challenge BarnetteHamiltonian.json",
+      "note": "Names 1 theorem: OAI.Barnette.main."
+    }
+  ],
+  "headline": "Every Barnette graph has a round trip through all its points.",
+  "scope": "The graph must be cubic, bipartite, planar and 3-connected. The proof shows a cycle exists; it does not give a fast way to find one.",
+  "plain": "A Hamiltonian cycle visits every point of a network exactly once and returns to the start. Barnette conjectured that certain networks always have one: three links at each point, two teams, a flat drawing and strong connectivity. Earlier proofs needed limits on the face sizes. This paper proves the conjecture with no such limit.",
+  "doesNot": "This does not give a fast method for finding the cycle.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1969",
+    "firstStepBy": "Barnette’s conjecture, recorded by Branko Grünbaum",
+    "field": "Combinatorics",
+    "significance": "Solid",
+    "significanceWhy": "It settles a well-known graph theory conjecture that was proved only under face-size limits."
+  },
+  "explanation": "Take the corners and edges of a cube: 8 points and 12 links. Can you walk along the links, visit every point exactly once, and end where you started? Yes. Label the corners with three-digit codes of 0s and 1s, so that linked corners differ in one digit. Then 000, 001, 011, 010, 110, 111, 101, 100 and back to 000 works. A round trip like this is called a Hamiltonian cycle. The cube has exactly six of them.\n\nThe cube belongs to a special family. Every point has exactly three links, so the graph is called cubic. Its points split into two teams, with every link joining opposite teams, so it is bipartite. It can be drawn flat with no crossings, so it is planar. And it stays connected even after removing any two points. In 1969, Branko Grünbaum recorded Barnette's conjecture: every graph with all four properties has a Hamiltonian cycle.\n\nThe team condition matters. An older guess, Tait's conjecture, asked the same for cubic graphs that are planar and well connected, without teams. William Tutte disproved it in 1946. Barnette's version adds the two-team condition and asks whether that is enough.\n\nPartial answers came by limiting the faces, the regions of the flat drawing. Paul Goodey proved the case where every face has 4 or 6 sides in 1975. Tomás Feder and Carlos Subi allowed large faces in one of three face classes. In 2020, František Kardoš proved a related conjecture with faces of at most 6 sides, using a computer. In 2025, Tobias Schnieders reached faces of up to 8 sides. This paper removes the face-size limit entirely.\n\nThe single difficulty is getting one cycle instead of several. On the cube, the top square and the bottom square together touch every point, each point exactly twice. But they form two separate loops, not one trip. Local choices can easily produce such a set of loops, and nothing local joins them up.\n\nThe paper sidesteps this with a global count. It first redraws the problem on the dual picture, where each face becomes a point and each corner becomes a triangle. Earlier work showed that a Hamiltonian cycle matches a way to split those points into two groups. Each group must form a tree, a connected network with no loops. The paper then forms one finite weighted sum over many candidate choices. Choices that would leave a loop cancel each other in pairs. Grouped another way, the same sum is not zero. So some choice with no loop must exist, and it yields a single round trip.\n\nThis makes the proof one of existence. It shows that a Hamiltonian cycle is there, for graphs of any size and any face lengths. It does not claim a fast way to find the cycle. The paper also derives a stronger form: for any single link you name, some Hamiltonian cycle avoids it.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem, for every such graph. A tool called Comparator matches it against a fixed reference statement. No specialist review of the paper has been published.",
+  "hypeCheck": "Lean checks a formal version of the main theorem. The proof shows existence only, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Hamiltonian cycle",
+      "meaning": "A round trip along the links that visits every point exactly once."
+    },
+    {
+      "term": "Cubic graph",
+      "meaning": "A network where every point has exactly three links."
+    },
+    {
+      "term": "Bipartite",
+      "meaning": "Split into two teams so every link joins opposite teams."
+    },
+    {
+      "term": "Planar",
+      "meaning": "Drawable on a flat page with no crossing links."
+    },
+    {
+      "term": "3-connected",
+      "meaning": "Still connected after removing any two points."
+    },
+    {
+      "term": "Tree",
+      "meaning": "A connected network with no loops."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "B. Grünbaum, “Unsolved Problem 5”, Recent Progress in Combinatorics: Proceedings of the Third Waterloo Conference on Combinatorics (1969), 343 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 2,
+      "cite": "W. T. Tutte, “On Hamiltonian Circuits”, Journal of the London Mathematical Society s1-21(2) (1946), 98–101",
+      "url": "https://doi.org/10.1112/jlms/s1-21.2.98"
+    },
+    {
+      "id": 3,
+      "cite": "P. R. Goodey, “Hamiltonian circuits in polytopes with even sided faces”, Israel Journal of Mathematics 22 (1975), 52–56",
+      "url": "https://doi.org/10.1007/BF02757273"
+    },
+    {
+      "id": 4,
+      "cite": "T. Feder and C. Subi, “On Barnette’s conjecture”, ECCC report TR06-015 (2006)",
+      "url": "https://eccc.weizmann.ac.il/report/2006/015/"
+    },
+    {
+      "id": 5,
+      "cite": "F. Kardoš, “A Computer-Assisted Proof of the Barnette–Goodey Conjecture”, SIAM Journal on Discrete Mathematics 34(1) (2020), 62–100",
+      "url": "https://doi.org/10.1137/140984737"
+    },
+    {
+      "id": 6,
+      "cite": "T. Schnieders, “Barnette Graphs with Faces up to Size 8 are Hamiltonian” (2025), arXiv:2508.03531",
+      "url": "https://arxiv.org/abs/2508.03531v1"
+    },
+    {
+      "id": 7,
+      "cite": "H. Alt, M. S. Payne, J. M. Schmidt and D. R. Wood, “Thoughts on Barnette’s Conjecture”, Australasian Journal of Combinatorics 64 (2016), 354–365",
+      "url": "https://arxiv.org/abs/1312.3783v1"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 180: “Paired states and Hamiltonian cycles in cubic bipartite planar graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Paired-states-and-Hamiltonian-cycles-in-cubic-bipartite-planar-graphs-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean doc for family 180 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/180.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Barnette’s conjecture was recorded by Grünbaum in the 1969 Waterloo proceedings.",
+      "verdict": "supported",
+      "sourceLine": "recorded by Gr\\\"unbaum in the 1969 Waterloo proceedings"
+    },
+    {
+      "text": "Tait’s conjecture for cubic polyhedral graphs was disproved by Tutte.",
+      "verdict": "supported",
+      "sourceLine": "initiated by Tait's conjecture for cubic polyhedral graphs, disproved by Tutte"
+    },
+    {
+      "text": "Goodey proved the case with all faces quadrilaterals or hexagons.",
+      "verdict": "supported",
+      "sourceLine": "Goodey proved the case in which all faces are quadrilaterals or hexagons"
+    },
+    {
+      "text": "Kardoš proved the Barnette–Goodey conjecture for faces of size at most six.",
+      "verdict": "supported",
+      "sourceLine": "with faces of size at most six, without assuming bipartiteness"
+    },
+    {
+      "text": "Schnieders proved the faces-at-most-eight case.",
+      "verdict": "supported",
+      "sourceLine": "More recently, Schnieders proved the faces-at-most-eight case of Barnette's conjecture"
+    },
+    {
+      "text": "Every finite simple cubic, bipartite, planar, 3-vertex-connected graph has a Hamiltonian cycle.",
+      "verdict": "supported",
+      "sourceLine": "Every finite simple undirected graph that is cubic, bipartite, planar, and"
+    },
+    {
+      "text": "The difficulty is getting one spanning cycle; a degree-two spanning subgraph can have several cycle components.",
+      "verdict": "supported",
+      "sourceLine": "A spanning subgraph of degree two can have several cycle components, and local choices alone need not join them."
+    },
+    {
+      "text": "Hamiltonicity corresponds to splitting the dual triangulation’s vertices into two sets each inducing a tree.",
+      "verdict": "supported",
+      "sourceLine": "Hamiltonicity corresponds to a partition of the triangulation's vertices into two sets, each inducing a tree."
+    },
+    {
+      "text": "Pairs with a cycle cancel in the weighted sum.",
+      "verdict": "supported",
+      "sourceLine": "Thus all pairs with cyclic … cancel."
+    },
+    {
+      "text": "The sum is used for existence and no polynomial-time construction is asserted.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert a polynomial-time construction of the cycle."
+    },
+    {
+      "text": "The Hamiltonian cycle can avoid any specified single edge.",
+      "verdict": "supported",
+      "sourceLine": "The corresponding Hamiltonian cycle avoids any specified single edge"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "Lean formalizes the statement for every such graph.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "d4e732513f7345e1e84b4d2e2ed1cc7d5f5e6658ae72aafc7376500070ebd800",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

@@ -30,7 +30,12 @@ Rules for the corrected entry:
 - Keep `status` as "ai-checked". Never set "reviewed".
 - Keep `collection`, `lab`, `science`, `field`, `aiRole`, `evidence`, `sourceHash`,
   `sourceCommit`, `origin` and `model` exactly as in the draft.
-- `scorecard.field` must still equal `field`. Section titles and order stay fixed.
+- `scorecard.field` must still equal `field`.
+- Keep `explanation` as continuous prose (paragraphs, no headings or bullets). Delete or
+  rewrite each unsupported sentence inside it; never add facts. Recompute every number
+  in its worked example; a number you cannot reproduce is unsupported. It must not use
+  the word "verified". (Legacy entries without `explanation` keep their four sections,
+  titles and order fixed.)
 - Sentences stay ≤25 words; no hype words (revolutionary, groundbreaking, game-changing,
   unprecedented, breakthrough, stunning, mind-blowing, historic, finally, solves forever).
 - If a correction from the pipeline is attached (validation errors), fix exactly those

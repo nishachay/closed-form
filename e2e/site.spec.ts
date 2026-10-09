@@ -142,3 +142,19 @@ test('archive field filter works on desktop chips and phone pickers', async ({ p
   await expect(page.locator('.group:not([hidden]) .group-h .num').first()).not.toHaveText('31');
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
 });
+
+test('entry with a prose explanation renders it in place of the four sections', async ({ page }) => {
+  for (const id of ['017', '158']) {
+    await page.goto(`e/openai-math-2026-${id}/`);
+    const prose = page.locator('section.e-prose');
+    await expect(prose.locator('h2#the-explanation')).toHaveText('The explanation');
+    expect(await prose.locator('p:not(.e-limit)').count()).toBeGreaterThanOrEqual(5);
+    await expect(prose.locator('.e-limit')).toContainText("What it doesn't show");
+    await expect(page.locator('#where-it-came-from')).toBeVisible();
+    await expect(page.locator('.e-ai')).toContainText('openai/math release on 6 October 2026');
+    await expect(page.locator('h2#the-story')).toHaveCount(0);
+    await expect(page.locator('#hype-check')).toBeVisible();
+    await expect(page.locator('section[aria-labelledby="sources"] li')).not.toHaveCount(0);
+    await expect(page.locator('.side .toc a[href="#the-explanation"]')).toHaveCount(1);
+  }
+});

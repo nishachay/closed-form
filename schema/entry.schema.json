@@ -3,6 +3,10 @@
   "$id": "https://example.github.io/closed-form/schema/entry.schema.json",
   "title": "Closed Form entry (§10 + collection extension)",
   "type": "object",
+  "anyOf": [
+    { "required": ["explanation"] },
+    { "required": ["sections"], "properties": { "sections": { "minItems": 4 } } }
+  ],
   "required": [
     "id",
     "status",
@@ -18,7 +22,6 @@
     "doesNot",
     "origin",
     "scorecard",
-    "sections",
     "hypeCheck",
     "glossary",
     "sources",
@@ -93,9 +96,15 @@
         }
       }
     },
+    "explanation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Continuous-prose explanation written per prompts/explainer.md: paragraphs separated by one blank line, no headings, no bullets. When present it is the main body and replaces the four fixed sections, which may then be omitted or empty."
+    },
     "sections": {
       "type": "array",
-      "minItems": 4,
+      "description": "Legacy body: exactly 4 items titled The story, Why it matters, Where it leads, What it says about AI. Required (4 items) when explanation is absent; omit or leave empty when explanation is present.",
+      "minItems": 0,
       "maxItems": 4,
       "items": {
         "type": "object",

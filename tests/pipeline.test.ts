@@ -14,6 +14,7 @@ import {
   gatherFamily,
   loadConfig,
   parseExplainArgs,
+  readReaderPrompt,
   runDryRun,
   selectFamilies,
   verifyAiRole,
@@ -27,6 +28,22 @@ describe('lint-ste (§8)', () => {
   it('passes the 017 gold entry with zero errors', () => {
     const issues = lintEntry(entry017 as unknown as Record<string, unknown>);
     expect(hasErrors(issues)).toBe(false);
+  });
+
+  it('lints the prose explanation and bans the word "verified"', () => {
+    const bad = { ...(entry017 as unknown as Record<string, unknown>), explanation: 'The proof is verified. It is short.' };
+    const issues = lintEntry(bad);
+    expect(issues.some((i) => i.kind === 'banned-word' && i.field === 'explanation')).toBe(true);
+    expect(hasErrors(issues)).toBe(true);
+    const hype = { ...(entry017 as unknown as Record<string, unknown>), explanation: 'A breakthrough result.' };
+    expect(lintEntry(hype).some((i) => i.kind === 'hype' && i.field === 'explanation')).toBe(true);
+  });
+
+  it('wires prompts/explainer.md into the writer (reader) system prompt', async () => {
+    const prompt = await readReaderPrompt();
+    expect(prompt).toContain('EXPLAINER RULES');
+    expect(prompt).toContain('simplest concrete example');
+    expect(prompt).toContain('Leave `sections` out');
   });
 
   it('flags long sentences and hype words', () => {

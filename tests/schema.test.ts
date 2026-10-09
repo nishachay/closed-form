@@ -49,12 +49,10 @@ describe('017 gold standard (§10, Appendix A + collection extension)', () => {
     expect(plain.length).toBeLessThanOrEqual(5);
     expect(entry017.glossary.length).toBeGreaterThanOrEqual(3);
     expect(entry017.glossary.length).toBeLessThanOrEqual(8);
-    expect(entry017.sections.map((s: { title: string }) => s.title)).toEqual([
-      'The story',
-      'Why it matters',
-      'Where it leads',
-      'What it says about AI',
-    ]);
+    // 017 is the gold example for the prose body (prompts/explainer.md): no fixed sections.
+    expect(typeof entry017.explanation).toBe('string');
+    expect((entry017 as { sections?: unknown }).sections).toBeUndefined();
+    expect(entry017.explanation.split(/\n\s*\n/).length).toBeGreaterThanOrEqual(5);
     const ids = new Set(entry017.sources.map((s: { id: number }) => s.id));
     for (const p of entry017.visual.points as { source: number }[]) {
       expect(ids.has(p.source)).toBe(true);
@@ -111,6 +109,39 @@ describe('schema rejects bad entries (§10, §18)', () => {
   });
 });
 
+describe('explanation body (prompts/explainer.md)', () => {
+  const base = entry017 as Record<string, unknown>;
+  const legacySections = [
+    { title: 'The story', body: 'A story.' },
+    { title: 'Why it matters', body: 'It matters.' },
+    { title: 'Where it leads', body: 'It leads on.' },
+    { title: 'What it says about AI', body: 'It says little.' },
+  ];
+
+  it('accepts explanation with sections omitted or empty', () => {
+    expect(entrySchema.safeParse(base).success).toBe(true);
+    expect(entrySchema.safeParse({ ...base, sections: [] }).success).toBe(true);
+  });
+
+  it('still accepts the legacy four sections without explanation', () => {
+    const { explanation: _omit, ...rest } = base;
+    expect(entrySchema.safeParse({ ...rest, sections: legacySections }).success).toBe(true);
+  });
+
+  it('rejects an entry with neither explanation nor four sections', () => {
+    const { explanation: _omit, ...rest } = base;
+    expect(entrySchema.safeParse(rest).success).toBe(false);
+    expect(entrySchema.safeParse({ ...rest, sections: legacySections.slice(0, 3) }).success).toBe(false);
+  });
+
+  it('rejects headings, bullets, hype and long sentences in explanation', () => {
+    expect(entrySchema.safeParse({ ...base, explanation: '## Heading\n\nText here.' }).success).toBe(false);
+    expect(entrySchema.safeParse({ ...base, explanation: 'Intro.\n\n- a bullet point' }).success).toBe(false);
+    expect(entrySchema.safeParse({ ...base, explanation: 'A breakthrough result.' }).success).toBe(false);
+    expect(entrySchema.safeParse({ ...base, explanation: Array(30).fill('word').join(' ') + '.' }).success).toBe(false);
+  });
+});
+
 describe('exported JSON schema', () => {
   it('exists and requires the collection fields', () => {
     const raw = readFileSync('schema/entry.schema.json', 'utf-8');
@@ -120,5 +151,7 @@ describe('exported JSON schema', () => {
       expect(schema.properties[key]).toBeDefined();
     }
     expect(schema.properties.aiRole.enum).toEqual(['autonomous', 'ai-led', 'ai-assisted']);
+    expect(schema.properties.explanation.type).toBe('string');
+    expect(schema.required).not.toContain('sections');
   });
 });
