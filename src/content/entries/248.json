@@ -1,0 +1,246 @@
+{
+  "id": "248",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Thompsons-group-F-is-nonamenable-September-23-2026/paper.pdf",
+      "label": "Thompson's group F is nonamenable"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/248.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Thompson's group F, a famous group of interval stretchings, is not amenable.",
+  "scope": "The result is about Thompson's group F only, the dyadic piecewise-linear moves of the interval from 0 to 1.",
+  "plain": "Thompson's group F is made of ways to stretch and squeeze the interval from 0 to 1. A group is amenable if it admits a fair average that its moves do not change. This paper proves that F has no such average. It finds a fixed finite list of moves that always shifts a positive share of any finite set. This settles a conjecture Geoghegan made in 1979.",
+  "doesNot": "This does not give an explicit size for the shifted share in its Lean statement. Its two consequences rest on companion papers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Geoghegan, conjecture that F is nonamenable",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "It settles a 47-year-old conjecture about a central example in group theory. Earlier claims went both ways."
+  },
+  "explanation": "Here is one move in Thompson's group F. Take the interval from 0 to 1 and cut it into three pieces. The first half shrinks to half its length. The next quarter slides left by 1/4. The last quarter doubles in length. So 1/2 lands on 1/4, 3/4 lands on 1/2, and 1 stays at 1. Call this move A.\n\nEvery cut point of A is a dyadic fraction, meaning a fraction whose bottom number is a power of 2. Every stretch factor is a power of 2, such as 1/2, 1 or 2. Thompson's group F is the collection of all such moves with finitely many pieces. It is a group: doing one move after another gives another move, and every move can be undone. Order matters. Let B leave the left half alone and do a half-size copy of A on the right half. Then A after B sends 3/4 to 3/8. B after A sends 3/4 to 1/2.\n\nNow a question about balance, first in a simpler group. Take the whole numbers and one move: add 1. The set 1 to 100, shifted by 1, becomes 2 to 101. Only two numbers differ between the old set and the new one: 1 and 101. That is 2 out of 100, or 2 percent. For the set 1 to 1000 it drops to 0.2 percent. So the whole numbers have finite sets that barely notice the move.\n\nA group is called amenable if it has a fair way to average every bounded function on it. Fair means the average does not change when you shift the function by any move. This idea goes back to von Neumann and Day. A criterion of Følner from 1955 links it to the example above. Suppose a group is amenable. Then any finite list of moves has finite sets that each move barely shifts. The share that changes can be made as small as you like.\n\nThis paper proves that Thompson's group F is not amenable. It fixes one finite list of moves in F. Then it shows that every nonempty finite set of moves has a weak spot. At least one move on the list shifts a fixed positive share of it. No set can push that share toward zero, the way 2 percent fell to 0.2 percent. By Følner's criterion, F cannot be amenable.\n\nThe question is old. Thompson introduced F in 1965. Geoghegan conjectured in 1979 that F is not amenable. The usual test does not help. A group that contains a free subgroup cannot be amenable. A free subgroup is a pair of moves that obey no shortcut rules when combined. Brin and Squier showed in 1985 that F contains no free subgroup. Yet F also lies outside the simplest family of amenable groups, called elementary amenable. Neither fact decides the question.\n\nFinite sets were the main way in, and they proved slippery. Moore showed that any barely shifted sets in F would have to be enormous, growing like a tower of powers. Complete answers were claimed in both directions. Shavgulidze claimed amenability, and Moore identified errors in that approach. Moore withdrew his own amenability claim after Akhmedov identified an error in it. Akhmedov's 2021 version claims nonamenability by a different method.\n\nThe paper plays two facts against each other. The first is a 1983 result of Benyamini and Sternfeld about infinite-dimensional spaces. There, a ball has a map into itself that moves every point by at least a fixed distance. The map also never stretches distances by more than a fixed factor. The paper gives each dyadic cutting of the interval a color, which is a point in that ball. The color comes from applying the map to the average color of smaller pieces. If F had barely shifted sets, averaging colors over one would give a point the map almost leaves in place. That contradicts the fixed minimum distance. The list of moves is chosen before the set, so no set can dodge it.\n\nThe result says what F is not. It does not describe F in any new positive way. The Lean statement gives no explicit size for the shifted share and names no particular generating moves. The paper also draws two consequences, about special representations of F and about random networks built on it. Those rely on separate companion papers, not on this proof.\n\nHow sure is this? A computer proof checker called Lean has checked a formal statement. It rules out a fair average on F, the standard group of dyadic piecewise-linear moves of the interval. A Comparator statement for it is listed. The Lean scope note covers nonamenability only, not the two consequences. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. A Lean formalization of nonamenability is listed with a Comparator statement. The two consequences are not in the Lean scope note, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Thompson's group F",
+      "meaning": "All increasing piecewise-linear stretchings of the interval from 0 to 1 with finitely many pieces, dyadic cut points and slopes that are powers of 2."
+    },
+    {
+      "term": "Dyadic fraction",
+      "meaning": "A fraction whose bottom number is a power of 2, such as 3/8."
+    },
+    {
+      "term": "Group",
+      "meaning": "A collection of moves where doing two in a row gives another, and every move can be undone."
+    },
+    {
+      "term": "Amenable group",
+      "meaning": "A group with a fair way to average bounded functions on it that its own moves do not change."
+    },
+    {
+      "term": "Free subgroup",
+      "meaning": "Moves inside a group that obey no shortcut rules when combined; having one rules out amenability."
+    },
+    {
+      "term": "Elementary amenable",
+      "meaning": "The simplest family of amenable groups, built from finite and abelian groups by standard steps."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a mathematical proof written in its formal language."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Thompson's group F is nonamenable”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Thompsons-group-F-is-nonamenable-September-23-2026/paper.pdf",
+      "quote": "Thompson's group \\(F\\) is not amenable."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for “Thompson's group F is nonamenable” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/248.md"
+    },
+    {
+      "id": 3,
+      "cite": "J. W. Cannon, W. J. Floyd and W. R. Parry, “Introductory notes on Richard Thompson's groups”, L'Enseignement Mathématique 42 (1996), 215–256",
+      "url": "https://www.imo.universite-paris-saclay.fr/~emmanuel.breuillard/Cannon.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "M. G. Brin and C. C. Squier, “Groups of piecewise linear homeomorphisms of the real line”, Inventiones Mathematicae 79 (1985), 485–498",
+      "url": "https://doi.org/10.1007/BF01388519"
+    },
+    {
+      "id": 5,
+      "cite": "E. Følner, “On groups with full Banach mean value”, Mathematica Scandinavica 3 (1955), 243–254",
+      "url": "https://doi.org/10.7146/math.scand.a-10442"
+    },
+    {
+      "id": 6,
+      "cite": "J. T. Moore, “Fast growth in the Følner function for Thompson's group F”, Groups, Geometry, and Dynamics 7 (2013), 633–651",
+      "url": "https://doi.org/10.4171/GGD/201"
+    },
+    {
+      "id": 7,
+      "cite": "Y. Benyamini and Y. Sternfeld, “Spheres in infinite-dimensional normed spaces are Lipschitz contractible”, Proceedings of the AMS 88 (1983), 439–445",
+      "url": "https://doi.org/10.1090/S0002-9939-1983-0699410-7"
+    },
+    {
+      "id": 8,
+      "cite": "A. Akhmedov, “Non-amenability of R. Thompson's group F”, arXiv:1310.4395v3 (2021)",
+      "url": "https://arxiv.org/abs/1310.4395v3"
+    },
+    {
+      "id": 9,
+      "cite": "E. T. Shavgulidze, “About amenability of subgroups of the group of diffeomorphisms of the interval”, arXiv:0906.0107v1 (2009)",
+      "url": "https://arxiv.org/abs/0906.0107v1"
+    },
+    {
+      "id": 10,
+      "cite": "J. T. Moore, “A note on Shavgulidze's papers concerning the amenability problem for Thompson's group F”, arXiv:1102.0747v2 (2011)",
+      "url": "https://arxiv.org/abs/1102.0747v2"
+    },
+    {
+      "id": 11,
+      "cite": "J. T. Moore, “Nonassociative Ramsey theory and the amenability of Thompson's group”, arXiv:1209.2063v4 (withdrawn)",
+      "url": "https://arxiv.org/abs/1209.2063v4"
+    }
+  ],
+  "sourceHash": "4768096bf1636f8168aa79c30dc88d70ffd9da42e379b013a641b407dcc2f1be",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Thompson's group F consists of increasing piecewise linear homeomorphisms of [0,1] with finitely many pieces, dyadic breakpoints and slopes that are powers of 2.",
+      "verdict": "supported",
+      "sourceLine": "with finitely many pieces, dyadic rational",
+      "sourceId": 1
+    },
+    {
+      "text": "A group is amenable if its bounded real functions admit a positive normalized left-invariant mean.",
+      "verdict": "supported",
+      "sourceLine": "functions admit a positive normalized left-invariant mean",
+      "sourceId": 1
+    },
+    {
+      "text": "The invariant-mean viewpoint belongs to the classical theory of von Neumann and Day.",
+      "verdict": "supported",
+      "sourceLine": "This invariant-mean viewpoint belongs to the classical theory developed",
+      "sourceId": 1
+    },
+    {
+      "text": "By the Følner criterion, amenability requires finite sets with simultaneously small relative boundaries under any fixed finite family of translations.",
+      "verdict": "supported",
+      "sourceLine": "whose relative boundaries are simultaneously small under any fixed",
+      "sourceId": 5
+    },
+    {
+      "text": "The paper proves that Thompson's group F is not amenable.",
+      "verdict": "supported",
+      "sourceLine": "Thompson's group \\(F\\) is not amenable.",
+      "sourceId": 1
+    },
+    {
+      "text": "For a fixed finite set S, every nonempty finite set A has a relative S-boundary bounded below by a positive constant.",
+      "verdict": "supported",
+      "sourceLine": "For every nonempty finite set $A\\subset F$,",
+      "sourceId": 1
+    },
+    {
+      "text": "The set S is fixed before the finite set A.",
+      "verdict": "supported",
+      "sourceLine": "fixed before the arbitrary nonempty",
+      "sourceId": 1
+    },
+    {
+      "text": "Thompson introduced F in 1965.",
+      "verdict": "supported",
+      "sourceLine": "Thompson introduced \\(F\\) in 1965; an early published construction appears",
+      "sourceId": 3
+    },
+    {
+      "text": "Geoghegan conjectured in 1979 that F is nonamenable.",
+      "verdict": "supported",
+      "sourceLine": "The latter authors record Geoghegan's 1979 conjecture that \\(F\\) is",
+      "sourceId": 3
+    },
+    {
+      "text": "Brin and Squier show that F contains no nonabelian free subgroup, so the free-subgroup obstruction does not apply.",
+      "verdict": "supported",
+      "sourceLine": "free-subgroup obstruction does not apply.",
+      "sourceId": 4
+    },
+    {
+      "text": "F is not elementary amenable, and neither fact decides ordinary amenability.",
+      "verdict": "supported",
+      "sourceLine": "Neither fact decides ordinary",
+      "sourceId": 3
+    },
+    {
+      "text": "Moore proves tower lower bounds on the sizes of possible Følner sets.",
+      "verdict": "supported",
+      "sourceLine": "Moore proves tower lower bounds on the sizes of possible",
+      "sourceId": 6
+    },
+    {
+      "text": "Shavgulidze claimed amenability; Moore identified errors in that approach.",
+      "verdict": "supported",
+      "sourceLine": "Moore identified errors in that approach",
+      "sourceId": 10
+    },
+    {
+      "text": "Moore withdrew an amenability claim after Akhmedov identified an error.",
+      "verdict": "supported",
+      "sourceLine": "Moore separately withdrew an amenability claim",
+      "sourceId": 11
+    },
+    {
+      "text": "Akhmedov's 2021 version claims nonamenability through a height-function criterion.",
+      "verdict": "supported",
+      "sourceLine": "Akhmedov's 2021 version claims nonamenability through a height-function",
+      "sourceId": 8
+    },
+    {
+      "text": "Benyamini and Sternfeld give a Lipschitz self-map of an infinite-dimensional unit ball that displaces every point by at least a fixed amount.",
+      "verdict": "supported",
+      "sourceLine": "Benyamini and Sternfeld prove this assertion for every infinite-dimensional",
+      "sourceId": 7
+    },
+    {
+      "text": "The proof turns approximate invariance of finite averages into an approximate fixed point of a Lipschitz map on a Hilbert ball.",
+      "verdict": "supported",
+      "sourceLine": "scalar functions on \\(F\\) into an approximate fixed point of a Lipschitz",
+      "sourceId": 1
+    },
+    {
+      "text": "Each basic partition is colored by applying f to the mean of its parent-restriction colors.",
+      "verdict": "supported",
+      "sourceLine": "by applying \\(f\\) to the mean of its parent-restriction colors when all",
+      "sourceId": 1
+    },
+    {
+      "text": "The two consequences use separate companion theorems and are not used in the proof.",
+      "verdict": "supported",
+      "sourceLine": "Neither companion result is used in the proof of nonamenability.",
+      "sourceId": 1
+    },
+    {
+      "text": "The Lean formalization rules out an invariant mean on F; no explicit boundary constant or prescribed generating set is given.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

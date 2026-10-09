@@ -1,0 +1,224 @@
+{
+  "id": "143",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/uniform-bounds-for-planar-polynomial-limit-cycles-September-24-2026/uniform-bounds-for-planar-polynomial-limit-cycles-September-24-2026.pdf",
+      "label": "Uniform bounds for planar polynomial limit cycles"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/two-limit-cycles-for-quintic-lienard-systems-September-24-2026/two-limit-cycles-for-quintic-lienard-systems-September-24-2026.pdf",
+      "label": "Two limit cycles for quintic Liénard systems"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/143.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims a finite cap, set by degree alone, on limit cycles of planar polynomial systems.",
+  "scope": "The cap covers real polynomial rules in the plane of fixed degree. The exact value two is for degree-5 Liénard systems only.",
+  "plain": "A limit cycle is an isolated closed path of a moving point. The first paper claims that all polynomial rules of one degree share a finite cap on these loops. It gives no formula for that cap. The second paper proves that degree-5 Liénard systems have at most two limit cycles (Lean proof listed). It also shows that two can occur.",
+  "doesNot": "This does not give a formula or a value for the general cap B(d) in any degree.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Landmark",
+    "significanceWhy": "If the long paper holds, it settles the uniform finiteness part of a problem Hilbert posed. Only the degree-5 Liénard result has a Lean check."
+  },
+  "explanation": "Picture a point moving in a flat plane. At each spot, a rule says which way to go and how fast. The second of the two papers builds one such rule. It uses a small push size ε and the polynomial f(x) = 4x − (20/3)x³ + (8/5)x⁵. With no push, every path is a perfect circle around the centre. With a small push, a path gains or loses a little energy on each lap.\n\nThe paper computes that gain for a lap of radius s. For a small push it is about ε times Q(s). Here Q(s) = −π s²(4 − 5s² + s⁴). The bracket factors as (s² − 1)(s² − 4). So Q is zero exactly at radius 1 and radius 2. At radius 0.5, Q is about −2.21, so small paths lose energy and shrink. At radius 1.5, Q is about +15.46, so those paths grow. At radius 2.5, Q is about −231.9, so wide paths shrink back. Paths are squeezed toward a loop near radius 2 and pushed away from a loop near radius 1.\n\nThose two loops are limit cycles. A limit cycle is a closed path that the point repeats forever. No other closed path lies right next to it. Nearby paths spiral toward it or away from it. The paper shows that this example, for small positive ε, has two such loops. The inner one repels and the outer one attracts.\n\nHow many limit cycles can a rule have? David Hilbert asked this in his famous list of problems, for rules built from polynomials. The degree of the rule is the highest power of x or y that appears. Two questions hide inside his problem. One asks whether each single rule has only finitely many limit cycles. The other asks for one ceiling that works for every rule of a given degree. Dulac claimed the first in 1923. A gap in his argument was later found. Écalle and Ilyashenko gave new proofs in 1990 to 1992. In 2025, Yeung flagged a problem in one step of Ilyashenko's 1991 proof, though not a counterexample. Even then, finiteness for each rule does not bound the counts as the coefficients change.\n\nThat is the obstacle. As the numbers in a rule change, limit cycles can appear out of degenerate configurations. They can also drift arbitrarily far from the centre. Earlier work, such as Ilyashenko and Yakovenko's and Kaloshin's, counted cycles near such shapes only under extra conditions. The first paper claims to remove those conditions. It claims that for every degree d there is a finite number B(d). No polynomial rule of degree at most d has more than B(d) limit cycles anywhere in the plane. The paper does not give a formula for B(d). It shows a ceiling exists, but not how high it sits.\n\nThe second paper looks at one family where the exact ceiling can be pinned down. These are classical Liénard systems: x′ = y − F(x) and y′ = −x, with F a polynomial. In 1977, Lins, de Melo and Pugh proposed at most ⌊(n − 1)/2⌋ limit cycles when F has degree n. For degree 5 that guess gives 2. Rychkov proved 2 in 1975 when F has only odd powers. Counterexamples later broke the guess in degree 7 and in degree 6. Li and Llibre proved the degree-4 bound of 1. Degree 5 with all powers allowed stayed open.\n\nThe second paper proves that degree 5 allows at most two limit cycles. It puts no sign or symmetry condition on F. The example above shows two can occur, so two is the exact maximum. In that example, the main theorem rules out a third loop. The even powers of F were the hard part. They stop the problem from reducing to Rychkov's odd case.\n\nHow sure is this? A computer proof checker called Lean has checked the degree-5 Liénard theorem. That check covers both the ceiling of two and an example with exactly two. The general bound for every degree has no Lean check. That claim rests on the paper alone. No specialist review of either paper has been published.",
+  "hypeCheck": "Landmark only if the long paper's argument holds, and no one outside the release has checked it. Lean covers only the narrow degree-5 Liénard result. Neither paper gives a value for the general cap.",
+  "glossary": [
+    {
+      "term": "Vector field",
+      "meaning": "A rule that gives a direction and speed at every point of the plane."
+    },
+    {
+      "term": "Limit cycle",
+      "meaning": "A closed path repeated forever, with no other closed path right next to it."
+    },
+    {
+      "term": "Degree",
+      "meaning": "The highest power of the variables appearing in a polynomial rule."
+    },
+    {
+      "term": "Liénard system",
+      "meaning": "The rule x′ = y − F(x), y′ = −x, a classic model of a damped oscillator."
+    },
+    {
+      "term": "Uniform bound",
+      "meaning": "One cap that works for every rule of a given degree at once."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "D. Hilbert, “Mathematical problems”, Bulletin of the AMS 8 (1902), Problem 16",
+      "url": "https://doi.org/10.1090/S0002-9904-1902-00923-3"
+    },
+    {
+      "id": 2,
+      "cite": "H. Dulac, “Sur les cycles limites” (1923)",
+      "url": "https://doi.org/10.24033/bsmf.1031"
+    },
+    {
+      "id": 3,
+      "cite": "Yu. Ilyashenko, “Centennial history of Hilbert's 16th problem” (2002)",
+      "url": "https://doi.org/10.1090/S0273-0979-02-00946-1"
+    },
+    {
+      "id": 4,
+      "cite": "A. Lins, W. de Melo and C. C. Pugh, “On Liénard's equation”, Lecture Notes in Mathematics 597 (1977), 335–357",
+      "url": "https://doi.org/10.1007/BFb0085364"
+    },
+    {
+      "id": 5,
+      "cite": "G. S. Rychkov, Differentsial'nye Uravneniya 11(2) (1975), 390–391",
+      "url": "https://www.mathnet.ru/eng/de2400"
+    },
+    {
+      "id": 6,
+      "cite": "C. Li and J. Llibre, “Uniqueness of limit cycles for Liénard differential equations of degree four” (2012)",
+      "url": "https://doi.org/10.1016/j.jde.2011.11.002"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Uniform bounds for planar polynomial limit cycles” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/uniform-bounds-for-planar-polynomial-limit-cycles-September-24-2026/uniform-bounds-for-planar-polynomial-limit-cycles-September-24-2026.pdf",
+      "quote": "It does not furnish an effective formula for \\(B(d)\\)."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Two limit cycles for quintic Liénard systems” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/two-limit-cycles-for-quintic-lienard-systems-September-24-2026/two-limit-cycles-for-quintic-lienard-systems-September-24-2026.pdf",
+      "quote": "Thus its exact maximum is two."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note 143 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/143.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For each degree d there is a finite B(d) bounding the limit cycles of every planar polynomial field of degree at most d.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "such that every real planar polynomial vector field of degree at most"
+    },
+    {
+      "text": "The paper gives no formula for B(d).",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "It does not furnish an effective formula for"
+    },
+    {
+      "text": "Finiteness for each rule does not bound the counts as coefficients vary.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Even finiteness for every member of a family does not by itself bound the numbers occurring as its coefficients vary."
+    },
+    {
+      "text": "Dulac claimed individual finiteness in 1923; a gap was found; Écalle and Ilyashenko gave proofs.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Dulac claimed a proof of individual finiteness in 1923"
+    },
+    {
+      "text": "Cycles far from the origin and degenerations must be handled.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "The difficulty is to bound these zeros while the coefficients vary and the passages making up the return map degenerate."
+    },
+    {
+      "text": "Yeung identified an obstruction in a step of Ilyashenko's 1991 monograph, not a counterexample.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "This concerns that proof mechanism; it is not a counterexample to individual finiteness."
+    },
+    {
+      "text": "Degree 5 unrestricted was reported open in August 2026.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "These counterexamples leave degree five undecided."
+    },
+    {
+      "text": "Ilyashenko–Yakovenko and Kaloshin results are restricted by elementary and genericity hypotheses.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "It and the genericity assumptions restrict these results."
+    },
+    {
+      "text": "Degree at most 5 Liénard systems have at most two limit cycles, and two occur.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "Thus its exact maximum is two."
+    },
+    {
+      "text": "No parity or sign assumption on F.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "No parity or coefficient-sign assumption is imposed on"
+    },
+    {
+      "text": "Lins, de Melo and Pugh proposed ⌊(n−1)/2⌋.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "Lins, de Melo, and Pugh proposed the bound"
+    },
+    {
+      "text": "Rychkov proved two for odd quintics.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "Rychkov proved the two-cycle bound for odd quintic primitives"
+    },
+    {
+      "text": "Counterexamples in degree 7 and degree 6.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "constructed systems with four cycles and primitive degree seven"
+    },
+    {
+      "text": "Li and Llibre proved the quartic bound of one.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "Li and Llibre established the unrestricted quartic bound of one cycle"
+    },
+    {
+      "text": "The even coefficients block reduction to the odd case.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "The even coefficients prevent reduction to the odd quintic family"
+    },
+    {
+      "text": "The sharpness example uses f(x)=4x−(20/3)x³+(8/5)x⁵ and Q(s,0)=−πs²(4−5s²+s⁴).",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "Its zeros at"
+    },
+    {
+      "text": "The inner cycle repels and the outer attracts.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "the inner one repels and the outer one attracts"
+    },
+    {
+      "text": "Lean covers the degree-5 Liénard bound and the existence of exactly two.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "bb75ec4bedbc8dac047509fb9cb27fe44ba09df0441c4a869418af3e00f42dac",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
