@@ -20,7 +20,7 @@
   ],
   "headline": "Grothendieck's algebraic ∞-groupoids capture all shapes of spaces, a paper claims, with its key step checked in Lean.",
   "scope": "The result covers every Grothendieck coherator in the Ara–Henry convention; Lean checks only the elementary-expansion step.",
-  "plain": "Grothendieck asked whether a purely algebraic object, the weak ∞-groupoid, can describe every shape studied in homotopy theory. Simon Henry reduced the question to one move: attaching a new cell along an old one. This paper proves that this move never changes the shape (Lean proof listed). Using Henry's earlier work, it then claims to prove the full homotopy hypothesis for these groupoids.",
+  "plain": "Grothendieck asked whether a purely algebraic object, the weak ∞-groupoid, can describe every shape studied in homotopy theory. Simon Henry reduced the question to one move: attaching a new cell along an old one. For groupoids built cell by cell, this paper proves that this move never changes the shape (Lean proof listed). Using Henry's earlier work, it then claims to prove the full homotopy hypothesis, for every rulebook in a standard convention.",
   "doesNot": "This does not cover coherators outside the Ara–Henry convention, and it does not compute anything new about particular spaces.",
   "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
   "scorecard": {
@@ -28,15 +28,11 @@
     "firstStepBy": "Alexander Grothendieck, Pursuing Stacks",
     "field": "Topology",
     "significance": "Major",
-    "significanceWhy": "It settles Henry's pushout conjecture and claims a long-open question for all dimensions, after earlier work reached dimension three."
+    "significanceWhy": "It settles Henry's expansion conjecture and claims a long-open question for all dimensions, after earlier work reached dimension three."
   },
-  "explanation": "Draw a circle as one point, called a, and one loop from a back to a. The drawing has one piece and one hole. Now grow a whisker. Add a new point b and one arrow from a to b. The shape has not really changed. Count to check. Arrows minus points plus pieces gives the number of independent loops. Before the whisker this is 1 − 1 + 1 = 1. After it, the count is 2 − 2 + 1 = 1. Still one piece, still one hole.\n\nHomotopy theory studies shapes up to stretching, without tearing. It keeps track of pieces, called components. It also keeps track of holes in every dimension, recorded by homotopy groups. A homotopy group lists the loops at a point, or loops of loops, up to deformation. A map that matches all this data is a weak equivalence. The whisker map from the circle to the circle with a whisker is one.\n\nIn a 1983 manuscript, Pursuing Stacks, Alexander Grothendieck asked whether algebra could describe all such shapes. His proposed objects are weak globular ∞-groupoids. An ∞-groupoid has points, arrows between points, arrows between arrows, and so on without end. Arrows can be joined and reversed. In the weak version, rules like \"joining is associative\" hold only up to a higher arrow. A coherator is the rulebook that fixes which joining operations exist. Georges Maltsiniotis later gave the question a precise form. The homotopy hypothesis asserts that these objects recover the homotopy theory of spaces.\n\nThe weakness matters. In strict versions, the rules hold exactly. Dimitri Ara showed in 2013 that these capture only a narrow family of shapes. So the hope rests on the weak, algebraic version.\n\nThe obstacle is the whisker move itself. In 2016 Simon Henry stated it as a conjecture. Take any cell a of a cellular groupoid, one built by attaching cells. Add a new parallel cell and one higher cell from a to it. Henry conjectured that this elementary expansion is always a weak equivalence. Geometrically it looks harmless. But the algebra adds every composite of the new cell with the old ones, plus coherence cells between them. Take the circle again. Arrows from a to b now include one turn of the loop and then the whisker. They include two turns, three turns, and so on. Controlling the homotopy classes of all those cells is the issue. Henry showed his conjecture would be enough for the full hypothesis.\n\nEarlier progress stopped at low dimension. In 2018 Edoardo Lanari built the needed structure for Grothendieck groupoids of dimension three. Henry and Lanari proved the matching comparison with spaces for 3-groupoids in 2023. A 2026 preprint by Johnathon Taylor still keeps a general pushout conjecture as a hypothesis.\n\nThis paper proves Henry's conjecture for every coherator in the Ara–Henry convention. That convention limits how large the inputs of each rule may be. The proof handles one dimension at a time, starting from the top. Cases already settled in higher dimensions make the needed building blocks contractible. Contractible means having the shape of a single point.\n\nFrom there the paper claims to prove the homotopy hypothesis itself for these groupoids. The step uses Henry's 2016 comparison machinery. The paper states the result as a Quillen equivalence with spaces. In plain terms, the two settings hold the same shapes and the same maps up to deformation. A consequence is that the answer does not depend on which coherator you choose. The result covers only coherators in the stated convention. It is a statement about models of shapes, not a new fact about any particular space.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the expansion theorem. It covers every coherator in the Ara–Henry convention and every boundary-cellular model. The semi-model structure and the full comparison with spaces are outside that check. No specialists have published a review yet.",
+  "explanation": "Draw a circle as one point, called a, and one loop from a back to a. The drawing has one piece and one hole. Now grow a whisker. Add a new point b and one arrow from a to b. The shape has not really changed. Count to check. Arrows minus points plus pieces gives the number of independent loops. Before the whisker this is 1 − 1 + 1 = 1. After it, the count is 2 − 2 + 1 = 1. Still one piece, still one hole.\n\nHomotopy theory studies shapes up to stretching, without tearing. It keeps track of pieces, called components. It also keeps track of holes in every dimension, recorded by homotopy groups. A homotopy group lists the loops at a point, or loops of loops, up to deformation. A map that matches all this data is a weak equivalence. The whisker map from the circle to the circle with a whisker is one.\n\nIn a 1983 manuscript, Pursuing Stacks, Alexander Grothendieck asked whether algebra could describe all such shapes. His proposed objects are weak globular ∞-groupoids. Globular means each cell is shaped like a disc, with a source face and a target face. An ∞-groupoid has points, arrows between points, arrows between arrows, and so on without end. Arrows can be joined and reversed. In the weak version, rules like \"joining is associative\" hold only up to a higher arrow. A coherator is the rulebook that fixes which joining operations exist. Georges Maltsiniotis later gave the question a precise form. The homotopy hypothesis asserts that these objects recover the homotopy theory of spaces.\n\nThe weakness matters. In strict versions, the rules hold exactly. Dimitri Ara showed in 2013 what these capture among shapes with no one-dimensional holes. They give only products of simple building blocks, called Eilenberg–Mac Lane spaces. So the paper treats the move to weak rules as essential.\n\nThe obstacle is the whisker move itself. In 2016 Simon Henry stated it as a conjecture. Take any cell a of a cellular groupoid, one built by gluing new cells along their boundaries. Add a new parallel cell and one higher cell from a to it. Henry conjectured that this elementary expansion is always a weak equivalence. Geometrically it looks harmless. But the algebra adds every composite of the new cell with the old ones. It also adds coherence cells, the higher arrows that witness rules like associativity. Take the circle again. Arrows from a to b now include one turn of the loop and then the whisker. They include two turns, three turns, and so on. Controlling the homotopy classes of all those cells is the issue. Henry showed his conjecture would be enough for the full hypothesis.\n\nEarlier progress was partial. In 2018 Edoardo Lanari built a semi-model structure for a suitable kind of Grothendieck 3-groupoid. That is a standard toolkit for comparing shapes. Henry and Lanari proved the matching comparison with spaces for 3-groupoids in 2023. In 2020 Lanari also built a candidate path construction in all dimensions, but it left the higher operations open. A 2026 preprint by Johnathon Taylor still keeps a general pushout conjecture as a hypothesis.\n\nThis paper proves Henry's conjecture for every coherator in the Ara–Henry convention. That convention limits how large the inputs of each rule may be. First the proof cuts the groupoid off above some dimension, where all higher cells are forced. Then it handles one expansion dimension at a time, from the top down. Cases already settled in higher dimensions make the needed building blocks contractible. Contractible means having the shape of a single point.\n\nFrom there the paper claims two consequences. First, every such groupoid setting gets a semi-model structure. Second, it claims to prove the homotopy hypothesis itself for these groupoids. The step uses Henry's 2016 comparison machinery. The paper states the result as a Quillen equivalence with spaces. In plain terms, the two settings hold the same shapes and the same maps up to deformation. A consequence is that the answer does not depend on which coherator you choose within the convention. The result covers only coherators in the stated convention. It is a statement about models of shapes, not a new fact about any particular space.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the expansion theorem. It covers every coherator in the Ara–Henry convention and every groupoid built by gluing cells along boundaries. The semi-model structure and the full comparison with spaces are outside that check. No specialists have published a review yet.",
   "hypeCheck": "Major if the full argument holds. Lean checks only the expansion theorem. The comparison with spaces relies on Henry's 2016 results and is not machine-checked. No specialist review has been published.",
   "glossary": [
-    {
-      "term": "Homotopy theory",
-      "meaning": "The study of shapes up to stretching and bending, without tearing."
-    },
     {
       "term": "Homotopy group",
       "meaning": "A record of the loops, or loops of loops, at a point, counted up to deformation."
@@ -50,6 +46,10 @@
       "meaning": "An algebraic object with points, arrows, arrows between arrows, and so on, which can be joined and reversed."
     },
     {
+      "term": "Globular",
+      "meaning": "Built from cells shaped like discs, each with a source face and a target face."
+    },
+    {
       "term": "Coherator",
       "meaning": "The rulebook that fixes which joining operations a Grothendieck ∞-groupoid has."
     },
@@ -58,8 +58,8 @@
       "meaning": "Adding a new cell parallel to an old one, plus one higher cell joining them, like growing a whisker."
     },
     {
-      "term": "Contractible",
-      "meaning": "Having the shape of a single point."
+      "term": "Semi-model structure",
+      "meaning": "A standard toolkit for doing homotopy theory in a setting, slightly weaker than the usual full version."
     },
     {
       "term": "Quillen equivalence",
@@ -137,7 +137,7 @@
     {
       "text": "For strict globular infinity-groupoids, the simply connected homotopy types represented are precisely products of Eilenberg–Mac Lane spaces.",
       "verdict": "supported",
-      "sourceLine": "homotopy types represented under a realization preserving homotopy",
+      "sourceLine": "groups are precisely products of Eilenberg--Mac~Lane spaces",
       "sourceId": 8
     },
     {
@@ -173,13 +173,13 @@
     {
       "text": "Theorem 1 resolves Henry's pushout conjecture affirmatively.",
       "verdict": "supported",
-      "sourceLine": "resolves Henry's",
+      "sourceLine": "pushout conjecture affirmatively.",
       "sourceId": 8
     },
     {
       "text": "Generating fillers of output dimension j have arity of dimension at most j (the Ara–Henry convention).",
       "verdict": "supported",
-      "sourceLine": "Thus generating fillers of output",
+      "sourceLine": "dimension \\(j\\) have pasting-scheme arity of dimension at most \\(j\\).",
       "sourceId": 8
     },
     {
