@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import FieldCards from '../../components/FieldCards.astro';
+import MapLegend from '../../components/MapLegend.astro';
 import { appUrl, catalog, collectionName, computeStats, labName, scienceName } from '../../lib/site.js';
 
 export function getStaticPaths() {
@@ -30,8 +31,8 @@ const name = scienceName();
       <span class="hub-go" aria-hidden="true">Open →</span>
     </a>
     <section class="map" aria-labelledby="map-h">
-      <div class="sec-head"><h2 class="label" id="map-h">Fields · one square per result</h2></div>
-      <ul class="fields"><FieldCards subjects={catalog.subjects} families={catalog.families} explainedIds={new Set()} /></ul>
+      <div class="sec-head"><h2 class="label" id="map-h">Fields · one square per result</h2><MapLegend /></div>
+      <ul class="fields"><FieldCards subjects={catalog.subjects} families={catalog.families} /></ul>
     </section>
   </div>
 </Base>
