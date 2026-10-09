@@ -1,4 +1,4 @@
-# PR notes — collected deviations for the v1-site PR description
+# Design and build decisions
 
 ## Phase 4 fix (aiRole)
 
