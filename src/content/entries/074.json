@@ -1,0 +1,252 @@
+{
+  "id": "074",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kakeya-maximal-conjecture-in-three-dimensions-September-23-2026/paper.pdf",
+      "label": "The Kakeya maximal conjecture in three dimensions"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Every-four-dimensional-Kakeya-set-has-full-Hausdorff-dimension-September-24-2026/paper.pdf",
+      "label": "Every four-dimensional Kakeya set has full Hausdorff dimension"
+    }
+  ],
+  "headline": "Claimed proofs: the Kakeya maximal conjecture in 3D, and full dimension for every Kakeya set in 4D.",
+  "scope": "The maximal result is for three-dimensional space only. The set result is for four-dimensional space and needs no assumption on the set.",
+  "plain": "A Kakeya set contains a line segment of length 1 pointing in every direction. Such sets can have zero volume, yet they are expected to be as large as space in dimension. The first paper claims to prove a stronger, quantitative form of this in three dimensions. There, thin tubes keep only part of themselves. The second paper claims to prove that every Kakeya set in four dimensions has full dimension 4.",
+  "doesNot": "This does not prove the maximal conjecture in four dimensions, or full dimension in five or more dimensions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "Roy Davies, the two-dimensional case",
+    "field": "Real and complex analysis",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle two central cases of the Kakeya problem, a long-studied question in analysis."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best lower bound on the dimension of Kakeya sets in four dimensions",
+    "note": "Higher is better. 4 is the most possible. The 3.025 bound was for bounded, closed sets.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 1995,
+        "value": 3,
+        "who": "Wolff",
+        "source": 3
+      },
+      {
+        "year": 2018,
+        "value": 3.025,
+        "who": "Guth and Zahl",
+        "source": 6
+      },
+      {
+        "year": 2021,
+        "value": 3.059,
+        "who": "Katz and Zahl",
+        "source": 7
+      },
+      {
+        "year": 2026,
+        "value": 4,
+        "who": "This paper",
+        "claim": true,
+        "source": 10
+      }
+    ]
+  },
+  "explanation": "Picture a thin straw of length 1 and radius 0.01. Its volume is π times 0.01 squared, about 0.000314. Now take 10,000 such straws, each pointing in a different direction. Their volumes add up to about 3.14. If no two straws overlapped, their union would fill that much space. The question is how much they can overlap, so that the union fills far less.\n\nA set that contains a line segment of length 1 in every direction is called a Kakeya set. Overlap can be extreme. Besicovitch's constructions, from 1928, show that a Kakeya set can have zero volume. So volume is too blunt a measure here. Mathematicians use Hausdorff dimension instead. It measures size by how the number of small covering pieces grows as the pieces shrink. A line has dimension 1, a flat sheet 2, a solid block 3. A set can have zero volume and still have full dimension.\n\nThe Kakeya conjecture says that every Kakeya set in n-dimensional space has dimension n. In other words, the segments may overlap, but never so much that the set becomes thinner than space itself. Davies proved the flat, two-dimensional case in 1971. In 1995, Wolff proved dimension at least (n+2)/2. That is 5/2 in three dimensions and 3 in four. Katz and Zahl later pushed past 5/2 in three dimensions. Wang and Zahl then settled the three-dimensional set problem, in preprints from 2022, 2024 and 2025.\n\nThe first paper asks a harder question in three dimensions, called the Kakeya maximal conjecture. Go back to the straws. Suppose each straw keeps only a fraction of itself, call it λ, and the rest is thrown away. The maximal conjecture says the union still fills about λ³ times the total, with only a tiny loss. With λ = 1/2, λ³ is 1/8, so the 10,000 half-straws should fill about 0.39. The tiny loss is a factor like 0.01 raised to a small power. For the power 0.01, that factor is about 0.955. A fixed constant factor is also allowed, so 0.39 sets the scale, not an exact floor.\n\nWang and Zahl's theorem gives a bound of this shape. But it raises λ to some unnamed power, not 3. Their own paper states the need to replace that power by 3. That was the one obstacle. The difficulty is keeping exactly the cube while the argument cuts, rescales and restricts the straws. The first paper claims to keep it at every step. It then extends the bound from kept pieces of straws to arbitrary functions, which is the full maximal conjecture.\n\nThe second paper moves to four-dimensional space and to the set question. Before it, the best lower bounds for dimension sat just above 3. Guth and Zahl, with work of Zahl and of Katz and Rogers, gave 3 + 1/40 for bounded, closed sets. That is 3.025. Katz and Zahl's planebrush method gave at least 3.059. The paper names the central difficulty plainly. Many segments can overlap heavily even when their directions are well spread out. The paper claims to prove that every Kakeya set in four dimensions has dimension 4. It uses an estimate from the first paper as an input.\n\nIn the straw picture, the four-dimensional claim says this. Pack unit segments in every direction as cleverly as you like. The union may have zero volume, but its dimension is still 4. The claim covers every such set. No assumption is placed on the set, such as being closed or bounded. It is a statement about sets only. It does not give the four-dimensional maximal estimate for kept pieces of straws. In five or more dimensions, it yields only dimension at least 4, while the conjecture asks for the full dimension.\n\nHow sure is this? Both results are claims in preprints written by the model. Neither paper has a Lean formalization listed in the release, so no computer proof checker has checked either argument. No specialist review has been published.",
+  "hypeCheck": "Landmark if the proofs hold, but both are unreviewed preprints. Neither has a Lean formalization listed, and no specialist has published a check of either argument.",
+  "glossary": [
+    {
+      "term": "Kakeya set",
+      "meaning": "A set that contains a line segment of length 1 in every direction."
+    },
+    {
+      "term": "Hausdorff dimension",
+      "meaning": "A measure of size based on how many small pieces are needed to cover a set as the pieces shrink."
+    },
+    {
+      "term": "Tube",
+      "meaning": "A thin solid straw of length 1 and a small radius around a line segment."
+    },
+    {
+      "term": "Shading",
+      "meaning": "The part of each tube that is kept; its density is the kept fraction, written λ."
+    },
+    {
+      "term": "Kakeya maximal conjecture",
+      "meaning": "A stronger, quantitative form of the Kakeya conjecture about how much space tubes, or kept parts of tubes, must fill."
+    },
+    {
+      "term": "Measure zero",
+      "meaning": "Having zero volume, even though the set may still be large in dimension."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. S. Besicovitch, “On Kakeya's problem and a similar one”, Mathematische Zeitschrift (1928)",
+      "url": "https://doi.org/10.1007/BF01171101"
+    },
+    {
+      "id": 2,
+      "cite": "R. O. Davies, “Some remarks on the Kakeya problem”, Proceedings of the Cambridge Philosophical Society (1971)",
+      "url": "https://doi.org/10.1017/S0305004100046867"
+    },
+    {
+      "id": 3,
+      "cite": "T. H. Wolff, “An improved bound for Kakeya type maximal functions”, Revista Matemática Iberoamericana (1995)",
+      "url": "https://doi.org/10.4171/RMI/188"
+    },
+    {
+      "id": 4,
+      "cite": "N. H. Katz and J. Zahl, “An improved bound on the Hausdorff dimension of Besicovitch sets in R^3”, Journal of the American Mathematical Society (2019)",
+      "url": "https://doi.org/10.1090/jams/907"
+    },
+    {
+      "id": 5,
+      "cite": "H. Wang and J. Zahl, “Volume estimates for unions of convex sets, and the Kakeya set conjecture in three dimensions”, arXiv:2502.17655 (2025)",
+      "url": "https://arxiv.org/abs/2502.17655v1"
+    },
+    {
+      "id": 6,
+      "cite": "L. Guth and J. Zahl, “Polynomial Wolff axioms and Kakeya-type estimates in R^4”, Proceedings of the London Mathematical Society (2018)",
+      "url": "https://doi.org/10.1112/plms.12138"
+    },
+    {
+      "id": 7,
+      "cite": "N. H. Katz and J. Zahl, “A Kakeya maximal function estimate in four dimensions using planebrushes”, Revista Matemática Iberoamericana (2021)",
+      "url": "https://doi.org/10.4171/RMI/1219"
+    },
+    {
+      "id": 8,
+      "cite": "I. Łaba and T. Tao, “An improved bound for the Minkowski dimension of Besicovitch sets in medium dimension” (2001), arXiv:math/0004015",
+      "url": "https://arxiv.org/abs/math/0004015v1"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “The Kakeya maximal conjecture in three dimensions” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kakeya-maximal-conjecture-in-three-dimensions-September-23-2026/paper.pdf",
+      "quote": "Theorem~\\ref{thm:main} resolves the three-dimensional Kakeya maximal"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “Every Four-Dimensional Kakeya Set Has Full Hausdorff Dimension” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Every-four-dimensional-Kakeya-set-has-full-Hausdorff-dimension-September-24-2026/paper.pdf",
+      "quote": "Theorem~\\ref{thm:main} resolves the Hausdorff-dimension Kakeya conjecture"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A tube of length 1 and radius δ has volume πδ².",
+      "verdict": "supported",
+      "sourceLine": "has volume \\(\\pi\\delta^2\\)"
+    },
+    {
+      "text": "A Kakeya set contains a unit line segment in every direction.",
+      "verdict": "supported",
+      "sourceLine": "A Kakeya set contains a unit line segment in every direction."
+    },
+    {
+      "text": "Besicovitch's constructions show that a Kakeya set can have measure zero.",
+      "verdict": "supported",
+      "sourceLine": "showed that a set with segments in every direction can have measure zero,"
+    },
+    {
+      "text": "Davies proved full Hausdorff dimension in the plane.",
+      "verdict": "supported",
+      "sourceLine": "have Lebesgue measure zero, whereas Davies proved full Hausdorff"
+    },
+    {
+      "text": "The Hausdorff-dimension Kakeya conjecture asserts that every Kakeya set in n dimensions has dimension n.",
+      "verdict": "supported",
+      "sourceLine": "that every such set has Hausdorff dimension \\(n\\). We prove its"
+    },
+    {
+      "text": "Wolff's bound (n+2)/2 is 5/2 in three dimensions.",
+      "verdict": "supported",
+      "sourceLine": "In three dimensions this is \\(5/2\\)."
+    },
+    {
+      "text": "Wolff's bound gives dimension at least three in four dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Wolff's bound \\(\\dim_H K\\ge(n+2)/2\\) gives dimension at least three"
+    },
+    {
+      "text": "Katz and Zahl obtained a strict improvement over 5/2 in three dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Hausdorff-dimension improvement over \\(5/2\\) \\citep{KatzZahl2019}."
+    },
+    {
+      "text": "Wang and Zahl resolved the three-dimensional set problem; the preprints appeared in 2022, 2024 and 2025.",
+      "verdict": "supported",
+      "sourceLine": "appeared in 2022, 2024, and 2025."
+    },
+    {
+      "text": "The maximal problem asks for the cubic density power λ³ in the union estimate.",
+      "verdict": "supported",
+      "sourceLine": "the maximal problem asks for the cubic density"
+    },
+    {
+      "text": "Wang and Zahl's set theorem gives the estimate with a power λ^K(ε), and the need to replace it by λ³ is stated after their theorem.",
+      "verdict": "supported",
+      "sourceLine": "form of estimate with a power \\(\\lambda^{K(\\varepsilon)}\\); the need to"
+    },
+    {
+      "text": "The three-dimensional theorem's essential feature is uniformity in the density.",
+      "verdict": "supported",
+      "sourceLine": "conjecture affirmatively. Its essential quantitative feature is uniformity"
+    },
+    {
+      "text": "The final reduction passes from shadings to arbitrary L³ functions.",
+      "verdict": "supported",
+      "sourceLine": "from shadings to arbitrary \\(L^3\\) functions."
+    },
+    {
+      "text": "Guth and Zahl, with Zahl and Katz–Rogers, gave the lower bound 3 + 1/40 for compact sets in four dimensions.",
+      "verdict": "supported",
+      "sourceLine": "lower bound \\(3+1/40\\)"
+    },
+    {
+      "text": "Katz and Zahl's planebrush gives Hausdorff dimension at least 3.059.",
+      "verdict": "supported",
+      "sourceLine": "It gives Hausdorff dimension at least \\(3.059\\), while their distinct"
+    },
+    {
+      "text": "A central difficulty is that many segments can overlap substantially even when their directions are well distributed.",
+      "verdict": "supported",
+      "sourceLine": "A central difficulty in the dimension problem is that many segments"
+    },
+    {
+      "text": "The four-dimensional paper claims every Kakeya set in R⁴ has Hausdorff dimension four, with no compactness or regularity assumption.",
+      "verdict": "supported",
+      "sourceLine": "direction has Hausdorff dimension four. No compactness or regularity"
+    },
+    {
+      "text": "The four-dimensional reduction uses a three-dimensional estimate from the first paper.",
+      "verdict": "supported",
+      "sourceLine": "The three-dimensional estimate used in our reduction is the weighted"
+    },
+    {
+      "text": "In dimensions five and above, the result gives only dimension at least four.",
+      "verdict": "supported",
+      "sourceLine": "The resulting lower bound is four; the full conjecture in"
+    },
+    {
+      "text": "Neither paper has a Lean formalization listed; the catalog records no Lean doc for this family.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "106",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026.pdf",
+      "label": "Hardness of finding large independent sets in three-colorable graphs"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/106.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Even a three-colorable graph can be NP-hard to tell from one with only tiny independent sets.",
+  "scope": "The result holds for each fixed fraction δ between 0 and 1/3. The running time's power may depend on δ.",
+  "plain": "A graph is three-colorable when its dots can get three colors with joined dots always different. Such a graph always has a group of unjoined dots holding a third of all dots. This paper proves that telling these graphs from graphs where every such group is tiny is NP-hard. A fast method would speed up every problem in the class NP. A known consequence follows: coloring a three-colorable graph with any fixed number of colors is also NP-hard.",
+  "doesNot": "This does not say how many colors a fast method needs, and the coloring consequence was already known.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2000",
+    "firstStepBy": "Khanna, Linial and Safra, hardness of four-coloring three-colorable graphs (earliest result the paper cites)",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It gets tiny independent sets and three colors together without an extra conjecture, which earlier work could not."
+  },
+  "explanation": "Take a triangular prism. It is two triangles, with each corner joined to the matching corner of the other. That gives 6 corners and 9 lines. Try to paint the corners so that joined corners always get different colors. Three colors work, in 12 different ways. Two colors never work, because each triangle needs three.\n\nMathematicians call such a drawing a graph. The corners are vertices and the lines are edges. A proper coloring gives joined vertices different colors. An independent set is a group of vertices with no edge between any two of them. The prism's largest independent set has 2 vertices, one third of its 6. That is no accident. Each color class of a proper coloring is an independent set. With three colors, one class must hold at least a third of the vertices.\n\nNow scale up. A three-colorable graph with 3000 vertices always has an independent set of at least 1000. Picture a second graph with 3000 vertices whose largest independent set has fewer than 300. That graph cannot be properly colored with 10 colors. Ten classes of at most 299 vertices cover at most 2990 vertices. The two graphs differ sharply. Yet this paper proves that telling them apart is NP-hard.\n\nNP-hard means this: a fast method for the task would speed up every problem in a large class called NP. The paper shows this by translation from 3SAT. A 3SAT formula is a logic puzzle: many short rules, each about three true-or-false switches. The question is whether some setting of the switches obeys every rule. For each fixed fraction δ between 0 and 1/3, the paper builds a fast, fixed recipe. It turns a solvable formula into a three-colorable graph. It turns an unsolvable formula into a graph whose independent sets all hold fewer than δ times the vertices. With δ = 1/10, these are exactly the two graphs above. The ceiling 1/3 is natural, since three-colorable graphs always have a third.\n\nA weaker coloring version follows. For any fixed number of colors c, at least 3, finding a proper c-coloring of a three-colorable graph is NP-hard. That question has a long history. In 2000, Khanna, Linial and Safra proved hardness for four colors. Barto, Bulín, Krokhin and Opršal reached five colors, in a 2021 paper. In 2020, Guruswami and Sandeep showed that every fixed palette would follow from an unproved conjecture about certain puzzles. In September 2026, Fei, Minzer and Wang proved a version of that conjecture. Combined with earlier reductions, it settles the coloring question for every fixed palette. So the coloring statement here is not new. The paper says it recovers it.\n\nThe new part is the small independent sets, together with three colors for the whole graph. Earlier work got one half without the other. Fei, Minzer and Wang get small independent sets, but only for graphs promised to be eight-colorable. The step that shrinks the palette to three loses the independent-set guarantee. Dinur, Mossel and Regev got both halves in 2009, but only by assuming an unproved conjecture. Braverman, Khot, Lifshitz and Minzer did the same from a different conjecture. Dinur, Khot, Perkins and Safra reached a density of 1/9 in 2010. But their easy case lets a few vertices fall outside the coloring.\n\nThe proof gives each vertex a set of positions on a circle. In the solvable case, joined vertices end up more than a third of a turn apart. Cutting the circle into three equal arcs then colors every vertex. The hard direction is the reverse. A large independent set must reveal a good solution to the logic puzzle. The standard tool for this approximates functions by a few coordinates. That approximation can break when the puzzle glues coordinates together. The paper answers with new machinery of its own. It picks key coordinates for whole stretches of the puzzle at once. It adds fresh random rotations at every layer. A new alignment argument, drawing on game theory and Ramsey theory, makes labels line up across layers. Random tests at several scales then turn this into the small independent-set bound. The paper proves every piece itself.\n\nThe result has limits. Each fraction δ gets its own recipe. Its running time is polynomial, but the power may depend on δ. The paper claims no common running time as δ shrinks toward zero. It also says nothing new about how many colors fast methods need. For n vertices, Bansal, Huang and Lee use on the order of n to the power 0.19539 colors. Later preprints report smaller powers. A wide gap remains between a fixed number of colors and such growing counts.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the recipe from 3SAT, both promises, and a running-time bound that counts the whole output. The Lean scope note does not list the coloring consequence separately, though it is a short step in the paper. No specialists have published a review yet.",
+  "hypeCheck": "Major if it holds, but narrower than it may sound. The coloring consequence was already settled by Fei, Minzer and Wang. A Lean proof of the main theorem is listed, and specialists have not yet published a review.",
+  "glossary": [
+    {
+      "term": "Graph",
+      "meaning": "A set of dots, called vertices, joined in pairs by lines, called edges."
+    },
+    {
+      "term": "Proper coloring",
+      "meaning": "A way to color the vertices so that joined vertices always get different colors."
+    },
+    {
+      "term": "Three-colorable",
+      "meaning": "Having a proper coloring that uses only three colors."
+    },
+    {
+      "term": "Independent set",
+      "meaning": "A group of vertices with no edge between any two of them."
+    },
+    {
+      "term": "NP-hard",
+      "meaning": "So hard that a fast method for it would give fast methods for every problem in the class NP."
+    },
+    {
+      "term": "3SAT",
+      "meaning": "The question of whether a logic formula, made of rules about three true-or-false switches each, can be satisfied."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks mathematical proofs step by step."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Hardness of finding large independent sets in three-colorable graphs”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026/Hardness-of-finding-large-independent-sets-in-three-colorable-graphs-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for “Hardness of coloring three-colorable graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/106.md"
+    },
+    {
+      "id": 3,
+      "cite": "S. Khanna, N. Linial and S. Safra, “On the Hardness of Approximating the Chromatic Number”, Combinatorica 20 (2000), 393–415",
+      "url": "https://doi.org/10.1007/s004930070013"
+    },
+    {
+      "id": 4,
+      "cite": "L. Barto, J. Bulín, A. Krokhin and J. Opršal, “Algebraic Approach to Promise Constraint Satisfaction”, Journal of the ACM 68 (2021)",
+      "url": "https://doi.org/10.1145/3457606"
+    },
+    {
+      "id": 5,
+      "cite": "V. Guruswami and S. Sandeep, “d-to-1 Hardness of Coloring 3-Colorable Graphs with O(1) Colors”, ICALP 2020",
+      "url": "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.ICALP.2020.62"
+    },
+    {
+      "id": 6,
+      "cite": "Y. Fei, D. Minzer and S. Wang, “On the Hardness of 4-to-1 Games with Perfect Completeness”, ECCC TR26-179 (14 September 2026)",
+      "url": "https://eccc.weizmann.ac.il/report/2026/179/"
+    },
+    {
+      "id": 7,
+      "cite": "I. Dinur, E. Mossel and O. Regev, “Conditional Hardness for Approximate Coloring”, SIAM Journal on Computing 39 (2009), 843–873",
+      "url": "https://doi.org/10.1137/07068062X"
+    },
+    {
+      "id": 8,
+      "cite": "M. Braverman, S. Khot, N. Lifshitz and D. Minzer, “An Invariance Principle for the Multi-slice, with Applications”, FOCS 2021 (2022)",
+      "url": "https://arxiv.org/abs/2110.10725v2"
+    },
+    {
+      "id": 9,
+      "cite": "I. Dinur, S. Khot, W. Perkins and M. Safra, “Hardness of Finding Independent Sets in Almost 3-Colorable Graphs”, FOCS 2010",
+      "url": "https://www.wisdom.weizmann.ac.il/~dinuri/mypapers/DKPS-3col9.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "N. Bansal, N. Huang and E. Lee, “Improved SDP-Based Algorithm for Coloring 3-Colorable Graphs”, arXiv:2602.05904 (2026)",
+      "url": "https://arxiv.org/abs/2602.05904v1"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every three-colorable graph has an independent set of at least a third of its vertices, from one color class.",
+      "verdict": "supported",
+      "sourceLine": "$n/3$: one of its three color classes has that size."
+    },
+    {
+      "text": "Distinguishing three-colorable graphs from graphs with any small fixed independence ratio is NP-hard.",
+      "verdict": "supported",
+      "sourceLine": "We prove that distinguishing this structured case from graphs with an"
+    },
+    {
+      "text": "The reduction maps 3-CNF formulas to graphs: satisfiable gives three-colorable, unsatisfiable gives every independent set below δ times the vertices.",
+      "verdict": "supported",
+      "sourceLine": "   &\\Longrightarrow \\alpha(G_\\phi)<\\delta\\,|V(G_\\phi)|."
+    },
+    {
+      "text": "The coloring covers every vertex and is not supplied with the graph.",
+      "verdict": "supported",
+      "sourceLine": "The coloring in the first implication covers every vertex and is not"
+    },
+    {
+      "text": "The running time's constants and polynomial degree may depend on δ.",
+      "verdict": "supported",
+      "sourceLine": "may depend on the fixed $\\delta$, but not on $\\phi$."
+    },
+    {
+      "text": "The paper does not assert a uniform runtime as δ goes to 0.",
+      "verdict": "supported",
+      "sourceLine": "Neither a uniform runtime as $\\delta\\to0$ nor an algorithm computing"
+    },
+    {
+      "text": "The coloring corollary recovers the known constant-palette hardness theorem.",
+      "verdict": "supported",
+      "sourceLine": "constant-palette hardness theorem."
+    },
+    {
+      "text": "Khanna, Linial and Safra established hardness of four-coloring three-colorable graphs.",
+      "verdict": "supported",
+      "sourceLine": "Khanna, Linial, and Safra established hardness of"
+    },
+    {
+      "text": "Barto, Bulín, Krokhin and Opršal gave hardness of five colors for three-colorable graphs.",
+      "verdict": "supported",
+      "sourceLine": "$(2k-1)$-coloring $k$-colorable graphs, and hence five colors when"
+    },
+    {
+      "text": "Guruswami and Sandeep showed the d-to-1 Games Conjecture with perfect completeness implies constant-palette hardness.",
+      "verdict": "supported",
+      "sourceLine": "Guruswami and Sandeep showed that the ordinary $d$-to-$1$ Games"
+    },
+    {
+      "text": "Fei, Minzer and Wang proved the 4-to-1 Games Conjecture with perfect completeness.",
+      "verdict": "supported",
+      "sourceLine": "Fei, Minzer, and Wang have proved the $4$-to-$1$ Games Conjecture"
+    },
+    {
+      "text": "Combined with earlier reductions, this resolves the constant-palette conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Combining it with the preceding reductions resolves the constant-palette"
+    },
+    {
+      "text": "Their small independent-set density comes with an eight-colorable promise.",
+      "verdict": "supported",
+      "sourceLine": "arbitrarily small independent-set density with an eight-colorable"
+    },
+    {
+      "text": "The step reducing the palette to three loses the independent-set guarantee.",
+      "verdict": "supported",
+      "sourceLine": "three-colorable hardness statement does not include the independent-set"
+    },
+    {
+      "text": "Dinur, Mossel and Regev obtained both halves from a conjecture.",
+      "verdict": "supported",
+      "sourceLine": "three-colorable completeness and arbitrarily small independent-set"
+    },
+    {
+      "text": "Braverman, Khot, Lifshitz and Minzer obtained the same promise from the Rich 2-to-1 Games Conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Braverman, Khot, Lifshitz, and Minzer obtained the same graph promise"
+    },
+    {
+      "text": "Dinur, Khot, Perkins and Safra reached density 1/9 when the three-colorable part misses a small fraction of vertices.",
+      "verdict": "supported",
+      "sourceLine": "an independent set of density $1/9$ when an induced"
+    },
+    {
+      "text": "In the solvable case adjacent vertices have circle phases more than 1/3 apart; three equal arcs color them.",
+      "verdict": "supported",
+      "sourceLine": "vertices to have circle phases more than $1/3$ apart. Three equal"
+    },
+    {
+      "text": "The difficulty is that the coordinate approximation need not survive identifications by projections.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is that approximation under product"
+    },
+    {
+      "text": "The compatibility properties are proved within the paper.",
+      "verdict": "supported",
+      "sourceLine": "All required compatibility properties are proved within this"
+    },
+    {
+      "text": "Bansal, Huang and Lee give a polynomial-time algorithm using O(n^0.19539) colors.",
+      "verdict": "supported",
+      "sourceLine": "using $O(n^{0.19539})$ colors \\cite{BansalHuangLee2026}, improving the"
+    },
+    {
+      "text": "Lean covers the main theorem: the deterministic polynomial-time reduction from 3SAT, both promises, and the full output in the runtime bound.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

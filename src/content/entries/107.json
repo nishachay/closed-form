@@ -1,0 +1,276 @@
+{
+  "id": "107",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/paper.pdf",
+      "label": "An Upper Bound of 9/4 for the Matrix Multiplication Exponent"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026/Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026.pdf",
+      "label": "Complex Matrix Multiplication Below 2.258 and Rectangular Bounds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Staggered-extraction-for-exact-matrix-multiplication-over-every-field-September-24-2026/Staggered-extraction-for-exact-matrix-multiplication-over-every-field-September-24-2026.pdf",
+      "label": "Staggered extraction for exact matrix multiplication over every field"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/107.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Huge n-by-n complex matrices can be multiplied in about n^(9/4) arithmetic steps, up to any tiny slack.",
+  "scope": "The 9/4 and 2.258 bounds are for complex numbers; only the 2.371054886006746 bound covers every field. All count arithmetic steps as n grows without limit.",
+  "plain": "Multiplying two n-by-n matrices the school way takes about n^3 arithmetic steps. The best published exponent before this family was about 2.371. The main paper proves that, over the complex numbers, the exponent is at most 9/4 (Lean proof listed). Companion papers prove a bound below 2.371054886006746 for every field and new bounds for thin matrices (Lean proofs listed).",
+  "doesNot": "This does not give a practical faster program or say at what matrix size any speedup begins.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1969",
+    "firstStepBy": "Volker Strassen, seven-product 2-by-2 method",
+    "field": "Theoretical computer science",
+    "significance": "Landmark",
+    "significanceWhy": "If it holds, it cuts the best bound on a central exponent from about 2.371 to 2.25."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven upper bound on the matrix multiplication exponent ω",
+    "note": "Lower is better. No method can go below 2. The 2026 claim is over the complex numbers.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1969,
+        "value": 2.807,
+        "who": "Strassen",
+        "source": 1
+      },
+      {
+        "year": 1990,
+        "value": 2.375477,
+        "who": "Coppersmith and Winograd",
+        "source": 2
+      },
+      {
+        "year": 2026,
+        "value": 2.371177,
+        "who": "Dupont et al.",
+        "source": 4
+      },
+      {
+        "year": 2026,
+        "value": 2.25,
+        "who": "This paper",
+        "claim": true,
+        "source": 5
+      }
+    ]
+  },
+  "explanation": "Multiply two 2-by-2 grids of numbers the school way and you make 8 multiplications. Each of the 4 answer entries needs 2 of them. In 1969, Volker Strassen found a way with only 7. His trick repeats. Cut a big grid into four blocks and use the same trick on the blocks. For two 1024-by-1024 grids, ten rounds need 7^10 multiplications, about 282 million. The school method needs 1024^3, about 1.07 billion.\n\nSuch a grid is called a matrix. Experts track the cost of multiplying two n-by-n matrices with one number, the exponent ω (omega). Roughly, ω is the smallest power p for which the work grows like n^p as n gets large. Work here means arithmetic steps: additions, subtractions and multiplications of single numbers. The school method gives 3. Strassen's trick gives log2 7, about 2.807. Nothing can beat 2, because the answer alone has n^2 entries.\n\nFor decades, progress came in small steps. In 1990, Don Coppersmith and Shmuel Winograd showed ω < 2.375477. In August 2026, Dupont and coauthors reported ω < 2.371177. They combined modern optimization with AlphaEvolve. The gains had shrunk to the third decimal place.\n\nThis family of three papers goes much further. The main paper proves ω ≤ 9/4, which is 2.25, over the complex numbers. The complex numbers include all ordinary decimals, plus square roots of negative numbers. So for any small extra slack, the work grows no faster than n^(2.25 + slack). At n = 1024, n^2.25 is about 5.9 million. That number shows a growth rate, not a step count. The papers give no size for the hidden constant factor. The paper says its proof does not name a matrix size where the method would compete.\n\nTwo earlier companion papers reach weaker square bounds by other routes. One shows ω < 2.258 over the complex numbers. The other shows ω < 2.371054886006746 over every field. A field is any number system with the usual four operations, including finite ones such as arithmetic on a clock. That second bound is just below the August 2026 record. It is the only one of the three shown to hold for every field.\n\nWhy was this hard? Fast methods hunt for many small, separate multiplications hidden inside one big computation. A cheap way to compute many separate products at once then yields a bound on ω. The catch is that the hidden pieces share inputs. Truly separate pieces need their own variables on all three sides: both input matrices and the output. Pulling pieces apart costs work, and that cost ate most of the gains. The 9/4 and 2.258 papers start from pieces that are already separate on two sides and share only the third. An extra labeling step then tells them apart on the third side too. The number of freed pieces outweighs the cost of the labels.\n\nThe 2.258 paper also handles thin matrices. Take n = 1,000,000 and multiply an n-by-617 matrix by a 617-by-n matrix. The answer has a trillion entries, so the work is at least about that. The dual exponent α (alpha) measures how wide that middle can get. Within that width, the work still grows like n^2 as n gets large. The paper shows α > 0.465, and 1,000,000^0.465 is about 617. The best earlier value it cites is α ≥ 0.321334, which allows a middle of about 85. The same paper also claims its 2.258 bound for most other fields. A finite list of exceptions remains, and the paper does not compute it.\n\nAll of these results concern growth as n becomes huge. They count arithmetic steps, not computer time or the size of the numbers involved. They do not say at what size any of these methods would beat ordinary ones in practice.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of four statements. Three are about complex numbers: ω ≤ 9/4, α > 0.465, and a thin-matrix bound. The fourth is ω < 2.371054886006746 over every field. Each is matched to a fixed reference statement for a checking tool called Comparator. The move of 2.258 to other fields is not in the Lean scope note. No specialist review has been published.",
+  "hypeCheck": "If the proofs hold, this is a large drop in a closely watched number. Lean proofs are listed for the main bounds, but they describe growth rates only. They give no practical program, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Matrix",
+      "meaning": "A rectangular grid of numbers."
+    },
+    {
+      "term": "Matrix multiplication exponent (ω)",
+      "meaning": "Roughly the smallest power p such that multiplying two n-by-n matrices takes about n^p arithmetic steps."
+    },
+    {
+      "term": "Dual exponent (α)",
+      "meaning": "How wide the shared middle side of two thin matrices can grow while the work stays near n squared."
+    },
+    {
+      "term": "Complex numbers",
+      "meaning": "The ordinary decimals together with square roots of negative numbers and their combinations."
+    },
+    {
+      "term": "Field",
+      "meaning": "A number system where you can add, subtract, multiply and divide by anything except zero."
+    },
+    {
+      "term": "Arithmetic step",
+      "meaning": "One addition, subtraction or multiplication of two single numbers."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks mathematical proofs line by line."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "V. Strassen, “Gaussian elimination is not optimal”, Numerische Mathematik 13 (1969), 354–356",
+      "url": "https://doi.org/10.1007/BF02165411"
+    },
+    {
+      "id": 2,
+      "cite": "D. Coppersmith and S. Winograd, “Matrix multiplication via arithmetic progressions”, Journal of Symbolic Computation 9 (1990), 251–280",
+      "url": "https://doi.org/10.1016/S0747-7171(08)80013-2"
+    },
+    {
+      "id": 3,
+      "cite": "V. Vassilevska Williams, Y. Xu, Z. Xu and R. Zhou, “New Bounds for Matrix Multiplication: from Alpha to Omega”, SODA 2024, arXiv:2307.07970",
+      "url": "https://arxiv.org/abs/2307.07970v2"
+    },
+    {
+      "id": 4,
+      "cite": "E. Dupont et al., “Improving the matrix multiplication exponent with modern optimization and AlphaEvolve”, arXiv:2608.16884 (2026)",
+      "url": "https://arxiv.org/abs/2608.16884v1"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “An Upper Bound of 9/4 for the Matrix Multiplication Exponent” (October 2, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Matrix-Multiplication-Nine-Fourths-October-2-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Complex Matrix Multiplication Below 2.258 and Rectangular Bounds” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026/Complex-Matrix-Multiplication-Below-2.258-and-Rectangular-Bounds-September-24-2026.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Staggered extraction for exact matrix multiplication over every field” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Staggered-extraction-for-exact-matrix-multiplication-over-every-field-September-24-2026/Staggered-extraction-for-exact-matrix-multiplication-over-every-field-September-24-2026.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 107 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/107.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Strassen's seven-product algorithm gave ω ≤ log2 7.",
+      "verdict": "supported",
+      "sourceLine": "Strassen's rank-seven algorithm for … multiplication gave … establishing subcubic arithmetic complexity",
+      "sourceId": 6
+    },
+    {
+      "text": "The output size forces an exponent of at least 2.",
+      "verdict": "supported",
+      "sourceLine": "The output size gives",
+      "sourceId": 6
+    },
+    {
+      "text": "Coppersmith and Winograd's analysis gave ω < 2.375477.",
+      "verdict": "supported",
+      "sourceLine": "their tensor-square analysis gave",
+      "sourceId": 6
+    },
+    {
+      "text": "Dupont et al. obtained ω < 2.371177 using modern optimization and AlphaEvolve.",
+      "verdict": "supported",
+      "sourceLine": "by optimizing the eighth-power instance of this asymmetric framework, combining modern optimization with AlphaEvolve",
+      "sourceId": 7
+    },
+    {
+      "text": "Two n-by-n complex matrices can be multiplied in O(n^(9/4+ε)) arithmetic operations, so ω ≤ 9/4.",
+      "verdict": "supported",
+      "sourceLine": "complex matrices can be multiplied using … arithmetic operations. In particular,",
+      "sourceId": 5
+    },
+    {
+      "text": "The proof does not specify a competitive finite matrix size.",
+      "verdict": "supported",
+      "sourceLine": "its proof does not specify a competitive finite matrix size",
+      "sourceId": 5
+    },
+    {
+      "text": "Over the complex numbers, ω < 2.258, α > 0.465 and w(0.709) < 2.092.",
+      "verdict": "supported",
+      "sourceLine": "the arithmetic matrix-multiplication exponents satisfy",
+      "sourceId": 6
+    },
+    {
+      "text": "Over every fixed field, ω < 2.371054886006746.",
+      "verdict": "supported",
+      "sourceLine": "the arithmetic exponent of square matrix multiplication satisfies",
+      "sourceId": 7
+    },
+    {
+      "text": "The all-field construction gives exact algorithms, including in positive characteristic.",
+      "verdict": "supported",
+      "sourceLine": "The construction gives exact arithmetic algorithms, including in positive characteristic.",
+      "sourceId": 7
+    },
+    {
+      "text": "Useful pieces in tensor constructions can share variables.",
+      "verdict": "supported",
+      "sourceLine": "A basic difficulty in tensor constructions is that useful pieces can share variables.",
+      "sourceId": 5
+    },
+    {
+      "text": "A full direct sum needs independent variables on all three sides.",
+      "verdict": "supported",
+      "sourceLine": "A full direct sum requires independent variables on all three tensor legs.",
+      "sourceId": 5
+    },
+    {
+      "text": "The construction starts with blocks independent on two sides that share the third.",
+      "verdict": "supported",
+      "sourceLine": "Our principal construction starts with blocks that are independent on two legs and share the third.",
+      "sourceId": 5
+    },
+    {
+      "text": "The number of output blocks outweighs the cost of the labeling copies.",
+      "verdict": "supported",
+      "sourceLine": "The number of output blocks compensates for the cost of the Fourier copies at the exponential scale.",
+      "sourceId": 5
+    },
+    {
+      "text": "The dual exponent measures how far the inner dimension can grow while keeping the output-size exponent.",
+      "verdict": "supported",
+      "sourceLine": "measures how far the inner dimension can grow while multiplication retains the exponent of its output size.",
+      "sourceId": 6
+    },
+    {
+      "text": "The earlier four-author work established α ≥ 0.321334.",
+      "verdict": "supported",
+      "sourceLine": "The four-author work establishes",
+      "sourceId": 6
+    },
+    {
+      "text": "The 2.258 bound transfers to other fields except possibly a finite set of primes, which is not computed.",
+      "verdict": "supported",
+      "sourceLine": "The exceptional primes are not computed.",
+      "sourceId": 6
+    },
+    {
+      "text": "The results do not give bit-complexity or practical crossover estimates.",
+      "verdict": "supported",
+      "sourceLine": "the counting arguments and parameter choices do not give bit-complexity or practical crossover estimates",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes ω(ℂ) ≤ 9/4, α > 0.465, w(0.709) < 2.092 over ℂ, and ω(F) < 2.371054886006746 for every field, with Comparator statements.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

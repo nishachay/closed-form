@@ -1,0 +1,315 @@
+{
+  "id": "072",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Brennans-conjecture-and-sharp-inverse-square-integral-means-September-24-2026/paper.pdf",
+      "label": "Brennan's conjecture and sharp inverse-square integral means"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-strict-inverse-first-power-bound-for-univalent-functions-September-24-2026/paper.pdf",
+      "label": "A strict inverse-first-power bound for univalent functions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/072.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Reshaping a region into a disk can never squeeze too hard: Brennan's 1978 conjecture is proved.",
+  "scope": "Brennan's range covers every region in the plane with no holes, except the whole plane. The companion's strict bound concerns the power −1 only.",
+  "plain": "A conformal map reshapes a region into a round disk while keeping angles. Brennan's 1978 conjecture concerns its stretch factor raised to a power between 4/3 and 4. It says the total over the region is finite. The paper proves this for every region with no holes, and a Lean proof is listed. A companion paper proves a strict bound that contradicts a 1996 experimental prediction at one power.",
+  "doesNot": "This does not give a number for the companion's gap below 1/4. It also leaves the predicted value at power +1 open.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "James Brennan, the conjecture",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle a conjecture open since 1978. The best earlier bound was 1.206 against a target of 1."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven upper bound on the integral-means spectrum at −2",
+    "note": "Lower is better. The Koebe map shows the value is at least 1.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 2005,
+        "value": 1.218,
+        "who": "Hedenmalm and Shimorin",
+        "source": 4
+      },
+      {
+        "year": 2007,
+        "value": 1.206,
+        "who": "Sola",
+        "source": 5
+      },
+      {
+        "year": 2026,
+        "value": 1,
+        "who": "This paper",
+        "claim": true,
+        "source": 7
+      }
+    ]
+  },
+  "explanation": "Take a round disk of radius 1 and reshape it without tearing or folding. Such a map is called conformal when it keeps angles. Near each point it enlarges tiny shapes by one factor, called the stretch factor. A standard example is the Koebe map, f(z) = z/(1 − z)². Near the edge point 1 it stretches enormously. At z = 0.99 the factor is about 1,990,000. Near the opposite edge point −1 it squeezes instead. At z = −0.99 the factor is about 0.00127, a squeeze of about 788 times.\n\nSqueezing is the hard part of this subject. One way to measure it is to walk round a circle of radius r inside the disk. At each point, take 1 divided by the squared stretch factor. Then average around the circle. For the Koebe map this average is about 225 at r = 0.9. It is about 3,092 at r = 0.99 and about 31,890 at r = 0.999. Multiply each by the distance to the edge, 1 − r. The results are about 22.5, 30.9 and 31.9, settling near a constant. So the average grows like 1 divided by the distance to the edge. Experts call the power in that rule, here 1, the growth exponent.\n\nBrennan's conjecture runs such maps backwards. Start with any region in the plane that has no holes. Map it onto the disk with a conformal map φ (phi). Raise its stretch factor to a power s and add it up over the whole region. Is the total finite? The conjecture dates to James Brennan's work in 1978. It says yes for every s strictly between 4/3 and 4. The region may be unbounded, and its edge may be as rough as you like.\n\nA change of variables turns this into a question about maps out of the disk. The power s becomes a new power t = 2 − s. The top end, s = 4, becomes t = −2. That is the squared squeeze from the example. The paper shows the Koebe map makes the total infinite at both ends, s = 4 and s = 4/3. So the range cannot be widened.\n\nProgress came in pieces. Brennan's own work pushed the top of the range beyond 3. A 1999 thesis by Daniel Bertilsson reports the range from 4/3 to 3.421. Attention turned to a related number, the integral-means spectrum at −2. It is the largest growth exponent of the example's average, over all normalized maps of the disk. Normalized means the map keeps the center fixed and does not stretch it. The paper ties the value 1 at −2 to Brennan's conjecture. In 1994 Lennart Carleson and Nikolai Makarov found the spectrum for all sufficiently negative powers. Their result does not reach −2. Håkan Hedenmalm and Serguei Shimorin bounded the value at −2 by 1.218 in 2005. Alan Sola lowered it to 1.206 in a 2007 thesis. Recent papers proved the conjectured range for special families of maps.\n\nWhy was 1 so hard to reach? A classical estimate caps the squeeze at each single point. Squaring that cap gives growth exponent 2, not 1. The missing information is how often very strong squeezing can happen around one circle. The paper argues by contradiction. It supposes some maps grow faster than exponent 1. It turns that excess into a random way of choosing maps with exact scaling rules. Those rules force a certain average to be positive. A second, geometric count forces the same average to be zero or below. That count pairs each saddle point of a related height function with a distinct peak at least as high. The two signs clash, so the excess growth cannot exist.\n\nThe paper proves the full conjecture: the total is finite for every s between 4/3 and 4. It also proves that the spectrum at −2 is exactly 1. One constant works for every normalized map at once, at the cost of an arbitrarily small loss in the exponent. Back in the example, the Koebe average grew like 1 divided by the distance to the edge. No normalized map does worse, apart from that small loss. The paper also claims the spectrum equals |t| − 1 for every power t at or below −2.\n\nA companion paper studies maps onto bounded regions at the power −1. Philipp Kraetzer's computer experiments on such maps led to a predicted formula. Its quadratic part appears in his 1996 paper and gives exactly 1/4 at −1. Earlier general bounds at −1 were 0.403, then 0.388. The companion proves a uniform bound with exponent strictly below 1/4. So the bounded spectrum at −1 is below 1/4, and Kraetzer's formula is false there. The proof shows that a gap exists but gives no number for its size. It does not settle the predicted value at the power +1.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main statements. They cover Brennan's range, the uniform bound at −2 and the value 1. They also cover the Koebe failures at the end points, and the companion's bound below 1/4. The Lean scope note does not mention the formula |t| − 1 for powers below −2. No specialist review has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean proofs of the main statements are listed in the scope note. The formula below −2 is outside that note. The companion gives no size for its gap below 1/4. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Conformal map",
+      "meaning": "A one-to-one reshaping of a region that keeps angles, so tiny shapes are enlarged or shrunk without distortion."
+    },
+    {
+      "term": "Stretch factor",
+      "meaning": "How much a map enlarges tiny shapes near a point; mathematicians call it the size of the derivative."
+    },
+    {
+      "term": "Region with no holes",
+      "meaning": "A connected open region in the plane that any loop inside it can be shrunk within; the technical term is simply connected."
+    },
+    {
+      "term": "Koebe map",
+      "meaning": "The standard extreme example f(z) = z/(1 − z)², which squeezes hard near one edge point of the disk."
+    },
+    {
+      "term": "Growth exponent",
+      "meaning": "The power p for which an average around circles grows like 1 divided by the distance to the edge raised to p."
+    },
+    {
+      "term": "Integral-means spectrum",
+      "meaning": "For each power, the largest growth exponent of the circle averages over a whole class of maps."
+    },
+    {
+      "term": "Normalized map",
+      "meaning": "A one-to-one map of the disk that keeps the center fixed and does not stretch it there."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. E. Brennan, “The Integrability of the Derivative in Conformal Mapping”, Journal of the London Mathematical Society (2) 18 (1978), 261–272",
+      "url": "https://doi.org/10.1112/jlms/s2-18.2.261"
+    },
+    {
+      "id": 2,
+      "cite": "D. Bertilsson, “On Brennan's conjecture in conformal mapping”, PhD thesis, Royal Institute of Technology, Stockholm (1999)",
+      "url": "https://www.diva-portal.org/smash/get/diva2:8593/FULLTEXT01.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "L. Carleson and N. G. Makarov, “Some results connected with Brennan's conjecture”, Arkiv för Matematik 32 (1994), 33–62",
+      "url": "https://doi.org/10.1007/BF02559522"
+    },
+    {
+      "id": 4,
+      "cite": "H. Hedenmalm and S. Shimorin, “Weighted Bergman spaces and the integral means spectrum of conformal mappings”, Duke Mathematical Journal 127 (2005), 341–393",
+      "url": "https://doi.org/10.1215/S0012-7094-04-12725-3"
+    },
+    {
+      "id": 5,
+      "cite": "A. Sola, “Bergman space methods and integral means spectra of univalent functions”, Licentiate thesis, Royal Institute of Technology, Stockholm (2007)",
+      "url": "https://www.diva-portal.org/smash/get/diva2:11935/FULLTEXT01.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "P. Kraetzer, “Experimental bounds for the universal integral means spectrum of conformal maps”, Complex Variables, Theory and Application 31 (1996), 305–309",
+      "url": "https://doi.org/10.1080/17476939608814969"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Brennan's conjecture and sharp inverse-square integral means” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Brennans-conjecture-and-sharp-inverse-square-integral-means-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “A strict inverse-first-power bound for univalent functions” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-strict-inverse-first-power-bound-for-univalent-functions-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 072 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/072.md",
+      "quote": "The formalization establishes this interval"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 11,
+      "cite": "A. Aleman and A. Kouroupis, “Brennan's conjecture holds for semigroups of holomorphic functions”, arXiv:2409.15074 (2025)",
+      "url": "https://arxiv.org/abs/2409.15074v2"
+    },
+    {
+      "id": 12,
+      "cite": "Y. Zheng, “Brennan Conjecture for Basin of Attraction at Infinity”, arXiv:2604.12240 (2026)",
+      "url": "https://arxiv.org/abs/2604.12240v1"
+    },
+    {
+      "id": 13,
+      "cite": "A. Sola, “An Estimate of the Universal Means Spectrum of Conformal Mappings”, Computational Methods and Function Theory 6 (2006), 423–436",
+      "url": "https://doi.org/10.1007/BF03321620"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Koebe map z/(1 − z)² belongs to the normalized class.",
+      "verdict": "supported",
+      "sourceLine": "The Koebe function"
+    },
+    {
+      "text": "Brennan's conjecture dates to Brennan's 1978 work.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture dates to Brennan's 1978 work"
+    },
+    {
+      "text": "The conjecture imposes no boundary regularity and no boundedness on the region.",
+      "verdict": "supported",
+      "sourceLine": "There is no regularity assumption on the boundary and no boundedness assumption on"
+    },
+    {
+      "text": "A change of variables turns the range into one for maps out of the disk, with t = 2 − s.",
+      "verdict": "supported",
+      "sourceLine": "Thus the conjectured interval becomes"
+    },
+    {
+      "text": "The inverse-square power t = −2 corresponds to the upper endpoint s = 4.",
+      "verdict": "supported",
+      "sourceLine": "is the limiting case relevant to the upper endpoint"
+    },
+    {
+      "text": "The Koebe map's inverse fails area integrability at both s = 4 and s = 4/3.",
+      "verdict": "supported",
+      "sourceLine": "Its inverse therefore fails area integrability at both"
+    },
+    {
+      "text": "Brennan's 1978 work improved the known upper range beyond 3.",
+      "verdict": "supported",
+      "sourceLine": "improved the previously known upper range beyond"
+    },
+    {
+      "text": "Bertilsson's 1999 thesis reports the range 4/3 < s < 3.421.",
+      "verdict": "supported",
+      "sourceLine": "His thesis reports the area range"
+    },
+    {
+      "text": "The threshold t = −2 is the one associated with Brennan's conjecture.",
+      "verdict": "supported",
+      "sourceLine": "is the one associated with Brennan's conjecture"
+    },
+    {
+      "text": "Carleson and Makarov proved the linear tail |t| − 1 for all sufficiently negative t, which does not reach −2.",
+      "verdict": "supported",
+      "sourceLine": "The statement for sufficiently negative parameters alone does not reach that endpoint."
+    },
+    {
+      "text": "Hedenmalm and Shimorin's table gives 1.218 at −2.",
+      "verdict": "supported",
+      "sourceLine": "Their published table gives"
+    },
+    {
+      "text": "Sola reported the improved estimate 1.206 in his thesis.",
+      "verdict": "supported",
+      "sourceLine": "reporting the improved estimate"
+    },
+    {
+      "text": "Recent papers treat the conjectured range under additional hypotheses.",
+      "verdict": "supported",
+      "sourceLine": "Recent works treat the conjectured integrability range under additional hypotheses."
+    },
+    {
+      "text": "The classical distortion theorem caps the inverse derivative at each point; squaring it gives exponent 2.",
+      "verdict": "supported",
+      "sourceLine": "Squaring this estimate gives radial growth with exponent"
+    },
+    {
+      "text": "The missing information is how often very small derivatives occur around a circle.",
+      "verdict": "supported",
+      "sourceLine": "The missing information concerns how often very small derivatives can occur around a circle."
+    },
+    {
+      "text": "The proof encodes hypothetical excess growth in a probability law on conformal maps.",
+      "verdict": "supported",
+      "sourceLine": "Our proof encodes hypothetical excess growth in a probability law on conformal maps."
+    },
+    {
+      "text": "The law forces one sign on an expected Jacobian; a pairing of critical points forces the opposite sign.",
+      "verdict": "supported",
+      "sourceLine": "a geometric pairing of critical points imposes the opposite sign."
+    },
+    {
+      "text": "Each saddle is paired with a distinct maximum of at least the same value.",
+      "verdict": "supported",
+      "sourceLine": "pairs each saddle with a distinct maximum of at least the same value."
+    },
+    {
+      "text": "The paper proves Brennan's conjecture for the full range 4/3 < s < 4.",
+      "verdict": "supported",
+      "sourceLine": "We prove Brennan's conjecture"
+    },
+    {
+      "text": "The paper proves the sharp inverse-square exponent: the spectrum at −2 equals 1.",
+      "verdict": "supported",
+      "sourceLine": "We also prove the sharp inverse-square integral-means exponent"
+    },
+    {
+      "text": "The paper proves a uniform estimate directly and derives the area assertion from it.",
+      "verdict": "supported",
+      "sourceLine": "We prove the following uniform estimate directly, and then derive the area assertion."
+    },
+    {
+      "text": "The paper also derives the spectrum |t| − 1 for every t ≤ −2.",
+      "verdict": "supported",
+      "sourceLine": "That section also derives"
+    },
+    {
+      "text": "Kraetzer's experiments with maps onto bounded domains led to his prediction; the quadratic part is in his 1996 paper.",
+      "verdict": "supported",
+      "sourceLine": "The quadratic part is stated in his 1996 paper"
+    },
+    {
+      "text": "Hedenmalm and Shimorin's upper bound at −1 for the unrestricted class is 0.403; Sola then obtained 0.388.",
+      "verdict": "supported",
+      "sourceLine": "Sola subsequently obtained the bound"
+    },
+    {
+      "text": "The companion proves a uniform inverse-first-power bound with exponent strictly below 1/4.",
+      "verdict": "supported",
+      "sourceLine": "We prove a strict upper bound at the negative interior exponent"
+    },
+    {
+      "text": "The proof gives a positive gap but does not evaluate it numerically.",
+      "verdict": "supported",
+      "sourceLine": "The proof gives existence of a positive gap but does not evaluate it numerically."
+    },
+    {
+      "text": "The companion does not settle the proposed value at p = 1.",
+      "verdict": "supported",
+      "sourceLine": "it does not settle the proposed value at"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "Lean covers Brennan's interval, the uniform inverse-square bound, the value 1 at −2, Koebe divergence at the four boundary exponents, and the strict bound below 1/4; the scope note does not mention the |t| − 1 tail.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}
