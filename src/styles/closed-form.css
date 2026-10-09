@@ -82,8 +82,7 @@ p{text-wrap:pretty}
 .c-formal{--c:var(--color-trust-formal)}.c-partial{--c:var(--color-trust-partial)}.c-claimed{--c:var(--color-trust-claimed-fill)}
 .dot{display:inline-block;inline-size:.625rem;block-size:.625rem;border-radius:2px;background:var(--c);flex:none}
 .cell{position:relative;display:block;inline-size:.8125rem;block-size:.8125rem;border-radius:2px;background:var(--c)}
-/* explained: the logo's vermilion square, set inside the trust square. Stays inside the cell, so neighbours never overlap */
-.cell.ex::after,.dot-ex::after{content:"";position:absolute;inset:30%;background:var(--color-accent);border-radius:1px;box-shadow:0 0 0 1px var(--color-bg-surface);pointer-events:none}
+
 @media (hover:hover){.cell:hover{outline:2px solid var(--color-text);outline-offset:1px}}
 .tip{position:fixed;z-index:30;pointer-events:none;max-inline-size:20rem;background:var(--color-text);color:var(--color-bg);font-size:.875rem;line-height:1.4;padding:.5rem .625rem;border-radius:6px;box-shadow:var(--shadow-raised);opacity:0;transition:opacity .1s var(--ease-out)}
 .tip b{font-weight:500;font-variant-numeric:tabular-nums;margin-inline-end:.375rem;opacity:.7}
@@ -239,7 +238,7 @@ footer a{color:var(--color-text-secondary);text-decoration:underline;text-decora
 @media (prefers-reduced-motion:no-preference){.btn:active{scale:.96}}
 .btn-q{display:inline-flex;align-items:center;min-block-size:2.75rem;font-weight:500;color:var(--color-text-secondary);text-decoration-line:underline;text-decoration-color:var(--color-border-strong);text-decoration-thickness:from-font;text-underline-offset:.2em;transition:text-decoration-color .15s ease-out}
 @media (hover:hover){.btn-q:hover{color:var(--color-text);text-decoration-color:var(--color-accent)}}
-.dot-ex{position:relative;background:var(--color-text-tertiary)}
+
 .home-ex{margin-block:4.5rem 5rem}
 .sec-h{margin:0;font:inherit}
 .more{font-size:.875rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--color-text-secondary);display:inline-flex;align-items:center;min-block-size:1.5rem}
@@ -1007,3 +1006,16 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 }
 @media (max-width:28rem){.top .top-gh{display:none}.top-sep{display:none}}
 @media (max-width:36rem){.filters{grid-template-columns:minmax(0,1fr)}}
+
+/* Field map squares and the Explained ring, sized from one rule:
+   ring reach e = offset + width; gap = 2e + 2, so two ringed neighbours
+   always keep a 2px clear channel and a ring never touches another square.
+   Desktop: 12px squares, 8px gaps (10 per row, 40 results = 4 rows).
+   Phone:    9px squares, 7px gaps (7 to 8 per row). */
+.fcard{--sq:12px;--ring-o:1.5px;--ring-w:1.5px;--sq-gap:calc(2 * (var(--ring-o) + var(--ring-w)) + 2px)}
+.fcard .cells{gap:var(--sq-gap)}
+.fcard .cell{inline-size:var(--sq);block-size:var(--sq);border-radius:2.5px}
+.fcard .cell.ex{box-shadow:0 0 0 var(--ring-o) var(--color-bg-surface),0 0 0 calc(var(--ring-o) + var(--ring-w)) var(--color-accent)}
+.fcard .cell::before{inset:calc(var(--sq-gap) / -2)}
+@media (max-width:36rem){.fcard{--sq:9px;--ring-o:1px;--ring-w:1.5px;--sq-gap:7px}.fcard .cell{border-radius:2px}}
+.legend .dot-ex{background:var(--color-text-tertiary);margin-inline:3px;box-shadow:0 0 0 1.5px var(--color-bg),0 0 0 3px var(--color-accent)}
