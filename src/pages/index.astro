@@ -2,10 +2,10 @@
 import { toPlain } from '../lib/plain.js';
 import Base from '../layouts/Base.astro';
 import FieldCards from '../components/FieldCards.astro';
+import MapLegend from '../components/MapLegend.astro';
 import TrustLabel from '../components/TrustLabel.astro';
 import { catalog, computeStats, entryUrl, appUrl, familiesById, loadExplained } from '../lib/site.js';
 import { collectionRange } from '../lib/dates.js';
-import { TRUST_LADDER } from '../lib/trust.js';
 
 const stats = computeStats();
 const explainedById = await loadExplained();
@@ -68,12 +68,7 @@ const range = collectionRange(catalog.families);
     <section class="map" aria-labelledby="map-h">
       <div class="sec-head">
         <h2 class="label" id="map-h">Browse by field · one square per result</h2>
-        <ul class="legend" aria-label="Trust legend">
-          {TRUST_LADDER.map((t) => (
-            <li><i class={`dot c-${t.key}`} aria-hidden="true"></i>{t.label}</li>
-          ))}
-          <li><i class="dot dot-ex" aria-hidden="true"></i>Explained</li>
-        </ul>
+        <MapLegend />
       </div>
       <ul class="fields" id="grid">
         <FieldCards subjects={catalog.subjects} families={catalog.families} explainedIds={explainedIds} />

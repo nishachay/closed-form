@@ -1,0 +1,9 @@
+---
+import { TRUST_LADDER } from '../lib/trust.js';
+---
+<ul class="legend" aria-label="Legend">
+  {TRUST_LADDER.map((t) => (
+    <li><i class={`dot c-${t.key}`} aria-hidden="true"></i>{t.label}</li>
+  ))}
+  <li><i class="dot dot-ex" aria-hidden="true"></i>Explained</li>
+</ul>

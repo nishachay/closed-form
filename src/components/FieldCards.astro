@@ -1,15 +1,17 @@
 ---
 import { toPlain } from '../lib/plain.js';
-import { entryUrl, fieldUrl } from '../lib/site.js';
+import { entryUrl, fieldUrl, loadExplainedIds } from '../lib/site.js';
 import { TRUST_LADDER } from '../lib/trust.js';
 import type { Catalog } from '../lib/catalog.js';
 
 interface Props {
   subjects: Catalog['subjects'];
   families: Catalog['families'];
-  explainedIds: Set<string>;
+  /** Defaults to every entry with an explanation, so all maps mark the same squares. */
+  explainedIds?: Set<string>;
 }
-const { subjects, families, explainedIds } = Astro.props;
+const { subjects, families } = Astro.props;
+const explainedIds = Astro.props.explainedIds ?? (await loadExplainedIds());
 
 const order: Record<string, number> = { formal: 0, partial: 1, claimed: 2 };
 ---
