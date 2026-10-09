@@ -1,11 +1,16 @@
 ---
+import { toPlain } from '../lib/plain.js';
 import Base from '../layouts/Base.astro';
 import FieldCards from '../components/FieldCards.astro';
-import { catalog, computeStats, appUrl } from '../lib/site.js';
+import TrustLabel from '../components/TrustLabel.astro';
+import { catalog, computeStats, entryUrl, appUrl, familiesById, loadExplained } from '../lib/site.js';
 import { collectionRange } from '../lib/dates.js';
 import { TRUST_LADDER } from '../lib/trust.js';
 
 const stats = computeStats();
+const explainedById = await loadExplained();
+const explainedIds = new Set(explainedById.keys());
+const explained = [...explainedById.values()].sort((a, b) => a.id.localeCompare(b.id));
 const range = collectionRange(catalog.families);
 ---
 <Base title="AI mathematics, explained" description={`Every problem an OpenAI model solved, explained in plain words with honest trust labels. ${stats.results} results from ${stats.papers} papers.`} current="home">
@@ -52,9 +57,9 @@ const range = collectionRange(catalog.families);
             <div class="m">papers with a Lean proof listed</div>
           </div>
           <div class="stat">
-            <div class="label">Fields</div>
-            <div class="n num">{catalog.subjects.length}</div>
-            <div class="m">from number theory to topology</div>
+            <div class="label">Explained</div>
+            <div class="n"><span class="num">{explained.length}</span><span class="of">/{stats.results}</span></div>
+            <div class="m">in plain words so far</div>
           </div>
         </div>
       </div>
@@ -67,10 +72,11 @@ const range = collectionRange(catalog.families);
           {TRUST_LADDER.map((t) => (
             <li><i class={`dot c-${t.key}`} aria-hidden="true"></i>{t.label}</li>
           ))}
+          <li><i class="dot dot-ex" aria-hidden="true"></i>Explained</li>
         </ul>
       </div>
       <ul class="fields" id="grid">
-        <FieldCards subjects={catalog.subjects} families={catalog.families} explainedIds={new Set()} />
+        <FieldCards subjects={catalog.subjects} families={catalog.families} explainedIds={explainedIds} />
         <li class="fcard fcard-all">
           <h3 class="fc-t"><a href={appUrl('/archive/')}>All fields</a></h3>
           <p class="fc-n"><span><b class="num">{stats.results}</b> results in the archive</span></p>
@@ -79,6 +85,31 @@ const range = collectionRange(catalog.families);
       </ul>
     </section>
 
+    {explained.length > 0 && (
+    <section class="home-ex" aria-labelledby="ex-h">
+      <div class="sec-head">
+        <h2 id="ex-h" class="label">Explained so far</h2>
+        <a class="more" href={appUrl('/archive/?trust=explained')}>All explained →</a>
+      </div>
+      <ul class="ex-cards" id="explained">
+        {explained.map((e) => {
+          const fam = familiesById.get(e.id);
+          if (!fam) return null;
+          return (
+            <li class="xcard">
+              <div class="label">Entry <span class="num">{e.id}</span> · {fam.subject}</div>
+              <h3 class="xc-t"><a href={entryUrl(fam)}>{toPlain(fam.title)}</a></h3>
+              <p class="xc-h">{e.headline}</p>
+              <div class="xc-f">
+                <TrustLabel trust={fam.trust} />
+                <span class="xc-go" aria-hidden="true">Read →</span>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+    )}
   </section>
   <script>
     const hq = document.getElementById('hq') as HTMLInputElement | null;
