@@ -2,7 +2,7 @@
  * OG card rendering (Phase 3, §14.6).
  *
  * 1200×630 PNGs built at build time with hand-built SVG + @resvg/resvg-js.
- * (Spec names Satori + resvg; see PR_NOTES.md for why Satori was skipped.)
+ * (Spec names Satori + resvg; see docs/decisions.md for why Satori was skipped.)
  *
  * Card content per §14.6: dark bg, top-left "Closed Form ∎" wordmark, large
  * "Open since {firstStep}." (or "Entry NNN") line, headline (max 3 lines),

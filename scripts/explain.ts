@@ -268,7 +268,7 @@ async function readTexTree(dir: string): Promise<string[]> {
  *
  * NOTE: the 017 seed's stored sourceHash predates this definition and will
  * not match a fresh gather — a real run treats 017 as source-changed and
- * reprocesses it. Safe direction; noted in PR_NOTES.md.
+ * reprocesses it. Safe direction; noted in docs/decisions.md.
  */
 export async function gatherFamily(
   sourceDir: string,
