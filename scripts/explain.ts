@@ -459,7 +459,14 @@ export function retryDelayMs(
   return Math.min(capMs, Math.max(0, ms));
 }
 
-export const MAX_TRIES = 5;
+export const MAX_TRIES = 7;
+
+/**
+ * Per-minute rate limits (NVIDIA NIM free tier) reset on a ~60 s window and send no
+ * Retry-After. Short exponential backoff (2, 4, 8 s) burned every retry inside one
+ * window and turned a brief limit into a quota stop, so an unhinted 429 waits at least this.
+ */
+export const RATE_LIMIT_FLOOR_MS = 20_000;
 
 export interface ChatOptions {
   fetchImpl?: typeof fetch;
@@ -544,7 +551,13 @@ export async function chatComplete(
       if (res.status === 429 && isDailyQuota(body)) {
         throw new QuotaExhaustedError(`daily quota exhausted for ${model}: ${lastError}`);
       }
-      if (attempt < maxTries - 1) await sleep(retryDelayMs(attempt, res.headers.get('retry-after'), body));
+      if (attempt < maxTries - 1) {
+        const retryAfter = res.headers.get('retry-after');
+        let wait = retryDelayMs(attempt, retryAfter, body);
+        const hinted = retryAfter !== null || /"retryDelay"/.test(body);
+        if (res.status === 429 && !hinted) wait = Math.max(wait, RATE_LIMIT_FLOOR_MS);
+        await sleep(wait);
+      }
       continue;
     }
     if (!res.ok) throw new Error(`LLM request failed: ${res.status} ${(await res.text()).slice(0, 300)}`);
@@ -648,7 +661,39 @@ async function loadExisting(): Promise<Map<string, { sourceHash?: string }>> {
   return map;
 }
 
-/** Families needing work, in catalog order. */
+/**
+ * Batch order: spread work across fields so every field gets explained early.
+ * Round-robin over subjects, starting with the subjects that have the fewest
+ * explained entries; within a subject, catalog order. Deterministic.
+ */
+export function fieldsFirst(
+  need: Family[],
+  catalog: Catalog,
+  existing: Map<string, { sourceHash?: string }>,
+): Family[] {
+  const done = new Map<string, number>();
+  for (const f of catalog.families) {
+    if (existing.has(f.id)) done.set(f.subject, (done.get(f.subject) ?? 0) + 1);
+  }
+  const bySubject = new Map<string, Family[]>();
+  for (const f of need) {
+    if (!bySubject.has(f.subject)) bySubject.set(f.subject, []);
+    bySubject.get(f.subject)!.push(f);
+  }
+  const subjects = [...bySubject.keys()].sort(
+    (a, b) => (done.get(a) ?? 0) - (done.get(b) ?? 0) || catalog.subjects.indexOf(a) - catalog.subjects.indexOf(b),
+  );
+  const out: Family[] = [];
+  for (let round = 0; out.length < need.length; round++) {
+    for (const s of subjects) {
+      const f = bySubject.get(s)![round];
+      if (f) out.push(f);
+    }
+  }
+  return out;
+}
+
+/** Families needing work: explicit ids in order, or a fields-first batch. */
 export function selectFamilies(
   catalog: Catalog,
   existing: Map<string, { sourceHash?: string }>,
@@ -677,7 +722,7 @@ export function selectFamilies(
   });
   if (args.batch !== null) {
     if (!Number.isInteger(args.batch) || args.batch <= 0) throw new Error('--batch needs a positive integer');
-    return need.slice(0, args.batch);
+    return fieldsFirst(need, catalog, existing).slice(0, args.batch);
   }
   return need;
 }

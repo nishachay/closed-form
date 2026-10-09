@@ -184,3 +184,18 @@ describe('calibrate (§6.3, §11.5)', () => {
     expect(again).toEqual(plan);
   });
 });
+
+describe('fieldsFirst batch order', () => {
+  it('starts with fields that have no explained entries and rotates across fields', async () => {
+    const { fieldsFirst } = await import('../scripts/explain.js');
+    const fam = (id: string, subject: string) => ({ id, subject }) as never;
+    const catalog = {
+      subjects: ['A', 'B', 'C'],
+      families: [fam('1', 'A'), fam('2', 'A'), fam('3', 'A'), fam('4', 'B'), fam('5', 'B'), fam('6', 'C')],
+    } as never;
+    const existing = new Map([['1', {}]]);
+    const need = [fam('2', 'A'), fam('3', 'A'), fam('4', 'B'), fam('5', 'B'), fam('6', 'C')];
+    const order = fieldsFirst(need, catalog, existing).map((f: { id: string }) => f.id);
+    expect(order).toEqual(['4', '6', '2', '5', '3']);
+  });
+});
