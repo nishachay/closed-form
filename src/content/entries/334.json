@@ -1,0 +1,272 @@
+{
+  "id": "334",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Smooth-Metric-with-No-Local-Isometric-Immersion-into-Three-Space-September-24-2026/paper.pdf",
+      "label": "A Smooth Metric with No Local Isometric Immersion into Three-Space"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/334.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Some smooth rules for measuring length cannot be built as a surface in space, even near one point.",
+  "scope": "The result is about smooth surface metrics realized as smooth surfaces in ordinary three-dimensional space, near one chosen point.",
+  "plain": "A metric is a rule for measuring lengths on a flat region. The question is whether a small curved surface in space can carry those exact lengths. The paper proves that for some smooth metric, no such surface exists near the center, however small. The metric even matches flat lengths to every order at the center. A Lean proof of the main statement is listed.",
+  "doesNot": "This does not settle the question for metrics whose curvature keeps one sign, because this example uses both signs.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "A. V. Pogorelov, a less smooth metric with no local surface",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it answers a smooth local problem that Ghomi's 2019 survey lists as open."
+  },
+  "explanation": "Picture the saddle surface z = xy, shaped like a riding saddle. An ant living on it can measure distances along the surface. From distances alone, it can compute the Gaussian curvature [a number saying how the surface bends near a point]. Negative means saddle-shaped, positive means dome-shaped, and zero means flat like paper. On this saddle the curvature is −1 at the center. Above the point (1, 1) it is −1/9. Above (2, 0) it is −1/25.\n\nNow run the question backwards. Start with only a metric [a rule giving the length of every short path in a flat region]. Can you always build a surface in ordinary three-dimensional space with exactly those lengths? Ask only for a small piece around one point. Such a piece is a local isometric immersion [a smooth map into space that keeps every length]. An immersion may cross itself, but near a single point it cannot. So here the two questions have the same answer.\n\nMuch was known. Take analytic metrics [ones given by convergent power series]. Janet and Cartan showed in 1926 and 1927 that the answer is yes. For smooth metrics [ones with derivatives of every order], the answer is yes where curvature is not zero. Trouble starts where the curvature hits zero. There the governing equation can change type, a bit like a road switching from tarmac to ice. Nakamura and Maeda in 1989 handled a clean sign change, where curvature crosses zero at a nonzero slope.\n\nSmoothness matters at both ends. Nash and Kuiper showed that with only one derivative required, a local surface always exists. In 1971 Pogorelov built a metric with limited smoothness and no local surface with two derivatives. Nadirashvili and Yuan published a refinement in 2008 with curvature never negative. The fully smooth question stayed open. Yau discussed it, and Ghomi's 2019 survey lists it as a problem. A 2002 preprint by Nadirashvili and Yuan claimed a stronger counterexample, but their later paper calls the question open. This paper leaves that discrepancy unresolved and does not use the preprint's claim.\n\nThe paper proves the answer is no. It builds a smooth metric on the open square from −1 to 1 in both directions. No neighborhood of the center, however small, has a smooth surface with those lengths. The metric can even match the flat metric to every order at the center. A flat plane realizes the flat metric. So the metric's derivatives at that one point cannot decide the question.\n\nThe one obstacle is that smoothness must hold on a single fixed piece. Having a solution with any finite number of derivatives is not enough. Those solutions may live on pieces that shrink as the number grows. The paper must rule out every smooth candidate on every neighborhood at once.\n\nThe construction places a chain of tiny disks marching toward the center. Disk number j is centered at distance 1/2^j, with radius 1/2^(j+4). Disk 1 sits at 0.5 with radius 1/32, about 0.031. Disk 10 sits at about 0.00098 with radius about 0.000061. Each radius is 1/16 of its distance from the center. Inside each disk the curvature is negative, and on its rim it is zero. Any surface built near the center would contain one whole disk. An argument from the 2002 preprint then forces a special one-direction bending somewhere on that rim.\n\nAround every rim point the paper packs tinier square patches, each with a carefully perturbed metric. On each patch, no height function can satisfy the equation a surface must obey with that bending. So the surface cannot exist. The paper shows suitable patch metrics exist without writing a formula for them. Its curvature also takes both signs. So it does not settle the smooth question when curvature is required to stay one sign.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main statement. It says no neighborhood of the center has a smooth surface with these lengths. The Lean scope note does not mention the flat-matching refinement, so that part sits outside the check. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. A Lean proof of the main statement is listed, but the flat-matching refinement is outside the scope note. The example uses curvature of both signs, so the one-sign cases remain open. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Metric",
+      "meaning": "A rule that gives the length of every short path in a region."
+    },
+    {
+      "term": "Gaussian curvature",
+      "meaning": "A number at each point saying how a surface bends: negative for a saddle, positive for a dome, zero for flat."
+    },
+    {
+      "term": "Isometric immersion",
+      "meaning": "A smooth map of a region into space that keeps every length unchanged."
+    },
+    {
+      "term": "Smooth",
+      "meaning": "Having derivatives of every order."
+    },
+    {
+      "term": "Analytic",
+      "meaning": "Given near each point by a convergent power series, which is stricter than smooth."
+    },
+    {
+      "term": "Neighborhood",
+      "meaning": "Any small open region around a point."
+    },
+    {
+      "term": "Taylor jet",
+      "meaning": "The full list of derivatives of every order at a single point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Janet, “Sur la possibilité de plonger un espace riemannien donné dans un espace euclidien”, Ann. Soc. Polon. Math. 5 (1926), 38–43",
+      "url": "https://rcin.org.pl/dlibra/publication/31746/edition/15034"
+    },
+    {
+      "id": 2,
+      "cite": "G. Nakamura and Y. Maeda, “Local smooth isometric embeddings of low-dimensional Riemannian manifolds into Euclidean spaces”, Trans. AMS 313 (1989), 1–51",
+      "url": "https://doi.org/10.1090/S0002-9947-1989-0992597-8"
+    },
+    {
+      "id": 3,
+      "cite": "J. Nash, “C¹ isometric imbeddings”, Annals of Mathematics 60 (1954), 383–396",
+      "url": "https://doi.org/10.2307/1969840"
+    },
+    {
+      "id": 4,
+      "cite": "A. V. Pogorelov, “An example of a two-dimensional Riemannian metric admitting no local realization in E³”, Doklady Akad. Nauk SSSR 198 (1971), 42–43",
+      "url": "https://www.mathnet.ru/eng/dan36135"
+    },
+    {
+      "id": 5,
+      "cite": "N. Nadirashvili and Y. Yuan, “Improving Pogorelov's isometric embedding counterexample”, Calc. Var. PDE 32 (2008), 319–323",
+      "url": "https://doi.org/10.1007/s00526-007-0140-7"
+    },
+    {
+      "id": 6,
+      "cite": "N. Nadirashvili and Y. Yuan, “Counterexamples for Local Isometric Embedding”, arXiv:math/0208127 (2002)",
+      "url": "https://arxiv.org/abs/math/0208127v1"
+    },
+    {
+      "id": 7,
+      "cite": "M. Ghomi, “Open problems in geometry of curves and surfaces” (2019), Section 1.5, Problem 1.9",
+      "url": "https://ghomi.math.gatech.edu/Papers/op.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "S.-T. Yau, “Review of geometry and analysis”, Asian Journal of Mathematics 4 (2000), 235–278",
+      "url": "https://doi.org/10.4310/AJM.2000.v4.n1.a16"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “A Smooth Metric with No Local Isometric Immersion into Three-Space” and Lean scope note (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/334.md",
+      "quote": "We give a negative answer to this local three-dimensional problem."
+    },
+    {
+      "id": 10,
+      "cite": "É. Cartan, “Sur la possibilité de plonger un espace riemannien donné dans un espace euclidien”, Ann. Soc. Polon. Math. 6 (1927), 1–7",
+      "url": "https://rcin.org.pl/dlibra/publication/32955/edition/18106"
+    }
+  ],
+  "sourceHash": "2edf369a091dc4bd10974cbf1d1d2199446e11f2d7968451ab9079ba50842c10",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The unrestricted smooth question is part of Yau's discussion and is posed in Ghomi's survey.",
+      "verdict": "supported",
+      "sourceLine": "The unrestricted smooth question is part of Yau's discussion of isometric embedding"
+    },
+    {
+      "text": "Ghomi's survey formulates the problem explicitly.",
+      "verdict": "supported",
+      "sourceLine": "and is formulated explicitly in Ghomi's survey"
+    },
+    {
+      "text": "The paper constructs a smooth positive-definite metric on the open square with no smooth isometric immersion on any neighborhood of the origin.",
+      "verdict": "supported",
+      "sourceLine": "such that no open neighborhood … of the origin admits a"
+    },
+    {
+      "text": "Immersion and embedding have the same local existence content.",
+      "verdict": "supported",
+      "sourceLine": "Thus the two local formulations have the same existence content."
+    },
+    {
+      "text": "The analytic case is settled by Janet and Cartan.",
+      "verdict": "supported",
+      "sourceLine": "The analytic local problem is settled by the classical Janet"
+    },
+    {
+      "text": "Nonzero curvature gives smooth local existence.",
+      "verdict": "supported",
+      "sourceLine": "nonzero Gaussian curvature leads to elliptic or hyperbolic equations and smooth local existence"
+    },
+    {
+      "text": "Zeros of curvature cause degeneracy and changes of type.",
+      "verdict": "supported",
+      "sourceLine": "zeros of curvature introduce degeneracy and changes of type"
+    },
+    {
+      "text": "A clean change of sign means curvature zero with nonzero derivative.",
+      "verdict": "supported",
+      "sourceLine": "Here a clean change of sign means"
+    },
+    {
+      "text": "Nakamura and Maeda established smooth local existence at a clean sign change.",
+      "verdict": "supported",
+      "sourceLine": "Smooth local existence under this condition was established by Nakamura and Maeda"
+    },
+    {
+      "text": "Nash-Kuiper flexibility gives C^1 local realizations.",
+      "verdict": "supported",
+      "sourceLine": "flexibility gives … local isometric realizations in three-space"
+    },
+    {
+      "text": "Pogorelov constructed a C^{2,1} metric with no local C^2 realization.",
+      "verdict": "supported",
+      "sourceLine": "Pogorelov constructed a … metric with no local … realization"
+    },
+    {
+      "text": "Nadirashvili and Yuan's published refinement achieves K >= 0.",
+      "verdict": "supported",
+      "sourceLine": "The published refinement by Nadirashvili and Yuan achieves"
+    },
+    {
+      "text": "The 2002 preprint states a stronger counterexample.",
+      "verdict": "supported",
+      "sourceLine": "states a stronger"
+    },
+    {
+      "text": "The later published paper leaves the arbitrary smooth question open.",
+      "verdict": "supported",
+      "sourceLine": "explicitly leaves the arbitrary smooth-metric question open"
+    },
+    {
+      "text": "The paper leaves the discrepancy unresolved.",
+      "verdict": "supported",
+      "sourceLine": "We leave this discrepancy unresolved."
+    },
+    {
+      "text": "The paper does not use the preprint's nonsolvability assertion.",
+      "verdict": "supported",
+      "sourceLine": "We do not use the preprint's nonsolvability assertion"
+    },
+    {
+      "text": "The metric can share the full Taylor jet of the Euclidean metric at the origin.",
+      "verdict": "supported",
+      "sourceLine": "The metric can moreover be chosen to have the same full Taylor jet at the origin as the Euclidean metric"
+    },
+    {
+      "text": "Smooth local realizability is not determined by that jet.",
+      "verdict": "supported",
+      "sourceLine": "Thus smooth local realizability is not determined by that jet."
+    },
+    {
+      "text": "The Euclidean metric admits an isometric immersion.",
+      "verdict": "supported",
+      "sourceLine": "The Euclidean metric itself admits an isometric immersion into"
+    },
+    {
+      "text": "Finite-order existence on shrinking neighborhoods does not give one smooth map on a fixed neighborhood.",
+      "verdict": "supported",
+      "sourceLine": "Existence at every finite differentiability order, on neighborhoods allowed to shrink with that order, does not by itself give one smooth map on a fixed neighborhood."
+    },
+    {
+      "text": "The disks have centers (2^-j, 0) and radii 2^-j-4.",
+      "verdict": "supported",
+      "sourceLine": "be the round disks with centers"
+    },
+    {
+      "text": "Each disk has negative curvature inside and zero on its boundary.",
+      "verdict": "supported",
+      "sourceLine": "a disk with negative curvature inside and zero curvature on its boundary"
+    },
+    {
+      "text": "The boundary-saddle argument comes from Nadirashvili and Yuan's 2002 preprint.",
+      "verdict": "supported",
+      "sourceLine": "The geometric construction uses the boundary-saddle argument of Nadirashvili and Yuan"
+    },
+    {
+      "text": "A negatively curved disk cannot be a graph whose second fundamental form vanishes on its whole boundary.",
+      "verdict": "supported",
+      "sourceLine": "a negatively curved disk cannot be a graph whose second fundamental form vanishes along its entire boundary."
+    },
+    {
+      "text": "Obstructed patches approach every boundary point of the disk.",
+      "verdict": "supported",
+      "sourceLine": "place shrinking obstructed patches approaching every boundary point of a disk"
+    },
+    {
+      "text": "The disks and patches accumulate at the origin.",
+      "verdict": "supported",
+      "sourceLine": "let such disks and their surrounding patches accumulate at the origin"
+    },
+    {
+      "text": "Patch metrics with no admissible height exist in every neighborhood, by a category argument.",
+      "verdict": "supported",
+      "sourceLine": "there is a metric in that neighborhood with no admissible height"
+    },
+    {
+      "text": "The construction uses both signs of curvature.",
+      "verdict": "supported",
+      "sourceLine": "the construction uses both signs of curvature"
+    },
+    {
+      "text": "It does not settle the problem under a one-sign curvature restriction.",
+      "verdict": "supported",
+      "sourceLine": "It does not settle the smooth local-realizability problem under either sign restriction"
+    },
+    {
+      "text": "Lean covers the main statement: a smooth positive-definite metric on (-1,1)^2 with no smooth isometric immersion on any neighborhood of the origin. The scope note does not mention the Taylor-jet corollary.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "047",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-failure-of-complex-affine-space-cancellation-September-23-2026/paper.pdf",
+      "label": "An explicit failure of complex affine-space cancellation"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/047.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A four-dimensional shape that is not ordinary space, until you add one line.",
+  "scope": "The example is over the complex numbers in dimension four; it says nothing about dimension three.",
+  "plain": "The paper writes down one polynomial equation in five unknowns, and its solutions form a four-dimensional shape X. It proves that X with one extra free direction is ordinary five-dimensional space. Yet X itself is not ordinary four-dimensional space (Lean proof listed). This answers Zariski's cancellation question over the complex numbers in dimension four: the answer is no. The paper also claims to disprove two related conjectures with the same equation.",
+  "doesNot": "This does not settle the cancellation question for complex dimension three.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1972",
+    "firstStepBy": "Abhyankar, Heinzer and Eakin, cancellation for the line",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it answers Zariski's complex cancellation question in dimension four, open there from dimension three up."
+  },
+  "explanation": "Take five numbers p, s, u, F and J, and set each one to 1. The paper first forms x = s² + u³ + p²F, which here equals 3. Then it forms H = x²F − (1 + 2sx)J − p²J² − pu. With our numbers, H = 9 − 7 − 1 − 1 = 0. So the point (1, 1, 1, 1, 1) solves the equation H = 0. Complex numbers have the form a + bi, where i is a square root of −1. All complex solutions form a shape the paper calls X. One equation in five unknowns leaves four free directions, so X is four-dimensional.\n\nNow give X one extra free direction, called w. Each point of X becomes a whole line, one point for each value of w. This new shape is the cylinder over X. The paper proves that this cylinder is ordinary five-dimensional space. Here two shapes count as the same when polynomial formulas match their points both ways. Yet X itself is not ordinary four-dimensional space. Adding one line hides a real difference.\n\nOrdinary space of this kind is called affine space. The Zariski cancellation problem asks a simple question. If the cylinder over X is affine space, must X be affine space? For the line, the answer is yes, from work of Abhyankar, Heinzer and Eakin (1972). For surfaces over the complex numbers it is also yes, through work of Fujita and of Miyanishi and Sugie. Some number systems wrap around: adding 1 to itself enough times gives 0. Experts say these have positive characteristic. Over every such system, Gupta showed in 2014 that cancellation fails in every dimension from three up. Over the complex numbers, dimensions three and up stayed open. A July 2026 preprint by Gaifullin and Petrov still lists the question as open.\n\nThe hard part is showing that X is not four-space. The match with five-space does not help here. It can twist the extra line together with the old directions. So its existence alone does not give coordinates on X. The paper calls this its main work.\n\nIts test uses sliding motions. Four-space has many of them: shift one coordinate and keep the others fixed. Makar-Limanov used such motions to show that a well-known threefold, the Russell cubic, is not three-space. A slice of X is the part where p is held at one value. The paper sorts the functions on X by how fast they vanish on the slice p = 0. This degenerates X into a simpler, graded model: a smooth shape with a simpler equation. If X were four-space, a sliding motion with a special property would pass to that model. The paper lifts that motion to a larger related space built over the model. It then argues that no such motion can exist. A classical inequality about polynomials, the Mason–Stothers abc inequality, is a key tool in that final argument. Take two polynomials with no common factor and their sum. The inequality bounds their degrees by how many distinct roots the three have.\n\nGo back to the numbers, but now set p = 0 and keep s = u = 1. Then x = 2, and H becomes 4F − 5J. On the slice p = 0, the equation is a straight-line condition on F and J. The paper claims more. Over every point of the p-line, the slice of X is three-dimensional affine space. This includes the extra abstract points that algebraists add to the ordinary values of p. Dolgachev and Weisfeiler predicted that such a family must be a product with three-space near each point. The paper claims that this family breaks the prediction. If it were locally a product, X would be four-space after all. A second family, from five-space to the plane, breaks it too.\n\nThe same H answers one more question. A coordinate is a polynomial that can serve as one of the axes after an invertible polynomial change of variables. The Stable Coordinate Conjecture says this: a polynomial that becomes a coordinate after adding one variable was already one. The paper claims that H is not a coordinate in five variables but becomes one in six.\n\nThese results have limits. The cancellation example lives in dimension four. The paper does not treat complex dimension three or dimensions above four. Its families have three-dimensional slices. The paper says they do not address slices of dimension one or two.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It says that adding one variable to the polynomial functions on X gives polynomials in five variables. The functions on X themselves are not polynomials in four variables. The stable-coordinate consequence is outside that check. The Lean scope note does not list the fibration results either. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. Lean has checked the main cancellation statement. The stable-coordinate and fibration consequences are not in that check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Affine space",
+      "meaning": "Ordinary flat space, where each point is a list of complex numbers."
+    },
+    {
+      "term": "Cylinder",
+      "meaning": "A shape times a line: each point of the shape becomes a whole line."
+    },
+    {
+      "term": "Zariski cancellation problem",
+      "meaning": "The question whether a shape whose cylinder is affine space must itself be affine space."
+    },
+    {
+      "term": "Coordinate",
+      "meaning": "A polynomial that can serve as one of the axes after an invertible change of variables given by polynomial formulas."
+    },
+    {
+      "term": "Sliding motion",
+      "meaning": "A way to move a shape along itself by polynomial formulas, like shifting one axis; experts call it an additive action."
+    },
+    {
+      "term": "Complex numbers",
+      "meaning": "Numbers of the form a + bi, where a and b are ordinary real numbers and i is a square root of −1."
+    },
+    {
+      "term": "Positive characteristic",
+      "meaning": "A number system where adding 1 to itself enough times gives 0."
+    },
+    {
+      "term": "Mason–Stothers abc inequality",
+      "meaning": "A rule for polynomials: if two with no common factor add up to a third, their degrees are bounded by how many distinct roots the three have."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. S. Abhyankar, W. Heinzer and P. Eakin, “On the uniqueness of the coefficient ring in a polynomial ring”, J. Algebra 23 (1972), 310–342",
+      "url": "https://doi.org/10.1016/0021-8693(72)90134-2"
+    },
+    {
+      "id": 2,
+      "cite": "T. Fujita, “On Zariski problem”, Proc. Japan Acad. Ser. A 55 (1979), 106–110",
+      "url": "https://doi.org/10.3792/pjaa.55.106"
+    },
+    {
+      "id": 3,
+      "cite": "M. Miyanishi and T. Sugie, “Affine surfaces containing cylinderlike open sets”, J. Math. Kyoto Univ. 20 (1980), 11–42",
+      "url": "https://doi.org/10.1215/kjm/1250522319"
+    },
+    {
+      "id": 4,
+      "cite": "N. Gupta, “On Zariski's cancellation problem in positive characteristic”, Adv. Math. 264 (2014), 296–307",
+      "url": "https://doi.org/10.1016/j.aim.2014.07.012"
+    },
+    {
+      "id": 5,
+      "cite": "S. Gaifullin and M. Petrov, “Non-cancellative varieties, maximal tori, and the Makar-Limanov invariant”, arXiv:2607.13593 (July 2026)",
+      "url": "https://arxiv.org/abs/2607.13593v1"
+    },
+    {
+      "id": 6,
+      "cite": "L. Makar-Limanov, “On the hypersurface x+x²y+z²+t³=0 in C⁴ or a C³-like threefold which is not C³”, Israel J. Math. 96 (1996), 419–429",
+      "url": "https://doi.org/10.1007/BF02937314"
+    },
+    {
+      "id": 7,
+      "cite": "B. Yu. Weisfeiler and I. V. Dolgachev, “Unipotent group schemes over integral rings”, Math. USSR-Izv. 8 (1974), 761–800",
+      "url": "https://doi.org/10.1070/IM1974v008n04ABEH002127"
+    },
+    {
+      "id": 8,
+      "cite": "L. Makar-Limanov, P. van Rossum, V. Shpilrain and J.-T. Yu, “The stable equivalence and cancellation problems”, Comment. Math. Helv. 79 (2004), 341–349",
+      "url": "https://doi.org/10.1007/s00014-003-0796-3"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “An explicit failure of complex affine-space cancellation” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-failure-of-complex-affine-space-cancellation-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 047 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/047.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "H is a polynomial in the five variables p, s, u, F, J, with x = s² + u³ + p²F.",
+      "verdict": "supported",
+      "sourceLine": "Thus … is an abbreviation for the displayed polynomial, and … is a polynomial in exactly the five indicated variables."
+    },
+    {
+      "text": "The algebra A = P/(H) is an integral complex algebra of dimension four.",
+      "verdict": "supported",
+      "sourceLine": "is an integral complex algebra of dimension four"
+    },
+    {
+      "text": "Adding one variable gives a polynomial ring in five variables, while A is not a polynomial ring in four, so cancellation fails over the complex numbers in dimension four.",
+      "verdict": "supported",
+      "sourceLine": "Consequently the Zariski cancellation problem over the complex numbers has a negative answer in dimension four."
+    },
+    {
+      "text": "An isomorphism of cylinders need not respect the projection, so its existence alone does not give coordinates on A.",
+      "verdict": "supported",
+      "sourceLine": "An isomorphism of cylinders need not respect the given projection to the affine line, so its existence alone does not identify polynomial coordinates on"
+    },
+    {
+      "text": "Cancellation for the line follows from Abhyankar, Heinzer and Eakin.",
+      "verdict": "supported",
+      "sourceLine": "Cancellation for the affine line follows from the work of Abhyankar, Heinzer, and Eakin",
+      "sourceId": 1
+    },
+    {
+      "text": "Cancellation for the complex plane came through Fujita, Miyanishi and Sugie.",
+      "verdict": "supported",
+      "sourceLine": "Cancellation for the complex affine plane was established through the work of Fujita, Miyanishi, and Sugie"
+    },
+    {
+      "text": "Gupta showed cancellation fails in every dimension at least three in positive characteristic.",
+      "verdict": "supported",
+      "sourceLine": "then established failure of cancellation in every dimension at least three over every field of positive characteristic",
+      "sourceId": 4
+    },
+    {
+      "text": "The characteristic-zero problem in dimension three and up is listed as open by Gaifullin and Petrov in July 2026.",
+      "verdict": "supported",
+      "sourceLine": "The characteristic-zero problem in dimensions at least three is still listed as open in Gaifullin--Petrov's July 2026 preprint",
+      "sourceId": 5
+    },
+    {
+      "text": "The paper answers the question negatively for n = 4.",
+      "verdict": "supported",
+      "sourceLine": "We give a negative answer to … over … for"
+    },
+    {
+      "text": "The main work is proving that A is not polynomial.",
+      "verdict": "supported",
+      "sourceLine": "The main work is to prove that … itself is not polynomial."
+    },
+    {
+      "text": "Makar-Limanov used additive actions to show the Russell cubic is not affine three-space.",
+      "verdict": "supported",
+      "sourceLine": "Makar-Limanov used them to show that the Russell cubic is not affine three-space",
+      "sourceId": 6
+    },
+    {
+      "text": "The final rigidity argument uses the Mason–Stothers polynomial abc inequality, together with a nonsquare argument.",
+      "verdict": "supported",
+      "sourceLine": "The Mason--Stothers polynomial $abc$ inequality and the nonsquareness of $-u^3$ in $\\Frac\\Rt$ force $E'$ to fix $a,d,u$."
+    },
+    {
+      "text": "At p = 0, H reduces to x0²F − (1 + 2sx0)J, linear in F and J.",
+      "verdict": "supported",
+      "sourceLine": "Set \\(x_0=s^2+u^3\\). Reduction modulo \\(p\\) gives H\\bmod p=x_0^2F-(1+2sx_0)J\\ne0,"
+    },
+    {
+      "text": "For either map, the fiber over every point of its base is affine three-space, and neither map is Zariski-locally trivial.",
+      "verdict": "supported",
+      "sourceLine": "For either morphism and every point $y$ of its base, the fiber over $y$ is isomorphic to $\\Aff^3_{\\kappa(y)}$"
+    },
+    {
+      "text": "Dolgachev and Weisfeiler predicted such a morphism is Zariski-locally a product with affine space.",
+      "verdict": "supported",
+      "sourceLine": "predicts that an affine morphism to a normal locally noetherian integral base is Zariski-locally a product with affine",
+      "sourceId": 7
+    },
+    {
+      "text": "The Dolgachev–Weisfeiler conjecture fails in relative dimension three over the line and the plane.",
+      "verdict": "supported",
+      "sourceLine": "Thus the Dolgachev--Weisfeiler affine-fibration conjecture fails in relative dimension three over each of the smooth complex affine bases"
+    },
+    {
+      "text": "Local triviality of the map p would make A a polynomial ring in four variables.",
+      "verdict": "supported",
+      "sourceLine": "then use the nonpolynomiality of $A$ to rule out Zariski local triviality"
+    },
+    {
+      "text": "The paper builds a filtration of A by order along p = 0 and identifies its graded algebra G.",
+      "verdict": "supported",
+      "sourceLine": "Its negative defines the \\emph{valuation degree} $\\deg h=-\\ord_p(h)$ and a filtration of $A$."
+    },
+    {
+      "text": "The Stable Coordinate Conjecture asks whether a polynomial that is a coordinate after adding one variable was already a coordinate.",
+      "verdict": "supported",
+      "sourceLine": "The Stable Coordinate Conjecture asks whether a polynomial",
+      "sourceId": 8
+    },
+    {
+      "text": "H is not a coordinate of the five-variable ring but is one after adding w.",
+      "verdict": "supported",
+      "sourceLine": "is not a coordinate of … but it is a coordinate of … for one independent variable"
+    },
+    {
+      "text": "The fibration counterexamples do not address relative dimensions one or two.",
+      "verdict": "supported",
+      "sourceLine": "they do not address the corresponding assertions in relative dimensions one or two"
+    },
+    {
+      "text": "Lean covers the main cancellation statement; the stable-coordinate and line-bundle lifting consequences are not included.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "4614cf5c9a9e29426d5702881400f6018af4671a4240258b79f3de612f91ff3b",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

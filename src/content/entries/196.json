@@ -1,0 +1,234 @@
+{
+  "id": "196",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Group-Algebra-with-Zero-Divisors-September-23-2026/paper.pdf",
+      "label": "A Torsion-Free Group Algebra with Zero Divisors"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/196.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A group with no looping moves still lets two nonzero sums multiply to zero.",
+  "scope": "The counterexample works over arithmetic modulo 2 and for one group the paper shows exists.",
+  "plain": "Kaplansky's zero-divisor conjecture is about groups where no move except doing nothing returns to the start. It says that sums of such moves, multiplied out like brackets, never give zero unless one sum is zero. This paper proves the conjecture false. It builds such a group, described by finitely many rules, where two nonzero sums of moves multiply to zero. The arithmetic counts only odd and even.",
+  "doesNot": "This does not write down an explicit group or explicit zero divisors, because the construction is probabilistic.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1940",
+    "firstStepBy": "Graham Higman, D.Phil. thesis",
+    "field": "Algebra",
+    "significance": "Landmark",
+    "significanceWhy": "If the claim holds, it answers a question first raised in Higman's 1940 thesis."
+  },
+  "explanation": "Take a clock with three positions, 0, 1 and 2. Let g mean \"move one step forward\". Three steps bring you back, so g³ = 1, where 1 means \"stay put\". Now do arithmetic where only odd and even matter, so 1 + 1 = 0. Multiply (1 + g) by (1 + g + g²). The six terms give 1, g and g² twice each. Every pair cancels, and the product is 0.\n\nSo two things that are not zero multiply to zero. Such things are called zero divisors. Ordinary numbers never do this. The clock did it because g has finite order: some power of g brings you back to the start. The paper states this trick in general. If g has order m above 1, then (1 − g)(1 + g + … + g^(m−1)) = 0.\n\nThe setting is a group algebra. Start with a group, a set of moves that can be combined and undone. A group algebra element is a finite sum of moves, here with each move counted odd or even times. Products expand term by term, as with ordinary brackets. A group is torsion-free if no move except \"stay put\" ever returns to the start. Kaplansky's zero-divisor conjecture says that for a torsion-free group, the group algebra over any field has no zero divisors.\n\nThe question is old. The paper traces it to Graham Higman's 1940 thesis. Irving Kaplansky posed it in a 1956 conference contribution, published in 1957. Many cases were settled in its favour. Higman proved it for groups in which every nontrivial subgroup maps onto the whole numbers. In 1988, Kropholler, Linnell and Moody proved it for torsion-free elementary amenable groups. In 2021, Giles Gardam disproved a related claim, the unit conjecture. A unit, though, is never a zero divisor.\n\nCancellation alone is not enough. In 1987, Rips and Segev built torsion-free groups without the unique-product property. That property means some product term always appears exactly once, so nothing can cancel it. Losing it is not enough. Over odd-and-even arithmetic, every term must appear an even number of times, not just more than once.\n\nThis paper proves the conjecture false. It builds a torsion-free group G, described by finitely many moves and rules. It gives two nonzero sums whose product is 0, counting odd or even. The paper builds parity into the design. It builds two random graphs whose edges carry letters, and the letters become the group's basic moves. The letters are the 16513 points of a finite geometry, plus three extra letters. At each position, the letters on the outgoing edges form one line of that geometry, plus possibly some extras. Two line parts meet in 1 point, or in 129 points when they are the same line. Both counts are odd. The extra parts on the two sides overlap in 0 or 2 letters, both even. Odd plus even stays odd. So every relevant overlap is odd, and the paper turns that into even counts that cancel.\n\nThe paper calls the cancellation itself simple. The difficulty lies in two safeguards. Both sums must stay nonzero, and the group must stay torsion-free. The paper gets both from a shape argument. It argues that the space built from its graphs has no essential spheres. An essential sphere is a sphere-shaped surface in the space that cannot be shrunk to a point. That makes it a finite two-dimensional classifying space, which rules out finite-order moves.\n\nThere is a limit worth knowing. The construction is probabilistic. The paper argues that suitable random choices exist, but it does not write down a specific group. So nobody can yet read off the two sums and multiply them by hand. The clock example works because g has finite order. The new group has no such move, yet zero divisors still appear.\n\nHow sure is this? A computer proof checker called Lean has checked a formal statement of the counterexample. The Lean scope note describes that statement. It gives a finitely presented torsion-free group G. It also gives two nonzero sums in its group algebra, counted odd or even, whose product is 0. The note also mentions the classifying space. No specialists have published a review yet.",
+  "hypeCheck": "Significant only if the proof holds. Lean has checked the counterexample statement, but no specialist review is published. The group is shown to exist, not written down.",
+  "glossary": [
+    {
+      "term": "Group",
+      "meaning": "A set of moves that can be combined and undone, with a move that does nothing."
+    },
+    {
+      "term": "Torsion-free group",
+      "meaning": "A group where no move except doing nothing returns to the start when repeated."
+    },
+    {
+      "term": "Group algebra",
+      "meaning": "Finite sums of group moves, multiplied out term by term like brackets."
+    },
+    {
+      "term": "Zero divisor",
+      "meaning": "A nonzero thing that multiplies with another nonzero thing to give zero."
+    },
+    {
+      "term": "Unique-product property",
+      "meaning": "For any two finite nonempty sets of moves, some product appears in exactly one way."
+    },
+    {
+      "term": "Classifying space",
+      "meaning": "A shape whose loops record exactly the group, and which has no holes of higher dimension."
+    },
+    {
+      "term": "Finitely presented",
+      "meaning": "Described by a finite list of basic moves and a finite list of rules."
+    },
+    {
+      "term": "Essential sphere",
+      "meaning": "A sphere-shaped surface in a space that cannot be shrunk to a point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Torsion-Free Group Algebra with Zero Divisors”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Group-Algebra-with-Zero-Divisors-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 196 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/196.md"
+    },
+    {
+      "id": 3,
+      "cite": "G. Higman, “Units in group rings”, D.Phil. thesis, University of Oxford (1940) (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 4,
+      "cite": "I. Kaplansky, “Problems in the theory of rings”, Report of a Conference on Linear Algebras, June 6–8, 1956, NAS–NRC Publication 502 (1957), 1–3 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 5,
+      "cite": "G. Higman, “The units of group-rings”, Proceedings of the London Mathematical Society (2) 46 (1940), 231–248",
+      "url": "https://doi.org/10.1112/plms/s2-46.1.231"
+    },
+    {
+      "id": 6,
+      "cite": "P. H. Kropholler, P. A. Linnell and J. A. Moody, “Applications of a new K-theoretic theorem to soluble group rings”, Proceedings of the AMS 104 (1988), 675–684",
+      "url": "https://doi.org/10.2307/2046771"
+    },
+    {
+      "id": 7,
+      "cite": "E. Rips and Y. S. Segev, “Torsion-free group without unique product property”, Journal of Algebra 108 (1987), 116–126",
+      "url": "https://doi.org/10.1016/0021-8693(87)90125-6"
+    },
+    {
+      "id": 8,
+      "cite": "G. Gardam, “A counterexample to the unit conjecture for group rings”, Annals of Mathematics 194 (2021), 967–979",
+      "url": "https://doi.org/10.4007/annals.2021.194.3.9"
+    }
+  ],
+  "sourceHash": "75320f63fe1ec0e22c31ee18bcf49b2b370c4749f87091c6b93969bb02383ffe",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "If g has order m above 1, then (1 − g)(1 + g + … + g^(m−1)) = 0.",
+      "verdict": "supported",
+      "sourceLine": "Finite-order elements give elementary zero divisors",
+      "sourceId": 1
+    },
+    {
+      "text": "Kaplansky's conjecture says the group algebra of a torsion-free group over a field has no nonzero zero divisors.",
+      "verdict": "supported",
+      "sourceLine": "Kaplansky's zero-divisor conjecture asserts that",
+      "sourceId": 1
+    },
+    {
+      "text": "The question goes back to Higman's 1940 thesis.",
+      "verdict": "supported",
+      "sourceLine": "The question goes back to Higman's 1940 thesis",
+      "sourceId": 1
+    },
+    {
+      "text": "Kaplansky posed it in a 1956 conference contribution, published in 1957.",
+      "verdict": "supported",
+      "sourceLine": "It was also posed in Kaplansky's 1956 conference contribution, published in 1957",
+      "sourceId": 1
+    },
+    {
+      "text": "Higman proved it for groups in which every nontrivial subgroup maps onto the whole numbers.",
+      "verdict": "supported",
+      "sourceLine": "Higman proved the domain conclusion for groups in which every nontrivial subgroup maps onto",
+      "sourceId": 1
+    },
+    {
+      "text": "Kropholler, Linnell and Moody proved it for torsion-free elementary amenable groups.",
+      "verdict": "supported",
+      "sourceLine": "Kropholler, Linnell, and Moody established it for torsion-free elementary amenable groups",
+      "sourceId": 1
+    },
+    {
+      "text": "Rips and Segev constructed torsion-free groups without unique product.",
+      "verdict": "supported",
+      "sourceLine": "Rips and Segev constructed torsion-free groups without unique product",
+      "sourceId": 1
+    },
+    {
+      "text": "Losing unique product is not enough: over F2 the counts must be even, not just more than one.",
+      "verdict": "supported",
+      "sourceLine": "Failure of unique product alone does not produce a zero divisor",
+      "sourceId": 1
+    },
+    {
+      "text": "Gardam disproved the unit conjecture over F2; a unit is not a zero divisor.",
+      "verdict": "supported",
+      "sourceLine": "a nontrivial unit is not a zero divisor",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper constructs a finitely presented torsion-free group G with nonzero alpha, beta in F2[G] and alpha beta = 0.",
+      "verdict": "supported",
+      "sourceLine": "There exist a finitely presented torsion-free group",
+      "sourceId": 1
+    },
+    {
+      "text": "Each vertex's outgoing letters are a line of a finite projective plane, plus possibly some of three extra letters.",
+      "verdict": "supported",
+      "sourceLine": "The outgoing-label types use lines in a finite projective plane together with three extra letters.",
+      "sourceId": 1
+    },
+    {
+      "text": "The cancellation is simple; it leaves two substantial safeguards.",
+      "verdict": "supported",
+      "sourceLine": "This simple cancellation leaves two substantial safeguards.",
+      "sourceId": 1
+    },
+    {
+      "text": "The topology section rules out an essential sphere.",
+      "verdict": "supported",
+      "sourceLine": "explains why either an essential sphere or a trivial label on a path from a prescribed root to a different vertex would produce such an arrangement",
+      "sourceId": 1
+    },
+    {
+      "text": "The finite geometry has 16513 points.",
+      "verdict": "supported",
+      "sourceLine": "The projective plane over",
+      "sourceId": 1
+    },
+    {
+      "text": "Two line parts meet in 1 point, or in 129 when they are the same line.",
+      "verdict": "supported",
+      "sourceLine": "Two ordinary line parts meet in either",
+      "sourceId": 1
+    },
+    {
+      "text": "Extra parts meet in 0 or 2 letters.",
+      "verdict": "supported",
+      "sourceLine": "An extra part on",
+      "sourceId": 1
+    },
+    {
+      "text": "Both factors must survive, and the group must be torsion-free.",
+      "verdict": "supported",
+      "sourceLine": "This simple cancellation leaves two substantial safeguards.",
+      "sourceId": 1
+    },
+    {
+      "text": "Asphericity makes X a finite two-dimensional classifying space, ruling out torsion.",
+      "verdict": "supported",
+      "sourceLine": "is aspherical, making it a finite two-dimensional classifying space and ruling out torsion",
+      "sourceId": 1
+    },
+    {
+      "text": "The construction is probabilistic and gives no concrete presentation or factors.",
+      "verdict": "supported",
+      "sourceLine": "is probabilistic: it proves that suitable finite matchings exist, without",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean has a formal statement of the counterexample; the scope note also states the classifying space.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

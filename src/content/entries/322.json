@@ -1,0 +1,196 @@
+{
+  "id": "322",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-positive-solution-to-Tingleys-problem-September-23-2026/paper.pdf",
+      "label": "A positive solution to Tingley’s problem"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/322.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Distances on a unit sphere alone fix the whole space around it.",
+  "scope": "The result covers every nonzero real Banach space, of any dimension, and maps that reach the whole target sphere.",
+  "plain": "A unit sphere is the set of all vectors of length 1. Tingley's problem asks whether every distance-keeping map from one unit sphere onto another comes from a linear map of the whole space. This paper proves that it always does, for every nonzero real Banach space (Lean proof listed). The extension is unique and keeps all distances. No limit on dimension or on the shape of the sphere is needed.",
+  "doesNot": "This does not give complex linearity for complex spaces; it gives real linearity only.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "D. Tingley, who posed the sphere question",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It answers in full a question open since 1987 that earlier work had settled only for particular spaces."
+  },
+  "explanation": "Draw a square with corners at (1, 1), (1, −1), (−1, −1) and (−1, 1). Now measure length by an unusual rule. The length of (a, b) is the larger of |a| and |b|. Under this rule, every point on the square's edge has length exactly 1. So the square plays the role of a circle. Mathematicians call it the unit sphere, meaning the set of all points of length 1. Distances follow the same rule. The corner (1, 1) and the point (1, 0) are 1 apart. The points (1, 0) and (1, 0.5) are 0.5 apart.\n\nNow take a map that moves the points of the edge around. Suppose it keeps every distance between edge points, and it reaches every point of the edge. Such a map is called a surjective isometry of the sphere. A quarter turn of the square is one example. It sends (1, 0) to (0, 1). Tingley's problem asks a simple question. Does every such map come from a linear map of the whole space? Linear means the map respects adding points and stretching them by a number.\n\nThere is only one possible candidate. Take any point that is not zero, such as (0, 0.5). Its length is 0.5, and its direction on the sphere is (0, 1). Move the direction with the given map and keep the length. The paper calls this the radial map. It keeps lengths. It also keeps distances between two points of the same length. The hard part is two points of different lengths. The point (1, 0) has length 1, and (0, 0.5) has length 0.5. Under the square rule they are 1 apart. An ordinary ruler would give about 1.118. The sphere by itself never shows that distance directly. The paper names this as the difficulty: such distances must be recovered from the sphere alone.\n\nOlder results stop short of the sphere. In 1932, Mazur and Ulam proved a result about distance-keeping maps of a whole space onto another. Every such map is affine, meaning linear plus a shift. In 1972, Mankiewicz extended this to convex sets with a nonempty interior. A sphere has no interior, so his theorem does not apply. Tingley asked the sphere question in 1987. He showed, in finite dimensions, that such maps send opposite points to opposite points.\n\nLater work settled the question space by space. Ding treated sequence spaces of ℓ^p type in 2003. Tan treated L^p spaces in 2012. Others handled operator algebras and other concrete families. In 2022, Banakh settled every two-dimensional space. So the square above was already covered. The general case stayed open.\n\nThis paper proves the full answer, and a Lean proof is listed. It covers every nonzero real Banach space. That is a space of vectors with a length rule and no missing limit points. Every surjective isometry between two such unit spheres extends to the whole spaces. The extension is the radial map. It is real-linear, keeps all distances, and is the only linear extension. The dimension can be anything, even infinite. The sphere may have corners and flat sides, like the square.\n\nThe proof works by contradiction. It measures the largest error the radial map could make between two radius levels. Suppose that error were above zero. The proof first makes the worst error actually occur, by passing to larger spaces if needed. It then shows that this worst case cannot exist.\n\nSo, for the square, the theorem guarantees the distance 1 between the images of (1, 0) and (0, 0.5). More broadly, distances on the unit sphere alone fix the whole space, up to a linear map that keeps lengths. Two limits matter. The map must reach every point of the target sphere. And for complex spaces treated as real ones, the result gives real linearity, not complex linearity.\n\nHow sure is this? The Lean scope note lists a formal version of the main theorem. It states the unique surjective real-linear extension for arbitrary nonzero real Banach spaces. It also lists a Comparator statement for that theorem. No specialist review has been published yet.",
+  "hypeCheck": "Major if the proof holds. The Lean scope note lists a formal version of the main theorem. Specialists have not yet published a review of the paper.",
+  "glossary": [
+    {
+      "term": "Unit sphere",
+      "meaning": "The set of all vectors whose length is exactly 1."
+    },
+    {
+      "term": "Isometry",
+      "meaning": "A map that keeps every distance between points the same."
+    },
+    {
+      "term": "Surjective",
+      "meaning": "A map is surjective when it reaches every point of its target."
+    },
+    {
+      "term": "Linear map",
+      "meaning": "A map that respects adding vectors and stretching them by a number."
+    },
+    {
+      "term": "Affine map",
+      "meaning": "A linear map followed by a shift."
+    },
+    {
+      "term": "Banach space",
+      "meaning": "A space of vectors with a length rule and no missing limit points."
+    },
+    {
+      "term": "Radial map",
+      "meaning": "The map that moves a vector's direction by the sphere map and keeps its length."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "D. Tingley, “Isometries of the unit sphere”, Geometriae Dedicata 22 (1987), 371–378",
+      "url": "https://doi.org/10.1007/BF00147942",
+      "quote": "Tingley's problem asks whether every surjective isometry"
+    },
+    {
+      "id": 2,
+      "cite": "S. Mazur and S. Ulam, “Sur les transformations isométriques d'espaces vectoriels normés”, Comptes Rendus de l'Académie des Sciences, Paris 194 (1932), 946–948, as cited in the openai/math paper (no DOI given there)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-positive-solution-to-Tingleys-problem-September-23-2026/paper.pdf",
+      "quote": "Mazur and Ulam proved that every surjective isometry between real normed"
+    },
+    {
+      "id": 3,
+      "cite": "T. Banakh, “Every 2-dimensional Banach space has the Mazur–Ulam property”, Linear Algebra and its Applications 632 (2022), 268–280",
+      "url": "https://doi.org/10.1016/j.laa.2021.09.020",
+      "quote": "In finite dimensions, Banakh proved the Mazur--Ulam property for every"
+    },
+    {
+      "id": 4,
+      "cite": "G. G. Ding, “The isometric extension problem in the unit spheres of ℓ^p(Γ) (p>1) type spaces”, Science in China Series A 46 (2003), 333–338",
+      "url": "https://doi.org/10.1360/03ys9035"
+    },
+    {
+      "id": 5,
+      "cite": "D.-N. Tan, “Extension of isometries on the unit sphere of L^p spaces”, Acta Mathematica Sinica, English Series 28 (2012), 1197–1208",
+      "url": "https://doi.org/10.1007/s10114-011-0302-6",
+      "quote": "Tan proved it for real $L^p(\\mu)$ on"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “A positive solution to Tingley’s problem” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-positive-solution-to-Tingleys-problem-September-23-2026/paper.pdf",
+      "quote": "It is the unique linear extension of $f$."
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for Tingley’s sphere-isometry problem (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/322.md"
+    }
+  ],
+  "sourceHash": "09fa02f0cf1038b2bd9148aed69940eaf9264e8e2e59a57bc59a01fc3c741887",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Tingley's problem asks whether every surjective sphere isometry extends to a real-linear isometry of the spaces.",
+      "verdict": "supported",
+      "sourceLine": "Tingley's problem asks whether every surjective isometry"
+    },
+    {
+      "text": "Any such extension must be the radial map.",
+      "verdict": "supported",
+      "sourceLine": "Any such extension must be the radial map below."
+    },
+    {
+      "text": "The radial map keeps norms and distances at each fixed radius.",
+      "verdict": "supported",
+      "sourceLine": "This candidate preserves norms and distances at each fixed radius"
+    },
+    {
+      "text": "The difficulty is recovering distances between points at different radii from the sphere alone.",
+      "verdict": "supported",
+      "sourceLine": "the difficulty is to recover distances between points at different radii from the metric on a single sphere"
+    },
+    {
+      "text": "Mazur and Ulam proved that surjective isometries between real normed spaces are affine.",
+      "verdict": "supported",
+      "sourceLine": "Mazur and Ulam proved that every surjective isometry between real normed"
+    },
+    {
+      "text": "Mankiewicz extended isometries between convex sets with nonempty interiors.",
+      "verdict": "supported",
+      "sourceLine": "theorem for surjective isometries between convex sets with nonempty interiors"
+    },
+    {
+      "text": "A unit sphere has no interior, so Mankiewicz's theorem does not apply directly.",
+      "verdict": "supported",
+      "sourceLine": "A unit sphere has empty ambient interior, so this"
+    },
+    {
+      "text": "Tingley showed antipodal points are preserved in finite dimensions.",
+      "verdict": "supported",
+      "sourceLine": "paper established preservation of antipodal points for surjective"
+    },
+    {
+      "text": "Ding treated ℓ^p-type sequence spaces.",
+      "verdict": "supported",
+      "sourceLine": "Ding obtained extension results for"
+    },
+    {
+      "text": "Tan treated L^p spaces.",
+      "verdict": "supported",
+      "sourceLine": "Tan proved it for real $L^p(\\mu)$ on"
+    },
+    {
+      "text": "Banakh settled every two-dimensional space in 2022.",
+      "verdict": "supported",
+      "sourceLine": "In finite dimensions, Banakh proved the Mazur--Ulam property for every"
+    },
+    {
+      "text": "The radial map is a surjective real-linear isometry and the unique linear extension.",
+      "verdict": "supported",
+      "sourceLine": "It is the unique linear extension of $f$."
+    },
+    {
+      "text": "The spaces may have any dimension and need not be smooth or strictly convex.",
+      "verdict": "supported",
+      "sourceLine": "The spaces may have arbitrary dimension and need not be separable, reflexive, smooth, or strictly convex."
+    },
+    {
+      "text": "For complex spaces viewed as real, the result gives real linearity only.",
+      "verdict": "supported",
+      "sourceLine": "Applied to complex Banach spaces regarded as real spaces, the conclusion is real linearity; complex linearity is not asserted."
+    },
+    {
+      "text": "The proof measures the largest error in preserving a distance between two radius levels.",
+      "verdict": "supported",
+      "sourceLine": "The argument measures the largest error in preserving a distance between two radius levels."
+    },
+    {
+      "text": "The proof makes the worst error occur in a possibly enlarged pair of spaces.",
+      "verdict": "supported",
+      "sourceLine": "we realize the positive maximal defect in a possibly enlarged pair of Banach spaces"
+    },
+    {
+      "text": "The Lean scope note lists a formal unique surjective real-linear extension for arbitrary nonzero real Banach spaces, with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

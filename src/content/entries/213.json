@@ -1,0 +1,251 @@
+{
+  "id": "213",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-bond-and-site-percolation-on-the-cubic-lattice-September-24-2026/paper.pdf",
+      "label": "Critical bond and site percolation on the cubic lattice"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/No-percolation-at-criticality-on-quasi-transitive-graphs-September-24-2026/paper.pdf",
+      "label": "No percolation at criticality on quasi-transitive graphs"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/213.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "At the exact tipping point, random networks of a broad, symmetric kind form no endless cluster.",
+  "scope": "The general result covers bond percolation on infinite, connected, quasi-transitive graphs with finite links per point and p_c below 1.",
+  "plain": "Open each link of a network at random with the same chance. Above a critical chance, an endless connected cluster appears. These papers prove that exactly at the critical chance, no endless cluster exists. One paper proves this for links and for points on the three-dimensional grid. The other proves it for links on every graph in the broad family Benjamini and Schramm named in 1996.",
+  "doesNot": "This does not find any graph's critical chance, or settle site percolation beyond the cubic grid.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1996",
+    "firstStepBy": "Itai Benjamini and Oded Schramm, the criticality conjecture",
+    "field": "Probability and statistical mechanics",
+    "significance": "Landmark",
+    "significanceWhy": "If the proof holds, it settles the bond form of a central 30-year-old conjecture in percolation."
+  },
+  "explanation": "Picture an endless square grid of streets. Flip a fair coin for every block of street. Heads keeps the block open, tails closes it. A corner has four blocks, so it is cut off with chance 1/16. A fixed route of 20 blocks is fully open with chance 1 in 1,048,576. But routes are many. From one corner, 4,649,045,868 routes of 20 blocks never turn straight back. That count is over 4,000 times the odds against any single route.\n\nThis game is called bond percolation. Each link of a network is open with some chance p, independently of the others. A cluster is a group of points joined by open links. For small p, every cluster is finite. For p near 1, an endless cluster appears. The switch point is the critical probability, written p_c. On the square grid, Harry Kesten showed in 1980 that p_c equals 1/2.\n\nThe hard question is what happens exactly at p_c. Does an endless cluster already exist there, or only just above it? If none exists, the chance of joining an endless cluster starts at zero and rises without a jump. For the square grid, work by Harris in 1960 and Kesten in 1980 settled the question. Hara and Slade handled grids of high enough dimension in 1990. In 2017, Fitzner and van der Hofstad covered dimension 11 and up. The planar methods do not work for paths in three dimensions.\n\nIn 1996, Itai Benjamini and Oded Schramm asked the question far more widely. Their conjecture covers every quasi-transitive graph with p_c below 1. A graph is quasi-transitive if its points come in finitely many types. Any two points of one type can be swapped by a symmetry of the whole graph. Every grid qualifies. Earlier work settled large families. In 2016, Tom Hutchcroft covered every such graph of exponential growth. That means the number of points within distance r grows like a fixed number raised to the power r. What remained was slower growth.\n\nThe first paper treats the cubic grid, in three dimensions. It proves that critical bond percolation there has no endless cluster. The same holds for site percolation, where the points rather than the links are open or closed. This was not untouched ground. In August 2026, Justin Leder publicly reported a Lean formalization of the bond case. It covers every grid of dimension 2 or more. Public expositions written by AI systems, prompted by Ahmed Bou-Rabee, reported the site case from dimension 3 up. The paper credits these and aims to give its own self-contained argument.\n\nThe second paper proves the full bond form of the Benjamini–Schramm conjecture. Take any infinite, connected graph where each point has finitely many links. Suppose it is quasi-transitive and its p_c is below 1. Then at p_c, there is almost surely no endless open cluster. Almost surely means with probability exactly one. The condition on p_c matters. A single endless line has p_c equal to 1, and at chance 1 every link is open.\n\nThe obstacle was the middle ground of growth. Graphs that grow slower than exponentially need not look like flat grids. The paper splits them into two kinds. Count the points within distance r of a point. In one kind, that count outgrows every fixed power of r. In the other, it sometimes grows no faster than a fixed power, much like a grid. For that kind, a known structure theorem by Tessera and Tointon supplies grid-like coordinates. In the grid-like case, the argument runs by contradiction. An endless cluster at p_c would force one slightly below p_c. The definition of p_c rules that out.\n\nReturn to the street grid, now in three dimensions. Set each block open with exactly the critical chance. Then every corner almost surely sits in a finite cluster. The results do not say what p_c is for the cubic grid. The general theorem covers bond percolation only. The paper notes that it does not imply the site version, which it proves separately only for the cubic grid.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of each main statement. One covers bond and site percolation on the cubic grid. The other covers bond percolation on every graph described above, and allows repeated links between two points. Each is matched against a fixed reference statement by a tool called Comparator. No specialist review of either paper has been published.",
+  "hypeCheck": "Lean proofs of both main statements are listed, with Comparator reference statements. The cubic bond case was already reported in public by others in 2026. No specialist review of either paper has been published.",
+  "glossary": [
+    {
+      "term": "Bond percolation",
+      "meaning": "A random network where each link is open with the same chance, independently of the others."
+    },
+    {
+      "term": "Site percolation",
+      "meaning": "The same game played with points instead of links: each point is open or closed at random."
+    },
+    {
+      "term": "Cluster",
+      "meaning": "A group of points joined to each other by open links."
+    },
+    {
+      "term": "Critical probability",
+      "meaning": "The chance p_c at which an endless cluster first becomes possible."
+    },
+    {
+      "term": "Quasi-transitive graph",
+      "meaning": "A network whose points come in finitely many types, each type looking the same everywhere."
+    },
+    {
+      "term": "Exponential growth",
+      "meaning": "When the number of points within distance r grows like a fixed number raised to the power r."
+    },
+    {
+      "term": "Almost surely",
+      "meaning": "With probability exactly one."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Critical bond and site percolation on the cubic lattice” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-bond-and-site-percolation-on-the-cubic-lattice-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “No percolation at criticality on quasi-transitive graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/No-percolation-at-criticality-on-quasi-transitive-graphs-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 213 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/213.md"
+    },
+    {
+      "id": 4,
+      "cite": "I. Benjamini and O. Schramm, “Percolation beyond Z^d, many questions and a few answers”, Electronic Communications in Probability 1 (1996), 71–82",
+      "url": "https://doi.org/10.1214/ECP.v1-978"
+    },
+    {
+      "id": 5,
+      "cite": "H. Kesten, “The critical probability of bond percolation on the square lattice equals 1/2”, Communications in Mathematical Physics 74 (1980), 41–59",
+      "url": "https://doi.org/10.1007/BF01197577"
+    },
+    {
+      "id": 6,
+      "cite": "T. E. Harris, “A lower bound for the critical probability in a certain percolation process”, Proceedings of the Cambridge Philosophical Society 56 (1960), 13–20",
+      "url": "https://doi.org/10.1017/S0305004100034241"
+    },
+    {
+      "id": 7,
+      "cite": "T. Hara and G. Slade, “Mean-field critical behaviour for percolation in high dimensions”, Communications in Mathematical Physics 128 (1990), 333–391",
+      "url": "https://doi.org/10.1007/BF02108785"
+    },
+    {
+      "id": 8,
+      "cite": "R. Fitzner and R. van der Hofstad, “Mean-field behavior for nearest-neighbor percolation in d>10”, Electronic Journal of Probability 22 (2017), paper 43",
+      "url": "https://doi.org/10.1214/17-EJP56"
+    },
+    {
+      "id": 9,
+      "cite": "T. Hutchcroft, “Critical percolation on any quasi-transitive graph of exponential growth has no infinite clusters”, Comptes Rendus Mathématique 354 (2016), 944–947",
+      "url": "https://doi.org/10.1016/j.crma.2016.07.013"
+    },
+    {
+      "id": 10,
+      "cite": "J. Leder, “θ(p_c)=0 for Bernoulli bond percolation on Z^d in all dimensions d≥2: a guide to the Lean formalization”, public research announcement, August 2026",
+      "url": "https://github.com/anthropics/formal-math/blob/795efb86f191735c5481675763537cfb4ff37e55/percolation/summary.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "ChatGPT 5.6, prompted by Ahmed Bou-Rabee, “Percolation at criticality”, public research exposition, September 2026",
+      "url": "https://nitromannitol.github.io/site-percolation-7d3f2/"
+    }
+  ],
+  "sourceHash": "1973dcaee289603665bf46beda033369b8ea3429f78d97981b4360f55e0ab393",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Bernoulli bond percolation keeps each edge independently with probability p.",
+      "verdict": "supported",
+      "sourceLine": "Bernoulli bond percolation on an undirected graph $G=(V,E)$ retains each edge independently with probability $p\\in[0,1]$."
+    },
+    {
+      "text": "Kesten identified the square bond threshold, and with Harris settled the planar bond result.",
+      "verdict": "supported",
+      "sourceLine": "In two dimensions, Harris's critical nonpercolation theorem and Kesten's identification of the square bond threshold established the bond result"
+    },
+    {
+      "text": "No infinite cluster at p_c gives continuity of the percolation probability at the transition.",
+      "verdict": "supported",
+      "sourceLine": "The theorem gives continuity at the transition"
+    },
+    {
+      "text": "Planar methods use geometry unavailable in three dimensions.",
+      "verdict": "supported",
+      "sourceLine": "These planar results use geometry that is unavailable for paths in three dimensions."
+    },
+    {
+      "text": "Hara and Slade treated high dimensions; Fitzner and van der Hofstad obtained d at least 11.",
+      "verdict": "supported",
+      "sourceLine": "Fitzner and van der Hofstad obtained the nearest-neighbor bond range"
+    },
+    {
+      "text": "Benjamini and Schramm formulated the quasi-transitive conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Benjamini and Schramm formulated the general quasi-transitive conjecture in their systematic study of percolation beyond Euclidean lattices"
+    },
+    {
+      "text": "A graph is quasi-transitive if its automorphism group has finitely many vertex orbits.",
+      "verdict": "supported",
+      "sourceLine": "A graph is \\emph{quasi-transitive} if its automorphism group has finitely many orbits on vertices."
+    },
+    {
+      "text": "Hutchcroft excluded infinite critical clusters on every quasi-transitive graph of exponential growth.",
+      "verdict": "supported",
+      "sourceLine": "Hutchcroft excluded all infinite critical clusters on every quasi-transitive graph of exponential growth"
+    },
+    {
+      "text": "The new arguments cover the remaining subexponential case.",
+      "verdict": "supported",
+      "sourceLine": "The two arguments above cover the remaining subexponential case."
+    },
+    {
+      "text": "The cubic-lattice paper proves no infinite cluster at criticality for bond and site percolation on Z^3.",
+      "verdict": "supported",
+      "sourceLine": "For nearest-neighbor Bernoulli bond percolation on $\\mathbb Z^3$, there is almost surely no infinite open cluster at the bond critical parameter."
+    },
+    {
+      "text": "Leder's public account reports a Lean formalization of critical bond nonpercolation on Z^d, d at least 2.",
+      "verdict": "supported",
+      "sourceLine": "Leder's public account of a Lean formalization reports critical bond nonpercolation on every nearest-neighbor lattice"
+    },
+    {
+      "text": "The public site exposition reports critical site nonpercolation on Z^d for d at least 3.",
+      "verdict": "supported",
+      "sourceLine": "critical site nonpercolation on $\\mathbb Z^d$ for every $d\\ge3$"
+    },
+    {
+      "text": "Those expositions describe work by AI systems prompted by Ahmed Bou-Rabee.",
+      "verdict": "supported",
+      "sourceLine": "These two public expositions describe work produced by AI systems prompted by Ahmed Bou-Rabee."
+    },
+    {
+      "text": "The paper aims at a self-contained cubic argument.",
+      "verdict": "supported",
+      "sourceLine": "Our purpose here is a self-contained cubic argument"
+    },
+    {
+      "text": "The main theorem: infinite connected locally finite quasi-transitive graph with p_c below 1 has no infinite cluster at p_c.",
+      "verdict": "supported",
+      "sourceLine": "Let $G$ be an infinite connected locally finite quasi-transitive undirected graph. If $\\pc(G)<1$, then"
+    },
+    {
+      "text": "This resolves the Benjamini–Schramm conjecture for bond percolation.",
+      "verdict": "supported",
+      "sourceLine": "resolves the Benjamini--Schramm criticality conjecture positively for Bernoulli bond percolation"
+    },
+    {
+      "text": "The hypothesis p_c below 1 is necessary since at parameter one every edge is open.",
+      "verdict": "supported",
+      "sourceLine": "The hypothesis $\\pc<1$ is necessary: at parameter one every edge is open, so an infinite connected graph percolates."
+    },
+    {
+      "text": "The one-dimensional case has p_c equal to 1.",
+      "verdict": "supported",
+      "sourceLine": "The one-dimensional case has $\\pc=1$."
+    },
+    {
+      "text": "The proof divides subexponential growth into two exhaustive alternatives.",
+      "verdict": "supported",
+      "sourceLine": "In the other case, the proof divides according to the following exhaustive alternatives:"
+    },
+    {
+      "text": "In case (ii) the paper applies the structure theorem of Tessera and Tointon.",
+      "verdict": "supported",
+      "sourceLine": "In case (ii), we apply the finitary structure theorem of Tessera and Tointon"
+    },
+    {
+      "text": "The argument produces an infinite open cluster below p_c.",
+      "verdict": "supported",
+      "sourceLine": "hence an infinite open cluster below $\\pc$."
+    },
+    {
+      "text": "The general bond theorem does not imply the site assertion.",
+      "verdict": "supported",
+      "sourceLine": "The general bond criticality theorem does not imply the site assertion"
+    },
+    {
+      "text": "Kesten proved that the critical probability of bond percolation on the square lattice equals 1/2.",
+      "verdict": "external",
+      "sourceId": 5
+    },
+    {
+      "text": "Lean formalizations prove the Z^3 bond and site statements and the general quasi-transitive bond statement, with bond multiplicities allowed.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
