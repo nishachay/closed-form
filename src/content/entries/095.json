@@ -1,0 +1,289 @@
+{
+  "id": "095",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hyperbolicity-Cones-Without-Semidefinite-Lifts-October-5-2026/nonliftable-hyperbolicity.pdf",
+      "label": "Hyperbolicity Cones Without Semidefinite Lifts"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Nonspectrahedral-Hyperbolicity-Cone-September-24-2026/nonspectrahedral-hyperbolicity-cone.pdf",
+      "label": "A nonspectrahedral hyperbolicity cone"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Exact-Semidefinite-Lift-of-a-Nonspectrahedral-Hyperbolicity-Cone-October-5-2026/Exact-Semidefinite-Lift-of-a-Nonspectrahedral-Hyperbolicity-Cone.pdf",
+      "label": "An Exact Semidefinite Lift of a Nonspectrahedral Hyperbolicity Cone"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/095.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A claimed proof that some hyperbolicity cones have no semidefinite description, even with hidden variables.",
+  "scope": "The no-lift claim concerns one very high-dimensional cone built by an existence argument. The Lean-checked result covers one explicit 23-variable cone, without hidden variables.",
+  "plain": "A hyperbolicity cone collects the points where a special kind of polynomial has only nonnegative roots along one fixed direction. A long-standing conjecture said every such cone can be carved out by a single symmetric-matrix test. A September paper proves, with a Lean proof listed, that this fails for one explicit cone in 23 variables. An October 5 paper claims more: some such cone has no description even with hidden extra variables. That would disprove both the generalized Lax conjecture and its weaker projected form.",
+  "doesNot": "This does not give a smallest counterexample or a lower bound on representation size. The explicit 23-variable cone does have a description with hidden variables.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1958",
+    "firstStepBy": "Peter Lax, the original question in three variables",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "If the October 5 proof holds, it settles the generalized Lax conjecture and its weaker projected form in the negative."
+  },
+  "explanation": "Take a square grid of numbers that reads the same across its diagonal. Rows (2, 1) and (1, 2) make one. Such a grid is a symmetric matrix. It has special numbers called eigenvalues, the amounts by which it stretches certain directions. Here they are 1 and 3. Swap to rows (1, 2) and (2, 1), and they become 3 and −1. A matrix is positive semidefinite when none of its eigenvalues is negative. The first matrix passes. The second fails.\n\nThat test hides a polynomial. The eigenvalues are the roots of a formula in t built from the matrix. For the first matrix it is t² − 4t + 3, with roots 1 and 3. A hyperbolic polynomial behaves like this along every line through one fixed direction: all its roots are real. Its hyperbolicity cone is the set of points where all those roots are nonnegative. The positive semidefinite matrices form the basic example. Lars Gårding proved in 1959 that every such cone is convex, meaning it has no dents.\n\nA spectrahedron is a set cut out by one matrix test. Each coordinate of a point feeds linearly into the entries of a fixed symmetric matrix. The point belongs exactly when that matrix is positive semidefinite. A spectrahedral shadow also allows hidden extra variables. The point belongs when some choice of hidden values makes the matrix pass. Such a description is called a semidefinite lift.\n\nThe question began with Peter Lax in 1958, for polynomials in three variables. Helton and Vinnikov's 2007 theorem, with an equivalence explained by Lewis, Parrilo and Ramana, answered it yes. The generalized Lax conjecture says every hyperbolicity cone is a spectrahedron. Netzer and Sanyal posed a weaker version, the Projected Lax Conjecture: every such cone is a spectrahedral shadow. They proved it when every nonzero boundary point is a smooth point of the polynomial. Other positive results covered special families or assumed extra regularity. In 2018 Claus Scheiderer asked whether his methods for ruling out lifts could settle the question.\n\nThe obstacle is that a cone is not its polynomial. Many polynomials and many matrices can describe one cone. In 2011 Petter Brändén found a polynomial with no determinant formula for any of its powers. That does not stop another polynomial from having the same cone. Mario Kummer showed the gap is real. The specialized Vámos polynomial has no such formula for any power, yet its cone has a 7-by-7 matrix description. So a counterexample must defeat every matrix of every size, with any real coefficients.\n\nThe September 24 paper meets that demand without hidden variables. It writes down one polynomial in 23 variables, of degree 20. A reduced version of degree 16 has the same cone. It proves this cone is not a spectrahedron for any matrix size. Its key ingredient is the Choi–Lam form, a fourth-degree formula b(z, y) in two triples of numbers. It is never negative. At z = y = (1, 0, 0) it equals 1. At z = y = (1, 1, 1) it equals 0. Its rigid feature is this: no nonzero bilinear form has a square that stays below it everywhere. A bilinear form is a sum of terms, each a z-coordinate times a y-coordinate. A 2026 preprint by Alejandro González Nevado had stated a positive solution. The September paper gives a counterexample to one step it uses.\n\nThat cone does have a lift. A companion paper of October 5 claims a description of it with a 100-by-100 matrix and 307 hidden variables. So hidden variables can rescue a cone that fails the direct test. The Projected Lax Conjecture survives this example.\n\nThe main October 5 paper claims to prove that it does not survive in general. It claims a hyperbolic polynomial whose closed cone has no semidefinite lift at all. That rules out every matrix size, any number of hidden variables, and any real coefficients. If correct, this disproves the Projected Lax Conjecture and hence the generalized Lax conjecture. The paper names its main difficulty plainly. It must force an obstruction while a certain matrix built from the input stays positive semidefinite for every input. Its building block is a special 36-by-36 matrix. Its rank facts are certified by explicit determinants written out in arithmetic modulo 7. A separate argument carries them back to real numbers. A program reproduces the calculation, but the proof does not rely on it.\n\nThe new cone is far from explicit. A matrix at its core has 20N − 1 rows, and the paper allows any N above 12,960. That means at least 259,219 rows. The paper calls its construction an existence argument in high dimension. It gives no lower bound on the size of any particular representation.\n\nHow sure is this? Lean, a computer proof checker, has checked the September result. The degree-20 polynomial is hyperbolic, and no finite symmetric matrix test in its original variables describes its cone. The October 5 no-lift claim and the 307-variable lift are outside that check. No specialist review of either has been published.",
+  "hypeCheck": "Major if the October 5 proof holds. Only the weaker September result, about one explicit cone without hidden variables, has a Lean check listed. The no-lift claim rests on a long argument and a finite-field certificate that no one outside has reviewed in print.",
+  "glossary": [
+    {
+      "term": "Eigenvalue",
+      "meaning": "A number by which a matrix stretches some direction; a symmetric matrix of size n has n real eigenvalues."
+    },
+    {
+      "term": "Positive semidefinite",
+      "meaning": "A symmetric matrix with no negative eigenvalues."
+    },
+    {
+      "term": "Hyperbolic polynomial",
+      "meaning": "A polynomial whose roots are all real along every line through one fixed direction."
+    },
+    {
+      "term": "Hyperbolicity cone",
+      "meaning": "The set of points where all those roots are nonnegative; it is always convex."
+    },
+    {
+      "term": "Spectrahedron",
+      "meaning": "A set of points cut out by requiring one matrix, built linearly from the coordinates, to be positive semidefinite."
+    },
+    {
+      "term": "Spectrahedral shadow (semidefinite lift)",
+      "meaning": "A set described the same way but with hidden extra variables that only need to exist."
+    },
+    {
+      "term": "Choi–Lam form",
+      "meaning": "A specific never-negative fourth-degree formula in two triples of numbers, used as the key ingredient of the 23-variable example."
+    },
+    {
+      "term": "Bilinear form",
+      "meaning": "A sum of terms, each one coordinate of z times one coordinate of y, with fixed coefficients."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "L. Gårding, “An inequality for hyperbolic polynomials”, Journal of Mathematics and Mechanics 8 (1959), 957–965",
+      "url": "https://doi.org/10.1512/iumj.1959.8.58061"
+    },
+    {
+      "id": 2,
+      "cite": "P. D. Lax, “Differential equations, difference equations and matrix theory”, Communications on Pure and Applied Mathematics 11 (1958), 175–194",
+      "url": "https://doi.org/10.1002/cpa.3160110203"
+    },
+    {
+      "id": 3,
+      "cite": "J. W. Helton and V. Vinnikov, “Linear matrix inequality representation of sets”, Communications on Pure and Applied Mathematics 60 (2007), 654–674",
+      "url": "https://doi.org/10.1002/cpa.20155"
+    },
+    {
+      "id": 4,
+      "cite": "A. S. Lewis, P. A. Parrilo and M. V. Ramana, “The Lax conjecture is true”, Proceedings of the AMS 133 (2005), 2495–2499",
+      "url": "https://doi.org/10.1090/S0002-9939-05-07752-X"
+    },
+    {
+      "id": 5,
+      "cite": "T. Netzer and R. Sanyal, “Smooth hyperbolicity cones are spectrahedral shadows”, Mathematical Programming 153 (2015), 213–221",
+      "url": "https://doi.org/10.1007/s10107-014-0744-6"
+    },
+    {
+      "id": 6,
+      "cite": "P. Brändén, “Obstructions to determinantal representability”, Advances in Mathematics 226 (2011), 1202–1212",
+      "url": "https://doi.org/10.1016/j.aim.2010.08.003"
+    },
+    {
+      "id": 7,
+      "cite": "M. Kummer, “A note on the hyperbolicity cone of the specialized Vámos polynomial”, Acta Applicandae Mathematicae 144 (2016), 11–15",
+      "url": "https://doi.org/10.1007/s10440-015-0036-z"
+    },
+    {
+      "id": 8,
+      "cite": "C. Scheiderer, “Spectrahedral shadows”, SIAM Journal on Applied Algebra and Geometry 2 (2018), 26–44",
+      "url": "https://doi.org/10.1137/17M1118981"
+    },
+    {
+      "id": 9,
+      "cite": "M.-D. Choi and T.-Y. Lam, “Extremal positive semidefinite forms”, Mathematische Annalen 231 (1977), 1–18",
+      "url": "https://doi.org/10.1007/BF01360024"
+    },
+    {
+      "id": 10,
+      "cite": "A. González Nevado, “The generalized Lax conjecture is true for topological reasons related to compactness, convexity and determinantal deformations of increasing products of pointwise approximating linear forms”, arXiv:2601.12267, version 1 (2026)",
+      "url": "https://arxiv.org/abs/2601.12267v1"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “Hyperbolicity Cones Without Semidefinite Lifts” (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hyperbolicity-Cones-Without-Semidefinite-Lifts-October-5-2026/nonliftable-hyperbolicity.pdf",
+      "quote": "There exists a real homogeneous hyperbolic polynomial whose closed hyperbolicity cone has no finite semidefinite lift."
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, “A nonspectrahedral hyperbolicity cone” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Nonspectrahedral-Hyperbolicity-Cone-September-24-2026/nonspectrahedral-hyperbolicity-cone.pdf",
+      "quote": "The geometric Generalized Lax conjecture asserts that every hyperbolicity cone is spectrahedral. We give a counterexample."
+    },
+    {
+      "id": 13,
+      "cite": "openai/math, “An Exact Semidefinite Lift of a Nonspectrahedral Hyperbolicity Cone” (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Exact-Semidefinite-Lift-of-a-Nonspectrahedral-Hyperbolicity-Cone-October-5-2026/Exact-Semidefinite-Lift-of-a-Nonspectrahedral-Hyperbolicity-Cone.pdf",
+      "quote": "The sizes in Theorem~\\ref{thm:main} are explicit bounds, with no minimality assertion."
+    },
+    {
+      "id": 14,
+      "cite": "openai/math, Lean scope note for family 095 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/095.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The determinant on symmetric matrices, with the identity as direction, gives the positive semidefinite cone as the basic example.",
+      "verdict": "supported",
+      "sourceLine": "The determinant on real symmetric matrices, with direction the identity, gives the positive semidefinite cone as a basic example.",
+      "sourceId": 11
+    },
+    {
+      "text": "Gårding proved that a hyperbolicity cone is convex.",
+      "verdict": "supported",
+      "sourceLine": "proved that this is a convex cone",
+      "sourceId": 11
+    },
+    {
+      "text": "A spectrahedron is defined by a finite affine linear matrix inequality; a spectrahedral shadow allows auxiliary variables.",
+      "verdict": "supported",
+      "sourceLine": "A spectrahedron is a set defined by a finite affine linear matrix inequality. A spectrahedral shadow, or a set with a finite semidefinite lift",
+      "sourceId": 11
+    },
+    {
+      "text": "The original Lax question concerned polynomials in three variables.",
+      "verdict": "supported",
+      "sourceLine": "The original Lax question concerned homogeneous polynomials in three variables",
+      "sourceId": 11
+    },
+    {
+      "text": "Helton and Vinnikov's theorem, with the equivalence explained by Lewis, Parrilo and Ramana, answered it affirmatively.",
+      "verdict": "supported",
+      "sourceLine": "together with the equivalence explained by Lewis, Parrilo, and Ramana",
+      "sourceId": 11
+    },
+    {
+      "text": "The generalized Lax conjecture says every hyperbolicity cone is a spectrahedron.",
+      "verdict": "supported",
+      "sourceLine": "conjecture asserts that every hyperbolicity cone is a spectrahedron.",
+      "sourceId": 11
+    },
+    {
+      "text": "Netzer and Sanyal formulated the weaker Projected Lax Conjecture.",
+      "verdict": "supported",
+      "sourceLine": "formulated by Netzer and Sanyal",
+      "sourceId": 11
+    },
+    {
+      "text": "Netzer and Sanyal proved a hyperbolicity cone is a spectrahedral shadow when each nonzero boundary point is a smooth point.",
+      "verdict": "supported",
+      "sourceLine": "is a spectrahedral shadow when each nonzero boundary point is a smooth point of its defining hyperbolic polynomial.",
+      "sourceId": 11
+    },
+    {
+      "text": "Positive results concern special families or impose regularity hypotheses.",
+      "verdict": "supported",
+      "sourceLine": "These results concern special families or impose regularity hypotheses",
+      "sourceId": 11
+    },
+    {
+      "text": "Scheiderer asked whether his methods could settle the hyperbolicity-cone question.",
+      "verdict": "supported",
+      "sourceLine": "He explicitly asked whether these methods could settle the hyperbolicity-cone question",
+      "sourceId": 11
+    },
+    {
+      "text": "Brändén constructed a polynomial none of whose positive powers has a definite determinantal representation; this does not exclude another polynomial with the same cone.",
+      "verdict": "supported",
+      "sourceLine": "That obstruction does not exclude a different determinant, with additional factors, from defining the same cone.",
+      "sourceId": 12
+    },
+    {
+      "text": "Kummer showed the specialized Vámos cone has a 7-by-7 representation although no power of the polynomial has one.",
+      "verdict": "supported",
+      "sourceLine": "representation, although no positive power of that polynomial has a definite determinantal representation",
+      "sourceId": 12
+    },
+    {
+      "text": "The September polynomial has 23 variables and degree 20 and its cone is not spectrahedral for any finite matrix size.",
+      "verdict": "supported",
+      "sourceLine": "The ambient space has dimension",
+      "sourceId": 12
+    },
+    {
+      "text": "A reduced polynomial of degree 16 has the same cone.",
+      "verdict": "supported",
+      "sourceLine": "extends to a homogeneous polynomial of degree",
+      "sourceId": 12
+    },
+    {
+      "text": "The Choi–Lam form is nonnegative and nonzero, and every bilinear form whose square it dominates is zero.",
+      "verdict": "supported",
+      "sourceLine": "is nonnegative and nonzero. If a real bilinear form",
+      "sourceId": 12
+    },
+    {
+      "text": "The September paper records a counterexample to a step used in González Nevado's stated positive solution.",
+      "verdict": "supported",
+      "sourceLine": "records a counterexample to the path-containment assertion used in that argument.",
+      "sourceId": 12
+    },
+    {
+      "text": "The companion lift has a 100-by-100 pencil and 307 auxiliary variables.",
+      "verdict": "supported",
+      "sourceLine": "The lift is a homogeneous real symmetric pencil of size",
+      "sourceId": 13
+    },
+    {
+      "text": "The no-lift claim allows arbitrary real coefficients and any number of auxiliary variables, and disproves both conjectures.",
+      "verdict": "supported",
+      "sourceLine": "This disproves the Projected Lax Conjecture and hence the generalized Lax conjecture.",
+      "sourceId": 11
+    },
+    {
+      "text": "The difficulty is forcing the obstruction while keeping Q(y) positive semidefinite for every y.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to force such an obstruction while keeping",
+      "sourceId": 11
+    },
+    {
+      "text": "Nonvanishing assertions about the seed matrix are certified by explicit minors over the field with 7 elements.",
+      "verdict": "supported",
+      "sourceLine": "All nonvanishing assertions are certified below by explicit minors over",
+      "sourceId": 11
+    },
+    {
+      "text": "The construction uses r = 20N − 1 with N above 10·36², and is an existence argument rather than a size lower bound.",
+      "verdict": "supported",
+      "sourceLine": "The construction is an existence argument in high dimension, not a lower bound on the size of a particular representation.",
+      "sourceId": 11
+    },
+    {
+      "text": "Lean covers the September counterexample: a degree-20 hyperbolic polynomial in 23 variables whose cone has no finite real symmetric linear matrix pencil description.",
+      "verdict": "external",
+      "sourceId": 14
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

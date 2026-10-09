@@ -1,0 +1,216 @@
+{
+  "id": "028",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-Step-Walks-on-Gaussian-Primes-September-26-2026/paper.pdf",
+      "label": "Bounded-Step Walks on Gaussian Primes"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/028.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "No walk through Gaussian primes with steps of bounded length can go on forever.",
+  "scope": "The result holds for each fixed step length, and the size bound depends only on that length.",
+  "plain": "Gaussian primes are the prime points on a square grid of numbers. The Gaussian moat problem, traced to 1962, asks if you can hop between them forever using steps of bounded length. This paper proves you cannot, and a Lean proof is listed. For each step length, every linked cluster of primes is smaller than one fixed number. The paper shows that number exists but gives no formula for it.",
+  "doesNot": "This does not give a formula for the bound. It does not say how far a walk with steps of 6 can go.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1962",
+    "firstStepBy": "Basil Gordon, as traced by Gethner and Stark",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-known question about prime walks that dates back to 1962."
+  },
+  "explanation": "Picture a square grid of points a + bi, where a and b are whole numbers. These points are called Gaussian integers. Some of them are Gaussian primes. They cannot be split as a product of two smaller grid points. For example, 2 + i is a Gaussian prime, because 2² + 1² = 5 is an ordinary prime. But 5 itself is not one, since 5 = (2 + i)(2 − i).\n\nNow walk on the primes. Each hop must land on a new Gaussian prime and be at most 1 unit long. Start at 1 + i. You can reach 2 + i and 1 + 2i, and then you are stuck. Start at 3 + 2i and you cannot move at all. Its four neighbours have a² + b² equal to 20, 8, 18 and 10. None of those four points is a Gaussian prime.\n\nThe reason is parity. Apart from the four points ±1 ± i, every Gaussian prime has a + b odd. A hop of length 1 changes a + b by one, so it lands where a + b is even. Those points are all divisible by 1 + i. So with hops of length 1, each cluster of linked primes has at most 3 members. Mathematicians call such a cluster a component.\n\nThe Gaussian moat problem asks what happens with longer hops. Fix any step limit D, such as 6 or 100. Can a walk visit new Gaussian primes forever, never hopping farther than D? Gethner and Stark trace the question to Basil Gordon, at the 1962 International Congress of Mathematicians in Stockholm. Erdős later credited Gordon and Motzkin with it.\n\nLarge empty regions do not settle it. Gethner, Wagon and Wick built prime-free disks centred on lines through the grid. They also built Gaussian primes on the real axis that sit as isolated as you like. But a walk in the plane can go around a disk. Computers could fence in one starting point. In 2005 Tsuchimura bounded how far steps of at most 6 can reach from the origin. That says nothing about walks that start elsewhere.\n\nThe closest earlier idea is a repeating block like the parity rule above. Gethner and Stark found such periodic blocks for step limits √2 and 2. For larger limits they proposed sieving by small Gaussian primes. Sieving means deleting every grid point divisible by one of a chosen set of primes. Vardi studied the repeating graphs that result. The missing piece was a finite sieve that provably works for every step limit.\n\nThis paper proves the answer is no, in a strong form. For each D, it picks a finite list of ordinary primes that leave remainder 1 when divided by 4. Each such prime splits into two Gaussian primes. Delete every grid point divisible by any of them. What remains repeats in a fixed pattern. The paper claims that no endless walk with steps at most D fits inside it. Repetition then caps every cluster at one size. A cluster can never contain two points that differ by one full repeat of the pattern.\n\nThe hard part is the sieve, because the walk can be any path at all. The paper samples moments of one walk at random. It measures how spread out the walk's remainders are, using entropy, a standard measure of uncertainty. Dodging every deleted point costs the walk a little information at each block of primes. Summed over all blocks, those costs grow without limit. Yet one bounded hop carries only a fixed amount of information. So no such walk exists.\n\nGo back to the example. With hops of length 1, every cluster has at most 3 primes. The theorem says a cap like that exists for every step limit D. Call it B_D. No walk through distinct Gaussian primes with hops at most D has more than B_D stops. This holds wherever the walk starts, including on the two axes. But the proof gives no formula for B_D. It does not say how far a walk with hops of 6 can go.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. That version covers every step limit, every starting prime, axis primes and all associates. Associates are the copies of a prime rotated by a quarter, half or three-quarter turn about 0. It also gives no explicit formula for the bound. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. The main theorem has a Lean formalization listed. The bound has no explicit formula, and no specialist review is published yet.",
+  "glossary": [
+    {
+      "term": "Gaussian integer",
+      "meaning": "A number a + bi with whole a and b, drawn as a point on a square grid."
+    },
+    {
+      "term": "Gaussian prime",
+      "meaning": "A Gaussian integer that cannot be split as a product of two smaller ones."
+    },
+    {
+      "term": "Gaussian moat problem",
+      "meaning": "The question of whether a walk on Gaussian primes with bounded steps can go on forever."
+    },
+    {
+      "term": "Component",
+      "meaning": "A cluster of primes linked to each other by allowed hops."
+    },
+    {
+      "term": "Sieve",
+      "meaning": "A rule that deletes every number divisible by one of a chosen set of primes."
+    },
+    {
+      "term": "Entropy",
+      "meaning": "A standard measure of how uncertain or spread out a random quantity is."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "E. Gethner and H. M. Stark, “Periodic Gaussian moats”, Experimental Mathematics 6 (1997), 289–292",
+      "url": "https://doi.org/10.1080/10586458.1997.10504616"
+    },
+    {
+      "id": 2,
+      "cite": "E. Gethner, S. Wagon and B. Wick, “A stroll through the Gaussian primes”, American Mathematical Monthly 105 (1998), 327–337",
+      "url": "https://doi.org/10.1080/00029890.1998.12004889"
+    },
+    {
+      "id": 3,
+      "cite": "N. Tsuchimura, “Computational results for Gaussian moat problem”, IEICE Transactions on Fundamentals E88-A (2005), 1267–1273",
+      "url": "https://doi.org/10.1093/ietfec/e88-a.5.1267"
+    },
+    {
+      "id": 4,
+      "cite": "I. Vardi, “Prime percolation”, Experimental Mathematics 7 (1998), 275–289",
+      "url": "https://doi.org/10.1080/10586458.1998.10504373"
+    },
+    {
+      "id": 5,
+      "cite": "P. Erdős, “Problems and results on combinatorial number theory III”, Lecture Notes in Mathematics 626 (1977), 43–72",
+      "url": "https://www.renyi.hu/~p_erdos/1977-27.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Bounded-Step Walks on Gaussian Primes” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-Step-Walks-on-Gaussian-Primes-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for family 028 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/028.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Gaussian moat problem asks whether some bounded-step graph on Gaussian primes has an infinite path without repeats.",
+      "verdict": "supported",
+      "sourceLine": "The Gaussian moat problem asks whether some $G_D$ contains an infinite path with no repeated vertex."
+    },
+    {
+      "text": "Gethner and Stark trace the question to Basil Gordon at the 1962 ICM in Stockholm.",
+      "verdict": "supported",
+      "sourceLine": "Gethner and Stark trace the question to Basil Gordon at the 1962 International Congress of Mathematicians in Stockholm"
+    },
+    {
+      "text": "Erdős later credited Gordon and Motzkin.",
+      "verdict": "supported",
+      "sourceLine": "later credited Gordon and Motzkin"
+    },
+    {
+      "text": "Large prime-free disks block motion locally, but a planar walk may go around them.",
+      "verdict": "supported",
+      "sourceLine": "Large prime-free disks obstruct motion locally, but a planar walk may go around them."
+    },
+    {
+      "text": "Gethner, Wagon and Wick built prime-free disks centred on lines and arbitrarily isolated real Gaussian primes.",
+      "verdict": "supported",
+      "sourceLine": "constructed such disks with centers on any line containing two Gaussian integers, and constructed arbitrarily isolated real Gaussian primes"
+    },
+    {
+      "text": "Tsuchimura bounded the distance reachable from the origin with steps of at most 6.",
+      "verdict": "supported",
+      "sourceLine": "Tsuchimura obtained a finite bound on the distance reachable with steps of length at most $6$ from the origin"
+    },
+    {
+      "text": "Tsuchimura's result concerns only the origin's component.",
+      "verdict": "supported",
+      "sourceLine": "This is a result about the component of that vertex."
+    },
+    {
+      "text": "Tsuchimura's paper appeared in 2005.",
+      "verdict": "supported",
+      "sourceLine": "and Computer Sciences E88-A (2005)"
+    },
+    {
+      "text": "Gethner and Stark established periodic obstructions for step bounds √2 and 2 and proposed sieving by small Gaussian primes for larger bounds.",
+      "verdict": "supported",
+      "sourceLine": "established periodic obstructions for step bounds $\\sqrt2$ and $2$, and proposed sieving by small Gaussian primes for larger bounds"
+    },
+    {
+      "text": "Vardi studied the associated periodic coprimality graphs.",
+      "verdict": "supported",
+      "sourceLine": "Vardi studied the associated periodic coprimality graphs"
+    },
+    {
+      "text": "For every step limit D, every component has at most B_D vertices.",
+      "verdict": "supported",
+      "sourceLine": "For every finite real $D$ there is a finite $B_D$ such that every connected component of $G_D$ has at most $B_D$ vertices."
+    },
+    {
+      "text": "The bound does not depend on the starting prime and covers axis primes.",
+      "verdict": "supported",
+      "sourceLine": "The bound is independent of the starting prime and includes primes on the coordinate axes."
+    },
+    {
+      "text": "No walk through distinct Gaussian primes with steps at most D has more than B_D terms.",
+      "verdict": "supported",
+      "sourceLine": "Consequently every sequence of distinct Gaussian primes whose successive distances are at most $D$ has at most $B_D$ terms."
+    },
+    {
+      "text": "The bound B_D is not explicit.",
+      "verdict": "supported",
+      "sourceLine": "The bound $B_D$ is nonexplicit"
+    },
+    {
+      "text": "Each rational prime that is 1 mod 4 has two conjugate Gaussian prime factors.",
+      "verdict": "supported",
+      "sourceLine": "its two conjugate Gaussian prime factors are nonassociate"
+    },
+    {
+      "text": "A finite set of primes 1 mod 4 leaves a sieved set with no infinite bounded-step walk.",
+      "verdict": "supported",
+      "sourceLine": "contains no infinite sequence of distinct points with successive distances at most $D$"
+    },
+    {
+      "text": "The sieved set is periodic.",
+      "verdict": "supported",
+      "sourceLine": "It is periodic under translations by"
+    },
+    {
+      "text": "A finite component cannot be invariant under a nonzero translation, so it injects into the period box.",
+      "verdict": "supported",
+      "sourceLine": "A finite nonempty subset of $\\Z^2$ cannot be invariant under a nonzero translation."
+    },
+    {
+      "text": "Periodicity makes the bound uniform in the starting point.",
+      "verdict": "supported",
+      "sourceLine": "Periodicity is what makes the bound uniform in the starting point."
+    },
+    {
+      "text": "The proof samples times of a fixed walk at random.",
+      "verdict": "supported",
+      "sourceLine": "Randomness enters only through sampled times"
+    },
+    {
+      "text": "Each prime batch costs information per increment; the costs diverge but are bounded by the entropy of one increment.",
+      "verdict": "supported",
+      "sourceLine": "Block subadditivity bounds their sum by the entropy available in one bounded increment, whereas the selected batches make the lower bounds diverge."
+    },
+    {
+      "text": "The Lean formalization covers every step bound, all components and injective walks, axis primes and associates, with no explicit function of D.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

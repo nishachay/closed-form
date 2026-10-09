@@ -1,0 +1,265 @@
+{
+  "id": "100",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-angular-cylinder-covers-below-the-half-area-bound-September-27-2026/main.pdf",
+      "label": "Finite angular cylinder covers below the half-area bound"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-cylinder-approximation-of-ruled-sets-September-27-2026/main.pdf",
+      "label": "Finite cylinder approximation of ruled sets"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Slope-field-perturbations-of-the-two-cylinder-covering-September-27-2026/main.pdf",
+      "label": "Slope-field perturbations of the two-cylinder covering"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-triangular-approximation-of-radial-sweeps-September-27-2026/main.pdf",
+      "label": "Finite triangular approximation of radial sweeps"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/100.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Cylinders can cover a regular tetrahedron for less than half its smallest shadow.",
+  "scope": "The half-area result is for regular tetrahedra; the directionwise result extends to every tetrahedron.",
+  "plain": "A cylinder cover wraps a solid in straight tubes, and its cost is the total area of the tubes' cross-sections. A classic two-tube cover of a regular tetrahedron costs exactly half the area of its smallest shadow. People asked whether any cover of a convex solid could ever cost less than that. This paper proves that one can, by splitting the two tubes into many slightly tilted ones (Lean proof listed). It also breaks a stronger 2016 conjecture that compares each tube with the shadow in its own direction.",
+  "doesNot": "This does not find the cheapest possible cover, and the saving it gives is tiny.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1951",
+    "firstStepBy": "Thøger Bang, the two-cylinder tetrahedron example (as later attributed)",
+    "field": "Convex and metric geometry",
+    "significance": "Solid",
+    "significanceWhy": "It answers a covering question traced to 1951 and a 2016 conjecture, in a specialized area of geometry."
+  },
+  "explanation": "Take a regular tetrahedron: a solid with four equal triangle faces. Make every edge 2 units long. Shine a distant light on it and look at its shadow. The shadow's size depends on the direction of the light. The smallest shadow has area √2, about 1.414. It appears when the light shines straight along one edge.\n\nNow try to cover the solid with cylinders. Here a cylinder means a flat shape, its base, slid along a straight line forever in both directions. The base is measured at right angles to that line. The cost of a cover is the total area of its bases. There is a classic cheap cover with just two cylinders. Cut the tetrahedron halfway up. Cover the bottom half with a cylinder running along the bottom edge. Its base is a triangle of area √2/4, about 0.354. Cover the top half the same way, along the top edge. The two bases total √2/2, about 0.707. That is exactly half of the smallest shadow.\n\nThe question behind this comes from planks. A plank is the slab between two parallel planes. In 1951, Thøger Bang proved a rule about covering a convex body with planks. A convex body is a solid with no dents or holes. The planks' widths must add up to at least the body's smallest width. For cylinders, the tetrahedron example shows that the same rule with areas fails. Two cylinders cost only half the smallest shadow. Later authors trace this example, and a question, to Bang's 1951 paper. Must every finite cylinder cover cost at least half the smallest shadow? A 2026 survey by William Verreault still lists this as open.\n\nThere is also a stronger guess. Divide each base by the body's shadow in that cylinder's own direction, then add the results. In 2016, Károly Bezdek and Muhammad Khan recorded the guess that this sum is always at least one half. In 2009, Bezdek and Alexander Litvak proved it is at least one third. If the stronger guess were true, the half-area rule would follow.\n\nThis paper proves that both guesses fail for the regular tetrahedron. It starts from the classic two-cylinder cover. It slices each triangle base into many thin wedges. Each wedge gets its own slightly tilted line. Tilting shrinks the base, because the base is measured across the new line. The one obstacle is gaps. Tilted neighbors can pull apart, and the two halves can separate near the middle.\n\nTwo choices close the gaps. Neighboring wedges are tilted so that their shared side lies in one common plane. Each wedge is also stretched a tiny amount past the halfway cut. The stretch costs area, but less than the tilt saves. Measure cost as a share of the smallest shadow, so the classic cover scores 1/2. Write ε for the size of the tilt. The tilt saves about ε²/240, and the stretch costs ε²/500. The net saving is 13ε²/6000, give or take at most 2ε⁴.\n\nTake the largest tilt the theorem allows, ε = 1/2000. The cover then uses 16,000,000 cylinders, each with a triangle base. Adding up all their bases gives about 0.49999999946 of the smallest shadow. The saving is about 5.4 parts in ten billion. It is tiny, but the rule claimed no cover could save anything at all. The cover is always finite, but it needs more cylinders as the tilt shrinks. The result shows that one half is not a floor. It does not say where the true floor lies.\n\nThe stronger guess fails for every tetrahedron, not only regular ones. Stretching or squashing space changes each base and its matching shadow by the same factor. So each ratio in the sum stays the same. The plain half-area claim is stated only for regular tetrahedra. Two companion papers build covers below one half by other routes. One uses parallelogram bases instead of triangles. A third gives a general tool for turning smoothly tilting families of segments into finitely many cylinders.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the regular tetrahedron results. Every regular tetrahedron has a finite cover costing strictly less than half its smallest shadow. The stronger ratio sum is also below one half. The companion approximation results are in the same Lean files. The extension to every tetrahedron by stretching is outside the checked statements. No specialists have published a review yet.",
+  "hypeCheck": "Solid within its area. The saving is about five parts in ten billion. Lean checks the regular tetrahedron statements. The extension to all tetrahedra is outside that check. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Regular tetrahedron",
+      "meaning": "A solid with four faces that are identical equilateral triangles."
+    },
+    {
+      "term": "Convex body",
+      "meaning": "A bounded solid with no dents or holes, including its surface."
+    },
+    {
+      "term": "Cylinder",
+      "meaning": "A flat base shape slid along a straight line forever in both directions."
+    },
+    {
+      "term": "Perpendicular base",
+      "meaning": "The cross-section of a cylinder cut at right angles to its line; its area is the cylinder's cost."
+    },
+    {
+      "term": "Projection",
+      "meaning": "The shadow a solid casts on a plane when light comes from one fixed direction."
+    },
+    {
+      "term": "Plank",
+      "meaning": "The slab of space between two parallel planes; its width is their distance apart."
+    },
+    {
+      "term": "Directionwise relative area",
+      "meaning": "The sum, over all cylinders, of each base area divided by the shadow in that cylinder's direction."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks every step of a formal mathematical proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "T. Bang, “A solution of the “plank problem””, Proceedings of the American Mathematical Society 2 (1951), 990–993",
+      "url": "https://doi.org/10.1090/S0002-9939-1951-0046672-4"
+    },
+    {
+      "id": 2,
+      "cite": "K. Bezdek, “Tarski's plank problem revisited”, arXiv:0903.4637 (2009), Problem 3.1",
+      "url": "https://arxiv.org/abs/0903.4637v1"
+    },
+    {
+      "id": 3,
+      "cite": "K. Bezdek and A. E. Litvak, “Covering convex bodies by cylinders and lattice points by flats”, Journal of Geometric Analysis 19 (2009), 233–243",
+      "url": "https://doi.org/10.1007/s12220-008-9063-6"
+    },
+    {
+      "id": 4,
+      "cite": "K. Bezdek and M. A. Khan, “The geometry of homothetic covering and illumination”, arXiv:1602.06040v2 (2016)",
+      "url": "https://arxiv.org/abs/1602.06040v2"
+    },
+    {
+      "id": 5,
+      "cite": "W. Verreault, “Plank theorems and their applications: A survey”, Bulletin of the London Mathematical Society 58 (2026), e70230",
+      "url": "https://doi.org/10.1112/blms.70230"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for “Cylinder coverings below the half-area bound” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/100.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Finite angular cylinder covers below the half-area bound” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-angular-cylinder-covers-below-the-half-area-bound-September-27-2026/main.pdf"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The tetrahedron with edge length 2 has smallest projection area √2.",
+      "verdict": "supported",
+      "sourceLine": "The tetrahedron \\eqref{eq:tetrahedron} has $A_{\\min}(K)=\\sqrt2$."
+    },
+    {
+      "text": "The smallest shadow occurs looking along an edge (u = (1,0,0) is parallel to an edge).",
+      "verdict": "supported",
+      "sourceLine": "Hence $A(u)=H(U+V)\\ge H$, with equality at $u=(1,0,0)$."
+    },
+    {
+      "text": "In the classic cover the bottom half is covered by an x-parallel cylinder and the top half by a y-parallel one.",
+      "verdict": "supported",
+      "sourceLine": "At zero tilt, the part $t\\le1/2$ is covered by an $x$-parallel cylinder and the part $t\\ge1/2$ by a $y$-parallel cylinder."
+    },
+    {
+      "text": "Each base of the classic cover is a triangle of area √2/4.",
+      "verdict": "supported",
+      "sourceLine": "Each perpendicular base is a triangle of area $H/4$."
+    },
+    {
+      "text": "The two-cylinder cover has axes parallel to opposite edges and total base area half the minimum projection area.",
+      "verdict": "supported",
+      "sourceLine": "total base area equals half the tetrahedron's minimum projection area."
+    },
+    {
+      "text": "Bang proved that a finite plank covering has total width at least the minimum width.",
+      "verdict": "supported",
+      "sourceLine": "a finite plank covering of a convex body has total width at least the"
+    },
+    {
+      "text": "Replacing widths by base areas cannot keep the constant one.",
+      "verdict": "supported",
+      "sourceLine": "shows that replacing widths by base areas cannot preserve"
+    },
+    {
+      "text": "Bezdek and Bezdek–Litvak attribute the example and the half-area question to Bang's 1951 paper.",
+      "verdict": "supported",
+      "sourceLine": "the resulting half-area question to Bang's 1951 paper."
+    },
+    {
+      "text": "Verreault's 2026 survey records the half-area question as unresolved.",
+      "verdict": "supported",
+      "sourceLine": "Verreault's 2026 survey records the half-area question as"
+    },
+    {
+      "text": "Bezdek and Khan record the directionwise bound 1/2 as the 1-Codimensional Cylinder Covering Conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Bezdek and Khan record the directionwise assertion"
+    },
+    {
+      "text": "Bezdek and Litvak proved the directionwise sum is at least 1/3.",
+      "verdict": "supported",
+      "sourceLine": "Bezdek and Litvak proved $\\mathcal R(\\mathcal C;K)\\ge1/3$"
+    },
+    {
+      "text": "The directionwise conjecture would imply the half-area bound.",
+      "verdict": "supported",
+      "sourceLine": "It would imply \\eqref{eq:conjectured-bound}, since"
+    },
+    {
+      "text": "The construction subdivides the two triangles into narrow sectors, each with its own tilted axis.",
+      "verdict": "supported",
+      "sourceLine": "own tilted axis. Tilting reduces the perpendicular area, but it can also"
+    },
+    {
+      "text": "Tilting can open gaps between neighboring sectors and between the two families.",
+      "verdict": "supported",
+      "sourceLine": "open gaps between neighboring sectors and between the two families."
+    },
+    {
+      "text": "Adjacent axes make the planes containing a shared sector side coincide.",
+      "verdict": "supported",
+      "sourceLine": "sector side make the planes containing that side coincide."
+    },
+    {
+      "text": "Each sector's radial extent is increased by an amount of order ε².",
+      "verdict": "supported",
+      "sourceLine": "sector's radial extent by a"
+    },
+    {
+      "text": "The area cost of the increase is less than the quadratic gain from tilting.",
+      "verdict": "supported",
+      "sourceLine": "that their area cost is less than the quadratic gain from tilting."
+    },
+    {
+      "text": "With η = 1/1000 the normalized area is 1/2 + (2η − 1/240)ε² up to 2ε⁴, which gives 1/2 − (13/6000)ε².",
+      "verdict": "supported",
+      "sourceLine": "so this integral equals $2\\eta-1/240$. The combined error is at most"
+    },
+    {
+      "text": "The construction uses η = 1/1000.",
+      "verdict": "supported",
+      "sourceLine": "Since $\\eta=1/1000$, \\cref{prop:area-expansion} gives"
+    },
+    {
+      "text": "For 0 < ε ≤ 1/2000 there is a cover by 2⌈2/ε²⌉ cylinders with compact triangular bases and remainder at most 2ε⁴.",
+      "verdict": "supported",
+      "sourceLine": "The remainder has absolute value at most $2\\eps^4$, and the total base"
+    },
+    {
+      "text": "Every cover is finite, though the number of cylinders grows as the tilt decreases.",
+      "verdict": "supported",
+      "sourceLine": "Every covering in the theorem is finite, although its number of cylinders"
+    },
+    {
+      "text": "The directionwise ratios are invariant under invertible affine maps.",
+      "verdict": "supported",
+      "sourceLine": "The directionwise ratios are invariant under invertible affine"
+    },
+    {
+      "text": "The half-area conclusion with one minimum projection area is asserted for regular tetrahedra.",
+      "verdict": "supported",
+      "sourceLine": "area for all directions, is asserted here for regular tetrahedra."
+    },
+    {
+      "text": "A companion paper gives covers with compact parallelogram bases.",
+      "verdict": "supported",
+      "sourceLine": "cylinder cover with compact parallelogram perpendicular bases such that"
+    },
+    {
+      "text": "The radial-sweeps companion lowers the two-cylinder cost strictly by varying directions.",
+      "verdict": "supported",
+      "sourceLine": "tetrahedron's two-cylinder cost strictly by varying the directions,"
+    },
+    {
+      "text": "The ruled-sets companion turns continuously varying segment families into finite cylinder covers.",
+      "verdict": "supported",
+      "sourceLine": "family finite. This paper supplies that last step with its exact"
+    },
+    {
+      "text": "Lean proves the regular tetrahedron cover below half the minimum projection area and the directionwise cost below one half; the affine extension is outside the selected statements.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "For ε = 1/2000 the exact finite sum gives a normalized cost of about 0.49999999946 with 16,000,000 cylinders (recomputed from the paper's exact area formula).",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

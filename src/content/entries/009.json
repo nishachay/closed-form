@@ -1,0 +1,261 @@
+{
+  "id": "009",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Reconstruction-of-Function-Fields-from-Mod-ell-Milnor-K-Theory-October-5-2026/mod-ell-bogomolov-pop.pdf",
+      "label": "Reconstruction of Function Fields from Mod-ℓ Milnor K-Theory"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Reconstruction-from-Milnor-K-theory-modulo-the-characteristic-October-5-2026/paper.pdf",
+      "label": "Reconstruction from Milnor K-theory modulo the characteristic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Bogomolov-Pop-reconstruction-theorem-September-23-2026/paper.pdf",
+      "label": "The Bogomolov-Pop reconstruction theorem"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/009.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A field of functions can be rebuilt from its multiplication, blurred by powers, plus one trace of addition.",
+  "scope": "The fields need at least two variables and algebraically closed constants. When ℓ differs from the characteristic, only the perfect closure is recovered.",
+  "plain": "Take all fractions of polynomials in two or more variables, and treat ℓ-th powers as 1 for a fixed prime ℓ. Add one record of addition: which pairs of functions add up to 1. These papers claim to prove that this thin record still determines the whole field. Any matching of such records between two fields comes from a real field isomorphism, up to one scalar. A companion paper claims the same for Bogomolov's Galois-group data, which he proposed in 1991.",
+  "doesNot": "This does not cover fields of functions in one variable, or fields whose constants are not algebraically closed.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1991",
+    "firstStepBy": "Fedor Bogomolov, the abelian-by-central reconstruction program",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle Bogomolov's pro-ℓ question in its standard form. In characteristic p this recovers the perfect closure, up to Frobenius, not the field itself. They need no extra data and work from two variables up."
+  },
+  "explanation": "Take a fraction of polynomials in two variables, s and t, such as 4s³(t − 1)². Now blur it. Treat two functions as the same when one equals the other times a perfect square. Divide our function by s and you get 4s²(t − 1)², which is the square of 2s(t − 1). So in the blurred view, 4s³(t − 1)² looks exactly like s. The constant 4 has vanished, and so has the squared factor (t − 1)².\n\nThis blurred version keeps only multiplication, and only roughly. Mathematicians call it the first Milnor K-group modulo 2. Squares can be replaced by ℓ-th powers for any prime ℓ, giving the group modulo ℓ. One more piece of data carries a trace of addition. For each function x other than 0 and 1, the pair x and 1 − x is marked as special. Take x = s/t. Then 1 − x = (t − s)/t. So the marked pair ties s, t and t − s together. These marks, called Steinberg relations, define a second group and a product between the two.\n\nThe question is whether this thin record still pins down the whole field. A field here is a system of numbers or functions where you can add, subtract, multiply and divide. The fields in question are function fields: all fractions of polynomials in several variables. Their constants come from an algebraically closed field, one where every polynomial equation has a root, like the complex numbers. The number of independent variables is the transcendence degree. The papers need at least two.\n\nThe idea goes back to Bogomolov in 1991. He proposed recovering such fields from a small piece of their Galois group. That group records the symmetries of the field's extensions. The piece is the pro-ℓ quotient in which commutators are central. Bogomolov and Tschinkel proved this for surfaces over algebraic closures of finite fields in 2008. They reached higher dimensions in 2011. Pop independently completed that case in 2012. For general constants, Pop's 2018 preprint used extra inertia data and more than two variables. For the blurred mod-ℓ data, Topaz's 2016 theorem needed at least five variables. It also needed an extra supplied list of rational subgroups.\n\nThe October 2026 paper claims to remove both extra requirements. Suppose ℓ differs from the field's characteristic. Then the two groups and their product alone determine the field's perfect closure and its constants. The characteristic is p when adding p copies of 1 gives 0, and zero when no such p exists. The perfect closure adds every p-th root, and changes nothing in characteristic zero. Any matching of the data comes from a field isomorphism, up to one scalar. When ℓ = 2 that scalar ambiguity disappears. A September 2026 companion claims the same for Bogomolov's original Galois data. It claims to resolve the Bogomolov–Pop conjecture in its pro-ℓ abelian-by-central form.\n\nThe main obstacle is that the blur destroys information. A class records the order of each zero or pole only modulo ℓ. So a zero of multiplicity divisible by ℓ simply disappears, as (t − 1)² did above. The paper controls this loss with a uniform bound. Fix one function t. Then all the transformed classes of t − a, for every constant a, stay bounded in complexity. The bound comes from five fixed members of that family. From these families it recovers one-variable subfields, then points, then addition itself.\n\nA third paper treats the case ℓ = p, blurring by p-th powers in characteristic p. There the blurred group becomes a geometry over the subfield of p-th powers. With p = 3 and two variables, the field is 3² = 9 times as big as that subfield. Its basis is the nine products sᶦtʲ, with i and j from 0 to 2. The paper recovers lines in this geometry by a calculation with derivatives. It claims this recovers the field itself and its named base, not just the perfect closure.\n\nThe results stop at clear edges. They need algebraically closed constants and at least two variables, so curves are not covered. When ℓ differs from the characteristic, p-th roots are invisible to the data. So only the perfect closure is recovered. The field isomorphism is also fixed only up to Frobenius, the map raising everything to the p-th power.\n\nHow sure is this? A computer proof checker called Lean has checked one half of the Galois version. Two field isomorphisms that give the same Galois data agree up to Frobenius. The other half, that every admissible matching of Galois data comes from some field isomorphism, is outside that check. The Lean scope note covers neither Milnor K-theory paper. No specialist review has been published.",
+  "hypeCheck": "Lean has checked only the uniqueness half of the Galois version. The existence half and both Milnor K-theory papers have no Lean check listed, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Function field",
+      "meaning": "All fractions of polynomials in some variables, possibly with extra algebraic relations among them."
+    },
+    {
+      "term": "Algebraically closed",
+      "meaning": "A field where every polynomial equation has a root, like the complex numbers."
+    },
+    {
+      "term": "Transcendence degree",
+      "meaning": "The number of independent variables in a function field."
+    },
+    {
+      "term": "Milnor K-group modulo ℓ",
+      "meaning": "The field's nonzero elements under multiplication, with ℓ-th powers treated as 1; the second group adds pairs of them."
+    },
+    {
+      "term": "Steinberg relation",
+      "meaning": "The rule that marks each pair x and 1 − x; it is the data's only trace of addition."
+    },
+    {
+      "term": "Galois group",
+      "meaning": "The group of symmetries of a field's extensions; Bogomolov's data is a small quotient of it."
+    },
+    {
+      "term": "Characteristic",
+      "meaning": "The number p of copies of 1 that add to 0, or zero if none do."
+    },
+    {
+      "term": "Perfect closure",
+      "meaning": "The field with every p-th root added in characteristic p; in characteristic zero, the field itself."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "F. A. Bogomolov, “On two conjectures in birational algebraic geometry”, ICM-90 Satellite Conference Proceedings, Springer, Tokyo (1991), 26–52",
+      "url": "https://doi.org/10.1007/978-4-431-68172-4_2"
+    },
+    {
+      "id": 2,
+      "cite": "F. Bogomolov and Y. Tschinkel, “Reconstruction of function fields”, Geom. Funct. Anal. 18 (2008), 400–462",
+      "url": "https://arxiv.org/abs/math/0303075"
+    },
+    {
+      "id": 3,
+      "cite": "F. Bogomolov and Y. Tschinkel, “Reconstruction of higher-dimensional function fields”, Mosc. Math. J. 11 (2011), 185–204",
+      "url": "https://doi.org/10.17323/1609-4514-2011-11-2-185-204"
+    },
+    {
+      "id": 4,
+      "cite": "F. Pop, “On the birational anabelian program initiated by Bogomolov I”, Invent. Math. 187 (2012), 511–533",
+      "url": "https://doi.org/10.1007/s00222-011-0331-x"
+    },
+    {
+      "id": 5,
+      "cite": "F. Pop, “Reconstruction of function fields from their pro-ℓ abelian divisorial inertia”, preprint (2018), arXiv:1810.04768",
+      "url": "https://arxiv.org/abs/1810.04768"
+    },
+    {
+      "id": 6,
+      "cite": "A. Topaz, “Reconstructing function fields from rational quotients of mod-ℓ Galois groups”, Math. Ann. 366 (2016), 337–385",
+      "url": "https://doi.org/10.1007/s00208-015-1327-4"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 009: “Reconstruction of Function Fields from Mod-ℓ Milnor K-Theory” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Reconstruction-of-Function-Fields-from-Mod-ell-Milnor-K-Theory-October-5-2026/mod-ell-bogomolov-pop.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 009: “Reconstruction from Milnor K-theory modulo the characteristic” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Reconstruction-from-Milnor-K-theory-modulo-the-characteristic-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 009: “The Bogomolov-Pop reconstruction theorem” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Bogomolov-Pop-reconstruction-theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean doc for family 009 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/009.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The first group is the multiplicative group modulo ℓ-th powers, written additively.",
+      "verdict": "supported",
+      "sourceLine": "We write $V_F$ additively, so $[xy]=[x]+[y]$."
+    },
+    {
+      "text": "The Steinberg relation subspace is spanned by the pairs x and 1 − x.",
+      "verdict": "supported",
+      "sourceLine": "Define the Steinberg relation subspace"
+    },
+    {
+      "text": "Bogomolov proposed reconstruction from the pro-ℓ quotient in which commutators are central.",
+      "verdict": "supported",
+      "sourceLine": "Bogomolov proposed reconstructing higher-dimensional function fields over algebraically closed constants from the pro-$\\ell$ quotient in which commutators are central"
+    },
+    {
+      "text": "Bogomolov and Tschinkel proved the surface case over algebraic closures of finite fields.",
+      "verdict": "supported",
+      "sourceLine": "Bogomolov and Tschinkel proved reconstruction for surfaces over algebraic closures of finite fields"
+    },
+    {
+      "text": "They later treated higher-dimensional function fields over those constants.",
+      "verdict": "supported",
+      "sourceLine": "and subsequently for higher-dimensional function fields over those constants"
+    },
+    {
+      "text": "Pop independently completed reconstruction in that setting.",
+      "verdict": "supported",
+      "sourceLine": "Pop independently completed reconstruction in this constant-field setting"
+    },
+    {
+      "text": "Pop's 2018 result over general constants uses divisorial inertia and needs more than two variables.",
+      "verdict": "supported",
+      "sourceLine": "Over more general algebraically closed constants, Pop also obtained reconstruction from pro-$\\ell$ data endowed with divisorial inertia, in relative transcendence degree greater than two"
+    },
+    {
+      "text": "Topaz's mod-ℓ theorem needed at least five variables and supplied rational subgroups.",
+      "verdict": "supported",
+      "sourceLine": "Topaz proved a Milnor-theoretic isomorphism theorem in relative transcendence degree at least five when the degree-one and degree-two mod-$\\ell$ groups and their product are supplied together with all rational subgroups"
+    },
+    {
+      "text": "The new paper obtains rational subfields from the product itself, in every dimension at least two.",
+      "verdict": "supported",
+      "sourceLine": "obtains the required rational subfields from the product itself, and its point-value argument applies in every relative dimension at least two"
+    },
+    {
+      "text": "The two groups and their product determine the perfect closure and its constant field.",
+      "verdict": "supported",
+      "sourceLine": "together with their full bilinear product, determine the perfect closure and its constant field"
+    },
+    {
+      "text": "Matchings are induced by a field isomorphism up to one scalar, with Frobenius ambiguity in positive characteristic.",
+      "verdict": "supported",
+      "sourceLine": "Every compatible isomorphism of these data is induced by a field isomorphism up to a single scalar"
+    },
+    {
+      "text": "At ℓ = 2 the scalar ambiguity is trivial.",
+      "verdict": "supported",
+      "sourceLine": "at $\\ell=2$ this ambiguity is trivial"
+    },
+    {
+      "text": "The perfect closure equals the field in characteristic zero.",
+      "verdict": "supported",
+      "sourceLine": "it equals $F$ in characteristic zero"
+    },
+    {
+      "text": "A mod-ℓ class records orders only modulo ℓ, so divisors of multiplicity divisible by ℓ can disappear.",
+      "verdict": "supported",
+      "sourceLine": "Individual mod-$\\ell$ classes record only orders modulo $\\ell$, so a divisor can disappear when its multiplicity is divisible by $\\ell$."
+    },
+    {
+      "text": "Five fixed members of the pencil bound the support degree of every class Θ([t − a]).",
+      "verdict": "supported",
+      "sourceLine": "applying Riemann--Hurwitz to five fixed members of its pencil bounds the total degree of the divisor support"
+    },
+    {
+      "text": "The Galois paper resolves the pro-ℓ abelian-by-central Bogomolov–Pop conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Thus the theorem resolves the pro-$\\ell$ abelian-by-central Bogomolov--Pop reconstruction conjecture positively."
+    },
+    {
+      "text": "In characteristic p, the mod-p invariant determines the field and its isomorphisms up to scalar.",
+      "verdict": "supported",
+      "sourceLine": "The invariant therefore determines the field and its isomorphisms, with exactly the scalar identification in the displayed target."
+    },
+    {
+      "text": "It also recovers the named base.",
+      "verdict": "supported",
+      "sourceLine": "The argument also recovers the named algebraically closed base from the field itself."
+    },
+    {
+      "text": "The blurred group is a projective geometry over the subfield of p-th powers.",
+      "verdict": "supported",
+      "sourceLine": "This is a projective geometry over $C_F$, not over the original constant field $\\kappa$."
+    },
+    {
+      "text": "In characteristic p the field has finite degree p to the transcendence degree over its p-th powers.",
+      "verdict": "supported",
+      "sourceLine": "The field degree is finite"
+    },
+    {
+      "text": "Lines are recovered by a calculation with derivations.",
+      "verdict": "supported",
+      "sourceLine": "The proof recovers projective lines over the subfields of $p$th powers by an elementary calculation with derivations."
+    },
+    {
+      "text": "Lean formalizes injectivity of the Galois reconstruction map modulo Frobenius; existence is outside it.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "Bogomolov's proposal dates from 1991.",
+      "verdict": "external",
+      "sourceId": 1
+    }
+  ]
+}
