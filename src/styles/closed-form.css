@@ -1023,3 +1023,14 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 .dot-ex,.ex-tag::before{background:var(--color-text-tertiary);margin-inline:3px;box-shadow:0 0 0 1.5px var(--ring-bg,var(--color-bg)),0 0 0 3px var(--color-accent)}
 .res .ex-tag,.fopt,.filters{--ring-bg:var(--color-bg-surface)}
 .ex-tag::before{inline-size:.5rem;block-size:.5rem;border-radius:2px;margin-inline:3px 1px}
+
+/* home: two latest explained + a third card that opens them all */
+.home-ex .ex-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+.xcard-all{background:none;border-style:dashed}
+.xcard-all .xa-n{margin:.625rem 0 0;display:flex;align-items:baseline;gap:.25rem}
+.xcard-all .xa-n .num{font-size:2.25rem;line-height:1;font-weight:500;letter-spacing:-.02em;color:var(--color-text)}
+.xcard-all .xa-n .of{font-size:.875rem;color:var(--color-text-tertiary)}
+.xcard-all .xc-t{margin-block-start:auto;padding-block-start:1rem}
+.xcard-all .xc-f{margin-block-start:0}
+@media (max-width:56rem){.home-ex .ex-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.xcard-all{grid-column:1/-1}}
+@media (max-width:36rem){.home-ex .ex-cards{grid-template-columns:minmax(0,1fr)}.xcard-all .xa-n .num{font-size:1.75rem}}

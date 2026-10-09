@@ -10,7 +10,7 @@ import OriginalPapers from '../../components/OriginalPapers.astro';
 import TrustLabel from '../../components/TrustLabel.astro';
 import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, fieldUrl, loadExplained, neighbors } from '../../lib/site.js';
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
-import { renderMath } from '../../lib/katex.js';
+import { renderMath, renderQuote } from '../../lib/katex.js';
 
 export async function getStaticPaths() {
   return catalog.families.map((f) => ({
@@ -157,7 +157,7 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
                 return (
                   <li>
                     <span>{href ? <a href={href} target="_blank" rel="noopener">{c.text}</a> : c.text}{c.unchecked && entry.status !== 'reviewed' && <i class="ref-u" role="img" aria-label="Not yet checked against the source"></i>}</span>
-                    {s.quote && <q>{s.quote}</q>}
+                    {s.quote && <q set:html={renderQuote(s.quote)} />}
                   </li>
                 );
               })}
