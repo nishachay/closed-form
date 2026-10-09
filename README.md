@@ -1,25 +1,33 @@
 # Closed Form ∎ — AI mathematics, explained
 
-Every problem AI has solved, explained for everyone, with honest trust labels.
+[![Deploy](https://github.com/nishachay/closed-form/actions/workflows/deploy.yml/badge.svg)](https://github.com/nishachay/closed-form/actions/workflows/deploy.yml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT.md)
 
-This repo builds a static Astro site from the `openai/math` release (Vol. 1:
-372 result families, 722 papers) plus hand/AI-written plain-language entries.
-`CLOSED_FORM.md` is the full spec and source of truth.
+**Live site: https://nishachay.github.io/closed-form/**
+
+Every maths problem AI has solved, explained for everyone, with honest trust
+labels. Each entry starts from a concrete example, says what was known before,
+names the obstacle the paper removed, and is plain about how certain the result is.
+
+The site is built from the [`openai/math`](https://github.com/openai/math)
+release (Vol. 1: 372 result families, 722 papers). Explanations are written by
+an AI pipeline and checked by a second AI pass against the source papers. They are not
+peer-reviewed. Found a mistake? Every entry has a "Report an error" link.
+`CLOSED_FORM.md` is the full spec.
 
 ## Quickstart
 
 ```sh
-git clone --recurse-submodules -b v1-site https://github.com/nishachay/closed-form.git
+git clone https://github.com/nishachay/closed-form.git
 cd closed-form
+git submodule update --init --depth 1   # openai/math source, ~2.4 GB
 corepack enable
 pnpm install
-pnpm test     # vitest: 55+ unit tests
-pnpm build    # static site in dist/ (395 pages + 393 OG cards)
+pnpm test     # vitest unit tests
+pnpm build    # static site in dist/
 pnpm preview  # serve the build locally
 ```
-
-The OpenAI submodule is large (~2.4 GB checked out). A shallow
-`git submodule update --init --depth 1` is enough for ingest and gather.
 
 ## Scripts
 
@@ -52,6 +60,14 @@ from `explain.yml` and merge publishes them.
 - `/data/fields.json` — the 17 fields with counts and trust split.
 - `/feed.xml` — newly explained entries, newest first.
 
-Our explanations are CC BY 4.0. Source papers are `openai/math` (Apache-2.0).
-Not affiliated with OpenAI. Found a mistake? Every entry has a
-“Report an error” link.
+## Contributing
+
+Corrections, bug reports and pull requests are welcome. Read
+[CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
+Report security problems privately, as described in [SECURITY.md](SECURITY.md).
+
+## License
+
+Code is [MIT](LICENSE). Written explanations are
+[CC BY 4.0](LICENSE-CONTENT.md). Source papers, Lean proofs and traces belong to
+`openai/math` under Apache-2.0. Not affiliated with OpenAI.
