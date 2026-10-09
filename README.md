@@ -42,16 +42,16 @@ pnpm preview  # serve the build locally
 
 ## Pipeline credentials
 
-Real `explain` runs read `LLM_BASE_URL`, `LLM_API_KEY`, `READER_MODEL` and
-`CHECK_MODEL` from the environment (GitHub secrets in CI — see
-`.github/workflows/explain.yml`). Never commit a key. No key is needed for
-ingest, dry runs, tests or the site build.
+Entries are now written by hand from the paper sources and opened as pull
+requests. The old `scripts/explain.ts` still reads `LLM_BASE_URL`, `LLM_API_KEY`,
+`READER_MODEL` and `CHECK_MODEL` if you run it locally, but no scheduled CI job
+runs it. Never commit a key. No key is needed for ingest, tests or the site build.
 
 ## Deploy
 
 Push to `main` deploys to GitHub Pages via `.github/workflows/deploy.yml`
-(`actions/deploy-pages`, base `/closed-form`). Entry batches arrive as PRs
-from `explain.yml` and merge publishes them.
+(`actions/deploy-pages`, base `/closed-form`). New entries arrive as PRs, and
+merging publishes them.
 
 ## Public data
 
