@@ -334,6 +334,8 @@ export function buildReaderUser(
     leanFactsText(leanFacts(family)),
     LEAN_RULE,
     '',
+    RELEASE_PROVENANCE,
+    '',
     'OFFICIAL SUMMARY (in its own words, NOT plain language):',
     family.summary.replace(/<[^>]+>/g, ''),
     '',
@@ -376,6 +378,20 @@ export const CHECKER_RUBRIC = [
   '    and end `cite` with "(no online copy found)".',
 ].join('\n');
 
+
+/**
+ * Release-level provenance, quoted verbatim from openai/math README.md
+ * ("How the results were produced"). The per-paper LaTeX lists only "OpenAI"
+ * as author, so without this fixed input the checker rejects every aiRole.
+ */
+export const RELEASE_PROVENANCE = [
+  'RELEASE PROVENANCE (fixed input, quoted verbatim from the openai/math README; a valid source for aiRole):',
+  '"This repository contains mathematical manuscripts and supporting proof artifacts produced by an internal OpenAI model."',
+  '"The vast majority of results were obtained with the same procedure using an unreleased internal OpenAI model. On average, each result used three hours of ChatGPT Pro thinking compute with that model."',
+  '"Exceptions to this fixed procedure include work on a zero-free region for the Riemann zeta function and proof of the Hodge Conjecture for CM abelian varieties. Additionally, the writeup for the Re(s) > 11/12 zero-free region for the Riemann zeta function was human edited for readability."',
+  'RULE: for families produced by the fixed procedure, aiRole "autonomous" is supported by this block; quote it as the sourceLine. For the named exceptions (Riemann zeta zero-free region, Hodge Conjecture for CM abelian varieties), do not claim "autonomous".',
+].join('\n');
+
 export function buildCheckerUser(draft: string, gathered: Gathered, family?: Family): string {
   return [
     'DRAFT ENTRY (JSON):',
@@ -384,6 +400,8 @@ export function buildCheckerUser(draft: string, gathered: Gathered, family?: Fam
     ...(family
       ? ['LEAN FACTS (fixed input from repo files):', leanFactsText(leanFacts(family)), LEAN_RULE, '']
       : []),
+    RELEASE_PROVENANCE,
+    '',
     'SOURCE LATEX:',
     gathered.sourceText,
     '',
