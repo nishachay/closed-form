@@ -37,9 +37,9 @@ jobs:
         # so the PR step below still opens a PR with those entries.
         run: |
           if [ -n "${{ inputs.ids }}" ]; then
-            pnpm explain --ids "${{ inputs.ids }}" --concurrency "${{ inputs.concurrency || '1' }}"
+            pnpm explain --ids "${{ inputs.ids }}" --concurrency "${{ inputs.concurrency || '1' }}" || echo "::warning::Some families failed; opening a PR with the ones that passed."
           else
-            pnpm explain --batch "${{ inputs.batch }}" --concurrency "${{ inputs.concurrency || '1' }}"
+            pnpm explain --batch "${{ inputs.batch }}" --concurrency "${{ inputs.concurrency || '1' }}" || echo "::warning::Some families failed; opening a PR with the ones that passed."
           fi
         env:
           # Reader, e.g. Gemini free tier: https://generativelanguage.googleapis.com/v1beta/openai/
@@ -51,12 +51,16 @@ jobs:
           CHECK_BASE_URL: ${{ secrets.CHECK_BASE_URL }}
           CHECK_API_KEY: ${{ secrets.CHECK_API_KEY }}
           CHECK_MODEL: ${{ secrets.CHECK_MODEL }}
+          # Stream replies so slow reasoning models don't hit fetch's 300 s header
+          # timeout, and lift the provider's default output cap (NVIDIA NIM truncated entries).
+          LLM_STREAM: '1'
+          LLM_MAX_TOKENS: '32768'
       - name: Lint entries
         run: pnpm lint-ste
       - name: Open PR
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: entries/${{ inputs.ids || 'batch' }}
+          branch: entries/${{ inputs.ids || format('batch-{0}', github.run_id) }}
           title: "Entries: ${{ inputs.ids || inputs.batch }}${{ steps.explain.outputs.quota_stop == 'true' && ' (partial: quota stop)' || '' }}"
           body-path: pipeline/last-run.md
           commit-message: 'Entries: AI-checked batch'

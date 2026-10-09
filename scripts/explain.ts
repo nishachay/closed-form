@@ -447,12 +447,46 @@ export interface ChatOptions {
 }
 
 /** Request body: only fields Gemini's OpenAI-compatible layer and OpenRouter both accept. */
-export function chatBody(model: string, messages: ChatMsg[], jsonMode: boolean): Record<string, unknown> {
+export function chatBody(
+  model: string,
+  messages: ChatMsg[],
+  jsonMode: boolean,
+  env: NodeJS.ProcessEnv = process.env,
+): Record<string, unknown> {
+  // Opt-in extras (both off by default so Gemini/OpenRouter bodies stay minimal):
+  // LLM_STREAM=1 streams the reply (long reasoning models otherwise hit
+  // fetch's 300 s header timeout); LLM_MAX_TOKENS lifts a provider's low default
+  // output cap, which truncated whole entries into unparseable JSON.
+  const maxTokens = Number(env.LLM_MAX_TOKENS || 0);
   return {
     model,
     messages,
     ...(jsonMode ? { response_format: { type: 'json_object' } } : {}),
+    ...(maxTokens > 0 ? { max_tokens: maxTokens } : {}),
+    ...(env.LLM_STREAM === '1' ? { stream: true } : {}),
   };
+}
+
+/** Reads an OpenAI-style SSE stream; returns the answer text (reasoning deltas are dropped) and finish reason. */
+export async function readStream(res: Response): Promise<{ content: string; finish: string | null }> {
+  const text = await res.text();
+  let content = '';
+  let finish: string | null = null;
+  for (const line of text.split('\n')) {
+    const t = line.trim();
+    if (!t.startsWith('data:')) continue;
+    const payload = t.slice(5).trim();
+    if (payload === '[DONE]') break;
+    try {
+      const j = JSON.parse(payload) as { choices?: { delta?: { content?: string | null }; finish_reason?: string | null }[] };
+      const c = j.choices?.[0];
+      if (c?.delta?.content) content += c.delta.content;
+      if (c?.finish_reason) finish = c.finish_reason;
+    } catch {
+      // ignore keep-alive or partial lines
+    }
+  }
+  return { content, finish };
 }
 
 export async function chatComplete(
@@ -493,9 +527,32 @@ export async function chatComplete(
       continue;
     }
     if (!res.ok) throw new Error(`LLM request failed: ${res.status} ${(await res.text()).slice(0, 300)}`);
-    const data = (await res.json()) as { choices?: { message?: { content?: string } }[] };
-    const content = data.choices?.[0]?.message?.content ?? '';
-    if (!content) throw new Error('LLM returned empty content');
+    let content = '';
+    let finish: string | null = null;
+    if ((res.headers.get('content-type') ?? '').includes('text/event-stream')) {
+      try {
+        ({ content, finish } = await readStream(res));
+      } catch (e) {
+        lastError = `stream: ${String(e)}`.slice(0, 300);
+        last429 = false;
+        if (attempt < maxTries - 1) await sleep(retryDelayMs(attempt, null));
+        continue;
+      }
+    } else {
+      const data = (await res.json()) as { choices?: { message?: { content?: string }; finish_reason?: string }[] };
+      content = data.choices?.[0]?.message?.content ?? '';
+      finish = data.choices?.[0]?.finish_reason ?? null;
+    }
+    if (finish === 'length') {
+      // Truncated output is never a valid entry; retrying wastes quota, so fail clearly.
+      throw new Error(`LLM output hit the token limit (finish_reason=length) for ${model}; raise LLM_MAX_TOKENS`);
+    }
+    if (!content) {
+      lastError = 'empty content';
+      last429 = false;
+      if (attempt < maxTries - 1) await sleep(retryDelayMs(attempt, null));
+      continue;
+    }
     return content;
   }
   if (last429) throw new QuotaExhaustedError(`rate limit persisted after ${maxTries} tries for ${model}: ${lastError}`);

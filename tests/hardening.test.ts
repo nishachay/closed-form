@@ -152,6 +152,29 @@ describe('chat client (free tiers)', () => {
     expect(calls).toBe(MAX_TRIES);
   });
 
+  it('reads a streamed reply and drops reasoning deltas; adds stream/max_tokens only when asked', async () => {
+    expect(chatBody('m', [], true, { LLM_STREAM: '1', LLM_MAX_TOKENS: '32768' })).toMatchObject({ stream: true, max_tokens: 32768 });
+    const sse =
+      'data: {"choices":[{"delta":{"reasoning_content":"thinking"}}]}\n\n' +
+      'data: {"choices":[{"delta":{"content":"{\\"ok\\":"}}]}\n\n' +
+      'data: {"choices":[{"delta":{"content":"true}"},"finish_reason":"stop"}]}\n\n' +
+      'data: [DONE]\n\n';
+    const out = await chatComplete({ baseUrl: 'https://x', apiKey: 'k' }, 'm', [], true, {
+      fetchImpl: (async () => new Response(sse, { status: 200, headers: { 'content-type': 'text/event-stream' } })) as unknown as typeof fetch,
+      sleep: async () => {},
+    });
+    expect(out).toBe('{"ok":true}');
+  });
+
+  it('fails clearly when the reply was cut off at the token limit', async () => {
+    await expect(
+      chatComplete({ baseUrl: 'https://x', apiKey: 'k' }, 'm', [], true, {
+        fetchImpl: (async () => json(200, { choices: [{ message: { content: '{"id":"003",' }, finish_reason: 'length' }] })) as unknown as typeof fetch,
+        sleep: async () => {},
+      }),
+    ).rejects.toThrow(/token limit/);
+  });
+
   it('does not retry other 4xx errors', async () => {
     let calls = 0;
     await expect(
