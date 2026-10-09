@@ -1,0 +1,257 @@
+{
+  "id": "020",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Squarefree-values-of-quartics-and-power-free-values-of-polynomials-September-24-2026/manuscript.pdf",
+      "label": "Squarefree values of quartics and power-free values of polynomials"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/020.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Whole-number quartics like n⁴ + 2 take squarefree values at exactly the share the local guess predicts.",
+  "scope": "It covers fixed irreducible whole-number formulas of degree 4 to 8, at positive inputs, when no prime power divides every value.",
+  "plain": "A number is squarefree when no prime divides it twice. For a formula like n⁴ + 2, one can predict the share of inputs that give squarefree values. The prediction multiplies together one survival fraction for each prime. This paper proves the prediction is right for every suitable degree-4 formula, with a Lean proof listed. It proves the matching statement for degrees 5 to 8, which with earlier work covers every degree from 4 up.",
+  "doesNot": "This does not say which inputs give squarefree values, or how fast the count nears its limit.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1953",
+    "firstStepBy": "Paul Erdős, who singled out n⁴ + 2",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It closes the gap between degree 4 and degree 9 left by a line of results from 1976 to 2011."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Smallest degree d with a proven share of (d − 2)-power-free values",
+    "note": "Smaller is better. Degree 4 is the squarefree case for quartics.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1976,
+        "value": 24,
+        "who": "Nair",
+        "source": 3
+      },
+      {
+        "year": 2006,
+        "value": 10,
+        "who": "Heath-Brown",
+        "source": 4
+      },
+      {
+        "year": 2011,
+        "value": 9,
+        "who": "Browning",
+        "source": 5
+      },
+      {
+        "year": 2026,
+        "value": 4,
+        "who": "This paper",
+        "claim": true,
+        "source": 7
+      }
+    ]
+  },
+  "explanation": "Feed whole numbers into the formula n⁴ + 2. The input 1 gives 3. The input 2 gives 18, which is 2 × 3 × 3. The input 7 gives 2403, which is 3 × 3 × 3 × 89. Call a number squarefree when no prime appears twice in it. So 3 is squarefree, while 18 and 2403 are not. Among the inputs 1 to 5,000, exactly 3,787 give squarefree values. That is about 76%.\n\nWhere could a share like 76% come from? Check one prime at a time. The square of 2, which is 4, never divides n⁴ + 2. The square of 3, which is 9, divides it for 2 of the 9 possible remainders of n. So the prime 3 removes 2/9 of inputs and leaves 7/9. Each prime gives a survival fraction like this. Multiply them all together, and you get what is called an Euler product. For n⁴ + 2 it comes to about 0.757. The natural guess is that this product is the true long-run share.\n\nThe guess can fail in only one obvious way. Some prime square might divide every value of the formula. Then no value is squarefree at all. Call the formula admissible when that does not happen. The paper also needs the formula to be irreducible. That means it cannot be split into smaller whole-number formulas multiplied together.\n\nPaul Erdős singled out n⁴ + 2 as an open case in 1953. The general question allows any degree d, the highest power of n in the formula. It asks for values free of every prime raised to the power k. Such values are called k-power-free, so squarefree means 2-power-free. Ricci settled every k at least d in 1933. For k = d − 1, Erdős proved there are infinitely many such values. Hooley found their exact share in 1967.\n\nThe next step, k = d − 2, resisted. For degree 4 it is exactly the squarefree question. Nair's 1976 work reached k = d − 2 for degrees 24 and up. Heath-Brown's 2006 method brought this down to degree 10. Browning reached degree 9 in 2011. Degrees 4 to 8 stayed outside these ranges. Some other preprints claim special cases such as n⁴ + 1. This paper does not use those claims.\n\nThis paper proves the guess for every admissible irreducible formula of degree 4 to 8. Here k = d − 2. A Lean proof is listed. For degree 4 that is the squarefree statement. For degrees 5, 6, 7 and 8, the excluded powers are cubes, fourth, fifth and sixth powers. Combined with Browning's theorem, this covers every degree from 4 upward.\n\nThe hard part is large primes. Small primes are easy to handle by counting remainders, as with 3 above. But a value near n⁴ might be divisible by the square of a prime bigger than n itself. Counting remainders gives no control there. The paper shows that such inputs are rare enough to ignore. It turns each one into a point on a fixed surface, then shows such points are scarce.\n\nSo for n⁴ + 2, about 76% of all inputs give squarefree values, not just the first 5,000. The theorem gives this share as a limit. It does not say which inputs work, and it gives no rate for how fast the count settles. The inputs are positive whole numbers, and the formula is fixed in advance.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the result. The Lean scope note states it for every degree from 4 upward under the admissibility condition. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. A Lean formalization is listed for the main statement. No specialist review has been published yet, and the result gives no error rate.",
+  "glossary": [
+    {
+      "term": "Squarefree",
+      "meaning": "A whole number in which no prime appears twice, such as 3 or 258 but not 18."
+    },
+    {
+      "term": "k-power-free",
+      "meaning": "A whole number not divisible by any prime raised to the power k."
+    },
+    {
+      "term": "Irreducible polynomial",
+      "meaning": "A formula in n that cannot be split into a product of smaller whole-number formulas."
+    },
+    {
+      "term": "Degree",
+      "meaning": "The highest power of n that appears in a polynomial formula."
+    },
+    {
+      "term": "Euler product",
+      "meaning": "A product with one factor per prime; here each factor is the share of inputs that prime leaves alone."
+    },
+    {
+      "term": "Admissible",
+      "meaning": "Here, a formula where no prime raised to the power k divides every value."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer proof checker that tests each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, “Arithmetical properties of polynomials”, Journal of the London Mathematical Society s1-28 (1953), 416–425",
+      "url": "https://doi.org/10.1112/jlms/s1-28.4.416"
+    },
+    {
+      "id": 2,
+      "cite": "C. Hooley, “On the power free values of polynomials”, Mathematika 14 (1967), 21–26",
+      "url": "https://doi.org/10.1112/S002557930000797X"
+    },
+    {
+      "id": 3,
+      "cite": "M. Nair, “Power free values of polynomials”, Mathematika 23 (1976), 159–183",
+      "url": "https://doi.org/10.1112/S0025579300008779"
+    },
+    {
+      "id": 4,
+      "cite": "D. R. Heath-Brown, “Counting rational points on algebraic varieties”, Lecture Notes in Mathematics 1891 (2006), 51–95",
+      "url": "https://doi.org/10.1007/978-3-540-36364-4_2"
+    },
+    {
+      "id": 5,
+      "cite": "T. D. Browning, “Power-free values of polynomials”, Archiv der Mathematik 96 (2011), 139–150",
+      "url": "https://doi.org/10.1007/s00013-011-0224-7"
+    },
+    {
+      "id": 6,
+      "cite": "G. Ricci, “Ricerche aritmetiche sui polinomi”, Rendiconti del Circolo Matematico di Palermo 57 (1933), 433–475",
+      "url": "https://doi.org/10.1007/BF03017586"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Squarefree values of quartics and power-free values of polynomials” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Squarefree-values-of-quartics-and-power-free-values-of-polynomials-September-24-2026/manuscript.pdf",
+      "quote": "We prove that every irreducible integer quartic with no fixed prime-square divisor takes squarefree values with the predicted positive Euler-product density."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 020 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/020.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "An integer is k-power-free if no prime power p^k divides it; negatives are included and zero excluded.",
+      "verdict": "supported",
+      "sourceLine": "This convention includes negative integers and excludes zero.",
+      "sourceId": 7
+    },
+    {
+      "text": "The local condition says no prime kth power divides every value.",
+      "verdict": "supported",
+      "sourceLine": "It says that no prime $k$th power divides every value of $f$.",
+      "sourceId": 7
+    },
+    {
+      "text": "The predicted density is the product of the proportions surviving the separate congruence conditions.",
+      "verdict": "supported",
+      "sourceLine": "candidate for the density is the product of the proportions that survive",
+      "sourceId": 7
+    },
+    {
+      "text": "The paper proves the density for irreducible polynomials of degree 4 to 8 with k = d − 2.",
+      "verdict": "supported",
+      "sourceLine": "we obtain the corresponding $(d-2)$-power-free density in degrees $4\\le d\\le8$.",
+      "sourceId": 7
+    },
+    {
+      "text": "For quartics this is a squarefree-value density theorem; in degrees 5 to 8 the excluded powers are 3 to 6.",
+      "verdict": "supported",
+      "sourceLine": "For quartics this is a squarefree-value density theorem. In degrees $5,6,7,8$, the respective excluded powers are $3,4,5,6$.",
+      "sourceId": 7
+    },
+    {
+      "text": "The statement concerns positive integer inputs and the error term is not asserted to be uniform.",
+      "verdict": "supported",
+      "sourceLine": "The statement concerns positive integer inputs",
+      "sourceId": 7
+    },
+    {
+      "text": "No power-saving error is asserted in the density asymptotic.",
+      "verdict": "supported",
+      "sourceLine": "This order gives the exact Euler product without an assertion of a power-saving error in the density asymptotic.",
+      "sourceId": 7
+    },
+    {
+      "text": "Ricci obtained the asymptotic for k at least d in 1933.",
+      "verdict": "supported",
+      "sourceLine": "Ricci obtained the asymptotic in the range $k\\ge d$",
+      "sourceId": 6
+    },
+    {
+      "text": "Erdős proved infinitude for exponent d − 1 and Hooley obtained the asymptotic.",
+      "verdict": "supported",
+      "sourceLine": "Erd\\H{o}s proved infinitude for exponent $d-1$, and Hooley obtained the corresponding asymptotic",
+      "sourceId": 2
+    },
+    {
+      "text": "In 1953 Erdős singled out the unresolved squarefreeness of n^4 + 2.",
+      "verdict": "supported",
+      "sourceLine": "Already in 1953, Erd\\H{o}s singled out the unresolved squarefreeness",
+      "sourceId": 1
+    },
+    {
+      "text": "Nair's 1976 bound reaches k = d − 2 for d at least 24.",
+      "verdict": "supported",
+      "sourceLine": "The 1976 bound reaches $k=d-2$ for $d\\ge24$.",
+      "sourceId": 3
+    },
+    {
+      "text": "Heath-Brown's affine determinant method reaches k = d − 2 for d at least 10.",
+      "verdict": "supported",
+      "sourceLine": "reaching $k=d-2$ for $d\\ge10$.",
+      "sourceId": 4
+    },
+    {
+      "text": "Browning's range reaches k = d − 2 for d at least 9.",
+      "verdict": "supported",
+      "sourceLine": "which reaches $k=d-2$ for $d\\ge9$.",
+      "sourceId": 5
+    },
+    {
+      "text": "Other preprints claim results including n^4 + 1; the paper does not use them.",
+      "verdict": "supported",
+      "sourceLine": "We do not use either claim as a theorem input.",
+      "sourceId": 7
+    },
+    {
+      "text": "Together with Browning's theorem the result covers every d at least 4.",
+      "verdict": "supported",
+      "sourceLine": "Together with Browning's theorem for higher degrees, this gives the $(d-2)$-power-free density for every $d\\ge4$.",
+      "sourceId": 7
+    },
+    {
+      "text": "The remaining task is to control primes larger than the input range.",
+      "verdict": "supported",
+      "sourceLine": "The remaining task is to control primes larger than the length of the input interval.",
+      "sourceId": 7
+    },
+    {
+      "text": "The relation f(n) = y p^k puts the chosen points on a surface.",
+      "verdict": "supported",
+      "sourceLine": "puts the chosen triples on the surface",
+      "sourceId": 7
+    },
+    {
+      "text": "The Lean formalized result covers every irreducible integer polynomial of degree at least 4 with k = d − 2 under the local condition.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "Among inputs 1 to 5,000, 3,787 give squarefree values of n^4 + 2, and the Euler product is about 0.757 (recomputed in Python, primes below 20,000).",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

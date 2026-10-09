@@ -1,0 +1,244 @@
+{
+  "id": "039",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nagatas-Conjecture-for-Plane-Curves-September-23-2026/main.pdf",
+      "label": "Nagata's conjecture for plane curves"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Maximal-Seshadri-Constants-on-Arbitrary-Polarized-Surfaces-September-23-2026/main.pdf",
+      "label": "Maximal Seshadri constants on arbitrary polarized surfaces"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Maximal-Multipoint-Seshadri-Constants-in-Higher-Dimensions-October-5-2026/main.pdf",
+      "label": "Maximal Multipoint Seshadri Constants in Higher Dimensions"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Maximal-multipoint-Seshadri-constants-in-positive-characteristic-October-5-2026/seshadri-positive-characteristic.pdf",
+      "label": "Maximal multipoint Seshadri constants in positive characteristic"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/039.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Nagata's 1959 rule for curves through random points holds for every count from 10 points up.",
+  "scope": "The plane result needs at least 10 very general complex points. The other results need enough points.",
+  "plain": "Nagata's conjecture limits how many times a plane curve can pass through random points, given its degree. At r random points, with r at least 10, the total multiplicity must stay below the degree times √r. This paper proves that rule for every such r, with a Lean proof listed. A companion paper proves a matching statement on every smooth surface once there are enough points. Two later papers claim to prove it in higher dimensions and in positive characteristic.",
+  "doesNot": "This does not give an explicit number of points beyond which the surface and higher-dimensional results start.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1959",
+    "firstStepBy": "Masayoshi Nagata, proof for square numbers of points from 16",
+    "field": "Algebraic and complex geometry",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle Nagata's conjecture, open since 1959, and its surface version."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven lower bound on degree per multiplicity at ten random points",
+    "note": "Equal multiplicities m. Higher is better. Nagata's target is √10, about 3.1623, with strict inequality.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 2001,
+        "value": 2.6073,
+        "who": "Roé",
+        "source": 2
+      },
+      {
+        "year": 2011,
+        "value": 3.1622,
+        "who": "Eckl; Ciliberto–Dumitrescu–Miranda–Roé",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 3.1623,
+        "who": "This paper",
+        "claim": true,
+        "source": 6
+      }
+    ]
+  },
+  "explanation": "Pick nine points in the plane, scattered at random. Is there a cubic curve through all nine? A cubic equation has 10 coefficients. Passing through a point is one linear condition on them. Nine conditions on 10 unknowns always leave a nonzero solution. So a cubic through the nine points always exists. Add a tenth random point and the count becomes 10 conditions on 10 unknowns. Now the cubic usually disappears.\n\nNagata's conjecture turns this into a rule. Take a plane curve of degree d, meaning its equation has degree d. Its multiplicity at a point counts how many of its branches cross there. A simple pass counts 1. A curve that crosses itself three times there counts 3. The rule says: at r random points, with r at least 10, add up the multiplicities. The total must stay below d times the square root of r. For the tenth-point cubic, the total would be 10. The limit is 3 times √10, about 9.49. So the cubic is forbidden. At nine points the limit is exactly 3 times 3, which is 9. The cubic sits exactly on the line, so the strict rule cannot start at nine.\n\nCounting suggests the square root. A degree-d equation has (d+1)(d+2)/2 coefficients. Multiplicity m at r points costs at most r·m(m+1)/2 conditions. For large curves the two counts balance when d equals m times √r. But counting alone proves nothing below that line. Conditions can overlap, and then fewer of them really bite. The paper names the hard part: the dependencies among the conditions must be controlled for every m.\n\nMasayoshi Nagata posed the problem in 1959, in his work on Hilbert's fourteenth problem. He proved the rule when r is a perfect square, at least 16. Every other count stayed open. Joaquim Roé proved a general bound in 2001. With all multiplicities equal to m and r at least 10, d exceeds m(√(r−1) − π/8). At ten points that gives about 2.61 times m, against the target of about 3.162. Later work by Thomas Eckl and by Ciliberto, Dumitrescu, Miranda and Roé pushed the ten-point bound to 117/37. That is about 3.16216. The target √10 is about 3.16228.\n\nThe gap looks tiny, but it hides real curves. Take ten random points, each crossed 37 times. The old bound allows degree 117, since 117/37 just meets it. Nagata's rule needs degree above 37 times √10, about 117.004. So it demands at least 118. The count already leans against degree 117: 7021 coefficients against 7030 conditions. Overlaps could still let a curve slip through. Only a proof can close that door.\n\nThe first paper proves the full rule for every r from 10 up. It covers curves made of several pieces, repeated pieces, and unequal multiplicities at different points. Here very general means one thing precisely. A thin set of bad point positions is removed once, for all curves at the same time. It is a countable union of lower-dimensional pieces, so random points avoid it. The paper also extends the result to other number systems that behave like the complex numbers.\n\nThe other papers move from the plane to other shapes. A Seshadri constant measures how far a curve's degree must outweigh its multiplicities at r chosen points. There is a simple ceiling for it, set by the shape's size and by r. The second paper covers any smooth surface with any chosen notion of degree. It proves that random points reach that ceiling once r is large enough. How large depends on the surface, and no explicit number is given. Two later papers claim to prove the same in every higher dimension. One works over the complex numbers. The other works in positive characteristic, number systems where adding some prime number of 1s gives 0.\n\nHow sure is this? A computer proof checker called Lean has checked the plane rule for every r from 10. That check covers reducible curves, repeated pieces and unequal multiplicities. Lean has also checked the surface result. Its threshold is not explicit. The higher-dimensional and positive-characteristic papers are outside the Lean scope note. No specialists have published a review yet.",
+  "hypeCheck": "Landmark only if the proofs hold. The plane rule and the surface result have Lean formalizations listed. The higher-dimensional and positive-characteristic papers do not, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Plane curve of degree d",
+      "meaning": "The set of points where one polynomial equation of degree d in the plane's coordinates holds."
+    },
+    {
+      "term": "Multiplicity",
+      "meaning": "How many times a curve passes through a point, counting each branch that crosses there."
+    },
+    {
+      "term": "Very general points",
+      "meaning": "Points that avoid one fixed countable union of thin bad sets, so random points qualify."
+    },
+    {
+      "term": "Seshadri constant",
+      "meaning": "The smallest ratio of a curve's degree to its total multiplicity at chosen points."
+    },
+    {
+      "term": "Positive characteristic",
+      "meaning": "A number system where adding some prime number of 1s gives 0."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Nagata, “On the 14-th Problem of Hilbert”, American Journal of Mathematics 81 (1959)",
+      "url": "https://doi.org/10.2307/2372927"
+    },
+    {
+      "id": 2,
+      "cite": "J. Roé, “On the existence of plane curves with imposed multiple points”, Journal of Pure and Applied Algebra 156 (2001)",
+      "url": "https://arxiv.org/abs/math/9807066v2"
+    },
+    {
+      "id": 3,
+      "cite": "T. Eckl, “Ciliberto–Miranda degenerations of CP² blown up in 10 points”, Journal of Pure and Applied Algebra 215 (2011)",
+      "url": "https://doi.org/10.1016/j.jpaa.2010.06.016"
+    },
+    {
+      "id": 4,
+      "cite": "C. Ciliberto, O. Dumitrescu, R. Miranda and J. Roé, “Emptiness of homogeneous linear systems with ten general base points”, in Classification of Algebraic Varieties (2011)",
+      "url": "https://doi.org/10.4171/007-1/8"
+    },
+    {
+      "id": 5,
+      "cite": "C. Ciliberto, R. Miranda and J. Roé, “Irrational Nef Rays at the Boundary of the Mori Cone for Very General Blowups of the Plane”, Michigan Mathematical Journal 76 (2026)",
+      "url": "https://doi.org/10.1307/mmj/20236356"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Nagata's conjecture for plane curves” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nagatas-Conjecture-for-Plane-Curves-September-23-2026/main.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Maximal Seshadri constants on arbitrary polarized surfaces” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Maximal-Seshadri-Constants-on-Arbitrary-Polarized-Surfaces-September-23-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Maximal Multipoint Seshadri Constants in Higher Dimensions” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Maximal-Multipoint-Seshadri-Constants-in-Higher-Dimensions-October-5-2026/main.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “Maximal multipoint Seshadri constants in positive characteristic” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Maximal-multipoint-Seshadri-constants-in-positive-characteristic-October-5-2026/seshadri-positive-characteristic.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 039 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/039.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "At nine points a nonzero cubic always exists, so the strict rule cannot start at nine.",
+      "verdict": "supported",
+      "sourceLine": "at nine points a nonzero cubic always exists, so the asserted strict inequality cannot start at"
+    },
+    {
+      "text": "A degree-d equation has (d+1)(d+2)/2 coefficients, and multiplicity m at r points imposes at most r·m(m+1)/2 conditions.",
+      "verdict": "supported",
+      "sourceLine": "A degree-$d$ form has $\\binom{d+2}{2}$ coefficients, and order at least $m$ at $r$ points imposes at most $r\\binom{m+1}{2}$ linear conditions."
+    },
+    {
+      "text": "The counts balance when d equals m times √r.",
+      "verdict": "supported",
+      "sourceLine": "Their leading terms balance at $d=m\\sqrt r$."
+    },
+    {
+      "text": "Ruling out curves below that scale requires controlling the dependencies among the conditions for every m.",
+      "verdict": "supported",
+      "sourceLine": "proving their absence below it requires control of the dependencies among the conditions, for every $m$."
+    },
+    {
+      "text": "Nagata introduced the problem in his work on Hilbert's fourteenth problem and proved the square cases r ≥ 16.",
+      "verdict": "supported",
+      "sourceLine": "Nagata introduced the problem in his work on Hilbert's fourteenth problem and proved the square cases $r\\ge16$"
+    },
+    {
+      "text": "Roé obtained d > m(√(r−1) − π/8) for r ≥ 10 with equal multiplicities.",
+      "verdict": "supported",
+      "sourceLine": "uniform estimate $d>m(\\sqrt{r-1}-\\pi/8)$ for $r\\ge10$"
+    },
+    {
+      "text": "For ten very general points, Eckl and Ciliberto–Dumitrescu–Miranda–Roé give d/m ≥ 117/37 for every nonempty homogeneous system.",
+      "verdict": "supported",
+      "sourceLine": "For ten very general points, degeneration methods give $d/m\\ge117/37$ for every nonempty homogeneous system"
+    },
+    {
+      "text": "The theorem gives d√r greater than the total multiplicity for every r ≥ 10, for every nonzero effective curve outside one countable union of proper closed sets.",
+      "verdict": "supported",
+      "sourceLine": "For every integer $r\\ge10$, there is a countable union $E_r$ of proper Zariski-closed subsets of $U_r$, with nonempty complement"
+    },
+    {
+      "text": "Very general means the complement of one countable union of proper closed subsets, chosen simultaneously for all degrees and multiplicity vectors.",
+      "verdict": "supported",
+      "sourceLine": "complement of one countable union of proper closed subsets, chosen simultaneously for all degrees and multiplicity vectors."
+    },
+    {
+      "text": "Components may repeat, and unequal multiplicities are allowed.",
+      "verdict": "supported",
+      "sourceLine": "Components may repeat."
+    },
+    {
+      "text": "The plane result extends to every uncountable algebraically closed field of characteristic zero.",
+      "verdict": "supported",
+      "sourceLine": "extends the theorem to every uncountable algebraically closed field of characteristic zero."
+    },
+    {
+      "text": "On every smooth complex projective surface with an ample line bundle, the multipoint Seshadri constant equals √(L²/r) at very general points for all r beyond a threshold r0(S,L).",
+      "verdict": "supported",
+      "sourceLine": "there is an integer $r_0=r_0(S,L)$ with the following property."
+    },
+    {
+      "text": "The surface threshold depends on the polarized surface.",
+      "verdict": "supported",
+      "sourceLine": "The threshold is allowed to depend on the polarized surface."
+    },
+    {
+      "text": "The universal upper bound is the volume bound (L^n/r)^{1/n}.",
+      "verdict": "supported",
+      "sourceLine": "Its universal upper bound is"
+    },
+    {
+      "text": "The higher-dimensional paper treats smooth complex projective varieties of dimension at least 3.",
+      "verdict": "supported",
+      "sourceLine": "Let $X$ be a smooth integral complex projective variety of dimension $n\\ge3$, and let $L$ be an ample line bundle on $X$."
+    },
+    {
+      "text": "The positive-characteristic paper claims the volume bound is reached at the geometric generic tuple for r ≥ r0, also when n = 2.",
+      "verdict": "supported",
+      "sourceLine": "The same conclusion holds when $n=2$"
+    },
+    {
+      "text": "Lean formalizes the plane inequality, including reducible curves, repeated components and unequal multiplicities, and the surface maximality result; the threshold is not explicit.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

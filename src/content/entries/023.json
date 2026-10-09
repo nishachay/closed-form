@@ -1,0 +1,222 @@
+{
+  "id": "023",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026/paper.pdf",
+      "label": "An unconditional first moment for cubic Gauss sums"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/023.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Cubic Gauss sums over primes lean positive at exactly the rate Patterson predicted in 1978.",
+  "scope": "The result averages over all primary Eisenstein primes up to a size limit. It uses a sharp cutoff and no GRH.",
+  "plain": "Cubic Gauss sums turn each prime into a point on a circle, and these points spread evenly. Patterson predicted in 1978 that their average still leans slightly positive, at a precise rate. This paper proves that prediction without assuming the Generalized Riemann Hypothesis (Lean proof listed). Earlier work needed that hypothesis and a smoothed cutoff.",
+  "doesNot": "This does not give a rate for the error, or settle the power cases divisible by three.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "S. J. Patterson, predicted bias of Kummer sums",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it removes the GRH assumption from a known conditional proof of a 1978 prediction."
+  },
+  "explanation": "Take the prime 7. Cube each whole number from 0 to 6 and keep the remainder after dividing by 7. You get 0, 1, 1, 6, 1, 6 and 6. Now treat each remainder r as an arrow of length 1. It points r sevenths of the way round a circle. Add the seven arrows tip to tail. The total points straight along the horizontal axis and has length about 4.741. This total is Kummer's sum for 7.\n\nKummer's sum exists for every prime that leaves remainder 1 when divided by 3. Divide it by twice the square root of the prime. The result is the normalized sum, a number between −1 and 1. For 7 it is about 0.896. For 13 it is about 0.253, for 19 about −0.306, and for 31 about 0.921. The values look like random points on a scale from −1 to 1.\n\nIn a sense they are random. In 1979, Heath-Brown and Patterson proved that the underlying angles spread evenly round the circle. Yet the tally leans one way. Below 30,000 there are 1,610 such primes. Of their normalized sums, 991 are positive, and the total is about 301. Truly random values of this kind would typically total about 28 in either direction. Kummer had suspected a lean toward positive values in 1846.\n\nEven spread and a lean can both be true, because the lean is small. In 1978, Patterson predicted its size. In the paper's simple model, each prime p tilts the tally by about 0.838 divided by the sixth root of p. Near 30,000 that tilt is about 0.15. Adding it over the same 1,610 primes gives about 298, close to the observed 301. Up to a limit X, the tilts add up to roughly X to the power 5/6, over the logarithm of X. Heath-Brown proved an upper bound of nearly that size in 2000.\n\nDunn and Radziwiłł proved a smoothed version of Patterson's prediction in a paper published in 2024. Smoothed means primes near the limit X count only partly. Their proof assumed the Generalized Riemann Hypothesis, or GRH. GRH is a famous unproved statement that would guarantee strong cancellation in sums over primes. The obstacle was to get enough cancellation without it, and with a sharp cutoff at X.\n\nThis paper proves the prediction without GRH and with the sharp cutoff. Its main statement uses Eisenstein integers, numbers built from whole numbers and a cube root of 1. Each prime like 7 splits into two such primes, a pair of mirror images. Each gets its own normalized Gauss sum. The pair adds up to Kummer's sum divided by the square root of p. The paper sums these over all such primes up to size X. The total grows like a fixed constant times X to the power 5/6, over the logarithm of X. The paper does not improve the general tools for arbitrary prime sums. It finds the extra cancellation only in the special prime-built sums that arise here.\n\nThe theorem is a statement about the long run. At 30,000 its rational-prime formula predicts about 263, not the observed 301. It says the ratio tends to 1, with no rate for the error. The paper also weights each value by a fixed power of its prime's angle. Then the lean disappears at this scale. This holds for each fixed nonzero power, not uniformly as the power grows. It settles part of Patterson's companion prediction about powers of the sums. The cases with powers divisible by three stay open. One older paper prints two conflicting constants. The paper says which form it proves and does not claim to settle that conflict.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main result and the angle results. The scope note says they cover all primary Eisenstein primes, with no extra conjectural premise. Each statement is matched against a fixed reference statement by a tool called Comparator. The consequences for powers and for the rational-prime form are not in the scope note. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. Lean has checked the main statements, but no specialist review is published. It extends a known GRH-based result rather than opening a new area.",
+  "glossary": [
+    {
+      "term": "Kummer sum",
+      "meaning": "For a prime p, the total of p arrows of length 1, aimed by the cubes of 0 to p−1 modulo p."
+    },
+    {
+      "term": "Cubic Gauss sum",
+      "meaning": "A related sum attached to a prime of the Eisenstein integers; after normalizing it has length 1."
+    },
+    {
+      "term": "Eisenstein integers",
+      "meaning": "Numbers of the form a + bω, with a and b whole numbers and ω a cube root of 1 other than 1."
+    },
+    {
+      "term": "Primary prime",
+      "meaning": "The one chosen form of an Eisenstein prime that leaves remainder 1 when divided by 3."
+    },
+    {
+      "term": "Generalized Riemann Hypothesis (GRH)",
+      "meaning": "An unproved statement about where certain functions vanish; it would give strong cancellation in prime sums."
+    },
+    {
+      "term": "Equidistribution",
+      "meaning": "Values spreading evenly, so each arc of the circle gets its fair share in the long run."
+    },
+    {
+      "term": "Angular Fourier mode",
+      "meaning": "A weight that turns each prime's value by a fixed whole-number multiple of the prime's own angle."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "E. E. Kummer, “De residuis cubicis disquisitiones nonnullae analyticae”, J. reine angew. Math. 32 (1846), 341–359",
+      "url": "https://doi.org/10.1515/crll.1846.32.341"
+    },
+    {
+      "id": 2,
+      "cite": "S. J. Patterson, “On the distribution of Kummer sums”, J. reine angew. Math. 303/304 (1978), 126–143",
+      "url": "https://doi.org/10.1515/crll.1978.303-304.126"
+    },
+    {
+      "id": 3,
+      "cite": "D. R. Heath-Brown and S. J. Patterson, “The distribution of Kummer sums at prime arguments”, J. reine angew. Math. 310 (1979), 111–130",
+      "url": "https://doi.org/10.1515/crll.1979.310.111"
+    },
+    {
+      "id": 4,
+      "cite": "D. R. Heath-Brown, “Kummer's conjecture for cubic Gauss sums”, Israel J. Math. 120 (2000), 97–124",
+      "url": "https://doi.org/10.1007/s11856-000-1273-y"
+    },
+    {
+      "id": 5,
+      "cite": "A. Dunn and M. Radziwiłł, “Bias in cubic Gauss sums: Patterson's conjecture”, Annals of Mathematics 200 (2024), 967–1057",
+      "url": "https://doi.org/10.4007/annals.2024.200.3.3"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “An unconditional first moment for cubic Gauss sums” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026/paper.pdf",
+      "quote": "We prove Patterson's first-moment conjecture for normalized cubic Gauss sums over all primary Eisenstein primes, unconditionally."
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for family 023 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/023.md"
+    },
+    {
+      "id": 8,
+      "cite": "Closed Form worked example: Kummer sums for primes p ≡ 1 (mod 3) below 30,000, computed directly from the definition (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-unconditional-first-moment-for-cubic-Gauss-sums-September-25-2026/paper.pdf"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Kummer's sum for a prime p ≡ 1 mod 3 adds e(x³/p) over x mod p.",
+      "verdict": "supported",
+      "sourceLine": "For a rational prime … Kummer's sum is"
+    },
+    {
+      "text": "Kummer's numerical observations suggested a bias toward positive values.",
+      "verdict": "supported",
+      "sourceLine": "Kummer's numerical observations~\\cite{Kummer1846} suggested a bias toward positive values."
+    },
+    {
+      "text": "Heath-Brown and Patterson proved equidistribution of the normalized cubic Gauss sums on the unit circle.",
+      "verdict": "supported",
+      "sourceLine": "Heath-Brown and Patterson~\\cite{HBP1979} proved equidistribution of the normalized cubic Gauss sums on the unit circle."
+    },
+    {
+      "text": "Equidistribution is compatible with a smaller persistent first moment.",
+      "verdict": "supported",
+      "sourceLine": "is compatible with a smaller persistent first moment."
+    },
+    {
+      "text": "Patterson predicted a bias on the scale X^{5/6}/log X.",
+      "verdict": "supported",
+      "sourceLine": "predicted a bias on the scale"
+    },
+    {
+      "text": "Heath-Brown's cubic large sieve gave the unconditional upper bound O(X^{5/6+ε}).",
+      "verdict": "supported",
+      "sourceLine": "Heath-Brown's cubic large sieve gave the unconditional upper bound"
+    },
+    {
+      "text": "Dunn and Radziwiłł proved a smoothed first-moment asymptotic under GRH.",
+      "verdict": "supported",
+      "sourceLine": "they proved a smoothed first-moment asymptotic under the Generalized Riemann Hypothesis for Hecke"
+    },
+    {
+      "text": "The difficulty is making the comparison with a sharp upper limit.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to make that comparison with a sharp upper limit"
+    },
+    {
+      "text": "The model term per prime is c_* N(π)^{-1/6}, with c_* = (2π)^{2/3}/(3Γ(2/3)) ≈ 0.838.",
+      "verdict": "supported",
+      "sourceLine": "The analytic target is a comparison with the elementary model"
+    },
+    {
+      "text": "Each split rational prime gives two conjugate primary primes, both counted, and their Gauss sums add to S_p/√p.",
+      "verdict": "supported",
+      "sourceLine": "In particular, both conjugate prime ideals above a split rational prime are counted."
+    },
+    {
+      "text": "The main theorem gives the sum over primary primes of norm at most X as (6/5)c_* X^{5/6}/log X plus a smaller error.",
+      "verdict": "supported",
+      "sourceLine": "We prove Patterson's first-moment conjecture for normalized cubic Gauss sums over all primary Eisenstein primes, unconditionally."
+    },
+    {
+      "text": "In rational-prime form the sum of S_p/(2√p) is asymptotic to (3/5)c_* X^{5/6}/log X.",
+      "verdict": "supported",
+      "sourceLine": "Consequently Theorem … gives"
+    },
+    {
+      "text": "No GRH-dependent cancellation result is an input.",
+      "verdict": "supported",
+      "sourceLine": "In particular, no GRH-dependent cancellation result is an input."
+    },
+    {
+      "text": "The paper does not improve the cubic large sieve for arbitrary coefficients.",
+      "verdict": "supported",
+      "sourceLine": "We do not improve the cubic large sieve for arbitrary coefficients."
+    },
+    {
+      "text": "The new cancellation is confined to structured prime polynomials.",
+      "verdict": "supported",
+      "sourceLine": "The new cancellation needed here is confined to structured prime polynomials."
+    },
+    {
+      "text": "The error is little-oh at the first-moment scale.",
+      "verdict": "supported",
+      "sourceLine": "The error here is little-oh at the first-moment scale."
+    },
+    {
+      "text": "For each fixed nonzero mode the twisted moment is smaller order; no uniformity in a growing angular parameter is asserted.",
+      "verdict": "supported",
+      "sourceLine": "no uniformity in a growing angular parameter is asserted."
+    },
+    {
+      "text": "The fixed-power consequence establishes the part with 3 not dividing k; multiples of three require stronger information.",
+      "verdict": "supported",
+      "sourceLine": "The fixed-power consequence above establishes the part with … nonzero multiples of three require stronger information about angular"
+    },
+    {
+      "text": "The paper does not claim to settle which printed historical coefficient is authoritative.",
+      "verdict": "supported",
+      "sourceLine": "We do not silently identify the conflicting normalizations or claim to have settled which printed historical coefficient is authoritative."
+    },
+    {
+      "text": "The normalized value S_p/(2√p) lies between −1 and 1, since |G(π)| = 1.",
+      "verdict": "supported",
+      "sourceLine": "Negative powers are well-defined because"
+    },
+    {
+      "text": "Lean formalization covers the sharp-cutoff asymptotic, the angular comparison for every integer mode, and cancellation for each fixed nonzero mode, over all primary Eisenstein primes without an extra conjectural premise.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "Worked numbers (S_7 ≈ 4.741; normalized 0.896, 0.253, −0.306, 0.921; 1,610 primes below 30,000, 991 positive, total ≈ 301; model total ≈ 298; formula ≈ 263) were recomputed from the definitions.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

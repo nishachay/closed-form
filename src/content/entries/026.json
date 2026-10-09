@@ -1,0 +1,218 @@
+{
+  "id": "026",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-lower-density-of-large-prime-gaps-September-25-2026/main.pdf",
+      "label": "Positive lower density of large prime gaps"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/026.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "For any size bar, a fixed share of prime gaps clears it, all the way out.",
+  "scope": "It covers gaps between consecutive primes. The bar is a fixed multiple of the log of the smaller prime.",
+  "plain": "Primes near a number p are about log p apart on average. Some gaps between consecutive primes are much larger than that. This paper claims to prove that a positive share of gaps exceeds any fixed multiple of log p. The share stays above a fixed level for every long enough stretch of primes. It also answers a 1962 question of Erdős and Prachar about the ratio of each prime to its position.",
+  "doesNot": "This does not give the size of the share, and it does not find new record-size gaps.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1962",
+    "firstStepBy": "Erdős and Prachar, question on rising steps of p/n",
+    "field": "Number theory",
+    "significance": "Solid",
+    "significanceWhy": "It answers a 1962 question and closes a gap between record-gap results and how often large gaps occur."
+  },
+  "explanation": "Look at the primes near 113. The next prime after 113 is 127, so the gap between them is 14. Near 113, primes are usually about 4.7 apart. So this gap is about three times the usual size. Such gaps are not rare. Among the first million primes, 31,946 gaps are more than three times the usual size. That is about 3.2%. For five times the usual size, the count is 2,420, about 0.24%. The share falls fast as the bar rises. The question is whether it keeps falling toward zero as the primes go on.\n\nThe usual size has a precise meaning. The prime number theorem, a classical result on how primes thin out, sets the average gap near a number p. That average is about log p, the natural logarithm of p. The natural log of 113 is about 4.7. The millionth prime is 15,485,863, and its log is about 16.6. So primes slowly spread out, and the yardstick grows with them.\n\nMathematicians knew long ago that single gaps can be huge. Westzynthius proved in 1931 that gaps can exceed any fixed multiple of log p. Erdős and Rankin then gave stronger and stronger lower bounds for the largest gaps. In 2016, Ford, Green, Konyagin and Tao, and separately Maynard, pushed these bounds further. The five of them then wrote a joint paper in 2018. But all of this concerns a few record gaps. A record gap says nothing about how often large gaps occur. The closest earlier result on frequency came from Bazzanella, Languasco and Zaccagnini in 2010. They got a positive share of gaps only for bars below about 0.579 times log p. That is smaller than an average gap.\n\nThe main obstacle is a counting trap. It is easier to count empty stretches of numbers than to count gaps. But one long gap contains many short empty stretches. So a few giant gaps could produce many empty stretches. Counting stretches cannot tell many large gaps from a handful of enormous ones. Terence Tao pointed out this missing control in a 2019 online answer.\n\nThe paper avoids the trap with one extra demand. It looks at two windows of equal length placed side by side. The first window must contain a prime, and the second must contain none. Then the last prime in the first window starts a gap longer than one window. Each prime can be picked this way only a limited number of times, however long its gap is. So many good window pairs force many distinct large gaps. The hard part is showing that such pairs are common. The paper builds special weights that keep the first window likely to hold a prime. At the same time, they make a prime in the second window very unlikely.\n\nThe main theorem says this. Fix any bar, say C times log p, for any positive number C. Then a fixed positive share of the first N gaps clears that bar. This holds for every large enough N, not just for some lucky N. Mathematicians call this a positive lower density. The share may depend on C. In the example, the 0.24% at five times the yardstick cannot drift down to zero. The same holds at a hundred times the yardstick. The theorem does not say what the share actually is. The counts above are only data, not the theorem's constant.\n\nThere is also an old puzzle behind the result. Divide each prime by its position in the list. The first five are 2/1 = 2, 3/2 = 1.5, 5/3 ≈ 1.67, 7/4 = 1.75 and 11/5 = 2.2. These ratios creep upward on average, but they zigzag. A ratio rises at a step exactly when the next gap is larger than the current ratio. That ratio is roughly log p. So the theorem with a bar of twice the log handles it. In 1962, Erdős and Prachar asked whether the rising steps have positive lower density. Among the first million steps, 406,140 rise, about 41%. The paper answers their question with yes.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the answer to Erdős and Prachar. It states that the steps where the ratio rises have positive lower density. The Lean scope note does not describe a separate check of the main theorem for every C. So for that general statement, the paper claims to prove it. No specialists have published a review yet.",
+  "hypeCheck": "Solid if the proof holds. Lean has checked the Erdős–Prachar consequence, but the scope note does not describe a check of the general theorem. No specialist review is published, and the share it guarantees has no stated size.",
+  "glossary": [
+    {
+      "term": "Prime gap",
+      "meaning": "The distance between one prime and the next prime, such as 14 between 113 and 127."
+    },
+    {
+      "term": "Natural logarithm (log)",
+      "meaning": "A slowly growing function; log p is roughly the average gap between primes near p."
+    },
+    {
+      "term": "Prime number theorem",
+      "meaning": "A classical result describing how primes thin out; it makes log p the average gap near p."
+    },
+    {
+      "term": "Positive lower density",
+      "meaning": "A set of positions has it if, in every long enough starting stretch, it fills at least a fixed share."
+    },
+    {
+      "term": "Corollary",
+      "meaning": "A result that follows quickly from a main theorem."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Positive lower density of large prime gaps”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-lower-density-of-large-prime-gaps-September-25-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "P. Erdős and K. Prachar, “Sätze und Probleme über p_k/k”, Abh. Math. Sem. Univ. Hamburg 25 (1962), 251–256",
+      "url": "https://doi.org/10.1007/BF02992930"
+    },
+    {
+      "id": 3,
+      "cite": "E. Westzynthius, “Über die Verteilung der Zahlen, die zu den n ersten Primzahlen teilerfremd sind”, Comment. Phys.-Math. 5 (1931), no. 25, 1–37 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 4,
+      "cite": "P. Erdős, “On the difference of consecutive primes”, Quart. J. Math. Oxford 6 (1935), 124–128",
+      "url": "https://doi.org/10.1093/qmath/os-6.1.124"
+    },
+    {
+      "id": 5,
+      "cite": "R. A. Rankin, “The difference between consecutive prime numbers”, J. London Math. Soc. 13 (1938), 242–247",
+      "url": "https://doi.org/10.1112/jlms/s1-13.4.242"
+    },
+    {
+      "id": 6,
+      "cite": "K. Ford, B. Green, S. Konyagin and T. Tao, “Large gaps between consecutive prime numbers”, Annals of Mathematics 183 (2016), 935–974",
+      "url": "https://doi.org/10.4007/annals.2016.183.3.4"
+    },
+    {
+      "id": 7,
+      "cite": "J. Maynard, “Large gaps between primes”, Annals of Mathematics 183 (2016), 915–933",
+      "url": "https://doi.org/10.4007/annals.2016.183.3.3"
+    },
+    {
+      "id": 8,
+      "cite": "K. Ford, B. Green, S. Konyagin, J. Maynard and T. Tao, “Long gaps between primes”, J. Amer. Math. Soc. 31 (2018), 65–105",
+      "url": "https://doi.org/10.1090/jams/876"
+    },
+    {
+      "id": 9,
+      "cite": "D. Bazzanella, A. Languasco and A. Zaccagnini, “Prime numbers in logarithmic intervals”, Trans. Amer. Math. Soc. 362 (2010), 2667–2684",
+      "url": "https://arxiv.org/abs/0809.2967"
+    },
+    {
+      "id": 10,
+      "cite": "T. Tao, answer to “Positive proportion of logarithmic gaps between consecutive primes”, MathOverflow (May 2019)",
+      "url": "https://mathoverflow.net/a/332888"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for family 026",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/026.md"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The prime number theorem makes log p the average scale of prime gaps near p.",
+      "verdict": "supported",
+      "sourceLine": "as the average scale of prime gaps near"
+    },
+    {
+      "text": "Westzynthius proved that gaps divided by log p are unbounded.",
+      "verdict": "supported",
+      "sourceLine": "Westzynthius proved that … is unbounded"
+    },
+    {
+      "text": "Erdős and Rankin gave increasingly strong lower bounds for exceptionally large gaps.",
+      "verdict": "supported",
+      "sourceLine": "gave increasingly strong quantitative lower bounds for exceptionally large gaps"
+    },
+    {
+      "text": "Ford, Green, Konyagin and Tao, and separately Maynard, obtained modern refinements, followed by joint work.",
+      "verdict": "supported",
+      "sourceLine": "Modern refinements were obtained independently by Ford, Green, Konyagin and Tao and by Maynard"
+    },
+    {
+      "text": "A lower bound for the largest gap does not give a positive proportion of gaps above a fixed multiple of log p.",
+      "verdict": "supported",
+      "sourceLine": "A lower bound for the largest gap does not by itself give a positive proportion of gaps exceeding a fixed multiple of"
+    },
+    {
+      "text": "Bazzanella, Languasco and Zaccagnini got positive prime-start proportions only for thresholds below 0.579038…",
+      "verdict": "supported",
+      "sourceLine": "Their Theorem~5 gives positive prime-start proportions for each fixed threshold below"
+    },
+    {
+      "text": "A long gap contains many empty short intervals, so a few long gaps can account for many empty intervals.",
+      "verdict": "supported",
+      "sourceLine": "Consequently a positive proportion of empty intervals may be accounted for by a sparse set of very long gaps."
+    },
+    {
+      "text": "Tao's empty-interval argument identifies the extra control needed to pass from intervals to gap counts.",
+      "verdict": "supported",
+      "sourceLine": "argument … also identifies the additional control required to pass from interval measure to gap counts."
+    },
+    {
+      "text": "The last prime in the first window begins a gap longer than the window, and each prime is picked at most h times.",
+      "verdict": "supported",
+      "sourceLine": "It can be selected by at most … values of … independently of the length of that gap."
+    },
+    {
+      "text": "The weights give a prime in the first window substantial weight while making primes in the second window arbitrarily rare.",
+      "verdict": "supported",
+      "sourceLine": "whereas the expected number of primes in"
+    },
+    {
+      "text": "For every fixed C, a positive proportion of the first N gaps exceed C log p_n for all large N.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed real"
+    },
+    {
+      "text": "The bound holds for every sufficiently large initial segment, and the constants may depend on C.",
+      "verdict": "supported",
+      "sourceLine": "The density is ordinary lower density: the bound holds for every sufficiently large initial segment, and both constants may depend on the fixed threshold"
+    },
+    {
+      "text": "Erdős and Prachar asked whether the indices where p_n/n increases have positive lower density.",
+      "verdict": "supported",
+      "sourceLine": "asked whether the indices at which this ratio increases have positive lower density"
+    },
+    {
+      "text": "The ratio rises exactly when the next gap exceeds p_n/n, and p_n/n is asymptotic to log p_n.",
+      "verdict": "supported",
+      "sourceLine": "The displayed inequality is equivalent to"
+    },
+    {
+      "text": "The corollary follows by applying the theorem with C = 2.",
+      "verdict": "supported",
+      "sourceLine": "Apply Theorem~\\ref{thm:main} with … and discard the finitely many indices"
+    },
+    {
+      "text": "The corollary answers the Erdős–Prachar question affirmatively.",
+      "verdict": "supported",
+      "sourceLine": "Thus the corollary answers the"
+    },
+    {
+      "text": "Lean formalizes the positive lower density of indices where p_n/n increases.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "id": "088",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pettys-projection-volume-conjecture-in-dimensions-at-least-four-September-24-2026/paper.pdf",
+      "label": "Petty’s projection-volume conjecture in dimensions at least four"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-product-counterexample-to-the-simplex-maximum-for-projection-body-volume-September-24-2026/paper.pdf",
+      "label": "A product counterexample to the simplex maximum for projection-body volume"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/088.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "In four or more dimensions, ellipsoids have the smallest shadow body for their volume.",
+  "scope": "The minimum result covers every convex body in dimension four and up; the counterexample is one shape in dimension twenty.",
+  "plain": "Every solid casts shadows, and the projection body collects all their areas into one new shape. In 1971 Petty conjectured that, for a fixed volume, ellipsoids make this shape as small as possible. This paper proves that in every dimension from four up (Lean proof listed). A companion paper proves that a product of two ten-dimensional simplices beats the twenty-dimensional simplex. That rules out Brannen's guess that simplices give the largest value.",
+  "doesNot": "This does not find the largest possible score or the shapes that reach it.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "C. M. Petty, the projection-volume conjecture",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a 1971 conjecture in every dimension from four up."
+  },
+  "explanation": "Hold a cube with sides of length 1 up to the sun. Face-on, its shadow is a square of area 1. Turn it so the sun shines along a long diagonal. The shadow grows into a hexagon of area about 1.73. Every direction gives a shadow, and every shadow has an area.\n\nNow build one new shape from all those numbers. In each direction, let it reach out exactly as far as that shadow is large. Geometers call this the projection body (the shape that records every shadow area). For the unit cube it is a cube of side 2, with volume 8. The paper studies a score: the volume of the projection body, divided by a power of the original volume. That division makes the score ignore size. It also ignores any stretching or shearing, so a ball and every ellipsoid (a stretched ball) score the same.\n\nIn three dimensions the ball scores about 7.40 and the cube scores 8. A tetrahedron, the simplest pointed solid, scores 18. In four dimensions the ball scores 1024/81, about 12.64. The four-dimensional cube scores 16. The simplest four-dimensional simplex scores 160/3, about 53.3. A simplex is the analogue of a triangle or tetrahedron.\n\nIn 1971 Clinton Petty conjectured that ellipsoids have the lowest score, in every dimension from three up. Nobody could rule out some odd shape scoring lower. Earlier results only compared the ball with shapes already close to it, after stretching. In 2026 Mielke-Sulz handled shapes with an axis of rotational symmetry. Also in 2026, Chen, Feng, Li, Xi and Xu proved the full three-dimensional case. Dimensions four and higher stayed open.\n\nThis paper proves that case: in every dimension from four up, ellipsoids have the lowest score. They are the only shapes that reach it. The shape need not be symmetric or smooth. The paper says that, together with the separate three-dimensional proof, this settles Petty's conjecture in every dimension from three up. The paper itself does not use or check that three-dimensional proof.\n\nThe main obstacle was that older methods needed a shape near a ball. Near a ball, small errors can be controlled. A general shape gives no such foothold. The paper's answer is to choose, for any shape, a stretch that puts it in a balanced position. Finding such a stretch takes a careful existence argument. In that position, a sharp estimate shows the ball cannot be beaten.\n\nA second paper looks at the other end. In 1996 Brannen proposed that simplices have the highest score. Feng, Hu, Liu and Xu had already found counterexamples in every dimension from nine up, using perturbed cubes. This paper gives a simpler one. Take two ten-dimensional simplices and form their product, a twenty-dimensional shape. A product's score is the product of its two factors' scores. Each ten-dimensional simplex scores about 30,313. Squared, that is about 918.9 million. The twenty-dimensional simplex scores only about 905.1 million. The exact ratio is 22,355,476/22,020,096, about 1.015.\n\nSo the simplex loses by about 1.5 percent in dimension twenty. The paper also argues that the gap grows. In every large enough dimension, some product of simplices beats the simplex by a factor that grows exponentially with dimension. Neither paper finds the true highest score or the shapes that reach it. The first paper also derives further sharp inequalities, including the Lutwak–Petty family, but those lean on the separate three-dimensional proof.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the lowest-score theorem. It covers every convex shape in dimension four and up. Its scope note states that ellipsoids are exactly the minimizers. Lean has also checked the twenty-dimensional counterexample. The exponential gap and the other inequalities are outside that check. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. Lean proofs are listed for the four-plus-dimensional minimum and the dimension-twenty counterexample. The exponential gap and the derived inequalities are not machine-checked. The three-dimensional case rests on another group's preprint. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Convex body",
+      "meaning": "A solid, bounded shape with no dents or holes, such as a ball, cube or pyramid."
+    },
+    {
+      "term": "Projection body",
+      "meaning": "A shape that reaches out, in each direction, exactly as far as the shadow cast in that direction is large."
+    },
+    {
+      "term": "Ellipsoid",
+      "meaning": "A ball that has been stretched or squeezed along some directions."
+    },
+    {
+      "term": "Simplex",
+      "meaning": "The simplest pointed shape in a given dimension: a triangle in two dimensions, a tetrahedron in three."
+    },
+    {
+      "term": "Normalized projection volume",
+      "meaning": "The projection body's volume divided by a power of the original volume, so size and stretching do not change it."
+    },
+    {
+      "term": "Counterexample",
+      "meaning": "A single case that shows a proposed general statement is false."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Petty’s projection-volume conjecture in dimensions at least four”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pettys-projection-volume-conjecture-in-dimensions-at-least-four-September-24-2026/paper.pdf",
+      "quote": "We prove the unpolarized conjecture in every dimension at least four."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A product counterexample to the simplex maximum for projection-body volume”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-product-counterexample-to-the-simplex-maximum-for-projection-body-volume-September-24-2026/paper.pdf",
+      "quote": "Thus \\(K\\) violates \\eqref{eq:proposed-bound} in dimension twenty."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 088 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/088.md"
+    },
+    {
+      "id": 4,
+      "cite": "S. Chen, Y. Feng, Y. Li, D. Xi and L. Xu, “Petty's conjectured projection inequality in dimension three”, preprint, MathSciDoc:2608.23001 (2026)",
+      "url": "https://archive.ymsc.tsinghua.edu.cn/pacm_download/741/12780-pettyinequality.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "Y. Feng, S. Hu, W. Liu and L. Xu, “On the reverse projection inequality”, preprint, MathSciDoc:2608.23002 (2026)",
+      "url": "https://archive.ymsc.tsinghua.edu.cn/pacm_download/743/12781--2026.8.26.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "N. S. Brannen, “Volumes of projection bodies”, Mathematika 43 (1996), 255–264",
+      "url": "https://doi.org/10.1112/S002557930001175X"
+    },
+    {
+      "id": 7,
+      "cite": "F. Mielke-Sulz, “The Petty conjecture for convex bodies of revolution”, arXiv:2609.13517 (2026)",
+      "url": "https://arxiv.org/abs/2609.13517v1"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The projection body records the volumes of the shadows of a body in all directions.",
+      "verdict": "supported",
+      "sourceLine": "Thus $\\Pi K$ records the volumes of the orthogonal shadows of $K$ in"
+    },
+    {
+      "text": "The normalized projection volume is invariant under translations and invertible linear maps.",
+      "verdict": "supported",
+      "sourceLine": "It is invariant under translations and invertible linear maps: the"
+    },
+    {
+      "text": "Petty's conjecture asserts, for n at least 3, that ellipsoids exactly minimize the normalized projection volume.",
+      "verdict": "supported",
+      "sourceLine": "Petty's projection-volume conjecture asserts, for $n\\ge3$, that"
+    },
+    {
+      "text": "Petty's conjecture is cited to a 1971 conference paper.",
+      "verdict": "supported",
+      "sourceLine": "(University of Oklahoma, Norman, 1971),"
+    },
+    {
+      "text": "Earlier local results needed the body to be close to the ball after a linear change of variables.",
+      "verdict": "supported",
+      "sourceLine": "Saroglou and Zvavitch proved a local minimum theorem under the"
+    },
+    {
+      "text": "Mielke-Sulz proved the conjecture for bodies of revolution.",
+      "verdict": "supported",
+      "sourceLine": "Mielke-Sulz proved the conjecture"
+    },
+    {
+      "text": "Chen, Feng, Li, Xi and Xu proved the unrestricted three-dimensional inequality with ellipsoid equality.",
+      "verdict": "supported",
+      "sourceLine": "Chen, Feng, Li, Xi, and Xu proved the unrestricted three-dimensional"
+    },
+    {
+      "text": "The paper proves the conjecture in every dimension at least four.",
+      "verdict": "supported",
+      "sourceLine": "We prove the unpolarized conjecture in every dimension at least four."
+    },
+    {
+      "text": "Equality holds only for ellipsoids.",
+      "verdict": "supported",
+      "sourceLine": "Equality holds if and only if $K=a+TB_2^n$ for some $a\\in\\R^n$ and some"
+    },
+    {
+      "text": "The theorem includes bodies without symmetry or boundary regularity.",
+      "verdict": "supported",
+      "sourceLine": "The theorem includes bodies without symmetry or boundary regularity."
+    },
+    {
+      "text": "The three-dimensional theorem of Chen et al. is not used in the proof for n at least 4.",
+      "verdict": "supported",
+      "sourceLine": "proved three-dimensional theorem of Chen et al. establishes the"
+    },
+    {
+      "text": "The paper makes a global choice of affine coordinates where proximity to the ball is unavailable.",
+      "verdict": "supported",
+      "sourceLine": "where proximity to the ball is unavailable."
+    },
+    {
+      "text": "A fixed-point argument yields the affine position.",
+      "verdict": "supported",
+      "sourceLine": "and a fixed-point argument yields an invertible matrix at which the"
+    },
+    {
+      "text": "Brannen conjectured in 1996 that simplices maximize the functional.",
+      "verdict": "supported",
+      "sourceLine": "Brannen conjectured in 1996 that simplices"
+    },
+    {
+      "text": "Feng, Hu, Liu and Xu gave counterexamples in every dimension at least 9, using perturbed projections of a cube.",
+      "verdict": "supported",
+      "sourceLine": "Their construction uses perturbed projections of a cube and"
+    },
+    {
+      "text": "The product of two ten-dimensional simplices beats the twenty-dimensional simplex with ratio 22,355,476/22,020,096.",
+      "verdict": "supported",
+      "sourceLine": "=\\frac{22\\,355\\,476}{22\\,020\\,096}>1."
+    },
+    {
+      "text": "The normalized projection volume of a product of polytopes is the product of the factors' values.",
+      "verdict": "supported",
+      "sourceLine": "R_{r+s}(A\\times B)=R_r(A)R_s(B)."
+    },
+    {
+      "text": "The ten-dimensional simplex constant is 17,187,500/567.",
+      "verdict": "supported",
+      "sourceLine": "c_{10}=\\frac{17\\,187\\,500}{567},\\qquad"
+    },
+    {
+      "text": "The optimal upper constant and its maximizing bodies remain separate questions.",
+      "verdict": "supported",
+      "sourceLine": "optimal upper constant and its maximizing bodies remain separate"
+    },
+    {
+      "text": "Products of simplices exceed the simplex value by an exponential factor in every sufficiently large dimension.",
+      "verdict": "supported",
+      "sourceLine": "excess over the simplex benchmark: for some fixed \\(\\lambda>1\\) and"
+    },
+    {
+      "text": "The Lutwak–Petty lower-degree inequalities use the separate three-dimensional result.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:main} and the separately proved three-dimensional"
+    },
+    {
+      "text": "Lean covers Petty's inequality for every convex body and n at least 4, and the dimension-twenty counterexample; other inequalities and the exponential result are not included.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

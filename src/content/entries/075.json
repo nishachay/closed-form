@@ -1,0 +1,217 @@
+{
+  "id": "075",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Almost-everywhere-Fourier-convergence-in-L-log-L-September-23-2026/paper.pdf",
+      "label": "Almost-everywhere Fourier convergence in L log L"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/075.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Fourier sums of every L log L function converge to it at almost every point of the circle.",
+  "scope": "It covers complex-valued functions on the circle where |f| times log(2 + |f|) has a finite average.",
+  "plain": "Fourier series rebuild a function on a circle from waves of rising frequency. Carleson showed in 1966 that, for square-integrable functions, the partial sums settle on the true value almost everywhere. Kolmogorov had shown in 1923 that this can fail for some functions with only finite area. This paper proves convergence for the class L log L, which allows spikes much taller than earlier work could handle. A Lean formalization of the main theorem is listed.",
+  "doesNot": "This does not cover every integrable function or claim that L log L is the largest class that works.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1966",
+    "firstStepBy": "Lennart Carleson, convergence for square-integrable functions",
+    "field": "Real and complex analysis",
+    "significance": "Landmark",
+    "significanceWhy": "If the proof holds, it settles the long-studied L log L sufficiency conjecture for Fourier series."
+  },
+  "explanation": "Take a square wave. It equals 1 on the first half of a circle and −1 on the second half. Fourier's method rebuilds it from smooth waves of rising frequency. Adding the waves up to frequency N gives a partial sum. At the quarter point, where the true value is 1, the partial sums swing around it. Up to frequency 1 the sum is about 1.273. Up to 3 it is about 0.849, and up to 5 about 1.104. By 101 it is about 1.0062, and by 1001 about 1.0006. The sums close in on the true value.\n\nDoes this always happen? Here \"always\" can only mean almost everywhere. That means at every point except a set of total length zero. A few stray points may misbehave. The question is which functions allow more than that. The paper uses the ordinary partial sums, which take every frequency from −N to N. It asks about the full sequence N = 0, 1, 2 and so on, not a hand-picked subsequence.\n\nThe answer depends on how wild the function may be, especially in its tall spikes. Picture a spike of height about 22,026, which is e to the power 10. Let it cover one part in 22,026 of the circle. Its total area is 1. Square the height before averaging, and the spike scores about 22,026. Multiply the height by its logarithm instead, and it scores only about 10. That second score defines the class L log L. A function belongs to it when the average of |f| times log(2 + |f|) is finite.\n\nCarleson proved almost-everywhere convergence for square-integrable functions in 1966. In 1968, Hunt extended it to functions whose |f| raised to any fixed power above 1 has finite average. In 1923, Kolmogorov's counterexample showed that the conclusion cannot hold for every integrable function. Integrable means only that the average of |f| is finite. Between these extremes, progress came in small steps above L log L. Sjölin reached a class with an extra log log factor in 1969. Antonov reached one with an extra log log log factor in 1996. Arias de Reyna and later Carro, Mastyło and Rodríguez-Piazza built larger spaces still. A 2017 paper by Lie states the L log L conjecture through a bound on the largest partial sum.\n\nThis paper proves that the L log L condition is enough. For every complex-valued function in L log L, the partial sums converge to the function almost everywhere. The convergence holds along the full sequence of partial sums. The paper also derives a weak bound on the largest partial sum, measured in a standard L log L norm.\n\nThe obstacle is that the partial sums must be controlled for every frequency at once. A bound that grows with the number of frequencies is useless here. The paper reduces the problem to one spike of height at most e to the power d. Away from a small exceptional set, it shows the largest partial sum has average at most a constant times d. That cost grows like the logarithm of the height, which is exactly what L log L can pay for. To get there, the proof counts information in the sense of information theory. It splits the input into pieces and charges the cost of locating the right frequencies to that information count.\n\nGo back to the spike. The theorem lets a function carry many such spikes, with total L log L score finite. Its partial sums still settle on the right value at almost every point. Kolmogorov's example shows that finite area alone is not enough. The paper does not claim that L log L is the largest class that works. It also gives no rate for how fast the partial sums settle.\n\nHow sure is this? A computer proof checker called Lean has a formalization of the main theorem. It covers every measurable complex-valued function on the circle whose |f| times log(2 + |f|) has a finite integral. The weak maximal bound is not in the Lean scope note. No specialist review has been published.",
+  "hypeCheck": "Landmark only if the proof holds. The main theorem has a Lean formalization listed, but the weak maximal bound is outside the Lean scope note. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Fourier partial sum",
+      "meaning": "The sum of a function's waves with frequencies from −N to N, used to approximate the function."
+    },
+    {
+      "term": "Almost everywhere",
+      "meaning": "At every point except a set of total length zero."
+    },
+    {
+      "term": "Integrable",
+      "meaning": "A function whose absolute value has a finite average over the circle."
+    },
+    {
+      "term": "L log L",
+      "meaning": "The functions for which |f| times log(2 + |f|) has a finite average."
+    },
+    {
+      "term": "Square-integrable",
+      "meaning": "A function whose squared absolute value has a finite average."
+    },
+    {
+      "term": "Maximal estimate",
+      "meaning": "A bound on the largest of all the partial sums at each point."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks mathematical proofs step by step."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Almost-everywhere Fourier convergence in L log L”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Almost-everywhere-Fourier-convergence-in-L-log-L-September-23-2026/paper.pdf",
+      "quote": "For every complex-valued $f\\in L\\log L(\\mathbb T)$, there is a measurable set $N_f$ of measure zero such that"
+    },
+    {
+      "id": 2,
+      "cite": "L. Carleson, “On convergence and growth of partial sums of Fourier series”, Acta Mathematica 116 (1966), 135–157",
+      "url": "https://doi.org/10.1007/BF02392815"
+    },
+    {
+      "id": 3,
+      "cite": "A. Kolmogoroff, “Une série de Fourier–Lebesgue divergente presque partout”, Fundamenta Mathematicae 4 (1923), 324–328",
+      "url": "https://doi.org/10.4064/fm-4-1-324-328"
+    },
+    {
+      "id": 4,
+      "cite": "P. Sjölin, “An inequality of Paley and convergence a.e. of Walsh–Fourier series”, Arkiv för Matematik 7 (1969), 551–570",
+      "url": "https://doi.org/10.1007/BF02590894"
+    },
+    {
+      "id": 5,
+      "cite": "J. Arias-de-Reyna, “Pointwise convergence of Fourier series”, Journal of the London Mathematical Society 65 (2002), 139–153",
+      "url": "https://doi.org/10.1112/S0024610701002824"
+    },
+    {
+      "id": 6,
+      "cite": "V. Lie, “Pointwise convergence of Fourier series (I). On a conjecture of Konyagin”, Journal of the European Mathematical Society 19 (2017), 1655–1728",
+      "url": "https://doi.org/10.4171/JEMS/703"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for “The L log L Fourier-convergence conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/075.md"
+    },
+    {
+      "id": 8,
+      "cite": "R. A. Hunt, “On the convergence of Fourier series”, in Orthogonal Expansions and their Continuous Analogues, Southern Illinois University Press (1968), 235–255 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 9,
+      "cite": "N. Yu. Antonov, “Convergence of Fourier series”, East Journal on Approximations 2 (1996), 187–196 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 10,
+      "cite": "M. J. Carro, M. Mastyło and L. Rodríguez-Piazza, “Almost everywhere convergent Fourier series”, Journal of Fourier Analysis and Applications 18 (2012), 266–286",
+      "url": "https://doi.org/10.1007/s00041-011-9199-9"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For every complex-valued L log L function, the partial sums converge to the function off a set of measure zero, along the full sequence.",
+      "verdict": "supported",
+      "sourceLine": "For every complex-valued $f\\in L\\log L(\\mathbb T)$, there is a measurable set $N_f$ of measure zero such that"
+    },
+    {
+      "text": "The limit is along the full sequence N = 0, 1, 2, ….",
+      "verdict": "supported",
+      "sourceLine": "The limit is along the full sequence $N=0,1,2,\\ldots$."
+    },
+    {
+      "text": "L log L is the class where the average of |f| log(2+|f|) is finite.",
+      "verdict": "supported",
+      "sourceLine": "=\\left\\{f:\\int_{\\mathbb T}|f(x)|\\log(2+|f(x)|)\\,d\\mu(x)<\\infty\\right\\}."
+    },
+    {
+      "text": "Carleson proved almost-everywhere convergence for square-integrable functions.",
+      "verdict": "supported",
+      "sourceLine": "Carleson proved almost-everywhere convergence for square-integrable functions"
+    },
+    {
+      "text": "Hunt extended this to L^p for every p > 1.",
+      "verdict": "supported",
+      "sourceLine": "and Hunt extended this conclusion to $L^p$ for every $p>1$"
+    },
+    {
+      "text": "Kolmogorov's integrable counterexample shows the conclusion cannot hold throughout L^1.",
+      "verdict": "supported",
+      "sourceLine": "Kolmogorov's integrable counterexample shows that the conclusion cannot hold throughout $L^1$"
+    },
+    {
+      "text": "Sjölin obtained convergence in L log L log log L.",
+      "verdict": "supported",
+      "sourceLine": "Sj\\\"olin obtained convergence in $L\\log L\\log\\log L$"
+    },
+    {
+      "text": "Antonov proved convergence in L log L log log log L.",
+      "verdict": "supported",
+      "sourceLine": "Antonov proved convergence in $L\\log L\\log\\log\\log L$"
+    },
+    {
+      "text": "Arias de Reyna introduced QA, which strictly contains Antonov's class and Soria's space.",
+      "verdict": "supported",
+      "sourceLine": "quasi-Banach space $\\mathrm{QA}$, which strictly contains both Antonov's class and Soria's space"
+    },
+    {
+      "text": "Carro, Mastyło and Rodríguez-Piazza obtained a convergence space strictly larger than Antonov's.",
+      "verdict": "supported",
+      "sourceLine": "and obtained a Lorentz convergence space strictly larger than Antonov's space"
+    },
+    {
+      "text": "Lie formulated the L log L conjecture through a weak-L1 maximal estimate.",
+      "verdict": "supported",
+      "sourceLine": "The $L\\log L$ conjecture is also formulated through a weak-$L^1$ maximal estimate in"
+    },
+    {
+      "text": "The theorem establishes the conjectured sufficiency of L log L for ordinary Fourier sums along the full sequence.",
+      "verdict": "supported",
+      "sourceLine": "establishes the conjectured sufficiency of $L\\log L$ for the ordinary Fourier sums along the full sequence."
+    },
+    {
+      "text": "The paper derives a Luxemburg-norm weak-L1 maximal bound.",
+      "verdict": "supported",
+      "sourceLine": "Stein's Banach-space theorem also yields the corresponding Luxemburg-norm weak-$L^1$ maximal bound"
+    },
+    {
+      "text": "The proof must control many frequencies without a loss that grows with their number.",
+      "verdict": "supported",
+      "sourceLine": "The finite proof must control many modulation frequencies without a loss that grows with their number."
+    },
+    {
+      "text": "For a mass-one input of height at most e^d, the good-set integral of the maximal partial sum is at most Cd.",
+      "verdict": "supported",
+      "sourceLine": "The main analytic estimate concerns one nonnegative input $\\rho$ of mass one and height at most $e^d$, where $d$ is large."
+    },
+    {
+      "text": "The integral bound is summable with the masses of the height layers of an L log L function.",
+      "verdict": "supported",
+      "sourceLine": "The integral bound is summable with the masses of the height layers of an $L\\log L$ function."
+    },
+    {
+      "text": "The proof splits the input into pieces and counts information.",
+      "verdict": "supported",
+      "sourceLine": "Information is counted under the first law and converted to path estimates under the second."
+    },
+    {
+      "text": "The Lean formalization proves the theorem for every measurable complex-valued function with finite integral of |f| log(2+|f|).",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "The proof splits the input into pieces and uses noisy observations to identify frequencies with nearly the same phase.",
+      "verdict": "supported",
+      "sourceLine": "It splits the input into pieces and, on each piece, uses a noisy observation of the input point to identify frequencies with nearly the same phase."
+    }
+  ]
+}

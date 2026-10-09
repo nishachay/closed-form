@@ -1,0 +1,198 @@
+{
+  "id": "024",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-asymptotic-formula-for-the-number-of-totients-September-25-2026/An-asymptotic-formula-for-the-number-of-totients-September-25-2026.pdf",
+      "label": "An asymptotic formula for the number of totients"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/024.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Counting totient values up to x gets an exact leading formula, and doubling x doubles the count in the limit.",
+  "scope": "The result describes the count of distinct totient values as x grows large. It gives no error size at any fixed x.",
+  "plain": "Euler's totient of a number counts the smaller numbers that share no factor with it. Many numbers are never a totient, and many numbers share the same one. This paper proves a formula whose ratio to the count of distinct totient values up to x tends to 1. It also proves that stretching x by any fixed factor stretches the count by the same factor in the limit. That answers a 1976 question of Erdős and Hall.",
+  "doesNot": "This does not give the coefficient as one closed number or say how close the formula is at a given x.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1976",
+    "firstStepBy": "Paul Erdős and R. R. Hall, the fixed-dilation question",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles an old Erdős–Hall question and removes the last bounded uncertainty in counting totient values."
+  },
+  "explanation": "Take the number 9 and list the numbers from 1 to 9 that share no factor with it. They are 1, 2, 4, 5, 7 and 8. There are six, so the totient of 9 is 6. Euler's totient of a whole number counts exactly these numbers. Different starting numbers can give the same answer. The totients of 7, 9, 14 and 18 are all 6. Some numbers are never an answer. Up to 30, the totient values are 1, 2, 4, 6, 8, 10, 12, 16, 18, 20, 22, 24, 28, 30. So 14 and 26 are skipped.\n\nHow many numbers up to some limit x are totient values? Call that count V(x). Up to 100 there are 38. Up to 1,000 there are 291. Up to one million there are 180,184. The share keeps falling, from 38% to 29% to about 18%. Pillai proved in 1929 that this share tends to zero.\n\nFinding the exact size of V(x) took a long chain of work. A prime p has totient p − 1. So V(x) is at least about the count of primes up to x. Erdős, then Erdős and Hall, then Pomerance tightened the bounds. In 1988 Maier and Pomerance found the leading constant, 0.8178146…, in a rough formula. In 1998 Ford went further. His formula was right up to a bounded factor. That factor always stays between two fixed positive numbers. Nobody knew what it actually was.\n\nThat gap hid a simple question. If you double the limit x, does the count of totient values double too? Erdős and Hall asked this in 1976, for every fixed stretch factor c above 1. My own counts lean that way, slowly. Going from 1,000 to 2,000 multiplies the count by about 1.87. Going from 10,000 to 20,000 gives about 1.89. Going from 500,000 to one million gives about 1.94. Numbers like these settle nothing. Ford proved that the stretched range always adds a comparable number of new values. He could not pin down the limiting ratio.\n\nThis paper proves an asymptotic formula for V(x). Asymptotic means the ratio of the two sides tends to 1 as x grows. The formula is Ford's scale times a coefficient. The coefficient depends on x only through a number between 0 and 1, called the phase. It is built from finite sums over primes and whole numbers, followed by a limit. It always stays between two fixed positive bounds. From this, the paper proves that V(cx)/V(x) tends to c for every fixed c above 0. That answers Erdős and Hall's question with a yes.\n\nThe hard part is collisions. Counting numbers with a given pattern of prime factors is the standard tool. But that counts starting numbers, not distinct values. Since 7, 9, 14 and 18 all give 6, counting starting numbers overcounts the value 6. The paper lists a typical number's primes from largest to smallest. The large primes can be counted smoothly, like measuring a volume. The last few primes stay small, and different choices of them may give the same totient. The paper keeps these small tails exactly and counts each resulting value once. That bookkeeping produces the coefficient. The paper also shows that collisions among the long front parts are rare in total.\n\nThe formula has limits a reader might miss. The coefficient is a limit of finite computations, not a single closed number. The paper does not claim the coefficient changes smoothly with the phase. A companion result counts values whose smallest starting number lies in a given range. It gives positive counts for two such ranges and leaves the others open. An older Erdős question, whether that smallest starting number can be arbitrarily large relative to its value, remains unresolved here.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main result. It covers the explicit formula, the doubling result for every fixed c, and the companion counts. No specialists have published a review yet.",
+  "hypeCheck": "Major if it holds. A Lean formalization of the main statements is listed, but specialists have not published a review. The coefficient is defined as a limit, not computed as a number. No error size is given at any fixed x.",
+  "glossary": [
+    {
+      "term": "Euler's totient",
+      "meaning": "For a whole number n, the count of numbers from 1 to n that share no factor with n."
+    },
+    {
+      "term": "Totient value",
+      "meaning": "A number that is the totient of at least one whole number."
+    },
+    {
+      "term": "Asymptotic formula",
+      "meaning": "A formula whose ratio to the true count tends to 1 as the count's limit grows."
+    },
+    {
+      "term": "Phase",
+      "meaning": "A number between 0 and 1, computed from x, on which the paper's coefficient depends."
+    },
+    {
+      "term": "Collision",
+      "meaning": "Two different starting numbers that have the same totient."
+    },
+    {
+      "term": "Least preimage",
+      "meaning": "The smallest whole number whose totient equals a given value."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “An asymptotic formula for the number of totients”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-asymptotic-formula-for-the-number-of-totients-September-25-2026/An-asymptotic-formula-for-the-number-of-totients-September-25-2026.pdf",
+      "quote": "We also prove that $V(cx)/V(x)\\to c$ as $x\\to\\infty$ for every fixed $c>0$, answering a question of Erd\\H{o}s and Hall."
+    },
+    {
+      "id": 2,
+      "cite": "S. S. Pillai, “On some functions connected with φ(n)”, Bulletin of the American Mathematical Society 35 (1929), 832–836",
+      "url": "https://www.ams.org/journals/bull/1929-35-06/S0002-9904-1929-04799-2/S0002-9904-1929-04799-2.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "P. Erdős and R. R. Hall, “Distinct values of Euler's φ-function”, Mathematika 23 (1976), 1–3",
+      "url": "https://doi.org/10.1112/S0025579300006100"
+    },
+    {
+      "id": 4,
+      "cite": "H. Maier and C. Pomerance, “On the number of distinct values of Euler's φ-function”, Acta Arithmetica 49 (1988), 263–275",
+      "url": "https://doi.org/10.4064/aa-49-3-263-275"
+    },
+    {
+      "id": 5,
+      "cite": "K. Ford, “The distribution of totients”, Ramanujan Journal 2 (1998), 67–151; revised version arXiv:1104.3264v2 (2013)",
+      "url": "https://arxiv.org/abs/1104.3264v2"
+    },
+    {
+      "id": 6,
+      "cite": "C. Pomerance, “On the distribution of the values of Euler's function”, Acta Arithmetica 47 (1986), 63–70",
+      "url": "https://doi.org/10.4064/aa-47-1-63-70"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for “An asymptotic formula for the number of totients” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/024.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Euler's totient of n counts the integers from 1 to n that are relatively prime to n.",
+      "verdict": "supported",
+      "sourceLine": "counts the integers in … that are relatively prime to"
+    },
+    {
+      "text": "Different integers can have the same totient.",
+      "verdict": "supported",
+      "sourceLine": "different integers can have the same totient."
+    },
+    {
+      "text": "Since a prime p has totient p − 1, V(x) is at least about the count of primes up to x.",
+      "verdict": "supported",
+      "sourceLine": "Since … for primes … the prime number theorem gives"
+    },
+    {
+      "text": "Pillai proved that the totient values have density zero.",
+      "verdict": "supported",
+      "sourceLine": "Pillai proved that the totient values have density zero"
+    },
+    {
+      "text": "Erdős and Hall obtained a much larger lower-bound factor.",
+      "verdict": "supported",
+      "sourceLine": "Erd\\H{o}s and Hall obtained a much larger factor"
+    },
+    {
+      "text": "Pomerance brought the upper bound onto the same logarithmic scale.",
+      "verdict": "supported",
+      "sourceLine": "Pomerance brought the upper bound onto"
+    },
+    {
+      "text": "Maier and Pomerance determined the leading constant 0.8178146…",
+      "verdict": "supported",
+      "sourceLine": "Maier and Pomerance then determined the leading constant"
+    },
+    {
+      "text": "In 1998 Ford gave an estimate with only a bounded multiplicative uncertainty.",
+      "verdict": "supported",
+      "sourceLine": "In 1998, Ford refined this to an estimate with only a bounded multiplicative"
+    },
+    {
+      "text": "Erdős and Hall asked whether V(cx)/V(x) tends to c for fixed c > 1.",
+      "verdict": "supported",
+      "sourceLine": "Erd\\H{o}s and Hall asked whether"
+    },
+    {
+      "text": "Ford proved V(cx) − V(x) is of the same order as V(x), which does not determine the limiting ratio.",
+      "verdict": "supported",
+      "sourceLine": "neither it nor … determines the limiting ratio."
+    },
+    {
+      "text": "The paper gives an explicit asymptotic equivalent and proves the fixed-scale limit, answering Erdős and Hall positively.",
+      "verdict": "supported",
+      "sourceLine": "We obtain an explicit asymptotic equivalent and prove the fixed-scale limit, thereby answering this question of Erd\\H{o}s and Hall positively."
+    },
+    {
+      "text": "The coefficient is an explicitly constructed function of the phase, which lies between 0 and 1.",
+      "verdict": "supported",
+      "sourceLine": "resolves its bounded multiplicative uncertainty by an explicitly constructed"
+    },
+    {
+      "text": "The coefficient is defined by bounded prime and integer sums, inclusion–exclusion, and a uniformly convergent limit.",
+      "verdict": "supported",
+      "sourceLine": "It is defined in … by bounded prime and integer sums, inclusion--exclusion, and a uniformly convergent limit"
+    },
+    {
+      "text": "The paper orders the primes of a typical preimage from largest to smallest; tail factorizations can collide and are kept exactly.",
+      "verdict": "supported",
+      "sourceLine": "several tail factorizations may give the same totient. We retain these tails exactly"
+    },
+    {
+      "text": "Collisions between different long prefixes have negligible total multiplicity.",
+      "verdict": "supported",
+      "sourceLine": "collisions between different long prefixes have negligible total multiplicity"
+    },
+    {
+      "text": "No regularity of the coefficient in the phase is asserted.",
+      "verdict": "supported",
+      "sourceLine": "No regularity of"
+    },
+    {
+      "text": "The least-preimage count has positive coefficient for k = 1, 2; other k are not determined.",
+      "verdict": "supported",
+      "sourceLine": "We do not determine which other integers"
+    },
+    {
+      "text": "Whether ℓ(d)/d is unbounded remains unresolved.",
+      "verdict": "supported",
+      "sourceLine": "remains unresolved here."
+    },
+    {
+      "text": "The Lean formalization covers the explicit main term, V(cx)/V(x) → c, and the least-preimage asymptotics with the k = 1, 2 and zero cases.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+  "id": "012",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-joint-Dickman-law-for-consecutive-integers-September-24-2026/paper.pdf",
+      "label": "The joint Dickman law for consecutive integers"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/012.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The largest prime factors of n and n + 1 act like independent dice, so each wins half the time.",
+  "scope": "The law holds for fixed powers a and b between 0 and 1, in ordinary counting over all large ranges.",
+  "plain": "Every whole number has a largest prime factor, and its size follows a known curve called the Dickman law. Erdős and Pomerance asked in 1978 whether neighbours n and n + 1 have independent sizes. This paper proves they do in ordinary counting, with no exceptional ranges (Lean proof listed). So in the limit, n + 1 has the bigger largest prime factor for exactly half of all n.",
+  "doesNot": "This does not say how fast the shares approach their limits, and it gives no error term.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "Erdős and Pomerance, positive lower density 0.0099 for each ordering",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It settles a 1978 Erdős–Pomerance conjecture without the averaging or exceptional ranges earlier results needed."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Proven guaranteed share of n with P⁺(n) < P⁺(n+1)",
+    "note": "Earlier values are lower bounds on lower density. The paper's 1/2 is an exact limit.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 1978,
+        "value": 0.0099,
+        "who": "Erdős and Pomerance",
+        "source": 1
+      },
+      {
+        "year": 2005,
+        "value": 0.05544,
+        "who": "de la Bretèche, Pomerance and Tenenbaum",
+        "source": 2
+      },
+      {
+        "year": 2025,
+        "value": 0.2017,
+        "who": "Lü and Wang",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 0.28,
+        "who": "Yang",
+        "source": 4
+      },
+      {
+        "year": 2026,
+        "value": 0.5,
+        "who": "This paper",
+        "claim": true,
+        "source": 9
+      }
+    ]
+  },
+  "explanation": "Take the number 14. Its largest prime factor is 7. A prime is a whole number above 1 with no divisors except 1 and itself. The next number, 15, has largest prime factor 5. So here the first number has the bigger one. Now try 20 and 21. Their largest prime factors are 5 and 7, so the second number wins.\n\nRun this contest for every whole number n from 2 up to one million, against its neighbour n + 1. The neighbour wins 500,148 times out of 999,999. That is about 50.01 percent. It looks like a fair coin. Yet a computer count cannot show that the share settles at exactly one half. Only a proof about all numbers can.\n\nStart with one number at a time. Mathematicians measure the largest prime factor on a logarithmic scale, as a power of the number. A power of 1/2 means the largest prime factor is about the square root. Work beginning with Karl Dickman in 1930 found the long-run share for each power. The answer is given by the Dickman function, a fixed curve. For the square root, the share tends to 1 − ln 2, about 30.7 percent. Up to one million it is still only 26.8 percent. These shares settle slowly.\n\nIn 1978, Paul Erdős and Carl Pomerance asked about two neighbours together. Do n and n + 1 behave like two separate dice? If so, a simple prediction follows. Both would have largest prime factor below their square root for about 9.4 percent of numbers. That is 30.7 percent times 30.7 percent. Erdős and Pomerance proved that each winner in the contest has a guaranteed positive share. Their explicit floor was 0.0099. Later work raised it to 0.05544, then 0.1356, then 0.2017. Yang's 2026 preprint gives 0.280 for both orderings. These are only floors. None shows that the share actually settles.\n\nCloser work came from Joni Teräväinen in 2018. He proved the predicted independence for a weighted count. In that count, each number n counts as 1/n, so small numbers weigh more. Terence Tao and Teräväinen then got ordinary counts, but with an exception. Some rare ranges of numbers were left uncovered. Zhiwei Wang got the full ordinary result, but only by assuming an unproved conjecture about primes.\n\nSo the one obstacle was ordinary counting at every large range, with no rare bad ranges and no extra assumption. That is the gap this paper closes. It argues by contradiction. Suppose the link between neighbours failed along some sequence of ranges. The paper rewrites n and n + 1 through chosen factors. That turns the link into one between numbers a short distance apart. A known theorem on short stretches of numbers, due to Kaisa Matomäki and Maksym Radziwiłł, then rules it out.\n\nThe result is the joint Dickman law. Pick any two powers a and b between 0 and 1. Count the n whose largest prime factor is at most n to the power a. Also require n + 1 to have largest prime factor at most n to the power b. The share of such n tends to the product of the two single shares. In plain terms, the two sizes behave like independent dice. The paper proves this (Lean proof listed).\n\nNow return to the contest. Two independent draws from the same smooth curve almost never tie. Each is equally likely to come first. So the share of n where the neighbour wins tends to exactly one half. The reverse ordering also tends to one half. The theorem guarantees a limit, not a speed. It gives no error term, so it does not say how close one million should be.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the joint law in ordinary counting. Lean has also checked that each ordering has share one half. The paper's other consequences, such as the upper-tail statement of Erdős and Pomerance, are not in the Lean scope note. No specialist review has been published.",
+  "hypeCheck": "Major if it holds. Lean checks formal versions of the joint law and the one-half orderings. The paper gives no rate of convergence, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Prime factor",
+      "meaning": "A prime number that divides a given whole number exactly."
+    },
+    {
+      "term": "Largest prime factor",
+      "meaning": "The biggest prime dividing a number, written P⁺(n); P⁺(15) = 5."
+    },
+    {
+      "term": "Dickman function",
+      "meaning": "A fixed curve giving the long-run share of numbers whose largest prime factor is below a given power."
+    },
+    {
+      "term": "Natural density",
+      "meaning": "The long-run share of whole numbers with a property, counting every number equally."
+    },
+    {
+      "term": "Logarithmic density",
+      "meaning": "A weighted long-run share where each number n counts as 1/n."
+    },
+    {
+      "term": "Lower density",
+      "meaning": "A floor the share stays above at every large range, even if the share never settles."
+    },
+    {
+      "term": "Independent",
+      "meaning": "Two quantities are independent when knowing one tells you nothing about the other."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős and C. Pomerance, “On the largest prime factors of n and n+1”, Aequationes Mathematicae 17 (1978), 311–321",
+      "url": "https://www.renyi.hu/~p_erdos/1978-29.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "R. de la Bretèche, C. Pomerance and G. Tenenbaum, “Products of ratios of consecutive integers”, The Ramanujan Journal 9 (2005), 131–138",
+      "url": "https://tenenb.perso.math.cnrs.fr/PPP/AB.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "X. Lü and Z. Wang, “On the largest prime factors of consecutive integers”, Monatshefte für Mathematik 206 (2025), 403–418",
+      "url": "https://hal.science/hal-01797939"
+    },
+    {
+      "id": 4,
+      "cite": "Z. Yang, “An improvement on the largest prime factors of consecutive integers”, arXiv:2607.16032 (2026)",
+      "url": "https://arxiv.org/abs/2607.16032v1"
+    },
+    {
+      "id": 5,
+      "cite": "J. Teräväinen, “On binary correlations of multiplicative functions”, Forum of Mathematics, Sigma 6 (2018), e10",
+      "url": "https://doi.org/10.1017/fms.2018.10"
+    },
+    {
+      "id": 6,
+      "cite": "T. Tao and J. Teräväinen, “The structure of correlations of multiplicative functions at almost all scales, with applications to the Chowla and Elliott conjectures”, Algebra & Number Theory 13 (2019), 2103–2150",
+      "url": "https://doi.org/10.2140/ant.2019.13.2103"
+    },
+    {
+      "id": 7,
+      "cite": "Z. Wang, “Three conjectures on P⁺(n) and P⁺(n+1) hold under the Elliott–Halberstam conjecture for friable integers”, Journal of Number Theory 223 (2021), 1–11",
+      "url": "https://doi.org/10.1016/j.jnt.2020.12.013"
+    },
+    {
+      "id": 8,
+      "cite": "Z. Wang, “Sur les plus grands facteurs premiers d'entiers consécutifs”, Mathematika 64 (2018), 343–379",
+      "url": "https://doi.org/10.1112/S0025579317000547"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “The joint Dickman law for consecutive integers” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-joint-Dickman-law-for-consecutive-integers-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 012",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/012.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The joint law holds for every fixed a, b in (0,1), with the limit over all real X and ordinary counting.",
+      "verdict": "supported",
+      "sourceLine": "Here the limit is taken over all real $X$, with ordinary, unweighted counting."
+    },
+    {
+      "text": "The two normalized sizes have independent limiting distributions in natural density.",
+      "verdict": "supported",
+      "sourceLine": "have, in natural density, independent limiting distributions"
+    },
+    {
+      "text": "Classical smooth-number theory began with Dickman.",
+      "verdict": "supported",
+      "sourceLine": "The classical theory of smooth numbers, beginning with Dickman"
+    },
+    {
+      "text": "The comparison conjecture attributed to Erdős and Turán is a consequence; each ordering has density 1/2.",
+      "verdict": "supported",
+      "sourceLine": "The comparison conjecture usually attributed to Erd\\H{o}s and Tur\\'an is a consequence"
+    },
+    {
+      "text": "The reverse ordering has the same natural density.",
+      "verdict": "supported",
+      "sourceLine": "The reverse ordering has the same natural density."
+    },
+    {
+      "text": "The continuous marginal gives the diagonal zero mass, and symmetry gives the corollary.",
+      "verdict": "supported",
+      "sourceLine": "The limiting marginal is continuous, so its product measure gives zero mass to the diagonal; symmetry then gives the corollary."
+    },
+    {
+      "text": "Erdős and Pomerance formulated the problem and proved each ordering has positive lower density, with explicit bound 0.0099.",
+      "verdict": "supported",
+      "sourceLine": "formulated the joint independence problem and proved that each ordering has positive lower natural density.  Their explicit lower bound was"
+    },
+    {
+      "text": "De la Bretèche, Pomerance and Tenenbaum raised the bound to 0.05544.",
+      "verdict": "supported",
+      "sourceLine": "The lower-density bound was increased to"
+    },
+    {
+      "text": "Wang obtained 0.1063 and 0.1356; Lü and Wang obtained 0.2017.",
+      "verdict": "supported",
+      "sourceLine": "obtained $0.1063$ and $0.1356$, and L\\\"u and Wang"
+    },
+    {
+      "text": "Yang's preprint gives 0.280 for both orderings.",
+      "verdict": "supported",
+      "sourceLine": "gives $0.280$ for both orderings."
+    },
+    {
+      "text": "These are lower-density bounds and do not assert a density exists.",
+      "verdict": "supported",
+      "sourceLine": "These are bounds on lower natural densities; they do not assert that a natural density exists."
+    },
+    {
+      "text": "Teräväinen proved the predicted product in logarithmic density, with weight 1/n.",
+      "verdict": "supported",
+      "sourceLine": "proved the predicted product in logarithmic density"
+    },
+    {
+      "text": "Tao and Teräväinen got the ordinary product law outside an exceptional set of scales.",
+      "verdict": "supported",
+      "sourceLine": "then obtained the joint product law for ordinary averages outside an exceptional set of scales"
+    },
+    {
+      "text": "Wang proved the ordinary joint law under the Elliott–Halberstam conjecture for friable integers.",
+      "verdict": "supported",
+      "sourceLine": "proved the ordinary joint law under the Elliott--Halberstam conjecture for friable integers"
+    },
+    {
+      "text": "The distinction is the unconditional ordinary limit at every sufficiently large scale.",
+      "verdict": "supported",
+      "sourceLine": "the distinction is therefore the unconditional ordinary limit at every sufficiently large scale"
+    },
+    {
+      "text": "The theorem has no exceptional scales and does not assert a quantitative error term.",
+      "verdict": "supported",
+      "sourceLine": "concerns fixed parameters and has no exceptional scales; it does not assert their quantitative error term"
+    },
+    {
+      "text": "The proof supposes the mixed correlation stays nonzero along a sequence of scales.",
+      "verdict": "supported",
+      "sourceLine": "Suppose, then, that the mixed correlation stays nonzero along a sequence of scales."
+    },
+    {
+      "text": "The amplifier uses factorizations n = am and n + 1 = c l_a.",
+      "verdict": "supported",
+      "sourceLine": "weighted count of factorizations"
+    },
+    {
+      "text": "The off-diagonal energy becomes a graph of ordinary additive shifts.",
+      "verdict": "supported",
+      "sourceLine": "The off-diagonal energy is therefore a weighted graph of ordinary additive shifts."
+    },
+    {
+      "text": "The short-interval theorem of Matomäki and Radziwiłł is a key input.",
+      "verdict": "supported",
+      "sourceLine": "the real short-interval theorem of"
+    },
+    {
+      "text": "The paper also derives the upper-tail independence conjecture of Erdős and Pomerance.",
+      "verdict": "supported",
+      "sourceLine": "gives the upper-tail independence conjecture of"
+    },
+    {
+      "text": "Lean formalizes the joint Dickman law in natural density and the density-1/2 orderings.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

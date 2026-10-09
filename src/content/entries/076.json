@@ -1,0 +1,257 @@
+{
+  "id": "076",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ultraflat-real-Littlewood-polynomials-October-5-2026/ultraflat-real-littlewood-polynomials.pdf",
+      "label": "Ultraflat real Littlewood polynomials"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nearly-minimal-maxima-and-positive-minima-of-Littlewood-polynomials-October-5-2026/littlewood-lower-envelope.pdf",
+      "label": "Nearly minimal maxima and positive minima of Littlewood polynomials"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Asymptotically-minimal-maxima-of-real-Littlewood-polynomials-September-23-2026/paper.pdf",
+      "label": "Asymptotically minimal maxima of real Littlewood polynomials"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/076.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Polynomials with only +1 and −1 coefficients can be almost perfectly flat on the unit circle.",
+  "scope": "The results hold at every large enough length, with fresh signs at each length. They show existence only.",
+  "plain": "A Littlewood polynomial has coefficients that are all +1 or −1. Its typical size on the unit circle is the square root of its length. One paper proves that its largest size can get as close to that as you like. Another paper claims the smallest size can get close too, for the same polynomial. The first paper also claims that merit factors of sign patterns grow without limit, disproving Turyn's conjecture.",
+  "doesNot": "This does not give a way to find the signs, or say when the bounds start to hold.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1957",
+    "firstStepBy": "Paul Erdős, flatness problem",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "It answers a real-sign flatness question from Erdős's problem lists and disproves Turyn's bounded-merit-factor conjecture."
+  },
+  "explanation": "Take four signs: +1, +1, +1, −1. Use them as the coefficients of a polynomial, P(z) = 1 + z + z² − z³. Now let z travel once around the unit circle. That is the circle of complex numbers whose size is exactly 1. At each point, measure the size of P(z). At z = 1 the size is 2. The average of the squared size is exactly 4, the sum of the squared signs. So the natural typical size is √4 = 2.\n\nThe size does not stay at 2. It climbs to about 2.66 and drops to about 0.96. That is about 1.33 times the typical size at the top, and 0.48 times at the bottom. A search of all 16 sign patterns of length 4 finds none with a lower top.\n\nA polynomial whose coefficients are all +1 or −1 is called a real Littlewood polynomial. Its length N is the number of coefficients. Its typical size on the circle is always √N, for the reason above. The top can never sit below √N. Call a family of such polynomials ultraflat if size divided by √N gets uniformly close to 1 as N grows. Uniformly means at every point of the circle at once, top and bottom together.\n\nPaul Erdős asked in 1957 whether such polynomials can stay between two fixed multiples of √N. A construction of Shapiro and Rudin gives a top of at most √(2N) when N is a power of two. In 2020, Balister, Bollobás, Morris, Sahasrabudhe and Tiba built flat ones of every degree from two up. Their sizes stay between two fixed positive multiples of √N. But the multiples do not approach 1. A real-sign version of an Erdős question asked whether the top always stays at least a fixed fraction above √N.\n\nThe one obstacle is that the coefficients must be plain signs. With complex coefficients of size 1, each coefficient can point in any direction. Jean-Pierre Kahane used that freedom to build ultraflat polynomials in 1980. Real signs leave no such room. The papers first build coefficients anywhere between −1 and 1 that give a nearly flat curve. They then round each coefficient to +1 or −1 while keeping the error small.\n\nThree papers make the claims. The September paper proves that the top can be pushed to within any small margin of √N. This holds for every large enough length, not just special ones. A second paper claims to add a floor of √N/16 for the same polynomial. The third paper claims the full ultraflat result. For any small ε, it claims signs whose size stays between (1 − ε)√N and (1 + ε)√N everywhere. That includes the real points z = 1 and z = −1. The signs may be chosen afresh at each length.\n\nA consequence concerns the merit factor of a sign pattern. Slide the pattern against itself and record each overlap total. For +1, +1, +1, −1 the totals are 1, 0 and −1. The merit factor is N² divided by twice the sum of their squares. Here that is 16 divided by 4, giving 4. At length 13, the best of all 8,192 patterns scores 169/12, about 14.08. Turyn's conjecture said merit factors stay bounded over all patterns. In 2013, Jedwab, Katz and Schmidt reached families with limiting merit factor 6.342061…. The September paper claims the largest merit factor at length N tends to infinity. That would disprove Turyn's conjecture. It gives no rate of growth.\n\nThe results say such signs exist. They give no useful rate and no efficient way to find the signs. They also do not say how large N must be before each bound holds.\n\nHow sure is this? A computer proof checker called Lean has checked the September main theorem. That is the top bound of (1 + η)√N at every large length. Lean also covers a related average form of flatness for one family. The Lean scope note does not list the merit-factor consequence. The √N/16 floor and the two-sided ultraflat theorem are outside the Lean check. No specialist review has been published.",
+  "hypeCheck": "Major if the papers hold. Lean covers only the upper bound on the maximum and a related average flatness statement. The two-sided ultraflat theorem and the merit-factor consequence are not in the Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Littlewood polynomial",
+      "meaning": "A polynomial whose coefficients are all +1 or −1 (real signs, in this entry)."
+    },
+    {
+      "term": "Unit circle",
+      "meaning": "The complex numbers whose size is exactly 1."
+    },
+    {
+      "term": "Ultraflat",
+      "meaning": "A family whose size divided by √N gets uniformly close to 1 on the whole unit circle as the length N grows."
+    },
+    {
+      "term": "Flat",
+      "meaning": "Staying between two fixed positive multiples of √N everywhere on the unit circle."
+    },
+    {
+      "term": "Merit factor",
+      "meaning": "N² divided by twice the sum of squared overlap totals of a sign pattern with its shifted copies."
+    },
+    {
+      "term": "Turyn's conjecture",
+      "meaning": "The conjecture that merit factors of sign patterns stay bounded over all lengths."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer proof checker that tests every step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, “Some unsolved problems”, Michigan Mathematical Journal 4 (1957), 291–300",
+      "url": "https://doi.org/10.1307/mmj/1028997963"
+    },
+    {
+      "id": 2,
+      "cite": "W. Rudin, “Some theorems on Fourier coefficients”, Proceedings of the American Mathematical Society 10 (1959), 855–859",
+      "url": "https://doi.org/10.1090/S0002-9939-1959-0116184-5"
+    },
+    {
+      "id": 3,
+      "cite": "J.-P. Kahane, “Sur les polynômes à coefficients unimodulaires”, Bulletin of the London Mathematical Society 12 (1980), 321–342",
+      "url": "https://doi.org/10.1112/blms/12.5.321"
+    },
+    {
+      "id": 4,
+      "cite": "P. Balister, B. Bollobás, R. Morris, J. Sahasrabudhe and M. Tiba, “Flat Littlewood polynomials exist”, Annals of Mathematics 192 (2020), 977–1004",
+      "url": "https://doi.org/10.4007/annals.2020.192.3.6"
+    },
+    {
+      "id": 5,
+      "cite": "J. Jedwab, D. J. Katz and K.-U. Schmidt, “Littlewood polynomials with small L⁴ norm”, Advances in Mathematics 241 (2013), 127–136",
+      "url": "https://doi.org/10.1016/j.aim.2013.03.015"
+    },
+    {
+      "id": 6,
+      "cite": "T. Downarowicz and Y. Lacroix, “Merit factors and Morse sequences”, Theoretical Computer Science 209 (1998), 377–387",
+      "url": "https://doi.org/10.1016/S0304-3975(98)00121-2"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Asymptotically minimal maxima of real Littlewood polynomials” (September 23, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Asymptotically-minimal-maxima-of-real-Littlewood-polynomials-September-23-2026/paper.pdf",
+      "quote": "the largest binary merit factor at length $N$ tends to infinity through all\ninteger lengths, disproving Turyn's conjecture."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Nearly minimal maxima and positive minima of Littlewood polynomials” (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nearly-minimal-maxima-and-positive-minima-of-Littlewood-polynomials-October-5-2026/littlewood-lower-envelope.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “Ultraflat real Littlewood polynomials” (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ultraflat-real-Littlewood-polynomials-October-5-2026/ultraflat-real-littlewood-polynomials.pdf",
+      "quote": "The signs may depend on $N$."
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 076 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/076.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The squared mean modulus of a real Littlewood polynomial of length N is N, by Parseval's identity.",
+      "verdict": "supported",
+      "sourceLine": "Its squared mean modulus on the unit circle is $N$, by Parseval's identity.",
+      "sourceId": 9
+    },
+    {
+      "text": "A family is ultraflat if |P(z)|/√N tends uniformly to 1 on the unit circle.",
+      "verdict": "supported",
+      "sourceLine": "A family is \\emph{ultraflat} if",
+      "sourceId": 9
+    },
+    {
+      "text": "Erdős asked whether real-sign polynomials could stay between two fixed positive multiples of their square-root scale.",
+      "verdict": "supported",
+      "sourceLine": "Erd\\H{o}s asked whether real-sign polynomials could stay between two\nfixed positive multiples of their square-root scale on the entire\ncircle",
+      "sourceId": 9
+    },
+    {
+      "text": "The Rudin–Shapiro construction gives a maximum of at most √(2N) at dyadic lengths.",
+      "verdict": "supported",
+      "sourceLine": "The Rudin--Shapiro construction\ngives real-sign polynomials with maximum at most $\\sqrt{2N}$ at dyadic\nlengths",
+      "sourceId": 9
+    },
+    {
+      "text": "Balister, Bollobás, Morris, Sahasrabudhe and Tiba proved flat Littlewood polynomials exist at every degree at least two.",
+      "verdict": "supported",
+      "sourceLine": "proved that flat\nLittlewood polynomials exist at every degree at least two",
+      "sourceId": 8
+    },
+    {
+      "text": "Those results control the scale of the maximum but do not make the upper constant tend to one.",
+      "verdict": "supported",
+      "sourceLine": "These results control the scale of the maximum,\nbut do not make the upper constant tend to one.",
+      "sourceId": 7
+    },
+    {
+      "text": "The real-sign question asks whether m_N is eventually at least 1 + c.",
+      "verdict": "supported",
+      "sourceLine": "asks whether $m_N$ is\neventually bounded below by $1+c$ for some absolute $c>0$.",
+      "sourceId": 7
+    },
+    {
+      "text": "Kahane constructed ultraflat polynomials with complex unimodular coefficients.",
+      "verdict": "supported",
+      "sourceLine": "For complex coefficients of modulus one, Kahane constructed ultraflat\npolynomials",
+      "sourceId": 9
+    },
+    {
+      "text": "The restriction to real signs is substantial.",
+      "verdict": "supported",
+      "sourceLine": "The restriction to real\nsigns is substantial.",
+      "sourceId": 9
+    },
+    {
+      "text": "The proof first allows real coefficients in [−1,1] and then a discrepancy argument replaces them by signs.",
+      "verdict": "supported",
+      "sourceLine": "A discrepancy argument then replaces the\ncoefficients by signs, with an error controlled by this small defect.",
+      "sourceId": 7
+    },
+    {
+      "text": "For every η > 0 and every large N there are signs with maximum at most (1 + η)√N.",
+      "verdict": "supported",
+      "sourceLine": "The theorem concerns every sufficiently large length, rather than a\nsubsequence.",
+      "sourceId": 7
+    },
+    {
+      "text": "The companion paper gives both √N/16 ≤ |P(z)| and |P(z)| ≤ (1 + η)√N.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:main} combines the\nnearly minimal upper bound with a fixed positive lower bound.",
+      "sourceId": 8
+    },
+    {
+      "text": "The ultraflat theorem covers both extrema on the whole circle, including z = 1 and z = −1, and the signs may depend on N.",
+      "verdict": "supported",
+      "sourceLine": "The theorem concerns both extrema of the\nsame polynomial on the entire circle, including the real points\n$z=1$ and $z=-1$.",
+      "sourceId": 9
+    },
+    {
+      "text": "The merit factor is N² divided by twice the sum of squared sidelobe autocorrelations.",
+      "verdict": "supported",
+      "sourceLine": "define its aperiodic sidelobe autocorrelations and merit factor by",
+      "sourceId": 7
+    },
+    {
+      "text": "Turyn's conjecture is the conjectured boundedness of the merit factor.",
+      "verdict": "supported",
+      "sourceLine": "The conjectured boundedness of $F(A)$ over all such words is called\nTuryn's conjecture",
+      "sourceId": 7
+    },
+    {
+      "text": "Jedwab, Katz and Schmidt constructed families with limiting merit factor 6.342061….",
+      "verdict": "supported",
+      "sourceLine": "For comparison, Jedwab, Katz and Schmidt constructed families with\nlimiting merit factor $6.342061\\ldots$",
+      "sourceId": 7
+    },
+    {
+      "text": "The largest merit factor at length N tends to infinity, disproving Turyn's conjecture; no rate of divergence is given.",
+      "verdict": "supported",
+      "sourceLine": "It supplies no\nquantitative rate of divergence.",
+      "sourceId": 7
+    },
+    {
+      "text": "The choices are existential; no useful convergence rate or efficient signing algorithm is asserted.",
+      "verdict": "supported",
+      "sourceLine": "The choices in the proof are\nexistential; no useful convergence rate or efficient signing algorithm\nis asserted.",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean covers the (1 + η)√N maximum bound at all large lengths and finite-exponent flatness of one all-length family; the scope note does not list the ultraflat theorem, the √N/16 floor, or the merit-factor corollary.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
