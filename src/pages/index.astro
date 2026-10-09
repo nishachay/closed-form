@@ -10,7 +10,11 @@ import { collectionRange } from '../lib/dates.js';
 const stats = computeStats();
 const explainedById = await loadExplained();
 const explainedIds = new Set(explainedById.keys());
-const explained = [...explainedById.values()].sort((a, b) => a.id.localeCompare(b.id));
+const explained = [...explainedById.values()];
+// Newest first: publish day, then entry number (a batch shares one day).
+const latest = [...explained]
+  .sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? '') || b.id.localeCompare(a.id))
+  .slice(0, 2);
 const range = collectionRange(catalog.families);
 ---
 <Base title="AI mathematics, explained" description={`Every problem an OpenAI model solved, explained in plain words with honest trust labels. ${stats.results} results from ${stats.papers} papers.`} current="home">
@@ -83,11 +87,10 @@ const range = collectionRange(catalog.families);
     {explained.length > 0 && (
     <section class="home-ex" aria-labelledby="ex-h">
       <div class="sec-head">
-        <h2 id="ex-h" class="label">Explained so far</h2>
-        <a class="more" href={appUrl('/archive/?trust=explained')}>All explained →</a>
+        <h2 id="ex-h" class="label">Latest explained</h2>
       </div>
       <ul class="ex-cards" id="explained">
-        {explained.map((e) => {
+        {latest.map((e) => {
           const fam = familiesById.get(e.id);
           if (!fam) return null;
           return (
@@ -102,6 +105,12 @@ const range = collectionRange(catalog.families);
             </li>
           );
         })}
+        <li class="xcard xcard-all">
+          <div class="label">Explained so far</div>
+          <p class="xa-n"><span class="num">{explained.length}</span><span class="of"> of {stats.results} results</span></p>
+          <h3 class="xc-t"><a href={appUrl('/archive/?trust=explained')}>Read all explained</a></h3>
+          <div class="xc-f"><span class="xc-go" aria-hidden="true">Open the archive →</span></div>
+        </li>
       </ul>
     </section>
     )}

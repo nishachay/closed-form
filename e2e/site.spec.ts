@@ -11,7 +11,8 @@ test('home shows 372 map cells, stats and field deep-links', async ({ page }) =>
   const stats = await page.locator('.stats .stat .n').allTextContents();
   const explainedN = readdirSync('src/content/entries').filter((f) => f.endsWith('.json')).length;
   expect(stats.map((s) => s.trim().split('/')[0])).toEqual(['719', '372', '172', String(explainedN)]);
-  await expect(page.locator('#explained .xcard')).toHaveCount(explainedN);
+  // Two latest entries plus the "Read all explained" card.
+  await expect(page.locator('#explained .xcard')).toHaveCount(Math.min(2, explainedN) + 1);
   const href = await page.locator('.fc-t a').first().getAttribute('href');
   expect(href).toContain('/science/mathematics/');
   await expect(page.locator('link[rel="alternate"][type="application/rss+xml"]')).toHaveCount(1);

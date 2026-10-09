@@ -870,6 +870,7 @@ async function processFamily(
   // Lean evidence is overwritten from repo facts, whatever the models wrote.
   final.evidence = applyLeanEvidence(final.evidence, family) as Entry['evidence'];
   final.status = 'ai-checked';
+  final.publishedAt ??= new Date().toISOString().replace(/\.\d+Z$/, 'Z');
   final.model = { reader: cfg.readerModel, checker: cfg.checkerModel, date: new Date().toISOString().slice(0, 10) };
 
   const steIssues = [

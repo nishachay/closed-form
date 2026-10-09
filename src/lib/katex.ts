@@ -25,3 +25,21 @@ export function renderMath(text: string): string {
     })
     .join('');
 }
+
+const escapeHtml = (s: string): string =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/**
+ * A verbatim quote from a paper's LaTeX, made readable: citation commands
+ * (\\cite{…}) and non-breaking tildes are dropped, text is escaped, and `$…$`
+ * math is rendered. The stored quote stays exact, so source checks still match.
+ */
+export function renderQuote(text: string): string {
+  const cleaned = text
+    .replace(/~?\\(?:cite[a-z]*|ref|eqref|label)\*?(?:\[[^\]]*\])?\{[^}]*\}/g, '')
+    .replace(/(?<!\\)~/g, ' ')
+    .replace(/\s+([,.;:])/g, '$1');
+  const parts = cleaned.split('$');
+  if (parts.length % 2 === 0) return escapeHtml(cleaned);
+  return parts.map((p, i) => (i % 2 === 0 ? escapeHtml(p) : renderMath(`$${p}$`))).join('');
+}
