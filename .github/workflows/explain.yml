@@ -54,7 +54,7 @@ jobs:
           # Stream replies so slow reasoning models don't hit fetch's 300 s header
           # timeout, and lift the provider's default output cap (NVIDIA NIM truncated entries).
           LLM_STREAM: '1'
-          LLM_MAX_TOKENS: '32768'
+          LLM_MAX_TOKENS: '65536'
       - name: Lint entries
         run: pnpm lint-ste
       - name: Open PR
