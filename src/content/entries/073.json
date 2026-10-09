@@ -18,9 +18,9 @@
       "label": "Lean scope note"
     }
   ],
-  "headline": "Any set bigger than half the dimension of its space has distances that fill a stretch of positive length.",
+  "headline": "Any closed, bounded set whose dimension is more than half that of its space has distances with positive total length.",
   "scope": "The result covers compact sets in every dimension d of 2 or more. Their dimension must be strictly above d/2.",
-  "plain": "Take a set of points and list every distance between two of them. Falconer asked how large the set must be before those distances cover a stretch of real length. The expected answer was a dimension above half that of the space. This paper proves that answer in every dimension (Lean proof listed). It needs no assumption about how regular the set is.",
+  "plain": "Take a set of points and list every distance between two of them. Falconer asked how large the set must be before those distances have positive total length. The expected answer was a dimension above half that of the space. This paper proves that answer for closed, bounded sets in every dimension (Lean proof listed). It needs no assumption about how regular the set is.",
   "doesNot": "This does not cover sets of dimension exactly d/2, or distances measured from one single point.",
   "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
   "scorecard": {
@@ -33,7 +33,7 @@
   "visual": {
     "type": "record",
     "title": "Best general dimension threshold in the plane",
-    "note": "Smaller is better. 1 is the conjectured value; the threshold itself is not covered.",
+    "note": "Smaller is better. The paper's point at 1 means any dimension strictly above 1 works in the plane; dimension exactly 1 is not covered.",
     "lowerIsBetter": true,
     "points": [
       {
@@ -63,8 +63,8 @@
       }
     ]
   },
-  "explanation": "Draw a square and cut it into a 4 by 4 grid of 16 small squares. Keep 5 of them and throw the rest away. Now repeat the same step inside each square you kept, forever. After 5 steps you hold 3125 tiny squares, each 1/1024 of the side. Together they cover about 0.3 percent of the original area. In the limit the area is zero. What remains is a fractal dust of points.\n\nNow measure every distance between two points of that dust. The distances all lie between 0 and about 1.414, the diagonal. The question is whether they cover a stretch of that range with real length. A finite set of points gives only finitely many distances, so the length is zero. A full square gives every distance from 0 to 1.414. The dust sits in between.\n\nThe right yardstick is Hausdorff dimension. It is a way to give a set a size between whole numbers. A line has dimension 1 and a filled square has dimension 2. Our dust multiplies its pieces by 5 while shrinking them by 4 at each step. That gives it dimension log 5 / log 4, about 1.16. The plane has dimension 2, so half of that is 1. The dust is above that halfway mark.\n\nIn 1985, K. J. Falconer asked what dimension forces the distances to have positive length. Positive length here means positive Lebesgue measure, the usual notion of total length on a line. He showed that dimension above (d+1)/2 is enough, where d is the dimension of the space. In the plane that is 1.5. He also gave lattice-type examples at exactly d/2. These explain why the conjecture asks for dimension strictly greater than d/2.\n\nLater work pushed the planar threshold down. Thomas Wolff reached 4/3 in 1999. Guth, Iosevich, Ou and Wang reached 5/4 in 2020, with distances measured from a single point. Our dust, at about 1.16, sits below all of these. In three dimensions, Du, Ou, Ren and Zhang reached about 1.714 in a 2024 preprint. The target there is 1.5. Recent work reached the halfway mark only for unusually regular sets. Liu's planar result, for example, needed two different measures of dimension to agree.\n\nThis paper proves the full conjecture in every dimension d of 2 or more. Take any compact set, meaning closed and bounded, in d-dimensional space. If its Hausdorff dimension is above d/2, its distances have positive length. In the plane, any such set above dimension 1 qualifies, including the dust. The theorem asks for no regularity at all. A set may be as patchy and uneven as it likes.\n\nThe main obstacle shows up in higher dimensions. Stand at one point of the set and look at the other points. Note the direction to each one. Those directions form a set on a sphere. For a set of dimension just above d/2, they can be too thin to spread out evenly. So earlier tools that assume an even spread cannot start. The paper instead builds a weaker guarantee: no small patch of directions holds too much of the set. It then shows that this weaker guarantee is enough for the distance estimate.\n\nThe result has clear edges. It says nothing at dimension exactly d/2. It is about all distances between pairs of points. It does not claim that the distances measured from one single point have positive length. It also gives positive length, which is stronger than saying the distances have dimension 1.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers every dimension d of 2 or more. A separate Lean statement covers the planar case. Specialists have not published a review yet.",
-  "hypeCheck": "Landmark if the proof holds. Lean has checked formal statements of the main theorem and the planar case. No specialist review has been published, and the endpoint d/2 and the single-point version stay open.",
+  "explanation": "Draw a square and cut it into a 4 by 4 grid of 16 small squares. Keep 5 of them and throw the rest away. Now repeat the same step inside each square you kept, forever. After 5 steps you hold 3125 tiny squares, each 1/1024 of the side. Together they cover about 0.3 percent of the original area. In the limit the area is zero. What remains is a fractal dust of points.\n\nNow measure every distance between two points of that dust. The distances all lie between 0 and about 1.414, the diagonal. The question is whether they have positive total length, even if they leave gaps. A finite set of points gives only finitely many distances, so the length is zero. A full square gives every distance from 0 to 1.414. The dust sits in between.\n\nThe right yardstick is Hausdorff dimension. It is a way to give a set a size between whole numbers. A line has dimension 1 and a filled square has dimension 2. Our dust multiplies its pieces by 5 while shrinking them by 4 at each step. That gives it dimension log 5 / log 4, about 1.16. The plane has dimension 2, so half of that is 1. The dust is above that halfway mark.\n\nIn 1985, K. J. Falconer asked what dimension forces the distances to have positive length. Positive length here means positive Lebesgue measure, the usual notion of total length on a line. He showed that dimension above (d+1)/2 is enough, where d is the dimension of the space. In the plane that is 1.5. He also gave lattice-type examples at exactly d/2. These explain why the conjecture asks for dimension strictly greater than d/2.\n\nLater work pushed the planar threshold down. Thomas Wolff reached 4/3 in 1999. In 2020, Guth, Iosevich, Ou and Wang reached 5/4 with a stronger, pinned conclusion. From some single point of the set, the distances to the others already have positive length. Our dust, at about 1.16, sits below both planar thresholds. In three dimensions, Du, Guth, Ou, Wang, Wilson and Zhang reached 9/5 for distances between all pairs. A 2024 preprint by Du, Ou, Ren and Zhang gave the pinned conclusion above about 1.714. The target there is 1.5. Results near the halfway mark needed extra conditions. Liu's planar result needs the set's Hausdorff dimension to equal its packing dimension, a second way to measure size. Shmerkin and Wang worked at exactly d/2, for sets with both dimensions equal to d/2. They showed the distances have dimension 1, which is weaker than positive length.\n\nThis paper proves the full conjecture in every dimension d of 2 or more. Take any compact set, meaning closed and bounded, in d-dimensional space. If its Hausdorff dimension is above d/2, its distances have positive total length. In the plane, any such set above dimension 1 qualifies, including the dust. The theorem asks for no regularity at all. A set may be as patchy and uneven as it likes.\n\nThe main obstacle shows up in higher dimensions. Stand at one point of the set and look at the other points. Note the direction to each one. Those directions form a set on a sphere. For a set of dimension just above d/2, the directions can be too thin to have a density. A density here means a smooth spread over the sphere. So the proof cannot assume one. It instead builds a weaker guarantee: no small patch of directions holds too much of the set. It then shows that this weaker guarantee is what the distance estimate actually needs.\n\nThe result has clear edges. It says nothing at dimension exactly d/2. It is about all distances between pairs of points. It does not claim that the distances measured from one single point have positive length. It also gives positive length, which is stronger than saying the distances have dimension 1.\n\nHow sure is this? A computer proof checker called Lean was used. Its scope note says the formal proof covers the main theorem in every dimension d of 2 or more. The note links two formal statements: this all-dimension result and the earlier planar case. Specialists have not published a review yet.",
+  "hypeCheck": "Landmark if the proof holds. The Lean scope note says the formal proof covers every dimension. It also links the planar case. No specialist review has been published, and the endpoint d/2 and the single-point version stay open.",
   "glossary": [
     {
       "term": "Distance set",
@@ -89,6 +89,10 @@
     {
       "term": "Fractal",
       "meaning": "A shape that repeats its pattern at smaller and smaller scales."
+    },
+    {
+      "term": "Packing dimension",
+      "meaning": "A second way to measure the size of a set; for very regular sets it equals the Hausdorff dimension."
     }
   ],
   "sources": [
@@ -192,13 +196,19 @@
       "sourceId": 2
     },
     {
-      "text": "Guth, Iosevich, Ou and Wang proved the pinned conclusion in the plane above dimension 5/4.",
+      "text": "Guth, Iosevich, Ou and Wang proved the pinned conclusion in the plane above dimension 5/4: distances from some point of the set have positive length.",
       "verdict": "supported",
       "sourceLine": "For compact \\(E\\subset\\R^2\\) with \\(\\dim_HE>5/4\\),",
       "sourceId": 3
     },
     {
-      "text": "Du, Ou, Ren and Zhang reached d/2 + 1/4 - 1/(8d+4) for d of 3 or more; for d = 3 this is about 1.714.",
+      "text": "For distances between all pairs, Du, Guth, Ou, Wang, Wilson and Zhang reached the threshold 9/5 in dimension three.",
+      "verdict": "supported",
+      "sourceLine": "Du, Guth, Ou, Wang, Wilson and Zhang obtained the threshold \\(9/5\\)",
+      "sourceId": 7
+    },
+    {
+      "text": "Du, Ou, Ren and Zhang proved the pinned conclusion (distances from some point of the set) above d/2 + 1/4 - 1/(8d+4) for d of 3 or more; for d = 3 this is about 1.714.",
       "verdict": "supported",
       "sourceLine": "obtained the same existential pinned conclusion when",
       "sourceId": 4
@@ -234,7 +244,7 @@
       "sourceId": 7
     },
     {
-      "text": "Lean formalizes the result in every dimension and links the planar case too.",
+      "text": "The Lean scope note says the formalization proves the result in every dimension and links statements for both this result and the earlier planar case.",
       "verdict": "external",
       "sourceId": 8
     }

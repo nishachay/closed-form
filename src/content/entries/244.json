@@ -20,15 +20,15 @@
   ],
   "headline": "Fitting sets back inside their images does not give you the Axiom of Choice.",
   "scope": "The result is about the standard axioms of set theory without Choice, and assumes those axioms are consistent.",
-  "plain": "The Partition Principle says that if one set maps onto another, the second fits back inside the first. The Axiom of Choice implies it. This paper proves the reverse fails (Lean proof listed). If ZF is consistent, ZF stays consistent with the Partition Principle and ordinal-labelled choice, while full Choice fails.",
+  "plain": "The Partition Principle says that if one set maps onto another, the second fits back inside the first. The Axiom of Choice implies it. This paper shows the reverse cannot be proved in ZF, the standard axioms without Choice, if ZF is consistent. It builds a universe where full Choice fails but the Partition Principle holds. There, choice still works for any collection listed in a fixed order, even past infinity.",
   "doesNot": "This does not show that Choice or the Partition Principle is false. It shows only that ZF cannot derive Choice from the Partition Principle.",
   "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
   "scorecard": {
     "field": "Mathematical logic",
     "significance": "Major",
-    "significanceWhy": "It answers a long-standing question about the Axiom of Choice. A published paper still listed it as open in August 2026."
+    "significanceWhy": "It answers a long-standing question about the Axiom of Choice. An August 2026 arXiv version of another paper still listed it as open."
   },
-  "explanation": "Take six socks, two each in red, blue and green. Sorting them by colour is a map from socks onto colours. Every sock gets one colour, and every colour gets at least one sock. A map like this, which reaches every target, is called a surjection.\n\nNow go backwards. Send each colour to a sock, never using the same sock twice. A map that never sends two things to one place is called an injection. There are 6 × 5 × 4 = 120 injections from the three colours into the six socks. Only 8 of them send each colour to a sock of that colour. The other 112 are still injections. They simply ignore the colours.\n\nWith finitely many socks, nothing here is hard. The questions start with infinite sets. The Axiom of Choice says that from any collection of non-empty sets you may pick one member of each. Choice gives a backward injection at once: pick one sock of each colour. The Partition Principle asks for less. Whenever one set maps onto another, it says some injection runs back the other way. That injection need not land each colour on a sock of that colour. So the Partition Principle looks weaker than Choice. The question was whether it secretly gives back all of Choice.\n\nThe question is old. A 2021 survey by Samuel da Silva traces the Partition Principle to Beppo Levi in 1902. Bernhard Banaschewski and Gregory Moore studied it in 1990 beside related rules for comparing sizes. Andreas Blass and Dhruv Kulshreshtha still listed the question as open in an August 2026 version of their paper. In September 2026, Frank Gilson withdrew the model constructions in three earlier attempts.\n\nThe Partition Principle already gives a lot of choice. It gives choice for any collection labelled by ordinals, the counting numbers extended past infinity in a fixed order. That fact is classical and is credited to David Pincus. So the gap to close was narrow. Is choice for every collection, however labelled, also forced?\n\nThis paper proves the answer is no. The setting is ZF, the standard axioms of set theory without Choice. A theory is consistent if it can never prove a contradiction. Here is the main theorem. Suppose ZF is consistent. Then ZF stays consistent after adding the Partition Principle, ordinal-labelled choice and the failure of Choice. So ZF can never derive Choice from the Partition Principle.\n\nThe method is to build a model, a whole universe of sets that obeys the axioms. The paper starts from a universe where Choice holds and adds a new set of objects. It then keeps only the sets that look the same under many reshufflings of those objects. The reshuffling is what breaks Choice: the new objects can no longer be put in order. The obstacle is that the Partition Principle must survive the same reshuffling. Its backward injections must also be among the kept sets. The paper reduces this to one property of its special set. Every image of that set that cannot be put in order must match the set exactly, one to one. Building those matchings locally is easy. Making all the local matchings agree with each other and with the reshufflings is the hard part.\n\nBack to the socks. Picture endless pairs of socks where no rule picks one sock from each pair. The paper's model has a failure of this kind. No rule picks one member from every non-empty part of its special set. Yet every surjection there still has a backward injection. Those injections are free to ignore the colours. The paper notes that its injections need not respect the original sorting. The result does not say which principle is true. It says only that ZF cannot get from one to the other.\n\nA second theorem builds such a universe inside any countable transitive model of ZFC, which is ZF with Choice. The new universe keeps the same ordinals and adds no new countable sequences of old elements. The first theorem allows stranger models; the second keeps the familiar shape.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main consistency theorem. Lean also checks a version of the second construction, but with an extra assumption. That version needs the starting model to contain a strongly inaccessible cardinal, a kind of very large infinite size. The paper's stronger claims about what the second model keeps are outside that check. No specialist review has been published.",
+  "explanation": "Take six socks, two each in red, blue and green. Sorting them by colour is a map from socks onto colours. Every sock gets one colour, and every colour gets at least one sock. A map like this, which reaches every target, is called a surjection.\n\nNow go backwards. Send each colour to a sock, never using the same sock twice. A map that never sends two things to one place is called an injection. There are 6 × 5 × 4 = 120 injections from the three colours into the six socks. Only 8 of them send each colour to a sock of that colour. The other 112 are still injections. They simply ignore the colours.\n\nWith finitely many socks, nothing here is hard. The questions start with infinite sets. The Axiom of Choice says that from any collection of non-empty sets you may pick one member of each. Choice gives a backward injection at once: pick one sock of each colour. The Partition Principle asks for less. Whenever one set maps onto another, it says some injection runs back the other way. That injection need not land each colour on a sock of that colour. So the Partition Principle looks weaker than Choice. The question was whether it secretly gives back all of Choice.\n\nThe question is old. A 2021 article by Samuel da Silva traces the Partition Principle to Beppo Levi in 1902. Bernhard Banaschewski and Gregory Moore studied it in 1990 beside related rules for comparing sizes. Andreas Blass and Dhruv Kulshreshtha still listed the question as open in an August 2026 version of their paper. In September 2026, Frank Gilson withdrew the model constructions in three earlier attempts.\n\nThe Partition Principle already gives a lot of choice. It gives choice for any collection labelled by ordinals, the counting numbers extended past infinity in a fixed order. That fact is classical. An argument for it is attributed to David Pincus. What remained open was whether choice for every collection, not only ordinal-labelled ones, follows. This paper proves the answer is no. The setting is ZF, the standard axioms of set theory without Choice. A theory is consistent if it can never prove a contradiction. Here is the main theorem. Suppose ZF is consistent. Then ZF stays consistent after adding the Partition Principle, ordinal-labelled choice and the failure of Choice. So ZF can never derive Choice from the Partition Principle.\n\nThe method is to build a model, a whole universe of sets that obeys the axioms. The paper starts from a universe where Choice holds and adds a new set of objects. It then keeps only the sets that look the same under many reshufflings of those objects. The reshuffling is what breaks Choice: the new objects can no longer be put in order. The obstacle is that the Partition Principle must survive the same reshuffling. Its backward injections must also be among the kept sets. The paper reduces this to one property of its special set. Every image of that set that cannot be put in order must match the set exactly, one to one. Building matchings on small pieces is possible, but arbitrary choices need not agree with each other. Making all the small matchings agree with each other and with the reshufflings is the hard part.\n\nBack to the socks. In the paper's model, the special set plays the role of the colours, and it cannot be put in order. Take every non-empty collection of its members. No rule picks one member from each of those collections. Yet every surjection there still has a backward injection. Those injections are free to ignore the colours. The paper notes that its injections need not respect the original sorting. The result does not say which principle is true. It says only that ZF cannot get from one to the other.\n\nA second theorem starts from any countable transitive model of ZFC, which is ZF with Choice. Such a model is a universe with only countably many sets, whose members are themselves sets inside it. The paper enlarges it by forcing, a standard way to add new sets. It then takes a smaller universe between the old one and the enlargement. That universe contains the starting one and has the same ordinals. It adds no new countable sequences of old elements. A countable sequence is an infinite list indexed 1, 2, 3 and so on. The first theorem allows stranger models; the second keeps the familiar shape.\n\nHow sure is this? The Lean scope note says a proof checker called Lean has checked a formal version of the main consistency theorem. The note says Lean also checks a version of the second construction, but with an extra assumption. That version needs the starting model to contain a strongly inaccessible cardinal, a kind of very large infinite size. The paper itself says it uses no inaccessible cardinal. The paper's stronger claims about what the second model keeps are outside that check. No specialist review has been published.",
   "hypeCheck": "Major if the proof holds. Lean checks a formal version of the main consistency theorem. The paper's stronger claims about the second model are outside that check, and no specialist review is published.",
   "glossary": [
     {
@@ -61,7 +61,7 @@
     },
     {
       "term": "Model",
-      "meaning": "A whole universe of sets in which a given list of axioms holds."
+      "meaning": "A whole universe of sets in which a given list of axioms holds. A countable transitive model has only countably many sets, and every member of its sets is also in it."
     }
   ],
   "sources": [
@@ -149,6 +149,18 @@
       "sourceId": 8
     },
     {
+      "text": "The second model is a symmetric model inside a forcing extension; it contains V and has the same ordinals as V.",
+      "verdict": "supported",
+      "sourceLine": "It contains $V$ and has the same ordinals as $V$.",
+      "sourceId": 8
+    },
+    {
+      "text": "The paper's constructions use no inaccessible cardinal.",
+      "verdict": "supported",
+      "sourceLine": "No inaccessible cardinal is used.",
+      "sourceId": 8
+    },
+    {
       "text": "The second model adds no new countable sequences of ground elements.",
       "verdict": "supported",
       "sourceLine": "Every countable sequence of elements of $V$ that belongs to $W$ already belongs to $V$.",
@@ -173,7 +185,7 @@
       "sourceId": 8
     },
     {
-      "text": "Blass and Kulshreshtha's August 2026 version still lists PP implies AC as open.",
+      "text": "Blass and Kulshreshtha's August 2026 arXiv version still lists PP implies AC as open.",
       "verdict": "supported",
       "sourceLine": "their August 2026 version still lists $\\PP\\Rightarrow\\AC$ as open",
       "sourceId": 8
@@ -185,7 +197,7 @@
       "sourceId": 8
     },
     {
-      "text": "PP implies ordinal-indexed choice is classical, attributed to Pincus.",
+      "text": "PP implies ordinal-indexed choice is classical; Ryan-Smith records an argument Pelc attributes to Pincus.",
       "verdict": "supported",
       "sourceLine": "The implication $\\PP\\Rightarrow\\ACwo$ is classical: Ryan-Smith records the argument attributed to Pincus by Pelc",
       "sourceId": 8
@@ -209,7 +221,7 @@
       "sourceId": 8
     },
     {
-      "text": "The family of non-empty subsets of A has no choice function in the model.",
+      "text": "The label set A is not wellorderable in the model, and the family of non-empty subsets of A has no choice function there.",
       "verdict": "supported",
       "sourceLine": "is an explicit family in $W$ with no choice function in $W$.",
       "sourceId": 8
