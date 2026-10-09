@@ -1,0 +1,210 @@
+{
+  "id": "096",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Gaussian-Propeller-Bound-in-Every-Dimension-September-24-2026/main.pdf",
+      "label": "The Gaussian propeller bound in every dimension"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/096.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Three 120-degree wedges are the best way to cut a bell-curve cloud, in every dimension.",
+  "scope": "The bound covers every finite cut of space in any dimension. Equality needs two or more dimensions and three pieces.",
+  "plain": "Cut space into pieces, and give each piece an arrow: the average position of a random bell-curve point, counted only inside it. Add up the squared arrow lengths. This paper proves that the total never exceeds 9/(8π), about 0.3581 (Lean proof listed). Three equal 120-degree wedges, like a propeller, reach that value. The question had been settled only for up to four pieces.",
+  "doesNot": "This does not give a better kernel-clustering method. It claims that beating the known loss factor is NP-hard.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2009",
+    "firstStepBy": "Khot and Naor, approximate kernel clustering",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles a conjecture open since 2009. Earlier work covered only up to four pieces."
+  },
+  "explanation": "Scatter random points on a flat plane. Most land near a centre spot, and fewer land far away, in a bell-curve pattern. This is the standard Gaussian distribution. Now cut the plane into pieces. For each piece, average every point's position, but count any point outside that piece as sitting at the centre. The result is an arrow from the centre, which the paper calls the piece's centroid. A piece that leans far to one side gets a long arrow. The score of a cut is the sum of its squared arrow lengths.\n\nTry a few cuts. With no cut at all, the arrow has length 0, because the cloud balances at the centre. One straight line through the centre gives two halves. Each arrow has length about 0.3989, so the score is about 0.3183. Three equal wedges of 120 degrees give arrows of about 0.3455 each. Their score is about 0.3581, exactly 9/(8π). Four quarters drop back to about 0.3183, and five equal wedges score about 0.2749. Too few pieces give arrows that cancel out. Too many give short arrows. Three wedges look like a three-bladed propeller.\n\nThe propeller conjecture says no cut does better. That includes curved or scattered pieces, pieces of any size, any number of pieces, and spaces of any dimension. Some pieces may even be empty. The question arose in a 2009 paper by Khot and Naor on approximate kernel clustering, a data-grouping problem. They showed that a best cut can be taken to be made of cones. A cone here is a region of straight rays fanning out from the centre. They also found the best score for three pieces.\n\nProgress then came piece by piece. In 2013, Heilman, Jagannath and Naor proved the bound in three-dimensional space. Their proof was computer-assisted. Because the problem places k pieces in a space of k − 1 dimensions, this settled up to four pieces. In 2022, Heilman gave a route for three or four pieces in any dimension. That route assumed an extra stability property, and it still stopped at four pieces. Five or more pieces stayed open.\n\nThe obstacle is the sheer freedom. Each piece can have any shape and any probability, and an argument must handle all of them at once. The paper first shrinks the problem. It takes a best cut with the fewest pieces of positive probability. Merging two of its pieces shows that every pair of arrows points more than 90 degrees apart. The 2013 three-dimensional theorem then rules out four or fewer pieces.\n\nFor five or more pieces, the paper uses two consequences of being the best cut. Removing one piece must cost a definite amount. Competing against two other pieces limits how the arrows can sit. These facts force lower limits on the pieces' probabilities. Together these limits cannot fit inside a total probability of 1, so no such cut beats the propeller. Every numerical comparison in this step is checked with exact fractions. The paper's argument also takes two earlier theorems as given. One is the three-dimensional result. The other is Ehrhard's inequality, a known fact about bell-curve probabilities.\n\nSo the paper proves that no cut, in any dimension, scores above about 0.3581. The plane propeller wins everywhere. In more dimensions, stretch its three wedges straight along the extra directions. Those directions add nothing to any arrow, so the score stays 9/(8π). In a straight line, a space of one dimension, the bound still holds but nothing reaches it. Equality needs at least two dimensions and at least three pieces.\n\nThe result feeds back into kernel clustering. There, a computer splits N items into k groups to maximize total similarity inside the groups. A loss factor of 2 means a method always gets at least half the best possible total. Khot and Naor's 2009 method has loss factor (8π/9)(1 − 1/k). For three groups, that is about 1.862. The paper claims that any fixed smaller factor is NP-hard. NP-hard means no fast method exists unless every problem in a large class called NP has one. That claim also needs a companion paper in the same release, The Unique Games Theorem.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main bound. It covers every dimension and every number of pieces, plus the propeller reaching the bound. The kernel-clustering hardness claim and a related result on Gaussian maxima are outside that check. No specialists have published a review yet.",
+  "hypeCheck": "Major only if the proof holds. Lean has checked the main bound, but the proof takes the 2013 three-dimensional theorem and Ehrhard's inequality as inputs. The kernel-clustering claim is not machine-checked, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Standard Gaussian distribution",
+      "meaning": "The bell-curve rule for random points: most land near the centre, fewer far away."
+    },
+    {
+      "term": "Centroid (Gaussian first moment)",
+      "meaning": "The average position of a random point, counting points outside the piece as sitting at the centre."
+    },
+    {
+      "term": "Propeller",
+      "meaning": "A cut of the plane into three equal 120-degree wedges meeting at the centre."
+    },
+    {
+      "term": "Cone",
+      "meaning": "A region made of straight rays fanning out from the centre."
+    },
+    {
+      "term": "Kernel clustering",
+      "meaning": "Splitting items into a fixed number of groups to maximize total similarity inside the groups."
+    },
+    {
+      "term": "Loss factor",
+      "meaning": "How far below the best possible total a method may fall; 2 means at least half."
+    },
+    {
+      "term": "NP-hard",
+      "meaning": "No fast method exists unless every problem in the large class NP has one."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. Khot and A. Naor, “Approximate kernel clustering”, Mathematika 55 (2009), 129–165",
+      "url": "https://doi.org/10.1112/S002557930000098X"
+    },
+    {
+      "id": 2,
+      "cite": "S. Heilman, A. Jagannath and A. Naor, “Solution of the Propeller Conjecture in R³”, Discrete & Computational Geometry 50 (2013), 263–305",
+      "url": "https://doi.org/10.1007/s00454-013-9530-0"
+    },
+    {
+      "id": 3,
+      "cite": "S. Heilman, “Hyperstable sets with voting and algorithmic hardness applications”, arXiv:2209.11216 (2022)",
+      "url": "https://arxiv.org/abs/2209.11216v1"
+    },
+    {
+      "id": 4,
+      "cite": "A. Ehrhard, “Symétrisation dans l'espace de Gauss”, Mathematica Scandinavica 53 (1983), 281–301",
+      "url": "https://doi.org/10.7146/math.scand.a-12035"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “The Unique Games Theorem”, openai/math preprint (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Unique-Games-Theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “The Gaussian propeller bound in every dimension” and Lean scope note (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/096.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Three sectors of angle 2π/3 have squared centroid lengths summing to 9/(8π).",
+      "verdict": "supported",
+      "sourceLine": "squared centroid lengths sum to"
+    },
+    {
+      "text": "Extra orthogonal directions add zero to every centroid, so the value is the same in every dimension at least two.",
+      "verdict": "supported",
+      "sourceLine": "An orthogonal Gaussian factor contributes zero to every centroid, so"
+    },
+    {
+      "text": "Empty cells are allowed and cell probabilities are unrestricted.",
+      "verdict": "supported",
+      "sourceLine": "The cell probabilities are unrestricted."
+    },
+    {
+      "text": "The conjecture arose in Khot and Naor's study of approximate kernel clustering.",
+      "verdict": "supported",
+      "sourceLine": "Naor's study of approximate kernel clustering~\\cite{KhotNaor}, where"
+    },
+    {
+      "text": "Khot and Naor showed a maximizer can be chosen conical and determined the three-cell value.",
+      "verdict": "supported",
+      "sourceLine": "They proved that a maximizer can be chosen to be a"
+    },
+    {
+      "text": "Their formulation uses k cells in a space of dimension k − 1.",
+      "verdict": "supported",
+      "sourceLine": "Their formulation uses $k$ cells in $\\mathbb R^{k-1}$, with unused"
+    },
+    {
+      "text": "Heilman, Jagannath and Naor proved the bound in three dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Heilman, Jagannath, and Naor proved the bound for every finite partition"
+    },
+    {
+      "text": "Their argument was computer-assisted.",
+      "verdict": "supported",
+      "sourceLine": "Their computer-assisted"
+    },
+    {
+      "text": "Heilman gave a conditional route for three or four cells in any dimension, assuming an extra stability property.",
+      "verdict": "supported",
+      "sourceLine": "the propeller bound for three or four cells in arbitrary dimension,"
+    },
+    {
+      "text": "The difficulty is controlling all partitions while shapes and probabilities vary.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to control all measurable partitions while allowing"
+    },
+    {
+      "text": "The proof takes an extremizer with the fewest cells of positive measure; merging shows pairwise inner products are negative.",
+      "verdict": "supported",
+      "sourceLine": "one with the fewest cells of positive measure. Merging two cells shows"
+    },
+    {
+      "text": "The three-dimensional theorem excludes four or fewer active cells.",
+      "verdict": "supported",
+      "sourceLine": "Heilman, Jagannath, and Naor therefore excludes $m\\le4$ from any"
+    },
+    {
+      "text": "The new estimates handle five or more active cells.",
+      "verdict": "supported",
+      "sourceLine": "The new estimates below show that an extremizer with five or more"
+    },
+    {
+      "text": "Two consequences of optimality are used: deleting one score, and competing against two scores.",
+      "verdict": "supported",
+      "sourceLine": "linear scores. Two different consequences of optimality then constrain"
+    },
+    {
+      "text": "The probability bounds are combined with the total probability 1 to reach a contradiction.",
+      "verdict": "supported",
+      "sourceLine": "bounds with the identity $\\sum_iP_i=1$. The available probability mass"
+    },
+    {
+      "text": "Every finite numerical comparison has exact rational enclosures.",
+      "verdict": "supported",
+      "sourceLine": "gives exact rational enclosures for every finite numerical comparison,"
+    },
+    {
+      "text": "The proof uses the three-dimensional bound and Ehrhard's inequality as external inputs.",
+      "verdict": "supported",
+      "sourceLine": "The geometric proof uses the three-dimensional propeller bound and"
+    },
+    {
+      "text": "Khot and Naor's rounding has loss factor (8π/9)(1 − 1/k).",
+      "verdict": "supported",
+      "sourceLine": "For fixed $k\\ge3$, Khot and Naor's expected Gaussian rounding guarantee"
+    },
+    {
+      "text": "Any fixed loss factor below α_k is NP-hard, using the companion Unique Games Theorem.",
+      "verdict": "supported",
+      "sourceLine": "deterministic approximation with a fixed loss factor below $\\alpha_k$."
+    },
+    {
+      "text": "The Unique Games input is needed only for the hardness statement.",
+      "verdict": "supported",
+      "sourceLine": "Unique Games input is needed only for the hardness statement."
+    },
+    {
+      "text": "Lean covers the bound for every dimension and cell count and its attainment; the Gaussian-maxima and kernel-clustering consequences are not included.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}

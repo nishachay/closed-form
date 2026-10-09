@@ -1,0 +1,223 @@
+{
+  "id": "008",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Deligne-Drinfeld-conjecture-September-23-2026/paper.pdf",
+      "label": "The Deligne-Drinfeld conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/008.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A short list of braid equations has exactly the solutions Deligne and Drinfeld predicted, in every size.",
+  "scope": "The result concerns the rational solutions of three standard equations, with the Ihara bracket, in every weight.",
+  "plain": "Three short equations pick out special expressions built from two letters. Deligne and Drinfeld predicted exactly how many independent solutions exist at each length. The prediction says all solutions grow from one basic piece at each odd length 3, 5, 7 and so on. This paper proves that prediction in every length, with a Lean proof listed. Before it, the count had been confirmed only up to length 29.",
+  "doesNot": "This does not give a canonical choice of the basic pieces; the paper says its generators are not canonical.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1990",
+    "firstStepBy": "Vladimir Drinfeld, associators and the Grothendieck–Teichmüller group",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It settles a central conjecture about braid symmetries in every weight, where computers had reached weight 29."
+  },
+  "explanation": "Take two letters, x and y. Combine them with a bracket: [a,b] means ab minus ba. With three letters you can build [x,[x,y]], which expands to xxy − 2xyx + yxx. You can also build [y,[x,y]]. Every other three-letter bracket expression is a mix of these two. The number of letters is called the weight. Counting gets large fast. Weight 11 allows 186 independent bracket expressions. Weight 29 allows 18,512,790.\n\nNow demand that an expression pass three short tests. The first says swapping x and y flips its sign. The second adds three versions with x and y replaced by other mixes, and asks for zero. The third, the pentagon, balances five versions written in symbols for four braid strands. Expressions that pass all three are the solutions. The theorem pins down how many survive. In weight 3 one survives. In weight 11 two survive. In weight 29 only 120 survive out of 18,512,790.\n\nWhere do those counts come from? The prediction is a building recipe. Start with one basic piece in each odd weight: 3, 5, 7 and upward. Combine pieces with a bracket, and their weights add. Weight 8 has one combination, the bracket of the 3-piece with the 5-piece. Weight 11 has two: the 11-piece alone, and the 3-piece bracketed twice with the 5-piece. Counting all such combinations gives 1, 2 and 120 above. The prediction says the solutions are exactly these combinations, with no hidden coincidences among them.\n\nThe solutions form the Grothendieck–Teichmüller Lie algebra. It records the tiny symmetries of the rules for regrouping and crossing braid strands. Solutions combine under a special operation, the Ihara bracket. The Deligne–Drinfeld conjecture predicts that this structure is free on one generator in each odd weight from 3. Free means the generators obey no relations beyond the bracket's own rules. Generator here means one of the basic pieces.\n\nThe prediction has three parts: the basic pieces exist, they combine freely, and nothing else solves the equations. The first two were known. Drinfeld's 1990 paper credits Ihara with the odd-weight pieces. Brown's 2012 work gave a free family of solutions. In 2026 Willwacher showed that suitable families of pieces are always free. The obstacle was the third part. Nobody could rule out extra solutions in every weight. Computations by Naef and Willwacher settled the count only up to weight 29.\n\nThe paper's main estimate is an upper bound on the number of solutions in every weight. It matches the recipe's count. The key step studies the pentagon in characteristic two. That is arithmetic where 1 + 1 equals 0. There, the equation simplifies enough to count what can survive. Separately, the paper builds a solution in each odd weight. Each has a nonzero coefficient on the word x…xy, which has one y. This relies on a convergent integral being nonzero, not on any unproved fact about its value. Together the two halves give existence, freeness and the exact count at once.\n\nSo the theorem forbids any surprise solution. In weight 30 the recipe gives 151 solutions among 35,790,267 bracket expressions. No computer had checked that weight, and the theorem says 151 is exact. It also shows that the Ihara bracket of two solutions is again a solution. The basic pieces it uses are one valid choice among many; the paper says they are not canonical. The paper also claims a consequence for Kontsevich's graph complex, an algebraic structure built from drawings of graphs. That step relies on Willwacher's earlier theorem. It describes only one layer of that structure, the layer called degree zero, and no other.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the rational solutions of the three equations with the Ihara bracket. It also covers the version for infinite sums by weight. The regularized-transport proposition and the graph-complex consequences are outside that check. No specialist review has been published yet.",
+  "hypeCheck": "Major if the proof holds. The main statement has a Lean proof listed. The graph-complex consequence is outside it, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Bracket",
+      "meaning": "The operation [a,b] = ab − ba, which measures how far two expressions are from commuting."
+    },
+    {
+      "term": "Weight",
+      "meaning": "The number of letters in each word of an expression."
+    },
+    {
+      "term": "Grothendieck–Teichmüller Lie algebra",
+      "meaning": "The set of solutions to three equations that record tiny symmetries of braid regrouping and crossing rules."
+    },
+    {
+      "term": "Ihara bracket",
+      "meaning": "The special way to combine two solutions into a new one used in this problem."
+    },
+    {
+      "term": "Free Lie algebra",
+      "meaning": "A bracket structure whose generators obey no relations beyond the bracket's own rules."
+    },
+    {
+      "term": "Characteristic two",
+      "meaning": "Arithmetic in which 1 + 1 equals 0, so only even and odd matter."
+    },
+    {
+      "term": "Graph complex",
+      "meaning": "An algebraic structure built from drawings of graphs, arranged in layers called degrees."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal mathematical proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The Deligne–Drinfeld conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Deligne-Drinfeld-conjecture-September-23-2026/paper.pdf",
+      "quote": "We prove this conjecture, including generation of the entire solution space."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 008",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/008.md",
+      "quote": "The regularized-transport proposition and graph-complex consequences are not included."
+    },
+    {
+      "id": 3,
+      "cite": "V. G. Drinfel'd, “On quasitriangular quasi-Hopf algebras and a group closely connected with Gal(Q̄/Q)”, Leningrad Mathematical Journal 2 (1991), 829–860; Russian original Algebra i Analiz 2 (1990), 149–181",
+      "url": "https://www.mathnet.ru/eng/aa199"
+    },
+    {
+      "id": 4,
+      "cite": "F. Brown, “Mixed Tate motives over Z”, Annals of Mathematics 175 (2012), 949–976",
+      "url": "https://doi.org/10.4007/annals.2012.175.2.10"
+    },
+    {
+      "id": 5,
+      "cite": "T. Willwacher, “On free generators in the Grothendieck–Teichmüller Lie Algebra”, preprint (2026), arXiv:2607.18793v2",
+      "url": "https://arxiv.org/abs/2607.18793v2"
+    },
+    {
+      "id": 6,
+      "cite": "F. Naef and T. Willwacher, “Numerical computation of linearized KV and the Deligne–Drinfeld and Broadhurst–Kreimer conjectures”, preprint (2025), arXiv:2508.08081v1",
+      "url": "https://arxiv.org/abs/2508.08081v1"
+    },
+    {
+      "id": 7,
+      "cite": "T. Willwacher, “M. Kontsevich's graph complex and the Grothendieck–Teichmüller Lie algebra”, Inventiones Mathematicae 200 (2015), 671–760",
+      "url": "https://doi.org/10.1007/s00222-014-0528-x"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Grothendieck–Teichmüller Lie algebra records infinitesimal symmetries of the associativity and braiding constraints for parenthesized braids.",
+      "verdict": "supported",
+      "sourceLine": "The Grothendieck--Teichm\\\"uller Lie algebra records the infinitesimal symmetries of the associativity and braiding constraints for parenthesized braids."
+    },
+    {
+      "text": "Weight is the total number of letters.",
+      "verdict": "supported",
+      "sourceLine": "graded by the total number of letters. We call this degree the weight."
+    },
+    {
+      "text": "The pentagon equation is imposed in the four-strand braid algebra.",
+      "verdict": "supported",
+      "sourceLine": "The last equation is imposed in"
+    },
+    {
+      "text": "The conjecture predicts exactly a free Lie algebra with one generator in each odd weight from three.",
+      "verdict": "supported",
+      "sourceLine": "The Deligne--Drinfeld conjecture predicts that these conditions leave exactly a free Lie algebra with one generator in each odd weight starting at three."
+    },
+    {
+      "text": "The paper proves the conjecture, including generation of the whole solution space.",
+      "verdict": "supported",
+      "sourceLine": "We prove this conjecture, including generation of the entire solution space."
+    },
+    {
+      "text": "The conjecture has three parts: existence, freeness and exhaustion.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture has three parts: existence of the proposed odd-weight elements, freeness of the Lie algebra they generate, and exhaustion of the equation space."
+    },
+    {
+      "text": "Drinfeld's paper credits Ihara with the odd-weight existence result.",
+      "verdict": "supported",
+      "sourceLine": "Drinfeld's Proposition 6.3 credits Ihara with the odd-weight existence result and gives an associator proof."
+    },
+    {
+      "text": "Brown's work on mixed Tate motives supplies a free Lie subalgebra of the solution space.",
+      "verdict": "supported",
+      "sourceLine": "its inclusion in the associator symmetry algebra therefore supplies a free Lie subalgebra of"
+    },
+    {
+      "text": "Willwacher proved freeness for suitable families of solutions, one in each odd weight.",
+      "verdict": "supported",
+      "sourceLine": "Willwacher subsequently proved freeness for any homogeneous family of solutions, one in each odd weight"
+    },
+    {
+      "text": "Freeness left open whether there are additional solutions.",
+      "verdict": "supported",
+      "sourceLine": "Freeness leaves open whether there are additional solutions of the defining equations"
+    },
+    {
+      "text": "Naef and Willwacher's computations establish the equality through weight 29.",
+      "verdict": "supported",
+      "sourceLine": "establish the required equality through weight 29"
+    },
+    {
+      "text": "The main estimate is an upper bound on the solution space in every weight.",
+      "verdict": "supported",
+      "sourceLine": "Our main estimate is the all-weight upper bound"
+    },
+    {
+      "text": "The main step degenerates the pentagon in characteristic two.",
+      "verdict": "supported",
+      "sourceLine": "The main step is a degeneration of the pentagon in characteristic two."
+    },
+    {
+      "text": "The paper constructs rational solutions with a nonzero coefficient of x^{n-1}y in every odd weight.",
+      "verdict": "supported",
+      "sourceLine": "we construct rational solutions with a nonzero coefficient of"
+    },
+    {
+      "text": "The construction uses the nonvanishing of a convergent integral and no independence assertion about its values.",
+      "verdict": "supported",
+      "sourceLine": "This uses the nonvanishing of a convergent integral, and requires no arithmetic independence assertion about its values."
+    },
+    {
+      "text": "The argument proves generation and freeness simultaneously.",
+      "verdict": "supported",
+      "sourceLine": "This proves generation and freeness simultaneously."
+    },
+    {
+      "text": "The proof also gives closure of the solution space under the Ihara bracket.",
+      "verdict": "supported",
+      "sourceLine": "This also proves closure of … under the stated Ihara bracket"
+    },
+    {
+      "text": "The generators are not canonical.",
+      "verdict": "supported",
+      "sourceLine": "are not canonical."
+    },
+    {
+      "text": "Via Willwacher's isomorphism, the result identifies the zeroth cohomology of Kontsevich's graph complex; no other degree is computed.",
+      "verdict": "supported",
+      "sourceLine": "no other cohomological degree is computed here."
+    },
+    {
+      "text": "Lean formalizes the main statement and the completed isomorphism; regularized transport and graph-complex consequences are not included.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
