@@ -1,0 +1,255 @@
+{
+  "id": "118",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Additive-hardness-and-unbounded-configuration-gaps-in-bin-packing-September-24-2026/Additive-hardness-and-unbounded-configuration-gaps-in-bin-packing-September-24-2026.pdf",
+      "label": "Additive hardness and unbounded configuration gaps in bin packing"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/118.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Rounding up the fractional bin count can be wrong by any fixed number of bins.",
+  "scope": "Item sizes are rational and above 1/6, so each bin holds at most five items; hardness concerns deterministic fast methods.",
+  "plain": "Bin packing asks how few bins of size one can hold a list of items. A fractional relaxation, the configuration LP, gives a lower bound. It was conjectured to be off by at most one bin beyond rounding up. This paper proves the true count can exceed a whole-number LP value by any fixed amount. It also proves that staying within a fixed number of extra bins is NP-hard.",
+  "doesNot": "This does not contradict the known methods that stay within a logarithmic number of extra bins.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "Scheithauer and Terno, modified round-up bound",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles a named conjecture and a textbook open problem on bin packing."
+  },
+  "explanation": "Take five items, each filling 0.4 of a bin. A bin holds a total of at most 1. Two items fit, using 0.8. Three do not, since they need 1.2. So the five items need three bins: two full pairs and one lone item. Packing items into as few bins as possible is called bin packing.\n\nNow pretend bins could be shared out in fractions. Each bin carries a pair, so five items need two and a half bins. This pretend count has a name, the configuration LP (a linear program over bin patterns). List every way to fill one bin, called a pattern. Give each pattern a weight, which may be a fraction. Every item must be covered, and the total weight is kept as small as possible. The result never exceeds the true number of bins. Here it is 2.5, and rounding up gives exactly 3.\n\nThe idea goes back to cutting stock, with Gilmore and Gomory's method from 1961. People asked whether rounding up always gives the true answer. Odile Marcotte found an instance where it fails, in papers from 1985 and 1986. Guntram Scheithauer and Johannes Terno then studied a weaker bound. It allows one bin more than the rounded-up value. This is now called the Modified Integer Round-Up Conjecture. For the five items, it would allow up to four bins.\n\nFast methods show the same pattern. Here \"fast\" means a running time that grows like a fixed power of the input's length. Karmarkar and Karp in 1982 got within an extra amount growing like the square of the logarithm of the optimum. Hoberg and Rothvoss in 2017 cut this to an amount growing like the logarithm. Their method flips coins, and its bound is measured against the configuration LP. Williamson and Shmoys's 2011 textbook listed an open question. Can one fast method always stay within a fixed number of extra bins?\n\nThis paper answers both questions with no. Pick any whole number c, such as 1 or 100. It builds an instance whose configuration LP equals a whole number B exactly. Yet no packing fits into B plus c bins. Taking c equal to 1 breaks the conjecture. Every item is larger than 1/6, so no bin holds more than five. The LP value also stays B for a stricter LP whose patterns use each physical item copy at most once.\n\nThe second result concerns fast methods. Fix any c. Telling instances that fit in B bins from those needing more than B plus c is NP-hard. NP-hard means a fast method for it would give fast methods for every problem in a large class called NP. So a fast method with a fixed allowance of extra bins exists exactly when P equals NP. Whether P equals NP is itself unproved.\n\nThe obstacle was that a real packing may use any pattern at all. Earlier constructions only blocked methods that round the patterns the LP happened to choose. A true gap must defeat every possible packing. The paper encodes a network problem into item sizes near 1/5. The problem is vertex cover: choosing points in a network so that every link has at least one chosen end. Any packing into few bins can be read back as a small such choice. For the gap, the network is four points all joined. Covering every link needs three points, but a tight packing would yield fewer. So no tight packing exists.\n\nThe gap comes at a price in size. The instances can grow very rapidly as c grows. The paper does not give a matching logarithmic lower bound in terms of instance size. So the logarithmic upper bounds above remain consistent with it. The gap result needs no unproved assumption, while the hardness result is about methods that do not flip coins.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main statements. They cover the gap for both LPs, the hardness for each c, and the link to P versus NP. The Lean statement is matched against a fixed reference statement by a tool called Comparator. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean checks formal versions of the main statements. No specialist review is published. The instances are very large, and hardness says nothing unless P differs from NP.",
+  "glossary": [
+    {
+      "term": "Bin packing",
+      "meaning": "Putting items of given sizes into as few bins of size one as possible."
+    },
+    {
+      "term": "Configuration LP",
+      "meaning": "A relaxed count of bins that lets bin patterns be used in fractional amounts."
+    },
+    {
+      "term": "Pattern",
+      "meaning": "One way to fill a single bin with items whose sizes add up to at most one."
+    },
+    {
+      "term": "Modified Integer Round-Up Conjecture",
+      "meaning": "The guess that the true bin count is at most the rounded-up LP value plus one."
+    },
+    {
+      "term": "NP-hard",
+      "meaning": "At least as hard as every problem in the class NP, so a fast method would give fast methods for all of them."
+    },
+    {
+      "term": "P equals NP",
+      "meaning": "The unproved possibility that every problem whose answers are quick to check is also quick to solve."
+    },
+    {
+      "term": "Vertex cover",
+      "meaning": "A set of points in a network that includes at least one end of every link."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. C. Gilmore and R. E. Gomory, “A linear programming approach to the cutting-stock problem”, Operations Research 9(6) (1961), 849–859",
+      "url": "https://doi.org/10.1287/opre.9.6.849"
+    },
+    {
+      "id": 2,
+      "cite": "O. Marcotte, “An instance of the cutting stock problem for which the rounding property does not hold”, Operations Research Letters 4(5) (1986), 239–243",
+      "url": "https://doi.org/10.1016/0167-6377(86)90009-X"
+    },
+    {
+      "id": 3,
+      "cite": "G. Scheithauer and J. Terno, “The modified integer round-up property of the one-dimensional cutting stock problem”, European Journal of Operational Research 84(3) (1995), 562–571",
+      "url": "https://doi.org/10.1016/0377-2217(95)00022-I"
+    },
+    {
+      "id": 4,
+      "cite": "N. Karmarkar and R. M. Karp, “An efficient approximation scheme for the one-dimensional bin-packing problem”, FOCS (1982), 312–320",
+      "url": "https://pagesperso.g-scop.grenoble-inp.fr/~newmana/OptApproxFall2016/Karmarker-Karp-BinPacking.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "R. Hoberg and T. Rothvoss, “A logarithmic additive integrality gap for bin packing”, SODA (2017), 2616–2625",
+      "url": "https://doi.org/10.1137/1.9781611974782.172"
+    },
+    {
+      "id": 6,
+      "cite": "D. P. Williamson and D. B. Shmoys, The Design of Approximation Algorithms, Cambridge University Press (2011), Chapter 17, Problem 3",
+      "url": "https://designofapproxalgs.com/book.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Additive hardness and unbounded configuration gaps in bin packing” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Additive-hardness-and-unbounded-configuration-gaps-in-bin-packing-September-24-2026/Additive-hardness-and-unbounded-configuration-gaps-in-bin-packing-September-24-2026.pdf",
+      "quote": "Taking $c=1$ contradicts Equation~\\eqref{eq:mirup}, so"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for “Bin packing and unbounded configuration-LP gaps” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/118.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A bin may contain any subcollection of total size at most one.",
+      "verdict": "supported",
+      "sourceLine": "subcollection of total size at most one",
+      "sourceId": 7
+    },
+    {
+      "text": "The configuration LP assigns nonnegative weights to bin patterns and minimizes total weight while covering item demands.",
+      "verdict": "supported",
+      "sourceLine": "The configuration linear program assigns nonnegative weights",
+      "sourceId": 7
+    },
+    {
+      "text": "Both configuration LPs are lower bounds on the optimum.",
+      "verdict": "supported",
+      "sourceLine": "Both programs are lower bounds on $\\OPT(I)$.",
+      "sourceId": 7
+    },
+    {
+      "text": "Its antecedents include Gilmore and Gomory's column-generation method.",
+      "verdict": "supported",
+      "sourceLine": "Eisemann's formulation and Gilmore and Gomory's column-generation",
+      "sourceId": 1
+    },
+    {
+      "text": "Marcotte studied integer round-up for cutting stock and exhibited an instance where it fails.",
+      "verdict": "supported",
+      "sourceLine": "cutting stock and exhibited an instance for which it",
+      "sourceId": 2
+    },
+    {
+      "text": "Scheithauer and Terno investigated the bound OPT ≤ ⌈LP⌉+1, now known as the Modified Integer Round-Up Conjecture.",
+      "verdict": "supported",
+      "sourceLine": "now known as the \\emph{Modified Integer Round-Up Conjecture}.",
+      "sourceId": 3
+    },
+    {
+      "text": "Karmarkar and Karp obtained an additive bound of order log² OPT.",
+      "verdict": "supported",
+      "sourceLine": "obtaining an additive bound of order",
+      "sourceId": 4
+    },
+    {
+      "text": "Hoberg and Rothvoss obtained order log OPT.",
+      "verdict": "supported",
+      "sourceLine": "packed the containers into bins, obtaining order",
+      "sourceId": 5
+    },
+    {
+      "text": "The Rothvoss and Hoberg–Rothvoss algorithms are randomized, with bounds relative to the configuration LP.",
+      "verdict": "supported",
+      "sourceLine": "The latter two algorithms are randomized, and their bounds hold relative",
+      "sourceId": 7
+    },
+    {
+      "text": "Williamson and Shmoys listed the constant-additive question as an open problem in their 2011 book.",
+      "verdict": "supported",
+      "sourceLine": "Williamson and Shmoys included this constant-additive question among",
+      "sourceId": 6
+    },
+    {
+      "text": "For every c there is an instance with LP value exactly B and optimum above B+c, with all sizes above 1/6.",
+      "verdict": "supported",
+      "sourceLine": "For every integer $c\\ge0$, there is a finite rational bin-packing instance",
+      "sourceId": 7
+    },
+    {
+      "text": "The LP equality also holds for the individual-copy configuration LP.",
+      "verdict": "supported",
+      "sourceLine": "LP whose patterns are subsets of the individual item copies.",
+      "sourceId": 7
+    },
+    {
+      "text": "Taking c = 1 disproves the Modified Integer Round-Up Conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Taking $c=1$ contradicts Equation~\\eqref{eq:mirup}, so",
+      "sourceId": 7
+    },
+    {
+      "text": "Sizes above 1/6 mean each bin holds at most five items.",
+      "verdict": "supported",
+      "sourceLine": "than $1/6$, so each feasible bin contains at most five items.",
+      "sourceId": 7
+    },
+    {
+      "text": "For every fixed c, distinguishing instances that fit in B bins from those that cannot fit in B+c bins is NP-hard.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed integer $c\\ge0$, it is NP-hard to distinguish pairs $(I,B)$",
+      "sourceId": 7
+    },
+    {
+      "text": "A deterministic polynomial-time algorithm with a fixed additive constant exists if and only if P = NP.",
+      "verdict": "supported",
+      "sourceLine": "$\\OPT(I)+C$ bins for some absolute constant $C$ exists if and only if",
+      "sourceId": 7
+    },
+    {
+      "text": "The gap theorem assumes no separation of complexity classes.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:unbounded-gap} assumes no separation of complexity",
+      "sourceId": 7
+    },
+    {
+      "text": "Earlier discrepancy constructions obstructed only algorithms that round a supplied fractional support.",
+      "verdict": "supported",
+      "sourceLine": "logarithmic obstructions for algorithms restricted to rounding a supplied",
+      "sourceId": 7
+    },
+    {
+      "text": "A gap for the full configuration LP must control all packings, not only the chosen support.",
+      "verdict": "supported",
+      "sourceLine": "therefore control all such packings, rather than only the chosen support.",
+      "sourceId": 7
+    },
+    {
+      "text": "The paper reduces from vertex cover, encoding it in scalar sizes near 1/5.",
+      "verdict": "supported",
+      "sourceLine": "sizes near $1/5$. An arbitrary feasible packing need not consist of the",
+      "sourceId": 7
+    },
+    {
+      "text": "The gap uses the four-vertex clique, whose minimum vertex cover has size three.",
+      "verdict": "supported",
+      "sourceLine": "The minimum vertex cover of this graph has size three, whereas",
+      "sourceId": 7
+    },
+    {
+      "text": "The instances can grow very rapidly with the gap, and no matching logarithmic lower bound in instance size is given.",
+      "verdict": "supported",
+      "sourceLine": "rapidly with the prescribed gap. We do not obtain a matching logarithmic",
+      "sourceId": 7
+    },
+    {
+      "text": "The paper considers deterministic polynomial-time algorithms.",
+      "verdict": "supported",
+      "sourceLine": "We consider deterministic",
+      "sourceId": 7
+    },
+    {
+      "text": "The Lean formalization covers the gap for both LPs, NP-hardness for each fixed c, and the P = NP equivalence.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

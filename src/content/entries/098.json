@@ -1,0 +1,226 @@
+{
+  "id": "098",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-doubling-Hilbert-subset-with-no-finite-dimensional-bi-Lipschitz-embedding-September-25-2026/main.pdf",
+      "label": "A doubling Hilbert subset with no finite-dimensional bi-Lipschitz embedding"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/098.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Some uncrowded point sets in infinite dimensions cannot be copied faithfully into any finite dimension.",
+  "scope": "The set lives in Hilbert space; the result covers copies into any finite dimension at any finite stretch factor.",
+  "plain": "A set of points is doubling if no ball in it is too crowded. Every set in ordinary finite-dimensional space passes this test. Lang and Plaut asked whether every doubling set in Hilbert space can be copied into finitely many dimensions. The copy may stretch distances by a fixed factor but never shrink them below a fixed scale. This paper proves the answer is no, and also proves a compact version inside every infinite-dimensional Banach space.",
+  "doesNot": "This does not rule out copies after snowflaking, where Assouad's 1983 theorem still gives a yes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2001",
+    "firstStepBy": "Lang and Plaut, who posed the question",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It answers a well-known question in metric geometry that earlier work had settled only for p greater than 2."
+  },
+  "explanation": "Start with one point. Push copies of it one step away, each along its own direction. Make every direction perpendicular to all the others. Any two pushed points are then √2, about 1.414, apart. Hilbert space is a setting with endless perpendicular directions. So you can make as many pushed points as you like. Now try to copy the picture onto a flat sheet. Distances may stretch by up to a factor of 2, but they may never shrink.\n\nEach copy must then sit within 2 of the starting point's copy. The copies must also stay more than 1 apart. Give each copy a small disk of radius 1/2. These disks cannot overlap, and all of them fit inside one disk of radius 2.5. That big disk has 25 times the area of a small one. So at most 25 pushed points can be copied. With 26, the copy must fail.\n\nThat bunch of points has a feature a simple test can measure. A set is called doubling if a fixed number of half-radius balls can cover any ball in it. The smaller balls must be centred on points of the set. The bunch fails this test. A ball of radius 1.5 around the starting point holds every point. A ball of radius 0.75 centred on any one point catches only that point. So 26 pushed points need 27 half-size balls, and more points need more. By contrast, every set inside a flat space of finitely many dimensions passes the test.\n\nThat last fact invites a reverse question. Lang and Plaut asked it in a paper published in 2001. Take a set in Hilbert space that passes the doubling test. Can it always be copied into some flat space of finitely many dimensions? The copy may use any number of dimensions. Distances may stretch by any fixed factor, called the distortion, but never shrink below a fixed scale. Such a copy is called a bi-Lipschitz embedding. Gupta, Krauthgamer and Lee asked the same question independently, in a 2003 paper on algorithms.\n\nPartial answers came first. In 1983, Assouad showed that the answer is yes after a change of rules. Every doubling set can be copied once each distance is raised to a power below 1, like a square root. This trick is called snowflaking. For some other ways of measuring distance, the answer was no. Lafforgue and Naor in 2014, and Bartal, Gottlieb and Neiman in 2015, built doubling sets that cannot be copied. Their sets live in spaces called L_p and ℓ_p, with p greater than 2. Hilbert space is the case p = 2, and it stayed open. Schioppa announced a negative answer in 2017. He withdrew it after reporting a possible issue in its argument.\n\nThe obstacle is that the opening bunch is exactly what doubling forbids. A counterexample must hold many perpendicular directions without ever crowding them into one ball. The paper spreads them across a plane. It cuts the plane into rows and columns at sizes 1/1000, 1/1000², and so on. Each row and column gets a colour, repeating in a fixed cycle. A point in a row or column of some colour may be pushed off the plane. The push has the size of that level and points in that colour's own direction. Near any point, at any radius, only a few colours are in reach. The paper counts fewer than 300 choices there. That gives a doubling constant of at most 300 × 16², which is 76,800. The set is fixed before any attempted copy is considered.\n\nNow suppose someone offers a copy into k dimensions with distortion D. The proof picks more colours than (1 + 2D)^k. For a flat sheet and a stretch of 2, that bound is 5², which is 25, so 26 colours. Where a row of one colour crosses a column of another, both pushes are allowed. The two pushed points are √2 times the level size apart. Calculus then shows the copy barely bends along suitable rows and columns. After rescaling, this yields one point per colour, all within D of a centre and more than 1 apart. That is the opening area count, now in k dimensions. It allows at most (1 + 2D)^k such points, so no copy exists. This works for every finite k and D.\n\nSo the answer to the question of Lang and Plaut is no. A bound on crowding alone cannot guarantee a faithful copy in finitely many dimensions. The set built here is unbounded, since it contains a whole plane. A second result fixes that. Every infinite-dimensional Banach space contains a compact set with the same failure. A Banach space is a complete space where vectors have lengths. Compact means, roughly, that every endless sequence in the set has points bunching toward a limit in the set. Their doubling bound does not depend on the space. It is far larger, though: 1 + 6 × 76,800⁸. The same Hilbert set also sits exactly inside L_p for every finite p of at least 1. That settles a case Lafforgue and Naor had left open, p between 1 and 2.\n\nHow sure is this? A computer proof checker called Lean has a formal version of two statements. One is the Hilbert set with doubling constant at most 76,800 and no finite-dimensional copy at any finite distortion. The other is the compact Banach-space version with one universal doubling constant. The L_p consequence is not in the Lean scope note. No specialists have published a review yet.",
+  "hypeCheck": "Major if the formal statements match the paper. Both main statements are in the Lean scope note. The L_p consequence is outside it, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Hilbert space",
+      "meaning": "A space like ordinary flat space, but with endlessly many perpendicular directions."
+    },
+    {
+      "term": "Doubling",
+      "meaning": "A set is doubling if every ball in it can be covered by a fixed number of balls of half the radius."
+    },
+    {
+      "term": "Bi-Lipschitz embedding",
+      "meaning": "A copy of a set where distances may stretch by at most a fixed factor and never shrink below a fixed scale."
+    },
+    {
+      "term": "Distortion",
+      "meaning": "The fixed factor by which a bi-Lipschitz copy may stretch distances."
+    },
+    {
+      "term": "Snowflaking",
+      "meaning": "Replacing every distance by a power of itself below 1, such as its square root."
+    },
+    {
+      "term": "Banach space",
+      "meaning": "A complete space in which vectors have lengths; Hilbert space is one example."
+    },
+    {
+      "term": "Compact",
+      "meaning": "Roughly, a set where every endless sequence has points bunching toward a limit inside the set."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "U. Lang and C. Plaut, “Bilipschitz embeddings of metric spaces into space forms”, Geometriae Dedicata 87 (2001), 285–307",
+      "url": "https://doi.org/10.1023/A:1012093209450"
+    },
+    {
+      "id": 2,
+      "cite": "A. Gupta, R. Krauthgamer and J. R. Lee, “Bounded geometries, fractals, and low-distortion embeddings”, FOCS 2003, 534–543",
+      "url": "https://doi.org/10.1109/SFCS.2003.1238226"
+    },
+    {
+      "id": 3,
+      "cite": "P. Assouad, “Plongements lipschitziens dans R^n”, Bulletin de la Société Mathématique de France 111 (1983), 429–448",
+      "url": "https://doi.org/10.24033/bsmf.1997"
+    },
+    {
+      "id": 4,
+      "cite": "V. Lafforgue and A. Naor, “A doubling subset of L_p for p>2 that is inherently infinite dimensional”, Geometriae Dedicata 172 (2014), 387–398",
+      "url": "https://doi.org/10.1007/s10711-013-9924-4"
+    },
+    {
+      "id": 5,
+      "cite": "Y. Bartal, L.-A. Gottlieb and O. Neiman, “On the impossibility of dimension reduction for doubling subsets of ℓ_p”, SIAM Journal on Discrete Mathematics 29 (2015), 1207–1222",
+      "url": "https://doi.org/10.1137/140977655"
+    },
+    {
+      "id": 6,
+      "cite": "A. Schioppa, “An example of a doubling ‘inherently’ infinite-dimensional subset of l_2”, withdrawn preprint, arXiv:1703.10265 (2017)",
+      "url": "https://arxiv.org/abs/1703.10265"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “A doubling Hilbert subset with no finite-dimensional bi-Lipschitz embedding” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-doubling-Hilbert-subset-with-no-finite-dimensional-bi-Lipschitz-embedding-September-25-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for “Compact counterexamples to bi-Lipschitz dimension reduction” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/098.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every subset of a finite-dimensional Euclidean space is doubling.",
+      "verdict": "supported",
+      "sourceLine": "Every subset of a finite-dimensional Euclidean space is doubling."
+    },
+    {
+      "text": "Lang and Plaut asked whether every doubling subset of Hilbert space bi-Lipschitz embeds into some finite-dimensional Euclidean space.",
+      "verdict": "supported",
+      "sourceLine": "Lang and Plaut asked whether every doubling subset of Hilbert space admits a bi-Lipschitz embedding into some finite-dimensional Euclidean space"
+    },
+    {
+      "text": "Lang and Plaut's paper was published in 2001.",
+      "verdict": "supported",
+      "sourceLine": "Geometriae Dedicata 87 (2001), 285--307."
+    },
+    {
+      "text": "Gupta, Krauthgamer and Lee independently formulated the question for algorithmic dimension reduction, in 2003.",
+      "verdict": "supported",
+      "sourceLine": "Gupta, Krauthgamer, and Lee independently formulated the question in the context of algorithmic dimension reduction"
+    },
+    {
+      "text": "Assouad showed every doubling space embeds after snowflaking, with exponent below 1.",
+      "verdict": "supported",
+      "sourceLine": "This operation is called"
+    },
+    {
+      "text": "Lafforgue and Naor built doubling subsets of L_p, p>2, with no bi-Lipschitz embedding into finite-dimensional Euclidean space.",
+      "verdict": "supported",
+      "sourceLine": "constructed doubling subsets of"
+    },
+    {
+      "text": "Bartal, Gottlieb and Neiman independently obtained obstructions for doubling subsets of ℓ_p.",
+      "verdict": "supported",
+      "sourceLine": "Independently, Bartal, Gottlieb, and Neiman obtained dimension-reduction obstructions for doubling subsets of"
+    },
+    {
+      "text": "Those results concern exponents greater than two and do not settle the Hilbert case.",
+      "verdict": "supported",
+      "sourceLine": "These results concern ambient exponents strictly greater than two and do not settle the Hilbert case."
+    },
+    {
+      "text": "Schioppa announced a negative answer but withdrew it after reporting a possible issue.",
+      "verdict": "supported",
+      "sourceLine": "Schioppa announced a negative answer in , but withdrew the preprint after reporting a possible issue with its duality argument."
+    },
+    {
+      "text": "Schioppa's withdrawal was posted in 2017.",
+      "verdict": "supported",
+      "sourceLine": "withdrawn preprint, 2017; withdrawal posted April 22, 2017."
+    },
+    {
+      "text": "The scales are powers of 1/1000 and strips are coloured periodically.",
+      "verdict": "supported",
+      "sourceLine": "we color horizontal strips of width"
+    },
+    {
+      "text": "At the intermediate level there are fewer than 300 labels.",
+      "verdict": "supported",
+      "sourceLine": "Consequently, at the intermediate level there are fewer than"
+    },
+    {
+      "text": "The doubling constant is at most 300·16² = 76800.",
+      "verdict": "supported",
+      "sourceLine": "The doubling constant of"
+    },
+    {
+      "text": "The set does not depend on a proposed embedding.",
+      "verdict": "supported",
+      "sourceLine": "nor its defining parameters will subsequently depend on a proposed embedding."
+    },
+    {
+      "text": "Where a row of colour i crosses a column of colour m, both displacements are permitted and the source points are √2·r apart.",
+      "verdict": "supported",
+      "sourceLine": "row and a color-… column with … both displacements are permitted, and the corresponding source points are separated by"
+    },
+    {
+      "text": "The proof yields N separated vectors in a radius-D ball, contradicting volume comparison.",
+      "verdict": "supported",
+      "sourceLine": "Euclidean volume comparison contradicts the choice of"
+    },
+    {
+      "text": "Dimension and distortion bounds depending only on the doubling constant cannot hold for all doubling Hilbert subsets.",
+      "verdict": "supported",
+      "sourceLine": "In particular, dimension and distortion bounds depending only on the doubling constant cannot hold for all doubling Hilbert subsets."
+    },
+    {
+      "text": "Every infinite-dimensional real Banach space contains a compact doubling subset with no bi-Lipschitz embedding into a finite-dimensional normed space, with universal constant.",
+      "verdict": "supported",
+      "sourceLine": "such that every infinite-dimensional real Banach space … contains a compact subset … whose doubling constant is at most"
+    },
+    {
+      "text": "One may take the universal constant to be 1+6·76800^8.",
+      "verdict": "supported",
+      "sourceLine": "This proves a universal doubling bound; one may take"
+    },
+    {
+      "text": "The same set is isometric to a subset of L_p for every finite p ≥ 1.",
+      "verdict": "supported",
+      "sourceLine": "is isometric to a subset"
+    },
+    {
+      "text": "This answers Lafforgue and Naor's question for 1<p<2.",
+      "verdict": "supported",
+      "sourceLine": "answers that qualitative fixed-set question with finite-dimensional Euclidean targets when"
+    },
+    {
+      "text": "Assouad's paper is from 1983; Lafforgue–Naor from 2014; Bartal–Gottlieb–Neiman from 2015.",
+      "verdict": "supported",
+      "sourceLine": "Bulletin de la Soci\\'et\\'e Math\\'ematique de France 111 (1983), 429--448."
+    },
+    {
+      "text": "Lean formalizes the Hilbert subset with doubling constant at most 76800 and the compact Banach companion; the L_p consequence is not in the scope note.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

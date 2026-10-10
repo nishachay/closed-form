@@ -1,0 +1,293 @@
+{
+  "id": "122",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-quasipolynomial-time-trace-reconstruction-October-5-2026/uniform-trace-reconstruction.pdf",
+      "label": "Uniform quasipolynomial-time trace reconstruction"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-latest-anchor-induction-with-spectrally-compact-masks-for-worst-case-trace-reconstruction-October-5-2026/paper.pdf",
+      "label": "A latest-anchor induction with spectrally compact masks for worst-case trace reconstruction"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/quantitative-lower-bounds-for-trace-reconstruction-September-24-2026/paper.pdf",
+      "label": "Quantitative lower bounds for trace reconstruction"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/122.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Rebuilding a string from randomly thinned copies needs more than polynomially many copies.",
+  "scope": "The results concern the worst case over all binary strings, with the string length and deletion rate known in advance.",
+  "plain": "A channel deletes each bit of a hidden string at random. You must rebuild the string from many such copies. One paper proves that at a fixed deletion rate, some strings need more copies than any power of the length. A second paper claims to give one algorithm that rebuilds every string with a quasipolynomial number of copies and steps. A third claims a smaller quasipolynomial copy count, without a fast algorithm.",
+  "doesNot": "This does not settle the exact number of copies needed, since the lower and upper bounds still differ.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Batu, Kannan, Khanna and McGregor, independent-deletion trace problem",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they answer the polynomial-sample question and add a quasipolynomial-time algorithm."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven lower bound on traces needed, as a power of n",
+    "note": "Higher is stronger. Log factors are dropped. The new bound beats every fixed power, so it has no single value here.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 2004,
+        "value": 1,
+        "who": "Batu, Kannan, Khanna and McGregor (outlined)",
+        "source": 1
+      },
+      {
+        "year": 2020,
+        "value": 1.25,
+        "who": "Holden and Lyons",
+        "source": 5
+      },
+      {
+        "year": 2021,
+        "value": 1.5,
+        "who": "Chase",
+        "source": 6
+      }
+    ]
+  },
+  "explanation": "Take the string 0110 and pass it through a noisy channel. The channel deletes each bit on its own, with chance 1/2. What comes out is a trace: the surviving bits, in order, with their positions lost. All 16 keep-or-delete patterns are equally likely. The trace 01 comes out in 2 of them, so its chance is 1/8. The full string 0110 survives intact only 1 time in 16. Trace reconstruction asks you to name the original string from many such traces. The hard version asks this for every possible string, not just typical ones.\n\nSome pairs of strings are hard to tell apart. Compare 0100 with 0010, where one lone 1 has moved one place. From a single trace, the best possible guess is right about 59.4% of the time. For 00010000 against 00001000 it drops to about 56.8%. A full search over every pair of length 8 finds none harder at this deletion rate. More traces sharpen the guess. The real question is how fast the number of traces needed must grow with the length n.\n\nTwo kinds of growth matter here. Polynomial growth means a fixed power of n, such as n² or n¹⁰. Quasipolynomial growth is faster than every fixed power, yet far slower than exponential growth like 2 to the power n. Batu, Kannan, Khanna and McGregor set out this problem in 2004 and sketched why about n traces are needed. Known upper limits then fell. They went from exp of roughly √n in 2008 to exp of about n to the 1/5 in 2021. Here exp means the number e raised to that power. The best lower limits reached about n to the 3/2. In 2026 Burudgunte, Valiant and Wang showed that quasipolynomially many traces suffice at a fixed deletion rate. Two things were still open. Could a polynomial number of traces ever be enough? And could a fast method actually find the string?\n\nThe September paper answers the first question with no. Fix any deletion rate. It proves that some strings then need at least n to the power (constant × log log n) traces. Here log log n means the logarithm taken twice, so it grows without limit, though very slowly. That makes the requirement outgrow every fixed power of n. The bound holds even with unlimited computing power and any fixed chance of success. The paper also proves a sharper form when the deletion rate may shrink as n grows.\n\nThe obstacle for lower bounds was building two strings whose traces stay almost identical. Earlier pairs, like the lone shifted 1 above, differ in one place, and enough traces eventually reveal where. The new pairs hide their difference in location at many scales at once. Their middle parts use opposite plus-and-minus patterns from the Thue–Morse sequence, a classic pattern that cancels itself out well. When deletions blur positions, those opposite patterns cancel almost completely.\n\nThe two October papers work on the other side. One claims to give a single algorithm that reconstructs every string when n and a rational keep-probability are known. For each fixed rate, both its trace count and its running time are quasipolynomial in n. It succeeds with chance at least 2/3 for each string. It finds the answer one bit at a time, instead of searching over every possible string. That matters because the 2026 sample bound came with no fast reconstruction method. The other October paper claims a smaller quasipolynomial trace count, but gives no efficient algorithm. Both claim polynomial trace counts when the deletion rate is at most 1/n^ε, for some fixed ε above 0.\n\nSo the polynomial hope is gone, but the exact answer is not known. The logarithm of the lower bound grows like log n times log log n. The logarithm of the upper bound grows like a fixed power of log n. These two rates still leave a gap. The results also describe growth as n becomes large. They do not say how many traces the length-8 pair above needs.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the lower bounds from the September paper. That covers the faster-than-every-power requirement at each fixed deletion rate and the sharper quantitative form. The two October papers, with the algorithm and the trace counts, are outside that check. No specialist review of any of the three papers has been published.",
+  "hypeCheck": "Important if the proofs hold. Only the lower bounds have a Lean check. The algorithm and trace counts in the two October papers are not machine-checked. No specialist review is published. The exact growth rate is still open.",
+  "glossary": [
+    {
+      "term": "Trace",
+      "meaning": "What survives when each bit of a string is deleted at random: the kept bits in order, without their positions."
+    },
+    {
+      "term": "Trace reconstruction",
+      "meaning": "Recovering the original string from many independent traces."
+    },
+    {
+      "term": "Deletion rate",
+      "meaning": "The chance that the channel deletes any one bit. The keep-probability is one minus this."
+    },
+    {
+      "term": "Polynomial growth",
+      "meaning": "Growth no faster than a fixed power of n, such as n squared."
+    },
+    {
+      "term": "Quasipolynomial growth",
+      "meaning": "Growth faster than every fixed power of n but far slower than exponential growth; roughly e raised to a power of log n."
+    },
+    {
+      "term": "Worst case",
+      "meaning": "The method must succeed for every possible input string, not just typical ones."
+    },
+    {
+      "term": "Thue–Morse sequence",
+      "meaning": "A classic sequence of 0s and 1s built by repeatedly appending the flipped copy; its plus-and-minus version cancels out well."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "T. Batu, S. Kannan, S. Khanna and A. McGregor, “Reconstructing Strings from Random Traces”, SODA 2004",
+      "url": "https://people.cs.umass.edu/~mcgregor/papers/04-soda.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "T. Holenstein, M. Mitzenmacher, R. Panigrahy and U. Wieder, “Trace reconstruction with constant deletion probability and related results”, SODA 2008",
+      "url": "https://www.eecs.harvard.edu/~michaelm/postscripts/soda2008c.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "A. De, R. O'Donnell and R. Servedio, “Optimal Mean-Based Algorithms for Trace Reconstruction”, STOC 2017",
+      "url": "https://doi.org/10.1145/3055399.3055450"
+    },
+    {
+      "id": 4,
+      "cite": "F. Nazarov and Y. Peres, “Trace Reconstruction with exp(O(n^{1/3})) Samples”, STOC 2017",
+      "url": "https://arxiv.org/abs/1612.03599"
+    },
+    {
+      "id": 5,
+      "cite": "N. Holden and R. Lyons, “Lower Bounds for Trace Reconstruction”, Annals of Applied Probability (2020)",
+      "url": "https://doi.org/10.1214/19-AAP1506"
+    },
+    {
+      "id": 6,
+      "cite": "Z. Chase, “New lower bounds for trace reconstruction”, Ann. Inst. Henri Poincaré Probab. Stat. (2021)",
+      "url": "https://doi.org/10.1214/20-AIHP1089"
+    },
+    {
+      "id": 7,
+      "cite": "Z. Chase, “Separating words and trace reconstruction”, STOC 2021",
+      "url": "https://doi.org/10.1145/3406325.3451118"
+    },
+    {
+      "id": 8,
+      "cite": "Burudgunte, Valiant and Wang, “Quasipolynomial Trace Reconstruction”, arXiv:2607.04073 (2026)",
+      "url": "https://arxiv.org/abs/2607.04073v1"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “Quantitative lower bounds for trace reconstruction” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/quantitative-lower-bounds-for-trace-reconstruction-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “Uniform quasipolynomial-time trace reconstruction” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-quasipolynomial-time-trace-reconstruction-October-5-2026/uniform-trace-reconstruction.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “A latest-anchor induction with spectrally compact masks for worst-case trace reconstruction” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-latest-anchor-induction-with-spectrally-compact-masks-for-worst-case-trace-reconstruction-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, Lean scope note for family 122 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/122.md",
+      "quote": "The formalization proves superpolynomial sample lower bounds for exact worst-case reconstruction of binary words from independent deletion traces"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A trace keeps the surviving bits in order without their positions.",
+      "verdict": "supported",
+      "sourceLine": "The trace contains its length and its bits, but does not identify their original positions."
+    },
+    {
+      "text": "The worst-case problem requires success for every string.",
+      "verdict": "supported",
+      "sourceLine": "We consider the worst case: the unknown string is arbitrary, and the recovery probability must hold separately for each string."
+    },
+    {
+      "text": "Batu, Kannan, Khanna and McGregor formulated the problem and outlined a linear sample obstruction.",
+      "verdict": "supported",
+      "sourceLine": "Batu, Kannan, Khanna, and McGregor studied the independent-deletion trace problem in connection with multiple sequence alignment and outlined a linear sample obstruction at fixed deletion probability"
+    },
+    {
+      "text": "Holenstein et al. obtained exp(Õ(√n)).",
+      "verdict": "supported",
+      "sourceLine": "Holenstein, Mitzenmacher, Panigrahy, and Wieder obtained a worst-case upper bound of $\\exp(\\widetilde O(\\sqrt n))$"
+    },
+    {
+      "text": "De, O'Donnell and Servedio and Nazarov and Peres improved it to exp(O(n^{1/3})).",
+      "verdict": "supported",
+      "sourceLine": "Independently, De, O'Donnell, and Servedio and Nazarov and Peres improved it to $\\exp(O(n^{1/3}))$"
+    },
+    {
+      "text": "Chase obtained exp(O(n^{1/5} log^5 n)).",
+      "verdict": "supported",
+      "sourceLine": "Chase obtained $\\exp(O(n^{1/5}\\log^5 n))$"
+    },
+    {
+      "text": "Holden and Lyons proved about n^{5/4}; Chase obtained about n^{3/2}.",
+      "verdict": "supported",
+      "sourceLine": "Holden and Lyons used a defect in an alternating background to prove $\\Omega(n^{5/4}/\\sqrt{\\log n})$"
+    },
+    {
+      "text": "Chase's lower bound is Ω(n^{3/2}/log^7 n).",
+      "verdict": "supported",
+      "sourceLine": "Chase obtained $\\Omega(n^{3/2}/\\log^7 n)$ by a direct Hellinger calculation for a related pair"
+    },
+    {
+      "text": "The 2026 BVW bound is quasipolynomial at fixed p and gives no quasipolynomial-time algorithm.",
+      "verdict": "supported",
+      "sourceLine": "At fixed $p$ this is a quasipolynomial sample upper bound; the cited preprint does not give a quasipolynomial-time reconstruction algorithm."
+    },
+    {
+      "text": "At every fixed deletion probability, n^{Ω(log log n)} samples are required, with unrestricted computation and any fixed positive success probability.",
+      "verdict": "supported",
+      "sourceLine": "Exact worst-case reconstruction of a binary word from independent deletion traces requires $n^{\\Omega(\\log\\log n)}$ samples for every fixed deletion probability $q\\in(0,1)$, even with unrestricted computation and any fixed positive success probability."
+    },
+    {
+      "text": "This answers the polynomial-sample question negatively.",
+      "verdict": "supported",
+      "sourceLine": "This gives a negative answer to the polynomial-sample question for binary trace reconstruction."
+    },
+    {
+      "text": "A quantitative form holds when the deletion rate may vary with n.",
+      "verdict": "supported",
+      "sourceLine": "More generally, when $q^3\\log n\\to\\infty$, we prove a lower bound of $n^{c\\log(q^3\\log n)}$ samples for every fixed $0<c<1/(4\\log2)$."
+    },
+    {
+      "text": "Earlier lower bounds located a small discrepancy within a long background.",
+      "verdict": "supported",
+      "sourceLine": "Later lower bounds for complete traces focused on the difficulty of locating a small discrepancy within a long background."
+    },
+    {
+      "text": "The construction hides differences in location at several scales.",
+      "verdict": "supported",
+      "sourceLine": "Our construction hides differences in location at several scales."
+    },
+    {
+      "text": "The two words use complementary signed patterns in their central segments.",
+      "verdict": "supported",
+      "sourceLine": "The two words use complementary signed patterns in their central segments."
+    },
+    {
+      "text": "The Thue–Morse pattern's convolution with a broad offset is small.",
+      "verdict": "supported",
+      "sourceLine": "making its convolution with a broad binomial offset small"
+    },
+    {
+      "text": "A uniform algorithm reconstructs every binary string when length and rational retention probability are known.",
+      "verdict": "supported",
+      "sourceLine": "We give a uniform algorithm that reconstructs every binary string from independent deletion traces when its length and rational retention probability are known."
+    },
+    {
+      "text": "For each fixed retention probability, both the number of traces and the bit complexity are quasipolynomial.",
+      "verdict": "supported",
+      "sourceLine": "For each fixed retention probability, both the number of traces and the bit complexity are quasipolynomial in the string length."
+    },
+    {
+      "text": "Reconstruction succeeds with probability at least 2/3 for each input string.",
+      "verdict": "supported",
+      "sourceLine": "Reconstruction succeeds with probability at least $2/3$ for each input string."
+    },
+    {
+      "text": "The tests determine one bit at a time.",
+      "verdict": "supported",
+      "sourceLine": "The resulting tests determine one bit at a time and can be implemented using rational arithmetic."
+    },
+    {
+      "text": "The approach replaces a search over complete strings.",
+      "verdict": "supported",
+      "sourceLine": "It enables constructive feasibility tests in place of a search over complete strings."
+    },
+    {
+      "text": "The latest-anchor paper concerns sample complexity and asserts no efficient algorithm.",
+      "verdict": "supported",
+      "sourceLine": "They concern sample complexity and do not assert an efficient reconstruction algorithm or matching optimality."
+    },
+    {
+      "text": "If the deletion probability is at most n^{-ε}, the bounds are polynomial.",
+      "verdict": "supported",
+      "sourceLine": "If the deletion probability is at most $n^{-\\varepsilon}$ for fixed $\\varepsilon>0$, the sample and running-time bounds are polynomial."
+    },
+    {
+      "text": "A gap remains between the lower and upper rates.",
+      "verdict": "supported",
+      "sourceLine": "The logarithm of this sample bound is a fixed power of $\\log n$, whereas the logarithm of our lower bound at a fixed channel has order $(\\log n)(\\log\\log n)$, leaving a gap between the rates."
+    },
+    {
+      "text": "Lean has checked the lower bounds of the September paper; the October papers are outside the Lean scope note.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "id": "089",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Planar-Graph-Metrics-Embed-into-L1-with-Constant-Distortion-September-23-2026/paper.pdf",
+      "label": "Planar Graph Metrics Embed into L1 with Constant Distortion"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/L1-Embeddings-of-Graphs-of-Bounded-Treewidth-September-23-2026/paper.pdf",
+      "label": "L1 Embeddings of Graphs of Bounded Treewidth"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/089.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every planar road network can be redrawn in taxicab distance with stretch below one fixed number.",
+  "scope": "Finite connected networks with positive edge lengths that are planar, or whose tree decompositions have bags of bounded size.",
+  "plain": "Distances along roads in a network can often be copied into taxicab distance, but usually with some stretch. These two papers prove that planar networks need only a bounded stretch, whatever their size or road lengths. Networks of bounded treewidth are close to trees in a precise sense. They need a stretch depending only on that closeness. This settles two cases of a conjecture published in 2004 by Gupta, Newman, Rabinovich and Sinclair (Lean proof listed).",
+  "doesNot": "This does not prove the full Gupta–Newman–Rabinovich–Sinclair conjecture, and it gives no value for the planar constant.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Gupta, Newman, Rabinovich and Sinclair, conjecture and treewidth-two case",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles the planar and bounded-treewidth cases of a long-open conjecture linking distances and network cuts."
+  },
+  "explanation": "Picture two towns, A and B. Each has a 1 km road to the same three villages. Distances follow the roads. A village is 1 km from each town. The two towns are 2 km apart, through any village. Any two villages are also 2 km apart.\n\nNow try to redraw this map on a city grid. On a grid you add up the blocks walked in each direction. This is taxicab distance. Mathematicians call it L1 distance, and they allow as many directions as needed. Some maps fit a grid perfectly. Four corners of a square block, 1 km per side, already sit on grid corners. The towns-and-villages map does not fit. A small computer calculation over all cuts settles the best drawing. Even the best grid drawing must stretch some distance by 4/3 relative to another. That factor is called the distortion. In the best drawing, each distance lies between its true value and 4/3 of it, after one overall rescaling.\n\nWhy this kind of grid? A taxicab distance is a sum of cuts. A cut splits the places into two sides. Each cut adds its weight to every pair it separates. For the square block, take one north–south cut and one east–west cut, each of weight 1. Neighbouring corners are split by one cut, so they sit 1 km apart. Opposite corners are split by both, so they sit 2 km apart. Cuts are also how bottlenecks in networks are measured. Picture pipes carrying several kinds of goods between different pairs of places at once. The tightest cut caps how much can flow. The real best flow can fall short of that cap. The ratio between the two is the flow–cut gap. Gupta, Newman, Rabinovich and Sinclair showed that the worst gap on a network equals its worst taxicab distortion.\n\nThe towns-and-villages map is planar: it can be drawn on paper with no roads crossing. In a 2004 paper, those four authors stated a broad conjecture. Take any proper minor-closed family of networks. Such a family stays inside itself when roads are deleted or shrunk to a point. It also leaves some network out. They predicted one fixed distortion for the whole family. It must not grow with the number of places or depend on road lengths. Planar networks form one such family. Networks of bounded treewidth form another.\n\nTreewidth measures how tree-like a network is. Cover the places with small overlapping groups, called bags, arranged like the branches of a tree. Every road must fit inside some bag. The bag size needed says how tree-like the network is. The towns-and-villages map has treewidth two, the simplest case past trees.\n\nBefore these papers, the best general bound for planar maps still grew with size. Rao gave a bound of order the square root of log n, for n places, in 1999. Constant bounds existed only for special shapes. Gupta and coauthors proved the treewidth-two case. The best distortion there is exactly 2. Chakrabarti, Jaffe, Lee and Vincent gave the upper bound. Lee and Raghavendra gave the matching lower bound. Lee and Sidiropoulos handled bounded pathwidth, a stricter, path-like cousin of treewidth. Their route through random trees cannot reach all bounded-treewidth networks.\n\nThe one obstacle was scale. A large map has distances of many sizes. Close pairs and far pairs need different cuts. Each new layer of cuts can stretch short roads a little more. Over many scales, those small losses could pile up without limit. The planar paper makes its local cut rules agree exactly where neighbouring regions meet. It also narrows down which pairs still need work at each scale. The treewidth paper changes its random cuts in pairs, so the cut pattern on each bag stays the same.\n\nTogether, the two papers prove these two cases of the conjecture. Grow the towns-and-villages map to millions of places, with wildly uneven roads. If no roads cross, a taxicab drawing exists with distortion below one universal number. The same holds, with a number depending only on bag size, for networks of bounded treewidth. The theorems state that these numbers exist. The treewidth paper says it gives no explicit estimate for its number. Through the earlier link, the flow–cut gap is also capped on these networks. The full conjecture stays open. The planar paper says the needed gluing of larger pieces is not established.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both main theorems. One gives a single distortion bound for all finite connected planar networks with positive road lengths. The other gives a bound depending only on bag size, for networks with a tree decomposition. The flow–cut consequences and the other corollaries are outside that check. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proofs hold. Lean formalizations of both main theorems are listed. The flow–cut and other corollaries are not machine-checked. No constants are given, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "L1 (taxicab) distance",
+      "meaning": "Distance found by adding up the differences in each coordinate separately, like walking city blocks."
+    },
+    {
+      "term": "Distortion",
+      "meaning": "The largest factor by which a redrawing stretches some distance relative to another, after one overall rescaling."
+    },
+    {
+      "term": "Cut",
+      "meaning": "A split of a network's places into two sides; it separates every pair on opposite sides."
+    },
+    {
+      "term": "Planar network",
+      "meaning": "A network that can be drawn on paper with no two roads crossing."
+    },
+    {
+      "term": "Treewidth",
+      "meaning": "A measure of how tree-like a network is, based on the size of overlapping groups arranged like a tree."
+    },
+    {
+      "term": "Minor-closed family",
+      "meaning": "A family of networks that stays inside itself when roads are deleted or shrunk to a point."
+    },
+    {
+      "term": "Flow–cut gap",
+      "meaning": "How far the best possible multi-pair flow in a network can fall short of the limit set by its tightest cut."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. Gupta, I. Newman, Y. Rabinovich and A. Sinclair, “Cuts, Trees and ℓ1-Embeddings of Graphs”, Combinatorica 24 (2004), 233–269",
+      "url": "https://doi.org/10.1007/s00493-004-0015-x"
+    },
+    {
+      "id": 2,
+      "cite": "S. Rao, “Small distortion and volume preserving embeddings for planar and Euclidean metrics”, SCG ’99 (1999), 300–306",
+      "url": "https://doi.org/10.1145/304893.304983"
+    },
+    {
+      "id": 3,
+      "cite": "A. Chakrabarti, A. Jaffe, J. R. Lee and J. Vincent, “Embeddings of topological graphs: Lossy invariants, linearization, and 2-sums”, FOCS 2008, 761–770",
+      "url": "https://doi.org/10.1109/FOCS.2008.79"
+    },
+    {
+      "id": 4,
+      "cite": "J. R. Lee and P. Raghavendra, “Coarse Differentiation and Multi-flows in Planar Graphs”, Discrete & Computational Geometry 43 (2010), 346–362",
+      "url": "https://doi.org/10.1007/s00454-009-9172-4"
+    },
+    {
+      "id": 5,
+      "cite": "J. R. Lee and A. Sidiropoulos, “Pathwidth, trees, and random embeddings”, Combinatorica 33 (2013), 349–374",
+      "url": "https://doi.org/10.1007/s00493-013-2685-8"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Planar Graph Metrics Embed into L1 with Constant Distortion” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Planar-Graph-Metrics-Embed-into-L1-with-Constant-Distortion-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “L1 Embeddings of Graphs of Bounded Treewidth” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/L1-Embeddings-of-Graphs-of-Bounded-Treewidth-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 089 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/089.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every finite connected planar graph with positive edge lengths embeds into L1 with a universal distortion bound.",
+      "verdict": "supported",
+      "sourceLine": "We prove that every finite connected planar graph with arbitrary positive"
+    },
+    {
+      "text": "The planar constant is independent of the number of vertices and the edge lengths.",
+      "verdict": "supported",
+      "sourceLine": "every planar graph metric, independently of the number of vertices and"
+    },
+    {
+      "text": "For each bag-size bound, there is a distortion bound depending only on that bound.",
+      "verdict": "supported",
+      "sourceLine": "The constant is independent of the number of vertices, the depth of the"
+    },
+    {
+      "text": "The treewidth paper gives no explicit estimate for its constant.",
+      "verdict": "supported",
+      "sourceLine": "The proof gives the existence of …, without an explicit estimate"
+    },
+    {
+      "text": "The conjecture of Gupta, Newman, Rabinovich and Sinclair predicts uniformly bounded L1 distortion in every proper minor-closed family.",
+      "verdict": "supported",
+      "sourceLine": "Rabinovich, and Sinclair, which predicts uniformly bounded"
+    },
+    {
+      "text": "L1 distances on a finite set are nonnegative combinations of cuts.",
+      "verdict": "supported",
+      "sourceLine": "Finite … pseudometrics are exactly the nonnegative combinations of cut"
+    },
+    {
+      "text": "Gupta et al. showed that the worst flow–cut gap on a fixed graph equals its worst L1 distortion.",
+      "verdict": "supported",
+      "sourceLine": "Gupta et al. showed that its worst value on a fixed graph equals the"
+    },
+    {
+      "text": "Rao's general preceding bound for n-vertex planar metrics is O(√log n).",
+      "verdict": "supported",
+      "sourceLine": "The general preceding bound for …-vertex planar metrics is"
+    },
+    {
+      "text": "Gupta et al. proved the treewidth-two case.",
+      "verdict": "supported",
+      "sourceLine": "Gupta et al. proved the treewidth-two case~\\cite{GNRS}."
+    },
+    {
+      "text": "The optimal distortion in the treewidth-two case is 2, from Chakrabarti–Jaffe–Lee–Vincent and Lee–Raghavendra.",
+      "verdict": "supported",
+      "sourceLine": "The optimal distortion is …, by the upper bound of Chakrabarti,"
+    },
+    {
+      "text": "Lee and Sidiropoulos established the bounded-pathwidth case through stochastic embeddings into trees.",
+      "verdict": "supported",
+      "sourceLine": "Lee and Sidiropoulos established the bounded-pathwidth case through"
+    },
+    {
+      "text": "The route through dominating trees cannot yield a uniform bound for all bounded-treewidth graphs.",
+      "verdict": "supported",
+      "sourceLine": "The route through dominating trees cannot yield a uniform bound for"
+    },
+    {
+      "text": "The difficulty is combining separation at different scales while keeping a uniform upper bound.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to combine separation at different scales while"
+    },
+    {
+      "text": "Interpolation makes local formulas agree exactly at their interfaces.",
+      "verdict": "supported",
+      "sourceLine": "further updates, and interpolation makes local formulas agree"
+    },
+    {
+      "text": "Replacing two particles by f+g and f−g leaves the combined cut law on the bag unchanged.",
+      "verdict": "supported",
+      "sourceLine": "bag is unchanged: successive threshold masses are affine in the ordered"
+    },
+    {
+      "text": "The planar paper does not establish the general clique-sum closure required for the full conjecture.",
+      "verdict": "supported",
+      "sourceLine": "The general clique-sum closure required for the full GNRS conjecture"
+    },
+    {
+      "text": "Lean formalizes both main theorems; the flow–cut and other corollaries are outside the scope note.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "id": "111",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/One-Sample-Suffices-for-Matroid-Prophet-Inequalities-against-an-Almighty-Adversary-September-23-2026/final.pdf",
+      "label": "One Sample Suffices for Matroid Prophet Inequalities against an Almighty Adversary"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/111.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One sample per item lets an online rule keep a fixed share of the best, even against an all-seeing opponent.",
+  "scope": "The matroid is finite and known. Values are independent and nonnegative, each with one matching sample. The best total has a finite average.",
+  "plain": "An online rule accepts or rejects items one by one, keeping its picks inside a family of allowed sets. It does not know how the values are distributed, but it sees one sample for each item first. This paper proves (Lean proof listed) that it can still earn a fixed share of the best average total. The share holds even when the opponent who orders the items sees every sample, value and coin flip. The share, 2^-310, is extremely small, and no running time is claimed.",
+  "doesNot": "This does not give a fast or practical rule. Its share of 2^-310 is far below the 1/2 known in easier settings.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Theoretical computer science",
+    "significance": "Solid",
+    "significanceWhy": "It swaps a share that shrinks with matroid size for a fixed one, under the strongest opponent. The constant is tiny."
+  },
+  "explanation": "Picture four job candidates who arrive one at a time. You may hire at most two. Each yes or no is final and comes before the next person walks in. Say their values turn out to be 7, 2, 5 and 3. Looking back, the best pair is easy to see: 7 and 5, worth 12. A hasty rule that hires the first two arrivals might meet 2 and 3 first. It would end with 5, about 42 percent of the best.\n\nThis is a prophet inequality problem. A prophet sees every value at once and picks the best allowed set. An online rule sees values one at a time and decides on the spot. The question is what share of the prophet's average total some rule can always secure. \"Always\" means for every pattern of chance behind the values, called their distributions.\n\nThe limit \"at most two\" is the simplest example of a matroid. A matroid is a collection of allowed sets that obeys two rules. Any part of an allowed set is also allowed. And if one allowed set is larger than another, the smaller one can grow by some item of the larger. The rank is the size of the largest allowed set. The paper covers every finite matroid, known to the rule in advance.\n\nHere the rule does not know the distributions. Before anyone arrives, it gets one sample per candidate. A sample is a separate random draw from the same distribution as that candidate's real value. Then an opponent picks the arrival order. This opponent is called almighty. It sees every sample, every real value and the rule's whole random seed. The seed is all the coin flips the rule will use. The rule is never told the order.\n\nMuch was known in easier settings. With known distributions and a single pick, the best possible share is 1/2. Krengel and Sucheston's 1977 paper credits that factor-two bound to Garling. Kleinberg and Weinberg proved the same 1/2 for every matroid in 2012. With one sample and a single pick, Rubinstein, Wang and Weinberg reached the best share, 1/2, in 2020. For general matroids, Feldman, Svensson and Zenklusen gave a one-sample rule in 2015. Its share shrinks slowly as the rank grows, roughly with the logarithm of its logarithm. In 2024, Fu and coauthors reached nearly 1/4 against an almighty opponent. But they needed more samples per item as the matroid grows.\n\nThe single obstacle is that the opponent sees the coins. Random choices usually shield an online rule, because no fixed order can hurt every coin outcome. Here the opponent can pick the worst order for each outcome separately. So the rule must do well against every order at once, on typical coin flips. The paper calls this an expected minimum of rewards, not a minimum of expected rewards. A 2026 one-sample rule by Abdi, Banihashem, Hajiaghayi and Mittal gets 1/2. There, though, the order is fixed without looking at samples, values or coins.\n\nThis paper proves that one sample per item is enough against the almighty opponent. Its rule picks a random set of items in advance. For those items it uses the sample in place of the real value and always says no. This works because a sample and a real value follow the same distribution. From what it sees, the rule builds a chain of nested pieces of the matroid. In each piece it accepts an item only when that item adds to what earlier pieces can already reach. The nesting keeps the hired set allowed in every arrival order.\n\nBack to the candidates. The theorem guarantees a fixed share of the prophet's average, whatever the matroid and its size. That share is 2^-310, about 4.8 × 10^-94. If the prophet averaged 12, the promise is about 5.8 × 10^-93. The paper also claims a larger share, 2^-293, from its own count, leaving slack. It claims no running-time bound. So the result says such a rule exists, not that it is practical. It also needs the prophet's average to be finite.\n\nThe same argument gives a secretary result. There the values are fixed and the order starts out random. The rule watches and rejects a random first stretch. After that, an almighty opponent may reorder the rest, and a fixed share still holds.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the 2^-310 share against an almighty order. Lean also checked the fixed-value result behind it, with the 2^-293 share. The Lean scope note does not describe the secretary result. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds, with modest practical weight. Lean checks the main statement. But the share is about 10^-94, no running time is claimed, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Prophet inequality",
+      "meaning": "A guarantee that an online rule earns a set share of what an all-knowing chooser would earn."
+    },
+    {
+      "term": "Matroid",
+      "meaning": "A family of allowed sets where parts of allowed sets are allowed and smaller allowed sets can always grow from larger ones."
+    },
+    {
+      "term": "Rank",
+      "meaning": "The size of the largest allowed set in a matroid."
+    },
+    {
+      "term": "Sample",
+      "meaning": "A separate random draw from the same distribution as an item's real value."
+    },
+    {
+      "term": "Almighty adversary",
+      "meaning": "An opponent that chooses the arrival order after seeing all samples, values and the rule's coin flips."
+    },
+    {
+      "term": "Random seed",
+      "meaning": "All the random coin flips a rule will use, drawn before it starts."
+    },
+    {
+      "term": "Secretary problem",
+      "meaning": "A selection problem with fixed values where items arrive in random order."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "U. Krengel and L. Sucheston, “Semiamarts and finite values”, Bulletin of the AMS 83 (1977), 745–747",
+      "url": "https://doi.org/10.1090/S0002-9904-1977-14378-4"
+    },
+    {
+      "id": 2,
+      "cite": "R. Kleinberg and S. M. Weinberg, “Matroid Prophet Inequalities”, STOC 2012",
+      "url": "https://arxiv.org/abs/1201.4764v1"
+    },
+    {
+      "id": 3,
+      "cite": "A. Rubinstein, J. Z. Wang and S. M. Weinberg, “Optimal Single-Choice Prophet Inequalities from Samples”, ITCS 2020",
+      "url": "https://arxiv.org/abs/1911.07945v2"
+    },
+    {
+      "id": 4,
+      "cite": "M. Feldman, O. Svensson and R. Zenklusen, “A Simple O(log log(rank))-Competitive Algorithm for the Matroid Secretary Problem”, SODA 2015",
+      "url": "https://arxiv.org/abs/1404.4473v2"
+    },
+    {
+      "id": 5,
+      "cite": "H. Fu, P. Lu, Z. G. Tang, H. Wu, J. Wu and Q. Zhang, “Sample-Based Matroid Prophet Inequalities”, EC 2024",
+      "url": "https://arxiv.org/abs/2406.12799v1"
+    },
+    {
+      "id": 6,
+      "cite": "H. Abdi, K. Banihashem, M. Hajiaghayi and D. Mittal, “On the Strong Matroid Secretary Conjecture and Beyond”, arXiv:2609.19118 (2026)",
+      "url": "https://arxiv.org/abs/2609.19118v1"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “One Sample Suffices for Matroid Prophet Inequalities against an Almighty Adversary” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/One-Sample-Suffices-for-Matroid-Prophet-Inequalities-against-an-Almighty-Adversary-September-23-2026/final.pdf",
+      "quote": "The constant is independent of the matroid, its size and rank, and the distributions."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 111 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/111.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A prophet inequality compares irrevocable online choices with the best feasible choice after all values are known.",
+      "verdict": "supported",
+      "sourceLine": "A prophet inequality compares irrevocable online choices with the best feasible choice after all values are known.",
+      "sourceId": 7
+    },
+    {
+      "text": "A matroid's allowed sets are closed under taking subsets and satisfy augmentation.",
+      "verdict": "supported",
+      "sourceLine": "are closed under taking subsets and satisfy the augmentation axiom",
+      "sourceId": 7
+    },
+    {
+      "text": "The rule decides on each item before the next arrival and keeps its accepted set independent.",
+      "verdict": "supported",
+      "sourceLine": "must accept or reject each label before the next arrival while keeping its accepted set independent",
+      "sourceId": 7
+    },
+    {
+      "text": "The rule receives one independent sample from each distribution before arrivals.",
+      "verdict": "supported",
+      "sourceLine": "before arrivals the rule receives one independent sample from each of these distributions",
+      "sourceId": 7
+    },
+    {
+      "text": "The almighty adversary sees the samples, the values and the rule's complete seed before choosing the order.",
+      "verdict": "supported",
+      "sourceLine": "Besides the samples and the entire online value vector, this adversary sees the rule's complete random seed before choosing the permutation.",
+      "sourceId": 7
+    },
+    {
+      "text": "The rule is not told the future order.",
+      "verdict": "supported",
+      "sourceLine": "The rule is not told that future order.",
+      "sourceId": 7
+    },
+    {
+      "text": "Seeing the coins removes the protection randomness would give against a bad order.",
+      "verdict": "supported",
+      "sourceLine": "This exposes both the statistical information and every random choice that might otherwise protect the online rule from an unfavorable ordering.",
+      "sourceId": 7
+    },
+    {
+      "text": "Krengel and Sucheston credit Garling for the factor-two bound for a single pick with known distributions.",
+      "verdict": "supported",
+      "sourceLine": "the original work of Krengel and Sucheston credits Garling for the factor-two bound",
+      "sourceId": 1
+    },
+    {
+      "text": "Kleinberg and Weinberg proved 1/2 for every matroid with known distributions.",
+      "verdict": "supported",
+      "sourceLine": "guarantee for arbitrary matroid constraints when the distributions are known",
+      "sourceId": 2
+    },
+    {
+      "text": "Rubinstein, Wang and Weinberg obtained the optimal one-sample share 1/2 for a single pick.",
+      "verdict": "supported",
+      "sourceLine": "Rubinstein, Wang, and Weinberg obtained the optimal one-sample reward fraction",
+      "sourceId": 3
+    },
+    {
+      "text": "Feldman, Svensson and Zenklusen derived a one-sample prophet inequality with doubly logarithmic loss in the rank.",
+      "verdict": "supported",
+      "sourceLine": "derived a one-sample prophet inequality with the same loss",
+      "sourceId": 4
+    },
+    {
+      "text": "Earlier secretary guarantees had a doubly logarithmic loss in the rank.",
+      "verdict": "supported",
+      "sourceLine": "obtained guarantees with a doubly logarithmic loss in the rank",
+      "sourceId": 4
+    },
+    {
+      "text": "Fu et al. obtained 1/4 minus delta using a sample count per element growing with n, against an almighty adversary.",
+      "verdict": "supported",
+      "sourceLine": "These latter results allow an almighty adversary",
+      "sourceId": 5
+    },
+    {
+      "text": "Abdi, Banihashem, Hajiaghayi and Mittal give a one-sample 1/2 guarantee with an order fixed independently of samples, values and coins.",
+      "verdict": "supported",
+      "sourceLine": "Their order is fixed independently of the samples, online values, and internal random coins.",
+      "sourceId": 6
+    },
+    {
+      "text": "The full-seed adversary requires an expected minimum of rewards, not a minimum of expected rewards.",
+      "verdict": "supported",
+      "sourceLine": "A bound for every fixed order controls the minimum of expected rewards, whereas this information pattern requires an expected minimum of rewards.",
+      "sourceId": 7
+    },
+    {
+      "text": "The rule uses samples on the revealed mask and rejects those labels.",
+      "verdict": "supported",
+      "sourceLine": "Ignore unused samples and reject revealed labels without using their online values.",
+      "sourceId": 7
+    },
+    {
+      "text": "Sample and value symmetry can replace knowledge of a distribution.",
+      "verdict": "supported",
+      "sourceLine": "These works illustrate how symmetry between a sample and a realized value can replace knowledge of a distribution.",
+      "sourceId": 7
+    },
+    {
+      "text": "Nesting makes the union of accepted labels feasible for every arrival order.",
+      "verdict": "supported",
+      "sourceLine": "Nesting makes their union feasible for every arrival order",
+      "sourceId": 7
+    },
+    {
+      "text": "Within each layer the rule greedily selects labels independent over the earlier endpoint flat.",
+      "verdict": "supported",
+      "sourceLine": "Within each layer the rule greedily selects labels independent over the earlier endpoint flat.",
+      "sourceId": 7
+    },
+    {
+      "text": "The guaranteed share is 2^-310.",
+      "verdict": "supported",
+      "sourceLine": "achieves the absolute competitive ratio",
+      "sourceId": 7
+    },
+    {
+      "text": "The constant does not depend on the matroid, its size or rank, or the distributions.",
+      "verdict": "supported",
+      "sourceLine": "The constant is independent of the matroid, its size and rank, and the distributions.",
+      "sourceId": 7
+    },
+    {
+      "text": "No running-time guarantee is claimed.",
+      "verdict": "supported",
+      "sourceLine": "no running-time or polynomial independence-oracle guarantee is claimed",
+      "sourceId": 7
+    },
+    {
+      "text": "The paper claims the stronger constant 2^-293 from its own count, leaving slack.",
+      "verdict": "supported",
+      "sourceLine": "proves the stronger constant",
+      "sourceId": 7
+    },
+    {
+      "text": "The secretary model has fixed weights, and the rule observes and rejects a random initial segment.",
+      "verdict": "supported",
+      "sourceLine": "In that model the weights are fixed before any randomness, and the rule observes and rejects a random initial segment of a uniformly random permutation.",
+      "sourceId": 7
+    },
+    {
+      "text": "After the prefix, an adversary seeing everything may rearrange the remaining labels.",
+      "verdict": "supported",
+      "sourceLine": "may rearrange the remaining labels arbitrarily",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes the one-sample inequality with ratio 2^-310 and the hidden-vector result with 2^-293; the scope note does not mention the secretary corollary.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}
