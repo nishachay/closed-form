@@ -1,0 +1,223 @@
+{
+  "id": "147",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rigidity-of-Smooth-Billiards-with-a-Continuous-Caustic-Collar-September-24-2026/paper.pdf",
+      "label": "Rigidity of Smooth Billiards with a Continuous Caustic Collar"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Continuous-Phase-Foliations-Create-Analytic-Caustic-Collars-September-24-2026/paper.pdf",
+      "label": "Continuous Phase Foliations Create Analytic Caustic Collars"
+    }
+  ],
+  "headline": "Two papers claim that a smooth billiard table with an unbroken band of caustics along its edge must be an ellipse.",
+  "scope": "Smooth, strictly convex planar tables with positive curvature, where caustics fill a whole band next to the edge.",
+  "plain": "A billiard ball inside an ellipse can follow paths that keep touching one inner curve, called a caustic. Birkhoff's conjecture asks whether only ellipses have this kind of order. The first paper claims to prove that a smooth table is an ellipse if caustics fill an unbroken band along its edge. The second claims the same under a weaker, purely continuous assumption on the ball's motion. Neither paper says anything about tables whose orderly paths have gaps.",
+  "doesNot": "This does not cover tables whose caustics near the edge leave gaps, such as Lazutkin's Cantor-like families.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1927",
+    "firstStepBy": "Birkhoff, the convex billiard as a dynamical model",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "It claims the near-boundary form of a classical conjecture without symmetry or closeness-to-an-ellipse assumptions."
+  },
+  "explanation": "Take an elliptical table with half-width 5 and half-height 3. Its two foci sit at −4 and 4 on the long axis, since 5² − 3² = 4². Now draw a smaller ellipse inside it with half-width √20, about 4.47, and half-height 2. It has the same foci, since 20 − 4 = 16. Roll a ball along a line that just touches the small ellipse. It hits the edge, bounces, and the new line again just touches the small ellipse. A short computer run of six bounces confirms this to rounding error. The small ellipse is called a caustic. It is a curve that every segment of the path keeps touching.\n\nA billiard here is a ball moving in straight lines inside a flat convex table. At the edge it reflects like light in a mirror. The table is smooth and strictly convex, meaning it bulges outward everywhere. It also has positive curvature, so no part of the edge is flat. In an ellipse, the confocal ellipses near the edge form an unbroken family of caustics. In a circle they are smaller circles with the same centre. This orderly behaviour is called integrability.\n\nBirkhoff's conjecture asks whether integrability forces the table to be an ellipse. Birkhoff developed the convex billiard as a model in 1927. Poritsky gave an early printed form of the question in 1950. In 1973 Lazutkin showed that sufficiently smooth tables with positive curvature have many caustics near the edge. But his family has gaps, like a Cantor set, so it is not a full band. In 1993 Bialy showed a circle is forced if invariant curves fill the whole space of ball motions. An invariant curve is a family of motions that the bounces keep inside itself. Avila, De Simoi and Kaloshin in 2016, and Kaloshin and Sorrentino in 2018, treated tables close to ellipses.\n\nThe papers claim the near-boundary version. Suppose a smooth, positively curved table has a continuous caustic collar. That is a band next to the edge, filled without gaps by smooth closed convex caustics. The caustics must vary continuously, but no smoothness across them is assumed. The paper on rigidity of smooth billiards claims such a table is an ellipse. Circles count as ellipses. The band may be very thin, and nothing is assumed about motion deeper inside.\n\nThe companion paper on phase foliations weakens the input further. It works in phase space, the record of where the ball hits and at what angle. It assumes only that continuous closed curves fill a thin band near grazing. Each curve is kept in place by the bounce map, the rule taking one hit to the next. Grazing means the ball skims almost along the edge. The paper claims these curves come from a smooth collar of real caustics. Then the first paper's theorem gives an ellipse.\n\nThe key obstacle is regularity. A merely continuous curve of motions need not be the tangent lines of any smooth caustic. The papers use periodic orbits, paths that close up after a fixed number of bounces. They claim that for each small fraction p/q, a whole curve consists of orbits that circle the table p times in q bounces. Their lengths give equations for the shape of the edge. Solving these equations shows the edge is real analytic, so a power series describes it near every point. Complex-variable arguments then force an ellipse.\n\nThe gap matters. Many tables have Lazutkin's gappy caustics, and these results say nothing about them. They need a band filled completely, with no missing caustics.\n\nHow sure is this? No Lean formalization is listed for either paper in the openai/math release. So no computer proof checker has checked these claims. The phase-foliation paper also relies on the collar paper's estimates and its ellipse theorem. No specialist review has been published.",
+  "hypeCheck": "Major only if both proofs hold. No Lean formalization is listed and no specialist review is published. Tables whose edge caustics leave gaps are not covered.",
+  "glossary": [
+    {
+      "term": "Billiard",
+      "meaning": "A ball moving in straight lines inside a table and reflecting at the edge like light in a mirror."
+    },
+    {
+      "term": "Strictly convex",
+      "meaning": "Bulging outward everywhere, with no flat or inward-bent parts of the edge."
+    },
+    {
+      "term": "Caustic",
+      "meaning": "A curve inside the table that every segment of some ball path keeps touching after each bounce."
+    },
+    {
+      "term": "Continuous caustic collar",
+      "meaning": "A band next to the edge, filled without gaps by smooth closed convex caustics that vary continuously."
+    },
+    {
+      "term": "Phase space",
+      "meaning": "The record of a ball's state: where it hits the edge and at what angle it leaves."
+    },
+    {
+      "term": "Grazing",
+      "meaning": "Moving at a very small angle to the edge, skimming almost along it."
+    },
+    {
+      "term": "Real analytic",
+      "meaning": "Described near every point by a convergent power series, which is stronger than smooth."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Rigidity of Smooth Billiards with a Continuous Caustic Collar”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rigidity-of-Smooth-Billiards-with-a-Continuous-Caustic-Collar-September-24-2026/paper.pdf",
+      "quote": "We prove that a smooth strictly convex planar billiard with positive curvature is an ellipse whenever a full neighborhood of its boundary is continuously foliated by smooth closed convex caustics."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Continuous Phase Foliations Create Analytic Caustic Collars”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Continuous-Phase-Foliations-Create-Analytic-Caustic-Collars-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "G. D. Birkhoff, “On the periodic motions of dynamical systems”, Acta Mathematica 50 (1927), 359–379",
+      "url": "https://doi.org/10.1007/BF02421325"
+    },
+    {
+      "id": 5,
+      "cite": "H. Poritsky, “The billard ball problem on a table with a convex boundary—an illustrative dynamical problem”, Annals of Mathematics 51 (1950), 446–470",
+      "url": "https://www.jstor.org/stable/1969334"
+    },
+    {
+      "id": 6,
+      "cite": "V. F. Lazutkin, “The existence of caustics for a billiard problem in a convex domain”, Mathematics of the USSR-Izvestiya 7 (1973), 185–214",
+      "url": "https://doi.org/10.1070/IM1973v007n01ABEH001932"
+    },
+    {
+      "id": 7,
+      "cite": "M. Bialy, “Convex billiards and a theorem by E. Hopf”, Mathematische Zeitschrift 214 (1993), 147–154",
+      "url": "https://doi.org/10.1007/BF02572397"
+    },
+    {
+      "id": 8,
+      "cite": "A. Avila, J. De Simoi and V. Kaloshin, “An integrable deformation of an ellipse of small eccentricity is an ellipse”, Annals of Mathematics 184 (2016), 527–558",
+      "url": "https://doi.org/10.4007/annals.2016.184.2.5"
+    },
+    {
+      "id": 9,
+      "cite": "V. Kaloshin and A. Sorrentino, “On the local Birkhoff conjecture for convex billiards”, Annals of Mathematics 188 (2018), 315–380",
+      "url": "https://doi.org/10.4007/annals.2018.188.1.6"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A caustic is a curve that a tangent billiard segment keeps touching after reflection.",
+      "verdict": "supported",
+      "sourceLine": "such that a billiard segment tangent to the curve remains tangent after reflection at either endpoint."
+    },
+    {
+      "text": "Confocal ellipses supply caustics that fill a collar of an ellipse.",
+      "verdict": "supported",
+      "sourceLine": "Ellipses are the basic integrable examples: their confocal conics supply caustics, and a confocal elliptic family fills a collar of the boundary."
+    },
+    {
+      "text": "For a circle the caustics are concentric circles.",
+      "verdict": "supported",
+      "sourceLine": "for a circular table, the corresponding caustics are concentric circles."
+    },
+    {
+      "text": "Birkhoff's conjecture asks whether an integrable convex billiard must be an ellipse.",
+      "verdict": "supported",
+      "sourceLine": "The Birkhoff conjecture asks whether an integrable planar convex billiard must be an ellipse."
+    },
+    {
+      "text": "Birkhoff developed the convex billiard as a dynamical model.",
+      "verdict": "supported",
+      "sourceLine": "Birkhoff developed the convex billiard as a dynamical model"
+    },
+    {
+      "text": "Poritsky gave an early printed formulation.",
+      "verdict": "supported",
+      "sourceLine": "its early printed formulation appears in Poritsky's work"
+    },
+    {
+      "text": "Lazutkin's family of caustics has gaps and is not a full collar.",
+      "verdict": "supported",
+      "sourceLine": "its gaps do not give a full collar."
+    },
+    {
+      "text": "Bialy's theorem assumes the whole phase cylinder is foliated and concludes a circle.",
+      "verdict": "supported",
+      "sourceLine": "assumes a foliation of the whole phase cylinder by continuous noncontractible invariant curves and concludes that the table is a circle"
+    },
+    {
+      "text": "Avila, De Simoi and Kaloshin, and Kaloshin and Sorrentino, worked near ellipses.",
+      "verdict": "supported",
+      "sourceLine": "Perturbative results include the local rigidity work of Avila, De Simoi and Kaloshin near low-eccentricity ellipses"
+    },
+    {
+      "text": "A table with a continuous caustic collar is an ellipse.",
+      "verdict": "supported",
+      "sourceLine": "If \\(\\Omega\\) has a continuous caustic collar, then \\(\\Omega\\) is an ellipse."
+    },
+    {
+      "text": "No differentiability across the leaves is assumed.",
+      "verdict": "supported",
+      "sourceLine": "no differentiability of the foliation across its leaves is required."
+    },
+    {
+      "text": "Circles are included.",
+      "verdict": "supported",
+      "sourceLine": "Circles are included."
+    },
+    {
+      "text": "Nothing is assumed about the dynamics farther inside.",
+      "verdict": "supported",
+      "sourceLine": "The hypothesis makes no assertion about the billiard dynamics farther inside the domain."
+    },
+    {
+      "text": "A Cantor family of invariant curves does not satisfy the hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "A Cantor family of invariant curves, even one accumulating at the boundary, does not satisfy this assumption."
+    },
+    {
+      "text": "The companion paper starts from a continuous foliation of a grazing annulus by invariant curves.",
+      "verdict": "supported",
+      "sourceLine": "a continuous foliation of a full grazing annulus by individually invariant essential curves forces an analytic boundary and a jointly analytic collar of smooth strictly convex caustics."
+    },
+    {
+      "text": "A continuous phase curve need not be tangent lines of a smooth caustic.",
+      "verdict": "supported",
+      "sourceLine": "The main issue is that a continuous essential phase curve need not initially be given as the tangent lines of a smooth convex caustic."
+    },
+    {
+      "text": "Small rational rotations occur on curves made entirely of periodic orbits.",
+      "verdict": "supported",
+      "sourceLine": "every sufficiently small rational rotation occurs on a curve entirely made of periodic orbits."
+    },
+    {
+      "text": "Rational caustics force analytic regularity.",
+      "verdict": "supported",
+      "sourceLine": "First, rational caustics force analytic regularity."
+    },
+    {
+      "text": "The phase-foliation paper uses estimates from the collar paper.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:collar-regularity} uses the mesh and Fourier estimates from"
+    },
+    {
+      "text": "No Lean formalization is listed for either paper.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
