@@ -1,0 +1,281 @@
+{
+  "id": "033",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Orbifold-and-logarithmic-Iitaka-subadditivity-September-26-2026/paper.pdf",
+      "label": "Orbifold and logarithmic Iitaka subadditivity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Logarithmic-Kodaira-dimension-and-whole-fiber-variation-September-26-2026/paper.pdf",
+      "label": "Logarithmic Kodaira dimension and whole-fiber variation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-reverse-logarithmic-Kodaira-inequality-and-additivity-September-26-2026/paper.pdf",
+      "label": "The reverse logarithmic Kodaira inequality and additivity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Projective-Hodge-lines-and-ordinary-Iitaka-subadditivity-September-27-2026/paper.pdf",
+      "label": "Projective Hodge lines and ordinary Iitaka subadditivity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/B-semiampleness-for-compact-log-smooth-Kahler-fibrations-September-10-2026/paper.pdf",
+      "label": "B-semiampleness for compact log-smooth Kähler fibrations"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/033.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Twisting a family of shapes never destroys the forms its fibers and base contribute.",
+  "scope": "The results need connected fibers, a very general fiber and smooth compact spaces; the equality needs extra smoothness.",
+  "plain": "The Kodaira dimension measures how fast a shape's special forms multiply. Iitaka asked whether a family of shapes always has at least the fiber's plus the base's Kodaira dimension. These papers claim to prove that rule in full, including orbifold and open-space versions. They also claim Popa's stronger bound, which rewards fibers that really vary. Under extra smoothness they claim exact equality.",
+  "doesNot": "This does not compute the Kodaira dimension of any particular space; it only bounds it.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "Shigeru Iitaka, the theory of divisor dimensions",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle a central question of classification that was open in general for decades."
+  },
+  "explanation": "Take a curve shaped like a doughnut's surface, a torus. It carries exactly one special form of each degree, up to scale. The counts run 1, 1, 1, 1 and never grow. Now take a two-holed doughnut surface, which mathematicians call a curve of genus 2. In degrees 2, 3, 4 and 5 it carries 3, 5, 7 and 9 independent forms. The count grows like the degree itself. A sphere carries none at all.\n\nThese forms are called pluricanonical forms. The Kodaira dimension records how fast their count grows. Growth like the degree to the power 1 gives Kodaira dimension 1, as for the genus-2 curve. Constant counts give 0, as for the torus. No forms at all give minus infinity, as for the sphere. A space whose count grows as fast as its own dimension allows is called of general type.\n\nNow multiply two genus-2 curves into a product. Its counts multiply too: 9, 25, 49 and 81 in degrees 2 to 5. That is 3², 5², 7² and 9². Growth like the degree squared gives Kodaira dimension 2, which is 1 plus 1. A product is the simplest fibration. A fibration is a space laid over a base, with one copy of a fiber above each base point. In a general fibration the fibers can twist and change from point to point.\n\nIitaka asked whether twisting can ever destroy forms. His subadditivity question asks for this rule. The total space's Kodaira dimension is at least the fiber's plus the base's. A product meets it with equality. Iitaka set up the language in 1971. An explicit version for open spaces appeared in his 1977 note.\n\nMany special cases followed. Kawamata treated curve bases in 1982 and fibers with good minimal models in 1985. Viehweg handled bases of general type in 1983. Kollár handled fibers of general type in 1987. Birkar settled total dimension at most six in 2009. Each case drew its positivity from a different part of the fibration. No single method covered all of them. Earlier preprints by Tsuji and Maehara state general inequalities, but these papers do not use them.\n\nThis family of five papers claims to prove the full rule and several stronger forms. The main paper covers Campana's orbifold version. It counts multiple fibers, where the fiber above a point is repeated. It also allows open spaces, where forms may have poles along a removed boundary. The open version uses the logarithmic Kodaira dimension. The complex plane with one point removed shows why that matters. It has logarithmic Kodaira dimension 0. The sphere that completes it, by adding two points, has minus infinity. A second paper claims Popa's stronger inequality. It counts the directions in which the fibers truly vary. When that number beats the base's term, it can replace it. That paper needs a base with logarithmic Kodaira dimension at least 0. A third claims the reverse inequality, and so exact equality, when the family is smooth over the open base.\n\nThe single obstacle was finding enough global forms. They must keep the growth of the fibers and of the base at once. The papers split each fiber into a part of general type and a part with Kodaira dimension 0. A part with Kodaira dimension 0 carries just one form in the relevant degrees. A line of Hodge classes records how that one form changes along the base. These are measurements of a fiber's shape, built from its forms. The papers claim this line carries enough positivity. It comes through a second map, to a space that tracks how fibers change. A fifth paper supplies a related positivity result for compact Kähler fibrations.\n\nThe rules give lower bounds, not values. They do not compute the Kodaira dimension of any particular space. The fiber in each statement is a very general one, chosen away from a countable set of bad points. The equality result needs smooth boundary pieces over the open base. The same holds wherever those pieces cross.\n\nHow sure is this? A computer proof checker called Lean has checked one branch of the equality theorem. It covers a very general base point whose fiber has logarithmic Kodaira dimension minus infinity. Then the total space has minus infinity too, and its logarithmic pluricanonical forms of positive degree all vanish. The other branches of that theorem are outside the check. So are the subadditivity, orbifold and variation theorems. No specialist review has been published.",
+  "hypeCheck": "Only one branch of the equality theorem has a Lean proof. The subadditivity, orbifold and variation claims rest on long unchecked arguments, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Pluricanonical form",
+      "meaning": "A special kind of form on a shape; counting them in each degree measures the shape's complexity."
+    },
+    {
+      "term": "Kodaira dimension",
+      "meaning": "The growth rate of the count of pluricanonical forms, from minus infinity up to the shape's dimension."
+    },
+    {
+      "term": "Fibration",
+      "meaning": "A space laid over a base, with one fiber above each base point."
+    },
+    {
+      "term": "General type",
+      "meaning": "A shape whose form count grows as fast as its dimension allows."
+    },
+    {
+      "term": "Logarithmic Kodaira dimension",
+      "meaning": "The Kodaira dimension of an open space, allowing poles along the removed boundary."
+    },
+    {
+      "term": "Orbifold base",
+      "meaning": "Campana's base that also records fibers repeated with a multiplicity."
+    },
+    {
+      "term": "Variation",
+      "meaning": "The number of independent directions in which the fibers truly change."
+    },
+    {
+      "term": "Hodge line",
+      "meaning": "A line of measurements, built from one special form on each fiber, that tracks how that form changes across the family."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. Iitaka, “On D-dimensions of algebraic varieties”, Journal of the Mathematical Society of Japan 23 (1971), 356–373; and “Classification of Algebraic Varieties”, Proceedings of the Japan Academy 53 (1977), 103–105",
+      "url": "https://doi.org/10.2969/jmsj/02320356"
+    },
+    {
+      "id": 2,
+      "cite": "Y. Kawamata, “Kodaira dimension of algebraic fiber spaces over curves”, Inventiones Mathematicae 66 (1982), 57–71",
+      "url": "https://doi.org/10.1007/BF01404756"
+    },
+    {
+      "id": 3,
+      "cite": "Bibliography of “Orbifold and logarithmic Iitaka subadditivity”: Kawamata 1982 and 1985 (Crelle 363), Viehweg 1983 (Adv. Stud. Pure Math. 1), Kollár 1987 (Adv. Stud. Pure Math. 10)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Orbifold-and-logarithmic-Iitaka-subadditivity-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "E. Viehweg, “Weak positivity and the additivity of the Kodaira dimension for certain fibre spaces”, Advanced Studies in Pure Mathematics 1 (1983), 329–353",
+      "url": "https://doi.org/10.2969/aspm/00110329"
+    },
+    {
+      "id": 5,
+      "cite": "J. Kollár, “Subadditivity of the Kodaira dimension: fibers of general type”, Advanced Studies in Pure Mathematics 10 (1987), 361–398",
+      "url": "https://doi.org/10.2969/aspm/01010361"
+    },
+    {
+      "id": 6,
+      "cite": "C. Birkar, “The Iitaka conjecture C_{n,m} in dimension six”, Compositio Mathematica 145 (2009), 1442–1446",
+      "url": "https://doi.org/10.1112/S0010437X09004187"
+    },
+    {
+      "id": 7,
+      "cite": "F. Campana, “Orbifoldes géométriques spéciales et classification biméromorphe des variétés kählériennes compactes”, Journal of the Institute of Mathematics of Jussieu 10 (2011), 809–934",
+      "url": "https://doi.org/10.1017/S1474748010000101"
+    },
+    {
+      "id": 8,
+      "cite": "M. Popa, “Conjectures on the Kodaira dimension”, in Higher Dimensional Algebraic Geometry (Cambridge University Press, 2025), 19–28",
+      "url": "https://people.math.harvard.edu/~mpopa/papers/kodaira.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "H. Tsuji, “Global generation of the direct images of relative pluricanonical systems”, arXiv:1012.0884 (2010)",
+      "url": "https://arxiv.org/abs/1012.0884v1"
+    },
+    {
+      "id": 10,
+      "cite": "K. Maehara, “Iitaka–Viehweg conjectures C and C++”, arXiv:0910.0604 (2010)",
+      "url": "https://arxiv.org/abs/0910.0604v3"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for family 033 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/033.md"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 13,
+      "cite": "Y. Kawamata, “Minimal models and the Kodaira dimension of algebraic fiber spaces”, Journal für die reine und angewandte Mathematik 363 (1985), 1–46",
+      "url": "https://doi.org/10.1515/crll.1985.363.1"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Kodaira dimension measures the growth of pluricanonical forms.",
+      "verdict": "supported",
+      "sourceLine": "The Kodaira dimension measures the growth of pluricanonical forms."
+    },
+    {
+      "text": "Iitaka's subadditivity problem asks whether kappa(X) is at least kappa(F) plus kappa(Y) for a general fiber F.",
+      "verdict": "supported",
+      "sourceLine": "Iitaka's subadditivity problem asks whether"
+    },
+    {
+      "text": "Iitaka's divisor-dimension and logarithmic theories provide the language; an explicit logarithmic conjecture appears in his classification note.",
+      "verdict": "supported",
+      "sourceLine": "Iitaka's divisor-dimension and logarithmic theories provide the language for this question … an explicit logarithmic subadditivity conjecture appears in"
+    },
+    {
+      "text": "Iitaka's divisor-dimension paper is from 1971 and his classification note from 1977.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "Kawamata treated curve bases and good minimal models, Viehweg addition over a general-type base, Kollár general-type fibers.",
+      "verdict": "supported",
+      "sourceLine": "Kawamata treated curve bases and fibers admitting good minimal models, Viehweg developed weak positivity and addition over a base of general type, and Koll\\'ar proved addition for general-type fibers"
+    },
+    {
+      "text": "Kawamata's papers date from 1982 and 1985, Viehweg's from 1983 and Kollár's from 1987.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "Birkar treated total dimension at most six.",
+      "verdict": "supported",
+      "sourceLine": "Birkar treated total dimension at most six"
+    },
+    {
+      "text": "Established cases draw positivity from different parts of the fibration.",
+      "verdict": "supported",
+      "sourceLine": "Thus the established cases draw positivity from different parts of the fibration, rather than imposing one uniform condition on it."
+    },
+    {
+      "text": "Tsuji and Maehara preprints state ordinary inequalities; neither is a proof input.",
+      "verdict": "supported",
+      "sourceLine": "Neither preprint statement is a proof input here."
+    },
+    {
+      "text": "The main theorem is a positive resolution of Campana's orbifold Iitaka conjecture in the rational SNC, Fujiki class C formulation.",
+      "verdict": "supported",
+      "sourceLine": "This is a positive resolution of Campana's orbifold Iitaka conjecture in its rational SNC, Fujiki-class-"
+    },
+    {
+      "text": "Multiple fibers carry information that the ordinary base omits.",
+      "verdict": "supported",
+      "sourceLine": "Multiple fibers carry information that the ordinary base omits."
+    },
+    {
+      "text": "The logarithmic version permits poles along boundary divisors and applies to open varieties.",
+      "verdict": "supported",
+      "sourceLine": "The logarithmic version permits poles along reduced boundary divisors and therefore applies to open varieties."
+    },
+    {
+      "text": "The punctured plane has logarithmic Kodaira dimension 0, while its compactification P^1 has minus infinity.",
+      "verdict": "supported",
+      "sourceLine": "whereas its smooth projective compactification"
+    },
+    {
+      "text": "The variation theorem claims to prove Popa's Conjecture 3.8 and assumes the base has logarithmic Kodaira dimension at least 0.",
+      "verdict": "supported",
+      "sourceLine": "This proves Popa's Conjecture~3.8 in the formulation on page~6 of his author version dated 13 June 2023"
+    },
+    {
+      "text": "The reverse inequality plus logarithmic subadditivity gives additivity under stratum smoothness.",
+      "verdict": "supported",
+      "sourceLine": "This gives a positive resolution of Popa's logarithmic additivity conjecture in its projective reduced-SNC, stratum-smooth formulation"
+    },
+    {
+      "text": "The lower bound requires global forms that retain the growth of both fibers and base.",
+      "verdict": "supported",
+      "sourceLine": "The lower bound requires global pluricanonical forms that retain the growth of both the fibers and the base."
+    },
+    {
+      "text": "A relative Iitaka map splits off Kodaira-dimension-zero fibers; their pluricanonical system is one-dimensional.",
+      "verdict": "supported",
+      "sourceLine": "A sufficiently divisible pluricanonical system on"
+    },
+    {
+      "text": "The period map supplies a second fibration recording how Hodge structures vary.",
+      "verdict": "supported",
+      "sourceLine": "which records how the Hodge structures of the covers vary, supplies a second fibration"
+    },
+    {
+      "text": "The ordinary proof rests on positivity of the entire highest Hodge line.",
+      "verdict": "supported",
+      "sourceLine": "The main step in the proof is a positivity statement for the entire highest Hodge line of a rationally polarized variation."
+    },
+    {
+      "text": "The b-semiampleness paper resolves the compact log-smooth Kähler case.",
+      "verdict": "supported",
+      "sourceLine": "We resolve the compact log-smooth case of this K\\\"ahler b-semiampleness question."
+    },
+    {
+      "text": "A very general fiber is chosen outside a countable union of proper closed analytic subsets.",
+      "verdict": "supported",
+      "sourceLine": "Here a very general fiber is chosen outside a countable union of proper closed analytic subsets"
+    },
+    {
+      "text": "The reverse inequality assumes the total space and every boundary stratum are smooth over the open base.",
+      "verdict": "supported",
+      "sourceLine": "We call this \\emph{stratum smoothness over"
+    },
+    {
+      "text": "Lean proves the negative-fiber branch of additivity; the finite-dimension and negative-base branches are outside.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ]
+}

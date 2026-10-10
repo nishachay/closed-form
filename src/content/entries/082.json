@@ -1,0 +1,252 @@
+{
+  "id": "082",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Annular-variation-of-the-triangular-Hilbert-transform-at-the-symmetric-point-October-5-2026/annular-variation.pdf",
+      "label": "Annular variation of the triangular Hilbert transform at the symmetric point"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-L3-bound-for-the-dyadic-triangular-Hilbert-form-October-5-2026/dyadic-triangular-hilbert.pdf",
+      "label": "An L³ bound for the dyadic triangular Hilbert form"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-maximal-triangular-Hilbert-transform-at-the-symmetric-point-September-24-2026/paper.pdf",
+      "label": "The maximal triangular Hilbert transform at the symmetric point"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/082.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A triangle-shaped singular integral stays bounded at the symmetric L³ point, whatever cutoffs each point picks.",
+  "scope": "The bounds cover complex L³ inputs on the plane at exponents (3, 3, 3). The constant 40 belongs to a separate dyadic model.",
+  "plain": "The triangular Hilbert transform averages two functions shifted in two different directions. Its weight 1/t cancels between left and right. Earlier bounds grew slowly as the range of scales widened. This work proves a bound that does not grow, even when every point picks its own cutoffs (Lean proof listed). Companion papers claim to prove a stronger variation bound and a bound with constant 40 for a dyadic model.",
+  "doesNot": "This does not give a number for the constant, and it does not cover exponents other than 3, 3, 3.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2017",
+    "firstStepBy": "Christoph Thiele, Problem 13 in a list of open problems",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it answers a stated open problem in harmonic analysis and removes the scale-range growth in earlier bounds."
+  },
+  "explanation": "Make two functions on the plane, F and G. Each equals 1 on the unit square and 0 everywhere else. Stand at the point (0.2, 0.6). Pick a shift t. Read F at the point t steps to the right, and G at the point t steps up. Multiply the two readings. Here the product is 1 exactly when t lies between −0.2 and 0.4. The triangular Hilbert transform adds up these products, each weighted by 1/t.\n\nThe weight 1/t blows up near t = 0. So one cuts out a small gap of half-width ε around zero and stops at a far cutoff R. Take ε = 0.001. The positive shifts then contribute about 5.99. The negative shifts contribute about −5.30. The total is about 0.693, which is ln 2, the natural logarithm of 2. Shrink ε and both halves grow without limit. Their sum stays at ln 2. That cancellation between left and right is the whole subject.\n\nThe cutoffs ε and R are called hard truncation endpoints. The maximal transform takes, at each point, the largest size over every choice of the two endpoints. Different points may pick different endpoints. Sizes are measured by norms. The L³ norm of F is the cube root of the total of |F|³ over the plane. For our unit square it is exactly 1. The output is measured with the L^(3/2) norm, built the same way with the power 3/2.\n\nThe main theorem bounds the worst case. The L^(3/2) norm of the maximal output is at most C times the L³ norms of F and G multiplied. Here C is one absolute constant: it does not depend on F, G or any endpoint. The inputs may be any complex-valued functions with finite L³ norm. The theorem says such a C exists. It does not state a number for it.\n\nPair the output with a third function and you get a form of three inputs, G0(a,b), G1(b,c) and G2(c,a). Each input sees one pair of the three variables, and the pairs close into a triangle. The exponents must satisfy 1/p0 + 1/p1 + 1/p2 = 1. Taking all three equal to 3 is the symmetric point. Christoph Thiele posed this symmetric estimate as Problem 13 in a 2017 list of open problems. The paper says its result resolves that problem positively.\n\nThe operator appears in work of Ciprian Demeter and Christoph Thiele from 2010. In 2015, Kovač, Thiele and Zorin-Kranich proved estimates for a simplified model with one restricted input. In 2019, Durcik, Kovač and Thiele proved bounds with hard truncations. At the symmetric point their bound grows like the square root of log(R/ε). For R/ε of a million, that factor is about 3.7. For a trillion, it is about 5.3. It never stops growing. The new bound does not grow at all.\n\nThe one obstacle is the triangle. An older method tracks a nonnegative quantity, an energy, and lets its total decrease pay for the form. That method worked for two-sided patterns of inputs. Vjekoslav Kovač described why a triangular cycle blocks it. The paper builds a new energy from matrices made by sampling the inputs on a grid. Choosing endpoints point by point makes this energy jump. The paper bounds the total of these jumps without a cost that grows with the number of scales.\n\nTwo companion papers push further. The first claims to prove an annular variation bound. At each point, split the shifts into many disjoint rings. Raise the size of each ring piece to a power r and add. For every r above 2, that total obeys the same kind of L³ bound. Taking a single ring gives back the maximal bound. The second paper studies a dyadic model, built from binary intervals instead of real shifts. It claims the sum of absolute local pieces is at most 40 times the product of the three input norms. That model and the continuous form are different operators.\n\nBack in our example, the theorem guarantees something about every point at once. At almost every point, the cut-off integrals settle to one limit as ε shrinks and R grows. Ours settled at ln 2. The paper also gets this convergence in the L^(3/2) norm. The bound covers only the symmetric point, where all three inputs use the exponent 3.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the maximal bound. It covers any complex F and G with finite L³ norm and one absolute constant C. It also covers a common set where the cut-off integrals are defined. The annular variation bound, the dyadic bound, the limits and the step to Thiele's problem are outside that check. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proofs hold. Lean covers the maximal bound only. The variation bound, the dyadic bound and the step to Thiele's problem are not machine-checked. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Triangular Hilbert transform",
+      "meaning": "An average of two functions on the plane, shifted in two different directions and weighted by 1/t."
+    },
+    {
+      "term": "Hard truncation",
+      "meaning": "Cutting the integral off sharply: dropping shifts closer to zero than ε or farther than R."
+    },
+    {
+      "term": "Maximal transform",
+      "meaning": "At each point, the largest size over every choice of cutoffs."
+    },
+    {
+      "term": "L³ norm",
+      "meaning": "A size of a function: the cube root of the total of its absolute value cubed."
+    },
+    {
+      "term": "Symmetric point",
+      "meaning": "The case where all three inputs of the triangular form use the same exponent, 3."
+    },
+    {
+      "term": "Annular variation",
+      "meaning": "A total of the sizes of the pieces from many disjoint rings of shifts, each raised to a power r."
+    },
+    {
+      "term": "Dyadic model",
+      "meaning": "A simplified version built from intervals of binary lengths instead of real shifts."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer proof checker that accepts a proof only if every step follows from the rules."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The maximal triangular Hilbert transform at the symmetric point” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-maximal-triangular-Hilbert-transform-at-the-symmetric-point-September-24-2026/paper.pdf",
+      "quote": "There is an absolute constant $C$ such that, for every pair of complex functions $F,G\\in L^3(\\R^2)$"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Annular variation of the triangular Hilbert transform at the symmetric point” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Annular-variation-of-the-triangular-Hilbert-transform-at-the-symmetric-point-October-5-2026/annular-variation.pdf",
+      "quote": "Taking a single increment gives the maximal estimate with the supremum over both hard truncation endpoints."
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “An L³ bound for the dyadic triangular Hilbert form” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-L3-bound-for-the-dyadic-triangular-Hilbert-form-October-5-2026/dyadic-triangular-hilbert.pdf",
+      "quote": "The continuous form and its dyadic model are distinct operators; the theorem here is a statement about the latter."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 082 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/082.md"
+    },
+    {
+      "id": 5,
+      "cite": "L. Grafakos, D. Oliveira e Silva, M. Pramanik, A. Seeger and B. Stovall, “Some problems in harmonic analysis”, arXiv:1701.06637 (2017), Section 9 by C. Thiele, Problem 13",
+      "url": "https://arxiv.org/abs/1701.06637v1"
+    },
+    {
+      "id": 6,
+      "cite": "C. Demeter and C. Thiele, “On the two-dimensional bilinear Hilbert transform”, American Journal of Mathematics 132 (2010), 201–256",
+      "url": "https://doi.org/10.1353/ajm.0.0101"
+    },
+    {
+      "id": 7,
+      "cite": "V. Kovač, C. Thiele and P. Zorin-Kranich, “Dyadic triangular Hilbert transform of two general functions and one not too general function”, Forum of Mathematics, Sigma 3 (2015), e25",
+      "url": "https://doi.org/10.1017/fms.2015.25"
+    },
+    {
+      "id": 8,
+      "cite": "P. Durcik, V. Kovač and C. Thiele, “Power-type cancellation for the simplex Hilbert transform”, Journal d'Analyse Mathématique 139 (2019), 67–82",
+      "url": "https://doi.org/10.1007/s11854-019-0052-4"
+    },
+    {
+      "id": 9,
+      "cite": "V. Kovač, “Bellman function technique for multilinear estimates and an application to generalized paraproducts”, Indiana University Mathematics Journal 60 (2011), 813–846",
+      "url": "https://doi.org/10.1512/iumj.2011.60.4784"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The maximal bound holds with one absolute constant for every pair of complex L³ functions.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute constant $C$ such that, for every pair of complex functions $F,G\\in L^3(\\R^2)$",
+      "sourceId": 1
+    },
+    {
+      "text": "The supremum is over both finite hard truncation endpoints.",
+      "verdict": "supported",
+      "sourceLine": "The supremum is over both finite hard truncation endpoints.",
+      "sourceId": 1
+    },
+    {
+      "text": "The truncation may be chosen separately at each point.",
+      "verdict": "supported",
+      "sourceLine": "The estimate controls a truncation chosen separately at each spatial point.",
+      "sourceId": 1
+    },
+    {
+      "text": "The joint principal value exists almost everywhere and in L^{3/2}.",
+      "verdict": "supported",
+      "sourceLine": "almost everywhere and in $L^{3/2}$, with the same norm bound",
+      "sourceId": 1
+    },
+    {
+      "text": "Each input of the scalar form sees one pair of the three variables, and the pairs form a cycle.",
+      "verdict": "supported",
+      "sourceLine": "each input sees one pair of the three variables, and the pairs form a cycle",
+      "sourceId": 2
+    },
+    {
+      "text": "Equal exponents 3 are the symmetric point of the scalar Hölder relation.",
+      "verdict": "supported",
+      "sourceLine": "The three factors have equal exponent $3$, which is the symmetric point of the scalar H\\\"older relation $1/p_0+1/p_1+1/p_2=1$.",
+      "sourceId": 1
+    },
+    {
+      "text": "The result resolves positively Thiele's symmetric triangular Hilbert transform problem, Problem 13.",
+      "verdict": "supported",
+      "sourceLine": "In particular, the result resolves positively the symmetric triangular Hilbert transform problem stated by Thiele",
+      "sourceId": 1
+    },
+    {
+      "text": "The flat operator appears in Demeter and Thiele's discussion of bilinear averages.",
+      "verdict": "supported",
+      "sourceLine": "The flat operator appears in Demeter and Thiele's discussion of bilinear averages for two commuting transformations",
+      "sourceId": 1
+    },
+    {
+      "text": "Kovač, Thiele and Zorin-Kranich proved estimates for a Walsh model with one structurally restricted input.",
+      "verdict": "supported",
+      "sourceLine": "Kova\\v{c}, Thiele and Zorin-Kranich proved estimates for a Walsh model with one structurally restricted input",
+      "sourceId": 1
+    },
+    {
+      "text": "Durcik, Kovač and Thiele's hard-truncation bound grows like the square root of log(R/ε) at the symmetric tuple.",
+      "verdict": "supported",
+      "sourceLine": "at the symmetric tuple the bound grows like $\\sqrt{\\log(R/\\varepsilon)}$",
+      "sourceId": 1
+    },
+    {
+      "text": "These finite-scale bounds retain a dependence on the scale range.",
+      "verdict": "supported",
+      "sourceLine": "These finite-scale bounds retain a dependence on the scale range.",
+      "sourceId": 1
+    },
+    {
+      "text": "Energy telescoping methods concern bipartite forms; Kovač discusses the obstacle posed by the triangular cycle.",
+      "verdict": "supported",
+      "sourceLine": "These methods concern bipartite forms; Kova\\v{c} discusses the obstacle posed by the triangular cycle",
+      "sourceId": 1
+    },
+    {
+      "text": "The proof samples the inputs on a finite mesh.",
+      "verdict": "supported",
+      "sourceLine": "We first sample these inputs, together with a dual input $G_0(a,b)$, on a finite mesh.",
+      "sourceId": 1
+    },
+    {
+      "text": "The energy may jump at switching scales, and the paper bounds the total change without a factor depending on the number of scales.",
+      "verdict": "supported",
+      "sourceLine": "This permits the pointwise maximum without a factor depending on the number of scales or the matrix dimensions.",
+      "sourceId": 1
+    },
+    {
+      "text": "The annular r-variation estimate holds for every real r > 2.",
+      "verdict": "supported",
+      "sourceLine": "For every real $r>2$ there is a finite constant $C_r$ such that",
+      "sourceId": 2
+    },
+    {
+      "text": "The variation partitions may depend on the output point.",
+      "verdict": "supported",
+      "sourceLine": "The supremum is pointwise: the partition may depend on $(x,y)$",
+      "sourceId": 2
+    },
+    {
+      "text": "A single increment gives the maximal estimate.",
+      "verdict": "supported",
+      "sourceLine": "Taking a single increment gives the maximal estimate with the supremum over both hard truncation endpoints.",
+      "sourceId": 2
+    },
+    {
+      "text": "The dyadic sum of absolute local contributions is at most 40 times the product of the input norms.",
+      "verdict": "supported",
+      "sourceLine": "The sum of the absolute local contributions over any finite set of scales is bounded by forty times the product of the input norms.",
+      "sourceId": 3
+    },
+    {
+      "text": "The continuous form and its dyadic model are distinct operators.",
+      "verdict": "supported",
+      "sourceLine": "The continuous form and its dyadic model are distinct operators; the theorem here is a statement about the latter.",
+      "sourceId": 3
+    },
+    {
+      "text": "Lean covers the symmetric maximal estimate for complex L³ inputs with one absolute constant, plus a common full-measure set where truncations are defined; the companion papers and the scalar step are outside it.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

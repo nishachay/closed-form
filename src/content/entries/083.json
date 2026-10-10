@@ -1,0 +1,191 @@
+{
+  "id": "083",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-uniform-Hilbert-transform-estimate-for-Lipschitz-directions-September-25-2026/main.pdf",
+      "label": "A uniform Hilbert transform estimate for Lipschitz directions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/083.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Hilbert transforms along any Lipschitz direction field in the plane obey one energy bound at short lengths.",
+  "scope": "The field must be Lipschitz, and integration lengths must stay below a fixed constant divided by the Lipschitz constant.",
+  "plain": "A directional Hilbert transform compares a function on the two sides of each point, along a line through it. Here each point of the plane picks its own direction, and the directions change at a controlled rate. This paper proves that such transforms never increase energy by more than a fixed factor, at short lengths (Lean proof listed). The factor does not depend on the field or on how small a window around the point is cut out. This answers Stein's question in its short-scale form.",
+  "doesNot": "This does not give a bound at arbitrary lengths for fields whose direction varies.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it answers a long-standing question of Stein that earlier work settled only in special cases."
+  },
+  "explanation": "Picture a straight line with a bright stripe painted on it, from position 0 to position 1. Stand at a point on the line. Add up the paint on one side, weighted by 1 over its distance. Subtract the same sum for the other side. The answer is the Hilbert transform at that point. It measures how lopsided the paint looks from where you stand. With no limit on distance, the answer at point x works out to the logarithm of x/(x − 1), ignoring sign. At the middle point 0.5 the two sides cancel exactly, giving 0. At 0.75 it is about 1.10. At 2 it is about 0.69. Near the stripe's edge it climbs: about 4.62 at 1.01, and about 9.21 at 1.0001.\n\nThat climb is the danger. Nearby paint gets a huge weight, so the sum depends on delicate cancellation between the two sides. On one fixed line, mathematicians have long controlled this well. The standard yardstick is energy, the total of the squared values over all points. A good bound says the output energy is at most a fixed multiple of the input energy.\n\nNow move to a flat plane, and give every point its own direction. This rule is a vector field (an arrow of length 1 at each point). At each point, you take the Hilbert transform along the straight line through it, in that point's own direction. Different points use different lines. The field is Lipschitz with constant K when two arrows a distance d apart differ by at most K times d. For example, let the arrow at height y point at angle y radians. That field has constant 1.\n\nElias Stein asked whether such transforms keep a uniform energy bound. The question, in the form Lacey and Li wrote down, allows lines up to a length set by 1/K. It asks for a weak bound, which limits how much area can carry large output values. The constant must not depend on the field. Lacey and Li trace the question back to an older conjecture of Zygmund on averages along short segments.\n\nMuch partial progress came before. In 2006 Lacey and Li proved a bound for one frequency range at a time, for any measurable directions. Bateman and Thiele, in 2013, handled full transforms when the direction depends on only one coordinate. The paper calls that one-coordinate condition a substantive restriction. Bourgain, and later Stein and Street, used the extra structure of analytic fields. Di Plinio, Guo, Thiele and Zorin-Kranich showed how bounds on single frequency bands reassemble into the full bound.\n\nThe obstacle is that the line moves with the point. Keeping the lines short limits how much the field turns along them. With K equal to 1 and length one millionth, the arrow turns at most about 0.0000573 degrees. Yet the paper stresses that this does not reduce the problem to frequency methods. Lacey and Li also recall that smoothness slightly weaker than Lipschitz does not give the matching bound for the averaging version.\n\nThis paper proves a strong energy bound for every Lipschitz field in the plane. The field may depend on both coordinates. The integration length runs up to a fixed absolute constant divided by K. The bound also holds uniformly when a tiny window around the point is cut out, however small that window is. A strong energy bound implies the weak bound Stein asked for. So, inside this scale, no Lipschitz field can make the output energy blow up.\n\nThe result stops at that scale. The paper separates it from estimates at arbitrary lengths for varying fields, which it does not give. For a constant field, any length reduces to the one-line case. The constants are not given as explicit numbers in the paper.\n\nHow sure is this? The Lean scope note says a computer proof checker called Lean has checked a formal version. It covers every cut-off range from ε up to R, with R at most 1/(1,000,000 K), on smooth rapidly decaying inputs. It also covers the weak bound at a fixed short scale for fields with constant 1. No specialist review has been published.",
+  "hypeCheck": "The Lean scope note lists a formal proof of the short-scale bounds. The paper's constants are not explicit, and no specialist review has been published. It covers only short lengths.",
+  "glossary": [
+    {
+      "term": "Hilbert transform",
+      "meaning": "A weighted difference between a function's values on the two sides of a point, with weight 1 over distance."
+    },
+    {
+      "term": "Vector field",
+      "meaning": "A rule that attaches an arrow, here of length 1, to every point of the plane."
+    },
+    {
+      "term": "Lipschitz",
+      "meaning": "Changing at a controlled rate: two values a distance d apart differ by at most a fixed constant times d."
+    },
+    {
+      "term": "Energy (L² norm)",
+      "meaning": "The total of a function's squared values, which measures its overall size."
+    },
+    {
+      "term": "Weak bound",
+      "meaning": "A limit on how much area can carry output values above a given level."
+    },
+    {
+      "term": "Truncation",
+      "meaning": "Cutting the integral to distances between an inner and an outer length."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “A uniform Hilbert transform estimate for Lipschitz directions” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-uniform-Hilbert-transform-estimate-for-Lipschitz-directions-September-25-2026/main.pdf",
+      "quote": "Both coordinates may enter the field arbitrarily subject to the Lipschitz bound."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note 083 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/083.md"
+    },
+    {
+      "id": 3,
+      "cite": "M. Lacey and X. Li, “On a conjecture of E. M. Stein on the Hilbert transform on vector fields”, Memoirs of the AMS 205 (2010)",
+      "url": "https://arxiv.org/abs/0704.0808v3"
+    },
+    {
+      "id": 4,
+      "cite": "M. T. Lacey and X. Li, “Maximal theorems for the directional Hilbert transform on the plane”, Trans. AMS 358 (2006), 4099–4117",
+      "url": "https://arxiv.org/abs/math/0310346v2"
+    },
+    {
+      "id": 5,
+      "cite": "M. Bateman and C. Thiele, “Lp estimates for the Hilbert transforms along a one-variable vector field”, Analysis & PDE 6 (2013), 1577–1600",
+      "url": "https://arxiv.org/abs/1109.6396"
+    },
+    {
+      "id": 6,
+      "cite": "F. Di Plinio, S. Guo, C. Thiele and P. Zorin-Kranich, “Square functions for bi-Lipschitz maps and directional operators”, J. Funct. Anal. 275 (2018), 2015–2058",
+      "url": "https://arxiv.org/abs/1706.07111v1"
+    },
+    {
+      "id": 7,
+      "cite": "E. M. Stein and B. Street, “Multi-parameter singular Radon transforms III: Real analytic surfaces”, Adv. Math. 229 (2012), 2210–2238",
+      "url": "https://arxiv.org/abs/1105.4589"
+    },
+    {
+      "id": 8,
+      "cite": "J. Bourgain, “A remark on the maximal function associated to an analytic vector field”, Analysis at Urbana I (1989), 111–132",
+      "url": "https://doi.org/10.1017/CBO9780511662294.006"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The integral samples the straight line through the output point in that point's direction.",
+      "verdict": "supported",
+      "sourceLine": "The direction is held fixed at the output point … the integral samples the straight line through … in direction"
+    },
+    {
+      "text": "The field may depend on both coordinates.",
+      "verdict": "supported",
+      "sourceLine": "Both coordinates may enter the field arbitrarily subject to the Lipschitz bound."
+    },
+    {
+      "text": "The bound is uniform over every inner truncation.",
+      "verdict": "supported",
+      "sourceLine": "so its first assertion is a uniform operator bound for each inner truncation."
+    },
+    {
+      "text": "Stein's question, as formulated by Lacey and Li, asks for a uniform weak bound with outer length controlled by the reciprocal Lipschitz seminorm.",
+      "verdict": "supported",
+      "sourceLine": "it asks for a uniform weak-… bound with the outer length controlled by the reciprocal Lipschitz seminorm."
+    },
+    {
+      "text": "The theorem answers Stein's question with a strong L2 bound.",
+      "verdict": "supported",
+      "sourceLine": "gives an affirmative answer with a strong"
+    },
+    {
+      "text": "Lacey and Li trace the question to Zygmund's conjecture on averages over short segments.",
+      "verdict": "supported",
+      "sourceLine": "Lacey and Li trace Stein's question to Zygmund's conjecture on almost-everywhere differentiation by averages over shrinking straight segments"
+    },
+    {
+      "text": "Hölder regularity below one does not by itself give the bound for the averaging maximal operator.",
+      "verdict": "supported",
+      "sourceLine": "obstruction showing that H\\\"older regularity of any exponent below one does not by itself give the corresponding uniform weak-"
+    },
+    {
+      "text": "The scale restriction does not make the operator a Fourier multiplier.",
+      "verdict": "supported",
+      "sourceLine": "The scale restriction limits the turning of the field, but it does not make the operator a Fourier multiplier: the line used by the integral still varies with the output point."
+    },
+    {
+      "text": "Lacey and Li proved an annular weak bound for measurable directions.",
+      "verdict": "supported",
+      "sourceLine": "Lacey and Li proved an annular weak-"
+    },
+    {
+      "text": "Bateman and Thiele proved bounds for the full transform for fields depending on one coordinate.",
+      "verdict": "supported",
+      "sourceLine": "for every nonvanishing measurable field depending on one coordinate"
+    },
+    {
+      "text": "The one-coordinate condition is a substantive restriction.",
+      "verdict": "supported",
+      "sourceLine": "The one-coordinate hypothesis remains a substantive restriction on the direction field."
+    },
+    {
+      "text": "Analytic fields admit extra structure, used by Bourgain and by Stein and Street.",
+      "verdict": "supported",
+      "sourceLine": "Analytic fields admit additional structure:"
+    },
+    {
+      "text": "Di Plinio, Guo, Thiele and Zorin-Kranich showed band bounds imply the full short bound.",
+      "verdict": "supported",
+      "sourceLine": "established that uniform strong … bounds on vertical frequency bands imply the full short principal-value bound"
+    },
+    {
+      "text": "The paper distinguishes its short-scale result from estimates at arbitrary lengths for varying fields.",
+      "verdict": "supported",
+      "sourceLine": "These conventions distinguish the short-scale assertion from an estimate at arbitrary outer lengths for varying fields."
+    },
+    {
+      "text": "A constant field reduces, for any length, to the one-dimensional Hilbert transform.",
+      "verdict": "supported",
+      "sourceLine": "Rotation and Fubini reduce its transform, for any finite outer length, to the one-dimensional Hilbert transform."
+    },
+    {
+      "text": "The constants are absolute constants, not given as explicit numbers.",
+      "verdict": "supported",
+      "sourceLine": "There are absolute constants"
+    },
+    {
+      "text": "Lean covers truncations with 0<ε≤R≤1/(10^6 K) on Schwartz functions, and weak-(2,2) at a fixed short scale for 1-Lipschitz fields.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

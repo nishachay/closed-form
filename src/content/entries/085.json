@@ -1,0 +1,232 @@
+{
+  "id": "085",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Endpoint-Gradient-Bound-for-the-Centered-Disk-Maximal-Operator-September-26-2026/article.pdf",
+      "label": "An Endpoint Gradient Bound for the Centered Disk Maximal Operator"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/085.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Taking the best disk average at each point never multiplies a surface's total slope by more than a fixed factor.",
+  "scope": "The result covers real functions on the plane whose values and slopes have finite totals, with averages over centered disks.",
+  "plain": "Take a surface over the plane, and at each point record the highest average height over disks centered there. This new surface, the maximal function, spreads out and can have infinite volume. This paper proves its total slope is at most a fixed multiple of the original total slope (Lean proof listed). It answers, for disks in the plane, a question Piotr Hajłasz and Jani Onninen asked in 2004.",
+  "doesNot": "This does not find the best fixed factor, and it does not cover higher dimensions or other shapes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Piotr Hajłasz and Jani Onninen, who asked the question",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "It settles the planar centered-disk case of a question open since 2004, after only special cases were known."
+  },
+  "explanation": "Picture a small pile of sand on a flat floor, shaped like a cone. Its peak is 1 unit high, and its base is a disk of radius 1. Its sides fall with slope exactly 1. So its total slope, added over the whole base, equals the base area: π, about 3.14. Its volume is π/3, about 1.05.\n\nNow stand at any point and ask one question. Among all disks centered where you stand, which has the highest average height? That best average is the maximal function at your point. At the peak, tiny disks win, and the answer is 1. Ten units away, the floor around you is empty. But a disk of radius 11 swallows the whole pile. Its average height is π/3 divided by 121π, which is 1/363, about 0.0028.\n\nSo the maximal function smears the pile across the whole plane. Its height fades only like one over the squared distance. Add up the volume under it ring by ring, and the total never settles. Once R is 100 or more, each ring from distance R to 2R adds at least 1.4. The heights blow up in total. The open question was about slopes. Does the smeared surface still have a finite total slope?\n\nMathematicians measure slopes in several ways, labeled by a power p. Juha Kinnunen proved in 1997 that the maximal function keeps slopes under control for every p above 1. His argument bounds the slope at each point by the maximal function of the slope. Then it uses a fact about maximal functions that holds only for p above 1. At p equal to 1 that step fails, and the cone shows why. Its slope equals 1 across the unit disk. The maximal function of that slope fades just like the pile, so its total is infinite too. In 2004, Piotr Hajłasz and Jani Onninen asked whether the slope bound survives at p equal to 1 anyway.\n\nOn a line, earlier work said yes. Hitoshi Tanaka proved it in 2002 for the uncentered version, where intervals need only contain the point. Ondřej Kurka proved it for centered intervals in 2015. In higher dimensions, results needed special inputs or shapes. Hannes Luiro handled radially symmetric inputs with uncentered balls in 2018. Julian Weigt handled uncentered cubes in 2025. A total-variation bound measures total slope but also counts sharp creases. In 2025, Panu Lahti and Weigt showed such a bound would upgrade to genuine slopes. That bound was missing for centered disks.\n\nThe main obstacle is geometry. On a line, intervals can be lined up in order, and those proofs lean on that order. Disks centered at different points overlap in tangled ways, with no such order. There is a second trap. A total-slope bound can still allow creases, where slope piles up on a set of zero area.\n\nThis paper proves that the answer is yes for disks in the plane. Take any real function on the plane whose values and slopes have finite totals. Its centered disk maximal function then has a weak gradient (a slope function defined by averaging, which tolerates corners). The total of that slope is at most C times the input's total slope. C is one fixed number for every input. The paper first bounds a simpler version that uses only a fixed range of radii. That version keeps the sign of the input, which lets it subtract a local average. Its bound does not grow as the range widens. Then the paper widens the range and shows that no slope hides in creases.\n\nBack to the pile. Its smeared shadow has infinite volume, yet its total slope is at most C times π. The paper does not compute C, so the factor stays unknown. The result covers disks in the plane only, not balls in space or other shapes.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main theorem. It covers every real input whose values and slopes have finite totals. Lean also checks the simpler fixed-range estimate. An extension to functions of bounded variation, which may jump, is outside these statements. No specialist review of the paper has been published.",
+  "hypeCheck": "Major within the study of maximal functions, if the proof holds. Lean has a formal proof of the main statement. Specialists have not published a review, and the constant is unknown. It settles one case: centered disks in the plane.",
+  "glossary": [
+    {
+      "term": "Maximal function",
+      "meaning": "At each point, the highest average of a function's size over all disks centered at that point."
+    },
+    {
+      "term": "Uncentered maximal function",
+      "meaning": "A variant that averages over all disks or intervals containing the point, not only those centered there."
+    },
+    {
+      "term": "Weak gradient",
+      "meaning": "A slope function defined through averaging, so it exists even for surfaces with corners."
+    },
+    {
+      "term": "Sobolev space W^{1,1}",
+      "meaning": "The functions whose values and slopes both have finite totals over the whole plane."
+    },
+    {
+      "term": "Total variation",
+      "meaning": "A measure of total slope that also counts sharp creases and jumps, not only smooth slope."
+    },
+    {
+      "term": "Absolute constant",
+      "meaning": "One fixed number that works for every input, here written C."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Kinnunen, “The Hardy–Littlewood maximal function of a Sobolev function”, Israel Journal of Mathematics 100 (1997), 117–124",
+      "url": "https://doi.org/10.1007/BF02773636"
+    },
+    {
+      "id": 2,
+      "cite": "P. Hajłasz and J. Onninen, “On boundedness of maximal functions in Sobolev spaces”, Annales Academiae Scientiarum Fennicae Mathematica 29 (2004), 167–176",
+      "url": "https://afm.journal.fi/article/view/135096"
+    },
+    {
+      "id": 3,
+      "cite": "H. Tanaka, “A remark on the derivative of the one-dimensional Hardy–Littlewood maximal function”, Bulletin of the Australian Mathematical Society 65 (2002), 253–258",
+      "url": "https://doi.org/10.1017/S0004972700020293"
+    },
+    {
+      "id": 4,
+      "cite": "O. Kurka, “On the variation of the Hardy–Littlewood maximal function”, Annales Academiae Scientiarum Fennicae Mathematica 40 (2015), 109–133",
+      "url": "https://doi.org/10.5186/aasfm.2015.4003"
+    },
+    {
+      "id": 5,
+      "cite": "H. Luiro, “The variation of the maximal function of a radial function”, Arkiv för Matematik 56 (2018), 147–161",
+      "url": "https://doi.org/10.4310/ARKIV.2018.v56.n1.a9"
+    },
+    {
+      "id": 6,
+      "cite": "J. Weigt, “The variation of the uncentered maximal operator with respect to cubes”, Journal of the European Mathematical Society 27 (2025), 2531–2570",
+      "url": "https://doi.org/10.4171/JEMS/1575"
+    },
+    {
+      "id": 7,
+      "cite": "P. Lahti and J. Weigt, “The centered maximal operator removes the non-concave Cantor part from the gradient”, arXiv:2510.01936 (2025)",
+      "url": "https://arxiv.org/abs/2510.01936v1"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 085: “An Endpoint Gradient Bound for the Centered Disk Maximal Operator” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Endpoint-Gradient-Bound-for-the-Centered-Disk-Maximal-Operator-September-26-2026/article.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean doc for family 085 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/085.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Kinnunen proved boundedness on W^{1,p} for 1<p<∞.",
+      "verdict": "supported",
+      "sourceLine": "Kinnunen proved that this operator is bounded on $W^{1,p}$ for $1<p<\\infty$"
+    },
+    {
+      "text": "His argument bounds the gradient pointwise by the maximal function of the gradient, then uses the strong L^p maximal inequality.",
+      "verdict": "supported",
+      "sourceLine": "The pointwise control of its gradient by $M(|\\nabla f|)$ gives the corresponding norm bound through the strong $L^p$ maximal inequality."
+    },
+    {
+      "text": "At p=1 that step fails.",
+      "verdict": "supported",
+      "sourceLine": "At $p=1$ that last step fails."
+    },
+    {
+      "text": "Hajłasz and Onninen asked whether the gradient estimate survives at p=1.",
+      "verdict": "supported",
+      "sourceLine": "asked whether the gradient estimate itself nevertheless survives"
+    },
+    {
+      "text": "Tanaka proved a one-dimensional L^1 derivative bound for the uncentered operator.",
+      "verdict": "supported",
+      "sourceLine": "In one dimension, Tanaka proved an $L^1$ derivative bound for the uncentered maximal operator"
+    },
+    {
+      "text": "Kurka proved the bound for the centered operator in one dimension.",
+      "verdict": "supported",
+      "sourceLine": "Kurka proved a variation bound with an absolute constant for the centered operator on functions of bounded variation, together with local Sobolev regularity and an integrable derivative for Sobolev inputs"
+    },
+    {
+      "text": "Luiro handled radial input with the uncentered ball operator.",
+      "verdict": "supported",
+      "sourceLine": "Luiro proved the $L^1$ gradient estimate for radial Sobolev input and the uncentered ball operator"
+    },
+    {
+      "text": "Weigt handled the uncentered operator over cubes.",
+      "verdict": "supported",
+      "sourceLine": "for the uncentered maximal operator over axis-parallel cubes"
+    },
+    {
+      "text": "Lahti and Weigt's conditional theorem upgrades a local variation bound to local Sobolev regularity for Sobolev input.",
+      "verdict": "supported",
+      "sourceLine": "conditional regularity theorem upgrades local bounded variation of the centered maximal function to local Sobolev regularity when the input is Sobolev"
+    },
+    {
+      "text": "Their theorem assumes the variation bound; this paper proves it and removes the singular part directly.",
+      "verdict": "supported",
+      "sourceLine": "It assumes the requisite variation bound. We prove that bound and then remove the singular part directly"
+    },
+    {
+      "text": "The ordering of intervals does not organize centered disks.",
+      "verdict": "supported",
+      "sourceLine": "The ordering of intervals used in these arguments does not directly organize a family of centered disks."
+    },
+    {
+      "text": "A variation estimate may still allow a singular part.",
+      "verdict": "supported",
+      "sourceLine": "a variation estimate controls a derivative measure, which may still have a singular part."
+    },
+    {
+      "text": "The paper resolves the planar centered-disk case.",
+      "verdict": "supported",
+      "sourceLine": "We give a positive resolution of the planar centered-disk case of their endpoint question."
+    },
+    {
+      "text": "For every real W^{1,1}(R^2) input, Mf is in W^{1,1}_loc with an absolute constant bound.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute constant $C<\\infty$ such that, for every real-valued $f\\in W^{1,1}(\\R^2)$, the function $Mf$ is locally integrable"
+    },
+    {
+      "text": "The maximal function need not be globally integrable.",
+      "verdict": "supported",
+      "sourceLine": "The maximal function itself need not be globally integrable, even for a nonzero nonnegative smooth function of compact support."
+    },
+    {
+      "text": "The optimal constant is not determined.",
+      "verdict": "supported",
+      "sourceLine": "its optimal value is not determined."
+    },
+    {
+      "text": "The argument concerns disks in the plane.",
+      "verdict": "supported",
+      "sourceLine": "The argument below concerns disks in the plane."
+    },
+    {
+      "text": "The intermediate estimate keeps the sign of the input.",
+      "verdict": "supported",
+      "sourceLine": "The intermediate estimate retains the sign of the input."
+    },
+    {
+      "text": "The signed form permits local mean subtraction.",
+      "verdict": "supported",
+      "sourceLine": "their role here is to permit this local subtraction."
+    },
+    {
+      "text": "The finite-band constant does not depend on the number of radius scales.",
+      "verdict": "supported",
+      "sourceLine": "The constant is independent of $a$, $b$, and the number of dyadic radius scales between them."
+    },
+    {
+      "text": "The paper shows the derivative measure has no singular part.",
+      "verdict": "supported",
+      "sourceLine": "To prove that this measure has no singular part"
+    },
+    {
+      "text": "Lean formalizes the main endpoint statement and the signed finite-band estimate; a BV extension is outside these statements.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

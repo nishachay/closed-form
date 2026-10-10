@@ -1,0 +1,222 @@
+{
+  "id": "094",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subpolynomial-dimension-reduction-in-Lp-September-23-2026/paper.pdf",
+      "label": "Subpolynomial dimension reduction in Lp"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/094.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Points in Lp space can be squeezed into far fewer coordinates if distances may stretch slightly.",
+  "scope": "The result holds for each fixed p between 1 and infinity other than 2, and each fixed distortion above 1.",
+  "plain": "Some ways of measuring distance use a power p other than 2. For such rulers, copying n points exactly can need about n squared coordinates. This paper proves (Lean proof listed) that a small allowed stretch changes the picture. Then the count grows slower than any fixed power of n. The map that does this need not be a straight-line one.",
+  "doesNot": "This does not give a fast way to build the embedding, or an explicit count for given n.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1984",
+    "firstStepBy": "Johnson and Lindenstrauss, who asked about other spaces",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it moves the known counts for p other than 2 from polynomial to subpolynomial."
+  },
+  "explanation": "Take two points on a grid, (0, 0) and (3, 4). Their straight-line distance is 5. There are other fair ways to measure the gap. Add the two gaps, 3 plus 4, and you get 7. Or cube the gaps, add them to get 91, and take the cube root. That gives about 4.50. Each power p gives its own ruler. A space of long lists of numbers, measured with power p, is called an L_p space. The straight-line ruler is the case p = 2.\n\nNow take a million points, each a very long list of numbers. Can each point be described by far fewer numbers, with every distance kept? Each number in the short list is called a coordinate. The usual price is a little stretching. Allowing distortion D means this. After one common rescaling, each new distance lies between the old one and D times it. Distortion 1 means an exact copy.\n\nFor the straight-line ruler, the answer has been known since 1984. The Johnson–Lindenstrauss lemma fits any n points into a number of coordinates that grows like log n. That holds for any fixed distortion above 1. Johnson and Lindenstrauss also asked what happens for other rulers.\n\nExact copies are costly. Keith Ball showed in 1990 that n points always fit exactly into n(n−1)/2 coordinates. For a million points that is 499,999,500,000. The paper shows this cannot be cut much when p is not 2. It builds point sets from the rows and columns of a square grid. Take n of at least 9. An exact copy then needs at least the square of the whole-number part of (n−1)/4. For a million points, that whole-number part is 249,999, so the minimum is 62,499,500,001 coordinates.\n\nAllowing a little stretch had helped only partly. For p below 2, Gideon Schechtman cut the count from about n log n to about n coordinates. Those counts still grow in step with the number of points. Lee, Mendel and Naor showed that straight-line maps can need that many when p is not 2. At p = 1, Brinkman and Charikar found an obstacle that holds even for bent maps. For p above 2, Naor and Ren recently ruled out counts that grow like log n.\n\nThis paper proves a much smaller count for every p between 1 and infinity except 2. Fix any distortion above 1. Then n points fit into n^o(1) coordinates. That notation means the count eventually drops below every fixed power of n, even n^0.01. More exactly, the logarithm of the count grows like a power of log n below 1. For p = 3 that power is one third. For a million points, log n is about 13.8, and its cube root is about 2.40. So exact copies need about n² coordinates, but any stretch above 1 needs far fewer.\n\nThe single obstacle is that the map must bend. Straight-line maps can need a count in proportion to n, so they cannot work. The paper instead builds one random rule that gives each point a single bounded number. Raise each pair's gap to the power p and average it. For every pair, the rule makes this nearly match the original, up to one common factor. Many independent copies of that rule then serve as the coordinates. The hard part is making one rule serve every pair at once.\n\nSome limits come with the result. A constant in the bound depends on p and the distortion, and its size is not given. So the theorem gives no actual count for a million points. It promises that an embedding exists, not a fast way to compute it. A simple packing argument shows some sets need at least log n divided by log(1 + 2D) coordinates. For a million points at distortion 2, that ratio is about 8.6, so at least 9 coordinates are needed. The paper does not claim either bound is the best possible.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the upper and lower bounds with stretch, the exact-copy bounds and the two limits. The statement is matched against a fixed reference statement by a tool called Comparator. No specialist review of the paper has been published.",
+  "hypeCheck": "The main theorem has a Lean proof listed with a Comparator statement. The constants are not explicit, the bounds are not claimed optimal, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "L_p space",
+      "meaning": "A space of lists or functions where distance is measured by adding gaps raised to the power p, then taking the p-th root."
+    },
+    {
+      "term": "Coordinate",
+      "meaning": "One number in the list that describes a point; the dimension is how many there are."
+    },
+    {
+      "term": "Distortion",
+      "meaning": "The largest factor by which a copy stretches distances, after one common rescaling."
+    },
+    {
+      "term": "Embedding",
+      "meaning": "A way to place points in a new space while keeping distances close to the originals."
+    },
+    {
+      "term": "Subpolynomial",
+      "meaning": "Growing more slowly than every fixed power of n, such as n^0.01."
+    },
+    {
+      "term": "Johnson–Lindenstrauss lemma",
+      "meaning": "The 1984 result that n points with straight-line distances fit into about log n coordinates with small stretch."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "W. B. Johnson and J. Lindenstrauss, “Extensions of Lipschitz mappings into a Hilbert space”, Contemporary Mathematics 26 (1984), 189–206",
+      "url": "https://doi.org/10.1090/conm/026/737400"
+    },
+    {
+      "id": 2,
+      "cite": "K. Ball, “Isometric embedding in l_p-spaces”, European Journal of Combinatorics 11(4) (1990), 305–311",
+      "url": "https://doi.org/10.1016/S0195-6698(13)80131-X"
+    },
+    {
+      "id": 3,
+      "cite": "G. Schechtman, “Dimension reduction in L_p, 0<p<2”, arXiv:1110.2148 (2011)",
+      "url": "https://arxiv.org/abs/1110.2148v1"
+    },
+    {
+      "id": 4,
+      "cite": "J. R. Lee, M. Mendel and A. Naor, “Metric structures in L_1: dimension, snowflakes, and average distortion”, European Journal of Combinatorics 26(8) (2005), 1180–1190",
+      "url": "https://doi.org/10.1016/j.ejc.2004.07.002"
+    },
+    {
+      "id": 5,
+      "cite": "B. Brinkman and M. Charikar, “On the impossibility of dimension reduction in ℓ_1”, Journal of the ACM 52(5) (2005), 766–788",
+      "url": "https://doi.org/10.1145/1089023.1089026"
+    },
+    {
+      "id": 6,
+      "cite": "A. Naor and K. Ren, “A threshold phenomenon for embeddings of Euclidean snowflakes and impossibility of dimension reduction”, arXiv:2609.01079 (2026)",
+      "url": "https://arxiv.org/abs/2609.01079v1"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 094: “Subpolynomial dimension reduction in Lp” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subpolynomial-dimension-reduction-in-Lp-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean doc for family 094 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/094.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 10,
+      "cite": "G. Schechtman, “More on embedding subspaces of L_p in l_r^n”, Compositio Mathematica 61(2) (1987), 159–169",
+      "url": "https://numdam.org/item/CM_1987__61_2_159_0/"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Johnson–Lindenstrauss lemma places n points of Hilbert space in O_D(log n) dimensions for any distortion D>1.",
+      "verdict": "supported",
+      "sourceLine": "The Johnson--Lindenstrauss lemma places every … point subset of a Hilbert space in … Euclidean dimensions with any prescribed distortion"
+    },
+    {
+      "text": "Johnson and Lindenstrauss asked what analogues hold in other Banach spaces.",
+      "verdict": "supported",
+      "sourceLine": "Johnson and Lindenstrauss also asked what analogues of their lemma hold in other Banach spaces"
+    },
+    {
+      "text": "For every fixed p≠2 and D>1 the dimension is at most exp(C(log n)^γ(p)), with γ(p)=2−p below 2 and 1−2/p above 2.",
+      "verdict": "supported",
+      "sourceLine": "For every … there is a constant … such that, for every integer"
+    },
+    {
+      "text": "The log of the dimension divided by log n tends to 0 for D>1 and to 2 for D=1.",
+      "verdict": "supported",
+      "sourceLine": "Consequently,"
+    },
+    {
+      "text": "Ball proved the exact upper bound n(n−1)/2.",
+      "verdict": "supported",
+      "sourceLine": "Ball proved the exact-coordinate upper bound … and its quadratic-order sharpness for"
+    },
+    {
+      "text": "The exact lower bound uses a row-and-column configuration.",
+      "verdict": "supported",
+      "sourceLine": "The lower bound in … uses an antipodal row-and-column configuration."
+    },
+    {
+      "text": "For n≥9 take k=⌊(n−1)/4⌋; any exact embedding needs at least k² coordinates.",
+      "verdict": "supported",
+      "sourceLine": "take … and add distinct points if necessary to obtain an … point set."
+    },
+    {
+      "text": "Schechtman's finite-set estimates below 2 progressed from O_D(n log n) to O_{p,D}(n) coordinates.",
+      "verdict": "supported",
+      "sourceLine": "Schechtman's finite-set estimates progressed from … coordinates to"
+    },
+    {
+      "text": "Linear maps on selected Lp configurations can require dimension proportional to cardinality when p≠2.",
+      "verdict": "supported",
+      "sourceLine": "fixed-distortion linear maps on selected … configurations can require dimension proportional to their cardinality when"
+    },
+    {
+      "text": "At p=1 the Brinkman–Charikar obstruction applies even to nonlinear maps.",
+      "verdict": "supported",
+      "sourceLine": "the obstruction of Brinkman--Charikar applies even to nonlinear maps"
+    },
+    {
+      "text": "For p>2 Naor–Ren rules out O(log n) coordinate dimension.",
+      "verdict": "supported",
+      "sourceLine": "Naor--Ren's recent lower bound … rules out … coordinate dimension"
+    },
+    {
+      "text": "The absence of a linearity requirement is essential.",
+      "verdict": "supported",
+      "sourceLine": "The absence of a linearity requirement is essential"
+    },
+    {
+      "text": "A bounded distribution of scalar images is found and independent sampling supplies the coordinates.",
+      "verdict": "supported",
+      "sourceLine": "Convex separation produces one distribution working for all pairs; independent sampling then supplies the coordinates of a finite embedding."
+    },
+    {
+      "text": "The constants depend on p and D, with no uniformity asserted.",
+      "verdict": "supported",
+      "sourceLine": "The constants in the upper bound depend on the fixed parameters"
+    },
+    {
+      "text": "The theorem is existential and gives no efficient algorithm.",
+      "verdict": "supported",
+      "sourceLine": "The theorem is existential and does not assert an efficient embedding algorithm."
+    },
+    {
+      "text": "Comparing volumes gives n ≤ (1+2D)^d.",
+      "verdict": "supported",
+      "sourceLine": "Comparing … dimensional Lebesgue volumes gives"
+    },
+    {
+      "text": "Neither the upper exponent nor the logarithmic lower bound is claimed optimal.",
+      "verdict": "supported",
+      "sourceLine": "neither its upper exponent nor its elementary logarithmic lower bound is asserted to be optimal."
+    },
+    {
+      "text": "The embedding need not be linear.",
+      "verdict": "supported",
+      "sourceLine": "The target has the same exponent … and the embedding need not be linear."
+    },
+    {
+      "text": "The Lean formalization covers both bound pairs and the limits; a Comparator statement is linked.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
