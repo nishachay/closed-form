@@ -1,0 +1,201 @@
+{
+  "id": "109",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/paper.pdf",
+      "label": "Integer multiplication below n log n"
+    }
+  ],
+  "headline": "A tape-based computer can multiply huge whole numbers slightly faster than the long-conjectured n log n limit.",
+  "scope": "The result covers exact multiplication on a Turing machine with a fixed number of tapes. Its saving is astronomically small.",
+  "plain": "Multiplying two n-bit numbers on a simple tape-based model computer was known to take about n log n steps. In 1971, Schönhage and Strassen proposed that this was the best possible growth rate. This paper claims to prove a slower-growing method, saving a factor of (log n) to the power 2^−182. If the proof holds, that conjecture fails in this model. The gain is far too small to matter in practice.",
+  "doesNot": "This does not give a faster multiplication method for real computers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1962",
+    "firstStepBy": "Karatsuba and Ofman, first method faster than school multiplication (earliest result the paper cites)",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It claims to break a growth rate conjectured optimal since 1971, though the gain is purely theoretical."
+  },
+  "explanation": "Multiply 1234 by 5678 the way you learned at school. Each of the 4 top digits meets each of the 4 bottom digits. That makes 16 small products, which add up to 7,006,652. Double the length of both numbers, and the work roughly quadruples. Computers multiply in bits (binary digits, 0 or 1). Take two numbers that are each 2^20 bits long, about a million bits. The school method then needs about 1.1 trillion small products.\n\nFaster methods have a long history. In 1962, Karatsuba and Ofman found a trick that beats the school method. It splits each number in half and applies the same trick again to the smaller pieces. In 1971, Schönhage and Strassen proved a much faster bound. Their time grows like n log n log log n, where n is the number of bits. Here log n is the number of times you can halve n before reaching 1. For a million bits, log n is about 20. So n log n is about 21 million, against 1.1 trillion for the school method.\n\nSchönhage and Strassen also proposed n log n as the best possible growth rate. Fürer narrowed the gap in 2007. Harvey and van der Hoeven then proved a bound of order n log n, in a paper published in 2021. That met the conjectured limit. The open question was whether anyone could go below it.\n\nThe answer depends on the machine you count steps on. All of these bounds use a multitape Turing machine. That is a simple model computer. It reads and writes symbols on a fixed number of long tapes, moving one cell at a time. In other models, faster methods already existed. Schönhage obtained linear-time multiplication on a different machine model. Groff beat log n on a machine that can jump anywhere in memory instantly, after setup work not counted. Neither result settles the tape model.\n\nThis paper claims to prove that one fixed tape machine beats n log n. It multiplies exactly, for every input length. Its time grows like n times (log n) to the power 1 − κ, where κ = 2^−182. That is n log n divided by (log n)^κ. As n grows, this divisor grows without limit. So the ratio to n log n shrinks toward zero. If the proof holds, the n log n conjecture fails in this model.\n\nThe saving is real but extremely slow. κ is about 1.6 × 10^−55. Take n = 2^64 bits, so log n is 64. Then the cost falls short of n log n by a fraction of about 7 × 10^−55. Halving the cost would need log n near 2 to the power 2^182. The paper says its constants are extremely large. It calls the algorithm a way to establish a bound, not a practical method.\n\nWhy was n log n such a firm wall? Fast methods turn multiplication into Fourier transforms (a standard way to mix data in about log n stages). A tape machine must scan its data in order, like a cassette. Scanning n bits at each of log n stages already costs n log n. So any saving must cut both data movement and arithmetic at once.\n\nThe paper builds two new tape procedures for this. One swaps blocks of the data's address labels. Midway it stores mixed combinations of the data, not plain copies, yet the end result is an exact rearrangement. The other performs many arithmetic stages together. Both rest on a small fixed network that needs fewer smaller calls than a direct approach. Used again and again inside itself, that small surplus becomes the saving κ.\n\nThe same speed carries over to related tasks. The paper also claims division with remainder and integer square roots in the same time. It also claims faster transposing of a square grid of bits. That transposition result does not apply to models that may only move data around.\n\nHow sure is this? No Lean formalization is listed for this paper, so no computer proof checker has checked it. No specialist review has been published yet.",
+  "hypeCheck": "Major in theory if the proof holds, and of no practical use. The speed-up is a factor of (log n) to the power 2^−182, with extremely large constants. No Lean formalization is listed, and specialists have not yet published a review.",
+  "glossary": [
+    {
+      "term": "Bit",
+      "meaning": "A binary digit, either 0 or 1."
+    },
+    {
+      "term": "log n",
+      "meaning": "Roughly how many times you can halve n before reaching 1; for a million it is about 20."
+    },
+    {
+      "term": "Turing machine",
+      "meaning": "A simple model computer that reads and writes symbols on long tapes, one cell at a time."
+    },
+    {
+      "term": "n log n conjecture",
+      "meaning": "Schönhage and Strassen's 1971 proposal that multiplying n-bit numbers cannot grow slower than n log n."
+    },
+    {
+      "term": "Fourier transform",
+      "meaning": "A standard way to mix and unmix data in stages, used by all fast multiplication methods here."
+    },
+    {
+      "term": "Matrix transposition",
+      "meaning": "Turning the rows of a grid into its columns."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks mathematical proofs step by step."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Integer multiplication below n log n”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "A. Karatsuba and Yu. Ofman, “Multiplication of Many-Digital Numbers by Automatic Computers”, Doklady Akademii Nauk SSSR 145 (1962), 293–294",
+      "url": "https://www.mathnet.ru/eng/dan26729"
+    },
+    {
+      "id": 3,
+      "cite": "A. Schönhage and V. Strassen, “Schnelle Multiplikation großer Zahlen”, Computing 7 (1971), 281–292",
+      "url": "https://doi.org/10.1007/BF02242355"
+    },
+    {
+      "id": 4,
+      "cite": "M. Fürer, “Faster Integer Multiplication”, STOC 2007, 57–66",
+      "url": "https://doi.org/10.1145/1250790.1250800"
+    },
+    {
+      "id": 5,
+      "cite": "D. Harvey and J. van der Hoeven, “Integer Multiplication in Time O(n log n)”, Annals of Mathematics 193 (2021), 563–617",
+      "url": "https://doi.org/10.4007/annals.2021.193.2.4"
+    },
+    {
+      "id": 6,
+      "cite": "A. Schönhage, “Storage Modification Machines”, SIAM Journal on Computing 9 (1980), 490–508",
+      "url": "https://doi.org/10.1137/0209036"
+    },
+    {
+      "id": 7,
+      "cite": "M. Groff, “Faster Integer Multiplication Using Preprocessing”, arXiv:1911.07124v2 (2019)",
+      "url": "https://arxiv.org/abs/1911.07124v2"
+    },
+    {
+      "id": 8,
+      "cite": "D. Harvey and J. van der Hoeven, “Integer Multiplication Is at Least as Hard as Matrix Transposition”, FOCS 2025, 1366–1381",
+      "url": "https://arxiv.org/abs/2503.22848v1"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Karatsuba's recursive construction, published with Ofman in 1962, beat the school method.",
+      "verdict": "supported",
+      "sourceLine": "Karatsuba's recursive construction, published jointly with Ofman in 1962"
+    },
+    {
+      "text": "Schönhage and Strassen proved an n log n log log n bound in 1971 on a multitape Turing machine.",
+      "verdict": "supported",
+      "sourceLine": "Strassen proved in 1971 that two"
+    },
+    {
+      "text": "Schönhage and Strassen proposed n log n as the optimal order of growth.",
+      "verdict": "supported",
+      "sourceLine": "as the optimal order of growth"
+    },
+    {
+      "text": "Fürer improved the bound in 2007.",
+      "verdict": "supported",
+      "sourceLine": "in 2007, with a full journal account in 2009"
+    },
+    {
+      "text": "Harvey and van der Hoeven proved an O(n log n) bound.",
+      "verdict": "supported",
+      "sourceLine": "Harvey and van der Hoeven proved the unconditional"
+    },
+    {
+      "text": "Schönhage obtained linear-time multiplication on a different machine model.",
+      "verdict": "supported",
+      "sourceLine": "linear-time multiplication on storage-modification machines"
+    },
+    {
+      "text": "Groff beat log n on a unit-cost RAM after preprocessing whose cost is excluded.",
+      "verdict": "supported",
+      "sourceLine": "with constant-time arbitrary memory access, after polynomial preprocessing whose cost is excluded from that bound"
+    },
+    {
+      "text": "Neither result settles the fixed tape model.",
+      "verdict": "supported",
+      "sourceLine": "Neither result establishes the bound in the fixed finite-tape model"
+    },
+    {
+      "text": "One fixed machine computes the exact product for every input length.",
+      "verdict": "supported",
+      "sourceLine": "computes this exact product for every"
+    },
+    {
+      "text": "The algorithm disproves the n log n conjecture in this model.",
+      "verdict": "supported",
+      "sourceLine": "The algorithm is exact for every input length and disproves the"
+    },
+    {
+      "text": "The constants are extremely large and the algorithm is meant to establish a bound.",
+      "verdict": "supported",
+      "sourceLine": "The constants and thresholds in the construction are extremely large; the algorithm is intended to establish a bit-complexity bound."
+    },
+    {
+      "text": "Scanning n bits at each of log n transform stages already costs n log n.",
+      "verdict": "supported",
+      "sourceLine": "stored bits at each of"
+    },
+    {
+      "text": "Savings are needed in both data movement and arithmetic.",
+      "verdict": "supported",
+      "sourceLine": "We therefore need savings in both movement and arithmetic."
+    },
+    {
+      "text": "The address procedure stores XOR combinations midway, yet ends in an exact permutation.",
+      "verdict": "supported",
+      "sourceLine": "Although its final effect is an exact permutation, its intermediate steps form pointwise XOR combinations of data."
+    },
+    {
+      "text": "The fixed network needs fewer smaller calls, and this is the source of the saving.",
+      "verdict": "supported",
+      "sourceLine": "This strict inequality is the source of the power saving."
+    },
+    {
+      "text": "Division with remainder and integer square root run in the same time.",
+      "verdict": "supported",
+      "sourceLine": "Exact division and integer square root"
+    },
+    {
+      "text": "Square binary matrices can be transposed faster on a fixed tape machine.",
+      "verdict": "supported",
+      "sourceLine": "that transposes a row-major"
+    },
+    {
+      "text": "The method lies outside models restricted to moving data.",
+      "verdict": "supported",
+      "sourceLine": "It therefore lies outside models restricted to moving data without such computations"
+    },
+    {
+      "text": "Harvey and van der Hoeven's Annals paper appeared in 2021.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "id": "103",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-Derandomization-of-Logarithmic-Space-L-equals-RL-equals-BPL-September-23-2026/paper.pdf",
+      "label": "Exact derandomization of logarithmic space: L = RL = BPL"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/103.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Coin flips give no extra power to computers with tiny memory: L = RL = BPL.",
+  "scope": "The result covers coin-flipping machines that use logarithmic memory and polynomial time on every run.",
+  "plain": "Some computer methods flip coins to decide what to do next. This paper proves that, for machines with very little memory, the coins add no power. Any such method that runs in polynomial time and answers correctly at least two times in three can be replaced. The replacement uses no coins, logarithmic memory and polynomial time. A Lean proof of the class equality is listed.",
+  "doesNot": "This does not cover coin-flipping machines without a polynomial time limit, or make very fine probability estimates fast.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Aleliunas, Karp, Lipton, Lovász and Rackoff asked the question",
+    "field": "Theoretical computer science",
+    "significance": "Landmark",
+    "significanceWhy": "If the proof holds, it settles a central question about randomness and memory that has been open since 1979."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Deterministic memory for bounded-error log-space, as a power of log n",
+    "note": "Lower is better. 1 means logarithmic space. Hoza's 2021 gain is below a full power and is not shown. Saks and Zhou's bound does not keep polynomial time.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1994,
+        "value": 2,
+        "who": "Nisan",
+        "source": 5
+      },
+      {
+        "year": 1999,
+        "value": 1.5,
+        "who": "Saks and Zhou",
+        "source": 6
+      },
+      {
+        "year": 2026,
+        "value": 1,
+        "who": "This paper",
+        "claim": true,
+        "source": 10
+      }
+    ]
+  },
+  "explanation": "Picture an input a million symbols long. To point at one symbol, a computer needs about 20 bits, because 2^20 is 1,048,576. A logarithmic-space machine is allowed only a fixed number of such pointers and counters. Logarithmic space means memory that grows like the number of digits of the input length. Give the machine three 20-bit counters. Then it has at most 2^60 memory states, about 1.15 × 10^18. That is roughly the input length cubed. A machine that never repeats a state must stop within that many steps. So these machines also run in polynomial time, meaning a fixed power of the input length.\n\nNow let the machine flip fair coins as it works. Suppose it runs for a million squared steps and flips a coin each step. That is 10^12 random bits, far more than it can remember. Each coin is fresh, and the machine cannot store them all. The question is whether those coins add any power. Could a machine with the same tiny memory, and no coins, always reach the same answers? Trying every coin sequence is hopeless: there are 2^(10^12) of them.\n\nThree families of problems name the question. L holds the problems a coin-free machine solves in logarithmic space. RL allows coins and polynomial time with one-sided error. Such a machine never says yes to a no-instance, and says yes to a yes-instance at least half the time. BPL allows two-sided error. It says yes with probability at most 1/3 on no-instances and at least 2/3 on yes-instances. The paper proves that all three families are the same: L = RL = BPL.\n\nThe question is old. John Gill developed the theory of coin-flipping machines in 1977. In 1979, Aleliunas, Karp, Lipton, Lovász and Rackoff found coin-flipping methods for maze connectivity. They explicitly asked whether such machines could be made deterministic in logarithmic space. A main line of attack replaces many coin flips with a short seed. In 1992, Noam Nisan built a generator whose seed has length of order log² n. In our example that is about 397 bits, ignoring constant factors. Trying every seed then takes more than polynomial time.\n\nLater work cut the memory but never reached logarithmic space in general. Nisan's 1994 method ran in polynomial time with log² n space. Michael Saks and Shiyu Zhou reached log^(3/2) n space in 1999. In our example that is about 89 bits instead of 20. William Hoza improved this slightly in 2021. Special cases fell earlier. Omer Reingold's logarithmic-space method for undirected connectivity appeared in 2005. Those special methods relied on structure that general machines lack.\n\nThe paper's route is to estimate the machine's chance of saying yes. It builds a large but finite family of estimates, each named by a short description. More than three quarters of them are accurate. Each one can be computed deterministically in logarithmic space, and each computation always stops. The machine then tries every description and takes the median. The hard part is memory. The estimates are built in nested levels. Keeping a full address at every level would cost too much. The paper instead compares addresses by short fingerprints, which keeps the total memory logarithmic.\n\nHere is what that buys in practice. The final estimate is off by less than 1/8 on most descriptions, and so is their median. On a no-instance the true chance is at most 1/3, so the estimate stays below 11/24, about 0.458. On a yes-instance it is at least 2/3, so the estimate stays above 13/24, about 0.542. Comparing with 1/2 therefore gives the right answer every time. The paper also claims a compiler. It is said to turn a described coin-flipping machine into a deterministic one, with explicit memory and time bounds.\n\nThe result has limits. It covers coin-flipping machines with a polynomial time limit on every run. Machines without that time limit are a broader setting, and the paper does not claim them. Its general estimator can reach any accuracy 2^-q. But its running time then grows exponentially in q, so very fine estimates stay slow.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of L = RL = BPL. It uses binary inputs and an explicit Turing-machine model with logarithmic workspace. The compiler and its numerical time bounds are not part of that checked statement. No specialists have published a review yet.",
+  "hypeCheck": "Landmark only if the proof holds. Lean has a formal proof of the class equality in an explicit machine model. The compiler bounds are outside it. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Logarithmic space",
+      "meaning": "Memory that grows like the number of digits in the input length, enough for a few pointers into the input."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "A running time bounded by a fixed power of the input length."
+    },
+    {
+      "term": "L",
+      "meaning": "Problems solved by a machine without coins in logarithmic space."
+    },
+    {
+      "term": "RL",
+      "meaning": "Problems solved with coins in logarithmic space and polynomial time, never wrongly saying yes and saying yes to true cases at least half the time."
+    },
+    {
+      "term": "BPL",
+      "meaning": "Like RL, but errors in both directions are allowed, each with chance at most 1/3."
+    },
+    {
+      "term": "Pseudorandom generator",
+      "meaning": "A method that stretches a short random seed into a long string that small machines cannot tell from true coin flips."
+    },
+    {
+      "term": "Median",
+      "meaning": "The middle value of a list once it is sorted."
+    },
+    {
+      "term": "Fingerprint",
+      "meaning": "A short code computed from a long address, used to compare addresses without storing them in full."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Gill, “Computational Complexity of Probabilistic Turing Machines”, SIAM Journal on Computing 6(4) (1977), 675–695",
+      "url": "https://doi.org/10.1137/0206049"
+    },
+    {
+      "id": 2,
+      "cite": "R. Aleliunas, R. M. Karp, R. J. Lipton, L. Lovász and C. Rackoff, “Random Walks, Universal Traversal Sequences, and the Complexity of Maze Problems”, FOCS (1979), 218–223",
+      "url": "https://doi.org/10.1109/SFCS.1979.34"
+    },
+    {
+      "id": 3,
+      "cite": "A. Borodin, S. Cook and N. Pippenger, “Parallel computation for well-endowed rings and space-bounded probabilistic machines”, Information and Control 58(1–3) (1983), 113–136",
+      "url": "https://doi.org/10.1016/S0019-9958(83)80060-6"
+    },
+    {
+      "id": 4,
+      "cite": "N. Nisan, “Pseudorandom generators for space-bounded computation”, Combinatorica 12(4) (1992), 449–461",
+      "url": "https://doi.org/10.1007/BF01305237"
+    },
+    {
+      "id": 5,
+      "cite": "N. Nisan, “RL ⊆ SC”, Computational Complexity 4(1) (1994), 1–11",
+      "url": "https://doi.org/10.1007/BF01205052"
+    },
+    {
+      "id": 6,
+      "cite": "M. Saks and S. Zhou, “BP_H SPACE(S) ⊆ DSPACE(S^{3/2})”, Journal of Computer and System Sciences 58(2) (1999), 376–403",
+      "url": "https://doi.org/10.1006/jcss.1998.1616"
+    },
+    {
+      "id": 7,
+      "cite": "W. M. Hoza, “Better pseudodistributions and derandomization for space-bounded computation”, APPROX/RANDOM 2021, LIPIcs 207, 28:1–28:23",
+      "url": "https://doi.org/10.4230/LIPIcs.APPROX/RANDOM.2021.28"
+    },
+    {
+      "id": 8,
+      "cite": "O. Reingold, “Undirected connectivity in log-space”, Journal of the ACM 55(4) (2008), 17:1–17:24 (conference version STOC 2005)",
+      "url": "https://doi.org/10.1145/1391289.1391291"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 103: “Exact Derandomization of Logarithmic Space: L = RL = BPL” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-Derandomization-of-Logarithmic-Space-L-equals-RL-equals-BPL-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean doc for family 103 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/103.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A halting deterministic logarithmic-space machine has polynomially many configurations and runs in polynomial time.",
+      "verdict": "supported",
+      "sourceLine": "Such a halting deterministic machine has only polynomially many configurations and hence runs in polynomial time."
+    },
+    {
+      "text": "A logarithmic-space machine cannot keep a polynomial-length computation or random tape.",
+      "verdict": "supported",
+      "sourceLine": "cannot keep a polynomial-length computation or random tape"
+    },
+    {
+      "text": "RL machines accept no-inputs with probability zero and yes-inputs with probability at least 1/2.",
+      "verdict": "supported",
+      "sourceLine": "polynomial-time randomized machines in this space, with acceptance probability zero on no inputs and at least"
+    },
+    {
+      "text": "For BPL the probabilities are at most 1/3 and at least 2/3.",
+      "verdict": "supported",
+      "sourceLine": "the corresponding probabilities are at most"
+    },
+    {
+      "text": "Gill developed the complexity of probabilistic Turing machines.",
+      "verdict": "supported",
+      "sourceLine": "The complexity of probabilistic Turing machines was developed by Gill"
+    },
+    {
+      "text": "Aleliunas, Karp, Lipton, Lovász and Rackoff gave randomized algorithms for undirected connectivity and asked the derandomization question.",
+      "verdict": "supported",
+      "sourceLine": "explicitly asked whether polynomial-time randomized logarithmic space could be simulated in deterministic logarithmic space"
+    },
+    {
+      "text": "Borodin, Cook and Pippenger obtained a quadratic-space simulation in a broader setting without a polynomial-time restriction.",
+      "verdict": "supported",
+      "sourceLine": "Borodin, Cook and Pippenger obtained a quadratic-space deterministic simulation in this broader setting"
+    },
+    {
+      "text": "Nisan's generator gives O(log² n) seed length, and seed enumeration takes quasipolynomial time.",
+      "verdict": "supported",
+      "sourceLine": "seed length; direct seed enumeration has a quasipolynomial time bound"
+    },
+    {
+      "text": "Nisan's later simulation achieves polynomial time and O(log² n) space.",
+      "verdict": "supported",
+      "sourceLine": "Nisan's later simultaneous simulation achieves polynomial time and"
+    },
+    {
+      "text": "Saks and Zhou reduced the space to O(log^{3/2} n).",
+      "verdict": "supported",
+      "sourceLine": "Saks and Zhou reduced the deterministic space needed for general bounded-error logarithmic-space computation to"
+    },
+    {
+      "text": "Hoza improved the general space bound.",
+      "verdict": "supported",
+      "sourceLine": "Hoza subsequently improved the general space bound to"
+    },
+    {
+      "text": "Reingold's logarithmic-space algorithm settles undirected connectivity; its conference version appeared at STOC 2005.",
+      "verdict": "supported",
+      "sourceLine": "Reingold's logarithmic-space algorithm, whose conference version appeared at STOC 2005, settles undirected connectivity"
+    },
+    {
+      "text": "Structured results did not settle the unrestricted problem.",
+      "verdict": "supported",
+      "sourceLine": "so those results did not settle the unrestricted randomized computation problem"
+    },
+    {
+      "text": "More than three quarters of the estimates are accurate, each is evaluated by a halting deterministic O(B)-space computation, and enumeration gives a deterministic answer.",
+      "verdict": "supported",
+      "sourceLine": "More than three quarters of these estimates are accurate"
+    },
+    {
+      "text": "Retaining a full endpoint at every recursive level would cost too much, so endpoints are compared by short fingerprint keys.",
+      "verdict": "supported",
+      "sourceLine": "Retaining a full endpoint at every recursive level would cost too much."
+    },
+    {
+      "text": "The total error is less than 1/8 on more than three quarters of the encodings, and the median has the same bound.",
+      "verdict": "supported",
+      "sourceLine": "makes the total error less than"
+    },
+    {
+      "text": "Comparing the answer with 1/2 distinguishes probabilities at most 1/3 from at least 2/3.",
+      "verdict": "supported",
+      "sourceLine": "Comparing its answer with"
+    },
+    {
+      "text": "A terminating compiler produces a deterministic decider with explicit space and time bounds.",
+      "verdict": "supported",
+      "sourceLine": "one terminating compiler produces a deterministic decider and explicit numerical bounds for its space and time"
+    },
+    {
+      "text": "The approximation algorithm uses O(log(n+2)+q) space, and its running time is exponential in general q.",
+      "verdict": "supported",
+      "sourceLine": "the running-time bound is exponential in general"
+    },
+    {
+      "text": "All randomized running-time bounds hold on every random tape.",
+      "verdict": "supported",
+      "sourceLine": "All randomized running-time bounds hold on every random tape."
+    },
+    {
+      "text": "The Lean formalization proves L = RL = BPL for binary languages in an explicit Turing-machine model; the compiler and numerical bounds are not in the Comparator target.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

@@ -1,0 +1,193 @@
+{
+  "id": "021",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-quadratic-bound-for-Jacobsthals-function-September-25-2026/paper.pdf",
+      "label": "A quadratic bound for Jacobsthal's function"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/021.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every run of about k² whole numbers holds one sharing no factor with a number that has k prime factors.",
+  "scope": "It covers every number with at most k distinct prime factors and every starting point, with an unstated constant.",
+  "plain": "Pick a number with k different prime factors. Some runs of consecutive whole numbers share a factor with it at every step. This paper proves that such runs cannot be longer than a fixed constant times k squared. It answers a question Jacobsthal raised and Erdős recorded in 1962. The constant is not given as a number.",
+  "doesNot": "This does not find the true growth rate of Jacobsthal's function, and it gives no explicit constant.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1960",
+    "firstStepBy": "Ernst Jacobsthal, first papers on the function",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It answers Jacobsthal's quadratic-bound question and removes the logarithmic loss left by Iwaniec in 1978."
+  },
+  "explanation": "Take the number 210. It is 2 × 3 × 5 × 7, so it has four distinct prime factors. Now look at the run 2, 3, 4, 5, 6, 7, 8, 9, 10. Every one of these nine numbers shares a factor with 210. Each is even, or a multiple of 3, 5 or 7. The next number, 11, shares no factor with 210. Mathematicians call such a number coprime to 210.\n\nSo 210 allows a run of nine numbers with no coprime number in it. A computer search over every starting point finds no longer run. Every stretch of 10 consecutive whole numbers therefore contains a number coprime to 210. Jacobsthal's function, j(n), records exactly this: the shortest length that always works for n. Here j(210) = 10.\n\nA bigger question asks about every number with at most k prime factors at once. Call the answer h(k). It is the shortest interval length that always contains a number coprime to any such number. The interval may start anywhere. For k = 4 the answer is again 10. Hajdu and Saradha proved that the first k primes give the worst case for every k up to 23. At k = 24 that pattern breaks. There, the first 24 primes give 234, but the true worst case is 236.\n\nThere is a second way to see the problem. For each prime, cross out one chosen remainder class, such as every number leaving remainder 1 when divided by 3. Then ask how long a run of whole numbers can be crossed out entirely. The paper notes that this is the same problem. It also explains why arbitrary primes and arbitrary starting points come together.\n\nJacobsthal studied this function in papers beginning in 1960. Erdős later recorded his question: does h(k) grow no faster than a constant times k squared? Erdős observed that Brun's method gives some fixed power of k. In 1977, Vaughan proved a bound of order k² times the fourth power of log k. Here log means the natural logarithm, a slowly growing function. In 1978, Iwaniec improved this to order k² times (log k)². That logarithmic factor never went away. At a million primes, (log k)² is already about 191.\n\nVaughan explained where the square comes from. The standard counting tool, called a sieve, estimates how many numbers survive the crossing out. At exactly the quadratic length, its guaranteed lower count drops to zero. So the usual method says nothing useful right at the scale Jacobsthal asked about. The paper keeps a small boundary term that the standard method throws away. It then shows that cleverly chosen remainder classes cannot cancel that term. Classes that try to do so are forced into a rigid, predictable pattern, and that pattern can be handled.\n\nThis paper proves that the answer to Jacobsthal's question is yes. There is a fixed constant C that works for every k. The bound says h(k) is at most C k² divided by (log log 3k)². That is slightly better than k² itself. The bound holds for any set of primes and any starting point. In the example's terms, no k primes and remainders can cross out a run longer than C k².\n\nThe result has limits. The constant C is not made explicit, so the theorem gives no concrete number for any given k. It also does not settle the true growth rate. Ford, Green, Konyagin, Maynard and Tao gave the best known lower bound. It grows like k times a few slow logarithmic factors. Vaughan suggested that the true growth might be only slightly faster than k. The gap between these bounds remains substantial.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main bound. It covers one fixed C and every k. Intervals may start at any integer, including negative ones. The plain quadratic bound is checked as a separate statement. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. A Lean formalization of the main bound is listed. The constant is not explicit, and the true growth rate is still open. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Prime factor",
+      "meaning": "A prime number that divides a given number exactly, like 5 for 210."
+    },
+    {
+      "term": "Coprime",
+      "meaning": "Two whole numbers are coprime when no number larger than 1 divides both."
+    },
+    {
+      "term": "Jacobsthal's function",
+      "meaning": "For a number n, the shortest length such that every run of that many consecutive whole numbers contains one coprime to n."
+    },
+    {
+      "term": "Remainder class",
+      "meaning": "All whole numbers that leave the same remainder when divided by a fixed number."
+    },
+    {
+      "term": "Sieve",
+      "meaning": "A counting method that estimates how many numbers survive after removing those in chosen remainder classes."
+    },
+    {
+      "term": "Natural logarithm",
+      "meaning": "The function log, which grows very slowly; log of a million is about 13.8."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “A quadratic bound for Jacobsthal's function” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-quadratic-bound-for-Jacobsthals-function-September-25-2026/paper.pdf",
+      "quote": "Thus $h(k)-1$ is the greatest length of an interval that can be covered"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for “A quadratic bound for Jacobsthal's function” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/021.md"
+    },
+    {
+      "id": 3,
+      "cite": "P. Erdős, “On the integers relatively prime to n and on a number-theoretic function considered by Jacobsthal”, Mathematica Scandinavica 10 (1962), 163–170",
+      "url": "https://doi.org/10.7146/math.scand.a-10523"
+    },
+    {
+      "id": 4,
+      "cite": "R. C. Vaughan, “On the order of magnitude of Jacobsthal's function”, Proceedings of the Edinburgh Mathematical Society 20 (1977), 329–331",
+      "url": "https://doi.org/10.1017/S0013091500026560"
+    },
+    {
+      "id": 5,
+      "cite": "H. Iwaniec, “On the problem of Jacobsthal”, Demonstratio Mathematica 11 (1978), 225–231",
+      "url": "https://doi.org/10.1515/dema-1978-0121"
+    },
+    {
+      "id": 6,
+      "cite": "L. Hajdu and N. Saradha, “Disproof of a conjecture of Jacobsthal”, Mathematics of Computation 81 (2012), 2461–2471",
+      "url": "https://doi.org/10.1090/S0025-5718-2012-02581-6"
+    },
+    {
+      "id": 7,
+      "cite": "K. Ford, B. Green, S. Konyagin, J. Maynard and T. Tao, “Long gaps between primes”, Journal of the American Mathematical Society 31 (2018), 65–105",
+      "url": "https://doi.org/10.1090/jams/876"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "j(n) is the least m such that every interval of m consecutive integers contains an integer coprime to n.",
+      "verdict": "supported",
+      "sourceLine": "such that every interval of $m$ consecutive integers contains an integer"
+    },
+    {
+      "text": "The starting point of the interval is arbitrary.",
+      "verdict": "supported",
+      "sourceLine": "The starting point of the interval is arbitrary"
+    },
+    {
+      "text": "h(k)−1 is the longest interval coverable by the divisibility classes of at most k primes.",
+      "verdict": "supported",
+      "sourceLine": "Thus $h(k)-1$ is the greatest length of an interval that can be covered"
+    },
+    {
+      "text": "Jacobsthal studied this function in papers beginning in 1960.",
+      "verdict": "supported",
+      "sourceLine": "Jacobsthal studied this function in a series of papers beginning in"
+    },
+    {
+      "text": "Erdős recorded Jacobsthal's question whether h(k) ≪ k².",
+      "verdict": "supported",
+      "sourceLine": "subsequently recorded Jacobsthal's question"
+    },
+    {
+      "text": "Erdős observed that Brun's method gives a polynomial bound.",
+      "verdict": "supported",
+      "sourceLine": "observed that Brun's method gives"
+    },
+    {
+      "text": "Vaughan proved j(n) ≪ ω(n)²(log 2ω(n))⁴.",
+      "verdict": "supported",
+      "sourceLine": "Vaughan then proved the uniform estimate"
+    },
+    {
+      "text": "Iwaniec established h(k) ≪ k² log² k for arbitrary prime sets.",
+      "verdict": "supported",
+      "sourceLine": "established $h(k)\\ll k^2\\log^2 k$ for arbitrary prime sets"
+    },
+    {
+      "text": "Vaughan explained the exponent 2 through the sieve's restriction to moduli near the square root, where the lower function f vanishes at parameter 2.",
+      "verdict": "supported",
+      "sourceLine": "appears as the vanishing of the lower function $f$ at sieve parameter"
+    },
+    {
+      "text": "The proof keeps a boundary contribution that disappears from the leading linear-sieve term.",
+      "verdict": "supported",
+      "sourceLine": "boundary contribution that disappears from the leading linear-sieve"
+    },
+    {
+      "text": "Many discrepant edges force alignment with one of finitely many rationals.",
+      "verdict": "supported",
+      "sourceLine": "shows that many discrepant edges force"
+    },
+    {
+      "text": "Hajdu and Saradha proved j(P_k)=h(k) for k ≤ 23 but found j(P_24)=234 < 236 = h(24).",
+      "verdict": "supported",
+      "sourceLine": "Hajdu and Saradha proved equality for $k\\le23$, but found"
+    },
+    {
+      "text": "There is an absolute constant C with h(k) ≤ C k²/(log log 3k)² for every k ≥ 1.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute constant $C>0$ such that"
+    },
+    {
+      "text": "The bound is uniform over prime sets and interval translations.",
+      "verdict": "supported",
+      "sourceLine": "no restriction on their sizes or on the interval's translation"
+    },
+    {
+      "text": "The constant in the main theorem is not made explicit.",
+      "verdict": "supported",
+      "sourceLine": "constant in Theorem~\\ref{thm:main} is not made explicit."
+    },
+    {
+      "text": "The Ford–Green–Konyagin–Maynard–Tao construction gives the lower bound j(P_k) ≫ k(log k)² logloglog k / loglog k.",
+      "verdict": "supported",
+      "sourceLine": "The later construction of Ford, Green, Konyagin, Maynard and Tao gives"
+    },
+    {
+      "text": "The gap between the lower bound and the new upper bound remains substantial.",
+      "verdict": "supported",
+      "sourceLine": "remains substantial. Vaughan suggested the stronger possible estimate"
+    },
+    {
+      "text": "The Lean formalization proves h(k) ≤ Ck²/(log log 3k)² for one absolute C and every k ≥ 1, with intervals starting at any signed integer; the quadratic bound is retained separately; the optimal order is not determined.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

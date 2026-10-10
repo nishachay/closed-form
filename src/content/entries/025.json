@@ -1,0 +1,202 @@
+{
+  "id": "025",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Short-Egyptian-fractions-September-25-2026/Short-Egyptian-fractions-September-25-2026.pdf",
+      "label": "Short Egyptian fractions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/025.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every fraction below 1 is a sum of about log log b distinct unit fractions, as Erdős conjectured.",
+  "scope": "The result needs 1 ≤ a < b with b large enough. The constants are not computed, and bottom numbers are unrestricted.",
+  "plain": "Any fraction between 0 and 1 is a sum of different fractions of the form 1 over a whole number. This paper proves that about log log b such pieces always suffice, with a Lean proof listed. Here b is the bottom number, and log log b grows extremely slowly. Erdős proposed this in 1950 and showed then that no smaller order works. The paper also counts the ways to write 1 as such a sum.",
+  "doesNot": "This does not give the exact piece count for any particular fraction, or keep the bottom numbers small.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1950",
+    "firstStepBy": "Paul Erdős, who proposed the log log b bound",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles a 1950 Erdős conjecture, listed as Erdős Problem 304, on the shortest expansions."
+  },
+  "explanation": "Take the fraction 4/5. It can be written as 1/2 + 1/4 + 1/20. Each piece is a unit fraction, meaning 1 over a whole number. The bottom numbers are all different. A sum like this is called an Egyptian-fraction expansion. A computer search shows 4/5 needs three pieces; two will not do. Some fractions need more. By the same search, 16/17 needs five: 1/2 + 1/3 + 1/10 + 1/128 + 1/32640.\n\nHere is the question. Fix the bottom number b of a fraction a/b, with a smaller than b. Try every top number a. Ask for the worst case: how many pieces can the hardest fraction need? The paper calls this count N(b). For b = 17, the search above gives five. Some top numbers are easy. For example, 1/b needs only one piece.\n\nA simple method always finishes. It is the greedy method: take the largest unit fraction that fits, then repeat on what is left. But it can waste pieces. For 5/121 it uses five pieces, and the last bottom number has 25 digits. Yet 5/121 = 1/33 + 1/121 + 1/363 uses only three. So the real question is how short the best expansion can be.\n\nHere is what was known before. In 1950, Paul Erdős reported a bound due to de Bruijn and improved it. He proposed that about log log b pieces should always be enough. A logarithm (log) of a number roughly tracks how many digits it has. So log log b roughly tracks how many digits that digit count has. It grows extremely slowly. For b with 100 digits, log log b is about 5.4. Erdős also proved that you cannot do better. The fraction (b−1)/b already needs that many pieces, up to a fixed multiplier. Vose later reached a bound of order the square root of log b, in 1985. For a 100-digit b that is about 15.2, ignoring fixed multipliers. The question is listed as Erdős Problem 304.\n\nThis paper proves Erdős's guess, with a Lean proof listed. There are fixed numbers c1 and c2 that work for every large enough b. The worst case N(b) always lies between c1 times log log b and c2 times log log b. The upper bound holds for every top number a. The lower bound was already known. The new part is the upper bound, for all top numbers at once. The paper does not compute c2. So it gives no exact piece count for any particular b.\n\nWhat made this hard? The proof cuts off one unit fraction at a time, shrinking the top number. Each cut works for most top numbers, but some fail. Across many cuts, those failures could pile up. The paper claims they stay rare at every stage. It ends with a large range in which almost every top number has a short expansion. Any target top number, after scaling, is then the sum of two good ones. Two short expansions together make one short expansion.\n\nThe bottom numbers are left unrestricted. The expansion is short, but its pieces may have enormous bottom numbers. Earlier work by Tenenbaum and Yokota also kept the bottom numbers small. This paper does not try to.\n\nThe paper also counts ways to write 1 itself. Let F(k) count the expansions of 1 with exactly k different pieces. A short search gives F(3) = 1, from 1/2 + 1/3 + 1/6, and F(5) = 72. The paper proves F(k) grows doubly exponentially, with a Lean proof listed. That means log log F(k) is about a fixed multiple of k. It also studies v(k). This is the smallest whole number from 2 up that is never a bottom number in such an expansion. For every large enough k, v(k) is at least e to the power e^(k/600). Van Doorn and Tang had earlier proved a lower bound of the form e^(c·k²).\n\nHow sure is this? The Lean scope note says a computer proof checker called Lean has a formal proof of the main statement. It covers the log log b order of the worst case. It also covers the count F(k) and the bounds on v(k). No specialist review has been published yet.",
+  "hypeCheck": "Major if correct. The Lean scope note lists formal proofs, but the constants are not given, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Unit fraction",
+      "meaning": "A fraction with 1 on top, like 1/7."
+    },
+    {
+      "term": "Egyptian-fraction expansion",
+      "meaning": "A way of writing a fraction as a sum of unit fractions with all bottom numbers different."
+    },
+    {
+      "term": "Greedy method",
+      "meaning": "Repeatedly take the largest unit fraction that still fits into what is left."
+    },
+    {
+      "term": "Logarithm",
+      "meaning": "A measure of a number's size that roughly tracks how many digits it has."
+    },
+    {
+      "term": "log log b",
+      "meaning": "The logarithm taken twice; it grows extremely slowly, about 5.4 for a 100-digit number."
+    },
+    {
+      "term": "Doubly exponential",
+      "meaning": "Growth like e raised to e raised to a multiple of k."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Short Egyptian fractions” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Short-Egyptian-fractions-September-25-2026/Short-Egyptian-fractions-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "P. Erdős, “Az 1/x1+1/x2+…+1/xn=a/b egyenlet egész számú megoldásairól”, Matematikai Lapok 1 (1950), 192–210",
+      "url": "https://users.renyi.hu/~p_erdos/1950-02.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "M. D. Vose, “Egyptian fractions”, Bulletin of the London Mathematical Society 17 (1985), 21–24",
+      "url": "https://doi.org/10.1112/blms/17.1.21"
+    },
+    {
+      "id": 4,
+      "cite": "T. F. Bloom, “Erdős Problem 304”",
+      "url": "https://www.erdosproblems.com/304"
+    },
+    {
+      "id": 5,
+      "cite": "G. Tenenbaum and H. Yokota, “Length and denominators of Egyptian fractions, III”, Journal of Number Theory 35 (1990), 150–156",
+      "url": "https://doi.org/10.1016/0022-314X(90)90109-5"
+    },
+    {
+      "id": 6,
+      "cite": "W. van Doorn and Q. Tang, “The smallest denominator not contained in a unit fraction decomposition of 1 with fixed length”, Math. Proc. Cambridge Philos. Soc. (2026)",
+      "url": "https://arxiv.org/abs/2512.22083v2"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for “Short Egyptian fractions”",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/025.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Some top numbers are easy: 1/b needs only one piece.",
+      "verdict": "supported",
+      "sourceLine": "have much shorter expansions: for example, $N(1,b)=1$ for every $b\\ge2$."
+    },
+    {
+      "text": "The greedy method always finishes.",
+      "verdict": "supported",
+      "sourceLine": "The greedy algorithm shows that such expansions exist."
+    },
+    {
+      "text": "In 1950, Erdős reported de Bruijn's bound and improved it.",
+      "verdict": "supported",
+      "sourceLine": "reported de Bruijn's bound"
+    },
+    {
+      "text": "Erdős proposed the log log b upper bound and proved the matching lower order, already for the top number b−1.",
+      "verdict": "supported",
+      "sourceLine": "He proposed the double-logarithmic upper bound and proved the matching"
+    },
+    {
+      "text": "Vose later reached a bound of order the square root of log b.",
+      "verdict": "supported",
+      "sourceLine": "Vose subsequently obtained $N(b)\\ll\\sqrt{\\log b}$ \\cite{Vose1985};"
+    },
+    {
+      "text": "The question is listed as Erdős Problem 304.",
+      "verdict": "supported",
+      "sourceLine": "Problem~304 \\cite{Bloom304}."
+    },
+    {
+      "text": "There are fixed constants c1, c2 with c1 log log b ≤ N(b) ≤ c2 log log b for every large enough b.",
+      "verdict": "supported",
+      "sourceLine": "c_1\\log\\log b\\le N(b)\\le c_2\\log\\log b."
+    },
+    {
+      "text": "The upper bound holds for every top number a.",
+      "verdict": "supported",
+      "sourceLine": "In particular, the upper bound holds for every integer numerator"
+    },
+    {
+      "text": "The lower bound was already known; the new part is the upper bound.",
+      "verdict": "supported",
+      "sourceLine": "The lower bound is classical; the issue is the uniform upper bound."
+    },
+    {
+      "text": "The paper does not compute c2.",
+      "verdict": "supported",
+      "sourceLine": "quantifying the constant $c_2$ in the uniform theorem."
+    },
+    {
+      "text": "Each cut of one unit fraction shrinks the problem to a smaller top number.",
+      "verdict": "supported",
+      "sourceLine": "Thus one unit fraction reduces the problem to the residue of $-Qt$"
+    },
+    {
+      "text": "The difficulty is keeping the failing top numbers from piling up.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to prevent the exceptional numerators from accumulating"
+    },
+    {
+      "text": "Almost every top number in a large range has a short expansion.",
+      "verdict": "supported",
+      "sourceLine": "a large interval of numerators in which almost every fraction $u/(MC)$ has"
+    },
+    {
+      "text": "The scaled target is the sum of two good top numbers.",
+      "verdict": "supported",
+      "sourceLine": "inside the interval, and it is the sum of two numerators from that dense family."
+    },
+    {
+      "text": "The paper leaves the bottom numbers unrestricted.",
+      "verdict": "supported",
+      "sourceLine": "Here we optimize only the order of the length and leave the"
+    },
+    {
+      "text": "Tenenbaum and Yokota kept the bottom numbers small as well as the length short.",
+      "verdict": "supported",
+      "sourceLine": "has a distinct expansion of length at most"
+    },
+    {
+      "text": "log log F(k) is of order k.",
+      "verdict": "supported",
+      "sourceLine": " ck\\le\\log\\log F(k)\\le Ck."
+    },
+    {
+      "text": "For every large enough k, v(k) is at least e^(e^(k/600)).",
+      "verdict": "supported",
+      "sourceLine": "\\exp\\bigl(\\exp(k/600)\\bigr)\\le v(k)\\le1+k^{2^{k-1}}."
+    },
+    {
+      "text": "Van Doorn and Tang proved a lower bound of the form e^(c·k²).",
+      "verdict": "supported",
+      "sourceLine": "Van Doorn and Tang prove the lower bound $v(k)\\ge\\exp(c k^2)$ for"
+    },
+    {
+      "text": "The Lean formalization covers the log log b order, the counting of expansions of 1, and the bounds on v(k).",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

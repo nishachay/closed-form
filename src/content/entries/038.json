@@ -1,0 +1,256 @@
+{
+  "id": "038",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fujitas-freeness-conjecture-September-23-2026/Fujitas-freeness-conjecture-September-23-2026.pdf",
+      "label": "Fujita's freeness conjecture"
+    }
+  ],
+  "headline": "On every smooth shape, n + 1 copies of a positive bundle are always enough for Fujita's freeness.",
+  "scope": "The claim covers smooth projective varieties over the complex numbers, of any dimension n, with any ample line bundle L.",
+  "plain": "Fujita's freeness conjecture, from 1987, concerns smooth shapes defined by polynomial equations. It predicts that K + mL has a section nonzero at each point once m reaches n + 1. Here n is the shape's dimension and L is any positive bundle. Before this paper it was known only up to dimension 5, with weaker bounds in general. This paper claims to prove the conjecture in every dimension, at the sharp value n + 1.",
+  "doesNot": "This does not prove that sections separate points. Nor does it prove the stronger part of Fujita's conjecture, about embedding the shape in projective space.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "Takao Fujita, the conjecture",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a central conjecture of algebraic geometry at its sharp bound."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Smallest m proven to work in dimension 10",
+    "note": "Lower is better. 11 is the lowest possible value, as projective space shows. Values computed from each paper's stated bound with n = 10.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1995,
+        "value": 56,
+        "who": "Angehrn and Siu",
+        "source": 6
+      },
+      {
+        "year": 2026,
+        "value": 18,
+        "who": "Han (preprint)",
+        "source": 9
+      },
+      {
+        "year": 2026,
+        "value": 11,
+        "who": "This paper",
+        "claim": true,
+        "source": 11
+      }
+    ]
+  },
+  "explanation": "Picture the projective plane. Its points are triples [x : y : z], not all zero. Scaling all three gives the same point. So [1 : 2 : 3] and [2 : 4 : 6] are one point. A polynomial whose terms all have the same degree has a clear zero set there. Now ask a simple question. Can you pick polynomials of a given degree so that, at every point, at least one of them is nonzero?\n\nFor degree 0 the answer is yes. The constant 1 never vanishes. For degree 1 there are three choices: x, y and z. At every point at least one coordinate is nonzero, so again yes. Degree 2 offers 6 polynomials, and degree 3 offers 10. For degree −1 there are no polynomials at all, so the answer is no.\n\nFujita's freeness conjecture asks this question on every smooth shape. A smooth projective variety [a shape cut out by polynomial equations, with no corners or pinches] has a dimension n. The plane has n = 2. A line bundle is a rule saying which function-like objects, called sections, live on the shape. It is ample when it is positive in a standard sense. Each shape also carries one built-in line bundle, the canonical bundle K. Adding m copies of an ample bundle L to K gives the adjoint bundle K + mL. It is globally generated [free] when, at every point, some section is nonzero there.\n\nIn the plane, take L to be the bundle of degree-1 polynomials. Then the sections of K + mL are the polynomials of degree m − 3. So m = 3 works and m = 2 gives nothing. In 1987 Takao Fujita predicted that m = n + 1 always works. The plane shows that n + 1 cannot be lowered. The paper states the same sharpness for projective space of every dimension. The bundle L itself need not have any nonzero sections.\n\nThe known cases climbed slowly, one dimension at a time. Curves follow from the Riemann–Roch formula. Surfaces follow from Reider's theorem of 1988. Ein and Lazarsfeld did dimension 3 in 1993. Kawamata did dimension 4 in 1997, and Ye and Zhu dimension 5 in 2020. In every dimension, Angehrn and Siu proved m ≥ (n² + n + 2)/2 is enough in 1995. In dimension 10 that means 56, against the predicted 11. Later work brought it to order n^(4/3), then n(log log n + 2.34). A 2026 preprint by Jingjun Han reached a linear bound, about 1.776 times n. In dimension 10 that gives 18. In 2024 Tsz On Mario Chan announced a proof of a stronger form. That preprint was withdrawn after a step failed.\n\nThis paper claims to prove the full conjecture. Take any smooth complex projective shape of dimension n and any ample L. Then K + (n + 1)L is globally generated. It also claims the same for every larger m.\n\nThe standard method works one point at a time. To get a nonzero section at a point, it builds a carefully placed singularity there. A vanishing theorem then lifts a value at the point to a section on the whole shape. The trouble is where the singularity concentrates. It often settles along a curve or surface through the point, called a center, not on the point alone. That center can itself be badly shaped, and cutting it down costs positivity. The paper chooses its construction by minimizing a single average. It then claims an estimate that holds equally for all such centers of a given dimension. It holds no matter how singular or how complicated the center is. This lets it push the center down to the point itself.\n\nThe result has limits worth keeping in view. It only promises a nonzero section at each point. It does not claim that sections tell points or directions apart. It does not touch the second, stronger part of Fujita's conjecture, about embedding the shape. It is stated over the complex numbers.\n\nHow sure is this? No Lean formalization is listed for this paper, so no computer proof checker has examined it. No specialist review has been published. An earlier claimed proof of a stronger form was withdrawn, so a careful outside check matters here.",
+  "hypeCheck": "Major if the proof holds. No Lean formalization is listed and no specialist review is published. A 2024 claimed proof of a stronger form was withdrawn, so caution is warranted.",
+  "glossary": [
+    {
+      "term": "Smooth projective variety",
+      "meaning": "A shape cut out by polynomial equations, with no corners or pinches."
+    },
+    {
+      "term": "Line bundle",
+      "meaning": "A rule saying which function-like objects, called sections, live on a shape."
+    },
+    {
+      "term": "Ample",
+      "meaning": "Positive in a standard sense; some multiple of the bundle can place the shape inside projective space."
+    },
+    {
+      "term": "Canonical bundle",
+      "meaning": "A line bundle that every smooth shape carries, written K."
+    },
+    {
+      "term": "Adjoint bundle",
+      "meaning": "The canonical bundle plus m copies of an ample bundle, written K + mL."
+    },
+    {
+      "term": "Globally generated",
+      "meaning": "At every point of the shape, some section is nonzero there. Also called free."
+    },
+    {
+      "term": "Center",
+      "meaning": "The curve, surface or point where a constructed singularity concentrates."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "T. Fujita, “On polarized manifolds whose adjoint bundles are not semipositive”, Advanced Studies in Pure Mathematics 10 (1987), 167–178",
+      "url": "https://doi.org/10.2969/aspm/01010167"
+    },
+    {
+      "id": 2,
+      "cite": "I. Reider, “Vector bundles of rank 2 and linear systems on algebraic surfaces”, Annals of Mathematics 127 (1988), 309–316",
+      "url": "https://doi.org/10.2307/2007055"
+    },
+    {
+      "id": 3,
+      "cite": "L. Ein and R. Lazarsfeld, “Global generation of pluricanonical and adjoint linear series on smooth projective threefolds”, Journal of the AMS 6 (1993), 875–903",
+      "url": "https://doi.org/10.1090/S0894-0347-1993-1207013-5"
+    },
+    {
+      "id": 4,
+      "cite": "Y. Kawamata, “On Fujita's freeness conjecture for 3-folds and 4-folds”, Mathematische Annalen 308 (1997), 491–505",
+      "url": "https://doi.org/10.1007/s002080050085"
+    },
+    {
+      "id": 5,
+      "cite": "F. Ye and Z. Zhu, “On Fujita's freeness conjecture in dimension 5”, Advances in Mathematics 371 (2020), 107210",
+      "url": "https://doi.org/10.1016/j.aim.2020.107210"
+    },
+    {
+      "id": 6,
+      "cite": "U. Angehrn and Y.-T. Siu, “Effective freeness and point separation for adjoint bundles”, Inventiones Mathematicae 122 (1995), 291–308",
+      "url": "https://doi.org/10.1007/BF01231446"
+    },
+    {
+      "id": 7,
+      "cite": "G. Heier, “Effective freeness of adjoint line bundles”, Documenta Mathematica 7 (2002), 31–42",
+      "url": "https://doi.org/10.4171/DM/116"
+    },
+    {
+      "id": 8,
+      "cite": "L. Ghidelli and J. Lacini, “Logarithmic bounds on Fujita's conjecture”, Proceedings of the LMS 128 (2024), e12591",
+      "url": "https://doi.org/10.1112/plms.12591"
+    },
+    {
+      "id": 9,
+      "cite": "J. Han, “A linear bound for Fujita's freeness conjecture”, arXiv:2609.01574v2 (2026)",
+      "url": "https://arxiv.org/abs/2609.01574v2"
+    },
+    {
+      "id": 10,
+      "cite": "T. O. M. Chan, “A solution to Fujita's freeness conjecture via an extension theorem with analytic adjoint ideal sheaves”, arXiv:2411.07129 (2024, withdrawn in v2)",
+      "url": "https://arxiv.org/abs/2411.07129"
+    },
+    {
+      "id": 11,
+      "cite": "OpenAI, “Fujita's freeness conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fujitas-freeness-conjecture-September-23-2026/Fujitas-freeness-conjecture-September-23-2026.pdf",
+      "quote": "We prove Fujita's freeness conjecture."
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The conjecture predicts the canonical bundle becomes globally generated after twisting by n + 1 copies of an ample bundle; the ample bundle need not have nonzero sections.",
+      "verdict": "supported",
+      "sourceLine": "predicts that the canonical bundle becomes globally generated after twisting by $n+1$ copies of an arbitrary ample line bundle on a smooth projective $n$-fold. The ample bundle itself need not have any nonzero sections.",
+      "sourceId": 11
+    },
+    {
+      "text": "Fujita stated the conjecture; the paper cites Fujita's 1987 paper.",
+      "verdict": "supported",
+      "sourceLine": "Fujita's freeness conjecture \\cite{fujita1987}",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper claims that K + (n + 1)L is globally generated for smooth connected complex projective X of dimension n ≥ 1 and ample L.",
+      "verdict": "supported",
+      "sourceLine": "Let $X$ be a smooth connected projective variety over $\\C$ of dimension $n\\geq 1$, and let $L$ be an ample line bundle on $X$.",
+      "sourceId": 11
+    },
+    {
+      "text": "The bound is sharp: on projective space with L = O(1), K + (n + 1)L is trivial and K + nL has no nonzero sections.",
+      "verdict": "supported",
+      "sourceLine": "The exponent is sharp: for $X=\\mathbb P^n$ and $L=\\cO_{\\mathbb P^n}(1)$, the bundle $K_X+(n+1)L$ is trivial, whereas $K_X+nL$ has no nonzero sections.",
+      "sourceId": 11
+    },
+    {
+      "text": "The result does not assert separation of points or tangent directions, or the very-ampleness part of Fujita's conjecture.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert separation of points or tangent directions, or the very-ampleness part of Fujita's conjecture.",
+      "sourceId": 11
+    },
+    {
+      "text": "The paper also claims global generation of K + mL for every m ≥ n + 1.",
+      "verdict": "supported",
+      "sourceLine": "$K_X+mL$ is globally generated for every integer $m\\geq n+1$.",
+      "sourceId": 11
+    },
+    {
+      "text": "Curves follow from Riemann–Roch; surfaces from Reider's theorem.",
+      "verdict": "supported",
+      "sourceLine": "Riemann--Roch gives the sharp bound. The surface case follows from Reider's theorem",
+      "sourceId": 2
+    },
+    {
+      "text": "Dimensions 3, 4 and 5 were done by Ein–Lazarsfeld, Kawamata, and Ye–Zhu.",
+      "verdict": "supported",
+      "sourceLine": "the threefold, fourfold, and fivefold cases were proved by Ein--Lazarsfeld, Kawamata, and Ye--Zhu, respectively",
+      "sourceId": 3
+    },
+    {
+      "text": "Angehrn and Siu obtained generation for m ≥ (n² + n + 2)/2 in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "In arbitrary dimension, Angehrn--Siu obtained generation for $m\\geq (n^2+n+2)/2$",
+      "sourceId": 6
+    },
+    {
+      "text": "Heier obtained a bound of order n^(4/3).",
+      "verdict": "supported",
+      "sourceLine": "Heier combined these estimates with the Angehrn--Siu method to obtain a bound of order $n^{4/3}$",
+      "sourceId": 7
+    },
+    {
+      "text": "Ghidelli and Lacini obtained m ≥ n(log log n + 2.34).",
+      "verdict": "supported",
+      "sourceLine": "Ghidelli--Lacini subsequently obtained the bound $m\\geq n(\\log\\log n+2.34)$ for $n\\geq2$",
+      "sourceId": 8
+    },
+    {
+      "text": "Han's 2026 preprint gives m ≥ ⌈C₀n⌉ with C₀ = 1.77629988…",
+      "verdict": "supported",
+      "sourceLine": "Han's recent preprint gives $m\\geq\\lceil C_0n\\rceil$, where $C_0=1.77629988\\ldots$",
+      "sourceId": 9
+    },
+    {
+      "text": "Chan announced a proof of a stronger form in 2024; the preprint was withdrawn.",
+      "verdict": "supported",
+      "sourceLine": "that preprint was withdrawn after the local extension argument did not guarantee the required vanishing order.",
+      "sourceId": 10
+    },
+    {
+      "text": "The standard method builds controlled singularities at the point, reduces a center to the point, and lifts a nonzero value.",
+      "verdict": "supported",
+      "sourceLine": "The common vanishing strategy constructs controlled singularities at the prescribed point, reduces a suitable center to a point, and then lifts a nonzero fiber value",
+      "sourceId": 11
+    },
+    {
+      "text": "A positive-dimensional center can be singular, and cutting it down costs positivity.",
+      "verdict": "supported",
+      "sourceLine": "A recurring difficulty is that a positive-dimensional center can itself be singular, and cutting it down costs positivity.",
+      "sourceId": 11
+    },
+    {
+      "text": "The paper's estimate is uniform over all integral subvarieties of a fixed dimension, including singular ones of unbounded degree.",
+      "verdict": "supported",
+      "sourceLine": "The estimate is uniform over all integral subvarieties of a fixed dimension, including singular subvarieties of unbounded degree.",
+      "sourceId": 11
+    },
+    {
+      "text": "The final lift uses Kawamata–Viehweg vanishing.",
+      "verdict": "supported",
+      "sourceLine": "Kawamata--Viehweg vanishing then lifts a nonzero fiber value at $x$.",
+      "sourceId": 11
+    },
+    {
+      "text": "The catalog lists no Lean formalization for this paper.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ]
+}

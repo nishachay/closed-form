@@ -1,0 +1,280 @@
+{
+  "id": "005",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Catalans-constant-is-irrational-September-24-2026/paper.pdf",
+      "label": "Catalan's constant is irrational"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/005.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Catalan's constant, 1 − 1/9 + 1/25 − 1/49 + …, is not a fraction.",
+  "scope": "The result is about Catalan's constant alone. It says nothing about the other even beta values.",
+  "plain": "Catalan's constant is the endless sum 1 − 1/9 + 1/25 − 1/49 + …, about 0.916. Earlier work showed only that some member of its family of sums is not a fraction. This paper proves that Catalan's constant itself is not a fraction. It does so by building large grids of numbers whose size would be impossible if it were one. A Lean proof of the main theorem is listed.",
+  "doesNot": "This does not say how closely fractions can approach Catalan's constant.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2003",
+    "firstStepBy": "Tanguy Rivoal and Wadim Zudilin, one of β(2) to β(14) is irrational",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It settles a classical constant that earlier family results could not single out."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Shortest list of beta values known to contain an irrational one",
+    "note": "Smaller is better. A list of one names Catalan's constant itself.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 2003,
+        "value": 7,
+        "who": "Rivoal and Zudilin",
+        "source": 1
+      },
+      {
+        "year": 2019,
+        "value": 6,
+        "who": "Zudilin",
+        "source": 4
+      },
+      {
+        "year": 2022,
+        "value": 5,
+        "who": "Lai and Zhou",
+        "source": 5
+      },
+      {
+        "year": 2026,
+        "value": 1,
+        "who": "This paper",
+        "claim": true,
+        "source": 9
+      }
+    ]
+  },
+  "explanation": "Catalan's constant is the sum 1 − 1/9 + 1/25 − 1/49 + … and so on forever. The bottom numbers are the odd numbers squared, and the signs alternate. Call the total G. It is about 0.9159656. Stop after four terms and you get the fraction 10016/11025, about 0.90848. That misses G by about 0.0075. More terms get closer. The question this paper settles is whether G itself is a fraction.\n\nCloseness alone cannot answer that. Suppose G were a fraction a/b. Pick any whole numbers A and B. Then A times G minus B is a whole number of b-ths. So it is either zero or at least 1/b in size. To show G is not a fraction, it is enough to find whole numbers A and B with one property. A times G minus B must never be zero, yet must shrink toward zero. A number that is not a fraction is called irrational.\n\nThe obvious attempt fails. Take A = 11025 and B = 10016 from the four-term sum. Then A times G minus B is about 82.5. With six terms the bottom number is 12006225, and the same quantity is about 40865. The fractions improve, but multiplying by the bottom number wipes out the gain. The paper calls this the basic difficulty. Faster recipes for G exist. In 2003, Wadim Zudilin built several. He noted that their whole-number combinations still do not tend to zero. Roger Apéry's 1979 method for two related sums worked because the shrinking survived that multiplication. Similar recipes for G had not managed that.\n\nEarlier results came at G from the side. G is the first of a family of sums, β(2), β(4), β(6) and so on, one per even power. In each, the odd numbers are raised to that power instead of squared. In 2003, Tanguy Rivoal and Zudilin proved that at least one of β(2) through β(14) is irrational. Zudilin cut that list to six values in 2019. Li Lai and Li Zhou cut it to five, through β(10), in 2022. Such results promise an irrational member without saying which one.\n\nThis paper proves that G is irrational. It replaces the single combination with large square grids of numbers. A grid of the paper's chosen size 48N is built for each whole number N. Each entry mixes 1, G and a second constant, ζ(2) = 1 + 1/4 + 1/9 + 1/16 + …. The rows are chosen so the ζ(2) parts cancel in every entry. Each grid then gets one number computed from all its entries, called its determinant. If G were a fraction, every determinant would be a fraction too.\n\nNow the trap from before works on a larger scale. Control of the bottom numbers stops a nonzero determinant from being very small. An integral formula for the same determinant forces it to be small. After a fixed rescaling, the first bound stays above −2.29084. The second stays at or below −2.290939875. They clash by about one ten-thousandth. That is a thin margin, but any clash is a contradiction. Zudilin's 2017 determinant method is the paper's closest precedent. He explained why the approximations available to him could not apply it to G.\n\nThe hard part is that the determinant must not be zero, because a zero springs no trap. The paper handles this when N is a large prime number. Assuming G is a fraction, each growing grid reduces to three fixed grids of fractions. The paper claims an exact finite computation shows those are not zero. That yields nonzero determinants for an endless run of primes, which is all the trap needs.\n\nThe result says only that G is not a fraction. It gives no irrationality measure, a limit on how closely fractions can approach G. It does give a side result. Ian Agol showed that 4G is the smallest volume of a certain kind of curved three-dimensional space. That space has exactly two cusps, ends that taper off forever. So that smallest volume is irrational too. Zhi-Wei Sun announced a proof of the same statement in a September 2026 preprint. This paper uses nothing from it.\n\nHow sure is this? A computer proof checker called Lean has a formal proof that G is irrational. A tool called Comparator matches it to a fixed reference statement. The step about volumes is not in the Lean scope note. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. A Lean proof of the irrationality statement is listed. The volume consequence is outside the scope note, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Catalan's constant",
+      "meaning": "The sum 1 − 1/9 + 1/25 − 1/49 + …, about 0.9159656."
+    },
+    {
+      "term": "Irrational number",
+      "meaning": "A number that is not a fraction of two whole numbers."
+    },
+    {
+      "term": "Beta values",
+      "meaning": "A family of alternating sums over odd numbers raised to a power; Catalan's constant is β(2)."
+    },
+    {
+      "term": "ζ(2)",
+      "meaning": "The sum 1 + 1/4 + 1/9 + 1/16 + … of all reciprocal squares."
+    },
+    {
+      "term": "Determinant",
+      "meaning": "One number computed from all the entries of a square grid of numbers."
+    },
+    {
+      "term": "Irrationality measure",
+      "meaning": "A limit on how closely fractions can approach a number."
+    },
+    {
+      "term": "Cusp",
+      "meaning": "An end of a curved space that tapers off forever while keeping finite volume."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "T. Rivoal and W. Zudilin, “Diophantine properties of numbers related to Catalan's constant”, Mathematische Annalen 326 (2003), 705–721",
+      "url": "https://doi.org/10.1007/s00208-003-0420-2"
+    },
+    {
+      "id": 2,
+      "cite": "W. Zudilin, “An Apéry-like difference equation for Catalan's constant”, Electronic Journal of Combinatorics 10 (2003), R14",
+      "url": "https://doi.org/10.37236/1707"
+    },
+    {
+      "id": 3,
+      "cite": "R. Apéry, “Irrationalité de ζ2 et ζ3”, Astérisque 61 (1979), 11–13",
+      "url": "https://numdam.org/item/AST_1979__61__11_0/"
+    },
+    {
+      "id": 4,
+      "cite": "W. Zudilin, “Arithmetic of Catalan's constant and its relatives”, Abh. Math. Semin. Univ. Hambg. 89 (2019), 45–53",
+      "url": "https://doi.org/10.1007/s12188-019-00203-w"
+    },
+    {
+      "id": 5,
+      "cite": "L. Lai and L. Zhou, “At least two of ζ(5), ζ(7), …, ζ(35) are irrational”, Publicationes Mathematicae Debrecen 101 (2022), 353–372",
+      "url": "https://doi.org/10.5486/PMD.2022.9252"
+    },
+    {
+      "id": 6,
+      "cite": "W. Zudilin, “A determinantal approach to irrationality”, Constructive Approximation 45 (2017), 301–310",
+      "url": "https://doi.org/10.1007/s00365-016-9333-7"
+    },
+    {
+      "id": 7,
+      "cite": "I. Agol, “The minimal volume orientable hyperbolic 2-cusped 3-manifolds”, Proceedings of the AMS 138 (2010), 3723–3732",
+      "url": "https://doi.org/10.1090/S0002-9939-10-10364-5"
+    },
+    {
+      "id": 8,
+      "cite": "Z.-W. Sun, “Catalan's constant is irrational”, arXiv:2609.04176 (2026)",
+      "url": "https://arxiv.org/abs/2609.04176v1"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “Catalan's constant is irrational” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Catalans-constant-is-irrational-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 005 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/005.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Catalan's constant is the alternating sum of reciprocals of odd squares.",
+      "verdict": "supported",
+      "sourceLine": "Catalan's constant is the real number"
+    },
+    {
+      "text": "Catalan's constant is irrational.",
+      "verdict": "supported",
+      "sourceLine": "Catalan's constant is irrational."
+    },
+    {
+      "text": "Irrationality needs nonzero integer linear forms that tend to zero.",
+      "verdict": "supported",
+      "sourceLine": "For an individual value, the basic approximation criterion requires nonzero integer linear forms"
+    },
+    {
+      "text": "Convergence of the fractions alone does not suffice; multiplying by the denominator may remove the decay.",
+      "verdict": "supported",
+      "sourceLine": "alone does not suffice: multiplication by … may remove the decay."
+    },
+    {
+      "text": "The basic difficulty is that rapidly converging approximations need not stay accurate after clearing denominators.",
+      "verdict": "supported",
+      "sourceLine": "Its arithmetic illustrates a basic difficulty in the study of special values: rapidly converging rational approximations need not be sufficiently accurate after their denominators are cleared."
+    },
+    {
+      "text": "Zudilin's 2003 constructions give integer linear forms that do not tend to zero.",
+      "verdict": "supported",
+      "sourceLine": "the displayed integer linear forms do not tend to zero, despite the rapid convergence of their rational quotients."
+    },
+    {
+      "text": "Apéry's and Beukers's proofs for ζ(2) and ζ(3) work because the decay survives denominator clearing.",
+      "verdict": "supported",
+      "sourceLine": "succeed because the analytic decay survives the necessary denominator clearing."
+    },
+    {
+      "text": "Rivoal and Zudilin proved at least one of β(2) through β(14) is irrational.",
+      "verdict": "supported",
+      "sourceLine": "Rivoal and Zudilin proved that infinitely many even beta values are irrational, and that at least one of"
+    },
+    {
+      "text": "Zudilin reduced the list to six values through β(12).",
+      "verdict": "supported",
+      "sourceLine": "Zudilin reduced this finite collection to the six values through"
+    },
+    {
+      "text": "Lai and Zhou reduced it to five values through β(10).",
+      "verdict": "supported",
+      "sourceLine": "Lai and Zhou subsequently reduced it to the five values"
+    },
+    {
+      "text": "Family results do not identify β(2).",
+      "verdict": "supported",
+      "sourceLine": "Such family results guarantee irrational members without identifying the particular value"
+    },
+    {
+      "text": "The determinants have size 48N.",
+      "verdict": "supported",
+      "sourceLine": "We construct determinants … of size … whose entries combine moments of two elementary kernels."
+    },
+    {
+      "text": "Each entry combines 1, G and ζ(2); the ζ(2) term cancels in every entry.",
+      "verdict": "supported",
+      "sourceLine": "This agreement cancels the … term in every entry."
+    },
+    {
+      "text": "If G is rational, all the determinants are rational.",
+      "verdict": "supported",
+      "sourceLine": "makes all the determinants rational."
+    },
+    {
+      "text": "Denominator bounds give a lower bound; an integral formula gives an upper bound.",
+      "verdict": "supported",
+      "sourceLine": "An integral formula for the same determinant gives an upper bound."
+    },
+    {
+      "text": "The lower bound exceeds −2.29084 and the upper bound is at most −2.290939875; they are incompatible.",
+      "verdict": "supported",
+      "sourceLine": "These inequalities are incompatible."
+    },
+    {
+      "text": "Zudilin's determinantal criterion is a precedent, and his discussion explains why it could not apply to Catalan's constant.",
+      "verdict": "supported",
+      "sourceLine": "His discussion of Catalan's constant explains why the denominator growth of the approximation family considered there still prevents application of the criterion"
+    },
+    {
+      "text": "For large primes N the matrix reduces to three fixed rational matrices, shown nonzero by an exact finite certificate.",
+      "verdict": "supported",
+      "sourceLine": "reduce the growing matrix to three fixed rational matrices. An exact finite certificate proves their nonvanishing."
+    },
+    {
+      "text": "This gives nonzero determinants along an unbounded sequence of primes.",
+      "verdict": "supported",
+      "sourceLine": "The reduction then gives nonzero determinants along an unbounded prime sequence"
+    },
+    {
+      "text": "The argument gives no irrationality measure.",
+      "verdict": "supported",
+      "sourceLine": "The argument proves qualitative irrationality; a bound for an irrationality measure would require additional control of rational approximations."
+    },
+    {
+      "text": "Agol identified 4G as the minimum volume of an orientable hyperbolic three-manifold with two cusps, so it is irrational.",
+      "verdict": "supported",
+      "sourceLine": "therefore makes this minimum and both link volumes irrational."
+    },
+    {
+      "text": "Sun has announced a proof of the same statement; nothing from it is used.",
+      "verdict": "supported",
+      "sourceLine": "has also announced a proof of the same qualitative irrationality statement. No result from that preprint is used here."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "The Lean formalization proves that Catalan's constant is irrational, with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "id": "050",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/ample-rank-two-bundles-on-the-quadric-surface-without-griffiths-positive-metrics-September-24-2026/paper.pdf",
+      "label": "Ample rank-two bundles on the quadric surface without Griffiths-positive metrics"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/050.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Algebraic positivity need not come with positive curvature, even on the simple surface built from two spheres.",
+  "scope": "The examples are rank-two bundles on the quadric surface. They fail only for all large enough m, with no explicit threshold.",
+  "plain": "In 1969, Phillip Griffiths asked a question about ample bundles, which carry an algebraic kind of positivity. Must each one carry a metric with strictly positive curvature? This paper builds an explicit family of ample rank-two bundles on the quadric surface, the product of two spheres. It proves (Lean proof listed) that all large enough members of the family have no strictly Griffiths-positive Hermitian metric. So Griffiths' conjecture fails on that surface.",
+  "doesNot": "This does not say which members of the family first fail, or exclude metrics with merely nonnegative curvature.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1969",
+    "firstStepBy": "Phillip Griffiths, who posed the question",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it shows a 1969 conjecture fails on one of the simplest surfaces. A related claim on another surface appeared two days earlier."
+  },
+  "explanation": "Picture the Riemann sphere: all the complex numbers, plus one extra point called infinity. The paper uses two motions of this sphere, called A and B. A multiplies every number by a fixed number whose angle is 120 degrees. So A is a third of a turn about the points 0 and infinity. Three steps bring every point home. B also returns home after three steps, but it turns about two other points. A and B have no fixed point in common.\n\nNow combine them: do B, then A. In suitable coordinates, this combined motion multiplies every number by about 3.55. Each step pushes points away from one of its fixed points and toward the other. That number comes from its matrix, whose two stretch factors are about 1.883 and 0.531. Their ratio is about 3.55.\n\nTry to sprinkle sand on the sphere so that A and B both leave the pattern unchanged. The amount of sand is fixed in advance, and it is not zero. The combined motion would drag any sand that sits away from its two fixed points. So all the sand must sit on those two points. A must also leave the pattern unchanged, so it can at most swap the two piles. But a swap needs two steps to undo, and A returns home after three. So A fixes both piles, and so does B. That gives A and B a common fixed point, which they lack. So no such sand exists. This small clash drives the whole paper.\n\nThe sand matters because of a question Phillip Griffiths asked in 1969. Geometers often attach a small flat space of directions to each point of a shape. The whole family is called a vector bundle. Here each of those spaces is a plane, so the bundle has rank two. A Hermitian metric is a smooth rule for measuring lengths in each plane, by a formula like Pythagoras'. Its curvature records how those rulers bend from point to point. The metric is strictly Griffiths-positive when that curvature is positive in every pair of directions. Such a metric forces an algebraic kind of positivity called ampleness. Griffiths' conjecture asks for the reverse: every ample bundle should carry such a metric.\n\nFor bundles with one direction at each point, the two notions agree. On curves, which are one-dimensional shapes, Hiroshi Umemura proved the reverse direction. He did it first for elliptic curves and then for compact Riemann surfaces. In 2026, Rei Murakami gave an analytic proof of the full curve case. So a surface is the first place a counterexample could live. Other work found strong curvature only after changing the bundle, by twisting it or taking powers. Bo Berndtsson did this in 2009, and Kefeng Liu, Xiaofeng Sun and Xiaokui Yang in 2013. Those changes give no such metric on the original bundle. Two days before this paper's date, Yun-Heng Du and Song-Yan Xie posted a preprint. It states an ample rank-two bundle on a different surface with no metric even of nonnegative curvature.\n\nThis paper works on the quadric surface. Its points are pairs (x, y), each taken from its own Riemann sphere. Inside it sit three curves: the pairs where y equals x, where y equals Ax, and where y equals Bx. The paper glues two simple bundles together along these curves, using A and B to match them. The matching works because the matrices for A, B and one combination of them repeat. They repeat after 6, 6 and 8 steps. So the paper raises the gluing maps to the 24th power, a common multiple of all three. The result is a bundle called G. The paper then pulls G back by the map that raises each coordinate to the m-th power. It also adds one fixed twist. Call the result E_m. Every E_m is ample, for every positive whole number m.\n\nThe hard part is ruling out every metric. A metric can be chosen freely at each point, so there are endless candidates. No one can test them one by one. The paper instead supposes that infinitely many E_m carry a strictly positive metric. It averages each one over the m-th power map and lets m grow. The limit is a nonzero object that still respects the three gluing curves. On one sphere it becomes sand left unchanged by A and B. The opening clash says that sand cannot exist. So only finitely many E_m can carry such a metric.\n\nThat gives a threshold m_0. From m_0 on, no E_m has a strictly positive metric. The threshold comes from a limit argument, so the paper cannot say what m_0 is. Smaller members of the family may or may not carry such metrics. The result also excludes only strictly positive metrics, not those whose curvature is merely nonnegative. And the metric must be Hermitian. Shoshichi Kobayashi showed in 1975 that ampleness does match a curvature condition for a looser kind of length rule.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the bundle G, ampleness of every E_m, and the missing metrics for all large m. The paper's separate, more explicit ampleness certificate is outside that check. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. Lean has checked a formal version of the main theorem, but not the paper's separate very-ampleness certificate. A preprint posted two days earlier states a related counterexample on another surface. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Riemann sphere",
+      "meaning": "The complex numbers plus one point at infinity, pictured as a sphere."
+    },
+    {
+      "term": "Vector bundle",
+      "meaning": "A shape with a small flat space of directions attached to each of its points."
+    },
+    {
+      "term": "Rank",
+      "meaning": "The number of directions in each of those attached spaces; rank two means a plane."
+    },
+    {
+      "term": "Hermitian metric",
+      "meaning": "A smooth rule for measuring lengths in each attached space, by a formula like Pythagoras'."
+    },
+    {
+      "term": "Curvature",
+      "meaning": "A record of how a metric's rulers bend from point to point."
+    },
+    {
+      "term": "Strictly Griffiths-positive",
+      "meaning": "Curvature that is positive in every pair of a shape direction and a bundle direction."
+    },
+    {
+      "term": "Ample",
+      "meaning": "An algebraic kind of positivity for a bundle, defined without any metric."
+    },
+    {
+      "term": "Quadric surface",
+      "meaning": "The surface of pairs of points, each taken from its own Riemann sphere."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. A. Griffiths, “Hermitian differential geometry, Chern classes, and positive vector bundles”, in Global Analysis: Papers in Honor of K. Kodaira, University of Tokyo Press (1969), 185–251",
+      "url": "https://publications.ias.edu/sites/default/files/hermdiffgeometrychern.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "R. Hartshorne, “Ample vector bundles”, Publications Mathématiques de l'IHÉS 29 (1966), 63–94",
+      "url": "https://doi.org/10.1007/BF02684806"
+    },
+    {
+      "id": 3,
+      "cite": "H. Umemura, “Fibrés vectoriels positifs sur une courbe elliptique”, Bulletin de la Société Mathématique de France 100 (1972), 431–433",
+      "url": "https://doi.org/10.24033/bsmf.1746"
+    },
+    {
+      "id": 4,
+      "cite": "H. Umemura, “Some results in the theory of vector bundles”, Nagoya Mathematical Journal 52 (1973), 97–128",
+      "url": "https://doi.org/10.1017/S0027763000015919"
+    },
+    {
+      "id": 5,
+      "cite": "R. Murakami, “An analytic proof of Griffiths' conjecture on compact Riemann surfaces”, Mathematische Annalen 394 (2026), Article 36",
+      "url": "https://doi.org/10.1007/s00208-026-03360-5"
+    },
+    {
+      "id": 6,
+      "cite": "B. Berndtsson, “Curvature of vector bundles associated to holomorphic fibrations”, Annals of Mathematics 169 (2009), 531–560",
+      "url": "https://annals.math.princeton.edu/2009/169-2/p04"
+    },
+    {
+      "id": 7,
+      "cite": "K. Liu, X. Sun and X. Yang, “Positivity and vanishing theorems for ample vector bundles”, Journal of Algebraic Geometry 22 (2013), 303–331",
+      "url": "https://doi.org/10.1090/S1056-3911-2012-00588-8"
+    },
+    {
+      "id": 8,
+      "cite": "S. Kobayashi, “Negative vector bundles and complex Finsler structures”, Nagoya Mathematical Journal 57 (1975), 153–166",
+      "url": "https://doi.org/10.1017/S0027763000016615"
+    },
+    {
+      "id": 9,
+      "cite": "Y.-H. Du and S.-Y. Xie, “Ample vector bundles without Griffiths-semipositive metrics”, arXiv:2609.26504 (September 22, 2026)",
+      "url": "https://arxiv.org/abs/2609.26504v1"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “Ample rank-two bundles on the quadric surface without Griffiths-positive metrics” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/ample-rank-two-bundles-on-the-quadric-surface-without-griffiths-positive-metrics-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for “A counterexample to Griffiths’ positivity conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/050.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A strictly Griffiths-positive metric implies ampleness.",
+      "verdict": "supported",
+      "sourceLine": "Such a metric implies ampleness."
+    },
+    {
+      "text": "Griffiths' conjecture asks for the converse.",
+      "verdict": "supported",
+      "sourceLine": "Griffiths' conjecture asks for the converse on smooth complex projective varieties"
+    },
+    {
+      "text": "For line bundles the algebraic and curvature notions agree.",
+      "verdict": "supported",
+      "sourceLine": "For line bundles the algebraic and curvature notions agree"
+    },
+    {
+      "text": "Umemura proved the equivalence first for elliptic curves, then for compact Riemann surfaces.",
+      "verdict": "supported",
+      "sourceLine": "Umemura proved the metric equivalence first for elliptic curves and then for compact Riemann surfaces"
+    },
+    {
+      "text": "Murakami gave an analytic proof of the full curve case.",
+      "verdict": "supported",
+      "sourceLine": "Murakami subsequently obtained an analytic proof of the full curve case"
+    },
+    {
+      "text": "A surface is the first possible dimension for a counterexample.",
+      "verdict": "supported",
+      "sourceLine": "These results make a surface the first possible base dimension"
+    },
+    {
+      "text": "Berndtsson and Liu–Sun–Yang get positivity only after twists or symmetric powers, not on the bundle itself.",
+      "verdict": "supported",
+      "sourceLine": "The determinant twists and symmetric powers are part of these conclusions; they do not supply a Griffiths-positive metric on"
+    },
+    {
+      "text": "Du and Xie's September 22, 2026 preprint states an ample rank-two bundle on another surface without a semipositive metric.",
+      "verdict": "supported",
+      "sourceLine": "In a preprint posted on September 22, 2026, Du--Xie state the existence of a rank-two ample bundle on the abelian surface"
+    },
+    {
+      "text": "A and B are order-three motions with no common fixed point.",
+      "verdict": "supported",
+      "sourceLine": "with order three and no common fixed point"
+    },
+    {
+      "text": "The lifts have orders 6, 6 and 8, and 24 is a common multiple.",
+      "verdict": "supported",
+      "sourceLine": "The exponent $24$ is a common multiple of the orders $6,6,8$"
+    },
+    {
+      "text": "The product AB acts like multiplication by a number larger than one in size.",
+      "verdict": "supported",
+      "sourceLine": "is conjugate to $z\\mapsto\\lambda z$ with $|\\lambda|>1$"
+    },
+    {
+      "text": "The invariant measure has nonzero total mass.",
+      "verdict": "supported",
+      "sourceLine": "gives a positive measure whose nonzero total mass is fixed by the degree"
+    },
+    {
+      "text": "Invariance under AB forces the measure onto its two fixed points.",
+      "verdict": "supported",
+      "sourceLine": "Invariance under $AB$ forces this measure to be supported on its two fixed points."
+    },
+    {
+      "text": "A permutation of at most two points of order dividing three is trivial.",
+      "verdict": "supported",
+      "sourceLine": "Since a permutation of at most two points whose order divides three is trivial"
+    },
+    {
+      "text": "Every E_m is ample, for every positive power.",
+      "verdict": "supported",
+      "sourceLine": "are ample for every positive power"
+    },
+    {
+      "text": "The proof supposes infinitely many E_m have positive metrics and averages over the power map.",
+      "verdict": "supported",
+      "sourceLine": "Suppose that infinitely many $E_m$ have positive metrics."
+    },
+    {
+      "text": "The threshold m_0 comes from compactness and is ineffective.",
+      "verdict": "supported",
+      "sourceLine": "The threshold $m_0$ is obtained by compactness and is ineffective."
+    },
+    {
+      "text": "The conclusion is about strictly Griffiths-positive metrics.",
+      "verdict": "supported",
+      "sourceLine": "Its metric conclusion is the absence of smooth"
+    },
+    {
+      "text": "The Hermitian requirement is essential; Kobayashi characterized ampleness through Finsler structures.",
+      "verdict": "supported",
+      "sourceLine": "The requirement that the metric be Hermitian is essential to the problem."
+    },
+    {
+      "text": "Griffiths' conjecture fails in rank two on the quadric surface.",
+      "verdict": "supported",
+      "sourceLine": "Thus Griffiths' conjecture fails in rank two on the quadric surface."
+    },
+    {
+      "text": "Lean has a formal version of the main theorem; the very-ampleness result is not included.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ]
+}
