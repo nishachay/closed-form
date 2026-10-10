@@ -1,0 +1,193 @@
+{
+  "id": "142",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-Polynomial-Factorization-over-Prime-Fields-October-4-2026/Deterministic-Polynomial-Factorization-over-Prime-Fields.pdf",
+      "label": "Deterministic Polynomial Factorization over Prime Fields"
+    }
+  ],
+  "headline": "A claimed coin-free algorithm that factors any polynomial modulo a prime in time polynomial in the input size.",
+  "scope": "Dense polynomials over the field of integers modulo a prime p, with p written in binary; the bound uses a companion paper's analytic theorem.",
+  "plain": "Factoring a polynomial modulo a prime p means splitting it into pieces that cannot be split further. Fast methods that use random guesses have existed since at least 1981. Known methods without guessing were slow for huge primes or assumed the unproven generalized Riemann hypothesis. This paper claims a method with no randomness whose running time is polynomial in the degree and the number of digits of p. One key input is an analytic theorem proved in a companion openai/math paper.",
+  "doesNot": "This does not give a fast practical method: the claimed bound has exponent 10¹², which the paper calls deliberately generous.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1970",
+    "firstStepBy": "Berlekamp, factoring over large finite fields with linear algebra",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "The deterministic bounds it cites needed time growing with the square root of p, or GRH. It claims a bound polynomial in the input size without either."
+  },
+  "explanation": "Work with whole numbers modulo 5, where only the remainders 0 to 4 count. Take the polynomial x² + 1. Put in x = 2, and you get 5, which counts as 0. Put in x = 3, and you get 10, also 0. So x² + 1 splits as (x − 2)(x − 3). Check it: the product is x² − 5x + 6, and modulo 5 that is x² + 1. Now work modulo 7 instead. The squares there are only 1, 2 and 4, so x² + 1 is never 0. Modulo 7, the same polynomial cannot be split at all.\n\nThis is factorization over a prime field. A prime field is the arithmetic of remainders after division by a prime p. Complete factorization means writing a polynomial as a constant times irreducible pieces, each with its multiplicity. An irreducible piece is one that cannot be split further. The multiplicity counts how often a piece repeats.\n\nThe difficulty is the size of p. The input gives p by its binary digits. A prime near 10¹⁰⁰ needs only 333 binary digits, but trying every remainder means 10¹⁰⁰ trials. So an efficient method must run in time polynomial in the number of digits, not in p itself. The paper also asks for polynomial time in the degree n at the same time.\n\nRandom guessing solves this efficiently. Berlekamp's work in 1967 and 1970 used linear algebra to reduce factoring to finding suitable separating elements. Cantor and Zassenhaus in 1981 found such elements by random choices, in expected polynomial time. The hard part is making every choice without randomness. Shoup's 1990 method avoids randomness, but its time grows roughly like the square root of p. For p near 10¹⁰⁰, the square root is 10⁵⁰. Other results assumed the generalized Riemann hypothesis, or GRH, an unproven conjecture about the zeros of certain functions. Under GRH, Evdokimov in 1994 reached a quasipolynomial bound in n, a little worse than any fixed power of n.\n\nThe paper claims a deterministic method, one that never flips a coin, for every prime and every degree. Its running time is at most a constant times ((n + 1) times the number of binary digits of p) to the power 10¹². The exponent is deliberately generous. The point is one fixed polynomial bound for all degrees and all primes. The method uses no randomness, no help factoring integers, and no GRH.\n\nThe method first reduces the job to one case. The polynomial has distinct roots, and every root is already one of the remainders. When the number of roots is even, a tournament trick works. Compare every pair of roots by a fixed rule, so one of each pair wins. With 4 roots there are 6 games in all. Equal scores would need 1.5 wins each, which is impossible. So unequal scores separate the roots into groups. When the number of roots is odd, the paper uses an auxiliary curve, the solutions of an equation built from the polynomial. It shows that certain labels on that curve cannot all agree. Different labels then split the polynomial.\n\nBoth cases need extra arithmetic information, prepared without guessing. The paper gets it from auxiliary primes. These are small primes with a special relation to p. Showing that small enough ones always exist needs a zero-free theorem for Hecke L-functions. These are functions built from primes, and their zeros control how primes are spread. That theorem is not proved here. It comes from the companion paper “Primitive roots for every admissible integer base”. The algebraic reduction itself does not use it.\n\nHow sure is this? No Lean formalization is listed for this result in the openai/math release. So no computer proof checker has checked it. The polynomial-time claim also depends on the companion paper's analytic theorem, which is itself unreviewed. No specialist review of either paper has been published.",
+  "hypeCheck": "Major only if both this paper and its companion hold. No Lean formalization is listed and no specialist review is published. The bound is theoretical, with exponent 10¹².",
+  "glossary": [
+    {
+      "term": "Prime field",
+      "meaning": "Arithmetic with the remainders 0 to p − 1 after division by a prime p."
+    },
+    {
+      "term": "Irreducible polynomial",
+      "meaning": "A polynomial that cannot be written as a product of two polynomials of smaller degree."
+    },
+    {
+      "term": "Multiplicity",
+      "meaning": "How many times the same irreducible piece appears in a factorization."
+    },
+    {
+      "term": "Deterministic algorithm",
+      "meaning": "A method that never uses random choices, so the same input always gives the same steps."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "A running time bounded by a fixed power of the input length, here the degree and the digits of p."
+    },
+    {
+      "term": "GRH",
+      "meaning": "The generalized Riemann hypothesis, an unproven conjecture about where certain functions can equal zero."
+    },
+    {
+      "term": "Hecke L-function",
+      "meaning": "A function that encodes how primes are distributed; its zeros control the size of the auxiliary primes."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Deterministic Polynomial Factorization over Prime Fields”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-Polynomial-Factorization-over-Prime-Fields-October-4-2026/Deterministic-Polynomial-Factorization-over-Prime-Fields.pdf",
+      "quote": "We give a uniform deterministic polynomial-time algorithm for complete factorization over prime fields."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Primitive roots for every admissible integer base”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026/primitive-roots-all-integer-bases.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "E. R. Berlekamp, “Factoring polynomials over large finite fields”, Mathematics of Computation 24 (1970), 713–735",
+      "url": "https://doi.org/10.1090/S0025-5718-1970-0276200-X"
+    },
+    {
+      "id": 5,
+      "cite": "D. G. Cantor and H. Zassenhaus, “A new algorithm for factoring polynomials over finite fields”, Mathematics of Computation 36 (1981), 587–592",
+      "url": "https://doi.org/10.1090/S0025-5718-1981-0606517-5"
+    },
+    {
+      "id": 6,
+      "cite": "V. Shoup, “On the deterministic complexity of factoring polynomials over finite fields”, Information Processing Letters 33 (1990), 261–267",
+      "url": "https://doi.org/10.1016/0020-0190(90)90195-4"
+    },
+    {
+      "id": 7,
+      "cite": "S. Evdokimov, “Factorization of polynomials over finite fields in subexponential time under GRH”, Algorithmic Number Theory, LNCS 877 (1994), 209–219",
+      "url": "https://doi.org/10.1007/3-540-58691-1_58"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Complete factorization gives the leading coefficient and distinct monic irreducible factors with multiplicities.",
+      "verdict": "supported",
+      "sourceLine": "Complete factorization means computing the leading coefficient $c$ and distinct monic irreducible polynomials $g_i$, with positive integer multiplicities $e_i$, such that"
+    },
+    {
+      "text": "A method polynomial in p is not polynomial time in this input format.",
+      "verdict": "supported",
+      "sourceLine": "so an algorithm polynomial in $p$ does not give a polynomial-time algorithm in the prescribed representation."
+    },
+    {
+      "text": "Berlekamp's algorithms put linear algebra at the centre of finite-field factorization.",
+      "verdict": "supported",
+      "sourceLine": "Berlekamp's algorithms put linear algebra at the center of finite-field factorization"
+    },
+    {
+      "text": "Cantor–Zassenhaus and other randomized methods reach expected polynomial time by random choices.",
+      "verdict": "supported",
+      "sourceLine": "obtain expected polynomial running time by finding separating elements with random choices."
+    },
+    {
+      "text": "The difficulty is making every choice deterministically with a polynomial bound in both parameters.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty studied here is to make every such choice deterministically, with a bound polynomial in both the degree and the bit length of the characteristic."
+    },
+    {
+      "text": "Shoup's algorithm depends on p roughly like its square root.",
+      "verdict": "supported",
+      "sourceLine": "Shoup's algorithm has polynomial dependence on the degree and a $p^{1/2+o(1)}$ dependence on the characteristic"
+    },
+    {
+      "text": "Evdokimov's GRH bound is quasipolynomial in n.",
+      "verdict": "supported",
+      "sourceLine": "The latter is quasipolynomial in $n$."
+    },
+    {
+      "text": "The time bound has exponent 10^12.",
+      "verdict": "supported",
+      "sourceLine": "O\\bigl(((n+1)\\lceil\\log_2p\\rceil)^{10^{12}}\\bigr)"
+    },
+    {
+      "text": "The algorithm uses no randomness, integer-factoring help or GRH.",
+      "verdict": "supported",
+      "sourceLine": "The algorithm uses no randomness, integer-factorization oracle, primitive-root oracle, or GRH assumption."
+    },
+    {
+      "text": "The exponent is deliberately generous; the point is one fixed polynomial bound.",
+      "verdict": "supported",
+      "sourceLine": "The exponent is deliberately generous. The point is one fixed polynomial bound for all degrees and prime characteristics."
+    },
+    {
+      "text": "The problem reduces to splitting a square-free polynomial whose roots all lie in the prime field.",
+      "verdict": "supported",
+      "sourceLine": "The Berlekamp algebra reduces complete factorization to splitting a monic square-free polynomial $F$ all of whose roots already belong to $\\Fp$."
+    },
+    {
+      "text": "For an even number of roots, tournament scores cannot all be equal.",
+      "verdict": "supported",
+      "sourceLine": "The vertex scores cannot all be equal when $N$ is even, so they provide a separator."
+    },
+    {
+      "text": "The odd case uses cyclic curves.",
+      "verdict": "supported",
+      "sourceLine": "The odd-degree construction uses cyclic curves"
+    },
+    {
+      "text": "Equal labels everywhere would contradict a lattice valuation.",
+      "verdict": "supported",
+      "sourceLine": "If every test gave one common label, a fixed nonzero infinity divisor would become divisible by one more power of $\\lambda$ than its lattice valuation allows."
+    },
+    {
+      "text": "The analytic theorem belongs to the companion paper.",
+      "verdict": "supported",
+      "sourceLine": "The analytic theorem itself belongs to the companion."
+    },
+    {
+      "text": "The reduction does not use the analytic theorem.",
+      "verdict": "supported",
+      "sourceLine": "The reduction in Theorem~\\ref{thm:reduction} does not use that theorem."
+    },
+    {
+      "text": "No Lean formalization is listed for this result.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
