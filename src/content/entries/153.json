@@ -1,0 +1,234 @@
+{
+  "id": "153",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Arithmetic-classification-and-non-Pisot-singularity-for-Bernoulli-convolutions-October-3-2026/paper.pdf",
+      "label": "Arithmetic classification and non-Pisot singularity for Bernoulli convolutions"
+    }
+  ],
+  "headline": "Claimed singular Bernoulli convolutions beyond Pisot reciprocals, plus an arithmetic test for every parameter.",
+  "scope": "Unbiased Bernoulli convolutions, the random sums of ±λⁿ with fair signs, for every λ between 0 and 1.",
+  "plain": "Add up ±1 ± λ ± λ² and so on, choosing each sign by a fair coin flip. The result has a density or sits on a set of zero length, and for many λ it was unknown which. Above one half, every known zero-length case had 1/λ equal to a Pisot number, following Erdős in 1939. This paper claims new zero-length cases, at one over each degree-four Salem number between 1 and 2, and at one more number. It also claims an exact arithmetic test for every λ, though not a finite procedure.",
+  "doesNot": "This does not give a finite procedure that decides, for a given λ, which of the two cases holds.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1939",
+    "firstStepBy": "Erdős, singularity when 1/λ is a Pisot number",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "Singular examples beyond Pisot reciprocals are recorded as open in the recent literature the paper cites."
+  },
+  "explanation": "Flip a fair coin again and again. Heads adds a plus sign, tails a minus sign. Now add ±1 ± λ ± λ² ± λ³ and so on, where λ is a fixed number between 0 and 1. The sum is a random number. Its probability law is called the unbiased Bernoulli convolution for λ. Take λ = 1/2. Then the sum is spread perfectly evenly over the interval from −2 to 2.\n\nNow take λ = 1/3. Fix the first ten signs, which allows 1,024 choices. The rest of the sum then stays inside a window of width 3 × (1/3)¹⁰. So all outcomes sit inside 1,024 short intervals. Their total length is 3 × (2/3)¹⁰, about 0.052. With more flips that total keeps shrinking towards zero. The law is singular: all its probability sits on a set of zero total length. This simple covering argument works for every λ below 1/2.\n\nThe hard range is λ between 1/2 and 1. Since 1935 it has been known that each such law has a pure type. It is either singular or absolutely continuous, meaning it has a density, like a smooth histogram. The classification problem asks which type holds for each λ.\n\nNumber theory enters here. A Pisot number is a number above 1 that solves a polynomial with whole-number coefficients and leading coefficient 1. Its other roots must all have size below 1. The golden ratio, about 1.618, is one. Its partner root is about −0.618. In 1939 Erdős proved the law is singular when 1/λ is a Pisot number. So λ ≈ 0.618 gives a singular law. In 1962 Garsia found a different class with a density. In 1995 Solomyak showed that almost every λ in the range has a density. In 2014 Shmerkin showed the possible exceptions form a very thin set, of dimension zero. Still, the recent literature lists one gap as open. No singular example was known whose 1/λ is not a Pisot number.\n\nSalem numbers are the natural next suspects. A Salem number is like a Pisot number, but its other roots are 1/β and roots of size exactly 1. Take x⁴ − x³ − x² − x + 1. Its largest root is about 1.7221. Its other roots are about 0.5807, and a pair of complex roots of size exactly 1. In 1943 Salem showed that a key tool fails here. That tool, the Fourier transform, measures how strongly the law repeats at each frequency. For non-Pisot parameters it fades to zero, so it cannot prove singularity.\n\nThe paper claims to prove singularity at 1/β for every degree-four Salem number β between 1 and 2. That includes λ ≈ 1/1.7221 ≈ 0.5807 from the example. It claims the same for one root of an explicit degree-31 polynomial, between 1.8392 and 1.8393, which is not Pisot. For the Salem case, it builds certain wave-like averages from the Fourier transform. Under the Bernoulli convolution they stay concentrated, while under ordinary length they fade. That difference shows the law is singular.\n\nThe paper also claims a criterion for every λ. It uses finite lists of algebraic units, roots of polynomials with coefficients −1, 0 or 1. The law is singular exactly when such units approach λ from one side at a fixed geometric rate. This is an infinite approximation condition. It need not give a short test for a given number.\n\nHow sure is this? No Lean formalization is listed for this result in the openai/math release. The degree-31 case comes with a Python script that checks its finite exact arithmetic. The paper supplies the analytic bounds linking that check to the infinite products in the proof. No specialist review has been published.",
+  "hypeCheck": "Major only if the proofs hold. No Lean formalization is listed and no specialist review is published. A script checks only the finite arithmetic of the degree-31 case.",
+  "glossary": [
+    {
+      "term": "Bernoulli convolution",
+      "meaning": "The probability law of ±1 ± λ ± λ² ± …, with each sign chosen by a fair coin."
+    },
+    {
+      "term": "Singular",
+      "meaning": "Putting all probability on a set of zero total length, so no density exists."
+    },
+    {
+      "term": "Absolutely continuous",
+      "meaning": "Having a density, so probability is spread like a histogram with no zero-length pile-ups."
+    },
+    {
+      "term": "Pisot number",
+      "meaning": "A root above 1 of a whole-coefficient polynomial with leading coefficient 1, whose other roots all have size below 1."
+    },
+    {
+      "term": "Salem number",
+      "meaning": "Like a Pisot number, but its other roots are 1/β and roots of size exactly 1."
+    },
+    {
+      "term": "Fourier transform",
+      "meaning": "A measure of how strongly a probability law repeats at each frequency."
+    },
+    {
+      "term": "Algebraic unit",
+      "meaning": "A root of a whole-coefficient polynomial whose leading and constant coefficients are each 1 or −1."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Arithmetic classification and non-Pisot singularity for Bernoulli convolutions”, openai/math release preprint (October 3, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Arithmetic-classification-and-non-Pisot-singularity-for-Bernoulli-convolutions-October-3-2026/paper.pdf",
+      "quote": "We give an arithmetic classification of singular and absolutely continuous unbiased Bernoulli convolutions for every parameter $\\lambda\\in(0,1)$."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "B. Jessen and A. Wintner, “Distribution functions and the Riemann zeta function”, Transactions of the AMS 38 (1935), 48–88",
+      "url": "https://doi.org/10.1090/S0002-9947-1935-1501802-5"
+    },
+    {
+      "id": 4,
+      "cite": "P. Erdős, “On a family of symmetric Bernoulli convolutions”, American Journal of Mathematics 61 (1939), 974–976",
+      "url": "https://doi.org/10.2307/2371641"
+    },
+    {
+      "id": 5,
+      "cite": "R. Salem, “Sets of uniqueness and sets of multiplicity”, Transactions of the AMS 54 (1943), 218–228",
+      "url": "https://doi.org/10.1090/S0002-9947-1943-0008428-8"
+    },
+    {
+      "id": 6,
+      "cite": "A. M. Garsia, “Arithmetic properties of Bernoulli convolutions”, Transactions of the AMS 102 (1962), 409–432",
+      "url": "https://doi.org/10.1090/S0002-9947-1962-0137961-5"
+    },
+    {
+      "id": 7,
+      "cite": "B. Solomyak, “On the random series ∑±λⁿ (an Erdős problem)”, Annals of Mathematics 142 (1995), 611–625",
+      "url": "https://doi.org/10.2307/2118556"
+    },
+    {
+      "id": 8,
+      "cite": "P. Shmerkin, “On the exceptional set for absolute continuity of Bernoulli convolutions”, Geometric and Functional Analysis 24 (2014), 946–958",
+      "url": "https://doi.org/10.1007/s00039-014-0285-4"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, verification README for the degree-31 certificate (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Arithmetic-classification-and-non-Pisot-singularity-for-Bernoulli-convolutions-October-3-2026/README.md",
+      "quote": "The script checks the finite exact-arithmetic certificate; the analytic bounds connecting it to the infinite products are supplied in the manuscript."
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "At λ = 1/2 the law is uniform on [−2, 2].",
+      "verdict": "supported",
+      "sourceLine": "at $\\lambda=1/2$, $\\nu_\\lambda$ is uniform on $[-2,2]$."
+    },
+    {
+      "text": "For λ below 1/2 an interval cover proves singularity.",
+      "verdict": "supported",
+      "sourceLine": "For $\\lambda<1/2$, a direct interval cover proves singularity"
+    },
+    {
+      "text": "A singular measure gives full mass to a set of zero length.",
+      "verdict": "supported",
+      "sourceLine": "A measure is singular if it gives full mass to a Borel set of Lebesgue measure zero."
+    },
+    {
+      "text": "Bernoulli convolutions are either singular or absolutely continuous.",
+      "verdict": "supported",
+      "sourceLine": "Bernoulli convolutions have pure type: they are either singular or absolutely continuous"
+    },
+    {
+      "text": "The interval from 1/2 to 1 holds the arithmetic difficulty.",
+      "verdict": "supported",
+      "sourceLine": "The interval $(1/2,1)$ presents the arithmetic difficulty."
+    },
+    {
+      "text": "Definition of a Pisot number.",
+      "verdict": "supported",
+      "sourceLine": "is a real algebraic integer $\\beta>1$ whose other conjugates have modulus less than one."
+    },
+    {
+      "text": "Erdős proved singularity when 1/λ is Pisot.",
+      "verdict": "supported",
+      "sourceLine": "Erd\\H{o}s proved singularity when $\\lambda^{-1}$ is Pisot by showing that the Fourier transform does not tend to zero"
+    },
+    {
+      "text": "Garsia found absolute continuity for a different arithmetic class.",
+      "verdict": "supported",
+      "sourceLine": "Garsia subsequently established absolute continuity for a different arithmetic class"
+    },
+    {
+      "text": "Solomyak proved a density for almost every λ in the range.",
+      "verdict": "supported",
+      "sourceLine": "Solomyak proved that $\\nu_\\lambda$ has an $L^2$ density for Lebesgue-almost every $\\lambda\\in(1/2,1)$"
+    },
+    {
+      "text": "Shmerkin showed possible singular parameters form a set of dimension zero.",
+      "verdict": "supported",
+      "sourceLine": "Shmerkin proved that the possible singular parameters in this interval form a set of Hausdorff dimension zero"
+    },
+    {
+      "text": "Definition of a Salem number.",
+      "verdict": "supported",
+      "sourceLine": "is a real algebraic integer $\\beta>1$ whose other conjugates consist of $\\beta^{-1}$ and conjugates on the unit circle."
+    },
+    {
+      "text": "Salem showed the Fourier transform tends to zero for non-Pisot parameters.",
+      "verdict": "supported",
+      "sourceLine": "Salem proved that the Fourier transform of $\\nu_\\lambda$ tends to zero whenever $\\lambda^{-1}$ is not Pisot"
+    },
+    {
+      "text": "So Fourier nondecay cannot prove singularity for Salem parameters.",
+      "verdict": "supported",
+      "sourceLine": "Thus Fourier nondecay cannot prove singularity for Salem parameters."
+    },
+    {
+      "text": "Non-Pisot singular examples are recorded as open.",
+      "verdict": "supported",
+      "sourceLine": "The existence of singular examples with non-Pisot reciprocal is explicitly recorded as open in the recent literature"
+    },
+    {
+      "text": "Every degree-four Salem number in (1,2) gives a singular law.",
+      "verdict": "supported",
+      "sourceLine": "Let $\\beta\\in(1,2)$ be a Salem number of degree four."
+    },
+    {
+      "text": "x⁴ − x³ − x² − x + 1 is one of the explicit examples.",
+      "verdict": "supported",
+      "sourceLine": "P_1(x)=x^4-x^3-x^2-x+1,"
+    },
+    {
+      "text": "The degree-31 root lies between 1.8392 and 1.8393 and is not Pisot.",
+      "verdict": "supported",
+      "sourceLine": "has a unique real root \\(\\beta\\in(1.8392,1.8393)\\). This root is not a Pisot number"
+    },
+    {
+      "text": "Phase averages concentrate under the convolution but fade under Lebesgue measure.",
+      "verdict": "supported",
+      "sourceLine": "Their averages concentrate under the Bernoulli convolution while tending to zero in Lebesgue mean square."
+    },
+    {
+      "text": "The criterion uses units with coefficients −1, 0 and 1.",
+      "verdict": "supported",
+      "sourceLine": "Their minimal polynomials have coefficients in $\\{-1,0,1\\}$, prescribed degree, and irreducible reduction modulo two."
+    },
+    {
+      "text": "Singularity is equivalent to one-sided approximation at a fixed geometric rate.",
+      "verdict": "supported",
+      "sourceLine": "Singularity is equivalent to one-sided approximation by these retained targets at a fixed geometric rate."
+    },
+    {
+      "text": "The criterion is an infinite approximation condition, not a finite algorithm.",
+      "verdict": "supported",
+      "sourceLine": "it is an infinite approximation condition, not a finite membership algorithm."
+    },
+    {
+      "text": "A Python script checks the finite arithmetic of the degree-31 certificate; the analytic bounds are in the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "No Lean formalization is listed for this result.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

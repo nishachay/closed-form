@@ -1,0 +1,223 @@
+{
+  "id": "154",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pointwise-Multiple-Ergodic-Averages-for-Mixing-Transformations-October-4-2026/multiple-ergodic-averages.pdf",
+      "label": "Pointwise Multiple Ergodic Averages for Mixing Transformations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pointwise-convergence-of-fourfold-ergodic-averages-for-mixing-transformations-October-4-2026/fourfold-ergodic-averages.pdf",
+      "label": "Pointwise convergence of fourfold ergodic averages for mixing transformations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Triple-ergodic-averages-with-distinct-integer-slopes-October-4-2026/triple-ergodic-distinct-slopes.pdf",
+      "label": "Triple ergodic averages with distinct integer slopes"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pointwise-convergence-of-triple-ergodic-averages-for-mixing-transformations-October-4-2026/pointwise-triple-ergodic-averages-mixing-transformations.pdf",
+      "label": "Pointwise convergence of triple ergodic averages for mixing transformations"
+    }
+  ],
+  "headline": "For mixing systems, averages along k, 2k, …, nk are claimed to settle at almost every starting point, for every n.",
+  "scope": "Invertible, mixing, probability-preserving systems; bounded measurements; the times k, 2k, …, nk for each fixed n of at least 2.",
+  "plain": "Watch a random system at times k, 2k and 3k, multiply what you see, and average over k. Since 2005 such averages were known to settle in an averaged sense, for every length. Whether they settle at almost every single starting point was known only for two times or under extra structure. These four papers claim it for every length, whenever the system is mixing. The limit is then the product of the separate averages.",
+  "doesNot": "This does not cover systems that are not mixing, such as rotations, or give a rate of convergence.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1990",
+    "firstStepBy": "Bourgain, pointwise double recurrence for two factors",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "It claims pointwise convergence at every length for all mixing systems, where earlier results needed extra structure past two factors."
+  },
+  "explanation": "Flip a fair coin once for every whole number, negative ones included. Call the record of flips a starting point x. The system T shifts the record one place each step. Let f(x) be 1 if the flip at position 0 is heads, and 0 if tails. Then f at time k reads the flip at position k. Now multiply f at times k, 2k and 3k. The product is 1 only when flips k, 2k and 3k are all heads. Average this product over k from 1 to N. For almost every record, the average tends to 1/2 × 1/2 × 1/2 = 1/8 as N grows.\n\nHere is a system where that fails. Spin a point around a circle by half a turn each step. Let f be 1 on the first half of the circle and 0 on the second half. Look at times k and 2k. After 2k steps, the point is back where it started. If it starts in the first half, the product is 1 for even k and 0 for odd k. The average tends to 1/2. If it starts in the second half, the average is 0. Neither equals 1/2 × 1/2 = 1/4. The answer depends on the starting point.\n\nThe difference is mixing. A system is mixing when, after many steps, any two events become independent. For the coin flips, heads at position 0 and heads at position r have probability exactly 1/4 together, for any r other than 0. The half-turn spin never forgets where it started, so it is not mixing. The papers also need T to be invertible, meaning each step can be undone. T must also preserve probability, so every region keeps its chance under T.\n\nThe averages here are multiple ergodic averages. They became central after Furstenberg's 1977 proof of Szemerédi's theorem on arithmetic progressions, runs of evenly spaced numbers. There are two ways an average can settle. Norm convergence means it settles when errors are averaged over all starting points. Pointwise convergence means it settles at almost every single starting point. Host and Kra proved norm convergence in 2005, for every length and every such system. Pointwise convergence is harder. Bourgain proved it for two times, k and 2k, in 1990. Longer cases were known only with extra structure, such as Huang, Shao and Ye's 2019 work on a structured class called distal systems.\n\nThe main paper claims pointwise convergence for every length n of at least 2. The system must be invertible and mixing, and the measurements bounded. The limit is the product of the separate averages. No rate of mixing is needed. The underlying probability space need not be of the standard kind. Three companion papers carry smaller cases. One treats times k, 2k and 3k. One treats four times. One treats three distinct whole-number speeds, positive or negative.\n\nThe hard part is a single starting point that misbehaves. Suppose the averages fail to settle. Then for each starting point one can pick bad averaging lengths. The proof turns those choices into a new probability law on several output streams. That law keeps the right separate behaviour in each stream. The proof then uses mixing of every order. That means any finite number of events become independent when spread far apart in time. It forces enough independence among the streams. An argument that pushes a certain count of streams as high as possible then gives a contradiction.\n\nThe proof leans on other work. It uses the claim that ordinary mixing implies mixing of every order. That is Rokhlin's multiple-mixing problem, claimed in a separate openai/math paper. It also uses the paper on distinct speeds. Those proofs are not repeated in the main paper. The exceptional starting points may depend on the chosen measurements.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The result also depends on the separate multiple-mixing paper, which is itself unreviewed. No specialist review has been published.",
+  "hypeCheck": "Major only if this paper and its companions hold, including the separate multiple-mixing claim. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Probability-preserving transformation",
+      "meaning": "A rule that moves points each step while keeping the probability of every region the same."
+    },
+    {
+      "term": "Invertible",
+      "meaning": "Each step can be undone, so every point has exactly one previous position."
+    },
+    {
+      "term": "Mixing",
+      "meaning": "After many steps, any two events become independent of each other."
+    },
+    {
+      "term": "Multiple ergodic average",
+      "meaning": "The average over k of a product of measurements taken at times k, 2k, up to nk."
+    },
+    {
+      "term": "Norm convergence",
+      "meaning": "Settling down when the errors are averaged over all starting points."
+    },
+    {
+      "term": "Pointwise convergence",
+      "meaning": "Settling down at almost every single starting point."
+    },
+    {
+      "term": "Mixing of every order",
+      "meaning": "Any finite number of events become independent when their times are pushed far apart."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Pointwise Multiple Ergodic Averages for Mixing Transformations”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pointwise-Multiple-Ergodic-Averages-for-Mixing-Transformations-October-4-2026/multiple-ergodic-averages.pdf",
+      "quote": "The probability space need not be standard, and no rate of mixing is required."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Pointwise convergence of fourfold ergodic averages for mixing transformations”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pointwise-convergence-of-fourfold-ergodic-averages-for-mixing-transformations-October-4-2026/fourfold-ergodic-averages.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Triple ergodic averages with distinct integer slopes”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Triple-ergodic-averages-with-distinct-integer-slopes-October-4-2026/triple-ergodic-distinct-slopes.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Pointwise convergence of triple ergodic averages for mixing transformations”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pointwise-convergence-of-triple-ergodic-averages-for-mixing-transformations-October-4-2026/pointwise-triple-ergodic-averages-mixing-transformations.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Rokhlin's multiple-mixing problem for one transformation”, openai/math release preprint (September 23, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rokhlins-multiple-mixing-problem-for-one-transformation-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 7,
+      "cite": "H. Furstenberg, “Ergodic behavior of diagonal measures and a theorem of Szemerédi on arithmetic progressions”, Journal d'Analyse Mathématique 31 (1977), 204–256",
+      "url": "https://doi.org/10.1007/BF02813304"
+    },
+    {
+      "id": 8,
+      "cite": "J. Bourgain, “Double recurrence and almost sure convergence”, Journal für die reine und angewandte Mathematik 404 (1990), 140–161",
+      "url": "https://doi.org/10.1515/crll.1990.404.140"
+    },
+    {
+      "id": 9,
+      "cite": "B. Host and B. Kra, “Nonconventional ergodic averages and nilmanifolds”, Annals of Mathematics 161 (2005), 397–488",
+      "url": "https://doi.org/10.4007/annals.2005.161.397"
+    },
+    {
+      "id": 10,
+      "cite": "W. Huang, S. Shao and X. Ye, “Pointwise convergence of multiple ergodic averages and strictly ergodic models”, Journal d'Analyse Mathématique 139 (2019), 265–305",
+      "url": "https://doi.org/10.1007/s11854-019-0061-3"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The problem is almost-everywhere behaviour, not only the limit in norm.",
+      "verdict": "supported",
+      "sourceLine": "The problem is to determine their almost-everywhere behavior, not merely their limit in norm."
+    },
+    {
+      "text": "Arithmetic-progression averages became central through Furstenberg's proof of Szemerédi's theorem.",
+      "verdict": "supported",
+      "sourceLine": "Arithmetic-progression averages became central to ergodic Ramsey theory through Furstenberg's proof of Szemer\\'edi's theorem"
+    },
+    {
+      "text": "Host and Kra proved norm convergence for every length on every such system.",
+      "verdict": "supported",
+      "sourceLine": "Host and Kra proved $L^2$ convergence of these averages for every finite length on arbitrary probability-preserving systems"
+    },
+    {
+      "text": "Bourgain treated two factors pointwise.",
+      "verdict": "supported",
+      "sourceLine": "For pointwise convergence, Bourgain's double recurrence theorem treats two factors"
+    },
+    {
+      "text": "Longer cases needed additional structure.",
+      "verdict": "supported",
+      "sourceLine": "Higher-length results have been obtained under additional structural assumptions"
+    },
+    {
+      "text": "Huang, Shao and Ye treated ergodic measure-distal systems.",
+      "verdict": "supported",
+      "sourceLine": "Huang, Shao, and Ye proved pointwise convergence for every finite length on ergodic measure-distal systems"
+    },
+    {
+      "text": "For every n at least 2 and bounded functions, the averages converge almost everywhere to the product of integrals.",
+      "verdict": "supported",
+      "sourceLine": "For every integer $n\\ge2$ and every fixed tuple of bounded measurable functions, we prove that the consecutive multiple ergodic averages of length $n$ converge almost everywhere to the product of the integrals"
+    },
+    {
+      "text": "No mixing rate or standard space is needed.",
+      "verdict": "supported",
+      "sourceLine": "The probability space need not be standard, and no rate of mixing is required."
+    },
+    {
+      "text": "The exceptional null set may depend on the system and functions.",
+      "verdict": "supported",
+      "sourceLine": "The exceptional null set may depend on the system and the fixed tuple."
+    },
+    {
+      "text": "A companion treats times n, 2n, 3n, 4n.",
+      "verdict": "supported",
+      "sourceLine": "We prove that fourfold ergodic averages along the times $n,2n,3n,4n$ converge almost everywhere to the product of the integrals"
+    },
+    {
+      "text": "A companion treats three distinct slopes, positive or negative.",
+      "verdict": "supported",
+      "sourceLine": "The slopes may be positive or negative."
+    },
+    {
+      "text": "A failure lets one choose a bad averaging length at each point.",
+      "verdict": "supported",
+      "sourceLine": "A failure of pointwise convergence allows an averaging length to be chosen measurably at each starting point so that a centered average stays positive."
+    },
+    {
+      "text": "These choices define a probability law on output coordinates.",
+      "verdict": "supported",
+      "sourceLine": "these choices define a probability law on $n$ output coordinates."
+    },
+    {
+      "text": "The proof uses that ordinary mixing implies mixing of every finite order.",
+      "verdict": "supported",
+      "sourceLine": "The first proves that ordinary mixing implies mixing of every finite order, the assertion of Rokhlin's multiple-mixing problem"
+    },
+    {
+      "text": "The companion proofs are not reproduced.",
+      "verdict": "supported",
+      "sourceLine": "These companion proofs are not reproduced here."
+    },
+    {
+      "text": "Maximizing a count gives the contradiction.",
+      "verdict": "supported",
+      "sourceLine": "Maximizing that number gives the contradiction."
+    },
+    {
+      "text": "No Lean formalization is listed for these papers.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}

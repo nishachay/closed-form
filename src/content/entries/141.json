@@ -1,0 +1,203 @@
+{
+  "id": "141",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Existential-universal-real-sentences-in-the-counting-hierarchy-October-4-2026/etr-counting-hierarchy.pdf",
+      "label": "Existential–universal real sentences in the counting hierarchy"
+    }
+  ],
+  "headline": "Deciding “there is x so that for every y” questions about real numbers claimed at one fixed counting level.",
+  "scope": "Sentences with one “there is” block of real variables, then one “for every” block, with polynomials given as arithmetic circuits.",
+  "plain": "Some yes-or-no questions ask whether real numbers exist that make polynomial conditions true. Since 1988 these were known to be solvable with a polynomial amount of memory. This paper claims to place them at one fixed level of the counting hierarchy, a ladder of classes built on majority-vote coin flipping. The claim also allows a second block of “for every” variables. For questions with only the “there is” block, it claims level 26.",
+  "doesNot": "This does not cover real sentences that switch between “there is” and “for every” more than once.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1951",
+    "firstStepBy": "Tarski, decidability of the first-order theory of real closed fields",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It claims to move a central family of real decision problems from polynomial space into one fixed counting level."
+  },
+  "explanation": "Here is a question about real numbers. Is there a number x such that, for every number y, the value y² − 2xy + 1 stays above zero? Try x = 0. The value becomes y² + 1, which never drops below 1. So the answer is yes. Now try x = 2 and y = 2. The value is 4 − 8 + 1 = −3, which fails. In general, the smallest value over all y is 1 − x², reached at y = x. So exactly the numbers x strictly between −1 and 1 work.\n\nThis is an existential–universal sentence over the reals. “Existential” means “there is”, and “universal” means “for every”. The paper studies the general version. Each block may hold many variables. The conditions test whether polynomials equal zero or are positive. These tests may be joined with AND, OR and NOT. The task is to decide, by an exact algorithm, whether a given sentence is true.\n\nThe polynomials arrive as arithmetic circuits. A circuit is a short recipe of additions, subtractions and multiplications, where each step may reuse earlier results. Short recipes can describe huge numbers. Start with 2 and square it ten times. Ten multiplications give 2 to the power 1024, a number with 309 digits. Fifty squarings give a number with about 3.4 × 10¹⁴ digits. So an algorithm cannot simply expand everything and compute.\n\nComputer scientists sort problems by the resources they need. PSPACE holds the problems solvable with memory that grows at most like a fixed power of the input length. That kind of growth is called polynomial. PP holds problems solved in polynomial time with fair coin flips. There, the answer is yes exactly when more than half of the coin outcomes accept. The counting hierarchy, introduced by Wagner in 1986, stacks PP on itself. Its first level is PP. Each higher level is PP with free access to the level below, used as an oracle. An oracle is a black box that answers questions instantly.\n\nTarski proved that such sentences can always be decided by some algorithm. In 1988 Canny put the purely existential case in PSPACE. Renegar's bounds give polynomial space for each fixed number of quantifier blocks, that is, runs of “there is” or “for every” variables. Every fixed level of the counting hierarchy already lies inside PSPACE. In 2009, Allender, Bürgisser, Kjeldgaard-Pedersen and Miltersen placed a related problem, PosSLP, in the counting hierarchy. PosSLP asks whether a circuit with no division outputs a positive integer. Their counting tools are the ones this paper builds on.\n\nThe paper claims to prove that all two-block sentences of this kind are decided at one fixed level of the counting hierarchy. The level does not grow with the number of variables, the degrees, or the size of the coefficients. For sentences with only the “there is” block, it claims the explicit level 26. That also covers every problem that can be translated efficiently into that existential case.\n\nThe hard part is the witness. For a true sentence, the algorithm wants a short description of a good x. But a good x may be an irrational root of a polynomial with enormous degree. Writing its digits is hopeless. Testing many x values one at a time also gives no finite description. The paper names a chosen root by the signs of the polynomial's derivatives there. That list of signs can be too long, so the paper compresses it into one weighted sum. It then shows that some good point always has coordinates among such labelled roots. Counting machines can check these labels without building the giant numbers.\n\nThe two-block claim names no specific level. It says only that some fixed whole number works. The explicit level 26 is for the existential case alone. The result also stops at two blocks. It says nothing direct about sentences that switch between “there is” and “for every” more often.\n\nHow sure is this? No Lean formalization is listed for this result in the openai/math release. So no computer proof checker has checked the claim. The argument rests on the paper alone, and no specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The two-block level is an unnamed constant.",
+  "glossary": [
+    {
+      "term": "Existential–universal sentence",
+      "meaning": "A statement of the form “there is x such that for every y, some conditions hold”."
+    },
+    {
+      "term": "Arithmetic circuit",
+      "meaning": "A recipe of additions, subtractions and multiplications where each step may reuse earlier results."
+    },
+    {
+      "term": "PSPACE",
+      "meaning": "The problems a computer can solve using memory that grows at most like a fixed power of the input length."
+    },
+    {
+      "term": "PP",
+      "meaning": "Problems solved in polynomial time with fair coin flips, where yes means more than half of the outcomes accept."
+    },
+    {
+      "term": "Counting hierarchy",
+      "meaning": "A ladder of classes: PP, then PP with a PP oracle, and so on, one fixed level at a time."
+    },
+    {
+      "term": "Oracle",
+      "meaning": "A black box that a machine may ask questions of, receiving each answer instantly."
+    },
+    {
+      "term": "Existential theory of the reals",
+      "meaning": "The true sentences that only say “there are real numbers such that” some polynomial conditions hold."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Existential–universal real sentences in the counting hierarchy”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Existential-universal-real-sentences-in-the-counting-hierarchy-October-4-2026/etr-counting-hierarchy.pdf",
+      "quote": "We prove that the existential theory of the reals lies in the counting hierarchy."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "K. W. Wagner, “The Complexity of Combinatorial Problems with Succinct Input Representation”, Acta Informatica 23 (1986), 325–356",
+      "url": "https://doi.org/10.1007/BF00289117"
+    },
+    {
+      "id": 4,
+      "cite": "J. F. Canny, “Some Algebraic and Geometric Computations in PSPACE”, Proceedings of the 20th ACM STOC (1988), 460–467",
+      "url": "https://doi.org/10.1145/62212.62257"
+    },
+    {
+      "id": 5,
+      "cite": "J. Renegar, “On the Computational Complexity and Geometry of the First-order Theory of the Reals. II”, Journal of Symbolic Computation 13 (1992), 301–327",
+      "url": "https://doi.org/10.1016/S0747-7171(10)80004-5"
+    },
+    {
+      "id": 6,
+      "cite": "E. Allender, P. Bürgisser, J. Kjeldgaard-Pedersen and P. B. Miltersen, “On the Complexity of Numerical Analysis”, SIAM Journal on Computing 38 (2009), 1987–2006",
+      "url": "https://doi.org/10.1137/070697926"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper studies true sentences with one existential and one universal real block.",
+      "verdict": "supported",
+      "sourceLine": "A sentence with one existential and one universal real block asks whether there is a real tuple for which every real tuple in a second block satisfies specified polynomial conditions."
+    },
+    {
+      "text": "Conditions combine zero and positivity tests with AND, OR and NOT.",
+      "verdict": "supported",
+      "sourceLine": "is an explicitly encoded Boolean formula using AND, OR, and NOT over atoms $p=0$ and $p>0$."
+    },
+    {
+      "text": "The polynomials are given by arithmetic circuits with addition, subtraction and multiplication gates.",
+      "verdict": "supported",
+      "sourceLine": "Each $p$ is given by an explicitly listed acyclic arithmetic circuit with signed binary integer constants and gates $+,-,\\times$."
+    },
+    {
+      "text": "PP accepts exactly the yes-instances with probability above one half.",
+      "verdict": "supported",
+      "sourceLine": "accepting exactly the yes-instances with probability greater than $1/2$."
+    },
+    {
+      "text": "Wagner introduced the counting hierarchy.",
+      "verdict": "supported",
+      "sourceLine": "The counting hierarchy, introduced by Wagner"
+    },
+    {
+      "text": "Tarski proved decidability.",
+      "verdict": "supported",
+      "sourceLine": "Tarski proved decidability of the first-order theory of real closed fields"
+    },
+    {
+      "text": "Canny gave the polynomial-space bound for the existential case.",
+      "verdict": "supported",
+      "sourceLine": "Canny established the polynomial-space upper bound for the existential fragment"
+    },
+    {
+      "text": "Renegar's bounds give polynomial space for each fixed number of blocks.",
+      "verdict": "supported",
+      "sourceLine": "For each fixed number of real quantifier blocks, Renegar's decision bounds yield a polynomial-space algorithm"
+    },
+    {
+      "text": "Every fixed counting level lies in polynomial space.",
+      "verdict": "supported",
+      "sourceLine": "a depth-first simulation enumerates random choices and answers the fixed-depth oracle queries using polynomial space."
+    },
+    {
+      "text": "PosSLP asks about the sign of a division-free circuit's integer output.",
+      "verdict": "supported",
+      "sourceLine": "positivity of the integer output of a division-free straight-line program"
+    },
+    {
+      "text": "The 2009 counting tools are behind this paper's method.",
+      "verdict": "supported",
+      "sourceLine": "Their modular-product and approximate Chinese-remainder techniques are the counting tools behind our treatment of implicit polynomial families."
+    },
+    {
+      "text": "There is one absolute level for the two-block language.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute integer $j$ such that"
+    },
+    {
+      "text": "The level does not depend on input length, variables, degrees or coefficients.",
+      "verdict": "supported",
+      "sourceLine": "The level $j$ is independent of the input length, the numbers of variables, the degrees of the circuit polynomials, and their coefficient magnitudes."
+    },
+    {
+      "text": "The existential case is placed at level 26.",
+      "verdict": "supported",
+      "sourceLine": "accounting for this fragment gives $\\ETR\\in\\Clevel{26}$ and hence"
+    },
+    {
+      "text": "Testing fibers alone gives no finite description of a good parameter.",
+      "verdict": "supported",
+      "sourceLine": "Merely testing fibers does not provide a finite description of a good parameter."
+    },
+    {
+      "text": "A chosen root needs a short description even with exponential degree.",
+      "verdict": "supported",
+      "sourceLine": "a chosen real root needs a short description even when its polynomial has exponential degree."
+    },
+    {
+      "text": "Derivative signs separate roots, but the full sign list can be too long.",
+      "verdict": "supported",
+      "sourceLine": "Derivative signs distinguish real roots, as in Thom encodings"
+    },
+    {
+      "text": "The sign list is compressed into a weighted integer sum.",
+      "verdict": "supported",
+      "sourceLine": "compresses that string to a weighted integer sum with weights computed modulo a short prime"
+    },
+    {
+      "text": "The theorem places the two-block language at a fixed level.",
+      "verdict": "supported",
+      "sourceLine": "Our theorem places this two-block language in a fixed level of the counting hierarchy."
+    },
+    {
+      "text": "No Lean formalization is listed for this result.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
