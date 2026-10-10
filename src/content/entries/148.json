@@ -1,0 +1,233 @@
+{
+  "id": "148",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026/main.pdf",
+      "label": "The entropy-rate dimension formula for self-similar measures on the line"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/148.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A single formula gives the dimension of every self-similar measure on the line, even when its pieces collide.",
+  "scope": "The result covers finitely many shrinking maps of the line with positive chances, any shifts, and signed, unequal shrink factors. It concerns dimension only, not whether the measure has a density.",
+  "plain": "Some random fractals are built by applying shrinking moves to a point, chosen at random again and again. Their size is measured by a dimension. For decades the dimension had a formula only when the pieces stayed apart or the numbers had special forms. This paper proves one formula for all such systems on the line. The dimension is the information per step, counting only distinct maps, divided by the zoom per step, capped at 1.",
+  "doesNot": "This does not say whether the measure has a density. It also gives no explicit bound on the fine scales the proof uses.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1946",
+    "firstStepBy": "P. A. P. Moran, the separated case",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles the entropy-rate dimension conjecture on the line with no separation or arithmetic assumption."
+  },
+  "explanation": "Start with a number line and two moves. One move shrinks everything toward 0 by a factor of 3. The other shrinks by 3 and then shifts right by 2/3. Flip a fair coin again and again, and stack the chosen moves one inside the next. The point you land on is random. Its chances pile up on a fine dust of points called the Cantor set. That pile of chance is a self-similar measure [chance spread so it repeats, scaled down, inside each piece].\n\nHow spread out is that dust? Mathematicians answer with the Hausdorff dimension [a fullness score: a point scores 0, a line segment 1]. Here the answer is a ratio. Each coin flip adds 1 bit [the information in one fair coin flip] of information. Each move zooms in by a factor of 3, which is about 1.585 bits of zoom. Divide 1 by 1.585 and you get about 0.631. That is the dimension of the Cantor measure.\n\nNow change the moves. Use three of them, each picked with chance 1/3. All three shrink by 3. The first adds nothing, the second adds 1, and the third adds 4/3. Each step now carries about 1.585 bits of information, the same as its zoom. The simple ratio says the dimension is 1. But two different routes can give the same map. \"Add 1, then add 1\" and \"add 4/3, then add nothing\" both send x to x/9 + 4/3. Such a collision is an exact overlap [two different move sequences of equal length giving the same map].\n\nCollisions waste information, so the paper counts maps instead of routes. With two steps there are 9 routes but only 8 different maps. The information per step falls to about 1.474 bits. The ratio falls to about 0.93. With fourteen steps, 4,782,969 routes give only 832,040 different maps. The ratio falls to about 0.854. The limit of this per-step information is the random-walk entropy rate [long-run information per step, counting distinct maps].\n\nThe paper proves a single formula for every such system on the line. The dimension equals the entropy rate divided by the average zoom per step. The average zoom is called the Lyapunov exponent. If that ratio is above 1, the dimension is 1. The shrink factors may differ from move to move and may flip direction. Moves may repeat and routes may collide. This was the entropy-rate dimension conjecture, stated as Conjecture 3 in a survey by Péter Varjú.\n\nThe paper first proves, in a short section, that the dimension can never exceed the ratio. The hard part is showing it never falls below. When the pieces are kept apart, the answer has long been known. Moran in 1946 and Hutchinson in 1981 found the dust's dimension in that case. They assumed the open set condition [a rule keeping pieces apart]. In 2014 Michael Hochman showed that a drop in dimension forces maps to crowd together extremely fast. His work gives the formula under a mild separation condition. Later papers proved formulas without it in special cases. Rapaport did so in 2022 for algebraic shrink factors, assuming no exact overlaps. Rapaport and Varjú did so in 2024 for rational shifts with one common positive shrink factor. Our three-move example falls in that last case.\n\nThe obstacle is maps that come extremely close without ever being equal. In 2021 Baker, and separately Bárány and Käenmäki, built examples of this. Their pieces never collide but approach each other arbitrarily fast. So having no exact overlaps gives no floor on how close two maps can get. A proof for all systems must work without any such floor. Its key estimate finds hidden information at arbitrarily fine scales, however close the maps sit.\n\nReturn to the three moves. The theorem says their dimension is exactly the limit of the falling ratio, so at most about 0.854. Swap the shift 4/3 for any real number t. Whenever no routes collide, the dimension is now given by the simple ratio, for every choice of chances. For equal chances, earlier work on this three-map family left a small exceptional set of parameters. The paper also derives the matching formula for the dust itself, not just the measure on it. The result is about dimension only. It says nothing about whether the measure has a density. The proof gives no explicit bound on the fine scales it uses.\n\nHow certain is this? A computer proof checker called Lean has a formal proof of the main formula. Lean also proves two consequences without exact overlaps. One covers a common positive shrink factor. The other is the formula for the dust. Whether the measure has a density lies outside these statements. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. Lean proofs are listed for the main formula and two consequences. No specialist review is published, and the result says nothing about densities.",
+  "glossary": [
+    {
+      "term": "Self-similar measure",
+      "meaning": "A spread of probability built from shrinking moves, which repeats itself, scaled down, inside each of its pieces."
+    },
+    {
+      "term": "Hausdorff dimension",
+      "meaning": "A score for how fully a set or measure fills space; a point scores 0 and a line segment scores 1."
+    },
+    {
+      "term": "Exact overlap",
+      "meaning": "Two different sequences of moves of the same length that produce exactly the same map."
+    },
+    {
+      "term": "Random-walk entropy rate",
+      "meaning": "The long-run information each random step adds, counting only distinct maps, not distinct routes."
+    },
+    {
+      "term": "Lyapunov exponent",
+      "meaning": "The average amount each step zooms in, measured on a logarithmic scale."
+    },
+    {
+      "term": "Open set condition",
+      "meaning": "A rule that keeps the pieces of a self-similar set from overlapping in any real way."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, family 148: “The entropy-rate dimension formula for self-similar measures on the line” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-entropy-rate-dimension-formula-for-self-similar-measures-on-the-line-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean doc for family 148 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/148.md"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "P. P. Varjú, “Entropy rates in the dimension theory of self-similar measures”, arXiv:2509.22042 (2026)",
+      "url": "https://arxiv.org/abs/2509.22042v2"
+    },
+    {
+      "id": 5,
+      "cite": "P. A. P. Moran, “Additive functions of intervals and Hausdorff measure”, Proceedings of the Cambridge Philosophical Society 42 (1946), 15–23",
+      "url": "https://doi.org/10.1017/S0305004100022684"
+    },
+    {
+      "id": 6,
+      "cite": "J. E. Hutchinson, “Fractals and self-similarity”, Indiana University Mathematics Journal 30 (1981), 713–747",
+      "url": "https://doi.org/10.1512/iumj.1981.30.30055"
+    },
+    {
+      "id": 7,
+      "cite": "M. Hochman, “On self-similar sets with overlaps and inverse theorems for entropy”, Annals of Mathematics 180 (2014), 773–822",
+      "url": "https://doi.org/10.4007/annals.2014.180.2.7"
+    },
+    {
+      "id": 8,
+      "cite": "A. Rapaport, “Proof of the exact overlaps conjecture for systems with algebraic contractions”, Annales Scientifiques de l'École Normale Supérieure 55 (2022), 1357–1377",
+      "url": "https://doi.org/10.24033/asens.2518"
+    },
+    {
+      "id": 9,
+      "cite": "A. Rapaport and P. P. Varjú, “Self-similar measures associated to a homogeneous system of three maps”, Duke Mathematical Journal 173 (2024), 513–602",
+      "url": "https://doi.org/10.1215/00127094-2023-0019"
+    },
+    {
+      "id": 10,
+      "cite": "S. Baker, “Iterated function systems with super-exponentially close cylinders”, Advances in Mathematics 379 (2021), 107548",
+      "url": "https://doi.org/10.1016/j.aim.2020.107548"
+    },
+    {
+      "id": 11,
+      "cite": "B. Bárány and A. Käenmäki, “Super-exponential condensation without exact overlaps”, Advances in Mathematics 379 (2021), 107549",
+      "url": "https://doi.org/10.1016/j.aim.2020.107549"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A self-similar measure is the law of the limit of randomly composed maps.",
+      "verdict": "supported",
+      "sourceLine": "is the law of"
+    },
+    {
+      "text": "An exact overlap is an equality of maps for distinct words of the same length.",
+      "verdict": "supported",
+      "sourceLine": "for distinct words of the same positive length."
+    },
+    {
+      "text": "The relevant entropy counts maps rather than addresses.",
+      "verdict": "supported",
+      "sourceLine": "The relevant entropy counts maps rather than addresses."
+    },
+    {
+      "text": "The theorem holds with no separation assumption; exact overlaps and repeated generators are allowed.",
+      "verdict": "supported",
+      "sourceLine": "No separation assumption is required; exact overlaps and repeated generators are allowed."
+    },
+    {
+      "text": "Ratios may be unequal and negative.",
+      "verdict": "supported",
+      "sourceLine": "Exact overlaps are allowed, and the contraction ratios may be unequal and negative."
+    },
+    {
+      "text": "This proves the entropy-rate dimension conjecture, Conjecture 3 in Varjú's survey.",
+      "verdict": "supported",
+      "sourceLine": "This proves the entropy-rate dimension conjecture, formulated as Conjecture~3 in Varj\\'u's survey"
+    },
+    {
+      "text": "The paper proves the upper bound first.",
+      "verdict": "supported",
+      "sourceLine": "We prove the upper bound before turning to the contradiction argument."
+    },
+    {
+      "text": "Moran and Hutchinson give the similarity-dimension formula under the open set condition.",
+      "verdict": "supported",
+      "sourceLine": "give the similarity-dimension formula under the open set condition."
+    },
+    {
+      "text": "Hochman showed that a dimension drop forces superexponential concentration of cylinder maps.",
+      "verdict": "supported",
+      "sourceLine": "forces superexponential concentration of cylinder maps"
+    },
+    {
+      "text": "The entropy-rate formula under weak exponential separation follows from Hochman's work.",
+      "verdict": "supported",
+      "sourceLine": "The entropy-rate formula under weak exponential separation follows from his work"
+    },
+    {
+      "text": "Rapaport proved the no-exact-overlap formula for algebraic contraction ratios.",
+      "verdict": "supported",
+      "sourceLine": "Rapaport proved the no-exact-overlap formula for algebraic contraction ratios and arbitrary real translations"
+    },
+    {
+      "text": "Rapaport and Varjú proved the entropy-rate formula with exact overlaps for rational translations and a positive common ratio.",
+      "verdict": "supported",
+      "sourceLine": "proved the entropy-rate formula, including exact overlaps, for rational translations and a positive common ratio"
+    },
+    {
+      "text": "Rapaport and Varjú's results for the three-map family include an exceptional parameter set.",
+      "verdict": "supported",
+      "sourceLine": "their results include an exceptional parameter set of Hausdorff dimension zero"
+    },
+    {
+      "text": "Baker and, independently, Bárány and Käenmäki built systems without exact overlaps whose cylinders approach at arbitrarily prescribed superexponential rates.",
+      "verdict": "supported",
+      "sourceLine": "constructed systems without exact overlaps whose distinct cylinders approach one another at arbitrarily prescribed superexponential rates."
+    },
+    {
+      "text": "Close maps must be handled without bounding the smallest positive separation.",
+      "verdict": "supported",
+      "sourceLine": "Thus the entropy carried by extremely close maps must be handled without bounding the smallest positive separation."
+    },
+    {
+      "text": "The proof uses an estimate that detects information across arbitrarily fine scales.",
+      "verdict": "supported",
+      "sourceLine": "a finite-law estimate that detects information across arbitrarily fine scales"
+    },
+    {
+      "text": "Without exact overlaps, the three-map family obeys the simple formula for all positive weights.",
+      "verdict": "supported",
+      "sourceLine": "have no exact overlaps, then for every"
+    },
+    {
+      "text": "The paper derives the attractor (set) formula.",
+      "verdict": "supported",
+      "sourceLine": "the attractor formula"
+    },
+    {
+      "text": "The result asserts dimension, not absolute continuity.",
+      "verdict": "supported",
+      "sourceLine": "It asserts dimension, without an assertion of absolute continuity."
+    },
+    {
+      "text": "The scales used in the proof have no asserted effective bound.",
+      "verdict": "supported",
+      "sourceLine": "the finite upper endpoints of the scale ranges used in the proof have no asserted effective bound."
+    },
+    {
+      "text": "Lean proves the main formula and two no-overlap consequences; absolute continuity is outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "The model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

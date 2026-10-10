@@ -1,0 +1,232 @@
+{
+  "id": "145",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rokhlins-multiple-mixing-problem-for-one-transformation-September-23-2026/paper.pdf",
+      "label": "Rokhlin's multiple-mixing problem for one transformation"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/145.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "If long waits make any two moments independent, they make every finite group of moments independent.",
+  "scope": "The main theorem covers one invertible, probability-preserving, mixing transformation, with every gap between times growing.",
+  "plain": "A mixing system forgets its past: what happens now and what happens much later become independent. A question traced to Rokhlin in 1949 asks whether this forces three or more far-apart moments to be independent too. Pairs can be independent while triples are linked, so the answer was not obvious. This paper proves the answer is yes for every invertible mixing transformation, and a proof checker has checked it. No extra structure on the system is needed.",
+  "doesNot": "This does not cover systems with two independent directions of time. Ledrappier's 1978 example shows those can fail.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1949",
+    "firstStepBy": "V. A. Rokhlin, higher-order mixing and the question",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Landmark",
+    "significanceWhy": "If the proof holds, it answers Rokhlin's 1949 question for one transformation with no extra structure assumed."
+  },
+  "explanation": "Flip two fair coins and write 1 for heads, 0 for tails. Call the results X and Y. Now set a third digit Z. It is 1 when X and Y differ, and 0 when they match. Four outcomes are equally likely: 000, 011, 101 and 110. Each digit is 1 half the time. Each pair of digits is 1 together a quarter of the time. That is exactly ½ × ½, so any two digits look independent. Yet all three digits are never 1 together. Full independence would predict 1 time in 8.\n\nThat gap between pairs and triples sits at the heart of a question from 1949. The question is about a rule T that moves the points of a space, step by step. Picture stirring a drink. The rule is probability-preserving: it never shrinks or swells the share of space a region takes up. It is invertible: every step can be undone. The rule is mixing when long waits erase memory. Take two regions, A and B. Count the points that start in A and sit in B after n steps. As n grows, their share tends to the share of A times the share of B. If A and B each fill half the space, that share tends to ¼.\n\nMixing of order 3 asks the same for three regions visited at three times, with both gaps growing. Then the share should tend to the product of three shares, such as ⅛ for three halves. Mixing of order k asks it for k regions. V. A. Rokhlin introduced these higher orders in 1949. Thierry de la Rue presents his 1949 question as this: does ordinary mixing alone imply the next order? The coin example shows why the answer is not automatic. Pairs can be independent while a triple stays linked.\n\nWith two independent directions of time, the answer is no. In 1978, F. Ledrappier gave a mixing example on a grid that is not mixing of order 3. In 2006, de la Rue explained why a direct one-dimensional copy of it fails. Positive answers for one rule needed extra structure. S. A. Kalikow showed in 1984 that order 2 gives order 3 for one special class. B. Host in 1991 and V. V. Ryzhikov in 1993 reached all orders for other special classes. In 2024, A. Kanigowski and D. Ravotti did so for certain flows, which are motions in continuous time. A general mixing rule has none of that structure.\n\nThis paper proves the general answer is yes. Every invertible, probability-preserving, mixing rule is mixing of every finite order. It assumes no special form for the rule. It also imposes no technical regularity condition on the space.\n\nThe proof argues by contradiction. Suppose some order fails, and take the smallest one that does. Then every smaller group of times behaves independently, but the full group does not. That is the coin pattern again, and pairwise independence alone does not force full independence. The paper first trims the failure down to a very predictable process. Such a process has zero entropy: long stretches follow relatively few likely patterns. After that step, the new difficulty is to control every leftover interaction at once, not just one chosen snapshot. It then shows any hidden link must ride on special wave-like functions. These come in finite blocks that time shuffles as wholes. Averaging over time makes those links cancel. That contradicts a positive quantity that time preserves.\n\nSo no mixing rule can hide a coin-style link between three far-apart moments. With three half-size regions and all gaps long, the triple share must approach ⅛. The same holds for any number of regions. The statement is about limits only. It names no rate, so it does not say how long the gaps must be. It concerns one rule repeated in time, which is exactly where Ledrappier's grid example does not apply. The paper also extends the result to rules that cannot be undone, and to certain flows.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers every order from 3 up and every choice of measurable regions. The Lean scope note links it to a fixed reference statement for a checking tool called Comparator. The extensions to non-invertible rules and to flows are not in that scope note. No specialists have published a review yet.",
+  "hypeCheck": "Landmark only if the proof holds. Lean has checked a formal version of the main theorem. The extensions to non-invertible maps and flows are outside the scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Probability-preserving transformation",
+      "meaning": "A rule that moves points of a space without changing the share of space any region fills."
+    },
+    {
+      "term": "Invertible",
+      "meaning": "Every step of the rule can be undone by another rule of the same kind."
+    },
+    {
+      "term": "Mixing",
+      "meaning": "Being in one region now and in another after a long wait become independent events."
+    },
+    {
+      "term": "Mixing of order k",
+      "meaning": "The same independence for k regions at k times, as all gaps between the times grow."
+    },
+    {
+      "term": "Independent",
+      "meaning": "The chance of events happening together equals the product of their separate chances."
+    },
+    {
+      "term": "Flow",
+      "meaning": "A motion that runs in continuous time instead of whole steps."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof matches a fixed reference statement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "V. A. Rokhlin, “On endomorphisms of compact commutative groups”, Izvestiya Akademii Nauk SSSR. Seriya Matematicheskaya 13 (1949), 329–340",
+      "url": "https://www.mathnet.ru/eng/im3198"
+    },
+    {
+      "id": 2,
+      "cite": "T. de la Rue, “2-fold and 3-fold mixing: why 3-dot-type counterexamples are impossible in one dimension”, Bulletin of the Brazilian Mathematical Society 37 (2006), 503–521",
+      "url": "https://doi.org/10.1007/s00574-006-0024-z"
+    },
+    {
+      "id": 3,
+      "cite": "S. A. Kalikow, “Twofold mixing implies threefold mixing for rank one transformations”, Ergodic Theory and Dynamical Systems 4 (1984), 237–259",
+      "url": "https://doi.org/10.1017/S014338570000242X"
+    },
+    {
+      "id": 4,
+      "cite": "B. Host, “Mixing of all orders and pairwise independent joinings of systems with singular spectrum”, Israel Journal of Mathematics 76 (1991), 289–298",
+      "url": "https://doi.org/10.1007/BF02773866"
+    },
+    {
+      "id": 5,
+      "cite": "V. V. Ryzhikov, “Joinings and multiple mixing of finite rank actions”, Functional Analysis and Its Applications 27 (1993), 128–140",
+      "url": "https://doi.org/10.1007/BF01085983"
+    },
+    {
+      "id": 6,
+      "cite": "A. Kanigowski and D. Ravotti, “Multiple mixing for parabolic systems”, arXiv:2410.13686 (2024)",
+      "url": "https://arxiv.org/abs/2410.13686v1"
+    },
+    {
+      "id": 7,
+      "cite": "V. V. Ryzhikov, “Multiple mixing, 75 years of Rokhlin's problem”, arXiv:2411.07234 (2024)",
+      "url": "https://arxiv.org/abs/2411.07234v2"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Rokhlin's multiple-mixing problem for one transformation” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rokhlins-multiple-mixing-problem-for-one-transformation-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for “Rokhlin’s multiple-mixing problem” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/145.md",
+      "quote": "The formalization proves this implication."
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every invertible mixing probability-preserving transformation is mixing of every finite order.",
+      "verdict": "supported",
+      "sourceLine": "Every invertible mixing probability-preserving transformation is mixing of every finite order."
+    },
+    {
+      "text": "Rokhlin introduced higher-order mixing in 1949.",
+      "verdict": "supported",
+      "sourceLine": "introduced higher-order mixing and proved it for ergodic surjective"
+    },
+    {
+      "text": "De la Rue presents Rokhlin's 1949 question as whether ordinary mixing alone implies the next order.",
+      "verdict": "supported",
+      "sourceLine": "The question whether ordinary mixing alone implies the next order is presented as Rokhlin's 1949 question in de la Rue's account"
+    },
+    {
+      "text": "Pairwise independence alone does not force full independence of a joint law.",
+      "verdict": "supported",
+      "sourceLine": "Pairwise independence alone does not force a joining to be product."
+    },
+    {
+      "text": "Ledrappier's mixing two-dimensional example is not mixing of order 3.",
+      "verdict": "supported",
+      "sourceLine": "is not threefold mixing"
+    },
+    {
+      "text": "De la Rue explains why a direct one-dimensional analogue of Ledrappier's example fails.",
+      "verdict": "supported",
+      "sourceLine": "and why a direct one-dimensional analogue fails"
+    },
+    {
+      "text": "Kalikow proved the twofold-to-threefold implication for one special class.",
+      "verdict": "supported",
+      "sourceLine": "Kalikow proved the twofold-to-threefold implication for rank-one transformations"
+    },
+    {
+      "text": "Host obtained all orders under a singular-spectrum hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "Host obtained all orders under a singular-spectrum hypothesis"
+    },
+    {
+      "text": "Ryzhikov obtained all-orders conclusions for mixing finite-rank automorphisms.",
+      "verdict": "supported",
+      "sourceLine": "and Ryzhikov obtained all-orders conclusions for mixing finite-rank automorphisms"
+    },
+    {
+      "text": "Kanigowski and Ravotti proved certain flows are mixing of all orders.",
+      "verdict": "supported",
+      "sourceLine": "proved that mixing locally uniformly shearing flows are mixing of all orders"
+    },
+    {
+      "text": "These earlier results need structure a general mixing transformation lacks.",
+      "verdict": "supported",
+      "sourceLine": "These results require structure not present in a general mixing transformation."
+    },
+    {
+      "text": "The theorem assumes no special form of the transformation.",
+      "verdict": "supported",
+      "sourceLine": "Neither a group structure nor any other special form of the transformation is assumed in our theorem."
+    },
+    {
+      "text": "No regularity condition is imposed on the original space.",
+      "verdict": "supported",
+      "sourceLine": "No standardness or countable-generation assumption is imposed on the original probability space."
+    },
+    {
+      "text": "The proof supposes a least failing order.",
+      "verdict": "supported",
+      "sourceLine": "is the least failing order"
+    },
+    {
+      "text": "After the reduction, the new difficulty is to control all residual interactions, not merely one selected joining.",
+      "verdict": "supported",
+      "sourceLine": "obstacle after that reduction is to control all residual interactions of the proper-independent limit law, not merely a selected joining."
+    },
+    {
+      "text": "The failure is reduced to a zero-entropy finite-alphabet process.",
+      "verdict": "supported",
+      "sourceLine": "The reduction gives a zero-entropy finite-alphabet mixing process"
+    },
+    {
+      "text": "In a zero-entropy process, the number of likely long patterns grows slower than exponentially.",
+      "verdict": "supported",
+      "sourceLine": "subexponential number of likely words in a zero-entropy process"
+    },
+    {
+      "text": "Time permutes finite blocks of labels.",
+      "verdict": "supported",
+      "sourceLine": "Time permutes the blocks"
+    },
+    {
+      "text": "Average correlation tends to zero, contradicting a positive quantity preserved by time.",
+      "verdict": "supported",
+      "sourceLine": "They show that the average absolute correlation with each moving finite block tends to zero, contradicting a positive quantity preserved by time."
+    },
+    {
+      "text": "The proof uses one time transformation throughout.",
+      "verdict": "supported",
+      "sourceLine": "The proof uses one time transformation throughout"
+    },
+    {
+      "text": "The conclusion extends to mixing endomorphisms and to certain mixing flows.",
+      "verdict": "supported",
+      "sourceLine": "extends the conclusion to mixing endomorphisms on arbitrary probability spaces and to mixing flows whose Koopman operators are strongly continuous on"
+    },
+    {
+      "text": "The Lean formalization proves the implication for every k ≥ 3 and every k measurable sets.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "Ryzhikov's 2024 survey covers the all-orders formulation.",
+      "verdict": "supported",
+      "sourceLine": "surveys the all-orders formulation in"
+    }
+  ]
+}

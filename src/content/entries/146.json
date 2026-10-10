@@ -1,0 +1,217 @@
+{
+  "id": "146",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-Metric-Entropy-for-the-Standard-Map-at-Large-Parameters-September-23-2026/paper.pdf",
+      "label": "Positive Metric Entropy for the Standard Map at Large Parameters"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/146.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The standard map is chaotic on a region of positive area for every large enough parameter.",
+  "scope": "The result holds for every parameter k at or above some threshold k₀, whose value is not given.",
+  "plain": "The standard map is a simple rule that moves points around a wrapped-around square, with a strength k. This paper proves (Lean proof listed) that, for every large enough k, the map is chaotic on positive area. In technical terms, its metric entropy with respect to area is positive. This settles an old conjecture of Sinai, as Berger and Turaev state it, for every large k of the exact map.",
+  "doesNot": "This does not say how large k must be, or that the map is chaotic on the whole square.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles Sinai's conjecture for the exact standard map, not a perturbed or random version."
+  },
+  "explanation": "Picture a square whose edges wrap around, like an old video game screen. Leave by the right edge and you come back on the left. Leave by the top and you return at the bottom. Mathematicians call this surface a torus. The standard map moves every point of it by one simple rule. Pick a number k. Add k times sin(2πx) to the height y. Then add the new height to the position x, and wrap around.\n\nTake k = 10 and the point x = 0.1, y = 0.2. Follow a second point a tiny distance to its right. After one step, the gap between them is about 72.6 times larger. After seven steps, it is about 10 billion times larger. That averages to about 27 times per step. But the growth is uneven. On the third step, the gap grew only about 3.3 times. That step began near x = 0.25, where the sine curve is flat at its peak. There the push barely stretches anything.\n\nThis mix is typical of large k. The paper describes strong local stretching combined with repeated losses of that stretching. The long-run growth rate of such gaps, measured as a logarithm, is called the Lyapunov exponent. A positive exponent means tiny gaps grow exponentially, which is the usual signature of chaos. The map also keeps area unchanged: a patch of the square moves around but never shrinks or grows.\n\nMetric entropy measures how much unpredictability the map creates, averaged over the whole area. A classical formula of Pesin turns it into the average Lyapunov exponent over the square. So the entropy is positive exactly when the exponent is positive on a region of positive area. Chaos on a set with no area does not count. The point x = 0, y = 0 shows why this matters. It never moves, and gaps near it stretch about 64.8 times per step in one direction. Yet one point has no area at all.\n\nMuch chaos of this zero-area kind was already known. In 1994 Duarte built such chaotic sets for large k, and also found islands where motion stays orderly. In 2012 Gorodetski found chaotic sets of full dimension for a large but possibly zero-length set of big k values. The paper notes that neither result gives positive area. In 2024 Oliveira studied topological entropy, a count of distinct behaviours. Oliveira proved it positive for every k > 0 other than k = 2/π, a value that result leaves out. That still says nothing about entropy measured by area. Other work added noise, coupling or small changes to the map. In a form stated by Berger and Turaev, Sinai's conjecture asks for positive area entropy on a set of k values of positive total length.\n\nThis paper proves that conjecture for the exact map, in a stronger form. There is a threshold k₀ such that every k at or above k₀ has positive metric entropy. It also finds, for each such k, a region of positive area that the map explores as one indivisible whole. That region splits into finitely many pieces that the map visits in turn. On each piece, a fixed number of steps behaves as randomly as repeated coin tossing.\n\nThe one obstacle is cancellation. Stretching built up over a long time can be undone later. The paper shows this is rare. Two long stretches that each grow near the top rate seldom cancel when joined. The chance falls exponentially with their length. A second estimate controls fast-growing stretches without assuming that distant times act independently. The proof then argues by contradiction. Suppose arbitrarily large k had zero exponent almost everywhere. The two estimates make a bookkeeping identity across many time scales impossible.\n\nThe theorem has clear limits. The contradiction shows that k₀ exists, but the paper does not give a value for it. Nothing is said about smaller k. The paper also makes no claim that the exponent is positive almost everywhere. So it does not rule out orderly regions, and it gives no uniform lower bound on entropy.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of three statements. They are the main entropy theorem, positive Lyapunov exponents on positive area, and the coin-tossing region. The Lean scope note says no special assumption on k is used. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. The Lean scope note lists formal versions of the main statements. The threshold k₀ is not computed, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Torus",
+      "meaning": "A square whose opposite edges are glued, so leaving one side brings you back on the other."
+    },
+    {
+      "term": "Standard map",
+      "meaning": "A simple area-keeping rule on the torus, with a strength k, used as a model of chaos."
+    },
+    {
+      "term": "Lyapunov exponent",
+      "meaning": "The long-run growth rate of tiny gaps between nearby points, on a logarithmic scale."
+    },
+    {
+      "term": "Metric entropy",
+      "meaning": "How much unpredictability a map creates, averaged over a fixed measure such as area."
+    },
+    {
+      "term": "Topological entropy",
+      "meaning": "A count of how many distinct behaviours a map has, ignoring how much area they cover."
+    },
+    {
+      "term": "Bernoulli",
+      "meaning": "Behaving, after a change of viewpoint, as randomly as repeated independent coin tosses or dice rolls."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Positive Metric Entropy for the Standard Map at Large Parameters” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-Metric-Entropy-for-the-Standard-Map-at-Large-Parameters-September-23-2026/paper.pdf",
+      "quote": "has positive metric entropy with respect to normalized area for every sufficiently large positive parameter"
+    },
+    {
+      "id": 2,
+      "cite": "P. Berger and D. Turaev, “On Herman's positive entropy conjecture”, Advances in Mathematics 349 (2019), 1234–1288",
+      "url": "https://doi.org/10.1016/j.aim.2019.04.002"
+    },
+    {
+      "id": 3,
+      "cite": "P. Duarte, “Plenty of elliptic islands for the standard family of area preserving maps”, Annales de l'Institut Henri Poincaré. Analyse non linéaire 11 (1994), 359–409",
+      "url": "https://www.numdam.org/item/AIHPC_1994__11_4_359_0/"
+    },
+    {
+      "id": 4,
+      "cite": "A. Gorodetski, “On stochastic sea of the standard map”, Communications in Mathematical Physics 309 (2012), 155–192",
+      "url": "https://doi.org/10.1007/s00220-011-1365-z"
+    },
+    {
+      "id": 6,
+      "cite": "F. Oliveira, “Positive topological entropy for the Standard Map”, arXiv:2404.02209v2 (2024)",
+      "url": "https://arxiv.org/abs/2404.02209"
+    },
+    {
+      "id": 7,
+      "cite": "Ya. B. Pesin, “Characteristic Lyapunov exponents and smooth ergodic theory”, Russian Mathematical Surveys 32 (1977), 55–114",
+      "url": "https://doi.org/10.1070/RM1977v032n04ABEH001639"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean doc for family 146 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/146.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The standard map is f_k(x,y) = (x + y + k sin(2πx), y + k sin(2πx)) mod 1 on the torus.",
+      "verdict": "supported",
+      "sourceLine": "The standard sine map is the area-preserving diffeomorphism"
+    },
+    {
+      "text": "The large-parameter regime combines strong local expansion with recurrent losses of derivative growth.",
+      "verdict": "supported",
+      "sourceLine": "Its large-parameter regime combines strong local expansion with recurrent losses of derivative growth."
+    },
+    {
+      "text": "Pesin's entropy formula expresses area entropy as the area average of the top Lyapunov exponent.",
+      "verdict": "supported",
+      "sourceLine": "The entropy formula of Pesin, in the absolutely continuous invariant-measure form"
+    },
+    {
+      "text": "So positive entropy amounts to a positive exponent on positive area.",
+      "verdict": "supported",
+      "sourceLine": "Consequently the task is to prove positivity of"
+    },
+    {
+      "text": "A hyperbolic set may have zero area.",
+      "verdict": "supported",
+      "sourceLine": "a hyperbolic set may have zero area"
+    },
+    {
+      "text": "Duarte constructed hyperbolic basic sets and exhibited elliptic islands for large parameters.",
+      "verdict": "supported",
+      "sourceLine": "Duarte's large-parameter analysis constructs hyperbolic basic sets and exhibits elliptic-island and tangency phenomena in the standard family"
+    },
+    {
+      "text": "Gorodetski obtained transitive invariant sets of full Hausdorff dimension for a residual set of large parameters.",
+      "verdict": "supported",
+      "sourceLine": "obtained transitive invariant sets of full Hausdorff dimension for a residual set of large parameters"
+    },
+    {
+      "text": "Neither hyperbolic sets nor full dimension imply positive area.",
+      "verdict": "supported",
+      "sourceLine": "neither hyperbolic sets nor full dimension imply positive area"
+    },
+    {
+      "text": "Oliveira proved positive topological entropy for every k > 0 with k ≠ 2/π.",
+      "verdict": "supported",
+      "sourceLine": "proved positive topological entropy for every"
+    },
+    {
+      "text": "Positive topological entropy does not by itself give positive area entropy.",
+      "verdict": "supported",
+      "sourceLine": "Positive topological entropy does not by itself give positive entropy for the specific invariant measure"
+    },
+    {
+      "text": "The parameter set with positive metric entropy contains an interval of positive length.",
+      "verdict": "supported",
+      "sourceLine": "In particular the parameter set with positive metric entropy contains an interval of positive length."
+    },
+    {
+      "text": "Coupling, noise and perturbation change the system; the question concerns the exact map.",
+      "verdict": "supported",
+      "sourceLine": "Coupling, noise, and smooth perturbation change the dynamical system or its probability law."
+    },
+    {
+      "text": "There is k₀ > 0 with positive metric entropy for every k ≥ k₀.",
+      "verdict": "supported",
+      "sourceLine": "for every sufficiently large positive parameter. This gives a full parameter tail"
+    },
+    {
+      "text": "This resolves Sinai's conjecture in the Berger–Turaev formulation, with the stronger all-large-parameter conclusion.",
+      "verdict": "supported",
+      "sourceLine": "resolves affirmatively Sinai's positive metric entropy conjecture in the formulation of Berger and Turaev"
+    },
+    {
+      "text": "For each such k there is a positive-area ergodic component split into finitely many cyclic Bernoulli pieces.",
+      "verdict": "supported",
+      "sourceLine": "is Bernoulli for every"
+    },
+    {
+      "text": "Two long nearly full-rate segments rarely cancel when concatenated; the probability decays exponentially.",
+      "verdict": "supported",
+      "sourceLine": "converts those tests into exponential probability decay"
+    },
+    {
+      "text": "The bridge step does not presume mixing or independence.",
+      "verdict": "supported",
+      "sourceLine": "This step does not presume mixing or independence of orbit segments."
+    },
+    {
+      "text": "The proof argues by contradiction from arbitrarily large zero-exponent parameters.",
+      "verdict": "supported",
+      "sourceLine": "Suppose now that arbitrarily large parameters had zero exponent almost everywhere."
+    },
+    {
+      "text": "The threshold k₀ is obtained as a finite number from the contradiction, with no value stated.",
+      "verdict": "supported",
+      "sourceLine": "There is consequently a finite"
+    },
+    {
+      "text": "The paper makes no claim of ergodicity, almost-everywhere positive exponents, or a uniform entropy lower bound.",
+      "verdict": "supported",
+      "sourceLine": "It makes no claim of ergodicity, almost-everywhere positive exponents, or a uniform positive lower bound on entropy."
+    },
+    {
+      "text": "Lean formalizes the positive-entropy tail, positive Lyapunov exponents on positive area, and the Bernoulli component, with no genericity assumption.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}

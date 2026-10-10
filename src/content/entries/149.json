@@ -1,0 +1,217 @@
+{
+  "id": "149",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Permanence-in-Weakly-Reversible-Mass-Action-Systems-October-5-2026/permanence.pdf",
+      "label": "Uniform Permanence in Weakly Reversible Mass-Action Systems"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Boundedness-and-persistence-of-weakly-reversible-mass-action-systems-September-25-2026/paper.pdf",
+      "label": "Boundedness and persistence of weakly reversible mass-action systems"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/149.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "With fixed rates, every weakly reversible chemical network herds each class of states into one common window.",
+  "scope": "The result needs a finite weakly reversible network, mass-action kinetics and rate constants that are fixed and positive.",
+  "plain": "Chemicals in a reaction network can, in principle, die out or pile up without limit. A September 2026 paper proves that weakly reversible networks with fixed rates avoid both (Lean proof listed). The October paper claims to prove something stronger. All starts that share the same conserved totals end up in one common window. The time it takes to get there may still depend on the start.",
+  "doesNot": "This does not show that concentrations settle to one resting state, or cover rates that change over time.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "Martin Feinberg, raised the question of zero-concentration limits",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "It claims the fixed-rate weakly reversible case of the permanence question, which earlier work had settled only in special cases."
+  },
+  "explanation": "Picture a vat holding one chemical, A. Two reactions run at once. In one, a molecule of A copies itself: A → 2A. In the other, two molecules of A merge into one: 2A → A. Under mass action, a reaction runs at its rate constant times the concentrations it uses up, multiplied together. Set both rate constants to 1. Then the concentration x of A changes at speed x − x². Below 1, copying wins and x grows. Above 1, merging wins and x falls.\n\nThis toy system can be solved exactly. Start at x = 0.001, and x climbs to 0.5 after about 6.91 time units. Start at x = 1000, and x falls to 2 after about 0.69 units. After that, both stay between 0.5 and 2 for good. The waiting time depends on the start. The final window does not. Every positive start, however extreme, ends up in that one window. This is what mathematicians call permanence.\n\nReal reaction networks have many chemicals and many reactions. A network is weakly reversible when every reaction has a directed return path. The path can take several steps, such as A → B → C → A. Many networks also keep some totals fixed. Take 2A ⇌ B, where two A molecules join into one B and split back. There the total a + 2b never changes. All positive states that share these fixed totals form one class (a stoichiometric compatibility class). In the A ⇌ 2A vat nothing is conserved. So its class holds every positive number, and it is unbounded.\n\nThree questions sit side by side. Boundedness asks that no concentration blow up. Persistence asks that none drift toward zero. Permanence asks for more: one window that works for the whole class, after a waiting time. In 1987, Martin Feinberg raised the question of ruling out limits where some concentration is zero. Partial answers followed. Craciun, Nazarov and Pantea proved permanence for two-chemical weakly reversible systems in 2013. Gopalkrishnan, Miller and Shiu proved it in 2014 for another family, strongly endotactic networks. That family includes every weakly reversible network whose reactions form one connected piece. Our toy vat is one such piece, so it was already covered. Boros and Hofbauer gave another proof of that case in 2020.\n\nA companion paper from September 2026 proves boundedness and persistence for every finite weakly reversible network with fixed positive rates. It notes that a 2010 paper by August and Barahona had stated this conclusion. It also says one step of that proof does not hold as written. The companion's bounds come with a catch. Each starting point gets its own window, which may differ from start to start. A start nearer zero might need a wider window. That paper does not promise one window for a whole class.\n\nThe October paper claims to prove that promise. For each class it builds one compact convex region. Compact means closed and bounded. Convex means the straight segment between any two of its points stays inside. Call the path a starting state follows over time its trajectory. Every trajectory in the class enters this region in finite time and never leaves. The region depends only on the network, the rates and the class. This holds even when the class itself is unbounded, as in the toy vat.\n\nThe hard part is turning many personal windows into one shared window. The companion paper already traps each start in a region of its own. The new step links traps of different sizes. A trajectory caught in a wide trap is pushed into a narrower one. After finitely many such steps, it lands in one fixed trap chosen for the class.\n\nSome limits stay. The waiting time still depends on where a trajectory starts. The theorem says a common window exists, but its statement gives no size for it. Rates must be fixed numbers. Several earlier results also allowed rates that change over time within fixed positive bounds. The theorem does not say that concentrations settle to a single resting state.\n\nHow sure is this? A computer proof checker called Lean has checked the companion's main theorem. Every positive start has a solution for all time. One number keeps its concentrations above it and below its reciprocal from the start onward. That number may depend on the start. The October paper's common window for each class is outside that check. No specialist review has been published yet.",
+  "hypeCheck": "Major if it holds. Lean has checked the companion's start-dependent bounds, not the common window for each class. No specialist review has been published, and time-varying rates remain outside the result.",
+  "glossary": [
+    {
+      "term": "Mass-action kinetics",
+      "meaning": "A rule where each reaction runs at a fixed rate constant times the product of the concentrations it uses up."
+    },
+    {
+      "term": "Weakly reversible",
+      "meaning": "Every reaction in the network can be undone by some chain of reactions leading back to where it started."
+    },
+    {
+      "term": "Stoichiometric compatibility class",
+      "meaning": "All positive states that share the totals the reactions can never change."
+    },
+    {
+      "term": "Boundedness",
+      "meaning": "No concentration grows without limit along a trajectory."
+    },
+    {
+      "term": "Persistence",
+      "meaning": "No concentration drifts toward zero along a trajectory."
+    },
+    {
+      "term": "Permanence",
+      "meaning": "One window, the same for a whole class, that every trajectory in that class eventually enters and stays in."
+    },
+    {
+      "term": "Compact convex set",
+      "meaning": "A closed, bounded region that contains the straight segment between any two of its points."
+    },
+    {
+      "term": "Linkage class",
+      "meaning": "One connected piece of the network's reaction diagram."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Uniform Permanence in Weakly Reversible Mass-Action Systems”, openai/math preprint (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Permanence-in-Weakly-Reversible-Mass-Action-Systems-October-5-2026/permanence.pdf",
+      "quote": "permanence conjecture holds, including on unbounded classes."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Boundedness and persistence of weakly reversible mass-action systems”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Boundedness-and-persistence-of-weakly-reversible-mass-action-systems-September-25-2026/paper.pdf",
+      "quote": "That implication does not hold throughout the stated region."
+    },
+    {
+      "id": 3,
+      "cite": "M. Feinberg, “Chemical reaction network structure and the stability of complex isothermal reactors—I. The deficiency zero and deficiency one theorems”, Chemical Engineering Science 42 (1987), 2229–2268",
+      "url": "https://doi.org/10.1016/0009-2509(87)80099-4"
+    },
+    {
+      "id": 4,
+      "cite": "G. Craciun, F. Nazarov and C. Pantea, “Persistence and permanence of mass-action and power-law dynamical systems”, SIAM Journal on Applied Mathematics 73 (2013), 305–329",
+      "url": "https://doi.org/10.1137/100812355"
+    },
+    {
+      "id": 5,
+      "cite": "M. Gopalkrishnan, E. Miller and A. Shiu, “A geometric approach to the global attractor conjecture”, SIAM Journal on Applied Dynamical Systems 13 (2014), 758–797",
+      "url": "https://doi.org/10.1137/130928170"
+    },
+    {
+      "id": 6,
+      "cite": "B. Boros and J. Hofbauer, “Permanence of weakly reversible mass-action systems with a single linkage class”, SIAM Journal on Applied Dynamical Systems 19 (2020), 352–365",
+      "url": "https://doi.org/10.1137/19M1248431"
+    },
+    {
+      "id": 7,
+      "cite": "E. August and M. Barahona, “Solutions of weakly reversible chemical reaction networks are bounded and persistent”, IFAC Proceedings Volumes 43 (2010), 42–47",
+      "url": "https://doi.org/10.3182/20100707-3-BE-2012.0018"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 149 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/149.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Weak reversibility means every reaction has a directed return path.",
+      "verdict": "supported",
+      "sourceLine": "to have a directed return path.",
+      "sourceId": 1
+    },
+    {
+      "text": "Permanence asks that, after a transient, all trajectories with the same conservation laws share the same lower and upper bounds.",
+      "verdict": "supported",
+      "sourceLine": "Permanence asks for more: after a transient, all trajectories allowed by",
+      "sourceId": 1
+    },
+    {
+      "text": "A positive stoichiometric class need not be bounded.",
+      "verdict": "supported",
+      "sourceLine": "The class $P$ need not be bounded.",
+      "sourceId": 1
+    },
+    {
+      "text": "The entry time may depend on the initial point, but the common set may not.",
+      "verdict": "supported",
+      "sourceLine": "The entry time may depend on the initial point, but $K$ may not.",
+      "sourceId": 1
+    },
+    {
+      "text": "Feinberg's 1987 discussion raised the question of excluding limiting states with a zero concentration.",
+      "verdict": "supported",
+      "sourceLine": "of excluding limiting states with a zero concentration.",
+      "sourceId": 1
+    },
+    {
+      "text": "Craciun, Nazarov and Pantea proved permanence for two-species weakly reversible systems.",
+      "verdict": "supported",
+      "sourceLine": "permanence for two-species weakly reversible systems, as part of their",
+      "sourceId": 1
+    },
+    {
+      "text": "Gopalkrishnan, Miller and Shiu proved permanence for strongly endotactic networks, including every weakly reversible network with one linkage class.",
+      "verdict": "supported",
+      "sourceLine": "which includes every weakly reversible network with one linkage class",
+      "sourceId": 1
+    },
+    {
+      "text": "Boros and Hofbauer later gave another proof of the single-linkage permanence theorem.",
+      "verdict": "supported",
+      "sourceLine": "Boros and Hofbauer later gave another proof of the single-linkage",
+      "sourceId": 1
+    },
+    {
+      "text": "Earlier permanence results also permit rates varying in time within fixed positive bounds.",
+      "verdict": "supported",
+      "sourceLine": "also permit rates varying in time within fixed positive bounds.",
+      "sourceId": 1
+    },
+    {
+      "text": "August and Barahona previously stated the general conclusion; the companion paper says one implication in their proof does not hold.",
+      "verdict": "supported",
+      "sourceLine": "That implication does not hold throughout the stated region.",
+      "sourceId": 2
+    },
+    {
+      "text": "The companion paper's sets give boundedness and persistence but may depend on the initial point.",
+      "verdict": "supported",
+      "sourceLine": "give boundedness and persistence, but may depend on the initial point.",
+      "sourceId": 1
+    },
+    {
+      "text": "The new arguments connect trapping sets at different scales and turn individual bounds into classwise permanence.",
+      "verdict": "supported",
+      "sourceLine": "They turn bounds for individual trajectories into permanence",
+      "sourceId": 1
+    },
+    {
+      "text": "The common set is compact, convex and forward invariant, and the result holds on unbounded classes.",
+      "verdict": "supported",
+      "sourceLine": "permanence conjecture holds, including on unbounded classes.",
+      "sourceId": 1
+    },
+    {
+      "text": "The window's size depends only on the network, the fixed rates and the class.",
+      "verdict": "supported",
+      "sourceLine": "$\\eps_P\\in(0,1)$, depending only on the network, the fixed rates, and",
+      "sourceId": 1
+    },
+    {
+      "text": "The companion makes no claim that trajectories converge to an equilibrium.",
+      "verdict": "supported",
+      "sourceLine": "We make no assertion in this generality that the trajectory converges to an",
+      "sourceId": 2
+    },
+    {
+      "text": "Lean formalizes global existence and one start-dependent bound for every weakly reversible network with positive constant rates.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

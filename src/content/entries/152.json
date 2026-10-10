@@ -1,0 +1,222 @@
+{
+  "id": "152",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-entropy-system-without-a-smooth-positive-volume-model-September-25-2026/paper.pdf",
+      "label": "A zero-entropy system without a smooth positive-volume model"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/152.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "An abstract zero-entropy system with no smooth, volume-keeping copy in any dimension.",
+  "scope": "The copy must keep a smooth, strictly positive density on a compact manifold of finite dimension.",
+  "plain": "Entropy measures how much new information a system makes each step. A smooth map on a bounded shape must have finite entropy. People asked whether finite entropy is enough to get a smooth copy that keeps volume. This paper claims to prove it is not, with one zero-entropy example. Lean has checked a weaker version of the claim, with finite entropy in place of zero.",
+  "doesNot": "This does not rule out smooth copies whose kept measure only shares volume's zero-size sets.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1977",
+    "firstStepBy": "Lind and Thouvenot, continuous torus models",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "It answers a classical realization question negatively, for the strictly positive smooth density version."
+  },
+  "explanation": "Flip a fair coin once a second. Each flip brings one bit of new information, since heads and tails are equally likely. A coin that lands heads nine times in ten brings less, about 0.469 bits per flip. Now watch a clock hand that jumps by the same angle every second. Note only which quarter of the dial it sits in. A long record of quarters soon becomes predictable, and new readings add almost nothing. Kolmogorov–Sinai entropy is this long-run rate of new information per step. The coin machine scores 1 bit, and the clock hand scores 0.\n\nMathematicians study such systems in an abstract form. A measure-preserving transformation is a rule that moves the points of a space each step. It keeps the probability of every region unchanged. The abstract form forgets shape and distance. It only remembers which sets have which probability. Two systems count as the same, or measurably conjugate, when a relabeling of points turns one into the other. The relabeling may ignore sets of probability zero, and it need not be continuous.\n\nThe clock hand also has a smooth picture. Its dial is a compact manifold, a smooth bounded shape of finite dimension, like a circle or a sphere. The jump is a diffeomorphism, a smooth map whose reverse is also smooth. It keeps arc length, which is a smooth positive volume. That means a smooth way to measure size that gives every small region some weight. Call such a picture a smooth positive-volume model. The smooth realization problem asks which abstract systems have one.\n\nSome limit was known. A smooth map on a compact shape cannot create information without bound. Ruelle's inequality from 1978 gives finite entropy from limits on how much the map stretches. So finite entropy is necessary. The open question was whether it is enough once the kept measure must be a smooth positive density.\n\nEarlier results came close. In 1977, Lind and Thouvenot copied every finite-entropy ergodic system by continuous, area-preserving maps of a torus, a doughnut-shaped surface. Ergodic means the system cannot be split into two separate parts, each with some probability, that each stay put. Those maps need not be smooth. They also used smooth torus maps. A standard example of such a map sends (x, y) to (2x + y, x + y), wrapped around. That map stretches one direction by about 2.618 each step. With a suitable spread-out measure, it copies every system with entropy below its own, about 1.39 bits. In 2016, Quas and Soo extended this to more torus maps. The catch is the measure these copies keep. It may be singular, piled onto thin sets, instead of a smooth volume. In 1997, Katok and Thouvenot found an obstruction for pairs of commuting maps. That did not settle the question for one map.\n\nThe paper claims to prove that finite entropy is not enough. It goes further. It builds one ergodic system with zero entropy, like the clock hand, that has no smooth positive-volume model. The model may use any finite dimension. Its shape may have a smooth edge. It need not be orientable, meaning it may lack a consistent sense of clockwise. The system is fixed first, and only then is any smooth model tested. So a single example defeats every dimension at once.\n\nThe obstacle is the relabeling. It keeps probabilities but may scramble distance and shape completely. So the proof needs a feature of smooth volume that survives any such scrambling. The paper finds a switching property. Cut the shape into small cells. Pick a cell by its volume, then two random points x and y inside it. Usually some third point z has a future that tracks x and a past that tracks y. On those pairs, the points z are never spread more than twice as thickly as the volume. The number of cells may grow with time, but only at a rate that fades toward zero over the scales.\n\nThe abstract system is built to fail this test. Its points are endless strings of symbols, made of words. Each long word is a chain of shorter words, and each word carries a label. Certain pairs of labels must pass a fixed compatibility test. Two independent histories rarely pass most of these tests. A smooth switch would force them to match one legal history, which does pass. At well-chosen scales, these two conclusions clash.\n\nThe result needs the kept measure to be a smooth, strictly positive density. Foreman and Weiss discuss a looser version, where the measure only has the same zero-size sets as volume. The paper does not claim an obstruction for that version.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of a weaker statement. It builds such a system with finite entropy, and no model in any finite dimension. Shapes with a smooth edge are included. The paper's stronger zero-entropy conclusion is outside that check. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. Lean checks a weaker finite-entropy version. The zero-entropy claim is unchecked, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Measure-preserving transformation",
+      "meaning": "A rule that moves points of a space each step while keeping the probability of every region the same."
+    },
+    {
+      "term": "Ergodic",
+      "meaning": "A system that cannot be split into two separate parts, each with some probability, that each stay put."
+    },
+    {
+      "term": "Kolmogorov–Sinai entropy",
+      "meaning": "The long-run rate of new information a system produces per step."
+    },
+    {
+      "term": "Measurable conjugacy",
+      "meaning": "A relabeling of points, ignoring sets of probability zero, that turns one system into another. It need not be continuous."
+    },
+    {
+      "term": "Compact manifold",
+      "meaning": "A smooth, bounded shape of finite dimension, such as a circle, sphere or torus."
+    },
+    {
+      "term": "Diffeomorphism",
+      "meaning": "A smooth map whose reverse is also smooth."
+    },
+    {
+      "term": "Smooth positive volume",
+      "meaning": "A smooth way to measure size that gives every small region some positive weight."
+    },
+    {
+      "term": "Homeomorphism",
+      "meaning": "A continuous map whose reverse is also continuous; it need not be smooth."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A zero-entropy system without a smooth positive-volume model” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-entropy-system-without-a-smooth-positive-volume-model-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 152",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/152.md",
+      "quote": "The linked statement gives finite entropy; the paper's stronger zero-entropy conclusion is outside this statement."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "D. Ruelle, “An inequality for the entropy of differentiable maps”, Boletim da Sociedade Brasileira de Matemática 9 (1978), 83–87",
+      "url": "https://doi.org/10.1007/BF02584795"
+    },
+    {
+      "id": 5,
+      "cite": "D. A. Lind and J.-P. Thouvenot, “Measure-preserving homeomorphisms of the torus represent all finite entropy ergodic transformations”, Mathematical Systems Theory 11 (1977), 275–282",
+      "url": "https://doi.org/10.1007/BF01768481"
+    },
+    {
+      "id": 6,
+      "cite": "A. Quas and T. Soo, “Ergodic universality of some topological dynamical systems”, Transactions of the AMS 368 (2016), 4137–4170",
+      "url": "https://doi.org/10.1090/tran/6489"
+    },
+    {
+      "id": 7,
+      "cite": "A. Katok and J.-P. Thouvenot, “Slow entropy type invariants and smooth realization of commuting measure-preserving transformations”, Ann. Inst. H. Poincaré Probab. Statist. 33 (1997), 323–338",
+      "url": "https://www.numdam.org/item/AIHPB_1997__33_3_323_0/"
+    },
+    {
+      "id": 8,
+      "cite": "M. Foreman and B. Weiss, “Measure preserving diffeomorphisms of the torus are unclassifiable”, J. Eur. Math. Soc. 24 (2022), 2605–2690",
+      "url": "https://doi.org/10.4171/JEMS/1151"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Kolmogorov–Sinai entropy is built from the Shannon entropy of finite partitions.",
+      "verdict": "supported",
+      "sourceLine": "where $\\mathcal P$ ranges over finite measurable partitions."
+    },
+    {
+      "text": "The conjugacy is measurable and need not be continuous.",
+      "verdict": "supported",
+      "sourceLine": "no continuity is required."
+    },
+    {
+      "text": "Finite entropy is necessary in the smooth realization problem.",
+      "verdict": "supported",
+      "sourceLine": "Finite entropy is a necessary restriction in the smooth realization problem."
+    },
+    {
+      "text": "Ruelle's inequality gives finite entropy from derivative bounds.",
+      "verdict": "supported",
+      "sourceLine": "gives finite entropy from compact derivative bounds."
+    },
+    {
+      "text": "The open question is whether finite entropy suffices when the measure must be a smooth positive density.",
+      "verdict": "supported",
+      "sourceLine": "whether this entropy restriction suffices when the invariant measure must be a smooth positive density."
+    },
+    {
+      "text": "Lind and Thouvenot realized finite-entropy ergodic transformations by Lebesgue-preserving torus homeomorphisms.",
+      "verdict": "supported",
+      "sourceLine": "Lind and Thouvenot realized finite-entropy ergodic transformations by Lebesgue-preserving homeomorphisms of the two-torus"
+    },
+    {
+      "text": "A hyperbolic torus automorphism represents every system with entropy below its topological entropy.",
+      "verdict": "supported",
+      "sourceLine": "two-torus automorphism represents every such system with measure entropy below the automorphism's topological entropy"
+    },
+    {
+      "text": "Quas and Soo extended this to more toral automorphisms.",
+      "verdict": "supported",
+      "sourceLine": "extends the result to toral automorphisms with no root-of-unity eigenvalue."
+    },
+    {
+      "text": "The invariant measure in these realizations may be singular rather than a smooth positive density.",
+      "verdict": "supported",
+      "sourceLine": "A realization with an arbitrary invariant Borel probability, which may be singular, does not by itself give a smooth positive-volume model."
+    },
+    {
+      "text": "Katok and Thouvenot's obstruction concerns commuting generators and does not settle one transformation.",
+      "verdict": "supported",
+      "sourceLine": "its obstruction does not by itself answer the question for one transformation."
+    },
+    {
+      "text": "The paper gives a negative answer already among zero-entropy systems.",
+      "verdict": "supported",
+      "sourceLine": "We give a negative answer to the smooth-volume realization question, already among systems of zero entropy."
+    },
+    {
+      "text": "The manifold may have smooth boundary and need not be orientable.",
+      "verdict": "supported",
+      "sourceLine": "may have smooth boundary and need not be orientable."
+    },
+    {
+      "text": "The symbolic system is fixed first, so one example covers every dimension.",
+      "verdict": "supported",
+      "sourceLine": "Thus the construction does not select a different counterexample for each dimension."
+    },
+    {
+      "text": "The proof needs a property of smooth volume that survives any measurable change of coordinates.",
+      "verdict": "supported",
+      "sourceLine": "The proof isolates a property of smooth positive volume that remains useful after an arbitrary measurable change of coordinates."
+    },
+    {
+      "text": "The switched points are spread at most twice as thickly as the volume.",
+      "verdict": "supported",
+      "sourceLine": "on the retained pairs is bounded by twice the original volume."
+    },
+    {
+      "text": "Each longer word is a concatenation of shorter words.",
+      "verdict": "supported",
+      "sourceLine": "Each word at the next level is a concatenation of words at the preceding level"
+    },
+    {
+      "text": "Two independent label lists are unlikely to pass most of the tests.",
+      "verdict": "supported",
+      "sourceLine": "The entropy of the label lists makes two independent lists unlikely to satisfy most of the orthogonality tests."
+    },
+    {
+      "text": "A smooth switch would force agreement with one legal point, whose lists pass the tests.",
+      "verdict": "supported",
+      "sourceLine": "Those lists do satisfy the tests."
+    },
+    {
+      "text": "The paper does not claim an obstruction for measures merely equivalent to volume.",
+      "verdict": "supported",
+      "sourceLine": "we do not assert an obstruction for every equivalent-to-volume invariant measure."
+    },
+    {
+      "text": "Lean checks a finite-entropy version; the zero-entropy conclusion is outside it.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
