@@ -1,0 +1,218 @@
+{
+  "id": "124",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf",
+      "label": "A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/124.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The best schedule for one-hour jobs with order rules on three machines can be found in polynomial time.",
+  "scope": "The result needs exactly three identical machines, jobs of equal length, and an explicitly listed set of order rules.",
+  "plain": "Some jobs must wait for others to finish, and three identical machines share the work. The aim is to finish the last job as early as possible. This paper proves that a method exists whose running time grows like a fixed power of the input size. Garey and Johnson listed this question as open in 1979. The power in the bound is enormous, so the method is not practical.",
+  "doesNot": "This does not give a practical program, and it does not cover four or more machines.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Garey and Johnson, listed as an open problem",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It settles, on the polynomial-time side, a scheduling question open since 1979."
+  },
+  "explanation": "Picture nine jobs that each take one hour, and three identical machines. Each machine runs one job at a time. Three of the jobs form a chain. The first must finish before the second starts, and the second before the third. The other six jobs can run whenever there is room. The goal is to finish everything as early as possible. The finishing time of the last job is called the makespan.\n\nThe best schedule takes three hours. Each hour runs one chain job beside two free jobs. Now suppose the first hour is filled with three free jobs instead. The chain cannot start until hour two, so its last job ends in hour four. One poor early choice costs a whole extra hour. With order rules (called precedence constraints), early choices can quietly ruin later ones.\n\nTrying everything does not scale. Ignoring the order rules, nine jobs can be split into three ordered groups of three in 1,680 ways. Thirty jobs over ten hours allow about 4.4 × 10^24 splits. So researchers want a polynomial-time method. That means its number of steps grows at most like a fixed power of the input size.\n\nFor two machines the question was settled long ago. Fujii, Kasami and Ninomiya treated it in 1969. Coffman and Graham gave an optimal method in 1972. If the number of machines is part of the input, Ullman showed in 1975 that the problem is NP-complete. That puts it in a large family of problems with no known fast method. Three fixed machines sat in between. Garey and Johnson listed that case as an open problem in their 1979 book.\n\nPartial answers followed. Garey, Johnson, Tarjan and Yannakakis handled three machines in linear time when the order rules form opposing forests. Dolev and Warmuth gave a polynomial method when the chains of rules have bounded length. In 2025, Nederlof, Swennenhuis and Węgrzycki gave an exact method for any rules. For three machines it runs in time 2^{O(√n log n)} for n jobs. That beats trying everything, but it is not polynomial. Other work found schedules within any fixed percentage of the best one.\n\nThis paper proves that a polynomial-time method exists for three machines and any order rules. It finds a schedule with the smallest makespan. Given a deadline, it decides exactly whether all jobs can finish by then. It also returns a schedule when the answer is yes.\n\nThe natural plan is to cut a good schedule at a few chosen hours. The jobs in each gap between cuts can then be rearranged on their own. Rearranging them does not change their order relative to any job outside the gap. So one could solve gaps separately and reuse the answers. The obstacle is how many gaps there are. Knowing the jobs at a gap's two edges does not pin down which jobs sit inside. Describing a gap through all the cuts above it can need an ever longer recipe.\n\nThe paper removes this obstacle with short descriptions. It shows that every schedule that meets the deadline can be cut so that each gap has a short recipe. A recipe combines simple yes-or-no tests on a job. One test asks whether the job must come before or after some group of three jobs. Another asks where the job falls in one fixed ordering of all jobs. The method allows recipes of up to 10,000 tests. The proof needs fewer than 500. Crucially, the length does not grow with the depth of cutting. Only polynomially many job sets then need checking. The method checks them from smallest to largest and glues accepted pieces into a full schedule.\n\nIn the nine-job example, the method would always find the three-hour schedule. But fast in theory is not fast in practice. The paper bounds the steps by (L + 2)^150020, where L is the input length in bits. For a 10-bit input, that bound is a number with about 162,000 digits. The paper makes no practical running-time claim. The theorem covers exactly three machines, one-hour jobs, and no release dates or communication delays.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers one fixed algorithm that finds a minimum-makespan schedule and decides a given deadline exactly. Its running time is polynomial in the input length. The scope note links this to a fixed reference statement for a tool called Comparator. It does not mention the paper's specific exponent. No specialists have published a review yet.",
+  "hypeCheck": "Major in theory if the proof holds, with a Lean check of the main theorem listed. The running-time bound is astronomically large, so nothing changes in practice, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Makespan",
+      "meaning": "The time at which the last job finishes."
+    },
+    {
+      "term": "Precedence constraint",
+      "meaning": "A rule that one job must finish before another starts."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "A running time that grows at most like a fixed power of the input size."
+    },
+    {
+      "term": "NP-complete",
+      "meaning": "Belonging to a large family of problems that have no known fast method."
+    },
+    {
+      "term": "Opposing forest",
+      "meaning": "Order rules made of tree-shaped pieces, some branching forward and some backward."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Fujii, T. Kasami and K. Ninomiya, “Optimal Sequencing of Two Equivalent Processors”, SIAM Journal on Applied Mathematics 17 (1969), 784–789",
+      "url": "https://doi.org/10.1137/0117070"
+    },
+    {
+      "id": 2,
+      "cite": "E. G. Coffman Jr. and R. L. Graham, “Optimal Scheduling for Two-Processor Systems”, Acta Informatica 1 (1972)",
+      "url": "https://doi.org/10.1007/BF00288685"
+    },
+    {
+      "id": 3,
+      "cite": "J. D. Ullman, “NP-Complete Scheduling Problems”, Journal of Computer and System Sciences 10 (1975)",
+      "url": "https://doi.org/10.1016/S0022-0000(75)80008-0"
+    },
+    {
+      "id": 4,
+      "cite": "M. R. Garey and D. S. Johnson, Computers and Intractability: A Guide to the Theory of NP-Completeness, W. H. Freeman (1979), Appendix A13, OPEN8",
+      "noUrl": true
+    },
+    {
+      "id": 5,
+      "cite": "M. R. Garey, D. S. Johnson, R. E. Tarjan and M. Yannakakis, “Scheduling Opposing Forests”, SIAM Journal on Algebraic and Discrete Methods 4 (1983), 72–93",
+      "url": "https://doi.org/10.1137/0604011"
+    },
+    {
+      "id": 6,
+      "cite": "D. Dolev and M. K. Warmuth, “Scheduling Precedence Graphs of Bounded Height”, Journal of Algorithms 5 (1984)",
+      "url": "https://doi.org/10.1016/0196-6774(84)90039-7"
+    },
+    {
+      "id": 7,
+      "cite": "J. Nederlof, C. M. F. Swennenhuis and K. Węgrzycki, “A Subexponential Time Algorithm for Makespan Scheduling of Unit Jobs with Precedence Constraints”, SODA (2025)",
+      "url": "https://doi.org/10.1137/1.9781611978322.16"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 124 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/124.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Fujii, Kasami and Ninomiya treated the two-processor case.",
+      "verdict": "supported",
+      "sourceLine": "The two-processor case was treated by Fujii, Kasami, and Ninomiya"
+    },
+    {
+      "text": "Coffman and Graham gave an optimal list-scheduling algorithm.",
+      "verdict": "supported",
+      "sourceLine": "Coffman and Graham gave an optimal list-scheduling algorithm"
+    },
+    {
+      "text": "With the number of machines in the input, the problem is NP-complete (Ullman).",
+      "verdict": "supported",
+      "sourceLine": "Allowing the number of machines to be part of the input yields an NP-complete problem"
+    },
+    {
+      "text": "The fixed-three problem is OPEN8 in Garey and Johnson.",
+      "verdict": "supported",
+      "sourceLine": "The fixed-three decision problem appears as OPEN8 in Appendix~A13 of Garey and Johnson"
+    },
+    {
+      "text": "Garey, Johnson, Tarjan and Yannakakis gave a linear-time algorithm on three processors for opposing forests.",
+      "verdict": "supported",
+      "sourceLine": "Garey, Johnson, Tarjan, and Yannakakis gave a linear-time algorithm on three processors for opposing forests"
+    },
+    {
+      "text": "Dolev and Warmuth's bound is polynomial when height and machine count are fixed.",
+      "verdict": "supported",
+      "sourceLine": "This is polynomial when both … and … are fixed."
+    },
+    {
+      "text": "Nederlof, Swennenhuis and Węgrzycki's exact algorithm gives 2^{O(√n log n)} for three machines.",
+      "verdict": "supported",
+      "sourceLine": "Nederlof, Swennenhuis, and Węgrzycki developed this structural approach into an exact algorithm with running time"
+    },
+    {
+      "text": "Approximation schemes get within 1+ε for fixed machine count.",
+      "verdict": "supported",
+      "sourceLine": "For fixed machine count and fixed … Levey and Rothvoß obtained a"
+    },
+    {
+      "text": "The algorithm constructs a minimum-makespan schedule and decides a deadline exactly, returning a schedule when feasible.",
+      "verdict": "supported",
+      "sourceLine": "There is a uniform deterministic algorithm that constructs a feasible schedule of minimum makespan."
+    },
+    {
+      "text": "The running time is O((L+2)^150020) where L is the binary input length.",
+      "verdict": "supported",
+      "sourceLine": "where … is the total binary input length."
+    },
+    {
+      "text": "Reordering jobs of one gap does not change their relation to exterior jobs.",
+      "verdict": "supported",
+      "sourceLine": "reordering the jobs of one gap does not change their temporal relation to any exterior job."
+    },
+    {
+      "text": "The obstacle is the number of gaps; boundary triples do not determine a gap's job set.",
+      "verdict": "supported",
+      "sourceLine": "The obstacle is their number. Naming a gap by its two boundary triples does not by itself determine its job set"
+    },
+    {
+      "text": "Inherited descriptions can require an unbounded formula.",
+      "verdict": "supported",
+      "sourceLine": "repeatedly intersecting descriptions inherited from its ancestors can require an unbounded formula."
+    },
+    {
+      "text": "The bound on description size is independent of decomposition depth.",
+      "verdict": "supported",
+      "sourceLine": "The bound is independent of the depth of the decomposition."
+    },
+    {
+      "text": "Formulas have at most 10000 leaves; the hierarchy needs fewer than 500.",
+      "verdict": "supported",
+      "sourceLine": "the global node predicates and relative split predicates needed in the hierarchy have fewer than"
+    },
+    {
+      "text": "The algorithm processes sets in increasing order of cardinality.",
+      "verdict": "supported",
+      "sourceLine": "in increasing order of cardinality"
+    },
+    {
+      "text": "No practical running-time claim is made.",
+      "verdict": "supported",
+      "sourceLine": "no practical running-time claim is made."
+    },
+    {
+      "text": "The model has no release dates or communication delays.",
+      "verdict": "supported",
+      "sourceLine": "There are no release dates, communication delays, eligibility restrictions, or additional resources."
+    },
+    {
+      "text": "The Lean formalization covers a fixed deterministic polynomial-time algorithm for minimum makespan and exact deadline decision, with a Comparator link.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

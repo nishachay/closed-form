@@ -1,0 +1,226 @@
+{
+  "id": "112",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/main.pdf",
+      "label": "Beyond the Square-Root Exponent for Depth-Three Boolean Circuits"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/112.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One fast-to-decide problem needs three-layer circuits bigger than any 2^(A√n) for large inputs.",
+  "scope": "The bound is for OR–AND–OR circuits of depth three, at every large enough input length for each fixed A.",
+  "plain": "A three-layer circuit of OR and AND gates can answer any yes-or-no question about n input bits. Since 1989, proven size limits for explicit questions grew like 2 to the power of a constant times √n. This paper proves (Lean proof listed) that one problem a computer decides quickly beats every such constant. Its circuits eventually need more than 2 to the A√n gates, for any fixed A.",
+  "doesNot": "This does not give a bound of 2 to the power n^(1/2+ε), or any bound for deeper circuits.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1989",
+    "firstStepBy": "Johan Håstad, 2^Ω(√n) bound for parity",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it moves explicit depth-three lower bounds past the constant-times-square-root scale."
+  },
+  "explanation": "Take two input bits, x1 and x2. Ask whether exactly one of them is 1. Here is a small circuit that answers. Two bottom gates are OR gates. One checks \"x1 or x2\". The other checks \"not x1 or not x2\". A middle AND gate demands that both checks pass. A top OR gate passes that answer out. Try all four inputs. The circuit says yes on 01 and 10, and no on 00 and 11. That is correct, and it used four gates.\n\nThis shape is called a depth-three OR–AND–OR circuit. It has exactly three layers of gates. Each gate may read as many wires as it likes. Flipping an input to \"not\" is free. Each bottom OR gate is a clause (an OR of inputs or their opposites). Each middle AND gate demands a list of clauses at once, which is called a CNF. So the whole circuit says yes when at least one middle CNF is satisfied. Every yes-or-no question about n bits can be answered this way. The cost is the total number of gates. The hard part is proving that some question needs many gates.\n\nLower bounds of this kind are old. In 1989, Johan Håstad showed that parity needs about 2 to the power c√n gates. Parity asks whether the number of 1s is odd, and c is some fixed constant. At n = 400 bits, √n is 20, and 2 to the 20 is about 1.05 million. In 1999, Paturi, Pudlák and Zane found parity's exact scale. It is about n to the 1/4 times 2 to the √n gates. At 400 bits, that is about 4.7 million, give or take a constant factor. A matching upper bound exists, so parity can never do better. In 2005, a related bound for another function reached an exponent of about 1.28√n. All of these stay at a constant times √n. A 2026 conference paper still lists going beyond that scale as open.\n\nThis paper proves the next step, and a Lean proof is listed. It builds one language: a fixed rule saying which strings of bits to accept. A single program decides it in polynomial time, meaning its running time grows like a fixed power of n. Pick any constant A, such as 3. Then for all large enough n, every such circuit for this language needs more than 2 to the A√n gates. The program is fixed first, and A is chosen after. So the gate exponent eventually beats every constant times √n.\n\nThe word \"eventually\" matters. How large n must be depends on A. For A = 3 at 400 bits, 2 to the 60 would be about 1.15 quintillion gates. The theorem does not claim that number at 400 bits. It also does not reach 2 to the power n^(1/2+ε) for a fixed ε above zero. That stronger question, asked in 1995, stays open. The result covers depth three only. It counts every gate, including the bottom layer. That matters because any question can be written as one giant CNF.\n\nThe proof needs a question whose answers look unrelated to every fairly wide CNF. The obstacle is that a CNF may hold an enormous number of clauses. The paper's main tool removes that count. It fixes most input bits at random and leaves a few free. Each wide CNF then becomes a weighted mix of narrow CNFs. On average, the total weight stays at most two, however many clauses there were.\n\nThe language itself takes data bits plus extra parameter bits. It hashes the data and plugs the result into a polynomial. The parameter bits choose the hash and the polynomial. Fixing them picks out one function of the data bits. For each target A, a random choice gives one with the needed property. The program never searches for that choice. It just uses whatever bits it is handed.\n\nThe last step is counting. A circuit with S gates has at most S middle CNFs. Each one can say yes on only a tiny share of inputs. The chosen function says yes on at least a quarter of them. Too few gates cannot cover that many yes answers.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. A tool called Comparator matches it against a fixed reference statement. That statement covers one polynomial-time language and every constant A, with unrestricted fan-in and sharing. It does not assert a fixed exponent above one half, or any bound beyond depth three. No specialists have published a review yet.",
+  "hypeCheck": "A Lean proof of the main theorem is listed with a Comparator statement. Specialists have not published a review. The gain is past every constant times √n, not a larger fixed power of n.",
+  "glossary": [
+    {
+      "term": "Depth-three OR–AND–OR circuit",
+      "meaning": "A circuit with a layer of OR gates, then AND gates, then one OR gate on top."
+    },
+    {
+      "term": "Clause",
+      "meaning": "An OR of some input bits or their opposites."
+    },
+    {
+      "term": "CNF",
+      "meaning": "An AND of clauses: it says yes only when every clause is satisfied."
+    },
+    {
+      "term": "Parity",
+      "meaning": "The question of whether an input has an odd number of 1s."
+    },
+    {
+      "term": "Language",
+      "meaning": "A fixed rule saying which bit strings are accepted, at every length."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "Running time that grows at most like a fixed power of the input length."
+    },
+    {
+      "term": "Lower bound",
+      "meaning": "A proof that every circuit for a question needs at least some number of gates."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Håstad, “Almost optimal lower bounds for small depth circuits”, Randomness and Computation, Advances in Computing Research 5 (1989), 143–170",
+      "url": "https://www.csc.kth.se/~johanh/largesmalldepth.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "J. Håstad, S. Jukna and P. Pudlák, “Top-down lower bounds for depth-three circuits”, Computational Complexity 5(2) (1995), 99–112",
+      "url": "https://doi.org/10.1007/BF01268140"
+    },
+    {
+      "id": 3,
+      "cite": "R. Paturi, P. Pudlák and F. Zane, “Satisfiability coding lemma”, Chicago Journal of Theoretical Computer Science, Article 11 (1999)",
+      "url": "https://scholar.lib.vt.edu/ejournals/CJTCS/cjtcs-mirror/articles/1999/11/contents.html"
+    },
+    {
+      "id": 4,
+      "cite": "R. Paturi, P. Pudlák, M. E. Saks and F. Zane, “An improved exponential-time algorithm for k-SAT”, Journal of the ACM 52(3) (2005), 337–364",
+      "url": "https://doi.org/10.1145/1066100.1066101"
+    },
+    {
+      "id": 5,
+      "cite": "M. Gurumukhani, D. Kleber, R. Paturi, C. Rosin and N. Talebanfard, “Optimal depth-three circuits for inner product”, CCC 2026, LIPIcs 383, 27:1–27:25",
+      "url": "https://doi.org/10.4230/LIPIcs.CCC.2026.27"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Beyond the Square-Root Exponent for Depth-Three Boolean Circuits” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Beyond-the-Square-Root-Exponent-for-Depth-Three-Boolean-Circuits-September-23-2026/main.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 112 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/112.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A depth-three OR–AND–OR circuit is a disjunction of CNFs.",
+      "verdict": "supported",
+      "sourceLine": "Such a circuit is a disjunction of CNFs: conjunctions of clauses, each a disjunction of literals."
+    },
+    {
+      "text": "Every gate is counted, including the bottom layer; input negations are free.",
+      "verdict": "supported",
+      "sourceLine": "Every bottom gate and the output gate are counted.  Input negations are free."
+    },
+    {
+      "text": "Håstad's method gives the 2^Ω(√n) depth-three lower bound for parity.",
+      "verdict": "supported",
+      "sourceLine": "stad's random-restriction and switching method gives the … depth-three lower bound for parity"
+    },
+    {
+      "text": "Håstad's paper is from 1989.",
+      "verdict": "supported",
+      "sourceLine": "JAI Press, 1989."
+    },
+    {
+      "text": "Paturi, Pudlák and Zane obtained the sharp parity bound Ω(n^(1/4) 2^√n), matching the upper bound within a constant factor.",
+      "verdict": "supported",
+      "sourceLine": "then obtained the sharp parity bound … through their satisfiability coding lemma, matching the upper bound within a constant factor"
+    },
+    {
+      "text": "Parity itself cannot witness the improvement.",
+      "verdict": "supported",
+      "sourceLine": "Thus parity itself cannot witness the improvement sought here."
+    },
+    {
+      "text": "Paturi, Pudlák, Saks and Zane gave a code-membership bound with leading exponent (π/√6)√n.",
+      "verdict": "supported",
+      "sourceLine": "Pudl\\'ak, Saks, and Zane to a code-membership lower bound with leading exponent"
+    },
+    {
+      "text": "These bounds remain at the constant-times-square-root scale.",
+      "verdict": "supported",
+      "sourceLine": "These bounds remain at the constant-times-square-root scale."
+    },
+    {
+      "text": "The problem is still identified as open in a 2026 paper.",
+      "verdict": "supported",
+      "sourceLine": "and still identified as open in"
+    },
+    {
+      "text": "One polynomial-time language has S_3(f_n) > 2^(A√n) for every A > 0 and every n ≥ N_A.",
+      "verdict": "supported",
+      "sourceLine": "Equivalently, for every real … , there is an integer … such that"
+    },
+    {
+      "text": "The language and its algorithm are fixed before A is chosen.",
+      "verdict": "supported",
+      "sourceLine": "must be fixed before … is chosen."
+    },
+    {
+      "text": "The result is weaker than a bound 2^(n^(1/2+ε)) for fixed ε, the question raised in 1995.",
+      "verdict": "supported",
+      "sourceLine": "It is weaker than a lower bound"
+    },
+    {
+      "text": "Every Boolean function is a single CNF, so the total gate count is essential.",
+      "verdict": "supported",
+      "sourceLine": "every Boolean function has a representation by a single CNF.  The total gate count in Theorem … is therefore essential."
+    },
+    {
+      "text": "The proof needs a function with small correlation with every moderately wide CNF.",
+      "verdict": "supported",
+      "sourceLine": "The circuit argument needs a function whose sign has small correlation with every moderately wide CNF."
+    },
+    {
+      "text": "After a random restriction, a wide CNF becomes a signed combination of narrow CNFs with expected coefficient mass at most two, independent of the clause count.",
+      "verdict": "supported",
+      "sourceLine": "a constant … makes the expected total absolute coefficient mass at most two, independently of the number of clauses."
+    },
+    {
+      "text": "Membership evaluates a polynomial at a linear hash of the data.",
+      "verdict": "supported",
+      "sourceLine": "Membership evaluates a polynomial at a linear hash of the data, in the quotient ring specified by another input block."
+    },
+    {
+      "text": "The evaluator uses the supplied bits and never searches for a hard slice.",
+      "verdict": "supported",
+      "sourceLine": "The language's evaluator simply uses the supplied bits; it never has to find a hard slice or test irreducibility."
+    },
+    {
+      "text": "A circuit with S gates has at most S middle CNFs.",
+      "verdict": "supported",
+      "sourceLine": "Finally, a circuit with … total gates has at most … middle CNFs"
+    },
+    {
+      "text": "The hard slice accepts at least a quarter of inputs.",
+      "verdict": "supported",
+      "sourceLine": "The accepted set of the slice consequently has density"
+    },
+    {
+      "text": "The depth stays three throughout.",
+      "verdict": "supported",
+      "sourceLine": "The depth remains three throughout."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "The Lean scope note lists a formal result with a Comparator statement, not a fixed exponent above one half or unrestricted depth.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

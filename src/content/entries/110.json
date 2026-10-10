@@ -1,0 +1,231 @@
+{
+  "id": "110",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Squared-logarithmic-randomized-k-server-on-arbitrary-metrics-September-24-2026/Squared-logarithmic-randomized-k-server-on-arbitrary-metrics-September-24-2026.pdf",
+      "label": "Squared-logarithmic randomized k-server on arbitrary metrics"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-computation-of-the-squared-logarithmic-k-server-bound-September-24-2026/Uniform-computation-of-the-squared-logarithmic-k-server-bound-September-24-2026.pdf",
+      "label": "Uniform computation of the squared-logarithmic k-server bound"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/110.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Randomized k-server costs at most a squared-logarithm factor on every space, matching the known lower bound.",
+  "scope": "Calls are fixed in advance, k is at least 2, and the space has at least k + 1 points. A fixed extra cost is allowed.",
+  "plain": "In the k-server problem, k movable servers answer calls in a space, paying the distance moved. This paper proves that a coin-flipping rule can stay within a fixed number times (log(k+1))² of the best cost in hindsight. It holds on every space, even infinite ones. A 2023 result showed that some spaces force a factor of this order. A companion paper makes the rule computable on finite spaces, but its fixed extra cost may be enormous.",
+  "doesNot": "This does not give the size of the constant C or a useful bound on the extra startup cost.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2023",
+    "firstStepBy": "Bubeck, Coester and Rabani, the squared-logarithmic lower bound",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles the order of the randomized k-server ratio on every space. The number of points drops out."
+  },
+  "explanation": "Picture three spots, A, B and C, each one mile from the other two. You run two repair vans, parked at A and B. Calls arrive one at a time. A van must drive to each called spot, and you pay for every mile. Say the calls run C, A, B, C, A, B, and so on, twelve calls in all. One simple rule sends the van whose spot was called longest ago. On this list it drives every single time, 12 miles in total. Someone who knew the whole list in advance would drive only 6.\n\nThis is the k-server problem, here with k = 2 servers (movable units, like the vans). An online rule (one that must act before seeing later calls) is judged by its competitive ratio. That is the worst factor by which its cost exceeds the best cost in hindsight. A fixed extra amount is allowed. Mark Manasse, Lyle McGeoch and Daniel Sleator introduced the problem. They showed that no fixed rule beats a ratio of k on a space with more than k points. The example hints why. Calls can always target the one empty spot.\n\nCoin flips help. A rule that flips coins can hide its next move. The list of calls must then be fixed in advance, without seeing the coins. This setting is called an oblivious adversary. When all distances are equal, the problem is called paging. There, McGeoch and Sleator reached the best possible ratio, 1 + 1/2 + … + 1/k. For k = 100 that sum is about 5.19, against 100 for rules without coins. It grows like the natural logarithm of k (ln 100 is about 4.6). Many expected a logarithmic ratio on every space. That guess was the randomized k-server conjecture.\n\nIn 2023, Sébastien Bubeck, Christian Coester and Yuval Rabani disproved it. They built spaces with k + 1 points that force a ratio of order (log k)², the logarithm squared. So the squared logarithm is the best order one can hope for on every space. Upper bounds lagged behind. In 2015, Bansal, Buchbinder, Mądry and Naor gave the first bound in powers of logarithms for finite spaces. Its bound also grows with n, the number of points. In 2018, Bubeck, Cohen, Lee, Lee and Mądry reached (log k)² on special tree-shaped spaces. Carrying that to a general space costs an extra factor of log n. James Lee proposed trees that change as calls arrive, but his general claim was withdrawn after a gap.\n\nThe first paper proves a ratio of C times (log(k+1))² on every space, for one fixed number C. The same C works for every space and every k of at least 2. The space needs at least k + 1 points. It may be infinite, and its distances may be unbounded. For each space and starting position, one rule handles every finite list of calls. A fixed extra amount, B, is allowed, depending on the space and the start but not on the list. If the servers start at different points, B is zero.\n\nThe single difficulty was the size of the space. A fixed tree picture of a space distorts its distances by a factor that grows with n. The paper lets its grouping of points change as calls come in. It steers those changes by where a hidden best solution is likely to be. It then charges each change against real movement, so the changes stay affordable. One logarithm comes from the changing groups and one from sharing servers down the tree.\n\nReturn to the vans and scale up. The theorem does not say how large C is. So it does not promise beating a ratio of 100 at k = 100. Its force is in how slowly the bound grows. At k = 100, (ln 101)² is about 21.3. At k = 1,000, (ln 1,001)² is about 47.7. The number of servers grew tenfold, and that factor grew about 2.2-fold. The number of points, even infinitely many, no longer enters it.\n\nThe first paper does not claim its rule can be computed quickly. The second paper claims to fill part of that gap, for finite spaces with rational distances. It builds one algorithm whose setup time is polynomial (bounded by a fixed power) in the input's length in bits. The time for call number t may also grow with the number of binary digits of t. The price sits in the extra amount B. It is finite but may be enormous. The algorithm may serve a huge number of early calls with one fixed server before its full rule takes over. Coester and Cosson had faster methods, but their ratio on general spaces keeps a log n factor.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both main statements, according to the Lean scope note. They are the squared-logarithmic bound on every space and the computable algorithm on finite rational spaces. The note does not claim the extra amount B is polynomially bounded. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has checked formal versions of both main statements. The constant C has no stated size. The startup cost may be enormous. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "k-server problem",
+      "meaning": "Moving k servers around a space to answer calls at points, paying the distance moved."
+    },
+    {
+      "term": "Competitive ratio",
+      "meaning": "The worst factor by which an online rule's cost exceeds the best cost in hindsight, up to a fixed extra amount."
+    },
+    {
+      "term": "Online rule",
+      "meaning": "A rule that must act on each call before seeing the later ones."
+    },
+    {
+      "term": "Oblivious adversary",
+      "meaning": "A model where the list of calls is fixed in advance, without seeing the rule's coin flips."
+    },
+    {
+      "term": "Paging",
+      "meaning": "The k-server problem when all distances between points are equal, as in a computer cache."
+    },
+    {
+      "term": "Natural logarithm",
+      "meaning": "The power to which the number e, about 2.718, must be raised to give a number; ln 100 is about 4.6."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "Running time bounded by a fixed power of the input's length."
+    },
+    {
+      "term": "Metric space",
+      "meaning": "A set of points with a distance between every pair that obeys the usual triangle rule."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. S. Manasse, L. A. McGeoch and D. D. Sleator, “Competitive Algorithms for Server Problems”, Journal of Algorithms 11(2) (1990), 208–230",
+      "url": "https://doi.org/10.1016/0196-6774(90)90003-W"
+    },
+    {
+      "id": 2,
+      "cite": "L. A. McGeoch and D. D. Sleator, “A Strongly Competitive Randomized Paging Algorithm”, Algorithmica 6 (1991), 816–825",
+      "url": "https://doi.org/10.1007/BF01759073"
+    },
+    {
+      "id": 3,
+      "cite": "S. Bubeck, C. Coester and Y. Rabani, “The Randomized k-Server Conjecture Is False!”, STOC 2023, 581–594",
+      "url": "https://doi.org/10.1145/3564246.3585132"
+    },
+    {
+      "id": 4,
+      "cite": "N. Bansal, N. Buchbinder, A. Mądry and J. Naor, “A Polylogarithmic-Competitive Algorithm for the k-Server Problem”, Journal of the ACM 62(5) (2015)",
+      "url": "https://doi.org/10.1145/2783434"
+    },
+    {
+      "id": 5,
+      "cite": "S. Bubeck, M. B. Cohen, J. R. Lee, Y. T. Lee and A. Mądry, “k-Server via Multiscale Entropic Regularization”, STOC 2018, 3–16",
+      "url": "https://doi.org/10.1145/3188745.3188798"
+    },
+    {
+      "id": 6,
+      "cite": "J. R. Lee, “Fusible HSTs and the Randomized k-Server Conjecture”, FOCS 2018, and erratum",
+      "url": "https://homes.cs.washington.edu/~jrl/papers/kserver-erratum.html"
+    },
+    {
+      "id": 7,
+      "cite": "C. Coester and R. Cosson, “Randomized k-Server in Polynomial Time”, ICALP 2026, LIPIcs 374, 65:1–65:20",
+      "url": "https://doi.org/10.4230/LIPIcs.ICALP.2026.65"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 110: “Squared-logarithmic randomized k-server on arbitrary metrics” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Squared-logarithmic-randomized-k-server-on-arbitrary-metrics-September-24-2026/Squared-logarithmic-randomized-k-server-on-arbitrary-metrics-September-24-2026.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 110: “Uniform computation of the squared-logarithmic k-server bound” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-computation-of-the-squared-logarithmic-k-server-bound-September-24-2026/Uniform-computation-of-the-squared-logarithmic-k-server-bound-September-24-2026.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean doc for family 110 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/110.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Manasse, McGeoch and Sleator introduced the k-server problem and proved the deterministic lower bound k on every metric with more than k points.",
+      "verdict": "supported",
+      "sourceLine": "on every metric with more than \\(k\\) points and conjectured that it is"
+    },
+    {
+      "text": "Requests fixed independently of the policy's random choices is the oblivious-adversary model.",
+      "verdict": "supported",
+      "sourceLine": "policy's random choices, the usual oblivious-adversary model."
+    },
+    {
+      "text": "McGeoch and Sleator attained the exact paging bound H_k.",
+      "verdict": "supported",
+      "sourceLine": "exact bound \\(H_k=\\sum_{i=1}^k i^{-1}\\) \\cite{MS91}."
+    },
+    {
+      "text": "The folklore randomized k-server conjecture predicted O(log k) on every metric.",
+      "verdict": "supported",
+      "sourceLine": "predicted \\(O(\\log k)\\) on every metric."
+    },
+    {
+      "text": "Bubeck, Coester and Rabani found (k+1)-point metrics requiring ratio Omega(log^2 k).",
+      "verdict": "supported",
+      "sourceLine": "competitive ratio \\(\\Omega(\\log^2 k)\\), even allowing a fixed additive"
+    },
+    {
+      "text": "Bansal, Buchbinder, Mądry and Naor gave the first polylogarithmic bound for arbitrary finite metrics.",
+      "verdict": "supported",
+      "sourceLine": "the first polylogarithmic bound for arbitrary finite metrics,"
+    },
+    {
+      "text": "Bubeck, Cohen, Lee, Lee and Mądry achieved O(log^2 k) on HSTs.",
+      "verdict": "supported",
+      "sourceLine": "Bubeck, Cohen, Lee, Lee, and Mądry achieved \\(O(\\log^2 k)\\) on HSTs"
+    },
+    {
+      "text": "The static embedding reduction yields O(log^2 k log n) on general finite metrics.",
+      "verdict": "supported",
+      "sourceLine": "The static embedding reduction yields \\(O(\\log^2 k\\log n)\\) on"
+    },
+    {
+      "text": "Lee's general competitive-ratio claim was withdrawn after a gap.",
+      "verdict": "supported",
+      "sourceLine": "Its general competitive-ratio claim was withdrawn after a gap in"
+    },
+    {
+      "text": "There is an absolute constant C such that for every k ≥ 2 and every metric space with at least k+1 points a policy achieves the bound.",
+      "verdict": "supported",
+      "sourceLine": "integer \\(k\\ge2\\), every metric space \\((X,d)\\) with at least \\(k+1\\)"
+    },
+    {
+      "text": "B may depend on the space, k and the start, but not on the sequence; one policy serves all sequences; B = 0 for distinct starts.",
+      "verdict": "supported",
+      "sourceLine": "horizons. If the initial positions are distinct, one may take \\(B=0\\)."
+    },
+    {
+      "text": "There is no finiteness or boundedness assumption on the space and no computational-efficiency claim for the policy.",
+      "verdict": "supported",
+      "sourceLine": "\\(X\\), and no computational-efficiency claim for the policy."
+    },
+    {
+      "text": "The partition schedule is driven by the posterior of a hidden comparator.",
+      "verdict": "supported",
+      "sourceLine": "construction. Here the partition schedule is driven by the posterior"
+    },
+    {
+      "text": "One logarithm comes from the partition estimate and one from the allocation estimate.",
+      "verdict": "supported",
+      "sourceLine": "partition estimate and one from the allocation estimate; rounding"
+    },
+    {
+      "text": "The uniform algorithm has polynomial preprocessing and per-request cost polynomial in L plus the length of the request counter.",
+      "verdict": "supported",
+      "sourceLine": "these data in at most \\(p(L)\\) bit operations and serves request \\(r_t\\),"
+    },
+    {
+      "text": "The additive constant is finite but may be enormous, and the algorithm may serve many early requests with one fixed label.",
+      "verdict": "supported",
+      "sourceLine": "requests immediately, but may serve an enormous initial number of them"
+    },
+    {
+      "text": "Coester and Cosson obtain ratio O(log n log^2 k) on arbitrary n-point metrics in polynomial time.",
+      "verdict": "supported",
+      "sourceLine": "and ratio \\(O(\\log n\\log^2 k)\\) on arbitrary \\(n\\)-point metrics, with"
+    },
+    {
+      "text": "Lean has formal proofs of both main statements; the additive constant is not claimed to be polynomially bounded.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

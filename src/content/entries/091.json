@@ -1,0 +1,191 @@
+{
+  "id": "091",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026/paper.pdf",
+      "label": "The logarithmic Brunn–Minkowski conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/091.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Blending two symmetric shapes the thrifty way never loses volume below their geometric mean.",
+  "scope": "The shapes must be convex and symmetric about the origin; any dimension is allowed.",
+  "plain": "Two shapes can be blended by taking, in each direction, the geometric mean of how far each one reaches. The logarithmic Brunn–Minkowski conjecture says this blend never has less volume than the geometric mean of the two volumes. This paper proves it for all convex shapes symmetric about the origin, in every dimension (Lean proof listed). It also claims the Lp version for powers between 0 and 1. It further claims the scalar B-conjecture for even log-concave measures.",
+  "doesNot": "This does not cover convex shapes that are not symmetric about the origin.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "Böröczky, Lutwak, Yang and Zhang, conjecture posed and planar case proved",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-studied conjecture in convex geometry, where earlier proofs needed extra symmetry or nearness to a ball."
+  },
+  "explanation": "Take two boxes centred on the same point. One is 4 units wide and 1 unit tall. The other is 1 unit wide and 4 units tall. Each has area 4. Now blend them halfway. The usual blend averages each point of one box with each point of the other. Here it gives a square 2.5 units on a side, with area 6.25.\n\nThere is a thriftier blend. Describe each shape by how far it reaches in every direction. The wide box reaches 2 to the right and 0.5 upward. The tall box reaches 0.5 to the right and 2 upward. Instead of averaging the reaches, multiply them and take the square root. That is called the geometric mean. To the right it gives 1, and upward it also gives 1. The blend is the largest shape that stays within these limits in every direction. Here it is a square 2 units on a side. Its area is 4, exactly the geometric mean of the two areas, √(4 × 4).\n\nShapes need not line up so neatly. Take a square 2 units on a side, with area 4. Take a diamond whose corners sit 1 unit from the centre, with area 2. The usual halfway blend has area 3.5. The thrifty blend is the square with its four corners trimmed off. Its area is 8√2 − 8, about 3.31. The geometric mean of the two areas is √8, about 2.83. So the thrifty blend is smaller than the usual one, yet still above that mark.\n\nThe logarithmic Brunn–Minkowski conjecture says this always happens. Take any two convex shapes (no dents or holes) in any number of dimensions. Each must be origin-symmetric (unchanged when flipped through its centre). Then the thrifty blend never has less volume than the geometric mean of the two volumes. This also holds for uneven blends, such as 30 percent of one and 70 percent of the other. The thrifty blend always fits inside the usual one. So in the symmetric setting this strengthens the classical Brunn–Minkowski inequality, which makes the same promise for the usual blend.\n\nBöröczky, Lutwak, Yang and Zhang posed the conjecture in 2012 and proved it in the plane. Saroglou proved it in 2015 for shapes unchanged by every flip of a coordinate sign, like the boxes above. In 2022, Böröczky and Kalantzopoulos extended this to shapes sharing n mirror symmetries whose mirrors meet only at the centre. Other work proved local versions, for shapes very close to a ball. In 2018, Stancu announced the full inequality in a short report, but the report deferred the details.\n\nThe main obstacle is this. The geometric mean of two reach profiles need not be the reach profile of any shape. The blend must be built by cutting space with all those limits at once. The proof must work with that cut throughout. Earlier proofs leaned on extra symmetry or stayed near a ball. This paper approximates each shape by many flat strips. It then softens the strips' hard edges into smooth fading weights. The question becomes one inequality about how much a random quantity can fluctuate.\n\nTwo further results follow. The first is the Lp version for every power p between 0 and 1. It blends reaches with a power mean instead of the geometric mean. The paper claims it follows from the logarithmic case by a known argument. The second replaces volume by an even log-concave measure. That is a way of weighting space that looks the same when flipped through the centre. Blending two sets the usual way never gives less weight than the geometric mean of their weights. A bell curve centred at the origin is one example. Spreading weight evenly over a symmetric convex shape, and none outside it, is another. Using Saroglou's 2016 transfer theorem, the paper claims the same inequality for these measures. It also claims the B-conjecture in its scalar form. Scale a symmetric shape by a factor e^t. Then the logarithm of its measure is a concave function of t, meaning it bends downward.\n\nThese results need the symmetry about the centre. The theorem says nothing about shapes that are lopsided around the origin. The B-conjecture part covers scaling one shape by a single factor. It does not cover stretching different directions by different amounts.\n\nHow certain is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers every dimension and all origin-symmetric convex shapes, with no smoothness assumption. The Lp corollary and the results for measures are outside that check. No specialist review has been published yet.",
+  "hypeCheck": "Major if it holds. A Lean formalization of the main volume inequality is listed. The Lp and measure consequences are outside that check, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Convex shape",
+      "meaning": "A shape with no dents or holes: the straight segment between any two of its points stays inside."
+    },
+    {
+      "term": "Origin-symmetric",
+      "meaning": "Unchanged when every point x is replaced by its mirror point −x through the centre."
+    },
+    {
+      "term": "Geometric mean",
+      "meaning": "For two positive numbers, the square root of their product; for uneven weights, a weighted version of that."
+    },
+    {
+      "term": "Brunn–Minkowski inequality",
+      "meaning": "A classical lower bound on the volume of the usual blend of two shapes."
+    },
+    {
+      "term": "Lp blend",
+      "meaning": "A blend that combines the reaches of two shapes by a power mean with power p instead of the geometric mean."
+    },
+    {
+      "term": "Log-concave measure",
+      "meaning": "A way of weighting space in which the usual blend of two sets never weighs less than the geometric mean of their weights. Examples: a bell curve, or even weight spread over a convex shape."
+    },
+    {
+      "term": "B-conjecture",
+      "meaning": "The claim that, for such a weighting, the log of a symmetric shape's weight is concave as the shape is scaled up exponentially."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "K. J. Böröczky, E. Lutwak, D. Yang and G. Zhang, “The log-Brunn–Minkowski inequality”, Advances in Mathematics 231 (2012), 1974–1997",
+      "url": "https://doi.org/10.1016/j.aim.2012.07.015"
+    },
+    {
+      "id": 2,
+      "cite": "C. Saroglou, “Remarks on the conjectured log-Brunn–Minkowski inequality”, Geometriae Dedicata 177 (2015), 353–365",
+      "url": "https://doi.org/10.1007/s10711-014-9993-z"
+    },
+    {
+      "id": 3,
+      "cite": "C. Saroglou, “More on logarithmic sums of convex bodies”, Mathematika 62 (2016), 818–841",
+      "url": "https://doi.org/10.1112/S0025579316000061"
+    },
+    {
+      "id": 4,
+      "cite": "K. J. Böröczky and P. Kalantzopoulos, “Log-Brunn–Minkowski inequality under symmetry”, Transactions of the AMS 375 (2022), 5987–6013",
+      "url": "https://arxiv.org/abs/2002.12239v2"
+    },
+    {
+      "id": 5,
+      "cite": "A. Colesanti, G. V. Livshyts and A. Marsiglietti, “On the stability of Brunn–Minkowski type inequalities”, Journal of Functional Analysis 273 (2017), 1120–1139",
+      "url": "https://doi.org/10.1016/j.jfa.2017.04.008"
+    },
+    {
+      "id": 6,
+      "cite": "A. Stancu, “A PDE approach to geometric inequalities”, Oberwolfach Reports 15 (2018), 3262–3264",
+      "url": "https://doi.org/10.4171/OWR/2018/54"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “The logarithmic Brunn–Minkowski conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-logarithmic-Brunn-Minkowski-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 091 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/091.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper's main theorem resolves the origin-symmetric logarithmic Brunn–Minkowski conjecture.",
+      "verdict": "supported",
+      "sourceLine": "resolves the origin-symmetric logarithmic"
+    },
+    {
+      "text": "In the symmetric setting the logarithmic inequality strengthens the multiplicative form of the classical Brunn–Minkowski inequality.",
+      "verdict": "supported",
+      "sourceLine": "strengthening, in the symmetric setting, of the multiplicative form"
+    },
+    {
+      "text": "The thrifty blend fits inside the usual blend, by the arithmetic–geometric mean inequality.",
+      "verdict": "supported",
+      "sourceLine": "of the classical Brunn--Minkowski inequality: the arithmetic--geometric"
+    },
+    {
+      "text": "Böröczky, Lutwak, Yang and Zhang proved the planar case.",
+      "verdict": "supported",
+      "sourceLine": "Lutwak, Yang and Zhang proved the planar case"
+    },
+    {
+      "text": "Saroglou established the inequality for bodies unconditional with respect to the same basis.",
+      "verdict": "supported",
+      "sourceLine": "Saroglou established the inequality and studied its equality cases for"
+    },
+    {
+      "text": "Böröczky and Kalantzopoulos extended the symmetry method to bodies sharing n reflections.",
+      "verdict": "supported",
+      "sourceLine": "and Kalantzopoulos extended the symmetry method to bodies"
+    },
+    {
+      "text": "Colesanti, Livshyts and Marsiglietti established a local result near Euclidean balls.",
+      "verdict": "supported",
+      "sourceLine": "Colesanti, Livshyts and Marsiglietti established a local result near"
+    },
+    {
+      "text": "Stancu announced the all-dimensional inequality; the report deferred details.",
+      "verdict": "supported",
+      "sourceLine": "equivalent logarithmic Brunn--Minkowski inequality; the report deferred"
+    },
+    {
+      "text": "The geometric mean of two support functions need not be a support function.",
+      "verdict": "supported",
+      "sourceLine": "In general $h_K^{1-\\lambda}h_L^\\lambda$ need not itself be a support"
+    },
+    {
+      "text": "The proof approximates by symmetric polytopes cut out by slabs and smooths their indicator.",
+      "verdict": "supported",
+      "sourceLine": "As $q$ tends to infinity, this weight becomes the Gaussian weight"
+    },
+    {
+      "text": "The analytic task is a variance bound.",
+      "verdict": "supported",
+      "sourceLine": "variance bound for sums of even powers of linear forms"
+    },
+    {
+      "text": "The logarithmic case implies the symmetric Lp volume inequality for 0<p<1.",
+      "verdict": "supported",
+      "sourceLine": "The logarithmic endpoint implies the full symmetric volume inequality in"
+    },
+    {
+      "text": "Saroglou's transfer theorem carries the Lebesgue inequality to even log-concave densities.",
+      "verdict": "supported",
+      "sourceLine": "Saroglou proved that the Lebesgue inequality in"
+    },
+    {
+      "text": "The B-conjecture consequence is that t ↦ μ(e^t K) is log-concave.",
+      "verdict": "supported",
+      "sourceLine": "$K$, the function $t\\mapsto\\mu(e^tK)$ is log-concave on $\\R$"
+    },
+    {
+      "text": "The consequence for general even log-concave measures concerns scalar dilations.",
+      "verdict": "supported",
+      "sourceLine": "log-concave measures concerns scalar dilations."
+    },
+    {
+      "text": "Lean formalizes the logarithmic Brunn–Minkowski inequality for origin-symmetric convex bodies in every dimension, without smoothness assumptions; the Lp and measure consequences are not in the scope note.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}
