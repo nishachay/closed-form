@@ -1,0 +1,226 @@
+{
+  "id": "151",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-C1-Counterexample-to-the-Entropy-Conjecture-September-25-2026/article.pdf",
+      "label": "A C^1 Counterexample to the Entropy Conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/151.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A smooth-enough map can double a shape's homology while its orbits stay orderly.",
+  "scope": "The map is C¹ and not invertible, on a compact manifold of dimension at least 5. The eigenvalue sits in second homology.",
+  "plain": "Shub's entropy conjecture says that a map stretching the shape of a space must also scramble its points. This paper proves that the general C¹ version is false (Lean proof listed). It builds a map that acts like squaring on one sphere, as far as homology can see. Yet the map's topological entropy, its measure of scrambling, is zero. The map is not invertible, and the stretching shows up in second homology.",
+  "doesNot": "This does not disprove the conjecture for infinitely smooth maps, which Yomdin settled in 1987, or for invertible maps.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "Michael Shub, the entropy conjecture",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it gives a negative answer to the general C¹ self-map form of a 1974 conjecture."
+  },
+  "explanation": "Take a point on the unit circle in the complex plane and square it, again and again. Each squaring doubles its angle. Start two points 0.001 of a turn apart. After 5 squarings they are 0.032 of a turn apart. After 9 squarings the gap is 0.512 of a turn. The two points now sit almost opposite each other. A tiny difference at the start has grown into a large one.\n\nTopological entropy measures this spreading. It is the growth rate of the number of orbits you can tell apart at a fixed precision. An orbit is the path a point traces as the map repeats. If the number of distinguishable orbits doubles at each step, the entropy is log 2, about 0.693. Zero entropy means the count grows slower than any exponential rate.\n\nSquaring also leaves a mark on shape. Add a point at infinity to the complex plane and it becomes a sphere, the Riemann sphere. Squaring wraps this sphere around itself twice. The point 1 has exactly two sources, 1 and −1. Both wrap with the same orientation, so the wrapping number, called the degree, is 2. Homology (an algebraic count of the holes and surfaces in a space) turns this into a number. On the sphere's surface, squaring acts as multiplication by 2.\n\nIn 1974, Michael Shub proposed a link between these two views. His entropy conjecture says that growth seen in homology should force orbit complexity. Precisely, entropy should be at least the logarithm of the spectral radius of the homology action. The spectral radius is the largest stretching factor, or eigenvalue, of that action. An eigenvalue of 2 would therefore force entropy of at least log 2. The general version asks this of every C¹ map of a compact smooth manifold without boundary. A C¹ map is one whose first derivatives exist and vary continuously. A compact manifold without boundary is a closed, finite space like a sphere.\n\nMany cases were already settled in favour of the conjecture. Manning's inequality handles first homology for every continuous map. A bound by Misiurewicz and Przytycki handles the top-dimensional part, through the degree. Yomdin proved the full inequality in 1987 for infinitely smooth maps. Saghin and Xia, and later Liao, Viana and Yang, proved it for restricted classes of invertible C¹ maps. Counterexamples were known only for rougher maps, called Lipschitz maps. The paper notes that no positive result covers one combination. That combination is finite smoothness, maps that are not invertible, and homology in a middle dimension.\n\nThis paper builds a map in exactly that gap. Its space is a circle times several copies of the sphere, of dimension at least 5. The map is C¹ and not invertible. Its entropy is zero. Yet on second homology it has eigenvalue 2. So the conjecture's lower bound, at least log 2, fails for it. The first-homology and top-dimensional results remain untouched, because the eigenvalue sits in the middle.\n\nThe obstacle is plain. One sphere coordinate must look like squaring to homology. But squaring spreads orbits and creates entropy. The map has to keep the doubling in shape while removing it from motion. The paper uses a circle coordinate as a clock that can slow down almost to a halt. Extra sphere coordinates, called registers, store small signals and later feed them into the squaring coordinate. As a result, every orbit drifts toward one of two simple sets, and both carry zero entropy. The hardest step is an infinite sum over all possible waiting times. A finite version would miss the push needed after a very long delay. The paper calls the link to squaring homological, not dynamical. Homology still sees the doubling, but orbits no longer follow it.\n\nThe gap in the result is just as specific. It concerns C¹ maps only, so Yomdin's theorem for infinitely smooth maps still stands. The map is not invertible, so the question for invertible maps is not addressed here. The theorem says some number of registers works, but its statement does not give that number.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main statement. That statement says a noninvertible C¹ map exists with entropy zero and an eigenvalue 2 on second homology. A Comparator statement is listed for it. No specialist review of the paper has been published.",
+  "hypeCheck": "Major within its scope, if the construction holds. Lean has checked a formal statement of the counterexample, but no specialist review is published. The result covers C¹ noninvertible maps only; smoother and invertible versions are untouched.",
+  "glossary": [
+    {
+      "term": "Topological entropy",
+      "meaning": "The growth rate of the number of orbits you can tell apart at a fixed precision."
+    },
+    {
+      "term": "Orbit",
+      "meaning": "The path a point traces when a map is applied over and over."
+    },
+    {
+      "term": "Homology",
+      "meaning": "An algebraic count of the holes and surfaces in a space, on which a map acts."
+    },
+    {
+      "term": "Degree",
+      "meaning": "How many times a map wraps a sphere around itself, counted with orientation."
+    },
+    {
+      "term": "Spectral radius",
+      "meaning": "The largest stretching factor, or eigenvalue size, of a linear action."
+    },
+    {
+      "term": "C¹ map",
+      "meaning": "A map whose first derivatives exist and vary continuously."
+    },
+    {
+      "term": "Noninvertible map",
+      "meaning": "A map that sends some different points to the same point, so it cannot be undone."
+    },
+    {
+      "term": "Riemann sphere",
+      "meaning": "The complex plane with one point at infinity added, which makes it a sphere."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Shub, “Dynamical systems, filtrations and entropy”, Bulletin of the American Mathematical Society 80(1) (1974), 27–41",
+      "url": "https://doi.org/10.1090/S0002-9904-1974-13344-6"
+    },
+    {
+      "id": 2,
+      "cite": "A. Manning, “Topological entropy and the first homology group”, Dynamical Systems—Warwick 1974, Lecture Notes in Mathematics 468 (1975), 185–190",
+      "url": "https://doi.org/10.1007/BFb0121394"
+    },
+    {
+      "id": 3,
+      "cite": "M. Misiurewicz and F. Przytycki, “Topological entropy and degree of smooth mappings”, Bull. Acad. Polon. Sci. Sér. Sci. Math. Astronom. Phys. 25(6) (1977), 573–574 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 4,
+      "cite": "Y. Yomdin, “Volume growth and entropy”, Israel Journal of Mathematics 57 (1987), 285–300",
+      "url": "https://doi.org/10.1007/BF02766215"
+    },
+    {
+      "id": 5,
+      "cite": "R. Saghin and Z. Xia, “The entropy conjecture for partially hyperbolic diffeomorphisms with 1-D center”, Topology and its Applications 157(1) (2010), 29–34",
+      "url": "https://doi.org/10.1016/j.topol.2009.04.053"
+    },
+    {
+      "id": 6,
+      "cite": "G. Liao, M. Viana and J. Yang, “The entropy conjecture for diffeomorphisms away from tangencies”, Journal of the European Mathematical Society 15 (2013), 2043–2060",
+      "url": "https://doi.org/10.4171/JEMS/413"
+    },
+    {
+      "id": 7,
+      "cite": "M. Shub, “All, most, some differentiable dynamical systems”, Proceedings of the ICM, Madrid 2006, Vol. III (2007), 99–120",
+      "url": "https://doi.org/10.4171/022-3/5"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 151: “A C^1 Counterexample to the Entropy Conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-C1-Counterexample-to-the-Entropy-Conjecture-September-25-2026/article.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean doc for family 151 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/151.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Shub's entropy conjecture relates orbit complexity to growth visible in homology.",
+      "verdict": "supported",
+      "sourceLine": "Shub's entropy conjecture relates orbit complexity to the growth visible"
+    },
+    {
+      "text": "The general C¹ formulation asks the inequality for every C¹ map of a compact smooth manifold without boundary.",
+      "verdict": "supported",
+      "sourceLine": "of a compact smooth manifold without boundary"
+    },
+    {
+      "text": "Shub distinguishes earlier Lipschitz counterexamples from the C¹ question.",
+      "verdict": "supported",
+      "sourceLine": "Lipschitz counterexamples discussed by Pugh"
+    },
+    {
+      "text": "Manning's inequality controls the action on first homology for every continuous map.",
+      "verdict": "supported",
+      "sourceLine": "Manning's inequality controls the action on"
+    },
+    {
+      "text": "The Misiurewicz–Przytycki bound concerns degree, hence top-dimensional homology.",
+      "verdict": "supported",
+      "sourceLine": "lower bound concerns topological degree, hence top-dimensional"
+    },
+    {
+      "text": "Yomdin proved the inequality for infinitely smooth maps.",
+      "verdict": "supported",
+      "sourceLine": "by controlling homological growth through volume growth"
+    },
+    {
+      "text": "Saghin and Xia proved the bound for partially hyperbolic diffeomorphisms with one-dimensional center.",
+      "verdict": "supported",
+      "sourceLine": "Saghin and Xia proved the bound for partially hyperbolic diffeomorphisms with one-dimensional center"
+    },
+    {
+      "text": "Liao, Viana and Yang established it for diffeomorphisms away from homoclinic tangencies.",
+      "verdict": "supported",
+      "sourceLine": "Liao, Viana, and Yang established it"
+    },
+    {
+      "text": "No earlier result covers finite regularity, noninvertibility and intermediate-degree homology together.",
+      "verdict": "supported",
+      "sourceLine": "None of these statements covers the combination of finite regularity, noninvertibility, and intermediate-degree homology used below."
+    },
+    {
+      "text": "The map is a noninvertible C¹ self-map with zero topological entropy and eigenvalue 2 on second real homology.",
+      "verdict": "supported",
+      "sourceLine": "whose topological entropy is zero, while its action on second real homology has eigenvalue"
+    },
+    {
+      "text": "The manifold has dimension at least 5 and the result does not conflict with first-homology or top-dimensional results.",
+      "verdict": "supported",
+      "sourceLine": "Thus it does not conflict with the first-homology or top-dimensional positive results."
+    },
+    {
+      "text": "Squaring on the Riemann sphere has degree 2: the value 1 has preimages 1 and −1, each with local degree +1.",
+      "verdict": "supported",
+      "sourceLine": "Both local degrees are"
+    },
+    {
+      "text": "A circle coordinate serves as a clock whose advance may become arbitrarily slow near one reading.",
+      "verdict": "supported",
+      "sourceLine": "Near one clock reading, its advance may become arbitrarily slow."
+    },
+    {
+      "text": "The remaining sphere coordinates store complex signals and are called registers.",
+      "verdict": "supported",
+      "sourceLine": "store complex signals and will be called registers"
+    },
+    {
+      "text": "Every forward orbit approaches one of two compact invariant sets, both with zero entropy.",
+      "verdict": "supported",
+      "sourceLine": "Every forward orbit then approaches one of two compact invariant sets"
+    },
+    {
+      "text": "The infinite sum over waiting times is the principal step; a finite truncation need not work after a long delay.",
+      "verdict": "supported",
+      "sourceLine": "a finite truncation need not supply the compulsory contribution after an arbitrarily long delay"
+    },
+    {
+      "text": "The link to squaring is a homological intertwining, not a dynamical semiconjugacy.",
+      "verdict": "supported",
+      "sourceLine": "This is a homological intertwining, not a dynamical semiconjugacy."
+    },
+    {
+      "text": "The theorem asserts the existence of some positive integer q of registers.",
+      "verdict": "supported",
+      "sourceLine": "There are a positive integer"
+    },
+    {
+      "text": "The Lean formalization gives the counterexample statement: a noninvertible C¹ map with entropy zero and eigenvalue 2 on second real homology; a Comparator statement is listed.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "The release says its manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

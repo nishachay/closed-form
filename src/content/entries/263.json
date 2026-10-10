@@ -1,0 +1,256 @@
+{
+  "id": "263",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf",
+      "label": "Uniform excess charge for Coulomb molecules and the outer radius of neutral atoms"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generalized-ionization-energies-for-full-Coulomb-atoms-September-24-2026/paper.pdf",
+      "label": "Generalized ionization energies for full Coulomb atoms"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generalized-outer-electron-radii-of-neutral-Coulomb-atoms-September-24-2026/paper.pdf",
+      "label": "Generalized outer-electron radii of neutral Coulomb atoms"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/263.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A nucleus can hold only a fixed number of extra electrons, however large its charge.",
+  "scope": "The results concern the nonrelativistic quantum model with fixed nuclei, charges at least 1, and two electron spin states.",
+  "plain": "A nucleus of charge Z holds Z electrons when its atom is neutral, and perhaps a few more. One paper claims to prove that the number of extra electrons stays below one fixed bound, for atoms and molecules. Two companion papers prove large-atom laws for the energy needed to remove many electrons. They also cover the size of the outer electron cloud. These two laws have Lean proofs, but the bound on extra electrons does not.",
+  "doesNot": "This does not give a value for the constant C, or exact numbers for any particular atom.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1984",
+    "firstStepBy": "Elliott Lieb, bound linear in the nuclear charge",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle a problem from Barry Simon's 2000 survey and two conjectured large-atom laws."
+  },
+  "explanation": "Take a bare nucleus with charge 100. Put 100 electrons around it and you have a neutral atom. Can it hold more? An extra electron counts as bound if adding it lowers the lowest possible energy. The best earlier bound for atoms came in 2025. It allows fewer than 1.1185Z + 4Z^(1/3) electrons, where Z is the charge and Z is at least 4. For Z = 100 that is about 130.4, so up to 30 extra electrons. For Z = 10,000 it is about 11,271, so up to 1,271 extra. The allowance grows with the charge.\n\nThe first paper claims to prove that it does not need to grow. There is one fixed number C that works for every nucleus. A nucleus of charge Z strictly binds at most Z + C electrons. The same holds for molecules. With M fixed nuclei of total charge Z, the limit is Z + CM. Each nucleus needs charge at least 1, and the nuclei may sit anywhere. The theorem asserts that such a C exists without giving its value.\n\nThis is the ionization conjecture. Barry Simon posed its atomic form as Problem 9 in a 2000 survey. It asks whether the number of extra electrons stays bounded as the charge grows. In 1984, Elliott Lieb proved bounds that grow in proportion to the nuclear charge. Lieb, Sigal, Simon and Thirring showed that the ratio of bound electrons to charge tends to 1. Phan Thành Nam proved fewer than 1.22Z + 3Z^(1/3) in 2012. The 2025 bound above came from Hundertmark, Pattakos and Schulz. These results still left the fixed-allowance question open.\n\nThe setting is the full quantum model of an atom, without relativity. Nuclei are held fixed, electrons have two spin states, and every electron repels every other one. In 2003, Jan Philip Solovej proved uniform bounds in Hartree–Fock theory. That is an approximation that builds the electron state from single-electron pieces. The real model allows correlation, meaning where one electron sits changes where the others tend to be. That is the main obstacle. The outer electrons also sit far from the bulk of the atom. They are a vanishing fraction of it, so knowing the bulk density does not settle them. The papers handle correlation with a statistical device. They imagine blurry snapshots of all electron positions and study the state given those snapshots.\n\nFor neutral atoms, the first paper makes two more claims. Removing one electron costs an energy between two fixed positive numbers, for every atom. That cost is called the first ionization energy. The sphere outside which half an electron remains, on average, also has a radius between two fixed bounds. In 1990, Seco, Sigal and Solovej had an upper bound on that energy, but it grew with Z.\n\nIn 2016, Solovej stated a generalized ionization conjecture that asks for exact laws, not just bounds. The second paper proves its energy part. Let I_m be the energy needed to strip m electrons from a neutral atom. Known large-atom formulas give each total energy only approximately. Subtracting two of them fails, because their error terms exceed the difference. When m is large but small next to Z, I_m is close to a_TF × m^(7/3). Here a_TF is a fixed positive constant from Thomas–Fermi theory, which treats the electrons as a continuous charged fluid. So doubling a large m multiplies the cost by about 2^(7/3), which is about 5.04. The paper gets this when m and Z/m both grow together. That is stronger than the order of limits in Solovej's statement, which it also obtains.\n\nThe third paper proves the radius part. Draw a sphere around the nucleus so that, on average, m electrons lie outside it. Call its radius R_m. For heavy atoms and large m, R_m approaches b × m^(-1/3), with b = (81π²/2)^(1/3). That is about 7.37 in atomic units of length. For m = 8 the law gives about 3.68. For m = 1,000 it gives about 0.74. Fewer electrons outside means a wider sphere. Solovej proved this same constant in 2003 for Hartree–Fock theory.\n\nThese laws describe limits, so they give no exact value for any single atom. In the radius law, the charge Z goes to infinity first, and m grows afterward. Neither law claims that the values settle down at a fixed m. All three papers concern the nonrelativistic model only.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the two laws, for energy and for radius. Each has a reference statement for a matching tool called Comparator. The Lean scope note leaves out fixed-m convergence, and it takes the radius law's ground states as given. The note does not cover the first paper. So the bound on extra electrons and the first-ionization bounds rest on the written proof. No specialist review has been published.",
+  "hypeCheck": "Major only if the proofs hold. Lean checks the two large-atom laws. The bound on extra electrons and the first-ionization bounds have no machine check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Nuclear charge",
+      "meaning": "The positive charge of a nucleus, written Z; a neutral atom has Z electrons."
+    },
+    {
+      "term": "Strictly bound electron",
+      "meaning": "An added electron that lowers the lowest possible energy of the system."
+    },
+    {
+      "term": "Ionization energy",
+      "meaning": "The energy needed to remove one or more electrons from an atom."
+    },
+    {
+      "term": "Correlation",
+      "meaning": "Where one electron sits changes where the others tend to be."
+    },
+    {
+      "term": "Thomas–Fermi theory",
+      "meaning": "A classical model that treats the electrons as a continuous charged fluid."
+    },
+    {
+      "term": "Hartree–Fock theory",
+      "meaning": "An approximation that builds the electron state from single-electron pieces."
+    },
+    {
+      "term": "Asymptotic law",
+      "meaning": "A rule that becomes exact only in a limit, such as very large charge."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "B. Simon, “Schrödinger operators in the twenty-first century”, Mathematical Physics 2000, Imperial College Press, 283–288",
+      "url": "https://doi.org/10.1142/9781848160224_0014"
+    },
+    {
+      "id": 2,
+      "cite": "E. H. Lieb, “Bound on the maximum negative ionization of atoms and molecules”, Physical Review A 29 (1984), 3018–3028",
+      "url": "https://doi.org/10.1103/PhysRevA.29.3018"
+    },
+    {
+      "id": 3,
+      "cite": "E. H. Lieb, I. M. Sigal, B. Simon and W. Thirring, “Asymptotic Neutrality of Large-Z Ions”, Physical Review Letters 52 (1984), 994–996",
+      "url": "https://doi.org/10.1103/PhysRevLett.52.994"
+    },
+    {
+      "id": 4,
+      "cite": "P. T. Nam, “New Bounds on the Maximum Ionization of Atoms”, Communications in Mathematical Physics 312 (2012), 427–445",
+      "url": "https://doi.org/10.1007/s00220-012-1479-y"
+    },
+    {
+      "id": 5,
+      "cite": "D. Hundertmark, N. Pattakos and M. R. Schulz, “On the Excess Charge Problem of Atoms”, arXiv:2504.18487 (2025)",
+      "url": "https://arxiv.org/abs/2504.18487"
+    },
+    {
+      "id": 6,
+      "cite": "J. P. Solovej, “The ionization conjecture in Hartree–Fock theory”, Annals of Mathematics 158 (2003), 509–576",
+      "url": "https://doi.org/10.4007/annals.2003.158.509"
+    },
+    {
+      "id": 7,
+      "cite": "J. P. Solovej, “A new look at Thomas–Fermi theory”, Molecular Physics 114 (2016), 1036–1040",
+      "url": "https://doi.org/10.1080/00268976.2015.1130273"
+    },
+    {
+      "id": 8,
+      "cite": "L. A. Seco, I. M. Sigal and J. P. Solovej, “Bound on the ionization energy of large atoms”, Communications in Mathematical Physics 131 (1990), 307–315",
+      "url": "https://doi.org/10.1007/BF02161416"
+    },
+    {
+      "id": 9,
+      "cite": "M. Lewin, “Some open mathematical problems concerning charged quantum particles”, Comptes Rendus. Physique 26 (2025), 369–380",
+      "url": "https://doi.org/10.5802/crphys.249"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “The ionization and generalized ionization conjectures”, three preprints and Lean scope note (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/263.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Hundertmark, Pattakos and Schulz obtained N_c(Z) < 1.1185Z + 4Z^(1/3) for Z ≥ 4 in 2025.",
+      "verdict": "supported",
+      "sourceLine": "More recently, Hundertmark, Pattakos and Schulz obtained"
+    },
+    {
+      "text": "Sector n binds strictly if E_n < E_{n-1}.",
+      "verdict": "supported",
+      "sourceLine": "binds strictly"
+    },
+    {
+      "text": "There is a universal finite constant C such that strict binding implies n ≤ Z + CM.",
+      "verdict": "supported",
+      "sourceLine": "There is a universal finite constant $C$ such that every nuclear system"
+    },
+    {
+      "text": "Nuclear charges are at least one and positions are arbitrary.",
+      "verdict": "supported",
+      "sourceLine": "The positions may be arbitrarily close or far apart."
+    },
+    {
+      "text": "Simon's atomic formulation, Problem 9, asks whether N_0(Z) - Z stays bounded.",
+      "verdict": "supported",
+      "sourceLine": "Simon's atomic formulation asks whether"
+    },
+    {
+      "text": "Lieb proved bounds linear in the total nuclear charge.",
+      "verdict": "supported",
+      "sourceLine": "Lieb proved bounds linear in the total nuclear charge for fixed atoms and"
+    },
+    {
+      "text": "Lieb, Sigal, Simon and Thirring proved N_c(Z)/Z → 1.",
+      "verdict": "supported",
+      "sourceLine": "For fermionic atoms, Lieb, Sigal, Simon and Thirring established asymptotic"
+    },
+    {
+      "text": "Nam proved N_c(Z) < 1.22Z + 3Z^(1/3).",
+      "verdict": "supported",
+      "sourceLine": "For explicit finite-charge estimates, Nam proved"
+    },
+    {
+      "text": "Earlier estimates left the uniform excess-charge assertion open.",
+      "verdict": "supported",
+      "sourceLine": "These estimates supply useful quantitative control while leaving the"
+    },
+    {
+      "text": "Solovej proved uniform ionization bounds in Hartree–Fock theory.",
+      "verdict": "supported",
+      "sourceLine": "in reduced and unrestricted Hartree--Fock"
+    },
+    {
+      "text": "The full model's states may have arbitrary many-body correlations.",
+      "verdict": "supported",
+      "sourceLine": "may have arbitrary many-body correlations"
+    },
+    {
+      "text": "Bulk convergence is insufficient because the outer mass is a vanishing fraction.",
+      "verdict": "supported",
+      "sourceLine": "Its vanishing fraction makes bulk convergence"
+    },
+    {
+      "text": "The proof observes all positions with independent errors.",
+      "verdict": "supported",
+      "sourceLine": "To prove these comparisons, observe all positions with independent errors"
+    },
+    {
+      "text": "The first ionization energy of every neutral atom lies between positive universal constants.",
+      "verdict": "supported",
+      "sourceLine": "the first ionization energy of the neutral atom"
+    },
+    {
+      "text": "The radius leaving one half electron outside is bounded above and below.",
+      "verdict": "supported",
+      "sourceLine": "There are universal constants $0<c\\le C<\\infty$ such that, for every"
+    },
+    {
+      "text": "Seco, Sigal and Solovej's energy upper bound grows with Z.",
+      "verdict": "supported",
+      "sourceLine": "Their energy upper bound grows with"
+    },
+    {
+      "text": "Subtracting two total-energy asymptotics does not control the ionization energy.",
+      "verdict": "supported",
+      "sourceLine": "Subtracting two such total-energy asymptotics does not control a much smaller ionization energy"
+    },
+    {
+      "text": "I_m(Z)/m^(7/3) → a_TF > 0 when m and Z/m both tend to infinity.",
+      "verdict": "supported",
+      "sourceLine": "in the stronger joint regime in which"
+    },
+    {
+      "text": "The joint limit strengthens Solovej's order of limits.",
+      "verdict": "supported",
+      "sourceLine": "strengthens that order of limits"
+    },
+    {
+      "text": "R_m is defined by expected exterior electron mass m.",
+      "verdict": "supported",
+      "sourceLine": "This is a radius in the neutral atom: $m$ specifies the expected electron"
+    },
+    {
+      "text": "b_TF = (81π²/2)^(1/3).",
+      "verdict": "supported",
+      "sourceLine": "Set $b_{\\mathrm{TF}}=(81\\pi^2/2)^{1/3}$."
+    },
+    {
+      "text": "Solovej's Hartree–Fock theorem had the same constant.",
+      "verdict": "supported",
+      "sourceLine": "Solovej's unrestricted Hartree--Fock theorem established the universal"
+    },
+    {
+      "text": "The inner limits hold m fixed; no convergence at fixed m is assumed.",
+      "verdict": "supported",
+      "sourceLine": "The inner limits hold $m$ fixed; no"
+    },
+    {
+      "text": "No convergence of I_m(Z) at a fixed m is asserted.",
+      "verdict": "supported",
+      "sourceLine": "No convergence of $I_m(Z)$ at a fixed $m$ is asserted or assumed."
+    },
+    {
+      "text": "Lean covers the energy and radius asymptotics; the first paper is outside the Lean scope note.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

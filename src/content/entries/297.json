@@ -1,0 +1,220 @@
+{
+  "id": "297",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Naimarks-problem-in-ZFC-September-24-2026/naimark-counterexample-zfc.pdf",
+      "label": "A counterexample to Naimark's problem in ZFC"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/297.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "An algebra with one irreducible representation that is not the compact operators, built without extra axioms.",
+  "scope": "The result uses only the standard ZFC axioms; the algebra is unital, simple, infinite-dimensional and very large.",
+  "plain": "Naimark asked in 1951 whether having only one irreducible representation forces an algebra to be the compact operators. Earlier counterexamples needed extra set-theory axioms beyond the standard ones. This paper proves a counterexample exists using the standard axioms alone (Lean proof listed). Ryotaro Tanaka reached the same existence result shortly before by another route, so this is an alternative proof.",
+  "doesNot": "This does not give the first ZFC counterexample, and its algebra has no separable irreducible representation.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Akemann and Weaver, counterexample assuming diamond",
+    "field": "Operator algebras",
+    "significance": "Solid",
+    "significanceWhy": "It settles Naimark's question in ZFC by a new route, but Tanaka's construction came first."
+  },
+  "explanation": "Start with a grid of numbers two rows by two columns, a 2×2 matrix. Its normalized trace is the average of its diagonal entries. The corner matrix with a single 1 at top left has trace 1/2. Place that 2×2 corner inside a 4×4 matrix, and the corner's trace becomes 1/4. At size 8×8 it is 1/8, at 16×16 it is 1/16. The traces halve forever and shrink toward zero. Glue all these sizes into one infinite object. That object is where this paper begins.\n\nMathematicians call such objects C*-algebras (collections that can be added, multiplied and measured for size, like matrices). A representation lets an algebra act as operators on a space of vectors. It is irreducible when no smaller closed part of the space is left untouched. For matrices, every irreducible representation is the usual one, up to renaming the coordinates. The infinite version of matrix algebras is the compact operators. The same holds for them. Each irreducible representation is unitarily equivalent to the usual one, meaning the same after a change of coordinates.\n\nNaimark's question dates to 1951. It asks whether this property singles out the compact operators. Suppose an algebra has, up to equivalence, only one irreducible representation. Must it be an algebra of compact operators? Part of the answer is yes. Suppose that one representation acts on a separable space (one with a countable dense set of vectors). Then the algebra is the compact operators.\n\nThe rest stayed open for decades. ZFC is the standard list of axioms behind nearly all of mathematics. In 2004, Charles Akemann and Nik Weaver built a counterexample using an extra axiom called Jensen's diamond principle. Diamond is added on top of ZFC. Daniel Calderón and Ilijas Farah later got a counterexample from different extra axioms. Andrea Vaccaro, still assuming diamond, controlled the traces of such examples. Each counterexample leaned on an assumption beyond ZFC.\n\nWhy was the extra axiom useful? The construction grows the algebra step by step. Every irreducible representation comes from a pure state (an extreme kind of averaging rule on the algebra). Each step glues one chosen pure state to a fixed one, so their representations become equivalent. In the end every pure state must be glued. But the algebra keeps growing, and new pure states keep appearing. Diamond acts like a prediction oracle. It lets the builder guess, in advance, the states the finished algebra will have.\n\nThis paper removes the need to guess. Its key step argues that each pure state of the final algebra is fixed by a countable piece. That piece already exists at some earlier stage, so a schedule chosen in advance can reach it. The schedule is fixed before any algebra is built, using no states at all. Each gluing step adds one new element. A projection is an element like the corner matrix above: applying it twice changes nothing. The new element moves one shrinking chain of projections onto another, and both chains must have equal traces. Here the opening example returns. Both chains have traces 1, 1/2, 1/4, 1/8 and so on, halving toward zero.\n\nThe finished algebra has a unit (an identity element) and infinite dimension. It is simple: it has no ideal except zero and itself. An ideal is a part that absorbs multiplication, so anything times a member stays a member. It carries a faithful tracial state (an averaging rule that ignores order and is positive on every nonzero element squared). And its irreducible representations are all equivalent. It cannot be the compact operators, because the compact operators have a unit only on finite-dimensional spaces. So the answer to Naimark's question is no, using ZFC alone.\n\nThis was not the first ZFC answer. Ryotaro Tanaka gave another ZFC construction with a faithful tracial state in September 2026. His algebra also has a faithful representation on a separable space. The new paper offers an alternative proof by a different route. Its algebra is very large: the recursion runs for more steps than there are real numbers. By the earlier separable result, its single irreducible representation cannot act on a separable space.\n\nHow sure is this? A computer proof checker called Lean has a formal version of the main theorem. It states the counterexample in ZFC with no extra set-theory axiom. It is matched against a fixed reference statement by a tool called Comparator. The Lean scope note says nothing about the paper's other intermediate results. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid, not more. A Lean formalization of the main theorem is listed. Tanaka's ZFC answer came first, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "C*-algebra",
+      "meaning": "A collection of operators that can be added, multiplied and measured for size, like matrices."
+    },
+    {
+      "term": "Irreducible representation",
+      "meaning": "A way for an algebra to act on a space of vectors that leaves no smaller closed part untouched."
+    },
+    {
+      "term": "Compact operators",
+      "meaning": "The infinite-dimensional version of matrix algebras, the standard algebras with only one irreducible representation."
+    },
+    {
+      "term": "Pure state",
+      "meaning": "An extreme kind of averaging rule on an algebra; each one gives an irreducible representation."
+    },
+    {
+      "term": "Faithful tracial state",
+      "meaning": "An averaging rule that ignores the order of multiplication and is positive on every nonzero element squared."
+    },
+    {
+      "term": "Projection",
+      "meaning": "An element that applying twice changes nothing, like a matrix with a single 1 on its diagonal."
+    },
+    {
+      "term": "Simple algebra",
+      "meaning": "An algebra with no ideal except zero and itself; an ideal is a part where anything times a member stays a member."
+    },
+    {
+      "term": "ZFC",
+      "meaning": "The standard axioms of set theory, the usual foundation for mathematics."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “A counterexample to Naimark's problem in ZFC” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Naimarks-problem-in-ZFC-September-24-2026/naimark-counterexample-zfc.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "C. Akemann and N. Weaver, “Consistency of a counterexample to Naimark's problem”, PNAS 101 (2004), 7522–7525",
+      "url": "https://doi.org/10.1073/pnas.0401489101"
+    },
+    {
+      "id": 3,
+      "cite": "D. Calderón and I. Farah, “Can you take Akemann–Weaver's ◇ℵ1 away?”, Journal of Functional Analysis 285 (2023), 110017",
+      "url": "https://arxiv.org/abs/2006.06886v3"
+    },
+    {
+      "id": 4,
+      "cite": "A. Vaccaro, “Trace spaces of counterexamples to Naimark's problem”, Journal of Functional Analysis 275 (2018), 2794–2816",
+      "url": "https://arxiv.org/abs/1711.05845v4"
+    },
+    {
+      "id": 5,
+      "cite": "R. Tanaka, “A separably representable counterexample to Naimark's problem in ZFC”, arXiv:2609.26930v1 (2026)",
+      "url": "https://arxiv.org/abs/2609.26930v1"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 297 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/297.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Every nonzero irreducible representation of K(H) is unitarily equivalent to its defining representation.",
+      "verdict": "supported",
+      "sourceLine": "Every nonzero irreducible representation of … is unitarily equivalent to its defining representation."
+    },
+    {
+      "text": "Naimark's problem asks whether this property characterizes the algebras K(H).",
+      "verdict": "supported",
+      "sourceLine": "Naimark's problem asks whether this property characterizes the algebras"
+    },
+    {
+      "text": "Naimark's question dates to 1951.",
+      "verdict": "supported",
+      "sourceLine": "Naimark's question dates to 1951"
+    },
+    {
+      "text": "If the unique irreducible representation acts on a separable space, the algebra is the compact operators.",
+      "verdict": "supported",
+      "sourceLine": "When the unique nonzero irreducible representation acts on a separable Hilbert space, the algebra is isomorphic to the compact operators"
+    },
+    {
+      "text": "Akemann and Weaver constructed a counterexample assuming Jensen's diamond principle.",
+      "verdict": "supported",
+      "sourceLine": "Akemann and Weaver constructed a counterexample assuming Jensen's diamond principle"
+    },
+    {
+      "text": "Calderón and Farah obtain a counterexample from other extra hypotheses.",
+      "verdict": "supported",
+      "sourceLine": "Calderón and Farah obtain a counterexample from"
+    },
+    {
+      "text": "Under diamond, Vaccaro controls the tracial state spaces of counterexamples.",
+      "verdict": "supported",
+      "sourceLine": "Under diamond, Vaccaro constructs counterexamples whose tracial state spaces are affinely homeomorphic to any prescribed metrizable Choquet simplex"
+    },
+    {
+      "text": "Tanaka gives another ZFC construction with a faithful tracial state.",
+      "verdict": "supported",
+      "sourceLine": "Tanaka gives another ZFC construction with a faithful tracial state"
+    },
+    {
+      "text": "Tanaka's construction gives a faithful representation on a separable Hilbert space that is not irreducible.",
+      "verdict": "supported",
+      "sourceLine": "It also gives a faithful representation on a separable Hilbert space; that representation is not irreducible."
+    },
+    {
+      "text": "This paper gives an alternative proof.",
+      "verdict": "supported",
+      "sourceLine": "Here we give an alternative proof"
+    },
+    {
+      "text": "Pure states have irreducible GNS representations.",
+      "verdict": "supported",
+      "sourceLine": "We work with pure states, whose Gelfand--Naimark--Segal (GNS) representations are irreducible."
+    },
+    {
+      "text": "The construction repeatedly joins a chosen pair of equivalence classes.",
+      "verdict": "supported",
+      "sourceLine": "The construction repeatedly joins a chosen pair of equivalence classes."
+    },
+    {
+      "text": "Each added unitary carries one decreasing projection sequence to another, with matching traces decreasing to zero.",
+      "verdict": "supported",
+      "sourceLine": "It adjoins a unitary carrying one decreasing projection sequence to another."
+    },
+    {
+      "text": "Countable determination replaces the state-guessing role of a prediction principle.",
+      "verdict": "supported",
+      "sourceLine": "This last conclusion replaces the state-guessing role of a set-theoretic prediction principle."
+    },
+    {
+      "text": "At every stage there are at most continuum many pure states, so a fixed schedule treats them all.",
+      "verdict": "supported",
+      "sourceLine": "pure states, so a fixed schedule can eventually treat them all."
+    },
+    {
+      "text": "The schedule is defined without referring to any states.",
+      "verdict": "supported",
+      "sourceLine": "This defines the entire schedule without referring to any states."
+    },
+    {
+      "text": "The starting algebra has corner projections with trace 2^-n.",
+      "verdict": "supported",
+      "sourceLine": "The trace formula is the normalized matrix trace formula."
+    },
+    {
+      "text": "The final algebra has exactly one nonzero irreducible representation up to unitary equivalence.",
+      "verdict": "supported",
+      "sourceLine": "Therefore … has exactly one nonzero irreducible representation up to unitary equivalence."
+    },
+    {
+      "text": "K(H) is unital only when H is finite-dimensional.",
+      "verdict": "supported",
+      "sourceLine": "is unital only when … is finite-dimensional."
+    },
+    {
+      "text": "The construction has length c^+; no assertion is made about density.",
+      "verdict": "supported",
+      "sourceLine": "we make no assertion that this length is the density of the resulting algebra."
+    },
+    {
+      "text": "The Lean formalization gives the counterexample in ZFC with no additional set-theoretic assumption, with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

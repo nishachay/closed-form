@@ -1,0 +1,201 @@
+{
+  "id": "288",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Kadisons-similarity-theorem-through-uniform-derivation-estimates-September-23-2026/paper.pdf",
+      "label": "Kadison's similarity theorem through uniform derivation estimates"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/288.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every bounded map from a C*-algebra to operators can be straightened to respect the mirror operation.",
+  "scope": "The result covers every unital complex C*-algebra, every complex Hilbert space, and every bounded unital homomorphism.",
+  "plain": "A C*-algebra is a system of operators that can be added, multiplied and mirrored. A map can keep sums and products yet ignore the mirror. Kadison asked in 1955 whether a change of coordinates can always repair such a map. This paper proves the answer is yes, with no extra conditions. It gives no limit on how much that change of coordinates distorts lengths.",
+  "doesNot": "This does not bound how much the repairing change of coordinates may distort lengths.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1955",
+    "firstStepBy": "Richard Kadison, who posed the similarity problem",
+    "field": "Operator algebras",
+    "significance": "Landmark",
+    "significanceWhy": "If the proof holds, it settles a central question about operator algebras open since 1955."
+  },
+  "explanation": "Start with a tiny algebra. Its elements are pairs of numbers (a, b), added and multiplied slot by slot. It also has a mirror operation, called the star. The star replaces each number by its complex conjugate. For ordinary real numbers, the star changes nothing.\n\nNow send each pair to a 2-by-2 matrix, a square table of numbers. Send (a, b) to the matrix with rows (a, a − b) and (0, b). So (2, 3) goes to rows (2, −1) and (0, 3). Products survive the trip. Multiply two pairs and convert, or convert and multiply the matrices: the answers agree. A map that keeps sums and products like this is called a homomorphism.\n\nThe mirror does not survive. The pair (1, 0) is its own mirror image. It goes to the matrix with rows (1, 1) and (0, 0). For matrices, the mirror flips the table across its diagonal. That gives rows (1, 0) and (1, 0), a different matrix. Picture the first matrix as a shadow cast on a line. It casts the shadow at a slant, not straight down. A slanted shadow can stretch arrows: here, by a factor of √2, about 1.414. A straight-down shadow never stretches anything.\n\nA change of coordinates repairs this. Take S, the matrix with rows (1, 1) and (0, −1). It undoes itself, so S times S is the identity. Compute S, then the image of (a, b), then S again. The result has a and b on the diagonal and zeros elsewhere. Now (1, 0) casts a straight-down shadow, which equals its own mirror image. In the new coordinates the map respects the star. Two maps linked this way are called similar. Here S stretches lengths by at most about 1.618.\n\nKadison asked in 1955 whether such a repair always exists. The setting is a C*-algebra: a system of operators that can be added, multiplied and mirrored. An operator is a rule that moves the arrows of a Hilbert space, a space with lengths and angles. A Hilbert space may have infinitely many directions. The map must be bounded, meaning it never multiplies sizes by more than a fixed factor. The question: is every such map similar to one that respects the star? This paper proves the answer is yes, with no extra conditions.\n\nMany cases were already settled. Bunce and Christensen handled nuclear algebras, a broad well-behaved class, in 1981. In 1983, Haagerup solved the cyclic case. There, one arrow, moved by the algebra, comes as close as you like to every arrow. He showed that complete boundedness is the test for similarity. Complete boundedness means the size bound still holds when the map acts on square blocks of elements, of every size. Haagerup also covered algebras without a tracial state. A tracial state is an averaging rule, like a matrix's diagonal sum divided by its size. Christensen covered type II1 factors with property Γ in 1986. A type II1 factor is an indivisible, infinite-dimensional operator algebra that has such an averaging rule. Property Γ means it contains elements, not plain numbers, that nearly commute with every element. Kirchberg proved in 1996 that the problem has an equivalent form. It asks about derivations, which measure how far an operator Y is from commuting with the algebra.\n\nThe one obstacle was a size limit that does not grow with block size. Suppose Y nearly commutes with every single element. Must it nearly commute with every block of elements, by the same margin? The paper's main estimate says yes, up to one fixed constant. That constant does not depend on the algebra, the space or the block size. The paper calls the hard part a constant independent of matrix size for finite factors. A finite factor is an indivisible operator algebra with a trace, an averaging rule like a matrix's diagonal sum.\n\nBack to the pairs. The theorem says a straightening S exists for every algebra, every space and every bounded map. It gives no limit on how much S may distort lengths. The choice of S may depend on the whole map. The same estimate yields one hyperreflexivity constant for all von Neumann algebras, a large class of operator algebras. Hyperreflexive means a simple test on invariant subspaces measures distance to the algebra, up to a fixed factor. The paper does not claim its constant is the best possible.\n\nHow sure is this? The Lean scope note says a formalization proves the similarity theorem for arbitrary Hilbert spaces. It also covers the universal hyperreflexivity constant. It links a formal statement of the uniform commutator estimate too. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark only if the proof holds. A Lean formalization is listed, but no specialist review is published. The result gives existence only, with no bound on the distortion and no best constant.",
+  "glossary": [
+    {
+      "term": "C*-algebra",
+      "meaning": "A system of operators that can be added, multiplied and mirrored, and that is closed under limits."
+    },
+    {
+      "term": "Hilbert space",
+      "meaning": "A space of arrows with lengths and angles, possibly with infinitely many directions."
+    },
+    {
+      "term": "Homomorphism",
+      "meaning": "A map between algebras that keeps sums and products."
+    },
+    {
+      "term": "Similar",
+      "meaning": "Two maps are similar when one becomes the other after a fixed, reversible change of coordinates."
+    },
+    {
+      "term": "Complete boundedness",
+      "meaning": "A size bound that still holds when a map acts on square blocks of elements of every size."
+    },
+    {
+      "term": "Tracial state",
+      "meaning": "An averaging rule on an algebra, like a matrix's diagonal sum divided by its size."
+    },
+    {
+      "term": "Hyperreflexive",
+      "meaning": "An algebra is hyperreflexive when distance to it is controlled, up to a fixed factor, by how an operator breaks its invariant subspaces."
+    },
+    {
+      "term": "Type II1 factor with property Γ",
+      "meaning": "An indivisible, infinite-dimensional operator algebra with a tracial state, containing elements, not plain numbers, that nearly commute with every element."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Kadison's similarity theorem through uniform derivation estimates”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Kadisons-similarity-theorem-through-uniform-derivation-estimates-September-23-2026/paper.pdf",
+      "quote": "This paper resolves the problem positively in its unrestricted bounded unital form."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for Kadison's similarity conjecture (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/288.md",
+      "quote": "The formalization proves this for arbitrary Hilbert spaces."
+    },
+    {
+      "id": 3,
+      "cite": "R. V. Kadison, “On the orthogonalization of operator representations”, American Journal of Mathematics 77 (1955), 600–620",
+      "url": "https://doi.org/10.2307/2372645"
+    },
+    {
+      "id": 4,
+      "cite": "J. W. Bunce, “The similarity problem for representations of C*-algebras”, Proceedings of the AMS 81 (1981), 409–414; E. Christensen, “On non self-adjoint representations of C*-algebras”, American Journal of Mathematics 103 (1981), 817–833",
+      "url": "https://doi.org/10.2307/2374248"
+    },
+    {
+      "id": 5,
+      "cite": "U. Haagerup, “Solution of the similarity problem for cyclic representations of C*-algebras”, Annals of Mathematics 118 (1983), 215–240",
+      "url": "https://doi.org/10.2307/2007028"
+    },
+    {
+      "id": 6,
+      "cite": "E. Christensen, “Similarities of II1 factors with property Γ”, Journal of Operator Theory 15 (1986), 281–288",
+      "url": "https://jot.theta.ro/jot/archive/1986-015-002/1986-015-002-005.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "E. Kirchberg, “The derivation problem and the similarity problem are equivalent”, Journal of Operator Theory 36 (1996), 59–62",
+      "url": "https://jot.theta.ro/jot/archive/1996-036-001/1996-036-001-004.html"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Kadison formulated the similarity problem in 1955.",
+      "verdict": "supported",
+      "sourceLine": "Kadison formulated the problem in 1955 in his study of the",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper resolves the problem positively in its unrestricted bounded unital form.",
+      "verdict": "supported",
+      "sourceLine": "This paper resolves the problem positively in its unrestricted bounded unital form.",
+      "sourceId": 1
+    },
+    {
+      "text": "The theorem imposes no separability, nuclearity, finite generation, faithfulness or normality condition.",
+      "verdict": "supported",
+      "sourceLine": "The theorem imposes no separability, nuclearity, finite generation,",
+      "sourceId": 1
+    },
+    {
+      "text": "The similarity may depend on the whole homomorphism, and no bound on its distortion is required.",
+      "verdict": "supported",
+      "sourceLine": "The similarity may depend on the whole homomorphism.",
+      "sourceId": 1
+    },
+    {
+      "text": "The result gives no a priori bound on the condition number of S.",
+      "verdict": "supported",
+      "sourceLine": "bounded invertible operator, and does not require an a priori bound for",
+      "sourceId": 1
+    },
+    {
+      "text": "Bunce and Christensen established the nuclear case.",
+      "verdict": "supported",
+      "sourceLine": "The nuclear case was established by Bunce and Christensen",
+      "sourceId": 4
+    },
+    {
+      "text": "Haagerup solved the cyclic case and identified complete boundedness as the criterion for similarity.",
+      "verdict": "supported",
+      "sourceLine": "Haagerup solved the cyclic representation case and identified",
+      "sourceId": 5
+    },
+    {
+      "text": "Haagerup proved the similarity property for C*-algebras without tracial states.",
+      "verdict": "supported",
+      "sourceLine": "-algebras without tracial states",
+      "sourceId": 5
+    },
+    {
+      "text": "Christensen established it for type II1 factors with property Γ.",
+      "verdict": "supported",
+      "sourceLine": "Christensen established it",
+      "sourceId": 6
+    },
+    {
+      "text": "Kirchberg proved similarity is equivalent to innerness of derivations.",
+      "verdict": "supported",
+      "sourceLine": "the similarity property is equivalent to innerness of derivations in every faithful",
+      "sourceId": 7
+    },
+    {
+      "text": "The difficult part is a constant independent of matrix size for finite factors.",
+      "verdict": "supported",
+      "sourceLine": "The difficult part is obtaining a constant independent of matrix size",
+      "sourceId": 1
+    },
+    {
+      "text": "The resulting constant is independent of matrix size, representation and Hilbert space.",
+      "verdict": "supported",
+      "sourceLine": "The resulting constant is numerical and",
+      "sourceId": 1
+    },
+    {
+      "text": "Every unital von Neumann algebra is hyperreflexive with one universal constant.",
+      "verdict": "supported",
+      "sourceLine": "independently of the algebra, its representation, and the Hilbert space.",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper does not assert that its constant is optimal.",
+      "verdict": "supported",
+      "sourceLine": "No optimality of this constant is asserted.",
+      "sourceId": 1
+    },
+    {
+      "text": "The Lean formalization proves the similarity theorem for arbitrary Hilbert spaces and gives one universal hyperreflexivity constant; a Comparator statement for the uniform commutator estimate is linked.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

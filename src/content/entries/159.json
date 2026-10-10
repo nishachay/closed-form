@@ -1,0 +1,256 @@
+{
+  "id": "159",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/paper.pdf",
+      "label": "Quasipolynomial Bounds for Arithmetic Progressions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/159.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Any set of whole numbers whose reciprocals add to infinity holds evenly spaced runs of every length.",
+  "scope": "It covers any set of positive whole numbers with an infinite reciprocal sum, and progressions of every length.",
+  "plain": "Take a set of whole numbers and add up one over each member. Erdős asked whether an infinite total forces evenly spaced runs of every length. This paper proves that it does. It also claims to prove a new upper bound on how many numbers up to N can avoid such runs. That bound is what makes the infinite-total statement follow.",
+  "doesNot": "This does not give explicit constants in the bound or improve the best three-term bound.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1936",
+    "firstStepBy": "Erdős and Turán, start of the density problem",
+    "field": "Combinatorics",
+    "significance": "Landmark",
+    "significanceWhy": "It settles a famous Erdős question for every length, where only the three-term case was known."
+  },
+  "explanation": "Here is a list of whole numbers: 1, 2, 4, 5, 10, 11, 13, 14, 28, and so on. It is built greedily. Start at 1. Then add each next number that creates no three-term progression. A three-term progression is three numbers with equal gaps, like 4, 10, 16. The list never contains one. Now add up the reciprocals: 1/1 + 1/2 + 1/4 + 1/5 and onward. The total settles near 3.008.\n\nThe powers of two behave the same way. The list 1, 2, 4, 8, 16 and onward has no three-term progression. Its reciprocals add up to exactly 2. The primes are different. Their reciprocals add to about 2.20 below one thousand. Below a million the total is about 2.89, and below ten million about 3.04. That total keeps growing without limit. And the primes do hold progressions: 7, 37, 67, 97, 127 and 157 are six primes with gap 30.\n\nPaul Erdős turned this contrast into a question, recorded in 1974. Suppose the reciprocals of a set of whole numbers add up to infinity. Must the set contain progressions of every finite length? This paper proves that the answer is yes. Put another way, for each length there is a ceiling. Every set with no progression of that length has a reciprocal sum below the ceiling. For three terms, the greedy list shows that ceiling is at least about 3.008.\n\nThe question grew from an older one. Erdős and Turán began in 1936 to ask how many numbers can avoid progressions. Write r_k(N) for the largest count of numbers from 1 to N with no k-term progression. Among 1 to 20, at most 9 numbers avoid three-term progressions, so r_3(20) = 9. Roth proved in 1953 that such sets take a vanishing share for three terms. Szemerédi proved it for four terms in 1969 and for every length in 1975.\n\nA vanishing share is not enough for Erdős's question. The primes also take a vanishing share, yet their reciprocals add to infinity. What matters is how fast the share falls. Split the numbers into blocks, from 1 to 2, 2 to 4, 4 to 8, and so on. A set with no k-term progression has reciprocals in the block from 2^m to 2^(m+1) adding to at most r_k(2^m)/2^m. If those block shares add to a finite total, Erdős's statement follows.\n\nFor three terms, Bloom and Sisask crossed that line in 2020. Their bound settled the three-term case of the question. Kelley and Meka then gave a much stronger three-term bound in 2023. Longer progressions lagged far behind. For five or more terms, the best bound came from Leng, Sah and Sawhney in 2024. Their share falls like exp(−(log log N)^c), with a double logarithm inside. The paper notes that this saving does not make the block shares add to a finite total.\n\nThe paper claims to prove a much faster fall for every length k of at least 3. It states that r_k(N) is at most C·N·exp(−c·(log N)^ε). Here C, c and ε are positive numbers that depend only on k. They are not given as explicit values, and the paper does not optimize the exponent. With this bound the block shares do add to a finite total. A limit on how far this can go was already known. Behrend showed in 1946 that r_3(N) is at least N·exp(−C·√(log N)). So the share can never fall as fast as a fixed power of N.\n\nThe single difficulty was keeping a standard method from losing too much. The method is called a density increment. Density is the share of a region that the set fills. If a set has too few progressions, it is unusually dense on some smaller structured region. The proof zooms into that region and repeats. Density cannot exceed one, so only a limited number of zooms can happen. The danger is that each zoom shrinks the region and adds new conditions. For long progressions those conditions are polynomial equations, and errors can pile up across zooms. The paper keeps the old equations exact at every zoom. It also bounds the new precision loss without feeding it the losses already made. That keeps the total cost small enough.\n\nThe bound also gives more than Erdős asked. Fix any B of at least 0. A set still has progressions of every length when its sum of (log(2+a))^B/a is infinite. The paper also recovers the Green–Tao theorem on progressions in dense subsets of the primes. It claims no improvement of the best three-term bound.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of Erdős's statement. It says any set of positive whole numbers with an infinite reciprocal sum holds progressions of every length. The quantitative bound on r_k(N) is outside that check. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark only if the paper holds up. Lean checks the formal statement of Erdős's question. The quantitative bound is outside that check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Arithmetic progression",
+      "meaning": "A list of numbers with equal gaps, like 7, 37, 67, 97."
+    },
+    {
+      "term": "Reciprocal sum",
+      "meaning": "The total of one over each member of a set, like 1/2 + 1/4 + 1/8."
+    },
+    {
+      "term": "r_k(N)",
+      "meaning": "The largest number of whole numbers from 1 to N that contain no k-term progression."
+    },
+    {
+      "term": "Density",
+      "meaning": "The share of a range or region that a set fills."
+    },
+    {
+      "term": "Density increment",
+      "meaning": "A proof method that finds a smaller region where the set is denser, then repeats there."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, “Problems”, Math. Balkanica 4 (1974), 203–204, Problem 4.33.6",
+      "url": "https://www.renyi.hu/~p_erdos/1974-27.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "K. F. Roth, “On certain sets of integers”, J. London Math. Soc. 28 (1953), 104–109",
+      "url": "https://doi.org/10.1112/jlms/s1-28.1.104"
+    },
+    {
+      "id": 3,
+      "cite": "E. Szemerédi, “On sets of integers containing no k elements in arithmetic progression”, Acta Arith. 27 (1975), 199–245",
+      "url": "https://doi.org/10.4064/aa-27-1-199-245"
+    },
+    {
+      "id": 4,
+      "cite": "T. F. Bloom and O. Sisask, “Breaking the logarithmic barrier in Roth's theorem on arithmetic progressions”, arXiv:2007.03528 (2020)",
+      "url": "https://arxiv.org/abs/2007.03528v2"
+    },
+    {
+      "id": 5,
+      "cite": "J. Leng, A. Sah and M. Sawhney, “Improved Bounds for Szemerédi's Theorem”, arXiv:2402.17995 (2024)",
+      "url": "https://arxiv.org/abs/2402.17995v2"
+    },
+    {
+      "id": 6,
+      "cite": "F. A. Behrend, “On sets of integers which contain no three terms in arithmetical progression”, Proc. Nat. Acad. Sci. U.S.A. 32 (1946), 331–332",
+      "url": "https://doi.org/10.1073/pnas.32.12.331"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 159: “Quasipolynomial Bounds for Arithmetic Progressions” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quasipolynomial-Bounds-for-Arithmetic-Progressions-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 159",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/159.md",
+      "quote": "The formalization proves this statement: for every requested length, such a set contains a progression with positive common difference."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Erdős asked whether every set with divergent reciprocal sum contains progressions of every finite length.",
+      "verdict": "supported",
+      "sourceLine": "asked whether every set $A$ of positive integers for which $\\sum_{a\\in A}1/a$ diverges contains arithmetic progressions of every finite length",
+      "sourceId": 1
+    },
+    {
+      "text": "Every set with divergent reciprocal sum contains nonconstant progressions of every finite length.",
+      "verdict": "supported",
+      "sourceLine": "contains nonconstant arithmetic progressions of every finite length.",
+      "sourceId": 7
+    },
+    {
+      "text": "There is a finite ceiling H_k on the reciprocal sum of every k-term-progression-free set.",
+      "verdict": "supported",
+      "sourceLine": "There is $H_k<\\infty$ such that every $k$-term-progression-free",
+      "sourceId": 7
+    },
+    {
+      "text": "r_k(N) is the largest size of a subset of 1..N with no nonconstant k-term progression.",
+      "verdict": "supported",
+      "sourceLine": "be the largest cardinality of a subset of",
+      "sourceId": 7
+    },
+    {
+      "text": "Roth proved the three-term case.",
+      "verdict": "supported",
+      "sourceLine": "Roth proved the three-term case by Fourier-analytic methods",
+      "sourceId": 2
+    },
+    {
+      "text": "Erdős and Turán began the study of the extremal functions in 1936.",
+      "verdict": "supported",
+      "sourceLine": "Erdős and Turán began the study of the corresponding extremal functions in 1936",
+      "sourceId": 7
+    },
+    {
+      "text": "Roth proved the three-term case; Szemerédi proved four terms in 1969 and the general theorem in 1975.",
+      "verdict": "supported",
+      "sourceLine": "Szemerédi proved the four-term case in 1969 and the general theorem in 1975",
+      "sourceId": 3
+    },
+    {
+      "text": "The conjecture extends the density problem to sparser sets, including the primes.",
+      "verdict": "supported",
+      "sourceLine": "The reciprocal-sum conjecture extends this density problem to sparser sets, including the primes",
+      "sourceId": 7
+    },
+    {
+      "text": "Zero-density sets can have divergent reciprocal sums, so r_k(N)=o(N) alone does not settle the question.",
+      "verdict": "supported",
+      "sourceLine": "Divergence of a reciprocal sum allows zero-density sets",
+      "sourceId": 7
+    },
+    {
+      "text": "Each dyadic block holds at most r_k(2^m) members of a progression-free set.",
+      "verdict": "supported",
+      "sourceLine": "Thus $|A\\cap[2^m,2^{m+1})|\\le r_k(2^m)$",
+      "sourceId": 7
+    },
+    {
+      "text": "Bloom and Sisask's bound crossed the dyadic summability threshold and established the three-term case.",
+      "verdict": "supported",
+      "sourceLine": "crossed the dyadic summability threshold and established the three-term reciprocal-sum conjecture",
+      "sourceId": 4
+    },
+    {
+      "text": "Kelley and Meka obtained a stronger three-term bound.",
+      "verdict": "supported",
+      "sourceLine": "Kelley and Meka obtained the stronger bound",
+      "sourceId": 7
+    },
+    {
+      "text": "Leng, Sah and Sawhney's saving in log log N does not give the dyadic summability.",
+      "verdict": "supported",
+      "sourceLine": "The resulting saving in $\\log\\log N$ does not give the dyadic summability above.",
+      "sourceId": 5
+    },
+    {
+      "text": "For each fixed k at least 3 there are positive constants with r_k(N) at most C_k N exp(-c_k (log N)^eps_k).",
+      "verdict": "supported",
+      "sourceLine": "For each fixed integer $k\\ge3$ there are constants",
+      "sourceId": 7
+    },
+    {
+      "text": "The constants may depend on k and the exponent is not optimized.",
+      "verdict": "supported",
+      "sourceLine": "The constants may depend on the fixed length $k$; the exponent is not optimized.",
+      "sourceId": 7
+    },
+    {
+      "text": "Behrend's construction rules out a fixed power saving in N, even for three terms.",
+      "verdict": "supported",
+      "sourceLine": "so a fixed power saving in $N$ is impossible even in this case",
+      "sourceId": 6
+    },
+    {
+      "text": "A fixed multiplicative density gain can be applied only a limited number of times before density exceeds one.",
+      "verdict": "supported",
+      "sourceLine": "A fixed multiplicative density gain can be applied only",
+      "sourceId": 7
+    },
+    {
+      "text": "Keeping integer blocks exact preserves the equations defining the old region.",
+      "verdict": "supported",
+      "sourceLine": "preserves the equations defining the old region when a new constraint is added",
+      "sourceId": 7
+    },
+    {
+      "text": "The added precision is bounded without using the current or lower precisions.",
+      "verdict": "supported",
+      "sourceLine": "In particular, this bound does not use the current $Q_h$ or the lower precisions.",
+      "sourceId": 7
+    },
+    {
+      "text": "A divergent weighted sum with (log(2+a))^B/a also forces progressions of every length.",
+      "verdict": "supported",
+      "sourceLine": "Our bound also gives a stronger divergence criterion",
+      "sourceId": 7
+    },
+    {
+      "text": "The paper recovers the Green–Tao theorem on dense subsets of the primes.",
+      "verdict": "supported",
+      "sourceLine": "It also recovers the theorem of Green and Tao that every subset of the primes of positive relative upper density contains infinitely many progressions of every finite length",
+      "sourceId": 7
+    },
+    {
+      "text": "No improvement of the three-term exponent is claimed.",
+      "verdict": "supported",
+      "sourceLine": "no improvement of the three-term exponent is claimed",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes the reciprocal-sum statement; the quantitative bound is outside it.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

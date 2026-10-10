@@ -1,0 +1,270 @@
+{
+  "id": "173",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-proof-of-Seymours-second-neighborhood-conjecture-September-23-2026/paper.pdf",
+      "label": "A proof of Seymour’s second-neighborhood conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/173.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "In every network of one-way arrows, some point reaches at least as many points in two steps as in one.",
+  "scope": "The result covers every nonempty finite oriented graph: no loops, and at most one arrow between any two points.",
+  "plain": "Picture points joined by one-way arrows, with at most one arrow between any two points. Seymour's conjecture says some point always reaches at least as many new points in two steps as in one. This paper proves that conjecture for every finite graph of this kind, with a Lean proof listed. Before it, the statement was known only in special cases or with a weaker ratio.",
+  "doesNot": "This does not say that every point has this property, only that at least one point does.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "Nathaniel Dean and Brenda Latka, who recorded the conjecture",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-known open problem in graph theory that had been proved only for special cases."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven second-to-first neighbor ratio for all oriented graphs",
+    "note": "Higher is better. The conjecture asks for a ratio of 1.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 2003,
+        "value": 0.657298,
+        "who": "Chen, Shen and Yuster",
+        "source": 4
+      },
+      {
+        "year": 2024,
+        "value": 0.715538,
+        "who": "Huang and Peng",
+        "source": 5
+      },
+      {
+        "year": 2026,
+        "value": 1,
+        "who": "This paper",
+        "claim": true,
+        "source": 8
+      }
+    ]
+  },
+  "explanation": "Draw four points, A, B, C and D. Draw an arrow from A to each of the other three. Then add a loop of arrows: B to C, C to D, and D back to B. Now count from each point. A reaches three points in one step. In two steps it reaches nothing new, because B, C and D were already counted. So A scores 3 against 0. B reaches only C in one step. It reaches D in two steps. B scores 1 against 1, and so do C and D.\n\nThe pattern in that drawing is the subject of Seymour's second-neighborhood conjecture. It is about oriented graphs. An oriented graph is a finite set of points joined by arrows. No arrow runs from a point to itself. Two points share at most one arrow, pointing one way. A point's first neighbors are the points one arrow away. Its second neighbors are the points exactly two arrows away. That count leaves out the starting point and its first neighbors. Each point is counted once, however many routes reach it. The conjecture says some point has at least as many second neighbors as first neighbors. In the drawing, A fails but B, C and D all succeed.\n\nLeaving out points already reached is what gives the conjecture its bite. From A, the route A to B to C reaches C in two steps. But C is one step away already, so it does not count. A point with no outgoing arrows, called a sink, passes at once with 0 against 0. So the claim only has force when every point has arrows leaving it.\n\nNathaniel Dean and Brenda Latka recorded the conjecture in 1995. One special case gets the most attention: the tournament, which has an arrow between every pair of points. David Fisher proved that case in 1996. Frédéric Havet and Stéphan Thomassé gave a second proof in 2000. Later papers covered tournaments with a few arrows missing. Others added conditions on the points. Yoshihiro Kaneko and Stephen Locke handled graphs where the fewest outgoing arrows at any point is six or less. A computer-assisted preprint in 2026 handled seven.\n\nAnother approach settles for a weaker ratio. In 2003, Guantao Chen, Jian Shen and Raphael Yuster proved a weaker guarantee. Some point always has at least about 0.657298 second neighbors per first neighbor. In 2024, Hao Huang and Fei Peng raised this to about 0.715538. The conjecture asks for a ratio of 1.\n\nThis paper proves the full statement. It needs no condition on how the points connect or how many arrows they have. The proof runs by contradiction. It imagines a smallest graph where every point fails. Deleting arrows from that graph gives a rule for every group of points smaller than the whole graph. Its second step gains fewer new points than its first step. Then the paper replaces each point by a large tournament. That turns the rule into a stronger, averaged form.\n\nThe obstacle is turning that growth rule into a contradiction. The paper tracks two collections of pairs of points and scores them. It then builds larger collections that should beat the best score. Those new collections can clash with each other. Removing clashing pairs costs points from the score. The paper's new tool is a pruning bound that works for any finite relation between points. It charges part of the removal cost to points left uncovered afterwards. With that accounting, the repaired score still beats the best one. That contradiction rules out the bad graph.\n\nBack in the drawing, the theorem promised that some point scores at least even, and B does. It does not promise that every point does, and A shows why it cannot. The paper also draws consequences. One is about triangles of arrows. Suppose every point sends arrows to at least a third of all points. Suppose it also receives arrows from at least a third. Then, the paper claims, the graph contains a loop of three arrows.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers every nonempty finite oriented graph, with second neighbors counted at distance exactly two. The paper's other consequences, such as the triangle result and the weighted forms, are not in the Lean scope note. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. Lean has checked the main theorem. The weighted and triangle consequences are outside the Lean scope note. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Oriented graph",
+      "meaning": "A finite set of points joined by one-way arrows, with no self-loops and at most one arrow between any two points."
+    },
+    {
+      "term": "First neighbors",
+      "meaning": "The points a given point reaches by following one arrow."
+    },
+    {
+      "term": "Second neighbors",
+      "meaning": "The points reached by exactly two arrows, not counting the start or its first neighbors."
+    },
+    {
+      "term": "Sink",
+      "meaning": "A point with no arrows leaving it."
+    },
+    {
+      "term": "Tournament",
+      "meaning": "An oriented graph with an arrow between every pair of points."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "N. Dean and B. J. Latka, “Squaring the tournament—an open problem”, Congressus Numerantium 109 (1995), 73–80 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 2,
+      "cite": "D. C. Fisher, “Squaring a tournament: A proof of Dean's conjecture”, Journal of Graph Theory 23 (1996), 43–48",
+      "url": "https://doi.org/10.1002/(SICI)1097-0118(199609)23:1<43::AID-JGT4>3.0.CO;2-K"
+    },
+    {
+      "id": 3,
+      "cite": "F. Havet and S. Thomassé, “Median orders of tournaments: A tool for the second neighborhood problem and Sumner's conjecture”, Journal of Graph Theory 35 (2000), 244–256",
+      "url": "https://doi.org/10.1002/1097-0118(200012)35:4<244::AID-JGT2>3.0.CO;2-H"
+    },
+    {
+      "id": 4,
+      "cite": "G. Chen, J. Shen and R. Yuster, “Second neighborhood via first neighborhood in digraphs”, Annals of Combinatorics 7 (2003), 15–20",
+      "url": "https://doi.org/10.1007/s000260300001"
+    },
+    {
+      "id": 5,
+      "cite": "H. Huang and F. Peng, “An improved bound on Seymour's second neighborhood conjecture”, arXiv:2412.20234 (2024)",
+      "url": "https://arxiv.org/abs/2412.20234v1"
+    },
+    {
+      "id": 6,
+      "cite": "Y. Kaneko and S. C. Locke, “The minimum degree approach for Paul Seymour's distance 2 conjecture”, Congressus Numerantium 148 (2001), 201–206 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 7,
+      "cite": "A. Sadhukhan, R. B. Sandeep and S. Sen, “A proof of Seymour's second neighborhood conjecture for oriented graphs with minimum out-degree equal to 7”, arXiv:2606.30588 (2026)",
+      "url": "https://arxiv.org/abs/2606.30588v1"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “A proof of Seymour's second-neighborhood conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-proof-of-Seymours-second-neighborhood-conjecture-September-23-2026/paper.pdf",
+      "quote": "Theorem~\\ref{thm:main} resolves the conjecture positively, without a"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for Seymour's second-neighborhood conjecture (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/173.md"
+    },
+    {
+      "id": 10,
+      "cite": "D. Fidler and R. Yuster, “Remarks on the second neighborhood problem”, Journal of Graph Theory 55 (2007), 208–220",
+      "url": "https://doi.org/10.1002/jgt.20229"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "An oriented graph is a finite directed graph with no loops, no multiple arcs and no pair of opposite arcs.",
+      "verdict": "supported",
+      "sourceLine": "An \\emph{oriented graph} is a finite directed graph with no loops, no multiple"
+    },
+    {
+      "text": "Second neighbors are the vertices at directed distance exactly two, each counted once.",
+      "verdict": "supported",
+      "sourceLine": "from \\(v\\).  Each vertex is counted once, regardless of the number of paths"
+    },
+    {
+      "text": "The conjecture asserts that some vertex has at most as many first as second out-neighbors.",
+      "verdict": "supported",
+      "sourceLine": "vertex satisfies \\(\\abs{N_1^+(v)}\\leq\\abs{N_2^+(v)}\\)."
+    },
+    {
+      "text": "A sink already satisfies the conclusion.",
+      "verdict": "supported",
+      "sourceLine": "connectivity or degree hypothesis.  In particular, a sink already satisfies"
+    },
+    {
+      "text": "Removing vertices already reached in one step is essential to the assertion.",
+      "verdict": "supported",
+      "sourceLine": "out-neighborhoods: removing vertices already reached in one step is essential"
+    },
+    {
+      "text": "Dean and Latka recorded the conjecture (1995).",
+      "verdict": "supported",
+      "sourceLine": "The conjecture was recorded by Dean and Latka~\\cite{DeanLatka1995}."
+    },
+    {
+      "text": "A tournament has an arc between every pair of distinct vertices.",
+      "verdict": "supported",
+      "sourceLine": "A \\emph{tournament} is an oriented graph with an arc between every pair of"
+    },
+    {
+      "text": "Fisher proved the tournament case (1996).",
+      "verdict": "supported",
+      "sourceLine": "by Fisher~\\cite{Fisher1996} using a probability distribution obtained from"
+    },
+    {
+      "text": "Havet and Thomassé gave a combinatorial proof for tournaments (2000).",
+      "verdict": "supported",
+      "sourceLine": "Farkas' lemma.  Havet and Thomass\\'e gave a combinatorial proof using"
+    },
+    {
+      "text": "Later work covered tournaments missing a matching, a star or a clique, and further cases.",
+      "verdict": "supported",
+      "sourceLine": "tournaments missing a matching, a star, or a clique.  Ghazal corrected the"
+    },
+    {
+      "text": "Kaneko and Locke established the conjecture for minimum outdegree at most six.",
+      "verdict": "supported",
+      "sourceLine": "Kaneko and Locke established the conjecture for minimum outdegree at most"
+    },
+    {
+      "text": "A 2026 computer-assisted preprint treats minimum outdegree seven.",
+      "verdict": "supported",
+      "sourceLine": "six~\\cite{KanekoLocke2001}; a recent computer-assisted preprint treats"
+    },
+    {
+      "text": "Chen, Shen and Yuster proved a universal ratio of about 0.657298.",
+      "verdict": "supported",
+      "sourceLine": "ratio of approximately $0.657298$~\\cite{ChenShenYuster2003}."
+    },
+    {
+      "text": "Huang and Peng raised the ratio to about 0.715538.",
+      "verdict": "supported",
+      "sourceLine": "Huang and Peng raise this to approximately $0.715538$ and additionally"
+    },
+    {
+      "text": "The theorem resolves the conjecture without a connectivity or degree hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:main} resolves the conjecture positively, without a"
+    },
+    {
+      "text": "The proof starts from a counterexample of minimum order and then minimum number of arcs.",
+      "verdict": "supported",
+      "sourceLine": "We first suppose that a counterexample exists and choose one with minimum"
+    },
+    {
+      "text": "Deleting arcs gives a strict subset inequality for every nonempty proper set.",
+      "verdict": "supported",
+      "sourceLine": "order and then minimum number of arcs.  Deleting carefully chosen arcs"
+    },
+    {
+      "text": "Each vertex is replaced by a large transitive tournament.",
+      "verdict": "supported",
+      "sourceLine": "Replacing each vertex by a sufficiently large transitive tournament turns"
+    },
+    {
+      "text": "The contradiction is an extremal argument on two families of ordered pairs.",
+      "verdict": "supported",
+      "sourceLine": "The obstruction to~\\eqref{eq:overview-concavity} is an extremal argument"
+    },
+    {
+      "text": "The new prospective families may conflict.",
+      "verdict": "supported",
+      "sourceLine": "These families may conflict, but their diagonal members are still present"
+    },
+    {
+      "text": "The main new ingredient is a pruning bound for arbitrary finite binary relations.",
+      "verdict": "supported",
+      "sourceLine": "The main additional ingredient is a pruning bound for arbitrary finite"
+    },
+    {
+      "text": "Its deletion cost depends on points left uncovered after pruning.",
+      "verdict": "supported",
+      "sourceLine": "binary relations.  Its deletion cost depends on the points left uncovered"
+    },
+    {
+      "text": "Minimum in- and outdegree at least a third of the order forces a directed triangle.",
+      "verdict": "supported",
+      "sourceLine": "outdegree at least one third of its order contains a directed triangle."
+    },
+    {
+      "text": "The weighted forms follow through Seacrest's equivalences.",
+      "verdict": "supported",
+      "sourceLine": "The theorem also gives the established vertex- and arc-weighted forms of"
+    },
+    {
+      "text": "The Lean formalization proves the conjecture with second neighbors at directed distance exactly two; corollaries are not in the scope note.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}

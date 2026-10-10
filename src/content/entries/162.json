@@ -1,0 +1,252 @@
+{
+  "id": "162",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Balanced-Counterexamples-to-Rysers-Conjecture-at-Prime-Orders-September-27-2026/paper.pdf",
+      "label": "Balanced counterexamples to Ryser's conjecture at prime orders"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Rysers-Covering-Conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to Ryser's covering conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/162.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Ryser's covering conjecture is false: some intersecting hypergraphs with r parts need r vertices to cover.",
+  "scope": "The examples exist only beyond an unstated size threshold. They use large primes q, or powers sⁿ of special primes s.",
+  "plain": "Ryser's covering conjecture predicted that certain hypergraphs with r parts can always be covered by r − 1 vertices. These papers prove it false (Lean proof listed) with examples that need r vertices. One paper's examples have q + 1 parts of equal size, for every large prime q. The other paper's examples have one more part than a power of a special prime. Both start from the lines of a finite grid and change how lines are grouped or labelled.",
+  "doesNot": "This does not give an explicit size at which the first counterexample appears, nor settle smaller cases.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "J. R. Henderson, equivalent formulation in thesis",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It refutes a long-standing conjecture that had been proved only for small numbers of parts."
+  },
+  "explanation": "Draw a 3-by-3 grid of 9 dots that wraps around at its edges, like a clock with 3 hours. Lines run in 4 directions: across, down, and two diagonals. Each direction has 3 parallel lines, so there are 12 lines in all. Now turn each dot into a list of 4 lines: the line through it in each direction. Any two dots lie on a common line. So any two lists share an entry.\n\nNow ask a covering question. What is the smallest set of lines that touches every list? The 3 across lines do it, because every dot sits on one of them. No 2 lines are enough. Each line holds only 3 dots, so 2 lines reach at most 6 of the 9. So the answer is 3, one less than the 4 directions.\n\nMathematicians call this kind of object a hypergraph. Its vertices here are the 12 lines, sorted into 4 groups called parts. Its edges are the 9 lists, and each edge takes exactly one vertex from every part. The hypergraph is intersecting: every two edges share a vertex. Its covering number is the size of the smallest vertex set that meets every edge.\n\nRyser's covering conjecture makes a prediction about such objects. For an intersecting hypergraph with r parts, it says the covering number is at most r − 1. The grid meets that bound exactly: 4 parts, covering number 3. The bound cannot fail by much. Any single edge meets every other edge, so it is itself a cover. The covering number therefore never exceeds r. A counterexample has to reach exactly r, the largest value possible.\n\nMuch was known before. With two parts, the bound is König's matching theorem. Henderson's 1971 thesis contains an equivalent form of the general conjecture. Aharoni proved the three-part case in 2001. In the intersecting case, Gyárfás proved it up to four parts and Tuza for five. In 2017, Francetić, Herke, McKay and Wanless reached nine parts for linear hypergraphs. Linear means any two distinct edges share exactly one vertex. Haxell and Scott built intersecting examples with covering number at least r − 4 for every large r.\n\nThe single obstacle is that a cover may mix vertices from different parts. Growing every part bigger does not stop a small mixed cover. A counterexample must defeat every mixed choice at once.\n\nTwo papers in this family build such examples, and each starts from a grid like the one above. The September 23 paper uses a grid with q = sⁿ dots per side. Here s is a large prime leaving remainder 2 when divided by 3. The power n is a large odd number. It adds extra edges whose labels are changed in some directions. The September 27 paper uses a grid whose side q is any large prime. In each direction it merges two parallel lines into one block and splits two others into two blocks. The count per direction becomes (q − 4) + 1 + 4 = q + 1. That is the fewest vertices per part a counterexample can have.\n\nBoth papers end with q + 1 parts and covering number q + 1. In the small grid, 3 lines from one direction always sufficed. In these hypergraphs, no choice of q vertices covers every edge. Every cover needs as many vertices as a whole edge holds. The result holds for every q beyond some threshold, but neither paper gives a number for it. Both papers also turn the result into coloured complete graphs. That refutes Gyárfás's tree-cover conjecture at these sizes.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main results. They cover the equal-part examples for every large prime q, and the examples with r = sⁿ + 1 parts. The extension-field statements do not assert equal parts, and none gives a numerical threshold. The tree-cover consequence is not in the Lean scope note. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. Lean checks formal versions of the main counterexamples. The thresholds are not numerical, the tree-cover consequence is outside the scope note, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Hypergraph",
+      "meaning": "A set of points called vertices plus a list of groups of them called edges; an edge may hold many vertices."
+    },
+    {
+      "term": "r-partite",
+      "meaning": "The vertices are split into r parts, and every edge takes exactly one vertex from each part."
+    },
+    {
+      "term": "Intersecting",
+      "meaning": "Every two edges share at least one vertex."
+    },
+    {
+      "term": "Covering number",
+      "meaning": "The fewest vertices needed so that every edge contains at least one of them."
+    },
+    {
+      "term": "Matching number",
+      "meaning": "The largest number of edges that share no vertices with each other; it is 1 for an intersecting hypergraph."
+    },
+    {
+      "term": "Ryser's covering conjecture",
+      "meaning": "The prediction that the covering number is at most r − 1 times the matching number in an r-partite hypergraph."
+    },
+    {
+      "term": "Affine plane",
+      "meaning": "A finite grid of points with straight lines that wrap around, where any two points lie on exactly one line."
+    },
+    {
+      "term": "Monochromatic tree cover",
+      "meaning": "A set of one-colour trees in a coloured complete graph whose dots together include every dot."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Balanced counterexamples to Ryser's conjecture at prime orders” (September 27, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Balanced-Counterexamples-to-Rysers-Conjecture-at-Prime-Orders-September-27-2026/paper.pdf",
+      "quote": "This disproves Ryser's covering conjecture, even for intersecting hypergraphs with equally sized parts."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “A counterexample to Ryser's covering conjecture” (September 23, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Rysers-Covering-Conjecture-September-23-2026/paper.pdf",
+      "quote": "This disproves Ryser's covering conjecture in its intersecting case."
+    },
+    {
+      "id": 3,
+      "cite": "R. Aharoni, “Ryser's Conjecture for Tripartite 3-Graphs”, Combinatorica 21 (2001), 1–4",
+      "url": "https://doi.org/10.1007/s004930170001"
+    },
+    {
+      "id": 4,
+      "cite": "N. Francetić, S. Herke, B. D. McKay and I. M. Wanless, “On Ryser's conjecture for linear intersecting multipartite hypergraphs”, European Journal of Combinatorics 61 (2017), 91–105",
+      "url": "https://doi.org/10.1016/j.ejc.2016.10.004"
+    },
+    {
+      "id": 5,
+      "cite": "Z. Király and L. Tóthmérész, “On Ryser's Conjecture for t-Intersecting and Degree-Bounded Hypergraphs”, Electronic Journal of Combinatorics 24(4) (2017), P4.40",
+      "url": "https://doi.org/10.37236/6448"
+    },
+    {
+      "id": 6,
+      "cite": "J. R. Henderson, “Permutation Decompositions of (0,1)-Matrices and Decomposition Transversals”, PhD thesis, California Institute of Technology (1971)",
+      "url": "https://thesis.caltech.edu/5726/"
+    },
+    {
+      "id": 7,
+      "cite": "P. E. Haxell and A. D. Scott, “A note on intersecting hypergraphs with large cover number”, Electronic Journal of Combinatorics 24(3) (2017), P3.26",
+      "url": "https://doi.org/10.37236/6460"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 162 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/162.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "The vast majority of results were obtained with the same procedure using an unreleased internal OpenAI model."
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A vertex cover may use vertices from several parts, which is the central obstacle to a counterexample.",
+      "verdict": "supported",
+      "sourceLine": "The vertices of a cover may lie in several different parts, which is the central obstacle in constructing a counterexample.",
+      "sourceId": 2
+    },
+    {
+      "text": "Making each part large does not by itself prevent a small cover.",
+      "verdict": "supported",
+      "sourceLine": "A cover may use vertices from any of the parts, so making each individual part large does not by itself obstruct a small cover.",
+      "sourceId": 1
+    },
+    {
+      "text": "For two parts the bound is König's matching theorem.",
+      "verdict": "supported",
+      "sourceLine": "For $r=2$, inequality~\\eqref{eq:ryser} is K\\H{o}nig's matching theorem",
+      "sourceId": 1
+    },
+    {
+      "text": "Henderson's 1971 thesis contains an equivalent formulation.",
+      "verdict": "supported",
+      "sourceLine": "Henderson's 1971 thesis contains an equivalent formulation of the general conjecture",
+      "sourceId": 1
+    },
+    {
+      "text": "Aharoni proved the full tripartite case.",
+      "verdict": "supported",
+      "sourceLine": "Aharoni proved the full tripartite case",
+      "sourceId": 1
+    },
+    {
+      "text": "In the intersecting case Gyárfás proved rank four and Tuza rank five.",
+      "verdict": "supported",
+      "sourceLine": "In the intersecting case, Gy\\'arf\\'as proved the conjecture through rank four and Tuza proved rank five",
+      "sourceId": 1
+    },
+    {
+      "text": "For linear intersecting hypergraphs the conjecture was established through rank nine.",
+      "verdict": "supported",
+      "sourceLine": "McKay, and Wanless established the conjecture through rank nine",
+      "sourceId": 1
+    },
+    {
+      "text": "Linear means every two distinct edges meet in exactly one vertex.",
+      "verdict": "supported",
+      "sourceLine": "in which every two distinct edges meet in exactly one vertex",
+      "sourceId": 1
+    },
+    {
+      "text": "Haxell and Scott gave covering number at least r − 4 for every sufficiently large r.",
+      "verdict": "supported",
+      "sourceLine": "r$-uniform hypergraphs with covering number at least $r-4$ for every sufficiently large $r$",
+      "sourceId": 1
+    },
+    {
+      "text": "Any edge of an intersecting r-uniform hypergraph is a cover, so r is the largest possible covering number.",
+      "verdict": "supported",
+      "sourceLine": "is the largest possible for an intersecting $r$-uniform hypergraph, since any edge is a cover",
+      "sourceId": 1
+    },
+    {
+      "text": "A hypergraph with covering number r needs at least r nonisolated vertices in every part, and the balanced construction attains this.",
+      "verdict": "supported",
+      "sourceLine": "must have at least $r$ such vertices in every part. Our construction attains this minimum simultaneously in all parts.",
+      "sourceId": 1
+    },
+    {
+      "text": "The balanced construction merges two parallel lines and splits two others, giving q + 1 blocks.",
+      "verdict": "supported",
+      "sourceLine": "In a given direction, merge two parallel lines into one block, and split two other parallel lines into two blocks each. The count becomes",
+      "sourceId": 1
+    },
+    {
+      "text": "The balanced theorem holds for every prime q at least some q0, with q + 1 equal parts and covering number q + 1.",
+      "verdict": "supported",
+      "sourceLine": "There exists $q_0$ such that, for every prime $q\\ge q_0$, there is a finite intersecting $(q+1)$-partite $(q+1)$-uniform hypergraph",
+      "sourceId": 1
+    },
+    {
+      "text": "The extension-field theorem uses primes s ≡ 2 mod 3 and odd n with q = s^n.",
+      "verdict": "supported",
+      "sourceLine": "For every odd integer $n\\ge n_0(s)$, put $q=s^n$.",
+      "sourceId": 2
+    },
+    {
+      "text": "The extension-field construction inserts exceptional edges whose labels are changed in some directions.",
+      "verdict": "supported",
+      "sourceLine": "We retain many of these point edges and add exceptional edges whose labels are changed in some directions.",
+      "sourceId": 2
+    },
+    {
+      "text": "The balanced threshold is not numerical.",
+      "verdict": "supported",
+      "sourceLine": "that threshold is not numerical",
+      "sourceId": 1
+    },
+    {
+      "text": "The extension-field proof gives no numerical threshold.",
+      "verdict": "supported",
+      "sourceLine": "The result is asymptotic; the proof does not give a numerical threshold.",
+      "sourceId": 2
+    },
+    {
+      "text": "Gyárfás's cover conjecture fails at the extension-field ranks.",
+      "verdict": "supported",
+      "sourceLine": "Thus Gy\\'arf\\'as's cover conjecture fails at these extension-field ranks.",
+      "sourceId": 2
+    },
+    {
+      "text": "The balanced paper gives complete graphs with q + 1 colours needing q + 1 monochromatic trees.",
+      "verdict": "supported",
+      "sourceLine": "graph with a $(q+1)$-edge-coloring whose vertices require exactly $q+1$ monochromatic trees to cover",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the balanced theorem and the extension-field counterexamples; equal parts and numerical thresholds are not asserted for the latter.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "The results were produced by an unreleased internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}
