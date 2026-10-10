@@ -1,0 +1,215 @@
+{
+  "id": "137",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Simulating-One-Tape-Time-in-Two-Fifths-Power-Space-September-25-2026/article.pdf",
+      "label": "Simulating One-Tape Time in Two-Fifths-Power Space"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/137.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A one-tape machine's run can be replayed with far less memory than the old square-root rule allowed.",
+  "scope": "Fixed deterministic machines with one writable tape and head, plus optional read-only input heads. The bound includes a polylogarithmic factor.",
+  "plain": "A one-tape machine is a simple computer that reads and writes a single strip of cells. The classical way to replay T of its steps uses memory of about the square root of T. This paper proves that about the two-fifths power of T is enough, up to log factors. It answers a question Ryan Williams asked in 2025 for this model. The replay may take far longer than the original run.",
+  "doesNot": "This does not speed up any computation, and it gives no two-fifths bound for machines with several writable tapes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It answers an open question from Williams's 2025 square-root paper, though only for one writable tape."
+  },
+  "explanation": "Picture a simple machine that runs for ten billion steps, so T = 10^10. It works on one long strip of cells, called a tape. A head reads and writes one cell, then moves at most one cell left or right. A fixed rule table decides each step. This is a one-tape Turing machine. Now ask a second program, the simulator, to work out how the run ends. The simulator may take as long as it likes. The question is how little memory it needs.\n\nThe classical answer is memory of about the square root of the step count. For ten billion steps that is about 100,000 units. This paper brings it down to about the two-fifths power of T. For ten billion steps that is about 10,000, ten times less. The gap widens as T grows. At T = 10^20 it is 10^10 against 10^8, a factor of 100. Both figures leave out a factor that grows like a fixed power of log T. Here log₂ T is about 33, and the paper does not state that power. So these numbers show the trend, not exact memory sizes.\n\nThe square-root simulation for one-tape machines is old. Williams's account attributes it to Hopcroft and Ullman. In 2025, Ryan Williams showed that any multitape machine running t steps fits in about √(t log t) memory. His proof builds on a 2024 method of Cook and Mertz. That method lets nested calculations share one pool of memory and restore it afterward. In his full paper, Williams asked whether the one-tape square-root exponent could drop by a fixed amount. This paper proves that it can. Any exponent above 2/5 works, and 2/5 sits a full tenth below 1/2.\n\nThe first idea is to cut the tape into blocks of equal width b. Then shift the cut points and count how often the head crosses a block edge. Each head move crosses an edge for exactly one of the b possible shifts. So across all b shifts there are at most T crossings in total. Some shift therefore has at most T/b crossings. With T = 10^10 and b = 10,000, that is at most a million. Each stay inside one block is a visit. Between visits only a short summary passes along: the state, head positions, elapsed time and end flags.\n\nThat short summary makes checking cheap. Suppose someone hands over the full list of summaries. Then each block can be replayed on its own, from its starting contents. Whether the list is right splits into separate checks, one per block. The hard part is that the simulator must guess these summaries. A nested calculation has to hold its guess while deeper calls run. If every level held one, the memory would pile up. The paper groups b visits into an epoch and guesses them in rounds of √b visits. It arranges the calls so any chain of nested calls holds at most one round guess per epoch. In the example, that means rounds of 100 visits and 101 epochs. Balancing block size against these held guesses gives the two-fifths exponent.\n\nThis splitting is also why the result needs a single writable tape. With two writable tapes, one step can depend on two blocks at once, and the checks no longer split. For several writable tapes the paper gives only a separate square-root bound. The machine may still have extra heads that only read the input. The paper also needs the starting tape contents to be readable with very little memory. Ordinary inputs meet that condition by rescanning.\n\nThe saving is in memory only. The simulator may run far longer than the machine it copies, so this cannot be turned into a speed-up. No time cap is needed either. The simulator can try caps 2, 4, 8 and so on until the machine actually halts. The paper does not claim that two-fifths is the best possible. Its own count shows only that tuning this method's three sizes cannot do better.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both main statements. One has a supplied time cap, and one has an unknown halting time. The multitape comparison and the paper's consequences for time and memory classes are outside that check. No specialist review of the paper has been published.",
+  "hypeCheck": "Major within its model. Lean has checked both main statements. The result saves memory, not time, covers one writable tape only, and has no published specialist review.",
+  "glossary": [
+    {
+      "term": "Turing machine",
+      "meaning": "A simple model computer: a head moves along a tape of cells, following a fixed rule table."
+    },
+    {
+      "term": "Tape",
+      "meaning": "The machine's strip of memory cells, each holding one symbol."
+    },
+    {
+      "term": "Simulation",
+      "meaning": "A program that works out what another machine would do, step by step or by cleverer means."
+    },
+    {
+      "term": "Space",
+      "meaning": "The number of memory bits a program uses while it runs."
+    },
+    {
+      "term": "Exponent",
+      "meaning": "The power in a bound like T to the 1/2 or T to the 2/5; smaller means less growth."
+    },
+    {
+      "term": "Read-only head",
+      "meaning": "An extra head that can read the input but never write."
+    },
+    {
+      "term": "Polylogarithmic factor",
+      "meaning": "An extra factor that grows like a fixed power of log T, slowly compared with any power of T."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. R. Williams, “Simulating Time with Square-Root Space”, STOC ’25 (2025), 13–23; full version arXiv:2502.17779",
+      "url": "https://doi.org/10.1145/3717823.3718225"
+    },
+    {
+      "id": 2,
+      "cite": "J. Cook and I. Mertz, “Tree Evaluation Is in Space O(log n · log log n)”, STOC ’24 (2024), 1268–1278",
+      "url": "https://doi.org/10.1145/3618260.3649664"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, family 137: “Simulating One-Tape Time in Two-Fifths-Power Space” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Simulating-One-Tape-Time-in-Two-Fifths-Power-Space-September-25-2026/article.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean doc for family 137 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/137.md"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The classical square-root one-tape simulation is attributed to Hopcroft and Ullman in Williams's account.",
+      "verdict": "supported",
+      "sourceLine": "is attributed to Hopcroft and Ullman in Williams's account"
+    },
+    {
+      "text": "Williams proved that deterministic multitape time t can be simulated in O(√(t log t)) space.",
+      "verdict": "supported",
+      "sourceLine": "Williams proved that deterministic multitape time"
+    },
+    {
+      "text": "Williams's proof uses the tree-evaluation algorithm of Cook and Mertz.",
+      "verdict": "supported",
+      "sourceLine": "His proof uses the additive dependence on value length and tree height"
+    },
+    {
+      "text": "The evaluator restores every other register after use.",
+      "verdict": "supported",
+      "sourceLine": "It supplies an additive translation of a true word from arbitrary initial register contents and restores every other register."
+    },
+    {
+      "text": "Williams asked whether the one-tape square-root exponent can be reduced by a fixed positive constant.",
+      "verdict": "supported",
+      "sourceLine": "Williams asks whether the classical…can be reduced by a fixed positive constant"
+    },
+    {
+      "text": "Every fixed exponent above 2/5 suffices.",
+      "verdict": "supported",
+      "sourceLine": "In particular, every fixed exponent"
+    },
+    {
+      "text": "The polylog factor uses a fixed constant C that is not stated numerically.",
+      "verdict": "supported",
+      "sourceLine": "with a fixed constant"
+    },
+    {
+      "text": "No log-free bound at exponent 2/5 is asserted.",
+      "verdict": "supported",
+      "sourceLine": "No log-free endpoint at exponent"
+    },
+    {
+      "text": "Each unit head move crosses a block boundary for exactly one offset, so some offset has at most T/b crossings.",
+      "verdict": "supported",
+      "sourceLine": "Every unit head move crosses a boundary for exactly one offset"
+    },
+    {
+      "text": "A visit accesses one block and passes on only a short controller of state, head positions, time and flags.",
+      "verdict": "supported",
+      "sourceLine": "A visit accesses one long block and exchanges only a short controller, consisting of the state, head positions, time and terminal flags."
+    },
+    {
+      "text": "Given a proposed transcript, each block can be replayed from its initial contents, and consistency factors over the blocks.",
+      "verdict": "supported",
+      "sourceLine": "Once a proposed controller transcript is fixed, all visits to a particular block can be replayed using that block's initial contents. Consistency of the transcript therefore factors over the blocks."
+    },
+    {
+      "text": "Visits are grouped into epochs and appended in rounds of √b visits.",
+      "verdict": "supported",
+      "sourceLine": "visits into an epoch and append their controllers in rounds of"
+    },
+    {
+      "text": "A recursion path pays for at most one retained round guess per epoch.",
+      "verdict": "supported",
+      "sourceLine": "so a recursion path pays for at most one retained round guess per epoch"
+    },
+    {
+      "text": "The block parameters are balanced at b about T^{2/5}.",
+      "verdict": "supported",
+      "sourceLine": "balanced at"
+    },
+    {
+      "text": "The single selected block is essential to the factored round rule; two bits from different sources break the product form.",
+      "verdict": "supported",
+      "sourceLine": "is essential to the factored round rule"
+    },
+    {
+      "text": "For several writable tapes the paper gives a separate square-root simulation.",
+      "verdict": "supported",
+      "sourceLine": "gives a separate"
+    },
+    {
+      "text": "The result is not a two-fifths bound for arbitrary multitape machines.",
+      "verdict": "supported",
+      "sourceLine": "it is not a two-fifths bound for arbitrary multitape machines"
+    },
+    {
+      "text": "Additional read-only input heads are allowed.",
+      "verdict": "supported",
+      "sourceLine": "A fixed number of additional read-only input heads may move by at most one position per step."
+    },
+    {
+      "text": "Ordinary input access satisfies the access condition by rescanning.",
+      "verdict": "supported",
+      "sourceLine": "Ordinary input access satisfies it for every cap by storing the requested coordinate and rescanning"
+    },
+    {
+      "text": "The theorem concerns space and gives no useful bound on simulation time; it cannot be iterated as a time improvement.",
+      "verdict": "supported",
+      "sourceLine": "concerns space, with no useful bound on simulation time. It cannot be iterated as a time improvement."
+    },
+    {
+      "text": "Without a supplied running time, the simulator tries caps 2, 4, 8, … and returns only on an actual halt.",
+      "verdict": "supported",
+      "sourceLine": "Continue after a timeout and return only on an actual halt."
+    },
+    {
+      "text": "Varying the three scales in this construction alone does not lower the exponent; this is not an optimality claim.",
+      "verdict": "supported",
+      "sourceLine": "changing the three scales in this construction alone does not lower its exponent. It is not a lower bound on other simulations, an optimality claim"
+    },
+    {
+      "text": "Lean formalizes the time-capped and unknown-time one-tape statements; multitape and hierarchy results are outside.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

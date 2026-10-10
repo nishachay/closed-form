@@ -1,0 +1,218 @@
+{
+  "id": "127",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Average-Sensitivity-of-Polynomial-Threshold-Functions-September-25-2026/main.pdf",
+      "label": "Average sensitivity of polynomial threshold functions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/127.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Yes-or-no rules built from degree-d polynomials on n inputs have average sensitivity at most 8d√n.",
+  "scope": "It covers sign rules of real polynomials of degree at most d on n yes-or-no inputs, all equally likely.",
+  "plain": "Many yes-or-no rules work by computing a polynomial of the inputs and reading off its sign. Average sensitivity counts how many single inputs, on average, could flip the answer by changing alone. This paper proves that for a polynomial of degree d in n inputs, that count is at most 8d√n. This settles the asymptotic form of a conjecture that Gotsman and Linial posed in 1994.",
+  "doesNot": "This does not say which rule is exactly the most sensitive, or that the constant 8 is best.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "Gotsman and Linial, proposed an exact bound",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It closes the asymptotic form of a 1994 conjecture, removing the extra factors left by Kane's 2014 bound."
+  },
+  "explanation": "Three people vote yes or no, and the majority wins. Write yes as +1 and no as −1. There are 8 equally likely ways the votes can fall. In 2 of them the vote is unanimous, and no single voter can change the result. In the other 6 the split is 2 to 1. Then either voter on the winning side could flip the result alone. So on average 6 × 2 / 8 = 1.5 voters are decisive. That average is called the average sensitivity of the rule. It is also called its total influence.\n\nMajority is the simplest polynomial threshold function. Such a rule computes a polynomial of the votes and outputs its sign. Majority uses x₁ + x₂ + x₃, a polynomial of degree 1. A polynomial of degree d may multiply up to d votes together in one term. Here the sign of exactly zero counts as +1. The paper allows any real coefficients, with no extra conditions.\n\nHow sensitive can such a rule be? With n voters, at most n can be decisive, so n is a trivial ceiling. Majority stays far below it. With 101 voters its average sensitivity is about 8.04. With 10,001 voters it is about 79.8. Both are close to 0.8 times √n. The new theorem says every rule of degree at most d has average sensitivity at most 8d√n. For degree 1 and 10,001 voters, that ceiling is about 800.\n\nThe shape d√n cannot be improved. The paper recalls symmetric rules, built from the count of yes votes, that reach that order. This holds whenever d is at most √n. Only the constant 8 could still move.\n\nThe question is old. In 1994 Gotsman and Linial proposed an exact bound. They named one symmetric rule as the most sensitive of all degree-d rules. Chapman later built counterexamples to that exact claim. He also separated it from a weaker asymptotic form: sensitivity at most a constant times d√n. That weaker form is what this paper addresses. Kim, Maldonado and Wellens independently found counterexamples for degree 2.\n\nEarly general bounds grew more slowly than n for each fixed degree. Harsha, Klivans and Meka proved one. Diakonikolas, Raghavendra, Servedio and Tan proved another independently. Both first circulated in 2009 and appeared in journals in 2014. In 2014 Kane reached the right power of n, the square root. His bound still carried extra factors that grow with log n and very fast with d.\n\nThe obstacle lay in how those proofs worked. They compared the voting cube with smooth bell-curve random inputs. That comparison only works for regular polynomials, where no single vote matters too much. The other cases had to be cut down to regular ones, and each step cost a factor. This paper uses no such comparison. Its proof pairs a short probability fact with a construction of matrices on the cube itself. That route removes the extra factors and leaves a bound linear in d.\n\nBack to the voters. Take any degree-1 rule on 10,001 votes, with any weights and threshold. On average it has at most about 800 decisive voters. Any degree-2 rule has at most about 1,600. The degree may even grow with the number of voters. But the bound beats the trivial ceiling only when 8d√n is below n. For 10,001 voters that means degree 12 or less. The theorem also assumes every pattern of votes is equally likely. It says nothing about which rule is exactly the most sensitive.\n\nThe paper also derives two side results from the main bound. One controls noise sensitivity, how often random flips of many votes change the answer. The other is a guarantee for learning such rules from labeled examples.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the bound 8d√n for every degree, every n, and the convention that zero counts as +1. The noise and learning results are outside that check. No specialist review has been published yet.",
+  "hypeCheck": "Major if it holds up. Lean has checked the main bound, but the side results are not machine-checked. No specialist review has been published, and the exact extremal question stays open.",
+  "glossary": [
+    {
+      "term": "Boolean cube",
+      "meaning": "The set of all lists of n entries, each +1 or −1, like every possible pattern of n yes-or-no votes."
+    },
+    {
+      "term": "Polynomial threshold function",
+      "meaning": "A yes-or-no rule that computes a polynomial of the inputs and outputs its sign, counting zero as +1."
+    },
+    {
+      "term": "Degree",
+      "meaning": "The largest number of inputs multiplied together in any single term of the polynomial."
+    },
+    {
+      "term": "Average sensitivity (total influence)",
+      "meaning": "The average number of inputs that could each flip the rule's answer by changing alone, over all equally likely inputs."
+    },
+    {
+      "term": "Regular polynomial",
+      "meaning": "A polynomial in which no single input carries too large a share of the weight."
+    },
+    {
+      "term": "Noise sensitivity",
+      "meaning": "The chance that the answer changes when each input is flipped independently with a small probability."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Average sensitivity of polynomial threshold functions”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Average-Sensitivity-of-Polynomial-Threshold-Functions-September-25-2026/main.pdf",
+      "quote": "This proves the asymptotic form of the Gotsman--Linial conjecture."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for entry 127 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/127.md"
+    },
+    {
+      "id": 3,
+      "cite": "C. Gotsman and N. Linial, “Spectral properties of threshold functions”, Combinatorica 14 (1994), 35–50",
+      "url": "https://doi.org/10.1007/BF01305949"
+    },
+    {
+      "id": 4,
+      "cite": "B. Chapman, “The Gotsman–Linial conjecture is false”, SODA 2018, 692–699",
+      "url": "https://doi.org/10.1137/1.9781611975031.45"
+    },
+    {
+      "id": 5,
+      "cite": "H. W. Kim, C. Maldonado and J. Wellens, “On graphs and the Gotsman–Linial conjecture for d=2”, arXiv:1709.06650 (2017)",
+      "url": "https://arxiv.org/abs/1709.06650v1"
+    },
+    {
+      "id": 6,
+      "cite": "P. Harsha, A. Klivans and R. Meka, “Bounding the sensitivity of polynomial threshold functions”, Theory of Computing 10 (2014), 1–26",
+      "url": "https://doi.org/10.4086/toc.2014.v010a001"
+    },
+    {
+      "id": 7,
+      "cite": "I. Diakonikolas, P. Raghavendra, R. A. Servedio and L.-Y. Tan, “Average sensitivity and noise sensitivity of polynomial threshold functions”, SIAM Journal on Computing 43 (2014), 231–253",
+      "url": "https://doi.org/10.1137/110855223"
+    },
+    {
+      "id": 8,
+      "cite": "D. M. Kane, “The correct exponent for the Gotsman–Linial conjecture”, Computational Complexity 23 (2014), 151–175",
+      "url": "https://doi.org/10.1007/s00037-014-0086-z"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Average sensitivity is the expected number of single-coordinate changes that reverse the sign.",
+      "verdict": "supported",
+      "sourceLine": "Average sensitivity measures the expected number of coordinate changes that reverse that sign."
+    },
+    {
+      "text": "Average sensitivity is also called total influence.",
+      "verdict": "supported",
+      "sourceLine": "This quantity is also called the total influence of"
+    },
+    {
+      "text": "Every degree-at-most-d polynomial threshold function has average sensitivity at most 8d√n, with sign of zero equal to +1.",
+      "verdict": "supported",
+      "sourceLine": "we prove that a polynomial threshold function of degree at most … on the uniform Boolean cube has average sensitivity at most"
+    },
+    {
+      "text": "The result proves the asymptotic form of the Gotsman–Linial conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This proves the asymptotic form of the Gotsman--Linial conjecture."
+    },
+    {
+      "text": "The degree may grow with the number of inputs.",
+      "verdict": "supported",
+      "sourceLine": "In particular, the degree may grow with the dimension."
+    },
+    {
+      "text": "No extra condition is placed on the polynomial, which may vanish on the cube.",
+      "verdict": "supported",
+      "sourceLine": "The polynomial may vanish on the cube, and no regularity condition is imposed on"
+    },
+    {
+      "text": "Gotsman and Linial proposed an exact bound naming one symmetric rule as the maximizer.",
+      "verdict": "supported",
+      "sourceLine": "Gotsman and Linial proposed an exact extremal bound for average sensitivity"
+    },
+    {
+      "text": "Chapman built counterexamples and separated the exact claim from the asymptotic bound.",
+      "verdict": "supported",
+      "sourceLine": "Chapman constructed counterexamples to this exact assertion and explicitly distinguished it from the asymptotic bound"
+    },
+    {
+      "text": "Kim, Maldonado and Wellens independently found degree-2 counterexamples.",
+      "verdict": "supported",
+      "sourceLine": "Kim, Maldonado, and Wellens independently constructed quadratic counterexamples"
+    },
+    {
+      "text": "The theorem says nothing about exact maximizers.",
+      "verdict": "supported",
+      "sourceLine": "it makes no assertion about exact maximizers."
+    },
+    {
+      "text": "Symmetric examples show the order d√n is sharp when d is at most √n.",
+      "verdict": "supported",
+      "sourceLine": "Thus the order … is sharp throughout this degree range"
+    },
+    {
+      "text": "Every Boolean function has average sensitivity at most n.",
+      "verdict": "supported",
+      "sourceLine": "For every Boolean function, the additional bound … holds."
+    },
+    {
+      "text": "Early general bounds were sublinear for each fixed degree.",
+      "verdict": "supported",
+      "sourceLine": "Early general bounds established sublinear influence for every fixed degree."
+    },
+    {
+      "text": "Those bounds first circulated in 2009 and were published in journals in 2014.",
+      "verdict": "supported",
+      "sourceLine": "These results first circulated in 2009, before their 2014 journal publications."
+    },
+    {
+      "text": "Their proofs compare regular Boolean polynomials with Gaussian ones.",
+      "verdict": "supported",
+      "sourceLine": "Their proofs use regularity and invariance arguments to compare sufficiently regular Boolean polynomials with Gaussian ones."
+    },
+    {
+      "text": "Kane established the square-root exponent in n.",
+      "verdict": "supported",
+      "sourceLine": "Kane subsequently established the square-root exponent in the dimension"
+    },
+    {
+      "text": "Kane's proof uses random restrictions, regularity and invariance.",
+      "verdict": "supported",
+      "sourceLine": "His proof combines random restrictions, regularity, and invariance estimates."
+    },
+    {
+      "text": "The theorem removes Kane's loss and gives linear dependence on d.",
+      "verdict": "supported",
+      "sourceLine": "removes that loss and gives linear dependence on … with an absolute constant."
+    },
+    {
+      "text": "The proof pairs a probability estimate with a finite-dimensional operator construction.",
+      "verdict": "supported",
+      "sourceLine": "The proof separates a probability estimate from a finite-dimensional operator construction."
+    },
+    {
+      "text": "The paper derives a noise sensitivity bound and a learning guarantee from the main bound.",
+      "verdict": "supported",
+      "sourceLine": "derives a dimension-free Boolean noise sensitivity bound and a quantitative learning guarantee from the influence estimate."
+    },
+    {
+      "text": "Noise sensitivity is the chance that the output changes when each coordinate is flipped independently with probability eta.",
+      "verdict": "supported",
+      "sourceLine": "is obtained by flipping each coordinate of … independently with probability"
+    },
+    {
+      "text": "Lean formalizes the 8d√n bound for all degree-at-most-d multilinear threshold functions, with value 1 at zero, not the exact-extremizer conjecture.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

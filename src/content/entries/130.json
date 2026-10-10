@@ -1,0 +1,233 @@
+{
+  "id": "130",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf",
+      "label": "An explicit power saving for the exact discrete Fourier transform"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-tensor-savings-and-exact-Fourier-circuits-September-25-2026/main.pdf",
+      "label": "Finite tensor savings and exact Fourier circuits"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/130.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "In exact arithmetic, the discrete Fourier transform can be computed in slightly fewer than n log n steps.",
+  "scope": "The model uses exact complex arithmetic, coefficients of any size and one supplied root of unity of polynomial order. It says nothing about floating-point or bit cost.",
+  "plain": "The fast Fourier transform turns a list of n numbers into its frequency components in about n log n steps. In an idealized exact model, these papers prove that n log n is not the limit (Lean formalization listed). One algorithm handles every length n in O(n (log n)^(1−10^−13)) operations. The saving is far too small to matter in practice. It holds only when numbers are exact and coefficients may be any size.",
+  "doesNot": "This does not give a faster FFT for real computers, which round numbers and limit their size.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Cooley and Tukey, the O(n log n) fast Fourier transform",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It shows n log n is not a hard floor in an exact model. The saving is tiny."
+  },
+  "explanation": "Take four numbers: 1, 2, 3 and 4. The discrete Fourier transform [a fixed recipe that splits a list into frequency components] makes four new numbers from them. Each output is a weighted sum of all four inputs. The weights are powers of i, the square root of minus one. Here the outputs are 10, −2−2i, −2 and −2+2i. Done directly, each of n outputs touches all n inputs. So the work grows like n times n.\n\nThe fast Fourier transform does far better. Cooley and Tukey's 1965 method uses about n log n operations [single additions, subtractions or multiplications]. Take about a million inputs, n = 2^20. Then n times n is about 1.1 trillion. But n times log₂n is about 21 million, roughly 52,000 times less. Bluestein's chirp trick later carried the n log n bound to every length, not only convenient ones.\n\nCould anything beat the n log n scale itself? Alman and Rao improved the constant in front, to (15/4) n log₂n real operations for power-of-two lengths. That stays on the same scale. Lower bounds [proofs that no method can do better] exist only in restricted settings. Morgenstern's applies when every coefficient [a fixed number the method multiplies by] stays bounded in size. Ailon's apply to rotation-like steps on two numbers at a time. Another limits how distorted the middle steps may be.\n\nThese two papers prove that, in an idealized exact model, the scale can be beaten. The model computes with complex numbers exactly. It allows coefficients of any size. It is handed one specified root of unity [a complex number with some power equal to 1]. That root has polynomial order [its power grows at most like a fixed power of n]. From it, the method builds every needed weight. The companion paper gives circuits [fixed lists of operations] for some lengths. Their cost falls below any fixed multiple of n log₂n. The main paper gives one algorithm for every length n. Its cost is O(n (log n)^(1−10^−13)) operations. That count includes preparing the weights and arranging the data in memory.\n\nThe saving is real but almost unmeasurably small. Compared with n log n, the new bound saves a factor of (log n) raised to the power 10^−13. Ignore the hidden constants and take n = 2^20 again. That factor then differs from 1 by under 3 parts in ten trillion. To halve the work, log n itself would need about three trillion digits. The paper says plainly that its constants are enormous, with no useful crossover point. This is a statement about how the cost grows, not about faster software.\n\nThe saving starts from one small, fixed computation. It applies a single 2-by-2 matrix of complex numbers along many axes at once. That is a tensor power [the same small map applied along every axis of a grid]. A known network from an OpenAI integer-multiplication paper does this with a strict saving. The hard part is carrying one fixed saving into a single algorithm for every length. The paper names three places it could leak. Recursive steps could each need fresh scratch space. Small Fourier transforms could need extra working room. Bookkeeping could cost one step per axis at every array entry. The paper counts each of these and shows none eats the saving.\n\nThe model matters for what the result means. Exact arithmetic with unlimited coefficients is not how computers handle real numbers. The paper makes no claim for floating-point FFTs, numerical stability or bit cost. So it does not contradict Morgenstern's bounded-coefficient lower bound. The same speed carries over to multiplying two complex polynomials exactly, under the same assumptions.\n\nHow sure is this? Formal versions of both results are written in Lean, a computer proof assistant. One is the subsequence result: at some lengths, circuits beat any fixed multiple of n log₂n. The other is the all-length program for the transform and for convolution, with cost O(n (log n)^(1−10^−13)). That formalization includes choosing the root and preparing the weights. The paper's appendix on extracting and searching for certificates lies outside it. No specialist review has been published.",
+  "hypeCheck": "Major for theory if the proof holds, with no practical speedup. Both main statements have Lean formalizations. The saving needs exact arithmetic and unbounded coefficients, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Discrete Fourier transform",
+      "meaning": "A fixed recipe that turns a list of n numbers into n weighted sums that measure its frequency components."
+    },
+    {
+      "term": "Fast Fourier transform (FFT)",
+      "meaning": "A family of methods that compute the discrete Fourier transform in about n log n operations."
+    },
+    {
+      "term": "Operation",
+      "meaning": "One addition, subtraction or multiplication by a fixed number, each counted as one step."
+    },
+    {
+      "term": "Root of unity",
+      "meaning": "A complex number with some power equal to 1; the Fourier weights are its powers."
+    },
+    {
+      "term": "Coefficient",
+      "meaning": "A fixed number that a method multiplies by, chosen in advance and not depending on the input."
+    },
+    {
+      "term": "Lower bound",
+      "meaning": "A proof that no method in a given setting can use fewer steps than some amount."
+    },
+    {
+      "term": "Tensor power",
+      "meaning": "The same small matrix applied along every axis of a many-dimensional grid of numbers."
+    },
+    {
+      "term": "Circuit",
+      "meaning": "A fixed list of operations, chosen for one input length, that computes the answer."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. W. Cooley and J. W. Tukey, “An Algorithm for the Machine Calculation of Complex Fourier Series”, Mathematics of Computation 19 (1965), 297–301",
+      "url": "https://doi.org/10.1090/S0025-5718-1965-0178586-1"
+    },
+    {
+      "id": 2,
+      "cite": "L. I. Bluestein, “A Linear Filtering Approach to the Computation of Discrete Fourier Transform”, IEEE Transactions on Audio and Electroacoustics 18 (1970), 451–455",
+      "url": "https://doi.org/10.1109/TAU.1970.1162132"
+    },
+    {
+      "id": 3,
+      "cite": "J. Morgenstern, “Note on a Lower Bound on the Linear Complexity of the Fast Fourier Transform”, Journal of the ACM 20 (1973), 305–306",
+      "url": "https://doi.org/10.1145/321752.321761"
+    },
+    {
+      "id": 4,
+      "cite": "N. Ailon, “A Lower Bound for Fourier Transform Computation in a Linear Model Over 2×2 Unitary Gates Using Matrix Entropy”, arXiv:1305.4745 (2013)",
+      "url": "https://arxiv.org/abs/1305.4745v1"
+    },
+    {
+      "id": 5,
+      "cite": "N. Ailon, “An Ω((n log n)/R) Lower Bound for Fourier Transform Computation in the R-Well Conditioned Model”, arXiv:1403.1307 (2014)",
+      "url": "https://arxiv.org/abs/1403.1307v5"
+    },
+    {
+      "id": 6,
+      "cite": "J. Alman and K. Rao, “Faster Walsh–Hadamard and Discrete Fourier Transforms from Matrix Non-Rigidity”, STOC 2023, 455–462",
+      "url": "https://doi.org/10.1145/3564246.3585188"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “An explicit power saving for the exact discrete Fourier transform”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf",
+      "quote": "We give a deterministic algorithm that computes the discrete Fourier transform at every length $n$ in $O(n(\\log n)^{1-10^{-13}})$ operations."
+    },
+    {
+      "id": 8,
+      "cite": "OpenAI, “Finite tensor savings and exact Fourier circuits”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-tensor-savings-and-exact-Fourier-circuits-September-25-2026/main.pdf",
+      "quote": "This refutes the $\\Omega(n\\log n)$ lower bound in the unrestricted complex linear-circuit model."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 130 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/130.md"
+    },
+    {
+      "id": 10,
+      "cite": "OpenAI, “Integer multiplication below n log n”, openai/math preprint (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/paper.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Cooley and Tukey's mixed-radix factorization computes transforms at highly composite lengths in O(n log n) operations.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "The mixed-radix factorization of Cooley and Tukey … computes transforms at highly composite lengths"
+    },
+    {
+      "text": "Bluestein's chirp identity gives the O(n log n) bound at every length.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Bluestein's chirp identity reduces an arbitrary Fourier length to convolution and, with an ordinary FFT, yields the $O(n\\log n)$ arithmetic bound at every length"
+    },
+    {
+      "text": "Alman and Rao's power-of-two Fourier bound has leading term (15/4) n log₂ n real operations.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Fourier bound has leading term $(15/4)n\\log_2 n$ in a count of real arithmetic operations"
+    },
+    {
+      "text": "Morgenstern's lower bound applies with bounded coefficients.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Morgenstern's determinant argument applies to the unnormalized Fourier transform with bounded coefficients"
+    },
+    {
+      "text": "Ailon's lower bounds concern unitary two-coordinate gates and restrictions on intermediate conditioning.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "his later bounds also quantify restrictions on intermediate conditioning"
+    },
+    {
+      "text": "The model permits unrestricted coefficients and exact intermediate values.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Our model permits unrestricted coefficients and exact intermediate values."
+    },
+    {
+      "text": "The companion paper gives, for every c > 0, circuits with fewer than c n log₂ n gates at some lengths.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "there is an integer $n\\ge N_0$ and an exact circuit for $F_n$ with fewer than $c n\\log_2 n$ gates."
+    },
+    {
+      "text": "The main paper gives one algorithm for every length with O(n(log n)^(1−10^−13)) operations.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "In the same model, the transform is computable at every length in"
+    },
+    {
+      "text": "Scalar preparation, schedule construction and index work are included in the running time.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "In the model above, including scalar preparation, schedule construction, and index work, its running time is"
+    },
+    {
+      "text": "The constants are enormous and there is no useful crossover estimate.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "The constants in the algorithm are enormous, so these are asymptotic existence and explicitness results, with no useful crossover estimate."
+    },
+    {
+      "text": "The result asserts no improvement for floating-point FFTs or bit complexity.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "the conclusion does not assert a corresponding improvement for stable floating-point FFTs or for bit complexity."
+    },
+    {
+      "text": "The 2-by-2 matrix network comes from the integer-multiplication paper and gives a strict saving.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "provides a particular two-coordinate kernel with a strict saving"
+    },
+    {
+      "text": "The main obstacle is turning a saving for one fixed finite matrix into one algorithm for all lengths.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "The main obstacle is to turn a saving for one fixed finite matrix into a single algorithm for arbitrary Fourier lengths."
+    },
+    {
+      "text": "The paper prevents three losses: fresh workspace, free scalar preparation, and per-axis array work.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Together they prevent three possible losses: allocating fresh zero workspace at every recursive use, silently treating scalar preparation as free, and spending one operation per tensor axis at every array entry."
+    },
+    {
+      "text": "Small Fourier matrices are compiled without increasing their widths.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "compiling small Fourier matrices without increasing their widths"
+    },
+    {
+      "text": "The same bound holds for exact convolution, equivalently multiplying two complex polynomials.",
+      "verdict": "supported",
+      "sourceId": 7,
+      "sourceLine": "Equivalently, it multiplies two complex polynomials of degree less than $n$."
+    },
+    {
+      "text": "Lean formalizes the subsequence circuit result and the uniform all-length DFT and convolution programs, including root-order selection and scalar preparation; the synthesis appendix's extraction, search and printer uniformization is outside.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

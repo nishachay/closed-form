@@ -1,0 +1,289 @@
+{
+  "id": "128",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Polynomial-Time-2-Approximation-for-Shortest-Common-Superstring-September-24-2026/paper.pdf",
+      "label": "A Polynomial-Time 2-Approximation for Shortest Common Superstring"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/128.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A fast method builds a string containing all given pieces, never more than twice the shortest possible.",
+  "scope": "It covers every finite list of explicitly written strings; time counts input bits, length counts letters.",
+  "plain": "The shortest common superstring problem asks for the shortest string containing every given piece of text unbroken. This paper proves (Lean proof listed) that a fast method can always come within a factor of two. Its answer is never more than twice the shortest possible length. The best earlier published guarantee was just below 2.466, and an August 2026 preprint reports 7/3. The guarantee is for the paper's new method, not for the classic greedy method.",
+  "doesNot": "This does not find the shortest superstring itself. Nor does it show that the classic greedy method reaches factor two.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Tarhio and Ukkonen, factor-two conjecture for Greedy",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it reaches factor two, a target named in 1988. Earlier guarantees fell step by step from 3."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best guarantee for a fast shortest-superstring method",
+    "note": "Smaller is better. The 2026 values are preprints.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1994,
+        "value": 3,
+        "who": "Blum, Jiang, Li, Tromp and Yannakakis",
+        "source": 2
+      },
+      {
+        "year": 1999,
+        "value": 2.5,
+        "who": "Sweedyk",
+        "source": 3
+      },
+      {
+        "year": 2013,
+        "value": 2.4783,
+        "who": "Mucha",
+        "source": 4
+      },
+      {
+        "year": 2023,
+        "value": 2.465,
+        "who": "Englert, Matsakis and Veselý",
+        "source": 5
+      },
+      {
+        "year": 2026,
+        "value": 2.3333,
+        "who": "Chukhin, Kulikov, Mihajlin and Smal (preprint)",
+        "source": 6
+      },
+      {
+        "year": 2026,
+        "value": 2,
+        "who": "This paper",
+        "claim": true,
+        "source": 8
+      }
+    ]
+  },
+  "explanation": "Take the word SUPERSTRING and cut it into overlapping four-letter pieces. You get eight: SUPE, UPER, PERS, ERST, RSTR, STRI, TRIN and RING. Now forget the word and keep only the pieces. The task is to find the shortest string that contains every piece as an unbroken run of letters. Gluing the pieces end to end works, but it spends 32 letters. Sliding each piece over the one before saves most of that. SUPERSTRING itself has 11 letters and contains all eight. A computer search over all 40,320 orders of the pieces finds nothing shorter.\n\nThis puzzle is the shortest common superstring problem. A superstring of a list is a string that contains every item as an unbroken block. The shortest possible length is called the optimum. Here the optimum is 11. With eight pieces, trying every order is easy. With twenty pieces there are about 2.4 billion billion orders to try.\n\nSo researchers settle for a guarantee instead of the exact answer. A factor-two approximation is a method whose answer is never more than twice the optimum. Here it would promise at most 22 letters. Plain gluing, at 32 letters, breaks that promise. The method must also be fast. Here that means polynomial time: the running time grows at most like a fixed power of the input's size.\n\nFactor two has been the target since 1988. That year, Jorma Tarhio and Esko Ukkonen conjectured that a simple greedy method reaches it. Greedy repeatedly merges the two pieces with the largest overlap. Proven guarantees came in steps. Avrim Blum, Tao Jiang, Ming Li, John Tromp and Mihalis Yannakakis reached factor 3 in 1994. Z. Sweedyk reached 5/2 in 1999. Marcin Mucha reached 2 + 11/23, about 2.478, in 2013. Matthias Englert, Nicolaos Matsakis and Pavel Veselý got below 2.466 in 2023. An August 2026 preprint by Nikolai Chukhin and three coauthors reports 7/3, about 2.333.\n\nMany earlier methods start from a lower bound [a number that can never exceed the optimum]. It comes from arranging the pieces into separate loops instead of one chain. The loops must then be opened and joined into one string. Each join adds letters, and the difficulty is keeping that extra length under control.\n\nThis paper builds its lower bound differently. For each short word, it computes a count. The count never exceeds how often that word must appear in any superstring. Adding up the counts for single letters gives a number W. W can never exceed the optimum. Words that repeat a pattern, like ABABAB, need a further counting rule. From the counts, the paper builds a map of words. Adding a letter costs one, and dropping the first letter costs nothing. Tracing this map spells out string pieces with total cost W. But the map may fall into separate parts. The paper then joins all the parts for at most W extra letters. The hard work is paying for those joins without spending the same budget twice.\n\nThat gives at most 2W letters, and 2W is at most twice the optimum. The paper proves this for every finite list of pieces. For the SUPERSTRING pieces, its method must return 22 letters or fewer. It does not promise 11. It also says nothing about Greedy. A September 2026 preprint by Hiroki Shibata reports a counterexample to the Greedy conjecture, with ratio at least 9/4. The paper shows its running time is polynomial. It does not show the method is quick in practice.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It states one deterministic polynomial-time method whose output is at most twice the optimum. Time is counted in input bits and length in letters. A tool called Comparator matches the Lean proof to a fixed reference statement. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. Lean checks a formal version of the main theorem, matched to a reference statement. No specialist review is published, and nothing shows the method is quick in practice.",
+  "glossary": [
+    {
+      "term": "Superstring",
+      "meaning": "A string that contains every item of a given list as an unbroken block of letters."
+    },
+    {
+      "term": "Optimum",
+      "meaning": "The shortest possible length of a superstring for the given list."
+    },
+    {
+      "term": "Factor-two approximation",
+      "meaning": "A method whose answer is never more than twice the optimum."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "Running time that grows at most like a fixed power of the input's size."
+    },
+    {
+      "term": "Lower bound",
+      "meaning": "A number that can never exceed the optimum, used to measure an answer's quality."
+    },
+    {
+      "term": "Greedy method",
+      "meaning": "The classic method that keeps merging the two pieces with the largest overlap."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer proof checker that tests each step of a formal proof."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement, using only standard axioms."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Tarhio and E. Ukkonen, “A greedy approximation algorithm for constructing shortest common superstrings”, Theoretical Computer Science 57(1) (1988), 131–145",
+      "url": "https://doi.org/10.1016/0304-3975(88)90167-3"
+    },
+    {
+      "id": 2,
+      "cite": "A. Blum, T. Jiang, M. Li, J. Tromp and M. Yannakakis, “Linear approximation of shortest superstrings”, Journal of the ACM 41(4) (1994), 630–647",
+      "url": "https://doi.org/10.1145/179812.179818"
+    },
+    {
+      "id": 3,
+      "cite": "Z. Sweedyk, “A 2.5-approximation algorithm for shortest superstring”, SIAM Journal on Computing 29(3) (1999), 954–986",
+      "url": "https://doi.org/10.1137/S0097539796324661"
+    },
+    {
+      "id": 4,
+      "cite": "M. Mucha, “Lyndon words and short superstrings”, Proceedings of SODA 2013, 958–972",
+      "url": "https://doi.org/10.1137/1.9781611973105.69"
+    },
+    {
+      "id": 5,
+      "cite": "M. Englert, N. Matsakis and P. Veselý, “Approximation guarantees for shortest superstrings: Simpler and better”, ISAAC 2023, LIPIcs 283, 29:1–29:17",
+      "url": "https://doi.org/10.4230/LIPIcs.ISAAC.2023.29"
+    },
+    {
+      "id": 6,
+      "cite": "N. Chukhin, A. S. Kulikov, I. Mihajlin and A. Smal, “A tight cycle-cover inequality for shortest common superstring”, ECCC TR26-157 (August 2026), preprint",
+      "url": "https://eccc.weizmann.ac.il/report/2026/157/"
+    },
+    {
+      "id": 7,
+      "cite": "H. Shibata, “Disproving the greedy superstring conjecture”, arXiv:2609.01365v1 (1 September 2026), preprint",
+      "url": "https://arxiv.org/abs/2609.01365v1"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “A Polynomial-Time 2-Approximation for Shortest Common Superstring” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Polynomial-Time-2-Approximation-for-Shortest-Common-Superstring-September-24-2026/paper.pdf",
+      "quote": "answers affirmatively the question of whether a polynomial-time factor-"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 128 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/128.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The problem asks for a shortest string containing every input string as a contiguous substring.",
+      "verdict": "supported",
+      "sourceLine": "the task is to find a shortest string containing every member of",
+      "sourceId": 8
+    },
+    {
+      "text": "Tarhio and Ukkonen proposed the factor-2 conjecture for the maximum-overlap Greedy procedure.",
+      "verdict": "supported",
+      "sourceLine": "Tarhio and Ukkonen proposed the factor-",
+      "sourceId": 8
+    },
+    {
+      "text": "Greedy repeatedly merges a pair of maximum overlap.",
+      "verdict": "supported",
+      "sourceLine": "The classical Greedy conjecture concerns repeatedly merging a pair of maximum overlap",
+      "sourceId": 8
+    },
+    {
+      "text": "Blum, Jiang, Li, Tromp and Yannakakis gave a polynomial-time 3-approximation.",
+      "verdict": "supported",
+      "sourceLine": "Blum, Jiang, Li, Tromp, and Yannakakis established a polynomial-time",
+      "sourceId": 8
+    },
+    {
+      "text": "Sweedyk later obtained a 5/2 guarantee.",
+      "verdict": "supported",
+      "sourceLine": "Sweedyk later obtained a",
+      "sourceId": 8
+    },
+    {
+      "text": "Mucha obtained 2+11/23; Englert, Matsakis and Veselý obtained (14+√67)/9 < 2.466.",
+      "verdict": "supported",
+      "sourceLine": "Subsequent guarantees include",
+      "sourceId": 8
+    },
+    {
+      "text": "An August 2026 preprint of Chukhin, Kulikov, Mihajlin and Smal reports a 7/3-approximation.",
+      "verdict": "supported",
+      "sourceLine": "An August 2026 preprint of Chukhin, Kulikov, Mihajlin, and Smal reports a",
+      "sourceId": 8
+    },
+    {
+      "text": "The theorem answers whether a polynomial-time factor-2 approximation exists.",
+      "verdict": "supported",
+      "sourceLine": "answers affirmatively the question of whether a polynomial-time factor-",
+      "sourceId": 8
+    },
+    {
+      "text": "Earlier methods use a cycle-cover lower bound whose cycles must be opened and joined while controlling extra length.",
+      "verdict": "supported",
+      "sourceLine": "A minimum-weight cycle cover gives a computable lower bound, but its cycles must then be opened and joined while controlling the extra length",
+      "sourceId": 8
+    },
+    {
+      "text": "The counts are no larger than the number of occurrences in any common superstring, and their one-letter sum W is a lower bound on the optimum.",
+      "verdict": "supported",
+      "sourceLine": "is therefore a lower bound on the optimum.",
+      "sourceId": 8
+    },
+    {
+      "text": "A further rule handles periodic words.",
+      "verdict": "supported",
+      "sourceLine": "A further rule handles periodic words.",
+      "sourceId": 8
+    },
+    {
+      "text": "Appending a letter costs one and deleting the first letter costs zero.",
+      "verdict": "supported",
+      "sourceLine": "An up edge appends a letter and costs one; a down edge deletes the first letter and costs zero.",
+      "sourceId": 8
+    },
+    {
+      "text": "The counts give a balanced, possibly disconnected graph of cost W.",
+      "verdict": "supported",
+      "sourceLine": "The resulting counts determine a balanced, possibly disconnected graph of cost",
+      "sourceId": 8
+    },
+    {
+      "text": "The final task is to arrange connections without spending a budget twice.",
+      "verdict": "supported",
+      "sourceLine": "The final task is to arrange these connections without spending a budget twice.",
+      "sourceId": 8
+    },
+    {
+      "text": "The graph is connected at additional cost at most W, giving the factor-2 bound.",
+      "verdict": "supported",
+      "sourceLine": "This connects the base graph at additional cost at most",
+      "sourceId": 8
+    },
+    {
+      "text": "Shibata's September 2026 preprint reports a counterexample to the Greedy conjecture with ratio at least 9/4.",
+      "verdict": "supported",
+      "sourceLine": "A September 2026 preprint of Shibata reports a counterexample to the Greedy conjecture, with worst-case ratio at least",
+      "sourceId": 8
+    },
+    {
+      "text": "The theorem concerns the paper's algorithm, not Greedy.",
+      "verdict": "supported",
+      "sourceLine": "Our theorem concerns the algorithm proved here; neither of those prescribed procedures is assumed to attain factor",
+      "sourceId": 8
+    },
+    {
+      "text": "The algorithm is deterministic and polynomial in the total encoded input size.",
+      "verdict": "supported",
+      "sourceLine": "There is a deterministic algorithm, polynomial in the total encoded input size",
+      "sourceId": 8
+    },
+    {
+      "text": "The Lean scope note covers one deterministic polynomial-time algorithm with output at most twice the optimum, time in input bits, ratio in symbol length, with a Comparator link.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
