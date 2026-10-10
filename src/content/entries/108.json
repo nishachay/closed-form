@@ -1,0 +1,269 @@
+{
+  "id": "108",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-cubic-lower-bound-for-border-determinantal-complexity-of-the-permanent-September-24-2026/A-cubic-lower-bound-for-border-determinantal-complexity-of-the-permanent-September-24-2026.pdf",
+      "label": "A cubic lower bound for border determinantal complexity of the permanent"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/108.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Disguising the permanent as a determinant needs a matrix that grows at least like the cube of its size.",
+  "scope": "The bound is over the complex numbers, for m-by-m permanents with m at least 1,408, with a small explicit constant.",
+  "plain": "The permanent and the determinant are two sums built from a grid of numbers. They differ only in their signs. This paper proves that a determinant formula for an m-by-m permanent needs size at least a small constant times m³. This holds even for determinants that only approach the permanent in a limit. The best earlier lower bound grew like m².",
+  "doesNot": "This does not show that the permanent needs determinants larger than every fixed power of m, which remains open.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1989",
+    "firstStepBy": "Roy Meshulam, a linear lower bound for affine determinant formulas",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It raises the power of m in the best lower bound from two to three."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Power of m in the best proven lower bound for determinant formulas for the permanent",
+    "note": "Higher is better. Constants are ignored; only the growth rate is shown.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 1989,
+        "value": 1,
+        "who": "Meshulam",
+        "source": 1
+      },
+      {
+        "year": 2004,
+        "value": 2,
+        "who": "Mignon and Ressayre",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 3,
+        "who": "This paper",
+        "claim": true,
+        "source": 7
+      }
+    ]
+  },
+  "explanation": "Take a small grid of numbers: 1 and 2 on top, 3 and 4 below. Its determinant multiplies along the two diagonals and subtracts: 1×4 − 2×3 = −2. Its permanent does the same but adds: 1×4 + 2×3 = 10. Bigger grids follow one recipe. Pick one entry from each row and each column, and multiply them. The permanent adds up every such product. The determinant gives exactly half of them a minus sign.\n\nA small permanent can wear a determinant's disguise. Flip the sign of the 2, and the determinant becomes 1×4 − (−2)×3 = 10. The trick works for any four numbers, not just these. For bigger grids, the disguise needs a bigger determinant. Each of its entries may be a constant plus a weighted sum of the original entries. Such entries are called affine-linear. The smallest determinant size that works is the permanent's determinantal complexity.\n\nWhy care about one formula? In 1979, Leslie Valiant showed that many polynomial families built from small formulas are pieces of small permanents. So the permanent stands in for a whole class of polynomial sums. The central open question is whether its disguise must grow faster than any fixed power of the grid size.\n\nThe known gap is wide. In 2012, Bruno Grenet built a disguise of size 2^m − 1 for an m-by-m permanent. That is 7 for a 3-by-3 grid and 1,023 for a 10-by-10 grid. Lower bounds grew slowly. Around 1989 and 1990, Roy Meshulam and Jin-yi Cai showed the size must be about 1.41 times m. In 2004, Thierry Mignon and Nicolas Ressayre raised this to m²/2. For a 10-by-10 grid, the true answer lay somewhere from 50 to 1,023.\n\nThere is also a looser kind of disguise. A sequence of same-size determinants may approach the permanent, coefficient by coefficient, without ever reaching it. The smallest size that allows this is the border determinantal complexity. It is never larger than the exact one. So a lower bound on it is the stronger statement. Joseph Landsberg, Laurent Manivel and Ressayre proved the same m²/2 bound for this looser model.\n\nThis paper proves that the looser size grows like the cube of m. For every m of at least 1,408, the size is at least m³/(5,529,600·e). Here e is about 2.718. The same bound then holds for exact disguises. The power of m rises from two to three. The constant is tiny, and the paper says it is not optimized. At m = 1,408 the new bound gives about 186, while m²/2 gives 991,232. The cube overtakes the square only beyond about 7.5 million rows. So the gain is in how fast the bound grows, not in any size you could write down today.\n\nWhy were the old methods stuck at squares? Mignon and Ressayre compared Hessians, the grids of second derivatives at one point. At a suitable point, a determinant of size n has Hessian rank at most 2n. The permanent has a point where its Hessian rank is m², the most possible. Rank cannot pass the m² entries, so this comparison stops at about m²/2.\n\nThe paper uses a different measure. Each partial derivative measures how fast the polynomial changes along one variable. The zero set is smooth when no point on it makes every partial derivative zero at once. The all-zero point is the one allowed exception. Roughly, it has no creases or pinch points. Take a polynomial with a smooth zero set, of degree r in d variables. The paper shows it needs size at least (r − 1)(d − 1)/(4e). That bound survives the looser, approximate disguises too. The permanent's own zero set is far from smooth, which gives only a linear bound. So the paper digs a smooth polynomial out of a larger permanent. Its degree grows like k and its number of variables like k², from a permanent of size about 11k. Degree times variables gives the cube.\n\nThe result still leaves the main question open. A cubic bound is a fixed power of m. Whether the permanent needs a disguise beyond every fixed power remains unknown. The paper also draws cubic bounds for algebraic branching programs, networks that compute a polynomial by summing products along paths.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of two statements. One is the cubic bound, exact and approximate, for m of at least 1,408 with the stated constant. The other is the general bound for smooth polynomials. The branching-program consequences are outside that check. No specialist review has been published yet.",
+  "hypeCheck": "If the proof holds, it is a real step, but a limited one. Lean proofs of the cubic bound and the smooth-polynomial bound are listed; the branching-program consequences are outside that check. The constant is so small that the old m²/2 bound stays larger below about 7.5 million rows. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Permanent",
+      "meaning": "The sum of all products that take one entry from each row and each column of a grid, all added."
+    },
+    {
+      "term": "Determinant",
+      "meaning": "The same sum as the permanent, but with half of the products subtracted."
+    },
+    {
+      "term": "Affine-linear",
+      "meaning": "A constant plus a weighted sum of variables."
+    },
+    {
+      "term": "Determinantal complexity",
+      "meaning": "The smallest determinant of affine-linear entries that equals a given polynomial exactly."
+    },
+    {
+      "term": "Border determinantal complexity",
+      "meaning": "The smallest determinant size whose formulas can approach a given polynomial as closely as wanted."
+    },
+    {
+      "term": "Hessian",
+      "meaning": "The grid of all second derivatives of a polynomial at one point."
+    },
+    {
+      "term": "Smooth zero set",
+      "meaning": "The set where a polynomial is zero, when no point on it except the all-zero point makes every partial derivative zero at once."
+    },
+    {
+      "term": "Algebraic branching program",
+      "meaning": "A network whose paths carry simple formulas; it adds up the products along all start-to-end paths."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. Meshulam, “On two extremal matrix problems”, Linear Algebra and its Applications 114/115 (1989), 261–271",
+      "url": "https://doi.org/10.1016/0024-3795(89)90465-5"
+    },
+    {
+      "id": 2,
+      "cite": "J.-Y. Cai, “A note on the determinant and permanent problem”, Information and Computation 84 (1990), 119–127",
+      "url": "https://doi.org/10.1016/0890-5401(90)90036-H"
+    },
+    {
+      "id": 3,
+      "cite": "T. Mignon and N. Ressayre, “A quadratic bound for the determinant and permanent problem”, International Mathematics Research Notices 2004 (79), 4241–4253",
+      "url": "https://doi.org/10.1155/S1073792804142566"
+    },
+    {
+      "id": 4,
+      "cite": "J. M. Landsberg, L. Manivel and N. Ressayre, “Hypersurfaces with degenerate duals and the Geometric Complexity Theory Program”, Commentarii Mathematici Helvetici 88 (2013), 469–484",
+      "url": "https://doi.org/10.4171/CMH/292"
+    },
+    {
+      "id": 5,
+      "cite": "B. Grenet, “An Upper Bound for the Permanent versus Determinant Problem”, author preprint (2012)",
+      "url": "https://membres-ljk.imag.fr/Bruno.Grenet/publis/Gre11.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "L. G. Valiant, “Completeness Classes in Algebra”, Proceedings of STOC ’79 (1979), 249–261",
+      "url": "https://doi.org/10.1145/800135.804419"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “A cubic lower bound for border determinantal complexity of the permanent” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-cubic-lower-bound-for-border-determinantal-complexity-of-the-permanent-September-24-2026/A-cubic-lower-bound-for-border-determinantal-complexity-of-the-permanent-September-24-2026.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 108 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/108.md",
+      "quote": "The formalization proves a cubic lower bound for both exact and border determinantal representations of the complex $m\\times m$ permanent."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The permanent adds every product of one entry per row and column.",
+      "verdict": "supported",
+      "sourceLine": "For a matrix … of independent variables, the permanent is"
+    },
+    {
+      "text": "Determinantal complexity is the least size of a determinant of affine-linear entries equal to f.",
+      "verdict": "supported",
+      "sourceLine": "its \\emph{determinantal complexity} … is the least positive integer … for which"
+    },
+    {
+      "text": "Valiant showed that polynomial families defined by summing polynomial-size formulas are projections of polynomial-size permanents.",
+      "verdict": "supported",
+      "sourceLine": "defined by summing polynomial-size formulas over Boolean strings of polynomial length are projections of polynomial-size permanents"
+    },
+    {
+      "text": "Whether the permanent has superpolynomial determinantal complexity remains open.",
+      "verdict": "supported",
+      "sourceLine": "Whether the permanent has superpolynomial determinantal complexity, or superpolynomial border determinantal complexity, remains open."
+    },
+    {
+      "text": "Grenet realizes the m-by-m permanent as a determinant of order 2^m − 1.",
+      "verdict": "supported",
+      "sourceLine": "On the upper side, Grenet's construction realizes … as a determinant of order"
+    },
+    {
+      "text": "Meshulam and Cai give the scale √2·m − O(1) for arbitrary affine representations over C.",
+      "verdict": "supported",
+      "sourceLine": "For arbitrary affine representations over … Meshulam's final theorem … and Cai's dimension argument … give the scale"
+    },
+    {
+      "text": "Mignon and Ressayre raised the exact lower bound to m²/2.",
+      "verdict": "supported",
+      "sourceLine": "Mignon and Ressayre raised the exact lower bound to"
+    },
+    {
+      "text": "Border determinantal complexity uses the coefficientwise closure of determinants of fixed size.",
+      "verdict": "supported",
+      "sourceLine": "Its \\emph{border determinantal complexity} … is the least positive integer … such that … lies in the coefficientwise closure of"
+    },
+    {
+      "text": "Border complexity is never larger than exact complexity.",
+      "verdict": "supported",
+      "sourceLine": "An exact determinant representation is also a constant sequence of approximating determinants."
+    },
+    {
+      "text": "Landsberg, Manivel and Ressayre proved the border bound m²/2.",
+      "verdict": "supported",
+      "sourceLine": "Landsberg, Manivel and Ressayre proved the unrestricted complex border bound"
+    },
+    {
+      "text": "For m ≥ 1408, the border complexity is at least m³/(5,529,600e).",
+      "verdict": "supported",
+      "sourceLine": "There exist absolute constants … and … such that, for every integer"
+    },
+    {
+      "text": "The constants are not optimized.",
+      "verdict": "supported",
+      "sourceLine": "The constants are not optimized."
+    },
+    {
+      "text": "The same numerical bound holds for exact determinantal complexity.",
+      "verdict": "supported",
+      "sourceLine": "The same numerical lower bound holds for exact determinantal complexity."
+    },
+    {
+      "text": "The result raises the lower-bound exponent from two to three in the same model.",
+      "verdict": "supported",
+      "sourceLine": "raises the lower-bound exponent from two to three in that same model."
+    },
+    {
+      "text": "Mignon and Ressayre compared Hessians at a zero; the permanent has a zero where its Hessian has full rank m².",
+      "verdict": "supported",
+      "sourceLine": "the permanent has a zero where its Hessian has full rank"
+    },
+    {
+      "text": "The determinant's Hessian rank is at most 2n at a noninvertible matrix.",
+      "verdict": "supported",
+      "sourceLine": "the Hessian of an order-… determinant has rank at most … at a noninvertible matrix"
+    },
+    {
+      "text": "For the permanent, the singularity bound has only a linear scale.",
+      "verdict": "supported",
+      "sourceLine": "so this obstruction alone has only a linear scale"
+    },
+    {
+      "text": "A smooth form of degree r in d variables has border complexity at least (r−1)(d−1)/(4e).",
+      "verdict": "supported",
+      "sourceLine": "Its lower bound is proportional to the product"
+    },
+    {
+      "text": "The smooth-form bound persists under arbitrary coefficientwise approximation.",
+      "verdict": "supported",
+      "sourceLine": "persistence of finitely many simple polar intersections in one sufficiently close determinant under an arbitrary coefficientwise approximation"
+    },
+    {
+      "text": "The construction realizes the coefficient polynomial as an affine restriction of a permanent of size 11k − 2q.",
+      "verdict": "supported",
+      "sourceLine": "as an affine restriction of a permanent of size"
+    },
+    {
+      "text": "The coefficient polynomial has degree linear in k in quadratically many variables, with a smooth zero set.",
+      "verdict": "supported",
+      "sourceLine": "that has degree proportional to … in quadratically many variables and has a smooth projective zero set."
+    },
+    {
+      "text": "There are cubic lower bounds for algebraic branching programs.",
+      "verdict": "supported",
+      "sourceLine": "requires … vertices and … edges"
+    },
+    {
+      "text": "Lean covers the cubic bound for exact and border representations for m ≥ 1408 and the general smooth-form bound; the branching-program consequences are outside.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}

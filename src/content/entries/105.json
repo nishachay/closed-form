@@ -1,0 +1,217 @@
+{
+  "id": "105",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Perfect-completeness-for-2-to-1-games-September-23-2026/paper.pdf",
+      "label": "Perfect completeness for 2-to-1 games"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/105.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Telling fully solvable 2-to-1 games from nearly worthless ones is NP-hard.",
+  "scope": "The result holds for each fixed target value δ between 0 and 1. The alphabet and running-time degree depend on δ.",
+  "plain": "In a 2-to-1 game, each rule lets exactly two left answers lead to each right answer. In 2002, Subhash Khot conjectured that fully solvable games are hard to tell from nearly worthless ones. Earlier work reached this only for nearly solvable games, or with a weak gap. This paper proves the full conjecture (Lean proof listed). The good side stays perfect and the bad side gets as small as wanted.",
+  "doesNot": "This does not give a fast algorithm for any problem. Its games are not shown to meet the extra Rich 2-to-1 condition.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2002",
+    "firstStepBy": "Subhash Khot, the 2-to-1 Games Conjecture",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles Khot's 2-to-1 Games Conjecture in the perfect-completeness form the conjecture asks for."
+  },
+  "explanation": "Here is a small puzzle with two kinds of players. Two left players each set two on-off switches, so each has four possible answers. Three right players each set one switch. A rule links every left player to every right player. Right player 1 must copy the left player's first switch. Right player 2 must copy the second switch. Right player 3 must say whether the two switches match, when facing left player 1. When facing left player 2, it must say whether they differ.\n\nEvery rule here has the same shape. For each answer a right player can give, exactly two left answers lead to it. A puzzle built only from rules of this shape is called a 2-to-1 game. Its value is the largest share of rules that one choice of answers can keep.\n\nThis puzzle cannot be fully solved. Right player 3 would have to say both \"match\" and \"differ\" about the same two switches. Yet five of the six rules can be kept. Checking all 128 ways to answer confirms it. The value is 5/6, about 83 percent, and 24 of those ways reach it.\n\nSubhash Khot introduced games like this in 2002. He was studying hardness of approximation: which problems stay hard even when a rough answer is enough. His 2-to-1 Games Conjecture is about telling two kinds of game apart. Some are fully solvable. Others have a tiny value, such as 1 percent. The conjecture says this task is NP-hard. That means a fast method for it would give fast methods for every problem in a large class called NP.\n\nThe words \"fully solvable\" carry the weight. This demand is called perfect completeness. A theorem of Khot, Dor Minzer and Muli Safra, published in 2023, settled a weaker version. In it, the good games only need a value close to 1. But nearly solvable is not solvable. Those constructions need not produce even one game that can be fully solved. In 2014, Per Austrin, Ryan O'Donnell, Li-Yang Tan and John Wright kept perfect completeness for 2-to-1 games. But their bad games could still have value just above 23/24, about 96 percent. The open issue was pushing that down while keeping both demands. In September 2026, Yumou Fei, Minzer and Shuo Wang reached perfect completeness for the looser 4-to-1 games.\n\nThe single obstacle is the usual way of widening a gap. The standard trick plays a game many times at once. That pushes down the value of a bad game. But it breaks the 2-to-1 shape. Play one rule twice, and each pair of right answers comes from 2 × 2 = 4 left pairs. Play it k times, and there are 2^k.\n\nThis paper proves the gap can be widened anyway. Pick any fixed fraction δ between 0 and 1. The paper gives a fast, step-by-step translation from 3-SAT into 2-to-1 games. 3-SAT is a standard logic puzzle: true-false conditions, each on three variables. Solvable puzzles become games of value exactly 1. Unsolvable ones become games of value at most δ. Every rule keeps exactly two left answers for each right answer. Instead of plain repetition, the paper places independent copies of a starting game in a tree. Its questions come from combining answers across that tree. Dropping one yes-or-no output merges at most two answers, so the two-to-one shape survives.\n\nBack in the switch puzzle, the theorem says this. No fast method can separate fully solvable 2-to-1 games from games keeping at most 1 percent of rules. The same holds for any fixed target in place of 1 percent, unless every NP problem has a fast method. The number of answers per player is fixed, but it depends on δ. The running time is a fixed power of the input size, but that power may also depend on δ. The paper also turns a known conditional limit on coloring most edges of a graph into an unconditional one. It recovers a known hardness result of Johan Håstad for a three-variable constraint called Not-Two.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. A tool called Comparator matches that proof against a fixed reference statement. The coloring and Not-Two consequences are not in the Lean scope note. No specialist review of the paper has been published.",
+  "hypeCheck": "The main theorem has a Lean proof listed with a Comparator statement. The corollaries are outside the Lean scope note, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "2-to-1 game",
+      "meaning": "A puzzle of linked players where, under each rule, exactly two left answers lead to each right answer."
+    },
+    {
+      "term": "Value",
+      "meaning": "The largest share of a game's rules that one choice of answers can keep."
+    },
+    {
+      "term": "Perfect completeness",
+      "meaning": "The demand that the good games be fully solvable, not just nearly solvable."
+    },
+    {
+      "term": "NP-hard",
+      "meaning": "At least as hard as every problem in the class NP, so a fast method would give fast methods for all of them."
+    },
+    {
+      "term": "3-SAT",
+      "meaning": "A standard logic puzzle: true-false conditions, each on three variables, that must all hold at once."
+    },
+    {
+      "term": "Hardness of approximation",
+      "meaning": "The study of which problems stay hard even when a rough answer is enough."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement, using only standard axioms."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. Khot, “On the Power of Unique 2-Prover 1-Round Games”, STOC (2002)",
+      "url": "https://doi.org/10.1145/509907.510017"
+    },
+    {
+      "id": 2,
+      "cite": "P. Austrin, R. O'Donnell, L.-Y. Tan and J. Wright, “New NP-Hardness Results for 3-Coloring and 2-to-1 Label Cover”, ACM Transactions on Computation Theory 6(1) (2014)",
+      "url": "https://www.cs.cmu.edu/afs/cs/Web/People/jswright/papers/coloring.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "S. Khot, D. Minzer and M. Safra, “Pseudorandom Sets in Grassmann Graph Have Near-Perfect Expansion”, Annals of Mathematics 198(1) (2023), 1–92",
+      "url": "https://doi.org/10.4007/annals.2023.198.1.1"
+    },
+    {
+      "id": 4,
+      "cite": "Y. Fei, D. Minzer and S. Wang, “On the Hardness of 4-to-1 Games with Perfect Completeness”, ECCC TR26-179 (September 2026)",
+      "url": "https://eccc.weizmann.ac.il/report/2026/179/"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, family 105: “Perfect completeness for 2-to-1 games” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Perfect-completeness-for-2-to-1-games-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 105 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/105.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A 2-to-1 game has every right answer with exactly two preimages under each constraint.",
+      "verdict": "supported",
+      "sourceLine": "A \\emph{2-to-1 game} has a common left alphabet"
+    },
+    {
+      "text": "The value of a game is the maximum fraction of satisfied constraints.",
+      "verdict": "supported",
+      "sourceLine": "The \\emph{value} of the game is the maximum fraction of satisfied occurrences."
+    },
+    {
+      "text": "Khot introduced the games conjectures in the study of hardness of approximation.",
+      "verdict": "supported",
+      "sourceLine": "Khot introduced the games conjectures in the study of hardness of approximation"
+    },
+    {
+      "text": "Khot's paper introducing the games appeared at STOC 2002.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "The conjecture asks for NP-hardness of distinguishing satisfiable games from games of arbitrarily small fixed value.",
+      "verdict": "supported",
+      "sourceLine": "Conjecture asks for NP-hardness of distinguishing satisfiable games from games of arbitrarily small fixed value."
+    },
+    {
+      "text": "The satisfiable case is the perfect-completeness requirement.",
+      "verdict": "supported",
+      "sourceLine": "The satisfiable case is the \\emph{perfect-completeness} requirement: one labeling must satisfy every constraint."
+    },
+    {
+      "text": "Near-perfect completeness does not give the endpoint, since those reductions need not produce any satisfiable game.",
+      "verdict": "supported",
+      "sourceLine": "those reductions need not produce any finite satisfiable game."
+    },
+    {
+      "text": "Khot, Minzer and Safra's near-perfect expansion theorem gave completeness close to one and small soundness.",
+      "verdict": "supported",
+      "sourceLine": "The near-perfect expansion theorem of Khot, Minzer and Safra completed these ingredients, giving completeness arbitrarily close to one and arbitrarily small soundness"
+    },
+    {
+      "text": "Austrin, O'Donnell, Tan and Wright proved perfect-completeness 2-to-1 hardness with alphabets 6 and 3 and soundness 23/24 plus epsilon.",
+      "verdict": "supported",
+      "sourceLine": "Austrin, O'Donnell, Tan and Wright established perfect-completeness 2-to-1 Label Cover hardness with alphabets of sizes $6$ and $3$ and soundness $23/24+\\eps$"
+    },
+    {
+      "text": "Fei, Minzer and Wang proved perfect-completeness hardness for 4-to-1 games.",
+      "verdict": "supported",
+      "sourceLine": "More recently, Fei, Minzer and Wang proved perfect-completeness hardness for 4-to-1 games at arbitrarily small fixed soundness"
+    },
+    {
+      "text": "Repeating an exact-two projection k times gives 2^k preimages.",
+      "verdict": "supported",
+      "sourceLine": "repeating an exact-two projection $k$ times gives $2^k$ preimages of every right answer."
+    },
+    {
+      "text": "For every fixed rational delta there is a deterministic polynomial-time reduction from 3-SAT to 2-to-1 games with value 1 or at most delta.",
+      "verdict": "supported",
+      "sourceLine": "and a deterministic polynomial-time reduction from $3$-SAT to 2-to-1 games"
+    },
+    {
+      "text": "Every table has exactly two preimages for each right answer.",
+      "verdict": "supported",
+      "sourceLine": "Every table has exactly two preimages for each right answer."
+    },
+    {
+      "text": "The construction places independent copies of the source questions at the leaves of a tree.",
+      "verdict": "supported",
+      "sourceLine": "independent copies of its questions at the leaves of a finite rooted tree."
+    },
+    {
+      "text": "Deleting one binary output direction merges at most two parts.",
+      "verdict": "supported",
+      "sourceLine": "Deleting one binary output direction merges at most two parts and gives the preliminary at-most-two constraints."
+    },
+    {
+      "text": "Any positive real target can be handled with a smaller rational target.",
+      "verdict": "supported",
+      "sourceLine": "For any positive real soundness target, one may apply the theorem with a smaller fixed rational target."
+    },
+    {
+      "text": "The running time's degree and constants may depend on delta.",
+      "verdict": "supported",
+      "sourceLine": "its degree and constants may depend on the fixed $\\delta$."
+    },
+    {
+      "text": "The Max k-colorable subgraph soundness bound becomes unconditional.",
+      "verdict": "supported",
+      "sourceLine": "Their soundness bound $1-1/k+O(\\log k/k^2)$ is therefore unconditional."
+    },
+    {
+      "text": "The Not-Two corollary recovers Håstad's unconditional hardness theorem.",
+      "verdict": "supported",
+      "sourceLine": "The next corollary recovers H{\\aa}stad's unconditional hardness theorem"
+    },
+    {
+      "text": "The Rich 2-to-1 uniform-partition condition is not part of the main theorem.",
+      "verdict": "supported",
+      "sourceLine": "No such condition is part of Theorem~\\ref{thm:main}."
+    },
+    {
+      "text": "Lean formalizes the perfect-completeness reduction, with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

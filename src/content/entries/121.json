@@ -1,0 +1,187 @@
+{
+  "id": "121",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Almost-Linear-Approximation-Scheme-for-Edit-Distance-September-24-2026/paper.pdf",
+      "label": "An Almost-Linear Approximation Scheme for Edit Distance"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/121.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Edit distance can be estimated to within any fixed accuracy in barely more than linear time.",
+  "scope": "The accuracy ε is fixed in advance. Symbols are integers of polynomial size. The speed holds only for very long strings.",
+  "plain": "The edit distance between two strings counts the fewest one-symbol changes that turn one into the other. The classic exact method takes time that grows like the square of the length. This paper proves a random method can estimate it within a factor 1 + ε, for any fixed ε below 1. It succeeds with probability at least 2/3, and its expected running time is barely more than linear. The speed only applies to astronomically long strings, so it is a theoretical result.",
+  "doesNot": "This does not give a practical program: below enormous input lengths the method falls back on the classic quadratic table.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "Wagner and Fischer, quadratic table method",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It pairs accuracy arbitrarily close to exact with almost-linear time, which the earlier methods the paper cites did not."
+  },
+  "explanation": "Turn the word kitten into sitting. Change the k to an s. Change the e to an i. Add a g at the end. That is three edits, and no shorter route exists. The edit distance between two strings is this smallest count. Each insertion, deletion or swap of one symbol costs one.\n\nThe classic method fills in a table with one cell for each pair of positions. For kitten and sitting that is 6 times 7, or 42 cells. The work grows with the product of the two lengths. Two strings of a million symbols each need about a trillion cells. Robert Wagner and Michael Fischer described this table method in 1974.\n\nDoing much better exactly looks out of reach. In 2018, Arturs Backurs and Piotr Indyk showed a link to a standard belief about hard problems. A fast exact method of a certain strong kind would break that belief. Their result says nothing against good estimates, though. So researchers turned to approximation, meaning an answer that may be off by a controlled factor.\n\nEstimates improved over two decades. In 2020, Alexandr Andoni and Negev Shekel Nosatzki reached a fixed error factor in time just above linear. Linear time means work proportional to the total length. But their factor could not be pushed close to one. In 2026, Xiao Mao and Aviad Rubinstein got within any factor 1 + ε. Here ε is a small accuracy setting, such as 0.1. Their running time was only a little below the square of the length.\n\nThis paper proves that both goals can be met at once. Fix any fraction ε between 0 and 1. With probability at least 2/3, the algorithm returns a whole number between the true distance and 1 + ε times it. Its expected running time is N to the power 1 + o(1), where N is the total length. That means barely more than linear: the extra factor grows slower than any fixed power of N. Equal strings always give zero.\n\nBack to kitten and sitting, with ε set to 0.1. The answer must lie between 3 and 3.3. The only whole number there is 3. So a correct run gives the exact answer here. On long strings, a 10 percent error is the price for skipping most of the trillion cells.\n\nThe hard part was cost, not accuracy. The method splits the first string into pieces, then pieces of pieces. It estimates how each piece lines up against stretches of the second string. Checking every possible stretch for every piece would use up the whole time budget. The paper predicts where a best alignment should go from rough early estimates. That confines each piece to a narrow band of positions. It then bounds how many smaller estimates are ever actually requested.\n\nThe result is a statement about very long inputs. For each fixed ε, the guarantee only kicks in past some length that depends on ε. Below it, the algorithm falls back on the exact table method. The paper says these thresholds are very large. One condition requires the length to exceed roughly 2 raised to 2 raised to 2 to the 999th power. So this is a theorem about growth rates, not a practical tool. The paper also does not claim a good dependence on ε.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers the accuracy guarantee with probability at least 2/3 and the zero answer on equal strings. It also covers the almost-linear bound on expected work, for symbols of polynomially bounded size. A tool called Comparator matches it against a fixed reference statement. No specialists have published a review yet.",
+  "hypeCheck": "Major in theory if the proof holds, with a Lean check of the main theorem listed. It is an asymptotic statement with huge thresholds, it gives no practical speedup, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Edit distance",
+      "meaning": "The fewest single-symbol insertions, deletions and swaps that turn one string into another."
+    },
+    {
+      "term": "Approximation factor",
+      "meaning": "How far an estimate may be from the true answer, as a multiple; 1 + ε allows an ε share of error."
+    },
+    {
+      "term": "Linear time",
+      "meaning": "Running time that grows in proportion to the size of the input."
+    },
+    {
+      "term": "N to the 1 + o(1)",
+      "meaning": "Time just above linear: the extra factor grows slower than any fixed power of N."
+    },
+    {
+      "term": "Randomized algorithm",
+      "meaning": "A method that uses coin flips and must succeed only with a stated probability."
+    },
+    {
+      "term": "Alignment",
+      "meaning": "A way of matching positions in one string to positions in the other."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement, using only standard axioms."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. A. Wagner and M. J. Fischer, “The String-to-String Correction Problem”, Journal of the ACM 21 (1974), 168–173",
+      "url": "https://doi.org/10.1145/321796.321811"
+    },
+    {
+      "id": 2,
+      "cite": "A. Backurs and P. Indyk, “Edit Distance Cannot Be Computed in Strongly Subquadratic Time (Unless SETH Is False)”, SIAM Journal on Computing 47 (2018), 1087–1097",
+      "url": "https://doi.org/10.1137/15M1053128"
+    },
+    {
+      "id": 3,
+      "cite": "A. Andoni and N. S. Nosatzki, “Edit Distance in Near-Linear Time: It's a Constant Factor”, FOCS (2020), 990–1001",
+      "url": "https://doi.org/10.1109/FOCS46700.2020.00096"
+    },
+    {
+      "id": 4,
+      "cite": "X. Mao and A. Rubinstein, “Approximation Schemes for Edit Distance and LCS in Quasi-Strongly Subquadratic Time”, STOC (2026), arXiv:2603.29702",
+      "url": "https://arxiv.org/abs/2603.29702v1"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “An Almost-Linear Approximation Scheme for Edit Distance” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Almost-Linear-Approximation-Scheme-for-Edit-Distance-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 121 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/121.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Edit distance is the minimum number of single-symbol insertions, deletions and substitutions, each of cost one.",
+      "verdict": "supported",
+      "sourceLine": "single-symbol insertions, deletions and substitutions that transform a string"
+    },
+    {
+      "text": "Wagner and Fischer's dynamic program computes edit distance in quadratic time.",
+      "verdict": "supported",
+      "sourceLine": "deletions and substitutions in quadratic time"
+    },
+    {
+      "text": "Backurs and Indyk showed a strongly subquadratic exact algorithm would refute the Strong Exponential Time Hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "would refute the Strong Exponential Time Hypothesis"
+    },
+    {
+      "text": "That lower bound does not rule out fixed-factor approximation.",
+      "verdict": "supported",
+      "sourceLine": "does not rule out fixed-factor approximation."
+    },
+    {
+      "text": "Andoni and Nosatzki's factor depends on the exponent parameter and is not an approximation scheme.",
+      "verdict": "supported",
+      "sourceLine": "this is not an approximation scheme with error tending to zero."
+    },
+    {
+      "text": "Mao and Rubinstein obtained a randomized 1 + ε approximation in slightly subquadratic time.",
+      "verdict": "supported",
+      "sourceLine": "randomized $(1+\\varepsilon)$ approximation in"
+    },
+    {
+      "text": "The algorithm returns an estimate between the true distance and 1 + ε times it with probability at least 2/3, in expected time N^{1+o(1)}.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed rational $\\varepsilon$, its worst-case expected running time"
+    },
+    {
+      "text": "Equal strings return zero deterministically.",
+      "verdict": "supported",
+      "sourceLine": "Equal strings return zero"
+    },
+    {
+      "text": "Unrestricted recursive evaluation of child distances would use up the time budget.",
+      "verdict": "supported",
+      "sourceLine": "unrestricted recursive evaluation of child distances would"
+    },
+    {
+      "text": "The method needs a narrow family containing a good comparison alignment and a bound on child distances evaluated.",
+      "verdict": "supported",
+      "sourceLine": "We therefore need both a narrow family that"
+    },
+    {
+      "text": "Predictions restrict the target positions at each cut to a narrow band.",
+      "verdict": "supported",
+      "sourceLine": "restricts the possible target positions at each cut to a narrow band."
+    },
+    {
+      "text": "Exact computation is used below an accuracy-dependent threshold, and the thresholds are very large.",
+      "verdict": "supported",
+      "sourceLine": "their thresholds are very large, so the result is an"
+    },
+    {
+      "text": "Exact dynamic programming is used if ℓ < 2^1000, where ℓ is about log2 log2 N.",
+      "verdict": "supported",
+      "sourceLine": "Use exact dynamic programming also if $\\ell<2^{1000}$ or"
+    },
+    {
+      "text": "The paper does not assert polynomial dependence on 1/ε.",
+      "verdict": "supported",
+      "sourceLine": "We do not assert"
+    },
+    {
+      "text": "The Lean formalization covers the accuracy guarantee, zero on equal strings, and almost-linear expected work, with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

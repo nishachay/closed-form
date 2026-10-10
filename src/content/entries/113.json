@@ -1,0 +1,269 @@
+{
+  "id": "113",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Fully-Polynomial-Randomized-Approximation-Scheme-for-Perfect-Matchings-in-General-Graphs-September-23-2026/main.pdf",
+      "label": "A Fully Polynomial Randomized Approximation Scheme for Perfect Matchings in General Graphs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Entropy-and-Face-Dimension-of-the-Perfect-Matching-Polytope-September-23-2026/main.pdf",
+      "label": "Entropy and Face Dimension of the Perfect-Matching Polytope"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/113.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A fast coin-flipping method estimates the number of perfect matchings in any network, to any chosen accuracy.",
+  "scope": "Counting covers finite simple networks without weights. The entropy bound covers loopless networks on an even number of points.",
+  "plain": "A perfect matching pairs up every point of a network using allowed links. Counting them exactly is believed to be hard, and fast estimates were known only for two-sided networks. This paper proves a fast coin-flipping method that estimates the count in any network, within any chosen error. A companion paper proves a 2018 conjecture. It bounds how spread out a random perfect matching can be, given each link's probability.",
+  "doesNot": "This does not give a practical program: the running time is a polynomial guarantee with large constants.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1989",
+    "firstStepBy": "Mark Jerrum and Alistair Sinclair, who raised the general-graph question",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they answer a counting question open since 1989 and a 2018 entropy conjecture."
+  },
+  "explanation": "Six people need to pair off for a dance. If anyone may dance with anyone, there are 15 ways. The first person has 5 choices of partner, the next unpaired person has 3, and the last two have 1. With 20 people the count is 654,729,075. With 100 people it is about 2.7 × 10^78. Each complete pairing is called a perfect matching. It pairs every point of a network, using only allowed pairs.\n\nReal networks allow only some pairs, and then no simple formula exists. Finding one perfect matching is easy. Jack Edmonds gave a fast method for that in 1965. Counting them all exactly is another matter. In 1979, Leslie Valiant showed that exact counting is #P-complete, even for bipartite networks. Bipartite means the points form two sides and every allowed pair crosses between them. The label #P-complete means as hard as a broad class of counting problems with no known fast method.\n\nSo researchers aimed for good estimates instead. An FPRAS (fully polynomial randomized approximation scheme) is a method that flips coins. You pick an error, such as 1 percent, and a failure chance, such as one in a million. The method must land within that error, except with at most that failure chance. Its running time may grow only like a fixed power of the input size and of 1 over the error. The failure chance costs even less: only its logarithm enters.\n\nIn 1989, Mark Jerrum and Alistair Sinclair gave an FPRAS for counting all matchings, of every size. Their method for perfect matchings needed a promise. Near-perfect matchings, which leave two points unpaired, could not outnumber perfect ones too badly. In 2004, Jerrum, Sinclair and Eric Vigoda removed that promise for bipartite networks. General networks stayed open. Jerrum and Sinclair had raised that question explicitly in 1989.\n\nThe one obstacle was that the bipartite method does not stretch. These methods take a long random walk through possible matchings, then read off statistics. In 2018, Daniel Štefankovič, Vigoda and John Wilmes built networks that defeat every walk of the 2004 type. On them, the walk either almost never visits a perfect matching or takes exponentially long to spread out. The new paper walks through a different space. It keeps several perfect matchings at once, on a larger network with colored links. A move swaps a closed loop of links between two of them. The count starts from the network where every pair is allowed, which is easy to count. Then the missing links are weakened step by step, and the changes are multiplied together.\n\nThe first paper proves that this gives an FPRAS for every finite network without repeated links or weights. If no perfect matching exists, it returns zero every time. The time bound holds on every run, even unlucky ones. It is a guarantee about growth, not a practical program. The paper says its constants favour clear estimates over speed.\n\nThe companion paper studies spread. Take four people, with all 6 pairs allowed. There are 3 perfect matchings. Ask each pair to appear with probability 1/3. Only one random choice fits: each matching with chance 1/3. Its entropy, a measure of how spread out a random choice is, equals ln 3, about 1.10. The paper compares this with two sums built from the pair probabilities alone. Here they are F ≈ 2.20 and B ≈ 1.62. With m = 2 pairs, its theorem says F − (2 − 2/m)·B ≤ entropy ≤ F. That reads 0.58 ≤ 1.10 ≤ 2.20. Turned back into counts, the bounds say between about 1.78 and 9 matchings. The true count is 3.\n\nThe upper bound was already known, from Shearer's entropy inequality. The lower bound is the new part. For bipartite networks, work of Schrijver and Gurvits implies the stronger F − B. The paper shows this fails in general, with an eight-point example. In 2018, Nima Anari, Shayan Oveis Gharan and Cynthia Vinzant asked a related question for their counting framework. Does their entropy objective exceed the log of the count by only a linear amount? The paper claims yes: the excess is at most 3m − 2. The bound holds at every feasible set of probabilities, including edge cases where some are 0 or 1. It also proves a fast method that never flips coins. That method is only accurate within a factor of 512^n for n points. It also claims a sharp count about the shape of the set of feasible probabilities.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main statements. These are the FPRAS, the entropy bounds, and the 512^n method. Each is matched against a fixed reference statement by a tool called Comparator. The paper's sharp shape count is outside that check. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean formalizations are listed for the counting method and the entropy bounds. No specialist review is published. The method is a theoretical guarantee, not a fast program.",
+  "glossary": [
+    {
+      "term": "Perfect matching",
+      "meaning": "A way to pair up every point of a network, using only allowed links."
+    },
+    {
+      "term": "Bipartite network",
+      "meaning": "A network whose points form two sides, with every link crossing between them."
+    },
+    {
+      "term": "#P-complete",
+      "meaning": "As hard as a broad class of counting problems that no one knows how to solve fast."
+    },
+    {
+      "term": "FPRAS",
+      "meaning": "A coin-flipping method that estimates a count within any chosen error, with high confidence, in time growing like a fixed power."
+    },
+    {
+      "term": "Random walk (Markov chain)",
+      "meaning": "A process that moves between states by random local changes, used to sample objects."
+    },
+    {
+      "term": "Entropy",
+      "meaning": "A measure of how spread out a random choice is; for k equally likely options it is ln k."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement, using only standard axioms."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "L. G. Valiant, “The complexity of computing the permanent”, Theoretical Computer Science 8(2) (1979), 189–201",
+      "url": "https://doi.org/10.1016/0304-3975(79)90044-6"
+    },
+    {
+      "id": 2,
+      "cite": "J. Edmonds, “Paths, trees, and flowers”, Canadian Journal of Mathematics 17 (1965), 449–467",
+      "url": "https://doi.org/10.4153/CJM-1965-045-4"
+    },
+    {
+      "id": 3,
+      "cite": "M. Jerrum and A. Sinclair, “Approximating the permanent”, SIAM Journal on Computing 18(6) (1989), 1149–1178",
+      "url": "https://doi.org/10.1137/0218077"
+    },
+    {
+      "id": 4,
+      "cite": "M. Jerrum, A. Sinclair and E. Vigoda, “A polynomial-time approximation algorithm for the permanent of a matrix with nonnegative entries”, Journal of the ACM 51(4) (2004), 671–697",
+      "url": "https://doi.org/10.1145/1008731.1008738"
+    },
+    {
+      "id": 5,
+      "cite": "D. Štefankovič, E. Vigoda and J. Wilmes, “On counting perfect matchings in general graphs”, LATIN 2018, LNCS 10807, 873–885; arXiv:1712.07504",
+      "url": "https://arxiv.org/abs/1712.07504v1"
+    },
+    {
+      "id": 6,
+      "cite": "N. Anari, S. Oveis Gharan and C. Vinzant, “Log-Concave Polynomials, Entropy, and a Deterministic Approximation Algorithm for Counting Bases of Matroids”, FOCS 2018, 35–46",
+      "url": "https://doi.org/10.1109/FOCS.2018.00013"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 113: “A Fully Polynomial Randomized Approximation Scheme for Perfect Matchings in General Graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Fully-Polynomial-Randomized-Approximation-Scheme-for-Perfect-Matchings-in-General-Graphs-September-23-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 113: “Entropy and Face Dimension of the Perfect-Matching Polytope” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Entropy-and-Face-Dimension-of-the-Perfect-Matching-Polytope-September-23-2026/main.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean doc for family 113 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/113.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Edmonds gave a fast method for finding a maximum matching in a general graph.",
+      "verdict": "supported",
+      "sourceLine": "Edmonds gave a polynomial-time algorithm for finding a maximum matching in a general graph",
+      "sourceId": 7
+    },
+    {
+      "text": "Valiant proved exact counting is #P-complete even for bipartite graphs.",
+      "verdict": "supported",
+      "sourceLine": "Valiant proved that exact counting is #P-complete even for bipartite graphs",
+      "sourceId": 7
+    },
+    {
+      "text": "An FPRAS has a prescribed error and success probability; the confidence enters through its logarithm.",
+      "verdict": "supported",
+      "sourceLine": "The confidence parameter enters through its logarithm.",
+      "sourceId": 7
+    },
+    {
+      "text": "Jerrum and Sinclair gave an FPRAS for the total number of matchings, summed over all sizes.",
+      "verdict": "supported",
+      "sourceLine": "Jerrum and Sinclair gave an FPRAS for the total number of matchings in an arbitrary graph, summed over all cardinalities",
+      "sourceId": 7
+    },
+    {
+      "text": "Their perfect-matching method needed a bounded ratio of near-perfect to perfect matchings.",
+      "verdict": "supported",
+      "sourceLine": "Their perfect-matching algorithm applied when the ratio of near-perfect matchings, which leave exactly two vertices unmatched, to perfect matchings was bounded by a fixed polynomial",
+      "sourceId": 7
+    },
+    {
+      "text": "Jerrum, Sinclair and Vigoda removed the restriction for bipartite graphs.",
+      "verdict": "supported",
+      "sourceLine": "Jerrum, Sinclair, and Vigoda removed the ratio restriction in the bipartite setting and obtained an FPRAS for the permanent of every nonnegative matrix",
+      "sourceId": 7
+    },
+    {
+      "text": "Jerrum and Sinclair raised the general-graph question explicitly.",
+      "verdict": "supported",
+      "sourceLine": "The general-graph question was explicitly raised by Jerrum and Sinclair",
+      "sourceId": 7
+    },
+    {
+      "text": "Štefankovič, Vigoda and Wilmes built graphs defeating every JSV-type chain.",
+      "verdict": "supported",
+      "sourceLine": "constructed graphs on which every JSV-type chain has either exponentially small stationary probability of perfect matchings or exponentially slow mixing",
+      "sourceId": 7
+    },
+    {
+      "text": "The new sampler uses several perfect matchings on an enlarged colored graph and swaps alternating cycles.",
+      "verdict": "supported",
+      "sourceLine": "The sampler below uses a different state space: a product of perfect-matching spaces on an enlarged colored graph, with exchanges of alternating cycles between coordinates.",
+      "sourceId": 7
+    },
+    {
+      "text": "The count starts from the complete graph and gradually suppresses the nonedges.",
+      "verdict": "supported",
+      "sourceLine": "The counting algorithm starts with the complete graph, whose perfect matchings are easy to count, and gradually suppresses the nonedges of",
+      "sourceId": 7
+    },
+    {
+      "text": "The main theorem covers finite simple undirected graphs and returns zero with certainty when there is no perfect matching.",
+      "verdict": "supported",
+      "sourceLine": "If ... the output is zero with certainty.",
+      "sourceId": 7
+    },
+    {
+      "text": "The theorem bounds the time of every execution.",
+      "verdict": "supported",
+      "sourceLine": "We prove the following theorem, including a bound on the time of every execution.",
+      "sourceId": 7
+    },
+    {
+      "text": "The main theorem does not cover compressed multiplicities.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert a counting algorithm for compressed edge multiplicities or for singleton-covering loops",
+      "sourceId": 7
+    },
+    {
+      "text": "The constants favour clear estimates over practical efficiency.",
+      "verdict": "supported",
+      "sourceLine": "the constants are chosen for transparent estimates rather than practical efficiency",
+      "sourceId": 7
+    },
+    {
+      "text": "The upper bound H ≤ F is an instance of Shearer's inequality.",
+      "verdict": "supported",
+      "sourceLine": "is a direct instance of Shearer's entropy inequality",
+      "sourceId": 8
+    },
+    {
+      "text": "The lower comparison is the paper's contribution.",
+      "verdict": "supported",
+      "sourceLine": "Our contribution to ... is its lower comparison.",
+      "sourceId": 8
+    },
+    {
+      "text": "Bipartite graphs admit a coefficient-one comparison via Schrijver and Gurvits.",
+      "verdict": "supported",
+      "sourceLine": "Bipartite graphs admit an order-independent coefficient-one comparison",
+      "sourceId": 8
+    },
+    {
+      "text": "An eight-vertex nonbipartite example has H < F − B.",
+      "verdict": "supported",
+      "sourceLine": "we give a simple eight-vertex nonbipartite graph with a feasible mean for which",
+      "sourceId": 8
+    },
+    {
+      "text": "Anari, Oveis Gharan and Vinzant asked whether the maximum objective exceeds log N by a linear function of the number of vertices.",
+      "verdict": "supported",
+      "sourceLine": "asked whether the maximum binary-coordinate entropy of a perfect matching mean exceeds",
+      "sourceId": 8
+    },
+    {
+      "text": "The bound holds throughout the polytope, including its boundary.",
+      "verdict": "supported",
+      "sourceLine": "throughout the polytope, including its boundary",
+      "sourceId": 8
+    },
+    {
+      "text": "For k edge-disjoint perfect matchings the uniform mixture has marginal 1/k on their union (used for the 1.78 count).",
+      "verdict": "supported",
+      "sourceLine": "edge-disjoint perfect matchings, their uniform mixture has marginal",
+      "sourceId": 8
+    },
+    {
+      "text": "The deterministic algorithm achieves factor 512^n and is a complexity guarantee, not a benchmark.",
+      "verdict": "supported",
+      "sourceLine": "the theorem gives a complexity guarantee, not a practical running-time benchmark",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "Lean formalizes the FPRAS, the entropy bounds and the 512^n deterministic count, each with a Comparator statement; the sharp global face-dimension bound is not part of the selected statement.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

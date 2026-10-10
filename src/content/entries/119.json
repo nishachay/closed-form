@@ -1,0 +1,211 @@
+{
+  "id": "119",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-binary-information-contraction-on-the-discrete-cube-September-24-2026/main.pdf",
+      "label": "Sharp binary-information contraction on the discrete cube"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hellinger-contraction-with-arbitrary-Boolean-output-bias-September-24-2026/main.pdf",
+      "label": "Hellinger contraction with arbitrary Boolean output bias"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/119.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "No yes-or-no summary of random bits survives noise better than simply keeping one bit.",
+  "scope": "The input bits are fair and independent, and each is flipped independently with the same probability.",
+  "plain": "Take many fair random bits and record one yes-or-no fact about them. Then send the bits through a channel that flips each one with the same probability. The first paper proves that the fact reveals the most about the noisy bits when it simply copies one bit. This settles the Courtade–Kumar conjecture from 2013 and 2014. A second paper claims to prove the related Hellinger conjecture for facts of any bias.",
+  "doesNot": "This does not cover inputs that are biased or correlated; the input bits are always fair and independent.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2013",
+    "firstStepBy": "Gowtham Kumar and Thomas Courtade, conjecture posed",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-known information theory conjecture, though several other proofs were announced around the same time."
+  },
+  "explanation": "Toss three fair coins. Send each result down a line that flips it with probability 10%. Before sending, you may also record one yes-or-no fact about the three coins. How much does that one fact reveal about what arrives? Information is measured in bits, and one fair yes-or-no answer is worth at most one bit.\n\nThe choice of fact matters. Take \"what did the first coin show?\" It reveals about 0.531 bits about the noisy copies. Majority vote of the three coins reveals about 0.457 bits. \"Did all three land heads?\" reveals about 0.257 bits. Whether the number of heads is odd reveals about 0.198 bits. Without noise, the first coin, majority and odd-or-even would each reveal a full bit. Noise erodes them at different rates.\n\nThe first coin's score has a closed form. It equals 1 − h(0.1), where h is the binary entropy. That is the uncertainty, in bits, of a coin that lands one way 10% of the time. There are 256 possible yes-or-no facts about three coins. A short program can try all 256. None beats 0.531 bits.\n\nGowtham Kumar and Thomas Courtade asked whether this holds in general. Their conjecture, from 2013 and 2014, says one coordinate is always best. A coordinate means a single input coin, like the first one. The claim covers every noise level and any number of coins. For thousands of coins, nobody can try every fact by computer. Earlier work settled pieces. Alex Samorodnitsky proved it in 2016 for all yes-or-no facts when the noise is high. Lei Yu's work reached a wider noise range for balanced facts, those that say yes half the time. It used a computer-assisted argument.\n\nA second question sits beside it. In a 2017 manuscript, Anantharam, Bogdanov, Chakrabarti, Jayram and Nair posed the Hellinger conjecture. It asks how distinguishable the noisy copies are after a yes versus after a no. It scores this with Hellinger affinity, a standard measure of overlap. The conjecture says a single coin again comes out on top, even for facts that are not balanced. Those authors showed it implies the Courtade–Kumar conjecture. The score here is the loss of affinity: how much overlap the noise destroys. In our example, the first coin keeps an affinity of 0.6, a loss of 0.4. Majority vote keeps about 0.649, a loss of about 0.351. The conjecture says no fact can lose more than 0.4 at this noise level.\n\nThe obstacle was bookkeeping. A natural plan splits the coins on one coin and builds the bound from the two halves. Tracking only how much information each half holds is not enough to make that step work. The first paper says the proof must also track the bias, meaning how often a fact answers yes. It does that and closes the induction, the step-by-step build from fewer coins to more.\n\nThe first paper proves the Courtade–Kumar conjecture. It also covers facts recorded with some randomness. Among facts that start with equal information, a single noisy coin keeps the most. For biased facts that are not constant, it gives a strictly smaller limit. This holds unless the noise scrambles the coins completely. The second paper claims to prove the Hellinger conjecture for every bias and noise level. Its proof uses computer arithmetic, but only for fixed inequalities that do not depend on the number of coins.\n\nThese are not the only claimed proofs. Recent preprints announce proofs of the Courtade–Kumar conjecture by other routes. Their authors include Chen and coauthors, Ky and Tran, and Mahdavifar and Beirami. The first paper says Chen and coauthors' work also gives its main contraction theorem. What the first paper adds is its own route and a stronger bound that depends on the bias.\n\nHow sure is this? A computer proof checker called Lean has checked the first paper's main results. They are the Courtade–Kumar inequality with its equality case, the sharp contraction theorem and the bias-dependent bounds. The Hellinger paper is not covered by the Lean scope note. Its finite arithmetic comes with programs to rerun. No specialists have published a review of either paper yet.",
+  "hypeCheck": "The Courtade–Kumar paper has Lean proofs of its main results listed. The Hellinger paper has no Lean check and relies partly on computer arithmetic. Other groups announced proofs of Courtade–Kumar at about the same time, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Bit",
+      "meaning": "The unit of information; one fair yes-or-no answer carries one bit."
+    },
+    {
+      "term": "Mutual information",
+      "meaning": "How many bits one quantity reveals about another."
+    },
+    {
+      "term": "Binary entropy",
+      "meaning": "The uncertainty, in bits, of a two-way outcome with given odds."
+    },
+    {
+      "term": "Coordinate (dictator) function",
+      "meaning": "A yes-or-no fact that just repeats one input bit."
+    },
+    {
+      "term": "Bias",
+      "meaning": "How far a yes-or-no fact is from saying yes exactly half the time."
+    },
+    {
+      "term": "Hellinger affinity",
+      "meaning": "A score from 0 to 1 for how much two probability distributions overlap."
+    },
+    {
+      "term": "Induction on dimension",
+      "meaning": "Proving a statement for n bits by building it from the case of fewer bits."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "G. R. Kumar and T. A. Courtade, “Which Boolean Functions are Most Informative?”, IEEE ISIT (2013), 226–230",
+      "url": "https://doi.org/10.1109/ISIT.2013.6620221"
+    },
+    {
+      "id": 2,
+      "cite": "T. A. Courtade and G. R. Kumar, “Which Boolean Functions Maximize Mutual Information on Noisy Inputs?”, IEEE Transactions on Information Theory 60(8) (2014), 4515–4525",
+      "url": "https://doi.org/10.1109/TIT.2014.2326877"
+    },
+    {
+      "id": 3,
+      "cite": "A. Samorodnitsky, “On the Entropy of a Noisy Function”, IEEE Transactions on Information Theory 62(10) (2016), 5446–5464",
+      "url": "https://doi.org/10.1109/TIT.2016.2584625"
+    },
+    {
+      "id": 4,
+      "cite": "L. Yu, “Local Optimality of Dictator Functions with Applications to Courtade–Kumar and Li–Médard Conjectures”, Annals of Applied Probability (2026, accepted), arXiv:2410.10147v5",
+      "url": "https://arxiv.org/abs/2410.10147v5"
+    },
+    {
+      "id": 5,
+      "cite": "V. Anantharam, A. Bogdanov, A. Chakrabarti, T. S. Jayram and C. Nair, “A conjecture regarding optimality of the dictator function under Hellinger distance”, manuscript, ITA Workshop (2017)",
+      "url": "https://chandra.ie.cuhk.edu.hk/pub/papers/HC/hel-conj.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "Z. Chen, A. Gohari and C. Nair, “A Differential Equation Approach to the Most-Informative Boolean Function Conjecture”, arXiv:2502.10019v2 (2025, revised 2026)",
+      "url": "https://arxiv.org/abs/2502.10019v2"
+    },
+    {
+      "id": 7,
+      "cite": "Z. Chen, A. Gohari, A. Javanmard, H. Lin, V. Mirrokni, C. Nair and D. P. Woodruff, “A Proof of the Most Informative Boolean Function Conjecture”, arXiv:2609.24931 (2026)",
+      "url": "https://arxiv.org/abs/2609.24931v1"
+    },
+    {
+      "id": 8,
+      "cite": "V. K. Ky and T. Tran, “Dictators Are Most Informative”, arXiv:2609.24184 (2026)",
+      "url": "https://arxiv.org/abs/2609.24184v1"
+    },
+    {
+      "id": 9,
+      "cite": "H. Mahdavifar and A. Beirami, “The Most Informative Bit and Beyond: A Proof of the Courtade–Kumar Conjecture and Multibit Extensions”, arXiv:2609.26444 (2026)",
+      "url": "https://arxiv.org/abs/2609.26444v1"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “Sharp binary-information contraction on the discrete cube” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-binary-information-contraction-on-the-discrete-cube-September-24-2026/main.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “Hellinger contraction with arbitrary Boolean output bias” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hellinger-contraction-with-arbitrary-Boolean-output-bias-September-24-2026/main.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, Lean scope note for family 119 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/119.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Kumar and Courtade conjectured that a single input coordinate is optimal at every noise level and in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "Courtade formulated the conjecture that a single input coordinate is"
+    },
+    {
+      "text": "In bits, the bound is 1 − h(ε) at crossover probability ε, and this is the Courtade–Kumar conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This is the Courtade--Kumar conjecture."
+    },
+    {
+      "text": "Samorodnitsky proved the conjecture for all Boolean functions in a dimension-independent high-noise range.",
+      "verdict": "supported",
+      "sourceLine": "Boolean functions in a dimension-independent high-noise range."
+    },
+    {
+      "text": "Yu's work enlarged the proved range for balanced functions by a computer-assisted argument.",
+      "verdict": "supported",
+      "sourceLine": "the latter gives $0\\le\\rho\\le0.914$ by a computer-assisted argument."
+    },
+    {
+      "text": "Anantharam, Bogdanov, Chakrabarti, Jayram and Nair posed the Hellinger conjecture in a 2017 manuscript and showed it implies Courtade–Kumar.",
+      "verdict": "supported",
+      "sourceLine": "Anantharam, Bogdanov, Chakrabarti, Jayram, and Nair formulated it in their 2017 manuscript and proved that it implies the Courtade--Kumar conjecture"
+    },
+    {
+      "text": "The Hellinger formulation keeps the mean, so biased functions are included.",
+      "verdict": "supported",
+      "sourceLine": "Its formulation retains the mean of the function, so biased functions are part of the question."
+    },
+    {
+      "text": "Tracking information alone does not make the local step work; the proof must also retain the mean.",
+      "verdict": "supported",
+      "sourceLine": "The proof must retain the mean"
+    },
+    {
+      "text": "At fixed initial information, a noisy coordinate retains the most information.",
+      "verdict": "supported",
+      "sourceLine": "initial information, a noisy coordinate retains the most information."
+    },
+    {
+      "text": "Signed coordinate functions attain the bound at mean zero.",
+      "verdict": "supported",
+      "sourceLine": "For $n\\ge1$, signed coordinate functions attain the bound at $m=0$."
+    },
+    {
+      "text": "For nonconstant biased outputs and nonzero noise correlation, the refined bound is strictly below the universal curve.",
+      "verdict": "supported",
+      "sourceLine": "If $0<|m|<1$ and $0<|\\rho|\\le1$, the refined upper curve is"
+    },
+    {
+      "text": "The Hellinger conjecture is claimed resolved in its full, unbalanced form.",
+      "verdict": "supported",
+      "sourceLine": "Thus the conjecture is resolved positively in its full, unbalanced form."
+    },
+    {
+      "text": "The Hellinger proof is computer-assisted only through fixed scalar inequalities independent of n.",
+      "verdict": "supported",
+      "sourceLine": "The proof is computer-assisted only through fixed scalar inequalities, independent of \\(n\\)."
+    },
+    {
+      "text": "Recent preprints announce proofs of the Courtade–Kumar conjecture by several routes.",
+      "verdict": "supported",
+      "sourceLine": "Recent preprints announce proofs of the Courtade--Kumar conjecture by"
+    },
+    {
+      "text": "Chen and coauthors' Lemma 9.2, integrated while retaining the initial information, gives the main contraction theorem.",
+      "verdict": "supported",
+      "sourceLine": "its Lemma~9.2 applies to arbitrary binary channels, and retaining the"
+    },
+    {
+      "text": "Lean covers the sharp contraction theorem, the refined Boolean bound, the entropy-production inequality and the Courtade–Kumar inequality with attainment; the Hellinger paper is not in the scope note.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ]
+}
