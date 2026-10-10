@@ -1,0 +1,206 @@
+{
+  "id": "131",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-Mixing-of-the-Switch-Chain-for-Every-Graphical-Degree-Sequence-September-25-2026/main.pdf",
+      "label": "Polynomial mixing of the switch chain for every graphical degree sequence"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/131.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Random rewiring reaches a fair random network quickly, for every possible list of degrees.",
+  "scope": "The result covers simple, undirected networks on at least four labelled dots, with any graphical degree list.",
+  "plain": "A switch rewires two lines of a network so every dot keeps its number of lines. Repeating random switches eventually picks each network with those degrees equally often. This paper proves the wait is at most 2n⁸ steps for n dots, whatever the degree list (Lean proof listed). It also claims an exact sampler with polynomial average running time.",
+  "doesNot": "This does not cover networks whose lines have directions, and it gives no practical step count.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1999",
+    "firstStepBy": "Kannan, Tetali and Vempala, the switch-chain program",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It settles the simple-network case of a conjecture that earlier work met only for restricted degree families."
+  },
+  "explanation": "Draw six dots and give each one exactly two lines to other dots. The list of line counts, 2 at every dot, is called a degree sequence. A dot's degree is just its number of lines. There are exactly 70 ways to draw such a network on six labelled dots. In 60 of them, the lines form one loop through all six dots. In the other 10, they form two separate triangles.\n\nNow suppose you want one of those 70 networks at random, each equally likely. Scientists want this for real networks too. A random network with the same degrees is a basic baseline to compare a real network against. A degree list is called graphical when at least one simple network has it. Simple means no dot links to itself and no two dots share two lines.\n\nA popular method never lists the options. It starts from any valid network and keeps making small random changes called switches. A switch removes two lines that share no dot and joins their four dots the other way. Take triangles 1-2-3 and 4-5-6. Remove lines 1–2 and 4–5, then add 1–4 and 2–5. Every dot keeps its two lines. The network is now one loop: 1-3-2-5-6-4-1. A switch is skipped if a new line already exists.\n\nThe paper's exact version works like this. Each step, it stays put with probability one half. Otherwise it picks four dots at random and tries a random rewiring of them. Repeated over and over, this is a random walk called the switch chain. In the long run it lands on all valid networks equally often. The question is how long the run must be. The mixing time is the number of steps until the odds are nearly even. Here nearly even means at most one quarter of the probability sits in the wrong places.\n\nI worked the six-dot example out exactly. From the worst starting network, 38 steps are enough. The paper's guaranteed limit is 2n⁸ steps, where n is the number of dots. For six dots, that is 3,359,232 steps. The limit is very generous here. Its value is that it grows only like a fixed power of n. Such growth is called polynomial, and it counts as fast in this field.\n\nThis method has a long history. Kannan, Tetali and Vempala started the switch-chain program in a 1999 paper. They handled regular bipartite cases, where every dot has the same degree and lines run only between two sides. Cooper, Dyer and Greenhill showed fast mixing for regular simple networks in 2007. Later work covered irregular degrees under number limits. In 2022, Erdős and five coauthors covered every P-stable family. P-stable roughly means small nudges to the degrees never change the network count too wildly. Each result needed a whole family of degree lists to behave well. The conjecture said fast mixing should hold for every graphical list. In 2026, Fu, Qin and Wang proved the bipartite version.\n\nThe one obstacle in the simple case is symmetry. A network's table of links reads the same across rows and down columns. The bipartite method reshuffles rows of a table freely, and that breaks the symmetry. This paper reshuffles neighbours between two chosen dots instead, which keeps the table symmetric. Reshuffles on separate pairs of dots can still interfere with each other. The paper shows that one interaction can push the wrong way, yet all of them together never do.\n\nThe result proves fast mixing for every graphical degree list on at least four dots. It needs no condition on the list beyond being graphical. It covers only simple, undirected networks, not networks whose lines have directions. The limit is a guarantee, not a practical speed. For 100 dots, 2n⁸ is 20 million billion steps. The paper also claims an exact sampler. It always outputs each valid network with exactly equal chance. It stops with probability one, and its average running time is polynomial. No polynomial limit is claimed for every single run.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the mixing limit. Lean also checked that switches connect every pair of valid networks, plus a related spectral-gap bound. The exact sampler is outside that check. No specialist review has been published yet.",
+  "hypeCheck": "Major if it holds. Lean checked the mixing limit, but the exact sampler is outside that check. The 2n⁸ limit is far from practical, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Degree sequence",
+      "meaning": "The list giving how many lines touch each dot of a network."
+    },
+    {
+      "term": "Graphical",
+      "meaning": "A degree list that at least one simple network actually has."
+    },
+    {
+      "term": "Simple network",
+      "meaning": "A network with no line from a dot to itself and no doubled lines."
+    },
+    {
+      "term": "Switch",
+      "meaning": "Removing two lines with no shared dot and joining their four dots the other way."
+    },
+    {
+      "term": "Switch chain",
+      "meaning": "A random walk that repeatedly tries random switches on a network."
+    },
+    {
+      "term": "Mixing time",
+      "meaning": "How many steps a random walk needs before its odds are nearly even."
+    },
+    {
+      "term": "Polynomial",
+      "meaning": "Growing no faster than a fixed power of the size, such as n⁸."
+    },
+    {
+      "term": "P-stable",
+      "meaning": "A family of degree lists where small nudges never change the network count too wildly."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. Kannan, P. Tetali and S. Vempala, “Simple Markov-chain algorithms for generating bipartite graphs and tournaments”, Random Structures & Algorithms 14 (1999), 293–308",
+      "url": "https://doi.org/10.1002/(SICI)1098-2418(199907)14:4%3C293::AID-RSA1%3E3.0.CO;2-G"
+    },
+    {
+      "id": 2,
+      "cite": "C. Cooper, M. Dyer and C. Greenhill, “Sampling regular graphs and a peer-to-peer network”, Combinatorics, Probability and Computing 16 (2007), 557–593",
+      "url": "https://doi.org/10.1017/S0963548306007978"
+    },
+    {
+      "id": 3,
+      "cite": "C. Greenhill and M. Sfragara, “The switch Markov chain for sampling irregular graphs and digraphs”, Theoretical Computer Science 719 (2018), 1–20",
+      "url": "https://doi.org/10.1016/j.tcs.2017.11.010"
+    },
+    {
+      "id": 4,
+      "cite": "P. L. Erdős, C. Greenhill, T. R. Mezei, I. Miklós, D. Soltész and L. Soukup, “The mixing time of switch Markov chains: a unified approach”, European Journal of Combinatorics 99 (2022), 103421",
+      "url": "https://doi.org/10.1016/j.ejc.2021.103421"
+    },
+    {
+      "id": 5,
+      "cite": "W. Fu, Q. Qin and G. Wang, “Spectral Gap for the Binary Fixed-Margin Swap Chain”, arXiv:2606.22636 (2026)",
+      "url": "https://arxiv.org/abs/2606.22636v2"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Polynomial mixing of the switch chain for every graphical degree sequence” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-Mixing-of-the-Switch-Chain-for-Every-Graphical-Degree-Sequence-September-25-2026/main.pdf",
+      "quote": "For a lazy chain that proposes switches uniformly on four vertices, the total-variation mixing time at distance $1/4$ is at most $2n^8$."
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for “Rapid mixing of graph switches for every degree sequence” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/131.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Sampling uniformly with prescribed degrees gives a basic null model for networks.",
+      "verdict": "supported",
+      "sourceLine": "Uniform sampling with prescribed degrees provides a basic null model for networks"
+    },
+    {
+      "text": "A switch removes two disjoint edges and inserts a different perfect matching on their four vertices, if both new edges are absent; it preserves simplicity and every degree.",
+      "verdict": "supported",
+      "sourceLine": "removes two disjoint edges and inserts a different perfect matching on their four vertices, provided both new edges are absent. This preserves simplicity and every vertex degree."
+    },
+    {
+      "text": "The chain stays put with probability 1/2; otherwise it chooses four vertices uniformly and a random rewiring.",
+      "verdict": "supported",
+      "sourceLine": "With probability $1/2$ the chain stays at its current graph. Otherwise it chooses a four-element set $S\\subseteq V$ uniformly"
+    },
+    {
+      "text": "Mixing time is measured at total-variation distance 1/4.",
+      "verdict": "supported",
+      "sourceLine": "the total-variation mixing time at distance $1/4$ is at most $2n^8$"
+    },
+    {
+      "text": "For every n ≥ 4 and every graphical degree vector, the mixing time is at most 2n⁸.",
+      "verdict": "supported",
+      "sourceLine": "For every $n\\ge4$ and every graphical degree vector $d$"
+    },
+    {
+      "text": "The six-dot example has 70 realizations (60 hexagons, 10 triangle pairs) and mixes in 38 steps; 2·6⁸ = 3,359,232; 2·100⁸ = 2×10¹⁶.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "Kannan, Tetali and Vempala initiated the switch-chain program and treated regular bipartite sequences.",
+      "verdict": "supported",
+      "sourceLine": "Kannan, Tetali, and Vempala initiated the switch-chain program, treated regular bipartite sequences"
+    },
+    {
+      "text": "Cooper, Dyer and Greenhill established rapid mixing for regular simple undirected sequences.",
+      "verdict": "supported",
+      "sourceLine": "For simple undirected graphs, Cooper, Dyer, and Greenhill established rapid mixing for regular sequences"
+    },
+    {
+      "text": "Greenhill and Sfragara proved rapid mixing under quantitative restrictions on the degrees.",
+      "verdict": "supported",
+      "sourceLine": "Greenhill and Sfragara proved rapid mixing under quantitative restrictions on the degrees"
+    },
+    {
+      "text": "Erdős, Greenhill, Mezei, Miklós, Soltész and Soukup proved rapid mixing for every P-stable family.",
+      "verdict": "supported",
+      "sourceLine": "proved rapid mixing for every P-stable family"
+    },
+    {
+      "text": "P-stability bounds the ratio of realization counts of nearby perturbed sequences to the original.",
+      "verdict": "supported",
+      "sourceLine": "P-stability requires a polynomial bound, uniform over the family, on the ratio between the number of realizations of nearby perturbed sequences and that of the original sequence."
+    },
+    {
+      "text": "Earlier results cover classes of degrees; this theorem requires only that the individual degree vector be graphical.",
+      "verdict": "supported",
+      "sourceLine": "These results explain substantial classes of degrees; the theorem here requires only that the individual degree vector be graphical."
+    },
+    {
+      "text": "The conjecture predicts rapid mixing for every realizable degree specification in the bipartite, directed and simple-undirected models; this paper resolves the simple-undirected formulation.",
+      "verdict": "supported",
+      "sourceLine": "resolves its simple-undirected formulation affirmatively"
+    },
+    {
+      "text": "Fu, Qin and Wang proved the bipartite formulation.",
+      "verdict": "supported",
+      "sourceLine": "Fu, Qin, and Wang proved the bipartite formulation"
+    },
+    {
+      "text": "A simple graph has a symmetric adjacency matrix, so arbitrary binary-matrix resampling breaks the state space; pair resamplings keep the symmetry.",
+      "verdict": "supported",
+      "sourceLine": "A simple undirected graph has a symmetric adjacency matrix, so an arbitrary binary-matrix resampling does not preserve its state space. Our pair resamplings preserve that symmetry by redistributing neighbors between two vertices."
+    },
+    {
+      "text": "Trades on disjoint pairs can be dependent; an individual term may be negative but the full sum is positive semidefinite.",
+      "verdict": "supported",
+      "sourceLine": "although an individual disjoint-pair term may be negative, their full sum is positive semidefinite"
+    },
+    {
+      "text": "The exact sampler uses unbiased random bits, terminates almost surely, and outputs an exactly uniform graph.",
+      "verdict": "supported",
+      "sourceLine": "uses unbiased random bits, terminates almost surely, and outputs a graph chosen exactly uniformly"
+    },
+    {
+      "text": "The time bound is in expectation; no polynomial bound on every execution is asserted.",
+      "verdict": "supported",
+      "sourceLine": "The time bound is in expectation; no polynomial bound on every random execution is asserted."
+    },
+    {
+      "text": "Lean proves the n ≥ 4 mixing bound, switch connectivity and the spectral-gap bound; the exact sampler is outside that scope.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "135",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026.pdf",
+      "label": "Homogeneous depth-five lower bounds for iterated matrix multiplication"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/135.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Five-layer recipes for multiplying n matrices need n to a power that grows like √n.",
+  "scope": "The result covers homogeneous five-layer circuits over fields of characteristic zero, for large enough n.",
+  "plain": "Iterated matrix multiplication is the top-left entry of a product of n grids of unknowns. It is cheap to compute with many layers of steps. This paper proves that a homogeneous recipe with only five layers needs at least n to the power (√n/400) gates. The paper also gives a block recipe with at most n to the power (√n + 4) gates. So the cost is n raised to a constant times √n.",
+  "doesNot": "This does not give useful numbers for small n, and it does not cover circuits that are not homogeneous.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "Nisan and Wigderson, partial-derivative lower bounds",
+    "field": "Theoretical computer science",
+    "significance": "Solid",
+    "significanceWhy": "It pins the exponent for a standard test polynomial in a well-studied shallow circuit model."
+  },
+  "explanation": "Take three grids of numbers, each 3 by 3, and multiply them in a row. Look only at the top-left entry of the result. Written out in full, it is a sum of 9 terms. Each term multiplies three entries, one from each grid. With n grids of size n by n, the count is n to the power n minus 1. For n = 10 that is a billion terms. This top-left entry, with every grid entry treated as an unknown, is called iterated matrix multiplication, or IMM.\n\nNobody needs to write out the billion terms. Multiply the grids one after another, and the work stays modest. In the paper's words, IMM has polynomial-size circuits when depth is unrestricted. A circuit [a recipe of additions and multiplications, where each step is a gate] can reuse earlier results. Its depth is the number of layers of steps. Step-by-step multiplication uses many layers, one after another.\n\nThe question is what happens when the recipe must be shallow. Here it gets exactly five layers: add, multiply, add, multiply, add. The bottom layer forms simple sums of the unknowns, called linear forms. The recipe must also be homogeneous [each step keeps a fixed degree, so no terms later cancel away]. Under these rules the paper gives a recipe. Cut the n grids into about the square root of n blocks. Multiply out each block fully, then combine the blocks. For n = 16, four blocks of four grids give a count of 4,207,617 gates by the paper's formula. In general the paper shows at most n to the power (square root of n plus 4) gates.\n\nLower bounds of this kind have a long history. Nisan and Wigderson, in 1995, asked for an explicit polynomial needing superpolynomial size at constant depth, even at depth five. Kumar and Saraf proved a bound of the right square-root shape for depth four, with much wider grids. In 2015, Bera and Chakrabarti proved a depth-five bound for IMM. Theirs limited how many unknowns each bottom linear form could use. Limaye, Srinivasan and Tavenas, in 2021, gave superpolynomial bounds with no such limit, over characteristic zero. But the matching square-root exponent was missing for n grids of size n by n.\n\nThis paper proves the missing bound. Over every field of characteristic zero, any such recipe needs many gates. The count is at least n to the power (square root of n divided by 400). Characteristic zero means that adding 1 to itself never gives 0, as with ordinary fractions. The bottom linear forms may use every unknown. Gates may be shared freely. Together with the recipe above, the true cost is n raised to a constant times the square root of n.\n\nThe sticking point was the bottom layer. The earlier depth-five bound for IMM limited how many unknowns each bottom sum may use. This paper needs no such limit. It gives each polynomial a score. Some unknowns become derivatives [rates of change], and the rest become multipliers. The score counts how many genuinely different results come out. A small five-layer recipe can only reach a modest score. IMM reaches a large one, because of the many paths through its grids. The two scores clash unless the recipe is large.\n\nThe bound is about shape, not small cases. Its constant 1/400 is tiny. At n = 100 the formula gives about 1.12 gates, which says nothing. The theorem holds only beyond a threshold that the paper does not state as a number. At n = 100,000,000 the formula gives 10 to the power 200 gates, if that size is past the threshold. The upper recipe there is far larger again. The two bounds agree in shape, not in their constants.\n\nHow sure is this? The Lean scope note says a formalization proves both the lower bound and the upper bound. Lean is a computer proof checker. The note links a Comparator statement for the result. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. The Lean scope note lists a formal proof of both bounds, but no specialist review is published. Superpolynomial bounds in this setting were already known; the new part is the sharp exponent.",
+  "glossary": [
+    {
+      "term": "Iterated matrix multiplication (IMM)",
+      "meaning": "The top-left entry of a product of n grids whose entries are unknowns."
+    },
+    {
+      "term": "Circuit",
+      "meaning": "A recipe of additions and multiplications in which each step is a gate and results can be reused."
+    },
+    {
+      "term": "Depth",
+      "meaning": "The number of layers of steps in a circuit."
+    },
+    {
+      "term": "Homogeneous",
+      "meaning": "Every step keeps a fixed degree, so no step builds terms that later cancel away."
+    },
+    {
+      "term": "Linear form",
+      "meaning": "A plain weighted sum of unknowns, with no products."
+    },
+    {
+      "term": "Characteristic zero",
+      "meaning": "A number system where adding 1 to itself never gives 0, like ordinary fractions."
+    },
+    {
+      "term": "Superpolynomial",
+      "meaning": "Growing faster than any fixed power of the input size."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "N. Nisan and A. Wigderson, “Lower Bounds on Arithmetic Circuits via Partial Derivatives”, 36th FOCS (1995)",
+      "url": "https://www.math.ias.edu/~avi/PUBLICATIONS/MYPAPERS/NW96/final.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "M. Kumar and S. Saraf, “On the Power of Homogeneous Depth 4 Arithmetic Circuits”, SIAM Journal on Computing 46(1) (2017), 336–387",
+      "url": "https://doi.org/10.1137/140999335"
+    },
+    {
+      "id": 3,
+      "cite": "S. K. Bera and A. Chakrabarti, “A Depth-Five Lower Bound for Iterated Matrix Multiplication”, CCC 2015, LIPIcs 33, 183–197",
+      "url": "https://doi.org/10.4230/LIPIcs.CCC.2015.183"
+    },
+    {
+      "id": 4,
+      "cite": "N. Limaye, S. Srinivasan and S. Tavenas, “Superpolynomial Lower Bounds Against Low-Depth Algebraic Circuits”, ECCC TR21-081 (2021)",
+      "url": "https://eccc.weizmann.ac.il/report/2021/081/revision/1/download"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, family 135: “Homogeneous depth-five lower bounds for iterated matrix multiplication” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026/Homogeneous-depth-five-lower-bounds-for-iterated-matrix-multiplication-September-25-2026.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 135 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/135.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "IMM is the (1,1) entry of the product of d matrices of distinct variables; IMM_{n,n} has degree n.",
+      "verdict": "supported",
+      "sourceLine": "Our target is $\\IMM_{n,n}$, of degree $n$ in $n^3$ ambient variables."
+    },
+    {
+      "text": "IMM has polynomial-size circuits when depth is unrestricted.",
+      "verdict": "supported",
+      "sourceLine": "Iterated matrix multiplication nevertheless has polynomial-size circuits when depth is unrestricted."
+    },
+    {
+      "text": "A five-layer circuit has layers +, ×, +, ×, + and bottom linear forms of unbounded support.",
+      "verdict": "supported",
+      "sourceLine": "In particular, no bound is placed on the number of variables in a bottom linear form."
+    },
+    {
+      "text": "Over every characteristic-zero field, homogeneous depth-five circuits for IMM_{n,n} need at least n^{√n/400} gates for large n.",
+      "verdict": "supported",
+      "sourceLine": "has at least $n^{\\sqrt n/400}$ gates.  Bottom fan-in and bottom support are unrestricted."
+    },
+    {
+      "text": "Gates may be shared, with arbitrary finite fan-in and fan-out.",
+      "verdict": "supported",
+      "sourceLine": "Fan-in and fan-out are arbitrary and finite.  Gates may be shared"
+    },
+    {
+      "text": "A block construction with t = ⌈√n⌉ gives at most 2n^3+rn^2+rn^{t+1}+n^{r-1}+1 ≤ n^{√n+4} gates; for n = 16 this is 4,207,617.",
+      "verdict": "supported",
+      "sourceLine": "2n^3+rn^2+rn^{t+1}+n^{r-1}+1"
+    },
+    {
+      "text": "Nisan and Wigderson asked for an explicit homogeneous polynomial needing superpolynomial size at constant depth, even depth five.",
+      "verdict": "supported",
+      "sourceLine": "They asked for an explicit homogeneous polynomial requiring superpolynomial size at constant depth, even at depth five"
+    },
+    {
+      "text": "Kumar and Saraf proved a d^{Ω(√d)} bound for homogeneous depth-four circuits computing IMM_{d^5,d}.",
+      "verdict": "supported",
+      "sourceLine": "Kumar and Saraf proved a $d^{\\Omega(\\sqrt d)}$ lower bound for homogeneous depth-four circuits computing $\\IMM_{d^5,d}$, over every field"
+    },
+    {
+      "text": "Bera and Chakrabarti proved a depth-five lower bound with a restriction on bottom support.",
+      "verdict": "supported",
+      "sourceLine": "At depth five, Bera and Chakrabarti proved a lower bound with a restriction on bottom support."
+    },
+    {
+      "text": "Superpolynomial bounds for unrestricted-bottom depth five over characteristic zero were already established by Limaye, Srinivasan and Tavenas.",
+      "verdict": "supported",
+      "sourceLine": "Superpolynomial lower bounds for unrestricted-bottom depth-five circuits over characteristic zero were already established by the constant-depth results of Limaye, Srinivasan, and Tavenas"
+    },
+    {
+      "text": "The new contribution is quantitative: the √n exponent in the balanced regime w = d = n with unrestricted bottom forms.",
+      "verdict": "supported",
+      "sourceLine": "The comparison addressed here is quantitative: we obtain the $\\sqrt n$ exponent in the balanced regime $w=d=n$ for homogeneous five-layer circuits with unrestricted bottom linear forms."
+    },
+    {
+      "text": "The proof uses a rank measure where some variables become derivatives and others multiplication operators.",
+      "verdict": "supported",
+      "sourceLine": "Replace its $V$-variables by partial derivatives and its $U$-variables by multiplication operators."
+    },
+    {
+      "text": "The lower estimate for IMM comes from counting paths in matrix multiplication.",
+      "verdict": "supported",
+      "sourceLine": "The opposite estimate uses the paths in matrix multiplication."
+    },
+    {
+      "text": "The gate complexity over characteristic-zero fields is n^{Θ(√n)}.",
+      "verdict": "supported",
+      "sourceLine": "Thus the gate complexity over characteristic-zero fields is $n^{\\Theta(\\sqrt n)}$."
+    },
+    {
+      "text": "The Lean scope note says the formalization proves the lower bound and the upper bound, with a Comparator link.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

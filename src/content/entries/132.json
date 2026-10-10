@@ -1,0 +1,267 @@
+{
+  "id": "132",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-superquadratic-separation-between-sensitivity-and-block-sensitivity-September-25-2026/paper.pdf",
+      "label": "A superquadratic separation between sensitivity and block sensitivity"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/132.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Block sensitivity can outgrow any constant times sensitivity squared.",
+  "scope": "The result covers total Boolean functions, those defined on every string of 0s and 1s, of some finite length.",
+  "plain": "Sensitivity counts single input bits whose flip changes a function's answer. Block sensitivity counts separate groups of bits whose flip changes it. Since 1994 experts asked whether block sensitivity is at most sensitivity squared. This paper proves (Lean proof listed) that no constant times sensitivity squared is enough. It builds functions where block sensitivity grows like a power of sensitivity above 2.",
+  "doesNot": "This does not pin down the true power, which known results place somewhere from 2 to 4.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "Nisan and Szegedy, suggested bs(f) ≤ s(f)²",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It refutes the quadratic inequality suggested in 1994, the long-standing guess for the true power."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best known constant c with block sensitivity about c·s² (before this paper)",
+    "note": "Higher is a bigger gap. This paper shows no fixed constant is the limit.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 2011,
+        "value": 0.5,
+        "who": "Virza",
+        "source": 4
+      },
+      {
+        "year": 2011,
+        "value": 0.667,
+        "who": "Ambainis and Sun",
+        "source": 5
+      }
+    ]
+  },
+  "explanation": "Picture 16 light switches in four rows of four, wired to one lamp. The lamp is on when some row shows one of two patterns. Either that row's first two switches are up and its last two down, or the reverse. Start with every switch down. The lamp is off, and flipping any single switch leaves it off. Yet eight separate pairs of switches exist, two in each row. Flipping any one of those pairs turns the lamp on.\n\nTwo counts capture this gap. A Boolean function takes a string of 0s and 1s and returns 0 or 1. Here the switches are the input and the lamp is the output. The sensitivity at an input counts the single switches whose flip changes the output. The block sensitivity counts the most non-overlapping groups of switches whose flip changes the output. A function's score on each count is its largest value over all inputs. A single switch is a group of one, so block sensitivity is never smaller. For the lamp, checking all 65,536 settings by computer gives sensitivity 4. Its block sensitivity is at least 8.\n\nNoam Nisan introduced block sensitivity in 1989, in work on parallel computation. The Sensitivity Conjecture asked whether block sensitivity is always at most some fixed power of sensitivity. In 1994, Nisan and Mario Szegedy suggested a sharper guess: block sensitivity is at most sensitivity squared. David Rubinstein's 1995 example showed that the power could not be below two. Madars Virza later found functions with block sensitivity ½s² + ½s, where s is the sensitivity. Andris Ambainis and Xiaoming Sun then reached ⅔s² − ⅓s. At sensitivity 10 that is about 63, still below 100.\n\nIn 2019, Hao Huang proved the Sensitivity Conjecture. With earlier work by Avishay Tal, it gives block sensitivity at most s⁴ for every function. Jake Wellens later sharpened this to at most √(2/3)·s⁴ + 1. So the right power sat somewhere from 2 to 4. The open question was whether squared, times some fixed constant, always suffices.\n\nThis paper proves that it does not. Pick any constant C, however large. Some function has block sensitivity bigger than C times its sensitivity squared. The paper also gives a fixed power α above 2. An endless family of functions has block sensitivity at least s to the power α. That block sensitivity grows without limit.\n\nThe hard part is not making many sensitive groups. It is keeping single-switch sensitivity low at every input, not just at the starting one. The paper builds its functions in levels. Each level arranges smaller copies in rows and links every pair of rows by one one-way arrow. Randomly chosen labels on the arrows rule out small patterns that would let single flips pile up. The paper also counts flips that change two linked conditions at once. That extra count keeps sensitivity in check as the levels stack. The closest earlier work, by Alexander Meiburg in 2026, used a similar row-and-arrow design. It beat a weaker measure, spectral sensitivity, which is never larger than sensitivity. So his result did not settle this question.\n\nPer level, the number of sensitive groups is multiplied by 2M² + 1, where M is a large size setting. Sensitivity grows by only about a factor M. The ratio of block sensitivity to sensitivity squared is at least 2^d divided by 4(d+2)², for d levels. That bound first exceeds 1 at nine levels, where it equals 128/121, about 1.06. Repeating that nine-level function inside itself then gives the fixed power α.\n\nThese functions are enormous. The paper requires M to be at least 9 to the power d+1. At nine levels, that makes the input a number of bits with 238 digits. With that smallest allowed setting, my own calculation from the paper's formulas gives α of about 2.00025. The paper itself only states that α is above 2. It does not say where between 2 and 4 the true power lies.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both results. One is the ratio bound for every number of levels. The other is the fixed power α above 2, measured at the all-zero input. The Lean scope note links a Comparator statement for the separation. No specialist review of the paper has been published.",
+  "hypeCheck": "Lean proofs of both main statements are listed. The functions are astronomically large, and the power found is only slightly above 2. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Boolean function",
+      "meaning": "A rule that takes a string of 0s and 1s and returns 0 or 1."
+    },
+    {
+      "term": "Total Boolean function",
+      "meaning": "A Boolean function that gives an answer for every possible input string."
+    },
+    {
+      "term": "Sensitivity",
+      "meaning": "The most single bits, at any one input, whose flip changes the answer."
+    },
+    {
+      "term": "Block sensitivity",
+      "meaning": "The most non-overlapping groups of bits, at any one input, whose flip changes the answer."
+    },
+    {
+      "term": "Sensitivity Conjecture",
+      "meaning": "The guess, proved in 2019, that block sensitivity is at most a fixed power of sensitivity."
+    },
+    {
+      "term": "Spectral sensitivity",
+      "meaning": "A related measure built from a network of input changes; it is never larger than sensitivity."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal mathematical proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "N. Nisan, “CREW PRAMs and Decision Trees”, STOC ’89 (1989), 327–335",
+      "url": "https://doi.org/10.1145/73007.73038"
+    },
+    {
+      "id": 2,
+      "cite": "N. Nisan and M. Szegedy, “On the degree of Boolean functions as real polynomials”, Computational Complexity 4 (1994), 301–313",
+      "url": "https://doi.org/10.1007/BF01263419"
+    },
+    {
+      "id": 3,
+      "cite": "D. Rubinstein, “Sensitivity vs. block sensitivity of Boolean functions”, Combinatorica 15 (1995), 297–299",
+      "url": "https://doi.org/10.1007/BF01200762"
+    },
+    {
+      "id": 4,
+      "cite": "M. Virza, “Sensitivity versus block sensitivity of Boolean functions”, Information Processing Letters 111 (2011), 433–435",
+      "url": "https://doi.org/10.1016/j.ipl.2011.02.001"
+    },
+    {
+      "id": 5,
+      "cite": "A. Ambainis and X. Sun, “New separation between s(f) and bs(f)”, ECCC TR11-116 (2011), arXiv:1108.3494",
+      "url": "https://arxiv.org/abs/1108.3494v1"
+    },
+    {
+      "id": 6,
+      "cite": "H. Huang, “Induced subgraphs of hypercubes and a proof of the Sensitivity Conjecture”, Annals of Mathematics 190 (2019), 949–955",
+      "url": "https://doi.org/10.4007/annals.2019.190.3.6"
+    },
+    {
+      "id": 7,
+      "cite": "J. Wellens, “Relationships between the number of inputs and other complexity measures of Boolean functions”, Discrete Analysis (2022), arXiv:2005.00566",
+      "url": "https://arxiv.org/abs/2005.00566v2"
+    },
+    {
+      "id": 8,
+      "cite": "A. Meiburg, “Block Sensitivity can exceed Spectral Sensitivity Squared”, arXiv:2608.00851 (2026)",
+      "url": "https://arxiv.org/html/2608.00851v1"
+    },
+    {
+      "id": 9,
+      "cite": "A. Tal, “Properties and Applications of Boolean Function Composition”, ITCS ’13 (2013), 441–454",
+      "url": "https://doi.org/10.1145/2422436.2422485"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “A superquadratic separation between sensitivity and block sensitivity” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-superquadratic-separation-between-sensitivity-and-block-sensitivity-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for family 132 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/132.md"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Block sensitivity counts the most pairwise disjoint nonempty blocks whose flip changes the value.",
+      "verdict": "supported",
+      "sourceLine": "Its block sensitivity \\(\\bs(f,x)\\) is the largest number of pairwise disjoint nonempty sets"
+    },
+    {
+      "text": "Nisan's work on parallel computation introduced block sensitivity.",
+      "verdict": "supported",
+      "sourceLine": "The question goes back to Nisan's work on parallel computation, which introduced block sensitivity"
+    },
+    {
+      "text": "The Sensitivity Conjecture asked whether block sensitivity is bounded by a polynomial in sensitivity.",
+      "verdict": "supported",
+      "sourceLine": "The Sensitivity Conjecture asked whether block sensitivity is bounded by a polynomial in sensitivity"
+    },
+    {
+      "text": "Nisan and Szegedy suggested the quadratic inequality bs(f) ≤ s(f)².",
+      "verdict": "supported",
+      "sourceLine": "explicitly suggested the quadratic inequality"
+    },
+    {
+      "text": "Rubinstein's construction showed a polynomial upper bound would need degree at least two.",
+      "verdict": "supported",
+      "sourceLine": "showed that a polynomial upper bound would need degree at least two"
+    },
+    {
+      "text": "Virza improved the separation to bs = ½s² + ½s.",
+      "verdict": "supported",
+      "sourceLine": "Virza improved the separation"
+    },
+    {
+      "text": "Ambainis and Sun obtained examples with bs = ⅔s² − ⅓s.",
+      "verdict": "supported",
+      "sourceLine": "Ambainis and Sun subsequently obtained examples satisfying"
+    },
+    {
+      "text": "Huang resolved the polynomial conjecture in 2019; with Tal's refinement this gives bs ≤ s⁴.",
+      "verdict": "supported",
+      "sourceLine": "Huang resolved the polynomial conjecture in 2019. His degree bound, together with Tal's refinement of the degree--block-sensitivity comparison"
+    },
+    {
+      "text": "Wellens improved the leading constant to √(2/3)·s⁴ + 1.",
+      "verdict": "supported",
+      "sourceLine": "Wellens later improved its leading constant"
+    },
+    {
+      "text": "For every C>0 there is a nonconstant total Boolean function with bs(f) > C s(f)².",
+      "verdict": "supported",
+      "sourceLine": "For every real \\(C>0\\), there are a positive integer \\(n\\) and a nonconstant total Boolean function"
+    },
+    {
+      "text": "For every d ≥ 1 the ratio bs/s² is at least 2^d/(4(d+2)²).",
+      "verdict": "supported",
+      "sourceLine": "More precisely, for every integer \\(d\\ge1\\) the construction below gives a nonconstant total Boolean function"
+    },
+    {
+      "text": "There is a fixed α > 2 and functions with bs(F_m,0) ≥ s(F_m)^α and bs(F_m,0) tending to infinity.",
+      "verdict": "supported",
+      "sourceLine": "There exist a real number $\\alpha>2$ and nonconstant total Boolean functions"
+    },
+    {
+      "text": "Each level arranges children in rows with one directed edge between each pair of rows.",
+      "verdict": "supported",
+      "sourceLine": "the input is partitioned into disjoint child inputs arranged in rows, and every pair of rows is given one directed edge"
+    },
+    {
+      "text": "Random labels exclude small local configurations.",
+      "verdict": "supported",
+      "sourceLine": "Random labels exclude small local configurations"
+    },
+    {
+      "text": "The proof tracks bits that reverse two predicates simultaneously.",
+      "verdict": "supported",
+      "sourceLine": "We consequently track the number of bits that reverse a fixed pair of distinct predicates simultaneously"
+    },
+    {
+      "text": "Sensitivity grows by about a factor M per level while blocks grow by 2M²+1.",
+      "verdict": "supported",
+      "sourceLine": "a factor \\(M\\) per level, while the number of disjoint sensitive blocks grows by \\(2M^2+1\\)"
+    },
+    {
+      "text": "Meiburg's spectral-sensitivity construction uses tournament-indexed rows.",
+      "verdict": "supported",
+      "sourceLine": "Meiburg's spectral-sensitivity construction uses tournament-indexed rows"
+    },
+    {
+      "text": "Spectral sensitivity is at most sensitivity, so a spectral bound alone does not give this separation.",
+      "verdict": "supported",
+      "sourceLine": "a lower bound on \\(\\bs(f)/\\lambda(f)^2\\) alone does not supply the ordinary-sensitivity separation"
+    },
+    {
+      "text": "The construction requires M ≥ 9^(d+1).",
+      "verdict": "supported",
+      "sourceLine": "Suppose that $d\\geq 1$ and $M\\geq 9^{d+1}$."
+    },
+    {
+      "text": "At d = 9 the seed ratio bound is 2^9/484 = 128/121.",
+      "verdict": "supported",
+      "sourceLine": "=\\frac{128}{121}>1."
+    },
+    {
+      "text": "Repeated composition of the seed gives the power separation.",
+      "verdict": "supported",
+      "sourceLine": "Repeated composition of that seed gives a power separation."
+    },
+    {
+      "text": "The model produced the manuscript (release provenance).",
+      "verdict": "external",
+      "sourceId": 12
+    },
+    {
+      "text": "Lean formalizes the ratio bound for every d and the fixed exponent α > 2 at the all-zero input.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ]
+}

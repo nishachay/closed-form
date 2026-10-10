@@ -1,0 +1,235 @@
+{
+  "id": "129",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-exponential-state-lower-bound-for-two-way-nondeterministic-complementation-September-25-2026/paper.pdf",
+      "label": "An exponential state lower bound for two-way nondeterministic complementation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-exponential-two-way-deterministic-state-lower-bound-for-one-way-liveness-September-25-2026/main.pdf",
+      "label": "An exponential two-way deterministic state lower bound for one-way liveness"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/129.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Removing guesses from simple two-way reading machines can cost exponentially many states.",
+  "scope": "The results allow the alphabet to grow with the problem size; they give no bound for one fixed alphabet.",
+  "plain": "A finite automaton is a tiny machine that reads a word letter by letter using a fixed number of states. A guessing machine can check whether a chain of relations leaves some path alive using few states. The second paper proves that a machine without guesses needs exponentially many states for this. That holds even if it may reread the input. The first paper proves that a guessing machine that confirms no path exists also needs exponentially many states.",
+  "doesNot": "This does not give a lower bound for machines over one fixed alphabet, and it separates no logarithmic-space complexity classes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "Sakoda and Sipser, who posed the state-cost question",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It replaces a quadratic lower bound with an exponential one for unrestricted two-way deterministic machines, over growing alphabets."
+  },
+  "explanation": "Take three points, called 1, 2 and 3. A relation here is a list of allowed one-step moves between them. Read three relations in order: 1 to 2, then 2 to 3, then 3 to 1. Chaining them gives a path from 1 back to 1. So this word is live: at least one path survives every step. Now swap the last relation for the single move 1 to 1. No step leaves point 3 anymore, so the chain is empty and the word is dead. Telling live words from dead ones is a task called one-way liveness.\n\nThe papers ask how big a simple machine must be to do this task. The machine is a finite automaton. It has a fixed number of internal modes, called states, and a head that reads one letter at a time. Here every possible relation is one letter. On 3 points there are 2 to the power 9, or 512, letters. A nondeterministic machine may guess its next move and accepts if some guess works. Guessing makes liveness easy: guess a path and check each step. For h points, one such machine uses h + 3 states and never moves its head left.\n\nA deterministic machine cannot guess. Each state and letter fix its one next move. A two-way machine may move its head back and reread letters. Rabin, Scott and Shepherdson showed in 1959 that two-way deterministic machines recognize the same languages as one-way machines. The open question was the price in states. Sakoda and Sipser posed this question in 1978. Is there a polynomial rule, such as n squared, for removing guesses?\n\nEarlier lower bounds all limited how the deterministic machine moves. Sipser proved an exponential gap in 1980 for sweeping machines, which turn around only at the ends of the input. Kapoutsis extended this in 2013 to machines with few turns. Against unrestricted machines, the best bound was quadratic, from Adeogun and Kapoutsis in 2026. The obstacle is that an unrestricted machine can turn anywhere and revisit a letter many times. The second paper handles this by turning each letter into a fixed wiring pattern. That pattern depends only on the letter, not on its neighbours.\n\nIts main theorem gives a hard number. Take h = 2000 points. The guessing machine needs only 2003 states. Every deterministic two-way machine for the same task needs at least 2,147,483,646 states, about 2.1 billion. In general, a machine with s states must satisfy 4(s+2)^2 ≥ 2^⌊(h−2)/31⌋. The needed size grows exponentially with h. So no polynomial rule can turn every guessing machine into a deterministic two-way one.\n\nThe first paper asks a related question about complements. The complement of a task swaps its yes and no answers. Here it means recognizing dead words, where the chain is empty. For deterministic two-way machines, complementing costs only a linear number of extra states. Vardi showed in 1989 how to complement a guessing two-way machine with exponentially many states. Guillon, Prigioniero and Taheri describe polynomial complementation of such machines as open. The first paper says it is not possible. It builds an n-state guessing machine for liveness. Any guessing machine for dead words then needs at least ½·2^⌊(n−4)/127⌋ − 1 states. For n = 4000, that is 1,073,741,823 states, about 1.07 billion. Guessing a path is cheap, but a guessing machine cannot cheaply confirm that no path exists.\n\nBoth results need a condition that is easy to miss. The alphabet grows with the problem. On h points there are 2 to the power h squared letters. The papers rule out a polynomial rule that holds for every alphabet. They give no lower bound over one fixed alphabet. The bounds also start slowly. For n = 131, the complement formula gives zero. They say nothing about logarithmic-space complexity classes, which concern machines with a work tape.\n\nHow sure is this? The Lean scope note lists Lean formalizations of all three bounds. A computer proof checker called Lean covers the complement bound for every n ≥ 4. It also covers the same family's deterministic bound for n ≥ 131. It covers the liveness bound for every h ≥ 2. Each has a Comparator statement, a fixed reference version used for matching. No specialist review has been published.",
+  "hypeCheck": "Major if the formal statements say what the papers claim. The scope note lists Lean formalizations of the three bounds, but they hold only for alphabets that grow. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Finite automaton",
+      "meaning": "A simple machine with a fixed number of states that reads a word one letter at a time."
+    },
+    {
+      "term": "State",
+      "meaning": "One of the machine's fixed internal modes; the count of states measures the machine's size."
+    },
+    {
+      "term": "Nondeterministic",
+      "meaning": "Allowed to guess its next move; it accepts if at least one sequence of guesses succeeds."
+    },
+    {
+      "term": "Deterministic",
+      "meaning": "Has exactly one possible next move at each step, so no guessing."
+    },
+    {
+      "term": "Two-way",
+      "meaning": "Able to move its reading head left as well as right and reread letters."
+    },
+    {
+      "term": "One-way liveness",
+      "meaning": "The task of deciding whether a chain of relations still allows at least one complete path."
+    },
+    {
+      "term": "Complement",
+      "meaning": "The task with yes and no answers swapped."
+    },
+    {
+      "term": "Alphabet",
+      "meaning": "The set of letters a machine can read; here it grows as the number of points grows."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "W. J. Sakoda and M. Sipser, “Nondeterminism and the Size of Two Way Finite Automata”, STOC ’78 (1978), 275–286",
+      "url": "https://doi.org/10.1145/800133.804357"
+    },
+    {
+      "id": 2,
+      "cite": "M. O. Rabin and D. Scott, “Finite Automata and Their Decision Problems”, IBM J. Res. Dev. 3 (1959), 114–125",
+      "url": "https://doi.org/10.1147/rd.32.0114"
+    },
+    {
+      "id": 3,
+      "cite": "J. C. Shepherdson, “The Reduction of Two-Way Automata to One-Way Automata”, IBM J. Res. Dev. 3 (1959), 198–200",
+      "url": "https://doi.org/10.1147/rd.32.0198"
+    },
+    {
+      "id": 4,
+      "cite": "M. Sipser, “Lower Bounds on the Size of Sweeping Automata”, J. Comput. Syst. Sci. 21 (1980), 195–202",
+      "url": "https://doi.org/10.1016/0022-0000(80)90034-3"
+    },
+    {
+      "id": 5,
+      "cite": "C. Kapoutsis, “Nondeterminism Is Essential in Small Two-Way Finite Automata with Few Reversals”, Information and Computation 222 (2013), 208–227",
+      "url": "https://doi.org/10.1016/j.ic.2012.11.001"
+    },
+    {
+      "id": 6,
+      "cite": "K. Adeogun and C. Kapoutsis, “A Quadratic Lower Bound for 2DFAs against One-Way Liveness”, arXiv:2602.24279 (2026)",
+      "url": "https://arxiv.org/abs/2602.24279v2"
+    },
+    {
+      "id": 7,
+      "cite": "M. Y. Vardi, “A note on the reduction of two-way automata to one-way automata”, Information Processing Letters 30 (1989), 261–264",
+      "url": "https://doi.org/10.1016/0020-0190(89)90205-6"
+    },
+    {
+      "id": 8,
+      "cite": "V. Geffert, C. Mereghetti and G. Pighizzini, “Complementing Two-Way Finite Automata”, Information and Computation 205 (2007), 1173–1187",
+      "url": "https://doi.org/10.1016/j.ic.2007.01.008"
+    },
+    {
+      "id": 9,
+      "cite": "B. Guillon, L. Prigioniero and J. Taheri, “Polynomial Complementation of Nondeterministic Two-Way Finite Automata by 1-Limited Automata”, STACS 2026, LIPIcs 364, 48:1–48:18",
+      "url": "https://doi.org/10.4230/LIPIcs.STACS.2026.48"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “An exponential state lower bound for two-way nondeterministic complementation” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-exponential-state-lower-bound-for-two-way-nondeterministic-complementation-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “An exponential two-way deterministic state lower bound for one-way liveness” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-exponential-two-way-deterministic-state-lower-bound-for-one-way-liveness-September-25-2026/main.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, Lean scope note for family 129 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/129.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A word of relations is in one-way liveness when the product of its letters is nonempty.",
+      "verdict": "supported",
+      "sourceLine": "each letter specifies a binary relation on an … -element set, and a word is live when the product of its letters is nonempty."
+    },
+    {
+      "text": "For h points, liveness has a nondeterministic automaton with h + 3 states and no left moves.",
+      "verdict": "supported",
+      "sourceLine": "is recognized by a nondeterministic automaton with … states using no left moves."
+    },
+    {
+      "text": "Two-way deterministic automata recognize the same languages as one-way automata, by Rabin and Scott and by Shepherdson.",
+      "verdict": "supported",
+      "sourceLine": "Two-way deterministic automata recognize the same languages as one-way finite automata, as established by Rabin and Scott and by Shepherdson"
+    },
+    {
+      "text": "Sakoda and Sipser posed the state cost of the conversion in 1978.",
+      "verdict": "supported",
+      "sourceLine": "Sakoda and Sipser posed the state cost of converting one-way and two-way nondeterministic finite automata to two-way deterministic automata in 1978"
+    },
+    {
+      "text": "Sipser proved an exponential separation for sweeping automata.",
+      "verdict": "supported",
+      "sourceLine": "Sipser proved an exponential separation for sweeping automata, whose head changes direction only at an endmarker"
+    },
+    {
+      "text": "Kapoutsis extended this to machines making sublinearly many reversals.",
+      "verdict": "supported",
+      "sourceLine": "Kapoutsis extended this phenomenon to deterministic machines constrained to make sublinearly many reversals"
+    },
+    {
+      "text": "Adeogun and Kapoutsis proved a quadratic lower bound against unrestricted 2DFAs.",
+      "verdict": "supported",
+      "sourceLine": "prove a quadratic lower bound for unrestricted deterministic two-way automata against one-way liveness."
+    },
+    {
+      "text": "The main difficulty is repeated visits to a cell while each symbol gets a fixed object independent of neighbours.",
+      "verdict": "supported",
+      "sourceLine": "The main representation difficulty is to account for repeated visits to a cell while assigning each input symbol a fixed object independent of its neighbors."
+    },
+    {
+      "text": "Every equivalent s-state deterministic two-way automaton satisfies 4(s+2)^2 ≥ 2^⌊(h−2)/31⌋.",
+      "verdict": "supported",
+      "sourceLine": "Every equivalent deterministic two-way automaton with … states satisfies"
+    },
+    {
+      "text": "No polynomial simulation of n-state 2NFAs by 2DFAs holds over every finite alphabet.",
+      "verdict": "supported",
+      "sourceLine": "There are no absolute constants … such that every … -state two-way nondeterministic automaton over every finite alphabet has an equivalent two-way deterministic automaton with at most … states."
+    },
+    {
+      "text": "Deterministic two-way complementation has a linear state bound independent of the alphabet.",
+      "verdict": "supported",
+      "sourceLine": "For deterministic two-way automata, complementation has a linear state bound independent of the alphabet"
+    },
+    {
+      "text": "Vardi's construction gives an exponential-state automaton for the complement of a 2NFA.",
+      "verdict": "supported",
+      "sourceLine": "Vardi's construction gives an exponential-state one-way nondeterministic automaton for the complement of a two-way nondeterministic automaton"
+    },
+    {
+      "text": "Guillon, Prigioniero and Taheri describe polynomial 2NFA complementation as open.",
+      "verdict": "supported",
+      "sourceLine": "Guillon, Prigioniero, and Taheri describe polynomial 2NFA complementation as open"
+    },
+    {
+      "text": "Every 2NFA for the complement of the n-state automaton's language has at least ½·2^⌊(n−4)/127⌋ − 1 states.",
+      "verdict": "supported",
+      "sourceLine": "There is an … -state 2NFA … recognizing … such that every 2NFA recognizing … has at least"
+    },
+    {
+      "text": "On h points the alphabet has 2^(h^2) symbols.",
+      "verdict": "supported",
+      "sourceLine": "For each … the alphabet has … symbols and is finite."
+    },
+    {
+      "text": "The theorem does not assert a lower bound over one fixed alphabet.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert a lower bound over one fixed alphabet."
+    },
+    {
+      "text": "The bounds give no separation between uniform logarithmic-space classes.",
+      "verdict": "supported",
+      "sourceLine": "give no separation between uniform logarithmic-space complexity classes."
+    },
+    {
+      "text": "The results come from an internal OpenAI model under the release's fixed procedure.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "The Lean scope note lists formalizations of the complement bound (n ≥ 4), the same-family deterministic bound (n ≥ 131) and the liveness bound (h ≥ 2), each with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ]
+}
