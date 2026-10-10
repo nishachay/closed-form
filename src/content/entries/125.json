@@ -1,0 +1,290 @@
+{
+  "id": "125",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Single-Exponential-Recovery-and-Bounded-Price-Strictness-for-Metric-k-Median-September-24-2026/paper.pdf",
+      "label": "Single-exponential recovery and bounded-price strictness for metric k-median"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Approximation-Threshold-for-Metric-k-Median-September-24-2026/main.pdf",
+      "label": "The approximation threshold for metric k-median"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/125.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The best possible guarantee for placing k facilities is exactly 1 + 2/e, assuming P ≠ NP.",
+  "scope": "It covers finite metrics with rational distances and separately listed candidate sites. The matching floor assumes P ≠ NP.",
+  "plain": "In metric k-median you open at most k facilities to make clients' total distance to the nearest one smallest. Fast methods can only promise to land within some factor of the best total. Before this work that factor was about 2, and nothing below about 1.736 was possible unless P = NP. This paper proves a fast method for every factor above 1 + 2/e, about 1.736 (Lean proof listed). So 1 + 2/e is exactly the best possible factor, assuming P ≠ NP.",
+  "doesNot": "This does not give a method that reaches factor 1 + 2/e itself. It also leaves open the version where facilities must sit at clients.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2002",
+    "firstStepBy": "Charikar, Guha, Tardos and Shmoys, first constant-factor approximation",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles the best possible guarantee for a classic clustering problem. It closes the gap between about 1.736 and 2."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven approximation factor for metric k-median",
+    "note": "Smaller is better. Below 1 + 2/e ≈ 1.736 is impossible unless P = NP. Values ignore the small + ε.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 2004,
+        "value": 3,
+        "who": "Arya et al.",
+        "source": 2
+      },
+      {
+        "year": 2017,
+        "value": 2.675,
+        "who": "Byrka et al.",
+        "source": 4
+      },
+      {
+        "year": 2023,
+        "value": 2.613,
+        "who": "Gowda et al.",
+        "source": 5
+      },
+      {
+        "year": 2025,
+        "value": 2,
+        "who": "Cohen-Addad et al.",
+        "source": 6
+      },
+      {
+        "year": 2026,
+        "value": 1.736,
+        "who": "This paper",
+        "claim": true,
+        "source": 9
+      }
+    ]
+  },
+  "explanation": "Picture a town with four houses and three possible clinic sites, A, B and C. The town can afford two clinics. Site A is close to houses 1 and 2. Site B is close to houses 3 and 4. Site C is close to houses 2 and 3. Close means a distance of 1, and far means a distance of 3. Each house uses its nearest open clinic. The town wants the smallest total travel distance.\n\nThere are only three ways to pick two sites. A and B give every house a close clinic, so the total is 4. A and C leave house 4 far away, so the total is 6. B and C leave house 1 far away, also 6. The best plan costs 4. The worst costs 1.5 times as much. This is the metric k-median problem. The k is the number of clinics allowed, here 2. Metric means the distances behave like real distances: a detour through a third point is never shorter.\n\nReal instances have thousands of points, and trying every choice takes far too long. So researchers look for fast methods with a guarantee. Fast here means polynomial time: the running time grows like a fixed power of the input size. The guarantee is an approximation factor. A factor of 2 means the method's total is never more than twice the best total.\n\nCharikar, Guha, Tardos and Shmoys gave the first fast method with a fixed factor, published in 2002. A local search method of Arya and coauthors reached 3 plus ε in 2004. Here ε means any small positive number chosen in advance. In 2016, Li and Svensson showed that a few extra clinics can later be removed at a tiny extra cost. That opened a route past factor 3. Byrka and coauthors reached 2.675 plus ε. Gowda and coauthors reached 2.613 in 2023. Cohen-Addad and coauthors reached 2 plus ε, first announced in 2025.\n\nThere is also a floor, and the town example shows where it comes from. Suppose every site is either close or far from every house. If the chosen sites leave c of m houses close, the total is 3m − 2c. A perfect choice gives m. Uriel Feige's 1998 work on covering problems supplies a hard case, assuming P ≠ NP. That is the standard belief that some problems with easy-to-check answers have no fast solution. Under it, no fast method can tell apart two cases. In one, a perfect choice exists. In the other, every choice leaves about 36.8 percent of houses far. That share is 1/e, where e is about 2.71828. The second case has a total of at least about 1.7358m, or 1 + 2/e times m. So no fast method can promise a factor below 1 + 2/e. That left a gap between about 1.7358 and 2.\n\nThe hard part is the clinic budget. A low total is much easier to reach when a few extra clinics are allowed. A 2026 graph-based rounding method also reached 2 plus ε. Its general transfer step stalls at factor 2 for this problem. This paper keeps the extra-clinics route. It first allows a fixed number of extra clinics, then removes them with the Li and Svensson step. Its new ingredient is a sharper way to compare costs while partial choices are rounded into whole ones. That comparison is what gets below 2.\n\nThis paper proves the matching upper bound (Lean proof listed). For every fixed ε, a fast method opens at most k sites. Its total stays within 1 + 2/e + ε times the best. It is deterministic: it uses no coin flips and gives the same answer every run. Together with the floor, the best possible factor is exactly 1 + 2/e, assuming P ≠ NP. Back in the town, the best total is 4. So the method's total is at most about 6.94, plus a sliver for ε. No fast method can promise to beat 1 + 2/e on every town.\n\nThe result has limits worth keeping in view. It does not give a method with factor exactly 1 + 2/e. Each ε gets its own method, and the power in its running time may depend on ε. The candidate sites are listed separately from the houses. The version where clinics must sit at houses is a different question. A companion paper gives a separate method that flips coins and beats factor 2 by a fixed amount. Its proof does not use the main paper's rounding argument.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of four statements. Two are the deterministic 1 + 2/e + ε method and the exact threshold assuming P ≠ NP. The other two are the companion's coin-flipping method and its recovery theorem. Each has a Comparator statement listed. No specialist review has been published yet.",
+  "hypeCheck": "Major if the proofs hold. Lean formalizations are listed for the main statements. Still, the threshold assumes P ≠ NP, and the guarantee holds only above 1 + 2/e. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Metric k-median",
+      "meaning": "Choose at most k facilities from a list so that the total distance from clients to their nearest chosen facility is smallest."
+    },
+    {
+      "term": "Metric",
+      "meaning": "A way of measuring distance where a detour through a third point is never shorter than going direct."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "A running time that grows like a fixed power of the input size; this is what fast means here."
+    },
+    {
+      "term": "Approximation factor",
+      "meaning": "A promise that a method's total is never more than this many times the best possible total."
+    },
+    {
+      "term": "P ≠ NP",
+      "meaning": "The widely believed conjecture that some problems with easy-to-check answers have no fast solution."
+    },
+    {
+      "term": "Deterministic",
+      "meaning": "A method that uses no random choices and gives the same answer every time."
+    },
+    {
+      "term": "Threshold",
+      "meaning": "The exact boundary: every factor above it is reachable by a fast method, and none below it is, under P ≠ NP."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Charikar, S. Guha, É. Tardos and D. B. Shmoys, “A Constant-Factor Approximation Algorithm for the k-Median Problem”, Journal of Computer and System Sciences 65 (2002), 129–149",
+      "url": "https://doi.org/10.1006/jcss.2002.1882"
+    },
+    {
+      "id": 2,
+      "cite": "V. Arya et al., “Local Search Heuristics for k-Median and Facility Location Problems”, SIAM Journal on Computing 33 (2004), 544–562",
+      "url": "https://doi.org/10.1137/S0097539702416402"
+    },
+    {
+      "id": 3,
+      "cite": "S. Li and O. Svensson, “Approximating k-Median via Pseudo-Approximation”, SIAM Journal on Computing 45 (2016), 530–547",
+      "url": "https://doi.org/10.1137/130938645"
+    },
+    {
+      "id": 4,
+      "cite": "J. Byrka, T. Pensyl, B. Rybicki, A. Srinivasan and K. Trinh, “An Improved Approximation for k-Median and Positive Correlation in Budgeted Optimization”, ACM Transactions on Algorithms 13 (2017)",
+      "url": "https://doi.org/10.1145/2981561"
+    },
+    {
+      "id": 5,
+      "cite": "K. N. Gowda, T. Pensyl, A. Srinivasan and K. Trinh, “Improved Bi-point Rounding Algorithms and a Golden Barrier for k-Median”, SODA 2023, 987–1011",
+      "url": "https://doi.org/10.1137/1.9781611977554.ch38"
+    },
+    {
+      "id": 6,
+      "cite": "V. Cohen-Addad, F. Grandoni, E. Lee, C. Schwiegelshohn and O. Svensson, “A (2+ε)-Approximation Algorithm for Metric k-Median”, SIAM Journal on Computing (2026); first posted as arXiv:2503.10972 in March 2025",
+      "url": "https://doi.org/10.1137/25M181026X"
+    },
+    {
+      "id": 7,
+      "cite": "U. Feige, “A Threshold of ln n for Approximating Set Cover”, Journal of the ACM 45 (1998), 634–652",
+      "url": "https://doi.org/10.1145/285055.285059"
+    },
+    {
+      "id": 8,
+      "cite": "J. Byrka, Y. Guo, Y. Hu, S. Li, C. Wan and Z. Wang, “k-Clustering via Iterative Randomized Rounding”, arXiv:2604.06046 (2026)",
+      "url": "https://arxiv.org/abs/2604.06046v1"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “The approximation threshold for metric k-median” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Approximation-Threshold-for-Metric-k-Median-September-24-2026/main.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “Single-exponential recovery and bounded-price strictness for metric k-median” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Single-Exponential-Recovery-and-Bounded-Price-Strictness-for-Metric-k-Median-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for family 125 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/125.md"
+    },
+    {
+      "id": 12,
+      "cite": "A. Anand and E. Lee, “Separating k-Median from the Supplier Version”, IPCO 2024, LNCS 14679, 14–27",
+      "url": "https://doi.org/10.1007/978-3-031-59835-7_2"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "In metric k-median one chooses at most k facilities to minimize the sum of client distances to their nearest chosen facility.",
+      "verdict": "supported",
+      "sourceLine": "one chooses at most \\(k\\) facilities to minimize the sum of the distances from clients to their nearest chosen facility"
+    },
+    {
+      "text": "Candidate facilities are specified as part of the input.",
+      "verdict": "supported",
+      "sourceLine": "Candidate facilities are specified as part of the input; we do not require \\(F=J\\)."
+    },
+    {
+      "text": "Charikar, Guha, Tardos and Shmoys gave the first constant-factor approximation.",
+      "verdict": "supported",
+      "sourceLine": "Charikar, Guha, Tardos and Shmoys gave the first constant-factor approximation through LP rounding"
+    },
+    {
+      "text": "Arya et al.'s local search achieves factor 3 + ε.",
+      "verdict": "supported",
+      "sourceLine": "A different route, the bounded-swap local search of Arya et al., achieves factor"
+    },
+    {
+      "text": "Li and Svensson showed a constant number of extra facilities can be removed at small extra loss, a route past factor three.",
+      "verdict": "supported",
+      "sourceLine": "a constant number of extra facilities can be removed at an arbitrarily small additional approximation loss"
+    },
+    {
+      "text": "Byrka et al. reached 2.675 + ε.",
+      "verdict": "supported",
+      "sourceLine": "the corrected \\(2.675+\\varepsilon\\) guarantee of Byrka et al."
+    },
+    {
+      "text": "Gowda et al. obtained 2.613 in their SODA 2023 version.",
+      "verdict": "supported",
+      "sourceLine": "obtained \\(2.613\\) in their SODA 2023 version"
+    },
+    {
+      "text": "Cohen-Addad et al. reached 2 + ε, first announced in 2025.",
+      "verdict": "supported",
+      "sourceLine": "\\(2+\\varepsilon\\), first announced in 2025"
+    },
+    {
+      "text": "With close distance 1 and far distance 3, covering c of m elements costs 3m − 2c, and a perfect cover costs m.",
+      "verdict": "supported",
+      "sourceLine": "the connection cost is exactly \\(3m-2c\\) when the chosen sets cover \\(c\\) elements; a perfect cover has cost \\(m\\)"
+    },
+    {
+      "text": "The hardness uses Feige's perfect-completeness coverage gap under P ≠ NP.",
+      "verdict": "supported",
+      "sourceLine": "based on Feige's perfect-completeness coverage gap"
+    },
+    {
+      "text": "A gap between covering every element and covering at most a 1 − 1/e fraction gives the lower bound 1 + 2/e.",
+      "verdict": "supported",
+      "sourceLine": "Thus a gap between covering every element and covering at most a \\(1-1/e+\\delta\\) fraction gives the lower bound \\(1+2/e-2\\delta\\)"
+    },
+    {
+      "text": "The facility budget is a central difficulty; small cost is much easier with extra facilities.",
+      "verdict": "supported",
+      "sourceLine": "The facility budget is a central difficulty: a solution with small connection cost can be much easier to obtain when extra facilities are allowed."
+    },
+    {
+      "text": "The earlier framework's general transfer theorem uses a parameter at least 2 for metric k-median.",
+      "verdict": "supported",
+      "sourceLine": "The earlier framework's general transfer theorem uses a parameter at least \\(2\\) in the metric \\(k\\)-median case"
+    },
+    {
+      "text": "The approach first permits a constant additive surplus, makes it deterministic, and then removes the surplus.",
+      "verdict": "supported",
+      "sourceLine": "Our approach first permits a constant additive surplus, makes that approximation deterministic, and then removes the surplus using an established reduction."
+    },
+    {
+      "text": "The new analysis replaces the cost analysis with a directed comparison inequality.",
+      "verdict": "supported",
+      "sourceLine": "with the cost analysis replaced by a directed comparison inequality"
+    },
+    {
+      "text": "For every fixed ε > 0 a deterministic polynomial-time algorithm opens at most k facilities within 1 + 2/e + ε of optimum.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed \\(\\varepsilon>0\\), there is a deterministic algorithm which"
+    },
+    {
+      "text": "The polynomial may depend on ε.",
+      "verdict": "supported",
+      "sourceLine": "The polynomial may depend on \\(\\varepsilon\\)."
+    },
+    {
+      "text": "If P ≠ NP, the infimum of approximation factors with specified candidate facilities is 1 + 2/e.",
+      "verdict": "supported",
+      "sourceLine": "If \\(P\\ne NP\\), the infimum of deterministic polynomial-time approximation factors for metric \\(k\\)-median with specified candidate facilities is \\(1+2/e\\)."
+    },
+    {
+      "text": "The infimum does not assert attainment of the endpoint factor.",
+      "verdict": "supported",
+      "sourceLine": "does not assert attainment of the endpoint factor"
+    },
+    {
+      "text": "The lower-bound question with facilities restricted to client locations is different.",
+      "verdict": "supported",
+      "sourceLine": "the corresponding lower-bound question with the restriction \\(F=J\\) is different"
+    },
+    {
+      "text": "A companion paper gives an independent randomized approximation below factor 2 within the facility budget.",
+      "verdict": "supported",
+      "sourceLine": "give an independent randomized approximation below factor \\(2\\) while respecting the facility budget"
+    },
+    {
+      "text": "The companion's proofs are independent of the graph-rounding argument.",
+      "verdict": "supported",
+      "sourceLine": "The recovery, execution and global application proofs below are independent of that graph-rounding argument."
+    },
+    {
+      "text": "Lean formalizations with Comparator statements cover the deterministic algorithm, the threshold under P ≠ NP, the randomized below-2 result and the recovery theorem.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ]
+}

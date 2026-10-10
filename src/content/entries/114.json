@@ -1,0 +1,217 @@
+{
+  "id": "114",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-FPRAS-for-Common-Integer-Polymatroid-Bases-with-Binary-Capacities-October-5-2026/polymatroid-fpras.pdf",
+      "label": "An FPRAS for Common Integer Polymatroid Bases with Binary Capacities"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Approximate-counting-of-common-bases-of-two-matroids-September-23-2026/main.pdf",
+      "label": "Approximate counting of common bases of two matroids"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/114.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Shared solutions of two capacity rules can be counted approximately, at a cost set by digits, not size.",
+  "scope": "Both rules come as exact query boxes on the same items, with equal total rank. The answer is a randomized estimate.",
+  "plain": "A matroid is a rule saying which groups of items are allowed together. The first paper proves a fast randomized estimate of how many groups are largest under two such rules (Lean proof listed). This answers an open question recorded in 2023. The second paper claims to extend the method to whole-number amounts with very large capacities. Its cost is claimed to grow with the number of digits in the capacities, not their size.",
+  "doesNot": "This does not give exact counts or a practically fast program; the paper says its polynomial has large fixed exponents.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Jerrum, Sinclair and Vigoda, approximate counting for the permanent",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It answers a recorded open question on counting common bases of two matroids. That part has a Lean proof listed."
+  },
+  "explanation": "Three workers need three jobs, A, B and C. Worker 1 can do A or B. Worker 2 can do any of the three. Worker 3 can do B or C. Each worker gets one job, and every job gets filled. Checking all six orderings shows that exactly three assignments work. Small cases like this are easy to list. Large ones are not. If 100 workers can each do any of 100 jobs, there are 100 factorial assignments, about 9.3 × 10^157.\n\nThis puzzle is one case of a general question about matroids. A matroid is a rule that says which groups of items are allowed together. Here the items are the seven allowed worker–job pairs. One rule says no worker appears twice. A second rule says no job appears twice. A basis is a largest allowed group. A common basis is a group that is a basis under both rules. In this example, the common bases are exactly the three full assignments.\n\nCounting common bases exactly is often out of reach, so the goal is a close estimate. The standard target has a long name: a fully polynomial randomized approximation scheme, or FPRAS. Ask for 1 percent accuracy, and the answer lands between 0.99 and 1.01 times the true count. It may fail, but only with a small chance you choose in advance. Its cost must grow like a fixed power of the input size and of 1/accuracy. Here the method may only query an independence oracle. That is a black box that says whether a given group is allowed.\n\nPieces of this were known. In 2004, Jerrum, Sinclair and Vigoda gave an FPRAS for the permanent. That covers the worker–job case. Anari, Liu, Oveis Gharan and Vinzant later gave an independence-oracle FPRAS for the bases of one matroid. For two matroids, Anari, Oveis Gharan and Vinzant had an estimate whose running time grows exponentially with the basis size. Kuikui Liu's 2023 dissertation recorded the two-matroid question as an open problem.\n\nThe first paper proves an FPRAS for common bases of any two equal-rank matroids (Lean proof listed). Rank means the size of a basis. The method takes a random walk among candidate answers, as in the permanent algorithm. The obstacle is that the walk must pass through rare in-between states. The paper adds slightly broken states and learns how much weight to give each kind. The result also covers common allowed groups of any fixed size, even when the two ranks differ.\n\nThe second paper claims to extend this from yes-or-no choices to whole-number amounts. Picture a 3 × 3 table of whole numbers. Every row and every column must add up to 1,000,000. Writing down these rules takes six seven-digit numbers. Yet the number of such tables is 125,000,750,001,875,002,250,001, about 1.25 × 10^23. Such tables are one example of common integer bases of two polymatroids. A polymatroid is a rule that gives every group of cells a ceiling on its total. Here one rule caps groups by their rows, the other by their columns.\n\nLarge numbers were the obstacle. The classical trick replaces a capacity of a million by a million labelled copies of one unit. That makes the problem as large as the capacity itself, not its number of digits. It also counts each table many times, once per labelling. The paper avoids the copies. It keeps only a few totals that take a modest number of values. It treats the rest like a smooth shape whose volume can be estimated. Large expansions appear only inside the proof, never in what the algorithm runs.\n\nSo for the table above, the cost is claimed to grow with the seven digits, not with the million. The answer is still an estimate, not an exact count, and it uses random choices. The paper also warns that its polynomial has large fixed exponents. The point is how cost grows with the input, not a fast program.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the two-matroid theorem. The scope note links a fixed reference statement for a tool called Comparator. The polymatroid paper with large capacities is outside that check. So is the result on common allowed groups of other sizes. No specialist review of either paper has been published.",
+  "hypeCheck": "Only the two-matroid theorem has a Lean proof listed. The polymatroid extension and the common-independent-set results are claims without a machine check, and no specialist review is published. The method is about how cost grows, not practical speed.",
+  "glossary": [
+    {
+      "term": "Matroid",
+      "meaning": "A rule saying which groups of items are allowed together, with a consistent notion of largest group."
+    },
+    {
+      "term": "Basis",
+      "meaning": "A largest allowed group under a matroid rule."
+    },
+    {
+      "term": "Common basis",
+      "meaning": "A group that is a basis under two different rules at once."
+    },
+    {
+      "term": "Independence oracle",
+      "meaning": "A black box that answers whether a given group is allowed."
+    },
+    {
+      "term": "FPRAS",
+      "meaning": "A randomized method that estimates a count to any chosen accuracy, at a cost growing like a fixed power of the input size."
+    },
+    {
+      "term": "Polymatroid",
+      "meaning": "A rule that gives every group of items a ceiling on its whole-number total."
+    },
+    {
+      "term": "Permanent",
+      "meaning": "A number computed from a table that, for yes-or-no tables, counts perfect assignments."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Jerrum, A. Sinclair and E. Vigoda, “A polynomial-time approximation algorithm for the permanent of a matrix with nonnegative entries”, Journal of the ACM 51(4) (2004), 671–697",
+      "url": "https://doi.org/10.1145/1008731.1008738"
+    },
+    {
+      "id": 2,
+      "cite": "N. Anari, K. Liu, S. Oveis Gharan and C. Vinzant, “Log-concave polynomials II: High-dimensional walks and an FPRAS for counting bases of a matroid”, Annals of Mathematics 199(1) (2024), 259–299",
+      "url": "https://doi.org/10.4007/annals.2024.199.1.4"
+    },
+    {
+      "id": 3,
+      "cite": "N. Anari, S. Oveis Gharan and C. Vinzant, “Log-concave polynomials, I: Entropy and a deterministic approximation algorithm for counting bases of matroids”, Duke Mathematical Journal 170(16) (2021), 3459–3504",
+      "url": "https://doi.org/10.1215/00127094-2020-0091"
+    },
+    {
+      "id": 4,
+      "cite": "K. Liu, “Spectral Independence: A New Tool to Analyze Markov Chains”, PhD thesis, University of Washington (2023), Section 13.2, Problem 1",
+      "url": "https://kuikuiliu.github.io/files/dissertation.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “Approximate counting of common bases of two matroids” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Approximate-counting-of-common-bases-of-two-matroids-September-23-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “An FPRAS for Common Integer Polymatroid Bases with Binary Capacities” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-FPRAS-for-Common-Integer-Polymatroid-Bases-with-Binary-Capacities-October-5-2026/polymatroid-fpras.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for family 114 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/114.md"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For a bipartite graph without isolated vertices, the common bases of the two partition matroids are exactly the perfect matchings.",
+      "verdict": "supported",
+      "sourceLine": "When there are no isolated vertices, their common bases are exactly the perfect matchings"
+    },
+    {
+      "text": "An FPRAS has relative error at most epsilon with failure probability at most delta, with polynomial dependence on input size, 1/epsilon and log(1/delta).",
+      "verdict": "supported",
+      "sourceLine": "A fully polynomial randomized approximation scheme, or FPRAS, achieves this guarantee with polynomial dependence on the input size,"
+    },
+    {
+      "text": "An independence oracle reports whether a queried subset is independent.",
+      "verdict": "supported",
+      "sourceLine": "An independence oracle reports whether a queried subset is independent."
+    },
+    {
+      "text": "Jerrum, Sinclair and Vigoda gave an FPRAS for the permanent, which includes bipartite matching.",
+      "verdict": "supported",
+      "sourceLine": "Jerrum, Sinclair, and Vigoda gave an FPRAS for the permanent of a nonnegative matrix, which includes this bipartite matching problem"
+    },
+    {
+      "text": "Anari, Liu, Oveis Gharan and Vinzant obtained an independence-oracle FPRAS for single-matroid counting.",
+      "verdict": "supported",
+      "sourceLine": "Anari, Liu, Oveis Gharan, and Vinzant removed such restrictions for single-matroid counting by developing high-dimensional walks for log-concave polynomials, obtaining an independence-oracle FPRAS"
+    },
+    {
+      "text": "Anari, Oveis Gharan and Vinzant's scheme has exponential dependence on rank and does not give an unrestricted-rank FPRAS.",
+      "verdict": "supported",
+      "sourceLine": "dependence in its running time, so it becomes fully polynomial when … but does not give an unrestricted-rank FPRAS"
+    },
+    {
+      "text": "The two-matroid FPRAS question is recorded in Liu's dissertation, and the theorem answers it.",
+      "verdict": "supported",
+      "sourceLine": "The question of an FPRAS for two arbitrary independence-oracle matroids is explicitly recorded in Liu's dissertation"
+    },
+    {
+      "text": "The theorem gives an affirmative answer to that formulation.",
+      "verdict": "supported",
+      "sourceLine": "gives an affirmative answer to that formulation."
+    },
+    {
+      "text": "In-between states can have very small weight, so connectivity alone does not give the needed bounds.",
+      "verdict": "supported",
+      "sourceLine": "Nonbasis transversals can have very small weight, so positivity and connectivity alone do not give the polynomial quantitative bounds needed for counting."
+    },
+    {
+      "text": "Balancing defect classes and learning their weights follows the permanent algorithm.",
+      "verdict": "supported",
+      "sourceLine": "Balancing defect classes and learning their weights through interpolation follows the permanent algorithm of Jerrum, Sinclair, and Vigoda"
+    },
+    {
+      "text": "The theorem also yields an FPRAS for common independent sets of prescribed, unrestricted or maximum size, even when ranks differ.",
+      "verdict": "supported",
+      "sourceLine": "The theorem also yields an FPRAS for counting common independent sets of prescribed, unrestricted, or maximum cardinality, even when the two matroid ranks differ"
+    },
+    {
+      "text": "Contingency tables, integer matrices with prescribed row and column sums, are a concrete instance.",
+      "verdict": "supported",
+      "sourceLine": "Contingency tables provide a concrete instance of this distinction. Such a table is a nonnegative integer matrix with prescribed row and column sums"
+    },
+    {
+      "text": "Replacing a large capacity by labelled copies changes both the instance size and the weight of each allocation.",
+      "verdict": "supported",
+      "sourceLine": "replacing it by labelled copies changes both the size of the instance and the weight assigned to each allocation."
+    },
+    {
+      "text": "Each integer vector counts once.",
+      "verdict": "supported",
+      "sourceLine": "Every vector has weight one."
+    },
+    {
+      "text": "The reduction keeps only part totals with polynomially many values and treats the rest by weighted volume approximation.",
+      "verdict": "supported",
+      "sourceLine": "The new reduction keeps only part totals with polynomially many possible values as discrete variables. It treats the remaining degrees of freedom by weighted volume approximation"
+    },
+    {
+      "text": "Large expansions are proof devices; every instance actually sampled has polynomial size.",
+      "verdict": "supported",
+      "sourceLine": "all large expansions and slice subdivisions used for comparison are proof devices, whereas every instance actually sampled has polynomial size."
+    },
+    {
+      "text": "The algorithm handles binary capacities directly, without labelled copies.",
+      "verdict": "supported",
+      "sourceLine": "The algorithm handles binary capacities directly, without expanding them into labelled copies."
+    },
+    {
+      "text": "The polynomial has large fixed exponents; the issue is dependence on encoding, not optimized running time.",
+      "verdict": "supported",
+      "sourceLine": "The algorithm's polynomial has large fixed exponents. The issue here is dependence on the input encoding, not an optimized running time."
+    },
+    {
+      "text": "The Lean formalization covers the FPRAS for common bases of two equal-rank matroids; the polymatroid paper and the common-independent-set corollary are outside it.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

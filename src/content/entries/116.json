@@ -1,0 +1,281 @@
+{
+  "id": "116",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Matrix-Hitting-Points-in-Every-Positive-Characteristic-October-4-2026/uniform-matrix-hitting-points-positive-characteristic.pdf",
+      "label": "Uniform Matrix Hitting Points in Every Positive Characteristic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/One-Rational-Matrix-Hitting-Point-for-Noncommutative-Formulas-September-24-2026/One-Rational-Matrix-Hitting-Point-for-Noncommutative-Formulas-September-24-2026.pdf",
+      "label": "One Rational Matrix Hitting Point for Noncommutative Formulas"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-Hitting-Lists-for-Noncommutative-Rational-Formulas-September-24-2026/Polynomial-Hitting-Lists-for-Noncommutative-Rational-Formulas-September-24-2026.pdf",
+      "label": "Polynomial Hitting Lists for Noncommutative Rational Formulas"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/116.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One fixed set of matrices exposes every nonzero small formula whose variables do not commute.",
+  "scope": "The results cover formulas of bounded size, not circuits that reuse shared pieces; the division result is over the rationals.",
+  "plain": "Some expressions look like zero for ordinary numbers but not for matrices, where multiplication order matters. These papers build matrices in advance that catch every nonzero formula up to a given size. One paper proves that a single tuple of fraction matrices works over every characteristic-zero field (Lean proof listed). A second proves that a short list handles formulas with division (Lean proof listed). A third claims to prove that one tuple works in each prime characteristic too.",
+  "doesNot": "This does not cover general circuits that reuse shared pieces, and it does not make evaluating an unknown formula fast.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2005",
+    "firstStepBy": "Ran Raz and Amir Shpilka, a deterministic test that reads the formula",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It replaces quasipolynomial-size hitting sets with polynomial ones for formulas, with and without division."
+  },
+  "explanation": "Take the expression x·y − y·x. Put in any two ordinary numbers and you get 0, because 3·5 equals 5·3. Now put in two small grids of numbers called matrices. Let X have rows (0, 1) and (0, 0). Let Y have rows (0, 0) and (1, 0). Then X·Y has rows (1, 0) and (0, 0). But Y·X has rows (0, 0) and (0, 1). Their difference has rows (1, 0) and (0, −1), which is not zero. Matrices can expose an expression that ordinary numbers make look like zero.\n\nMatrices do this because their order of multiplication matters. Variables whose order matters are called noncommutative. A noncommutative formula builds an expression from variables and numbers using only addition and multiplication, arranged as a tree. Its size counts every piece of the tree, numbers and variables included. The basic question is identity testing: does a given formula compute zero once everything is multiplied out?\n\nThese papers ask for the hardest version of that test. You may not look inside the formula. You may only plug matrices in and see the result. Worse, you must choose the matrices in advance, knowing only the number of variables and a size limit. A hitting point is one fixed choice that gives a nonzero answer for every nonzero formula within those limits. A hitting list is a short list of choices where at least one works.\n\nThe obstacle is that a small formula can hide a huge expression. Multiply x₁ + x₂ by itself 10 times, keeping the order. The formula has 39 pieces. Multiplied out, it has 1024 different words, such as x₁x₂x₂x₁… in every order. A fixed set of matrices must keep all of them from cancelling, for every formula, without seeing any of them.\n\nEarlier work left a gap. Ran Raz and Amir Shpilka gave a fast exact test in 2005, but it needs to read the formula. Andrej Bogdanov and Hoeteck Wee gave a test that only plugs in matrices, but it relies on random choices. In 2013, Michael Forbes and Amir Shpilka built fixed hitting sets without randomness. Their sets have quasipolynomial size, which grows faster than any fixed power of the formula size. In 2026, Foram Lakhani and Partha Mukhopadhyay built one fixed matrix tuple for sparse expressions, those with few words. A small formula can have very many words, as the example shows.\n\nThe first paper proves that one fixed tuple is enough over the rational numbers (fractions). For n variables and size limit s, the paper also claims at most 2ns² rows. It claims a build time that grows like a fixed power of n and s. The same tuple works over every number system where no whole number other than 0 equals zero. For the example, n = 2 and s = 39, so 6084 rows suffice. The idea is to turn each word into its own distinct infinite list of numbers. A small formula's list cannot begin with too many zeros, so a finite window of the list is enough.\n\nThe second Lean-checked paper handles division. A rational formula may also invert a matrix, which only works when that matrix is invertible. It proves a polynomial-size list of fraction-valued matrix tuples for such formulas with fraction constants. Every nonzero formula with some defined matrix value gets a defined, invertible value on some listed tuple. This holds however deeply inverses nest and however large the constants are. Earlier hitting sets of V. Arvind, Abhranil Chatterjee and Partha Mukhopadhyay had quasipolynomial size.\n\nThe third paper moves to characteristic p, for a prime p. There, adding p copies of 1 gives 0. The fraction method breaks there. It divides by whole numbers, and dividing by p is impossible there. Slopes also fail: when p = 2, the slope of z² is 2z, which is 0. The paper replaces slopes with a shift that multiplies z by a new symbol. It claims to prove that one tuple works in each characteristic p, including p = 2. Its matrices have on the order of n³s⁶ rows, more than in the fraction case. It is built in time polynomial in n, s and the number of digits of p.\n\nThese results do not say formulas can be evaluated quickly. The time bounds cover building the matrices, not plugging in an unknown formula. The first paper asserts no bound for circuits that reuse shared pieces. How sure is this? A computer proof checker called Lean has checked two statements. One is that a single fraction-valued tuple hits every nonzero formula of size at most s. That Lean statement does not include the 2ns² row bound or the time bound. The other is the full hitting-list theorem for formulas with division, including its polynomial bounds. The characteristic p paper is outside the Lean scope note. No specialist review has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has checked the single-tuple hitting property and the division hitting-list theorem. The single tuple's size and time bounds and the whole characteristic p paper are not in that check. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Matrix",
+      "meaning": "A square grid of numbers that can be added and multiplied; the order of multiplication matters."
+    },
+    {
+      "term": "Noncommutative",
+      "meaning": "Describes variables where x times y need not equal y times x."
+    },
+    {
+      "term": "Formula",
+      "meaning": "An expression built as a tree of additions and multiplications, with no shared pieces."
+    },
+    {
+      "term": "Identity testing",
+      "meaning": "Deciding whether an expression computes zero once everything is multiplied out."
+    },
+    {
+      "term": "Hitting point",
+      "meaning": "One fixed choice of matrices that gives a nonzero answer for every nonzero formula in a class."
+    },
+    {
+      "term": "Quasipolynomial",
+      "meaning": "Growing faster than any fixed power of the input size, but much slower than exponential growth."
+    },
+    {
+      "term": "Characteristic",
+      "meaning": "The number of copies of 1 that add to 0 in a number system; 0 if none do."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks mathematical proofs step by step."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “One Rational Matrix Hitting Point for Noncommutative Formulas” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/One-Rational-Matrix-Hitting-Point-for-Noncommutative-Formulas-September-24-2026/One-Rational-Matrix-Hitting-Point-for-Noncommutative-Formulas-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Polynomial Hitting Lists for Noncommutative Rational Formulas” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-Hitting-Lists-for-Noncommutative-Rational-Formulas-September-24-2026/Polynomial-Hitting-Lists-for-Noncommutative-Rational-Formulas-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Uniform Matrix Hitting Points in Every Positive Characteristic” (4 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Matrix-Hitting-Points-in-Every-Positive-Characteristic-October-4-2026/uniform-matrix-hitting-points-positive-characteristic.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 116",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/116.md"
+    },
+    {
+      "id": 5,
+      "cite": "R. Raz and A. Shpilka, “Deterministic polynomial identity testing in non-commutative models”, Computational Complexity 14 (2005), 1–19",
+      "url": "https://doi.org/10.1007/s00037-005-0188-8"
+    },
+    {
+      "id": 6,
+      "cite": "A. Bogdanov and H. Wee, “More on Noncommutative Polynomial Identity Testing”, IEEE CCC (2005), 92–99",
+      "url": "https://doi.org/10.1109/CCC.2005.13"
+    },
+    {
+      "id": 7,
+      "cite": "M. A. Forbes and A. Shpilka, “Quasipolynomial-time identity testing of non-commutative and read-once oblivious algebraic branching programs”, FOCS (2013), 243–252",
+      "url": "https://arxiv.org/abs/1209.2408v2"
+    },
+    {
+      "id": 8,
+      "cite": "F. Lakhani and P. Mukhopadhyay, “Hitting point for sparse noncommutative polynomials”, ECCC TR26-120 (2026)",
+      "url": "https://eccc.weizmann.ac.il/report/2026/120/"
+    },
+    {
+      "id": 9,
+      "cite": "V. Arvind, A. Chatterjee and P. Mukhopadhyay, “Black-Box Identity Testing of Noncommutative Rational Formulas in Deterministic Quasipolynomial Time”, SIAM Journal on Computing (2026)",
+      "url": "https://arxiv.org/abs/2309.15647v4"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "x·y − y·x vanishes on all scalar tuples but is nonzero on matrices.",
+      "verdict": "supported",
+      "sourceLine": "vanishes on all scalar tuples but is nonzero on matrices"
+    },
+    {
+      "text": "A noncommutative formula is a tree of variables and scalars with addition and ordered multiplication gates; its size counts all vertices.",
+      "verdict": "supported",
+      "sourceLine": "A noncommutative formula is a rooted tree whose leaves are variables or scalars in"
+    },
+    {
+      "text": "Size counts all gates, including the leaves.",
+      "verdict": "supported",
+      "sourceLine": "Its size counts all gates, including the leaves."
+    },
+    {
+      "text": "The matrices are chosen before seeing the expression or its coefficients.",
+      "verdict": "supported",
+      "sourceLine": "The aim is to choose the evaluation matrices before seeing the expression or any of its coefficients."
+    },
+    {
+      "text": "A hitting point is one tuple on which every nonzero member of the class is nonzero; a hitting set allows several tuples.",
+      "verdict": "supported",
+      "sourceLine": "A hitting point for a class of polynomials is one tuple on which every nonzero member of the class has nonzero matrix value."
+    },
+    {
+      "text": "The ordered product of k copies of x1+x2 has 4k−1 gates and 2^k monomials.",
+      "verdict": "supported",
+      "sourceLine": "the ordered product of … copies of … has … gates and … monomials"
+    },
+    {
+      "text": "A small formula may contain exponentially many words after expansion.",
+      "verdict": "supported",
+      "sourceLine": "The obstacle is that a small formula may contain exponentially many words after expansion."
+    },
+    {
+      "text": "Raz and Shpilka gave deterministic polynomial-time tests that use the formula's internal structure.",
+      "verdict": "supported",
+      "sourceLine": "These algorithms use the internal structure of the input, which is the white-box model."
+    },
+    {
+      "text": "Bogdanov and Wee gave a randomized matrix-evaluation test.",
+      "verdict": "supported",
+      "sourceLine": "Bogdanov and Wee gave a randomized matrix-evaluation identity test"
+    },
+    {
+      "text": "Forbes and Shpilka constructed deterministic quasipolynomial-size matrix hitting sets.",
+      "verdict": "supported",
+      "sourceLine": "Forbes and Shpilka constructed deterministic quasipolynomial-size matrix hitting sets for noncommutative algebraic branching programs"
+    },
+    {
+      "text": "Lakhani and Mukhopadhyay construct one integer matrix tuple for sparse polynomials.",
+      "verdict": "supported",
+      "sourceLine": "Lakhani and Mukhopadhyay construct one integer matrix tuple for sparse noncommutative polynomials"
+    },
+    {
+      "text": "Formula size can be much smaller than sparsity.",
+      "verdict": "supported",
+      "sourceLine": "Formula size can be much smaller than sparsity"
+    },
+    {
+      "text": "One rational tuple of dimension at most 2ns², built in polynomial bit time, hits every nonzero formula over every characteristic-zero field.",
+      "verdict": "supported",
+      "sourceLine": "in time polynomial in … measured in bit operations"
+    },
+    {
+      "text": "The tuple works for every field of characteristic zero.",
+      "verdict": "supported",
+      "sourceLine": "For every field … of characteristic zero and every"
+    },
+    {
+      "text": "Words are encoded by iterated integrals, which are linearly independent.",
+      "verdict": "supported",
+      "sourceLine": "We encode words by iterated integrals in one variable."
+    },
+    {
+      "text": "The order bound ensures a finite truncation retains a nonzero coefficient.",
+      "verdict": "supported",
+      "sourceLine": "the order bound ensures that this finite truncation retains a nonzero coefficient"
+    },
+    {
+      "text": "Evaluation of a rational formula is defined only when every inverse gate meets an invertible matrix.",
+      "verdict": "supported",
+      "sourceLine": "Evaluation is defined only when every inverse gate encounters an invertible matrix."
+    },
+    {
+      "text": "Every nonzero admissible formula has a defined evaluation with invertible value at some listed tuple.",
+      "verdict": "supported",
+      "sourceLine": "some tuple in … is a defined evaluation of … with invertible value"
+    },
+    {
+      "text": "The list works regardless of constants' bit lengths or inverse depth.",
+      "verdict": "supported",
+      "sourceLine": "The same list works for all such formulas, regardless of the bit lengths of their rational constants or their inverse depth."
+    },
+    {
+      "text": "Arvind, Chatterjee and Mukhopadhyay handled unrestricted inverse nesting with quasipolynomial-size hitting sets.",
+      "verdict": "supported",
+      "sourceLine": "handles unrestricted inverse nesting with quasipolynomial-size rational matrix hitting sets"
+    },
+    {
+      "text": "Formal integration divides by positive integers and differentiation annihilates pth powers in characteristic p.",
+      "verdict": "supported",
+      "sourceLine": "formal integration divides by positive integers, ordinary differentiation annihilates"
+    },
+    {
+      "text": "The paper replaces the differential operator by a multiplicative shift.",
+      "verdict": "supported",
+      "sourceLine": "replacing the differential operator by an infinite-order multiplicative shift"
+    },
+    {
+      "text": "The positive-characteristic tuple has dimension O(n³s⁶), and applies to p = 2.",
+      "verdict": "supported",
+      "sourceLine": "applies to … without any relation between the characteristic and the formula size"
+    },
+    {
+      "text": "The dimension bound is larger than in the companion but polynomial.",
+      "verdict": "supported",
+      "sourceLine": "The dimension bound is larger than in the companion, but remains polynomial without any lower bound on"
+    },
+    {
+      "text": "The construction is polynomial in formula size and the binary length of the characteristic.",
+      "verdict": "supported",
+      "sourceLine": "the construction here is polynomial in formula size and in the binary length of the characteristic"
+    },
+    {
+      "text": "The time bound concerns construction; evaluating an unknown formula is separate.",
+      "verdict": "supported",
+      "sourceLine": "The time to evaluate a formula over an unspecified coefficient field is separate from the bit complexity of constructing the tuple."
+    },
+    {
+      "text": "No bound for arbitrary shared circuits is asserted.",
+      "verdict": "supported",
+      "sourceLine": "No bound for arbitrary shared circuits is asserted."
+    },
+    {
+      "text": "Lean covers the universal hitting property of the single rational tuple, not its dimension or bit-time bounds, and the full rational hitting-list theorem with polynomial bounds.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "The papers were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}
