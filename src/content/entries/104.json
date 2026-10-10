@@ -1,0 +1,272 @@
+{
+  "id": "104",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Turn-Based-Stochastic-Mean-Payoff-Games-in-Deterministic-Quasipolynomial-Time-October-5-2026/stochastic-mean-payoff-games.pdf",
+      "label": "Turn-Based Stochastic Mean-Payoff Games in Deterministic Quasipolynomial Time"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Mean-payoff-parity-games-in-quasipolynomial-time-October-5-2026/mean-payoff-parity.pdf",
+      "label": "Mean-payoff parity games in quasipolynomial time"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf",
+      "label": "Deterministic quasipolynomial-time mean-payoff games"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Randomized-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf",
+      "label": "Randomized quasipolynomial-time mean-payoff games"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/104.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Who wins a mean-payoff game can be found in quasipolynomial time, however large the scores.",
+  "scope": "The results cover finite turn-based games with integer scores written in binary; the cost bound is quasipolynomial, not polynomial.",
+  "plain": "In a mean-payoff game, two players move a token around a network and only the long-run average score counts. Older exact methods could slow down in proportion to the size of the scores, not their number of digits. These papers give methods whose cost grows only quasipolynomially in the number of digits of the whole input. A randomized version has a Lean proof listed. The deterministic version and the extensions to chance moves and parity are claimed, not formally checked.",
+  "doesNot": "This does not give a polynomial-time algorithm for mean-payoff games.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1996",
+    "firstStepBy": "Zwick and Paterson, pseudopolynomial algorithms",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they remove the cost's dependence on how large the scores are, up to a quasipolynomial bound."
+  },
+  "explanation": "Picture a game board with two spots, A and B. Max moves from A and Min moves from B. Every move scores points for Max, and a negative score is a loss. From A, Max can stay at A for −1 or move to B for +3. From B, Min can stay at B for +1 or return to A for −2. Play goes on forever. Max wins if the long-run average score per move is at least zero.\n\nWork it out. If Max stays at A, the average is −1. If Max moves to B, Min gets the choice. Staying at B gives Max +1 per move. Returning to A makes a loop worth 3 − 2 = 1 over two moves, so 0.5 per move. Min picks 0.5, and Max prefers that to −1. So Max wins from A, and the game's value there is 0.5. The value is the best average Max can guarantee. Now change the −2 to −4. The loop now averages (3 − 4)/2 = −0.5, and Max loses from both spots.\n\nThis is a mean-payoff game (a two-player game on a network where only the long-run average score counts). The winning set is every starting spot from which Max can force an average of zero or more. In 1979, Ehrenfeucht and Mycielski proved that both players have optimal positional strategies. A positional strategy picks a move using only the current spot, never the history. That is why checking the four fixed plans above was enough.\n\nThe trouble is the size of the numbers. A computer writes each score in binary digits. Our own example: a score of about 1.15 quintillion (2 to the 60th) needs only 61 binary digits. In 1996, Zwick and Paterson gave pseudopolynomial algorithms. Their cost can be polynomial in the largest score, yet exponential in the number of digits. Faster methods existed for other measures. Björklund and Vorobyov proved an expected bound in terms of the number of spots. It counts arithmetic steps, not work on digits. A related game, the parity game, got a quasipolynomial algorithm in 2017. But the known translation runs from parity games to mean-payoff games, so that result did not carry over.\n\nThe single obstacle is simple to state. A natural method raises a running estimate for each spot step by step. With huge scores, the number of steps can grow in proportion to the size of the scores. The deterministic paper avoids computing that estimate. It only asks, for each spot, which end of a range the answer is forced towards. It splits the range in half again and again. It gives each spot weights that rise whenever the recursion gains ground. Along any branch, those rises can happen only about as often as the logarithm of the number of spots.\n\nThe deterministic paper claims an algorithm without randomness that returns the exact winning set. Its cost is at most 2 raised to C times the square of log₂(L + 2). Here L is the total length of the input in binary digits, and C is some fixed constant. Such a bound is called quasipolynomial. Here is our own example. For an input of 1,000 digits, log₂(1,002) is about 9.97 and its square is about 99.4. So the bound is 2 to roughly 99 times C. A polynomial bound would be 2 to a fixed multiple of about 9.97. The paper notes that a polynomial bound would be a further improvement. The same paper claims to compute every spot's exact value and optimal positional strategies for both players.\n\nTwo newer papers claim to stretch the method. The first adds chance spots, where a stated probability picks the next move. It claims to find every spot whose expected long-run average is zero or more, with zeros included. In a simple stochastic game, one player tries to reach a target spot and the other tries to stop them. Some moves are made by a fair coin. As a side result, the paper claims to decide whether such a game can be won with probability at least one half. The second adds a parity condition. Each spot carries a whole number called its priority. Max must also make the smallest priority seen infinitely often an even number. These two goals can pull against each other, and the paper claims to handle them together.\n\nA companion paper gives a randomized version. It returns the whole winning set correctly with probability at least 7/8. Its time bound holds on every run, even when the answer is wrong. The paper adds that a fast check catches a wrong answer. Repeating until the check passes then gives an always-correct method. That repeated version is not part of the Lean check. Truffet has claimed a strongly polynomial method. The paper shows that one printed step of it loses the optimum on an explicit example.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the randomized theorem. That covers the 7/8 success chance and the time bound on every run. Lean has also checked the finite counterexample to Truffet's step. The deterministic algorithm, exact values, chance spots and parity condition are outside that check. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proofs hold. Only the randomized algorithm and the Truffet counterexample have Lean proofs listed. The deterministic algorithm and both extensions are not machine-checked, and no specialist review is published. Quasipolynomial is still slower than polynomial.",
+  "glossary": [
+    {
+      "term": "Mean-payoff game",
+      "meaning": "A two-player game on a network where the winner is decided by the long-run average score per move."
+    },
+    {
+      "term": "Winning set",
+      "meaning": "All starting spots from which one player can force the outcome they want."
+    },
+    {
+      "term": "Positional strategy",
+      "meaning": "A plan that picks each move from the current spot alone, ignoring the past."
+    },
+    {
+      "term": "Pseudopolynomial",
+      "meaning": "A cost that is polynomial in the size of the numbers, which can be exponential in their number of digits."
+    },
+    {
+      "term": "Quasipolynomial",
+      "meaning": "A cost of 2 raised to a constant times the square of the logarithm of the input length; between polynomial and exponential."
+    },
+    {
+      "term": "Parity condition",
+      "meaning": "A rule that the smallest label seen infinitely often during play must be even."
+    },
+    {
+      "term": "Simple stochastic game",
+      "meaning": "A game where one player tries to reach a target spot, the other tries to stop them, and some moves are made by a fair coin."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. Ehrenfeucht and J. Mycielski, “Positional strategies for mean payoff games”, International Journal of Game Theory 8 (1979), 109–113",
+      "url": "https://doi.org/10.1007/BF01768705"
+    },
+    {
+      "id": 2,
+      "cite": "U. Zwick and M. Paterson, “The complexity of mean payoff games on graphs”, Theoretical Computer Science 158 (1996), 343–359",
+      "url": "https://doi.org/10.1016/0304-3975(95)00188-3"
+    },
+    {
+      "id": 3,
+      "cite": "H. Björklund and S. Vorobyov, “A combinatorial strongly subexponential strategy improvement algorithm for mean payoff games”, Discrete Applied Mathematics 155 (2007), 210–229",
+      "url": "https://doi.org/10.1016/j.dam.2006.04.029"
+    },
+    {
+      "id": 4,
+      "cite": "C. S. Calude, S. Jain, B. Khoussainov, W. Li and F. Stephan, “Deciding Parity Games in Quasi-polynomial Time”, SIAM Journal on Computing 51 (2022)",
+      "url": "https://doi.org/10.1137/17M1145288"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “Deterministic quasipolynomial-time mean-payoff games” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf",
+      "quote": "A polynomial bound for the complete binary input would be a further improvement."
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Randomized quasipolynomial-time mean-payoff games” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Randomized-quasipolynomial-time-mean-payoff-games-September-25-2026/paper.pdf",
+      "quote": "The probability statement concerns the whole returned set, and the time bound holds even when that output is wrong."
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Turn-Based Stochastic Mean-Payoff Games in Deterministic Quasipolynomial Time” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Turn-Based-Stochastic-Mean-Payoff-Games-in-Deterministic-Quasipolynomial-Time-October-5-2026/stochastic-mean-payoff-games.pdf",
+      "quote": "Vertices of value zero are included."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Mean-payoff parity games in quasipolynomial time” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Mean-payoff-parity-games-in-quasipolynomial-time-October-5-2026/mean-payoff-parity.pdf",
+      "quote": "The number of distinct priorities and the magnitudes of the rewards are unrestricted."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 104 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/104.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Ehrenfeucht and Mycielski proved that positional optimal strategies exist for mean-payoff games.",
+      "verdict": "supported",
+      "sourceLine": "Ehrenfeucht and Mycielski proved the existence of positional optimal strategies for mean-payoff games",
+      "sourceId": 5
+    },
+    {
+      "text": "Zwick and Paterson developed pseudopolynomial algorithms.",
+      "verdict": "supported",
+      "sourceLine": "Zwick and Paterson developed pseudopolynomial algorithms and complexity reductions",
+      "sourceId": 5
+    },
+    {
+      "text": "Pseudopolynomial bounds can be polynomial in the largest weight yet exponential in the binary length.",
+      "verdict": "supported",
+      "sourceLine": "Such bounds can be polynomial in the number of vertices and the largest absolute weight while remaining exponential in the binary encoding length.",
+      "sourceId": 5
+    },
+    {
+      "text": "Björklund and Vorobyov proved an expected bound depending on the number of vertices.",
+      "verdict": "supported",
+      "sourceLine": "bound for the threshold partition on graphs without parallel edges",
+      "sourceId": 5
+    },
+    {
+      "text": "A quasipolynomial parity-game algorithm appeared in 2017.",
+      "verdict": "supported",
+      "sourceLine": "The 2017 quasipolynomial parity-game algorithm of Calude, Jain, Khoussainov, Li, and Stephan",
+      "sourceId": 6
+    },
+    {
+      "text": "The reduction runs from parity to mean payoff, so it does not give a mean-payoff algorithm.",
+      "verdict": "supported",
+      "sourceLine": "The reduction goes from parity to mean payoff, so this result does not by itself give a quasipolynomial algorithm for arbitrary binary-weight mean-payoff games.",
+      "sourceId": 5
+    },
+    {
+      "text": "Ordinary iteration can take steps proportional to the numerical width.",
+      "verdict": "supported",
+      "sourceLine": "Iterating the clipped operator from the bottom can require a number of steps proportional to the numerical width",
+      "sourceId": 5
+    },
+    {
+      "text": "The deterministic method asks which boundary labels are forced without computing the solution.",
+      "verdict": "supported",
+      "sourceLine": "We instead ask which boundary labels are forced, without computing",
+      "sourceId": 5
+    },
+    {
+      "text": "Only logarithmically many weight increases occur along a branch.",
+      "verdict": "supported",
+      "sourceLine": "such product increases can therefore occur along a branch",
+      "sourceId": 5
+    },
+    {
+      "text": "The bound is 2 to C times the squared log of L+2 bit operations for an absolute constant C.",
+      "verdict": "supported",
+      "sourceLine": "For an absolute constant",
+      "sourceId": 5
+    },
+    {
+      "text": "A polynomial bound would be a further improvement.",
+      "verdict": "supported",
+      "sourceLine": "A polynomial bound for the complete binary input would be a further improvement.",
+      "sourceId": 5
+    },
+    {
+      "text": "The deterministic paper derives exact values and optimal positional strategies for both players.",
+      "verdict": "supported",
+      "sourceLine": "derives the exact rational value at every starting vertex and globally optimal positional strategies for both players",
+      "sourceId": 5
+    },
+    {
+      "text": "In the stochastic version, chance vertices draw the next edge from a rational distribution.",
+      "verdict": "supported",
+      "sourceLine": "the next edge is drawn from a prescribed rational probability distribution",
+      "sourceId": 7
+    },
+    {
+      "text": "Vertices of value zero are included.",
+      "verdict": "supported",
+      "sourceLine": "Vertices of value zero are included.",
+      "sourceId": 7
+    },
+    {
+      "text": "The stochastic result also decides whether a simple stochastic game has reachability value at least one half.",
+      "verdict": "supported",
+      "sourceLine": "also gives a deterministic quasipolynomial algorithm for deciding whether the reachability value of a simple stochastic game is at least",
+      "sourceId": 7
+    },
+    {
+      "text": "Mean-payoff parity games combine a long-run reward constraint with a recurring-priority condition.",
+      "verdict": "supported",
+      "sourceLine": "A mean-payoff parity game asks a player to satisfy both a long-run reward constraint and a recurring-priority condition.",
+      "sourceId": 8
+    },
+    {
+      "text": "The two objectives can conflict.",
+      "verdict": "supported",
+      "sourceLine": "repeatedly visiting a favorable priority may incur a loss, even when a nonnegative mean reward is achievable on its own.",
+      "sourceId": 8
+    },
+    {
+      "text": "The randomized algorithm returns the whole set correctly with probability at least 7/8.",
+      "verdict": "supported",
+      "sourceLine": "correctly with probability at least",
+      "sourceId": 6
+    },
+    {
+      "text": "The time bound holds even when the output is wrong.",
+      "verdict": "supported",
+      "sourceLine": "The probability statement concerns the whole returned set, and the time bound holds even when that output is wrong.",
+      "sourceId": 6
+    },
+    {
+      "text": "Repeating until the check succeeds gives an always-correct version.",
+      "verdict": "supported",
+      "sourceLine": "always-correct, or Las Vegas, version obtained by repeating until the check succeeds",
+      "sourceId": 6
+    },
+    {
+      "text": "There are strongly polynomial claims based on tropical optimization.",
+      "verdict": "supported",
+      "sourceLine": "There are also strongly polynomial claims based on tropical optimization",
+      "sourceId": 6
+    },
+    {
+      "text": "The appendix gives an explicit instance on which Truffet's printed rule loses the optimum.",
+      "verdict": "supported",
+      "sourceLine": "and gives an explicit instance on which it loses the optimum",
+      "sourceId": 6
+    },
+    {
+      "text": "Lean checks the randomized theorem and the finite Truffet counterexample; the deterministic, stochastic and parity results are outside that scope.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
