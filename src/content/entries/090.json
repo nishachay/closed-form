@@ -1,0 +1,289 @@
+{
+  "id": "090",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-atomic-certificate-for-triangular-lattice-universal-optimality-September-26-2026/paper.pdf",
+      "label": "An atomic certificate for triangular-lattice universal optimality"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026/paper.pdf",
+      "label": "Universal optimality of the triangular lattice"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-sharp-Fourier-certificate-for-planar-circle-packing-September-23-2026/paper.pdf",
+      "label": "A sharp Fourier certificate for planar circle packing"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Triangular-minimality-for-planar-Coulomb-renormalized-energy-September-23-2026/paper.pdf",
+      "label": "Triangular minimality for planar Coulomb renormalized energy"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/090.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "No arrangement of points in the plane beats the triangular lattice for any steadily fading repulsion.",
+  "scope": "It covers planar point sets with one point per unit area, and pushes completely monotone in squared distance.",
+  "plain": "Imagine points spread over a plane, one per unit of area, all pushing each other apart. A Lean formalization proves that the triangular lattice gives the lowest push per point. This holds for every push in a broad, steadily fading family, against every arrangement. The papers also claim to prove the same for charged-particle energies, including the planar Coulomb case. That claim fixes a constant for the best spreading of many points on a sphere.",
+  "doesNot": "This does not list every arrangement that reaches the minimum, and it makes no claim at s = 2.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1953",
+    "firstStepBy": "R. A. Rankin, triangular minimum among lattices",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles the planar case of the Cohn–Kumar question and a 2012 Sandier–Serfaty conjecture, if the proofs hold."
+  },
+  "explanation": "Spread points over a flat plane, one point per unit of area on average. Let every pair of points repel. The push gets weaker as the pair gets farther apart. Which arrangement makes the total push per point as small as possible? Try two tidy grids. In a square grid, each point has four nearest neighbors, exactly 1 unit away. In a triangular grid, each point has six nearest neighbors, about 1.075 units away.\n\nScore a pair at squared distance t by e^(−πt), a bell-shaped curve called a Gaussian. The four square-grid neighbors score about 0.173 together. The six triangular neighbors score about 0.159. Adding every other point too gives about 0.180 per point for the square grid. The triangular grid gives about 0.160. It has more close neighbors, but each one sits a little farther away. Here that trade wins by about 11 percent.\n\nThe papers say this is no accident of one score or two grids. The main theorem covers every completely monotone interaction. That means a push that never goes negative and keeps getting weaker, smoothly, at every level of detail. Both e^(−πt) and 1/t^p, for any positive power p, qualify. The competitors are almost any arrangements with one point per unit area. Density is measured in ever larger disks around one center. A competitor need not repeat. It may have points very close together, or crowded patches. The theorem compares long-run averages of push per point, and it allows infinite totals. A Lean formalization proves that the triangular lattice is never beaten in this sense.\n\nBefore this, the comparison was settled only among lattices, the grids made by repeating one tile. Rankin in 1953 and Cassels in 1959 began that work for inverse powers. Ennola and Diananda repaired and simplified it. Montgomery in 1988 handled every Gaussian, still among lattices only. In 2007, Cohn and Kumar asked whether the triangular lattice beats every arrangement. In 2022, Cohn, Kumar, Miller, Radchenko and Viazovska proved the matching statement in dimensions 8 and 24. In the plane, earlier results covered only narrow classes, such as honeycombs or small shifts of the lattice.\n\nThe one obstacle is the size of the competition. Checking lattices means tuning a few numbers. Here a rival can be any messy pattern. The papers get around this with a floor. For each Gaussian, they build a helper function that lies below it everywhere. Its Fourier transform, the recipe of waves that make it up, is never negative. Those two signs force every arrangement's energy above a fixed floor. The helper touches the Gaussian at every lattice point, so the triangular lattice sits exactly on that floor. Building such a helper is the hard part. It must touch at infinitely many points and keep its signs everywhere between them. The papers then write every allowed push as a positive blend of Gaussians, so the floors add up.\n\nThe same tools reach further. Take the push 1/r^s with s between 0 and 2, or the logarithm. Then totals are infinite even on the lattice. Physicists handle this with a uniform background of opposite charge, called jellium. The second paper claims to prove that the triangular lattice wins this corrected contest too. The fourth paper treats the planar Coulomb case directly, by a different method. It claims to prove a 2012 conjecture of Sandier and Serfaty. Combined with a 2018 result of Bétermin and Sandier, this settles a related question on a sphere. Brauchart, Hardin and Saff had predicted a constant in the lowest logarithmic energy of n points there. The predicted constant is about −0.0556. The third paper builds the matching helper for packing equal disks, with density π/(2√3), about 0.907.\n\nThere are limits. The theorem names the lowest value, not every arrangement that reaches it. It does not build a separate sharp helper for each push, which Cohn and Kumar's conjecture asks for. It says nothing about s equal to 2. The sphere result gives a growth rate, not a way to place the points.\n\nHow certain is this? The Lean scope note says a Lean formalization proves the universal minimum among these planar arrangements. It also covers the Gaussian helper functions and the disk-packing helper. The jellium results, the Coulomb paper and the sphere constant are outside that check. So is the packing paper's uniqueness statement. No specialist review has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean covers the universal minimum and the helper functions. The jellium, Coulomb and sphere claims are not machine-checked. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Triangular lattice",
+      "meaning": "The grid in which each point has six equally spaced nearest neighbors, like a honeycomb's cell centers."
+    },
+    {
+      "term": "Lattice",
+      "meaning": "A grid of points made by repeating one tile in two directions."
+    },
+    {
+      "term": "Completely monotone",
+      "meaning": "Describes a push that never goes negative and keeps weakening smoothly, at every level of detail."
+    },
+    {
+      "term": "Gaussian",
+      "meaning": "A bell-shaped score e^(−πt) that fades very fast with squared distance t."
+    },
+    {
+      "term": "Fourier transform",
+      "meaning": "The recipe of waves that add up to a given function."
+    },
+    {
+      "term": "Jellium",
+      "meaning": "A model of charged points sitting in a uniform background of opposite charge."
+    },
+    {
+      "term": "Renormalized energy",
+      "meaning": "An energy with each point's infinite self-energy removed, so arrangements can be compared."
+    },
+    {
+      "term": "Universal optimality",
+      "meaning": "Being the best arrangement for a whole family of pushes at once."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. A. Rankin, “A minimum problem for the Epstein zeta-function”, Proceedings of the Glasgow Mathematical Association 1 (1953), 149–158",
+      "url": "https://doi.org/10.1017/S2040618500035668"
+    },
+    {
+      "id": 2,
+      "cite": "H. L. Montgomery, “Minimal theta functions”, Glasgow Mathematical Journal 30 (1988), 75–85",
+      "url": "https://doi.org/10.1017/S0017089500007047"
+    },
+    {
+      "id": 3,
+      "cite": "H. Cohn and A. Kumar, “Universally optimal distribution of points on spheres”, Journal of the AMS 20 (2007), 99–148",
+      "url": "https://arxiv.org/abs/math/0607446v2"
+    },
+    {
+      "id": 4,
+      "cite": "H. Cohn, A. Kumar, S. D. Miller, D. Radchenko and M. Viazovska, “Universal optimality of the E8 and Leech lattices and interpolation formulas”, Annals of Mathematics 196 (2022), 983–1082",
+      "url": "https://doi.org/10.4007/annals.2022.196.3.3"
+    },
+    {
+      "id": 5,
+      "cite": "E. Sandier and S. Serfaty, “From the Ginzburg–Landau model to vortex lattice problems”, Communications in Mathematical Physics 313 (2012), 635–743",
+      "url": "https://arxiv.org/pdf/1011.4617v2"
+    },
+    {
+      "id": 6,
+      "cite": "J. S. Brauchart, D. P. Hardin and E. B. Saff, “The next-order term for optimal Riesz and logarithmic energy asymptotics on the sphere”, Contemporary Mathematics 578 (2012), 31–61",
+      "url": "https://arxiv.org/abs/1202.4037v1"
+    },
+    {
+      "id": 7,
+      "cite": "L. Bétermin and E. Sandier, “Renormalized energy and asymptotic expansion of optimal logarithmic energy on the sphere”, Constructive Approximation 47 (2018), 39–74",
+      "url": "https://arxiv.org/abs/1404.4485v5"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Universal optimality of the triangular lattice” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026/paper.pdf",
+      "quote": "We prove universal energy minimality for the triangular lattice in the plane."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “Triangular minimality for planar Coulomb renormalized energy” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Triangular-minimality-for-planar-Coulomb-renormalized-energy-September-23-2026/paper.pdf",
+      "quote": "This proves the $d=2$ case of the logarithmic-energy conjecture of Brauchart, Hardin, and Saff"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “A sharp Fourier certificate for planar circle packing” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-sharp-Fourier-certificate-for-planar-circle-packing-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “An atomic certificate for triangular-lattice universal optimality” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-atomic-certificate-for-triangular-lattice-universal-optimality-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, Lean scope note for family 090 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/090.md"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The main theorem covers every smooth, nonnegative, completely monotone function of squared distance, against every locally finite set of centered disk density one.",
+      "verdict": "supported",
+      "sourceLine": "For every smooth nonnegative completely monotone function $g$ on $(0,\\infty)$ and every locally finite planar set $\\mathcal C$ of centered disk density one,",
+      "sourceId": 11
+    },
+    {
+      "text": "Gaussians and every inverse power with p > 0 are covered.",
+      "verdict": "supported",
+      "sourceLine": "This includes every Gaussian $g(t)=e^{-\\pi\\alpha t}$ with $\\alpha>0$ and every inverse power $g(t)=t^{-p}$ with $p>0$.",
+      "sourceId": 8
+    },
+    {
+      "text": "Competitors may be nonperiodic, have arbitrarily close pairs and uneven local counts.",
+      "verdict": "supported",
+      "sourceLine": "a competing configuration may be nonperiodic, may contain arbitrarily close pairs, and may have very uneven local point counts.",
+      "sourceId": 8
+    },
+    {
+      "text": "Infinite energies are allowed in the comparison.",
+      "verdict": "supported",
+      "sourceLine": "The comparison includes infinite energies.",
+      "sourceId": 11
+    },
+    {
+      "text": "Rankin, Cassels, Ennola and Diananda establish the triangular minimum among lattices for inverse powers with p > 1.",
+      "verdict": "supported",
+      "sourceLine": "Together these works establish the triangular minimum among planar lattices of fixed covolume for $g(t)=t^{-p}$ with $p>1$.",
+      "sourceId": 8
+    },
+    {
+      "text": "Montgomery's theorem gives the Gaussian minimum among lattices for every parameter.",
+      "verdict": "supported",
+      "sourceLine": "Montgomery's theta theorem gives the Gaussian minimum for every positive parameter",
+      "sourceId": 8
+    },
+    {
+      "text": "Lattice results left comparison with nonlattice configurations open.",
+      "verdict": "supported",
+      "sourceLine": "These results identify the best lattice; they leave comparison with nonlattice configurations open.",
+      "sourceId": 8
+    },
+    {
+      "text": "Cohn, Kumar, Miller, Radchenko and Viazovska proved universal optimality in dimensions 8 and 24.",
+      "verdict": "supported",
+      "sourceLine": "In dimensions $8$ and $24$, Cohn, Kumar, Miller, Radchenko, and Viazovska proved universal optimality",
+      "sourceId": 8
+    },
+    {
+      "text": "Earlier planar results restrict the competitors, for example to honeycombs or small displacements.",
+      "verdict": "supported",
+      "sourceLine": "Several planar results address restricted competitor classes.",
+      "sourceId": 8
+    },
+    {
+      "text": "The helper lies below the Gaussian, has nonnegative Fourier transform, and touches at nonzero lattice points.",
+      "verdict": "supported",
+      "sourceLine": "The two inequalities give a lower bound for arbitrary competitors. The contacts at the direct and dual lattice points make the bound exact on $A$.",
+      "sourceId": 8
+    },
+    {
+      "text": "Positive mixtures of the Gaussian energy inequalities give the universal theorem.",
+      "verdict": "supported",
+      "sourceLine": "Positive mixtures of the resulting \\emph{energy inequalities}, rather than mixtures of the auxiliary functions, give Theorem~\\ref{thm:universal}.",
+      "sourceId": 11
+    },
+    {
+      "text": "For 0 < s < 2 the raw Riesz energy is infinite even on the lattice.",
+      "verdict": "supported",
+      "sourceLine": "For $0<s<2$, the raw Riesz energy with $g(t)=t^{-s/2}$ is infinite even on $A$",
+      "sourceId": 8
+    },
+    {
+      "text": "The second paper claims the triangular minimum for logarithmic and Riesz renormalized energies and jellium.",
+      "verdict": "supported",
+      "sourceLine": "Corollary~\\ref{cor:riesz-jellium} proves the triangular minimum for every $0\\le s<2$",
+      "sourceId": 8
+    },
+    {
+      "text": "The Coulomb paper resolves Sandier and Serfaty's Conjecture 1.",
+      "verdict": "supported",
+      "sourceLine": "Their Conjecture~1 asks whether the triangular value is also the minimum over the full admissible class. Theorem~\\ref{thm:main} resolves this conjecture positively.",
+      "sourceId": 9
+    },
+    {
+      "text": "The Coulomb proof treats the logarithmic functional directly, with no universal-optimality input.",
+      "verdict": "supported",
+      "sourceLine": "The present proof treats the logarithmic functional directly and uses no universal-optimality result as an input.",
+      "sourceId": 9
+    },
+    {
+      "text": "Bétermin and Sandier showed the linear coefficient equals the predicted constant exactly when the triangular lattice minimizes their energy.",
+      "verdict": "supported",
+      "sourceLine": "B\\'etermin and Sandier had already proved the existence of the linear coefficient and shown that it equals",
+      "sourceId": 9
+    },
+    {
+      "text": "The Coulomb paper proves the two-dimensional Brauchart–Hardin–Saff conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This proves the $d=2$ case of the logarithmic-energy conjecture of Brauchart, Hardin, and Saff",
+      "sourceId": 9
+    },
+    {
+      "text": "The sphere result is an asymptotic value, not a construction of point sets.",
+      "verdict": "supported",
+      "sourceLine": "The conclusion is an asymptotic value, not a construction of near-optimal point sets or an algorithm for Smale's seventh problem.",
+      "sourceId": 9
+    },
+    {
+      "text": "The packing paper's certificate gives density π/(2√3).",
+      "verdict": "supported",
+      "sourceLine": "the two-point Fourier bound attains the optimal circle-packing density",
+      "sourceId": 10
+    },
+    {
+      "text": "The theorem identifies the minimum value, not all minimizers.",
+      "verdict": "supported",
+      "sourceLine": "It identifies the minimum value, not all minimizers.",
+      "sourceId": 8
+    },
+    {
+      "text": "A sharp auxiliary for each mixed potential, as in Cohn and Kumar's conjecture, is not claimed.",
+      "verdict": "supported",
+      "sourceLine": "That stronger per-potential quantifier is not claimed here.",
+      "sourceId": 8
+    },
+    {
+      "text": "No claim is made at s = 2.",
+      "verdict": "supported",
+      "sourceLine": "It asserts neither uniqueness nor exclusion of defects, and makes no claim at $s=2$ or for quantum crystallization.",
+      "sourceId": 8
+    },
+    {
+      "text": "Lean covers the universal minimum, the Gaussian minorants and the packing certificate; the packing uniqueness statement is outside it.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

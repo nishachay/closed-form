@@ -1,0 +1,250 @@
+{
+  "id": "027",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integral-points-on-character-varieties-of-curves-September-25-2026/paper.pdf",
+      "label": "Integral points on character varieties of curves"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/027.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "On every curve, whole-number matrix rules spread across the character variety after one enlargement of the integers.",
+  "scope": "The result covers smooth complex curves, determinant-one matrices of any size, and boundary types whose eigenvalues are roots of unity.",
+  "plain": "A surface's loops can be labelled by matrices that respect how loops combine. The paper asks when such labellings can use only whole numbers of one number system. It claims to prove that, after one enlargement of the whole numbers, such labellings spread across the entire space. This holds for every surface of this kind and every matrix size, even with fixed matrix types at the punctures.",
+  "doesNot": "This does not cover spaces of higher dimension than curves, and it does not count the integral points.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2024",
+    "firstStepBy": "Daniel Litt, survey question on one number field",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it answers the determinant-one form of Litt's question for curves, in every matrix size."
+  },
+  "explanation": "Take two grids of whole numbers, A = [[1, 1], [1, 2]] and B = [[1, −1], [−1, 2]]. Each has determinant 1. Each has trace 3, where the trace is the sum of the two diagonal entries. Their product AB also has trace 3. Now multiply A, then B, then the inverse of A, then the inverse of B. The result is [[−1, 0], [−6, −1]]. Its trace is −2. Its only eigenvalue is −1, and no change of coordinates makes it diagonal.\n\nThese matrices describe a torus, the surface of a ring doughnut, with one point removed. Walk once around the ring and apply A. Walk once through the hole and apply B. Walk around the missing point and you get that last product. Such a rule, a matrix for every loop that respects how loops combine, is called a representation. Changing coordinates gives the same representation in disguise. Here three traces, x = 3, y = 3 and z = 3, pin it down. They obey one equation with t, the loop's trace: x² + y² + z² − xyz − 2 = t. Indeed 27 − 27 − 2 = −2.\n\nFix t = −2 and the equation becomes x² + y² + z² = xyz. Whole-number solutions keep coming. Replace (x, y, z) by (y, z, yz − x). From (3, 3, 3) you reach (3, 3, 6), then (3, 6, 15), then (6, 15, 87). Each still fits: 36 + 225 + 7569 = 7830 = 6 × 15 × 87. The real question is where such whole-number points go. Do they spread over the whole solution space, or stay trapped on a thinner piece? Being trapped means extra polynomial equations hold at all of them. Not trapped is called Zariski dense.\n\nThe paper asks this for every surface of this type, in every matrix size. Mathematicians call such a surface a smooth complex curve. It may have any number of handles and any number of punctures. The matrices are r by r with determinant 1. The space of all representations, up to coordinates, is the character variety. At each puncture one may also fix the type of matrix allowed, its conjugacy class. The paper requires these classes to be quasi-unipotent, meaning every eigenvalue is a root of unity. The −1 in our example qualifies.\n\nWhole numbers alone are not enough. Take the family x² + y² + z² − xyz = k. Ghosh and Sarnak showed integral points are dense for almost all suitable k. They also found infinitely many suitable k with no integer points at all. So the question allows one enlargement of the whole numbers. Pick a number field, a finite extension of the fractions, and use all its algebraic integers. Daniel Litt asked whether integral points then become dense, and whether one number field suffices. Simpson, Esnault and Groechenig, and de Jong and Esnault had studied when such matrices can be made integral. De Jong and Esnault worked one prime at a time, which is a different question. Coccia and Litt proved density for 2-by-2 matrices.\n\nThis paper claims to prove the answer is yes for every such curve and every matrix size. One number field works for the whole space at once, including every piece of it. It also handles boundary matrices that cannot be made diagonal, like our −2 loop. For a curve with punctures and no boundary conditions this was already easy, using whole numbers alone. The hard cases are fixed boundary types and closed surfaces. There one equation ties all the matrices together. For those cases the paper even names the field: add √2, certain roots of unity, and r-th roots of units.\n\nThe obstacle is that large matrices with fixed boundary types are tangled. Writing complex solutions by formulas does not produce integral ones. The paper splits each boundary matrix into simpler blocks along nested subspaces. It then lowers the matrix size one step at a time. The lost pieces come back as free whole-number choices. For closed surfaces, repeated twists of the surface spread the integral points, much like the move in our example. The exact boundary types are imposed only at the very end. Doing it earlier fails, because simplifying a representation can shrink its blocks.\n\nThe notion of integral here is specific. A point counts if its coordinates in the whole character variety are algebraic integers. The boundary type is required only over the complex numbers. Reduced modulo a prime, the boundary matrix may fall into a simpler type. The result covers curves only; higher-dimensional spaces remain open. For 2-by-2 matrices the conclusion already follows from Coccia and Litt, who allow more boundary traces there.\n\nHow sure is this? A computer proof checker called Lean has checked one supporting step. It shows that pieces built in the paper's surface construction fit together along every seam. The density theorem itself is outside that check, as are the boundary and every-piece conclusions. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds. Lean checks only one supporting compatibility step. The density theorem itself is not machine-checked. The rank-two case was already known, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Representation",
+      "meaning": "A rule assigning a matrix to every loop on a surface, so that joining loops multiplies their matrices."
+    },
+    {
+      "term": "Character variety",
+      "meaning": "The space of all representations, where two that differ only by a change of coordinates count as the same."
+    },
+    {
+      "term": "Quasi-unipotent",
+      "meaning": "A matrix whose eigenvalues are all roots of unity, such as 1 or −1."
+    },
+    {
+      "term": "Number field",
+      "meaning": "A finite extension of the fractions, such as the numbers a + b√2 with a and b fractions."
+    },
+    {
+      "term": "Ring of integers",
+      "meaning": "The algebraic integers inside a number field; they play the role of whole numbers there."
+    },
+    {
+      "term": "Zariski dense",
+      "meaning": "Not trapped on a smaller piece cut out by extra polynomial equations."
+    },
+    {
+      "term": "Trace",
+      "meaning": "The sum of the diagonal entries of a square matrix."
+    },
+    {
+      "term": "Conjugacy class",
+      "meaning": "All matrices that are the same matrix seen in different coordinates."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Integral points on character varieties of curves” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integral-points-on-character-varieties-of-curves-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 027 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/027.md"
+    },
+    {
+      "id": 3,
+      "cite": "D. Litt, “Motives, mapping class groups, and monodromy”, arXiv:2409.02234 (2024)",
+      "url": "https://arxiv.org/abs/2409.02234v1"
+    },
+    {
+      "id": 4,
+      "cite": "S. Coccia and D. Litt, “Density of integral points in the Betti moduli of quasi-projective varieties”, arXiv:2507.00167 (2025)",
+      "url": "https://arxiv.org/abs/2507.00167v1"
+    },
+    {
+      "id": 5,
+      "cite": "A. Ghosh and P. Sarnak, “Integral points on Markoff type cubic surfaces”, Inventiones Mathematicae 229 (2022), 689–749",
+      "url": "https://arxiv.org/abs/1706.06712"
+    },
+    {
+      "id": 6,
+      "cite": "C. T. Simpson, “Higgs bundles and local systems”, Publ. Math. IHÉS 75 (1992), 5–95",
+      "url": "https://doi.org/10.1007/BF02699491"
+    },
+    {
+      "id": 7,
+      "cite": "H. Esnault and M. Groechenig, “Cohomologically rigid local systems and integrality”, Selecta Math. 24 (2018), 4279–4292",
+      "url": "https://doi.org/10.1007/s00029-018-0409-z"
+    },
+    {
+      "id": 8,
+      "cite": "J. de Jong and H. Esnault, “Integrality of the Betti moduli space”, Trans. AMS 377 (2024), 431–448",
+      "url": "https://doi.org/10.1090/tran/8928"
+    },
+    {
+      "id": 9,
+      "cite": "D. Litt, “Problems I Like, Problem 7”",
+      "url": "https://www.problemsilike.com/7"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Coordinate change preserves the representation; the character variety parametrizes semisimple representations up to isomorphism.",
+      "verdict": "supported",
+      "sourceLine": "parametrizes semisimple representations of"
+    },
+    {
+      "text": "A matrix is quasi-unipotent if all its eigenvalues are roots of unity.",
+      "verdict": "supported",
+      "sourceLine": "its eigenvalues are roots of unity. Choose quasi-unipotent conjugacy"
+    },
+    {
+      "text": "Ghosh and Sarnak prove integral density for almost all locally admissible parameters of the Markoff cubic family.",
+      "verdict": "supported",
+      "sourceLine": "almost all locally admissible integer parameters, and also exhibit"
+    },
+    {
+      "text": "They exhibit infinitely many admissible parameters with no integral points.",
+      "verdict": "supported",
+      "sourceLine": "infinitely many admissible parameters with no integral"
+    },
+    {
+      "text": "Litt's survey asks whether one number field suffices.",
+      "verdict": "supported",
+      "sourceLine": "his survey explicitly asks whether one"
+    },
+    {
+      "text": "Simpson conjectured rigid representations are defined over rings of integers.",
+      "verdict": "supported",
+      "sourceLine": "The arithmetic study of local systems includes Simpson's conjecture"
+    },
+    {
+      "text": "Esnault and Groechenig prove integrality for cohomologically rigid local systems.",
+      "verdict": "supported",
+      "sourceLine": "Esnault and Groechenig prove integrality for irreducible cohomologically"
+    },
+    {
+      "text": "De Jong and Esnault's prime-by-prime result is distinct from density over one full ring of integers.",
+      "verdict": "supported",
+      "sourceLine": "This prime-by-prime existence is distinct from density over the full ring"
+    },
+    {
+      "text": "Coccia and Litt prove full-ring potential integral density for SL2 and PGL2.",
+      "verdict": "supported",
+      "sourceLine": "Coccia and Litt prove full-ring potential integral density for $\\SL_2$"
+    },
+    {
+      "text": "The main theorem gives Zariski density in Y and in every irreducible component.",
+      "verdict": "supported",
+      "sourceLine": "is Zariski dense in $Y$, and hence in every irreducible component of $Y$."
+    },
+    {
+      "text": "One field is fixed for the entire locus, including all components.",
+      "verdict": "supported",
+      "sourceLine": "of $\\cO_F$ is finitely generated. It is fixed for the entire locus,"
+    },
+    {
+      "text": "No restriction on the genus or Jordan forms is imposed.",
+      "verdict": "supported",
+      "sourceLine": "including all its components. No restriction on the genus or on the"
+    },
+    {
+      "text": "The result answers the determinant-one form of Litt's question for curves.",
+      "verdict": "supported",
+      "sourceLine": "answers the determinant-one form of Litt's question affirmatively for"
+    },
+    {
+      "text": "For a nonprojective curve without boundary conditions, density already holds over Z.",
+      "verdict": "supported",
+      "sourceLine": "For a nonprojective curve without boundary conditions, density already"
+    },
+    {
+      "text": "The substantive cases are prescribed boundary monodromy and projective curves, where the surface relation couples the matrices.",
+      "verdict": "supported",
+      "sourceLine": "boundary monodromy and projective curves, where the surface relation"
+    },
+    {
+      "text": "The field F = K(√2, ζ_pq) and L adjoins ζ_r and r-th roots of units of O_F.",
+      "verdict": "supported",
+      "sourceLine": " L=F\\bigl(\\zeta_r,\\{u^{1/r}:u\\in\\cO_F^\\times\\}\\bigr),"
+    },
+    {
+      "text": "The argument does not obtain integral points merely from a complex parametrization.",
+      "verdict": "supported",
+      "sourceLine": "integers, rather than obtaining integral points merely from a complex"
+    },
+    {
+      "text": "The proof refines flags and lowers rank by induction.",
+      "verdict": "supported",
+      "sourceLine": "The main construction proves integral density for all such diagrams by"
+    },
+    {
+      "text": "Powers of a Dehn twist enlarge the closure of the integral points.",
+      "verdict": "supported",
+      "sourceLine": "the preceding case. Powers of a Dehn twist then enlarge the closure of"
+    },
+    {
+      "text": "Exact Jordan conditions are selected last because semisimplification can reduce boundary Jordan blocks.",
+      "verdict": "supported",
+      "sourceLine": "essential: taking the semisimplification of a representation can reduce"
+    },
+    {
+      "text": "Ambient integral points need not avoid smaller Jordan classes after reduction at finite primes.",
+      "verdict": "supported",
+      "sourceLine": "avoid smaller Jordan classes after reduction at every finite prime."
+    },
+    {
+      "text": "The higher-dimensional, higher-rank question remains outside the scope.",
+      "verdict": "supported",
+      "sourceLine": "The higher-dimensional, higher-rank question remains outside its scope."
+    },
+    {
+      "text": "The rank-two exact-class statement also follows from Coccia–Litt.",
+      "verdict": "supported",
+      "sourceLine": "The ambient-integral exact-class statement in rank two also follows"
+    },
+    {
+      "text": "In rank two Coccia and Litt allow a broader range of boundary traces.",
+      "verdict": "supported",
+      "sourceLine": "boundary data; in rank two, Coccia and Litt allow a broader range of"
+    },
+    {
+      "text": "Lean checks a supporting seam-compatibility result; potential integral density, boundary and all-component conclusions are outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "The traces x, y, z of A, B, AB and t of the commutator satisfy x²+y²+z²−xyz−2 = t (classical Fricke identity, recomputed for the example).",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

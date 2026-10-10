@@ -1,0 +1,271 @@
+{
+  "id": "058",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Semialgebraic-universal-covers-of-normal-projective-varieties-September-24-2026/paper.pdf",
+      "label": "Semialgebraic universal covers of normal projective varieties"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Symmetry-of-semialgebraic-bounded-domains-with-compact-quotient-September-24-2026/paper.pdf",
+      "label": "Symmetry of semialgebraic bounded domains with compact quotient"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/058.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Unrolled shapes with a polynomial description split into just three kinds of pieces.",
+  "scope": "The classification covers universal covers of connected normal projective complex varieties; the Lean check covers only the bounded-domain theorem.",
+  "plain": "Unrolling every loop of a shape gives its universal cover. Kollár and Pardon conjectured what such a cover looks like when polynomials describe it. It should split into a bounded symmetric domain, flat complex space, and a simply connected projective variety. The main paper claims to prove this for connected normal projective varieties. A companion paper proves a key bounded case, with a Lean proof listed.",
+  "doesNot": "This does not cover universal covers that lack a semialgebraic description, and the full classification has no Lean proof.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "János Kollár and John Pardon, Conjecture 2",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle a conjecture of Kollár and Pardon and answer their bounded-domain question."
+  },
+  "explanation": "Take the disc of complex numbers whose size is less than 1. Write each number as z = x + iy. Then the disc is the set where x² + y² < 1. Now apply the map that sends z to (0.5 − z)/(1 − 0.5z). It sends 0 to 0.5, and 0.5 back to 0. Apply it twice and every point comes home: 0.3 goes out and returns to 0.3. Points on the rim stay on the rim, so 1 goes to −1. Exactly one point inside stays put: 2 − √3, about 0.268. Its neighbours swap sides. The point 0.278 lands near 0.258.\n\nSo the disc has a flip, like a mirror, centred at 0.268. Maps of the same kind give such a flip at every point of the disc. A finite-sized region with this property at every point is called a bounded symmetric domain. The disc has a second property. One polynomial inequality describes it. A set described by finitely many real polynomial equations and inequalities is called semialgebraic.\n\nThe disc is one of three answers to an old question about curved surfaces. Take a closed surface and unroll every loop in it. The result is its universal cover: a space with no loops left that wraps onto the surface. For complex curves, only three covers occur. They are the round sphere (the projective line), the flat plane, and the disc. A doughnut unrolls onto the plane. A surface with two or more holes unrolls onto the disc.\n\nIn higher dimensions the shapes are projective varieties. These are solution sets of polynomial equations, closed up so that nothing runs off to infinity. Their covers can be very wild. In 2012, János Kollár and John Pardon asked what happens when the cover itself has a finite polynomial description. More precisely, the cover should match a semialgebraic open part of a projective variety. Their conjecture says this happens exactly when the cover is a product of three pieces. One is a bounded symmetric domain. One is flat complex space of some dimension m. The last is a projective variety that is simply connected, meaning every loop in it shrinks to a point. For example, a disc times a plane times a sphere is such a product.\n\nPartial answers came first. In 1999, Noboru Nakayama treated covers equal to flat space, assuming a condition called abundance. In 2013, Benoît Claudon, Andreas Höring and Kollár classified covers that are quasi-projective varieties, assuming smooth abundance. Quasi-projective means a projective variety with a closed part removed. The bounded piece is the new feature in the semialgebraic case. Kollár and Pardon proved one case where it appears, under strong conditions on the fundamental group. That group records the loops of the shape. In 2024, Vasily Rogov proved a version that also assumes a well-behaved distance on the cover.\n\nThe main paper claims to prove the conjecture for connected normal projective varieties. Normal allows mild singular points. The maps that shift the cover over itself need not be given by polynomials. The paper also claims that a cover is quasi-projective exactly when the bounded piece is missing. Then a smooth projective variety covered by flat space is, up to a finite cover, an abelian variety. That is a higher-dimensional doughnut. These claims lean on other OpenAI preprints from the same release. The main proof uses one on the loops of special shapes. The quasi-projective step uses another on abundance.\n\nThe paper names the main obstacle. The cover can contain closed pieces of positive dimension. Its edge can also break down in several stages. Zooming in near one part of the edge therefore need not show the whole cover. The paper zooms in again and again, one stage at a time. It ends with a model described by inequalities between positive matrices. It then shows that this model describes the whole cover, not just one corner.\n\nA companion paper isolates the bounded piece. Take a bounded semialgebraic open set inside an affine variety, a shape cut out by polynomials in ordinary space. Suppose a group of its symmetries folds it into a closed, finite quotient. Kollár and Pardon asked whether such a set must be symmetric. The companion paper proves that it is smooth and is a bounded symmetric domain. Earlier results needed more. S. Frankel handled convex domains in 1989. J. Vey handled a special class, called generalized Siegel domains, in 1970. Here the edge may have corners. The paper zooms in at a well-chosen edge point. It shows the zoomed picture does not collapse. That reaches a case Vey's theorem covers. Its proof does not use the main classification.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the companion theorem on bounded domains. That version allows symmetries with fixed points and a singular ambient variety. The full three-piece classification is outside that check. So are the quasi-projective and flat-space statements, and the two other OpenAI preprints they rely on. No specialist review of either paper has been published.",
+  "hypeCheck": "Only the bounded-domain theorem has a Lean proof. The three-piece classification is not machine-checked and depends on two other OpenAI preprints. No specialist review of either paper is published.",
+  "glossary": [
+    {
+      "term": "Universal cover",
+      "meaning": "The space with no loops left that wraps onto a shape, made by unrolling every loop."
+    },
+    {
+      "term": "Projective variety",
+      "meaning": "The solution set of polynomial equations, closed up so nothing runs off to infinity."
+    },
+    {
+      "term": "Semialgebraic set",
+      "meaning": "A set described by finitely many real polynomial equations and inequalities."
+    },
+    {
+      "term": "Bounded symmetric domain",
+      "meaning": "A finite-sized region with a mirror-like flip centred at each of its points."
+    },
+    {
+      "term": "Simply connected",
+      "meaning": "Every loop in the space can shrink to a point."
+    },
+    {
+      "term": "Quasi-projective variety",
+      "meaning": "A projective variety with a closed part removed."
+    },
+    {
+      "term": "Abelian variety",
+      "meaning": "A projective variety shaped like a higher-dimensional doughnut."
+    },
+    {
+      "term": "Normal variety",
+      "meaning": "A variety that may have mild singular points."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Kollár and J. Pardon, “Algebraic varieties with semialgebraic universal cover”, Journal of Topology 5 (2012), 199–212",
+      "url": "https://doi.org/10.1112/jtopol/jts001"
+    },
+    {
+      "id": 2,
+      "cite": "N. Nakayama, “Projective algebraic varieties whose universal covering spaces are biholomorphic to C^n”, Journal of the Mathematical Society of Japan 51 (1999), 643–654",
+      "url": "https://doi.org/10.2969/jmsj/05130643"
+    },
+    {
+      "id": 3,
+      "cite": "B. Claudon, A. Höring and J. Kollár, “Algebraic varieties with quasi-projective universal cover”, Journal für die reine und angewandte Mathematik 679 (2013), 207–221",
+      "url": "https://doi.org/10.1515/crelle.2012.017"
+    },
+    {
+      "id": 4,
+      "cite": "V. Rogov, “On the metric Kollár–Pardon problem”, arXiv:2401.07983 (2024)",
+      "url": "https://arxiv.org/abs/2401.07983v1"
+    },
+    {
+      "id": 5,
+      "cite": "S. Frankel, “Complex geometry of convex domains that cover varieties”, Acta Mathematica 163 (1989), 109–149",
+      "url": "https://doi.org/10.1007/BF02392734"
+    },
+    {
+      "id": 6,
+      "cite": "J. Vey, “Sur la division des domaines de Siegel”, Annales scientifiques de l'École Normale Supérieure (4) 3 (1970), 479–506",
+      "url": "https://www.numdam.org/article/ASENS_1970_4_3_4_479_0.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Semialgebraic universal covers of normal projective varieties” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Semialgebraic-universal-covers-of-normal-projective-varieties-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Symmetry of semialgebraic bounded domains with compact quotient” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Symmetry-of-semialgebraic-bounded-domains-with-compact-quotient-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 058 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/058.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, “The abelianity conjecture for special compact Kähler manifolds” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-abelianity-conjecture-for-special-compact-Kahler-manifolds-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math, “Log abundance in characteristic zero” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Log-abundance-in-characteristic-zero-September-24-2026/paper.pdf"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "In complex dimension one, only the projective line, the complex line and the unit disc occur as universal covers.",
+      "verdict": "supported",
+      "sourceLine": "In complex dimension one, uniformization leaves only the projective line, the complex line and the unit disc."
+    },
+    {
+      "text": "A bounded symmetric domain has a holomorphic involution with each point as an isolated fixed point.",
+      "verdict": "supported",
+      "sourceLine": "A bounded symmetric domain is a connected bounded domain in a complex vector space for which every point is an isolated fixed point of a holomorphic involution of the domain."
+    },
+    {
+      "text": "The cover is semialgebraic exactly when it is a product of a bounded symmetric domain, affine space and a simply connected normal projective variety.",
+      "verdict": "supported",
+      "sourceLine": "is biholomorphic to a semialgebraic open subset of a projective variety if and only if it is a product of a bounded symmetric domain, a complex affine space, and a simply connected normal projective variety."
+    },
+    {
+      "text": "This proves Conjecture 2 of Kollár and Pardon in its normal-projective scope.",
+      "verdict": "supported",
+      "sourceLine": "This proves Conjecture~2 of Koll\\'ar and Pardon"
+    },
+    {
+      "text": "No algebraicity of the deck transformations is assumed.",
+      "verdict": "supported",
+      "sourceLine": "No algebraicity of the deck transformations is assumed."
+    },
+    {
+      "text": "Nakayama derived the affine-space statement from abundance.",
+      "verdict": "supported",
+      "sourceLine": "Nakayama proved the relevant structure theorem under semiampleness of the canonical divisor and derived the affine-space statement from abundance"
+    },
+    {
+      "text": "Claudon, Höring and Kollár classified quasi-projective covers assuming smooth abundance.",
+      "verdict": "supported",
+      "sourceLine": "Their classification and its general-cover extension were proved assuming smooth abundance"
+    },
+    {
+      "text": "Semialgebraic openness admits the additional bounded symmetric factor.",
+      "verdict": "supported",
+      "sourceLine": "Semialgebraic openness admits the additional bounded symmetric factor"
+    },
+    {
+      "text": "Kollár and Pardon established a nonabelian lattice case of the conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Koll\\'ar and Pardon established a nonabelian lattice case of this conjecture."
+    },
+    {
+      "text": "Rogov proves a metric form assuming a definable lifted Kähler metric.",
+      "verdict": "supported",
+      "sourceLine": "Rogov proves a metric form of the Koll\\'ar--Pardon statement for smooth aspherical projective varieties with definable lifted K\\\"ahler metric"
+    },
+    {
+      "text": "A cover is quasi-projective exactly when it is affine space times a simply connected projective variety.",
+      "verdict": "supported",
+      "sourceLine": "is biholomorphic to a quasi-projective variety. … For some integer \\(m\\geq0\\) and some simply connected projective variety \\(F\\), there is a biholomorphism"
+    },
+    {
+      "text": "A smooth projective variety covered by C^n has a finite étale cover by an abelian variety.",
+      "verdict": "supported",
+      "sourceLine": "then there is a finite \\'etale Galois cover \\(A\\to X\\) with \\(A\\) an abelian variety."
+    },
+    {
+      "text": "The main proof uses OpenAI's compact special abelianity theorem, proved in a companion article.",
+      "verdict": "supported",
+      "sourceLine": "That theorem is proved in the separately cited companion article."
+    },
+    {
+      "text": "The quasi-projective corollary applies OpenAI's log-abundance theorem.",
+      "verdict": "supported",
+      "sourceLine": "We now apply the log-abundance theorem to supply that premise."
+    },
+    {
+      "text": "The cover can contain compact positive-dimensional subvarieties and its boundary can have successive degeneracies.",
+      "verdict": "supported",
+      "sourceLine": "The given cover can contain compact positive-dimensional subvarieties, and its semialgebraic boundary can have several successive degeneracies."
+    },
+    {
+      "text": "Scaling near one boundary face need not produce the whole cover.",
+      "verdict": "supported",
+      "sourceLine": "A scaling near one boundary face therefore need not produce the whole cover or a bounded domain."
+    },
+    {
+      "text": "Repeated scaling terminates in a finite tower of positive-matrix inequalities.",
+      "verdict": "supported",
+      "sourceLine": "Repeating on that lower-dimensional model terminates in a finite tower of positive-matrix inequalities."
+    },
+    {
+      "text": "A bounded semialgebraic open subset of an affine variety with a cocompact properly discontinuous group is smooth and a bounded symmetric domain.",
+      "verdict": "supported",
+      "sourceLine": "Then \\(U\\) is smooth and is biholomorphic to a bounded symmetric domain."
+    },
+    {
+      "text": "This answers the bounded-domain question of Kollár and Pardon.",
+      "verdict": "supported",
+      "sourceLine": "This answers the bounded-domain question of Koll\\'ar and Pardon affirmatively."
+    },
+    {
+      "text": "Frankel proved that convex hyperbolic domains with compact quotient are bounded symmetric domains.",
+      "verdict": "supported",
+      "sourceLine": "Frankel proved that a convex hyperbolic domain with compact quotient is biholomorphic to a bounded symmetric domain"
+    },
+    {
+      "text": "Vey proved that a divisible generalized Siegel domain is symmetric.",
+      "verdict": "supported",
+      "sourceLine": "a divisible generalized Siegel domain is symmetric"
+    },
+    {
+      "text": "Semialgebraicity does not make the boundary a smooth hypersurface; corners may occur.",
+      "verdict": "supported",
+      "sourceLine": "Semialgebraicity provides finite geometric descriptions, but it does not make the relevant boundary a smooth hypersurface."
+    },
+    {
+      "text": "Analytic discs prevent the normal limit from collapsing.",
+      "verdict": "supported",
+      "sourceLine": "This is the step that prevents the normal limit from collapsing."
+    },
+    {
+      "text": "The companion proof is independent of the classification.",
+      "verdict": "supported",
+      "sourceLine": "The proof below is independent of that classification."
+    },
+    {
+      "text": "The Lean formalization covers the bounded-domain symmetry theorem; the action need not be free and the ambient set may be singular.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}

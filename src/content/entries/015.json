@@ -1,0 +1,247 @@
+{
+  "id": "015",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equidistribution-of-Prime-Degree-Torus-Packets-with-Arbitrary-Local-Type-September-24-2026/paper.pdf",
+      "label": "Equidistribution of Prime-Degree Torus Packets with Arbitrary Local Type"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equidistribution-of-Primitive-Quartic-Torus-Packets-for-Arbitrary-Orders-October-5-2026/quartic-torus-packets.pdf",
+      "label": "Equidistribution of primitive quartic torus packets for arbitrary orders"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equidistribution-of-Primitive-Sextic-Torus-Packets-October-5-2026/primitive-sextic-torus-packets.pdf",
+      "label": "Equidistribution of Primitive Sextic Torus Packets"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/015.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Number-field grids spread evenly over all grid shapes in prime degrees from five, and in degrees four and six.",
+  "scope": "All fields are totally real. The prime case needs degree five or more; degrees four and six need primitive fields.",
+  "plain": "A totally real number field turns its ideal classes into a finite packet of closed tori among all lattices. The first paper proves these packets spread out evenly in each fixed prime degree from five on (Lean proof listed). It covers every field and every local type, with no exceptions and no weight lost. Companion papers claim to prove the same for primitive quartic fields with any order. They also claim it for primitive sextic fields with the full ring of integers.",
+  "doesNot": "This does not say anything about a single torus, give a rate of convergence, or cover other composite degrees.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "William Duke, real-quadratic case",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "The prime-degree paper gives an unconditional answer to the packet form of the higher-dimensional Duke problem, with no exceptional fields."
+  },
+  "explanation": "Take the numbers a + b√2, where a and b are whole numbers. Pair each one with its mirror twin, a − b√2. The number 1 becomes the point (1, 1). The number √2 becomes about (1.414, −1.414). All such points form a regular grid in the plane, called a lattice. Its basic cell has area 2√2, about 2.83.\n\nNow stretch the plane sideways by about 5.83 and squash it upright by the same factor. The point (1, 1) moves to about (5.83, 0.172). That is exactly the point for 3 + 2√2. Every other grid point also lands on a grid point. Multiplying by 3 + 2√2 sends a + b√2 to (3a + 4b) + (2a + 3b)√2. The trick works because the twin 3 − 2√2 is exactly 1 divided by 3 + 2√2. So the whole grid comes back to itself.\n\nNow picture the space of all grids whose cell has area 1. Shrink our grid to area 1 and stretch it slowly, from factor 1 up to 5.83. It traces a closed loop in that space. In the natural logarithmic units, the loop has length about 1.76, the logarithm of 5.83.\n\nLarger number systems give larger versions of this picture. A totally real field of degree n is a number system built from a root of a degree-n whole-number equation. All n of its mirror copies are real. It gives a grid in n dimensions. The loop becomes a closed torus, a doughnut-like shape of dimension n − 1. One field can give several genuinely different grids, one for each ideal class. A torus packet collects the tori from every class, adds their sign-flipped copies, and weights each torus by its volume.\n\nThe question is whether packets spread out evenly as the number systems grow more intricate. Their size is measured by a whole number called the discriminant. For the grid above it is 8, the square of the cell area. Spreading evenly means each region gets its fair share of the packet's weight. Fair is judged by the natural uniform measure, called Haar measure. The papers also show that no share of the weight drifts off toward extremely squashed grids.\n\nFor degree two, the loops are closed paths on a classical surface. In 1988, William Duke proved that these loops, weighted by length, spread evenly for the fundamental real-quadratic discriminants. In 2011, Einsiedler, Lindenstrauss, Michel and Venkatesh proved a cubic version. Their extension to higher prime degrees depended on an unproven analytic bound called subconvexity. In 2024, Lemke Oliver, Thorner and Zaman removed that condition in each fixed prime degree from five on. Their result still left out a small exceptional family of fields.\n\nThe first paper proves the result in every fixed prime degree from five on, with no exceptional fields. The argument has two parts. A counting bound keeps weight away from squashed grids and from tiny neighbourhoods. A known classification then forces the uniform measure. The obstacle was making the count work for every field without the unproven bound. The paper uses a 1974 result of Stark in its place. It also allows smaller systems of whole numbers inside the field, and grids grouped by their behaviour at each prime.\n\nDegrees four and six bring a different obstacle. Four and six are not prime. In such degrees, the limit could pile up on smaller pieces of the space instead of spreading evenly. Both papers ask for primitive fields, which have no number system strictly between the ordinary fractions and the field itself. The quartic paper claims to rule out the smaller pieces with a count in a related cubic field. The sextic paper claims to do it with a new argument about how the weight is spread at many scales.\n\nThe scopes differ. The quartic paper allows any order, meaning any smaller ring of whole numbers inside the field. The sextic paper covers only the full ring of whole numbers, as the field discriminant grows. None of the results says anything about one torus on its own. The first paper also gives no rate of convergence.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the prime-degree theorem. It is matched against a fixed reference statement by a tool called Comparator. The quartic and sextic theorems are outside the Lean scope note. No specialist review of any of the three papers has been published.",
+  "hypeCheck": "Solid to major if the proofs hold. Only the prime-degree theorem has a Lean proof listed. The quartic and sextic theorems rest on the papers alone, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Lattice",
+      "meaning": "A regular grid of points that repeats in every direction, like the corners of graph paper."
+    },
+    {
+      "term": "Totally real field",
+      "meaning": "A number system built from a root of a whole-number equation whose mirror copies are all real numbers."
+    },
+    {
+      "term": "Discriminant",
+      "meaning": "A whole number that measures how large and intricate a number system is."
+    },
+    {
+      "term": "Order",
+      "meaning": "A ring of whole numbers inside a number field; the largest one is the ring of integers."
+    },
+    {
+      "term": "Ideal class",
+      "meaning": "A family of sub-grids of a number system that count as the same up to rescaling by the system's numbers."
+    },
+    {
+      "term": "Torus packet",
+      "meaning": "All the closed doughnut-shaped orbits that a field's ideal classes give, with sign flips, weighted by volume."
+    },
+    {
+      "term": "Haar measure",
+      "meaning": "The natural uniform way to measure regions in the space of all grids of area or volume one."
+    },
+    {
+      "term": "Primitive field",
+      "meaning": "A number field with no number system strictly between the ordinary fractions and the field itself."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "W. Duke, “Hyperbolic distribution problems and half-integral weight Maass forms”, Inventiones Mathematicae 92 (1988), 73–90",
+      "url": "https://doi.org/10.1007/BF01393993"
+    },
+    {
+      "id": 2,
+      "cite": "M. Einsiedler, E. Lindenstrauss, Ph. Michel and A. Venkatesh, “Distribution of periodic torus orbits and Duke's theorem for cubic fields”, Annals of Mathematics 173 (2011), 815–885",
+      "url": "https://doi.org/10.4007/annals.2011.173.2.5"
+    },
+    {
+      "id": 3,
+      "cite": "R. J. Lemke Oliver, J. Thorner and A. Zaman, “An approximate form of Artin's holomorphy conjecture and non-vanishing of Artin L-functions”, Inventiones Mathematicae 235 (2024), 893–971",
+      "url": "https://doi.org/10.1007/s00222-023-01232-2"
+    },
+    {
+      "id": 4,
+      "cite": "H. M. Stark, “Some effective cases of the Brauer–Siegel theorem”, Inventiones Mathematicae 23 (1974), 135–152",
+      "url": "https://doi.org/10.1007/BF01405166"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Equidistribution of Prime-Degree Torus Packets with Arbitrary Local Type” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equidistribution-of-Prime-Degree-Torus-Packets-with-Arbitrary-Local-Type-September-24-2026/paper.pdf",
+      "quote": "It gives an unconditional affirmative answer to this packet form of the higher-dimensional Duke problem, including sequences in a fixed field with increasing order index."
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Equidistribution of primitive quartic torus packets for arbitrary orders” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equidistribution-of-Primitive-Quartic-Torus-Packets-for-Arbitrary-Orders-October-5-2026/quartic-torus-packets.pdf",
+      "quote": "In particular, the field may remain fixed while the order index tends to infinity."
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “Equidistribution of Primitive Sextic Torus Packets” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equidistribution-of-Primitive-Sextic-Torus-Packets-October-5-2026/primitive-sextic-torus-packets.pdf",
+      "quote": "The second task is particularly important in composite degree"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 015 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/015.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Packet orbits are compact and finite in number, weighted by orbit volume, and include sign translates.",
+      "verdict": "supported",
+      "sourceLine": "These orbits are compact and their number is finite",
+      "sourceId": 5
+    },
+    {
+      "text": "Duke proved equidistribution of length-weighted closed geodesics for fundamental real-quadratic discriminants.",
+      "verdict": "supported",
+      "sourceLine": "Duke proved equidistribution of the length-weighted closed geodesics associated with fundamental real-quadratic discriminants on the modular surface",
+      "sourceId": 1
+    },
+    {
+      "text": "Einsiedler, Lindenstrauss, Michel and Venkatesh proved a cubic equidistribution theorem.",
+      "verdict": "supported",
+      "sourceLine": "Their cubic equidistribution theorem combines subconvexity, local analysis, and measure classification",
+      "sourceId": 2
+    },
+    {
+      "text": "The higher-prime-degree extension of their work is conditional on subconvexity.",
+      "verdict": "supported",
+      "sourceLine": "is conditional on subconvexity.",
+      "sourceId": 2
+    },
+    {
+      "text": "Lemke Oliver, Thorner and Zaman proved equidistribution in each fixed prime degree at least five outside a small exceptional family of fields.",
+      "verdict": "supported",
+      "sourceLine": "Lemke Oliver, Thorner, and Zaman proved equidistribution for sequences of orders in totally real fields of each fixed prime degree at least five, outside a small exceptional family of fields",
+      "sourceId": 3
+    },
+    {
+      "text": "The prime-degree theorem treats every field and every full-lattice local type.",
+      "verdict": "supported",
+      "sourceLine": "treats every field and every full-lattice local type in the stated prime degrees",
+      "sourceId": 5
+    },
+    {
+      "text": "Counting bounds control the cusp and small balls and feed into rigidity.",
+      "verdict": "supported",
+      "sourceLine": "packet averages of lattice-vector counts control the cusp and small ordinary balls, and these bounds feed into positive-entropy rigidity",
+      "sourceId": 5
+    },
+    {
+      "text": "Stark's exceptional-zero descent supplies the bounds without a subconvexity hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "supplies the required bounds without a subconvexity hypothesis",
+      "sourceId": 4
+    },
+    {
+      "text": "The prime-degree theorem includes noninvertible modules over nonmaximal orders.",
+      "verdict": "supported",
+      "sourceLine": "as well as arbitrary noninvertible modules over nonmaximal orders",
+      "sourceId": 5
+    },
+    {
+      "text": "In prime degree the positive-entropy classification gives Haar measure directly.",
+      "verdict": "supported",
+      "sourceLine": "In prime degree, the positive-entropy classification gives Haar measure directly",
+      "sourceId": 7
+    },
+    {
+      "text": "In degree six, proper block subgroups can carry limiting components.",
+      "verdict": "supported",
+      "sourceLine": "In degree six there are proper block subgroups containing the full diagonal group whose closed orbits can carry finite invariant measures.",
+      "sourceId": 7
+    },
+    {
+      "text": "Degree four allows proper homogeneous limits that must be excluded.",
+      "verdict": "supported",
+      "sourceLine": "then exclude the proper homogeneous limits allowed in degree four",
+      "sourceId": 6
+    },
+    {
+      "text": "A quartic field is primitive if no field lies strictly between Q and K.",
+      "verdict": "supported",
+      "sourceLine": "is \\emph{primitive} if it has no field strictly between",
+      "sourceId": 6
+    },
+    {
+      "text": "The quartic argument places exterior products in a cubic resolvent field.",
+      "verdict": "supported",
+      "sourceLine": "places the products in the three embeddings of a cubic resolvent field",
+      "sourceId": 6
+    },
+    {
+      "text": "The sextic argument uses conditional measures at growing but separated resolutions.",
+      "verdict": "supported",
+      "sourceLine": "The main additional argument concerns conditional measures that retain information at growing, but separated, resolutions.",
+      "sourceId": 7
+    },
+    {
+      "text": "The quartic theorem covers every order, and the order index may grow in a fixed field.",
+      "verdict": "supported",
+      "sourceLine": "We prove this for the complete packets attached to invertible ideals of every order in a primitive totally real quartic field.",
+      "sourceId": 6
+    },
+    {
+      "text": "The sextic theorem covers maximal orders as field discriminants tend to infinity.",
+      "verdict": "supported",
+      "sourceLine": "complete ideal-class packets of maximal orders in totally real sextic fields with no proper intermediate fields",
+      "sourceId": 7
+    },
+    {
+      "text": "The prime-degree theorem makes no assertion about an individual orbit, a convergence rate, or composite degrees.",
+      "verdict": "supported",
+      "sourceLine": "it makes no assertion about an individual orbit, a convergence rate, or composite degrees",
+      "sourceId": 5
+    },
+    {
+      "text": "The theorem includes no escape of mass.",
+      "verdict": "supported",
+      "sourceLine": "no mass escapes into the cusp",
+      "sourceId": 5
+    },
+    {
+      "text": "The Lean formalization covers the prime-degree theorem only, with a Comparator statement.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

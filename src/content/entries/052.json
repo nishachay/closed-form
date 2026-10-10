@@ -1,0 +1,238 @@
+{
+  "id": "052",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-cover-splitting-for-compact-Kahler-manifolds-September-23-2026/paper.pdf",
+      "label": "Universal-cover splitting for compact Kähler manifolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integrability-of-split-tangent-bundles-on-rationally-connected-manifolds-September-23-2026/main.pdf",
+      "label": "Integrability of split tangent bundles on rationally connected manifolds"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/052.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Two integrable families of directions on a compact Kähler manifold make its universal cover a product.",
+  "scope": "The first result needs a compact connected Kähler manifold with two integrable families. The second needs a smooth rationally connected projective manifold.",
+  "plain": "At each point of a curved space, the directions can sometimes be split into two families. The first paper proves that if both families form layers, the fully unrolled space is a product along them. This settles the two-family case of a conjecture Arnaud Beauville formulated in 2000. The second paper proves that on smooth rationally connected projective manifolds, both families always fit together into layers. Combined with Höring's earlier theorem, the paper claims such a space is then itself a product.",
+  "doesNot": "This does not make a compact Kähler manifold with such a splitting, or any finite cover of it, a product.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2000",
+    "firstStepBy": "Arnaud Beauville, the compatible splitting conjecture",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle the two-family case of Beauville's conjecture and Höring's conjecture for rationally connected manifolds."
+  },
+  "explanation": "Picture a square video-game screen that wraps around. Leave through the right edge and you come back on the left. Leave through the top and you come back at the bottom. Mathematicians call this surface a torus, the surface of a donut. At every point you can split the possible directions into two families: horizontal and vertical. Now unroll the torus by laying copies of the square side by side forever. You get the whole flat plane, and the two families become a plain grid. The plane is a product: each point is one horizontal position paired with one vertical position.\n\nNow tilt one family. Keep the vertical lines, but swap the horizontal lines for lines of slope √2. Start at a corner and follow one tilted line. Each time it wraps past the right edge, note its height. The heights come out at about 0.414, 0.828, 0.243, 0.657 and 0.071. Because √2 is not a fraction, the line never closes up. It winds forever across the donut. Yet on the unrolled plane the picture is still a grid, only slanted. The product survives, even though the lines on the donut look tangled.\n\nNot every split of directions behaves this well. Take ordinary space with coordinates x, y and z. Let one family be \"move in x\". Let the other be \"move in y while climbing in z at rate x\". Walk a small square with sides 0.1, using only these moves. You end up directly above your start, 0.01 higher. Two such moves do not close up, so no layers of surfaces can follow them. A family whose directions do fit together into layers is called integrable. The layers are called leaves. The papers define integrability through the Lie bracket (the drift left over after such a small loop).\n\nThese toy pictures use real coordinates. The papers work with complex manifolds (spaces that look locally like several complex coordinates). The question needs a few more terms. A tangent-bundle splitting is a smooth choice, at every point, of two complementary families of directions. A Kähler manifold is a complex manifold with a compatible way to measure lengths and areas. Compact means it is finite in extent and has no edge, like the donut. The universal cover is the space you get by unrolling every loop, as the plane unrolls the torus. The question asks when a given splitting comes from a product on the universal cover. The given families must be the factor directions.\n\nArnaud Beauville formulated this as a conjecture for compact Kähler manifolds, in a paper published in 2000. For two families, his condition is that both are integrable. He proved major cases, including Kähler–Einstein manifolds and compact Kähler surfaces. Later work added other special hypotheses. Brunella, Pereira and Touzet treated a family of directions that is a single line, with an integrable complement. Druel, Pereira, Pym and Touzet treated the case where one family has a compact leaf with finite holonomy. Integrability alone gives a product only near each point. The obstacle was continuing those small products across the whole space. Compactness makes every smooth metric complete, but it does not make the two families line up with it.\n\nThe first paper proves the two-family form of Beauville's conjecture. Take a compact connected Kähler manifold of complex dimension at least two. Split its directions into two integrable families, each of positive size. Then its universal cover is a product of two connected, simply connected complex manifolds. The first factor runs exactly along the first family, and the second along the second. The proof extends small two-direction patches, one direction in each family, step by step across the space. A bound on areas, supplied by the Kähler structure, stops these patches from breaking down. The result speaks only about the universal cover. It does not say that the original space, or any finite cover of it, is a product. The factors and the leaves can be infinite in extent, like the √2 line.\n\nThe second paper asks where integrability comes from. It looks at rationally connected projective manifolds. Projective means the space can be cut out by polynomial equations. Rationally connected means two general points lie on one rational curve (the image of a complex sphere). Andreas Höring showed in 2007 that on such a space one integrable family already gives an actual product. He then conjectured that at least one family is always integrable. Campana and Peternell had settled Fano manifolds when one family has size one or two. Höring's 2026 preprint covers varieties of Fano type. The second paper proves that both families are always integrable, with no rank or positivity condition. The paper adds that Höring's earlier theorem then makes the space itself a product. Smoothness matters here. Höring's 2026 preprint gives a singular rationally connected example with a non-integrable family.\n\nThe obstacle there was finding a way to test integrability everywhere at once. The paper builds, from each rational curve, a map of two spheres into the space. One sphere runs along the first family and the other along the second. Along this map, the drift from walking loops becomes a quantity that cannot change. It is zero at one marked point, so it is zero at another. Rational curves through enough points then force the drift to vanish everywhere. Beauville's own warning example shows why such a theorem is needed. On the product of a complex torus with a sphere, a tilted family of directions can fail to be integrable. That space is not rationally connected, so the second paper does not cover it.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both main theorems. The first is the universal-cover product, with both families assumed integrable. The second is integrability of both families on a rationally connected manifold of dimension at least two. There the manifold comes with a projective embedding that witnesses rational connectedness. The product consequence of the second paper is outside that check. So are the first paper's further corollaries. No specialist review has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean checks formal versions of both main theorems. The product consequence and the corollaries are outside that check. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Tangent-bundle splitting",
+      "meaning": "A smooth choice, at every point, of two complementary families of directions."
+    },
+    {
+      "term": "Integrable",
+      "meaning": "A family of directions is integrable when it fits together into layers, called leaves."
+    },
+    {
+      "term": "Kähler manifold",
+      "meaning": "A complex space with a compatible way to measure lengths and areas."
+    },
+    {
+      "term": "Universal cover",
+      "meaning": "The space you get by unrolling every loop, as the flat plane unrolls a donut-shaped torus."
+    },
+    {
+      "term": "Rationally connected",
+      "meaning": "Two general points of the space lie on a single rational curve, the image of a complex sphere."
+    },
+    {
+      "term": "Projective manifold",
+      "meaning": "A smooth space that can be cut out by polynomial equations."
+    },
+    {
+      "term": "Lie bracket",
+      "meaning": "The drift left over after walking a small loop along two direction fields."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. Beauville, “Complex manifolds with split tangent bundle”, in Complex Analysis and Algebraic Geometry, de Gruyter, Berlin (2000), 61–70",
+      "url": "https://arxiv.org/abs/math/9809033v2"
+    },
+    {
+      "id": 2,
+      "cite": "M. Brunella, J. V. Pereira and F. Touzet, “Kähler manifolds with split tangent bundle”, Bull. Soc. Math. France 134 (2006), 241–252",
+      "url": "https://doi.org/10.24033/bsmf.2507"
+    },
+    {
+      "id": 3,
+      "cite": "A. Höring, “Uniruled varieties with split tangent bundle”, Math. Z. 256 (2007), 465–479",
+      "url": "https://arxiv.org/abs/math/0505327v3"
+    },
+    {
+      "id": 4,
+      "cite": "A. Höring, “The structure of uniruled manifolds with split tangent bundle”, Osaka J. Math. 45 (2008), 1067–1084",
+      "url": "https://www.i-repository.net/contents/osakacu/sugaku/111F0000002-04504-14.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "F. Campana and T. Peternell, “Projective manifolds with splitting tangent bundle, I”, Math. Z. 241 (2002), 613–637",
+      "url": "https://doi.org/10.1007/s00209-002-0435-5"
+    },
+    {
+      "id": 6,
+      "cite": "A. Höring, “Fano varieties with split tangent sheaf”, preprint (2026), arXiv:2602.15427v1",
+      "url": "https://arxiv.org/abs/2602.15427v1"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Universal-cover splitting for compact Kähler manifolds” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-cover-splitting-for-compact-Kahler-manifolds-September-23-2026/paper.pdf",
+      "quote": "We prove the two-summand form of Beauville's compatible splitting conjecture."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Integrability of split tangent bundles on rationally connected manifolds” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integrability-of-split-tangent-bundles-on-rationally-connected-manifolds-September-23-2026/main.pdf",
+      "quote": "This proves H\\\"oring's conjecture on rationally connected projective manifolds."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 052 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/052.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Integrability means local holomorphic sections are closed under the Lie bracket.",
+      "verdict": "supported",
+      "sourceLine": "closed under the Lie bracket. When both summands are integrable,"
+    },
+    {
+      "text": "Integrability gives local product coordinates; the problem is continuing them globally.",
+      "verdict": "supported",
+      "sourceLine": "The problem is to continue these local products globally."
+    },
+    {
+      "text": "Compactness makes every smooth metric complete but does not make the foliations parallel.",
+      "verdict": "supported",
+      "sourceLine": "every smooth metric complete, but it does not turn the given foliations"
+    },
+    {
+      "text": "Beauville formulated the compatible universal-cover conjecture for compact Kähler manifolds.",
+      "verdict": "supported",
+      "sourceLine": "Beauville formulated the compatible"
+    },
+    {
+      "text": "Beauville proved major cases, including Kähler–Einstein manifolds and compact Kähler surfaces.",
+      "verdict": "supported",
+      "sourceLine": "\\cite[Section~2.3]{Beauville00}, and proved major positive cases, including"
+    },
+    {
+      "text": "For two summands the partial-sum condition means both are integrable.",
+      "verdict": "supported",
+      "sourceLine": "condition means precisely that both are integrable."
+    },
+    {
+      "text": "Beauville's paper appeared in 2000.",
+      "verdict": "supported",
+      "sourceLine": "de Gruyter, Berlin, 2000, pp.~61--70."
+    },
+    {
+      "text": "Brunella, Pereira and Touzet treated a line summand with integrable complement.",
+      "verdict": "supported",
+      "sourceLine": "line summand with integrable complement on a compact K\\\"ahler manifold"
+    },
+    {
+      "text": "Druel, Pereira, Pym and Touzet treated a foliation with a compact leaf with finite holonomy.",
+      "verdict": "supported",
+      "sourceLine": "universal-cover splitting when one foliation has a compact leaf with"
+    },
+    {
+      "text": "The first paper proves the two-summand form of Beauville's conjecture for compact connected Kähler manifolds of dimension at least two.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:main} proves the two-summand form of Beauville's"
+    },
+    {
+      "text": "The leaves and factors can be noncompact, and the conclusion does not assert a finite cover is a product.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert that a finite cover of $X$ is a product. If a summand"
+    },
+    {
+      "text": "The proof uses Stokes' theorem for a Kähler form to bound areas.",
+      "verdict": "supported",
+      "sourceLine": "$E_2$ compare the normal and tangential speeds of the box. Stokes'"
+    },
+    {
+      "text": "Rationally connected: two general points lie on the image of a morphism from P^1.",
+      "verdict": "supported",
+      "sourceLine": "manifold is rationally connected if two general points lie on the image"
+    },
+    {
+      "text": "Höring showed that for a rationally connected projective manifold, integrability of one summand gives a compatible product.",
+      "verdict": "supported",
+      "sourceLine": "\\cite[Theorem~1.4]{Hor07} showed that, for a rationally connected"
+    },
+    {
+      "text": "Höring conjectured that at least one summand is integrable.",
+      "verdict": "supported",
+      "sourceLine": "conjecturing that at least one summand is integrable"
+    },
+    {
+      "text": "Campana and Peternell treated Fano manifolds when one summand has rank one or two.",
+      "verdict": "supported",
+      "sourceLine": "a two-summand splitting when one summand has rank one or two, and hence"
+    },
+    {
+      "text": "Höring's 2026 theorem covers varieties of Fano type.",
+      "verdict": "supported",
+      "sourceLine": "integrability with algebraic leaves for split tangent sheaves on normal"
+    },
+    {
+      "text": "The second paper's theorem has no further rank or positivity hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "The theorem has no further rank or positivity hypothesis. It proves the"
+    },
+    {
+      "text": "Smoothness matters: Höring 2026 gives a singular rationally connected example with a nonintegrable summand.",
+      "verdict": "supported",
+      "sourceLine": "with a nonintegrable summand. Section~\\ref{sec:consequences} applies the"
+    },
+    {
+      "text": "A tangent box is a map from P^1×P^1 with first factor tangent to E1 and second tangent to E2.",
+      "verdict": "supported",
+      "sourceLine": "with the first factor direction tangent to \\(E_1\\) and the second"
+    },
+    {
+      "text": "The bracket section on a factor curve is constant and vanishes at the first mark, so it vanishes at the second.",
+      "verdict": "supported",
+      "sourceLine": "at the first mark, so it vanishes at the second."
+    },
+    {
+      "text": "Beauville's example on A×P^1 gives a non-integrable complement.",
+      "verdict": "supported",
+      "sourceLine": "The rank-two subbundle spanned by $U+S,V+T$ complements $T_{\\Pp^1}$,"
+    },
+    {
+      "text": "Lean formalizes both main theorems; the compatible product consequence and further corollaries are outside it.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}
