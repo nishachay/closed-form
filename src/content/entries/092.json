@@ -1,0 +1,227 @@
+{
+  "id": "092",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-single-lattice-covering-bound-of-order-n-log-n-September-23-2026/paper.pdf",
+      "label": "A single-lattice covering bound of order n log n"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Translative-covering-densities-of-order-n-log-n-September-23-2026/paper.pdf",
+      "label": "Translative covering densities of order n log n"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/092.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The worst convex shape needs covering density about n log n in dimension n, lattice or not.",
+  "scope": "The result concerns the hardest convex body in each dimension, up to unnamed fixed factors. The lower bound needs large dimensions.",
+  "plain": "Covering space with sliding copies of a solid shape always wastes some overlap. Covering density measures that overlap as the average number of copies over a point. These papers prove that the worst shape in dimension n needs density of size n log n, and never more. This holds whether the copies sit on one regular grid or anywhere at all.",
+  "doesNot": "This does not give the best density for any particular shape, such as a ball, or numerical constants.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1957",
+    "firstStepBy": "C. A. Rogers, upper bound n log n + n log log n + 5n",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles the growth rate of worst-case covering density, matching Rogers' 1957 upper bound and answering a recorded question."
+  },
+  "explanation": "Cover a floor with square tiles and nothing overlaps. Every point sits under exactly one tile. Try the same with round coins and it fails. Circles leave gaps, so some coins must overlap. Take coins of radius 1 and put their centres on a honeycomb grid, just close enough to leave no gap. Each centre then owns a hexagon of area about 2.598. Each coin has area π, about 3.142. So a typical point sits under about 3.142 / 2.598 = 1.21 coins.\n\nThat average is the covering density. It counts how many copies cover a typical point, overlaps included. The square scores 1, the lowest possible. Mathematicians ask the same question for any convex body in any dimension n. A convex body is a solid shape with no dents or holes, like a ball or a cube. The copies may only slide, never turn. The big question is about the worst shape. How high must the density be for the hardest body in dimension n?\n\nIn 1957, C. A. Rogers gave an upper limit for every convex body in dimension 3 or more. His coverings have density at most n log n + n log log n + 5n, with natural logarithms. In dimension 100 that is about 1,113. In dimension 1,000 it is about 13,840. His centres may form several shifted copies of one grid. Nobody knew whether some shapes truly need that much. Márton Naszódi recorded the question of a limit that grows only in step with n, some fixed number times n.\n\nA stricter version demands that the centres form one lattice. A lattice is a regular grid of points, built by repeating n fixed steps in every combination. One grid gives far less freedom than several shifted grids. Rogers reached a lattice bound in 1959 that grew faster than any power of n. Ordentlich, Regev and Weiss cut it to order n² in 2022. In 2026, Heng Li and Xizhi Liu reached C n log n (log log n)^(10/3+o(1)). Here C is a fixed number. The extra factor grows very slowly. At n = 1,000, (log log n)^(10/3) is about 9. Li and Liu also built centrally symmetric bodies that need lattice density at least c n log n. Centrally symmetric means the shape looks the same when flipped through its centre.\n\nThe first paper removes that slow extra factor. It proves a lattice bound for every convex body in dimension 2 or more. The density can be held to at most C n log n. The number C is fixed and does not depend on the body or the dimension. No symmetry or smooth boundary is needed. The obstacle was rigidity. With several shifted grids, you can add copies where holes remain. With one lattice, a single choice of n steps fixes every centre at once. The paper builds that one lattice in stages. Each stage loses only a tiny share. The losses add up to a bounded total, even as the stages multiply.\n\nThe second paper attacks the other side. For every large enough n, it builds a centrally symmetric body that resists every covering. Any arrangement of sliding copies, on a lattice or not, needs density above c n log n. Here c is a fixed positive number. Li and Liu's lower bound only ruled out single lattices. The new difficulty is ruling out every arrangement at once, including ones chosen after seeing the body. The body is random: a ball trimmed by many randomly tilted flat slabs. The paper squeezes all low-density arrangements into one finite list, fixed before the body is drawn. It then shows each listed arrangement leaves a hole, except with vanishing probability.\n\nPut together, the worst-case density grows like n log n, up to fixed factors. That holds for lattice coverings and for unrestricted ones. It also holds when only centrally symmetric bodies are allowed. Rogers' 1957 formula was the right size all along. No fixed multiple of n can work in every dimension. In dimension 1,000, a limit of n would mean density 1,000, while n log n is about 6,908.\n\nThree limits matter. The papers give no numerical values for c and C. The result concerns the worst body, not every body. For a round ball, the right order is still open, between order n and about half of n log n.\n\nHow sure is this? The Lean scope note lists a formal statement of the single-lattice bound. It also lists the n log n order for all four worst-case densities. These are sliding or lattice, over all bodies or symmetric ones. Lean is a computer proof checker. The paper's extra claim about polytopes with rational corners is not in that scope note. No specialist review has been published.",
+  "hypeCheck": "Major if the proofs hold. The Lean scope note lists both main statements. The constants are unnamed, and the ball case stays open. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Convex body",
+      "meaning": "A solid, bounded shape with no dents or holes, such as a ball or a cube."
+    },
+    {
+      "term": "Covering density",
+      "meaning": "The average number of copies of a shape lying over a typical point when the copies cover all of space."
+    },
+    {
+      "term": "Lattice",
+      "meaning": "A regular grid of points made by repeating n fixed steps in every combination."
+    },
+    {
+      "term": "Translative covering",
+      "meaning": "A covering of space by copies of one shape that are slid into place, never turned."
+    },
+    {
+      "term": "Centrally symmetric",
+      "meaning": "A shape that looks the same after flipping every point through its centre."
+    },
+    {
+      "term": "Order n log n",
+      "meaning": "Growing like n times the logarithm of n, up to fixed factors that do not depend on n."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "C. A. Rogers, “A note on coverings”, Mathematika 4 (1957), 1–6",
+      "url": "https://doi.org/10.1112/S0025579300001030"
+    },
+    {
+      "id": 2,
+      "cite": "C. A. Rogers, “Lattice coverings of space”, Mathematika 6 (1959), 33–39",
+      "url": "https://doi.org/10.1112/S002557930000190X"
+    },
+    {
+      "id": 3,
+      "cite": "O. Ordentlich, O. Regev and B. Weiss, “New bounds on the density of lattice coverings”, Journal of the AMS 35 (2022), 295–308",
+      "url": "https://doi.org/10.1090/jams/984"
+    },
+    {
+      "id": 4,
+      "cite": "H. Li and X. Liu, “Nearly sharp bounds for lattice coverings by convex bodies”, arXiv:2607.28429v2 (2026)",
+      "url": "https://arxiv.org/abs/2607.28429v2"
+    },
+    {
+      "id": 5,
+      "cite": "M. Naszódi, “Flavors of Translative Coverings”, New Trends in Intuitive Geometry, Bolyai Society Mathematical Studies 27 (2018), 335–358",
+      "url": "https://doi.org/10.1007/978-3-662-57413-3_14"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “A single-lattice covering bound of order n log n” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-single-lattice-covering-bound-of-order-n-log-n-September-23-2026/paper.pdf",
+      "quote": "There is an absolute constant $C>0$ such that, for every integer"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Translative covering densities of order n log n” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Translative-covering-densities-of-order-n-log-n-September-23-2026/paper.pdf",
+      "quote": "This answers negatively\nthe universal linear-bound question recorded by"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 092 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/092.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Covering density is the average number of translates covering a point.",
+      "verdict": "supported",
+      "sourceLine": "The density is the average number\nof translates covering a point in a fundamental cell",
+      "sourceId": 6
+    },
+    {
+      "text": "Rogers proved every convex body in dimension n ≥ 3 has a translative covering of density at most n log n + n log log n + 5n.",
+      "verdict": "supported",
+      "sourceLine": "Rogers proved that every convex body in dimension … admits a\ntranslative covering of density at most",
+      "sourceId": 6
+    },
+    {
+      "text": "Rogers' centres may be a finite union of lattice cosets.",
+      "verdict": "supported",
+      "sourceLine": "The centers in that construction may be a finite union of lattice\ncosets.",
+      "sourceId": 6
+    },
+    {
+      "text": "Naszódi recorded the universal linear-bound question, which the second paper answers negatively.",
+      "verdict": "supported",
+      "sourceLine": "This answers negatively\nthe universal linear-bound question recorded by",
+      "sourceId": 7
+    },
+    {
+      "text": "Rogers' 1959 lattice bound was n^(log2 log n + O(1)).",
+      "verdict": "supported",
+      "sourceLine": "For general lattice coverings, Rogers obtained the bound",
+      "sourceId": 6
+    },
+    {
+      "text": "Ordentlich, Regev and Weiss gave the universal quadratic bound.",
+      "verdict": "supported",
+      "sourceLine": "Ordentlich, Regev, and Weiss\nreplaced it by the universal quadratic bound",
+      "sourceId": 6
+    },
+    {
+      "text": "Li and Liu proved C n log n (log log n)^(10/3+o(1)) uniformly over convex bodies.",
+      "verdict": "supported",
+      "sourceLine": "Li and Liu subsequently proved",
+      "sourceId": 6
+    },
+    {
+      "text": "Li and Liu give centrally symmetric bodies with lattice covering density at least c n log n.",
+      "verdict": "supported",
+      "sourceLine": "In every sufficiently large dimension, Li and Liu also give centrally\nsymmetric bodies with lattice covering density at least",
+      "sourceId": 6
+    },
+    {
+      "text": "The first paper's main theorem gives one full-rank lattice with density at most C n log n for every convex body, n ≥ 2, without symmetry or regularity.",
+      "verdict": "supported",
+      "sourceLine": "No symmetry or boundary regularity is assumed.",
+      "sourceId": 6
+    },
+    {
+      "text": "The first paper removes the remaining iterated-logarithmic loss.",
+      "verdict": "supported",
+      "sourceLine": "removes this remaining iterated-logarithmic loss",
+      "sourceId": 6
+    },
+    {
+      "text": "Each block loses a small share and the losses are summable.",
+      "verdict": "supported",
+      "sourceLine": "The resulting losses are summable even when the number of blocks\ngrows.",
+      "sourceId": 6
+    },
+    {
+      "text": "The second paper gives, for large n, a centrally symmetric body with translative covering density above c n log n.",
+      "verdict": "supported",
+      "sourceLine": "some centrally symmetric convex body",
+      "sourceId": 7
+    },
+    {
+      "text": "The new issue is excluding every finite union of lattice cosets, including arrangements chosen after the body is known.",
+      "verdict": "supported",
+      "sourceLine": "The resulting finite class is\nfixed before the body is sampled, so it includes arrangements chosen after\nthe body is known.",
+      "sourceId": 7
+    },
+    {
+      "text": "The body is an enlarged ball intersected with symmetric slabs with random normals.",
+      "verdict": "supported",
+      "sourceLine": "Intersect a slightly enlarged Euclidean ball with symmetric slabs whose unit\nnormals are sampled by a Poisson process.",
+      "sourceId": 7
+    },
+    {
+      "text": "All four worst-case densities have order n log n.",
+      "verdict": "supported",
+      "sourceLine": "has order $n\\log n$, with absolute comparison constants.",
+      "sourceId": 7
+    },
+    {
+      "text": "The constant is not optimized.",
+      "verdict": "supported",
+      "sourceLine": "The constant in\nTheorem~\\ref{thm:main} is not optimized.",
+      "sourceId": 7
+    },
+    {
+      "text": "The statement concerns the supremum over bodies, not every body.",
+      "verdict": "supported",
+      "sourceLine": "This statement concerns the supremum over bodies, rather than the covering\ndensity of every individual body.",
+      "sourceId": 6
+    },
+    {
+      "text": "For Euclidean balls the gap between order n and (1/2+o(1)) n log n remains.",
+      "verdict": "supported",
+      "sourceLine": "The gap for Euclidean balls remains",
+      "sourceId": 7
+    },
+    {
+      "text": "The Lean scope note covers the single-lattice bound and the n log n order for translative and lattice suprema, over all and symmetric bodies.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}

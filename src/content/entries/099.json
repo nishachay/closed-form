@@ -1,0 +1,237 @@
+{
+  "id": "099",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Edit-Distance-in-l1-Matching-Bounds-up-to-Constants-in-the-Exponent-September-27-2026/paper.pdf",
+      "label": "Edit Distance in l1: Matching Bounds up to Constants in the Exponent"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Circle-Obstructions-Binary-Codes-and-Histogram-Embeddings-for-Edit-Distance-September-27-2026/paper.pdf",
+      "label": "Finite-Circle Obstructions, Binary Codes, and Histogram Embeddings for Edit Distance"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tree-Constructions-for-the-l1-Distortion-of-Binary-Edit-Distance-September-27-2026/paper.pdf",
+      "label": "Tree Constructions for the l1 Distortion of Binary Edit Distance"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/099.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Edit distance between words can be drawn as ℓ1 distance only with distortion of size exp(√(log d·log log d)).",
+  "scope": "It covers all words up to length d, over any alphabet of two or more symbols, for every large d.",
+  "plain": "Edit distance counts the fewest single-symbol insertions, deletions and substitutions that turn one word into another. A long-standing question asks how faithfully these distances can be copied by simple coordinate distances (ℓ1). Maps found in 2007 lose a factor near exp(√(log d · log log d)) for words of length d. The best lower bound before was only of order log d. These papers prove the 2007 scale is right, up to fixed constants in the exponent (Lean proof listed).",
+  "doesNot": "This does not give the constants in the exponent or the best map for any particular length.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2003",
+    "firstStepBy": "Andoni, Deza, Gupta, Indyk and Raskhodnikova, lower bound approaching 3/2",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It matches the 2007 upper bound up to exponent constants; the best earlier lower bound was of order log d."
+  },
+  "explanation": "Take the eight-symbol word 01010101 and shift it one place to get 10101010. All eight positions now hold different symbols. Yet two edits turn one word into the other. Delete the first 0, then add a 0 at the end. The edit distance between two words is the fewest single-symbol insertions, deletions and substitutions that turn one into the other. Each edit costs one. Here it is 2.\n\nNow try to file words as points, so that distances between points stand in for edit distances. The natural first attempt lists each word's symbols as coordinates. The distance between two lists is then the sum of the coordinate gaps, called the ℓ1 distance. For words of one length, this counts the positions that disagree. For our pair it gives 8, while the edit distance is 2. So this map stretches that pair four times. A check of all 256 binary words of length 8 finds no pair stretched more than four times. None is shrunk. Longer alternating words do worse: at length n the stretch is n/2.\n\nThe worst stretch, times the worst shrink, is the map's distortion. A map with distortion 1 keeps every distance exactly, up to one common scale. The question is how low the distortion can go. Fix a cap d and take every word of length at most d, including the empty word. Let E(d) be the least distortion of any map of all these words into ℓ1. The map may use any number of coordinates and need not be easy to compute.\n\nThe upper side has been known since 2007. Rafail Ostrovsky and Yuval Rabani built maps for binary words of one fixed length. Their distortion grows like exp(√(log d · log log d)), up to a constant in the exponent. The logarithms are natural ones. Lower bounds stayed far below this. Alexandr Andoni and four coauthors found binary word sets needing distortion close to 3/2 in 2003. Subhash Khot and Assaf Naor reached roughly the square root of log d in 2006. Robert Krauthgamer and Rabani reached order log d in 2009.\n\nThe gap is large. At d equal to one million, log d is about 13.8. The expression exp(√(log d · log log d)) is about 413. Multiply d by 1,000, and log d only grows to about 20.7. The expression grows about 6.7 times, to about 2,768. Meanwhile, log d itself grew only 1.5 times.\n\nThese three papers prove that the upper scale is the truth (Lean proof listed). There are fixed numbers c and C above zero with the following property. For every large cap d, E(d) sits between exp(c√(log d · log log d)) and exp(C√(log d · log log d)). The same constants work for every finite alphabet with at least two symbols. They work even when the alphabet grows with d. Binary words that all share one length already force the lower bound.\n\nRead the statement carefully. It pins down log E(d) within a constant factor, not E(d) itself. The paper does not say what c and C are, and they need not agree. At d equal to one million, it only places E(d) between 413 to the power c and 413 to the power C. What it does settle is the growth law. E(d) grows faster than every fixed power of log d, yet more slowly than every fixed power of d.\n\nThe obstacle was the cheap shift from the first example. A hard word set needs one change that every alignment must pay for. But an alignment may match symbols across the boundaries used to build the words, and hide the change. The papers build words from long lists of rows, each ending in a marker of a fresh symbol. A row whose matches spill into several rows must skip a whole marker. The skipped stretches for different rows never overlap, so the cost adds up. Shifts with different prime periods then make some change expensive at every level. The three papers give five independent lower-bound constructions along these lines.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the two-sided theorem. The Lean scope note also lists the circle and tree lower bounds and the uniform upper map. Each has a Comparator statement, a fixed reference statement the proof must match. For the tree paper, the note selects only its lower bounds. That paper's constant-factor binary conversion lies outside the check. No specialist review has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean checks formal versions of the main two-sided theorem and the lower-bound constructions. The constants in the exponent remain unknown, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Edit distance",
+      "meaning": "The fewest single-symbol insertions, deletions and substitutions that turn one word into another."
+    },
+    {
+      "term": "Binary word",
+      "meaning": "A word written with only two symbols, such as 0 and 1."
+    },
+    {
+      "term": "ℓ1 distance",
+      "meaning": "The distance between two lists of numbers found by adding up the gaps between matching entries."
+    },
+    {
+      "term": "Embedding",
+      "meaning": "A map that files each word as a point, so that point distances stand in for word distances."
+    },
+    {
+      "term": "Distortion",
+      "meaning": "How badly an embedding misrepresents distances: the worst stretch times the worst shrink."
+    },
+    {
+      "term": "Alignment",
+      "meaning": "A way of matching symbols of one word to symbols of another, in order, that an edit script implicitly uses."
+    },
+    {
+      "term": "Comparator",
+      "meaning": "A tool that checks a Lean proof proves exactly a fixed reference statement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. Ostrovsky and Y. Rabani, “Low distortion embeddings for edit distance”, Journal of the ACM 54(5), Article 23 (2007)",
+      "url": "https://doi.org/10.1145/1284320.1284322"
+    },
+    {
+      "id": 2,
+      "cite": "A. Andoni, M. Deza, A. Gupta, P. Indyk and S. Raskhodnikova, “Lower bounds for embedding edit distance into normed spaces”, Proceedings of SODA (2003), 523–526",
+      "url": "https://www.cs.columbia.edu/~andoni/papers/k2n2.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "S. Khot and A. Naor, “Nonembeddability theorems via Fourier analysis”, Mathematische Annalen 334(4) (2006), 821–852",
+      "url": "https://doi.org/10.1007/s00208-005-0745-0"
+    },
+    {
+      "id": 4,
+      "cite": "R. Krauthgamer and Y. Rabani, “Improved lower bounds for embeddings into L1”, SIAM Journal on Computing 38(6) (2009), 2487–2498",
+      "url": "https://doi.org/10.1137/060660126"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, family 099: “Edit Distance in l1: Matching Bounds up to Constants in the Exponent” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Edit-Distance-in-l1-Matching-Bounds-up-to-Constants-in-the-Exponent-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, family 099: “Finite-Circle Obstructions, Binary Codes, and Histogram Embeddings for Edit Distance” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Circle-Obstructions-Binary-Codes-and-Histogram-Embeddings-for-Edit-Distance-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 099: “Tree Constructions for the l1 Distortion of Binary Edit Distance” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tree-Constructions-for-the-l1-Distortion-of-Binary-Edit-Distance-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 099 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/099.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Edit distance is the least number of single-symbol insertions, deletions and substitutions, each costing one.",
+      "verdict": "supported",
+      "sourceLine": "is the least number of single-symbol insertions, deletions and substitutions that transform"
+    },
+    {
+      "text": "Cyclically shifting a nonempty word by one position costs at most two edits.",
+      "verdict": "supported",
+      "sourceLine": "Yet cyclically shifting a nonempty word by one position costs at most two edits: delete its first symbol and insert it at the end."
+    },
+    {
+      "text": "The domain includes the empty word, and there is no restriction on dimension or computation of the map.",
+      "verdict": "supported",
+      "sourceLine": "It imposes no restriction on target dimension or on the cost of computing the map."
+    },
+    {
+      "text": "Ostrovsky and Rabani proved the upper scale for fixed-length binary strings.",
+      "verdict": "supported",
+      "sourceLine": "proved the upper scale in … for fixed-length binary strings by recursively comparing collections of overlapping substrings."
+    },
+    {
+      "text": "Andoni et al. constructed binary subsets whose L1 distortion approaches 3/2.",
+      "verdict": "supported",
+      "sourceLine": "constructed binary subsets whose … distortion approaches"
+    },
+    {
+      "text": "Khot and Naor obtained a (log d)^{1/2-o(1)} bound.",
+      "verdict": "supported",
+      "sourceLine": "Khot and Naor obtained a"
+    },
+    {
+      "text": "Krauthgamer and Rabani proved an Omega(log d) lower bound for binary strings of length d.",
+      "verdict": "supported",
+      "sourceLine": "lower bound for binary strings of length"
+    },
+    {
+      "text": "For every large d and every finite alphabet with at least two symbols, the distortion lies between exp(c sqrt(log d log log d)) and exp(C sqrt(log d log log d)).",
+      "verdict": "supported",
+      "sourceLine": "There are absolute constants … and an integer … such that, for every integer … and every finite alphabet … with"
+    },
+    {
+      "text": "The constants are independent of the alphabet, including when its size grows with d.",
+      "verdict": "supported",
+      "sourceLine": "The constants and threshold in the theorem are independent of the alphabet, including when its size grows with"
+    },
+    {
+      "text": "The lower bound is witnessed by binary strings of one common length.",
+      "verdict": "supported",
+      "sourceLine": "The lower bound is witnessed by a subset of binary strings of one common length at most"
+    },
+    {
+      "text": "The theorem determines the order of log E(d); the constants in the exponent remain unspecified.",
+      "verdict": "supported",
+      "sourceLine": "the constants in the exponent remain unspecified."
+    },
+    {
+      "text": "The constants in the two exponents need not agree.",
+      "verdict": "supported",
+      "sourceLine": "the constants in its two exponents need not agree."
+    },
+    {
+      "text": "The lower bound grows faster than every fixed power of log d while remaining d^{o(1)}.",
+      "verdict": "supported",
+      "sourceLine": "The resulting lower bound grows faster than every fixed power of … while remaining"
+    },
+    {
+      "text": "Any lower bound must control arbitrary increasing matchings, even those crossing construction boundaries.",
+      "verdict": "supported",
+      "sourceLine": "A lower bound must therefore control arbitrary increasing matchings, even when they cross many of the boundaries used to construct the words."
+    },
+    {
+      "text": "Each row ends in a long marker of a fresh symbol; a payload spread over several target rows skips a complete marker.",
+      "verdict": "supported",
+      "sourceLine": "In that event, the matching skips a complete target marker: the source payload contains no copy of the marker symbol."
+    },
+    {
+      "text": "The skipped markers for different payloads are disjoint.",
+      "verdict": "supported",
+      "sourceLine": "The skipped markers for different payloads are disjoint."
+    },
+    {
+      "text": "Components cycle with distinct prime periods.",
+      "verdict": "supported",
+      "sourceLine": "In each component, repeatedly adding one distinguished step cycles the state with a prime period; different components use different primes."
+    },
+    {
+      "text": "The circle paper gives two lower constructions.",
+      "verdict": "supported",
+      "sourceLine": "Each of our two lower constructions supplies a binary subset whose words have one common length at most"
+    },
+    {
+      "text": "The tree paper proves the lower bound in two independent ways.",
+      "verdict": "supported",
+      "sourceLine": "We prove the following lower bound in two independent ways."
+    },
+    {
+      "text": "The tree paper's appendix gives a separate constant-distortion code with factor 804, not needed for the lower bounds.",
+      "verdict": "supported",
+      "sourceLine": "preserve edit distance up to scale and an absolute factor"
+    },
+    {
+      "text": "The Lean scope note covers the two-sided theorem, the circle and tree lower bounds and the histogram upper embedding, each with Comparator links; the constant-distortion binary conversion is outside.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

@@ -1,0 +1,222 @@
+{
+  "id": "084",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-geometric-case-of-the-Erdos-similarity-conjecture-October-5-2026/geometric-erdos-similarity.pdf",
+      "label": "The geometric case of the Erdős similarity conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-dyadic-case-of-the-Erdos-similarity-conjecture-September-25-2026/paper.pdf",
+      "label": "The dyadic case of the Erdős similarity conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/084.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A set covering almost all of [0, 1] can dodge every copy of a geometric list like 1/2, 1/4, 1/8, …",
+  "scope": "One fixed ratio q between 0 and 1 at a time; the avoiding set may change with q.",
+  "plain": "Take an endless list such as 1/2, 1/4, 1/8, and so on. Paul Erdős conjectured that some large set always avoids every shrunk, stretched or slid copy of such a list. This paper claims to prove it for lists made by multiplying again and again by one ratio below 1. For each such list, it claims a set covering almost all of 0 to 1 with no full copy inside. A computer-checked proof exists for the halving list only.",
+  "doesNot": "This does not settle the Erdős similarity conjecture for every infinite set. It gives no single set for all ratios at once.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "Paul Erdős, posed the problem",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle a natural family of cases that the earlier gap-based tests could not reach."
+  },
+  "explanation": "Start with the numbers 1/2, 1/4, 1/8, 1/16, and so on forever. Each one is half the one before. Shrink this list by a factor of 0.2 and slide it right by 0.3. You get 0.4, 0.35, 0.325, 0.3125, 0.30625, and so on. Each new point lands halfway between the last point and 0.3. The points crowd toward 0.3 but never reach it. A stretched or shrunk, possibly flipped, and slid version of a list like this is called an affine copy.\n\nNow take a large set inside the stretch of line from 0 to 1. Say it covers more than 99% of that stretch. Its gaps then add up to less than 0.01 in total length. Must such a set always hold a full affine copy of the halving list? For any finite piece of the list, the answer is yes. Shrink the piece enough, and copies of it fit inside any set of positive measure (positive total length). The question is whether this ever fails for endless lists. In 1974 Paul Erdős conjectured that it always fails. His conjecture says every infinite list can be dodged by some set of positive measure.\n\nEarlier work settled some kinds of lists. In 1984 and 1985, Falconer and Eigen handled lists that shrink toward zero slowly. In 1987 Bourgain handled sums of three infinite sets. In 1997 Kolountzakis gave a test based on randomness, and also treated certain sums of two lists. These tests need the gaps inside a list to stay fairly even. The halving list fails them. Take its first 10 points. The spread from first to last is 511 times the smallest gap. With 20 points the ratio is 524,287. The gaps shrink much too fast. Two research reports, from 2011 and 2015, describe incomplete attempts at the halving case.\n\nThis paper claims to prove the case of every list of this kind. Pick any ratio q between 0 and 1, and form q, q², q³, and so on. Such a list is called a geometric progression. Pick any small allowance η, such as 0.01. The paper claims a closed, bounded set inside 0 to 1 exists with measure above 1 − η. No affine copy of the list fits inside it. That holds for every slide and every nonzero stretch, flipped or not. A companion paper from September 2026 treats the halving list, where q is 1/2.\n\nThe basic tool is random holes. Cut many small random holes in the line. Fix one center and one stretch. Then many independent random tests make it unlikely that a copy dodges every hole. The difficulty is that the stretch can be any of infinitely many sizes. Checking every stretch at the finest level of detail costs more than the small failure chance can pay for. The paper arranges its random tests on a finite branching tree. Each group of tests then only has to handle the detail on one branch and below it. So the number of stretches to check stays small enough for the odds to win.\n\nOne loose end remains. The random holes may still miss copies centered in a small, closed set of bad points. Every copy crowds toward its center, as the example crowds toward 0.3. So a thin open window around each bad center catches all of its remaining points. The paper removes those windows as well, and copies at every center are then blocked.\n\nReturn to the example with η equal to 0.01. The claimed set covers more than 99% of the line from 0 to 1. Yet no shrunk, stretched, slid or flipped copy of the halving list fits wholly inside it. The set depends on the ratio. The paper makes no claim of one set working for all ratios at once. The full conjecture, for every infinite list, is a separate question the paper does not address.\n\nHow sure is this? A computer proof checker called Lean has checked a formal proof of the halving case only. That covers q equal to 1/2, every allowance η, and stretches of both signs. The general ratio in this paper is outside the Lean scope note. No specialists have published a review yet.",
+  "hypeCheck": "Major if the proof holds, but only for geometric lists. Lean checks the halving case alone; the general-ratio argument has no formal check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Affine copy",
+      "meaning": "A list stretched or shrunk, possibly flipped, and then slid along the number line."
+    },
+    {
+      "term": "Measure",
+      "meaning": "The total length of a set on the number line, counting all its pieces."
+    },
+    {
+      "term": "Geometric progression",
+      "meaning": "A list made by multiplying by the same ratio again and again, like 1/2, 1/4, 1/8."
+    },
+    {
+      "term": "Measure universal",
+      "meaning": "Said of a list when every set of positive measure holds some affine copy of it."
+    },
+    {
+      "term": "Erdős similarity conjecture",
+      "meaning": "The 1974 guess that no infinite list is measure universal."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal mathematical proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, “Problems”, Mathematica Balkanica 4 (1974), 203–204, Problem 4.33.7* (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 2,
+      "cite": "K. J. Falconer, “On a problem of Erdős on sequences and measurable sets”, Proc. Amer. Math. Soc. 90 (1984), 77–78",
+      "url": "https://doi.org/10.1090/S0002-9939-1984-0722418-0"
+    },
+    {
+      "id": 3,
+      "cite": "S. J. Eigen, “Putting convergent sequences into measurable sets”, Studia Sci. Math. Hungarica 20 (1985), 411–412 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 4,
+      "cite": "J. Bourgain, “Construction of sets of positive measure not containing an affine image of a given infinite structure”, Israel J. Math. 60 (1987), 333–344",
+      "url": "https://doi.org/10.1007/BF02780397"
+    },
+    {
+      "id": 5,
+      "cite": "M. N. Kolountzakis, “Infinite patterns that can be avoided by measure”, Bull. London Math. Soc. 29 (1997), 415–424",
+      "url": "https://doi.org/10.1112/S0024609397003056"
+    },
+    {
+      "id": 6,
+      "cite": "M. Chlebík, “On the Erdős similarity problem”, arXiv:1512.05607 (2015)",
+      "url": "https://arxiv.org/abs/1512.05607v1"
+    },
+    {
+      "id": 7,
+      "cite": "D. Solymosi, “Patterns in sparse sets”, NSERC USRA report, University of British Columbia (2011)",
+      "url": "https://oldwww.math.ubc.ca/Ugrad/NSERC/USRA-PDF/S11_solymosi.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "F. Tom, “Sets avoiding images of a given sequence”, NSERC USRA report, University of British Columbia (2015)",
+      "url": "https://secure.math.ubc.ca/Ugrad/NSERC/USRA-PDF/S15_Tom.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, “The geometric case of the Erdős similarity conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-geometric-case-of-the-Erdos-similarity-conjecture-October-5-2026/geometric-erdos-similarity.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “The dyadic case of the Erdős similarity conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-dyadic-case-of-the-Erdos-similarity-conjecture-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for the Erdős similarity entries (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/084.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Erdős similarity conjecture says that no infinite set is measure universal.",
+      "verdict": "supported",
+      "sourceLine": "asserts that no infinite set is measure universal."
+    },
+    {
+      "text": "Every finite pattern is measure universal.",
+      "verdict": "supported",
+      "sourceLine": "Every finite pattern is measure universal."
+    },
+    {
+      "text": "The conjecture asks whether this fails for infinite patterns.",
+      "verdict": "supported",
+      "sourceLine": "property always fails for infinite patterns."
+    },
+    {
+      "text": "Erdős posed the problem in 1974.",
+      "verdict": "external",
+      "sourceId": 1
+    },
+    {
+      "text": "Falconer and Eigen handled slowly decreasing sequences.",
+      "verdict": "supported",
+      "sourceLine": "Classical results concern slowly decreasing sequences."
+    },
+    {
+      "text": "Bourgain proved that the sum of three infinite sets is nonuniversal.",
+      "verdict": "supported",
+      "sourceLine": "proved that the sum of three infinite"
+    },
+    {
+      "text": "Kolountzakis gave a probabilistic criterion based on large finite subsets.",
+      "verdict": "supported",
+      "sourceLine": "a probabilistic criterion using large finite subsets with sufficiently"
+    },
+    {
+      "text": "Geometric progressions do not satisfy the earlier gap criterion.",
+      "verdict": "supported",
+      "sourceLine": "Geometric progressions do not satisfy this criterion."
+    },
+    {
+      "text": "Solymosi and Tom report incomplete dyadic constructions.",
+      "verdict": "supported",
+      "sourceLine": "report incomplete dyadic constructions based on"
+    },
+    {
+      "text": "For every q in (0,1) and η in (0,1), the paper claims a compact set in [0,1] of measure above 1 − η avoiding all affine copies of the geometric progression.",
+      "verdict": "supported",
+      "sourceLine": "For every $q\\in(0,1)$ and $\\eta\\in(0,1)$, there is a compact set"
+    },
+    {
+      "text": "The avoiding set may depend on q.",
+      "verdict": "supported",
+      "sourceLine": "The avoiding set may depend on $q$."
+    },
+    {
+      "text": "The conjecture for arbitrary infinite sets is a separate question.",
+      "verdict": "supported",
+      "sourceLine": "while the conjecture for arbitrary infinite"
+    },
+    {
+      "text": "For a fixed center and scale, many independent random tests make a missed copy unlikely.",
+      "verdict": "supported",
+      "sourceLine": "For a fixed center and a fixed scale, many independent random cell"
+    },
+    {
+      "text": "The difficulty is to control all scales at once.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to control all"
+    },
+    {
+      "text": "Recording every change at the finest grid can cost more than the failure probability allows.",
+      "verdict": "supported",
+      "sourceLine": "of a large construction can cost more than the failure probability"
+    },
+    {
+      "text": "The tests are arranged on a finite ordered tree.",
+      "verdict": "supported",
+      "sourceLine": "group of tests uses only the grids on one edge and in its child subtree."
+    },
+    {
+      "text": "The scale count depends on one interval's length, not on the whole tree's resolution.",
+      "verdict": "supported",
+      "sourceLine": "length of one interval, rather than on the resolution of the entire"
+    },
+    {
+      "text": "The construction may miss copies at a small closed set of centers, repaired by an open neighborhood.",
+      "verdict": "supported",
+      "sourceLine": "Finally, the construction may miss copies at a small closed set of"
+    },
+    {
+      "text": "Lean has a formal proof of the dyadic case for every η and both signs of dilation; the general ratio is outside the scope note.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ]
+}

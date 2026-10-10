@@ -1,0 +1,208 @@
+{
+  "id": "081",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Riesz-transforms-and-uniform-rectifiability-in-higher-codimension-September-24-2026/paper.pdf",
+      "label": "Riesz transforms and uniform rectifiability in higher codimension"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/081.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A bounded Riesz transform forces surfaces in higher codimension to contain big flat-like pieces.",
+  "scope": "The result covers n-dimensional regular measures in d-dimensional space, for integers d ≥ 4 and 2 ≤ n ≤ d−2.",
+  "plain": "The Riesz transform adds up arrows between the points of a set, with lengths shrinking with distance. David and Semmes asked whether a bounded transform forces the set to be built from nearly flat pieces. Earlier work settled curves and sets one dimension below the space. This paper proves the remaining middle range, with a Lean proof listed. The size of the flat pieces depends only on the dimensions and the two input constants.",
+  "doesNot": "This does not cover sets of fractional dimension, and the variation and principal-value corollary is outside the Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1996",
+    "firstStepBy": "Mattila, Melnikov and Verdera, the planar case",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "It answers the David–Semmes Riesz-transform question in the range a 2026 survey listed as open."
+  },
+  "explanation": "Picture a flat two-dimensional sheet sitting inside four-dimensional space. Every point of the sheet sends an arrow to every other point. The arrow lies along the line between them. Its length is 1 divided by the squared distance. A point 1 unit away gives an arrow of length 1. A point 2 units away gives an arrow of length 1/4.\n\nNow add the arrows ring by ring. The ring between distance 1 and 2 has area 3π, about 9.42. Its arrows have lengths between 1/4 and 1. The ring between 10 and 20 has area 300π, about 942. Its arrows are 100 times shorter. So every ring adds a total length between about 2.36 and 9.42, near or far. Distant rings matter as much as close ones. On a flat sheet this does no harm. Each arrow has a partner from the opposite side, and the two cancel.\n\nThis adding-up of arrows is the Riesz transform. It can also weight each point by a function f, a number attached to each point. A hard truncation skips all points closer than some cutoff ε. The transform is bounded when its output is never more than a fixed multiple of its input. Size here means the root-mean-square, the square root of the average squared value. The paper asks for one multiple, called C_R, that works for every cutoff at once.\n\nThe question is what a bounded transform says about shape. The paper fixes two notions. A measure is Ahlfors–David regular of dimension n when balls centered on it hold mass comparable to r^n. That is, the mass sits between r^n/C and C·r^n for a fixed C. On the flat sheet, a ball of radius r holds area πr². That is about 3.14 at radius 1 and about 314 at radius 10. So C = π works. Such a measure is uniformly rectifiable when it has big flat-like pieces at every place and scale. In every ball, a fixed share of the mass lies on a mildly bent copy of a flat disc. Mildly bent means distances are stretched by at most a fixed factor M. The share and M must not change from ball to ball.\n\nDavid and Semmes built uniform rectifiability for singular integrals like this one. Their question asks whether a bounded Riesz transform alone forces this geometry. Mattila, Melnikov and Verdera settled the planar case in 1996. Curvature methods also handled one-dimensional sets in higher dimensions. Nazarov, Tolsa and Volberg settled codimension one in 2014. Codimension means how many dimensions the space has beyond the set. Mas and Tolsa covered every dimension in 2014, but under a stronger hypothesis about changes across scales. That left sets of dimension 2 up to d−2, in a space of dimension d. Tolsa stated this gap explicitly in his 2026 survey. Our sheet in four-dimensional space is the smallest such case.\n\nNazarov, Tolsa and Volberg named their main obstacle. Their proof relied on a tool called a maximum principle. They reported no known version of it in higher codimension. The paper takes another road. Its core difficulty is to carry flatness down to smaller scales. It measures bending by the excess, the scaled average squared distance from the best flat plane.\n\nHere is the idea in plain words. Zoom in on a nearly flat piece. Measure how far it rises off its plane, and blow those heights up by the excess. The rescaled heights obey a limiting equation. That equation forces them to be flat. So the zoomed-in piece is flatter than before. A counting argument then limits how often this can fail. A theorem of David and Semmes turns that count into the bent discs.\n\nSo the paper proves the full answer for this range, with a Lean proof listed. For integers d ≥ 4 and 2 ≤ n ≤ d−2, a regular measure with bounded transform is uniformly rectifiable. The share and the stretch factor depend only on d, n, C and C_R. Now picture a regular set scattered like dust at every scale, with no big flat-like pieces. Read in reverse, the theorem means its transform cannot have one bound C_R for every cutoff. The theorem needs regularity at the start. It assumes no principal values, the limits as the cutoff shrinks to zero. It does not treat sets of fractional dimension.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. That version includes unbounded sets and works at every point and admissible radius. The paper's corollary on variation and principal values is outside that check. No specialists have published a review yet.",
+  "hypeCheck": "Major if it holds. Lean checks the main quantitative theorem, but the corollary is not machine-checked. No specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Riesz transform",
+      "meaning": "A sum of arrows between points of a set, each arrow shrinking with distance, weighted by a function."
+    },
+    {
+      "term": "Hard truncation",
+      "meaning": "The same sum with all points closer than a chosen cutoff left out."
+    },
+    {
+      "term": "Ahlfors–David regular",
+      "meaning": "Every ball centered on the set holds mass comparable to the radius raised to the dimension."
+    },
+    {
+      "term": "Uniformly rectifiable",
+      "meaning": "At every place and scale, a fixed share of the set lies on a mildly bent copy of a flat disc."
+    },
+    {
+      "term": "Codimension",
+      "meaning": "How many dimensions the surrounding space has beyond the set itself."
+    },
+    {
+      "term": "Excess",
+      "meaning": "The scaled average squared distance of a piece of the set from its best flat plane."
+    },
+    {
+      "term": "Principal value",
+      "meaning": "The limit of the truncated sum as the cutoff shrinks to zero."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Riesz transforms and uniform rectifiability in higher codimension”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Riesz-transforms-and-uniform-rectifiability-in-higher-codimension-September-24-2026/paper.pdf",
+      "quote": "This gives a positive answer to the David--Semmes Riesz-transform question in its remaining higher-codimension range."
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 081 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/081.md"
+    },
+    {
+      "id": 3,
+      "cite": "P. Mattila, M. S. Melnikov and J. Verdera, “The Cauchy integral, analytic capacity, and uniform rectifiability”, Annals of Mathematics 144 (1996), 127–136",
+      "url": "https://doi.org/10.2307/2118585"
+    },
+    {
+      "id": 4,
+      "cite": "F. Nazarov, X. Tolsa and A. Volberg, “On the uniform rectifiability of AD-regular measures with bounded Riesz transform operator: the case of codimension 1”, Acta Mathematica 213 (2014), 237–321",
+      "url": "https://doi.org/10.1007/s11511-014-0120-7"
+    },
+    {
+      "id": 5,
+      "cite": "A. Mas and X. Tolsa, “Variation for the Riesz transform and uniform rectifiability”, Journal of the European Mathematical Society 16 (2014), 2267–2321",
+      "url": "https://doi.org/10.4171/JEMS/487"
+    },
+    {
+      "id": 6,
+      "cite": "X. Tolsa, “Interactions between quantitative rectifiability, singular integrals, and boundary value problems for harmonic functions”, Proceedings of the ICM 2026",
+      "url": "https://arxiv.org/abs/2607.16457"
+    },
+    {
+      "id": 7,
+      "cite": "G. David and S. Semmes, “Singular integrals and rectifiable sets in R^n”, Astérisque 193 (1991)",
+      "url": "https://numdam.org/item/AST_1991__193__1_0/"
+    },
+    {
+      "id": 8,
+      "cite": "H. M. Farag, “Curvatures of the Melnikov type, Hausdorff dimension, rectifiability, and singular integrals on R^n”, Pacific Journal of Mathematics 196 (2000), 317–339",
+      "url": "https://msp.org/pjm/2000/196-2/pjm-v196-n2-p05-s.pdf"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Riesz kernel records the direction between two points as well as their separation.",
+      "verdict": "supported",
+      "sourceLine": "its kernel records the direction between two points as well as their separation"
+    },
+    {
+      "text": "The transform's bound is a single constant for every cutoff; no principal-value hypothesis is imposed.",
+      "verdict": "supported",
+      "sourceLine": "No pointwise principal-value hypothesis is imposed."
+    },
+    {
+      "text": "Uniform rectifiability asks for Lipschitz images of balls carrying a fixed share of mass, with constants chosen before the ball.",
+      "verdict": "supported",
+      "sourceLine": "The constants are chosen before $x$ and $r$."
+    },
+    {
+      "text": "For d ≥ 4 and 2 ≤ n ≤ d−2, a regular measure with bounded Riesz transform is uniformly rectifiable, with constants depending only on d, n, C_AD and C_R.",
+      "verdict": "supported",
+      "sourceLine": "Its constants $\\theta$ and $M$ can be chosen in terms of $d,n,C_{\\rm AD}$ and $C_{\\rm R}$ alone."
+    },
+    {
+      "text": "David and Semmes developed uniform rectifiability for singular integrals.",
+      "verdict": "supported",
+      "sourceLine": "David and Semmes developed uniform rectifiability as a quantitative form of rectifiability suited to singular integrals"
+    },
+    {
+      "text": "Their question asks whether a bounded Riesz transform alone forces this geometry.",
+      "verdict": "supported",
+      "sourceLine": "Their question asks whether the boundedness of the Riesz transform alone forces this geometry for an integer-dimensional regular measure."
+    },
+    {
+      "text": "Mattila, Melnikov and Verdera established the planar case (1996).",
+      "verdict": "supported",
+      "sourceLine": "Mattila, Melnikov and Verdera established the planar implication",
+      "sourceId": 3
+    },
+    {
+      "text": "Curvature methods give the one-dimensional case in higher ambient dimension.",
+      "verdict": "supported",
+      "sourceLine": "Curvature methods also give the one-dimensional Riesz-transform implication in higher ambient dimension",
+      "sourceId": 8
+    },
+    {
+      "text": "Nazarov, Tolsa and Volberg proved codimension one (2014).",
+      "verdict": "supported",
+      "sourceLine": "Nazarov, Tolsa and Volberg proved the codimension-one implication",
+      "sourceId": 4
+    },
+    {
+      "text": "They named reliance on a maximum principle, with no known higher-codimension analogue, as the main obstacle.",
+      "verdict": "supported",
+      "sourceLine": "They identify reliance on a maximum principle, for which they report no known higher-codimension analogue, as the main obstacle to extending their argument",
+      "sourceId": 4
+    },
+    {
+      "text": "Mas and Tolsa characterized every integer dimension under an L^2 variation bound, which controls changes across scales.",
+      "verdict": "supported",
+      "sourceLine": "It controls changes across scales, rather than each truncation separately.",
+      "sourceId": 5
+    },
+    {
+      "text": "The remaining range 1 < n < d−1 is stated explicitly in Tolsa's 2026 ICM survey.",
+      "verdict": "supported",
+      "sourceLine": "is stated explicitly in",
+      "sourceId": 6
+    },
+    {
+      "text": "The analytic difficulty is propagating flatness to smaller scales, measured by the excess.",
+      "verdict": "supported",
+      "sourceLine": "The analytic difficulty is to propagate geometric flatness to smaller scales."
+    },
+    {
+      "text": "Normal heights are divided by the initial excess scale before passing to a limit.",
+      "verdict": "supported",
+      "sourceLine": "We therefore divide the normal heights by that initial scale before passing to a limit."
+    },
+    {
+      "text": "The limiting equation forces each limiting height to be affine.",
+      "verdict": "supported",
+      "sourceLine": "forces each limiting height to be affine"
+    },
+    {
+      "text": "A finite counting argument controls failures, and the David–Semmes theorem gives the maps.",
+      "verdict": "supported",
+      "sourceLine": "The David--Semmes theorem then gives the maps in"
+    },
+    {
+      "text": "The variation and principal-value results are consequences in Section 8.",
+      "verdict": "supported",
+      "sourceLine": "variation bounds and almost-everywhere principal values for the Riesz transform"
+    },
+    {
+      "text": "Lean covers the quantitative main theorem, including unbounded support; the variation and principal-value corollary is not included.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

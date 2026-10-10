@@ -1,0 +1,193 @@
+{
+  "id": "097",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Euclidean-Steinitz-Bergstrom-theorem-September-24-2026/The-Euclidean-Steinitz-Bergstrom-theorem-September-24-2026.pdf",
+      "label": "The Euclidean Steinitz–Bergström theorem"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/097.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One choice of signs keeps every running total of unit vectors within a constant times √d, at any length.",
+  "scope": "It needs Euclidean length and vectors of length at most 1 in d dimensions. The signs are shown to exist, not computed.",
+  "plain": "Take a list of arrows, each at most one unit long, in a space with d directions. You may flip each arrow but must keep the order. This paper proves (Lean proof listed) that some flips keep every running total within a fixed multiple of √d. The bound does not grow with the length of the list. So arrows that add up to zero can be ordered to keep every running total within the same bound.",
+  "doesNot": "This does not give an efficient algorithm or a rule that picks the signs as the vectors arrive.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Grinberg and Sevast'yanov, a bound of d for every norm",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "It removes the length term from known bounds and fixes the Euclidean Steinitz constant up to a constant factor."
+  },
+  "explanation": "Take a list of arrows on a flat page, each at most one unit long. Here is one: right, up, right, up, and so on, eight arrows in all. Walk them in order and you drift away. After all eight you stand at the point (4, 4), about 5.66 units from the start. Now you may flip any arrow to point the opposite way. Flipping is the only move allowed; the order stays fixed. Choose plus, plus, minus, minus, and repeat. The walk visits (1, 0), (1, 1), (0, 1) and (0, 0), then loops. It never gets farther than √2, about 1.41, from the start. A search over all 256 sign choices finds nothing better.\n\nThe real question is how far you must stray in the worst case. The arrows may live in a space with any number of directions, called the dimension d. The list may have any length N. A prefix sum is the total of the first few signed arrows: one point along the walk. One choice of signs must keep every prefix sum close, not just the last one.\n\nA simple rule shows why length is the enemy. At each step, pick the sign that leaves you nearer the start. Then your squared distance grows by at most 1 per step. That only guarantees a distance of √N after N steps. For 10,000 arrows the guarantee is 100 units, and it keeps growing. The paper names the difficulty plainly. One choice of signs must control every prefix, with a bound that does not depend on N.\n\nThe problem is old. It goes back to Steinitz's work on series of vectors whose order matters. In 1980, Grinberg and Sevast'yanov studied the ordering version for every way of measuring length. They kept the partial sums within d times the unit size. For ordinary straight-line length, called Euclidean length, a much smaller square-root scale was long expected. Behrend discussed it in 1954. For the signing problem, Banaszczyk's bound was of order √d + √(log N). In 2021, Bansal, Jiang, Meka, Singla and Sinha stated the pure √d question explicitly. A 2026 preprint by Dutta, Jha and Jiang states an efficient bound of order √d + d^(1/4)·(log N)^(7/4). Each of these bounds still grows with the length N, however slowly.\n\nThis paper proves (Lean proof listed) a bound with no length term at all. There is one fixed number C that works everywhere. Take any dimension d, any length N, and any list of arrows at most one unit long. Some signs keep every prefix sum within C√d. The same C serves every list. Repeated arrows and zero arrows are allowed. The proof shows the signs exist, and they may depend on the whole list. It gives no rule for picking signs as arrows arrive, and no efficient algorithm.\n\nA second question follows. Suppose the arrows add up to zero. Now you may not flip any arrow, but you may change their order. The Steinitz constant is the worst-case distance you must accept in the best order. The paper turns good signs into a good order with a short trick. Put the plus-sign arrows first, in their original order. Then add the minus-sign arrows in reverse order. Every point of the new walk is then controlled by the old bounds. So some order keeps every prefix sum within C√d. This settles the Euclidean Steinitz–Bergström conjecture, which asked for exactly this √d scale.\n\nThe √d scale cannot be beaten. Take four arrows from the centre of a regular tetrahedron to its four corners, each one unit long. They live in three dimensions and add up to zero. Any two of them add up to about 1.155 units. So every order passes a point at least 1.155 from the start. The same shape in d dimensions forces a distance of at least half of √d. The Steinitz constant therefore lies between ½√d and C√d. The paper also derives versions for other ways of measuring length. Another covers grids of arrows whose rows are reordered separately.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main statements. It covers the signed bound with one constant C and the reordering bound for lists that sum to zero. The lower bound of ½√d and the other derived versions are outside the Lean scope note. No specialist review has been published.",
+  "hypeCheck": "Major if it holds. The main signed and reordering statements have a Lean proof listed with a Comparator statement. The ½√d lower bound and the other derived versions are outside the Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Dimension",
+      "meaning": "The number of independent directions in a space; a flat page has 2."
+    },
+    {
+      "term": "Prefix sum",
+      "meaning": "The total of the first few vectors in a list, one point along the walk."
+    },
+    {
+      "term": "Signing",
+      "meaning": "A choice of plus or minus for each vector, flipping the minus ones."
+    },
+    {
+      "term": "Euclidean length",
+      "meaning": "Ordinary straight-line length, found with Pythagoras' rule."
+    },
+    {
+      "term": "Steinitz constant",
+      "meaning": "The worst-case distance that the best ordering of a zero-sum list must still reach."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer proof checker that confirms each step of a formal proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The Euclidean Steinitz–Bergström theorem” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Euclidean-Steinitz-Bergstrom-theorem-September-24-2026/The-Euclidean-Steinitz-Bergstrom-theorem-September-24-2026.pdf",
+      "quote": "There are two natural ways to keep their partial sums small: choose signs"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for “The Euclidean Steinitz–Bergström bound” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/097.md"
+    },
+    {
+      "id": 3,
+      "cite": "V. S. Grinberg and S. V. Sevast'yanov, “Value of the Steinitz constant”, Functional Analysis and Its Applications 14 (1980), 125–126",
+      "url": "https://doi.org/10.1007/BF01086559"
+    },
+    {
+      "id": 4,
+      "cite": "F. A. Behrend, “The Steinitz–Gross theorem on sums of vectors”, Canadian Journal of Mathematics 6 (1954), 108–124",
+      "url": "https://doi.org/10.4153/CJM-1954-013-0"
+    },
+    {
+      "id": 5,
+      "cite": "W. Banaszczyk, “On series of signed vectors and their rearrangements”, Random Structures & Algorithms 40 (2012), 301–316",
+      "url": "https://doi.org/10.1002/rsa.20373"
+    },
+    {
+      "id": 6,
+      "cite": "N. Bansal, H. Jiang, R. Meka, S. Singla and M. Sinha, “Prefix Discrepancy, Smoothed Analysis, and Combinatorial Vector Balancing”, arXiv:2111.07049 (2021)",
+      "url": "https://arxiv.org/abs/2111.07049v1"
+    },
+    {
+      "id": 7,
+      "cite": "K. Dutta, A. V. Jha and H. Jiang, “Near-Optimal Constructive Bounds for ℓ2 Prefix Discrepancy and Steinitz Problems via Affine Spectral Independence”, arXiv:2604.13355 (2026)",
+      "url": "https://arxiv.org/abs/2604.13355v1"
+    },
+    {
+      "id": 8,
+      "cite": "G. Ambrus and R. Heck, “A note on the Steinitz Lemma”, Mathematika 72 (2026), e70085",
+      "url": "https://arxiv.org/abs/2505.09465v3"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The difficulty is to control every prefix by one choice of signs, with a bound independent of the length N.",
+      "verdict": "supported",
+      "sourceLine": "control every prefix by one choice of signs, with a bound independent of"
+    },
+    {
+      "text": "The finite rearrangement theorem goes back to Steinitz's work on vector series.",
+      "verdict": "supported",
+      "sourceLine": "The finite rearrangement theorem goes back to Steinitz's work on"
+    },
+    {
+      "text": "Grinberg and Sevast'yanov showed, for arbitrary norms, that zero-sum partial sums can be kept within d times the unit ball.",
+      "verdict": "supported",
+      "sourceLine": "that the partial sums can be kept within $d$ times the unit ball."
+    },
+    {
+      "text": "The square-root scale in Euclidean space has a long history; Behrend discussed it.",
+      "verdict": "supported",
+      "sourceLine": "The smaller square-root scale in Euclidean space has a long history;"
+    },
+    {
+      "text": "Banaszczyk's signing bound is O(√d + √log N).",
+      "verdict": "supported",
+      "sourceLine": "bound $O(\\sqrt d+\\sqrt{\\log N})$; the length term becomes significant when"
+    },
+    {
+      "text": "Bansal, Jiang, Meka, Singla and Sinha stated the square-root-dimension signing question explicitly.",
+      "verdict": "supported",
+      "sourceLine": "question is stated explicitly by Bansal, Jiang, Meka, Singla and"
+    },
+    {
+      "text": "Dutta, Jha and Jiang state an efficient bound O(√d + d^{1/4} log^{7/4} N).",
+      "verdict": "supported",
+      "sourceLine": "and Jiang state an efficient prescribed-order signing bound"
+    },
+    {
+      "text": "One absolute constant C works for every d, N and sequence, and the same signs control all prefixes.",
+      "verdict": "supported",
+      "sourceLine": "The same signs control all prefixes, and $C$ is independent of $d$, $N$"
+    },
+    {
+      "text": "Repetitions and zero vectors are allowed.",
+      "verdict": "supported",
+      "sourceLine": "Both statements allow repetitions and zero vectors."
+    },
+    {
+      "text": "The construction is existential and gives no online rule or efficient algorithm.",
+      "verdict": "supported",
+      "sourceLine": "successive choice of signs does not supply an online rule or an efficient"
+    },
+    {
+      "text": "The ordering puts positive-sign vectors first in original order, then negative-sign vectors in reverse order.",
+      "verdict": "supported",
+      "sourceLine": "Place all positive-sign indices in their original order, followed by all"
+    },
+    {
+      "text": "The theorem resolves the Euclidean Steinitz–Bergström conjecture that S_2(d) = O(√d).",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:signing} gives its affirmative resolution."
+    },
+    {
+      "text": "Ambrus and Heck record the conjecture and its attribution to Bergström.",
+      "verdict": "supported",
+      "sourceLine": "are recorded by Ambrus and Heck"
+    },
+    {
+      "text": "The regular-simplex unit vectors sum to zero, and every sum of k distinct members has squared norm k(d+1−k)/d.",
+      "verdict": "supported",
+      "sourceLine": "These unit vectors sum to zero and satisfy"
+    },
+    {
+      "text": "The Steinitz constant lies between ½√d and C√d.",
+      "verdict": "supported",
+      "sourceLine": "\\tfrac12\\sqrt d\\le S_2(d)\\le C\\sqrt d\\qquad(d\\ge1)."
+    },
+    {
+      "text": "The paper derives ℓp bounds and a colorful row-permutation consequence.",
+      "verdict": "supported",
+      "sourceLine": "The signed-prefix bound also yields finite-dimensional $\\ell_p$ estimates"
+    },
+    {
+      "text": "Lean covers the signed bound with one absolute constant and the zero-sum reordering bound, including repeated and zero vectors.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
