@@ -1,0 +1,211 @@
+{
+  "id": "140",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Memory-and-precision-in-noiseless-Gaussian-regression-September-27-2026/paper.pdf",
+      "label": "Memory and precision in noiseless Gaussian regression"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Posterior-replicas-and-conditional-information-in-Gaussian-regression-September-27-2026/paper.pdf",
+      "label": "Posterior replicas and conditional information in Gaussian regression"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Localization-costs-and-information-growth-for-exact-Gaussian-observations-September-27-2026/paper.pdf",
+      "label": "Localization costs and information growth for exact Gaussian observations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Projection-moments-positive-cap-domination-and-Riesz-estimates-on-the-sphere-September-27-2026/paper.pdf",
+      "label": "Projection moments, positive cap domination, and Riesz estimates on the sphere"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Replacing-Gaussian-observations-in-memory-constrained-inference-September-27-2026/paper.pdf",
+      "label": "Replacing Gaussian observations in memory-constrained inference"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subsphere-methods-for-memory-sample-lower-bounds-in-noiseless-Gaussian-regression-September-27-2026/paper.pdf",
+      "label": "Subsphere methods for memory-sample lower bounds in noiseless Gaussian regression"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/140.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Exact clues still cost more reading for each extra digit of accuracy when memory is limited.",
+  "scope": "It covers learners with at most A·d² bits of memory, for a fixed A, in a large dimension d. Errors may be up to 1/10, and success must be at least 2/3.",
+  "plain": "A learner must find a hidden direction from exact linear clues, read once each. If it could keep every clue, d clues would settle the answer exactly. This paper proves (Lean proof listed) that a learner with a constant times d² bits cannot do that. It needs at least a constant times d times the logarithm of one over the allowed error. So each extra digit of accuracy costs extra clues, even with no noise at all.",
+  "doesNot": "This does not give a limited-memory learner that reaches this number of clues; it is only a lower bound.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2019",
+    "firstStepBy": "Sharan, Sidford and Valiant, the noisy version with d²/4 bits",
+    "field": "Theoretical computer science",
+    "significance": "Solid",
+    "significanceWhy": "It gives a lower bound for the exact-clue form of a 2019 precision question, for memory up to order d²."
+  },
+  "explanation": "Hide an arrow of length 1 in 100-dimensional space. Each clue is a list of 100 random numbers plus one exact answer. The answer is the sum of each random number times the matching coordinate of the arrow. No clue has any noise. Keep the first 100 clues and you can solve for the arrow exactly. But storing them takes 10,100 real numbers, each with endless digits.\n\nNow suppose you may not store clues. A classic method, the Kaczmarz step, keeps only a running guess. Each clue nudges the guess so that it fits that one clue exactly. The paper computes its average squared error. That error shrinks by a factor of 1 − 1/d per clue, where d is the dimension. With d = 100, that factor is 0.99. A typical miss of 0.01 means an average squared miss of 0.0001. Reaching it takes about 917 clues. A typical miss of 0.0001 takes about 1,833. Each extra two digits of accuracy costs another 916 clues or so.\n\nThat pattern has a name in the paper: the scale d log(1/ε), where ε is the allowed error. Here log is the natural logarithm, and the error is measured as an angle. For small errors, the angle and the distance nearly agree. But the Kaczmarz guess stores real numbers with endless digits. The paper says it gives no recipe for a learner with a fixed number of bits. So the real question is this. Suppose a learner keeps only a fixed number of bits between clues. Must it still pay that price for accuracy?\n\nThe paper's model is a finite-state learner. It reads each clue once, in order, and may compute anything with it. Afterwards it keeps only a state, one of at most 2^M possibilities, where M is its memory in bits. It may use randomness. Its final guess may depend only on its last state, when it stopped, and fresh randomness. A discarded clue can never be read again.\n\nThe closest earlier result is a 2019 paper by Vatsal Sharan, Aaron Sidford and Gregory Valiant. They studied the same kind of clues with a tiny amount of added noise. With at most d²/4 bits, they gave a lower bound on clues for very small errors. They also asked whether this cost of precision was optimal under bounded memory. The obstacle is that exact clues tell you more than noisy ones. A lower bound with noise does not by itself cover the exact case.\n\nThis paper proves a lower bound for the exact case. Fix any number A, and allow A·d² bits of memory. Hide the arrow at a uniformly random direction. Then success with probability at least 2/3 needs at least c·d·log(1/ε) clues. Here c is a positive constant that depends on A, and ε may be any error up to 1/10. For memory that grows more slowly than d², the constant c can be the same for every memory budget. For that slower-growing memory, a companion paper makes it explicit. It needs at least 2^−16 times d times log₂(1/ε) clues in large dimension.\n\nExactness is also what makes the proof hard. One exact clue pins the arrow to a thin slice of the sphere of possible directions. The usual way to track what the learner believes then breaks down. The paper works backwards from the end instead. It keeps the original random direction fixed. It asks how tightly the directions on which the learner would still succeed can cluster. Each block of about d clues can loosen that clustering only by a bounded factor.\n\nReturn to d = 100, with 10,000 bits of memory. That budget is about one bit per number in the 100 clues that would settle the arrow. The theorem says the number of clues must grow at least in step with the digits of accuracy. It fixes that growth rate, not the exact count. Still, the theorem only applies above some large dimension that the paper does not state. The explicit constant 2^−16 is also tiny. And it is a lower bound only: it does not show that a finite-memory learner can reach that cost.\n\nHow sure is this? The Lean scope note says a computer proof checker, Lean, has a formal proof of the main statement. It also covers the memory below d² case, the every-direction version for that case, and the 2^−16 bound. A stronger variant with success 3/5 is outside that scope, and so is an auxiliary two-dimensional case. No specialist review has been published.",
+  "hypeCheck": "Solid if the proofs hold. Lean covers the main lower bound. But the constant is unstated or tiny, and the dimension must be large. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Noiseless Gaussian regression",
+      "meaning": "Finding a hidden vector from exact answers to random questions with bell-curve entries."
+    },
+    {
+      "term": "Finite-state learner",
+      "meaning": "A procedure that keeps only one of a fixed number of states between clues."
+    },
+    {
+      "term": "Bit",
+      "meaning": "One yes-or-no unit of memory; M bits allow 2^M different states."
+    },
+    {
+      "term": "Angular error",
+      "meaning": "The angle between the guessed direction and the true one."
+    },
+    {
+      "term": "Kaczmarz step",
+      "meaning": "An update that moves a guess the shortest distance needed to fit one new equation exactly."
+    },
+    {
+      "term": "Lower bound",
+      "meaning": "A proven minimum cost that no method can beat."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formal mathematical proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "V. Sharan, A. Sidford and G. Valiant, “Memory-Sample Tradeoffs for Linear Regression with Small Error”, STOC 2019, 890–901",
+      "url": "https://arxiv.org/abs/1904.08544v2"
+    },
+    {
+      "id": 2,
+      "cite": "T. Strohmer and R. Vershynin, “A Randomized Kaczmarz Algorithm with Exponential Convergence”, J. Fourier Anal. Appl. 15 (2009), 262–278",
+      "url": "https://doi.org/10.1007/s00041-008-9030-4"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “Memory and precision in noiseless Gaussian regression” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Memory-and-precision-in-noiseless-Gaussian-regression-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Subsphere methods for memory-sample lower bounds in noiseless Gaussian regression” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subsphere-methods-for-memory-sample-lower-bounds-in-noiseless-Gaussian-regression-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, Lean scope note for family 140 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/140.md"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "With all equations retained, d independent Gaussian equations determine the vector almost surely.",
+      "verdict": "supported",
+      "sourceLine": "independent Gaussian equations determine an unknown vector in"
+    },
+    {
+      "text": "The Kaczmarz step's expected squared error shrinks by 1 − 1/d per observation.",
+      "verdict": "supported",
+      "sourceLine": "This calculation explains the scale … for fresh isotropic observations."
+    },
+    {
+      "text": "With d = 100, errors 0.01 and 0.0001 need about 917 and 1,833 Kaczmarz steps.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "The Kaczmarz update stores real numbers and gives no finite-bit upper bound.",
+      "verdict": "supported",
+      "sourceLine": "The displayed update stores real scalars and supplies no finite-bit upper bound."
+    },
+    {
+      "text": "The learner reads pairs once, in order, keeps at most 2^M states, and computation is unrestricted.",
+      "verdict": "supported",
+      "sourceLine": "A learner reads the pairs once, in order. After each number of samples its persistent state belongs to a prescribed set of at most"
+    },
+    {
+      "text": "The output depends only on the terminal state, the stopping index and fresh randomness.",
+      "verdict": "supported",
+      "sourceLine": "is generated from the terminal state, the stopping index, and fresh randomness only. In particular, a discarded observation cannot be read again by the output rule."
+    },
+    {
+      "text": "Sharan, Sidford and Valiant used small uniform additive noise.",
+      "verdict": "supported",
+      "sourceLine": "covariates, a fixed unit target, and independent uniform additive noise"
+    },
+    {
+      "text": "They asked whether the first-order sample dependence on precision is optimal under bounded memory.",
+      "verdict": "supported",
+      "sourceLine": "asks whether the first-order sample dependence on precision is optimal under bounded memory."
+    },
+    {
+      "text": "A lower bound with noise does not by itself cover the exact experiment.",
+      "verdict": "supported",
+      "sourceLine": "A lower bound with additive noise does not by itself bound the more informative exact experiment."
+    },
+    {
+      "text": "Their bound used at most d²/4 bits.",
+      "verdict": "supported",
+      "sourceLine": "With at most … bits and Euclidean accuracy"
+    },
+    {
+      "text": "For fixed A, memory at most A·d² bits and success at least 2/3, T ≥ c_A d log(1/ε).",
+      "verdict": "supported",
+      "sourceLine": "For every fixed finite … there are constants … and … such that the following holds."
+    },
+    {
+      "text": "For memory o(d²) the constant is absolute.",
+      "verdict": "supported",
+      "sourceLine": "The constant is absolute for"
+    },
+    {
+      "text": "The companion paper gives the explicit bound 2^−16 d log₂(1/ε).",
+      "verdict": "supported",
+      "sourceLine": "require at least … samples for all sufficiently large"
+    },
+    {
+      "text": "One exact observation confines the signal to a hyperplane section of the sphere.",
+      "verdict": "supported",
+      "sourceLine": "Conditioning the uniform prior on one raw exact observation almost surely confines the signal to a hyperplane section of the sphere."
+    },
+    {
+      "text": "The proof keeps the original prior fixed and studies future success from a state.",
+      "verdict": "supported",
+      "sourceLine": "We instead keep the original prior fixed and study the probability of future success from a prescribed state."
+    },
+    {
+      "text": "Moving backward across a block of order d observations multiplies R by at most a constant.",
+      "verdict": "supported",
+      "sourceLine": "observations multiplies … by at most a constant for fixed"
+    },
+    {
+      "text": "The theorem's constants may depend on A and it makes no uniform claim when A grows.",
+      "verdict": "supported",
+      "sourceLine": "The statement makes no uniform claim when"
+    },
+    {
+      "text": "Lean formalizes the main bound, the o(d²) case, the every-signal version and the 2^−16 bound; the 3/5 variant and the dimension-two case are outside.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

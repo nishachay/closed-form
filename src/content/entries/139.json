@@ -1,0 +1,244 @@
+{
+  "id": "139",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subpolynomial-query-complexity-for-well-conditioned-log-concave-sampling-September-26-2026/article.pdf",
+      "label": "Subpolynomial query complexity for well-conditioned log-concave sampling"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/139.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Sampling from a gently curved bowl needs no fixed power of the dimension in queries.",
+  "scope": "The bowl's curvature stays between 1 and 2, its lowest point is known, and the allowed error is 1/10.",
+  "plain": "Sampling means drawing random points that favour the low parts of a bowl-shaped function. An algorithm learns the bowl only by asking for its height and slope at chosen points. This paper proves the number of questions can grow slower than any power of the dimension (Lean proof listed). It also proves that the count must still grow at least like the logarithm of the dimension.",
+  "doesNot": "This does not give a practical fast sampler, since it counts queries only and the constants are not stated.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2017",
+    "firstStepBy": "Dalalyan; Durmus and Moulines, nonasymptotic Langevin bounds",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It settles the dimension exponent for this query model at zero, where the best earlier bound was about d^(1/6)."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best power of dimension d in the query count",
+    "note": "Lower is better. Log factors and constants are ignored. The 2026 value 0 means any positive power works.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 2026,
+        "value": 0.3333,
+        "who": "Altschuler, Chewi and Zhang",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 0.1667,
+        "who": "Chen, Chewi, Lu and Zhang",
+        "source": 5
+      },
+      {
+        "year": 2026,
+        "value": 0,
+        "who": "This paper",
+        "claim": true,
+        "source": 7
+      }
+    ]
+  },
+  "explanation": "Start with a bowl on a line, the curve V(x) = x²/2. Give each point x a weight of e to the power −V(x). Low points of the bowl get the most weight. Drawing random points in proportion to that weight is called sampling. For this bowl the result is the standard bell curve. A steeper bowl, V(x) = x², gives a narrower bell. Its spread is about 0.71 instead of 1.\n\nThe paper allows any bowl whose curvature stays between those two, at every point and in every direction. Curvature is how fast the slope changes. The bowl may live in d dimensions, not just on a line. Its lowest point is at zero, and the algorithm is told so. The target is called the Gibbs law of V. A sample counts as good if its distribution is within 1/10 of the target in total variation. Total variation is the largest gap in probability the two give to any single event. The two bells above are about 0.166 apart by that measure. So the tolerance of 1/10 is tighter than the gap between the two extreme bowls.\n\nThe algorithm cannot see the bowl. It learns only by asking questions, called queries. Each query names a point and gets back the exact height and slope there. The slope in many dimensions is called the gradient. Between queries the algorithm may compute as much as it likes, for free. The cost is the number of queries, and the limit must hold on every run, not just on average. The question is how fast that count must grow with d.\n\nClassical samplers follow a random walk downhill in small steps, a method called Langevin dynamics. Their step error grows with dimension. In 2017, Dalalyan, and separately Durmus and Moulines, gave explicit error bounds for this method. In 2026, an analysis by Altschuler, Chewi and Zhang implied about d^(1/3) queries in this setting. A September 2026 preprint by Chen, Chewi, Lu and Zhang lowered it to about d^(1/6) on average. These rates ignore slowly growing log factors. The open question was whether some positive power of d is needed at all.\n\nThis paper proves that none is (Lean proof listed). For every small positive number ε, some constant C_ε makes C_ε times d^ε queries enough. Take d = 1,000,000. Then d^(1/3) is 100 and d^(1/6) is 10. With ε = 0.05, d^ε is about 2. The paper states no value for C_ε, and it may depend on ε. So these figures show how the counts grow, not real query numbers. The paper aims at counting queries, not at practical running time.\n\nThe paper also proves a floor. Some fixed constant c makes at least c times log d queries necessary, once d is large. Earlier work by Chewi and coauthors (2024) already gave a floor like this. The paper follows its strategy for this exact setting. For d = 1,000,000, log d is about 13.8. The floor holds even for exactly quadratic bowls. It also holds for any randomized algorithm that adapts its questions. Together the two bounds pin the best power of d at exactly zero. They do not pin down the exact growth between log d and d^ε. The paper does not claim a count that grows like a power of log d.\n\nThe hard part was accuracy. Methods that take large, precise steps usually need many smooth derivatives of the bowl. Here the bowl is only promised to have bounded curvature. Like the earlier d^(1/6) work, the paper gets the missing smoothness by blurring the bowl with a little Gaussian noise. Each blurred quantity is an average that itself needs sampling, so calls nest inside calls. The paper shows how to run these nested, noisy calls exactly with finitely many real queries. It then removes the added noise by further conditioning, so the final sample is for the original bowl.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers both the d^ε upper bound and the log d lower bound, so the best exponent is zero. In that statement, algorithms may be randomized and adaptive, and their arithmetic cost is not limited. No specialist review of the paper has been published.",
+  "hypeCheck": "Major within its query model. Lean has checked the main theorem. The result counts queries, not running time, gives no size for its constants, and has no published specialist review.",
+  "glossary": [
+    {
+      "term": "Sampling",
+      "meaning": "Drawing random points so that likely points come up more often, in a set proportion."
+    },
+    {
+      "term": "Gibbs law",
+      "meaning": "The distribution that gives each point a weight of e to the power minus the bowl's height."
+    },
+    {
+      "term": "Log-concave",
+      "meaning": "A distribution built this way from a bowl that curves upward everywhere."
+    },
+    {
+      "term": "Query",
+      "meaning": "One question to the bowl, returning its exact height and slope at a chosen point."
+    },
+    {
+      "term": "Gradient",
+      "meaning": "The slope of a function in many dimensions, pointing uphill."
+    },
+    {
+      "term": "Total variation",
+      "meaning": "The largest gap in probability two distributions give to any single event."
+    },
+    {
+      "term": "Langevin dynamics",
+      "meaning": "A random walk that drifts downhill, used by classical samplers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. S. Dalalyan, “Theoretical Guarantees for Approximate Sampling from Smooth and Log-Concave Densities”, Journal of the Royal Statistical Society: Series B 79 (2017), 651–676",
+      "url": "https://doi.org/10.1111/rssb.12183"
+    },
+    {
+      "id": 2,
+      "cite": "A. Durmus and E. Moulines, “Nonasymptotic Convergence Analysis for the Unadjusted Langevin Algorithm”, The Annals of Applied Probability 27 (2017), 1551–1587",
+      "url": "https://doi.org/10.1214/16-AAP1238"
+    },
+    {
+      "id": 3,
+      "cite": "J. M. Altschuler, S. Chewi and M. S. Zhang, “Shifted Composition IV: Toward Ballistic Acceleration for Log-Concave Sampling”, STOC 2026, 1739–1750",
+      "url": "https://doi.org/10.1145/3798129.3800881"
+    },
+    {
+      "id": 4,
+      "cite": "F. Chen, S. Chewi, A. Rakhlin and M. S. Zhang, “Exact Simulation of Diffusions and Improved Algorithms for Log-Concave Sampling”, arXiv:2608.05022 (2026)",
+      "url": "https://arxiv.org/abs/2608.05022v1"
+    },
+    {
+      "id": 5,
+      "cite": "F. Chen, S. Chewi, J. Lu and M. S. Zhang, “Smoothed Picard Hamiltonian Monte Carlo”, arXiv:2609.06906 (September 2026)",
+      "url": "https://arxiv.org/abs/2609.06906v1"
+    },
+    {
+      "id": 6,
+      "cite": "S. Chewi, J. de Dios Pont, J. Li, C. Lu and S. Narayanan, “Query Lower Bounds for Log-Concave Sampling”, Journal of the ACM 71(4) (2024), 29:1–29:42",
+      "url": "https://doi.org/10.1145/3673651"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 139: “Subpolynomial query complexity for well-conditioned log-concave sampling” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subpolynomial-query-complexity-for-well-conditioned-log-concave-sampling-September-26-2026/article.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean doc for family 139 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/139.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The class requires V(0)=0, a zero gradient at 0, and Hessian between I and 2I.",
+      "verdict": "supported",
+      "sourceLine": "consist of the functions"
+    },
+    {
+      "text": "An exact first-order query returns the value and gradient; queries may be adaptive and computation between queries is unrestricted.",
+      "verdict": "supported",
+      "sourceLine": "Random real variables may be generated, and computation between queries is unrestricted."
+    },
+    {
+      "text": "The query cap holds on every execution, not merely in expectation.",
+      "verdict": "supported",
+      "sourceLine": "Thus the budget is not merely an expectation."
+    },
+    {
+      "text": "Nonasymptotic analyses of the unadjusted Langevin algorithm were developed by Dalalyan and by Durmus and Moulines.",
+      "verdict": "supported",
+      "sourceLine": "Nonasymptotic analyses of the unadjusted Langevin algorithm were developed"
+    },
+    {
+      "text": "Familiar discretizations incur an error that grows with dimension.",
+      "verdict": "supported",
+      "sourceLine": "familiar discretizations incur an error that grows with dimension."
+    },
+    {
+      "text": "The shifted-composition analysis gives about d^(1/3) queries at fixed conditioning and total-variation accuracy.",
+      "verdict": "supported",
+      "sourceLine": "guarantee that yields a … query bound at fixed conditioning and total-variation accuracy."
+    },
+    {
+      "text": "Chen, Chewi, Lu and Zhang obtain about d^(1/6) expected gradient queries.",
+      "verdict": "supported",
+      "sourceLine": "expected-gradient-query bound at fixed relative-entropy accuracy and fixed conditioning."
+    },
+    {
+      "text": "The open question was whether a positive power of the dimension is intrinsically necessary.",
+      "verdict": "supported",
+      "sourceLine": "is a positive power of the dimension intrinsically necessary, or is it a feature of the sampling algorithms used?"
+    },
+    {
+      "text": "For every ε > 0 there is C_ε with Q(d) at most C_ε d^ε, and Q(d) is at least c log d for large d.",
+      "verdict": "supported",
+      "sourceLine": "There are also absolute constants \\(c>0\\) and \\(d_0\\)"
+    },
+    {
+      "text": "The lower bound applies to arbitrary randomized adaptive first-order algorithms, and the optimal exponent is zero.",
+      "verdict": "supported",
+      "sourceLine": "The lower bound applies to arbitrary randomized adaptive first-order algorithms. In particular"
+    },
+    {
+      "text": "The lower bound holds even for Gaussian potentials.",
+      "verdict": "supported",
+      "sourceLine": "The lower bound already holds for centered Gaussian targets, whose minimizer is known."
+    },
+    {
+      "text": "The result determines the exponent but not the finer growth rate, and does not assert a polylogarithmic count.",
+      "verdict": "supported",
+      "sourceLine": "Together they determine the exponent but not the finer growth rate of … In particular, the upper bound does not assert a polylogarithmic query count."
+    },
+    {
+      "text": "The constants may depend on ε.",
+      "verdict": "supported",
+      "sourceLine": "The constants and the algorithmic approximation orders may depend on"
+    },
+    {
+      "text": "The construction is aimed at oracle complexity rather than practical running time.",
+      "verdict": "supported",
+      "sourceLine": "is aimed at oracle complexity rather than practical running time."
+    },
+    {
+      "text": "No arithmetic or bit-complexity bound is imposed or deduced.",
+      "verdict": "supported",
+      "sourceLine": "No arithmetic or bit-complexity bound is imposed or deduced."
+    },
+    {
+      "text": "The obstacle is high-order accuracy under only the two-sided Hessian bounds, using finitely many first-order queries.",
+      "verdict": "supported",
+      "sourceLine": "The obstacle here is to obtain high-order accuracy under those bounds while implementing every conditional mean with finitely many first-order queries."
+    },
+    {
+      "text": "The construction first adds a Gaussian and then removes that noise by further conditioning.",
+      "verdict": "supported",
+      "sourceLine": "We first implement this conditional operation with an added Gaussian, then remove that noise by further conditioning."
+    },
+    {
+      "text": "All high derivatives come from Gaussian conditioning; the potential needs only C² regularity.",
+      "verdict": "supported",
+      "sourceLine": "All high derivatives come from Gaussian conditioning;"
+    },
+    {
+      "text": "Lean formalizes both bounds, for measurable randomized adaptive algorithms with unbounded arithmetic cost.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "The model provenance is an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "id": "138",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subset-Sum-in-Time-2-power-0-49n-October-4-2026/subset-sum.pdf",
+      "label": "Subset Sum in Time O(2^{0.49n})"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Low-Space-Algorithm-for-Worst-Case-Subset-Sum-September-26-2026/paper.pdf",
+      "label": "A Low-Space Algorithm for Worst-Case Subset Sum"
+    }
+  ],
+  "headline": "A randomized algorithm claims to decide every Subset Sum instance in O(2^(0.49n)) time, below the 2^(n/2) scale.",
+  "scope": "The result needs a word-RAM computer model and large enough n. Input bit length must be at most a fixed power of n.",
+  "plain": "Subset Sum asks whether some of n given whole numbers add up exactly to a target. A classic 1974 method needs about 2 to the power n/2 steps. A 2023 gain cut the time only by a factor that grows like a power of n. This paper claims to prove a randomized method that needs at most a constant times 2 to the power 0.49n. It is right with probability at least 2/3 on every input, and its time limit holds on every run.",
+  "doesNot": "This does not give a fast method. The time still doubles about every two extra numbers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "Horowitz and Sahni, meet-in-the-middle method, which the paper credits with the familiar 2^(n/2) time scale",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "It claims a fixed cut in the worst-case time exponent. The earlier gains it cites saved only polynomial factors."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Worst-case time exponent for Subset Sum",
+    "note": "Time grows like 2 to the power (exponent × n). Smaller is better. The 2023 result kept 0.5 and saved a polynomial factor.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 1974,
+        "value": 0.5,
+        "who": "Horowitz and Sahni",
+        "source": 1
+      },
+      {
+        "year": 2023,
+        "value": 0.5,
+        "who": "Chen, Jin, Randolph and Servedio",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 0.49,
+        "who": "This paper",
+        "claim": true,
+        "source": 5
+      }
+    ]
+  },
+  "explanation": "Take six numbers: 3, 34, 4, 12, 5 and 2. Can some of them add up to exactly 9? Yes: 4 + 5 works, and so does 3 + 4 + 2. This puzzle is called Subset Sum. You get a list of positive whole numbers and a target. You ask whether some selection of the numbers hits the target exactly. The blunt method tries every selection. Six numbers allow 2 to the power 6, or 64, selections. Each extra number doubles that count. With 100 numbers there are about 1.27 × 10^30 selections. Below, n means how many numbers the list holds.\n\nA faster method is the meet-in-the-middle algorithm of Horowitz and Sahni, from 1974. Split the list into two halves. List every sum each half can make. In the example, 3, 34 and 4 make eight sums: 0, 3, 4, 7, 34, 37, 38 and 41. The half 12, 5 and 2 makes eight more: 0, 2, 5, 7, 12, 14, 17 and 19. Now look for one sum from each side that totals 9. The pair 4 and 5 works, and so does 7 and 2. Two lists of 8 replace one list of 64. In general the work grows like 2 to the power n/2. For 100 numbers, that is about 1.13 × 10^15 instead of 10^30.\n\nSubset Sum is one of the classic NP-complete problems, on Karp's 1972 list. NP-complete means it belongs to a large family of problems that no one knows how to solve quickly. Since 1974, 2 to the power n/2 has been the familiar time scale. In 1981, Schroeppel and Shamir kept that time while using far less memory. In 2023, Chen, Jin, Randolph and Servedio cut the time by a growing factor. In certain computer models, their time is 2 to the power n/2, divided by n to a power above 0.5023. That leaves the exponent at one half. The paper calls a fixed cut in the exponent itself a different objective.\n\nWhy was the exponent so stubborn? Faster tricks existed, but only for random inputs. Howgrave-Graham and Joux wrote one solution in many ways. Then they searched only a filtered share of those ways. The paper notes that those gains concern random instances, not a guarantee for every input. A worst-case algorithm must work on every list, including lists built to defeat it. Another line of work counts steps by the size of the target instead. Bellman's dynamic programming takes about n times t steps for target t. That is fast for small targets, but numbers with many digits allow enormous targets.\n\nThis paper claims to prove a worst-case time of O(2^(0.49n)). The O means at most a fixed constant times that amount. For 100 numbers, 2 to the power 49 is half of 2 to the power 50. For 1,000 numbers the saving is 2 to the power 10, a factor of 1,024. At that size, the 2023 factor n to the power 0.5023 is about 32. The new saving keeps doubling with every 100 extra numbers.\n\nThe algorithm is randomized: it makes random choices as it runs. On every input it gives the right answer with probability at least 2/3. Its time limit holds on every run, even a run that answers wrongly. No assumption is made about how the input numbers were chosen. First, random tie-breaking weights make it likely that a solvable instance gets a version with exactly one solution. Then the algorithm works with remainders after division by a large random prime. Matching only the remainder lets in impostors, which the paper calls aliases. An alias is a selection whose sum matches the target's remainder but not the target itself.\n\nHere lies the one hard step. The algorithm estimates a weighted total over all remainder matches. It then lists every alias and subtracts its share. What remains is zero for an unsolvable instance and has size one for an isolated solution. But both pieces of the subtraction can be far larger than one. So the estimate must be accurate to a small absolute error, not just in proportion. The paper builds a sampling estimate that meets this standard without checking every remainder.\n\nThe claim comes with conditions. The computer model is a word RAM, a machine that handles fixed-size blocks of bits in one step. Its blocks hold about 4(n + b) bits. Here b is the bit length of the largest input number or target. The bound covers inputs whose bit length is at most a fixed power of n. It holds past some size N_c with some constant C_c. The theorem states that these exist but does not give their values in its statement. So it does not say how large n must be before the gain appears. A companion paper from September 2026 targets memory instead. It keeps time near 2 to the power n/2 and uses about 2 to the power n/5 words. Earlier memory records include Schroeppel and Shamir's 2^(n/4). In 2024, Belova, Chukhin, Kulikov and Mihajlin reached 2^(0.246n). Their bound needs input numbers below 2 to a fixed multiple of n.\n\nHow sure is this? No Lean formalization is listed for either paper. So no computer proof checker has checked these claims. No specialist review has been published yet.",
+  "hypeCheck": "Major if the proof holds, but it is a claim. No Lean formalization is listed and no specialist review is published. The gain is in theory only: the constants are unstated and the time still grows exponentially.",
+  "glossary": [
+    {
+      "term": "Subset Sum",
+      "meaning": "The puzzle of deciding whether some of a list of whole numbers add up exactly to a target."
+    },
+    {
+      "term": "NP-complete",
+      "meaning": "A large family of problems that no one knows how to solve quickly, all convertible into one another."
+    },
+    {
+      "term": "Worst case",
+      "meaning": "A guarantee that holds for every possible input, not just typical or random ones."
+    },
+    {
+      "term": "Randomized algorithm",
+      "meaning": "A method that makes random choices as it runs and may err with a small, bounded chance."
+    },
+    {
+      "term": "Polynomial factor",
+      "meaning": "A saving that grows like a fixed power of n, such as n squared, much slower than any change in the exponent."
+    },
+    {
+      "term": "O notation",
+      "meaning": "O(f) means at most a fixed constant times f, once the input is large enough."
+    },
+    {
+      "term": "Word RAM",
+      "meaning": "A model computer that reads, writes and does arithmetic on fixed-size blocks of bits in one step each."
+    },
+    {
+      "term": "Alias",
+      "meaning": "A selection whose sum matches the target after division by the chosen prime, but not exactly."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "E. Horowitz and S. Sahni, “Computing Partitions with Applications to the Knapsack Problem”, Journal of the ACM 21 (1974), 277–292",
+      "url": "https://doi.org/10.1145/321812.321823"
+    },
+    {
+      "id": 2,
+      "cite": "R. Schroeppel and A. Shamir, “A T=O(2^{n/2}), S=O(2^{n/4}) Algorithm for Certain NP-Complete Problems”, SIAM Journal on Computing 10 (1981), 456–464",
+      "url": "https://doi.org/10.1137/0210033"
+    },
+    {
+      "id": 3,
+      "cite": "X. Chen, Y. Jin, T. Randolph and R. A. Servedio, “Subset Sum in Time 2^{n/2}/poly(n)”, APPROX/RANDOM 2023, LIPIcs 275, 39:1–39:18",
+      "url": "https://doi.org/10.4230/LIPIcs.APPROX/RANDOM.2023.39"
+    },
+    {
+      "id": 4,
+      "cite": "R. M. Karp, “Reducibility among Combinatorial Problems”, in Complexity of Computer Computations, Plenum Press (1972), 85–103",
+      "url": "https://doi.org/10.1007/978-1-4684-2001-2_9"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Subset Sum in Time O(2^{0.49n})”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Subset-Sum-in-Time-2-power-0-49n-October-4-2026/subset-sum.pdf",
+      "quote": "We give a uniform randomized classical algorithm for Subset Sum with bounded error and worst-case running time $O(2^{0.49n})$ on polynomial-bit inputs in a word-RAM model, where $n$ is the number of input integers."
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “A Low-Space Algorithm for Worst-Case Subset Sum”, openai/math release preprint (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Low-Space-Algorithm-for-Worst-Case-Subset-Sum-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "T. Belova, N. Chukhin, A. S. Kulikov and I. Mihajlin, “Improved Space Bounds for Subset Sum”, ESA 2024, LIPIcs 308, 21:1–21:17",
+      "url": "https://doi.org/10.4230/LIPIcs.ESA.2024.21"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Subset Sum asks whether some of the given positive integers sum exactly to the target.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "The question is whether there is a set"
+    },
+    {
+      "text": "The meet-in-the-middle algorithm of Horowitz and Sahni lists subset sums of two parts and gives the 2^(n/2) time scale.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "divides the input into two parts, lists their subset sums, and searches for complementary sums. This gives the familiar"
+    },
+    {
+      "text": "Subset Sum is a foundational NP-complete problem, on Karp's list.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "Subset Sum is one of the foundational NP-complete problems, appearing as Knapsack in Karp's list"
+    },
+    {
+      "text": "Schroeppel and Shamir kept the time scale while reducing the space exponent to 1/4.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "preserved that time scale while reducing the space exponent to"
+    },
+    {
+      "text": "Chen, Jin, Randolph and Servedio obtained O(2^(n/2) n^(-γ)) for a constant γ > 0.5023.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "obtained a randomized worst-case running time"
+    },
+    {
+      "text": "A fixed reduction of the exponent below 1/2 is a different objective from polynomial-factor savings.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "is a different objective from such polynomial-factor savings."
+    },
+    {
+      "text": "Representation-method improvements concern random instances, not every input.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "Their improvements concern random instances, not a guarantee for every input."
+    },
+    {
+      "text": "Bellman's dynamic programming gives O(nt) time; polynomial bit length permits much larger targets.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "These bounds are particularly effective for small targets; polynomial"
+    },
+    {
+      "text": "The algorithm is correct with probability at least 2/3 and halts on every execution.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "the algorithm halts on every execution and outputs the correct answer with probability at least"
+    },
+    {
+      "text": "The running-time bound applies even to incorrect executions.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "The running-time bound applies even to executions on which the answer is incorrect."
+    },
+    {
+      "text": "No distributional assumption is made on the input integers.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "no distributional assumption is made on the input integers."
+    },
+    {
+      "text": "Random tie-breaking weights and the isolation lemma give a target with exactly one solution with high constant probability.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "ensures that, with high constant probability, some transformed target has exactly one solution whenever the original instance is positive."
+    },
+    {
+      "text": "An alias is a subset whose sum is the target modulo P but not over the integers.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "if its sum is $t'$ modulo $P$ but not over the integers."
+    },
+    {
+      "text": "The difference is zero on negative instances and has modulus one for an isolated target.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "On a negative instance the left side is zero for every transformed target; an isolated positive target leaves a single phase of modulus one."
+    },
+    {
+      "text": "The two sums can be much larger, so the difference must be recovered to small absolute error.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "The two sums on the right can be much larger, so their difference must be recovered to small"
+    },
+    {
+      "text": "The algorithm estimates the modular sum and subtracts a complete list of aliases.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "We estimate the modular sum and subtract the phases of a complete list of aliases."
+    },
+    {
+      "text": "The word length is about 4(n + b + log2(n+2)) bits.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "The machine is a word RAM with word length"
+    },
+    {
+      "text": "The bound holds for n at least N_c and b at most n^c, with constant C_c.",
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceLine": "there are constants $C_c>0$ and $N_c\\ge2$ such that every input with $n\\ge N_c$ and $b\\le n^c$"
+    },
+    {
+      "text": "The companion paper uses poly(n) 2^(n/2) time and O(2^(n/5)) writable words.",
+      "verdict": "supported",
+      "sourceId": 6,
+      "sourceLine": "We give a uniform algorithm with ordinary $O(2^{n/5})$ working space"
+    },
+    {
+      "text": "Belova, Chukhin, Kulikov and Mihajlin obtained 2^(0.246n) space for input integers of magnitude 2^(O(n)).",
+      "verdict": "supported",
+      "sourceId": 6,
+      "sourceLine": "space at the same time bound, for input integers of magnitude"
+    },
+    {
+      "text": "No Lean formalization is listed for either paper.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

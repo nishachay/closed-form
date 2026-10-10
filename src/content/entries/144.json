@@ -1,0 +1,227 @@
+{
+  "id": "144",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-smooth-three-torus-diffeomorphism-with-simple-Lebesgue-spectrum-September-23-2026/paper.pdf",
+      "label": "A smooth three-torus diffeomorphism with simple Lebesgue spectrum"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/144.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A smooth map of a 3D torus where one measurement’s past and future build every average-zero measurement.",
+  "scope": "The result is one smooth, volume-preserving map of the three-torus. It answers the probability form of Banach’s problem.",
+  "plain": "Picture a space being stirred by a fixed rule, one step at a time. Banach’s problem asks for a stirring where one measurement, read at every step, gives perpendicular pieces of information. Those pieces must also rebuild every other measurement with average zero. This paper proves such a stirring exists on a three-dimensional torus (Lean formalization listed). The map is smooth and keeps volume, but the measurement need not be smooth.",
+  "doesNot": "This does not answer the historical real-line question that Ulam recorded and attributed to Banach.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1949",
+    "firstStepBy": "V. A. Rokhlin, who asked for simple Lebesgue spectrum",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "It gives a smooth, volume-preserving answer to a question about spectra that Rokhlin raised in 1949."
+  },
+  "explanation": "Flip a fair coin once a second, forever, in both directions of time. Score heads as +1 and tails as −1. Call the score at second n by the name x_n. Waiting one second turns the reading x_0 into x_1, then x_2, and so on. Call two readings perpendicular when the average of their product is zero. Over the four equally likely outcomes of two flips, x_0 times x_1 averages to 0. So all the shifted copies of one reading are perpendicular to each other. Each also has average square 1.\n\nYet these copies do not reach everything. Take the product g = x_0 × x_1. It averages to 0, and its average square is 1. Now multiply g by any single reading x_n and average. For n = 0 the product is x_1, which averages to 0. For n = 1 it is x_0, also 0. For any other n the three flips are independent, and the average is 0 again. So g is perpendicular to every copy, and no weighted sum of copies can build it. One reading’s history misses part of what this system can measure.\n\nBanach’s simple Lebesgue-spectrum problem, in its probability form, asks for a system with no such gap. Take a space of total volume 1 and a rule T that moves its points without squeezing volume. The Koopman operator is the step that replaces a measurement f by f measured one step later. Simple Lebesgue spectrum asks for one measurement f with average zero and three properties. Its past and future copies are pairwise perpendicular. Each has average square 1. Together they build every measurement with average zero. Such a family is called an orthonormal basis (a set of perpendicular, unit-size building blocks for everything). The coins pass the first two tests and fail the third.\n\nThe paper sets this apart from a historical real-line question, recorded by Ulam in 1960 and attributed to Banach. In 1949, V. A. Rokhlin asked for ergodic transformations with simple, or at least finite-multiplicity, Lebesgue spectrum. Ergodic means the space cannot be split into two parts that each stay put under the rule. Partial answers followed. Helson and Parry, in 1978, built related operators with Lebesgue spectrum. Mathew and Nadkarni, in 1984, built a transformation with a Lebesgue part of multiplicity two. These gave a Lebesgue piece, not one orbit filling the whole space. In smooth systems, Fayad built smooth volume-preserving torus maps with simple spectrum in 2001. That result did not claim the Lebesgue type.\n\nMotion in continuous time, called a flow, came closer. Prikhod’ko built a flow with simple Lebesgue spectrum in 2020. But sampling a flow at a fixed time step breaks the property. The paper explains that the sampled copies then split into infinitely many separate strands. So the flow results do not give a map with one filling orbit.\n\nThis paper proves the full answer for a smooth map (Lean formalization listed). It builds a map T of the three-torus, a cube whose opposite faces are glued together. T is a diffeomorphism (a smooth, reversible map whose reverse is also smooth). It keeps the standard volume. The paper also builds one real measurement f with average zero. The copies of f at every past and future step form an orthonormal basis. The measurement f only needs a finite average square; it need not be smooth. The Koopman operator then acts like a standard model. That model multiplies functions on a circle by the circle’s own coordinate.\n\nThe map arises as a limit of simpler twists. A twist shifts one angle by an amount that depends on another coordinate. Each step adds a small change so that f’s history can predict one more target measurement. The danger is that each change spoils the exact perpendicularity of the copies. The paper’s central step makes that damage far smaller than the gain. Repeating the step makes prediction as accurate as wanted at very little cost. A final correction restores exact perpendicularity, and the limit keeps it.\n\nBack to the coins: in this torus map, nothing like g can exist. Every measurement with average zero is a weighted sum of the copies of f. The theorem also gives that T is ergodic. The paper’s last section claims three more consequences. T is mixing: two regions become close to independent after many steps. It has zero entropy: it produces no steady stream of randomness. Its Lyapunov exponents are zero: nearby points do not drift apart at an exponential rate. Mixing of every order there also relies on a separate paper’s multiple-mixing theorem.\n\nHow sure is this? The Lean scope note says the formalization constructs this smooth volume-preserving map of the three-torus. It also gives a real measurement whose copies form an orthonormal basis of the whole average-zero space. It covers ergodicity and the match with the standard model on the circle. The note does not mention mixing, entropy or Lyapunov exponents. No specialist review has been published.",
+  "hypeCheck": "Major if the construction holds. The Lean scope note lists a formalization of the main theorem. The mixing, entropy and Lyapunov consequences are not in that note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Koopman operator",
+      "meaning": "The step that replaces a measurement by the same measurement taken one time step later."
+    },
+    {
+      "term": "Orthonormal basis",
+      "meaning": "A set of perpendicular, unit-size building blocks from which every measurement in a space can be built."
+    },
+    {
+      "term": "Simple Lebesgue spectrum",
+      "meaning": "The property that the past and future copies of one measurement form an orthonormal basis of all average-zero measurements."
+    },
+    {
+      "term": "Ergodic",
+      "meaning": "A rule is ergodic when the space cannot be split into two parts that each stay put under it."
+    },
+    {
+      "term": "Three-torus",
+      "meaning": "A cube whose opposite faces are glued together, so leaving one side means re-entering the other."
+    },
+    {
+      "term": "Diffeomorphism",
+      "meaning": "A smooth, reversible map whose reverse is also smooth."
+    },
+    {
+      "term": "Flow",
+      "meaning": "Motion of a space in continuous time, rather than in whole steps."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “A smooth three-torus diffeomorphism with simple Lebesgue spectrum” (September 23, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-smooth-three-torus-diffeomorphism-with-simple-Lebesgue-spectrum-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 144 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/144.md"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "S. M. Ulam, A Collection of Mathematical Problems, Interscience Tracts in Pure and Applied Mathematics 8, Interscience (1960), §6, p. 76",
+      "url": "https://www.dbraulibrary.org.in/RareBooks/A%20collection%20of%20mathematical%20problems.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "V. A. Rokhlin, “Selected topics from the metric theory of dynamical systems”, Uspekhi Matematicheskikh Nauk 4 (1949), 57–128",
+      "url": "https://www.mathnet.ru/eng/rm8607"
+    },
+    {
+      "id": 6,
+      "cite": "H. Helson and W. Parry, “Cocycles and spectra”, Arkiv för Matematik 16 (1978), 195–206",
+      "url": "https://doi.org/10.1007/BF02385994"
+    },
+    {
+      "id": 7,
+      "cite": "J. Mathew and M. G. Nadkarni, “A measure preserving transformation whose spectrum has Lebesgue component of multiplicity two”, Bulletin of the London Mathematical Society 16 (1984), 402–406",
+      "url": "https://doi.org/10.1112/blms/16.4.402"
+    },
+    {
+      "id": 8,
+      "cite": "B. R. Fayad, “Partially mixing and locally rank one smooth transformations and flows on the torus T^d, d≥3”, Journal of the London Mathematical Society 64 (2001), 637–654",
+      "url": "https://doi.org/10.1112/S0024610701002447"
+    },
+    {
+      "id": 9,
+      "cite": "A. A. Prikhod’ko, “On ergodic flows with simple Lebesgue spectrum”, Sbornik: Mathematics 211 (2020), 594–615",
+      "url": "https://www.mathnet.ru/eng/sm8147"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, “Rokhlin's multiple-mixing problem for one transformation” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rokhlins-multiple-mixing-problem-for-one-transformation-September-23-2026/paper.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The probability form of Banach's problem asks for a Koopman operator on the whole mean-zero space equivalent to multiplication by w; equivalently a complete bilateral orthonormal orbit.",
+      "verdict": "supported",
+      "sourceLine": "Equivalently, that restriction has a bilateral orthonormal orbit which is complete."
+    },
+    {
+      "text": "There is a smooth volume-preserving diffeomorphism of the three-torus and a real mean-zero f whose iterates form an orthonormal basis.",
+      "verdict": "supported",
+      "sourceLine": "There exist a … volume-preserving diffeomorphism … and a real function … such that"
+    },
+    {
+      "text": "T is ergodic, and the Koopman operator is unitarily equivalent to multiplication by the coordinate on the circle.",
+      "verdict": "supported",
+      "sourceLine": "Consequently … is ergodic, and … on this space is unitarily equivalent to multiplication by the coordinate … on"
+    },
+    {
+      "text": "The generator f is only required to be in L^2.",
+      "verdict": "supported",
+      "sourceLine": "The generator … is only required to belong to"
+    },
+    {
+      "text": "The formulation is distinct from the real-line question recorded by Ulam and attributed to Banach.",
+      "verdict": "supported",
+      "sourceLine": "The formulation above is distinct from the historical real-line question recorded by Ulam and attributed to Banach"
+    },
+    {
+      "text": "Rokhlin asked for ergodic automorphisms with simple, or at least finite-multiplicity, Lebesgue spectrum.",
+      "verdict": "supported",
+      "sourceLine": "Rokhlin asked for ergodic automorphisms with simple, or at least finite-multiplicity, Lebesgue spectrum"
+    },
+    {
+      "text": "Helson and Parry constructed cocycles whose associated unitary operators have Lebesgue spectrum.",
+      "verdict": "supported",
+      "sourceLine": "Helson and Parry constructed cocycles over aperiodic probability-preserving transformations whose associated unitary operators have Lebesgue spectrum"
+    },
+    {
+      "text": "Mathew and Nadkarni built a transformation with a Lebesgue component of multiplicity two.",
+      "verdict": "supported",
+      "sourceLine": "Mathew and Nadkarni constructed a … of multiplicity two"
+    },
+    {
+      "text": "Earlier results gave a Lebesgue component, not one orbit spanning the whole space.",
+      "verdict": "supported",
+      "sourceLine": "These results distinguish a Lebesgue component, or a related group action, from one bilateral Lebesgue orbit spanning the whole centered space."
+    },
+    {
+      "text": "Fayad built smooth volume-preserving torus maps with simple spectrum, without asserting Lebesgue type.",
+      "verdict": "supported",
+      "sourceLine": "constructed … volume-preserving torus diffeomorphisms with simple spectrum"
+    },
+    {
+      "text": "Fayad's result did not assert Lebesgue spectral type.",
+      "verdict": "supported",
+      "sourceLine": "that result did not assert Lebesgue spectral type."
+    },
+    {
+      "text": "Prikhod'ko constructs a finite-measure flow with simple Lebesgue spectrum.",
+      "verdict": "supported",
+      "sourceLine": "Prikhod'ko constructs a finite-measure flow with simple Lebesgue spectrum"
+    },
+    {
+      "text": "A nonzero time map of a simple Lebesgue flow has countably infinite multiplicity, so flow results do not give the theorem.",
+      "verdict": "supported",
+      "sourceLine": "Taking a nonzero time map of a simple Lebesgue flow yields countably infinite multiplicity"
+    },
+    {
+      "text": "The approximating maps are integrable twists of the form S(θ,u,a)=(θ+φ(u),u,a).",
+      "verdict": "supported",
+      "sourceLine": "The approximating maps are integrable twists."
+    },
+    {
+      "text": "The loss is quadratic in the block's strength budget while the block still provides an estimator.",
+      "verdict": "supported",
+      "sourceLine": "quadratic in the block's strength budget, while the same block provides an estimator of the color label."
+    },
+    {
+      "text": "Repetition makes prediction arbitrarily accurate with arbitrarily little loss.",
+      "verdict": "supported",
+      "sourceLine": "Repetition makes prediction arbitrarily accurate with arbitrarily little loss in"
+    },
+    {
+      "text": "Separating the two estimates is the central finite construction.",
+      "verdict": "supported",
+      "sourceLine": "This separation of the two estimates is the central finite construction."
+    },
+    {
+      "text": "Whitening restores the spectral density exactly to one, and a diagonal limit preserves the orthonormal orbit.",
+      "verdict": "supported",
+      "sourceLine": "A diagonal limit preserves the orthonormal orbit and makes its span contain every member of a dense family of observables."
+    },
+    {
+      "text": "The paper claims mixing, zero entropy, and vanishing Lyapunov exponents as consequences; mixing of every order uses a separate theorem.",
+      "verdict": "supported",
+      "sourceLine": "derives mixing, zero entropy, and vanishing Lyapunov exponents. Mixing of every order uses, in addition, the separate multiple-mixing theorem of"
+    },
+    {
+      "text": "The Lean scope note says the formalization constructs the map, a real cyclic vector whose iterates form an orthonormal basis, the identification with multiplication on the circle, and ergodicity.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

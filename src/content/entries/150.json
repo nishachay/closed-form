@@ -1,0 +1,259 @@
+{
+  "id": "150",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Dynamical systems and ergodic theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weak-mixing-of-triangular-billiards-with-an-irrational-angle-October-5-2026/weak-mixing-triangular-billiards.pdf",
+      "label": "Weak mixing of triangular billiards with an irrational angle"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ergodicity-of-triangular-billiards-with-an-irrational-angle-September-25-2026/Ergodicity-of-triangular-billiards-with-an-irrational-angle-September-25-2026.pdf",
+      "label": "Ergodicity of triangular billiards with an irrational angle"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/150.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A paper claims billiards in every triangle with an irrational angle forget their start: they are weakly mixing.",
+  "scope": "It covers every genuine (non-flat) triangle with at least one angle that is not a fraction of π. Paths that hit a corner are ignored.",
+  "plain": "A ball bouncing inside a triangle can keep hidden patterns in its motion. This paper claims to prove that one irrational angle removes them all. The motion is weakly mixing: two balls bouncing independently together still explore every combination of states. A companion paper's weaker result, that one ball explores everything, has a Lean proof.",
+  "doesNot": "This does not claim mixing, a stronger property that experiments have suggested when all three angles are irrational.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Kerckhoff, Masur and Smillie, ergodicity for a dense family of polygons",
+    "field": "Dynamical systems and ergodic theory",
+    "significance": "Major",
+    "significanceWhy": "It upgrades ergodicity to weak mixing for every triangle with an irrational angle. Earlier proofs needed special families or approximation conditions."
+  },
+  "explanation": "Picture a ball rolling without friction on a table shaped like a right triangle with two 45° corners. It bounces off each side the way light bounces off a mirror. Start it moving at 10° to one of the short sides. Each bounce changes its direction, but only within a fixed menu. Work through every bounce and the menu has 8 entries: 10°, 80°, 100°, 170°, 190°, 260°, 280° and 350°. The ball may wander over the whole table. It will never travel at 30°.\n\nThis happens whenever every angle is a fraction of 180°. Such a table is called a rational triangle. The paper notes that its side reflections allow only finitely many directions. So the motion keeps a permanent memory of where it started. In the language of the field, it is not ergodic. Ergodic means this. Any set of states that the motion never leaves fills none of the space or all of it. A state is a position plus a direction. Space here is measured as table area times angle. In the 45° table, the states moving near one of the 8 directions form such a set. It fills only part of the space.\n\nNow change the corners. Take angles of 1 radian, 1 radian and the rest, about 57.30°, 57.30° and 65.41°. One radian is 180° divided by π. It is a long-known fact that π is irrational. So 1 radian is not a fraction of 180°. Such an angle is called irrational relative to π. Reflect a direction in one side at a corner, then in the other side. The direction turns by twice that corner's angle, here about 114.59°. Repeat the turn and the direction runs 0°, 114.59°, 229.18°, 343.77°, 98.37°, and never exactly repeats. After 100 turns, no gap between the reached directions exceeds about 13.2°. After 1,000 turns, no gap exceeds about 1.0°.\n\nEarlier proofs covered only special families. In 1986, Kerckhoff, Masur and Smillie proved ergodicity for a dense family of polygons. Dense means such tables sit arbitrarily close to any given one. In 1997, Vorobets gave a test that needs the angles to be approximated very well by fractions. His examples include irrational right triangles. Neither result covers each irrational triangle. Computer experiments disagreed with each other. Some pointed to the stronger behaviour described next, in irrational right triangles. Others suggested that some irrational right or symmetric triangles are not ergodic. On 25 September 2026, a companion paper in the same release claimed ergodicity for every triangle with an irrational angle.\n\nErgodicity still allows a hidden clock. Think of a point moving round a circle 1 metre long at a steady speed. Over time it spends equal time everywhere, so it is ergodic. Yet two such points started 0.3 metres apart stay 0.3 metres apart forever. Weak mixing forbids this. Run two copies of the motion side by side, each from its own start. The motion is weakly mixing when this pair is ergodic too. In 2026, Chaika and Forni proved weak mixing for a dense family of polygons with any number of sides. The paper notes that their result does not by itself give weak mixing for almost every triangle. This paper claims to prove weak mixing for every triangle with an irrational angle.\n\nA hidden clock would be a measurement on states that turns like a clock hand as time passes. It turns at a fixed rate. The central issue was roughness. Such a measurement need not vary smoothly. It may jump wildly between nearby states. You know how it changes along the ball's own path. You know nothing about how it changes sideways, between neighbouring parallel paths. Earlier tools of Forni and Moll needed some sideways smoothness as an assumption. The companion paper removed that need for a clock that does not turn at all. This paper extends the companion's method to every turning rate. It then argues that the sideways change is zero.\n\nAfter that, the paper argues, the triangle's shape does the rest. Inside the table, the measurement becomes a simple wave whose size depends only on direction. Reflection in the two sides at the irrational corner turns directions by that never-repeating step. This forces the size to be the same for every direction. Reflection in the third side then rules out every nonzero rate. Only constant measurements survive. So no hidden clock exists, and a standard argument gives weak mixing.\n\nWeak mixing is not full mixing. Mixing would mean any region of states spreads evenly over the space in the long run. Experiments have suggested mixing when all three angles are irrational, but the paper does not claim it. Rational triangles stay excluded, and there the motion is not even ergodic. Paths that hit a corner are discarded, and they take up no area. Among triangles of area one, the excluded angle pairs form a countable set. Its members can be listed one by one. So the result covers almost every triangle.\n\nHow sure is this? A computer proof checker called Lean has checked the companion's main theorem. It says billiards in every triangle with an irrational angle are ergodic. The Lean scope note lists only that companion paper. The step from ergodicity to weak mixing is outside that check. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. Lean checks only the companion's ergodicity theorem. The step to weak mixing is not machine-checked, and no specialist review has been published.",
+  "glossary": [
+    {
+      "term": "Billiard flow",
+      "meaning": "The motion of a point that moves in straight lines at unit speed and bounces off the sides like light off a mirror."
+    },
+    {
+      "term": "Irrational relative to π",
+      "meaning": "An angle that is not a fraction of 180°."
+    },
+    {
+      "term": "Ergodic",
+      "meaning": "Every set of states that the motion never leaves fills either none or all of the space."
+    },
+    {
+      "term": "Weakly mixing",
+      "meaning": "Two independent copies of the motion, run together, are still ergodic as a pair."
+    },
+    {
+      "term": "Eigenfunction",
+      "meaning": "A measurement on states that turns like a clock hand at a fixed rate as the motion runs."
+    },
+    {
+      "term": "Mixing",
+      "meaning": "Any region of states spreads evenly over the whole space in the long run; stronger than weak mixing."
+    },
+    {
+      "term": "Dense family",
+      "meaning": "A family of shapes that sit arbitrarily close to any given shape."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. Kerckhoff, H. Masur and J. Smillie, “Ergodicity of billiard flows and quadratic differentials”, Annals of Mathematics 124 (1986), 293–311",
+      "url": "https://doi.org/10.2307/1971280"
+    },
+    {
+      "id": 2,
+      "cite": "Ya. B. Vorobets, “Ergodicity of billiards in polygons”, Sbornik: Mathematics 188 (1997), 389–434",
+      "url": "https://doi.org/10.1070/SM1997v188n03ABEH000211"
+    },
+    {
+      "id": 3,
+      "cite": "J. Chaika and G. Forni, “Weakly mixing polygonal billiards”, Annals of Mathematics 203 (2026), 695–735",
+      "url": "https://doi.org/10.4007/annals.2026.203.3.1"
+    },
+    {
+      "id": 4,
+      "cite": "R. Artuso, G. Casati and I. Guarneri, “Numerical study on ergodic properties of triangular billiards”, Physical Review E 55 (1997), 6384–6390",
+      "url": "https://doi.org/10.1103/PhysRevE.55.6384"
+    },
+    {
+      "id": 5,
+      "cite": "G. Casati and T. Prosen, “Mixing property of triangular billiards”, Physical Review Letters 83 (1999), 4729–4732",
+      "url": "https://doi.org/10.1103/PhysRevLett.83.4729"
+    },
+    {
+      "id": 6,
+      "cite": "J. Wang, G. Casati and T. Prosen, “Nonergodicity and localization of invariant measure for two colliding masses”, Physical Review E 89 (2014), 042918",
+      "url": "https://doi.org/10.1103/PhysRevE.89.042918"
+    },
+    {
+      "id": 7,
+      "cite": "K. Zahradova, J. Slipantschuk, O. F. Bandtlow and W. Just, “Impact of symmetry on ergodic properties of triangular billiards”, Physical Review E 105 (2022), L012201",
+      "url": "https://doi.org/10.1103/PhysRevE.105.L012201"
+    },
+    {
+      "id": 8,
+      "cite": "G. Forni and N. Moll, “Cohomological equation for geodesic flows on flat surfaces”, arXiv:2510.18128 (2025)",
+      "url": "https://arxiv.org/abs/2510.18128v1"
+    },
+    {
+      "id": 9,
+      "cite": "OpenAI, “Ergodicity of triangular billiards with an irrational angle”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ergodicity-of-triangular-billiards-with-an-irrational-angle-September-25-2026/Ergodicity-of-triangular-billiards-with-an-irrational-angle-September-25-2026.pdf",
+      "quote": "No genericity or Diophantine condition is required."
+    },
+    {
+      "id": 10,
+      "cite": "OpenAI, “Weak mixing of triangular billiards with an irrational angle”, openai/math preprint (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weak-mixing-of-triangular-billiards-with-an-irrational-angle-October-5-2026/weak-mixing-triangular-billiards.pdf",
+      "quote": "The unit-speed billiard flow in every nondegenerate Euclidean triangle with at least one angle irrational relative to \\(\\pi\\) is weakly mixing for normalized Liouville measure."
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, Lean scope note for “Weak mixing of triangular billiards with an irrational angle” (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/150.md",
+      "quote": "The formalization proves that the unit-speed billiard flow in every nondegenerate Euclidean triangle with at least one angle irrational relative to $\\pi$ is ergodic for normalized area times uniform angular measure."
+    }
+  ],
+  "claims": [
+    {
+      "text": "In a rational triangle, side reflections generate a finite group of directions, so the full flow is not ergodic.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "In a rational triangle, side reflections generate a finite group on directions."
+    },
+    {
+      "text": "The irrationality assumption is sharp for the full phase space.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "The irrationality assumption is sharp for the full phase space."
+    },
+    {
+      "text": "Ergodicity means every invariant measurable set has probability zero or one.",
+      "verdict": "supported",
+      "sourceId": 9,
+      "sourceLine": "Ergodicity asks whether every measurable set invariant under this flow has probability zero or one."
+    },
+    {
+      "text": "The reflections in the two sides through a vertex generate a rotation through twice its angle.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "Their reflections generate a rotation through"
+    },
+    {
+      "text": "Kerckhoff, Masur and Smillie obtained ergodicity of the full billiard flow for a dense family of polygons.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceLine": "They also obtained ergodicity of the full billiard flow for a dense"
+    },
+    {
+      "text": "Vorobets gave a quantitative rational-approximation criterion, with examples including irrational right triangles.",
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceLine": "Vorobets gave a quantitative rational-approximation criterion and explicit ergodic examples, including irrational right triangles"
+    },
+    {
+      "text": "Earlier results need genericity or fast-approximation assumptions, not each irrational triangle.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "These results establish ergodicity under genericity or sufficiently rapid approximation assumptions rather than for each irrational triangle."
+    },
+    {
+      "text": "Numerical work suggested weak mixing in irrational right triangles and mixing when all angles are irrational.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "Numerical investigations have long suggested weak mixing in irrational right triangles and mixing in triangles with all angles irrational"
+    },
+    {
+      "text": "Other computations suggested nonergodicity in some irrational right or symmetric triangles.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "Other computations have suggested nonergodicity in some irrational right or symmetric triangles"
+    },
+    {
+      "text": "Weak mixing means the product of the flow with itself is ergodic.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "Equivalently, the product of the flow with itself is ergodic."
+    },
+    {
+      "text": "Chaika and Forni proved weak mixing of the full billiard flow for a dense family of polygons with any fixed number of sides at least three.",
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceLine": "Chaika and Forni proved that the full billiard flow is weakly mixing for a dense"
+    },
+    {
+      "text": "Their Baire-category conclusion does not assert almost-everywhere weak mixing in the space of triangle angles.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "The Baire-category conclusion does not assert Lebesgue-almost-everywhere weak mixing in the space of triangle angles."
+    },
+    {
+      "text": "The regularity of an eigenfunction is the central issue; the transverse derivative cannot be assumed.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "the missing transverse derivative cannot be assumed."
+    },
+    {
+      "text": "Forni and Moll's rigidity results need an additional horizontal Sobolev hypothesis.",
+      "verdict": "supported",
+      "sourceId": 8,
+      "sourceLine": "Their rigidity results distinguish invariance under both horizontal directions from geodesic invariance under an additional horizontal Sobolev hypothesis"
+    },
+    {
+      "text": "The companion manuscript removed the regularity obstacle for invariant functions.",
+      "verdict": "supported",
+      "sourceId": 9,
+      "sourceLine": "removes this regularity obstacle for invariant functions, proving ergodicity of irrational triangular billiards."
+    },
+    {
+      "text": "The paper extends the companion's method to every real spectral parameter and concludes the sideways derivative vanishes.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "We extend its coefficient-energy and long-average method to every real spectral parameter"
+    },
+    {
+      "text": "Inside the triangle the eigenfunction is a plane wave; the two sides at the irrational vertex make the amplitude constant and the third side excludes nonzero frequencies.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "Reflection in the two sides through an irrational vertex makes this amplitude constant. Reflection in the third side excludes every nonzero frequency."
+    },
+    {
+      "text": "The standard spectral criterion then gives weak mixing.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "The standard spectral criterion then gives weak mixing."
+    },
+    {
+      "text": "Trajectories meeting a vertex are discarded and form a null set.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "Trajectories meeting a vertex in either time direction are discarded; they form a null set."
+    },
+    {
+      "text": "For area-one triangles the excluded angle pairs form a countable set.",
+      "verdict": "supported",
+      "sourceId": 10,
+      "sourceLine": "the excluded pairs with both … rational form a countable set."
+    },
+    {
+      "text": "Lean formalizes the ergodicity theorem of the companion paper; the weak mixing extension is outside the scope note.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
