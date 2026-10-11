@@ -3,6 +3,8 @@
  * <title>, meta/OG descriptions, OG images, RSS and X share text.
  * Converts common inline TeX ($...$) to readable Unicode; never throws.
  */
+import { stripCitations } from './cite';
+
 const GREEK: Record<string, string> = {
   alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', epsilon: 'ε', varepsilon: 'ε', zeta: 'ζ', eta: 'η',
   theta: 'θ', vartheta: 'ϑ', iota: 'ι', kappa: 'κ', lambda: 'λ', mu: 'μ', nu: 'ν', xi: 'ξ', pi: 'π',
@@ -120,7 +122,8 @@ export function texMathToPlain(tex: string): string {
 /** Strip HTML tags and convert $...$ / \(...\) math to Unicode, collapsing whitespace. */
 export function toPlain(s: string): string {
   if (!s) return '';
-  return s
+  // Inline citation markers ([n], lib/cite.ts) never reach plain-text surfaces.
+  return stripCitations(s)
     .replace(/<[^>]+>/g, '')
     .replace(/\$\$([^$]+)\$\$|\$([^$]+)\$|\\\((.+?)\\\)/g, (_m, a, b, c) => texMathToPlain(a ?? b ?? c ?? ''))
     .replace(/&amp;/g, '&')

@@ -1034,3 +1034,47 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 .xcard-all .xc-f{margin-block-start:0}
 @media (max-width:56rem){.home-ex .ex-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.xcard-all{grid-column:1/-1}}
 @media (max-width:36rem){.home-ex .ex-cards{grid-template-columns:minmax(0,1fr)}.xcard-all .xa-n .num{font-size:1.75rem}}
+
+/* =====================================================================
+   Inline citations (Oct 2026): a raised numeral in the explanation opens the
+   exact line from the paper. No brackets, no layout shift: the numeral sits on
+   line-height 0 and is lifted with `top`, so lines keep their rhythm.
+   ===================================================================== */
+.cite{position:relative;inset-block-start:-.52em;margin-inline-start:.06em;font-size:.68em;line-height:0;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:0;white-space:nowrap}
+.cite-a{position:relative;padding-inline:.14em;border-radius:3px;color:color-mix(in oklab,var(--color-accent) 78%,var(--color-text-tertiary));text-decoration:none;transition:color .15s var(--ease-out),background-color .15s var(--ease-out)}
+/* A comfortable hit area around a 12px numeral, without moving anything. */
+.cite-a::after{content:"";position:absolute;inset:-.7em -.45em}
+@media (pointer:coarse){.cite-a::after{inset:-1.1em -.7em}}
+.cite-a[aria-expanded=true]{color:var(--color-accent);background:color-mix(in oklab,var(--color-accent) 12%,transparent)}
+@media (hover:hover){.cite-a:hover{color:var(--color-accent);background:color-mix(in oklab,var(--color-accent) 9%,transparent)}}
+.cite-a:focus-visible{outline-offset:1px;border-radius:3px}
+.cite-sep{color:var(--color-text-tertiary)}
+
+.cite-pop{position:fixed;z-index:60;display:block;inline-size:min(22rem,calc(100vw - 1.5rem));padding:.875rem 1rem .75rem;border-radius:var(--r-in,10px);background:var(--color-bg-surface);border:1px solid var(--color-border-strong);box-shadow:var(--shadow-raised);color:var(--color-text);font-size:.875rem;line-height:1.55;font-weight:400;letter-spacing:0;text-align:start;white-space:normal}
+.cite-pop-q{display:block;max-block-size:11.5rem;overflow:auto;padding-inline-start:.75rem;border-inline-start:2px solid color-mix(in oklab,var(--color-accent) 55%,var(--color-border));color:var(--color-text);overscroll-behavior:contain}
+.cite-pop-q .katex{font-size:1.02em}
+.cite-pop-m{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-block-start:.625rem;padding-block-start:.5625rem;border-block-start:1px solid var(--color-border);font-size:.8125rem;line-height:1.4;color:var(--color-text-tertiary)}
+.cite-pop-p{min-inline-size:0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.cite-pop-go{flex:none;color:var(--color-text-secondary);text-decoration-line:underline;text-decoration-color:var(--color-border-strong);text-decoration-thickness:from-font;text-underline-offset:.2em;transition:color .15s var(--ease-out),text-decoration-color .15s var(--ease-out)}
+@media (hover:hover){.cite-pop-go:hover{color:var(--color-text);text-decoration-color:var(--color-accent)}}
+@media (prefers-reduced-motion:no-preference){
+  .cite-pop:not([hidden]){animation:cite-in .14s var(--ease-out)}
+  .cite-pop[data-side=top]:not([hidden]){animation-name:cite-in-up}
+}
+@keyframes cite-in{from{opacity:0;transform:translateY(-3px)}}
+@keyframes cite-in-up{from{opacity:0;transform:translateY(3px)}}
+
+/* In the paper's words: the cited lines, each the target of its numeral. */
+.e-cites{margin-block-start:3rem}
+.entry .e-cites h2{display:flex;align-items:center;gap:.5rem;font-size:.75rem;line-height:1.3;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin:0 0 1rem;padding:0;border:0}
+.cites{list-style:none;margin:0;padding:0;display:grid;gap:.875rem}
+.cites li{display:grid;grid-template-columns:1.75rem minmax(0,1fr);font-size:.875rem;line-height:1.55;border-radius:6px;transition:background-color .6s var(--ease-out),box-shadow .6s var(--ease-out)}
+.cites li:focus{outline:none}
+.cites-n{font-size:.8125rem;font-weight:500;color:var(--color-accent)}
+.cites-q{margin:0;color:var(--color-text)}
+.cites-m{grid-column:2;display:flex;flex-wrap:wrap;gap:.125rem 1rem;margin-block-start:.25rem;font-size:.8125rem;color:var(--color-text-tertiary)}
+.cites-m a{color:var(--color-text-tertiary);text-decoration-line:underline;text-decoration-color:var(--color-border-strong);text-decoration-thickness:from-font;text-underline-offset:.2em}
+@media (hover:hover){.cites-m a:hover{color:var(--color-text);text-decoration-color:var(--color-accent)}}
+.cites li.is-flash,.cites li:target{background:color-mix(in oklab,var(--color-accent) 10%,transparent);box-shadow:0 0 0 .5rem color-mix(in oklab,var(--color-accent) 10%,transparent)}
+.cites li.is-flash{transition:none}
+@media (prefers-reduced-motion:reduce){.cites li{transition:none}}

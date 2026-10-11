@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { detachedCitations, parseCitations, stripCitations } from './cite.js';
 
 /**
  * Entry schema (§10) + Phase-1 extension:
@@ -61,7 +62,8 @@ function noHypeAndSentenceLength(fieldName: string) {
     if (hype) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: `${fieldName} contains hype word: ${hype}` });
     }
-    for (const s of splitSentences(val)) {
+    // Inline citation markers ([2]) are not words: strip them before counting.
+    for (const s of splitSentences(stripCitations(val))) {
       const n = countWords(s);
       if (n > 25) {
         ctx.addIssue({
@@ -132,6 +134,8 @@ export const claimSchema = z.object({
   verdict: z.enum(['supported', 'external']),
   sourceLine: z.string().optional(),
   sourceId: z.number().int().optional(),
+  /** 1-based index into the catalog family's papers: which paper sourceLine is quoted from (multi-paper results). */
+  paper: z.number().int().min(1).optional(),
 });
 
 export const entrySchema = z
@@ -201,6 +205,23 @@ export const entrySchema = z
           message: `sections must have exactly 4 items (or be empty when explanation is present), got ${sections.length}`,
           path: ['sections'],
         });
+      }
+    }
+    // Inline citations ([n] in the explanation, lib/cite.ts): each points at a claim with a sourceLine.
+    if (val.explanation) {
+      const claims = val.claims ?? [];
+      for (const m of parseCitations(val.explanation)) {
+        for (const n of m.claims) {
+          const c = claims[n - 1];
+          if (!c) {
+            ctx.addIssue({ code: z.ZodIssueCode.custom, message: `explanation cites [${n}] but there is no claims[${n - 1}]`, path: ['explanation'] });
+          } else if (!c.sourceLine) {
+            ctx.addIssue({ code: z.ZodIssueCode.custom, message: `explanation cites [${n}] but claims[${n - 1}] has no sourceLine`, path: ['explanation'] });
+          }
+        }
+      }
+      for (const d of detachedCitations(val.explanation)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: `citation marker not attached to a sentence: …${d}`, path: ['explanation'] });
       }
     }
     // Section titles exact + order.

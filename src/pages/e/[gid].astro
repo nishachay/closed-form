@@ -11,6 +11,7 @@ import TrustLabel from '../../components/TrustLabel.astro';
 import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, fieldUrl, loadExplained, neighbors } from '../../lib/site.js';
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
 import { renderMath, renderQuote } from '../../lib/katex.js';
+import { citationOrder, renderCitations } from '../../lib/cite.js';
 
 export async function getStaticPaths() {
   return catalog.families.map((f) => ({
@@ -43,6 +44,27 @@ const paragraphs = entry?.explanation
   ? entry.explanation.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
   : [];
 const sections = entry?.explanation ? [] : (entry?.sections ?? []);
+/** Inline citations: [n] in the explanation → a raised numeral, numbered in reading order. */
+const citeOrder = citationOrder(paragraphs);
+const citeSeen = new Set<number>();
+const paragraphHtml = paragraphs.map((p) => renderCitations(p, citeOrder, renderMath, citeSeen));
+const paperName = (c: { paper?: number; sourceId?: number }) => {
+  // Which paper the line is quoted from: the claim's `paper` index, the only paper, or a
+  // sourceId that points at one of this result's papers. Never an outside work it discusses.
+  const viaSource = c.sourceId ? entry?.sources.find((x) => x.id === c.sourceId)?.url : undefined;
+  const p = c.paper
+    ? family.papers[c.paper - 1]
+    : family.papers.length === 1
+      ? family.papers[0]
+      : family.papers.find((x) => viaSource && viaSource === x.pdf);
+  return p ? { name: toPlain(p.title), href: p.pdf } : { name: 'The paper', href: undefined };
+};
+const cited = [...citeOrder.entries()]
+  .sort((a, b) => a[1] - b[1])
+  .map(([claimNo, n]) => {
+    const c = entry!.claims![claimNo - 1];
+    return { n, quote: c.sourceLine ?? '', paper: paperName(c) };
+  });
 const aiSection = (entry?.sections ?? []).find((s) => s.title === 'What it says about AI') ?? null;
 const toc = entry
   ? [
@@ -58,6 +80,7 @@ const toc = entry
       { href: '#hype-check', label: 'Hype check' },
       { href: '#words-used', label: 'Words used' },
       { href: '#the-original', label: 'The original' },
+      ...(cited.length > 0 ? [{ href: '#in-the-papers-words', label: 'In the paper’s words' }] : []),
       { href: '#sources', label: 'Sources' },
     ]
   : [{ href: '#the-original', label: 'The original' }];
@@ -110,7 +133,7 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           {paragraphs.length > 0 && (
             <section class="e-sec e-prose" aria-labelledby="the-explanation">
               <h2 id="the-explanation">The explanation</h2>
-              {paragraphs.map((p) => <p set:html={renderMath(p)} />)}
+              {paragraphHtml.map((h) => <p set:html={h} />)}
               <p class="e-limit"><b>What it doesn't show.</b> {entry.doesNot}</p>
             </section>
           )}
@@ -147,6 +170,23 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           </section>
           <Glossary items={entry.glossary} />
           <OriginalPapers family={family} />
+          {cited.length > 0 && (
+            <section class="e-cites" aria-labelledby="in-the-papers-words">
+              <h2 id="in-the-papers-words">In the paper’s words</h2>
+              <ol class="cites">
+                {cited.map((c) => (
+                  <li id={`cite-${c.n}`} tabindex="-1">
+                    <span class="cites-n num" aria-hidden="true">{c.n}</span>
+                    <blockquote class="cites-q" id={`cite-${c.n}-q`} set:html={renderQuote(c.quote)} />
+                    <span class="cites-m" data-paper={c.paper.name}>
+                      {c.paper.href ? <a href={c.paper.href} target="_blank" rel="noopener">{c.paper.name}</a> : <span>{c.paper.name}</span>}
+                      <a class="cites-back" href={`#cref-${c.n}`} aria-label={`Back to the text for source ${c.n}`}>Back to text</a>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
           <section class="e-refs" aria-labelledby="sources">
             <h2 id="sources">Sources</h2>
             {anyUnchecked && <p class="e-refs-n"><i aria-hidden="true"></i>Marked sources have not yet been checked against the original text.</p>}
@@ -220,5 +260,138 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
       const t = document.getElementById(l.dataset.h ?? '');
       if (t) io.observe(t);
     });
+    // Inline citations: a raised numeral opens a small card with the exact paper line.
+    // Hover opens it on a mouse; click or tap pins it. Esc, an outside tap, or moving
+    // focus away closes it. Without JS the numeral is a plain link to the quote.
+    const cites = [...document.querySelectorAll('.cite-a')] as HTMLAnchorElement[];
+    if (cites.length > 0) {
+      const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const pop = document.createElement('span');
+      pop.className = 'cite-pop';
+      pop.id = 'cite-pop';
+      pop.setAttribute('role', 'dialog');
+      pop.hidden = true;
+      pop.innerHTML =
+        '<span class="cite-pop-q"></span><span class="cite-pop-m"><span class="cite-pop-p"></span><a class="cite-pop-go" href="#">Go to source</a></span>';
+      const q = pop.querySelector('.cite-pop-q') as HTMLElement;
+      const paper = pop.querySelector('.cite-pop-p') as HTMLElement;
+      const go = pop.querySelector('.cite-pop-go') as HTMLAnchorElement;
+      let current: HTMLAnchorElement | null = null;
+      let pinned = false;
+      let hoverTimer = 0;
+      // After the reader dismisses a card (Esc, a second click), hovering the same numeral
+      // must not reopen it until the pointer has left it once.
+      let noHover: HTMLAnchorElement | null = null;
+
+      const place = () => {
+        if (!current) return;
+        const r = current.getBoundingClientRect();
+        const vw = document.documentElement.clientWidth;
+        const vh = window.innerHeight;
+        const m = 12;
+        const w = pop.offsetWidth;
+        const h = pop.offsetHeight;
+        const left = Math.min(Math.max(r.left + r.width / 2 - w / 2, m), vw - w - m);
+        const below = r.bottom + 8;
+        const top = below + h > vh - m && r.top - 8 - h > m ? r.top - 8 - h : below;
+        pop.style.left = `${Math.round(left)}px`;
+        pop.style.top = `${Math.round(top)}px`;
+        pop.style.setProperty('--cite-x', `${Math.round(r.left + r.width / 2 - left)}px`);
+        pop.dataset.side = top < r.top ? 'top' : 'bottom';
+      };
+
+      const open = (a: HTMLAnchorElement, pin: boolean) => {
+        window.clearTimeout(hoverTimer);
+        if (current && current !== a) current.setAttribute('aria-expanded', 'false');
+        const n = a.dataset.cite ?? '';
+        const item = document.getElementById(`cite-${n}`);
+        const quote = document.getElementById(`cite-${n}-q`);
+        if (!item || !quote) return;
+        current = a;
+        pinned = pin || pinned;
+        q.innerHTML = quote.innerHTML;
+        paper.textContent = (item.querySelector('.cites-m') as HTMLElement | null)?.dataset.paper ?? '';
+        go.href = `#cite-${n}`;
+        pop.setAttribute('aria-label', `Source ${n}, from the paper`);
+        // Keep the card right after its numeral, so Tab moves from the numeral into "Go to source".
+        a.parentElement?.after(pop);
+        pop.hidden = false;
+        a.setAttribute('aria-expanded', 'true');
+        a.setAttribute('aria-controls', 'cite-pop');
+        place();
+      };
+
+      const close = (refocus = false) => {
+        window.clearTimeout(hoverTimer);
+        if (!current) return;
+        const a = current;
+        a.setAttribute('aria-expanded', 'false');
+        // The card can sit under the pointer (it opens next to the numeral's enlarged hit
+        // area); when it disappears the pointer lands back on the numeral.
+        noHover = a.matches(':hover') || pop.matches(':hover') ? a : null;
+        pop.hidden = true;
+        current = null;
+        pinned = false;
+        if (refocus) a.focus();
+      };
+
+      cites.forEach((a) => {
+        a.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          if (current === a && pinned) close();
+          else open(a, true);
+        });
+        a.addEventListener('pointerenter', (ev) => {
+          if (ev.pointerType !== 'mouse' || pinned || noHover === a) return;
+          window.clearTimeout(hoverTimer);
+          hoverTimer = window.setTimeout(() => open(a, false), 120);
+        });
+        a.addEventListener('pointerleave', (ev) => {
+          if (noHover === a) noHover = null;
+          if (ev.pointerType !== 'mouse' || pinned) return;
+          window.clearTimeout(hoverTimer);
+          hoverTimer = window.setTimeout(() => close(), 220);
+        });
+      });
+      pop.addEventListener('pointerenter', () => window.clearTimeout(hoverTimer));
+      pop.addEventListener('pointerleave', (ev) => {
+        if (ev.pointerType !== 'mouse' || pinned) return;
+        hoverTimer = window.setTimeout(() => close(), 220);
+      });
+
+      go.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        const target = document.getElementById(go.hash.slice(1));
+        close();
+        if (!target) return;
+        target.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'center' });
+        target.focus({ preventScroll: true });
+        target.classList.remove('is-flash');
+        void target.offsetWidth;
+        target.classList.add('is-flash');
+        window.setTimeout(() => target.classList.remove('is-flash'), 1800);
+        history.replaceState(null, '', go.hash);
+      });
+
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && current) close(true);
+      });
+      document.addEventListener('pointerdown', (ev) => {
+        const t = ev.target as Node;
+        if (current && !pop.contains(t) && !current.contains(t)) close();
+      });
+      pop.addEventListener('focusout', (ev) => {
+        const t = ev.relatedTarget as Node | null;
+        if (current && t && !pop.contains(t) && t !== current) close();
+      });
+      cites.forEach((a) =>
+        a.addEventListener('focusout', (ev) => {
+          const t = ev.relatedTarget as Node | null;
+          if (current === a && t && !pop.contains(t)) close();
+        }),
+      );
+      window.addEventListener('resize', place, { passive: true });
+      window.addEventListener('scroll', place, { passive: true });
+    }
   </script>
 </Base>
