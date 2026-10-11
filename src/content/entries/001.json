@@ -1,0 +1,172 @@
+{
+  "id": "001",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Milnes-rationality-conjecture-for-abelian-varieties-October-7-2026/paper.pdf",
+      "label": "Milne's rationality conjecture for abelian varieties"
+    }
+  ],
+  "headline": "After reduction mod p, Hodge classes on abelian varieties are claimed to give one rational number in every cohomology.",
+  "scope": "Abelian varieties over the algebraic numbers with good reduction at a chosen prime p, for every p including 2.",
+  "plain": "An abelian variety is a higher-dimensional cousin of an elliptic curve. Hodge classes on it are the classes that the Hodge conjecture expects to come from subvarieties. Reduce the variety modulo a prime, and pair such a class with curves and surfaces made of divisors there. Milne conjectured that each pairing is one rational number, the same in every cohomology theory. This paper claims to prove that for every prime.",
+  "doesNot": "This does not claim that Hodge classes on the original variety over the algebraic numbers come from algebraic cycles.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Deligne, every Hodge class on an abelian variety is absolute Hodge",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It claims a conjecture Milne tied to rational Tate classes, in every characteristic, and feeds an algebraicity result with a companion paper."
+  },
+  "explanation": "Take the elliptic curve y² = x³ − x, call it E, with its point at infinity O as zero. Form the surface E × E of all pairs of points. Inside it sit curves. One is the horizontal copy E × {O}. Another is the graph of doubling, all pairs (P, 2P). They meet where 2P = O. That happens at four points: O, (0, 0), (1, 0) and (−1, 0). So their intersection number is 4. Counts like this are whole numbers, because they count actual points.\n\nCohomology turns such shapes into algebra. Each curve gives a class, and intersections become products of classes. There are several cohomology theories. For each prime ℓ, ℓ-adic cohomology works with ℓ-adic numbers. Over a field of characteristic p, crystalline cohomology does the job at p itself. For actual curves and surfaces, every theory computes the same intersection numbers.\n\nAn abelian variety is a higher-dimensional version of E, a smooth shape whose points can be added. Some cohomology classes over the complex numbers look as if they come from subvarieties. These are Hodge classes. The Hodge conjecture predicts that every rational Hodge class comes from an algebraic cycle, a combination of subvarieties. For divisors, a 1924 theorem of Lefschetz settles this. In general it is open, even for abelian varieties.\n\nNow reduce the variety modulo a prime p. Good reduction means the equations stay smooth. The reduced variety can gain divisors that do not lift back. For a typical E, the reduction of E × E gains the graph of Frobenius. That is the map that raises coordinates to a power of p. It does not come from any curve on the original surface.\n\nTake a Hodge class and carry it down to the reduction. Pair it with a product of divisors there, which may include such new ones. Deligne proved in 1982 that Hodge classes on abelian varieties are absolute Hodge. That gives matching versions of the class in every theory. It does not show that its pairing with the new divisors is a rational number that all theories share.\n\nMilne's rationality conjecture asks exactly that. It grew out of his work on Shimura varieties around 2000, and appears as a pairing statement in his 2009 paper. The paper claims it for every abelian variety over the algebraic numbers with good reduction at p. Every residue characteristic is included, even 2. Earlier, only special cases were known, such as CM varieties with simple ordinary reduction. A CM abelian variety is one with an unusually large set of symmetries.\n\nThe claim has consequences. Milne showed that the CM case is equivalent to a \"good theory of rational Tate classes\" on certain varieties over finite fields. The paper extends that theory to specializations of all Hodge classes. A companion paper claims the Hodge conjecture for CM abelian varieties. With it, this paper claims each reduced Hodge class comes from one rational algebraic cycle. The main theorem does not use that companion.\n\nThe obstacle is getting one rational number in every theory at once. Separate local arguments can give a different multiple in each theory. The proof first moves the class to a CM abelian variety. It then breaks CM classes into balanced Weil classes, a standard family of test cases. For these it claims a dichotomy. Either every pairing is zero, or the class is a rational polynomial in divisors in every theory simultaneously. The second case lifts a divisor to an auxiliary variety and reads off a rational identity there.\n\nThe proof uses outside results, including recent work of Kisin and Zhou and of Gleason, Lim and Xu.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. The algebraic-cycle corollary also needs the companion CM Hodge paper. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Abelian variety",
+      "meaning": "A smooth geometric shape, defined by polynomial equations, whose points can be added. Elliptic curves are the one-dimensional case."
+    },
+    {
+      "term": "Cohomology",
+      "meaning": "A way to turn shapes into algebra, so that intersections become products."
+    },
+    {
+      "term": "Hodge class",
+      "meaning": "A cohomology class that the Hodge conjecture predicts comes from subvarieties."
+    },
+    {
+      "term": "Algebraic cycle",
+      "meaning": "A combination of subvarieties with rational coefficients."
+    },
+    {
+      "term": "Divisor",
+      "meaning": "A subvariety one dimension smaller than the whole space, such as a curve on a surface."
+    },
+    {
+      "term": "Good reduction",
+      "meaning": "The defining equations stay smooth after reducing modulo the prime p."
+    },
+    {
+      "term": "ℓ-adic and crystalline cohomology",
+      "meaning": "Cohomology theories for varieties over finite fields: ℓ-adic for primes ℓ other than p, crystalline at p."
+    },
+    {
+      "term": "CM abelian variety",
+      "meaning": "An abelian variety with an unusually large algebra of symmetries."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Milne's rationality conjecture for abelian varieties”, openai/math release preprint (October 7, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Milnes-rationality-conjecture-for-abelian-varieties-October-7-2026/paper.pdf",
+      "quote": "The conjecture isolates this rationality question from the stronger problem of representing the Hodge class by an algebraic cycle."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The rational Hodge conjecture for CM abelian varieties”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-rational-Hodge-conjecture-for-CM-abelian-varieties-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "P. Deligne, “Hodge cycles on abelian varieties” (notes by J. S. Milne), in Hodge Cycles, Motives, and Shimura Varieties, Lecture Notes in Mathematics 900, Springer (1982), 9–100",
+      "url": "https://www.jmilne.org/math/Documents/Deligne82.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "J. S. Milne, “Rational Tate classes”, Moscow Mathematical Journal 9 (2009), 111–141",
+      "url": "https://doi.org/10.17323/1609-4514-2009-9-1-111-141"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A rational cycle specializes, and every realization computes the same rational intersection degree.",
+      "verdict": "supported",
+      "sourceLine": "Its intersection with any complementary product of divisors has a rational degree, and every cycle-class realization computes that same number."
+    },
+    {
+      "text": "Milne's conjecture asks this when the class is only a rational Hodge class.",
+      "verdict": "supported",
+      "sourceLine": "Milne's rationality conjecture asks for this conclusion when the original class is only known to be a rational Hodge class."
+    },
+    {
+      "text": "The paper claims it for every residue characteristic.",
+      "verdict": "supported",
+      "sourceLine": "We prove it for every residue characteristic."
+    },
+    {
+      "text": "Good reduction can acquire divisors that do not lift.",
+      "verdict": "supported",
+      "sourceLine": "The distinction matters because good reduction can acquire divisors that do not lift to the original variety."
+    },
+    {
+      "text": "Deligne's theorem gives compatible realizations but not the rationality of these pairings.",
+      "verdict": "supported",
+      "sourceLine": "Deligne's absolute-Hodge theorem gives compatible realizations of the Hodge class, but does not by itself identify its pairing with these new divisors as the degree of a rational cycle."
+    },
+    {
+      "text": "The conjecture is separate from representing the class by an algebraic cycle.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture isolates this rationality question from the stronger problem of representing the Hodge class by an algebraic cycle."
+    },
+    {
+      "text": "The number q is common to all realizations for the fixed data.",
+      "verdict": "supported",
+      "sourceLine": "The number \\(q\\) is common to all realizations for the fixed data"
+    },
+    {
+      "text": "Milne introduced the formulation while studying reduction of Shimura varieties.",
+      "verdict": "supported",
+      "sourceLine": "Milne introduced a weak-rationality formulation while studying the reduction of Shimura varieties and the Langlands--Rapoport conjecture"
+    },
+    {
+      "text": "A previous positive case is a CM abelian variety with simple ordinary reduction.",
+      "verdict": "supported",
+      "sourceLine": "A previous positive case is a CM abelian variety with simple ordinary reduction, together with all its powers"
+    },
+    {
+      "text": "Milne proved the CM case equivalent to a good theory of rational Tate classes.",
+      "verdict": "supported",
+      "sourceLine": "Milne proved that the rationality assertion for all CM abelian varieties is equivalent to the existence of such a good theory"
+    },
+    {
+      "text": "With the CM Hodge theorem, each specialized Hodge class is one rational algebraic cycle in all realizations.",
+      "verdict": "supported",
+      "sourceLine": "represents each specialized Hodge class by one rational algebraic cycle in all the stated realizations."
+    },
+    {
+      "text": "The main theorem is independent of the CM Hodge theorem.",
+      "verdict": "supported",
+      "sourceLine": "This consequence uses the CM Hodge theorem; the proof of Theorem~\\ref{thm:main} is independent of it."
+    },
+    {
+      "text": "Deligne proved every Hodge class on an abelian variety is absolute Hodge.",
+      "verdict": "supported",
+      "sourceLine": "Deligne proved that every Hodge class on an abelian variety is absolute Hodge"
+    },
+    {
+      "text": "The key step is a dichotomy for balanced Weil classes.",
+      "verdict": "supported",
+      "sourceLine": "The key step is a dichotomy for balanced Weil classes: either all the complementary Lefschetz pairings vanish, or the specialized class is itself a rational polynomial in divisors, simultaneously in every realization."
+    },
+    {
+      "text": "Normalization by rational intersection numbers makes the transports simultaneous in all realizations.",
+      "verdict": "supported",
+      "sourceLine": "A separate normalization by rational intersection numbers makes the tensor transports simultaneous in all realizations."
+    }
+  ]
+}
