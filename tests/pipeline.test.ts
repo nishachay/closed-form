@@ -17,6 +17,7 @@ import {
   readReaderPrompt,
   runDryRun,
   selectFamilies,
+  sourceDirFromEnv,
   verifyAiRole,
 } from '../scripts/explain.js';
 import catalog from '../src/data/catalog.json';
@@ -140,10 +141,17 @@ describe('archive entries (§10): every published entry validates', () => {
 });
 
 describe('007 dry run (§11, offline)', () => {
+  // Needs the paper LaTeX on disk: the source/openai-math submodule (CI checks it out),
+  // or CF_SOURCE_DIR pointing at an openai/math checkout.
+  const sourceDir = sourceDirFromEnv();
+  const missingSource =
+    `no paper LaTeX under ${sourceDir}: run \`git submodule update --init source/openai-math\` ` +
+    'or set CF_SOURCE_DIR to an openai/math checkout';
+
   it('gathers tex sources with a 64-hex hash', async () => {
     const fam = fams.find((f) => f.id === '007') as Family;
-    const g = await gatherFamily('source/openai-math', fam, fam.summary);
-    expect(g.texFiles.length).toBeGreaterThan(0);
+    const g = await gatherFamily(sourceDir, fam, fam.summary);
+    expect(g.texFiles.length, missingSource).toBeGreaterThan(0);
     expect(g.texChars).toBeGreaterThan(1000);
     expect(g.sourceHash).toMatch(/^[0-9a-f]{64}$/);
     expect(g.evidence.some((e) => e.kind === 'trace')).toBe(true);
@@ -157,7 +165,7 @@ describe('007 dry run (§11, offline)', () => {
     expect(r.id).toBe('007');
     expect(r.subject).toBe('Number theory');
     expect(r.trust).toBe('formal');
-    expect(r.texFiles).toBeGreaterThan(0);
+    expect(r.texFiles, missingSource).toBeGreaterThan(0);
     expect(r.readerPromptChars).toBeGreaterThan(5000);
     expect(r.sourceHash).toMatch(/^[0-9a-f]{64}$/);
     expect(r.existing).toBe(true);

@@ -18,6 +18,7 @@
  * Usage:
  *   pnpm explain --ids 007,017 | --batch 10 | --traces | --all [--concurrency 20] [--dry-run]
  *   pnpm calibrate [--apply]
+ *   CF_SOURCE_DIR=<openai/math checkout>  # default source/openai-math (the submodule)
  *
  * Never run `--all` for real without a `--dry-run` first.
  */
@@ -63,6 +64,11 @@ async function failToHuman(id: string, error: unknown): Promise<never> {
 }
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+/** The openai/math checkout: CF_SOURCE_DIR, else the source/openai-math submodule (same as ingest, lint-ste, source-quotes). */
+export function sourceDirFromEnv(): string {
+  return process.env.CF_SOURCE_DIR ?? join(root, 'source/openai-math');
+}
 const entriesDir = join(root, 'src/content/entries');
 const pipelineDir = join(root, 'pipeline');
 
@@ -758,7 +764,7 @@ export async function runDryRun(ids: string[]): Promise<DryRunRow[]> {
   const readerMd = await readReaderPrompt();
   const schemaText = await readFile(join(root, 'schema/entry.schema.json'), 'utf-8');
   const example017 = await readFile(join(entriesDir, '017.json'), 'utf-8');
-  const sourceDir = join(root, 'source/openai-math');
+  const sourceDir = sourceDirFromEnv();
   const rows: DryRunRow[] = [];
   for (const f of fams) {
     const fam = catalog.families.find((x) => x.id === f.id) as Family;
@@ -934,7 +940,7 @@ async function main(): Promise<void> {
   const cfg = loadConfig();
   const catalog = await loadCatalog();
   const existing = await loadExisting();
-  const sourceDir = join(root, 'source/openai-math');
+  const sourceDir = sourceDirFromEnv();
 
   // Pre-gather for skip decisions (cheap, local).
   const pendingHashes = new Map<string, string>();
