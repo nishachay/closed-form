@@ -133,12 +133,14 @@
     {
       "text": "Adding one variable gives a polynomial ring in five variables, while A is not a polynomial ring in four, so cancellation fails over the complex numbers in dimension four.",
       "verdict": "supported",
-      "sourceLine": "Consequently the Zariski cancellation problem over the complex numbers has a negative answer in dimension four."
+      "sourceLine": "Consequently the Zariski cancellation problem over the complex numbers has a negative answer in dimension four.",
+      "sourceQuote": "Consequently the Zariski cancellation problem over the complex numbers has a negative answer in dimension four."
     },
     {
       "text": "An isomorphism of cylinders need not respect the projection, so its existence alone does not give coordinates on A.",
       "verdict": "supported",
-      "sourceLine": "An isomorphism of cylinders need not respect the given projection to the affine line, so its existence alone does not identify polynomial coordinates on"
+      "sourceLine": "An isomorphism of cylinders need not respect the given projection to the affine line, so its existence alone does not identify polynomial coordinates on",
+      "sourceQuote": "An isomorphism of cylinders need not respect the given projection to the affine line, so its existence alone does not identify polynomial coordinates on $A$."
     },
     {
       "text": "Cancellation for the line follows from Abhyankar, Heinzer and Eakin.",
@@ -171,7 +173,8 @@
     {
       "text": "The main work is proving that A is not polynomial.",
       "verdict": "supported",
-      "sourceLine": "The main work is to prove that … itself is not polynomial."
+      "sourceLine": "The main work is to prove that … itself is not polynomial.",
+      "sourceQuote": "The main work is to prove that $A$ itself is not polynomial."
     },
     {
       "text": "Makar-Limanov used additive actions to show the Russell cubic is not affine three-space.",
@@ -182,7 +185,8 @@
     {
       "text": "The final rigidity argument uses the Mason–Stothers polynomial abc inequality, together with a nonsquare argument.",
       "verdict": "supported",
-      "sourceLine": "The Mason--Stothers polynomial $abc$ inequality and the nonsquareness of $-u^3$ in $\\Frac\\Rt$ force $E'$ to fix $a,d,u$."
+      "sourceLine": "The Mason--Stothers polynomial $abc$ inequality and the nonsquareness of $-u^3$ in $\\Frac\\Rt$ force $E'$ to fix $a,d,u$.",
+      "sourceQuote": "The Mason--Stothers polynomial $abc$ inequality~\\cite{Mason,Stothers} and the nonsquareness of $-u^3$ in $\\Frac\\Rt$ force $E'$ to fix $a,d,u$. The determinant relation then forces positive fiber weight, contradicting the sign obtained in the preceding stage."
     },
     {
       "text": "At p = 0, H reduces to x0²F − (1 + 2sx0)J, linear in F and J.",
@@ -192,7 +196,8 @@
     {
       "text": "For either map, the fiber over every point of its base is affine three-space, and neither map is Zariski-locally trivial.",
       "verdict": "supported",
-      "sourceLine": "For either morphism and every point $y$ of its base, the fiber over $y$ is isomorphic to $\\Aff^3_{\\kappa(y)}$"
+      "sourceLine": "For either morphism and every point $y$ of its base, the fiber over $y$ is isomorphic to $\\Aff^3_{\\kappa(y)}$",
+      "sourceQuote": "For either morphism and every point $y$ of its base, the fiber over $y$ is isomorphic to $\\Aff^3_{\\kappa(y)}$; in particular, every geometric fiber is affine three-space."
     },
     {
       "text": "Dolgachev and Weisfeiler predicted such a morphism is Zariski-locally a product with affine space.",
@@ -203,17 +208,20 @@
     {
       "text": "The Dolgachev–Weisfeiler conjecture fails in relative dimension three over the line and the plane.",
       "verdict": "supported",
-      "sourceLine": "Thus the Dolgachev--Weisfeiler affine-fibration conjecture fails in relative dimension three over each of the smooth complex affine bases"
+      "sourceLine": "Thus the Dolgachev--Weisfeiler affine-fibration conjecture fails in relative dimension three over each of the smooth complex affine bases",
+      "sourceQuote": "Thus the Dolgachev--Weisfeiler affine-fibration conjecture fails in relative dimension three over each of the smooth complex affine bases $\\Aff^1$ and $\\Aff^2$."
     },
     {
       "text": "Local triviality of the map p would make A a polynomial ring in four variables.",
       "verdict": "supported",
-      "sourceLine": "then use the nonpolynomiality of $A$ to rule out Zariski local triviality"
+      "sourceLine": "then use the nonpolynomiality of $A$ to rule out Zariski local triviality",
+      "sourceQuote": "We first use it to prove that the morphisms are smooth, then use the nonpolynomiality of $A$ to rule out Zariski local triviality."
     },
     {
       "text": "The paper builds a filtration of A by order along p = 0 and identifies its graded algebra G.",
       "verdict": "supported",
-      "sourceLine": "Its negative defines the \\emph{valuation degree} $\\deg h=-\\ord_p(h)$ and a filtration of $A$."
+      "sourceLine": "Its negative defines the \\emph{valuation degree} $\\deg h=-\\ord_p(h)$ and a filtration of $A$.",
+      "sourceQuote": "Its negative defines the \\emph{valuation degree} $\\deg h=-\\ord_p(h)$ and a filtration of $A$."
     },
     {
       "text": "The Stable Coordinate Conjecture asks whether a polynomial that is a coordinate after adding one variable was already a coordinate.",
@@ -224,12 +232,14 @@
     {
       "text": "H is not a coordinate of the five-variable ring but is one after adding w.",
       "verdict": "supported",
-      "sourceLine": "is not a coordinate of … but it is a coordinate of … for one independent variable"
+      "sourceLine": "is not a coordinate of … but it is a coordinate of … for one independent variable",
+      "sourceQuote": "The polynomial $H$ in \\eqref{eq:example} is not a coordinate of $P=\\kk[p,s,u,F,J]$, but it is a coordinate of $P[w]$ for one independent variable $w$. Thus the Stable Coordinate Conjecture over $\\kk$ fails in ambient dimension five after one stabilization."
     },
     {
       "text": "The fibration counterexamples do not address relative dimensions one or two.",
       "verdict": "supported",
-      "sourceLine": "they do not address the corresponding assertions in relative dimensions one or two"
+      "sourceLine": "they do not address the corresponding assertions in relative dimensions one or two",
+      "sourceQuote": "These counterexamples have relative dimension three; they do not address the corresponding assertions in relative dimensions one or two."
     },
     {
       "text": "Lean covers the main cancellation statement; the stable-coordinate and line-bundle lifting consequences are not included.",

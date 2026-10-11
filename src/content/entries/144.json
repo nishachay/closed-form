@@ -124,22 +124,26 @@
     {
       "text": "There is a smooth volume-preserving diffeomorphism of the three-torus and a real mean-zero f whose iterates form an orthonormal basis.",
       "verdict": "supported",
-      "sourceLine": "There exist a … volume-preserving diffeomorphism … and a real function … such that"
+      "sourceLine": "There exist a … volume-preserving diffeomorphism … and a real function … such that",
+      "sourceQuote": "There exist a $C^\\infty$ volume-preserving diffeomorphism $T\\colon\\T^3\\to\\T^3$ and a real function $f\\in L^2_0(\\T^3,\\mu)$ such that \\[ \\{f\\circ T^n:n\\in\\Z\\} \\] is an orthonormal basis of $L^2_0(\\T^3,\\mu)$."
     },
     {
       "text": "T is ergodic, and the Koopman operator is unitarily equivalent to multiplication by the coordinate on the circle.",
       "verdict": "supported",
-      "sourceLine": "Consequently … is ergodic, and … on this space is unitarily equivalent to multiplication by the coordinate … on"
+      "sourceLine": "Consequently … is ergodic, and … on this space is unitarily equivalent to multiplication by the coordinate … on",
+      "sourceQuote": "Consequently $T$ is ergodic, and $U_T$ on this space is unitarily equivalent to multiplication by the coordinate $w$ on $L^2(S^1,m)$."
     },
     {
       "text": "The generator f is only required to be in L^2.",
       "verdict": "supported",
-      "sourceLine": "The generator … is only required to belong to"
+      "sourceLine": "The generator … is only required to belong to",
+      "sourceQuote": "The invariant measure in Theorem~\\ref{thm:main} is the standard smooth volume itself. The generator $f$ is only required to belong to $L^2$."
     },
     {
       "text": "The formulation is distinct from the real-line question recorded by Ulam and attributed to Banach.",
       "verdict": "supported",
-      "sourceLine": "The formulation above is distinct from the historical real-line question recorded by Ulam and attributed to Banach"
+      "sourceLine": "The formulation above is distinct from the historical real-line question recorded by Ulam and attributed to Banach",
+      "sourceQuote": "The formulation above is distinct from the historical real-line question recorded by Ulam and attributed to Banach \\cite[\\S 6, p.~76]{Ulam1960}."
     },
     {
       "text": "Rokhlin asked for ergodic automorphisms with simple, or at least finite-multiplicity, Lebesgue spectrum.",
@@ -179,22 +183,26 @@
     {
       "text": "A nonzero time map of a simple Lebesgue flow has countably infinite multiplicity, so flow results do not give the theorem.",
       "verdict": "supported",
-      "sourceLine": "Taking a nonzero time map of a simple Lebesgue flow yields countably infinite multiplicity"
+      "sourceLine": "Taking a nonzero time map of a simple Lebesgue flow yields countably infinite multiplicity",
+      "sourceQuote": "Taking a nonzero time map of a simple Lebesgue flow yields countably infinite multiplicity: its spectral model is multiplication by $\\ee(t\\xi)$ on $L^2(\\R,\\dd\\xi)$, and the substitution $\\xi=(x+k)/|t|$, with $x\\in[0,1)$ and $k\\in\\Z$, gives one Lebesgue copy for each $k$."
     },
     {
       "text": "The approximating maps are integrable twists of the form S(θ,u,a)=(θ+φ(u),u,a).",
       "verdict": "supported",
-      "sourceLine": "The approximating maps are integrable twists."
+      "sourceLine": "The approximating maps are integrable twists.",
+      "sourceQuote": "The approximating maps are integrable twists."
     },
     {
       "text": "The loss is quadratic in the block's strength budget while the block still provides an estimator.",
       "verdict": "supported",
-      "sourceLine": "quadratic in the block's strength budget, while the same block provides an estimator of the color label."
+      "sourceLine": "quadratic in the block's strength budget, while the same block provides an estimator of the color label.",
+      "sourceQuote": "Centering each block at a smooth approximation to this current mean makes the loss in $\\int\\sqrt p$ quadratic in the block's strength budget, while the same block provides an estimator of the color label."
     },
     {
       "text": "Repetition makes prediction arbitrarily accurate with arbitrarily little loss.",
       "verdict": "supported",
-      "sourceLine": "Repetition makes prediction arbitrarily accurate with arbitrarily little loss in"
+      "sourceLine": "Repetition makes prediction arbitrarily accurate with arbitrarily little loss in",
+      "sourceQuote": "Repetition makes prediction arbitrarily accurate with arbitrarily little loss in $\\int\\sqrt p$."
     },
     {
       "text": "Separating the two estimates is the central finite construction.",
@@ -204,12 +212,14 @@
     {
       "text": "Whitening restores the spectral density exactly to one, and a diagonal limit preserves the orthonormal orbit.",
       "verdict": "supported",
-      "sourceLine": "A diagonal limit preserves the orthonormal orbit and makes its span contain every member of a dense family of observables."
+      "sourceLine": "A diagonal limit preserves the orthonormal orbit and makes its span contain every member of a dense family of observables.",
+      "sourceQuote": "A diagonal limit preserves the orthonormal orbit and makes its span contain every member of a dense family of observables."
     },
     {
       "text": "The paper claims mixing, zero entropy, and vanishing Lyapunov exponents as consequences; mixing of every order uses a separate theorem.",
       "verdict": "supported",
-      "sourceLine": "derives mixing, zero entropy, and vanishing Lyapunov exponents. Mixing of every order uses, in addition, the separate multiple-mixing theorem of"
+      "sourceLine": "derives mixing, zero entropy, and vanishing Lyapunov exponents. Mixing of every order uses, in addition, the separate multiple-mixing theorem of",
+      "sourceQuote": "Section~\\ref{sec:consequences} derives mixing, zero entropy, and vanishing Lyapunov exponents. Mixing of every order uses, in addition, the separate multiple-mixing theorem of \\cite{MultipleMixing2026}."
     },
     {
       "text": "The Lean scope note says the formalization constructs the map, a real cyclic vector whose iterates form an orthonormal basis, the identification with multiplication on the circle, and ergodicity.",

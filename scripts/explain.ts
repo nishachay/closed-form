@@ -26,7 +26,8 @@ import { appendFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promise
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { entrySchema, AI_ROLES, type Entry } from '../src/lib/entry.js';
-import { hasErrors, lintClaimQuotes, lintEntry, lintSources, stripInlineTags } from './lint-ste.js';
+import { hasErrors, lintClaimQuotes, lintEntry, lintSources, loadTexByPaper, stripInlineTags } from './lint-ste.js';
+import { fillSourceQuotes, orderClaimKeys } from './source-quote.js';
 import type { Catalog, Family } from '../ingest/types.js';
 import { OPENAI_MATH_META } from '../ingest/openai-math.js';
 
@@ -894,8 +895,12 @@ async function processFamily(
 
   // claims[] holds only surviving supported/external verdicts (unsupported
   // statements are deleted by the checker, never listed), so nothing to count.
-  const out = { ...final };
-  await writeFile(join(entriesDir, `${family.id}.json`), JSON.stringify(out, null, 2) + '\n', 'utf-8');
+  // Readers see the full sentence around each cited sourceLine (scripts/source-quote.ts):
+  // copied deterministically from the LaTeX, never written by a model.
+  const texByPaper = await loadTexByPaper(family.papers.map((p) => ({ pdf: p.pdf })), join(root, 'source/openai-math'));
+  const out = { ...final } as unknown as Record<string, unknown>;
+  fillSourceQuotes(out, texByPaper);
+  await writeFile(join(entriesDir, `${family.id}.json`), JSON.stringify(orderClaimKeys(out), null, 2) + '\n', 'utf-8');
   return {
     id: family.id,
     reader: cfg.readerModel,

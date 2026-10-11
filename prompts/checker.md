@@ -36,7 +36,8 @@ Rules for the corrected entry:
   `[n]` point at `claims[n-1]` (1-based): when you remove or reorder claims, renumber
   every marker so it still points at the same claim, and drop a marker whose claim was
   removed. A marker belongs only on a sentence stating what a paper claims or proves,
-  and only on a claim with a `sourceLine`; never add one to an example or background. Recompute every number
+  and only on a claim with a `sourceLine`; never add one to an example or background.
+  Leave `sourceQuote` out (or unchanged): the pipeline fills it from the LaTeX. Recompute every number
   in its worked example; a number you cannot reproduce is unsupported. It must not use
   the word "verified". (Legacy entries without `explanation` keep their four sections,
   titles and order fixed.)

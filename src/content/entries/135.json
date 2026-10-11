@@ -119,17 +119,20 @@
     {
       "text": "Over every characteristic-zero field, homogeneous depth-five circuits for IMM_{n,n} need at least n^{√n/400} gates for large n.",
       "verdict": "supported",
-      "sourceLine": "has at least $n^{\\sqrt n/400}$ gates.  Bottom fan-in and bottom support are unrestricted."
+      "sourceLine": "has at least $n^{\\sqrt n/400}$ gates.  Bottom fan-in and bottom support are unrestricted.",
+      "sourceQuote": "There is an absolute integer $n_0$ such that, for every field $K$ of characteristic zero and every $n\\ge n_0$, every syntactically homogeneous $\\Sigma\\Pi\\Sigma\\Pi\\Sigma$ circuit over $K$ computing $\\IMM_{n,n}$ has at least $n^{\\sqrt n/400}$ gates. Bottom fan-in and bottom support are unrestricted."
     },
     {
       "text": "Gates may be shared, with arbitrary finite fan-in and fan-out.",
       "verdict": "supported",
-      "sourceLine": "Fan-in and fan-out are arbitrary and finite.  Gates may be shared"
+      "sourceLine": "Fan-in and fan-out are arbitrary and finite.  Gates may be shared",
+      "sourceQuote": "Fan-in and fan-out are arbitrary and finite. Gates may be shared, and a gate may occur repeatedly among another gate's inputs; repeated occurrences at a product gate are counted with their multiplicities."
     },
     {
       "text": "A block construction with t = ⌈√n⌉ gives at most 2n^3+rn^2+rn^{t+1}+n^{r-1}+1 ≤ n^{√n+4} gates; for n = 16 this is 4,207,617.",
       "verdict": "supported",
-      "sourceLine": "2n^3+rn^2+rn^{t+1}+n^{r-1}+1"
+      "sourceLine": "2n^3+rn^2+rn^{t+1}+n^{r-1}+1",
+      "sourceQuote": "There is a syntactically homogeneous $\\Sigma\\Pi\\Sigma\\Pi\\Sigma$ circuit over $K$ computing $\\IMM_{n,n}$ whose number of gates, including leaves, is at most \\begin{equation} \\label{eq:upper-gate-bound} 2n^3+rn^2+rn^{t+1}+n^{r-1}+1 \\le n^{\\sqrt n+4}. \\end{equation}"
     },
     {
       "text": "Nisan and Wigderson asked for an explicit homogeneous polynomial needing superpolynomial size at constant depth, even depth five.",
@@ -154,22 +157,26 @@
     {
       "text": "The new contribution is quantitative: the √n exponent in the balanced regime w = d = n with unrestricted bottom forms.",
       "verdict": "supported",
-      "sourceLine": "The comparison addressed here is quantitative: we obtain the $\\sqrt n$ exponent in the balanced regime $w=d=n$ for homogeneous five-layer circuits with unrestricted bottom linear forms."
+      "sourceLine": "The comparison addressed here is quantitative: we obtain the $\\sqrt n$ exponent in the balanced regime $w=d=n$ for homogeneous five-layer circuits with unrestricted bottom linear forms.",
+      "sourceQuote": "The comparison addressed here is quantitative: we obtain the $\\sqrt n$ exponent in the balanced regime $w=d=n$ for homogeneous five-layer circuits with unrestricted bottom linear forms."
     },
     {
       "text": "The proof uses a rank measure where some variables become derivatives and others multiplication operators.",
       "verdict": "supported",
-      "sourceLine": "Replace its $V$-variables by partial derivatives and its $U$-variables by multiplication operators."
+      "sourceLine": "Replace its $V$-variables by partial derivatives and its $U$-variables by multiplication operators.",
+      "sourceQuote": "Replace its $V$-variables by partial derivatives and its $U$-variables by multiplication operators."
     },
     {
       "text": "The lower estimate for IMM comes from counting paths in matrix multiplication.",
       "verdict": "supported",
-      "sourceLine": "The opposite estimate uses the paths in matrix multiplication."
+      "sourceLine": "The opposite estimate uses the paths in matrix multiplication.",
+      "sourceQuote": "The opposite estimate uses the paths in matrix multiplication."
     },
     {
       "text": "The gate complexity over characteristic-zero fields is n^{Θ(√n)}.",
       "verdict": "supported",
-      "sourceLine": "Thus the gate complexity over characteristic-zero fields is $n^{\\Theta(\\sqrt n)}$."
+      "sourceLine": "Thus the gate complexity over characteristic-zero fields is $n^{\\Theta(\\sqrt n)}$.",
+      "sourceQuote": "Thus the gate complexity over characteristic-zero fields is $n^{\\Theta(\\sqrt n)}$."
     },
     {
       "text": "The Lean scope note says the formalization proves the lower bound and the upper bound, with a Comparator link.",

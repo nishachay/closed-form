@@ -118,12 +118,14 @@
       "text": "Every set with divergent reciprocal sum contains nonconstant progressions of every finite length.",
       "verdict": "supported",
       "sourceLine": "contains nonconstant arithmetic progressions of every finite length.",
+      "sourceQuote": "Every set $A\\subseteq\\mathbb N$ with $\\sum_{a\\in A}a^{-1}=\\infty$ contains nonconstant arithmetic progressions of every finite length.",
       "sourceId": 7
     },
     {
       "text": "There is a finite ceiling H_k on the reciprocal sum of every k-term-progression-free set.",
       "verdict": "supported",
       "sourceLine": "There is $H_k<\\infty$ such that every $k$-term-progression-free",
+      "sourceQuote": "There is $H_k<\\infty$ such that every $k$-term-progression-free $A\\subseteq\\mathbb N$ satisfies \\[ \\sum_{a\\in A}\\frac1a\\le H_k. \\]",
       "sourceId": 7
     },
     {
@@ -166,6 +168,7 @@
       "text": "Each dyadic block holds at most r_k(2^m) members of a progression-free set.",
       "verdict": "supported",
       "sourceLine": "Thus $|A\\cap[2^m,2^{m+1})|\\le r_k(2^m)$",
+      "sourceQuote": "Thus $|A\\cap[2^m,2^{m+1})|\\le r_k(2^m)$.",
       "sourceId": 7
     },
     {
@@ -190,12 +193,14 @@
       "text": "For each fixed k at least 3 there are positive constants with r_k(N) at most C_k N exp(-c_k (log N)^eps_k).",
       "verdict": "supported",
       "sourceLine": "For each fixed integer $k\\ge3$ there are constants",
+      "sourceQuote": "For each fixed integer $k\\ge3$ there are constants $C_k,c_k,\\varepsilon_k>0$ such that, for every $N\\ge2$, \\begin{equation}\\label{ap:density-bound} r_k(N)\\le C_kN\\exp\\bigl(-c_k(\\log N)^{\\varepsilon_k}\\bigr). \\end{equation}",
       "sourceId": 7
     },
     {
       "text": "The constants may depend on k and the exponent is not optimized.",
       "verdict": "supported",
       "sourceLine": "The constants may depend on the fixed length $k$; the exponent is not optimized.",
+      "sourceQuote": "The constants may depend on the fixed length $k$; the exponent is not optimized.",
       "sourceId": 7
     },
     {
@@ -208,36 +213,42 @@
       "text": "A fixed multiplicative density gain can be applied only a limited number of times before density exceeds one.",
       "verdict": "supported",
       "sourceLine": "A fixed multiplicative density gain can be applied only",
+      "sourceQuote": "A fixed multiplicative density gain can be applied only $O_k(1+\\log(1/\\alpha))$ times before the density exceeds one.",
       "sourceId": 7
     },
     {
       "text": "Keeping integer blocks exact preserves the equations defining the old region.",
       "verdict": "supported",
       "sourceLine": "preserves the equations defining the old region when a new constraint is added",
+      "sourceQuote": "Keeping these integer blocks, and substituting them exactly into all later polynomials, preserves the equations defining the old region when a new constraint is added.",
       "sourceId": 7
     },
     {
       "text": "The added precision is bounded without using the current or lower precisions.",
       "verdict": "supported",
       "sourceLine": "In particular, this bound does not use the current $Q_h$ or the lower precisions.",
+      "sourceQuote": "In particular, this bound does not use the current $Q_h$ or the lower precisions.",
       "sourceId": 7
     },
     {
       "text": "A divergent weighted sum with (log(2+a))^B/a also forces progressions of every length.",
       "verdict": "supported",
       "sourceLine": "Our bound also gives a stronger divergence criterion",
+      "sourceQuote": "Our bound also gives a stronger divergence criterion: for every fixed $B\\ge0$, a set $A\\subseteq\\mathbb N$ satisfying \\[ \\sum_{a\\in A}\\frac{(\\log(2+a))^B}{a}=\\infty \\] contains progressions of every finite length.",
       "sourceId": 7
     },
     {
       "text": "The paper recovers the Green–Tao theorem on dense subsets of the primes.",
       "verdict": "supported",
       "sourceLine": "It also recovers the theorem of Green and Tao that every subset of the primes of positive relative upper density contains infinitely many progressions of every finite length",
+      "sourceQuote": "It also recovers the theorem of Green and Tao that every subset of the primes of positive relative upper density contains infinitely many progressions of every finite length~\\cite[Theorem~1.2]{GreenTaoPrimes2008}.",
       "sourceId": 7
     },
     {
       "text": "No improvement of the three-term exponent is claimed.",
       "verdict": "supported",
       "sourceLine": "no improvement of the three-term exponent is claimed",
+      "sourceQuote": "Its contribution to Erd\\H{o}s's conjecture is this all-length, summable bound; no improvement of the three-term exponent is claimed.",
       "sourceId": 7
     },
     {

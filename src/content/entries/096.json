@@ -109,7 +109,8 @@
     {
       "text": "Extra orthogonal directions add zero to every centroid, so the value is the same in every dimension at least two.",
       "verdict": "supported",
-      "sourceLine": "An orthogonal Gaussian factor contributes zero to every centroid, so"
+      "sourceLine": "An orthogonal Gaussian factor contributes zero to every centroid, so",
+      "sourceQuote": "An orthogonal Gaussian factor contributes zero to every centroid, so the construction has the same value in every dimension at least two."
     },
     {
       "text": "Empty cells are allowed and cell probabilities are unrestricted.",
@@ -154,12 +155,14 @@
     {
       "text": "The proof takes an extremizer with the fewest cells of positive measure; merging shows pairwise inner products are negative.",
       "verdict": "supported",
-      "sourceLine": "one with the fewest cells of positive measure. Merging two cells shows"
+      "sourceLine": "one with the fewest cells of positive measure. Merging two cells shows",
+      "sourceQuote": "Among extremizers, choose one with the fewest cells of positive measure. Merging two cells shows that its nonzero centroids $z_1,\\ldots,z_m$ have strictly negative pairwise inner products."
     },
     {
       "text": "The three-dimensional theorem excludes four or fewer active cells.",
       "verdict": "supported",
-      "sourceLine": "Heilman, Jagannath, and Naor therefore excludes $m\\le4$ from any"
+      "sourceLine": "Heilman, Jagannath, and Naor therefore excludes $m\\le4$ from any",
+      "sourceQuote": "The theorem of Heilman, Jagannath, and Naor therefore excludes $m\\le4$ from any counterexample to the desired bound."
     },
     {
       "text": "The new estimates handle five or more active cells.",
@@ -169,22 +172,26 @@
     {
       "text": "Two consequences of optimality are used: deleting one score, and competing against two scores.",
       "verdict": "supported",
-      "sourceLine": "linear scores. Two different consequences of optimality then constrain"
+      "sourceLine": "linear scores. Two different consequences of optimality then constrain",
+      "sourceQuote": "We first replace this infinite-dimensional optimization by a finite list of Gaussian linear scores. Two different consequences of optimality then constrain that list: deleting one score costs a definite amount of expected maximum, and competing against two scores constrains a covariance determinant."
     },
     {
       "text": "The probability bounds are combined with the total probability 1 to reach a contradiction.",
       "verdict": "supported",
-      "sourceLine": "bounds with the identity $\\sum_iP_i=1$. The available probability mass"
+      "sourceLine": "bounds with the identity $\\sum_iP_i=1$. The available probability mass",
+      "sourceQuote": "Finally, Section~\\ref{elim:section} combines the scalar probability bounds with the identity $\\sum_iP_i=1$. The available probability mass forces the third-largest squared length to be too large relative to the smallest length, contradicting the determinant bound."
     },
     {
       "text": "Every finite numerical comparison has exact rational enclosures.",
       "verdict": "supported",
-      "sourceLine": "gives exact rational enclosures for every finite numerical comparison,"
+      "sourceLine": "gives exact rational enclosures for every finite numerical comparison,",
+      "sourceQuote": "Appendix~\\ref{cert:arithmetic} gives exact rational enclosures for every finite numerical comparison, including the complete interval cover needed for the scalar constraint."
     },
     {
       "text": "The proof uses the three-dimensional bound and Ehrhard's inequality as external inputs.",
       "verdict": "supported",
-      "sourceLine": "The geometric proof uses the three-dimensional propeller bound and"
+      "sourceLine": "The geometric proof uses the three-dimensional propeller bound and",
+      "sourceQuote": "The geometric proof uses the three-dimensional propeller bound and Ehrhard's inequality as its external theorem inputs; the remaining geometric estimates are proved here."
     },
     {
       "text": "Khot and Naor's rounding has loss factor (8π/9)(1 − 1/k).",
@@ -194,12 +201,14 @@
     {
       "text": "Any fixed loss factor below α_k is NP-hard, using the companion Unique Games Theorem.",
       "verdict": "supported",
-      "sourceLine": "deterministic approximation with a fixed loss factor below $\\alpha_k$."
+      "sourceLine": "deterministic approximation with a fixed loss factor below $\\alpha_k$.",
+      "sourceQuote": "Together with their low-influence theorem and the companion paper \\emph{The Unique Games Theorem} \\cite[Theorem~1.1]{UniqueGamesTheorem}, it gives NP-hardness of every deterministic approximation with a fixed loss factor below $\\alpha_k$."
     },
     {
       "text": "The Unique Games input is needed only for the hardness statement.",
       "verdict": "supported",
-      "sourceLine": "Unique Games input is needed only for the hardness statement."
+      "sourceLine": "Unique Games input is needed only for the hardness statement.",
+      "sourceQuote": "The separate Unique Games input is needed only for the hardness statement."
     },
     {
       "text": "Lean covers the bound for every dimension and cell count and its attainment; the Gaussian-maxima and kernel-clustering consequences are not included.",

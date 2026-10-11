@@ -126,6 +126,7 @@
       "text": "The Kaczmarz step's expected squared error shrinks by 1 − 1/d per observation.",
       "verdict": "supported",
       "sourceLine": "This calculation explains the scale … for fresh isotropic observations.",
+      "sourceQuote": "This calculation explains the scale \\(d\\log(1/\\epsilon)\\) for fresh isotropic observations. Strohmer and Vershynin's theorem concerns norm-weighted sampling from a fixed finite matrix; the equality above is the separate symmetry calculation for this stream.",
       "paper": 1
     },
     {
@@ -137,18 +138,21 @@
       "text": "The Kaczmarz update stores real numbers and gives no finite-bit upper bound.",
       "verdict": "supported",
       "sourceLine": "The displayed update stores real scalars and supplies no finite-bit upper bound.",
+      "sourceQuote": "The displayed update stores real scalars and supplies no finite-bit upper bound.",
       "paper": 1
     },
     {
       "text": "The learner reads pairs once, in order, keeps at most 2^M states, and computation is unrestricted.",
       "verdict": "supported",
       "sourceLine": "A learner reads the pairs once, in order. After each number of samples its persistent state belongs to a prescribed set of at most",
+      "sourceQuote": "A learner reads the pairs once, in order. After each number of samples its persistent state belongs to a prescribed set of at most \\(2^M\\) elements.",
       "paper": 1
     },
     {
       "text": "The output depends only on the terminal state, the stopping index and fresh randomness.",
       "verdict": "supported",
       "sourceLine": "is generated from the terminal state, the stopping index, and fresh randomness only. In particular, a discarded observation cannot be read again by the output rule.",
+      "sourceQuote": "At a stopping index its unit output \\(\\widehat s\\in S^{d-1}\\) is generated from the terminal state, the stopping index, and fresh randomness only. In particular, a discarded observation cannot be read again by the output rule.",
       "paper": 1
     },
     {
@@ -165,6 +169,7 @@
       "text": "A lower bound with noise does not by itself cover the exact experiment.",
       "verdict": "supported",
       "sourceLine": "A lower bound with additive noise does not by itself bound the more informative exact experiment.",
+      "sourceQuote": "A lower bound with additive noise does not by itself bound the more informative exact experiment.",
       "paper": 1
     },
     {
@@ -176,42 +181,49 @@
       "text": "For fixed A, memory at most A·d² bits and success at least 2/3, T ≥ c_A d log(1/ε).",
       "verdict": "supported",
       "sourceLine": "For every fixed finite … there are constants … and … such that the following holds.",
+      "sourceQuote": "For every fixed finite \\(A>0\\), there are constants \\(c_A>0\\) and \\(d_A\\) such that the following holds. Let \\(d\\ge d_A\\), let \\(0\\le M\\le Ad^2\\) be an integer, and let \\(0<\\epsilon\\le1/10\\).",
       "paper": 1
     },
     {
       "text": "For memory o(d²) the constant is absolute.",
       "verdict": "supported",
       "sourceLine": "The constant is absolute for",
+      "sourceQuote": "The constant is absolute for \\(o(d^2)\\) memory.",
       "paper": 1
     },
     {
       "text": "The companion paper gives the explicit bound 2^−16 d log₂(1/ε).",
       "verdict": "supported",
       "sourceLine": "require at least … samples for all sufficiently large",
+      "sourceQuote": "We prove that \\(o(d^2)\\) bits of persistent memory and angular success probability at least \\(2/3\\) require at least \\(2^{-16}d\\log_2(1/\\epsilon)\\) samples for all sufficiently large \\(d\\), uniformly for \\(0<\\epsilon\\le1/10\\).",
       "paper": 6
     },
     {
       "text": "One exact observation confines the signal to a hyperplane section of the sphere.",
       "verdict": "supported",
       "sourceLine": "Conditioning the uniform prior on one raw exact observation almost surely confines the signal to a hyperplane section of the sphere.",
+      "sourceQuote": "Conditioning the uniform prior on one raw exact observation almost surely confines the signal to a hyperplane section of the sphere.",
       "paper": 1
     },
     {
       "text": "The proof keeps the original prior fixed and studies future success from a state.",
       "verdict": "supported",
       "sourceLine": "We instead keep the original prior fixed and study the probability of future success from a prescribed state.",
+      "sourceQuote": "We instead keep the original prior fixed and study the probability of future success from a prescribed state.",
       "paper": 1
     },
     {
       "text": "Moving backward across a block of order d observations multiplies R by at most a constant.",
       "verdict": "supported",
       "sourceLine": "observations multiplies … by at most a constant for fixed",
+      "sourceQuote": "Moving backward across a block of order \\(d\\) observations multiplies \\(R\\) by at most a constant for fixed \\(M/d^2\\).",
       "paper": 1
     },
     {
       "text": "The theorem's constants may depend on A and it makes no uniform claim when A grows.",
       "verdict": "supported",
       "sourceLine": "The statement makes no uniform claim when",
+      "sourceQuote": "The statement makes no uniform claim when \\(A=A(d)\\) tends to infinity.",
       "paper": 1
     },
     {

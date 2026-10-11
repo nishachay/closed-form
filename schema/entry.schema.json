@@ -153,7 +153,13 @@
           "text": { "type": "string" },
           "verdict": { "enum": ["supported", "external"] },
           "sourceLine": { "type": "string" },
-          "sourceId": { "type": "integer" }
+          "sourceQuote": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Full sentence(s) of the paper LaTeX containing sourceLine, verbatim (comments removed, line breaks as single spaces). Shown to readers for cited claims; filled by pnpm source-quotes."
+          },
+          "sourceId": { "type": "integer" },
+          "paper": { "type": "integer", "minimum": 1 }
         }
       }
     },

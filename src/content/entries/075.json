@@ -121,12 +121,14 @@
     {
       "text": "For every complex-valued L log L function, the partial sums converge to the function off a set of measure zero, along the full sequence.",
       "verdict": "supported",
-      "sourceLine": "For every complex-valued $f\\in L\\log L(\\mathbb T)$, there is a measurable set $N_f$ of measure zero such that"
+      "sourceLine": "For every complex-valued $f\\in L\\log L(\\mathbb T)$, there is a measurable set $N_f$ of measure zero such that",
+      "sourceQuote": "For every complex-valued $f\\in L\\log L(\\mathbb T)$, there is a measurable set $N_f$ of measure zero such that \\[ \\lim_{N\\to\\infty}S_Nf(x)=f(x) \\qquad (x\\in\\mathbb T\\setminus N_f). \\]"
     },
     {
       "text": "The limit is along the full sequence N = 0, 1, 2, ….",
       "verdict": "supported",
-      "sourceLine": "The limit is along the full sequence $N=0,1,2,\\ldots$."
+      "sourceLine": "The limit is along the full sequence $N=0,1,2,\\ldots$.",
+      "sourceQuote": "The limit is along the full sequence $N=0,1,2,\\ldots$."
     },
     {
       "text": "L log L is the class where the average of |f| log(2+|f|) is finite.",
@@ -176,32 +178,38 @@
     {
       "text": "The theorem establishes the conjectured sufficiency of L log L for ordinary Fourier sums along the full sequence.",
       "verdict": "supported",
-      "sourceLine": "establishes the conjectured sufficiency of $L\\log L$ for the ordinary Fourier sums along the full sequence."
+      "sourceLine": "establishes the conjectured sufficiency of $L\\log L$ for the ordinary Fourier sums along the full sequence.",
+      "sourceQuote": "\\Cref{thm:main} establishes the conjectured sufficiency of $L\\log L$ for the ordinary Fourier sums along the full sequence."
     },
     {
       "text": "The paper derives a Luxemburg-norm weak-L1 maximal bound.",
       "verdict": "supported",
-      "sourceLine": "Stein's Banach-space theorem also yields the corresponding Luxemburg-norm weak-$L^1$ maximal bound"
+      "sourceLine": "Stein's Banach-space theorem also yields the corresponding Luxemburg-norm weak-$L^1$ maximal bound",
+      "sourceQuote": "Stein's Banach-space theorem also yields the corresponding Luxemburg-norm weak-$L^1$ maximal bound; see Corollary~\\ref{cor:fourier-weak-l1}."
     },
     {
       "text": "The proof must control many frequencies without a loss that grows with their number.",
       "verdict": "supported",
-      "sourceLine": "The finite proof must control many modulation frequencies without a loss that grows with their number."
+      "sourceLine": "The finite proof must control many modulation frequencies without a loss that grows with their number.",
+      "sourceQuote": "The finite proof must control many modulation frequencies without a loss that grows with their number."
     },
     {
       "text": "For a mass-one input of height at most e^d, the good-set integral of the maximal partial sum is at most Cd.",
       "verdict": "supported",
-      "sourceLine": "The main analytic estimate concerns one nonnegative input $\\rho$ of mass one and height at most $e^d$, where $d$ is large."
+      "sourceLine": "The main analytic estimate concerns one nonnegative input $\\rho$ of mass one and height at most $e^d$, where $d$ is large.",
+      "sourceQuote": "The main analytic estimate concerns one nonnegative input $\\rho$ of mass one and height at most $e^d$, where $d$ is large."
     },
     {
       "text": "The integral bound is summable with the masses of the height layers of an L log L function.",
       "verdict": "supported",
-      "sourceLine": "The integral bound is summable with the masses of the height layers of an $L\\log L$ function."
+      "sourceLine": "The integral bound is summable with the masses of the height layers of an $L\\log L$ function.",
+      "sourceQuote": "The integral bound is summable with the masses of the height layers of an $L\\log L$ function."
     },
     {
       "text": "The proof splits the input into pieces and counts information.",
       "verdict": "supported",
-      "sourceLine": "Information is counted under the first law and converted to path estimates under the second."
+      "sourceLine": "Information is counted under the first law and converted to path estimates under the second.",
+      "sourceQuote": "Information is counted under the first law and converted to path estimates under the second."
     },
     {
       "text": "The Lean formalization proves the theorem for every measurable complex-valued function with finite integral of |f| log(2+|f|).",
@@ -211,7 +219,8 @@
     {
       "text": "The proof splits the input into pieces and uses noisy observations to identify frequencies with nearly the same phase.",
       "verdict": "supported",
-      "sourceLine": "It splits the input into pieces and, on each piece, uses a noisy observation of the input point to identify frequencies with nearly the same phase."
+      "sourceLine": "It splits the input into pieces and, on each piece, uses a noisy observation of the input point to identify frequencies with nearly the same phase.",
+      "sourceQuote": "It splits the input into pieces and, on each piece, uses a noisy observation of the input point to identify frequencies with nearly the same phase."
     }
   ]
 }

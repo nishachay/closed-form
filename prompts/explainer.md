@@ -62,6 +62,9 @@ Do not print the answers. Use them to plan the prose.
   that have a `sourceLine`. No marker on examples, intuition, analogies or background.
   Never invent a citation; a result sentence with no supporting claim stays unmarked.
   Markers appear nowhere except the `explanation`.
+- Choose each cited claim's `sourceLine` from inside one ordinary sentence of the paper
+  (not a heading or a displayed formula). Do not write `sourceQuote`: the pipeline copies
+  the full sentence around the `sourceLine` from the LaTeX after checking.
 - If the result cannot be made clear without inventing a fact or an example the
   source does not support, say so plainly in the explanation instead of filling the gap.
 - Wording must match the trust status: "proves" only with a Lean proof listed in the

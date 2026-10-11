@@ -1079,3 +1079,44 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 .cites li.is-flash,.cites li:target{background:color-mix(in oklab,var(--color-accent) 10%,transparent);box-shadow:0 0 0 .5rem color-mix(in oklab,var(--color-accent) 10%,transparent)}
 .cites li.is-flash{transition:none}
 @media (prefers-reduced-motion:reduce){.cites li{transition:none}}
+
+/* =====================================================================
+   Oct 2026: folded quote list, compact sources, no sideways scroll
+   ===================================================================== */
+
+/* "All quoted lines (N)": folded by default; each quote already opens from its numeral. */
+.cites-d > summary{display:flex;align-items:center;gap:.5rem;list-style:none;cursor:pointer;border-radius:6px;-webkit-tap-highlight-color:transparent}
+.cites-d > summary::-webkit-details-marker{display:none}
+.cites-d > summary::before{content:"";flex:none;inline-size:.4375rem;block-size:.4375rem;border-inline-end:1.5px solid var(--color-text-tertiary);border-block-end:1.5px solid var(--color-text-tertiary);transform:rotate(-45deg);transition:transform .15s var(--ease-out)}
+.cites-d[open] > summary::before{transform:rotate(45deg) translate(-.125rem,-.0625rem)}
+.cites-d > summary:focus-visible{outline:2px solid var(--color-accent);outline-offset:4px}
+.entry .e-cites .cites-d > summary h2{margin:0;min-block-size:2.75rem}
+.entry .e-cites .cites-d > summary h2 .num{letter-spacing:0;color:var(--color-text-tertiary)}
+@media (hover:hover){.cites-d > summary:hover h2{color:var(--color-text-secondary)}}
+.cites-d[open] > .cites{margin-block-start:.5rem}
+.e-cites{margin-block-start:2.5rem}
+@media (prefers-reduced-motion:reduce){.cites-d > summary::before{transition:none}}
+
+/* Other sources: one compact list (the result's own papers are under "The original"). */
+.e-refs{margin-block-start:2.5rem}
+.refs{gap:.375rem}
+.refs li{font-size:.8125rem;line-height:1.5}
+
+/* Nothing on an entry page may push it wider than the screen. */
+.entry p,.entry li,.entry blockquote,.entry dd,.entry dt,.entry h1,.entry .headline{overflow-wrap:break-word}
+.refs li,.orig li,.cites-m{overflow-wrap:anywhere}
+/* Long formulas scroll inside their own box instead of widening the page. */
+.cites-q,.refs q{max-inline-size:100%;overflow-x:auto;overflow-y:hidden;padding-block:.125rem}
+.cites-q .katex-display,.cite-pop-q .katex-display{margin:.375rem 0;overflow-x:auto;overflow-y:hidden;padding-block:.125rem}
+.entry .katex-display{max-inline-size:100%;overflow-x:auto;overflow-y:hidden}
+.cite-pop-q{overflow-x:auto}
+.entry > *,.entry section,.entry-wrap > *{min-inline-size:0}
+/* Header on very narrow screens (or large text, which narrows the layout): the links shrink
+   and, as a last resort, scroll inside the header instead of widening the page. */
+.top .top-in{min-inline-size:0}
+.top-r{min-inline-size:0;flex-shrink:1}
+.top .top-nav{min-inline-size:0;overflow-x:auto;scrollbar-width:none;padding:3px}
+.top .top-nav::-webkit-scrollbar{display:none}
+.top .logo,.top-search,.top-gh{flex:none}
+@media (max-width:20rem){.top .top-in{gap:.25rem}.top .top-nav a{padding-inline:.375rem}.top .logo{font-size:.9375rem}.top-r{gap:0}}
+.entry .gl{grid-template-columns:repeat(auto-fill,minmax(min(14rem,100%),1fr))}

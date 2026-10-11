@@ -131,47 +131,56 @@
     {
       "text": "There are fixed constants c1, c2 with c1 log log b ≤ N(b) ≤ c2 log log b for every large enough b.",
       "verdict": "supported",
-      "sourceLine": "c_1\\log\\log b\\le N(b)\\le c_2\\log\\log b."
+      "sourceLine": "c_1\\log\\log b\\le N(b)\\le c_2\\log\\log b.",
+      "sourceQuote": "There are absolute constants $c_1,c_2>0$ and $b_0$ such that, for every integer $b\\ge b_0$, \\[ c_1\\log\\log b\\le N(b)\\le c_2\\log\\log b. \\]"
     },
     {
       "text": "The upper bound holds for every top number a.",
       "verdict": "supported",
-      "sourceLine": "In particular, the upper bound holds for every integer numerator"
+      "sourceLine": "In particular, the upper bound holds for every integer numerator",
+      "sourceQuote": "In particular, the upper bound holds for every integer numerator $1\\le a<b$."
     },
     {
       "text": "The lower bound was already known; the new part is the upper bound.",
       "verdict": "supported",
-      "sourceLine": "The lower bound is classical; the issue is the uniform upper bound."
+      "sourceLine": "The lower bound is classical; the issue is the uniform upper bound.",
+      "sourceQuote": "The lower bound is classical; the issue is the uniform upper bound."
     },
     {
       "text": "The paper does not compute c2.",
       "verdict": "supported",
-      "sourceLine": "quantifying the constant $c_2$ in the uniform theorem."
+      "sourceLine": "quantifying the constant $c_2$ in the uniform theorem.",
+      "sourceQuote": "A direct construction additionally gives the numerical lower slope in Corollary~\\ref{cor:prescribed}, without quantifying the constant $c_2$ in the uniform theorem."
     },
     {
       "text": "Each cut of one unit fraction shrinks the problem to a smaller top number.",
       "verdict": "supported",
-      "sourceLine": "Thus one unit fraction reduces the problem to the residue of $-Qt$"
+      "sourceLine": "Thus one unit fraction reduces the problem to the residue of $-Qt$",
+      "sourceQuote": "Thus one unit fraction reduces the problem to the residue of $-Qt$ modulo $u$."
     },
     {
       "text": "The difficulty is keeping the failing top numbers from piling up.",
       "verdict": "supported",
-      "sourceLine": "The difficulty is to prevent the exceptional numerators from accumulating"
+      "sourceLine": "The difficulty is to prevent the exceptional numerators from accumulating",
+      "sourceQuote": "The difficulty is to prevent the exceptional numerators from accumulating as these reductions are joined."
     },
     {
       "text": "Almost every top number in a large range has a short expansion.",
       "verdict": "supported",
-      "sourceLine": "a large interval of numerators in which almost every fraction $u/(MC)$ has"
+      "sourceLine": "a large interval of numerators in which almost every fraction $u/(MC)$ has",
+      "sourceQuote": "We then construct an auxiliary integer $M$ with $e^S<M=\\exp(O(S))$ and a large interval of numerators in which almost every fraction $u/(MC)$ has an expansion of length $O(\\log S)$."
     },
     {
       "text": "The scaled target is the sum of two good top numbers.",
       "verdict": "supported",
-      "sourceLine": "inside the interval, and it is the sum of two numerators from that dense family."
+      "sourceLine": "inside the interval, and it is the sum of two numerators from that dense family.",
+      "sourceQuote": "This dense family suffices for the original numerator: a suitable integer multiple $gAM$ lies well inside the interval, and it is the sum of two numerators from that dense family."
     },
     {
       "text": "The paper leaves the bottom numbers unrestricted.",
       "verdict": "supported",
-      "sourceLine": "Here we optimize only the order of the length and leave the"
+      "sourceLine": "Here we optimize only the order of the length and leave the",
+      "sourceQuote": "Here we optimize only the order of the length and leave the denominator sizes unrestricted."
     },
     {
       "text": "Tenenbaum and Yokota kept the bottom numbers small as well as the length short.",
@@ -181,12 +190,14 @@
     {
       "text": "log log F(k) is of order k.",
       "verdict": "supported",
-      "sourceLine": " ck\\le\\log\\log F(k)\\le Ck."
+      "sourceLine": " ck\\le\\log\\log F(k)\\le Ck.",
+      "sourceQuote": "There are absolute constants $c,C>0$ and $k_0$ such that, for every integer $k\\ge k_0$, \\[ ck\\le\\log\\log F(k)\\le Ck. \\]"
     },
     {
       "text": "For every large enough k, v(k) is at least e^(e^(k/600)).",
       "verdict": "supported",
-      "sourceLine": "\\exp\\bigl(\\exp(k/600)\\bigr)\\le v(k)\\le1+k^{2^{k-1}}."
+      "sourceLine": "\\exp\\bigl(\\exp(k/600)\\bigr)\\le v(k)\\le1+k^{2^{k-1}}.",
+      "sourceQuote": "For every sufficiently large integer $k$, \\[ \\exp\\bigl(\\exp(k/600)\\bigr)\\le v(k)\\le1+k^{2^{k-1}}. \\]"
     },
     {
       "text": "Van Doorn and Tang proved a lower bound of the form e^(c·k²).",

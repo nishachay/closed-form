@@ -184,30 +184,35 @@
       "text": "For every large enough fixed k, deciding k-equivalence needs n^{Ω(k)} deterministic time in the worst case.",
       "verdict": "supported",
       "sourceLine": "$n^{\\Omega(k)}$ deterministic sequential time in the worst case.",
+      "sourceQuote": "For every sufficiently large fixed $k$, deciding whether two $n$-vertex graphs are $k$-Weisfeiler--Leman equivalent requires $n^{\\Omega(k)}$ deterministic sequential time in the worst case.",
       "paper": 3
     },
     {
       "text": "The constant c is independent of k and of the program.",
       "verdict": "supported",
       "sourceLine": "is independent of both $k$ and the program. The threshold $n_0$ need not",
+      "sourceQuote": "The exponent constant $c$ is independent of both $k$ and the program. The threshold $n_0$ need not be uniform in either.",
       "paper": 3
     },
     {
       "text": "The bound holds at every sufficiently large graph order.",
       "verdict": "supported",
       "sourceLine": "The bound holds at every sufficiently large graph order, even for",
+      "sourceQuote": "The bound holds at every sufficiently large graph order, even for simple connected uncolored graphs of diameter at most two, without a complexity assumption.",
       "paper": 3
     },
     {
       "text": "The theorem is unconditional and does not assume the Exponential Time Hypothesis.",
       "verdict": "supported",
       "sourceLine": "Theorem~\\ref{thm:main} is unconditional; in particular, it does not",
+      "sourceQuote": "Theorem~\\ref{thm:main} is unconditional; in particular, it does not assume the Exponential Time Hypothesis.",
       "paper": 3
     },
     {
       "text": "It holds for simple connected uncolored graphs of diameter at most two.",
       "verdict": "supported",
       "sourceLine": "pairs of simple connected uncolored graphs of diameter at most two,",
+      "sourceQuote": "The same bound holds if $A$ is required to decide correctly only on pairs of simple connected uncolored graphs of diameter at most two, with $T_A(n)$ maximized over that class.",
       "paper": 3
     },
     {
@@ -219,12 +224,14 @@
       "text": "A computation with exponent proportional to k has too many addressed locations to list in a small reduction.",
       "verdict": "supported",
       "sourceLine": "has too many addressed locations to list in a small reduction. Second,",
+      "sourceQuote": "First, a polynomial-time computation with an exponent proportional to $k$ has too many addressed locations to list in a small reduction. Second, local consistency uses symmetric comparisons, whereas a computation must propagate information forward without forcing false predecessors to become true.",
       "paper": 3
     },
     {
       "text": "A block records only two adjacent address coordinates.",
       "verdict": "supported",
       "sourceLine": "A block records only two adjacent address",
+      "sourceQuote": "A block records only two adjacent address coordinates.",
       "paper": 3
     },
     {
@@ -236,18 +243,21 @@
       "text": "With k in binary as input, joint-update equivalence is EXPTIME-complete, also for the restricted version.",
       "verdict": "supported",
       "sourceLine": "Both \\(\\WL\\) and \\(\\SubWL\\) are \\(\\EXPTIME\\)-complete under deterministic",
+      "sourceQuote": "Both \\(\\WL\\) and \\(\\SubWL\\) are \\(\\EXPTIME\\)-complete under deterministic polynomial-time many-one reductions.",
       "paper": 4
     },
     {
       "text": "The restricted version requires connected graphs of maximum degree at most three.",
       "verdict": "supported",
       "sourceLine": "and of maximum degree at most three. Malformed encodings or failures",
+      "sourceQuote": "Its restricted version \\(\\SubWL\\) additionally requires the two graphs to be connected, of the same positive order, and of maximum degree at most three. Malformed encodings or failures of the specified graph and dimension conditions are excluded.",
       "paper": 4
     },
     {
       "text": "Deciding whether a given dimension identifies a graph is EXPTIME-complete.",
       "verdict": "supported",
       "sourceLine": "The following problem is EXPTIME-complete under deterministic",
+      "sourceQuote": "The following problem is EXPTIME-complete under deterministic polynomial-time many-one reductions: given a nonempty finite simple undirected uncolored graph $G$ by its adjacency matrix and a positive integer $k$ in binary, decide whether $\\WLdim(G)\\le k$.",
       "paper": 2
     },
     {
@@ -259,18 +269,21 @@
       "text": "The parity-lift paper's ETH-based bound is superseded by the unconditional theorem for stable equivalence.",
       "verdict": "supported",
       "sourceLine": "Its unconditional theorem supersedes the conditional lower bound for",
+      "sourceQuote": "Its unconditional theorem supersedes the conditional lower bound for stable equivalence in Theorem~\\ref{thm:eth}.",
       "paper": 1
     },
     {
       "text": "The hard instances already differ after two joint rounds or one separate round.",
       "verdict": "supported",
       "sourceLine": "histograms after two joint rounds or one separate round, under the same",
+      "sourceQuote": "The time exclusions proved here already apply to comparing tuple-color histograms after two joint rounds or one separate round, under the same respective hypotheses; Section~\\ref{sec:complexity} gives the deduction.",
       "paper": 1
     },
     {
       "text": "The theorem concerns deterministic computation, not randomized algorithms or nonuniform advice.",
       "verdict": "supported",
       "sourceLine": "deterministic computation, not randomized algorithms, nonuniform",
+      "sourceQuote": "The theorem concerns deterministic computation, not randomized algorithms, nonuniform advice, or unit-cost operations on unbounded integers.",
       "paper": 3
     },
     {
@@ -282,6 +295,7 @@
       "text": "No bounded-degree promise is asserted in the fixed-dimension paper.",
       "verdict": "supported",
       "sourceLine": "to obtain diameter two has unbounded degree. No bounded-degree promise",
+      "sourceQuote": "Likewise, the universal hub used to obtain diameter two has unbounded degree. No bounded-degree promise is asserted in this paper.",
       "paper": 3
     },
     {

@@ -175,6 +175,7 @@
       "text": "The deterministic method asks which boundary labels are forced without computing the solution.",
       "verdict": "supported",
       "sourceLine": "We instead ask which boundary labels are forced, without computing",
+      "sourceQuote": "We instead ask which boundary labels are forced, without computing $h$.",
       "paper": 3,
       "sourceId": 5
     },
@@ -182,6 +183,7 @@
       "text": "Only logarithmically many weight increases occur along a branch.",
       "verdict": "supported",
       "sourceLine": "such product increases can therefore occur along a branch",
+      "sourceQuote": "Starting with masses $1/n$, only $O(\\log(n+1))$ such product increases can therefore occur along a branch.",
       "paper": 3,
       "sourceId": 5
     },
@@ -189,6 +191,7 @@
       "text": "The bound is 2 to C times the squared log of L+2 bit operations for an absolute constant C.",
       "verdict": "supported",
       "sourceLine": "For an absolute constant",
+      "sourceQuote": "For an absolute constant $C>0$, it uses at most \\[ 2^{C(\\log_2(L+2))^2} \\] bit operations.",
       "paper": 2,
       "sourceId": 5
     },
@@ -196,6 +199,7 @@
       "text": "A polynomial bound would be a further improvement.",
       "verdict": "supported",
       "sourceLine": "A polynomial bound for the complete binary input would be a further improvement.",
+      "sourceQuote": "A polynomial bound for the complete binary input would be a further improvement.",
       "paper": 3,
       "sourceId": 5
     },
@@ -203,6 +207,7 @@
       "text": "The deterministic paper derives exact values and optimal positional strategies for both players.",
       "verdict": "supported",
       "sourceLine": "derives the exact rational value at every starting vertex and globally optimal positional strategies for both players",
+      "sourceQuote": "Section~\\ref{sec:full-solution} derives the exact rational value at every starting vertex and globally optimal positional strategies for both players, within the same quasipolynomial bit bound.",
       "paper": 3,
       "sourceId": 5
     },
@@ -210,6 +215,7 @@
       "text": "In the stochastic version, chance vertices draw the next edge from a rational distribution.",
       "verdict": "supported",
       "sourceLine": "the next edge is drawn from a prescribed rational probability distribution",
+      "sourceQuote": "At a vertex of $V_{\\max}$, Max chooses the next edge; at a vertex of $V_{\\min}$, Min chooses it; at a vertex $i\\in V_{\\mathrm{ch}}$, the next edge is drawn from a prescribed rational probability distribution $p_i$ on the outgoing edges.",
       "paper": 1,
       "sourceId": 7
     },
@@ -217,6 +223,7 @@
       "text": "Vertices of value zero are included.",
       "verdict": "supported",
       "sourceLine": "Vertices of value zero are included.",
+      "sourceQuote": "Vertices of value zero are included.",
       "paper": 1,
       "sourceId": 7
     },
@@ -224,6 +231,7 @@
       "text": "The stochastic result also decides whether a simple stochastic game has reachability value at least one half.",
       "verdict": "supported",
       "sourceLine": "also gives a deterministic quasipolynomial algorithm for deciding whether the reachability value of a simple stochastic game is at least",
+      "sourceQuote": "Theorem~\\ref{thm:main} also gives a deterministic quasipolynomial algorithm for deciding whether the reachability value of a simple stochastic game is at least $1/2$.",
       "paper": 1,
       "sourceId": 7
     },
@@ -237,6 +245,7 @@
       "text": "The two objectives can conflict.",
       "verdict": "supported",
       "sourceLine": "repeatedly visiting a favorable priority may incur a loss, even when a nonnegative mean reward is achievable on its own.",
+      "sourceQuote": "These objectives interact: repeatedly visiting a favorable priority may incur a loss, even when a nonnegative mean reward is achievable on its own.",
       "paper": 2,
       "sourceId": 8
     },
@@ -244,6 +253,7 @@
       "text": "The randomized algorithm returns the whole set correctly with probability at least 7/8.",
       "verdict": "supported",
       "sourceLine": "correctly with probability at least",
+      "sourceQuote": "The companion's Theorem~1.1 \\cite{OpenAI2026Randomized} returns the whole winning set correctly with probability at least $7/8$ and has the quasipolynomial bit bound on every tape.",
       "paper": 3,
       "sourceId": 6
     },
@@ -251,6 +261,7 @@
       "text": "The time bound holds even when the output is wrong.",
       "verdict": "supported",
       "sourceLine": "The probability statement concerns the whole returned set, and the time bound holds even when that output is wrong.",
+      "sourceQuote": "The probability statement concerns the whole returned set, and the time bound holds even when that output is wrong.",
       "paper": 4,
       "sourceId": 6
     },
@@ -258,6 +269,7 @@
       "text": "Repeating until the check succeeds gives an always-correct version.",
       "verdict": "supported",
       "sourceLine": "always-correct, or Las Vegas, version obtained by repeating until the check succeeds",
+      "sourceQuote": "Corollary~\\ref{cor:certified-output} proves this consequence and an always-correct, or Las Vegas, version obtained by repeating until the check succeeds.",
       "paper": 4,
       "sourceId": 6
     },
@@ -271,6 +283,7 @@
       "text": "The appendix gives an explicit instance on which Truffet's printed rule loses the optimum.",
       "verdict": "supported",
       "sourceLine": "and gives an explicit instance on which it loses the optimum",
+      "sourceQuote": "Appendix~\\ref{sec:tropical-comparison} examines the printed substitution rule in Truffet's arXiv version~4 of August~29, 2026 and gives an explicit instance on which it loses the optimum.",
       "paper": 4,
       "sourceId": 6
     },

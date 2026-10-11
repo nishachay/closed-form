@@ -160,78 +160,91 @@
       "text": "For every large d and every finite alphabet with at least two symbols, the distortion lies between exp(c sqrt(log d log log d)) and exp(C sqrt(log d log log d)).",
       "verdict": "supported",
       "sourceLine": "There are absolute constants … and an integer … such that, for every integer … and every finite alphabet … with",
+      "sourceQuote": "There are absolute constants $c,C>0$ and an integer $d_0$ such that, for every integer $d\\ge d_0$ and every finite alphabet $\\Sigma$ with $|\\Sigma|\\ge2$, \\begin{equation}\\label{eq:main} \\exp\\!\\bigl(c\\sqrt{\\log d\\,\\log\\log d}\\bigr) \\le E_\\Sigma(d)\\le \\exp\\!\\bigl(C\\sqrt{\\log d\\,\\log\\log d}\\bigr). \\end{equation}",
       "paper": 1
     },
     {
       "text": "The constants are independent of the alphabet, including when its size grows with d.",
       "verdict": "supported",
       "sourceLine": "The constants and threshold in the theorem are independent of the alphabet, including when its size grows with",
+      "sourceQuote": "The constants and threshold in the theorem are independent of the alphabet, including when its size grows with $d$.",
       "paper": 1
     },
     {
       "text": "The lower bound is witnessed by binary strings of one common length.",
       "verdict": "supported",
       "sourceLine": "The lower bound is witnessed by a subset of binary strings of one common length at most",
+      "sourceQuote": "The lower bound is witnessed by a subset of binary strings of one common length at most $d$.",
       "paper": 1
     },
     {
       "text": "The theorem determines the order of log E(d); the constants in the exponent remain unspecified.",
       "verdict": "supported",
       "sourceLine": "the constants in the exponent remain unspecified.",
+      "sourceQuote": "The conclusion determines the order of $\\log E_\\Sigma(d)$; the constants in the exponent remain unspecified.",
       "paper": 1
     },
     {
       "text": "The constants in the two exponents need not agree.",
       "verdict": "supported",
       "sourceLine": "the constants in its two exponents need not agree.",
+      "sourceQuote": "Equation~\\eqref{eq:main} determines the order of $\\log E_\\Sigma(d)$; the constants in its two exponents need not agree.",
       "paper": 2
     },
     {
       "text": "The lower bound grows faster than every fixed power of log d while remaining d^{o(1)}.",
       "verdict": "supported",
       "sourceLine": "The resulting lower bound grows faster than every fixed power of … while remaining",
+      "sourceQuote": "Those constraints force large total leaf frequency and yield the exponent in~\\eqref{eq:main}. The resulting lower bound grows faster than every fixed power of $\\log d$, while remaining $d^{o(1)}$.",
       "paper": 2
     },
     {
       "text": "Any lower bound must control arbitrary increasing matchings, even those crossing construction boundaries.",
       "verdict": "supported",
       "sourceLine": "A lower bound must therefore control arbitrary increasing matchings, even when they cross many of the boundaries used to construct the words.",
+      "sourceQuote": "A lower bound must therefore control arbitrary increasing matchings, even when they cross many of the boundaries used to construct the words.",
       "paper": 2
     },
     {
       "text": "Each row ends in a long marker of a fresh symbol; a payload spread over several target rows skips a complete marker.",
       "verdict": "supported",
       "sourceLine": "In that event, the matching skips a complete target marker: the source payload contains no copy of the marker symbol.",
+      "sourceQuote": "In that event, the matching skips a complete target marker: the source payload contains no copy of the marker symbol.",
       "paper": 1
     },
     {
       "text": "The skipped markers for different payloads are disjoint.",
       "verdict": "supported",
       "sourceLine": "The skipped markers for different payloads are disjoint.",
+      "sourceQuote": "The skipped markers for different payloads are disjoint.",
       "paper": 1
     },
     {
       "text": "Components cycle with distinct prime periods.",
       "verdict": "supported",
       "sourceLine": "In each component, repeatedly adding one distinguished step cycles the state with a prime period; different components use different primes.",
+      "sourceQuote": "In each component, repeatedly adding one distinguished step cycles the state with a prime period; different components use different primes.",
       "paper": 1
     },
     {
       "text": "The circle paper gives two lower constructions.",
       "verdict": "supported",
       "sourceLine": "Each of our two lower constructions supplies a binary subset whose words have one common length at most",
+      "sourceQuote": "Each of our two lower constructions supplies a binary subset whose words have one common length at most $d$ and whose least $\\ell_1$ distortion satisfies the lower bound.",
       "paper": 2
     },
     {
       "text": "The tree paper proves the lower bound in two independent ways.",
       "verdict": "supported",
       "sourceLine": "We prove the following lower bound in two independent ways.",
+      "sourceQuote": "We prove the following lower bound in two independent ways.",
       "paper": 3
     },
     {
       "text": "The tree paper's appendix gives a separate constant-distortion code with factor 804, not needed for the lower bounds.",
       "verdict": "supported",
       "sourceLine": "preserve edit distance up to scale and an absolute factor",
+      "sourceQuote": "Appendix~\\ref{sec:code} proves a stronger, separate alphabet-conversion theorem: for words of one prescribed length $M$ over at most $M$ letters, blocks of width $M^2$ preserve edit distance up to scale and an absolute factor $804$.",
       "paper": 3
     },
     {

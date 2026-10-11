@@ -157,7 +157,8 @@
     {
       "text": "A long gap contains many empty short intervals, so a few long gaps can account for many empty intervals.",
       "verdict": "supported",
-      "sourceLine": "Consequently a positive proportion of empty intervals may be accounted for by a sparse set of very long gaps."
+      "sourceLine": "Consequently a positive proportion of empty intervals may be accounted for by a sparse set of very long gaps.",
+      "sourceQuote": "Consequently a positive proportion of empty intervals may be accounted for by a sparse set of very long gaps."
     },
     {
       "text": "Tao's empty-interval argument identifies the extra control needed to pass from intervals to gap counts.",
@@ -167,22 +168,26 @@
     {
       "text": "The last prime in the first window begins a gap longer than the window, and each prime is picked at most h times.",
       "verdict": "supported",
-      "sourceLine": "It can be selected by at most … values of … independently of the length of that gap."
+      "sourceLine": "It can be selected by at most … values of … independently of the length of that gap.",
+      "sourceQuote": "It can be selected by at most $h$ values of $m$, independently of the length of that gap. This bounded multiplicity is the step that turns the interval construction into a count of consecutive gaps."
     },
     {
       "text": "The weights give a prime in the first window substantial weight while making primes in the second window arbitrarily rare.",
       "verdict": "supported",
-      "sourceLine": "whereas the expected number of primes in"
+      "sourceLine": "whereas the expected number of primes in",
+      "sourceQuote": "We construct a nonnegative weight for which a prime in $(m,m+h]$ has substantial weighted probability, whereas the expected number of primes in $(m+h,m+2h]$ is arbitrarily small."
     },
     {
       "text": "For every fixed C, a positive proportion of the first N gaps exceed C log p_n for all large N.",
       "verdict": "supported",
-      "sourceLine": "For every fixed real"
+      "sourceLine": "For every fixed real",
+      "sourceQuote": "For every fixed real $C>0$, there are constants $c(C)>0$ and $N_0(C)$ such that, for every integer $N\\ge N_0(C)$, \\[ \\#\\{1\\le n\\le N:p_{n+1}-p_n>C\\log p_n\\}\\ge c(C)N. \\]"
     },
     {
       "text": "The bound holds for every sufficiently large initial segment, and the constants may depend on C.",
       "verdict": "supported",
-      "sourceLine": "The density is ordinary lower density: the bound holds for every sufficiently large initial segment, and both constants may depend on the fixed threshold"
+      "sourceLine": "The density is ordinary lower density: the bound holds for every sufficiently large initial segment, and both constants may depend on the fixed threshold",
+      "sourceQuote": "The density is ordinary lower density: the bound holds for every sufficiently large initial segment, and both constants may depend on the fixed threshold $C$."
     },
     {
       "text": "Erdős and Prachar asked whether the indices where p_n/n increases have positive lower density.",
@@ -192,17 +197,20 @@
     {
       "text": "The ratio rises exactly when the next gap exceeds p_n/n, and p_n/n is asymptotic to log p_n.",
       "verdict": "supported",
-      "sourceLine": "The displayed inequality is equivalent to"
+      "sourceLine": "The displayed inequality is equivalent to",
+      "sourceQuote": "The displayed inequality is equivalent to $p_{n+1}-p_n>p_n/n$."
     },
     {
       "text": "The corollary follows by applying the theorem with C = 2.",
       "verdict": "supported",
-      "sourceLine": "Apply Theorem~\\ref{thm:main} with … and discard the finitely many indices"
+      "sourceLine": "Apply Theorem~\\ref{thm:main} with … and discard the finitely many indices",
+      "sourceQuote": "Apply Theorem~\\ref{thm:main} with $C=2$ and discard the finitely many indices for which $p_n/n\\ge2\\log p_n$."
     },
     {
       "text": "The corollary answers the Erdős–Prachar question affirmatively.",
       "verdict": "supported",
-      "sourceLine": "Thus the corollary answers the"
+      "sourceLine": "Thus the corollary answers the",
+      "sourceQuote": "Thus the corollary answers the Erd\\H{o}s--Prachar question affirmatively."
     },
     {
       "text": "Lean formalizes the positive lower density of indices where p_n/n increases.",

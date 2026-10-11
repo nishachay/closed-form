@@ -198,22 +198,26 @@
     {
       "text": "For m ≥ 1408, the border complexity is at least m³/(5,529,600e).",
       "verdict": "supported",
-      "sourceLine": "There exist absolute constants … and … such that, for every integer"
+      "sourceLine": "There exist absolute constants … and … such that, for every integer",
+      "sourceQuote": "There exist absolute constants $c>0$ and $m_0$ such that, for every integer $m\\ge m_0$, \\[ \\bdc(\\per_m)\\ge c m^3. \\]"
     },
     {
       "text": "The constants are not optimized.",
       "verdict": "supported",
-      "sourceLine": "The constants are not optimized."
+      "sourceLine": "The constants are not optimized.",
+      "sourceQuote": "The constants are not optimized."
     },
     {
       "text": "The same numerical bound holds for exact determinantal complexity.",
       "verdict": "supported",
-      "sourceLine": "The same numerical lower bound holds for exact determinantal complexity."
+      "sourceLine": "The same numerical lower bound holds for exact determinantal complexity.",
+      "sourceQuote": "The same numerical lower bound holds for exact determinantal complexity."
     },
     {
       "text": "The result raises the lower-bound exponent from two to three in the same model.",
       "verdict": "supported",
-      "sourceLine": "raises the lower-bound exponent from two to three in that same model."
+      "sourceLine": "raises the lower-bound exponent from two to three in that same model.",
+      "sourceQuote": "Theorem~\\ref{thm:main} raises the lower-bound exponent from two to three in that same model."
     },
     {
       "text": "Mignon and Ressayre compared Hessians at a zero; the permanent has a zero where its Hessian has full rank m².",
@@ -228,32 +232,38 @@
     {
       "text": "For the permanent, the singularity bound has only a linear scale.",
       "verdict": "supported",
-      "sourceLine": "so this obstruction alone has only a linear scale"
+      "sourceLine": "so this obstruction alone has only a linear scale",
+      "sourceQuote": "For the permanent, matrices with two zero columns show that this codimension is at most $2m$, so this obstruction alone has only a linear scale \\cite[Remark~1.5]{AlperBogartVelasco2017}."
     },
     {
       "text": "A smooth form of degree r in d variables has border complexity at least (r−1)(d−1)/(4e).",
       "verdict": "supported",
-      "sourceLine": "Its lower bound is proportional to the product"
+      "sourceLine": "Its lower bound is proportional to the product",
+      "sourceQuote": "Its lower bound is proportional to the product $(r-1)(d-1)$."
     },
     {
       "text": "The smooth-form bound persists under arbitrary coefficientwise approximation.",
       "verdict": "supported",
-      "sourceLine": "persistence of finitely many simple polar intersections in one sufficiently close determinant under an arbitrary coefficientwise approximation"
+      "sourceLine": "persistence of finitely many simple polar intersections in one sufficiently close determinant under an arbitrary coefficientwise approximation",
+      "sourceQuote": "Theorem~\\ref{thm:smooth-border} proves the version needed here, including persistence of finitely many simple polar intersections in one sufficiently close determinant under an arbitrary coefficientwise approximation."
     },
     {
       "text": "The construction realizes the coefficient polynomial as an affine restriction of a permanent of size 11k − 2q.",
       "verdict": "supported",
-      "sourceLine": "as an affine restriction of a permanent of size"
+      "sourceLine": "as an affine restriction of a permanent of size",
+      "sourceQuote": "Over $\\C$, two count gates and a cancellation gadget realize $G_D$, up to a fixed nonzero scalar, as an affine restriction of a permanent of size $11k-2q$ (Proposition~\\ref{prop:selector})."
     },
     {
       "text": "The coefficient polynomial has degree linear in k in quadratically many variables, with a smooth zero set.",
       "verdict": "supported",
-      "sourceLine": "that has degree proportional to … in quadratically many variables and has a smooth projective zero set."
+      "sourceLine": "that has degree proportional to … in quadratically many variables and has a smooth projective zero set.",
+      "sourceQuote": "To use this product at cubic scale, we seek an affine restriction of a permanent of size proportional to $k$ that has degree proportional to $k$ in quadratically many variables and has a smooth projective zero set."
     },
     {
       "text": "There are cubic lower bounds for algebraic branching programs.",
       "verdict": "supported",
-      "sourceLine": "requires … vertices and … edges"
+      "sourceLine": "requires … vertices and … edges",
+      "sourceQuote": "Such a program computing $\\per_m$ requires $\\Omega(m^3)$ vertices and $\\Omega(m^3)$ edges, even after trimming to the vertices and edges on source-to-sink paths."
     },
     {
       "text": "Lean covers the cubic bound for exact and border representations for m ≥ 1408 and the general smooth-form bound; the branching-program consequences are outside.",

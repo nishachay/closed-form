@@ -110,12 +110,14 @@
     {
       "text": "The field may depend on both coordinates.",
       "verdict": "supported",
-      "sourceLine": "Both coordinates may enter the field arbitrarily subject to the Lipschitz bound."
+      "sourceLine": "Both coordinates may enter the field arbitrarily subject to the Lipschitz bound.",
+      "sourceQuote": "Both coordinates may enter the field arbitrarily subject to the Lipschitz bound."
     },
     {
       "text": "The bound is uniform over every inner truncation.",
       "verdict": "supported",
-      "sourceLine": "so its first assertion is a uniform operator bound for each inner truncation."
+      "sourceLine": "so its first assertion is a uniform operator bound for each inner truncation.",
+      "sourceQuote": "The supremum in the theorem is outside the norm, so its first assertion is a uniform operator bound for each inner truncation."
     },
     {
       "text": "Stein's question, as formulated by Lacey and Li, asks for a uniform weak bound with outer length controlled by the reciprocal Lipschitz seminorm.",
@@ -125,7 +127,8 @@
     {
       "text": "The theorem answers Stein's question with a strong L2 bound.",
       "verdict": "supported",
-      "sourceLine": "gives an affirmative answer with a strong"
+      "sourceLine": "gives an affirmative answer with a strong",
+      "sourceQuote": "\\Cref{thm:main} gives an affirmative answer with a strong \\(L^2\\) bound."
     },
     {
       "text": "Lacey and Li trace the question to Zygmund's conjecture on averages over short segments.",
@@ -140,7 +143,8 @@
     {
       "text": "The scale restriction does not make the operator a Fourier multiplier.",
       "verdict": "supported",
-      "sourceLine": "The scale restriction limits the turning of the field, but it does not make the operator a Fourier multiplier: the line used by the integral still varies with the output point."
+      "sourceLine": "The scale restriction limits the turning of the field, but it does not make the operator a Fourier multiplier: the line used by the integral still varies with the output point.",
+      "sourceQuote": "The scale restriction limits the turning of the field, but it does not make the operator a Fourier multiplier: the line used by the integral still varies with the output point."
     },
     {
       "text": "Lacey and Li proved an annular weak bound for measurable directions.",
@@ -155,7 +159,8 @@
     {
       "text": "The one-coordinate condition is a substantive restriction.",
       "verdict": "supported",
-      "sourceLine": "The one-coordinate hypothesis remains a substantive restriction on the direction field."
+      "sourceLine": "The one-coordinate hypothesis remains a substantive restriction on the direction field.",
+      "sourceQuote": "The one-coordinate hypothesis remains a substantive restriction on the direction field."
     },
     {
       "text": "Analytic fields admit extra structure, used by Bourgain and by Stein and Street.",
@@ -170,17 +175,20 @@
     {
       "text": "The paper distinguishes its short-scale result from estimates at arbitrary lengths for varying fields.",
       "verdict": "supported",
-      "sourceLine": "These conventions distinguish the short-scale assertion from an estimate at arbitrary outer lengths for varying fields."
+      "sourceLine": "These conventions distinguish the short-scale assertion from an estimate at arbitrary outer lengths for varying fields.",
+      "sourceQuote": "These conventions distinguish the short-scale assertion from an estimate at arbitrary outer lengths for varying fields."
     },
     {
       "text": "A constant field reduces, for any length, to the one-dimensional Hilbert transform.",
       "verdict": "supported",
-      "sourceLine": "Rotation and Fubini reduce its transform, for any finite outer length, to the one-dimensional Hilbert transform."
+      "sourceLine": "Rotation and Fubini reduce its transform, for any finite outer length, to the one-dimensional Hilbert transform.",
+      "sourceQuote": "Rotation and Fubini reduce its transform, for any finite outer length, to the one-dimensional Hilbert transform."
     },
     {
       "text": "The constants are absolute constants, not given as explicit numbers.",
       "verdict": "supported",
-      "sourceLine": "There are absolute constants"
+      "sourceLine": "There are absolute constants",
+      "sourceQuote": "There are absolute constants \\(a_*\\in(0,1/2)\\) and \\(C_*<\\infty\\) such that every Lipschitz field \\(v:\\R^2\\to S^1\\) with \\(\\Lip(v)\\le1\\) satisfies \\[ \\sup_{0<\\epsilon<a_*} \\norm{H_{v,a_*}^{\\epsilon}f}_{L^2(\\R^2)} \\le C_*\\norm{f}_{L^2(\\R^2)} \\qquad(f\\in\\mathcal S(\\R^2)). \\]"
     },
     {
       "text": "Lean covers truncations with 0<ε≤R≤1/(10^6 K) on Schwartz functions, and weak-(2,2) at a fixed short scale for 1-Lipschitz fields.",

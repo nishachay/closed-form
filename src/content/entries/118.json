@@ -170,78 +170,91 @@
       "text": "For every c there is an instance with LP value exactly B and optimum above B+c, with all sizes above 1/6.",
       "verdict": "supported",
       "sourceLine": "For every integer $c\\ge0$, there is a finite rational bin-packing instance",
+      "sourceQuote": "For every integer $c\\ge0$, there is a finite rational bin-packing instance $I$ and an integer $B$ such that every item size exceeds $1/6$ and \\begin{equation}\\label{eq:main-gap} \\LP(I)=B, \\qquad \\OPT(I)>B+c. \\end{equation}",
       "sourceId": 7
     },
     {
       "text": "The LP equality also holds for the individual-copy configuration LP.",
       "verdict": "supported",
       "sourceLine": "LP whose patterns are subsets of the individual item copies.",
+      "sourceQuote": "The equality for the fractional optimum also holds for the configuration LP whose patterns are subsets of the individual item copies.",
       "sourceId": 7
     },
     {
       "text": "Taking c = 1 disproves the Modified Integer Round-Up Conjecture.",
       "verdict": "supported",
       "sourceLine": "Taking $c=1$ contradicts Equation~\\eqref{eq:mirup}, so",
+      "sourceQuote": "Taking $c=1$ contradicts Equation~\\eqref{eq:mirup}, so Theorem~\\ref{thm:unbounded-gap} disproves the Modified Integer Round-Up Conjecture.",
       "sourceId": 7
     },
     {
       "text": "Sizes above 1/6 mean each bin holds at most five items.",
       "verdict": "supported",
       "sourceLine": "than $1/6$, so each feasible bin contains at most five items.",
+      "sourceQuote": "All constructions use sizes greater than $1/6$, so each feasible bin contains at most five items.",
       "sourceId": 7
     },
     {
       "text": "For every fixed c, distinguishing instances that fit in B bins from those that cannot fit in B+c bins is NP-hard.",
       "verdict": "supported",
       "sourceLine": "For every fixed integer $c\\ge0$, it is NP-hard to distinguish pairs $(I,B)$",
+      "sourceQuote": "For every fixed integer $c\\ge0$, it is NP-hard to distinguish pairs $(I,B)$ such that $I$ packs into $B$ bins from pairs such that $I$ cannot be packed into $B+c$ bins.",
       "sourceId": 7
     },
     {
       "text": "A deterministic polynomial-time algorithm with a fixed additive constant exists if and only if P = NP.",
       "verdict": "supported",
       "sourceLine": "$\\OPT(I)+C$ bins for some absolute constant $C$ exists if and only if",
+      "sourceQuote": "A deterministic polynomial-time algorithm that always uses at most $\\OPT(I)+C$ bins for some absolute constant $C$ exists if and only if $\\classP=\\classNP$.",
       "sourceId": 7
     },
     {
       "text": "The gap theorem assumes no separation of complexity classes.",
       "verdict": "supported",
       "sourceLine": "Theorem~\\ref{thm:unbounded-gap} assumes no separation of complexity",
+      "sourceQuote": "Theorem~\\ref{thm:unbounded-gap} assumes no separation of complexity classes.",
       "sourceId": 7
     },
     {
       "text": "Earlier discrepancy constructions obstructed only algorithms that round a supplied fractional support.",
       "verdict": "supported",
       "sourceLine": "logarithmic obstructions for algorithms restricted to rounding a supplied",
+      "sourceQuote": "Newman, Neiman, and Nikolov, and Eisenbrand, P\\'alv\\\"olgyi, and Rothvoss used discrepancy constructions to prove logarithmic obstructions for algorithms restricted to rounding a supplied fractional support~\\cite{NewmanNeimanNikolov2012,EisenbrandPalvolgyiRothvoss2013}.",
       "sourceId": 7
     },
     {
       "text": "A gap for the full configuration LP must control all packings, not only the chosen support.",
       "verdict": "supported",
       "sourceLine": "therefore control all such packings, rather than only the chosen support.",
+      "sourceQuote": "A gap for the full configuration LP must therefore control all such packings, rather than only the chosen support.",
       "sourceId": 7
     },
     {
       "text": "The paper reduces from vertex cover, encoding it in scalar sizes near 1/5.",
       "verdict": "supported",
       "sourceLine": "sizes near $1/5$. An arbitrary feasible packing need not consist of the",
+      "sourceQuote": "All coordinates and subclass constraints are encoded in ordinary scalar sizes near $1/5$. An arbitrary feasible packing need not consist of the intended bins.",
       "sourceId": 7
     },
     {
       "text": "The gap uses the four-vertex clique, whose minimum vertex cover has size three.",
       "verdict": "supported",
       "sourceLine": "The minimum vertex cover of this graph has size three, whereas",
+      "sourceQuote": "The minimum vertex cover of this graph has size three, whereas \\begin{equation}\\label{eq:clique-cover-contradiction} k+\\rho n=2+\\frac48=\\frac52<3. \\end{equation}",
       "sourceId": 7
     },
     {
       "text": "The instances can grow very rapidly with the gap, and no matching logarithmic lower bound in instance size is given.",
       "verdict": "supported",
       "sourceLine": "rapidly with the prescribed gap. We do not obtain a matching logarithmic",
+      "sourceQuote": "These logarithmic upper bounds are compatible with Theorem~\\ref{thm:unbounded-gap}: the constructed instances can grow very rapidly with the prescribed gap. We do not obtain a matching logarithmic lower bound as a function of their size.",
       "sourceId": 7
     },
     {
       "text": "The paper considers deterministic polynomial-time algorithms.",
       "verdict": "supported",
       "sourceLine": "We consider deterministic",
+      "sourceQuote": "We consider deterministic algorithms whose running time is polynomial in the length of this explicit encoding.",
       "sourceId": 7
     },
     {
