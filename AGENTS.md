@@ -25,8 +25,8 @@ List the IDs in the catalog. Leave out any that already have `src/content/entrie
 Take 5. Known gaps to fill: 141, 142, 143, 147.
 
 ### Which model does what
-- Write entries with a Claude model (Claude Opus 5.5 in Antigravity CLI, or the strongest Claude you have).
-- Review with a different model family (Gemini Pro in Antigravity, or GPT). The writer never reviews its own batch.
+- Write entries with the strongest model you have. Claude in Antigravity while the plan still offers it (promo plans lose Claude on 2 Nov 2026); after that, the newest Gemini Pro.
+- Review with a different model family from the writer (Claude writes, Gemini reviews; Gemini writes, Claude/GPT/Grok reviews). The writer never reviews its own batch.
 - The scripts are the final gate: `pnpm source-quotes --check`, `pnpm -s lint-ste` and `pnpm -s test` must pass before a PR is opened.
 
 ### Hard rules for every entry
