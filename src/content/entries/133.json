@@ -45,7 +45,7 @@
     "significance": "Major",
     "significanceWhy": "It shows, with no unproven assumption, that no deterministic algorithm avoids the growing power in the standard method's running time."
   },
-  "explanation": "Take six points. In graph A, join them in one ring, like a hexagon. In graph B, join them as two separate triangles. In both graphs every point has exactly two neighbours. Yet B contains triangles and A contains none. The two graphs are clearly different.\n\nA standard test, called colour refinement, cannot see this. Every point starts with the same colour. In each round, a point records the colours of its neighbours. Here every point always sees two neighbours of one colour. So the colour counts match forever, and the test calls the graphs alike.\n\nWeisfeiler–Leman refinement is the stronger version. At dimension k, it colours every ordered list of k points, called a tuple. At dimension 2 it colours pairs. A joined pair in B has a shared neighbour, and a joined pair in A does not. After one round, the pair colour counts differ, so dimension 2 tells A from B. Two graphs are called k-equivalent when the colour counts agree at every round. Equivalent graphs need not be the same graph.\n\nThe catch is cost. A graph with n points has n^k tuples. With 100 points, dimension 2 means 10,000 pairs. Dimension 10 means 10^20 tuples. For each fixed dimension the test runs in polynomial time. But the direct methods take time n^O(k), so the power of n grows with k. The open question was whether any algorithm at all must pay that growing power. A cleverer method might reach the same verdict without colouring every tuple.\n\nEarlier lower bounds missed this question. In 1992, Cai, Fürer and Immerman showed that some graphs need high dimension to be told apart. Those are limits on the dimension, not on every algorithm. Grohe, Lichter, Neuen and Schweitzer built graphs needing about n^(k/2) rounds of refinement. That bound concerns the refinement process itself. It does not exclude a faster method that decides the final answer another way. Lichter, Raßmann and Schweitzer expected that no algorithm runs in time n^o(k). That means a power growing more slowly than k.\n\nThe main paper proves that expectation for equivalence. For every large enough fixed k, any correct step-by-step algorithm needs at least n^(ck) steps on some input pair. Here c is a fixed positive number that does not depend on k or on the algorithm. The bound holds at every large enough number of points, not only at some sizes. It holds without any unproven assumption. It holds even for uncoloured connected graphs where any two points are at most two steps apart.\n\nThe one obstacle is size. The proof makes graph equivalence act out a long computation. A computation with a power proportional to k touches too many places to list in a small graph. The paper writes each place as an address in short pieces. Each local block records only two neighbouring pieces of an address. A classic diagonal argument then supplies a problem that no fast program can solve at any large size.\n\nThe other three papers settle nearby questions. When k is part of the input, deciding equivalence is EXPTIME-complete. That means it is among the hardest problems solvable in exponential time. This holds even for connected graphs where no point has more than three neighbours. Deciding whether dimension k tells one graph apart from every other graph is also EXPTIME-complete. The third gives a weaker time bound that rests on an unproven assumption. That bound applies even to colour counts after two rounds of the joint test.\n\nThese results have firm limits. They cover deterministic algorithms, not ones that flip coins or use outside advice. They cover graphs written out as full tables of which points are joined. The main paper makes no claim about graphs with few links per point at fixed k. None of this gives a faster test or decides when two graphs are truly the same.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of all four main statements. These are the time lower bound, the two EXPTIME-completeness results, and the graph construction in the parity-lift paper. That paper's conditional time bounds are outside the Lean check. No specialist review has been published.",
+  "explanation": "Take six points. In graph A, join them in one ring, like a hexagon. In graph B, join them as two separate triangles. In both graphs every point has exactly two neighbours. Yet B contains triangles and A contains none. The two graphs are clearly different.\n\nA standard test, called colour refinement, cannot see this. Every point starts with the same colour. In each round, a point records the colours of its neighbours. Here every point always sees two neighbours of one colour. So the colour counts match forever, and the test calls the graphs alike.\n\nWeisfeiler–Leman refinement is the stronger version. At dimension k, it colours every ordered list of k points, called a tuple. At dimension 2 it colours pairs. A joined pair in B has a shared neighbour, and a joined pair in A does not. After one round, the pair colour counts differ, so dimension 2 tells A from B. Two graphs are called k-equivalent when the colour counts agree at every round. Equivalent graphs need not be the same graph.\n\nThe catch is cost. A graph with n points has n^k tuples. With 100 points, dimension 2 means 10,000 pairs. Dimension 10 means 10^20 tuples. For each fixed dimension the test runs in polynomial time. But the direct methods take time n^O(k), so the power of n grows with k. The open question was whether any algorithm at all must pay that growing power. A cleverer method might reach the same verdict without colouring every tuple.\n\nEarlier lower bounds missed this question. In 1992, Cai, Fürer and Immerman showed that some graphs need high dimension to be told apart. Those are limits on the dimension, not on every algorithm. Grohe, Lichter, Neuen and Schweitzer built graphs needing about n^(k/2) rounds of refinement. That bound concerns the refinement process itself. It does not exclude a faster method that decides the final answer another way. Lichter, Raßmann and Schweitzer expected that no algorithm runs in time n^o(k). That means a power growing more slowly than k.\n\nThe main paper proves that expectation for equivalence. For every large enough fixed k, any correct step-by-step algorithm needs at least n^(ck) steps on some input pair[9]. Here c is a fixed positive number that does not depend on k or on the algorithm[10]. The bound holds at every large enough number of points, not only at some sizes[11]. It holds without any unproven assumption[12]. It holds even for uncoloured connected graphs where any two points are at most two steps apart[13].\n\nThe one obstacle is size. The proof makes graph equivalence act out a long computation. A computation with a power proportional to k touches too many places to list in a small graph[15]. The paper writes each place as an address in short pieces. Each local block records only two neighbouring pieces of an address[16]. A classic diagonal argument then supplies a problem that no fast program can solve at any large size.\n\nThe other three papers settle nearby questions. When k is part of the input, deciding equivalence is EXPTIME-complete[18]. That means it is among the hardest problems solvable in exponential time. This holds even for connected graphs where no point has more than three neighbours[19]. Deciding whether dimension k tells one graph apart from every other graph is also EXPTIME-complete[20]. The third gives a weaker time bound that rests on an unproven assumption[22]. That bound applies even to colour counts after two rounds of the joint test[23].\n\nThese results have firm limits. They cover deterministic algorithms, not ones that flip coins or use outside advice[24]. They cover graphs written out as full tables of which points are joined. The main paper makes no claim about graphs with few links per point at fixed k[26]. None of this gives a faster test or decides when two graphs are truly the same.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of all four main statements. These are the time lower bound, the two EXPTIME-completeness results, and the graph construction in the parity-lift paper. That paper's conditional time bounds are outside the Lean check. No specialist review has been published.",
   "hypeCheck": "Major for complexity theory if the proofs hold. Lean has checked formal versions of the four main statements, but the fourth paper's conditional bounds are outside that check. The bound covers only deterministic algorithms and large fixed dimensions, gives no faster method, and has no published specialist review.",
   "glossary": [
     {
@@ -183,27 +183,32 @@
     {
       "text": "For every large enough fixed k, deciding k-equivalence needs n^{Ω(k)} deterministic time in the worst case.",
       "verdict": "supported",
-      "sourceLine": "$n^{\\Omega(k)}$ deterministic sequential time in the worst case."
+      "sourceLine": "$n^{\\Omega(k)}$ deterministic sequential time in the worst case.",
+      "paper": 3
     },
     {
       "text": "The constant c is independent of k and of the program.",
       "verdict": "supported",
-      "sourceLine": "is independent of both $k$ and the program. The threshold $n_0$ need not"
+      "sourceLine": "is independent of both $k$ and the program. The threshold $n_0$ need not",
+      "paper": 3
     },
     {
       "text": "The bound holds at every sufficiently large graph order.",
       "verdict": "supported",
-      "sourceLine": "The bound holds at every sufficiently large graph order, even for"
+      "sourceLine": "The bound holds at every sufficiently large graph order, even for",
+      "paper": 3
     },
     {
       "text": "The theorem is unconditional and does not assume the Exponential Time Hypothesis.",
       "verdict": "supported",
-      "sourceLine": "Theorem~\\ref{thm:main} is unconditional; in particular, it does not"
+      "sourceLine": "Theorem~\\ref{thm:main} is unconditional; in particular, it does not",
+      "paper": 3
     },
     {
       "text": "It holds for simple connected uncolored graphs of diameter at most two.",
       "verdict": "supported",
-      "sourceLine": "pairs of simple connected uncolored graphs of diameter at most two,"
+      "sourceLine": "pairs of simple connected uncolored graphs of diameter at most two,",
+      "paper": 3
     },
     {
       "text": "The models are multitape Turing machines and sequential logarithmic-word RAMs.",
@@ -213,12 +218,14 @@
     {
       "text": "A computation with exponent proportional to k has too many addressed locations to list in a small reduction.",
       "verdict": "supported",
-      "sourceLine": "has too many addressed locations to list in a small reduction. Second,"
+      "sourceLine": "has too many addressed locations to list in a small reduction. Second,",
+      "paper": 3
     },
     {
       "text": "A block records only two adjacent address coordinates.",
       "verdict": "supported",
-      "sourceLine": "A block records only two adjacent address"
+      "sourceLine": "A block records only two adjacent address",
+      "paper": 3
     },
     {
       "text": "An explicit diagonal language is hard at every sufficiently large input length.",
@@ -228,17 +235,20 @@
     {
       "text": "With k in binary as input, joint-update equivalence is EXPTIME-complete, also for the restricted version.",
       "verdict": "supported",
-      "sourceLine": "Both \\(\\WL\\) and \\(\\SubWL\\) are \\(\\EXPTIME\\)-complete under deterministic"
+      "sourceLine": "Both \\(\\WL\\) and \\(\\SubWL\\) are \\(\\EXPTIME\\)-complete under deterministic",
+      "paper": 4
     },
     {
       "text": "The restricted version requires connected graphs of maximum degree at most three.",
       "verdict": "supported",
-      "sourceLine": "and of maximum degree at most three. Malformed encodings or failures"
+      "sourceLine": "and of maximum degree at most three. Malformed encodings or failures",
+      "paper": 4
     },
     {
       "text": "Deciding whether a given dimension identifies a graph is EXPTIME-complete.",
       "verdict": "supported",
-      "sourceLine": "The following problem is EXPTIME-complete under deterministic"
+      "sourceLine": "The following problem is EXPTIME-complete under deterministic",
+      "paper": 2
     },
     {
       "text": "Identification quantifies over every possible comparison graph.",
@@ -248,17 +258,20 @@
     {
       "text": "The parity-lift paper's ETH-based bound is superseded by the unconditional theorem for stable equivalence.",
       "verdict": "supported",
-      "sourceLine": "Its unconditional theorem supersedes the conditional lower bound for"
+      "sourceLine": "Its unconditional theorem supersedes the conditional lower bound for",
+      "paper": 1
     },
     {
       "text": "The hard instances already differ after two joint rounds or one separate round.",
       "verdict": "supported",
-      "sourceLine": "histograms after two joint rounds or one separate round, under the same"
+      "sourceLine": "histograms after two joint rounds or one separate round, under the same",
+      "paper": 1
     },
     {
       "text": "The theorem concerns deterministic computation, not randomized algorithms or nonuniform advice.",
       "verdict": "supported",
-      "sourceLine": "deterministic computation, not randomized algorithms, nonuniform"
+      "sourceLine": "deterministic computation, not randomized algorithms, nonuniform",
+      "paper": 3
     },
     {
       "text": "Inputs are explicit adjacency matrices.",
@@ -268,7 +281,8 @@
     {
       "text": "No bounded-degree promise is asserted in the fixed-dimension paper.",
       "verdict": "supported",
-      "sourceLine": "to obtain diameter two has unbounded degree. No bounded-degree promise"
+      "sourceLine": "to obtain diameter two has unbounded degree. No bounded-degree promise",
+      "paper": 3
     },
     {
       "text": "Lean checks formal versions of the four main statements; the parity-lift paper's conditional running-time exclusions are outside.",

@@ -293,6 +293,7 @@ Entries live in `src/content/entries/NNN.json` (an Astro content collection, val
   glossary: { term: string, meaning: string }[],     // 3–8
   sources: { id: number, cite: string, url?: string, quote?: string }[],
   claims?: { text: string, verdict: 'supported' | 'external', sourceLine?: string, sourceId?: number }[],  // from the checker
+  // explanation?: string — prose body; inline citation markers [n] cite claims[n-1] (AGENTS.md rule 12)
   sourceHash: string,                  // sha256 of the family's source files
   sourceCommit: string,                // openai/math commit the entry was written against
   model?: { reader: string, checker: string, date: string }

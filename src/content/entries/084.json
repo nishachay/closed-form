@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It claims to settle a natural family of cases that the earlier gap-based tests could not reach."
   },
-  "explanation": "Start with the numbers 1/2, 1/4, 1/8, 1/16, and so on forever. Each one is half the one before. Shrink this list by a factor of 0.2 and slide it right by 0.3. You get 0.4, 0.35, 0.325, 0.3125, 0.30625, and so on. Each new point lands halfway between the last point and 0.3. The points crowd toward 0.3 but never reach it. A stretched or shrunk, possibly flipped, and slid version of a list like this is called an affine copy.\n\nNow take a large set inside the stretch of line from 0 to 1. Say it covers more than 99% of that stretch. Its gaps then add up to less than 0.01 in total length. Must such a set always hold a full affine copy of the halving list? For any finite piece of the list, the answer is yes. Shrink the piece enough, and copies of it fit inside any set of positive measure (positive total length). The question is whether this ever fails for endless lists. In 1974 Paul Erdős conjectured that it always fails. His conjecture says every infinite list can be dodged by some set of positive measure.\n\nEarlier work settled some kinds of lists. In 1984 and 1985, Falconer and Eigen handled lists that shrink toward zero slowly. In 1987 Bourgain handled sums of three infinite sets. In 1997 Kolountzakis gave a test based on randomness, and also treated certain sums of two lists. These tests need the gaps inside a list to stay fairly even. The halving list fails them. Take its first 10 points. The spread from first to last is 511 times the smallest gap. With 20 points the ratio is 524,287. The gaps shrink much too fast. Two research reports, from 2011 and 2015, describe incomplete attempts at the halving case.\n\nThis paper claims to prove the case of every list of this kind. Pick any ratio q between 0 and 1, and form q, q², q³, and so on. Such a list is called a geometric progression. Pick any small allowance η, such as 0.01. The paper claims a closed, bounded set inside 0 to 1 exists with measure above 1 − η. No affine copy of the list fits inside it. That holds for every slide and every nonzero stretch, flipped or not. A companion paper from September 2026 treats the halving list, where q is 1/2.\n\nThe basic tool is random holes. Cut many small random holes in the line. Fix one center and one stretch. Then many independent random tests make it unlikely that a copy dodges every hole. The difficulty is that the stretch can be any of infinitely many sizes. Checking every stretch at the finest level of detail costs more than the small failure chance can pay for. The paper arranges its random tests on a finite branching tree. Each group of tests then only has to handle the detail on one branch and below it. So the number of stretches to check stays small enough for the odds to win.\n\nOne loose end remains. The random holes may still miss copies centered in a small, closed set of bad points. Every copy crowds toward its center, as the example crowds toward 0.3. So a thin open window around each bad center catches all of its remaining points. The paper removes those windows as well, and copies at every center are then blocked.\n\nReturn to the example with η equal to 0.01. The claimed set covers more than 99% of the line from 0 to 1. Yet no shrunk, stretched, slid or flipped copy of the halving list fits wholly inside it. The set depends on the ratio. The paper makes no claim of one set working for all ratios at once. The full conjecture, for every infinite list, is a separate question the paper does not address.\n\nHow sure is this? A computer proof checker called Lean has checked a formal proof of the halving case only. That covers q equal to 1/2, every allowance η, and stretches of both signs. The general ratio in this paper is outside the Lean scope note. No specialists have published a review yet.",
+  "explanation": "Start with the numbers 1/2, 1/4, 1/8, 1/16, and so on forever. Each one is half the one before. Shrink this list by a factor of 0.2 and slide it right by 0.3. You get 0.4, 0.35, 0.325, 0.3125, 0.30625, and so on. Each new point lands halfway between the last point and 0.3. The points crowd toward 0.3 but never reach it. A stretched or shrunk, possibly flipped, and slid version of a list like this is called an affine copy.\n\nNow take a large set inside the stretch of line from 0 to 1. Say it covers more than 99% of that stretch. Its gaps then add up to less than 0.01 in total length. Must such a set always hold a full affine copy of the halving list? For any finite piece of the list, the answer is yes. Shrink the piece enough, and copies of it fit inside any set of positive measure (positive total length). The question is whether this ever fails for endless lists. In 1974 Paul Erdős conjectured that it always fails. His conjecture says every infinite list can be dodged by some set of positive measure.\n\nEarlier work settled some kinds of lists. In 1984 and 1985, Falconer and Eigen handled lists that shrink toward zero slowly. In 1987 Bourgain handled sums of three infinite sets. In 1997 Kolountzakis gave a test based on randomness, and also treated certain sums of two lists. These tests need the gaps inside a list to stay fairly even. The halving list fails them. Take its first 10 points. The spread from first to last is 511 times the smallest gap. With 20 points the ratio is 524,287. The gaps shrink much too fast. Two research reports, from 2011 and 2015, describe incomplete attempts at the halving case.\n\nThis paper claims to prove the case of every list of this kind[10]. Pick any ratio q between 0 and 1, and form q, q², q³, and so on. Such a list is called a geometric progression. Pick any small allowance η, such as 0.01. The paper claims a closed, bounded set inside 0 to 1 exists with measure above 1 − η[10]. No affine copy of the list fits inside it. That holds for every slide and every nonzero stretch, flipped or not. A companion paper from September 2026 treats the halving list, where q is 1/2.\n\nThe basic tool is random holes. Cut many small random holes in the line. Fix one center and one stretch. Then many independent random tests make it unlikely that a copy dodges every hole[13]. The difficulty is that the stretch can be any of infinitely many sizes[14]. Checking every stretch at the finest level of detail costs more than the small failure chance can pay for[15]. The paper arranges its random tests on a finite branching tree[16]. Each group of tests then only has to handle the detail on one branch and below it[17]. So the number of stretches to check stays small enough for the odds to win.\n\nOne loose end remains. The random holes may still miss copies centered in a small, closed set of bad points[18]. Every copy crowds toward its center, as the example crowds toward 0.3. So a thin open window around each bad center catches all of its remaining points. The paper removes those windows as well, and copies at every center are then blocked[18].\n\nReturn to the example with η equal to 0.01. The claimed set covers more than 99% of the line from 0 to 1. Yet no shrunk, stretched, slid or flipped copy of the halving list fits wholly inside it. The set depends on the ratio[11]. The paper makes no claim of one set working for all ratios at once. The full conjecture, for every infinite list, is a separate question the paper does not address[12].\n\nHow sure is this? A computer proof checker called Lean has checked a formal proof of the halving case only. That covers q equal to 1/2, every allowance η, and stretches of both signs. The general ratio in this paper is outside the Lean scope note. No specialists have published a review yet.",
   "hypeCheck": "Major if the proof holds, but only for geometric lists. Lean checks the halving case alone; the general-ratio argument has no formal check and no published specialist review.",
   "glossary": [
     {
@@ -171,47 +171,56 @@
     {
       "text": "For every q in (0,1) and η in (0,1), the paper claims a compact set in [0,1] of measure above 1 − η avoiding all affine copies of the geometric progression.",
       "verdict": "supported",
-      "sourceLine": "For every $q\\in(0,1)$ and $\\eta\\in(0,1)$, there is a compact set"
+      "sourceLine": "For every $q\\in(0,1)$ and $\\eta\\in(0,1)$, there is a compact set",
+      "paper": 1
     },
     {
       "text": "The avoiding set may depend on q.",
       "verdict": "supported",
-      "sourceLine": "The avoiding set may depend on $q$."
+      "sourceLine": "The avoiding set may depend on $q$.",
+      "paper": 1
     },
     {
       "text": "The conjecture for arbitrary infinite sets is a separate question.",
       "verdict": "supported",
-      "sourceLine": "while the conjecture for arbitrary infinite"
+      "sourceLine": "while the conjecture for arbitrary infinite",
+      "paper": 1
     },
     {
       "text": "For a fixed center and scale, many independent random tests make a missed copy unlikely.",
       "verdict": "supported",
-      "sourceLine": "For a fixed center and a fixed scale, many independent random cell"
+      "sourceLine": "For a fixed center and a fixed scale, many independent random cell",
+      "paper": 1
     },
     {
       "text": "The difficulty is to control all scales at once.",
       "verdict": "supported",
-      "sourceLine": "The difficulty is to control all"
+      "sourceLine": "The difficulty is to control all",
+      "paper": 1
     },
     {
       "text": "Recording every change at the finest grid can cost more than the failure probability allows.",
       "verdict": "supported",
-      "sourceLine": "of a large construction can cost more than the failure probability"
+      "sourceLine": "of a large construction can cost more than the failure probability",
+      "paper": 1
     },
     {
       "text": "The tests are arranged on a finite ordered tree.",
       "verdict": "supported",
-      "sourceLine": "group of tests uses only the grids on one edge and in its child subtree."
+      "sourceLine": "group of tests uses only the grids on one edge and in its child subtree.",
+      "paper": 1
     },
     {
       "text": "The scale count depends on one interval's length, not on the whole tree's resolution.",
       "verdict": "supported",
-      "sourceLine": "length of one interval, rather than on the resolution of the entire"
+      "sourceLine": "length of one interval, rather than on the resolution of the entire",
+      "paper": 1
     },
     {
       "text": "The construction may miss copies at a small closed set of centers, repaired by an open neighborhood.",
       "verdict": "supported",
-      "sourceLine": "Finally, the construction may miss copies at a small closed set of"
+      "sourceLine": "Finally, the construction may miss copies at a small closed set of",
+      "paper": 1
     },
     {
       "text": "Lean has a formal proof of the dyadic case for every η and both signs of dilation; the general ratio is outside the scope note.",

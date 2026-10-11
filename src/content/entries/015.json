@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "The prime-degree paper gives an unconditional answer to the packet form of the higher-dimensional Duke problem, with no exceptional fields."
   },
-  "explanation": "Take the numbers a + b√2, where a and b are whole numbers. Pair each one with its mirror twin, a − b√2. The number 1 becomes the point (1, 1). The number √2 becomes about (1.414, −1.414). All such points form a regular grid in the plane, called a lattice. Its basic cell has area 2√2, about 2.83.\n\nNow stretch the plane sideways by about 5.83 and squash it upright by the same factor. The point (1, 1) moves to about (5.83, 0.172). That is exactly the point for 3 + 2√2. Every other grid point also lands on a grid point. Multiplying by 3 + 2√2 sends a + b√2 to (3a + 4b) + (2a + 3b)√2. The trick works because the twin 3 − 2√2 is exactly 1 divided by 3 + 2√2. So the whole grid comes back to itself.\n\nNow picture the space of all grids whose cell has area 1. Shrink our grid to area 1 and stretch it slowly, from factor 1 up to 5.83. It traces a closed loop in that space. In the natural logarithmic units, the loop has length about 1.76, the logarithm of 5.83.\n\nLarger number systems give larger versions of this picture. A totally real field of degree n is a number system built from a root of a degree-n whole-number equation. All n of its mirror copies are real. It gives a grid in n dimensions. The loop becomes a closed torus, a doughnut-like shape of dimension n − 1. One field can give several genuinely different grids, one for each ideal class. A torus packet collects the tori from every class, adds their sign-flipped copies, and weights each torus by its volume.\n\nThe question is whether packets spread out evenly as the number systems grow more intricate. Their size is measured by a whole number called the discriminant. For the grid above it is 8, the square of the cell area. Spreading evenly means each region gets its fair share of the packet's weight. Fair is judged by the natural uniform measure, called Haar measure. The papers also show that no share of the weight drifts off toward extremely squashed grids.\n\nFor degree two, the loops are closed paths on a classical surface. In 1988, William Duke proved that these loops, weighted by length, spread evenly for the fundamental real-quadratic discriminants. In 2011, Einsiedler, Lindenstrauss, Michel and Venkatesh proved a cubic version. Their extension to higher prime degrees depended on an unproven analytic bound called subconvexity. In 2024, Lemke Oliver, Thorner and Zaman removed that condition in each fixed prime degree from five on. Their result still left out a small exceptional family of fields.\n\nThe first paper proves the result in every fixed prime degree from five on, with no exceptional fields. The argument has two parts. A counting bound keeps weight away from squashed grids and from tiny neighbourhoods. A known classification then forces the uniform measure. The obstacle was making the count work for every field without the unproven bound. The paper uses a 1974 result of Stark in its place. It also allows smaller systems of whole numbers inside the field, and grids grouped by their behaviour at each prime.\n\nDegrees four and six bring a different obstacle. Four and six are not prime. In such degrees, the limit could pile up on smaller pieces of the space instead of spreading evenly. Both papers ask for primitive fields, which have no number system strictly between the ordinary fractions and the field itself. The quartic paper claims to rule out the smaller pieces with a count in a related cubic field. The sextic paper claims to do it with a new argument about how the weight is spread at many scales.\n\nThe scopes differ. The quartic paper allows any order, meaning any smaller ring of whole numbers inside the field. The sextic paper covers only the full ring of whole numbers, as the field discriminant grows. None of the results says anything about one torus on its own. The first paper also gives no rate of convergence.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the prime-degree theorem. It is matched against a fixed reference statement by a tool called Comparator. The quartic and sextic theorems are outside the Lean scope note. No specialist review of any of the three papers has been published.",
+  "explanation": "Take the numbers a + b√2, where a and b are whole numbers. Pair each one with its mirror twin, a − b√2. The number 1 becomes the point (1, 1). The number √2 becomes about (1.414, −1.414). All such points form a regular grid in the plane, called a lattice. Its basic cell has area 2√2, about 2.83.\n\nNow stretch the plane sideways by about 5.83 and squash it upright by the same factor. The point (1, 1) moves to about (5.83, 0.172). That is exactly the point for 3 + 2√2. Every other grid point also lands on a grid point. Multiplying by 3 + 2√2 sends a + b√2 to (3a + 4b) + (2a + 3b)√2. The trick works because the twin 3 − 2√2 is exactly 1 divided by 3 + 2√2. So the whole grid comes back to itself.\n\nNow picture the space of all grids whose cell has area 1. Shrink our grid to area 1 and stretch it slowly, from factor 1 up to 5.83. It traces a closed loop in that space. In the natural logarithmic units, the loop has length about 1.76, the logarithm of 5.83.\n\nLarger number systems give larger versions of this picture. A totally real field of degree n is a number system built from a root of a degree-n whole-number equation. All n of its mirror copies are real. It gives a grid in n dimensions. The loop becomes a closed torus, a doughnut-like shape of dimension n − 1. One field can give several genuinely different grids, one for each ideal class. A torus packet collects the tori from every class, adds their sign-flipped copies, and weights each torus by its volume.\n\nThe question is whether packets spread out evenly as the number systems grow more intricate. Their size is measured by a whole number called the discriminant. For the grid above it is 8, the square of the cell area. Spreading evenly means each region gets its fair share of the packet's weight. Fair is judged by the natural uniform measure, called Haar measure. The papers also show that no share of the weight drifts off toward extremely squashed grids[19].\n\nFor degree two, the loops are closed paths on a classical surface. In 1988, William Duke proved that these loops, weighted by length, spread evenly for the fundamental real-quadratic discriminants. In 2011, Einsiedler, Lindenstrauss, Michel and Venkatesh proved a cubic version. Their extension to higher prime degrees depended on an unproven analytic bound called subconvexity. In 2024, Lemke Oliver, Thorner and Zaman removed that condition in each fixed prime degree from five on. Their result still left out a small exceptional family of fields.\n\nThe first paper proves the result in every fixed prime degree from five on, with no exceptional fields[6]. The argument has two parts. A counting bound keeps weight away from squashed grids and from tiny neighbourhoods[7]. A known classification then forces the uniform measure[10]. The obstacle was making the count work for every field without the unproven bound. The paper uses a 1974 result of Stark in its place[8]. It also allows smaller systems of whole numbers inside the field, and grids grouped by their behaviour at each prime[9].\n\nDegrees four and six bring a different obstacle. Four and six are not prime. In such degrees, the limit could pile up on smaller pieces of the space instead of spreading evenly[11,12]. Both papers ask for primitive fields, which have no number system strictly between the ordinary fractions and the field itself[13]. The quartic paper claims to rule out the smaller pieces with a count in a related cubic field[14]. The sextic paper claims to do it with a new argument about how the weight is spread at many scales[15].\n\nThe scopes differ. The quartic paper allows any order, meaning any smaller ring of whole numbers inside the field[16]. The sextic paper covers only the full ring of whole numbers, as the field discriminant grows[17]. None of the results says anything about one torus on its own[18]. The first paper also gives no rate of convergence[18].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the prime-degree theorem. It is matched against a fixed reference statement by a tool called Comparator. The quartic and sextic theorems are outside the Lean scope note. No specialist review of any of the three papers has been published.",
   "hypeCheck": "Solid to major if the proofs hold. Only the prime-degree theorem has a Lean proof listed. The quartic and sextic theorems rest on the papers alone, and no specialist review is published.",
   "glossary": [
     {
@@ -158,84 +158,98 @@
       "text": "The prime-degree theorem treats every field and every full-lattice local type.",
       "verdict": "supported",
       "sourceLine": "treats every field and every full-lattice local type in the stated prime degrees",
+      "paper": 1,
       "sourceId": 5
     },
     {
       "text": "Counting bounds control the cusp and small balls and feed into rigidity.",
       "verdict": "supported",
       "sourceLine": "packet averages of lattice-vector counts control the cusp and small ordinary balls, and these bounds feed into positive-entropy rigidity",
+      "paper": 1,
       "sourceId": 5
     },
     {
       "text": "Stark's exceptional-zero descent supplies the bounds without a subconvexity hypothesis.",
       "verdict": "supported",
       "sourceLine": "supplies the required bounds without a subconvexity hypothesis",
+      "paper": 1,
       "sourceId": 4
     },
     {
       "text": "The prime-degree theorem includes noninvertible modules over nonmaximal orders.",
       "verdict": "supported",
       "sourceLine": "as well as arbitrary noninvertible modules over nonmaximal orders",
+      "paper": 1,
       "sourceId": 5
     },
     {
       "text": "In prime degree the positive-entropy classification gives Haar measure directly.",
       "verdict": "supported",
       "sourceLine": "In prime degree, the positive-entropy classification gives Haar measure directly",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "In degree six, proper block subgroups can carry limiting components.",
       "verdict": "supported",
       "sourceLine": "In degree six there are proper block subgroups containing the full diagonal group whose closed orbits can carry finite invariant measures.",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "Degree four allows proper homogeneous limits that must be excluded.",
       "verdict": "supported",
       "sourceLine": "then exclude the proper homogeneous limits allowed in degree four",
+      "paper": 2,
       "sourceId": 6
     },
     {
       "text": "A quartic field is primitive if no field lies strictly between Q and K.",
       "verdict": "supported",
       "sourceLine": "is \\emph{primitive} if it has no field strictly between",
+      "paper": 2,
       "sourceId": 6
     },
     {
       "text": "The quartic argument places exterior products in a cubic resolvent field.",
       "verdict": "supported",
       "sourceLine": "places the products in the three embeddings of a cubic resolvent field",
+      "paper": 2,
       "sourceId": 6
     },
     {
       "text": "The sextic argument uses conditional measures at growing but separated resolutions.",
       "verdict": "supported",
       "sourceLine": "The main additional argument concerns conditional measures that retain information at growing, but separated, resolutions.",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "The quartic theorem covers every order, and the order index may grow in a fixed field.",
       "verdict": "supported",
       "sourceLine": "We prove this for the complete packets attached to invertible ideals of every order in a primitive totally real quartic field.",
+      "paper": 2,
       "sourceId": 6
     },
     {
       "text": "The sextic theorem covers maximal orders as field discriminants tend to infinity.",
       "verdict": "supported",
       "sourceLine": "complete ideal-class packets of maximal orders in totally real sextic fields with no proper intermediate fields",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "The prime-degree theorem makes no assertion about an individual orbit, a convergence rate, or composite degrees.",
       "verdict": "supported",
       "sourceLine": "it makes no assertion about an individual orbit, a convergence rate, or composite degrees",
+      "paper": 1,
       "sourceId": 5
     },
     {
       "text": "The theorem includes no escape of mass.",
       "verdict": "supported",
       "sourceLine": "no mass escapes into the cusp",
+      "paper": 1,
       "sourceId": 5
     },
     {

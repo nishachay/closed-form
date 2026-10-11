@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "It answers a real-sign flatness question from Erdős's problem lists and disproves Turyn's bounded-merit-factor conjecture."
   },
-  "explanation": "Take four signs: +1, +1, +1, −1. Use them as the coefficients of a polynomial, P(z) = 1 + z + z² − z³. Now let z travel once around the unit circle. That is the circle of complex numbers whose size is exactly 1. At each point, measure the size of P(z). At z = 1 the size is 2. The average of the squared size is exactly 4, the sum of the squared signs. So the natural typical size is √4 = 2.\n\nThe size does not stay at 2. It climbs to about 2.66 and drops to about 0.96. That is about 1.33 times the typical size at the top, and 0.48 times at the bottom. A search of all 16 sign patterns of length 4 finds none with a lower top.\n\nA polynomial whose coefficients are all +1 or −1 is called a real Littlewood polynomial. Its length N is the number of coefficients. Its typical size on the circle is always √N, for the reason above. The top can never sit below √N. Call a family of such polynomials ultraflat if size divided by √N gets uniformly close to 1 as N grows. Uniformly means at every point of the circle at once, top and bottom together.\n\nPaul Erdős asked in 1957 whether such polynomials can stay between two fixed multiples of √N. A construction of Shapiro and Rudin gives a top of at most √(2N) when N is a power of two. In 2020, Balister, Bollobás, Morris, Sahasrabudhe and Tiba built flat ones of every degree from two up. Their sizes stay between two fixed positive multiples of √N. But the multiples do not approach 1. A real-sign version of an Erdős question asked whether the top always stays at least a fixed fraction above √N.\n\nThe one obstacle is that the coefficients must be plain signs. With complex coefficients of size 1, each coefficient can point in any direction. Jean-Pierre Kahane used that freedom to build ultraflat polynomials in 1980. Real signs leave no such room. The papers first build coefficients anywhere between −1 and 1 that give a nearly flat curve. They then round each coefficient to +1 or −1 while keeping the error small.\n\nThree papers make the claims. The September paper proves that the top can be pushed to within any small margin of √N. This holds for every large enough length, not just special ones. A second paper claims to add a floor of √N/16 for the same polynomial. The third paper claims the full ultraflat result. For any small ε, it claims signs whose size stays between (1 − ε)√N and (1 + ε)√N everywhere. That includes the real points z = 1 and z = −1. The signs may be chosen afresh at each length.\n\nA consequence concerns the merit factor of a sign pattern. Slide the pattern against itself and record each overlap total. For +1, +1, +1, −1 the totals are 1, 0 and −1. The merit factor is N² divided by twice the sum of their squares. Here that is 16 divided by 4, giving 4. At length 13, the best of all 8,192 patterns scores 169/12, about 14.08. Turyn's conjecture said merit factors stay bounded over all patterns. In 2013, Jedwab, Katz and Schmidt reached families with limiting merit factor 6.342061…. The September paper claims the largest merit factor at length N tends to infinity. That would disprove Turyn's conjecture. It gives no rate of growth.\n\nThe results say such signs exist. They give no useful rate and no efficient way to find the signs. They also do not say how large N must be before each bound holds.\n\nHow sure is this? A computer proof checker called Lean has checked the September main theorem. That is the top bound of (1 + η)√N at every large length. Lean also covers a related average form of flatness for one family. The Lean scope note does not list the merit-factor consequence. The √N/16 floor and the two-sided ultraflat theorem are outside the Lean check. No specialist review has been published.",
+  "explanation": "Take four signs: +1, +1, +1, −1. Use them as the coefficients of a polynomial, P(z) = 1 + z + z² − z³. Now let z travel once around the unit circle. That is the circle of complex numbers whose size is exactly 1. At each point, measure the size of P(z). At z = 1 the size is 2. The average of the squared size is exactly 4, the sum of the squared signs. So the natural typical size is √4 = 2.\n\nThe size does not stay at 2. It climbs to about 2.66 and drops to about 0.96. That is about 1.33 times the typical size at the top, and 0.48 times at the bottom. A search of all 16 sign patterns of length 4 finds none with a lower top.\n\nA polynomial whose coefficients are all +1 or −1 is called a real Littlewood polynomial. Its length N is the number of coefficients. Its typical size on the circle is always √N, for the reason above. The top can never sit below √N. Call a family of such polynomials ultraflat if size divided by √N gets uniformly close to 1 as N grows. Uniformly means at every point of the circle at once, top and bottom together.\n\nPaul Erdős asked in 1957 whether such polynomials can stay between two fixed multiples of √N. A construction of Shapiro and Rudin gives a top of at most √(2N) when N is a power of two. In 2020, Balister, Bollobás, Morris, Sahasrabudhe and Tiba built flat ones of every degree from two up. Their sizes stay between two fixed positive multiples of √N. But the multiples do not approach 1. A real-sign version of an Erdős question asked whether the top always stays at least a fixed fraction above √N.\n\nThe one obstacle is that the coefficients must be plain signs[9]. With complex coefficients of size 1, each coefficient can point in any direction. Jean-Pierre Kahane used that freedom to build ultraflat polynomials in 1980. Real signs leave no such room. The papers first build coefficients anywhere between −1 and 1 that give a nearly flat curve. They then round each coefficient to +1 or −1 while keeping the error small[10].\n\nThree papers make the claims. The September paper proves that the top can be pushed to within any small margin of √N[11]. This holds for every large enough length, not just special ones. A second paper claims to add a floor of √N/16 for the same polynomial[12]. The third paper claims the full ultraflat result. For any small ε, it claims signs whose size stays between (1 − ε)√N and (1 + ε)√N everywhere[13]. That includes the real points z = 1 and z = −1. The signs may be chosen afresh at each length[13].\n\nA consequence concerns the merit factor of a sign pattern. Slide the pattern against itself and record each overlap total. For +1, +1, +1, −1 the totals are 1, 0 and −1. The merit factor is N² divided by twice the sum of their squares. Here that is 16 divided by 4, giving 4. At length 13, the best of all 8,192 patterns scores 169/12, about 14.08. Turyn's conjecture said merit factors stay bounded over all patterns. In 2013, Jedwab, Katz and Schmidt reached families with limiting merit factor 6.342061…. The September paper claims the largest merit factor at length N tends to infinity[17]. That would disprove Turyn's conjecture. It gives no rate of growth[17].\n\nThe results say such signs exist. They give no useful rate and no efficient way to find the signs[18]. They also do not say how large N must be before each bound holds.\n\nHow sure is this? A computer proof checker called Lean has checked the September main theorem. That is the top bound of (1 + η)√N at every large length. Lean also covers a related average form of flatness for one family. The Lean scope note does not list the merit-factor consequence. The √N/16 floor and the two-sided ultraflat theorem are outside the Lean check. No specialist review has been published.",
   "hypeCheck": "Major if the papers hold. Lean covers only the upper bound on the maximum and a related average flatness statement. The two-sided ultraflat theorem and the merit-factor consequence are not in the Lean scope note. No specialist review is published.",
   "glossary": [
     {
@@ -185,30 +185,35 @@
       "text": "The restriction to real signs is substantial.",
       "verdict": "supported",
       "sourceLine": "The restriction to real\nsigns is substantial.",
+      "paper": 1,
       "sourceId": 9
     },
     {
       "text": "The proof first allows real coefficients in [−1,1] and then a discrepancy argument replaces them by signs.",
       "verdict": "supported",
       "sourceLine": "A discrepancy argument then replaces the\ncoefficients by signs, with an error controlled by this small defect.",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "For every η > 0 and every large N there are signs with maximum at most (1 + η)√N.",
       "verdict": "supported",
       "sourceLine": "The theorem concerns every sufficiently large length, rather than a\nsubsequence.",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "The companion paper gives both √N/16 ≤ |P(z)| and |P(z)| ≤ (1 + η)√N.",
       "verdict": "supported",
       "sourceLine": "Theorem~\\ref{thm:main} combines the\nnearly minimal upper bound with a fixed positive lower bound.",
+      "paper": 2,
       "sourceId": 8
     },
     {
       "text": "The ultraflat theorem covers both extrema on the whole circle, including z = 1 and z = −1, and the signs may depend on N.",
       "verdict": "supported",
       "sourceLine": "The theorem concerns both extrema of the\nsame polynomial on the entire circle, including the real points\n$z=1$ and $z=-1$.",
+      "paper": 1,
       "sourceId": 9
     },
     {
@@ -233,12 +238,14 @@
       "text": "The largest merit factor at length N tends to infinity, disproving Turyn's conjecture; no rate of divergence is given.",
       "verdict": "supported",
       "sourceLine": "It supplies no\nquantitative rate of divergence.",
+      "paper": 3,
       "sourceId": 7
     },
     {
       "text": "The choices are existential; no useful convergence rate or efficient signing algorithm is asserted.",
       "verdict": "supported",
       "sourceLine": "The choices in the proof are\nexistential; no useful convergence rate or efficient signing algorithm\nis asserted.",
+      "paper": 3,
       "sourceId": 7
     },
     {

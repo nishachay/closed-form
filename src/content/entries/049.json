@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "If the proof holds, it disproves two named conjectures in the lowest dimension where the first could fail."
   },
-  "explanation": "Take the polynomial x + y² in two variables. Replace x by x − y², and it becomes plain x. That replacement is a polynomial automorphism [a change of variables made of polynomials that other polynomials can undo]. Here the undo step is x → x + y². Call a polynomial a coordinate if some such change turns it into one variable. A coordinate is one axis in disguise.\n\nNow take four complex variables, x₁ to x₄. First set Q = x₂² − x₄² + x₁x₃. Then set f = x₁ − 2Q(Q(x₂ + x₄) + x₁x₄). Multiplied out, f has 16 terms and degree 5. At (0, 0, 0, 0) it equals 0. At (1, 0, 0, 0) it equals 1. At (1, 1, 1, 1), Q equals 1 and f equals −5.\n\nAdd a fifth variable, w, that f does not even use. The paper builds an explicit change of all five variables that turns f into x₁. It then proves that no change of the original four variables does this. So f is a stable coordinate [a polynomial that becomes a coordinate once spare variables are added]. Yet it is not a coordinate on its own. A Lean proof is listed for both halves.\n\nThe stable coordinate conjecture says this cannot happen. It predicts that a stable coordinate was a coordinate all along. Shpilrain and Yu stated the one-variable form as a conjecture in 2002. They also showed that it holds over the complex numbers in two and three variables. With one variable it is elementary. So four variables is the first place a counterexample could exist. One spare variable is already enough here.\n\nThe example also answers a second question. A fiber of f is the set of points where f takes one fixed value. For a coordinate, every fiber is a flat copy of affine three-space [ordinary three-dimensional complex space]. The paper shows every fiber of f is also a copy of three-space. Yet no change of variables of four-space carries any of them to a coordinate hyperplane. That is a flat slice such as x₁ = 0. Mathematicians call such a fiber nonrectifiable [impossible to straighten by any polynomial change of the whole space]. The Abhyankar–Sathaye conjecture predicts that this never happens. In two variables the Abhyankar–Moh–Suzuki theorem says the answer is yes. The example says no in four-dimensional space.\n\nA companion paper from 24 September 2026 had already found a different counterexample to Abhyankar–Sathaye. Its polynomial F also has four variables, and the set where F = 0 is a copy of three-space. F fails to be a coordinate for a simple reason. At the point (2, 0, −1/2, 1/2), F equals −1 and all four of its slopes are zero. A coordinate can never have such a flat point, because the change of variables would then have no inverse there. That paper claims the three-space shape for the zero fiber only.\n\nThe October polynomial f cannot be caught by that test. It becomes a coordinate once w is added, and the same slope argument then rules out any flat point. That is the real obstacle. Earlier work found polynomials that become coordinates after adding variables. Lewis proved in 2013 that one well-known test polynomial, the second Vénéreau polynomial, is a coordinate. Blanc and Poloni later proved stability for a wider family. Showing that a polynomial is a stable coordinate is explicit work. Showing that it is not a coordinate needs a different kind of argument.\n\nHere is the idea in plain terms. If f were a coordinate, a certain sliding symmetry would have to survive on a simpler ring built from f. The paper then shows that no such symmetry exists. One quantity in it would have to be a polynomial and also carry a negative weight. Both cannot be true. The strategy adapts an earlier OpenAI preprint on a related question, called cancellation. This example, however, does not itself give a cancellation counterexample. Its surrounding space is ordinary four-space, and the problem sits in the polynomial f.\n\nAdding more unused variables keeps the Abhyankar–Sathaye failure in every dimension of four or more. The three-variable case is not covered. How sure is this? The Lean scope note lists a formal version of the main claims. It covers the degree-five polynomial and its coordinate status with and without w. It also covers the claim that every fiber is three-space and cannot be straightened. It also covers the Abhyankar–Sathaye failure in every dimension of at least four. No specialist review has been published.",
+  "explanation": "Take the polynomial x + y² in two variables. Replace x by x − y², and it becomes plain x. That replacement is a polynomial automorphism [a change of variables made of polynomials that other polynomials can undo]. Here the undo step is x → x + y². Call a polynomial a coordinate if some such change turns it into one variable. A coordinate is one axis in disguise.\n\nNow take four complex variables, x₁ to x₄. First set Q = x₂² − x₄² + x₁x₃. Then set f = x₁ − 2Q(Q(x₂ + x₄) + x₁x₄). Multiplied out, f has 16 terms and degree 5. At (0, 0, 0, 0) it equals 0. At (1, 0, 0, 0) it equals 1. At (1, 1, 1, 1), Q equals 1 and f equals −5.\n\nAdd a fifth variable, w, that f does not even use. The paper builds an explicit change of all five variables that turns f into x₁. It then proves that no change of the original four variables does this[4]. So f is a stable coordinate [a polynomial that becomes a coordinate once spare variables are added]. Yet it is not a coordinate on its own. A Lean proof is listed for both halves.\n\nThe stable coordinate conjecture says this cannot happen. It predicts that a stable coordinate was a coordinate all along. Shpilrain and Yu stated the one-variable form as a conjecture in 2002. They also showed that it holds over the complex numbers in two and three variables. With one variable it is elementary. So four variables is the first place a counterexample could exist[8]. One spare variable is already enough here.\n\nThe example also answers a second question. A fiber of f is the set of points where f takes one fixed value. For a coordinate, every fiber is a flat copy of affine three-space [ordinary three-dimensional complex space]. The paper shows every fiber of f is also a copy of three-space[9]. Yet no change of variables of four-space carries any of them to a coordinate hyperplane[9]. That is a flat slice such as x₁ = 0. Mathematicians call such a fiber nonrectifiable [impossible to straighten by any polynomial change of the whole space]. The Abhyankar–Sathaye conjecture predicts that this never happens. In two variables the Abhyankar–Moh–Suzuki theorem says the answer is yes. The example says no in four-dimensional space[13].\n\nA companion paper from 24 September 2026 had already found a different counterexample to Abhyankar–Sathaye. Its polynomial F also has four variables, and the set where F = 0 is a copy of three-space[14]. F fails to be a coordinate for a simple reason. At the point (2, 0, −1/2, 1/2), F equals −1 and all four of its slopes are zero[15]. A coordinate can never have such a flat point, because the change of variables would then have no inverse there[16]. That paper claims the three-space shape for the zero fiber only[14].\n\nThe October polynomial f cannot be caught by that test. It becomes a coordinate once w is added, and the same slope argument then rules out any flat point. That is the real obstacle. Earlier work found polynomials that become coordinates after adding variables. Lewis proved in 2013 that one well-known test polynomial, the second Vénéreau polynomial, is a coordinate. Blanc and Poloni later proved stability for a wider family. Showing that a polynomial is a stable coordinate is explicit work. Showing that it is not a coordinate needs a different kind of argument[19].\n\nHere is the idea in plain terms. If f were a coordinate, a certain sliding symmetry would have to survive on a simpler ring built from f. The paper then shows that no such symmetry exists. One quantity in it would have to be a polynomial and also carry a negative weight[20]. Both cannot be true. The strategy adapts an earlier OpenAI preprint on a related question, called cancellation[21]. This example, however, does not itself give a cancellation counterexample. Its surrounding space is ordinary four-space, and the problem sits in the polynomial f[22].\n\nAdding more unused variables keeps the Abhyankar–Sathaye failure in every dimension of four or more[23]. The three-variable case is not covered. How sure is this? The Lean scope note lists a formal version of the main claims. It covers the degree-five polynomial and its coordinate status with and without w. It also covers the claim that every fiber is three-space and cannot be straightened. It also covers the Abhyankar–Sathaye failure in every dimension of at least four. No specialist review has been published.",
   "hypeCheck": "Major if the proofs hold. The Lean scope note lists formal versions of the main statements. No specialist has published a review, and the three-variable case is not addressed.",
   "glossary": [
     {
@@ -144,6 +144,7 @@
       "text": "An automorphism of R[w] sends f to x₁, but no automorphism of R does.",
       "verdict": "supported",
       "sourceLine": "sending $f$ to $x_1$, but there is no such automorphism of $R$.",
+      "paper": 1,
       "sourceId": 1
     },
     {
@@ -168,12 +169,14 @@
       "text": "Four variables is the first possible dimension and one added variable suffices.",
       "verdict": "supported",
       "sourceLine": "Thus four variables are the first possible dimension for a counterexample, and one added variable already suffices.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "Every fiber of f is a copy of three-space and its embedding is not rectifiable.",
       "verdict": "supported",
       "sourceLine": "is isomorphic to $\\A^3$ and its embedding in $\\A^4$ is not rectifiable.",
+      "paper": 1,
       "sourceId": 1
     },
     {
@@ -198,24 +201,28 @@
       "text": "The example gives a negative answer in ambient dimension four.",
       "verdict": "supported",
       "sourceLine": "gives a negative answer to this conjecture in ambient dimension four.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The September paper's F has a zero fibre that is affine three-space.",
       "verdict": "supported",
       "sourceLine": "a noncoordinate polynomial in four complex variables whose zero fibre is affine three-space.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "At P = (2,0,−1/2,1/2), F = −1 and its gradient vanishes.",
       "verdict": "supported",
       "sourceLine": "At $P$ this reduces to $0=dF(P)$, so $\\grad F(P)=0$.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "A coordinate cannot have a critical point, since the automorphism's Jacobian is invertible.",
       "verdict": "supported",
       "sourceLine": "If a polynomial automorphism had $F$ as its first component, its Jacobian matrix at $P$ would have a zero first row.",
+      "paper": 2,
       "sourceId": 2
     },
     {
@@ -234,30 +241,35 @@
       "text": "Stability is settled by explicit substitutions; non-coordinateness needs a different (derivation) obstruction.",
       "verdict": "supported",
       "sourceLine": "the first problem is settled by explicit substitutions; the second requires a derivation obstruction.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "A needed coefficient would have to be a polynomial and have negative weight, which is impossible.",
       "verdict": "supported",
       "sourceLine": "Such a derivation has a coefficient that would simultaneously have to be a polynomial in $a,d,u$ and have negative fiber weight. This is impossible.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The strategy adapts the construction of the OpenAI cancellation preprint.",
       "verdict": "supported",
       "sourceLine": "The graded-ring and line-bundle strategy adapts the construction in",
+      "paper": 1,
       "sourceId": 10
     },
     {
       "text": "In this example the ambient variety is already four-space and the obstruction concerns the polynomial.",
       "verdict": "supported",
       "sourceLine": "In our example the ambient variety is already $\\A^4$, and the obstruction concerns its distinguished polynomial.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "Adjoining variables gives counterexamples in every ambient dimension at least four; three variables are not addressed.",
       "verdict": "supported",
       "sourceLine": "Adjoining variables gives counterexamples in every ambient dimension at least four.",
+      "paper": 2,
       "sourceId": 2
     },
     {

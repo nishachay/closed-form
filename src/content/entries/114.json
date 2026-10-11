@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It answers a recorded open question on counting common bases of two matroids. That part has a Lean proof listed."
   },
-  "explanation": "Three workers need three jobs, A, B and C. Worker 1 can do A or B. Worker 2 can do any of the three. Worker 3 can do B or C. Each worker gets one job, and every job gets filled. Checking all six orderings shows that exactly three assignments work. Small cases like this are easy to list. Large ones are not. If 100 workers can each do any of 100 jobs, there are 100 factorial assignments, about 9.3 × 10^157.\n\nThis puzzle is one case of a general question about matroids. A matroid is a rule that says which groups of items are allowed together. Here the items are the seven allowed worker–job pairs. One rule says no worker appears twice. A second rule says no job appears twice. A basis is a largest allowed group. A common basis is a group that is a basis under both rules. In this example, the common bases are exactly the three full assignments.\n\nCounting common bases exactly is often out of reach, so the goal is a close estimate. The standard target has a long name: a fully polynomial randomized approximation scheme, or FPRAS. Ask for 1 percent accuracy, and the answer lands between 0.99 and 1.01 times the true count. It may fail, but only with a small chance you choose in advance. Its cost must grow like a fixed power of the input size and of 1/accuracy. Here the method may only query an independence oracle. That is a black box that says whether a given group is allowed.\n\nPieces of this were known. In 2004, Jerrum, Sinclair and Vigoda gave an FPRAS for the permanent. That covers the worker–job case. Anari, Liu, Oveis Gharan and Vinzant later gave an independence-oracle FPRAS for the bases of one matroid. For two matroids, Anari, Oveis Gharan and Vinzant had an estimate whose running time grows exponentially with the basis size. Kuikui Liu's 2023 dissertation recorded the two-matroid question as an open problem.\n\nThe first paper proves an FPRAS for common bases of any two equal-rank matroids (Lean proof listed). Rank means the size of a basis. The method takes a random walk among candidate answers, as in the permanent algorithm. The obstacle is that the walk must pass through rare in-between states. The paper adds slightly broken states and learns how much weight to give each kind. The result also covers common allowed groups of any fixed size, even when the two ranks differ.\n\nThe second paper claims to extend this from yes-or-no choices to whole-number amounts. Picture a 3 × 3 table of whole numbers. Every row and every column must add up to 1,000,000. Writing down these rules takes six seven-digit numbers. Yet the number of such tables is 125,000,750,001,875,002,250,001, about 1.25 × 10^23. Such tables are one example of common integer bases of two polymatroids. A polymatroid is a rule that gives every group of cells a ceiling on its total. Here one rule caps groups by their rows, the other by their columns.\n\nLarge numbers were the obstacle. The classical trick replaces a capacity of a million by a million labelled copies of one unit. That makes the problem as large as the capacity itself, not its number of digits. It also counts each table many times, once per labelling. The paper avoids the copies. It keeps only a few totals that take a modest number of values. It treats the rest like a smooth shape whose volume can be estimated. Large expansions appear only inside the proof, never in what the algorithm runs.\n\nSo for the table above, the cost is claimed to grow with the seven digits, not with the million. The answer is still an estimate, not an exact count, and it uses random choices. The paper also warns that its polynomial has large fixed exponents. The point is how cost grows with the input, not a fast program.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the two-matroid theorem. The scope note links a fixed reference statement for a tool called Comparator. The polymatroid paper with large capacities is outside that check. So is the result on common allowed groups of other sizes. No specialist review of either paper has been published.",
+  "explanation": "Three workers need three jobs, A, B and C. Worker 1 can do A or B. Worker 2 can do any of the three. Worker 3 can do B or C. Each worker gets one job, and every job gets filled. Checking all six orderings shows that exactly three assignments work. Small cases like this are easy to list. Large ones are not. If 100 workers can each do any of 100 jobs, there are 100 factorial assignments, about 9.3 × 10^157.\n\nThis puzzle is one case of a general question about matroids. A matroid is a rule that says which groups of items are allowed together. Here the items are the seven allowed worker–job pairs. One rule says no worker appears twice. A second rule says no job appears twice. A basis is a largest allowed group. A common basis is a group that is a basis under both rules. In this example, the common bases are exactly the three full assignments.\n\nCounting common bases exactly is often out of reach, so the goal is a close estimate. The standard target has a long name: a fully polynomial randomized approximation scheme, or FPRAS. Ask for 1 percent accuracy, and the answer lands between 0.99 and 1.01 times the true count. It may fail, but only with a small chance you choose in advance. Its cost must grow like a fixed power of the input size and of 1/accuracy. Here the method may only query an independence oracle. That is a black box that says whether a given group is allowed.\n\nPieces of this were known. In 2004, Jerrum, Sinclair and Vigoda gave an FPRAS for the permanent. That covers the worker–job case. Anari, Liu, Oveis Gharan and Vinzant later gave an independence-oracle FPRAS for the bases of one matroid. For two matroids, Anari, Oveis Gharan and Vinzant had an estimate whose running time grows exponentially with the basis size. Kuikui Liu's 2023 dissertation recorded the two-matroid question as an open problem.\n\nThe first paper proves an FPRAS for common bases of any two equal-rank matroids (Lean proof listed)[8]. Rank means the size of a basis. The method takes a random walk among candidate answers, as in the permanent algorithm. The obstacle is that the walk must pass through rare in-between states[9]. The paper adds slightly broken states and learns how much weight to give each kind[10]. The result also covers common allowed groups of any fixed size, even when the two ranks differ[11].\n\nThe second paper claims to extend this from yes-or-no choices to whole-number amounts. Picture a 3 × 3 table of whole numbers. Every row and every column must add up to 1,000,000. Writing down these rules takes six seven-digit numbers. Yet the number of such tables is 125,000,750,001,875,002,250,001, about 1.25 × 10^23. Such tables are one example of common integer bases of two polymatroids. A polymatroid is a rule that gives every group of cells a ceiling on its total. Here one rule caps groups by their rows, the other by their columns.\n\nLarge numbers were the obstacle. The classical trick replaces a capacity of a million by a million labelled copies of one unit. That makes the problem as large as the capacity itself, not its number of digits. It also counts each table many times, once per labelling[13]. The paper avoids the copies[17]. It keeps only a few totals that take a modest number of values. It treats the rest like a smooth shape whose volume can be estimated[15]. Large expansions appear only inside the proof, never in what the algorithm runs[16].\n\nSo for the table above, the cost is claimed to grow with the seven digits, not with the million. The answer is still an estimate, not an exact count, and it uses random choices. The paper also warns that its polynomial has large fixed exponents[18]. The point is how cost grows with the input, not a fast program.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the two-matroid theorem. The scope note links a fixed reference statement for a tool called Comparator. The polymatroid paper with large capacities is outside that check. So is the result on common allowed groups of other sizes. No specialist review of either paper has been published.",
   "hypeCheck": "Only the two-matroid theorem has a Lean proof listed. The polymatroid extension and the common-independent-set results are claims without a machine check, and no specialist review is published. The method is about how cost grows, not practical speed.",
   "glossary": [
     {
@@ -149,22 +149,26 @@
     {
       "text": "The theorem gives an affirmative answer to that formulation.",
       "verdict": "supported",
-      "sourceLine": "gives an affirmative answer to that formulation."
+      "sourceLine": "gives an affirmative answer to that formulation.",
+      "paper": 2
     },
     {
       "text": "In-between states can have very small weight, so connectivity alone does not give the needed bounds.",
       "verdict": "supported",
-      "sourceLine": "Nonbasis transversals can have very small weight, so positivity and connectivity alone do not give the polynomial quantitative bounds needed for counting."
+      "sourceLine": "Nonbasis transversals can have very small weight, so positivity and connectivity alone do not give the polynomial quantitative bounds needed for counting.",
+      "paper": 2
     },
     {
       "text": "Balancing defect classes and learning their weights follows the permanent algorithm.",
       "verdict": "supported",
-      "sourceLine": "Balancing defect classes and learning their weights through interpolation follows the permanent algorithm of Jerrum, Sinclair, and Vigoda"
+      "sourceLine": "Balancing defect classes and learning their weights through interpolation follows the permanent algorithm of Jerrum, Sinclair, and Vigoda",
+      "paper": 2
     },
     {
       "text": "The theorem also yields an FPRAS for common independent sets of prescribed, unrestricted or maximum size, even when ranks differ.",
       "verdict": "supported",
-      "sourceLine": "The theorem also yields an FPRAS for counting common independent sets of prescribed, unrestricted, or maximum cardinality, even when the two matroid ranks differ"
+      "sourceLine": "The theorem also yields an FPRAS for counting common independent sets of prescribed, unrestricted, or maximum cardinality, even when the two matroid ranks differ",
+      "paper": 2
     },
     {
       "text": "Contingency tables, integer matrices with prescribed row and column sums, are a concrete instance.",
@@ -174,7 +178,8 @@
     {
       "text": "Replacing a large capacity by labelled copies changes both the instance size and the weight of each allocation.",
       "verdict": "supported",
-      "sourceLine": "replacing it by labelled copies changes both the size of the instance and the weight assigned to each allocation."
+      "sourceLine": "replacing it by labelled copies changes both the size of the instance and the weight assigned to each allocation.",
+      "paper": 1
     },
     {
       "text": "Each integer vector counts once.",
@@ -184,22 +189,26 @@
     {
       "text": "The reduction keeps only part totals with polynomially many values and treats the rest by weighted volume approximation.",
       "verdict": "supported",
-      "sourceLine": "The new reduction keeps only part totals with polynomially many possible values as discrete variables. It treats the remaining degrees of freedom by weighted volume approximation"
+      "sourceLine": "The new reduction keeps only part totals with polynomially many possible values as discrete variables. It treats the remaining degrees of freedom by weighted volume approximation",
+      "paper": 1
     },
     {
       "text": "Large expansions are proof devices; every instance actually sampled has polynomial size.",
       "verdict": "supported",
-      "sourceLine": "all large expansions and slice subdivisions used for comparison are proof devices, whereas every instance actually sampled has polynomial size."
+      "sourceLine": "all large expansions and slice subdivisions used for comparison are proof devices, whereas every instance actually sampled has polynomial size.",
+      "paper": 1
     },
     {
       "text": "The algorithm handles binary capacities directly, without labelled copies.",
       "verdict": "supported",
-      "sourceLine": "The algorithm handles binary capacities directly, without expanding them into labelled copies."
+      "sourceLine": "The algorithm handles binary capacities directly, without expanding them into labelled copies.",
+      "paper": 1
     },
     {
       "text": "The polynomial has large fixed exponents; the issue is dependence on encoding, not optimized running time.",
       "verdict": "supported",
-      "sourceLine": "The algorithm's polynomial has large fixed exponents. The issue here is dependence on the input encoding, not an optimized running time."
+      "sourceLine": "The algorithm's polynomial has large fixed exponents. The issue here is dependence on the input encoding, not an optimized running time.",
+      "paper": 1
     },
     {
       "text": "The Lean formalization covers the FPRAS for common bases of two equal-rank matroids; the polymatroid paper and the common-independent-set corollary are outside it.",

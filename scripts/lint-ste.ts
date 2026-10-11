@@ -20,12 +20,25 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { HYPE_WORDS, countWords, splitSentences } from '../src/lib/entry.js';
+import { detachedCitations, parseCitations, stripCitations } from '../src/lib/cite.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 
 export interface LintIssue {
   field: string;
-  kind: 'long-sentence' | 'hype' | 'warning-long-sentence' | 'source-no-url' | 'claim-not-verbatim' | 'banned-word';
+  kind:
+    | 'long-sentence'
+    | 'hype'
+    | 'warning-long-sentence'
+    | 'source-no-url'
+    | 'claim-not-verbatim'
+    | 'banned-word'
+    | 'cite-missing-claim'
+    | 'cite-no-source-line'
+    | 'cite-detached'
+    | 'cite-outside-explanation'
+    | 'cite-wrong-paper'
+    | 'warning-cite-no-paper';
   message: string;
 }
 
@@ -46,7 +59,8 @@ export function lintText(text: string, field: string): LintIssue[] {
   if (m) {
     issues.push({ field, kind: 'hype', message: `${field} contains hype word: ${m[0].toLowerCase()}` });
   }
-  for (const s of splitSentences(text)) {
+  // Citation markers ([2]) never count as words.
+  for (const s of splitSentences(stripCitations(text))) {
     const n = countWords(s);
     if (n > 25) {
       issues.push({ field, kind: 'long-sentence', message: `${field} sentence exceeds 25 words (${n}): ${s.slice(0, 80)}…` });
@@ -91,6 +105,11 @@ const ERROR_KINDS: ReadonlySet<LintIssue['kind']> = new Set([
   'source-no-url',
   'claim-not-verbatim',
   'banned-word',
+  'cite-missing-claim',
+  'cite-no-source-line',
+  'cite-detached',
+  'cite-outside-explanation',
+  'cite-wrong-paper',
 ]);
 
 export function isError(i: LintIssue): boolean {
@@ -235,6 +254,80 @@ export async function loadPaperTex(entry: Record<string, unknown>, sourceDir: st
   return parts.length > 0 ? parts.join('\n') : null;
 }
 
+/**
+ * Inline citations (src/lib/cite.ts). In the explanation, a marker `[n]` must:
+ * - point at an existing claim (1-based index into claims[]) that has a sourceLine;
+ * - be attached to a sentence: written against the last word, before the punctuation (`basis[2].`).
+ * Markers anywhere else (headline, plain, sections…) are errors: only the explanation renders them.
+ * Multi-paper results: a cited claim should say which paper it quotes (`paper`), so the popover
+ * can name it (warning); when it does and the LaTeX is on disk, the line must be in that paper.
+ */
+export function lintCitations(entry: Record<string, unknown>, paperTexByIndex?: (string | null)[]): LintIssue[] {
+  const out: LintIssue[] = [];
+  const claims = (entry as { claims?: { sourceLine?: unknown; paper?: unknown }[] }).claims ?? [];
+  const papers = paperTexByIndex?.length ?? 0;
+  for (const key of ['headline', 'scope', 'plain', 'doesNot', 'hypeCheck']) {
+    const t = entry[key];
+    if (typeof t === 'string' && parseCitations(t).length > 0) {
+      out.push({ field: key, kind: 'cite-outside-explanation', message: `${key} has a citation marker; only the explanation may cite claims` });
+    }
+  }
+  const text = entry.explanation;
+  if (typeof text !== 'string') return out;
+  const seen = new Set<number>();
+  for (const m of parseCitations(text)) {
+    for (const n of m.claims) {
+      const c = claims[n - 1];
+      if (!c) {
+        out.push({ field: 'explanation', kind: 'cite-missing-claim', message: `explanation cites [${n}] but there are only ${claims.length} claims` });
+        continue;
+      }
+      if (typeof c.sourceLine !== 'string' || !c.sourceLine.trim()) {
+        out.push({ field: 'explanation', kind: 'cite-no-source-line', message: `explanation cites [${n}] but claims[${n - 1}] has no sourceLine to show` });
+        continue;
+      }
+      if (seen.has(n)) continue;
+      seen.add(n);
+      if (papers > 1 && typeof c.paper !== 'number') {
+        out.push({ field: `claims[${n - 1}]`, kind: 'warning-cite-no-paper', message: `claims[${n - 1}] is cited in a ${papers}-paper result but has no "paper" index` });
+      }
+      if (typeof c.paper === 'number' && paperTexByIndex) {
+        const tex = c.paper >= 1 && c.paper <= papers ? paperTexByIndex[c.paper - 1] : undefined;
+        if (tex === undefined) {
+          out.push({ field: `claims[${n - 1}]`, kind: 'cite-wrong-paper', message: `claims[${n - 1}].paper = ${c.paper}, but the result has ${papers} paper(s)` });
+        } else if (tex !== null && !quoteFound(c.sourceLine, texSkeleton(tex))) {
+          out.push({ field: `claims[${n - 1}]`, kind: 'cite-wrong-paper', message: `claims[${n - 1}] sourceLine is not in paper ${c.paper}` });
+        }
+      }
+    }
+  }
+  for (const d of detachedCitations(text)) {
+    out.push({ field: 'explanation', kind: 'cite-detached', message: `citation marker not attached to a sentence (write it before the punctuation, like "basis[2]."): …${d}` });
+  }
+  return out;
+}
+
+/** Per-paper LaTeX (+ that paper's abstract) in catalog order; null where a paper is not on disk. */
+export async function loadTexByPaper(
+  papers: { pdf: string; abstract?: string }[],
+  sourceDir: string,
+): Promise<(string | null)[]> {
+  const out: (string | null)[] = [];
+  for (const p of papers) {
+    const m = String(p.pdf ?? '').match(/preprints\/([^/]+)\//);
+    const files = m ? await texFilesUnder(join(sourceDir, 'preprints', m[1])) : [];
+    if (files.length === 0) {
+      out.push(null);
+      continue;
+    }
+    const parts: string[] = [];
+    for (const f of files) parts.push(await readFile(f, 'utf-8'));
+    parts.push(stripInlineTags(p.abstract ?? ''));
+    out.push(parts.join('\n'));
+  }
+  return out;
+}
+
 export function formatIssues(id: string, issues: LintIssue[]): string {
   return issues.map((i) => `${id} [${i.kind}] ${i.message}`).join('\n');
 }
@@ -251,7 +344,7 @@ async function main(): Promise<void> {
 
   const sourceDir = process.env.CF_SOURCE_DIR ?? join(root, 'source/openai-math');
   const catalog = JSON.parse(await readFile(join(root, 'src/data/catalog.json'), 'utf-8')) as {
-    families: { id: string; summary: string; papers: { abstract: string }[] }[];
+    families: { id: string; summary: string; papers: { abstract: string; pdf: string }[] }[];
   };
   let errors = 0;
   let warnings = 0;
@@ -264,10 +357,11 @@ async function main(): Promise<void> {
     const fam = catalog.families.find((f) => f.id === id);
     const tex = paperTex === null ? null : [paperTex, stripInlineTags(fam?.summary ?? ''), ...(fam?.papers.map((p) => stripInlineTags(p.abstract)) ?? [])].join('\n');
     if (tex !== null) quoteChecked++;
-    const issues = [...lintEntry(entry), ...lintSources(entry), ...lintClaimQuotes(entry, tex)];
+    const texByPaper = fam ? await loadTexByPaper(fam.papers, sourceDir) : undefined;
+    const issues = [...lintEntry(entry), ...lintSources(entry), ...lintClaimQuotes(entry, tex), ...lintCitations(entry, texByPaper)];
     if (issues.length > 0) console.log(formatIssues(id, issues));
     errors += issues.filter(isError).length;
-    warnings += issues.filter((i) => i.kind === 'warning-long-sentence').length;
+    warnings += issues.filter((i) => i.kind.startsWith('warning-')).length;
   }
   console.log(
     `lint-ste: ${files.length} entr${files.length === 1 ? 'y' : 'ies'}, ${errors} errors, ${warnings} warnings ` +

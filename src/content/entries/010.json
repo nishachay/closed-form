@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It claims the last prime in the odd regular two-dimensional Fontaine–Mazur conjecture over the rationals, with no residual conditions."
   },
-  "explanation": "Take the elliptic curve y² + y = x³ − x² − 10x − 20. Count its points modulo each prime p, including one point at infinity. Write a_p for p + 1 minus that count. Then a_2 = −2, a_3 = −1, a_5 = 1, a_7 = −2 and a_13 = 4. Now multiply out q(1 − q)²(1 − q¹¹)²(1 − q²)²(1 − q²²)² and so on forever. The coefficients of q², q³, q⁵, q⁷ and q¹³ are −2, −1, 1, −2 and 4. They match the point counts.\n\nThat infinite product is a modular form, a function with a strong symmetry under a group of transformations. The match between counts and coefficients is what \"modular\" means here. Wiles, Taylor and others proved such matches for every elliptic curve over the rationals by 2001.\n\nThe counts can also be read through symmetry. The points of order 2, 4, 8 and so on carry an action of the Galois group. That group collects all symmetries of the algebraic numbers. The action can be written with 2-by-2 matrices of 2-adic numbers. In 2-adic numbers, two numbers are close when their difference is divisible by a high power of 2. For each prime p other than 2 and 11, a special symmetry called Frobenius has trace a_p. This matrix-valued action is a 2-adic Galois representation.\n\nMany representations do not obviously come from a curve. In 1995, Fontaine and Mazur predicted which ones come from geometry. For odd two-dimensional ones over the rationals, the prediction is modularity, up to a standard shift called a Tate twist. Odd means complex conjugation acts with determinant −1. The other condition, regular de Rham at p, is a technical local test at p. It says the representation looks geometric there, with two distinct Hodge–Tate weights.\n\nEarlier work covered most cases. Khare, Wintenberger and Kisin proved Serre's conjecture, which handles the reduction mod p. Pan in 2022 treated many cases with reducible reduction at odd primes. Zhang then finished every odd prime. At 2, earlier theorems needed conditions on the reduction mod 2, such as a large image.\n\nThe third paper claims the prime 2 case. Every continuous, irreducible, odd two-dimensional 2-adic representation of this kind is modular up to Tate twist. It must be unramified outside finitely many primes and regular de Rham at 2. Scalar and reducible reductions mod 2 are included.\n\nThe first paper claims a statement with no local condition at 2. Modular forms of different weights can be 2-adically close. For example, E₄ = 1 + 240q + 2160q² + … has every later coefficient divisible by 16. So E₄ is close to the constant 1, a form of weight 0. Hecke operators, written T_ℓ, act on all forms of all weights at once. Completing their algebra 2-adically gives the full Hecke algebra. The paper claims every odd, absolutely irreducible representation of this kind matches a point of this algebra, at some odd level. It calls this pro-modularity. It does not claim the representation comes from one classical form.\n\nThe second paper claims a size result. At every odd level, each irreducible component of the full 2-adic Hecke algebra has Krull dimension exactly 4. Krull dimension counts independent directions of variation. This is the prime 2 case of a conjecture of Emerton.\n\nThe main obstacle is a representation with no geometric condition. The first paper places it in a family of representations of dimension at least 3. It then finds one regular de Rham point in that family. The third paper's theorem makes that point modular. A dimension count, using the second paper, spreads the match from that point to the whole family.\n\nThe papers depend on each other and on recent outside work, such as a 2026 preprint by Thorne on ordinary representations. The Hilbert's tenth problem paper in the same release uses the third paper's theorem.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "explanation": "Take the elliptic curve y² + y = x³ − x² − 10x − 20. Count its points modulo each prime p, including one point at infinity. Write a_p for p + 1 minus that count. Then a_2 = −2, a_3 = −1, a_5 = 1, a_7 = −2 and a_13 = 4. Now multiply out q(1 − q)²(1 − q¹¹)²(1 − q²)²(1 − q²²)² and so on forever. The coefficients of q², q³, q⁵, q⁷ and q¹³ are −2, −1, 1, −2 and 4. They match the point counts.\n\nThat infinite product is a modular form, a function with a strong symmetry under a group of transformations. The match between counts and coefficients is what \"modular\" means here. Wiles, Taylor and others proved such matches for every elliptic curve over the rationals by 2001.\n\nThe counts can also be read through symmetry. The points of order 2, 4, 8 and so on carry an action of the Galois group. That group collects all symmetries of the algebraic numbers. The action can be written with 2-by-2 matrices of 2-adic numbers. In 2-adic numbers, two numbers are close when their difference is divisible by a high power of 2. For each prime p other than 2 and 11, a special symmetry called Frobenius has trace a_p. This matrix-valued action is a 2-adic Galois representation.\n\nMany representations do not obviously come from a curve. In 1995, Fontaine and Mazur predicted which ones come from geometry. For odd two-dimensional ones over the rationals, the prediction is modularity, up to a standard shift called a Tate twist. Odd means complex conjugation acts with determinant −1. The other condition, regular de Rham at p, is a technical local test at p. It says the representation looks geometric there, with two distinct Hodge–Tate weights.\n\nEarlier work covered most cases. Khare, Wintenberger and Kisin proved Serre's conjecture, which handles the reduction mod p. Pan in 2022 treated many cases with reducible reduction at odd primes. Zhang then finished every odd prime. At 2, earlier theorems needed conditions on the reduction mod 2, such as a large image.\n\nThe third paper claims the prime 2 case. Every continuous, irreducible, odd two-dimensional 2-adic representation of this kind is modular up to Tate twist[4]. It must be unramified outside finitely many primes and regular de Rham at 2. Scalar and reducible reductions mod 2 are included[5].\n\nThe first paper claims a statement with no local condition at 2[11]. Modular forms of different weights can be 2-adically close. For example, E₄ = 1 + 240q + 2160q² + … has every later coefficient divisible by 16. So E₄ is close to the constant 1, a form of weight 0. Hecke operators, written T_ℓ, act on all forms of all weights at once. Completing their algebra 2-adically gives the full Hecke algebra. The paper claims every odd, absolutely irreducible representation of this kind matches a point of this algebra, at some odd level[9]. It calls this pro-modularity. It does not claim the representation comes from one classical form[11].\n\nThe second paper claims a size result. At every odd level, each irreducible component of the full 2-adic Hecke algebra has Krull dimension exactly 4[13]. Krull dimension counts independent directions of variation. This is the prime 2 case of a conjecture of Emerton[14].\n\nThe main obstacle is a representation with no geometric condition. The first paper places it in a family of representations of dimension at least 3. It then finds one regular de Rham point in that family[12]. The third paper's theorem makes that point modular. A dimension count, using the second paper, spreads the match from that point to the whole family[15].\n\nThe papers depend on each other and on recent outside work, such as a 2026 preprint by Thorne on ordinary representations[16]. The Hilbert's tenth problem paper in the same release uses the third paper's theorem[8].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
   "hypeCheck": "Major only if all three linked papers hold. No Lean formalization is listed and no specialist review is published.",
   "glossary": [
     {
@@ -156,12 +156,14 @@
     {
       "text": "Such a representation is a Tate twist of one attached to a classical cuspidal eigenform.",
       "verdict": "supported",
-      "sourceLine": "Then \\(r\\) is isomorphic to a Tate twist of the \\(2\\)-adic Galois representation associated with a classical cuspidal eigenform."
+      "sourceLine": "Then \\(r\\) is isomorphic to a Tate twist of the \\(2\\)-adic Galois representation associated with a classical cuspidal eigenform.",
+      "paper": 3
     },
     {
       "text": "The scope includes scalar and reducible residual representations.",
       "verdict": "supported",
-      "sourceLine": "Its scope includes every semisimple residual representation, including scalar and reducible ones."
+      "sourceLine": "Its scope includes every semisimple residual representation, including scalar and reducible ones.",
+      "paper": 3
     },
     {
       "text": "Khare–Wintenberger and Kisin supply modularity for odd irreducible residual representations, including characteristic two.",
@@ -176,12 +178,14 @@
     {
       "text": "The theorem supplies the modularity input in the Hilbert's tenth problem paper.",
       "verdict": "supported",
-      "sourceLine": "supplies the weight-two modularity input in the height argument of \\emph{Hilbert's tenth problem over the rational numbers}"
+      "sourceLine": "supplies the weight-two modularity input in the height argument of \\emph{Hilbert's tenth problem over the rational numbers}",
+      "paper": 3
     },
     {
       "text": "Odd absolutely irreducible representations occur in the full Hecke algebra at some odd level.",
       "verdict": "supported",
-      "sourceLine": "be continuous and absolutely irreducible. Suppose that $r$ is unramified outside finitely many finite primes and is odd:"
+      "sourceLine": "be continuous and absolutely irreducible. Suppose that $r$ is unramified outside finitely many finite primes and is odd:",
+      "paper": 1
     },
     {
       "text": "No condition on the residual representation is imposed.",
@@ -191,32 +195,38 @@
     {
       "text": "Pro-modularity does not assert classical modularity.",
       "verdict": "supported",
-      "sourceLine": "This is a completed-Hecke occurrence result, with no de Rham hypothesis; it does not assert classical modularity."
+      "sourceLine": "This is a completed-Hecke occurrence result, with no de Rham hypothesis; it does not assert classical modularity.",
+      "paper": 1
     },
     {
       "text": "The main task is finding a regular de Rham point on the family.",
       "verdict": "supported",
-      "sourceLine": "The main task is then to find a regular de Rham point on $D$, from which Hecke support can be transferred to the whole family over $\\Q$."
+      "sourceLine": "The main task is then to find a regular de Rham point on $D$, from which Hecke support can be transferred to the whole family over $\\Q$.",
+      "paper": 1
     },
     {
       "text": "Every component of the full 2-adic Hecke algebra at odd level has dimension 4.",
       "verdict": "supported",
-      "sourceLine": "every irreducible component of $\\Spec T_2(N)$ has dimension exactly $4$."
+      "sourceLine": "every irreducible component of $\\Spec T_2(N)$ has dimension exactly $4$.",
+      "paper": 2
     },
     {
       "text": "This is the p = 2 case of Emerton's conjecture.",
       "verdict": "supported",
-      "sourceLine": "This is the $p=2$ case of Emerton's Conjecture~2.9"
+      "sourceLine": "This is the $p=2$ case of Emerton's Conjecture~2.9",
+      "paper": 2
     },
     {
       "text": "The final passage uses the dimension theorem and Newton–Thorne's adjoint Selmer vanishing.",
       "verdict": "supported",
-      "sourceLine": "The final passage uses the dimension theorem of"
+      "sourceLine": "The final passage uses the dimension theorem of",
+      "paper": 1
     },
     {
       "text": "Thorne's theorem supplies an essential set of classical points.",
       "verdict": "supported",
-      "sourceLine": "Thorne's theorem supplies an essential set of classical points"
+      "sourceLine": "Thorne's theorem supplies an essential set of classical points",
+      "paper": 3
     }
   ]
 }

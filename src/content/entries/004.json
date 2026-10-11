@@ -30,7 +30,7 @@
     "significance": "Landmark",
     "significanceWhy": "If it holds, it settles the rational-number version of Hilbert's tenth problem, a central open question in logic and number theory."
   },
-  "explanation": "Take the equation x² + y² = 2. It has the solution x = 1, y = 1. It also has the fraction solution x = 1/5, y = 7/5, since 1/25 + 49/25 = 50/25 = 2. Now take x² = 2. No fraction works, because the square root of 2 is irrational. Hilbert's tenth problem over the rationals asks for one method that sorts every such equation. The method must say whether some choice of fractions makes it true.\n\nThe equations allowed are polynomials with whole-number coefficients. The number of unknowns can be anything, and it is part of the input. Fractions are the rational numbers, written a/b with whole numbers a and b, and b not zero.\n\nHilbert first asked the question in 1900 for whole-number solutions. In 1961, Davis, Putnam and Robinson did most of the work, with an extra power operation allowed. In 1970, Matiyasevich supplied the last step. Their combined theorem says whole-number equations can encode any condition whose cases a program can list. So no algorithm decides whether a whole-number equation has a whole-number solution.\n\nFor fractions, the question stayed open. A search through all fractions will find a solution if one exists. If none exists, the search runs forever and never says so. The natural plan was to describe the whole numbers inside the fractions using only equations. Then the old answer would carry over. In 1949, Julia Robinson described them with a formula that uses both \"for every\" and \"there is\". Poonen in 2009 and Koenigsmann in 2016 gave simpler formulas of that mixed kind. None gave the equation-only description the plan needs. A 1995 conjecture of Mazur, if true, would rule that description out.\n\nNearby cases were settled. In 2003, Poonen proved the problem undecidable for some rings of fractions whose denominators use almost all primes. Recent work by Koymans and Pagano, and separately by Alpöge, Bhargava, Ho and Shnidman, settled rings of integers of number fields. Those rings are different from the field of all fractions.\n\nThe paper claims the full answer is no. No algorithm decides whether a whole-number polynomial has a rational zero. It also claims the problem is exactly as hard as the halting problem, the question of whether a program ever stops. That stays true for polynomials of degree at most four.\n\nThe approach avoids describing the whole numbers directly. For each polynomial f, it builds an endless list of finite tests. Each test asks finitely many questions of the form \"does this equation have a fraction solution?\". The paper claims f has a whole-number zero exactly when every test passes. Suppose a method for fractions existed. Then two searches could run side by side. One hunts for a whole-number zero, and the other hunts for a failed test. One of them must stop.\n\nThe hard part is showing a failed test exists whenever f has no whole-number zero. The tests attach to each number a point on an elliptic curve. That is a cubic curve whose points can be added like numbers. Each attached point is a multiple of one fixed point, so it carries a whole-number index. The proof measures size by height, roughly the number of digits in a fraction. If every test passed, a logic tool called compactness would give an imagined zero, perhaps with infinitely large entries. Height bounds at carefully chosen primes cap the indices of its entries. That leaves only ordinary whole numbers, and f would have a real whole-number zero.\n\nThe proof leans on two other papers in the openai/math release. One is a 2-converse for elliptic curves with a point of order 2. It is the second paper of this result. The other is a modularity theorem at the prime 2, claimed in a separate paper. Neither has a published specialist review.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "explanation": "Take the equation x² + y² = 2. It has the solution x = 1, y = 1. It also has the fraction solution x = 1/5, y = 7/5, since 1/25 + 49/25 = 50/25 = 2. Now take x² = 2. No fraction works, because the square root of 2 is irrational. Hilbert's tenth problem over the rationals asks for one method that sorts every such equation. The method must say whether some choice of fractions makes it true.\n\nThe equations allowed are polynomials with whole-number coefficients. The number of unknowns can be anything, and it is part of the input. Fractions are the rational numbers, written a/b with whole numbers a and b, and b not zero.\n\nHilbert first asked the question in 1900 for whole-number solutions. In 1961, Davis, Putnam and Robinson did most of the work, with an extra power operation allowed. In 1970, Matiyasevich supplied the last step. Their combined theorem says whole-number equations can encode any condition whose cases a program can list. So no algorithm decides whether a whole-number equation has a whole-number solution.\n\nFor fractions, the question stayed open. A search through all fractions will find a solution if one exists. If none exists, the search runs forever and never says so. The natural plan was to describe the whole numbers inside the fractions using only equations. Then the old answer would carry over. In 1949, Julia Robinson described them with a formula that uses both \"for every\" and \"there is\". Poonen in 2009 and Koenigsmann in 2016 gave simpler formulas of that mixed kind. None gave the equation-only description the plan needs. A 1995 conjecture of Mazur, if true, would rule that description out.\n\nNearby cases were settled. In 2003, Poonen proved the problem undecidable for some rings of fractions whose denominators use almost all primes. Recent work by Koymans and Pagano, and separately by Alpöge, Bhargava, Ho and Shnidman, settled rings of integers of number fields. Those rings are different from the field of all fractions.\n\nThe paper claims the full answer is no. No algorithm decides whether a whole-number polynomial has a rational zero[13]. It also claims the problem is exactly as hard as the halting problem, the question of whether a program ever stops[14]. That stays true for polynomials of degree at most four[15].\n\nThe approach avoids describing the whole numbers directly. For each polynomial f, it builds an endless list of finite tests. Each test asks finitely many questions of the form \"does this equation have a fraction solution?\". The paper claims f has a whole-number zero exactly when every test passes. Suppose a method for fractions existed. Then two searches could run side by side. One hunts for a whole-number zero, and the other hunts for a failed test[16]. One of them must stop.\n\nThe hard part is showing a failed test exists whenever f has no whole-number zero[17]. The tests attach to each number a point on an elliptic curve[18]. That is a cubic curve whose points can be added like numbers. Each attached point is a multiple of one fixed point, so it carries a whole-number index. The proof measures size by height, roughly the number of digits in a fraction. If every test passed, a logic tool called compactness would give an imagined zero, perhaps with infinitely large entries. Height bounds at carefully chosen primes cap the indices of its entries. That leaves only ordinary whole numbers, and f would have a real whole-number zero.\n\nThe proof leans on two other papers in the openai/math release. One is a 2-converse for elliptic curves with a point of order 2[19]. It is the second paper of this result[21]. The other is a modularity theorem at the prime 2, claimed in a separate paper[20]. Neither has a published specialist review.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
   "hypeCheck": "Landmark only if this paper and the claimed 2-converse and modularity results it uses all hold. No Lean formalization is listed and no specialist review is published.",
   "glossary": [
     {
@@ -187,47 +187,56 @@
     {
       "text": "No algorithm decides whether an integer polynomial has a rational zero.",
       "verdict": "supported",
-      "sourceLine": "We give a negative answer to Hilbert's tenth problem over the rational numbers: no algorithm decides whether a polynomial with integer coefficients has a rational zero."
+      "sourceLine": "We give a negative answer to Hilbert's tenth problem over the rational numbers: no algorithm decides whether a polynomial with integer coefficients has a rational zero.",
+      "paper": 1
     },
     {
       "text": "The problem has the Turing degree of the halting problem.",
       "verdict": "supported",
-      "sourceLine": "Then \\(\\mathrm{H10}(\\Q)\\) has Turing degree \\(0'\\), the degree of the halting problem."
+      "sourceLine": "Then \\(\\mathrm{H10}(\\Q)\\) has Turing degree \\(0'\\), the degree of the halting problem.",
+      "paper": 1
     },
     {
       "text": "The same holds for polynomials of total degree at most four.",
       "verdict": "supported",
-      "sourceLine": "rational solvability for integral polynomials of total degree at most four;"
+      "sourceLine": "rational solvability for integral polynomials of total degree at most four;",
+      "paper": 1
     },
     {
       "text": "Two searches run in parallel: for integer zeros and for a failed test.",
       "verdict": "supported",
-      "sourceLine": "we could run two searches in parallel: enumeration of integer zeros, and enumeration of tests until one fails."
+      "sourceLine": "we could run two searches in parallel: enumeration of integer zeros, and enumeration of tests until one fails.",
+      "paper": 1
     },
     {
       "text": "The main work is showing a failed test exists when there is no integer zero.",
       "verdict": "supported",
-      "sourceLine": "The arithmetic work is to prove that a failed test exists whenever \\(f\\) has no integer zero."
+      "sourceLine": "The arithmetic work is to prove that a failed test exists whenever \\(f\\) has no integer zero.",
+      "paper": 1
     },
     {
       "text": "The tests attach elliptic points to ring elements, compatibly with addition.",
       "verdict": "supported",
-      "sourceLine": "The tests attach an elliptic point \\(T_a\\) to each \\(a\\in R\\), compatibly with addition"
+      "sourceLine": "The tests attach an elliptic point \\(T_a\\) to each \\(a\\in R\\), compatibly with addition",
+      "paper": 1
     },
     {
       "text": "The proof uses the pointwise 2-converse.",
       "verdict": "supported",
-      "sourceLine": "its passage from two-descent data to rational points uses the pointwise $2$-converse"
+      "sourceLine": "its passage from two-descent data to rational points uses the pointwise $2$-converse",
+      "paper": 1
     },
     {
       "text": "The height estimate uses the odd regular Fontaine–Mazur theorem at 2.",
       "verdict": "supported",
-      "sourceLine": "Its modularity step uses the odd regular Fontaine--Mazur theorem at $2$"
+      "sourceLine": "Its modularity step uses the odd regular Fontaine--Mazur theorem at $2$",
+      "paper": 1
     },
     {
       "text": "The second paper claims the 2-converse for curves with a rational point of order 2.",
       "verdict": "supported",
-      "sourceLine": "Here we give a separate full treatment of the rational-two-torsion case"
+      "sourceLine": "Here we give a separate full treatment of the rational-two-torsion case",
+      "paper": 2
     }
   ]
 }

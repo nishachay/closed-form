@@ -35,7 +35,7 @@
     "significance": "Landmark",
     "significanceWhy": "If it holds, it gives the exact Birch–Swinnerton-Dyer formula for every rank 0 or 1 curve meeting one Selmer test."
   },
-  "explanation": "Take the curve y² + y = x³ − x² − 10x − 20. It is an elliptic curve, a cubic curve whose points can be added. Its rational points form a group with five elements. One is a point at infinity. The others are (5, 5), (5, −6), (16, 60) and (16, −61). Since the group is finite, the curve has rank 0.\n\nNow count solutions modulo each prime p. Modulo 2, 3 and 5 there are 5 points, counting infinity. Modulo 7 there are 10. Write a_p for p + 1 minus the count. So a_2 = −2, a_3 = −1, a_5 = 1 and a_7 = −2. The L-function packs all these numbers into one function of a variable s. Its centre is s = 1. There its value is about 0.253842.\n\nThe Birch–Swinnerton-Dyer formula predicts that value exactly. For rank 0 it reads L(1) ÷ Ω = (#Sha × c) ÷ (#torsion)². Here Ω is the real period, an integral over the curve's real points, about 1.269209. The ratio L(1) ÷ Ω agrees with 1/5 to 16 digits. The torsion group has 5 points, so its square is 25. The local factor c comes from the bad prime 11, and it equals 5. So the formula says 1/5 = #Sha × 5/25. That forces Sha, the hidden group, to have exactly one element. For this curve, all this was already known.\n\nSha is the Tate–Shafarevich group. It collects curves that look solvable at every prime, and over the real numbers, but have no rational point. It is conjectured to be finite. The rank is the number of independent points that generate infinitely many others. The analytic rank is the order of vanishing of the L-function at the centre. For rank r, the formula uses the r-th derivative and a regulator, a determinant of point sizes.\n\nThe conjecture dates from 1965. Modularity, completed in 2001, gave every such L-function a value at the centre. Gross and Zagier in 1986, and Kolyvagin in 1990, handled analytic ranks 0 and 1. They proved the rank matches and Sha is finite. That still left the exact formula, prime by prime. Earlier exact results needed conditions on how the curve behaves modulo its bad primes, on the prime, or on the curve's symmetries.\n\nThe Selmer group is the computable side. For a prime q, the q-power Selmer group combines the rational points with the q-part of Sha. Its corank counts the rank plus any infinitely divisible part of Sha. It can be bounded by finite calculations.\n\nThe three papers claim the formula whenever the Selmer corank is 0 or 1 at some prime q. The Selmer converse paper claims rank equals analytic rank equals that corank, and Sha is finite. A second paper claims the formula's 2-part is exact. The main paper claims every odd prime part is exact. Together they give the whole formula. There are no extra conditions on reduction, torsion, isogenies or complex multiplication.\n\nThe converse paper also claims an old cube problem in special cases. For every prime ℓ leaving remainder 4, 7 or 8 after division by 9, ℓ is a sum of two rational cubes. For example, 13 = (7/3)³ + (2/3)³, since 343/27 + 8/27 = 351/27. Other recent work has treated these cases by Heegner-point methods.\n\nThe obstacle is that rank and finiteness do not fix the coefficient's prime factors. The main paper measures the mismatch at each odd prime p. For curves without complex multiplication, it shows the mismatch is never negative. It then pairs the curve with a twisted partner, so that one has analytic rank 0 and the other rank 1. The two mismatches add to zero, so both vanish. Curves with complex multiplication use a known rank-zero theorem of Burungale and Flach.\n\nThe papers lean on companions in the openai/math release. The Selmer converse uses the 2-converse and twist densities from the Goldfeld density paper. The main paper uses both other papers here. None has a published specialist review.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "explanation": "Take the curve y² + y = x³ − x² − 10x − 20. It is an elliptic curve, a cubic curve whose points can be added. Its rational points form a group with five elements. One is a point at infinity. The others are (5, 5), (5, −6), (16, 60) and (16, −61). Since the group is finite, the curve has rank 0.\n\nNow count solutions modulo each prime p. Modulo 2, 3 and 5 there are 5 points, counting infinity. Modulo 7 there are 10. Write a_p for p + 1 minus the count. So a_2 = −2, a_3 = −1, a_5 = 1 and a_7 = −2. The L-function packs all these numbers into one function of a variable s. Its centre is s = 1. There its value is about 0.253842.\n\nThe Birch–Swinnerton-Dyer formula predicts that value exactly. For rank 0 it reads L(1) ÷ Ω = (#Sha × c) ÷ (#torsion)². Here Ω is the real period, an integral over the curve's real points, about 1.269209. The ratio L(1) ÷ Ω agrees with 1/5 to 16 digits. The torsion group has 5 points, so its square is 25. The local factor c comes from the bad prime 11, and it equals 5. So the formula says 1/5 = #Sha × 5/25. That forces Sha, the hidden group, to have exactly one element. For this curve, all this was already known.\n\nSha is the Tate–Shafarevich group. It collects curves that look solvable at every prime, and over the real numbers, but have no rational point. It is conjectured to be finite. The rank is the number of independent points that generate infinitely many others. The analytic rank is the order of vanishing of the L-function at the centre. For rank r, the formula uses the r-th derivative and a regulator, a determinant of point sizes.\n\nThe conjecture dates from 1965. Modularity, completed in 2001, gave every such L-function a value at the centre. Gross and Zagier in 1986, and Kolyvagin in 1990, handled analytic ranks 0 and 1. They proved the rank matches and Sha is finite. That still left the exact formula, prime by prime. Earlier exact results needed conditions on how the curve behaves modulo its bad primes, on the prime, or on the curve's symmetries.\n\nThe Selmer group is the computable side. For a prime q, the q-power Selmer group combines the rational points with the q-part of Sha. Its corank counts the rank plus any infinitely divisible part of Sha. It can be bounded by finite calculations.\n\nThe three papers claim the formula whenever the Selmer corank is 0 or 1 at some prime q[3]. The Selmer converse paper claims rank equals analytic rank equals that corank, and Sha is finite[9]. A second paper claims the formula's 2-part is exact[12]. The main paper claims every odd prime part is exact[5]. Together they give the whole formula. There are no extra conditions on reduction, torsion, isogenies or complex multiplication[4].\n\nThe converse paper also claims an old cube problem in special cases. For every prime ℓ leaving remainder 4, 7 or 8 after division by 9, ℓ is a sum of two rational cubes[10]. For example, 13 = (7/3)³ + (2/3)³, since 343/27 + 8/27 = 351/27. Other recent work has treated these cases by Heegner-point methods.\n\nThe obstacle is that rank and finiteness do not fix the coefficient's prime factors. The main paper measures the mismatch at each odd prime p. For curves without complex multiplication, it shows the mismatch is never negative. It then pairs the curve with a twisted partner, so that one has analytic rank 0 and the other rank 1. The two mismatches add to zero, so both vanish[13]. Curves with complex multiplication use a known rank-zero theorem of Burungale and Flach[14].\n\nThe papers lean on companions in the openai/math release. The Selmer converse uses the 2-converse and twist densities from the Goldfeld density paper[15]. The main paper uses both other papers here. None has a published specialist review.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
   "hypeCheck": "Landmark only if all three papers and the Goldfeld density paper they use hold. No Lean formalization is listed and no specialist review is published.",
   "glossary": [
     {
@@ -136,17 +136,20 @@
     {
       "text": "If the q-power Selmer corank is 0 or 1, rank, analytic rank and corank agree, Sha is finite, and the formula holds.",
       "verdict": "supported",
-      "sourceLine": "If $s_q(E)\\in\\{0,1\\}$, then"
+      "sourceLine": "If $s_q(E)\\in\\{0,1\\}$, then",
+      "paper": 1
     },
     {
       "text": "No extra hypotheses on reduction, torsion, isogenies, CM or residual representations are needed.",
       "verdict": "supported",
-      "sourceLine": "There are no additional hypotheses on reduction, rational torsion, isogenies, complex multiplication, or residual Galois representations."
+      "sourceLine": "There are no additional hypotheses on reduction, rational torsion, isogenies, complex multiplication, or residual Galois representations.",
+      "paper": 1
     },
     {
       "text": "The new part of the main paper is the exact formula at every odd prime.",
       "verdict": "supported",
-      "sourceLine": "The new assertion proved here is the exact valuation of the leading-term formula at every odd prime, independently of the prime $q$ in the hypothesis."
+      "sourceLine": "The new assertion proved here is the exact valuation of the leading-term formula at every odd prime, independently of the prime $q$ in the hypothesis.",
+      "paper": 1
     },
     {
       "text": "Modularity supplies analytic continuation of every such L-function.",
@@ -166,12 +169,14 @@
     {
       "text": "Selmer corank 0 or 1 at any prime p forces analytic and Mordell–Weil rank r and finite Sha.",
       "verdict": "supported",
-      "sourceLine": "if the full $p$-power Selmer group has $\\Z_p$-corank $r\\in\\{0,1\\}$, then the analytic and Mordell--Weil ranks both equal $r$, and the entire Tate--Shafarevich group is finite."
+      "sourceLine": "if the full $p$-power Selmer group has $\\Z_p$-corank $r\\in\\{0,1\\}$, then the analytic and Mordell--Weil ranks both equal $r$, and the entire Tate--Shafarevich group is finite.",
+      "paper": 2
     },
     {
       "text": "Every prime congruent to 4, 7 or 8 mod 9 is a sum of two rational cubes.",
       "verdict": "supported",
-      "sourceLine": "In particular, every such $\\ell$ is a sum of two rational cubes."
+      "sourceLine": "In particular, every such $\\ell$ is a sum of two rational cubes.",
+      "paper": 2
     },
     {
       "text": "These cube cases were also treated by direct Heegner-point methods.",
@@ -181,22 +186,26 @@
     {
       "text": "The two-primary formula holds whenever the 2-power Selmer corank is at most 1.",
       "verdict": "supported",
-      "sourceLine": "We establish the two-primary formula for every elliptic curve over \\(\\mathbb Q\\) whose usual two-power Selmer group has corank zero or one."
+      "sourceLine": "We establish the two-primary formula for every elliptic curve over \\(\\mathbb Q\\) whose usual two-power Selmer group has corank zero or one.",
+      "paper": 3
     },
     {
       "text": "Applying the one-sided inequality to both curves in the pair identity gives zero mismatch.",
       "verdict": "supported",
-      "sourceLine": "Applying the first inequality to both curves in the second identity gives $X_p(E)=0$ in the non-CM case."
+      "sourceLine": "Applying the first inequality to both curves in the second identity gives $X_p(E)=0$ in the non-CM case.",
+      "paper": 1
     },
     {
       "text": "Burungale–Flach supply the rank-zero CM input.",
       "verdict": "supported",
-      "sourceLine": "That theorem supplies the rank-zero CM input in our final step."
+      "sourceLine": "That theorem supplies the rank-zero CM input in our final step.",
+      "paper": 1
     },
     {
       "text": "The Selmer converse uses two results of the Goldfeld density paper.",
       "verdict": "supported",
-      "sourceLine": "the unrestricted converse at $2$ settles that prime, while the analytic twist-density theorem supplies the auxiliary fields for the odd-prime argument."
+      "sourceLine": "the unrestricted converse at $2$ settles that prime, while the analytic twist-density theorem supplies the auxiliary fields for the odd-prime argument.",
+      "paper": 2
     }
   ]
 }

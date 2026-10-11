@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It replaces a quadratic lower bound with an exponential one for unrestricted two-way deterministic machines, over growing alphabets."
   },
-  "explanation": "Take three points, called 1, 2 and 3. A relation here is a list of allowed one-step moves between them. Read three relations in order: 1 to 2, then 2 to 3, then 3 to 1. Chaining them gives a path from 1 back to 1. So this word is live: at least one path survives every step. Now swap the last relation for the single move 1 to 1. No step leaves point 3 anymore, so the chain is empty and the word is dead. Telling live words from dead ones is a task called one-way liveness.\n\nThe papers ask how big a simple machine must be to do this task. The machine is a finite automaton. It has a fixed number of internal modes, called states, and a head that reads one letter at a time. Here every possible relation is one letter. On 3 points there are 2 to the power 9, or 512, letters. A nondeterministic machine may guess its next move and accepts if some guess works. Guessing makes liveness easy: guess a path and check each step. For h points, one such machine uses h + 3 states and never moves its head left.\n\nA deterministic machine cannot guess. Each state and letter fix its one next move. A two-way machine may move its head back and reread letters. Rabin, Scott and Shepherdson showed in 1959 that two-way deterministic machines recognize the same languages as one-way machines. The open question was the price in states. Sakoda and Sipser posed this question in 1978. Is there a polynomial rule, such as n squared, for removing guesses?\n\nEarlier lower bounds all limited how the deterministic machine moves. Sipser proved an exponential gap in 1980 for sweeping machines, which turn around only at the ends of the input. Kapoutsis extended this in 2013 to machines with few turns. Against unrestricted machines, the best bound was quadratic, from Adeogun and Kapoutsis in 2026. The obstacle is that an unrestricted machine can turn anywhere and revisit a letter many times. The second paper handles this by turning each letter into a fixed wiring pattern. That pattern depends only on the letter, not on its neighbours.\n\nIts main theorem gives a hard number. Take h = 2000 points. The guessing machine needs only 2003 states. Every deterministic two-way machine for the same task needs at least 2,147,483,646 states, about 2.1 billion. In general, a machine with s states must satisfy 4(s+2)^2 ≥ 2^⌊(h−2)/31⌋. The needed size grows exponentially with h. So no polynomial rule can turn every guessing machine into a deterministic two-way one.\n\nThe first paper asks a related question about complements. The complement of a task swaps its yes and no answers. Here it means recognizing dead words, where the chain is empty. For deterministic two-way machines, complementing costs only a linear number of extra states. Vardi showed in 1989 how to complement a guessing two-way machine with exponentially many states. Guillon, Prigioniero and Taheri describe polynomial complementation of such machines as open. The first paper says it is not possible. It builds an n-state guessing machine for liveness. Any guessing machine for dead words then needs at least ½·2^⌊(n−4)/127⌋ − 1 states. For n = 4000, that is 1,073,741,823 states, about 1.07 billion. Guessing a path is cheap, but a guessing machine cannot cheaply confirm that no path exists.\n\nBoth results need a condition that is easy to miss. The alphabet grows with the problem. On h points there are 2 to the power h squared letters. The papers rule out a polynomial rule that holds for every alphabet. They give no lower bound over one fixed alphabet. The bounds also start slowly. For n = 131, the complement formula gives zero. They say nothing about logarithmic-space complexity classes, which concern machines with a work tape.\n\nHow sure is this? The Lean scope note lists Lean formalizations of all three bounds. A computer proof checker called Lean covers the complement bound for every n ≥ 4. It also covers the same family's deterministic bound for n ≥ 131. It covers the liveness bound for every h ≥ 2. Each has a Comparator statement, a fixed reference version used for matching. No specialist review has been published.",
+  "explanation": "Take three points, called 1, 2 and 3. A relation here is a list of allowed one-step moves between them. Read three relations in order: 1 to 2, then 2 to 3, then 3 to 1. Chaining them gives a path from 1 back to 1. So this word is live: at least one path survives every step. Now swap the last relation for the single move 1 to 1. No step leaves point 3 anymore, so the chain is empty and the word is dead. Telling live words from dead ones is a task called one-way liveness.\n\nThe papers ask how big a simple machine must be to do this task. The machine is a finite automaton. It has a fixed number of internal modes, called states, and a head that reads one letter at a time. Here every possible relation is one letter. On 3 points there are 2 to the power 9, or 512, letters. A nondeterministic machine may guess its next move and accepts if some guess works. Guessing makes liveness easy: guess a path and check each step. For h points, one such machine uses h + 3 states and never moves its head left.\n\nA deterministic machine cannot guess. Each state and letter fix its one next move. A two-way machine may move its head back and reread letters. Rabin, Scott and Shepherdson showed in 1959 that two-way deterministic machines recognize the same languages as one-way machines. The open question was the price in states. Sakoda and Sipser posed this question in 1978. Is there a polynomial rule, such as n squared, for removing guesses?\n\nEarlier lower bounds all limited how the deterministic machine moves. Sipser proved an exponential gap in 1980 for sweeping machines, which turn around only at the ends of the input. Kapoutsis extended this in 2013 to machines with few turns. Against unrestricted machines, the best bound was quadratic, from Adeogun and Kapoutsis in 2026. The obstacle is that an unrestricted machine can turn anywhere and revisit a letter many times[8]. The second paper handles this by turning each letter into a fixed wiring pattern. That pattern depends only on the letter, not on its neighbours.\n\nIts main theorem gives a hard number. Take h = 2000 points. The guessing machine needs only 2003 states. Every deterministic two-way machine for the same task needs at least 2,147,483,646 states, about 2.1 billion[9]. In general, a machine with s states must satisfy 4(s+2)^2 ≥ 2^⌊(h−2)/31⌋. The needed size grows exponentially with h. So no polynomial rule can turn every guessing machine into a deterministic two-way one[10].\n\nThe first paper asks a related question about complements. The complement of a task swaps its yes and no answers. Here it means recognizing dead words, where the chain is empty. For deterministic two-way machines, complementing costs only a linear number of extra states[11]. Vardi showed in 1989 how to complement a guessing two-way machine with exponentially many states. Guillon, Prigioniero and Taheri describe polynomial complementation of such machines as open. The first paper says it is not possible. It builds an n-state guessing machine for liveness. Any guessing machine for dead words then needs at least ½·2^⌊(n−4)/127⌋ − 1 states[14]. For n = 4000, that is 1,073,741,823 states, about 1.07 billion. Guessing a path is cheap, but a guessing machine cannot cheaply confirm that no path exists.\n\nBoth results need a condition that is easy to miss. The alphabet grows with the problem. On h points there are 2 to the power h squared letters[15]. The papers rule out a polynomial rule that holds for every alphabet. They give no lower bound over one fixed alphabet[16]. The bounds also start slowly. For n = 131, the complement formula gives zero. They say nothing about logarithmic-space complexity classes, which concern machines with a work tape[17].\n\nHow sure is this? The Lean scope note lists Lean formalizations of all three bounds. A computer proof checker called Lean covers the complement bound for every n ≥ 4. It also covers the same family's deterministic bound for n ≥ 131. It covers the liveness bound for every h ≥ 2. Each has a Comparator statement, a fixed reference version used for matching. No specialist review has been published.",
   "hypeCheck": "Major if the formal statements say what the papers claim. The scope note lists Lean formalizations of the three bounds, but they hold only for alphabets that grow. No specialist review has been published.",
   "glossary": [
     {
@@ -174,22 +174,26 @@
     {
       "text": "The main difficulty is repeated visits to a cell while each symbol gets a fixed object independent of neighbours.",
       "verdict": "supported",
-      "sourceLine": "The main representation difficulty is to account for repeated visits to a cell while assigning each input symbol a fixed object independent of its neighbors."
+      "sourceLine": "The main representation difficulty is to account for repeated visits to a cell while assigning each input symbol a fixed object independent of its neighbors.",
+      "paper": 2
     },
     {
       "text": "Every equivalent s-state deterministic two-way automaton satisfies 4(s+2)^2 ≥ 2^⌊(h−2)/31⌋.",
       "verdict": "supported",
-      "sourceLine": "Every equivalent deterministic two-way automaton with … states satisfies"
+      "sourceLine": "Every equivalent deterministic two-way automaton with … states satisfies",
+      "paper": 2
     },
     {
       "text": "No polynomial simulation of n-state 2NFAs by 2DFAs holds over every finite alphabet.",
       "verdict": "supported",
-      "sourceLine": "There are no absolute constants … such that every … -state two-way nondeterministic automaton over every finite alphabet has an equivalent two-way deterministic automaton with at most … states."
+      "sourceLine": "There are no absolute constants … such that every … -state two-way nondeterministic automaton over every finite alphabet has an equivalent two-way deterministic automaton with at most … states.",
+      "paper": 2
     },
     {
       "text": "Deterministic two-way complementation has a linear state bound independent of the alphabet.",
       "verdict": "supported",
-      "sourceLine": "For deterministic two-way automata, complementation has a linear state bound independent of the alphabet"
+      "sourceLine": "For deterministic two-way automata, complementation has a linear state bound independent of the alphabet",
+      "paper": 1
     },
     {
       "text": "Vardi's construction gives an exponential-state automaton for the complement of a 2NFA.",
@@ -204,22 +208,26 @@
     {
       "text": "Every 2NFA for the complement of the n-state automaton's language has at least ½·2^⌊(n−4)/127⌋ − 1 states.",
       "verdict": "supported",
-      "sourceLine": "There is an … -state 2NFA … recognizing … such that every 2NFA recognizing … has at least"
+      "sourceLine": "There is an … -state 2NFA … recognizing … such that every 2NFA recognizing … has at least",
+      "paper": 1
     },
     {
       "text": "On h points the alphabet has 2^(h^2) symbols.",
       "verdict": "supported",
-      "sourceLine": "For each … the alphabet has … symbols and is finite."
+      "sourceLine": "For each … the alphabet has … symbols and is finite.",
+      "paper": 2
     },
     {
       "text": "The theorem does not assert a lower bound over one fixed alphabet.",
       "verdict": "supported",
-      "sourceLine": "it does not assert a lower bound over one fixed alphabet."
+      "sourceLine": "it does not assert a lower bound over one fixed alphabet.",
+      "paper": 1
     },
     {
       "text": "The bounds give no separation between uniform logarithmic-space classes.",
       "verdict": "supported",
-      "sourceLine": "give no separation between uniform logarithmic-space complexity classes."
+      "sourceLine": "give no separation between uniform logarithmic-space complexity classes.",
+      "paper": 1
     },
     {
       "text": "The results come from an internal OpenAI model under the release's fixed procedure.",

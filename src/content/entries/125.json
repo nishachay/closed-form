@@ -74,7 +74,7 @@
       }
     ]
   },
-  "explanation": "Picture a town with four houses and three possible clinic sites, A, B and C. The town can afford two clinics. Site A is close to houses 1 and 2. Site B is close to houses 3 and 4. Site C is close to houses 2 and 3. Close means a distance of 1, and far means a distance of 3. Each house uses its nearest open clinic. The town wants the smallest total travel distance.\n\nThere are only three ways to pick two sites. A and B give every house a close clinic, so the total is 4. A and C leave house 4 far away, so the total is 6. B and C leave house 1 far away, also 6. The best plan costs 4. The worst costs 1.5 times as much. This is the metric k-median problem. The k is the number of clinics allowed, here 2. Metric means the distances behave like real distances: a detour through a third point is never shorter.\n\nReal instances have thousands of points, and trying every choice takes far too long. So researchers look for fast methods with a guarantee. Fast here means polynomial time: the running time grows like a fixed power of the input size. The guarantee is an approximation factor. A factor of 2 means the method's total is never more than twice the best total.\n\nCharikar, Guha, Tardos and Shmoys gave the first fast method with a fixed factor, published in 2002. A local search method of Arya and coauthors reached 3 plus ε in 2004. Here ε means any small positive number chosen in advance. In 2016, Li and Svensson showed that a few extra clinics can later be removed at a tiny extra cost. That opened a route past factor 3. Byrka and coauthors reached 2.675 plus ε. Gowda and coauthors reached 2.613 in 2023. Cohen-Addad and coauthors reached 2 plus ε, first announced in 2025.\n\nThere is also a floor, and the town example shows where it comes from. Suppose every site is either close or far from every house. If the chosen sites leave c of m houses close, the total is 3m − 2c. A perfect choice gives m. Uriel Feige's 1998 work on covering problems supplies a hard case, assuming P ≠ NP. That is the standard belief that some problems with easy-to-check answers have no fast solution. Under it, no fast method can tell apart two cases. In one, a perfect choice exists. In the other, every choice leaves about 36.8 percent of houses far. That share is 1/e, where e is about 2.71828. The second case has a total of at least about 1.7358m, or 1 + 2/e times m. So no fast method can promise a factor below 1 + 2/e. That left a gap between about 1.7358 and 2.\n\nThe hard part is the clinic budget. A low total is much easier to reach when a few extra clinics are allowed. A 2026 graph-based rounding method also reached 2 plus ε. Its general transfer step stalls at factor 2 for this problem. This paper keeps the extra-clinics route. It first allows a fixed number of extra clinics, then removes them with the Li and Svensson step. Its new ingredient is a sharper way to compare costs while partial choices are rounded into whole ones. That comparison is what gets below 2.\n\nThis paper proves the matching upper bound (Lean proof listed). For every fixed ε, a fast method opens at most k sites. Its total stays within 1 + 2/e + ε times the best. It is deterministic: it uses no coin flips and gives the same answer every run. Together with the floor, the best possible factor is exactly 1 + 2/e, assuming P ≠ NP. Back in the town, the best total is 4. So the method's total is at most about 6.94, plus a sliver for ε. No fast method can promise to beat 1 + 2/e on every town.\n\nThe result has limits worth keeping in view. It does not give a method with factor exactly 1 + 2/e. Each ε gets its own method, and the power in its running time may depend on ε. The candidate sites are listed separately from the houses. The version where clinics must sit at houses is a different question. A companion paper gives a separate method that flips coins and beats factor 2 by a fixed amount. Its proof does not use the main paper's rounding argument.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of four statements. Two are the deterministic 1 + 2/e + ε method and the exact threshold assuming P ≠ NP. The other two are the companion's coin-flipping method and its recovery theorem. Each has a Comparator statement listed. No specialist review has been published yet.",
+  "explanation": "Picture a town with four houses and three possible clinic sites, A, B and C. The town can afford two clinics. Site A is close to houses 1 and 2. Site B is close to houses 3 and 4. Site C is close to houses 2 and 3. Close means a distance of 1, and far means a distance of 3. Each house uses its nearest open clinic. The town wants the smallest total travel distance.\n\nThere are only three ways to pick two sites. A and B give every house a close clinic, so the total is 4. A and C leave house 4 far away, so the total is 6. B and C leave house 1 far away, also 6. The best plan costs 4. The worst costs 1.5 times as much. This is the metric k-median problem. The k is the number of clinics allowed, here 2. Metric means the distances behave like real distances: a detour through a third point is never shorter.\n\nReal instances have thousands of points, and trying every choice takes far too long. So researchers look for fast methods with a guarantee. Fast here means polynomial time: the running time grows like a fixed power of the input size. The guarantee is an approximation factor. A factor of 2 means the method's total is never more than twice the best total.\n\nCharikar, Guha, Tardos and Shmoys gave the first fast method with a fixed factor, published in 2002. A local search method of Arya and coauthors reached 3 plus ε in 2004. Here ε means any small positive number chosen in advance. In 2016, Li and Svensson showed that a few extra clinics can later be removed at a tiny extra cost. That opened a route past factor 3. Byrka and coauthors reached 2.675 plus ε. Gowda and coauthors reached 2.613 in 2023. Cohen-Addad and coauthors reached 2 plus ε, first announced in 2025.\n\nThere is also a floor, and the town example shows where it comes from. Suppose every site is either close or far from every house. If the chosen sites leave c of m houses close, the total is 3m − 2c[9]. A perfect choice gives m. Uriel Feige's 1998 work on covering problems supplies a hard case, assuming P ≠ NP[10]. That is the standard belief that some problems with easy-to-check answers have no fast solution. Under it, no fast method can tell apart two cases. In one, a perfect choice exists. In the other, every choice leaves about 36.8 percent of houses far. That share is 1/e, where e is about 2.71828. The second case has a total of at least about 1.7358m, or 1 + 2/e times m. So no fast method can promise a factor below 1 + 2/e[11,18]. That left a gap between about 1.7358 and 2.\n\nThe hard part is the clinic budget. A low total is much easier to reach when a few extra clinics are allowed[12]. A 2026 graph-based rounding method also reached 2 plus ε. Its general transfer step stalls at factor 2 for this problem[13]. This paper keeps the extra-clinics route. It first allows a fixed number of extra clinics, then removes them with the Li and Svensson step[14]. Its new ingredient is a sharper way to compare costs while partial choices are rounded into whole ones[15]. That comparison is what gets below 2.\n\nThis paper proves the matching upper bound (Lean proof listed). For every fixed ε, a fast method opens at most k sites[16]. Its total stays within 1 + 2/e + ε times the best. It is deterministic: it uses no coin flips and gives the same answer every run[16]. Together with the floor, the best possible factor is exactly 1 + 2/e, assuming P ≠ NP. Back in the town, the best total is 4. So the method's total is at most about 6.94, plus a sliver for ε. No fast method can promise to beat 1 + 2/e on every town.\n\nThe result has limits worth keeping in view. It does not give a method with factor exactly 1 + 2/e[19]. Each ε gets its own method, and the power in its running time may depend on ε[17]. The candidate sites are listed separately from the houses. The version where clinics must sit at houses is a different question[20]. A companion paper gives a separate method that flips coins and beats factor 2 by a fixed amount[21]. Its proof does not use the main paper's rounding argument[22].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of four statements. Two are the deterministic 1 + 2/e + ε method and the exact threshold assuming P ≠ NP. The other two are the companion's coin-flipping method and its recovery theorem. Each has a Comparator statement listed. No specialist review has been published yet.",
   "hypeCheck": "Major if the proofs hold. Lean formalizations are listed for the main statements. Still, the threshold assumes P ≠ NP, and the guarantee holds only above 1 + 2/e. No specialist review has been published.",
   "glossary": [
     {
@@ -214,72 +214,86 @@
     {
       "text": "With close distance 1 and far distance 3, covering c of m elements costs 3m − 2c, and a perfect cover costs m.",
       "verdict": "supported",
-      "sourceLine": "the connection cost is exactly \\(3m-2c\\) when the chosen sets cover \\(c\\) elements; a perfect cover has cost \\(m\\)"
+      "sourceLine": "the connection cost is exactly \\(3m-2c\\) when the chosen sets cover \\(c\\) elements; a perfect cover has cost \\(m\\)",
+      "paper": 2
     },
     {
       "text": "The hardness uses Feige's perfect-completeness coverage gap under P ≠ NP.",
       "verdict": "supported",
-      "sourceLine": "based on Feige's perfect-completeness coverage gap"
+      "sourceLine": "based on Feige's perfect-completeness coverage gap",
+      "paper": 2
     },
     {
       "text": "A gap between covering every element and covering at most a 1 − 1/e fraction gives the lower bound 1 + 2/e.",
       "verdict": "supported",
-      "sourceLine": "Thus a gap between covering every element and covering at most a \\(1-1/e+\\delta\\) fraction gives the lower bound \\(1+2/e-2\\delta\\)"
+      "sourceLine": "Thus a gap between covering every element and covering at most a \\(1-1/e+\\delta\\) fraction gives the lower bound \\(1+2/e-2\\delta\\)",
+      "paper": 2
     },
     {
       "text": "The facility budget is a central difficulty; small cost is much easier with extra facilities.",
       "verdict": "supported",
-      "sourceLine": "The facility budget is a central difficulty: a solution with small connection cost can be much easier to obtain when extra facilities are allowed."
+      "sourceLine": "The facility budget is a central difficulty: a solution with small connection cost can be much easier to obtain when extra facilities are allowed.",
+      "paper": 2
     },
     {
       "text": "The earlier framework's general transfer theorem uses a parameter at least 2 for metric k-median.",
       "verdict": "supported",
-      "sourceLine": "The earlier framework's general transfer theorem uses a parameter at least \\(2\\) in the metric \\(k\\)-median case"
+      "sourceLine": "The earlier framework's general transfer theorem uses a parameter at least \\(2\\) in the metric \\(k\\)-median case",
+      "paper": 2
     },
     {
       "text": "The approach first permits a constant additive surplus, makes it deterministic, and then removes the surplus.",
       "verdict": "supported",
-      "sourceLine": "Our approach first permits a constant additive surplus, makes that approximation deterministic, and then removes the surplus using an established reduction."
+      "sourceLine": "Our approach first permits a constant additive surplus, makes that approximation deterministic, and then removes the surplus using an established reduction.",
+      "paper": 2
     },
     {
       "text": "The new analysis replaces the cost analysis with a directed comparison inequality.",
       "verdict": "supported",
-      "sourceLine": "with the cost analysis replaced by a directed comparison inequality"
+      "sourceLine": "with the cost analysis replaced by a directed comparison inequality",
+      "paper": 2
     },
     {
       "text": "For every fixed ε > 0 a deterministic polynomial-time algorithm opens at most k facilities within 1 + 2/e + ε of optimum.",
       "verdict": "supported",
-      "sourceLine": "For every fixed \\(\\varepsilon>0\\), there is a deterministic algorithm which"
+      "sourceLine": "For every fixed \\(\\varepsilon>0\\), there is a deterministic algorithm which",
+      "paper": 2
     },
     {
       "text": "The polynomial may depend on ε.",
       "verdict": "supported",
-      "sourceLine": "The polynomial may depend on \\(\\varepsilon\\)."
+      "sourceLine": "The polynomial may depend on \\(\\varepsilon\\).",
+      "paper": 2
     },
     {
       "text": "If P ≠ NP, the infimum of approximation factors with specified candidate facilities is 1 + 2/e.",
       "verdict": "supported",
-      "sourceLine": "If \\(P\\ne NP\\), the infimum of deterministic polynomial-time approximation factors for metric \\(k\\)-median with specified candidate facilities is \\(1+2/e\\)."
+      "sourceLine": "If \\(P\\ne NP\\), the infimum of deterministic polynomial-time approximation factors for metric \\(k\\)-median with specified candidate facilities is \\(1+2/e\\).",
+      "paper": 2
     },
     {
       "text": "The infimum does not assert attainment of the endpoint factor.",
       "verdict": "supported",
-      "sourceLine": "does not assert attainment of the endpoint factor"
+      "sourceLine": "does not assert attainment of the endpoint factor",
+      "paper": 2
     },
     {
       "text": "The lower-bound question with facilities restricted to client locations is different.",
       "verdict": "supported",
-      "sourceLine": "the corresponding lower-bound question with the restriction \\(F=J\\) is different"
+      "sourceLine": "the corresponding lower-bound question with the restriction \\(F=J\\) is different",
+      "paper": 2
     },
     {
       "text": "A companion paper gives an independent randomized approximation below factor 2 within the facility budget.",
       "verdict": "supported",
-      "sourceLine": "give an independent randomized approximation below factor \\(2\\) while respecting the facility budget"
+      "sourceLine": "give an independent randomized approximation below factor \\(2\\) while respecting the facility budget",
+      "paper": 2
     },
     {
       "text": "The companion's proofs are independent of the graph-rounding argument.",
       "verdict": "supported",
-      "sourceLine": "The recovery, execution and global application proofs below are independent of that graph-rounding argument."
+      "sourceLine": "The recovery, execution and global application proofs below are independent of that graph-rounding argument.",
+      "paper": 1
     },
     {
       "text": "Lean formalizations with Comparator statements cover the deterministic algorithm, the threshold under P ≠ NP, the randomized below-2 result and the recovery theorem.",

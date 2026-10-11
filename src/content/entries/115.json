@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It removes the row-count and margin-size limits on a long-studied sampling and counting problem, one named open in 2010."
   },
-  "explanation": "Fill a grid of two rows and three columns with whole numbers, none negative. Each row must add up to 3. Each column must add up to 2. Such a grid is called a contingency table. The required sums are its margins. Exactly 7 tables fit these margins. One has 1, 1, 1 in both rows. Another has 0, 1, 2 on top and 2, 1, 0 below.\n\nTwo jobs come with such tables. Counting asks how many tables fit: here, 7. Uniform sampling asks for one table drawn at random, with every table equally likely. Here each would get a chance of 1/7. A third twist adds a cap on single cells, called a cell bound. A cap of 0 forbids a cell outright. Forbid the top-left cell above, and only 2 tables remain. For grids this small, a computer can simply list every table.\n\nNow take a 3-by-3 grid with every margin equal to one million. Each margin takes only 7 digits to write. Yet 125,000,750,001,875,002,250,001 tables fit, about 1.25 × 10^23. Listing them is hopeless. Computer scientists call a method fast when its time grows like a fixed power of the input's length. Here the length counts rows, columns and the digits of the margins, not their size. The papers work in binary digits, but the idea is the same. A bound that grows with the margin total itself would not count as fast.\n\nEarlier work covered special shapes. In 2000, Dyer and Greenhill counted and sampled approximately for tables with two rows. In 2003, Kijima and Matsui gave exactly uniform sampling for two rows. Cryan and Dyer, and Dyer alone, handled any fixed number of rows in 2003. Their time bounds depend on that fixed row count. Dyer, Kannan and Mount in 1997, and Morris in 2002, worked with large margins. Arman, Gao and Wormald in 2021 handled sparse margins under a size condition. Their survey reported that no fast, nearly uniform sampler for arbitrary margins was known.\n\nCell bounds had their own history. Jerrum, Sinclair and Vigoda in 2004 covered the case where every cap is 0 or 1. In 2010, Cryan, Dyer and Randall handled large caps, or a fixed number of rows. They named the unrestricted case as an open problem.\n\nThe one obstacle was mixing. Real margins can be huge in some rows and tiny in others. Huge values cannot be stepped through one unit at a time. Tiny values break the smooth geometry that methods for large margins rely on. The papers split the table along that line. Cells that touch a small margin are handled one at a time. The rest form a block of large numbers, treated with geometric tools. In the sampling paper, that block is padded first so every part of it counts as large. A draw is kept only when the padding can be removed cleanly.\n\nThe first paper proves two samplers for any margins with matching totals. You choose an accuracy level k. One sampler always finishes within a fixed power of the input length and k. Its output can be slightly unfair, by at most 2^-k in total variation. Total variation is the largest amount any group of tables can gain or lose in probability. The other sampler is exactly uniform. It stops with probability 1, and its average running time is fast. A rare branch does slow, exhaustive work, so single runs can take much longer.\n\nThe second paper proves an approximate counting scheme with cell bounds, zero caps included. Ask for an error of ε and a failure chance of δ. The estimate then lands within a factor 1 ± ε of the true count. That happens with probability at least 1 − δ. One fixed power bound limits the work on every run. If no table fits, it returns zero every time. Such a scheme is called an FPRAS.\n\nBack in the 3-by-3 grid, each of those 10^23 tables can now get an exactly equal chance. The average cost grows with the number of digits, not with one million. Still, the papers call their power bounds deliberately large. These are guarantees about growth, not practical running times. Exact counting stays hard: Dyer, Kannan and Mount proved it is #P-complete even for two rows. The exact sampler also does not cover cell bounds.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main statements. They are the exact sampler, the bounded-time sampler and the counting scheme with cell bounds. All three sit in one Comparator challenge file, a fixed reference statement for checking. The counting paper's consequences for network flows are not in the Lean scope note. No specialist review has been published.",
+  "explanation": "Fill a grid of two rows and three columns with whole numbers, none negative. Each row must add up to 3. Each column must add up to 2. Such a grid is called a contingency table. The required sums are its margins. Exactly 7 tables fit these margins. One has 1, 1, 1 in both rows. Another has 0, 1, 2 on top and 2, 1, 0 below.\n\nTwo jobs come with such tables. Counting asks how many tables fit: here, 7. Uniform sampling asks for one table drawn at random, with every table equally likely. Here each would get a chance of 1/7. A third twist adds a cap on single cells, called a cell bound. A cap of 0 forbids a cell outright. Forbid the top-left cell above, and only 2 tables remain. For grids this small, a computer can simply list every table.\n\nNow take a 3-by-3 grid with every margin equal to one million. Each margin takes only 7 digits to write. Yet 125,000,750,001,875,002,250,001 tables fit, about 1.25 × 10^23. Listing them is hopeless. Computer scientists call a method fast when its time grows like a fixed power of the input's length. Here the length counts rows, columns and the digits of the margins, not their size. The papers work in binary digits, but the idea is the same. A bound that grows with the margin total itself would not count as fast.\n\nEarlier work covered special shapes. In 2000, Dyer and Greenhill counted and sampled approximately for tables with two rows. In 2003, Kijima and Matsui gave exactly uniform sampling for two rows. Cryan and Dyer, and Dyer alone, handled any fixed number of rows in 2003. Their time bounds depend on that fixed row count. Dyer, Kannan and Mount in 1997, and Morris in 2002, worked with large margins. Arman, Gao and Wormald in 2021 handled sparse margins under a size condition. Their survey reported that no fast, nearly uniform sampler for arbitrary margins was known.\n\nCell bounds had their own history. Jerrum, Sinclair and Vigoda in 2004 covered the case where every cap is 0 or 1. In 2010, Cryan, Dyer and Randall handled large caps, or a fixed number of rows. They named the unrestricted case as an open problem.\n\nThe one obstacle was mixing. Real margins can be huge in some rows and tiny in others. Huge values cannot be stepped through one unit at a time. Tiny values break the smooth geometry that methods for large margins rely on. The papers split the table along that line. Cells that touch a small margin are handled one at a time[12]. The rest form a block of large numbers, treated with geometric tools. In the sampling paper, that block is padded first so every part of it counts as large[12]. A draw is kept only when the padding can be removed cleanly[13].\n\nThe first paper proves two samplers for any margins with matching totals. You choose an accuracy level k. One sampler always finishes within a fixed power of the input length and k. Its output can be slightly unfair, by at most 2^-k in total variation[2]. Total variation is the largest amount any group of tables can gain or lose in probability. The other sampler is exactly uniform. It stops with probability 1, and its average running time is fast[3]. A rare branch does slow, exhaustive work, so single runs can take much longer[5,6].\n\nThe second paper proves an approximate counting scheme with cell bounds, zero caps included. Ask for an error of ε and a failure chance of δ. The estimate then lands within a factor 1 ± ε of the true count[14]. That happens with probability at least 1 − δ. One fixed power bound limits the work on every run. If no table fits, it returns zero every time[14]. Such a scheme is called an FPRAS.\n\nBack in the 3-by-3 grid, each of those 10^23 tables can now get an exactly equal chance. The average cost grows with the number of digits, not with one million. Still, the papers call their power bounds deliberately large[5]. These are guarantees about growth, not practical running times[16]. Exact counting stays hard: Dyer, Kannan and Mount proved it is #P-complete even for two rows. The exact sampler also does not cover cell bounds[20].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main statements. They are the exact sampler, the bounded-time sampler and the counting scheme with cell bounds. All three sit in one Comparator challenge file, a fixed reference statement for checking. The counting paper's consequences for network flows are not in the Lean scope note. No specialist review has been published.",
   "hypeCheck": "Major if the proofs hold. The Lean scope note lists formal versions of the three main statements. No specialist review is published. The power bounds are deliberately large, so this is not a practical tool.",
   "glossary": [
     {
@@ -150,13 +150,15 @@
       "text": "A bounded-time sampler outputs a table within 2^-k in total variation of uniform, in time polynomial in m, n, log(N+1) and k.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "Given an integer $k\\ge1$, a bounded-time algorithm outputs a table"
+      "sourceLine": "Given an integer $k\\ge1$, a bounded-time algorithm outputs a table",
+      "paper": 1
     },
     {
       "text": "An exact sampler outputs an exactly uniform table, terminates almost surely and has expected polynomial running time.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "An algorithm outputs an exactly uniform table in $\\Omega(r,c)$, terminates almost surely, and has expected running time polynomial in"
+      "sourceLine": "An algorithm outputs an exactly uniform table in $\\Omega(r,c)$, terminates almost surely, and has expected running time polynomial in",
+      "paper": 1
     },
     {
       "text": "No positivity, sparsity, balance or fixed-dimension hypothesis is imposed.",
@@ -168,13 +170,15 @@
       "text": "The exponents are deliberately large, and a rare branch performs exhaustive computation.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "The algorithms below are explicit, although their exponents are deliberately large. Part~\\textup{(ii)} concerns expected time: an exceptionally rare branch performs exhaustive computation."
+      "sourceLine": "The algorithms below are explicit, although their exponents are deliberately large. Part~\\textup{(ii)} concerns expected time: an exceptionally rare branch performs exhaustive computation.",
+      "paper": 1
     },
     {
       "text": "The exact algorithm has polynomial expected bit cost, not a polynomial bound on every execution.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "Thus the exact algorithm has polynomial expected bit cost, not a polynomial bound on every execution."
+      "sourceLine": "Thus the exact algorithm has polynomial expected bit cost, not a polynomial bound on every execution.",
+      "paper": 1
     },
     {
       "text": "Dyer and Greenhill gave polynomial-time approximate counting and sampling for two rows.",
@@ -210,19 +214,22 @@
       "text": "Cells incident to a small margin are explicit; the remaining rectangle is padded so completion problems have large margins.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "We pad this rectangle so every conditional completion problem has large margins."
+      "sourceLine": "We pad this rectangle so every conditional completion problem has large margins.",
+      "paper": 1
     },
     {
       "text": "Only a transversal whose large completion entries are at least the padding is accepted.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "Accept only a transversal whose large completion entries are all at least the padding."
+      "sourceLine": "Accept only a transversal whose large completion entries are all at least the padding.",
+      "paper": 1
     },
     {
       "text": "The counting algorithm returns an estimate within a factor 1±ε with probability at least 1−δ, outputs zero when no table exists, and has a polynomial bit-operation bound on every execution.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "If $\\Omega(r,c,b)$ is empty, the output is zero on every execution."
+      "sourceLine": "If $\\Omega(r,c,b)$ is empty, the output is zero on every execution.",
+      "paper": 2
     },
     {
       "text": "A bound of zero forbids an entry.",
@@ -234,7 +241,8 @@
       "text": "The counting paper's polynomial bounds are a uniform complexity guarantee rather than a practical running-time estimate.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "the result is a uniform complexity guarantee rather than a practical running-time estimate."
+      "sourceLine": "the result is a uniform complexity guarantee rather than a practical running-time estimate.",
+      "paper": 2
     },
     {
       "text": "Dyer, Kannan and Mount proved #P-completeness for tables with two rows.",
@@ -258,7 +266,8 @@
       "text": "The exact sampling guarantees concern the uncapped setting.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "Those stronger sampling guarantees concern the uncapped setting;"
+      "sourceLine": "Those stronger sampling guarantees concern the uncapped setting;",
+      "paper": 2
     },
     {
       "text": "The Lean scope note lists the exact sampler, the bounded-time sampler and the cell-bounded counting scheme, with one Comparator file.",

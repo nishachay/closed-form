@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "If the proof holds, it settles a 1971 conjecture in every dimension from four up."
   },
-  "explanation": "Hold a cube with sides of length 1 up to the sun. Face-on, its shadow is a square of area 1. Turn it so the sun shines along a long diagonal. The shadow grows into a hexagon of area about 1.73. Every direction gives a shadow, and every shadow has an area.\n\nNow build one new shape from all those numbers. In each direction, let it reach out exactly as far as that shadow is large. Geometers call this the projection body (the shape that records every shadow area). For the unit cube it is a cube of side 2, with volume 8. The paper studies a score: the volume of the projection body, divided by a power of the original volume. That division makes the score ignore size. It also ignores any stretching or shearing, so a ball and every ellipsoid (a stretched ball) score the same.\n\nIn three dimensions the ball scores about 7.40 and the cube scores 8. A tetrahedron, the simplest pointed solid, scores 18. In four dimensions the ball scores 1024/81, about 12.64. The four-dimensional cube scores 16. The simplest four-dimensional simplex scores 160/3, about 53.3. A simplex is the analogue of a triangle or tetrahedron.\n\nIn 1971 Clinton Petty conjectured that ellipsoids have the lowest score, in every dimension from three up. Nobody could rule out some odd shape scoring lower. Earlier results only compared the ball with shapes already close to it, after stretching. In 2026 Mielke-Sulz handled shapes with an axis of rotational symmetry. Also in 2026, Chen, Feng, Li, Xi and Xu proved the full three-dimensional case. Dimensions four and higher stayed open.\n\nThis paper proves that case: in every dimension from four up, ellipsoids have the lowest score. They are the only shapes that reach it. The shape need not be symmetric or smooth. The paper says that, together with the separate three-dimensional proof, this settles Petty's conjecture in every dimension from three up. The paper itself does not use or check that three-dimensional proof.\n\nThe main obstacle was that older methods needed a shape near a ball. Near a ball, small errors can be controlled. A general shape gives no such foothold. The paper's answer is to choose, for any shape, a stretch that puts it in a balanced position. Finding such a stretch takes a careful existence argument. In that position, a sharp estimate shows the ball cannot be beaten.\n\nA second paper looks at the other end. In 1996 Brannen proposed that simplices have the highest score. Feng, Hu, Liu and Xu had already found counterexamples in every dimension from nine up, using perturbed cubes. This paper gives a simpler one. Take two ten-dimensional simplices and form their product, a twenty-dimensional shape. A product's score is the product of its two factors' scores. Each ten-dimensional simplex scores about 30,313. Squared, that is about 918.9 million. The twenty-dimensional simplex scores only about 905.1 million. The exact ratio is 22,355,476/22,020,096, about 1.015.\n\nSo the simplex loses by about 1.5 percent in dimension twenty. The paper also argues that the gap grows. In every large enough dimension, some product of simplices beats the simplex by a factor that grows exponentially with dimension. Neither paper finds the true highest score or the shapes that reach it. The first paper also derives further sharp inequalities, including the Lutwak–Petty family, but those lean on the separate three-dimensional proof.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the lowest-score theorem. It covers every convex shape in dimension four and up. Its scope note states that ellipsoids are exactly the minimizers. Lean has also checked the twenty-dimensional counterexample. The exponential gap and the other inequalities are outside that check. No specialist review has been published.",
+  "explanation": "Hold a cube with sides of length 1 up to the sun. Face-on, its shadow is a square of area 1. Turn it so the sun shines along a long diagonal. The shadow grows into a hexagon of area about 1.73. Every direction gives a shadow, and every shadow has an area.\n\nNow build one new shape from all those numbers. In each direction, let it reach out exactly as far as that shadow is large. Geometers call this the projection body (the shape that records every shadow area). For the unit cube it is a cube of side 2, with volume 8. The paper studies a score: the volume of the projection body, divided by a power of the original volume. That division makes the score ignore size. It also ignores any stretching or shearing, so a ball and every ellipsoid (a stretched ball) score the same.\n\nIn three dimensions the ball scores about 7.40 and the cube scores 8. A tetrahedron, the simplest pointed solid, scores 18. In four dimensions the ball scores 1024/81, about 12.64. The four-dimensional cube scores 16. The simplest four-dimensional simplex scores 160/3, about 53.3. A simplex is the analogue of a triangle or tetrahedron.\n\nIn 1971 Clinton Petty conjectured that ellipsoids have the lowest score, in every dimension from three up. Nobody could rule out some odd shape scoring lower. Earlier results only compared the ball with shapes already close to it, after stretching. In 2026 Mielke-Sulz handled shapes with an axis of rotational symmetry. Also in 2026, Chen, Feng, Li, Xi and Xu proved the full three-dimensional case. Dimensions four and higher stayed open.\n\nThis paper proves that case: in every dimension from four up, ellipsoids have the lowest score[8]. They are the only shapes that reach it[9]. The shape need not be symmetric or smooth[10]. The paper says that, together with the separate three-dimensional proof, this settles Petty's conjecture in every dimension from three up. The paper itself does not use or check that three-dimensional proof[11].\n\nThe main obstacle was that older methods needed a shape near a ball. Near a ball, small errors can be controlled. A general shape gives no such foothold. The paper's answer is to choose, for any shape, a stretch that puts it in a balanced position[12,13]. Finding such a stretch takes a careful existence argument. In that position, a sharp estimate shows the ball cannot be beaten.\n\nA second paper looks at the other end. In 1996 Brannen proposed that simplices have the highest score. Feng, Hu, Liu and Xu had already found counterexamples in every dimension from nine up, using perturbed cubes. This paper gives a simpler one. Take two ten-dimensional simplices and form their product, a twenty-dimensional shape. A product's score is the product of its two factors' scores[17]. Each ten-dimensional simplex scores about 30,313[18]. Squared, that is about 918.9 million. The twenty-dimensional simplex scores only about 905.1 million. The exact ratio is 22,355,476/22,020,096, about 1.015[16].\n\nSo the simplex loses by about 1.5 percent in dimension twenty. The paper also argues that the gap grows. In every large enough dimension, some product of simplices beats the simplex by a factor that grows exponentially with dimension[20]. Neither paper finds the true highest score or the shapes that reach it[19]. The first paper also derives further sharp inequalities, including the Lutwak–Petty family, but those lean on the separate three-dimensional proof[21].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the lowest-score theorem. It covers every convex shape in dimension four and up. Its scope note states that ellipsoids are exactly the minimizers. Lean has also checked the twenty-dimensional counterexample. The exponential gap and the other inequalities are outside that check. No specialist review has been published.",
   "hypeCheck": "Major only if the proof holds. Lean proofs are listed for the four-plus-dimensional minimum and the dimension-twenty counterexample. The exponential gap and the derived inequalities are not machine-checked. The three-dimensional case rests on another group's preprint. No specialist review is published.",
   "glossary": [
     {
@@ -143,32 +143,38 @@
     {
       "text": "The paper proves the conjecture in every dimension at least four.",
       "verdict": "supported",
-      "sourceLine": "We prove the unpolarized conjecture in every dimension at least four."
+      "sourceLine": "We prove the unpolarized conjecture in every dimension at least four.",
+      "paper": 1
     },
     {
       "text": "Equality holds only for ellipsoids.",
       "verdict": "supported",
-      "sourceLine": "Equality holds if and only if $K=a+TB_2^n$ for some $a\\in\\R^n$ and some"
+      "sourceLine": "Equality holds if and only if $K=a+TB_2^n$ for some $a\\in\\R^n$ and some",
+      "paper": 1
     },
     {
       "text": "The theorem includes bodies without symmetry or boundary regularity.",
       "verdict": "supported",
-      "sourceLine": "The theorem includes bodies without symmetry or boundary regularity."
+      "sourceLine": "The theorem includes bodies without symmetry or boundary regularity.",
+      "paper": 1
     },
     {
       "text": "The three-dimensional theorem of Chen et al. is not used in the proof for n at least 4.",
       "verdict": "supported",
-      "sourceLine": "proved three-dimensional theorem of Chen et al. establishes the"
+      "sourceLine": "proved three-dimensional theorem of Chen et al. establishes the",
+      "paper": 1
     },
     {
       "text": "The paper makes a global choice of affine coordinates where proximity to the ball is unavailable.",
       "verdict": "supported",
-      "sourceLine": "where proximity to the ball is unavailable."
+      "sourceLine": "where proximity to the ball is unavailable.",
+      "paper": 1
     },
     {
       "text": "A fixed-point argument yields the affine position.",
       "verdict": "supported",
-      "sourceLine": "and a fixed-point argument yields an invertible matrix at which the"
+      "sourceLine": "and a fixed-point argument yields an invertible matrix at which the",
+      "paper": 1
     },
     {
       "text": "Brannen conjectured in 1996 that simplices maximize the functional.",
@@ -183,32 +189,38 @@
     {
       "text": "The product of two ten-dimensional simplices beats the twenty-dimensional simplex with ratio 22,355,476/22,020,096.",
       "verdict": "supported",
-      "sourceLine": "=\\frac{22\\,355\\,476}{22\\,020\\,096}>1."
+      "sourceLine": "=\\frac{22\\,355\\,476}{22\\,020\\,096}>1.",
+      "paper": 2
     },
     {
       "text": "The normalized projection volume of a product of polytopes is the product of the factors' values.",
       "verdict": "supported",
-      "sourceLine": "R_{r+s}(A\\times B)=R_r(A)R_s(B)."
+      "sourceLine": "R_{r+s}(A\\times B)=R_r(A)R_s(B).",
+      "paper": 2
     },
     {
       "text": "The ten-dimensional simplex constant is 17,187,500/567.",
       "verdict": "supported",
-      "sourceLine": "c_{10}=\\frac{17\\,187\\,500}{567},\\qquad"
+      "sourceLine": "c_{10}=\\frac{17\\,187\\,500}{567},\\qquad",
+      "paper": 2
     },
     {
       "text": "The optimal upper constant and its maximizing bodies remain separate questions.",
       "verdict": "supported",
-      "sourceLine": "optimal upper constant and its maximizing bodies remain separate"
+      "sourceLine": "optimal upper constant and its maximizing bodies remain separate",
+      "paper": 2
     },
     {
       "text": "Products of simplices exceed the simplex value by an exponential factor in every sufficiently large dimension.",
       "verdict": "supported",
-      "sourceLine": "excess over the simplex benchmark: for some fixed \\(\\lambda>1\\) and"
+      "sourceLine": "excess over the simplex benchmark: for some fixed \\(\\lambda>1\\) and",
+      "paper": 2
     },
     {
       "text": "The Lutwak–Petty lower-degree inequalities use the separate three-dimensional result.",
       "verdict": "supported",
-      "sourceLine": "Theorem~\\ref{thm:main} and the separately proved three-dimensional"
+      "sourceLine": "Theorem~\\ref{thm:main} and the separately proved three-dimensional",
+      "paper": 1
     },
     {
       "text": "Lean covers Petty's inequality for every convex body and n at least 4, and the dimension-twenty counterexample; other inequalities and the exponential result are not included.",

@@ -36,7 +36,7 @@
     "significance": "Landmark",
     "significanceWhy": "If the proof holds, it settles the bond form of a central 30-year-old conjecture in percolation."
   },
-  "explanation": "Picture an endless square grid of streets. Flip a fair coin for every block of street. Heads keeps the block open, tails closes it. A corner has four blocks, so it is cut off with chance 1/16. A fixed route of 20 blocks is fully open with chance 1 in 1,048,576. But routes are many. From one corner, 4,649,045,868 routes of 20 blocks never turn straight back. That count is over 4,000 times the odds against any single route. Yet routes share blocks, so this count alone settles nothing. On this grid, a fair coin is in fact exactly the tipping point.\n\nThis game is called bond percolation. Each link of a network is open with some chance p, independently of the others. A cluster is a group of points joined by open links. For small p, every cluster is finite. For p near 1, an endless cluster appears. The switch point is the critical probability, written p_c. On the square grid, Harry Kesten showed in 1980 that p_c equals 1/2.\n\nThe hard question is what happens exactly at p_c. Does an endless cluster already exist there, or only just above it? If none exists, the chance of joining an endless cluster rises from zero without a jump at the tipping point. For links on the square grid, work by Harris in 1960 and Kesten in 1980 settled the question. Hara and Slade handled grids of high enough dimension in 1990. In 2017, Fitzner and van der Hofstad covered dimension 11 and up. The planar methods do not work for paths in three dimensions.\n\nIn 1996, Itai Benjamini and Oded Schramm asked the question far more widely. Their conjecture covers every quasi-transitive graph with p_c below 1. A graph is quasi-transitive if its points come in finitely many types. A symmetry is a reshuffling of the points that keeps every link. For any two points of one type, some symmetry moves one onto the other. Every grid qualifies. Earlier work settled large families. For example, in 2016 Tom Hutchcroft covered every such graph of exponential growth. That means the number of points within distance r grows like a fixed number raised to the power r. What remained was slower growth.\n\nThe first paper treats the cubic grid, in three dimensions. It proves that critical bond percolation there has no endless cluster. The same holds for site percolation, where the points rather than the links are open or closed. This was not untouched ground. In August 2026, Justin Leder publicly reported a Lean formalization of the bond case. It covers every grid of dimension 2 or more. A public exposition reported the site case from dimension 3 up. The paper says it describes work produced by AI systems prompted by Ahmed Bou-Rabee. The paper credits these and aims to give its own self-contained argument.\n\nThe second paper proves the full bond form of the Benjamini–Schramm conjecture. Take any infinite, connected graph where each point has finitely many links. Suppose it is quasi-transitive and its p_c is below 1. Then at p_c, there is almost surely no endless open cluster. Almost surely means with probability exactly one. The condition on p_c matters. A single endless line has p_c equal to 1, and at chance 1 every link is open.\n\nThe obstacle was the middle ground of growth: graphs that grow slower than exponentially. The paper splits them into two kinds, without needing to classify them further. Count the points within distance r of a point. In one kind, that count outgrows every fixed power of r. In the other, at infinitely many distances r, it grows no faster than a fixed power, much like a grid. Both cases argue by contradiction, starting from an endless cluster at p_c. In the fast kind, that cluster would force two large separate clusters to sit side by side. A probability bound in the paper forbids that. In the grid-like kind, a known structure theorem by Tessera and Tointon supplies two whole-number coordinates. Using them, an endless cluster at p_c would force one slightly below p_c. The definition of p_c rules that out.\n\nReturn to the street grid, now in three dimensions. Set each block open with exactly the critical chance. Then every corner almost surely sits in a finite cluster. The results do not say what p_c is for the cubic grid. The general theorem covers bond percolation only. The cubic-grid paper notes that the general bond theorem does not imply the site version. That paper proves the site version separately, for the cubic grid only.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of each main statement. One covers bond and site percolation on the cubic grid. The other covers bond percolation on every graph described above, and allows repeated links between two points. Each is matched against a fixed reference statement by a tool called Comparator. No specialist review of either paper has been published.",
+  "explanation": "Picture an endless square grid of streets. Flip a fair coin for every block of street. Heads keeps the block open, tails closes it. A corner has four blocks, so it is cut off with chance 1/16. A fixed route of 20 blocks is fully open with chance 1 in 1,048,576. But routes are many. From one corner, 4,649,045,868 routes of 20 blocks never turn straight back. That count is over 4,000 times the odds against any single route. Yet routes share blocks, so this count alone settles nothing. On this grid, a fair coin is in fact exactly the tipping point.\n\nThis game is called bond percolation. Each link of a network is open with some chance p, independently of the others. A cluster is a group of points joined by open links. For small p, every cluster is finite. For p near 1, an endless cluster appears. The switch point is the critical probability, written p_c. On the square grid, Harry Kesten showed in 1980 that p_c equals 1/2.\n\nThe hard question is what happens exactly at p_c. Does an endless cluster already exist there, or only just above it? If none exists, the chance of joining an endless cluster rises from zero without a jump at the tipping point. For links on the square grid, work by Harris in 1960 and Kesten in 1980 settled the question. Hara and Slade handled grids of high enough dimension in 1990. In 2017, Fitzner and van der Hofstad covered dimension 11 and up. The planar methods do not work for paths in three dimensions.\n\nIn 1996, Itai Benjamini and Oded Schramm asked the question far more widely. Their conjecture covers every quasi-transitive graph with p_c below 1. A graph is quasi-transitive if its points come in finitely many types. A symmetry is a reshuffling of the points that keeps every link. For any two points of one type, some symmetry moves one onto the other. Every grid qualifies. Earlier work settled large families. For example, in 2016 Tom Hutchcroft covered every such graph of exponential growth. That means the number of points within distance r grows like a fixed number raised to the power r. What remained was slower growth.\n\nThe first paper treats the cubic grid, in three dimensions. It proves that critical bond percolation there has no endless cluster[11]. The same holds for site percolation, where the points rather than the links are open or closed. This was not untouched ground. In August 2026, Justin Leder publicly reported a Lean formalization of the bond case. It covers every grid of dimension 2 or more. A public exposition reported the site case from dimension 3 up. The paper says it describes work produced by AI systems prompted by Ahmed Bou-Rabee[14]. The paper credits these and aims to give its own self-contained argument[15].\n\nThe second paper proves the full bond form of the Benjamini–Schramm conjecture[17]. Take any infinite, connected graph where each point has finitely many links. Suppose it is quasi-transitive and its p_c is below 1. Then at p_c, there is almost surely no endless open cluster[16]. Almost surely means with probability exactly one. The condition on p_c matters. A single endless line has p_c equal to 1, and at chance 1 every link is open[18,19].\n\nThe obstacle was the middle ground of growth: graphs that grow slower than exponentially. The paper splits them into two kinds, without needing to classify them further[25]. Count the points within distance r of a point. In one kind, that count outgrows every fixed power of r. In the other, at infinitely many distances r, it grows no faster than a fixed power, much like a grid[20]. Both cases argue by contradiction, starting from an endless cluster at p_c. In the fast kind, that cluster would force two large separate clusters to sit side by side. A probability bound in the paper forbids that[24]. In the grid-like kind, a known structure theorem by Tessera and Tointon supplies two whole-number coordinates[21,26]. Using them, an endless cluster at p_c would force one slightly below p_c[22]. The definition of p_c rules that out.\n\nReturn to the street grid, now in three dimensions. Set each block open with exactly the critical chance. Then every corner almost surely sits in a finite cluster. The results do not say what p_c is for the cubic grid. The general theorem covers bond percolation only. The cubic-grid paper notes that the general bond theorem does not imply the site version[23]. That paper proves the site version separately, for the cubic grid only.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of each main statement. One covers bond and site percolation on the cubic grid. The other covers bond percolation on every graph described above, and allows repeated links between two points. Each is matched against a fixed reference statement by a tool called Comparator. No specialist review of either paper has been published.",
   "hypeCheck": "Lean proofs of both main statements are listed, with Comparator reference statements. Both cubic-grid cases, bond and site, had already been reported in public by others in 2026. No specialist review of either paper has been published.",
   "glossary": [
     {
@@ -185,7 +185,8 @@
     {
       "text": "The cubic-lattice paper proves no infinite cluster at criticality for bond and site percolation on Z^3.",
       "verdict": "supported",
-      "sourceLine": "For nearest-neighbor Bernoulli bond percolation on $\\mathbb Z^3$, there is almost surely no infinite open cluster at the bond critical parameter."
+      "sourceLine": "For nearest-neighbor Bernoulli bond percolation on $\\mathbb Z^3$, there is almost surely no infinite open cluster at the bond critical parameter.",
+      "paper": 1
     },
     {
       "text": "Leder's public account reports a Lean formalization of critical bond nonpercolation on Z^d, d at least 2.",
@@ -200,67 +201,80 @@
     {
       "text": "Those expositions describe work by AI systems prompted by Ahmed Bou-Rabee.",
       "verdict": "supported",
-      "sourceLine": "These two public expositions describe work produced by AI systems prompted by Ahmed Bou-Rabee."
+      "sourceLine": "These two public expositions describe work produced by AI systems prompted by Ahmed Bou-Rabee.",
+      "paper": 1
     },
     {
       "text": "The paper aims at a self-contained cubic argument.",
       "verdict": "supported",
-      "sourceLine": "Our purpose here is a self-contained cubic argument"
+      "sourceLine": "Our purpose here is a self-contained cubic argument",
+      "paper": 1
     },
     {
       "text": "The main theorem: infinite connected locally finite quasi-transitive graph with p_c below 1 has no infinite cluster at p_c.",
       "verdict": "supported",
-      "sourceLine": "Let $G$ be an infinite connected locally finite quasi-transitive undirected graph. If $\\pc(G)<1$, then"
+      "sourceLine": "Let $G$ be an infinite connected locally finite quasi-transitive undirected graph. If $\\pc(G)<1$, then",
+      "paper": 2
     },
     {
       "text": "This resolves the Benjamini–Schramm conjecture for bond percolation.",
       "verdict": "supported",
-      "sourceLine": "resolves the Benjamini--Schramm criticality conjecture positively for Bernoulli bond percolation"
+      "sourceLine": "resolves the Benjamini--Schramm criticality conjecture positively for Bernoulli bond percolation",
+      "paper": 2
     },
     {
       "text": "The hypothesis p_c below 1 is necessary since at parameter one every edge is open.",
       "verdict": "supported",
-      "sourceLine": "The hypothesis $\\pc<1$ is necessary: at parameter one every edge is open, so an infinite connected graph percolates."
+      "sourceLine": "The hypothesis $\\pc<1$ is necessary: at parameter one every edge is open, so an infinite connected graph percolates.",
+      "paper": 2
     },
     {
       "text": "The one-dimensional case has p_c equal to 1.",
       "verdict": "supported",
-      "sourceLine": "The one-dimensional case has $\\pc=1$."
+      "sourceLine": "The one-dimensional case has $\\pc=1$.",
+      "paper": 2
     },
     {
       "text": "The proof divides subexponential growth into two exhaustive alternatives.",
       "verdict": "supported",
-      "sourceLine": "In the other case, the proof divides according to the following exhaustive alternatives:"
+      "sourceLine": "In the other case, the proof divides according to the following exhaustive alternatives:",
+      "paper": 2
     },
     {
       "text": "In case (ii) the paper applies the structure theorem of Tessera and Tointon.",
       "verdict": "supported",
-      "sourceLine": "In case (ii), we apply the finitary structure theorem of Tessera and Tointon"
+      "sourceLine": "In case (ii), we apply the finitary structure theorem of Tessera and Tointon",
+      "paper": 2
     },
     {
       "text": "The argument produces an infinite open cluster below p_c.",
       "verdict": "supported",
-      "sourceLine": "hence an infinite open cluster below $\\pc$."
+      "sourceLine": "hence an infinite open cluster below $\\pc$.",
+      "paper": 2
     },
     {
       "text": "The general bond theorem does not imply the site assertion.",
       "verdict": "supported",
-      "sourceLine": "The general bond criticality theorem does not imply the site assertion"
+      "sourceLine": "The general bond criticality theorem does not imply the site assertion",
+      "paper": 1
     },
     {
       "text": "In case (i) an adjacent pair of large distinct clusters contradicts a two-cluster probability bound.",
       "verdict": "supported",
-      "sourceLine": "the resulting adjacent pair contradicts the bound in Proposition~\\ref{prop:two-cluster}"
+      "sourceLine": "the resulting adjacent pair contradicts the bound in Proposition~\\ref{prop:two-cluster}",
+      "paper": 2
     },
     {
       "text": "The case division requires no classification of intermediate growth.",
       "verdict": "supported",
-      "sourceLine": "This division requires no classification of intermediate growth."
+      "sourceLine": "This division requires no classification of intermediate growth.",
+      "paper": 2
     },
     {
       "text": "Otherwise there are two integer coordinates on vertices.",
       "verdict": "supported",
-      "sourceLine": "Otherwise there are two integer coordinates on vertices"
+      "sourceLine": "Otherwise there are two integer coordinates on vertices",
+      "paper": 2
     },
     {
       "text": "Kesten proved that the critical probability of bond percolation on the square lattice equals 1/2.",

@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It upgrades ergodicity to weak mixing for every triangle with an irrational angle. Earlier proofs needed special families or approximation conditions."
   },
-  "explanation": "Picture a ball rolling without friction on a table shaped like a right triangle with two 45° corners. It bounces off each side the way light bounces off a mirror. Start it moving at 10° to one of the short sides. Each bounce changes its direction, but only within a fixed menu. Work through every bounce and the menu has 8 entries: 10°, 80°, 100°, 170°, 190°, 260°, 280° and 350°. The ball may wander over the whole table. It will never travel at 30°.\n\nThis happens whenever every angle is a fraction of 180°. Such a table is called a rational triangle. The paper notes that its side reflections allow only finitely many directions. So the motion keeps a permanent memory of where it started. In the language of the field, it is not ergodic. Ergodic means this. Any set of states that the motion never leaves fills none of the space or all of it. A state is a position plus a direction. Space here is measured as table area times angle. In the 45° table, the states moving near one of the 8 directions form such a set. It fills only part of the space.\n\nNow change the corners. Take angles of 1 radian, 1 radian and the rest, about 57.30°, 57.30° and 65.41°. One radian is 180° divided by π. It is a long-known fact that π is irrational. So 1 radian is not a fraction of 180°. Such an angle is called irrational relative to π. Reflect a direction in one side at a corner, then in the other side. The direction turns by twice that corner's angle, here about 114.59°. Repeat the turn and the direction runs 0°, 114.59°, 229.18°, 343.77°, 98.37°, and never exactly repeats. After 100 turns, no gap between the reached directions exceeds about 13.2°. After 1,000 turns, no gap exceeds about 1.0°.\n\nEarlier proofs covered only special families. In 1986, Kerckhoff, Masur and Smillie proved ergodicity for a dense family of polygons. Dense means such tables sit arbitrarily close to any given one. In 1997, Vorobets gave a test that needs the angles to be approximated very well by fractions. His examples include irrational right triangles. Neither result covers each irrational triangle. Computer experiments disagreed with each other. Some pointed to the stronger behaviour described next, in irrational right triangles. Others suggested that some irrational right or symmetric triangles are not ergodic. On 25 September 2026, a companion paper in the same release claimed ergodicity for every triangle with an irrational angle.\n\nErgodicity still allows a hidden clock. Think of a point moving round a circle 1 metre long at a steady speed. Over time it spends equal time everywhere, so it is ergodic. Yet two such points started 0.3 metres apart stay 0.3 metres apart forever. Weak mixing forbids this. Run two copies of the motion side by side, each from its own start. The motion is weakly mixing when this pair is ergodic too. In 2026, Chaika and Forni proved weak mixing for a dense family of polygons with any number of sides. The paper notes that their result does not by itself give weak mixing for almost every triangle. This paper claims to prove weak mixing for every triangle with an irrational angle.\n\nA hidden clock would be a measurement on states that turns like a clock hand as time passes. It turns at a fixed rate. The central issue was roughness. Such a measurement need not vary smoothly. It may jump wildly between nearby states. You know how it changes along the ball's own path. You know nothing about how it changes sideways, between neighbouring parallel paths. Earlier tools of Forni and Moll needed some sideways smoothness as an assumption. The companion paper removed that need for a clock that does not turn at all. This paper extends the companion's method to every turning rate. It then argues that the sideways change is zero.\n\nAfter that, the paper argues, the triangle's shape does the rest. Inside the table, the measurement becomes a simple wave whose size depends only on direction. Reflection in the two sides at the irrational corner turns directions by that never-repeating step. This forces the size to be the same for every direction. Reflection in the third side then rules out every nonzero rate. Only constant measurements survive. So no hidden clock exists, and a standard argument gives weak mixing.\n\nWeak mixing is not full mixing. Mixing would mean any region of states spreads evenly over the space in the long run. Experiments have suggested mixing when all three angles are irrational, but the paper does not claim it. Rational triangles stay excluded, and there the motion is not even ergodic. Paths that hit a corner are discarded, and they take up no area. Among triangles of area one, the excluded angle pairs form a countable set. Its members can be listed one by one. So the result covers almost every triangle.\n\nHow sure is this? A computer proof checker called Lean has checked the companion's main theorem. It says billiards in every triangle with an irrational angle are ergodic. The Lean scope note lists only that companion paper. The step from ergodicity to weak mixing is outside that check. No specialist review has been published.",
+  "explanation": "Picture a ball rolling without friction on a table shaped like a right triangle with two 45° corners. It bounces off each side the way light bounces off a mirror. Start it moving at 10° to one of the short sides. Each bounce changes its direction, but only within a fixed menu. Work through every bounce and the menu has 8 entries: 10°, 80°, 100°, 170°, 190°, 260°, 280° and 350°. The ball may wander over the whole table. It will never travel at 30°.\n\nThis happens whenever every angle is a fraction of 180°. Such a table is called a rational triangle. The paper notes that its side reflections allow only finitely many directions[1]. So the motion keeps a permanent memory of where it started. In the language of the field, it is not ergodic. Ergodic means this. Any set of states that the motion never leaves fills none of the space or all of it. A state is a position plus a direction. Space here is measured as table area times angle. In the 45° table, the states moving near one of the 8 directions form such a set. It fills only part of the space.\n\nNow change the corners. Take angles of 1 radian, 1 radian and the rest, about 57.30°, 57.30° and 65.41°. One radian is 180° divided by π. It is a long-known fact that π is irrational. So 1 radian is not a fraction of 180°. Such an angle is called irrational relative to π. Reflect a direction in one side at a corner, then in the other side. The direction turns by twice that corner's angle, here about 114.59°. Repeat the turn and the direction runs 0°, 114.59°, 229.18°, 343.77°, 98.37°, and never exactly repeats. After 100 turns, no gap between the reached directions exceeds about 13.2°. After 1,000 turns, no gap exceeds about 1.0°.\n\nEarlier proofs covered only special families. In 1986, Kerckhoff, Masur and Smillie proved ergodicity for a dense family of polygons. Dense means such tables sit arbitrarily close to any given one. In 1997, Vorobets gave a test that needs the angles to be approximated very well by fractions. His examples include irrational right triangles. Neither result covers each irrational triangle[7]. Computer experiments disagreed with each other. Some pointed to the stronger behaviour described next, in irrational right triangles. Others suggested that some irrational right or symmetric triangles are not ergodic. On 25 September 2026, a companion paper in the same release claimed ergodicity for every triangle with an irrational angle.\n\nErgodicity still allows a hidden clock. Think of a point moving round a circle 1 metre long at a steady speed. Over time it spends equal time everywhere, so it is ergodic. Yet two such points started 0.3 metres apart stay 0.3 metres apart forever. Weak mixing forbids this. Run two copies of the motion side by side, each from its own start. The motion is weakly mixing when this pair is ergodic too. In 2026, Chaika and Forni proved weak mixing for a dense family of polygons with any number of sides. The paper notes that their result does not by itself give weak mixing for almost every triangle[12]. This paper claims to prove weak mixing for every triangle with an irrational angle.\n\nA hidden clock would be a measurement on states that turns like a clock hand as time passes. It turns at a fixed rate. The central issue was roughness[13]. Such a measurement need not vary smoothly. It may jump wildly between nearby states. You know how it changes along the ball's own path. You know nothing about how it changes sideways, between neighbouring parallel paths. Earlier tools of Forni and Moll needed some sideways smoothness as an assumption. The companion paper removed that need for a clock that does not turn at all[15]. This paper extends the companion's method to every turning rate[16]. It then argues that the sideways change is zero.\n\nAfter that, the paper argues, the triangle's shape does the rest. Inside the table, the measurement becomes a simple wave whose size depends only on direction. Reflection in the two sides at the irrational corner turns directions by that never-repeating step. This forces the size to be the same for every direction. Reflection in the third side then rules out every nonzero rate[17]. Only constant measurements survive. So no hidden clock exists, and a standard argument gives weak mixing[18].\n\nWeak mixing is not full mixing. Mixing would mean any region of states spreads evenly over the space in the long run. Experiments have suggested mixing when all three angles are irrational, but the paper does not claim it. Rational triangles stay excluded, and there the motion is not even ergodic[2]. Paths that hit a corner are discarded, and they take up no area[19]. Among triangles of area one, the excluded angle pairs form a countable set[20]. Its members can be listed one by one. So the result covers almost every triangle.\n\nHow sure is this? A computer proof checker called Lean has checked the companion's main theorem. It says billiards in every triangle with an irrational angle are ergodic. The Lean scope note lists only that companion paper. The step from ergodicity to weak mixing is outside that check. No specialist review has been published.",
   "hypeCheck": "Major if the proof holds. Lean checks only the companion's ergodicity theorem. The step to weak mixing is not machine-checked, and no specialist review has been published.",
   "glossary": [
     {
@@ -132,13 +132,15 @@
       "text": "In a rational triangle, side reflections generate a finite group of directions, so the full flow is not ergodic.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "In a rational triangle, side reflections generate a finite group on directions."
+      "sourceLine": "In a rational triangle, side reflections generate a finite group on directions.",
+      "paper": 1
     },
     {
       "text": "The irrationality assumption is sharp for the full phase space.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "The irrationality assumption is sharp for the full phase space."
+      "sourceLine": "The irrationality assumption is sharp for the full phase space.",
+      "paper": 1
     },
     {
       "text": "Ergodicity means every invariant measurable set has probability zero or one.",
@@ -168,7 +170,8 @@
       "text": "Earlier results need genericity or fast-approximation assumptions, not each irrational triangle.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "These results establish ergodicity under genericity or sufficiently rapid approximation assumptions rather than for each irrational triangle."
+      "sourceLine": "These results establish ergodicity under genericity or sufficiently rapid approximation assumptions rather than for each irrational triangle.",
+      "paper": 1
     },
     {
       "text": "Numerical work suggested weak mixing in irrational right triangles and mixing when all angles are irrational.",
@@ -198,13 +201,15 @@
       "text": "Their Baire-category conclusion does not assert almost-everywhere weak mixing in the space of triangle angles.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "The Baire-category conclusion does not assert Lebesgue-almost-everywhere weak mixing in the space of triangle angles."
+      "sourceLine": "The Baire-category conclusion does not assert Lebesgue-almost-everywhere weak mixing in the space of triangle angles.",
+      "paper": 1
     },
     {
       "text": "The regularity of an eigenfunction is the central issue; the transverse derivative cannot be assumed.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "the missing transverse derivative cannot be assumed."
+      "sourceLine": "the missing transverse derivative cannot be assumed.",
+      "paper": 1
     },
     {
       "text": "Forni and Moll's rigidity results need an additional horizontal Sobolev hypothesis.",
@@ -216,37 +221,43 @@
       "text": "The companion manuscript removed the regularity obstacle for invariant functions.",
       "verdict": "supported",
       "sourceId": 9,
-      "sourceLine": "removes this regularity obstacle for invariant functions, proving ergodicity of irrational triangular billiards."
+      "sourceLine": "removes this regularity obstacle for invariant functions, proving ergodicity of irrational triangular billiards.",
+      "paper": 1
     },
     {
       "text": "The paper extends the companion's method to every real spectral parameter and concludes the sideways derivative vanishes.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "We extend its coefficient-energy and long-average method to every real spectral parameter"
+      "sourceLine": "We extend its coefficient-energy and long-average method to every real spectral parameter",
+      "paper": 1
     },
     {
       "text": "Inside the triangle the eigenfunction is a plane wave; the two sides at the irrational vertex make the amplitude constant and the third side excludes nonzero frequencies.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "Reflection in the two sides through an irrational vertex makes this amplitude constant. Reflection in the third side excludes every nonzero frequency."
+      "sourceLine": "Reflection in the two sides through an irrational vertex makes this amplitude constant. Reflection in the third side excludes every nonzero frequency.",
+      "paper": 1
     },
     {
       "text": "The standard spectral criterion then gives weak mixing.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "The standard spectral criterion then gives weak mixing."
+      "sourceLine": "The standard spectral criterion then gives weak mixing.",
+      "paper": 1
     },
     {
       "text": "Trajectories meeting a vertex are discarded and form a null set.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "Trajectories meeting a vertex in either time direction are discarded; they form a null set."
+      "sourceLine": "Trajectories meeting a vertex in either time direction are discarded; they form a null set.",
+      "paper": 1
     },
     {
       "text": "For area-one triangles the excluded angle pairs form a countable set.",
       "verdict": "supported",
       "sourceId": 10,
-      "sourceLine": "the excluded pairs with both … rational form a countable set."
+      "sourceLine": "the excluded pairs with both … rational form a countable set.",
+      "paper": 1
     },
     {
       "text": "Lean formalizes the ergodicity theorem of the companion paper; the weak mixing extension is outside the scope note.",

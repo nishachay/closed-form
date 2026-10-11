@@ -45,7 +45,7 @@
     "significance": "Solid",
     "significanceWhy": "It answers a covering question traced to 1951 and a 2016 conjecture, in a specialized area of geometry."
   },
-  "explanation": "Take a regular tetrahedron: a solid with four equal triangle faces. Make every edge 2 units long. Shine a distant light on it and look at its shadow. The shadow's size depends on the direction of the light. The smallest shadow has area √2, about 1.414. It appears when the light shines straight along one edge.\n\nNow try to cover the solid with cylinders. Here a cylinder means a flat shape, its base, slid along a straight line forever in both directions. The base is measured at right angles to that line. The cost of a cover is the total area of its bases. There is a classic cheap cover with just two cylinders. Cut the tetrahedron halfway up. Cover the bottom half with a cylinder running along the bottom edge. Its base is a triangle of area √2/4, about 0.354. Cover the top half the same way, along the top edge. The two bases total √2/2, about 0.707. That is exactly half of the smallest shadow.\n\nThe question behind this comes from planks. A plank is the slab between two parallel planes. In 1951, Thøger Bang proved a rule about covering a convex body with planks. A convex body is a solid with no dents or holes. The planks' widths must add up to at least the body's smallest width. For cylinders, the tetrahedron example shows that the same rule with areas fails. Two cylinders cost only half the smallest shadow. Later authors trace this example, and a question, to Bang's 1951 paper. Must every finite cylinder cover cost at least half the smallest shadow? A 2026 survey by William Verreault still lists this as open.\n\nThere is also a stronger guess. Divide each base by the body's shadow in that cylinder's own direction, then add the results. In 2016, Károly Bezdek and Muhammad Khan recorded the guess that this sum is always at least one half. In 2009, Bezdek and Alexander Litvak proved it is at least one third. If the stronger guess were true, the half-area rule would follow.\n\nThis paper proves that both guesses fail for the regular tetrahedron. It starts from the classic two-cylinder cover. It slices each triangle base into many thin wedges. Each wedge gets its own slightly tilted line. Tilting shrinks the base, because the base is measured across the new line. The one obstacle is gaps. Tilted neighbors can pull apart, and the two halves can separate near the middle.\n\nTwo choices close the gaps. Neighboring wedges are tilted so that their shared side lies in one common plane. Each wedge is also stretched a tiny amount past the halfway cut. The stretch costs area, but less than the tilt saves. Measure cost as a share of the smallest shadow, so the classic cover scores 1/2. Write ε for the size of the tilt. The tilt saves about ε²/240, and the stretch costs ε²/500. The net saving is 13ε²/6000, give or take at most 2ε⁴.\n\nTake the largest tilt the theorem allows, ε = 1/2000. The cover then uses 16,000,000 cylinders, each with a triangle base. Adding up all their bases gives about 0.49999999946 of the smallest shadow. The saving is about 5.4 parts in ten billion. It is tiny, but the rule claimed no cover could save anything at all. The cover is always finite, but it needs more cylinders as the tilt shrinks. The result shows that one half is not a floor. It does not say where the true floor lies.\n\nThe stronger guess fails for every tetrahedron, not only regular ones. Stretching or squashing space changes each base and its matching shadow by the same factor. So each ratio in the sum stays the same. The plain half-area claim is stated only for regular tetrahedra. Two companion papers build covers below one half by other routes. One uses parallelogram bases instead of triangles. A third gives a general tool for turning smoothly tilting families of segments into finitely many cylinders.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the regular tetrahedron results. Every regular tetrahedron has a finite cover costing strictly less than half its smallest shadow. The stronger ratio sum is also below one half. The companion approximation results are in the same Lean files. The extension to every tetrahedron by stretching is outside the checked statements. No specialists have published a review yet.",
+  "explanation": "Take a regular tetrahedron: a solid with four equal triangle faces. Make every edge 2 units long. Shine a distant light on it and look at its shadow. The shadow's size depends on the direction of the light. The smallest shadow has area √2, about 1.414. It appears when the light shines straight along one edge.\n\nNow try to cover the solid with cylinders. Here a cylinder means a flat shape, its base, slid along a straight line forever in both directions. The base is measured at right angles to that line. The cost of a cover is the total area of its bases. There is a classic cheap cover with just two cylinders. Cut the tetrahedron halfway up. Cover the bottom half with a cylinder running along the bottom edge. Its base is a triangle of area √2/4, about 0.354. Cover the top half the same way, along the top edge. The two bases total √2/2, about 0.707. That is exactly half of the smallest shadow.\n\nThe question behind this comes from planks. A plank is the slab between two parallel planes. In 1951, Thøger Bang proved a rule about covering a convex body with planks. A convex body is a solid with no dents or holes. The planks' widths must add up to at least the body's smallest width. For cylinders, the tetrahedron example shows that the same rule with areas fails. Two cylinders cost only half the smallest shadow. Later authors trace this example, and a question, to Bang's 1951 paper. Must every finite cylinder cover cost at least half the smallest shadow? A 2026 survey by William Verreault still lists this as open.\n\nThere is also a stronger guess. Divide each base by the body's shadow in that cylinder's own direction, then add the results. In 2016, Károly Bezdek and Muhammad Khan recorded the guess that this sum is always at least one half. In 2009, Bezdek and Alexander Litvak proved it is at least one third. If the stronger guess were true, the half-area rule would follow.\n\nThis paper proves that both guesses fail for the regular tetrahedron[20]. It starts from the classic two-cylinder cover. It slices each triangle base into many thin wedges. Each wedge gets its own slightly tilted line[13]. Tilting shrinks the base, because the base is measured across the new line. The one obstacle is gaps[14]. Tilted neighbors can pull apart, and the two halves can separate near the middle.\n\nTwo choices close the gaps. Neighboring wedges are tilted so that their shared side lies in one common plane[15]. Each wedge is also stretched a tiny amount past the halfway cut[16]. The stretch costs area, but less than the tilt saves[17]. Measure cost as a share of the smallest shadow, so the classic cover scores 1/2. Write ε for the size of the tilt. The tilt saves about ε²/240, and the stretch costs ε²/500. The net saving is 13ε²/6000, give or take at most 2ε⁴[18].\n\nTake the largest tilt the theorem allows, ε = 1/2000. The cover then uses 16,000,000 cylinders, each with a triangle base. Adding up all their bases gives about 0.49999999946 of the smallest shadow. The saving is about 5.4 parts in ten billion. It is tiny, but the rule claimed no cover could save anything at all. The cover is always finite, but it needs more cylinders as the tilt shrinks[21]. The result shows that one half is not a floor. It does not say where the true floor lies.\n\nThe stronger guess fails for every tetrahedron, not only regular ones. Stretching or squashing space changes each base and its matching shadow by the same factor. So each ratio in the sum stays the same[22]. The plain half-area claim is stated only for regular tetrahedra[23]. Two companion papers build covers below one half by other routes[25]. One uses parallelogram bases instead of triangles[24]. A third gives a general tool for turning smoothly tilting families of segments into finitely many cylinders[26].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the regular tetrahedron results. Every regular tetrahedron has a finite cover costing strictly less than half its smallest shadow. The stronger ratio sum is also below one half. The companion approximation results are in the same Lean files. The extension to every tetrahedron by stretching is outside the checked statements. No specialists have published a review yet.",
   "hypeCheck": "Solid within its area. The saving is about five parts in ten billion. Lean checks the regular tetrahedron statements. The extension to all tetrahedra is outside that check. No specialist review is published.",
   "glossary": [
     {
@@ -184,32 +184,38 @@
     {
       "text": "The construction subdivides the two triangles into narrow sectors, each with its own tilted axis.",
       "verdict": "supported",
-      "sourceLine": "own tilted axis. Tilting reduces the perpendicular area, but it can also"
+      "sourceLine": "own tilted axis. Tilting reduces the perpendicular area, but it can also",
+      "paper": 1
     },
     {
       "text": "Tilting can open gaps between neighboring sectors and between the two families.",
       "verdict": "supported",
-      "sourceLine": "open gaps between neighboring sectors and between the two families."
+      "sourceLine": "open gaps between neighboring sectors and between the two families.",
+      "paper": 1
     },
     {
       "text": "Adjacent axes make the planes containing a shared sector side coincide.",
       "verdict": "supported",
-      "sourceLine": "sector side make the planes containing that side coincide."
+      "sourceLine": "sector side make the planes containing that side coincide.",
+      "paper": 1
     },
     {
       "text": "Each sector's radial extent is increased by an amount of order ε².",
       "verdict": "supported",
-      "sourceLine": "sector's radial extent by a"
+      "sourceLine": "sector's radial extent by a",
+      "paper": 1
     },
     {
       "text": "The area cost of the increase is less than the quadratic gain from tilting.",
       "verdict": "supported",
-      "sourceLine": "that their area cost is less than the quadratic gain from tilting."
+      "sourceLine": "that their area cost is less than the quadratic gain from tilting.",
+      "paper": 1
     },
     {
       "text": "With η = 1/1000 the normalized area is 1/2 + (2η − 1/240)ε² up to 2ε⁴, which gives 1/2 − (13/6000)ε².",
       "verdict": "supported",
-      "sourceLine": "so this integral equals $2\\eta-1/240$. The combined error is at most"
+      "sourceLine": "so this integral equals $2\\eta-1/240$. The combined error is at most",
+      "paper": 1
     },
     {
       "text": "The construction uses η = 1/1000.",
@@ -219,37 +225,44 @@
     {
       "text": "For 0 < ε ≤ 1/2000 there is a cover by 2⌈2/ε²⌉ cylinders with compact triangular bases and remainder at most 2ε⁴.",
       "verdict": "supported",
-      "sourceLine": "The remainder has absolute value at most $2\\eps^4$, and the total base"
+      "sourceLine": "The remainder has absolute value at most $2\\eps^4$, and the total base",
+      "paper": 1
     },
     {
       "text": "Every cover is finite, though the number of cylinders grows as the tilt decreases.",
       "verdict": "supported",
-      "sourceLine": "Every covering in the theorem is finite, although its number of cylinders"
+      "sourceLine": "Every covering in the theorem is finite, although its number of cylinders",
+      "paper": 1
     },
     {
       "text": "The directionwise ratios are invariant under invertible affine maps.",
       "verdict": "supported",
-      "sourceLine": "The directionwise ratios are invariant under invertible affine"
+      "sourceLine": "The directionwise ratios are invariant under invertible affine",
+      "paper": 1
     },
     {
       "text": "The half-area conclusion with one minimum projection area is asserted for regular tetrahedra.",
       "verdict": "supported",
-      "sourceLine": "area for all directions, is asserted here for regular tetrahedra."
+      "sourceLine": "area for all directions, is asserted here for regular tetrahedra.",
+      "paper": 1
     },
     {
       "text": "A companion paper gives covers with compact parallelogram bases.",
       "verdict": "supported",
-      "sourceLine": "cylinder cover with compact parallelogram perpendicular bases such that"
+      "sourceLine": "cylinder cover with compact parallelogram perpendicular bases such that",
+      "paper": 3
     },
     {
       "text": "The radial-sweeps companion lowers the two-cylinder cost strictly by varying directions.",
       "verdict": "supported",
-      "sourceLine": "tetrahedron's two-cylinder cost strictly by varying the directions,"
+      "sourceLine": "tetrahedron's two-cylinder cost strictly by varying the directions,",
+      "paper": 4
     },
     {
       "text": "The ruled-sets companion turns continuously varying segment families into finite cylinder covers.",
       "verdict": "supported",
-      "sourceLine": "family finite. This paper supplies that last step with its exact"
+      "sourceLine": "family finite. This paper supplies that last step with its exact",
+      "paper": 2
     },
     {
       "text": "Lean proves the regular tetrahedron cover below half the minimum projection area and the directionwise cost below one half; the affine extension is outside the selected statements.",

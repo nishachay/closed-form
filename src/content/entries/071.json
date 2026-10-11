@@ -35,7 +35,7 @@
     "significance": "Landmark",
     "significanceWhy": "It answers a question open since 1908 for every domain. Earlier proofs needed countably many holes or extra geometric conditions."
   },
-  "explanation": "Take the whole plane and cut out one round hole. Treat each point as a complex number, so the point (2, 1) is 2+i. Let the hole be the disk of radius 1 around the point 2. Now apply the flip that sends each point z to 1/z. The hole's edge points 1 and 3 land on 1 and 1/3. The edge point 2+i lands on 0.4−0.2i. All three now sit exactly 1/3 away from the point 2/3. In fact the whole edge circle lands on the circle of radius 1/3 around 2/3. The round hole stays round. It only moves and shrinks.\n\nThe flip is a conformal map. It bends the picture but keeps the angle between any two crossing curves. Now start with a hole of another shape, such as a square. Can a conformal map always make it round? Koebe asked a much bigger version of this in 1908. A domain is a connected open region: one piece, with its edge left out. The Riemann sphere is the plane plus one extra point at infinity. A circle domain is a domain on that sphere whose missing pieces are all closed round disks or single points. Koebe asked whether every domain is conformally equivalent to a circle domain. That means one conformal map carries it exactly onto a circle domain.\n\nFor finitely many holes, the answer was known to be yes. Koebe proved that case; the paper cites his 1920 treatment. In 1993, Zheng-Xu He and Oded Schramm proved it for countably many holes. Countably many means the holes can be listed one after another. Schramm gave another proof in 1995 with a tool called transboundary extremal length. Later work reached some regions with even more holes. Esmayli and Rajala, and separately Karafyllia and Ntalampekos, did this under geometric conditions on the holes.\n\nThe hard case is a region with uncountably many holes. These holes can have any shape. Nothing keeps them apart from each other. The natural plan approximates the region by regions with finitely many holes. Koebe's theorem makes those holes round. Then one passes to a limit. But in the limit, a hole can hold more than the round disk being followed. It can carry an extra bulge. Other holes are never followed at all. Kai Rajala showed that a careless choice of approximations can fail to reach a circle domain.\n\nThe paper Koebe's Circle-Domain Conjecture proves the full answer, with no condition on the holes. Every domain on the sphere is conformally equivalent to a circle domain. Its method picks countably many holes to follow. It argues that every other hole shrinks to a single point. It also argues that every followed hole ends up exactly round, with no bulge. So a square hole, a jagged hole and uncountably many specks can all be handled at once.\n\nThe first example also shows that the round model is not unique. A Möbius map is a formula (az+b)/(cz+d) with ad−bc not zero. The flip 1/z is one of them. Möbius maps turn one circle domain into another. A circle domain is rigid if these are its only conformal maps onto circle domains. He and Schramm proved rigidity for countably many holes in 1993. In 1994 they allowed uncountably many holes, if the boundary has σ-finite length. That means it splits into countably many pieces of finite length. They conjectured that rigidity holds exactly when the boundary is conformally removable.\n\nConformally removable describes a closed set E on the sphere. Take any one-to-one, continuous map of the sphere onto itself that keeps orientation. Suppose it is conformal everywhere outside E. The set E is removable if every such map must be Möbius. In 2025, Rajala built a rigid circle domain with a non-removable boundary. So one direction of the conjecture is false. Younsi, then Ntalampekos and Younsi, then Ntalampekos, proved rigidity under extra conditions. The companion paper on removable boundaries proves the other direction in full: a removable boundary makes a circle domain rigid. The number of holes is unlimited. Its proof uses a quantitative part of the Koebe paper's construction.\n\nThe two results answer different questions, and the gap matters. The Koebe paper says a round model exists for every domain. It does not say that model is unique up to Möbius maps. The removable-boundaries paper gives that uniqueness when the round model has a removable boundary. It says nothing about circle domains with non-removable boundaries.\n\nHow sure is this? The release's Lean scope note says a formalization proves both main theorems. It covers existence of a circle domain for every domain. It also covers rigidity when the boundary is conformally removable. One formal statement file states both. Neither paper appears in the release's list of formalized papers, so the scope note is the only record. No specialist review has been published.",
+  "explanation": "Take the whole plane and cut out one round hole. Treat each point as a complex number, so the point (2, 1) is 2+i. Let the hole be the disk of radius 1 around the point 2. Now apply the flip that sends each point z to 1/z. The hole's edge points 1 and 3 land on 1 and 1/3. The edge point 2+i lands on 0.4−0.2i. All three now sit exactly 1/3 away from the point 2/3. In fact the whole edge circle lands on the circle of radius 1/3 around 2/3. The round hole stays round. It only moves and shrinks.\n\nThe flip is a conformal map. It bends the picture but keeps the angle between any two crossing curves. Now start with a hole of another shape, such as a square. Can a conformal map always make it round? Koebe asked a much bigger version of this in 1908. A domain is a connected open region: one piece, with its edge left out. The Riemann sphere is the plane plus one extra point at infinity. A circle domain is a domain on that sphere whose missing pieces are all closed round disks or single points. Koebe asked whether every domain is conformally equivalent to a circle domain. That means one conformal map carries it exactly onto a circle domain.\n\nFor finitely many holes, the answer was known to be yes. Koebe proved that case; the paper cites his 1920 treatment. In 1993, Zheng-Xu He and Oded Schramm proved it for countably many holes. Countably many means the holes can be listed one after another. Schramm gave another proof in 1995 with a tool called transboundary extremal length. Later work reached some regions with even more holes. Esmayli and Rajala, and separately Karafyllia and Ntalampekos, did this under geometric conditions on the holes.\n\nThe hard case is a region with uncountably many holes. These holes can have any shape. Nothing keeps them apart from each other. The natural plan approximates the region by regions with finitely many holes. Koebe's theorem makes those holes round. Then one passes to a limit. But in the limit, a hole can hold more than the round disk being followed[5]. It can carry an extra bulge. Other holes are never followed at all. Kai Rajala showed that a careless choice of approximations can fail to reach a circle domain.\n\nThe paper Koebe's Circle-Domain Conjecture proves the full answer, with no condition on the holes[9]. Every domain on the sphere is conformally equivalent to a circle domain[3]. Its method picks countably many holes to follow[11]. It argues that every other hole shrinks to a single point. It also argues that every followed hole ends up exactly round, with no bulge[11]. So a square hole, a jagged hole and uncountably many specks can all be handled at once.\n\nThe first example also shows that the round model is not unique. A Möbius map is a formula (az+b)/(cz+d) with ad−bc not zero. The flip 1/z is one of them. Möbius maps turn one circle domain into another. A circle domain is rigid if these are its only conformal maps onto circle domains. He and Schramm proved rigidity for countably many holes in 1993. In 1994 they allowed uncountably many holes, if the boundary has σ-finite length. That means it splits into countably many pieces of finite length. They conjectured that rigidity holds exactly when the boundary is conformally removable.\n\nConformally removable describes a closed set E on the sphere. Take any one-to-one, continuous map of the sphere onto itself that keeps orientation. Suppose it is conformal everywhere outside E. The set E is removable if every such map must be Möbius. In 2025, Rajala built a rigid circle domain with a non-removable boundary. So one direction of the conjecture is false. Younsi, then Ntalampekos and Younsi, then Ntalampekos, proved rigidity under extra conditions. The companion paper on removable boundaries proves the other direction in full: a removable boundary makes a circle domain rigid[18]. The number of holes is unlimited[19]. Its proof uses a quantitative part of the Koebe paper's construction[20].\n\nThe two results answer different questions, and the gap matters. The Koebe paper says a round model exists for every domain. It does not say that model is unique up to Möbius maps. The removable-boundaries paper gives that uniqueness when the round model has a removable boundary. It says nothing about circle domains with non-removable boundaries.\n\nHow sure is this? The release's Lean scope note says a formalization proves both main theorems. It covers existence of a circle domain for every domain. It also covers rigidity when the boundary is conformally removable. One formal statement file states both. Neither paper appears in the release's list of formalized papers, so the scope note is the only record. No specialist review has been published.",
   "hypeCheck": "Landmark if the proofs hold. The Lean scope note says both main theorems are formalized. Neither paper is in the release's formalization list, and no specialist review is published.",
   "glossary": [
     {
@@ -166,7 +166,8 @@
     {
       "text": "Every domain in the Riemann sphere is conformally equivalent to a circle domain.",
       "verdict": "supported",
-      "sourceLine": "Every nonempty connected open set $G\\subset\\Chat$ is conformally equivalent to a circle domain."
+      "sourceLine": "Every nonempty connected open set $G\\subset\\Chat$ is conformally equivalent to a circle domain.",
+      "paper": 2
     },
     {
       "text": "The holes may be uncountably many, with no regularity or separation.",
@@ -176,7 +177,8 @@
     {
       "text": "A limiting hole can contain more than the followed disk, and unfollowed holes must also be controlled.",
       "verdict": "supported",
-      "sourceLine": "a limiting complementary component can contain more than the disk obtained by following one of those disks to the limit. The proof must rule out that excess and also control components for which no disk has been followed."
+      "sourceLine": "a limiting complementary component can contain more than the disk obtained by following one of those disks to the limit. The proof must rule out that excess and also control components for which no disk has been followed.",
+      "paper": 2
     },
     {
       "text": "Koebe proved the finitely connected case (1920 treatment); He and Schramm proved the countably connected case.",
@@ -196,7 +198,8 @@
     {
       "text": "The main theorem imposes no geometric condition on the complement.",
       "verdict": "supported",
-      "sourceLine": "Theorem~\\ref{thm:main} imposes no geometric condition on the complement."
+      "sourceLine": "Theorem~\\ref{thm:main} imposes no geometric condition on the complement.",
+      "paper": 2
     },
     {
       "text": "Rajala showed arbitrary interior exhaustions can fail to have circle-domain limits.",
@@ -206,7 +209,8 @@
     {
       "text": "The construction marks countably many components; unmarked ones collapse to points and marked ones equal their disks.",
       "verdict": "supported",
-      "sourceLine": "Our construction chooses a countable set of complementary components to mark."
+      "sourceLine": "Our construction chooses a countable set of complementary components to mark.",
+      "paper": 2
     },
     {
       "text": "A circle domain is conformally rigid if every conformal equivalence onto another circle domain is Möbius.",
@@ -241,17 +245,20 @@
     {
       "text": "Every circle domain with conformally removable boundary is conformally rigid.",
       "verdict": "supported",
-      "sourceLine": "Every circle domain with conformally removable boundary is conformally rigid."
+      "sourceLine": "Every circle domain with conformally removable boundary is conformally rigid.",
+      "paper": 1
     },
     {
       "text": "The number of holes is unrestricted in the rigidity theorem.",
       "verdict": "supported",
-      "sourceLine": "The theorem allows arbitrary cardinality of the complementary component set."
+      "sourceLine": "The theorem allows arbitrary cardinality of the complementary component set.",
+      "paper": 1
     },
     {
       "text": "The rigidity proof uses a quantitative part of the Koebe paper.",
       "verdict": "supported",
-      "sourceLine": "This is the quantitative part of the uniformization theorem needed in this paper."
+      "sourceLine": "This is the quantitative part of the uniformization theorem needed in this paper.",
+      "paper": 1
     },
     {
       "text": "The Lean scope note says the formalization proves both the existence theorem and removable-boundary rigidity, and one Comparator file states both.",

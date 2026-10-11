@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "If the proofs hold, they settle a central boundedness conjecture of birational geometry beyond bases of dimension two."
   },
-  "explanation": "Take the simplest curved shape in geometry, the projective line. It is an ordinary line closed up by one extra point at infinity. Geometers attach to every such shape a bookkeeping class, the canonical class. On the projective line it counts as minus two points. A complement adds marked points with weights so that the total becomes exactly zero. Two points of weight 1 work: −2 + 1 + 1 = 0. Four points of weight 1/2 also work, and so do three points of weight 2/3.\n\nTwo numbers judge a complement. The index is the smallest whole number that clears all the fractions. It is 1 for the weight-1 choice, 2 for halves, and 3 for thirds. The second number is the log discrepancy at each marked point. On a line it is 1 minus the weight. Weight 1 leaves a log discrepancy of 0, so that complement is only lc (log canonical). Halves leave 1/2 everywhere. That complement is klt (Kawamata log terminal), meaning every log discrepancy is strictly positive. So the line has a klt complement of index 2.\n\nWhy not start from the weight-1 complement and shave the weights a little? Lower each weight to 9/10 and the total becomes −2 + 1.8 = −0.2. The sum is no longer zero, so it is no longer a complement. The index would also jump from 1 to 10. This is the one obstacle the paper names. An lc complement may sit exactly at zero discrepancy. Reducing its weights need not keep the total trivial. Keeping a complement klt therefore needs a separate argument.\n\nThe paper asks the same question for far more complicated shapes. A Fano contraction is a map from a variety X onto a base whose fibres are curved like the line. Its canonical class is negative in a strong sense. X may also have singular points. They are measured by a number ε: X is ε-lc when every log discrepancy is at least ε. Shokurov's conjecture asks for one index that works near every base point. It should depend only on the dimension d, on ε, and on a fixed finite set of allowed weights.\n\nShokurov introduced complements in his work on threefold log flips, from 1992. He set out their boundedness in his theory of surfaces. Birkar proved in 2019 that lc complements are bounded for Fano type fibrations, with special coefficient sets. He also bounded klt complements for Fano fibrations over curves with no added boundary. Bingyi Chen tied bounded klt complements to a local threshold question. He proved the conjecture for bases of dimension at most two. Higher-dimensional bases remained open.\n\nThis paper claims to prove the general case. For each d and each positive rational ε, it gives one index N. Take any ε-lc Fano contraction of dimension d over an algebraically closed field of characteristic zero. Near each closed base point, it then has a klt complement of index N. The complement and the neighbourhood may change with the contraction and the point. N does not. Over the complex numbers, a corollary covers pairs with weights in a fixed finite set of rationals. The paper calls this the finite-rational-coefficient form of Shokurov's bounded-klt-complement conjecture.\n\nThe proof goes through Chen's equivalence. It turns the index question into a bound on a log canonical threshold. That threshold asks how many copies of a base point's equation the variety can absorb. Past it, the singularities become worse than lc. The proof argues by contradiction. A failing sequence would let it build a prime divisor of discrepancy less than ε, which ε-lc forbids. One trap had to be avoided. A measuring rule can be scaled, and its discrepancy scales with it. So the proof must reach a genuine divisor, not just a small number.\n\nA companion paper reaches the same conjecture by an independent argument. It claims a constant τ, depending only on d and ε, for contractions onto a base of positive dimension. Through any base point it finds a divisor whose pullback, weighted by τ, keeps the variety lc. The choice of divisor matters. On a smooth curve, a point counted m times has threshold 1/m, so 0.2 for m = 5. The companion also covers real weights over the complex numbers. Its τ is non-effective: the paper does not compute its value.\n\nThe result has limits. The complements are klt, not ε-lc. Chen's stronger request, that a complement keep the bound ε itself, is not asserted. How sure is this? Lean, a computer proof checker, has checked one supporting fact from the companion paper. It is a compactness statement about certain local maps. Uniform Cartier sections, bounded klt complements and the real-weight results lie outside that check. No specialist review has been published.",
+  "explanation": "Take the simplest curved shape in geometry, the projective line. It is an ordinary line closed up by one extra point at infinity. Geometers attach to every such shape a bookkeeping class, the canonical class. On the projective line it counts as minus two points. A complement adds marked points with weights so that the total becomes exactly zero. Two points of weight 1 work: −2 + 1 + 1 = 0. Four points of weight 1/2 also work, and so do three points of weight 2/3.\n\nTwo numbers judge a complement. The index is the smallest whole number that clears all the fractions. It is 1 for the weight-1 choice, 2 for halves, and 3 for thirds. The second number is the log discrepancy at each marked point. On a line it is 1 minus the weight. Weight 1 leaves a log discrepancy of 0, so that complement is only lc (log canonical). Halves leave 1/2 everywhere. That complement is klt (Kawamata log terminal), meaning every log discrepancy is strictly positive. So the line has a klt complement of index 2.\n\nWhy not start from the weight-1 complement and shave the weights a little? Lower each weight to 9/10 and the total becomes −2 + 1.8 = −0.2. The sum is no longer zero, so it is no longer a complement. The index would also jump from 1 to 10. This is the one obstacle the paper names. An lc complement may sit exactly at zero discrepancy. Reducing its weights need not keep the total trivial. Keeping a complement klt therefore needs a separate argument[3].\n\nThe paper asks the same question for far more complicated shapes. A Fano contraction is a map from a variety X onto a base whose fibres are curved like the line. Its canonical class is negative in a strong sense. X may also have singular points. They are measured by a number ε: X is ε-lc when every log discrepancy is at least ε. Shokurov's conjecture asks for one index that works near every base point. It should depend only on the dimension d, on ε, and on a fixed finite set of allowed weights.\n\nShokurov introduced complements in his work on threefold log flips, from 1992. He set out their boundedness in his theory of surfaces. Birkar proved in 2019 that lc complements are bounded for Fano type fibrations, with special coefficient sets. He also bounded klt complements for Fano fibrations over curves with no added boundary. Bingyi Chen tied bounded klt complements to a local threshold question. He proved the conjecture for bases of dimension at most two. Higher-dimensional bases remained open.\n\nThis paper claims to prove the general case[9]. For each d and each positive rational ε, it gives one index N. Take any ε-lc Fano contraction of dimension d over an algebraically closed field of characteristic zero. Near each closed base point, it then has a klt complement of index N. The complement and the neighbourhood may change with the contraction and the point. N does not[10]. Over the complex numbers, a corollary covers pairs with weights in a fixed finite set of rationals. The paper calls this the finite-rational-coefficient form of Shokurov's bounded-klt-complement conjecture[11].\n\nThe proof goes through Chen's equivalence[13]. It turns the index question into a bound on a log canonical threshold. That threshold asks how many copies of a base point's equation the variety can absorb. Past it, the singularities become worse than lc. The proof argues by contradiction. A failing sequence would let it build a prime divisor of discrepancy less than ε, which ε-lc forbids[14]. One trap had to be avoided. A measuring rule can be scaled, and its discrepancy scales with it. So the proof must reach a genuine divisor, not just a small number.\n\nA companion paper reaches the same conjecture by an independent argument[16]. It claims a constant τ, depending only on d and ε, for contractions onto a base of positive dimension[16]. Through any base point it finds a divisor whose pullback, weighted by τ, keeps the variety lc. The choice of divisor matters. On a smooth curve, a point counted m times has threshold 1/m, so 0.2 for m = 5[17]. The companion also covers real weights over the complex numbers[19]. Its τ is non-effective: the paper does not compute its value[18].\n\nThe result has limits. The complements are klt, not ε-lc. Chen's stronger request, that a complement keep the bound ε itself, is not asserted[12]. How sure is this? Lean, a computer proof checker, has checked one supporting fact from the companion paper. It is a compactness statement about certain local maps. Uniform Cartier sections, bounded klt complements and the real-weight results lie outside that check. No specialist review has been published.",
   "hypeCheck": "Major if correct, but unchecked. Lean covers only a small supporting compactness fact from the companion paper. Neither main theorem is machine-checked, and no specialist review is published.",
   "glossary": [
     {
@@ -132,6 +132,7 @@
       "text": "Reducing the boundary coefficients of an lc complement need not preserve linear triviality, so keeping it klt needs an additional argument.",
       "verdict": "supported",
       "sourceLine": "Reducing its boundary coefficients need not preserve the linear triviality of the adjoint divisor, so keeping the complement klt requires an additional argument.",
+      "paper": 1,
       "sourceId": 1
     },
     {
@@ -168,36 +169,42 @@
       "text": "The main theorem gives N(d, ε) for ε-lc Fano contractions over an algebraically closed field of characteristic zero.",
       "verdict": "supported",
       "sourceLine": "there is a positive integer $N=N(d,\\epsilon)$ with the following property",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "B and U may depend on f and z, whereas N does not.",
       "verdict": "supported",
       "sourceLine": "Both $B$ and $U$ may depend on $f$ and $z$, whereas $N$ does not.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The corollary is the finite-rational-coefficient form of Shokurov's bounded-klt-complement conjecture.",
       "verdict": "supported",
       "sourceLine": "is the finite-rational-coefficient form of Shokurov's bounded-klt-complement conjecture",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The stronger ε-lc complement requirement is not asserted.",
       "verdict": "supported",
       "sourceLine": "the stronger requirement of an $\\epsilon$-lc complement in",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The proof uses Chen's equivalence between bounded klt complements and a local threshold statement.",
       "verdict": "supported",
       "sourceLine": "The proof uses the equivalence between bounded klt complements and a local threshold statement established by Chen",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The proof constructs a prime divisor of discrepancy less than ε.",
       "verdict": "supported",
       "sourceLine": "We will construct a prime divisor of discrepancy less than $\\epsilon$.",
+      "paper": 1,
       "sourceId": 1
     },
     {
@@ -210,24 +217,28 @@
       "text": "The companion article proves a uniform Cartier-section threshold by an independent argument.",
       "verdict": "supported",
       "sourceLine": "proves a uniform Cartier-section threshold for rational-boundary Fano type contractions by an independent character and pinning argument.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "On a smooth curve, the divisor m[z] has threshold 1/m.",
       "verdict": "supported",
       "sourceLine": "A discrepancy bound alone does not control those orders. Even on a smooth curve, the divisor",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "The companion's constant is non-effective.",
       "verdict": "supported",
       "sourceLine": "It is non-effective; the divisor and the neighbourhood may depend on the contraction and the point.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "The companion gives the real-boundary formulation over C.",
       "verdict": "supported",
       "sourceLine": "Corollary~\\ref{cor:real-boundaries} below gives the real-boundary formulation over $\\C$.",
+      "paper": 2,
       "sourceId": 2
     },
     {

@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "If it holds, it answers a stated open problem in harmonic analysis and removes the scale-range growth in earlier bounds."
   },
-  "explanation": "Make two functions on the plane, F and G. Each equals 1 on the unit square and 0 everywhere else. Stand at the point (0.2, 0.6). Pick a shift t. Read F at the point t steps to the right, and G at the point t steps up. Multiply the two readings. Here the product is 1 exactly when t lies between −0.2 and 0.4. The triangular Hilbert transform adds up these products, each weighted by 1/t.\n\nThe weight 1/t blows up near t = 0. So one cuts out a small gap of half-width ε around zero and stops at a far cutoff R. Take ε = 0.001. The positive shifts then contribute about 5.99. The negative shifts contribute about −5.30. The total is about 0.693, which is ln 2, the natural logarithm of 2. Shrink ε and both halves grow without limit. Their sum stays at ln 2. That cancellation between left and right is the whole subject.\n\nThe cutoffs ε and R are called hard truncation endpoints. The maximal transform takes, at each point, the largest size over every choice of the two endpoints. Different points may pick different endpoints. Sizes are measured by norms. The L³ norm of F is the cube root of the total of |F|³ over the plane. For our unit square it is exactly 1. The output is measured with the L^(3/2) norm, built the same way with the power 3/2.\n\nThe main theorem bounds the worst case. The L^(3/2) norm of the maximal output is at most C times the L³ norms of F and G multiplied. Here C is one absolute constant: it does not depend on F, G or any endpoint. The inputs may be any complex-valued functions with finite L³ norm. The theorem says such a C exists. It does not state a number for it.\n\nPair the output with a third function and you get a form of three inputs, G0(a,b), G1(b,c) and G2(c,a). Each input sees one pair of the three variables, and the pairs close into a triangle. The exponents must satisfy 1/p0 + 1/p1 + 1/p2 = 1. Taking all three equal to 3 is the symmetric point. Christoph Thiele posed this symmetric estimate as Problem 13 in a 2017 list of open problems. The paper says its result resolves that problem positively.\n\nThe operator appears in work of Ciprian Demeter and Christoph Thiele from 2010. In 2015, Kovač, Thiele and Zorin-Kranich proved estimates for a simplified model with one restricted input. In 2019, Durcik, Kovač and Thiele proved bounds with hard truncations. At the symmetric point their bound grows like the square root of log(R/ε). For R/ε of a million, that factor is about 3.7. For a trillion, it is about 5.3. It never stops growing. The new bound does not grow at all.\n\nThe one obstacle is the triangle. An older method tracks a nonnegative quantity, an energy, and lets its total decrease pay for the form. That method worked for two-sided patterns of inputs. Vjekoslav Kovač described why a triangular cycle blocks it. The paper builds a new energy from matrices made by sampling the inputs on a grid. Choosing endpoints point by point makes this energy jump. The paper bounds the total of these jumps without a cost that grows with the number of scales.\n\nTwo companion papers push further. The first claims to prove an annular variation bound. At each point, split the shifts into many disjoint rings. Raise the size of each ring piece to a power r and add. For every r above 2, that total obeys the same kind of L³ bound. Taking a single ring gives back the maximal bound. The second paper studies a dyadic model, built from binary intervals instead of real shifts. It claims the sum of absolute local pieces is at most 40 times the product of the three input norms. That model and the continuous form are different operators.\n\nBack in our example, the theorem guarantees something about every point at once. At almost every point, the cut-off integrals settle to one limit as ε shrinks and R grows. Ours settled at ln 2. The paper also gets this convergence in the L^(3/2) norm. The bound covers only the symmetric point, where all three inputs use the exponent 3.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the maximal bound. It covers any complex F and G with finite L³ norm and one absolute constant C. It also covers a common set where the cut-off integrals are defined. The annular variation bound, the dyadic bound, the limits and the step to Thiele's problem are outside that check. No specialists have published a review yet.",
+  "explanation": "Make two functions on the plane, F and G. Each equals 1 on the unit square and 0 everywhere else. Stand at the point (0.2, 0.6). Pick a shift t. Read F at the point t steps to the right, and G at the point t steps up. Multiply the two readings. Here the product is 1 exactly when t lies between −0.2 and 0.4. The triangular Hilbert transform adds up these products, each weighted by 1/t.\n\nThe weight 1/t blows up near t = 0. So one cuts out a small gap of half-width ε around zero and stops at a far cutoff R. Take ε = 0.001. The positive shifts then contribute about 5.99. The negative shifts contribute about −5.30. The total is about 0.693, which is ln 2, the natural logarithm of 2. Shrink ε and both halves grow without limit. Their sum stays at ln 2. That cancellation between left and right is the whole subject.\n\nThe cutoffs ε and R are called hard truncation endpoints. The maximal transform takes, at each point, the largest size over every choice of the two endpoints. Different points may pick different endpoints. Sizes are measured by norms. The L³ norm of F is the cube root of the total of |F|³ over the plane. For our unit square it is exactly 1. The output is measured with the L^(3/2) norm, built the same way with the power 3/2.\n\nThe main theorem bounds the worst case. The L^(3/2) norm of the maximal output is at most C times the L³ norms of F and G multiplied[1]. Here C is one absolute constant: it does not depend on F, G or any endpoint. The inputs may be any complex-valued functions with finite L³ norm. The theorem says such a C exists. It does not state a number for it.\n\nPair the output with a third function and you get a form of three inputs, G0(a,b), G1(b,c) and G2(c,a). Each input sees one pair of the three variables, and the pairs close into a triangle. The exponents must satisfy 1/p0 + 1/p1 + 1/p2 = 1. Taking all three equal to 3 is the symmetric point. Christoph Thiele posed this symmetric estimate as Problem 13 in a 2017 list of open problems. The paper says its result resolves that problem positively[7].\n\nThe operator appears in work of Ciprian Demeter and Christoph Thiele from 2010. In 2015, Kovač, Thiele and Zorin-Kranich proved estimates for a simplified model with one restricted input. In 2019, Durcik, Kovač and Thiele proved bounds with hard truncations. At the symmetric point their bound grows like the square root of log(R/ε). For R/ε of a million, that factor is about 3.7. For a trillion, it is about 5.3. It never stops growing. The new bound does not grow at all[1].\n\nThe one obstacle is the triangle. An older method tracks a nonnegative quantity, an energy, and lets its total decrease pay for the form. That method worked for two-sided patterns of inputs. Vjekoslav Kovač described why a triangular cycle blocks it. The paper builds a new energy from matrices made by sampling the inputs on a grid[13]. Choosing endpoints point by point makes this energy jump. The paper bounds the total of these jumps without a cost that grows with the number of scales[14].\n\nTwo companion papers push further. The first claims to prove an annular variation bound[15]. At each point, split the shifts into many disjoint rings. Raise the size of each ring piece to a power r and add. For every r above 2, that total obeys the same kind of L³ bound[15]. Taking a single ring gives back the maximal bound[17]. The second paper studies a dyadic model, built from binary intervals instead of real shifts. It claims the sum of absolute local pieces is at most 40 times the product of the three input norms[18]. That model and the continuous form are different operators[19].\n\nBack in our example, the theorem guarantees something about every point at once. At almost every point, the cut-off integrals settle to one limit as ε shrinks and R grows[4]. Ours settled at ln 2. The paper also gets this convergence in the L^(3/2) norm[4]. The bound covers only the symmetric point, where all three inputs use the exponent 3.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the maximal bound. It covers any complex F and G with finite L³ norm and one absolute constant C. It also covers a common set where the cut-off integrals are defined. The annular variation bound, the dyadic bound, the limits and the step to Thiele's problem are outside that check. No specialists have published a review yet.",
   "hypeCheck": "Major if the proofs hold. Lean covers the maximal bound only. The variation bound, the dyadic bound and the step to Thiele's problem are not machine-checked. No specialist review is published.",
   "glossary": [
     {
@@ -133,6 +133,7 @@
       "text": "The maximal bound holds with one absolute constant for every pair of complex L³ functions.",
       "verdict": "supported",
       "sourceLine": "There is an absolute constant $C$ such that, for every pair of complex functions $F,G\\in L^3(\\R^2)$",
+      "paper": 3,
       "sourceId": 1
     },
     {
@@ -151,6 +152,7 @@
       "text": "The joint principal value exists almost everywhere and in L^{3/2}.",
       "verdict": "supported",
       "sourceLine": "almost everywhere and in $L^{3/2}$, with the same norm bound",
+      "paper": 3,
       "sourceId": 1
     },
     {
@@ -169,6 +171,7 @@
       "text": "The result resolves positively Thiele's symmetric triangular Hilbert transform problem, Problem 13.",
       "verdict": "supported",
       "sourceLine": "In particular, the result resolves positively the symmetric triangular Hilbert transform problem stated by Thiele",
+      "paper": 3,
       "sourceId": 1
     },
     {
@@ -205,18 +208,21 @@
       "text": "The proof samples the inputs on a finite mesh.",
       "verdict": "supported",
       "sourceLine": "We first sample these inputs, together with a dual input $G_0(a,b)$, on a finite mesh.",
+      "paper": 3,
       "sourceId": 1
     },
     {
       "text": "The energy may jump at switching scales, and the paper bounds the total change without a factor depending on the number of scales.",
       "verdict": "supported",
       "sourceLine": "This permits the pointwise maximum without a factor depending on the number of scales or the matrix dimensions.",
+      "paper": 3,
       "sourceId": 1
     },
     {
       "text": "The annular r-variation estimate holds for every real r > 2.",
       "verdict": "supported",
       "sourceLine": "For every real $r>2$ there is a finite constant $C_r$ such that",
+      "paper": 1,
       "sourceId": 2
     },
     {
@@ -229,18 +235,21 @@
       "text": "A single increment gives the maximal estimate.",
       "verdict": "supported",
       "sourceLine": "Taking a single increment gives the maximal estimate with the supremum over both hard truncation endpoints.",
+      "paper": 1,
       "sourceId": 2
     },
     {
       "text": "The dyadic sum of absolute local contributions is at most 40 times the product of the input norms.",
       "verdict": "supported",
       "sourceLine": "The sum of the absolute local contributions over any finite set of scales is bounded by forty times the product of the input norms.",
+      "paper": 2,
       "sourceId": 3
     },
     {
       "text": "The continuous form and its dyadic model are distinct operators.",
       "verdict": "supported",
       "sourceLine": "The continuous form and its dyadic model are distinct operators; the theorem here is a statement about the latter.",
+      "paper": 2,
       "sourceId": 3
     },
     {
