@@ -120,14 +120,17 @@ export function renderCitations(
   let html = '';
   let last = 0;
   for (const m of markers) {
-    html += renderText(text.slice(last, m.index));
-    html += markerHtml(m.claims, order, seen);
+    const before = text.slice(last, m.index);
+    html += renderText(before);
+    // A numeral right after a digit (or inline math) reads like an exponent: add a thin gap.
+    const prev = text.slice(0, m.index).slice(-1);
+    html += markerHtml(m.claims, order, seen, /[0-9$)\]}]/.test(prev));
     last = m.index + m.raw.length;
   }
   return html + renderText(text.slice(last));
 }
 
-function markerHtml(claims: number[], order: Map<number, number>, seen: Set<number>): string {
+function markerHtml(claims: number[], order: Map<number, number>, seen: Set<number>, gap = false): string {
   const nums = claims.map((c) => order.get(c)).filter((n): n is number => n !== undefined);
   const links = nums
     .map((n) => {
@@ -136,5 +139,5 @@ function markerHtml(claims: number[], order: Map<number, number>, seen: Set<numb
       return `<a class="cite-a"${id} href="#cite-${n}" data-cite="${n}" aria-describedby="cite-${n}-q" aria-haspopup="dialog" aria-expanded="false"><span class="sr">Source </span>${n}</a>`;
     })
     .join('<span class="cite-sep" aria-hidden="true">,</span>');
-  return `<span class="cite">${links}</span>`;
+  return `<span class="cite${gap ? ' cite-gap' : ''}">${links}</span>`;
 }
