@@ -32,7 +32,11 @@ Rules for the corrected entry:
   `sourceCommit`, `origin` and `model` exactly as in the draft.
 - `scorecard.field` must still equal `field`.
 - Keep `explanation` as continuous prose (paragraphs, no headings or bullets). Delete or
-  rewrite each unsupported sentence inside it; never add facts. Recompute every number
+  rewrite each unsupported sentence inside it; never add facts. Inline citation markers
+  `[n]` point at `claims[n-1]` (1-based): when you remove or reorder claims, renumber
+  every marker so it still points at the same claim, and drop a marker whose claim was
+  removed. A marker belongs only on a sentence stating what a paper claims or proves,
+  and only on a claim with a `sourceLine`; never add one to an example or background. Recompute every number
   in its worked example; a number you cannot reproduce is unsupported. It must not use
   the word "verified". (Legacy entries without `explanation` keep their four sections,
   titles and order fixed.)

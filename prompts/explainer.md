@@ -56,6 +56,12 @@ Do not print the answers. Use them to plan the prose.
   or an existing entry source. List each source you rely on in `sources`.
 - Every factual sentence must be checkable: add a `claims` item for it, quoting the
   supporting line verbatim from the source LaTeX where one exists.
+- Inline citations: end each sentence that states what a paper claims or proves with
+  `[n]`, the 1-based index of its supporting item in `claims` (several: `[2,5]`). Attach
+  it to the last word, before the punctuation: `…in every dimension[4].` Cite only claims
+  that have a `sourceLine`. No marker on examples, intuition, analogies or background.
+  Never invent a citation; a result sentence with no supporting claim stays unmarked.
+  Markers appear nowhere except the `explanation`.
 - If the result cannot be made clear without inventing a fact or an example the
   source does not support, say so plainly in the explanation instead of filling the gap.
 - Wording must match the trust status: "proves" only with a Lean proof listed in the
