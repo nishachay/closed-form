@@ -122,7 +122,8 @@
     {
       "text": "The difficulty is making every choice deterministically with a polynomial bound in both parameters.",
       "verdict": "supported",
-      "sourceLine": "The difficulty studied here is to make every such choice deterministically, with a bound polynomial in both the degree and the bit length of the characteristic."
+      "sourceLine": "The difficulty studied here is to make every such choice deterministically, with a bound polynomial in both the degree and the bit length of the characteristic.",
+      "sourceQuote": "The difficulty studied here is to make every such choice deterministically, with a bound polynomial in both the degree and the bit length of the characteristic."
     },
     {
       "text": "Shoup's algorithm depends on p roughly like its square root.",
@@ -137,47 +138,56 @@
     {
       "text": "The time bound has exponent 10^12.",
       "verdict": "supported",
-      "sourceLine": "O\\bigl(((n+1)\\lceil\\log_2p\\rceil)^{10^{12}}\\bigr)"
+      "sourceLine": "O\\bigl(((n+1)\\lceil\\log_2p\\rceil)^{10^{12}}\\bigr)",
+      "sourceQuote": "There is a uniform deterministic algorithm that, given a prime $p$ in binary and a nonzero dense polynomial $f\\in\\Fp[x]$ of degree $n$, outputs its leading coefficient and its distinct monic irreducible factors with their multiplicities in \\[ O\\bigl(((n+1)\\lceil\\log_2p\\rceil)^{10^{12}}\\bigr) \\] bit operations, with absolute implied constant."
     },
     {
       "text": "The algorithm uses no randomness, integer-factoring help or GRH.",
       "verdict": "supported",
-      "sourceLine": "The algorithm uses no randomness, integer-factorization oracle, primitive-root oracle, or GRH assumption."
+      "sourceLine": "The algorithm uses no randomness, integer-factorization oracle, primitive-root oracle, or GRH assumption.",
+      "sourceQuote": "The algorithm uses no randomness, integer-factorization oracle, primitive-root oracle, or GRH assumption."
     },
     {
       "text": "The exponent is deliberately generous; the point is one fixed polynomial bound.",
       "verdict": "supported",
-      "sourceLine": "The exponent is deliberately generous. The point is one fixed polynomial bound for all degrees and prime characteristics."
+      "sourceLine": "The exponent is deliberately generous. The point is one fixed polynomial bound for all degrees and prime characteristics.",
+      "sourceQuote": "The exponent is deliberately generous. The point is one fixed polynomial bound for all degrees and prime characteristics."
     },
     {
       "text": "The problem reduces to splitting a square-free polynomial whose roots all lie in the prime field.",
       "verdict": "supported",
-      "sourceLine": "The Berlekamp algebra reduces complete factorization to splitting a monic square-free polynomial $F$ all of whose roots already belong to $\\Fp$."
+      "sourceLine": "The Berlekamp algebra reduces complete factorization to splitting a monic square-free polynomial $F$ all of whose roots already belong to $\\Fp$.",
+      "sourceQuote": "The Berlekamp algebra reduces complete factorization to splitting a monic square-free polynomial $F$ all of whose roots already belong to $\\Fp$."
     },
     {
       "text": "For an even number of roots, tournament scores cannot all be equal.",
       "verdict": "supported",
-      "sourceLine": "The vertex scores cannot all be equal when $N$ is even, so they provide a separator."
+      "sourceLine": "The vertex scores cannot all be equal when $N$ is even, so they provide a separator.",
+      "sourceQuote": "The vertex scores cannot all be equal when $N$ is even, so they provide a separator."
     },
     {
       "text": "The odd case uses cyclic curves.",
       "verdict": "supported",
-      "sourceLine": "The odd-degree construction uses cyclic curves"
+      "sourceLine": "The odd-degree construction uses cyclic curves",
+      "sourceQuote": "The odd-degree construction uses cyclic curves $Y^q=F(X)$."
     },
     {
       "text": "Equal labels everywhere would contradict a lattice valuation.",
       "verdict": "supported",
-      "sourceLine": "If every test gave one common label, a fixed nonzero infinity divisor would become divisible by one more power of $\\lambda$ than its lattice valuation allows."
+      "sourceLine": "If every test gave one common label, a fixed nonzero infinity divisor would become divisible by one more power of $\\lambda$ than its lattice valuation allows.",
+      "sourceQuote": "If every test gave one common label, a fixed nonzero infinity divisor would become divisible by one more power of $\\lambda$ than its lattice valuation allows."
     },
     {
       "text": "The analytic theorem belongs to the companion paper.",
       "verdict": "supported",
-      "sourceLine": "The analytic theorem itself belongs to the companion."
+      "sourceLine": "The analytic theorem itself belongs to the companion.",
+      "sourceQuote": "The analytic theorem itself belongs to the companion."
     },
     {
       "text": "The reduction does not use the analytic theorem.",
       "verdict": "supported",
-      "sourceLine": "The reduction in Theorem~\\ref{thm:reduction} does not use that theorem."
+      "sourceLine": "The reduction in Theorem~\\ref{thm:reduction} does not use that theorem.",
+      "sourceQuote": "The reduction in Theorem~\\ref{thm:reduction} does not use that theorem."
     },
     {
       "text": "No Lean formalization is listed for this result.",

@@ -125,7 +125,8 @@
     {
       "text": "Each cell holds the number of crossing pairs minus 1 plus ρ.",
       "verdict": "supported",
-      "sourceLine": "A_n(\\rho)_{U,M}=|M\\cap\\delta(U)|-1+\\rho,"
+      "sourceLine": "A_n(\\rho)_{U,M}=|M\\cap\\delta(U)|-1+\\rho,",
+      "sourceQuote": "For $0\\le\\rho\\le1$, define the matrix \\begin{equation}\\label{eq:main-matrix} A_n(\\rho)_{U,M}=|M\\cap\\delta(U)|-1+\\rho, \\qquad U\\in\\mathcal O_n,\\quad M\\in\\mathcal M_n. \\end{equation}"
     },
     {
       "text": "Edmonds described the perfect matching polytope with nonnegativity and odd-cut inequalities.",
@@ -150,7 +151,8 @@
     {
       "text": "Linear lower bounds do not automatically exclude small semidefinite lifts.",
       "verdict": "supported",
-      "sourceLine": "formulations do not automatically exclude small semidefinite lifts."
+      "sourceLine": "formulations do not automatically exclude small semidefinite lifts.",
+      "sourceQuote": "They can be substantially smaller than linear descriptions, so lower bounds for linear extended formulations do not automatically exclude small semidefinite lifts."
     },
     {
       "text": "Gouveia, Parrilo and Thomas linked PSD rank to the size of semidefinite lifts.",
@@ -160,17 +162,20 @@
     {
       "text": "The factors must reproduce the entries exactly, with no symmetry, sparsity or precision limit.",
       "verdict": "supported",
-      "sourceLine": "exactly, and no symmetry, equivariance, sparsity, or precision"
+      "sourceLine": "exactly, and no symmetry, equivariance, sparsity, or precision",
+      "sourceQuote": "The entries must be reproduced exactly, and no symmetry, equivariance, sparsity, or precision restriction is imposed on the factors."
     },
     {
       "text": "At ρ = 1 a factorization of size n choose 2 exists, using diagonal matrices indexed by edges.",
       "verdict": "supported",
-      "sourceLine": "The endpoint $\\rho=1$ has a factorization of size $\\binom n2$:"
+      "sourceLine": "The endpoint $\\rho=1$ has a factorization of size $\\binom n2$:",
+      "sourceQuote": "The endpoint $\\rho=1$ has a factorization of size $\\binom n2$: use diagonal matrices indexed by edges, with diagonal entries $\\mathbf1_{\\{e\\in\\delta(U)\\}}$ for a row and $\\mathbf1_{\\{e\\in M\\}}$ for a column."
     },
     {
       "text": "The endpoint ρ = 1 cannot be included in the exponential bound.",
       "verdict": "supported",
-      "sourceLine": "cannot be included in the exponential lower bound."
+      "sourceLine": "cannot be included in the exponential lower bound.",
+      "sourceQuote": "Thus the endpoint $\\rho=1$ cannot be included in the exponential lower bound."
     },
     {
       "text": "Yannakakis proved an exponential bound for symmetric linear formulations.",
@@ -200,47 +205,56 @@
     {
       "text": "Lee, Raghavendra and Steurer gave a general approach to unrestricted SDP lower bounds, which this proof follows.",
       "verdict": "supported",
-      "sourceLine": "that approach, with a transfer argument tailored to matching."
+      "sourceLine": "that approach, with a transfer argument tailored to matching.",
+      "sourceQuote": "Our proof follows that approach, with a transfer argument tailored to matching."
     },
     {
       "text": "Averaging squares cannot be replaced by squaring averages.",
       "verdict": "supported",
-      "sourceLine": "averaging their squares cannot be replaced by squaring their"
+      "sourceLine": "averaging their squares cannot be replaced by squaring their",
+      "sourceQuote": "Taking square roots of the row factors gives matrix functions with no initial degree bound; averaging their squares cannot be replaced by squaring their averages."
     },
     {
       "text": "The paper builds an exact representation of the averaged row factor as a sum of squares.",
       "verdict": "supported",
-      "sourceLine": "We instead construct an exact representation"
+      "sourceLine": "We instead construct an exact representation",
+      "sourceQuote": "We instead construct an exact representation \\[ \\overline F(y)=\\sum_q H_q(y)^{\\mathsf T}H_q(y) \\] by real rectangular matrix functions."
     },
     {
       "text": "The obstruction is an inconsistent parity system.",
       "verdict": "supported",
-      "sourceLine": "The obstruction is an inconsistent parity system on an expanding"
+      "sourceLine": "The obstruction is an inconsistent parity system on an expanding",
+      "sourceQuote": "The obstruction is an inconsistent parity system on an expanding graph $H$ with $t$ vertices."
     },
     {
       "text": "One constant c > 0 works for every fixed ρ in (0,1), giving rank at least 2^{cn} for large even n.",
       "verdict": "supported",
-      "sourceLine": "There is a constant $c>0$ such that, for every fixed $0<\\rho<1$,"
+      "sourceLine": "There is a constant $c>0$ such that, for every fixed $0<\\rho<1$,",
+      "sourceQuote": "There is a constant $c>0$ such that, for every fixed $0<\\rho<1$, there is $n_0=n_0(\\rho)$ for which \\[ \\rankpsd A_n(\\rho)\\ge2^{cn} \\] for every even $n\\ge n_0$."
     },
     {
       "text": "Every exact semidefinite lift of the perfect matching polytope has size at least 2^{c0 n}.",
       "verdict": "supported",
-      "sourceLine": "$2^{c_0n}$, and every exact semidefinite lift of $P_n$ has size at"
+      "sourceLine": "$2^{c_0n}$, and every exact semidefinite lift of $P_n$ has size at",
+      "sourceQuote": "There are constants $c_0>0$ and $n_1$ such that, for every even $n\\ge n_1$, both $A_n(0)$ and $T_n(0)$ have real PSD rank at least $2^{c_0n}$, and every exact semidefinite lift of $P_n$ has size at least $2^{c_0n}$."
     },
     {
       "text": "The constant is c = 1/(2k).",
       "verdict": "supported",
-      "sourceLine": "Taking $c=1/(2k)$ proves the theorem."
+      "sourceLine": "Taking $c=1/(2k)$ proves the theorem.",
+      "sourceQuote": "Taking $c=1/(2k)$ proves the theorem."
     },
     {
       "text": "k is a fixed even integer chosen large enough, not given numerically.",
       "verdict": "supported",
-      "sourceLine": "Next fix an even integer $k$ large enough for the local construction"
+      "sourceLine": "Next fix an even integer $k$ large enough for the local construction",
+      "sourceQuote": "Next fix an even integer $k$ large enough for the local construction and for \\begin{equation}\\label{eq:matching-local-smallness} L\\lambda^2C_L\\theta_d(k)\\le1. \\end{equation}"
     },
     {
       "text": "The threshold in n depends on ρ.",
       "verdict": "supported",
-      "sourceLine": "although the threshold is allowed to deteriorate as"
+      "sourceLine": "although the threshold is allowed to deteriorate as",
+      "sourceQuote": "The exponential rate in Theorem~\\ref{thm:main} is independent of $\\rho$, although the threshold is allowed to deteriorate as $\\rho$ tends to one."
     },
     {
       "text": "Kaniewski, Lee and de Wolf built subexponential-rank matrices approximating the unshifted slack within 2^{-sqrt(n/2)}.",
@@ -260,7 +274,8 @@
     {
       "text": "For n = 6 there are 15 perfect matchings and 32 odd sets; 360 of 480 cells equal ρ and 120 equal 2 + ρ; for U = {1,2,3}, 9 matchings cross once and 6 cross three times.",
       "verdict": "supported",
-      "sourceLine": "A_n(\\rho)_{U,M}=|M\\cap\\delta(U)|-1+\\rho,"
+      "sourceLine": "A_n(\\rho)_{U,M}=|M\\cap\\delta(U)|-1+\\rho,",
+      "sourceQuote": "For $0\\le\\rho\\le1$, define the matrix \\begin{equation}\\label{eq:main-matrix} A_n(\\rho)_{U,M}=|M\\cap\\delta(U)|-1+\\rho, \\qquad U\\in\\mathcal O_n,\\quad M\\in\\mathcal M_n. \\end{equation}"
     }
   ]
 }

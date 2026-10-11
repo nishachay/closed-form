@@ -133,6 +133,11 @@ export const claimSchema = z.object({
   text: z.string().min(1),
   verdict: z.enum(['supported', 'external']),
   sourceLine: z.string().optional(),
+  /**
+   * The full sentence(s) of the paper's LaTeX containing `sourceLine`, verbatim (comments removed,
+   * line breaks as single spaces). Shown to readers for cited claims; filled by `pnpm source-quotes`.
+   */
+  sourceQuote: z.string().min(1).optional(),
   sourceId: z.number().int().optional(),
   /** 1-based index into the catalog family's papers: which paper sourceLine is quoted from (multi-paper results). */
   paper: z.number().int().min(1).optional(),

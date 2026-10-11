@@ -150,6 +150,7 @@
       "text": "The main theorem covers every smooth, nonnegative, completely monotone function of squared distance, against every locally finite set of centered disk density one.",
       "verdict": "supported",
       "sourceLine": "For every smooth nonnegative completely monotone function $g$ on $(0,\\infty)$ and every locally finite planar set $\\mathcal C$ of centered disk density one,",
+      "sourceQuote": "For every smooth nonnegative completely monotone function $g$ on $(0,\\infty)$ and every locally finite planar set $\\mathcal C$ of centered disk density one, \\[ E_g(\\mathcal C)\\ge \\sum_{a\\in A\\setminus\\{0\\}}g(|a|^2)=E_g(A). \\]",
       "paper": 1,
       "sourceId": 11
     },
@@ -157,6 +158,7 @@
       "text": "Gaussians and every inverse power with p > 0 are covered.",
       "verdict": "supported",
       "sourceLine": "This includes every Gaussian $g(t)=e^{-\\pi\\alpha t}$ with $\\alpha>0$ and every inverse power $g(t)=t^{-p}$ with $p>0$.",
+      "sourceQuote": "This includes every Gaussian $g(t)=e^{-\\pi\\alpha t}$ with $\\alpha>0$ and every inverse power $g(t)=t^{-p}$ with $p>0$.",
       "paper": 2,
       "sourceId": 8
     },
@@ -164,6 +166,7 @@
       "text": "Competitors may be nonperiodic, have arbitrarily close pairs and uneven local counts.",
       "verdict": "supported",
       "sourceLine": "a competing configuration may be nonperiodic, may contain arbitrarily close pairs, and may have very uneven local point counts.",
+      "sourceQuote": "The problem goes beyond comparison with other lattices: a competing configuration may be nonperiodic, may contain arbitrarily close pairs, and may have very uneven local point counts.",
       "paper": 2,
       "sourceId": 8
     },
@@ -171,6 +174,7 @@
       "text": "Infinite energies are allowed in the comparison.",
       "verdict": "supported",
       "sourceLine": "The comparison includes infinite energies.",
+      "sourceQuote": "The comparison includes infinite energies.",
       "paper": 1,
       "sourceId": 11
     },
@@ -208,6 +212,7 @@
       "text": "The helper lies below the Gaussian, has nonnegative Fourier transform, and touches at nonzero lattice points.",
       "verdict": "supported",
       "sourceLine": "The two inequalities give a lower bound for arbitrary competitors. The contacts at the direct and dual lattice points make the bound exact on $A$.",
+      "sourceQuote": "We seek a real radial Schwartz function $f_\\alpha$ satisfying \\[ f_\\alpha\\le G_\\alpha,\\qquad \\widehat f_\\alpha\\ge0, \\qquad \\begin{aligned} f_\\alpha(a)&=G_\\alpha(a)&& (a\\in A\\setminus\\{0\\}),\\\\ \\widehat f_\\alpha(w)&=0&& (w\\in A^*\\setminus\\{0\\}). \\end{aligned} \\] The two inequalities give a lower bound for arbitrary competitors. The contacts at the direct and dual lattice points make the bound exact on $A$.",
       "paper": 2,
       "sourceId": 8
     },
@@ -215,6 +220,7 @@
       "text": "Positive mixtures of the Gaussian energy inequalities give the universal theorem.",
       "verdict": "supported",
       "sourceLine": "Positive mixtures of the resulting \\emph{energy inequalities}, rather than mixtures of the auxiliary functions, give Theorem~\\ref{thm:universal}.",
+      "sourceQuote": "Positive mixtures of the resulting \\emph{energy inequalities}, rather than mixtures of the auxiliary functions, give Theorem~\\ref{thm:universal}.",
       "paper": 1,
       "sourceId": 11
     },
@@ -222,6 +228,7 @@
       "text": "For 0 < s < 2 the raw Riesz energy is infinite even on the lattice.",
       "verdict": "supported",
       "sourceLine": "For $0<s<2$, the raw Riesz energy with $g(t)=t^{-s/2}$ is infinite even on $A$",
+      "sourceQuote": "For $0<s<2$, the raw Riesz energy with $g(t)=t^{-s/2}$ is infinite even on $A$, so the comparison of raw energies does not by itself distinguish configurations in this range.",
       "paper": 2,
       "sourceId": 8
     },
@@ -229,6 +236,7 @@
       "text": "The second paper claims the triangular minimum for logarithmic and Riesz renormalized energies and jellium.",
       "verdict": "supported",
       "sourceLine": "Corollary~\\ref{cor:riesz-jellium} proves the triangular minimum for every $0\\le s<2$",
+      "sourceQuote": "Corollary~\\ref{cor:riesz-jellium} proves the triangular minimum for every $0\\le s<2$, with interaction $-\\log|x|$ at $s=0$ and $|x|^{-s}$ for $0<s<2$.",
       "paper": 2,
       "sourceId": 8
     },
@@ -236,6 +244,7 @@
       "text": "The Coulomb paper resolves Sandier and Serfaty's Conjecture 1.",
       "verdict": "supported",
       "sourceLine": "Their Conjecture~1 asks whether the triangular value is also the minimum over the full admissible class. Theorem~\\ref{thm:main} resolves this conjecture positively.",
+      "sourceQuote": "Their Conjecture~1 asks whether the triangular value is also the minimum over the full admissible class. Theorem~\\ref{thm:main} resolves this conjecture positively.",
       "paper": 4,
       "sourceId": 9
     },
@@ -243,6 +252,7 @@
       "text": "The Coulomb proof treats the logarithmic functional directly, with no universal-optimality input.",
       "verdict": "supported",
       "sourceLine": "The present proof treats the logarithmic functional directly and uses no universal-optimality result as an input.",
+      "sourceQuote": "The present proof treats the logarithmic functional directly and uses no universal-optimality result as an input.",
       "paper": 4,
       "sourceId": 9
     },
@@ -256,6 +266,7 @@
       "text": "The Coulomb paper proves the two-dimensional Brauchart–Hardin–Saff conjecture.",
       "verdict": "supported",
       "sourceLine": "This proves the $d=2$ case of the logarithmic-energy conjecture of Brauchart, Hardin, and Saff",
+      "sourceQuote": "This proves the $d=2$ case of the logarithmic-energy conjecture of Brauchart, Hardin, and Saff~\\cite[Conjecture~4]{BrauchartHardinSaff2012}.",
       "paper": 4,
       "sourceId": 9
     },
@@ -263,6 +274,7 @@
       "text": "The sphere result is an asymptotic value, not a construction of point sets.",
       "verdict": "supported",
       "sourceLine": "The conclusion is an asymptotic value, not a construction of near-optimal point sets or an algorithm for Smale's seventh problem.",
+      "sourceQuote": "The conclusion is an asymptotic value, not a construction of near-optimal point sets or an algorithm for Smale's seventh problem.",
       "paper": 4,
       "sourceId": 9
     },
@@ -270,6 +282,7 @@
       "text": "The packing paper's certificate gives density π/(2√3).",
       "verdict": "supported",
       "sourceLine": "the two-point Fourier bound attains the optimal circle-packing density",
+      "sourceQuote": "We resolve the planar Cohn--Elkies sharpness conjecture: the two-point Fourier bound attains the optimal circle-packing density $\\pi/(2\\sqrt3)$.",
       "paper": 3,
       "sourceId": 10
     },
@@ -277,6 +290,7 @@
       "text": "The theorem identifies the minimum value, not all minimizers.",
       "verdict": "supported",
       "sourceLine": "It identifies the minimum value, not all minimizers.",
+      "sourceQuote": "It identifies the minimum value, not all minimizers.",
       "paper": 2,
       "sourceId": 8
     },
@@ -284,6 +298,7 @@
       "text": "A sharp auxiliary for each mixed potential, as in Cohn and Kumar's conjecture, is not claimed.",
       "verdict": "supported",
       "sourceLine": "That stronger per-potential quantifier is not claimed here.",
+      "sourceQuote": "That stronger per-potential quantifier is not claimed here.",
       "paper": 2,
       "sourceId": 8
     },
@@ -291,6 +306,7 @@
       "text": "No claim is made at s = 2.",
       "verdict": "supported",
       "sourceLine": "It asserts neither uniqueness nor exclusion of defects, and makes no claim at $s=2$ or for quantum crystallization.",
+      "sourceQuote": "It asserts neither uniqueness nor exclusion of defects, and makes no claim at $s=2$ or for quantum crystallization.",
       "paper": 2,
       "sourceId": 8
     },

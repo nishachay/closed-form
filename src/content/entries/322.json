@@ -116,17 +116,20 @@
     {
       "text": "Any such extension must be the radial map.",
       "verdict": "supported",
-      "sourceLine": "Any such extension must be the radial map below."
+      "sourceLine": "Any such extension must be the radial map below.",
+      "sourceQuote": "Any such extension must be the radial map below."
     },
     {
       "text": "The radial map keeps norms and distances at each fixed radius.",
       "verdict": "supported",
-      "sourceLine": "This candidate preserves norms and distances at each fixed radius"
+      "sourceLine": "This candidate preserves norms and distances at each fixed radius",
+      "sourceQuote": "This candidate preserves norms and distances at each fixed radius; the difficulty is to recover distances between points at different radii from the metric on a single sphere."
     },
     {
       "text": "The difficulty is recovering distances between points at different radii from the sphere alone.",
       "verdict": "supported",
-      "sourceLine": "the difficulty is to recover distances between points at different radii from the metric on a single sphere"
+      "sourceLine": "the difficulty is to recover distances between points at different radii from the metric on a single sphere",
+      "sourceQuote": "This candidate preserves norms and distances at each fixed radius; the difficulty is to recover distances between points at different radii from the metric on a single sphere."
     },
     {
       "text": "Mazur and Ulam proved that surjective isometries between real normed spaces are affine.",
@@ -141,7 +144,8 @@
     {
       "text": "A unit sphere has no interior, so Mankiewicz's theorem does not apply directly.",
       "verdict": "supported",
-      "sourceLine": "A unit sphere has empty ambient interior, so this"
+      "sourceLine": "A unit sphere has empty ambient interior, so this",
+      "sourceQuote": "A unit sphere has empty ambient interior, so this does not directly provide the desired extension."
     },
     {
       "text": "Tingley showed antipodal points are preserved in finite dimensions.",
@@ -166,27 +170,32 @@
     {
       "text": "The radial map is a surjective real-linear isometry and the unique linear extension.",
       "verdict": "supported",
-      "sourceLine": "It is the unique linear extension of $f$."
+      "sourceLine": "It is the unique linear extension of $f$.",
+      "sourceQuote": "It is the unique linear extension of $f$."
     },
     {
       "text": "The spaces may have any dimension and need not be smooth or strictly convex.",
       "verdict": "supported",
-      "sourceLine": "The spaces may have arbitrary dimension and need not be separable, reflexive, smooth, or strictly convex."
+      "sourceLine": "The spaces may have arbitrary dimension and need not be separable, reflexive, smooth, or strictly convex.",
+      "sourceQuote": "The spaces may have arbitrary dimension and need not be separable, reflexive, smooth, or strictly convex."
     },
     {
       "text": "For complex spaces viewed as real, the result gives real linearity only.",
       "verdict": "supported",
-      "sourceLine": "Applied to complex Banach spaces regarded as real spaces, the conclusion is real linearity; complex linearity is not asserted."
+      "sourceLine": "Applied to complex Banach spaces regarded as real spaces, the conclusion is real linearity; complex linearity is not asserted.",
+      "sourceQuote": "Applied to complex Banach spaces regarded as real spaces, the conclusion is real linearity; complex linearity is not asserted."
     },
     {
       "text": "The proof measures the largest error in preserving a distance between two radius levels.",
       "verdict": "supported",
-      "sourceLine": "The argument measures the largest error in preserving a distance between two radius levels."
+      "sourceLine": "The argument measures the largest error in preserving a distance between two radius levels.",
+      "sourceQuote": "The argument measures the largest error in preserving a distance between two radius levels."
     },
     {
       "text": "The proof makes the worst error occur in a possibly enlarged pair of spaces.",
       "verdict": "supported",
-      "sourceLine": "we realize the positive maximal defect in a possibly enlarged pair of Banach spaces"
+      "sourceLine": "we realize the positive maximal defect in a possibly enlarged pair of Banach spaces",
+      "sourceQuote": "If distances between different radii are not preserved, we realize the positive maximal defect in a possibly enlarged pair of Banach spaces."
     },
     {
       "text": "The Lean scope note lists a formal unique surjective real-linear extension for arbitrary nonzero real Banach spaces, with a Comparator statement.",

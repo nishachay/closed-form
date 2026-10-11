@@ -179,42 +179,49 @@
       "text": "There is an absolute constant C such that for every k ≥ 2 and every metric space with at least k+1 points a policy achieves the bound.",
       "verdict": "supported",
       "sourceLine": "integer \\(k\\ge2\\), every metric space \\((X,d)\\) with at least \\(k+1\\)",
+      "sourceQuote": "There is an absolute constant \\(C<\\infty\\) such that, for every integer \\(k\\ge2\\), every metric space \\((X,d)\\) with at least \\(k+1\\) points, and every \\(s\\in X^k\\), there exist a randomized online policy \\(A\\) and a finite \\(B\\ge0\\) satisfying \\begin{equation}\\label{eq:main} \\E\\,\\cost_{A,s}(\\sigma) \\le C\\bigl(\\log(k+1)\\bigr)^2\\OPT_{X,d,k,s}(\\sigma)+B \\end{equation} for every finite request sequence \\(\\sigma\\).",
       "paper": 1
     },
     {
       "text": "B may depend on the space, k and the start, but not on the sequence; one policy serves all sequences; B = 0 for distinct starts.",
       "verdict": "supported",
       "sourceLine": "horizons. If the initial positions are distinct, one may take \\(B=0\\).",
+      "sourceQuote": "The same policy serves all finite sequences and horizons. If the initial positions are distinct, one may take \\(B=0\\).",
       "paper": 1
     },
     {
       "text": "There is no finiteness or boundedness assumption on the space and no computational-efficiency claim for the policy.",
       "verdict": "supported",
       "sourceLine": "\\(X\\), and no computational-efficiency claim for the policy.",
+      "sourceQuote": "There is no finiteness, boundedness, or discreteness assumption on \\(X\\), and no computational-efficiency claim for the policy.",
       "paper": 1
     },
     {
       "text": "The partition schedule is driven by the posterior of a hidden comparator.",
       "verdict": "supported",
       "sourceLine": "construction. Here the partition schedule is driven by the posterior",
+      "sourceQuote": "Heavy-ball protection and accounting for changing partitions are methodological antecedents of our construction. Here the partition schedule is driven by the posterior measure of a hidden comparator; it produces a fixed tree of label strings.",
       "paper": 1
     },
     {
       "text": "One logarithm comes from the partition estimate and one from the allocation estimate.",
       "verdict": "supported",
       "sourceLine": "partition estimate and one from the allocation estimate; rounding",
+      "sourceQuote": "One logarithm comes from the partition estimate and one from the allocation estimate; rounding and realization preserve their product.",
       "paper": 1
     },
     {
       "text": "The uniform algorithm has polynomial preprocessing and per-request cost polynomial in L plus the length of the request counter.",
       "verdict": "supported",
       "sourceLine": "these data in at most \\(p(L)\\) bit operations and serves request \\(r_t\\),",
+      "sourceQuote": "A single uniform randomized online algorithm preprocesses these data in at most \\(p(L)\\) bit operations and serves request \\(r_t\\), for every reachable history and internal state, in at most \\[ p\\!\\left(L+\\left\\lceil\\log_2(t+1)\\right\\rceil\\right) \\] additional bit operations.",
       "paper": 2
     },
     {
       "text": "The additive constant is finite but may be enormous, and the algorithm may serve many early requests with one fixed label.",
       "verdict": "supported",
       "sourceLine": "requests immediately, but may serve an enormous initial number of them",
+      "sourceQuote": "Our algorithm serves requests immediately, but may serve an enormous initial number of them using one fixed label before the constructed policy takes over.",
       "paper": 2
     },
     {

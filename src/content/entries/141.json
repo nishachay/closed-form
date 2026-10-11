@@ -152,42 +152,50 @@
     {
       "text": "There is one absolute level for the two-block language.",
       "verdict": "supported",
-      "sourceLine": "There is an absolute integer $j$ such that"
+      "sourceLine": "There is an absolute integer $j$ such that",
+      "sourceQuote": "There is an absolute integer $j$ such that \\[ \\EATR\\in\\Clevel j. \\]"
     },
     {
       "text": "The level does not depend on input length, variables, degrees or coefficients.",
       "verdict": "supported",
-      "sourceLine": "The level $j$ is independent of the input length, the numbers of variables, the degrees of the circuit polynomials, and their coefficient magnitudes."
+      "sourceLine": "The level $j$ is independent of the input length, the numbers of variables, the degrees of the circuit polynomials, and their coefficient magnitudes.",
+      "sourceQuote": "The level $j$ is independent of the input length, the numbers of variables, the degrees of the circuit polynomials, and their coefficient magnitudes."
     },
     {
       "text": "The existential case is placed at level 26.",
       "verdict": "supported",
-      "sourceLine": "accounting for this fragment gives $\\ETR\\in\\Clevel{26}$ and hence"
+      "sourceLine": "accounting for this fragment gives $\\ETR\\in\\Clevel{26}$ and hence",
+      "sourceQuote": "Finer accounting for this fragment gives $\\ETR\\in\\Clevel{26}$ and hence $\\existsR\\subseteq\\Clevel{26}$; Theorem~\\ref{thm:etr-bound} proves this explicit bound."
     },
     {
       "text": "Testing fibers alone gives no finite description of a good parameter.",
       "verdict": "supported",
-      "sourceLine": "Merely testing fibers does not provide a finite description of a good parameter."
+      "sourceLine": "Merely testing fibers does not provide a finite description of a good parameter.",
+      "sourceQuote": "Merely testing fibers does not provide a finite description of a good parameter."
     },
     {
       "text": "A chosen root needs a short description even with exponential degree.",
       "verdict": "supported",
-      "sourceLine": "a chosen real root needs a short description even when its polynomial has exponential degree."
+      "sourceLine": "a chosen real root needs a short description even when its polynomial has exponential degree.",
+      "sourceQuote": "Second, a chosen real root needs a short description even when its polynomial has exponential degree."
     },
     {
       "text": "Derivative signs separate roots, but the full sign list can be too long.",
       "verdict": "supported",
-      "sourceLine": "Derivative signs distinguish real roots, as in Thom encodings"
+      "sourceLine": "Derivative signs distinguish real roots, as in Thom encodings",
+      "sourceQuote": "Derivative signs distinguish real roots, as in Thom encodings~\\cite{BasuPollackRoy2006}, but the full sign string can be too long."
     },
     {
       "text": "The sign list is compressed into a weighted integer sum.",
       "verdict": "supported",
-      "sourceLine": "compresses that string to a weighted integer sum with weights computed modulo a short prime"
+      "sourceLine": "compresses that string to a weighted integer sum with weights computed modulo a short prime",
+      "sourceQuote": "Section~\\ref{sec:labels} compresses that string to a weighted integer sum with weights computed modulo a short prime, and realizes the resulting label by a polynomial positivity test."
     },
     {
       "text": "The theorem places the two-block language at a fixed level.",
       "verdict": "supported",
-      "sourceLine": "Our theorem places this two-block language in a fixed level of the counting hierarchy."
+      "sourceLine": "Our theorem places this two-block language in a fixed level of the counting hierarchy.",
+      "sourceQuote": "Our theorem places this two-block language in a fixed level of the counting hierarchy."
     },
     {
       "text": "No Lean formalization is listed for this result.",

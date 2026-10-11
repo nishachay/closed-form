@@ -120,7 +120,8 @@
     {
       "text": "The chain stays put with probability 1/2; otherwise it chooses four vertices uniformly and a random rewiring.",
       "verdict": "supported",
-      "sourceLine": "With probability $1/2$ the chain stays at its current graph. Otherwise it chooses a four-element set $S\\subseteq V$ uniformly"
+      "sourceLine": "With probability $1/2$ the chain stays at its current graph. Otherwise it chooses a four-element set $S\\subseteq V$ uniformly",
+      "sourceQuote": "With probability $1/2$ the chain stays at its current graph. Otherwise it chooses a four-element set $S\\subseteq V$ uniformly, and then chooses uniformly one of the six ordered pairs $(F,F')$ of distinct perfect matchings of the complete graph on $S$."
     },
     {
       "text": "Mixing time is measured at total-variation distance 1/4.",
@@ -130,7 +131,8 @@
     {
       "text": "For every n ≥ 4 and every graphical degree vector, the mixing time is at most 2n⁸.",
       "verdict": "supported",
-      "sourceLine": "For every $n\\ge4$ and every graphical degree vector $d$"
+      "sourceLine": "For every $n\\ge4$ and every graphical degree vector $d$",
+      "sourceQuote": "For every $n\\ge4$ and every graphical degree vector $d$, \\[ t_{\\mathrm{mix}}(d)\\le 2n^8. \\]"
     },
     {
       "text": "The six-dot example has 70 realizations (60 hexagons, 10 triangle pairs) and mixes in 38 steps; 2·6⁸ = 3,359,232; 2·100⁸ = 2×10¹⁶.",
@@ -165,7 +167,8 @@
     {
       "text": "Earlier results cover classes of degrees; this theorem requires only that the individual degree vector be graphical.",
       "verdict": "supported",
-      "sourceLine": "These results explain substantial classes of degrees; the theorem here requires only that the individual degree vector be graphical."
+      "sourceLine": "These results explain substantial classes of degrees; the theorem here requires only that the individual degree vector be graphical.",
+      "sourceQuote": "These results explain substantial classes of degrees; the theorem here requires only that the individual degree vector be graphical."
     },
     {
       "text": "The conjecture predicts rapid mixing for every realizable degree specification in the bipartite, directed and simple-undirected models; this paper resolves the simple-undirected formulation.",
@@ -180,22 +183,26 @@
     {
       "text": "A simple graph has a symmetric adjacency matrix, so arbitrary binary-matrix resampling breaks the state space; pair resamplings keep the symmetry.",
       "verdict": "supported",
-      "sourceLine": "A simple undirected graph has a symmetric adjacency matrix, so an arbitrary binary-matrix resampling does not preserve its state space. Our pair resamplings preserve that symmetry by redistributing neighbors between two vertices."
+      "sourceLine": "A simple undirected graph has a symmetric adjacency matrix, so an arbitrary binary-matrix resampling does not preserve its state space. Our pair resamplings preserve that symmetry by redistributing neighbors between two vertices.",
+      "sourceQuote": "A simple undirected graph has a symmetric adjacency matrix, so an arbitrary binary-matrix resampling does not preserve its state space. Our pair resamplings preserve that symmetry by redistributing neighbors between two vertices."
     },
     {
       "text": "Trades on disjoint pairs can be dependent; an individual term may be negative but the full sum is positive semidefinite.",
       "verdict": "supported",
-      "sourceLine": "although an individual disjoint-pair term may be negative, their full sum is positive semidefinite"
+      "sourceLine": "although an individual disjoint-pair term may be negative, their full sum is positive semidefinite",
+      "sourceQuote": "The additional estimate here gives quantitative control of those interactions: although an individual disjoint-pair term may be negative, their full sum is positive semidefinite."
     },
     {
       "text": "The exact sampler uses unbiased random bits, terminates almost surely, and outputs an exactly uniform graph.",
       "verdict": "supported",
-      "sourceLine": "uses unbiased random bits, terminates almost surely, and outputs a graph chosen exactly uniformly"
+      "sourceLine": "uses unbiased random bits, terminates almost surely, and outputs a graph chosen exactly uniformly",
+      "sourceQuote": "There is a uniform randomized algorithm that, given any finite graphical labeled degree vector $d=(d_1,\\ldots,d_n)$, uses unbiased random bits, terminates almost surely, and outputs a graph chosen exactly uniformly from the simple undirected graphs on $\\{1,\\ldots,n\\}$ with labeled degree vector $d$."
     },
     {
       "text": "The time bound is in expectation; no polynomial bound on every execution is asserted.",
       "verdict": "supported",
-      "sourceLine": "The time bound is in expectation; no polynomial bound on every random execution is asserted."
+      "sourceLine": "The time bound is in expectation; no polynomial bound on every random execution is asserted.",
+      "sourceQuote": "The time bound is in expectation; no polynomial bound on every random execution is asserted."
     },
     {
       "text": "Lean proves the n ≥ 4 mixing bound, switch connectivity and the spectral-gap bound; the exact sampler is outside that scope.",

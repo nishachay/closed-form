@@ -155,22 +155,26 @@
     {
       "text": "For every step limit D, every component has at most B_D vertices.",
       "verdict": "supported",
-      "sourceLine": "For every finite real $D$ there is a finite $B_D$ such that every connected component of $G_D$ has at most $B_D$ vertices."
+      "sourceLine": "For every finite real $D$ there is a finite $B_D$ such that every connected component of $G_D$ has at most $B_D$ vertices.",
+      "sourceQuote": "For every finite real $D$ there is a finite $B_D$ such that every connected component of $G_D$ has at most $B_D$ vertices."
     },
     {
       "text": "The bound does not depend on the starting prime and covers axis primes.",
       "verdict": "supported",
-      "sourceLine": "The bound is independent of the starting prime and includes primes on the coordinate axes."
+      "sourceLine": "The bound is independent of the starting prime and includes primes on the coordinate axes.",
+      "sourceQuote": "The bound is independent of the starting prime and includes primes on the coordinate axes."
     },
     {
       "text": "No walk through distinct Gaussian primes with steps at most D has more than B_D terms.",
       "verdict": "supported",
-      "sourceLine": "Consequently every sequence of distinct Gaussian primes whose successive distances are at most $D$ has at most $B_D$ terms."
+      "sourceLine": "Consequently every sequence of distinct Gaussian primes whose successive distances are at most $D$ has at most $B_D$ terms.",
+      "sourceQuote": "Consequently every sequence of distinct Gaussian primes whose successive distances are at most $D$ has at most $B_D$ terms."
     },
     {
       "text": "The bound B_D is not explicit.",
       "verdict": "supported",
-      "sourceLine": "The bound $B_D$ is nonexplicit"
+      "sourceLine": "The bound $B_D$ is nonexplicit",
+      "sourceQuote": "The bound $B_D$ is nonexplicit: the proof chooses sufficiently large scales after fixing $D$."
     },
     {
       "text": "Each rational prime that is 1 mod 4 has two conjugate Gaussian prime factors.",
@@ -180,32 +184,38 @@
     {
       "text": "A finite set of primes 1 mod 4 leaves a sieved set with no infinite bounded-step walk.",
       "verdict": "supported",
-      "sourceLine": "contains no infinite sequence of distinct points with successive distances at most $D$"
+      "sourceLine": "contains no infinite sequence of distinct points with successive distances at most $D$",
+      "sourceQuote": "For every $D\\ge1$ there is a finite set $\\mathcal P_D$ of rational primes congruent to $1$ modulo $4$ such that $\\mathcal A(\\mathcal P_D)$ contains no infinite sequence of distinct points with successive distances at most $D$."
     },
     {
       "text": "The sieved set is periodic.",
       "verdict": "supported",
-      "sourceLine": "It is periodic under translations by"
+      "sourceLine": "It is periodic under translations by",
+      "sourceQuote": "It is periodic under translations by $Q\\Z^2$, where $Q=\\prod_{p\\in\\mathcal P}p$."
     },
     {
       "text": "A finite component cannot be invariant under a nonzero translation, so it injects into the period box.",
       "verdict": "supported",
-      "sourceLine": "A finite nonempty subset of $\\Z^2$ cannot be invariant under a nonzero translation."
+      "sourceLine": "A finite nonempty subset of $\\Z^2$ cannot be invariant under a nonzero translation.",
+      "sourceQuote": "A finite nonempty subset of $\\Z^2$ cannot be invariant under a nonzero translation."
     },
     {
       "text": "Periodicity makes the bound uniform in the starting point.",
       "verdict": "supported",
-      "sourceLine": "Periodicity is what makes the bound uniform in the starting point."
+      "sourceLine": "Periodicity is what makes the bound uniform in the starting point.",
+      "sourceQuote": "Periodicity is what makes the bound uniform in the starting point."
     },
     {
       "text": "The proof samples times of a fixed walk at random.",
       "verdict": "supported",
-      "sourceLine": "Randomness enters only through sampled times"
+      "sourceLine": "Randomness enters only through sampled times",
+      "sourceQuote": "Randomness enters only through sampled times and auxiliary choices of one Gaussian factor over each split prime."
     },
     {
       "text": "Each prime batch costs information per increment; the costs diverge but are bounded by the entropy of one increment.",
       "verdict": "supported",
-      "sourceLine": "Block subadditivity bounds their sum by the entropy available in one bounded increment, whereas the selected batches make the lower bounds diverge."
+      "sourceLine": "Block subadditivity bounds their sum by the entropy available in one bounded increment, whereas the selected batches make the lower bounds diverge.",
+      "sourceQuote": "Block subadditivity bounds their sum by the entropy available in one bounded increment, whereas the selected batches make the lower bounds diverge."
     },
     {
       "text": "The Lean formalization covers every step bound, all components and injective walks, axis primes and associates, with no explicit function of D.",

@@ -129,12 +129,14 @@
     {
       "text": "For every fixed p≠2 and D>1 the dimension is at most exp(C(log n)^γ(p)), with γ(p)=2−p below 2 and 1−2/p above 2.",
       "verdict": "supported",
-      "sourceLine": "For every … there is a constant … such that, for every integer"
+      "sourceLine": "For every … there is a constant … such that, for every integer",
+      "sourceQuote": "Fix $1<p<\\infty$, $p\\ne2$, and put \\[ \\gamma(p)= \\begin{cases} 2-p,&1<p<2,\\\\ 1-2/p,&2<p<\\infty. \\end{cases} \\] For every $D>1$ there is a constant $C_{p,D}<\\infty$ such that, for every integer $n\\ge2$, \\begin{equation}\\label{eq:main-bounds} \\frac{\\log n}{\\log(1+2D)} \\le d_p(n,D) \\le \\exp\\!\\bigl(C_{p,D}(\\log n)^{\\gamma(p)}\\bigr). \\end{equation}"
     },
     {
       "text": "The log of the dimension divided by log n tends to 0 for D>1 and to 2 for D=1.",
       "verdict": "supported",
-      "sourceLine": "Consequently,"
+      "sourceLine": "Consequently,",
+      "sourceQuote": "Consequently, \\[ \\lim_{n\\to\\infty}\\frac{\\log d_p(n,D)}{\\log n} =\\begin{cases}0,&D>1,\\\\2,&D=1.\\end{cases} \\]"
     },
     {
       "text": "Ball proved the exact upper bound n(n−1)/2.",
@@ -144,12 +146,14 @@
     {
       "text": "The exact lower bound uses a row-and-column configuration.",
       "verdict": "supported",
-      "sourceLine": "The lower bound in … uses an antipodal row-and-column configuration."
+      "sourceLine": "The lower bound in … uses an antipodal row-and-column configuration.",
+      "sourceQuote": "Lemma~\\ref{lem:exact-upper} recalls the distance-cone and Carath\\'eodory argument for that upper bound. The lower bound in \\eqref{eq:exact-bounds} uses an antipodal row-and-column configuration."
     },
     {
       "text": "For n≥9 take k=⌊(n−1)/4⌋; any exact embedding needs at least k² coordinates.",
       "verdict": "supported",
-      "sourceLine": "take … and add distinct points if necessary to obtain an … point set."
+      "sourceLine": "take … and add distinct points if necessary to obtain an … point set.",
+      "sourceQuote": "For $n\\ge9$, take $k=\\lfloor(n-1)/4\\rfloor$ and add distinct points if necessary to obtain an $n$-point set. Any exact embedding of that set restricts to one of $\\mathcal X_k$, proving the lower bound in~\\eqref{eq:exact-bounds}."
     },
     {
       "text": "Schechtman's finite-set estimates below 2 progressed from O_D(n log n) to O_{p,D}(n) coordinates.",
@@ -159,7 +163,8 @@
     {
       "text": "Linear maps on selected Lp configurations can require dimension proportional to cardinality when p≠2.",
       "verdict": "supported",
-      "sourceLine": "fixed-distortion linear maps on selected … configurations can require dimension proportional to their cardinality when"
+      "sourceLine": "fixed-distortion linear maps on selected … configurations can require dimension proportional to their cardinality when",
+      "sourceQuote": "The absence of a linearity requirement is essential: fixed-distortion linear maps on selected $L_p$ configurations can require dimension proportional to their cardinality when $p\\ne2$ \\cite[Section~3]{LeeMendelNaor2005}."
     },
     {
       "text": "At p=1 the Brinkman–Charikar obstruction applies even to nonlinear maps.",
@@ -174,32 +179,38 @@
     {
       "text": "The absence of a linearity requirement is essential.",
       "verdict": "supported",
-      "sourceLine": "The absence of a linearity requirement is essential"
+      "sourceLine": "The absence of a linearity requirement is essential",
+      "sourceQuote": "The absence of a linearity requirement is essential: fixed-distortion linear maps on selected $L_p$ configurations can require dimension proportional to their cardinality when $p\\ne2$ \\cite[Section~3]{LeeMendelNaor2005}."
     },
     {
       "text": "A bounded distribution of scalar images is found and independent sampling supplies the coordinates.",
       "verdict": "supported",
-      "sourceLine": "Convex separation produces one distribution working for all pairs; independent sampling then supplies the coordinates of a finite embedding."
+      "sourceLine": "Convex separation produces one distribution working for all pairs; independent sampling then supplies the coordinates of a finite embedding.",
+      "sourceQuote": "Convex separation produces one distribution working for all pairs; independent sampling then supplies the coordinates of a finite embedding."
     },
     {
       "text": "The constants depend on p and D, with no uniformity asserted.",
       "verdict": "supported",
-      "sourceLine": "The constants in the upper bound depend on the fixed parameters"
+      "sourceLine": "The constants in the upper bound depend on the fixed parameters",
+      "sourceQuote": "The constants in the upper bound depend on the fixed parameters $p,D$; no uniformity as $p$ approaches an endpoint or $D$ approaches $1$ is asserted."
     },
     {
       "text": "The theorem is existential and gives no efficient algorithm.",
       "verdict": "supported",
-      "sourceLine": "The theorem is existential and does not assert an efficient embedding algorithm."
+      "sourceLine": "The theorem is existential and does not assert an efficient embedding algorithm.",
+      "sourceQuote": "The theorem is existential and does not assert an efficient embedding algorithm."
     },
     {
       "text": "Comparing volumes gives n ≤ (1+2D)^d.",
       "verdict": "supported",
-      "sourceLine": "Comparing … dimensional Lebesgue volumes gives"
+      "sourceLine": "Comparing … dimensional Lebesgue volumes gives",
+      "sourceQuote": "Their open balls of radius $1/2$ are disjoint and lie in the ball of radius $D+1/2$ about that point. Comparing $d$-dimensional Lebesgue volumes gives \\[ n(1/2)^d\\le(D+1/2)^d, \\qquad\\text{hence}\\qquad n\\le(1+2D)^d. \\]"
     },
     {
       "text": "Neither the upper exponent nor the logarithmic lower bound is claimed optimal.",
       "verdict": "supported",
-      "sourceLine": "neither its upper exponent nor its elementary logarithmic lower bound is asserted to be optimal."
+      "sourceLine": "neither its upper exponent nor its elementary logarithmic lower bound is asserted to be optimal.",
+      "sourceQuote": "This is compatible with \\eqref{eq:main-bounds}; neither its upper exponent nor its elementary logarithmic lower bound is asserted to be optimal."
     },
     {
       "text": "The embedding need not be linear.",

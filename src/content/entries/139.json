@@ -143,7 +143,8 @@
     {
       "text": "The class requires V(0)=0, a zero gradient at 0, and Hessian between I and 2I.",
       "verdict": "supported",
-      "sourceLine": "consist of the functions"
+      "sourceLine": "consist of the functions",
+      "sourceQuote": "For \\(d\\ge2\\), let \\(\\mathcal V_d\\) consist of the functions \\(V\\in C^2(\\R^d)\\) satisfying \\begin{equation}\\label{eq:original-class} V(0)=0,\\qquad \\nabla V(0)=0,\\qquad I_d\\preceq\\nabla^2V(x)\\preceq2I_d \\quad\\text{for every }x\\in\\R^d. \\end{equation}"
     },
     {
       "text": "An exact first-order query returns the value and gradient; queries may be adaptive and computation between queries is unrestricted.",
@@ -183,32 +184,38 @@
     {
       "text": "For every ε > 0 there is C_ε with Q(d) at most C_ε d^ε, and Q(d) is at least c log d for large d.",
       "verdict": "supported",
-      "sourceLine": "There are also absolute constants \\(c>0\\) and \\(d_0\\)"
+      "sourceLine": "There are also absolute constants \\(c>0\\) and \\(d_0\\)",
+      "sourceQuote": "There are also absolute constants \\(c>0\\) and \\(d_0\\) such that \\[ Q(d)\\ge c\\log d\\qquad(d\\ge d_0). \\]"
     },
     {
       "text": "The lower bound applies to arbitrary randomized adaptive first-order algorithms, and the optimal exponent is zero.",
       "verdict": "supported",
-      "sourceLine": "The lower bound applies to arbitrary randomized adaptive first-order algorithms. In particular"
+      "sourceLine": "The lower bound applies to arbitrary randomized adaptive first-order algorithms. In particular",
+      "sourceQuote": "The lower bound applies to arbitrary randomized adaptive first-order algorithms. In particular, \\(\\gamma_*=0\\)."
     },
     {
       "text": "The lower bound holds even for Gaussian potentials.",
       "verdict": "supported",
-      "sourceLine": "The lower bound already holds for centered Gaussian targets, whose minimizer is known."
+      "sourceLine": "The lower bound already holds for centered Gaussian targets, whose minimizer is known.",
+      "sourceQuote": "The lower bound already holds for centered Gaussian targets, whose minimizer is known."
     },
     {
       "text": "The result determines the exponent but not the finer growth rate, and does not assert a polylogarithmic count.",
       "verdict": "supported",
-      "sourceLine": "Together they determine the exponent but not the finer growth rate of … In particular, the upper bound does not assert a polylogarithmic query count."
+      "sourceLine": "Together they determine the exponent but not the finer growth rate of … In particular, the upper bound does not assert a polylogarithmic query count.",
+      "sourceQuote": "Together they determine the exponent but not the finer growth rate of \\(Q(d)\\). In particular, the upper bound does not assert a polylogarithmic query count."
     },
     {
       "text": "The constants may depend on ε.",
       "verdict": "supported",
-      "sourceLine": "The constants and the algorithmic approximation orders may depend on"
+      "sourceLine": "The constants and the algorithmic approximation orders may depend on",
+      "sourceQuote": "The constants and the algorithmic approximation orders may depend on \\(\\varepsilon\\)."
     },
     {
       "text": "The construction is aimed at oracle complexity rather than practical running time.",
       "verdict": "supported",
-      "sourceLine": "is aimed at oracle complexity rather than practical running time."
+      "sourceLine": "is aimed at oracle complexity rather than practical running time.",
+      "sourceQuote": "The construction uses approximation orders that can depend on the desired exponent and is aimed at oracle complexity rather than practical running time."
     },
     {
       "text": "No arithmetic or bit-complexity bound is imposed or deduced.",
@@ -218,17 +225,20 @@
     {
       "text": "The obstacle is high-order accuracy under only the two-sided Hessian bounds, using finitely many first-order queries.",
       "verdict": "supported",
-      "sourceLine": "The obstacle here is to obtain high-order accuracy under those bounds while implementing every conditional mean with finitely many first-order queries."
+      "sourceLine": "The obstacle here is to obtain high-order accuracy under those bounds while implementing every conditional mean with finitely many first-order queries.",
+      "sourceQuote": "The obstacle here is to obtain high-order accuracy under those bounds while implementing every conditional mean with finitely many first-order queries."
     },
     {
       "text": "The construction first adds a Gaussian and then removes that noise by further conditioning.",
       "verdict": "supported",
-      "sourceLine": "We first implement this conditional operation with an added Gaussian, then remove that noise by further conditioning."
+      "sourceLine": "We first implement this conditional operation with an added Gaussian, then remove that noise by further conditioning.",
+      "sourceQuote": "We first implement this conditional operation with an added Gaussian, then remove that noise by further conditioning."
     },
     {
       "text": "All high derivatives come from Gaussian conditioning; the potential needs only C² regularity.",
       "verdict": "supported",
-      "sourceLine": "All high derivatives come from Gaussian conditioning;"
+      "sourceLine": "All high derivatives come from Gaussian conditioning;",
+      "sourceQuote": "All high derivatives come from Gaussian conditioning; the original potential still needs only the $C^2$ regularity in \\eqref{eq:original-class}."
     },
     {
       "text": "Lean formalizes both bounds, for measurable randomized adaptive algorithms with unbounded arithmetic cost.",

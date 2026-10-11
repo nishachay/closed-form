@@ -34,13 +34,15 @@ List the IDs in the catalog. Leave out any that already have `src/content/entrie
 10. Credit the authors and the AI role exactly as the paper states them.
 11. The `explanation` is continuous first-principles prose: a concrete example, what was known before and after, the key obstacle, and honest certainty. No bullet lists or fixed sections.
 12. Inline citations: a sentence in the `explanation` that states what a paper claims or proves ends with a marker `[n]`, where n is the 1-based position of the supporting item in `claims` (several: `[2,5]`). Write it against the last word, before the full stop: `…in every dimension[4].` Only cite claims that have a `sourceLine`. Never put a marker on an example, intuition, analogy or background. Never invent a citation: if no claim supports a result sentence, leave it unmarked. If you add, remove or reorder `claims`, renumber every marker. Markers go only in the `explanation`.
+13. Every cited claim also carries `sourceQuote`: the full sentence (or two) of the paper LaTeX that contains its `sourceLine`, because readers see it when they tap the numeral. Do not type it by hand. Run `CF_SOURCE_DIR=<openai/math checkout> pnpm source-quotes --entry src/content/entries/<ID>.json`; it copies the sentence verbatim (comments removed, line breaks as single spaces, math kept). If it reports a fallback for a claim, the page shows the `sourceLine` instead; that is allowed, but prefer a `sourceLine` that sits inside one ordinary sentence.
 
 ### Loop for one entry
 1. Read the LaTeX and the Lean doc.
 2. Write `src/content/entries/<ID>.json`.
-3. Review it against rules 1-12. Check every quote against the source.
-4. Fix what failed.
-5. Run `pnpm -s lint-ste`, then `pnpm -s test`. Two "007 dry run" test failures are known and older; ignore them. Fix anything else.
+3. Run `pnpm source-quotes --entry src/content/entries/<ID>.json` (rule 13).
+4. Review it against rules 1-13. Check every quote against the source.
+5. Fix what failed.
+6. Run `pnpm -s lint-ste`, then `pnpm -s test`. Two "007 dry run" test failures are known and older; ignore them. Fix anything else.
 
 ### Batch loop
 - 5 entries per branch, named `entries/batch-N`.

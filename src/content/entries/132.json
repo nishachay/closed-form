@@ -196,37 +196,44 @@
     {
       "text": "For every C>0 there is a nonconstant total Boolean function with bs(f) > C s(f)².",
       "verdict": "supported",
-      "sourceLine": "For every real \\(C>0\\), there are a positive integer \\(n\\) and a nonconstant total Boolean function"
+      "sourceLine": "For every real \\(C>0\\), there are a positive integer \\(n\\) and a nonconstant total Boolean function",
+      "sourceQuote": "For every real \\(C>0\\), there are a positive integer \\(n\\) and a nonconstant total Boolean function \\(f:\\{0,1\\}^n\\to\\{0,1\\}\\) such that \\[ \\bs(f)>C\\,s(f)^2. \\]"
     },
     {
       "text": "For every d ≥ 1 the ratio bs/s² is at least 2^d/(4(d+2)²).",
       "verdict": "supported",
-      "sourceLine": "More precisely, for every integer \\(d\\ge1\\) the construction below gives a nonconstant total Boolean function"
+      "sourceLine": "More precisely, for every integer \\(d\\ge1\\) the construction below gives a nonconstant total Boolean function",
+      "sourceQuote": "More precisely, for every integer \\(d\\ge1\\) the construction below gives a nonconstant total Boolean function \\(f\\) with \\[ \\frac{\\bs(f)}{s(f)^2}\\ge \\frac{2^d}{4(d+2)^2}. \\]"
     },
     {
       "text": "There is a fixed α > 2 and functions with bs(F_m,0) ≥ s(F_m)^α and bs(F_m,0) tending to infinity.",
       "verdict": "supported",
-      "sourceLine": "There exist a real number $\\alpha>2$ and nonconstant total Boolean functions"
+      "sourceLine": "There exist a real number $\\alpha>2$ and nonconstant total Boolean functions",
+      "sourceQuote": "There exist a real number $\\alpha>2$ and nonconstant total Boolean functions $F_m$, for integers $m\\geq1$, such that \\[ \\bs(F_m,0)\\geq s(F_m)^\\alpha \\qquad\\text{for every }m, \\qquad \\bs(F_m,0)\\longrightarrow\\infty. \\]"
     },
     {
       "text": "Each level arranges children in rows with one directed edge between each pair of rows.",
       "verdict": "supported",
-      "sourceLine": "the input is partitioned into disjoint child inputs arranged in rows, and every pair of rows is given one directed edge"
+      "sourceLine": "the input is partitioned into disjoint child inputs arranged in rows, and every pair of rows is given one directed edge",
+      "sourceQuote": "At a recursive step, the input is partitioned into disjoint child inputs arranged in rows, and every pair of rows is given one directed edge."
     },
     {
       "text": "Random labels exclude small local configurations.",
       "verdict": "supported",
-      "sourceLine": "Random labels exclude small local configurations"
+      "sourceLine": "Random labels exclude small local configurations",
+      "sourceQuote": "Random labels exclude small local configurations in which many accepting subcubes lie close to the same accepting input."
     },
     {
       "text": "The proof tracks bits that reverse two predicates simultaneously.",
       "verdict": "supported",
-      "sourceLine": "We consequently track the number of bits that reverse a fixed pair of distinct predicates simultaneously"
+      "sourceLine": "We consequently track the number of bits that reverse a fixed pair of distinct predicates simultaneously",
+      "sourceQuote": "We consequently track the number of bits that reverse a fixed pair of distinct predicates simultaneously, in addition to ordinary sensitivity."
     },
     {
       "text": "Sensitivity grows by about a factor M per level while blocks grow by 2M²+1.",
       "verdict": "supported",
-      "sourceLine": "a factor \\(M\\) per level, while the number of disjoint sensitive blocks grows by \\(2M^2+1\\)"
+      "sourceLine": "a factor \\(M\\) per level, while the number of disjoint sensitive blocks grows by \\(2M^2+1\\)",
+      "sourceQuote": "With a size parameter \\(M\\) chosen sufficiently large for each fixed depth, their normalization in Section~\\ref{sec:separation} bounds sensitivity growth by essentially a factor \\(M\\) per level, while the number of disjoint sensitive blocks grows by \\(2M^2+1\\)."
     },
     {
       "text": "Meiburg's spectral-sensitivity construction uses tournament-indexed rows.",
@@ -236,22 +243,26 @@
     {
       "text": "Spectral sensitivity is at most sensitivity, so a spectral bound alone does not give this separation.",
       "verdict": "supported",
-      "sourceLine": "a lower bound on \\(\\bs(f)/\\lambda(f)^2\\) alone does not supply the ordinary-sensitivity separation"
+      "sourceLine": "a lower bound on \\(\\bs(f)/\\lambda(f)^2\\) alone does not supply the ordinary-sensitivity separation",
+      "sourceQuote": "Since \\(\\lambda(f)\\le s(f)\\), a lower bound on \\(\\bs(f)/\\lambda(f)^2\\) alone does not supply the ordinary-sensitivity separation in Theorem~\\ref{thm:main}."
     },
     {
       "text": "The construction requires M ≥ 9^(d+1).",
       "verdict": "supported",
-      "sourceLine": "Suppose that $d\\geq 1$ and $M\\geq 9^{d+1}$."
+      "sourceLine": "Suppose that $d\\geq 1$ and $M\\geq 9^{d+1}$.",
+      "sourceQuote": "Suppose that $d\\geq 1$ and $M\\geq 9^{d+1}$."
     },
     {
       "text": "At d = 9 the seed ratio bound is 2^9/484 = 128/121.",
       "verdict": "supported",
-      "sourceLine": "=\\frac{128}{121}>1."
+      "sourceLine": "=\\frac{128}{121}>1.",
+      "sourceQuote": "Moreover, \\[ \\frac{B}{A^2} =\\frac{(k/M^2)^9}{484} \\geq\\frac{2^9}{484} =\\frac{128}{121}>1. \\]"
     },
     {
       "text": "Repeated composition of the seed gives the power separation.",
       "verdict": "supported",
-      "sourceLine": "Repeated composition of that seed gives a power separation."
+      "sourceLine": "Repeated composition of that seed gives a power separation.",
+      "sourceQuote": "Repeated composition of that seed gives a power separation."
     },
     {
       "text": "The model produced the manuscript (release provenance).",

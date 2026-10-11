@@ -175,24 +175,28 @@
       "text": "The main difficulty is repeated visits to a cell while each symbol gets a fixed object independent of neighbours.",
       "verdict": "supported",
       "sourceLine": "The main representation difficulty is to account for repeated visits to a cell while assigning each input symbol a fixed object independent of its neighbors.",
+      "sourceQuote": "The main representation difficulty is to account for repeated visits to a cell while assigning each input symbol a fixed object independent of its neighbors.",
       "paper": 2
     },
     {
       "text": "Every equivalent s-state deterministic two-way automaton satisfies 4(s+2)^2 ≥ 2^⌊(h−2)/31⌋.",
       "verdict": "supported",
       "sourceLine": "Every equivalent deterministic two-way automaton with … states satisfies",
+      "sourceQuote": "For every integer $h\\ge2$, the language $\\OWL_h$ is recognized by a nondeterministic automaton with $h+3$ states using no left moves. Every equivalent deterministic two-way automaton with $s$ states satisfies \\begin{equation} \\label{eq:main-bound} 4(s+2)^2\\ge 2^{\\lfloor(h-2)/31\\rfloor}. \\end{equation}",
       "paper": 2
     },
     {
       "text": "No polynomial simulation of n-state 2NFAs by 2DFAs holds over every finite alphabet.",
       "verdict": "supported",
       "sourceLine": "There are no absolute constants … such that every … -state two-way nondeterministic automaton over every finite alphabet has an equivalent two-way deterministic automaton with at most … states.",
+      "sourceQuote": "There are no absolute constants $C,c>0$ such that every $n$-state two-way nondeterministic automaton over every finite alphabet has an equivalent two-way deterministic automaton with at most $Cn^c$ states.",
       "paper": 2
     },
     {
       "text": "Deterministic two-way complementation has a linear state bound independent of the alphabet.",
       "verdict": "supported",
       "sourceLine": "For deterministic two-way automata, complementation has a linear state bound independent of the alphabet",
+      "sourceQuote": "For deterministic two-way automata, complementation has a linear state bound independent of the alphabet \\cite{GeffertMereghettiPighizzini2007}.",
       "paper": 1
     },
     {
@@ -209,24 +213,28 @@
       "text": "Every 2NFA for the complement of the n-state automaton's language has at least ½·2^⌊(n−4)/127⌋ − 1 states.",
       "verdict": "supported",
       "sourceLine": "There is an … -state 2NFA … recognizing … such that every 2NFA recognizing … has at least",
+      "sourceQuote": "For every integer $n\\ge4$, set $H=\\{1,\\ldots,n-2\\}$ and $\\Sigma_n=\\mathcal R_H$. There is an $n$-state 2NFA $A_n$ recognizing $L_H$ such that every 2NFA recognizing $\\Sigma_n^*\\setminus L(A_n)$ has at least \\[ \\frac12\\,2^{\\lfloor(n-4)/127\\rfloor}-1 \\] states.",
       "paper": 1
     },
     {
       "text": "On h points the alphabet has 2^(h^2) symbols.",
       "verdict": "supported",
       "sourceLine": "For each … the alphabet has … symbols and is finite.",
+      "sourceQuote": "This bound exceeds $Cn^c$ for every fixed $C,c$ when $n$ is large enough. For each $h$ the alphabet has $2^{h^2}$ symbols and is finite.",
       "paper": 2
     },
     {
       "text": "The theorem does not assert a lower bound over one fixed alphabet.",
       "verdict": "supported",
       "sourceLine": "it does not assert a lower bound over one fixed alphabet.",
+      "sourceQuote": "Theorem~\\ref{main:theorem} concerns bounds uniform over finite alphabets; it does not assert a lower bound over one fixed alphabet.",
       "paper": 1
     },
     {
       "text": "The bounds give no separation between uniform logarithmic-space classes.",
       "verdict": "supported",
       "sourceLine": "give no separation between uniform logarithmic-space complexity classes.",
+      "sourceQuote": "They compare finite-state machines without a work tape, and give no separation between uniform logarithmic-space complexity classes.",
       "paper": 1
     },
     {

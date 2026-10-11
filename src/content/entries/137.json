@@ -119,12 +119,14 @@
     {
       "text": "Every fixed exponent above 2/5 suffices.",
       "verdict": "supported",
-      "sourceLine": "In particular, every fixed exponent"
+      "sourceLine": "In particular, every fixed exponent",
+      "sourceQuote": "In particular, every fixed exponent \\(\\epsilon>2/5\\) suffices."
     },
     {
       "text": "The polylog factor uses a fixed constant C that is not stated numerically.",
       "verdict": "supported",
-      "sourceLine": "with a fixed constant"
+      "sourceLine": "with a fixed constant",
+      "sourceQuote": "We write \\(\\softO(f(T))\\) for \\(O(f(T)\\log^C(T+2))\\), with a fixed constant \\(C\\)."
     },
     {
       "text": "No log-free bound at exponent 2/5 is asserted.",
@@ -134,72 +136,86 @@
     {
       "text": "Each unit head move crosses a block boundary for exactly one offset, so some offset has at most T/b crossings.",
       "verdict": "supported",
-      "sourceLine": "Every unit head move crosses a boundary for exactly one offset"
+      "sourceLine": "Every unit head move crosses a boundary for exactly one offset",
+      "sourceQuote": "Every unit head move crosses a boundary for exactly one offset; a stationary move crosses none."
     },
     {
       "text": "A visit accesses one block and passes on only a short controller of state, head positions, time and flags.",
       "verdict": "supported",
-      "sourceLine": "A visit accesses one long block and exchanges only a short controller, consisting of the state, head positions, time and terminal flags."
+      "sourceLine": "A visit accesses one long block and exchanges only a short controller, consisting of the state, head positions, time and terminal flags.",
+      "sourceQuote": "A visit accesses one long block and exchanges only a short controller, consisting of the state, head positions, time and terminal flags."
     },
     {
       "text": "Given a proposed transcript, each block can be replayed from its initial contents, and consistency factors over the blocks.",
       "verdict": "supported",
-      "sourceLine": "Once a proposed controller transcript is fixed, all visits to a particular block can be replayed using that block's initial contents. Consistency of the transcript therefore factors over the blocks."
+      "sourceLine": "Once a proposed controller transcript is fixed, all visits to a particular block can be replayed using that block's initial contents. Consistency of the transcript therefore factors over the blocks.",
+      "sourceQuote": "Once a proposed controller transcript is fixed, all visits to a particular block can be replayed using that block's initial contents. Consistency of the transcript therefore factors over the blocks."
     },
     {
       "text": "Visits are grouped into epochs and appended in rounds of √b visits.",
       "verdict": "supported",
-      "sourceLine": "visits into an epoch and append their controllers in rounds of"
+      "sourceLine": "visits into an epoch and append their controllers in rounds of",
+      "sourceQuote": "Group \\(b\\) visits into an epoch and append their controllers in rounds of \\(k=\\sqrt b\\) visits."
     },
     {
       "text": "A recursion path pays for at most one retained round guess per epoch.",
       "verdict": "supported",
-      "sourceLine": "so a recursion path pays for at most one retained round guess per epoch"
+      "sourceLine": "so a recursion path pays for at most one retained round guess per epoch",
+      "sourceQuote": "Such a call immediately leads to earlier epochs, so a recursion path pays for at most one retained round guess per epoch."
     },
     {
       "text": "The block parameters are balanced at b about T^{2/5}.",
       "verdict": "supported",
-      "sourceLine": "balanced at"
+      "sourceLine": "balanced at",
+      "sourceQuote": "The resulting space bound is \\[ \\softO\\!\\left(b+(1+T/b^2)\\sqrt b\\right), \\] balanced at \\(b\\asymp T^{2/5}\\)."
     },
     {
       "text": "The single selected block is essential to the factored round rule; two bits from different sources break the product form.",
       "verdict": "supported",
-      "sourceLine": "is essential to the factored round rule"
+      "sourceLine": "is essential to the factored round rule",
+      "sourceQuote": "The single selected block in Lemma~\\ref{lem:visits} is essential to the factored round rule."
     },
     {
       "text": "For several writable tapes the paper gives a separate square-root simulation.",
       "verdict": "supported",
-      "sourceLine": "gives a separate"
+      "sourceLine": "gives a separate",
+      "sourceQuote": "Section~\\ref{sec:multitape} gives a separate \\(\\softO(\\sqrt T)\\) simulation for every fixed number of writable tapes."
     },
     {
       "text": "The result is not a two-fifths bound for arbitrary multitape machines.",
       "verdict": "supported",
-      "sourceLine": "it is not a two-fifths bound for arbitrary multitape machines"
+      "sourceLine": "it is not a two-fifths bound for arbitrary multitape machines",
+      "sourceQuote": "The result applies to one writable head, even when additional read-only input heads are present; it is not a two-fifths bound for arbitrary multitape machines."
     },
     {
       "text": "Additional read-only input heads are allowed.",
       "verdict": "supported",
-      "sourceLine": "A fixed number of additional read-only input heads may move by at most one position per step."
+      "sourceLine": "A fixed number of additional read-only input heads may move by at most one position per step.",
+      "sourceQuote": "A fixed number of additional read-only input heads may move by at most one position per step."
     },
     {
       "text": "Ordinary input access satisfies the access condition by rescanning.",
       "verdict": "supported",
-      "sourceLine": "Ordinary input access satisfies it for every cap by storing the requested coordinate and rescanning"
+      "sourceLine": "Ordinary input access satisfies it for every cap by storing the requested coordinate and rescanning",
+      "sourceQuote": "Ordinary input access satisfies it for every cap by storing the requested coordinate and rescanning to that position or an endmarker."
     },
     {
       "text": "The theorem concerns space and gives no useful bound on simulation time; it cannot be iterated as a time improvement.",
       "verdict": "supported",
-      "sourceLine": "concerns space, with no useful bound on simulation time. It cannot be iterated as a time improvement."
+      "sourceLine": "concerns space, with no useful bound on simulation time. It cannot be iterated as a time improvement.",
+      "sourceQuote": "Theorem~\\ref{thm:main} concerns space, with no useful bound on simulation time. It cannot be iterated as a time improvement."
     },
     {
       "text": "Without a supplied running time, the simulator tries caps 2, 4, 8, … and returns only on an actual halt.",
       "verdict": "supported",
-      "sourceLine": "Continue after a timeout and return only on an actual halt."
+      "sourceLine": "Continue after a timeout and return only on an actual halt.",
+      "sourceQuote": "Continue after a timeout and return only on an actual halt."
     },
     {
       "text": "Varying the three scales in this construction alone does not lower the exponent; this is not an optimality claim.",
       "verdict": "supported",
-      "sourceLine": "changing the three scales in this construction alone does not lower its exponent. It is not a lower bound on other simulations, an optimality claim"
+      "sourceLine": "changing the three scales in this construction alone does not lower its exponent. It is not a lower bound on other simulations, an optimality claim",
+      "sourceQuote": "The parameter calculation in Section~\\ref{sec:balance} explains why changing the three scales in this construction alone does not lower its exponent. It is not a lower bound on other simulations, an optimality claim, or a claim of a general multitape improvement."
     },
     {
       "text": "Lean formalizes the time-capped and unknown-time one-tape statements; multitape and hierarchy results are outside.",

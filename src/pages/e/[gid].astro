@@ -63,9 +63,31 @@ const cited = [...citeOrder.entries()]
   .sort((a, b) => a[1] - b[1])
   .map(([claimNo, n]) => {
     const c = entry!.claims![claimNo - 1];
-    return { n, quote: c.sourceLine ?? '', paper: paperName(c) };
+    // The full sentence(s) from the paper when we have them; the single LaTeX line otherwise.
+    return { n, quote: c.sourceQuote ?? c.sourceLine ?? '', paper: paperName(c) };
   });
 const aiSection = (entry?.sections ?? []).find((s) => s.title === 'What it says about AI') ?? null;
+const title = `${family.id} · ${toPlain(family.title)}`;
+/** Source citations: strip the internal † "check me" marker and link arXiv ids. */
+const cleanCite = (cite: string) => {
+  const unchecked = /†\s*$/.test(cite);
+  const text = cite.replace(/\s*†\s*$/, '');
+  const arxiv = /arXiv:(\d{4}\.\d{4,5})/.exec(text);
+  return { text, unchecked, href: arxiv ? `https://arxiv.org/abs/${arxiv[1]}` : undefined };
+};
+/**
+ * Sources other than the result's own papers: those are already listed, with dates and Lean
+ * status, under "The original", so they are not repeated here. The JSON keeps every source.
+ */
+const ownLinks = new Set(
+  [...family.papers.map((p) => p.pdf), family.trace, family.leanDoc && (family.leanDoc.startsWith('http') ? family.leanDoc : `https://github.com/openai/math/blob/main/${family.leanDoc}`)]
+    .filter((u): u is string => !!u)
+    .map((u) => u.replace(/\/$/, '')),
+);
+const otherSources = (entry?.sources ?? []).filter((s) => {
+  const href = s.url ?? cleanCite(s.cite).href;
+  return !(href && ownLinks.has(href.replace(/\/$/, '')) && !s.quote);
+});
 const toc = entry
   ? [
       ...(paragraphs.length > 0
@@ -80,23 +102,14 @@ const toc = entry
       { href: '#hype-check', label: 'Hype check' },
       { href: '#words-used', label: 'Words used' },
       { href: '#the-original', label: 'The original' },
-      ...(cited.length > 0 ? [{ href: '#in-the-papers-words', label: 'In the paper’s words' }] : []),
-      { href: '#sources', label: 'Sources' },
+      ...(cited.length > 0 ? [{ href: '#in-the-papers-words', label: 'Quoted lines' }] : []),
+      ...(otherSources.length > 0 ? [{ href: '#sources', label: 'Other sources' }] : []),
     ]
   : [{ href: '#the-original', label: 'The original' }];
-
-const title = `${family.id} · ${toPlain(family.title)}`;
-/** Source citations: strip the internal † "check me" marker and link arXiv ids. */
-const cleanCite = (cite: string) => {
-  const unchecked = /†\s*$/.test(cite);
-  const text = cite.replace(/\s*†\s*$/, '');
-  const arxiv = /arXiv:(\d{4}\.\d{4,5})/.exec(text);
-  return { text, unchecked, href: arxiv ? `https://arxiv.org/abs/${arxiv[1]}` : undefined };
-};
 const withdrawnCount = family.withdrawn?.length ?? 0;
 const withdrawnOn = family.withdrawn?.[0]?.withdrawnOn ?? null;
 const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-const anyUnchecked = !!entry && entry.status !== 'reviewed' && entry.sources.some((x) => /†\s*$/.test(x.cite));
+const anyUnchecked = !!entry && entry.status !== 'reviewed' && otherSources.some((x) => /†\s*$/.test(x.cite));
 const firstDate = family.papers.map((p) => p.date).filter(Boolean).sort()[0] ?? null;
 const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 ---
@@ -172,37 +185,44 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <OriginalPapers family={family} />
           {cited.length > 0 && (
             <section class="e-cites" aria-labelledby="in-the-papers-words">
-              <h2 id="in-the-papers-words">In the paper’s words</h2>
-              <ol class="cites">
-                {cited.map((c) => (
-                  <li id={`cite-${c.n}`} tabindex="-1">
-                    <span class="cites-n num" aria-hidden="true">{c.n}</span>
-                    <blockquote class="cites-q" id={`cite-${c.n}-q`} set:html={renderQuote(c.quote)} />
-                    <span class="cites-m" data-paper={c.paper.name}>
-                      {c.paper.href ? <a href={c.paper.href} target="_blank" rel="noopener">{c.paper.name}</a> : <span>{c.paper.name}</span>}
-                      <a class="cites-back" href={`#cref-${c.n}`} aria-label={`Back to the text for source ${c.n}`}>Back to text</a>
-                    </span>
-                  </li>
-                ))}
+              {/* Every quote already opens from its numeral, so the full list stays folded. */}
+              <details class="cites-d">
+                <summary>
+                  <h2 id="in-the-papers-words">All quoted lines <span class="num">({cited.length})</span></h2>
+                </summary>
+                <ol class="cites">
+                  {cited.map((c) => (
+                    <li id={`cite-${c.n}`} tabindex="-1">
+                      <span class="cites-n num" aria-hidden="true">{c.n}</span>
+                      <blockquote class="cites-q" id={`cite-${c.n}-q`} set:html={renderQuote(c.quote)} />
+                      <span class="cites-m" data-paper={c.paper.name}>
+                        {c.paper.href ? <a href={c.paper.href} target="_blank" rel="noopener">{c.paper.name}</a> : <span>{c.paper.name}</span>}
+                        <a class="cites-back" href={`#cref-${c.n}`} aria-label={`Back to the text for source ${c.n}`}>Back to text</a>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </details>
+            </section>
+          )}
+          {otherSources.length > 0 && (
+            <section class="e-refs" aria-labelledby="sources">
+              <h2 id="sources">Other sources</h2>
+              {anyUnchecked && <p class="e-refs-n"><i aria-hidden="true"></i>Marked sources have not yet been checked against the original text.</p>}
+              <ol class="refs">
+                {otherSources.map((s) => {
+                  const c = cleanCite(s.cite);
+                  const href = s.url ?? c.href;
+                  return (
+                    <li>
+                      <span>{href ? <a href={href} target="_blank" rel="noopener">{c.text}</a> : c.text}{c.unchecked && entry.status !== 'reviewed' && <i class="ref-u" role="img" aria-label="Not yet checked against the source"></i>}</span>
+                      {s.quote && <q set:html={renderQuote(s.quote)} />}
+                    </li>
+                  );
+                })}
               </ol>
             </section>
           )}
-          <section class="e-refs" aria-labelledby="sources">
-            <h2 id="sources">Sources</h2>
-            {anyUnchecked && <p class="e-refs-n"><i aria-hidden="true"></i>Marked sources have not yet been checked against the original text.</p>}
-            <ol class="refs">
-              {entry.sources.map((s) => {
-                const c = cleanCite(s.cite);
-                const href = s.url ?? c.href;
-                return (
-                  <li>
-                    <span>{href ? <a href={href} target="_blank" rel="noopener">{c.text}</a> : c.text}{c.unchecked && entry.status !== 'reviewed' && <i class="ref-u" role="img" aria-label="Not yet checked against the source"></i>}</span>
-                    {s.quote && <q set:html={renderQuote(s.quote)} />}
-                  </li>
-                );
-              })}
-            </ol>
-          </section>
         </>
       ) : (
         <>
@@ -263,6 +283,16 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
     // Inline citations: a raised numeral opens a small card with the exact paper line.
     // Hover opens it on a mouse; click or tap pins it. Esc, an outside tap, or moving
     // focus away closes it. Without JS the numeral is a plain link to the quote.
+    // The full quote list is folded in a <details>; open it whenever a link points inside it.
+    const openFold = (el: Element | null) => {
+      const d = el?.closest('details');
+      if (d && !d.open) d.open = true;
+    };
+    const openForHash = () => {
+      if (location.hash.length > 1) openFold(document.getElementById(decodeURIComponent(location.hash.slice(1))));
+    };
+    openForHash();
+    window.addEventListener('hashchange', openForHash);
     const cites = [...document.querySelectorAll('.cite-a')] as HTMLAnchorElement[];
     if (cites.length > 0) {
       const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -364,6 +394,7 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
         const target = document.getElementById(go.hash.slice(1));
         close();
         if (!target) return;
+        openFold(target);
         target.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'center' });
         target.focus({ preventScroll: true });
         target.classList.remove('is-flash');

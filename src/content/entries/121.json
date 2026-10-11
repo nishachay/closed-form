@@ -136,17 +136,20 @@
     {
       "text": "The algorithm returns an estimate between the true distance and 1 + ε times it with probability at least 2/3, in expected time N^{1+o(1)}.",
       "verdict": "supported",
-      "sourceLine": "For every fixed rational $\\varepsilon$, its worst-case expected running time"
+      "sourceLine": "For every fixed rational $\\varepsilon$, its worst-case expected running time",
+      "sourceQuote": "For every fixed rational $\\varepsilon$, its worst-case expected running time on strings of total length $N$ is $N^{1+o(1)}$ as $N\\to\\infty$ on the logarithmic-word RAM."
     },
     {
       "text": "Equal strings return zero deterministically.",
       "verdict": "supported",
-      "sourceLine": "Equal strings return zero"
+      "sourceLine": "Equal strings return zero",
+      "sourceQuote": "Equal strings return zero deterministically."
     },
     {
       "text": "Unrestricted recursive evaluation of child distances would use up the time budget.",
       "verdict": "supported",
-      "sourceLine": "unrestricted recursive evaluation of child distances would"
+      "sourceLine": "unrestricted recursive evaluation of child distances would",
+      "sourceQuote": "In our refinement, unrestricted recursive evaluation of child distances would consume the available time even if the resulting numerical error were small."
     },
     {
       "text": "The method needs a narrow family containing a good comparison alignment and a bound on child distances evaluated.",
@@ -156,22 +159,26 @@
     {
       "text": "Predictions restrict the target positions at each cut to a narrow band.",
       "verdict": "supported",
-      "sourceLine": "restricts the possible target positions at each cut to a narrow band."
+      "sourceLine": "restricts the possible target positions at each cut to a narrow band.",
+      "sourceQuote": "Requiring agreement with that prediction restricts the possible target positions at each cut to a narrow band."
     },
     {
       "text": "Exact computation is used below an accuracy-dependent threshold, and the thresholds are very large.",
       "verdict": "supported",
-      "sourceLine": "their thresholds are very large, so the result is an"
+      "sourceLine": "their thresholds are very large, so the result is an",
+      "sourceQuote": "Section~\\ref{sec:geometry} gives the finite input convention and fallback rules; their thresholds are very large, so the result is an asymptotic approximation scheme."
     },
     {
       "text": "Exact dynamic programming is used if ℓ < 2^1000, where ℓ is about log2 log2 N.",
       "verdict": "supported",
-      "sourceLine": "Use exact dynamic programming also if $\\ell<2^{1000}$ or"
+      "sourceLine": "Use exact dynamic programming also if $\\ell<2^{1000}$ or",
+      "sourceQuote": "Use exact dynamic programming also if $\\ell<2^{1000}$ or $\\ell\\varepsilon<10$."
     },
     {
       "text": "The paper does not assert polynomial dependence on 1/ε.",
       "verdict": "supported",
-      "sourceLine": "We do not assert"
+      "sourceLine": "We do not assert",
+      "sourceQuote": "We do not assert polynomial dependence on $1/\\varepsilon$ or a joint bound when the accuracy varies with $N$."
     },
     {
       "text": "The Lean formalization covers the accuracy guarantee, zero on equal strings, and almost-linear expected work, with a Comparator statement.",

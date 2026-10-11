@@ -160,17 +160,20 @@
     {
       "text": "One polynomial-time language has S_3(f_n) > 2^(A√n) for every A > 0 and every n ≥ N_A.",
       "verdict": "supported",
-      "sourceLine": "Equivalently, for every real … , there is an integer … such that"
+      "sourceLine": "Equivalently, for every real … , there is an integer … such that",
+      "sourceQuote": "Equivalently, for every real \\(A>0\\), there is an integer \\(N_A\\) such that \\[ S_3(f_n)>2^{A\\sqrt n}\\qquad\\text{for every }n\\ge N_A. \\]"
     },
     {
       "text": "The language and its algorithm are fixed before A is chosen.",
       "verdict": "supported",
-      "sourceLine": "must be fixed before … is chosen."
+      "sourceLine": "must be fixed before … is chosen.",
+      "sourceQuote": "The word ``one'' matters: the language and its membership algorithm must be fixed before \\(A\\) is chosen."
     },
     {
       "text": "The result is weaker than a bound 2^(n^(1/2+ε)) for fixed ε, the question raised in 1995.",
       "verdict": "supported",
-      "sourceLine": "It is weaker than a lower bound"
+      "sourceLine": "It is weaker than a lower bound",
+      "sourceQuote": "It is weaker than a lower bound \\(2^{n^{1/2+\\varepsilon}}\\) for a fixed \\(\\varepsilon>0\\), the question raised in~\\cite[Section~5, Problem~2]{HJP95}."
     },
     {
       "text": "Every Boolean function is a single CNF, so the total gate count is essential.",
@@ -180,7 +183,8 @@
     {
       "text": "The proof needs a function with small correlation with every moderately wide CNF.",
       "verdict": "supported",
-      "sourceLine": "The circuit argument needs a function whose sign has small correlation with every moderately wide CNF."
+      "sourceLine": "The circuit argument needs a function whose sign has small correlation with every moderately wide CNF.",
+      "sourceQuote": "The circuit argument needs a function whose sign has small correlation with every moderately wide CNF."
     },
     {
       "text": "After a random restriction, a wide CNF becomes a signed combination of narrow CNFs with expected coefficient mass at most two, independent of the clause count.",
@@ -190,27 +194,32 @@
     {
       "text": "Membership evaluates a polynomial at a linear hash of the data.",
       "verdict": "supported",
-      "sourceLine": "Membership evaluates a polynomial at a linear hash of the data, in the quotient ring specified by another input block."
+      "sourceLine": "Membership evaluates a polynomial at a linear hash of the data, in the quotient ring specified by another input block.",
+      "sourceQuote": "Membership evaluates a polynomial at a linear hash of the data, in the quotient ring specified by another input block."
     },
     {
       "text": "The evaluator uses the supplied bits and never searches for a hard slice.",
       "verdict": "supported",
-      "sourceLine": "The language's evaluator simply uses the supplied bits; it never has to find a hard slice or test irreducibility."
+      "sourceLine": "The language's evaluator simply uses the supplied bits; it never has to find a hard slice or test irreducibility.",
+      "sourceQuote": "The language's evaluator simply uses the supplied bits; it never has to find a hard slice or test irreducibility."
     },
     {
       "text": "A circuit with S gates has at most S middle CNFs.",
       "verdict": "supported",
-      "sourceLine": "Finally, a circuit with … total gates has at most … middle CNFs"
+      "sourceLine": "Finally, a circuit with … total gates has at most … middle CNFs",
+      "sourceQuote": "Finally, a circuit with \\(S\\) total gates has at most \\(S\\) middle CNFs, each with at most \\(S\\) clauses, even when bottom gates are shared."
     },
     {
       "text": "The hard slice accepts at least a quarter of inputs.",
       "verdict": "supported",
-      "sourceLine": "The accepted set of the slice consequently has density"
+      "sourceLine": "The accepted set of the slice consequently has density",
+      "sourceQuote": "The accepted set of the slice consequently has density \\begin{equation}\\label{eq:accepted-density} \\Pr[g=1]=\\frac{1+\\E g}{2}\\ge\\frac14 \\end{equation} for every sufficiently large \\(n\\)."
     },
     {
       "text": "The depth stays three throughout.",
       "verdict": "supported",
-      "sourceLine": "The depth remains three throughout."
+      "sourceLine": "The depth remains three throughout.",
+      "sourceQuote": "The depth remains three throughout."
     },
     {
       "text": "An internal OpenAI model produced the manuscripts.",

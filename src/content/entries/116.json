@@ -166,6 +166,7 @@
       "text": "A small formula may contain exponentially many words after expansion.",
       "verdict": "supported",
       "sourceLine": "The obstacle is that a small formula may contain exponentially many words after expansion.",
+      "sourceQuote": "The obstacle is that a small formula may contain exponentially many words after expansion.",
       "paper": 2
     },
     {
@@ -197,24 +198,28 @@
       "text": "One rational tuple of dimension at most 2ns², built in polynomial bit time, hits every nonzero formula over every characteristic-zero field.",
       "verdict": "supported",
       "sourceLine": "in time polynomial in … measured in bit operations",
+      "sourceQuote": "There is a deterministic algorithm which, given integers $n,s\\ge1$, constructs a tuple \\[ \\mathbf T_{n,s}\\in\\Mat_d(\\Q)^n, \\qquad d\\le 2ns^2, \\] in time polynomial in $n,s$, measured in bit operations. The numerators and denominators of its entries have bit length $O(\\log(ns+1)+ns^2\\log(n+1))$.",
       "paper": 2
     },
     {
       "text": "The tuple works for every field of characteristic zero.",
       "verdict": "supported",
       "sourceLine": "For every field … of characteristic zero and every",
+      "sourceQuote": "For every field $F$ of characteristic zero and every $0\\ne f\\in\\mathsf{Form}_{n,s}(F)$, \\[ f(\\mathbf T_{n,s})\\ne0, \\] where the tuple is viewed over $F$ through the canonical embedding $\\Q\\hookrightarrow F$.",
       "paper": 2
     },
     {
       "text": "Words are encoded by iterated integrals, which are linearly independent.",
       "verdict": "supported",
       "sourceLine": "We encode words by iterated integrals in one variable.",
+      "sourceQuote": "We encode words by iterated integrals in one variable.",
       "paper": 2
     },
     {
       "text": "The order bound ensures a finite truncation retains a nonzero coefficient.",
       "verdict": "supported",
       "sourceLine": "the order bound ensures that this finite truncation retains a nonzero coefficient",
+      "sourceQuote": "Linear independence makes $h_f$ nonzero, and the order bound ensures that this finite truncation retains a nonzero coefficient.",
       "paper": 2
     },
     {
@@ -232,6 +237,7 @@
       "text": "The list works regardless of constants' bit lengths or inverse depth.",
       "verdict": "supported",
       "sourceLine": "The same list works for all such formulas, regardless of the bit lengths of their rational constants or their inverse depth.",
+      "sourceQuote": "The same list works for all such formulas, regardless of the bit lengths of their rational constants or their inverse depth.",
       "paper": 3
     },
     {
@@ -243,18 +249,21 @@
       "text": "Formal integration divides by positive integers and differentiation annihilates pth powers in characteristic p.",
       "verdict": "supported",
       "sourceLine": "formal integration divides by positive integers, ordinary differentiation annihilates",
+      "sourceQuote": "The analytic-looking part of the construction is not: formal integration divides by positive integers, ordinary differentiation annihilates $p$th powers in characteristic $p$, and distinct integer pole locations may coincide.",
       "paper": 1
     },
     {
       "text": "The paper replaces the differential operator by a multiplicative shift.",
       "verdict": "supported",
       "sourceLine": "replacing the differential operator by an infinite-order multiplicative shift",
+      "sourceQuote": "We retain the word-series and matrix-system organization, replacing the differential operator by an infinite-order multiplicative shift.",
       "paper": 1
     },
     {
       "text": "The positive-characteristic tuple has dimension O(n³s⁶), and applies to p = 2.",
       "verdict": "supported",
       "sourceLine": "applies to … without any relation between the characteristic and the formula size",
+      "sourceQuote": "In particular, its guarantee is uniform over arbitrary extensions of $\\F_p$, and applies to $p=2$ without any relation between the characteristic and the formula size.",
       "paper": 1
     },
     {
@@ -266,18 +275,21 @@
       "text": "The construction is polynomial in formula size and the binary length of the characteristic.",
       "verdict": "supported",
       "sourceLine": "the construction here is polynomial in formula size and in the binary length of the characteristic",
+      "sourceQuote": "These results provide relevant benchmarks, while the construction here is polynomial in formula size and in the binary length of the characteristic.",
       "paper": 1
     },
     {
       "text": "The time bound concerns construction; evaluating an unknown formula is separate.",
       "verdict": "supported",
       "sourceLine": "The time to evaluate a formula over an unspecified coefficient field is separate from the bit complexity of constructing the tuple.",
+      "sourceQuote": "The time to evaluate a formula over an unspecified coefficient field is separate from the bit complexity of constructing the tuple.",
       "paper": 1
     },
     {
       "text": "No bound for arbitrary shared circuits is asserted.",
       "verdict": "supported",
       "sourceLine": "No bound for arbitrary shared circuits is asserted.",
+      "sourceQuote": "No bound for arbitrary shared circuits is asserted.",
       "paper": 2
     },
     {

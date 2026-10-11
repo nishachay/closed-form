@@ -185,36 +185,42 @@
       "text": "The construction subdivides the two triangles into narrow sectors, each with its own tilted axis.",
       "verdict": "supported",
       "sourceLine": "own tilted axis. Tilting reduces the perpendicular area, but it can also",
+      "sourceQuote": "We subdivide these triangles into narrow sectors and give each sector its own tilted axis. Tilting reduces the perpendicular area, but it can also open gaps between neighboring sectors and between the two families.",
       "paper": 1
     },
     {
       "text": "Tilting can open gaps between neighboring sectors and between the two families.",
       "verdict": "supported",
       "sourceLine": "open gaps between neighboring sectors and between the two families.",
+      "sourceQuote": "Tilting reduces the perpendicular area, but it can also open gaps between neighboring sectors and between the two families.",
       "paper": 1
     },
     {
       "text": "Adjacent axes make the planes containing a shared sector side coincide.",
       "verdict": "supported",
       "sourceLine": "sector side make the planes containing that side coincide.",
+      "sourceQuote": "First, the axes adjacent to a shared sector side make the planes containing that side coincide.",
       "paper": 1
     },
     {
       "text": "Each sector's radial extent is increased by an amount of order ε².",
       "verdict": "supported",
       "sourceLine": "sector's radial extent by a",
+      "sourceQuote": "Second, we increase each sector's radial extent by a quantity of order $\\eps^2$.",
       "paper": 1
     },
     {
       "text": "The area cost of the increase is less than the quadratic gain from tilting.",
       "verdict": "supported",
       "sourceLine": "that their area cost is less than the quadratic gain from tilting.",
+      "sourceQuote": "The increases can therefore be chosen small enough that their area cost is less than the quadratic gain from tilting.",
       "paper": 1
     },
     {
       "text": "With η = 1/1000 the normalized area is 1/2 + (2η − 1/240)ε² up to 2ε⁴, which gives 1/2 − (13/6000)ε².",
       "verdict": "supported",
       "sourceLine": "so this integral equals $2\\eta-1/240$. The combined error is at most",
+      "sourceQuote": "Finally, \\[ \\int_{-1}^1d(q)\\,dq=\\frac1{15},\\qquad \\int_{-1}^1A(q)\\,dq=\\frac{17}{30}, \\] so this integral equals $2\\eta-1/240$. The combined error is at most $(59/64+1)\\eps^4<2\\eps^4$, as claimed.",
       "paper": 1
     },
     {
@@ -226,42 +232,49 @@
       "text": "For 0 < ε ≤ 1/2000 there is a cover by 2⌈2/ε²⌉ cylinders with compact triangular bases and remainder at most 2ε⁴.",
       "verdict": "supported",
       "sourceLine": "The remainder has absolute value at most $2\\eps^4$, and the total base",
+      "sourceQuote": "The remainder has absolute value at most $2\\eps^4$, and the total base area is strictly less than $A_{\\min}(K)/2$.",
       "paper": 1
     },
     {
       "text": "Every cover is finite, though the number of cylinders grows as the tilt decreases.",
       "verdict": "supported",
       "sourceLine": "Every covering in the theorem is finite, although its number of cylinders",
+      "sourceQuote": "Every covering in the theorem is finite, although its number of cylinders increases as the tilt decreases.",
       "paper": 1
     },
     {
       "text": "The directionwise ratios are invariant under invertible affine maps.",
       "verdict": "supported",
       "sourceLine": "The directionwise ratios are invariant under invertible affine",
+      "sourceQuote": "The directionwise ratios are invariant under invertible affine maps~\\cite[arXiv v1, Section~3]{BL2009}.",
       "paper": 1
     },
     {
       "text": "The half-area conclusion with one minimum projection area is asserted for regular tetrahedra.",
       "verdict": "supported",
       "sourceLine": "area for all directions, is asserted here for regular tetrahedra.",
+      "sourceQuote": "The conclusion of Theorem~\\ref{thm:counterexample}, which uses one minimum projection area for all directions, is asserted here for regular tetrahedra.",
       "paper": 1
     },
     {
       "text": "A companion paper gives covers with compact parallelogram bases.",
       "verdict": "supported",
       "sourceLine": "cylinder cover with compact parallelogram perpendicular bases such that",
+      "sourceQuote": "Every regular tetrahedron $K\\subset\\R^3$ of positive edge length admits a finite cylinder cover with compact parallelogram perpendicular bases such that \\[ \\sum_i|B_i|<\\tfrac12 A_{\\min}(K), \\qquad \\sum_i\\frac{|B_i|}{|\\pi_{u_i^\\perp}K|}<\\tfrac12. \\]",
       "paper": 3
     },
     {
       "text": "The radial-sweeps companion lowers the two-cylinder cost strictly by varying directions.",
       "verdict": "supported",
       "sourceLine": "tetrahedron's two-cylinder cost strictly by varying the directions,",
+      "sourceQuote": "Our construction lowers the tetrahedron's two-cylinder cost strictly by varying the directions, while keeping coverage after finite approximation.",
       "paper": 4
     },
     {
       "text": "The ruled-sets companion turns continuously varying segment families into finite cylinder covers.",
       "verdict": "supported",
       "sourceLine": "family finite. This paper supplies that last step with its exact",
+      "sourceQuote": "A useful way to search for inexpensive covers is to perturb the lines in a simple configuration, compare the added label area with the saving in perpendicular projection, and only then make the family finite. This paper supplies that last step with its exact hypotheses and area factor.",
       "paper": 2
     },
     {

@@ -163,12 +163,14 @@
       "text": "For fixed errors there is a polynomial-time reduction from 3SAT to unique games separating value 1-eps from delta.",
       "verdict": "supported",
       "sourceLine": "For every fixed …, there are an integer … and a deterministic polynomial-time reduction from 3SAT to explicit unweighted Unique Games instances … such that",
+      "sourceQuote": "For every fixed \\(\\varepsilon,\\delta\\in(0,1/2)\\), there are an integer \\(s\\ge1\\) and a deterministic polynomial-time reduction from \\(\\mathrm{3SAT}\\) to explicit unweighted Unique Games instances \\(G_\\varphi\\) over \\(K=\\F_2^s\\) such that \\[ \\begin{aligned} \\varphi\\text{ satisfiable} &\\quad\\Longrightarrow\\quad \\val(G_\\varphi)\\ge1-\\varepsilon,\\\\ \\varphi\\text{ unsatisfiable} &\\quad\\Longrightarrow\\quad \\val(G_\\varphi)\\le\\delta. \\end{aligned} \\] The graph is simple and bipartite, and every constraint is a translation \\(a(v_e)=a(u_e)+c_e\\) of \\(K\\).",
       "paper": 1
     },
     {
       "text": "This resolves the Unique Games Conjecture in its usual edge-value formulation.",
       "verdict": "supported",
       "sourceLine": "Thus the result resolves the Unique Games Conjecture positively in its usual edge-value formulation [Conjecture 2.5][Khot10].",
+      "sourceQuote": "Thus the result resolves the Unique Games Conjecture positively in its usual edge-value formulation~\\cite[Conjecture~2.5]{Khot10}.",
       "paper": 1
     },
     {
@@ -185,6 +187,7 @@
       "text": "The errors are prescribed before the alphabet, which may be large and fixed.",
       "verdict": "supported",
       "sourceLine": "The two errors are prescribed independently, before the alphabet is chosen.",
+      "sourceQuote": "The two errors are prescribed independently, before the alphabet is chosen.",
       "paper": 1
     },
     {
@@ -201,12 +204,14 @@
       "text": "The theorem turns conditional hardness results into NP-hardness results.",
       "verdict": "supported",
       "sourceLine": "Theorem … turns established conditional hardness results into NP-hardness results.",
+      "sourceQuote": "Theorem~\\ref{thm:ugc} turns established conditional hardness results into NP-hardness results. The underlying conditional reductions and approximation thresholds are due to the cited authors.",
       "paper": 1
     },
     {
       "text": "If P ≠ NP, the results exclude deterministic polynomial-time approximations at the thresholds.",
       "verdict": "supported",
       "sourceLine": "If …, the resulting hardness statements exclude deterministic polynomial-time approximations at the indicated strict thresholds.",
+      "sourceQuote": "In each reduction using Theorem~\\ref{thm:ugc}, they determine the Unique Games errors before its alphabet is chosen. If \\(\\mathrm P\\ne\\mathrm{NP}\\), the resulting hardness statements exclude deterministic polynomial-time approximations at the indicated strict thresholds.",
       "paper": 1
     },
     {
@@ -248,6 +253,7 @@
       "text": "The central difficulty is keeping completeness near one with one reply per label.",
       "verdict": "supported",
       "sourceLine": "The central difficulty is to retain completeness near one when every label permits only one reply.",
+      "sourceQuote": "The central difficulty is to retain completeness near one when every label permits only one reply.",
       "paper": 1
     },
     {
@@ -259,12 +265,14 @@
       "text": "Under the uniform rank-one test an honest evaluation keeps its value with probability close to one half.",
       "verdict": "supported",
       "sourceLine": "this evaluation keeps its value with probability … close to one half",
+      "sourceQuote": "For independent uniform \\(a\\in\\F_2^\\ell\\) and \\(l\\in\\F_2^m\\), this evaluation keeps its value with probability \\((1+2^{-\\ell})/2\\), close to one half. Our test changes the noise while retaining the ordinary rank-one test as the structural tool for soundness.",
       "paper": 1
     },
     {
       "text": "The new noise is built from quadratic blocks; large-rank linear observations detect it with probability at least 1/8.",
       "verdict": "supported",
       "sourceLine": "whose restrictions to … have sufficiently large rank detects … with probability at least",
+      "sourceQuote": "At the same time, every family of linear observations whose restrictions to \\(K\\) have sufficiently large rank detects \\(a\\) with probability at least \\(1/8\\). The rank threshold depends only on \\(p\\) and is chosen before \\(\\ell\\).",
       "paper": 1
     },
     {

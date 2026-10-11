@@ -157,52 +157,62 @@
     {
       "text": "The algorithm constructs a minimum-makespan schedule and decides a deadline exactly, returning a schedule when feasible.",
       "verdict": "supported",
-      "sourceLine": "There is a uniform deterministic algorithm that constructs a feasible schedule of minimum makespan."
+      "sourceLine": "There is a uniform deterministic algorithm that constructs a feasible schedule of minimum makespan.",
+      "sourceQuote": "There is a uniform deterministic algorithm that constructs a feasible schedule of minimum makespan."
     },
     {
       "text": "The running time is O((L+2)^150020) where L is the binary input length.",
       "verdict": "supported",
-      "sourceLine": "where … is the total binary input length."
+      "sourceLine": "where … is the total binary input length.",
+      "sourceQuote": "Both tasks can be performed in \\(O((L+2)^{150020})\\) steps on a deterministic multitape Turing machine, where \\(L\\) is the total binary input length."
     },
     {
       "text": "Reordering jobs of one gap does not change their relation to exterior jobs.",
       "verdict": "supported",
-      "sourceLine": "reordering the jobs of one gap does not change their temporal relation to any exterior job."
+      "sourceLine": "reordering the jobs of one gap does not change their temporal relation to any exterior job.",
+      "sourceQuote": "If selected slots are removed from a feasible schedule, the remaining open gaps can be scheduled independently: reordering the jobs of one gap does not change their temporal relation to any exterior job."
     },
     {
       "text": "The obstacle is the number of gaps; boundary triples do not determine a gap's job set.",
       "verdict": "supported",
-      "sourceLine": "The obstacle is their number. Naming a gap by its two boundary triples does not by itself determine its job set"
+      "sourceLine": "The obstacle is their number. Naming a gap by its two boundary triples does not by itself determine its job set",
+      "sourceQuote": "The obstacle is their number. Naming a gap by its two boundary triples does not by itself determine its job set, and repeatedly intersecting descriptions inherited from its ancestors can require an unbounded formula."
     },
     {
       "text": "Inherited descriptions can require an unbounded formula.",
       "verdict": "supported",
-      "sourceLine": "repeatedly intersecting descriptions inherited from its ancestors can require an unbounded formula."
+      "sourceLine": "repeatedly intersecting descriptions inherited from its ancestors can require an unbounded formula.",
+      "sourceQuote": "Naming a gap by its two boundary triples does not by itself determine its job set, and repeatedly intersecting descriptions inherited from its ancestors can require an unbounded formula."
     },
     {
       "text": "The bound on description size is independent of decomposition depth.",
       "verdict": "supported",
-      "sourceLine": "The bound is independent of the depth of the decomposition."
+      "sourceLine": "The bound is independent of the depth of the decomposition.",
+      "sourceQuote": "The bound is independent of the depth of the decomposition."
     },
     {
       "text": "Formulas have at most 10000 leaves; the hierarchy needs fewer than 500.",
       "verdict": "supported",
-      "sourceLine": "the global node predicates and relative split predicates needed in the hierarchy have fewer than"
+      "sourceLine": "the global node predicates and relative split predicates needed in the hierarchy have fewer than",
+      "sourceQuote": "In fact, the global node predicates and relative split predicates needed in the hierarchy have fewer than \\(500\\) leaves."
     },
     {
       "text": "The algorithm processes sets in increasing order of cardinality.",
       "verdict": "supported",
-      "sourceLine": "in increasing order of cardinality"
+      "sourceLine": "in increasing order of cardinality",
+      "sourceQuote": "The algorithm accepts or rejects each \\(W\\in\\F\\), in increasing order of cardinality."
     },
     {
       "text": "No practical running-time claim is made.",
       "verdict": "supported",
-      "sourceLine": "no practical running-time claim is made."
+      "sourceLine": "no practical running-time claim is made.",
+      "sourceQuote": "The polynomial supplied by the proof has a very large constant exponent; no practical running-time claim is made."
     },
     {
       "text": "The model has no release dates or communication delays.",
       "verdict": "supported",
-      "sourceLine": "There are no release dates, communication delays, eligibility restrictions, or additional resources."
+      "sourceLine": "There are no release dates, communication delays, eligibility restrictions, or additional resources.",
+      "sourceQuote": "There are no release dates, communication delays, eligibility restrictions, or additional resources."
     },
     {
       "text": "The Lean formalization covers a fixed deterministic polynomial-time algorithm for minimum makespan and exact deadline decision, with a Comparator link.",

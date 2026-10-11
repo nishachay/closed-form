@@ -38,7 +38,10 @@ export interface LintIssue {
     | 'cite-detached'
     | 'cite-outside-explanation'
     | 'cite-wrong-paper'
-    | 'warning-cite-no-paper';
+    | 'quote-not-verbatim'
+    | 'quote-missing-line'
+    | 'warning-cite-no-paper'
+    | 'warning-cite-no-quote';
   message: string;
 }
 
@@ -110,6 +113,8 @@ const ERROR_KINDS: ReadonlySet<LintIssue['kind']> = new Set([
   'cite-detached',
   'cite-outside-explanation',
   'cite-wrong-paper',
+  'quote-not-verbatim',
+  'quote-missing-line',
 ]);
 
 export function isError(i: LintIssue): boolean {
@@ -172,7 +177,66 @@ export function stripInlineTags(html: string): string {
 }
 
 export function texSkeleton(tex: string): string {
-  return baseSkeleton(stripRefs(tex.replace(/(?<!\\)%.*$/gm, '')));
+  return baseSkeleton(stripRefs(stripTexComments(tex)));
+}
+
+/** LaTeX with comments removed (an unescaped % to the end of its line). */
+export function stripTexComments(tex: string): string {
+  return tex.replace(/(?<!\\)%.*$/gm, '');
+}
+
+/**
+ * The form a `sourceQuote` is copied from: comments removed and every whitespace run
+ * (line breaks included) written as one space. Nothing else changes.
+ */
+export function flattenTex(tex: string): string {
+  return stripTexComments(tex).replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * A claim's `sourceQuote` (the full sentence shown to readers) must be an exact substring
+ * of its paper's flattened LaTeX and must contain the claim's `sourceLine`.
+ * `paperTexByIndex` null entries (paper not on disk) skip the verbatim check.
+ */
+export function lintSourceQuotes(entry: Record<string, unknown>, paperTexByIndex?: (string | null)[]): LintIssue[] {
+  const out: LintIssue[] = [];
+  const claims = (entry as { claims?: { sourceLine?: unknown; sourceQuote?: unknown; paper?: unknown }[] }).claims ?? [];
+  const flats = (paperTexByIndex ?? []).map((t) => (t === null ? null : flattenTex(t)));
+  claims.forEach((c, i) => {
+    if (c.sourceQuote === undefined) return;
+    const q = typeof c.sourceQuote === 'string' ? c.sourceQuote.replace(/\s+/g, ' ').trim() : '';
+    if (!q) {
+      out.push({ field: `claims[${i}]`, kind: 'quote-not-verbatim', message: `claims[${i}].sourceQuote is empty` });
+      return;
+    }
+    if (typeof c.sourceLine !== 'string' || !quoteFound(c.sourceLine, texSkeleton(q))) {
+      out.push({ field: `claims[${i}]`, kind: 'quote-missing-line', message: `claims[${i}].sourceQuote does not contain its sourceLine` });
+    }
+    const pool = typeof c.paper === 'number' ? [flats[c.paper - 1]] : flats;
+    if (pool.length === 0 || pool.some((f) => f === null || f === undefined)) return; // not on disk: skipped, never guessed
+    if (!pool.some((f) => (f as string).includes(q))) {
+      out.push({
+        field: `claims[${i}]`,
+        kind: 'quote-not-verbatim',
+        message: `claims[${i}].sourceQuote is not an exact passage of the paper LaTeX: ${q.slice(0, 80)}…`,
+      });
+    }
+  });
+  // Cited claims should carry the full sentence (pnpm source-quotes fills it).
+  if (typeof entry.explanation === 'string') {
+    const seen = new Set<number>();
+    for (const m of parseCitations(entry.explanation)) {
+      for (const n of m.claims) {
+        const c = claims[n - 1];
+        if (seen.has(n) || !c || typeof c.sourceLine !== 'string' || !c.sourceLine.trim()) continue;
+        seen.add(n);
+        if (c.sourceQuote === undefined) {
+          out.push({ field: `claims[${n - 1}]`, kind: 'warning-cite-no-quote', message: `claims[${n - 1}] is cited but has no sourceQuote (run pnpm source-quotes)` });
+        }
+      }
+    }
+  }
+  return out;
 }
 
 function stripRefs(s: string): string {
@@ -358,7 +422,7 @@ async function main(): Promise<void> {
     const tex = paperTex === null ? null : [paperTex, stripInlineTags(fam?.summary ?? ''), ...(fam?.papers.map((p) => stripInlineTags(p.abstract)) ?? [])].join('\n');
     if (tex !== null) quoteChecked++;
     const texByPaper = fam ? await loadTexByPaper(fam.papers, sourceDir) : undefined;
-    const issues = [...lintEntry(entry), ...lintSources(entry), ...lintClaimQuotes(entry, tex), ...lintCitations(entry, texByPaper)];
+    const issues = [...lintEntry(entry), ...lintSources(entry), ...lintClaimQuotes(entry, tex), ...lintCitations(entry, texByPaper), ...lintSourceQuotes(entry, texByPaper)];
     if (issues.length > 0) console.log(formatIssues(id, issues));
     errors += issues.filter(isError).length;
     warnings += issues.filter((i) => i.kind.startsWith('warning-')).length;

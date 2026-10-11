@@ -147,12 +147,14 @@
     {
       "text": "The proof keeps a boundary contribution that disappears from the leading linear-sieve term.",
       "verdict": "supported",
-      "sourceLine": "boundary contribution that disappears from the leading linear-sieve"
+      "sourceLine": "boundary contribution that disappears from the leading linear-sieve",
+      "sourceQuote": "It keeps a boundary contribution that disappears from the leading linear-sieve term, and then controls the discrepancy between this reference calculation and the actual prescribed classes."
     },
     {
       "text": "Many discrepant edges force alignment with one of finitely many rationals.",
       "verdict": "supported",
-      "sourceLine": "shows that many discrepant edges force"
+      "sourceLine": "shows that many discrepant edges force",
+      "sourceQuote": "An inverse estimate in Section~\\ref{sec:inverse} shows that many discrepant edges force alignment with one of finitely many rationals $A/D$: a prime $p$ aligns when $Da_p\\equiv A\\pmod p$."
     },
     {
       "text": "Hajdu and Saradha proved j(P_k)=h(k) for k ≤ 23 but found j(P_24)=234 < 236 = h(24).",
@@ -162,17 +164,20 @@
     {
       "text": "There is an absolute constant C with h(k) ≤ C k²/(log log 3k)² for every k ≥ 1.",
       "verdict": "supported",
-      "sourceLine": "There is an absolute constant $C>0$ such that"
+      "sourceLine": "There is an absolute constant $C>0$ such that",
+      "sourceQuote": "There is an absolute constant $C>0$ such that \\[ h(k)\\le C\\frac{k^2}{(\\log\\log(3k))^2} \\qquad\\text{for every integer }k\\ge1. \\]"
     },
     {
       "text": "The bound is uniform over prime sets and interval translations.",
       "verdict": "supported",
-      "sourceLine": "no restriction on their sizes or on the interval's translation"
+      "sourceLine": "no restriction on their sizes or on the interval's translation",
+      "sourceQuote": "In particular the theorem gives a uniform quadratic bound for arbitrary sets of prime divisors, with no restriction on their sizes or on the interval's translation."
     },
     {
       "text": "The constant in the main theorem is not made explicit.",
       "verdict": "supported",
-      "sourceLine": "constant in Theorem~\\ref{thm:main} is not made explicit."
+      "sourceLine": "constant in Theorem~\\ref{thm:main} is not made explicit.",
+      "sourceQuote": "These finite computations concern explicit values, whereas the constant in Theorem~\\ref{thm:main} is not made explicit."
     },
     {
       "text": "The Ford–Green–Konyagin–Maynard–Tao construction gives the lower bound j(P_k) ≫ k(log k)² logloglog k / loglog k.",
@@ -182,7 +187,8 @@
     {
       "text": "The gap between the lower bound and the new upper bound remains substantial.",
       "verdict": "supported",
-      "sourceLine": "remains substantial. Vaughan suggested the stronger possible estimate"
+      "sourceLine": "remains substantial. Vaughan suggested the stronger possible estimate",
+      "sourceQuote": "The gap between \\eqref{eq:historical-lower-bound} and our upper bound remains substantial. Vaughan suggested the stronger possible estimate $j(n)\\ll_\\eps\\omega(n)^{1+\\eps}$ for $n>1$ and each fixed $\\eps>0$ \\cite[p.~329]{Vaughan1977}."
     },
     {
       "text": "The Lean formalization proves h(k) ≤ Ck²/(log log 3k)² for one absolute C and every k ≥ 1, with intervals starting at any signed integer; the quadratic bound is retained separately; the optimal order is not determined.",

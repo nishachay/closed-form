@@ -215,84 +215,98 @@
       "text": "With close distance 1 and far distance 3, covering c of m elements costs 3m − 2c, and a perfect cover costs m.",
       "verdict": "supported",
       "sourceLine": "the connection cost is exactly \\(3m-2c\\) when the chosen sets cover \\(c\\) elements; a perfect cover has cost \\(m\\)",
+      "sourceQuote": "For a universe of size \\(m\\), the connection cost is exactly \\(3m-2c\\) when the chosen sets cover \\(c\\) elements; a perfect cover has cost \\(m\\).",
       "paper": 2
     },
     {
       "text": "The hardness uses Feige's perfect-completeness coverage gap under P ≠ NP.",
       "verdict": "supported",
       "sourceLine": "based on Feige's perfect-completeness coverage gap",
+      "sourceQuote": "We use the formulation under \\(P\\ne NP\\) recorded by Anand and Lee~\\cite[Sections~1 and~1.1]{AnandLee2024}, based on Feige's perfect-completeness coverage gap~\\cite[Theorem~5.3]{Feige1998}.",
       "paper": 2
     },
     {
       "text": "A gap between covering every element and covering at most a 1 − 1/e fraction gives the lower bound 1 + 2/e.",
       "verdict": "supported",
       "sourceLine": "Thus a gap between covering every element and covering at most a \\(1-1/e+\\delta\\) fraction gives the lower bound \\(1+2/e-2\\delta\\)",
+      "sourceQuote": "Thus a gap between covering every element and covering at most a \\(1-1/e+\\delta\\) fraction gives the lower bound \\(1+2/e-2\\delta\\), for every fixed positive \\(\\delta\\).",
       "paper": 2
     },
     {
       "text": "The facility budget is a central difficulty; small cost is much easier with extra facilities.",
       "verdict": "supported",
       "sourceLine": "The facility budget is a central difficulty: a solution with small connection cost can be much easier to obtain when extra facilities are allowed.",
+      "sourceQuote": "The facility budget is a central difficulty: a solution with small connection cost can be much easier to obtain when extra facilities are allowed.",
       "paper": 2
     },
     {
       "text": "The earlier framework's general transfer theorem uses a parameter at least 2 for metric k-median.",
       "verdict": "supported",
       "sourceLine": "The earlier framework's general transfer theorem uses a parameter at least \\(2\\) in the metric \\(k\\)-median case",
+      "sourceQuote": "The earlier framework's general transfer theorem uses a parameter at least \\(2\\) in the metric \\(k\\)-median case \\cite[Theorem~6.1]{ByrkaEtAl2026}; it does not supply the smaller factor proved here.",
       "paper": 2
     },
     {
       "text": "The approach first permits a constant additive surplus, makes it deterministic, and then removes the surplus.",
       "verdict": "supported",
       "sourceLine": "Our approach first permits a constant additive surplus, makes that approximation deterministic, and then removes the surplus using an established reduction.",
+      "sourceQuote": "Our approach first permits a constant additive surplus, makes that approximation deterministic, and then removes the surplus using an established reduction.",
       "paper": 2
     },
     {
       "text": "The new analysis replaces the cost analysis with a directed comparison inequality.",
       "verdict": "supported",
       "sourceLine": "with the cost analysis replaced by a directed comparison inequality",
+      "sourceQuote": "Our construction follows the iterative graph framework, with the cost analysis replaced by a directed comparison inequality and a potential that retains some surviving assignments after an opening.",
       "paper": 2
     },
     {
       "text": "For every fixed ε > 0 a deterministic polynomial-time algorithm opens at most k facilities within 1 + 2/e + ε of optimum.",
       "verdict": "supported",
       "sourceLine": "For every fixed \\(\\varepsilon>0\\), there is a deterministic algorithm which",
+      "sourceQuote": "For every fixed \\(\\varepsilon>0\\), there is a deterministic algorithm which, given a finite rational metric \\(k\\)-median instance with \\(1\\le k\\le |F|\\), returns \\(S\\subseteq F\\), \\(|S|\\le k\\), such that \\[ \\sum_{j\\in J}d(j,S)\\le \\left(1+\\frac2e+\\varepsilon\\right)\\OPT_k. \\]",
       "paper": 2
     },
     {
       "text": "The polynomial may depend on ε.",
       "verdict": "supported",
       "sourceLine": "The polynomial may depend on \\(\\varepsilon\\).",
+      "sourceQuote": "The polynomial may depend on \\(\\varepsilon\\).",
       "paper": 2
     },
     {
       "text": "If P ≠ NP, the infimum of approximation factors with specified candidate facilities is 1 + 2/e.",
       "verdict": "supported",
       "sourceLine": "If \\(P\\ne NP\\), the infimum of deterministic polynomial-time approximation factors for metric \\(k\\)-median with specified candidate facilities is \\(1+2/e\\).",
+      "sourceQuote": "If \\(P\\ne NP\\), the infimum of deterministic polynomial-time approximation factors for metric \\(k\\)-median with specified candidate facilities is \\(1+2/e\\).",
       "paper": 2
     },
     {
       "text": "The infimum does not assert attainment of the endpoint factor.",
       "verdict": "supported",
       "sourceLine": "does not assert attainment of the endpoint factor",
+      "sourceQuote": "The infimum in Corollary~\\ref{cor:threshold} does not assert attainment of the endpoint factor.",
       "paper": 2
     },
     {
       "text": "The lower-bound question with facilities restricted to client locations is different.",
       "verdict": "supported",
       "sourceLine": "the corresponding lower-bound question with the restriction \\(F=J\\) is different",
+      "sourceQuote": "In particular, the corresponding lower-bound question with the restriction \\(F=J\\) is different~\\cite{AnandLee2024}.",
       "paper": 2
     },
     {
       "text": "A companion paper gives an independent randomized approximation below factor 2 within the facility budget.",
       "verdict": "supported",
       "sourceLine": "give an independent randomized approximation below factor \\(2\\) while respecting the facility budget",
+      "sourceQuote": "A separate companion combines anchor recovery with bounded-price payment accounting to give an independent randomized approximation below factor \\(2\\) while respecting the facility budget~\\cite[Theorem~1.2]{OpenAIRecovery2026}.",
       "paper": 2
     },
     {
       "text": "The companion's proofs are independent of the graph-rounding argument.",
       "verdict": "supported",
       "sourceLine": "The recovery, execution and global application proofs below are independent of that graph-rounding argument.",
+      "sourceQuote": "The recovery, execution and global application proofs below are independent of that graph-rounding argument.",
       "paper": 1
     },
     {
