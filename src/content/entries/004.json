@@ -1,0 +1,233 @@
+{
+  "id": "004",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf",
+      "label": "Hilbert's tenth problem over the rational numbers"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-pointwise-2-converse-for-elliptic-curves-with-rational-two-torsion-October-7-2026/paper.pdf",
+      "label": "A pointwise 2-converse for elliptic curves with rational two-torsion"
+    }
+  ],
+  "headline": "No algorithm can decide whether a whole-number polynomial equation has a solution in fractions, the paper claims.",
+  "scope": "Polynomials with integer coefficients in any number of variables; the question is whether some choice of rational numbers makes the polynomial zero.",
+  "plain": "Hilbert asked in 1900 for a method to decide whether a polynomial equation has whole-number solutions. In 1970 that was shown to be impossible. The same question for fractions, the rational numbers, stayed open. This paper claims that it is impossible too. No computer program can sort every such equation correctly into solvable and unsolvable over the fractions.",
+  "doesNot": "This does not give a method for any special family of equations, such as curves of one fixed kind.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1949",
+    "firstStepBy": "Julia Robinson, defining the whole numbers inside the rationals",
+    "field": "Number theory",
+    "significance": "Landmark",
+    "significanceWhy": "If it holds, it settles the rational-number version of Hilbert's tenth problem, a central open question in logic and number theory."
+  },
+  "explanation": "Take the equation x² + y² = 2. It has the solution x = 1, y = 1. It also has the fraction solution x = 1/5, y = 7/5, since 1/25 + 49/25 = 50/25 = 2. Now take x² = 2. No fraction works, because the square root of 2 is irrational. Hilbert's tenth problem over the rationals asks for one method that sorts every such equation. The method must say whether some choice of fractions makes it true.\n\nThe equations allowed are polynomials with whole-number coefficients. The number of unknowns can be anything, and it is part of the input. Fractions are the rational numbers, written a/b with whole numbers a and b, and b not zero.\n\nHilbert first asked the question in 1900 for whole-number solutions. In 1961, Davis, Putnam and Robinson did most of the work, with an extra power operation allowed. In 1970, Matiyasevich supplied the last step. Their combined theorem says whole-number equations can encode any condition whose cases a program can list. So no algorithm decides whether a whole-number equation has a whole-number solution.\n\nFor fractions, the question stayed open. A search through all fractions will find a solution if one exists. If none exists, the search runs forever and never says so. The natural plan was to describe the whole numbers inside the fractions using only equations. Then the old answer would carry over. In 1949, Julia Robinson described them with a formula that uses both \"for every\" and \"there is\". Poonen in 2009 and Koenigsmann in 2016 gave simpler formulas of that mixed kind. None gave the equation-only description the plan needs. A 1995 conjecture of Mazur, if true, would rule that description out.\n\nNearby cases were settled. In 2003, Poonen proved the problem undecidable for some rings of fractions whose denominators use almost all primes. Recent work by Koymans and Pagano, and separately by Alpöge, Bhargava, Ho and Shnidman, settled rings of integers of number fields. Those rings are different from the field of all fractions.\n\nThe paper claims the full answer is no. No algorithm decides whether a whole-number polynomial has a rational zero. It also claims the problem is exactly as hard as the halting problem, the question of whether a program ever stops. That stays true for polynomials of degree at most four.\n\nThe approach avoids describing the whole numbers directly. For each polynomial f, it builds an endless list of finite tests. Each test asks finitely many questions of the form \"does this equation have a fraction solution?\". The paper claims f has a whole-number zero exactly when every test passes. Suppose a method for fractions existed. Then two searches could run side by side. One hunts for a whole-number zero, and the other hunts for a failed test. One of them must stop.\n\nThe hard part is showing a failed test exists whenever f has no whole-number zero. The tests attach to each number a point on an elliptic curve. That is a cubic curve whose points can be added like numbers. Each attached point is a multiple of one fixed point, so it carries a whole-number index. The proof measures size by height, roughly the number of digits in a fraction. If every test passed, a logic tool called compactness would give an imagined zero, perhaps with infinitely large entries. Height bounds at carefully chosen primes cap the indices of its entries. That leaves only ordinary whole numbers, and f would have a real whole-number zero.\n\nThe proof leans on two other papers in the openai/math release. One is a 2-converse for elliptic curves with a point of order 2. It is the second paper of this result. The other is a modularity theorem at the prime 2, claimed in a separate paper. Neither has a published specialist review.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Landmark only if this paper and the claimed 2-converse and modularity results it uses all hold. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Rational number",
+      "meaning": "A fraction a/b of whole numbers, with b not zero."
+    },
+    {
+      "term": "Hilbert's tenth problem",
+      "meaning": "Hilbert's 1900 request for a method that decides whether a polynomial equation has whole-number solutions."
+    },
+    {
+      "term": "Algorithm",
+      "meaning": "A step-by-step procedure a computer can follow that always finishes with an answer."
+    },
+    {
+      "term": "Halting problem",
+      "meaning": "The question of whether a given computer program ever stops. No algorithm answers it for every program."
+    },
+    {
+      "term": "Elliptic curve",
+      "meaning": "A cubic curve, such as y² = x³ + ax + b, whose points can be added like numbers."
+    },
+    {
+      "term": "Height",
+      "meaning": "A size measure for a fraction, roughly the logarithm of its larger numerator or denominator."
+    },
+    {
+      "term": "Compactness",
+      "meaning": "A logic principle: if every finite batch of conditions can be met, some possibly unusual structure meets them all."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Hilbert's tenth problem over the rational numbers”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf",
+      "quote": "Enumerating rational tuples will eventually find any rational zero, but gives no answer for an equation without one."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A pointwise 2-converse for elliptic curves with rational two-torsion”, openai/math release preprint (October 7, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-pointwise-2-converse-for-elliptic-curves-with-rational-two-torsion-October-7-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Fontaine–Mazur modularity at the prime 2”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fontaine-Mazur-modularity-at-the-prime-2-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 5,
+      "cite": "J. Robinson, “Definability and decision problems in arithmetic”, Journal of Symbolic Logic 14 (1949), 98–114",
+      "url": "https://doi.org/10.2307/2266510"
+    },
+    {
+      "id": 6,
+      "cite": "M. Davis, H. Putnam and J. Robinson, “The decision problem for exponential Diophantine equations”, Annals of Mathematics 74 (1961), 425–436",
+      "url": "https://doi.org/10.2307/1970289"
+    },
+    {
+      "id": 7,
+      "cite": "M. Davis, “Hilbert's tenth problem is unsolvable”, American Mathematical Monthly 80 (1973), 233–269",
+      "url": "https://doi.org/10.1080/00029890.1973.11993265"
+    },
+    {
+      "id": 8,
+      "cite": "B. Poonen, “Characterizing integers among rational numbers with a universal-existential formula”, American Journal of Mathematics 131 (2009), 675–682",
+      "url": "https://doi.org/10.1353/ajm.0.0057"
+    },
+    {
+      "id": 9,
+      "cite": "J. Koenigsmann, “Defining ℤ in ℚ”, Annals of Mathematics 183 (2016), 73–93",
+      "url": "https://doi.org/10.4007/annals.2016.183.1.2"
+    },
+    {
+      "id": 10,
+      "cite": "B. Poonen, “Hilbert's tenth problem and Mazur's conjecture for large subrings of ℚ”, Journal of the AMS 16 (2003), 981–990",
+      "url": "https://doi.org/10.1090/S0894-0347-03-00433-8"
+    },
+    {
+      "id": 11,
+      "cite": "P. Koymans and C. Pagano, “Hilbert's tenth problem via additive combinatorics”, Journal of the AMS (2026)",
+      "url": "https://doi.org/10.1090/jams/1081"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The problem asks for a decision procedure for rational zeros of integer polynomials.",
+      "verdict": "supported",
+      "sourceLine": "Hilbert's tenth problem over the rational numbers asks for a decision procedure for rational zeros of polynomials with integer coefficients."
+    },
+    {
+      "text": "The number of variables is part of the input.",
+      "verdict": "supported",
+      "sourceLine": "The number of variables is part of the input."
+    },
+    {
+      "text": "Davis, Putnam and Robinson handled the case with exponentiation allowed in 1961.",
+      "verdict": "supported",
+      "sourceLine": "Davis, Putnam, and Robinson proved in 1961 that every recursively enumerable relation has such a representation if exponentiation is also allowed."
+    },
+    {
+      "text": "Matiyasevich completed the whole-number theorem in 1970.",
+      "verdict": "supported",
+      "sourceLine": "Matiyasevich supplied the required growth in 1970 through a Diophantine description of a Fibonacci relation"
+    },
+    {
+      "text": "Whole-number equations can encode any listable condition.",
+      "verdict": "supported",
+      "sourceLine": "integer polynomial equations can encode arbitrary recursively enumerable conditions."
+    },
+    {
+      "text": "Searching fractions finds a zero if one exists but gives no answer otherwise.",
+      "verdict": "supported",
+      "sourceLine": "Enumerating rational tuples will eventually find any rational zero, but gives no answer for an equation without one."
+    },
+    {
+      "text": "Robinson defined the integers in the rationals in 1949.",
+      "verdict": "supported",
+      "sourceLine": "Julia Robinson showed in 1949 that the integers are first-order definable in the rationals using addition and multiplication."
+    },
+    {
+      "text": "Her formula uses both kinds of quantifier.",
+      "verdict": "supported",
+      "sourceLine": "Her formula uses both universal and existential quantifiers"
+    },
+    {
+      "text": "Later definitions did not give the equation-only description needed.",
+      "verdict": "supported",
+      "sourceLine": "but do not supply the existential membership condition for the direct transfer above."
+    },
+    {
+      "text": "Mazur's conjecture would rule out a Diophantine definition of the integers in the rationals.",
+      "verdict": "supported",
+      "sourceLine": "He observed that this conjecture would rule out a Diophantine definition of \\(\\mathbb Z\\) in \\(\\mathbb Q\\)."
+    },
+    {
+      "text": "Poonen proved undecidability for certain large subrings of the rationals.",
+      "verdict": "supported",
+      "sourceLine": "Hilbert's tenth problem is undecidable for every such ring."
+    },
+    {
+      "text": "Results for rings of integers concern a different class of rings.",
+      "verdict": "supported",
+      "sourceLine": "so these results concern a different class of rings from the field in"
+    },
+    {
+      "text": "No algorithm decides whether an integer polynomial has a rational zero.",
+      "verdict": "supported",
+      "sourceLine": "We give a negative answer to Hilbert's tenth problem over the rational numbers: no algorithm decides whether a polynomial with integer coefficients has a rational zero."
+    },
+    {
+      "text": "The problem has the Turing degree of the halting problem.",
+      "verdict": "supported",
+      "sourceLine": "Then \\(\\mathrm{H10}(\\Q)\\) has Turing degree \\(0'\\), the degree of the halting problem."
+    },
+    {
+      "text": "The same holds for polynomials of total degree at most four.",
+      "verdict": "supported",
+      "sourceLine": "rational solvability for integral polynomials of total degree at most four;"
+    },
+    {
+      "text": "Two searches run in parallel: for integer zeros and for a failed test.",
+      "verdict": "supported",
+      "sourceLine": "we could run two searches in parallel: enumeration of integer zeros, and enumeration of tests until one fails."
+    },
+    {
+      "text": "The main work is showing a failed test exists when there is no integer zero.",
+      "verdict": "supported",
+      "sourceLine": "The arithmetic work is to prove that a failed test exists whenever \\(f\\) has no integer zero."
+    },
+    {
+      "text": "The tests attach elliptic points to ring elements, compatibly with addition.",
+      "verdict": "supported",
+      "sourceLine": "The tests attach an elliptic point \\(T_a\\) to each \\(a\\in R\\), compatibly with addition"
+    },
+    {
+      "text": "The proof uses the pointwise 2-converse.",
+      "verdict": "supported",
+      "sourceLine": "its passage from two-descent data to rational points uses the pointwise $2$-converse"
+    },
+    {
+      "text": "The height estimate uses the odd regular Fontaine–Mazur theorem at 2.",
+      "verdict": "supported",
+      "sourceLine": "Its modularity step uses the odd regular Fontaine--Mazur theorem at $2$"
+    },
+    {
+      "text": "The second paper claims the 2-converse for curves with a rational point of order 2.",
+      "verdict": "supported",
+      "sourceLine": "Here we give a separate full treatment of the rational-two-torsion case"
+    }
+  ]
+}
