@@ -1,0 +1,222 @@
+{
+  "id": "010",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Unrestricted-pro-modularity-at-the-prime-two-October-6-2026/two-adic-promodularity.pdf",
+      "label": "Unrestricted pro-modularity at the prime two"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Dimension-of-the-Two-Adic-Hecke-Algebra-at-Odd-Level-October-5-2026/two-adic-hecke.pdf",
+      "label": "The Dimension of the Two-Adic Hecke Algebra at Odd Level"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fontaine-Mazur-modularity-at-the-prime-2-October-6-2026/paper.pdf",
+      "label": "Fontaine–Mazur modularity at the prime 2"
+    }
+  ],
+  "headline": "Odd two-dimensional 2-adic Galois representations are claimed to come from modular forms, with no condition mod 2.",
+  "scope": "Continuous, odd, two-dimensional 2-adic representations of the Galois group of the rationals, unramified outside finitely many primes.",
+  "plain": "A Galois representation records how the symmetries of algebraic numbers act on vectors, and modular forms produce many of them. Fontaine and Mazur predicted which ones come from geometry. For odd two-dimensional ones over the rationals, this was known at every odd prime. These papers claim the prime 2 case with no condition on the reduction mod 2. They also claim a weaker link to modular forms with no geometric condition at all.",
+  "doesNot": "This does not cover even representations, higher dimensions, or base fields other than the rationals.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "Fontaine and Mazur, the conjecture on geometric Galois representations",
+    "field": "Number theory",
+    "significance": "Major",
+    "significanceWhy": "It claims the last prime in the odd regular two-dimensional Fontaine–Mazur conjecture over the rationals, with no residual conditions."
+  },
+  "explanation": "Take the elliptic curve y² + y = x³ − x² − 10x − 20. Count its points modulo each prime p, including one point at infinity. Write a_p for p + 1 minus that count. Then a_2 = −2, a_3 = −1, a_5 = 1, a_7 = −2 and a_13 = 4. Now multiply out q(1 − q)²(1 − q¹¹)²(1 − q²)²(1 − q²²)² and so on forever. The coefficients of q², q³, q⁵, q⁷ and q¹³ are −2, −1, 1, −2 and 4. They match the point counts.\n\nThat infinite product is a modular form, a function with a strong symmetry under a group of transformations. The match between counts and coefficients is what \"modular\" means here. Wiles, Taylor and others proved such matches for every elliptic curve over the rationals by 2001.\n\nThe counts can also be read through symmetry. The points of order 2, 4, 8 and so on carry an action of the Galois group. That group collects all symmetries of the algebraic numbers. The action can be written with 2-by-2 matrices of 2-adic numbers. In 2-adic numbers, two numbers are close when their difference is divisible by a high power of 2. For each prime p other than 2 and 11, a special symmetry called Frobenius has trace a_p. This matrix-valued action is a 2-adic Galois representation.\n\nMany representations do not obviously come from a curve. In 1995, Fontaine and Mazur predicted which ones come from geometry. For odd two-dimensional ones over the rationals, the prediction is modularity, up to a standard shift called a Tate twist. Odd means complex conjugation acts with determinant −1. The other condition, regular de Rham at p, is a technical local test at p. It says the representation looks geometric there, with two distinct Hodge–Tate weights.\n\nEarlier work covered most cases. Khare, Wintenberger and Kisin proved Serre's conjecture, which handles the reduction mod p. Pan in 2022 treated many cases with reducible reduction at odd primes. Zhang then finished every odd prime. At 2, earlier theorems needed conditions on the reduction mod 2, such as a large image.\n\nThe third paper claims the prime 2 case. Every continuous, irreducible, odd two-dimensional 2-adic representation of this kind is modular up to Tate twist. It must be unramified outside finitely many primes and regular de Rham at 2. Scalar and reducible reductions mod 2 are included.\n\nThe first paper claims a statement with no local condition at 2. Modular forms of different weights can be 2-adically close. For example, E₄ = 1 + 240q + 2160q² + … has every later coefficient divisible by 16. So E₄ is close to the constant 1, a form of weight 0. Hecke operators, written T_ℓ, act on all forms of all weights at once. Completing their algebra 2-adically gives the full Hecke algebra. The paper claims every odd, absolutely irreducible representation of this kind matches a point of this algebra, at some odd level. It calls this pro-modularity. It does not claim the representation comes from one classical form.\n\nThe second paper claims a size result. At every odd level, each irreducible component of the full 2-adic Hecke algebra has Krull dimension exactly 4. Krull dimension counts independent directions of variation. This is the prime 2 case of a conjecture of Emerton.\n\nThe main obstacle is a representation with no geometric condition. The first paper places it in a family of representations of dimension at least 3. It then finds one regular de Rham point in that family. The third paper's theorem makes that point modular. A dimension count, using the second paper, spreads the match from that point to the whole family.\n\nThe papers depend on each other and on recent outside work, such as a 2026 preprint by Thorne on ordinary representations. The Hilbert's tenth problem paper in the same release uses the third paper's theorem.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Major only if all three linked papers hold. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Galois representation",
+      "meaning": "A way to write the symmetries of algebraic numbers as matrices."
+    },
+    {
+      "term": "2-adic numbers",
+      "meaning": "Numbers in which two values are close when their difference is divisible by a high power of 2."
+    },
+    {
+      "term": "Modular form",
+      "meaning": "A function with a strong symmetry, whose series coefficients often encode arithmetic counts."
+    },
+    {
+      "term": "Regular de Rham",
+      "meaning": "A technical local condition at p that representations coming from geometry satisfy, with two distinct weights."
+    },
+    {
+      "term": "Tate twist",
+      "meaning": "A standard shift of a representation by a power of the cyclotomic character."
+    },
+    {
+      "term": "Hecke algebra",
+      "meaning": "The algebra generated by the operators T_ℓ acting on modular forms."
+    },
+    {
+      "term": "Pro-modularity",
+      "meaning": "Matching a point of the full 2-adic Hecke algebra, rather than one classical form."
+    },
+    {
+      "term": "Krull dimension",
+      "meaning": "The number of independent directions in which an algebraic space can vary."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Unrestricted pro-modularity at the prime two”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Unrestricted-pro-modularity-at-the-prime-two-October-6-2026/two-adic-promodularity.pdf",
+      "quote": "No condition on the semisimplified reduction of $r$ is imposed."
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The Dimension of the Two-Adic Hecke Algebra at Odd Level”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Dimension-of-the-Two-Adic-Hecke-Algebra-at-Odd-Level-October-5-2026/two-adic-hecke.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Fontaine–Mazur modularity at the prime 2”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fontaine-Mazur-modularity-at-the-prime-2-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Hilbert's tenth problem over the rational numbers”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hilberts-tenth-problem-over-the-rational-numbers-October-6-2026/main.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 6,
+      "cite": "J.-M. Fontaine and B. Mazur, “Geometric Galois representations”, in Elliptic curves, modular forms, and Fermat's last theorem, International Press (1995), 41–78",
+      "url": "https://www.imo.universite-paris-saclay.fr/~fontaine/mazur.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "A. Wiles, “Modular elliptic curves and Fermat's last theorem”, Annals of Mathematics 141 (1995), 443–551",
+      "url": "https://doi.org/10.2307/2118559"
+    },
+    {
+      "id": 8,
+      "cite": "C. Khare and J.-P. Wintenberger, “Serre's modularity conjecture (I)”, Inventiones Mathematicae 178 (2009), 485–504",
+      "url": "https://doi.org/10.1007/s00222-009-0205-7"
+    },
+    {
+      "id": 9,
+      "cite": "L. Pan, “The Fontaine–Mazur conjecture in the residually reducible case”, Journal of the AMS 35 (2022), 1031–1169",
+      "url": "https://doi.org/10.1090/jams/991"
+    },
+    {
+      "id": 10,
+      "cite": "M. Emerton, “p-adic families of modular forms [after Hida, Coleman, and Mazur]”, Astérisque 339 (2011), 31–61",
+      "url": "https://www.numdam.org/item/AST_2011__339__31_0/"
+    },
+    {
+      "id": 11,
+      "cite": "C. Breuil, B. Conrad, F. Diamond and R. Taylor, “On the modularity of elliptic curves over ℚ: wild 3-adic exercises”, Journal of the AMS 14 (2001), 843–939",
+      "url": "https://doi.org/10.1090/S0894-0347-01-00370-8"
+    },
+    {
+      "id": 12,
+      "cite": "J. Newton and J. A. Thorne, “Adjoint Selmer groups of automorphic Galois representations of unitary type”, Journal of the EMS 25 (2023), 1919–1967",
+      "url": "https://doi.org/10.4171/JEMS/1228"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Fontaine–Mazur predicts that suitable irreducible p-adic representations arise from geometry.",
+      "verdict": "supported",
+      "sourceLine": "The Fontaine--Mazur conjecture predicts that irreducible \\(p\\)-adic Galois representations satisfying suitable finiteness and local conditions arise from algebraic geometry"
+    },
+    {
+      "text": "Odd means complex conjugation has determinant −1.",
+      "verdict": "supported",
+      "sourceLine": "is \\emph{odd} if \\(\\det r(c)=-1\\) for a complex conjugation \\(c\\)."
+    },
+    {
+      "text": "Regular de Rham means de Rham at p with two distinct Hodge–Tate weights.",
+      "verdict": "supported",
+      "sourceLine": "It is \\emph{regular de Rham} at \\(p\\) if its restriction to \\(G_{\\mathbb Q_p}\\) is de Rham and has two distinct Hodge--Tate weights."
+    },
+    {
+      "text": "Such a representation is a Tate twist of one attached to a classical cuspidal eigenform.",
+      "verdict": "supported",
+      "sourceLine": "Then \\(r\\) is isomorphic to a Tate twist of the \\(2\\)-adic Galois representation associated with a classical cuspidal eigenform."
+    },
+    {
+      "text": "The scope includes scalar and reducible residual representations.",
+      "verdict": "supported",
+      "sourceLine": "Its scope includes every semisimple residual representation, including scalar and reducible ones."
+    },
+    {
+      "text": "Khare–Wintenberger and Kisin supply modularity for odd irreducible residual representations, including characteristic two.",
+      "verdict": "supported",
+      "sourceLine": "its proof by Khare--Wintenberger and Kisin supplies modularity for odd absolutely irreducible residual representations, including characteristic two"
+    },
+    {
+      "text": "Zhang obtained the odd regular theorem for every odd prime.",
+      "verdict": "supported",
+      "sourceLine": "Zhang removes that configuration, obtaining the stated odd, regular theorem for every odd prime"
+    },
+    {
+      "text": "The theorem supplies the modularity input in the Hilbert's tenth problem paper.",
+      "verdict": "supported",
+      "sourceLine": "supplies the weight-two modularity input in the height argument of \\emph{Hilbert's tenth problem over the rational numbers}"
+    },
+    {
+      "text": "Odd absolutely irreducible representations occur in the full Hecke algebra at some odd level.",
+      "verdict": "supported",
+      "sourceLine": "be continuous and absolutely irreducible. Suppose that $r$ is unramified outside finitely many finite primes and is odd:"
+    },
+    {
+      "text": "No condition on the residual representation is imposed.",
+      "verdict": "supported",
+      "sourceLine": "No condition on the semisimplified reduction of $r$ is imposed."
+    },
+    {
+      "text": "Pro-modularity does not assert classical modularity.",
+      "verdict": "supported",
+      "sourceLine": "This is a completed-Hecke occurrence result, with no de Rham hypothesis; it does not assert classical modularity."
+    },
+    {
+      "text": "The main task is finding a regular de Rham point on the family.",
+      "verdict": "supported",
+      "sourceLine": "The main task is then to find a regular de Rham point on $D$, from which Hecke support can be transferred to the whole family over $\\Q$."
+    },
+    {
+      "text": "Every component of the full 2-adic Hecke algebra at odd level has dimension 4.",
+      "verdict": "supported",
+      "sourceLine": "every irreducible component of $\\Spec T_2(N)$ has dimension exactly $4$."
+    },
+    {
+      "text": "This is the p = 2 case of Emerton's conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This is the $p=2$ case of Emerton's Conjecture~2.9"
+    },
+    {
+      "text": "The final passage uses the dimension theorem and Newton–Thorne's adjoint Selmer vanishing.",
+      "verdict": "supported",
+      "sourceLine": "The final passage uses the dimension theorem of"
+    },
+    {
+      "text": "Thorne's theorem supplies an essential set of classical points.",
+      "verdict": "supported",
+      "sourceLine": "Thorne's theorem supplies an essential set of classical points"
+    }
+  ]
+}
