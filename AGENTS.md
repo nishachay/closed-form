@@ -19,7 +19,15 @@ Read from openai/math at commit `fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`:
 - `lean/docs/<ID>.md`, when it exists (it says what Lean actually proves)
 
 ### Pick the next IDs
-List the IDs in the catalog. Leave out any that already have `src/content/entries/<ID>.json`. Leave out IDs with no paper source. Take the lowest 5. Known gaps to fill: 141, 142, 143, 147.
+List the IDs in the catalog. Leave out any that already have `src/content/entries/<ID>.json`. Leave out IDs with no paper source. Then pick in this order:
+1. IDs that have `lean/docs/<ID>.md` (Lean-checked results first), lowest first.
+2. Then the rest, lowest first.
+Take 5. Known gaps to fill: 141, 142, 143, 147.
+
+### Which model does what
+- Write entries with a Claude model (Claude Opus 5.5 in Antigravity CLI, or the strongest Claude you have).
+- Review with a different model family (Gemini Pro in Antigravity, or GPT). The writer never reviews its own batch.
+- The scripts are the final gate: `pnpm source-quotes --check`, `pnpm -s lint-ste` and `pnpm -s test` must pass before a PR is opened.
 
 ### Hard rules for every entry
 1. Copy the structure of an existing entry, such as `src/content/entries/144.json` or `152.json`. Keep the same fields.
@@ -42,7 +50,7 @@ List the IDs in the catalog. Leave out any that already have `src/content/entrie
 3. Run `pnpm source-quotes --entry src/content/entries/<ID>.json` (rule 13).
 4. Review it against rules 1-13. Check every quote against the source.
 5. Fix what failed.
-6. Run `pnpm -s lint-ste`, then `pnpm -s test`. Two "007 dry run" test failures are known and older; ignore them. Fix anything else.
+6. Run `pnpm -s lint-ste`, then `pnpm -s test`. All must pass. If the 007 tests say the paper LaTeX is missing, run `git submodule update --init source/openai-math` or set `CF_SOURCE_DIR`.
 
 ### Batch loop
 - 5 entries per branch, named `entries/batch-N`.
@@ -53,5 +61,8 @@ List the IDs in the catalog. Leave out any that already have `src/content/entrie
 ### Never
 Don't merge, delete files or branches, change repo settings, or post anywhere.
 
+### Review command (different model)
+On the batch branch, tell the reviewer: `Review the entries changed on this branch against AGENTS.md rules 1-13. Open every sourceLine in the paper LaTeX and confirm it is word for word. Check every [n] marker points at a claim that supports that sentence. Recompute the worked example. Fix only real errors, rerun source-quotes, lint-ste and test, then commit and push.`
+
 ### Daily command
-Inside the repo, tell your tool: `Follow AGENTS.md and do the next 5 entries.`
+Inside the repo, tell your writer: `Follow AGENTS.md and do the next 5 entries.`
