@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It settles the planar and bounded-treewidth cases of a long-open conjecture linking distances and network cuts."
   },
-  "explanation": "Picture two towns, A and B. Each has a 1 km road to the same three villages. Distances follow the roads. A village is 1 km from each town. The two towns are 2 km apart, through any village. Any two villages are also 2 km apart.\n\nNow try to redraw this map on a city grid. On a grid you add up the blocks walked in each direction. This is taxicab distance. Mathematicians call it L1 distance, and they allow as many directions as needed. Some maps fit a grid perfectly. Four corners of a square block, 1 km per side, already sit on grid corners. The towns-and-villages map does not fit. A small computer calculation over all cuts settles the best drawing. Even the best grid drawing must stretch some distance by 4/3 relative to another. That factor is called the distortion. In the best drawing, each distance lies between its true value and 4/3 of it, after one overall rescaling.\n\nWhy this kind of grid? A taxicab distance is a sum of cuts. A cut splits the places into two sides. Each cut adds its weight to every pair it separates. For the square block, take one north–south cut and one east–west cut, each of weight 1. Neighbouring corners are split by one cut, so they sit 1 km apart. Opposite corners are split by both, so they sit 2 km apart. Cuts are also how bottlenecks in networks are measured. Picture pipes carrying several kinds of goods between different pairs of places at once. The tightest cut caps how much can flow. The real best flow can fall short of that cap. The ratio between the two is the flow–cut gap. Gupta, Newman, Rabinovich and Sinclair showed that the worst gap on a network equals its worst taxicab distortion.\n\nThe towns-and-villages map is planar: it can be drawn on paper with no roads crossing. In a 2004 paper, those four authors stated a broad conjecture. Take any proper minor-closed family of networks. Such a family stays inside itself when roads are deleted or shrunk to a point. It also leaves some network out. They predicted one fixed distortion for the whole family. It must not grow with the number of places or depend on road lengths. Planar networks form one such family. Networks of bounded treewidth form another.\n\nTreewidth measures how tree-like a network is. Cover the places with small overlapping groups, called bags, arranged like the branches of a tree. Every road must fit inside some bag. The bag size needed says how tree-like the network is. The towns-and-villages map has treewidth two, the simplest case past trees.\n\nBefore these papers, the best general bound for planar maps still grew with size. Rao gave a bound of order the square root of log n, for n places, in 1999. Constant bounds existed only for special shapes. Gupta and coauthors proved the treewidth-two case. The best distortion there is exactly 2. Chakrabarti, Jaffe, Lee and Vincent gave the upper bound. Lee and Raghavendra gave the matching lower bound. Lee and Sidiropoulos handled bounded pathwidth, a stricter, path-like cousin of treewidth. Their route through random trees cannot reach all bounded-treewidth networks.\n\nThe one obstacle was scale. A large map has distances of many sizes. Close pairs and far pairs need different cuts. Each new layer of cuts can stretch short roads a little more. Over many scales, those small losses could pile up without limit. The planar paper makes its local cut rules agree exactly where neighbouring regions meet. It also narrows down which pairs still need work at each scale. The treewidth paper changes its random cuts in pairs, so the cut pattern on each bag stays the same.\n\nTogether, the two papers prove these two cases of the conjecture. Grow the towns-and-villages map to millions of places, with wildly uneven roads. If no roads cross, a taxicab drawing exists with distortion below one universal number. The same holds, with a number depending only on bag size, for networks of bounded treewidth. The theorems state that these numbers exist. The treewidth paper says it gives no explicit estimate for its number. Through the earlier link, the flow–cut gap is also capped on these networks. The full conjecture stays open. The planar paper says the needed gluing of larger pieces is not established.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both main theorems. One gives a single distortion bound for all finite connected planar networks with positive road lengths. The other gives a bound depending only on bag size, for networks with a tree decomposition. The flow–cut consequences and the other corollaries are outside that check. No specialists have published a review yet.",
+  "explanation": "Picture two towns, A and B. Each has a 1 km road to the same three villages. Distances follow the roads. A village is 1 km from each town. The two towns are 2 km apart, through any village. Any two villages are also 2 km apart.\n\nNow try to redraw this map on a city grid. On a grid you add up the blocks walked in each direction. This is taxicab distance. Mathematicians call it L1 distance, and they allow as many directions as needed. Some maps fit a grid perfectly. Four corners of a square block, 1 km per side, already sit on grid corners. The towns-and-villages map does not fit. A small computer calculation over all cuts settles the best drawing. Even the best grid drawing must stretch some distance by 4/3 relative to another. That factor is called the distortion. In the best drawing, each distance lies between its true value and 4/3 of it, after one overall rescaling.\n\nWhy this kind of grid? A taxicab distance is a sum of cuts. A cut splits the places into two sides. Each cut adds its weight to every pair it separates. For the square block, take one north–south cut and one east–west cut, each of weight 1. Neighbouring corners are split by one cut, so they sit 1 km apart. Opposite corners are split by both, so they sit 2 km apart. Cuts are also how bottlenecks in networks are measured. Picture pipes carrying several kinds of goods between different pairs of places at once. The tightest cut caps how much can flow. The real best flow can fall short of that cap. The ratio between the two is the flow–cut gap. Gupta, Newman, Rabinovich and Sinclair showed that the worst gap on a network equals its worst taxicab distortion.\n\nThe towns-and-villages map is planar: it can be drawn on paper with no roads crossing. In a 2004 paper, those four authors stated a broad conjecture. Take any proper minor-closed family of networks. Such a family stays inside itself when roads are deleted or shrunk to a point. It also leaves some network out. They predicted one fixed distortion for the whole family. It must not grow with the number of places or depend on road lengths. Planar networks form one such family. Networks of bounded treewidth form another.\n\nTreewidth measures how tree-like a network is. Cover the places with small overlapping groups, called bags, arranged like the branches of a tree. Every road must fit inside some bag. The bag size needed says how tree-like the network is. The towns-and-villages map has treewidth two, the simplest case past trees.\n\nBefore these papers, the best general bound for planar maps still grew with size. Rao gave a bound of order the square root of log n, for n places, in 1999. Constant bounds existed only for special shapes. Gupta and coauthors proved the treewidth-two case. The best distortion there is exactly 2. Chakrabarti, Jaffe, Lee and Vincent gave the upper bound. Lee and Raghavendra gave the matching lower bound. Lee and Sidiropoulos handled bounded pathwidth, a stricter, path-like cousin of treewidth. Their route through random trees cannot reach all bounded-treewidth networks.\n\nThe one obstacle was scale. A large map has distances of many sizes. Close pairs and far pairs need different cuts. Each new layer of cuts can stretch short roads a little more. Over many scales, those small losses could pile up without limit. The planar paper makes its local cut rules agree exactly where neighbouring regions meet[14]. It also narrows down which pairs still need work at each scale. The treewidth paper changes its random cuts in pairs, so the cut pattern on each bag stays the same[15].\n\nTogether, the two papers prove these two cases of the conjecture. Grow the towns-and-villages map to millions of places, with wildly uneven roads. If no roads cross, a taxicab drawing exists with distortion below one universal number[1,2]. The same holds, with a number depending only on bag size, for networks of bounded treewidth[3]. The theorems state that these numbers exist. The treewidth paper says it gives no explicit estimate for its number[4]. Through the earlier link, the flow–cut gap is also capped on these networks. The full conjecture stays open. The planar paper says the needed gluing of larger pieces is not established[16].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both main theorems. One gives a single distortion bound for all finite connected planar networks with positive road lengths. The other gives a bound depending only on bag size, for networks with a tree decomposition. The flow–cut consequences and the other corollaries are outside that check. No specialists have published a review yet.",
   "hypeCheck": "Major if the proofs hold. Lean formalizations of both main theorems are listed. The flow–cut and other corollaries are not machine-checked. No constants are given, and no specialist review is published.",
   "glossary": [
     {
@@ -115,22 +115,26 @@
     {
       "text": "Every finite connected planar graph with positive edge lengths embeds into L1 with a universal distortion bound.",
       "verdict": "supported",
-      "sourceLine": "We prove that every finite connected planar graph with arbitrary positive"
+      "sourceLine": "We prove that every finite connected planar graph with arbitrary positive",
+      "paper": 1
     },
     {
       "text": "The planar constant is independent of the number of vertices and the edge lengths.",
       "verdict": "supported",
-      "sourceLine": "every planar graph metric, independently of the number of vertices and"
+      "sourceLine": "every planar graph metric, independently of the number of vertices and",
+      "paper": 1
     },
     {
       "text": "For each bag-size bound, there is a distortion bound depending only on that bound.",
       "verdict": "supported",
-      "sourceLine": "The constant is independent of the number of vertices, the depth of the"
+      "sourceLine": "The constant is independent of the number of vertices, the depth of the",
+      "paper": 2
     },
     {
       "text": "The treewidth paper gives no explicit estimate for its constant.",
       "verdict": "supported",
-      "sourceLine": "The proof gives the existence of …, without an explicit estimate"
+      "sourceLine": "The proof gives the existence of …, without an explicit estimate",
+      "paper": 2
     },
     {
       "text": "The conjecture of Gupta, Newman, Rabinovich and Sinclair predicts uniformly bounded L1 distortion in every proper minor-closed family.",
@@ -180,17 +184,20 @@
     {
       "text": "Interpolation makes local formulas agree exactly at their interfaces.",
       "verdict": "supported",
-      "sourceLine": "further updates, and interpolation makes local formulas agree"
+      "sourceLine": "further updates, and interpolation makes local formulas agree",
+      "paper": 1
     },
     {
       "text": "Replacing two particles by f+g and f−g leaves the combined cut law on the bag unchanged.",
       "verdict": "supported",
-      "sourceLine": "bag is unchanged: successive threshold masses are affine in the ordered"
+      "sourceLine": "bag is unchanged: successive threshold masses are affine in the ordered",
+      "paper": 2
     },
     {
       "text": "The planar paper does not establish the general clique-sum closure required for the full conjecture.",
       "verdict": "supported",
-      "sourceLine": "The general clique-sum closure required for the full GNRS conjecture"
+      "sourceLine": "The general clique-sum closure required for the full GNRS conjecture",
+      "paper": 1
     },
     {
       "text": "Lean formalizes both main theorems; the flow–cut and other corollaries are outside the scope note.",

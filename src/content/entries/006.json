@@ -30,7 +30,7 @@
     "significance": "Major",
     "significanceWhy": "It claims Goldfeld's 1979 conjecture for every curve. Smith's Selmer statistics did much of the counting; the new step is a 2-converse."
   },
-  "explanation": "A whole number n is called congruent if it is the area of a right triangle with rational sides. The 3, 4, 5 triangle has area 6, so 6 is congruent. The triangle with sides 3/2, 20/3 and 41/6 has area 5. The triangle with sides 24/5, 35/12 and 337/60 has area 7. Fermat showed that 1 is not congruent. A classical fact links this to curves. The number n is congruent exactly when the curve y² = x³ − n²x has infinitely many rational points.\n\nThose curves form one family. Start from the elliptic curve y² = x³ − x. Twisting it by n gives ny² = x³ − x, which is the same curve as y² = x³ − n²x after rescaling. In general, a quadratic twist of y² = x³ + ax + b by d is dy² = x³ + ax + b. The papers use every squarefree d, meaning no square larger than 1 divides it. Both positive and negative d count, ordered by size.\n\nEach twist has a rank, the number of independent rational points that generate infinitely many others. It also has an analytic rank, the number of times its L-function vanishes at the centre. The L-function is built from point counts modulo every prime. The Birch–Swinnerton-Dyer conjecture predicts the two ranks agree. A sign in the L-function's symmetry decides whether the analytic rank is even or odd.\n\nIn 1979, Goldfeld conjectured that the average analytic rank in such a family is 1/2. The density version says ranks 0 and 1 each occur half the time. For the congruent family, 1, 2 and 3 have rank 0, while 5, 6 and 7 have rank 1. Ranks of 2 or more should be rare enough to vanish in the average.\n\nEarlier results gave only partial answers. In 1998, Ono and Skinner showed that many twists have nonzero central value, but not a positive share. Positive shares of both ranks were known for special curves, such as those with a rational 3-isogeny. Smith's 2025 preprint gives that Selmer coranks 0 and 1 each occur half the time, for every curve. A Selmer group is a computable group that bounds the rank. Smith's result for analytic ranks assumed the Birch–Swinnerton-Dyer conjecture.\n\nThe first paper fills that gap with a 2-converse. It claims that if the 2-power Selmer corank is 0 or 1, the analytic rank and the rank both equal it. It also claims the Tate–Shafarevich group, a group of hidden solutions, is finite. Combined with Smith's statistics, it claims ranks 0 and 1 each have density 1/2. The rank and analytic rank then agree for almost every twist.\n\nThe second paper handles the average. A rare set of twists could still have huge ranks and pull the average up. The paper claims a bound on how much these rare high-rank twists can add. Together with the densities, the average analytic rank tends to 1/2. The proof uses neither the Birch–Swinnerton-Dyer conjecture nor the generalized Riemann hypothesis.\n\nThe hard step is going from the Selmer group to the L-function. The first paper builds finite families of twists indexed by strings of 0s and 1s. The curve under study sits at the all-zero string. Every other member is arranged to have the right analytic rank, with controlled 2-adic size. An interpolation argument then recovers the missing value at the all-zero string.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The density claim depends on Smith's preprint, and no specialist review of these papers has been published.",
+  "explanation": "A whole number n is called congruent if it is the area of a right triangle with rational sides. The 3, 4, 5 triangle has area 6, so 6 is congruent. The triangle with sides 3/2, 20/3 and 41/6 has area 5. The triangle with sides 24/5, 35/12 and 337/60 has area 7. Fermat showed that 1 is not congruent. A classical fact links this to curves. The number n is congruent exactly when the curve y² = x³ − n²x has infinitely many rational points.\n\nThose curves form one family. Start from the elliptic curve y² = x³ − x. Twisting it by n gives ny² = x³ − x, which is the same curve as y² = x³ − n²x after rescaling. In general, a quadratic twist of y² = x³ + ax + b by d is dy² = x³ + ax + b. The papers use every squarefree d, meaning no square larger than 1 divides it. Both positive and negative d count, ordered by size.\n\nEach twist has a rank, the number of independent rational points that generate infinitely many others. It also has an analytic rank, the number of times its L-function vanishes at the centre. The L-function is built from point counts modulo every prime. The Birch–Swinnerton-Dyer conjecture predicts the two ranks agree. A sign in the L-function's symmetry decides whether the analytic rank is even or odd.\n\nIn 1979, Goldfeld conjectured that the average analytic rank in such a family is 1/2. The density version says ranks 0 and 1 each occur half the time. For the congruent family, 1, 2 and 3 have rank 0, while 5, 6 and 7 have rank 1. Ranks of 2 or more should be rare enough to vanish in the average.\n\nEarlier results gave only partial answers. In 1998, Ono and Skinner showed that many twists have nonzero central value, but not a positive share. Positive shares of both ranks were known for special curves, such as those with a rational 3-isogeny. Smith's 2025 preprint gives that Selmer coranks 0 and 1 each occur half the time, for every curve. A Selmer group is a computable group that bounds the rank. Smith's result for analytic ranks assumed the Birch–Swinnerton-Dyer conjecture.\n\nThe first paper fills that gap with a 2-converse. It claims that if the 2-power Selmer corank is 0 or 1, the analytic rank and the rank both equal it. It also claims the Tate–Shafarevich group, a group of hidden solutions, is finite. Combined with Smith's statistics, it claims ranks 0 and 1 each have density 1/2[2,5]. The rank and analytic rank then agree for almost every twist[4].\n\nThe second paper handles the average. A rare set of twists could still have huge ranks and pull the average up. The paper claims a bound on how much these rare high-rank twists can add. Together with the densities, the average analytic rank tends to 1/2[14]. The proof uses neither the Birch–Swinnerton-Dyer conjecture nor the generalized Riemann hypothesis[15].\n\nThe hard step is going from the Selmer group to the L-function. The first paper builds finite families of twists indexed by strings of 0s and 1s. The curve under study sits at the all-zero string. Every other member is arranged to have the right analytic rank, with controlled 2-adic size. An interpolation argument then recovers the missing value at the all-zero string[16].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The density claim depends on Smith's preprint, and no specialist review of these papers has been published.",
   "hypeCheck": "Major only if the 2-converse and the tail estimate hold, along with Smith's Selmer statistics. No Lean formalization is listed and no specialist review is published.",
   "glossary": [
     {
@@ -111,7 +111,8 @@
     {
       "text": "For every curve, twists of analytic rank 0 and of rank 1 each have density 1/2.",
       "verdict": "supported",
-      "sourceLine": "For every elliptic curve $E/\\Q$ and each $j\\in\\{0,1\\}$,"
+      "sourceLine": "For every elliptic curve $E/\\Q$ and each $j\\in\\{0,1\\}$,",
+      "paper": 1
     },
     {
       "text": "Twists of analytic rank at least 2 have density zero.",
@@ -121,12 +122,14 @@
     {
       "text": "For almost every twist the two ranks agree and Sha is finite.",
       "verdict": "supported",
-      "sourceLine": "For a density-one set of signed squarefree parameters $d$, the analytic and Mordell--Weil ranks of $E^{(d)}$ agree and its whole Tate--Shafarevich group is finite."
+      "sourceLine": "For a density-one set of signed squarefree parameters $d$, the analytic and Mordell--Weil ranks of $E^{(d)}$ agree and its whole Tate--Shafarevich group is finite.",
+      "paper": 1
     },
     {
       "text": "The density theorem combines the 2-converse with Smith's Selmer distribution.",
       "verdict": "supported",
-      "sourceLine": "The theorem follows by combining the pointwise $2$-converse with Smith's distribution of full $2$-power Selmer coranks"
+      "sourceLine": "The theorem follows by combining the pointwise $2$-converse with Smith's distribution of full $2$-power Selmer coranks",
+      "paper": 1
     },
     {
       "text": "The main work is the pointwise converse.",
@@ -171,17 +174,20 @@
     {
       "text": "The average analytic rank of the twists tends to 1/2.",
       "verdict": "supported",
-      "sourceLine": "we prove that the average analytic rank of its quadratic twists tends to \\(1/2\\) when signed squarefree twist parameters are ordered by absolute value."
+      "sourceLine": "we prove that the average analytic rank of its quadratic twists tends to \\(1/2\\) when signed squarefree twist parameters are ordered by absolute value.",
+      "paper": 2
     },
     {
       "text": "The mean proof uses neither BSD nor GRH.",
       "verdict": "supported",
-      "sourceLine": "The proof invokes neither the Birch--Swinnerton-Dyer conjecture nor the generalized Riemann hypothesis."
+      "sourceLine": "The proof invokes neither the Birch--Swinnerton-Dyer conjecture nor the generalized Riemann hypothesis.",
+      "paper": 2
     },
     {
       "text": "Integral interpolation recovers nonvanishing at the missing vertex.",
       "verdict": "supported",
-      "sourceLine": "Bounded integral interpolation then recovers nonvanishing at the missing vertex $0$."
+      "sourceLine": "Bounded integral interpolation then recovers nonvanishing at the missing vertex $0$.",
+      "paper": 1
     },
     {
       "text": "The mean result gives no higher analytic-rank moments.",

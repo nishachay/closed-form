@@ -49,7 +49,7 @@
     "significance": "Solid",
     "significanceWhy": "It answers the first open case of a well-known question in quantum information, by a computer-assisted proof."
   },
-  "explanation": "Start with two directions on a flat page, straight across and straight up. In quantum physics, a pair like this can stand for a measurement with two outcomes. Now tilt both by 45 degrees. Each tilted direction makes the same angle with each original one. Prepare a state along one set and measure with the other, and both outcomes are equally likely, one half each. Two such sets are called mutually unbiased bases.\n\nIn two dimensions you can fit three sets that are all unbiased with each other. The third uses complex numbers: the directions (1, i) and (1, −i), scaled down by √2. A check of every pair of vectors from different sets gives exactly one half each time. In d dimensions, at most d + 1 such sets can exist. In 1989, William Wootters and Brian Fields built d + 1 sets whenever d is a prime or a power of one.\n\nSix is the first dimension that is neither. Combining the three sets for dimension 2 with three sets for dimension 3 gives three sets for dimension 6. A computer check confirms that every pair of vectors from different sets there gives 1/6, as it should. Can a fourth set be added? Gerhard Zauner conjectured in his 1991 thesis that it cannot, so the answer is three. Numerical searches agreed, but searches cannot cover every case. Earlier proofs excluded a fourth set only for special families of second bases.\n\nThe single difficulty is that the second set can be anything. After a change of view, the first set is the plain axes. The second set becomes a 6 by 6 table of complex numbers, all of size one. That table can vary in many directions at once, including ones outside every studied family. So a proof must rule out two more sets for every possible second set, not only the known ones.\n\nThis paper claims to do that with a computer-assisted search. It covers every possible second set by a finite list of small balls. For each ball, it bounds how far any true solution inside can move. Then it searches for vectors unbiased to the first two sets. It shows that no two further sets can be built from them anywhere in the ball. Every rejection uses a test with an explicit safety margin, so rounding cannot hide a real solution. The search finished with no region left unresolved.\n\nThat makes the certainty statement unusual. The result holds under stated conditions on the computer arithmetic and compiler, for the complete run the paper documents. A companion paper takes a different route with exact whole-number arithmetic. It rules out seven sets. With an earlier theorem of Mihály Weiner, that gives at most five. It also settles a related conjecture of Matolcsi, Ruzsa and Weiner about certain sums over these tables.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the bound of five and of that related conjecture. It has not checked the main claim that three is the maximum. That claim rests on the documented computer search, and no specialist review has been published.",
+  "explanation": "Start with two directions on a flat page, straight across and straight up. In quantum physics, a pair like this can stand for a measurement with two outcomes. Now tilt both by 45 degrees. Each tilted direction makes the same angle with each original one. Prepare a state along one set and measure with the other, and both outcomes are equally likely, one half each. Two such sets are called mutually unbiased bases.\n\nIn two dimensions you can fit three sets that are all unbiased with each other. The third uses complex numbers: the directions (1, i) and (1, −i), scaled down by √2. A check of every pair of vectors from different sets gives exactly one half each time. In d dimensions, at most d + 1 such sets can exist. In 1989, William Wootters and Brian Fields built d + 1 sets whenever d is a prime or a power of one.\n\nSix is the first dimension that is neither. Combining the three sets for dimension 2 with three sets for dimension 3 gives three sets for dimension 6. A computer check confirms that every pair of vectors from different sets there gives 1/6, as it should. Can a fourth set be added? Gerhard Zauner conjectured in his 1991 thesis that it cannot, so the answer is three. Numerical searches agreed, but searches cannot cover every case. Earlier proofs excluded a fourth set only for special families of second bases.\n\nThe single difficulty is that the second set can be anything. After a change of view, the first set is the plain axes. The second set becomes a 6 by 6 table of complex numbers, all of size one. That table can vary in many directions at once, including ones outside every studied family[8]. So a proof must rule out two more sets for every possible second set, not only the known ones.\n\nThis paper claims to do that with a computer-assisted search. It covers every possible second set by a finite list of small balls. For each ball, it bounds how far any true solution inside can move. Then it searches for vectors unbiased to the first two sets. It shows that no two further sets can be built from them anywhere in the ball. Every rejection uses a test with an explicit safety margin, so rounding cannot hide a real solution[10]. The search finished with no region left unresolved.\n\nThat makes the certainty statement unusual. The result holds under stated conditions on the computer arithmetic and compiler, for the complete run the paper documents[9]. A companion paper takes a different route with exact whole-number arithmetic. It rules out seven sets[11]. With an earlier theorem of Mihály Weiner, that gives at most five. It also settles a related conjecture of Matolcsi, Ruzsa and Weiner about certain sums over these tables[11].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the bound of five and of that related conjecture. It has not checked the main claim that three is the maximum. That claim rests on the documented computer search, and no specialist review has been published.",
   "hypeCheck": "Solid if the computation holds. The bound of three depends on a documented computer run. Lean checks only the weaker bound of five, and no review is published.",
   "glossary": [
     {
@@ -165,22 +165,26 @@
     {
       "text": "The argument covers arbitrary complex Hadamard matrices, including those outside studied families.",
       "verdict": "supported",
-      "sourceLine": "including those outside previously studied families."
+      "sourceLine": "including those outside previously studied families.",
+      "paper": 1
     },
     {
       "text": "Under stated arithmetic and compiler conditions the documented execution excludes four bases, so N(6) = 3.",
       "verdict": "supported",
-      "sourceLine": "certifies that there are no four pairwise mutually unbiased orthonormal bases in"
+      "sourceLine": "certifies that there are no four pairwise mutually unbiased orthonormal bases in",
+      "paper": 1
     },
     {
       "text": "Every rejection uses a necessary condition with an explicit safety margin.",
       "verdict": "supported",
-      "sourceLine": "Every rejection uses a necessary condition with an explicit safety margin."
+      "sourceLine": "Every rejection uses a necessary condition with an explicit safety margin.",
+      "paper": 1
     },
     {
       "text": "The companion paper proves the Matolcsi–Ruzsa–Weiner Fourier-vanishing conjecture and excludes seven bases, giving at most five.",
       "verdict": "supported",
-      "sourceLine": "We also give an exact certificate excluding seven mutually unbiased bases in"
+      "sourceLine": "We also give an exact certificate excluding seven mutually unbiased bases in",
+      "paper": 2
     },
     {
       "text": "An internal OpenAI model produced the manuscripts.",

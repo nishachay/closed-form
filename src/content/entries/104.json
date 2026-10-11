@@ -45,7 +45,7 @@
     "significance": "Major",
     "significanceWhy": "If the proofs hold, they remove the cost's dependence on how large the scores are, up to a quasipolynomial bound."
   },
-  "explanation": "Picture a game board with two spots, A and B. Max moves from A and Min moves from B. Every move scores points for Max, and a negative score is a loss. From A, Max can stay at A for −1 or move to B for +3. From B, Min can stay at B for +1 or return to A for −2. Play goes on forever. Max wins if the long-run average score per move is at least zero.\n\nWork it out. If Max stays at A, the average is −1. If Max moves to B, Min gets the choice. Staying at B gives Max +1 per move. Returning to A makes a loop worth 3 − 2 = 1 over two moves, so 0.5 per move. Min picks 0.5, and Max prefers that to −1. So Max wins from A, and the game's value there is 0.5. The value is the best average Max can guarantee. Now change the −2 to −4. The loop now averages (3 − 4)/2 = −0.5, and Max loses from both spots.\n\nThis is a mean-payoff game (a two-player game on a network where only the long-run average score counts). The winning set is every starting spot from which Max can force an average of zero or more. In 1979, Ehrenfeucht and Mycielski proved that both players have optimal positional strategies. A positional strategy picks a move using only the current spot, never the history. That is why checking the four fixed plans above was enough.\n\nThe trouble is the size of the numbers. A computer writes each score in binary digits. Our own example: a score of about 1.15 quintillion (2 to the 60th) needs only 61 binary digits. In 1996, Zwick and Paterson gave pseudopolynomial algorithms. Their cost can be polynomial in the largest score, yet exponential in the number of digits. Faster methods existed for other measures. Björklund and Vorobyov proved an expected bound in terms of the number of spots. It counts arithmetic steps, not work on digits. A related game, the parity game, got a quasipolynomial algorithm in 2017. But the known translation runs from parity games to mean-payoff games, so that result did not carry over.\n\nThe single obstacle is simple to state. A natural method raises a running estimate for each spot step by step. With huge scores, the number of steps can grow in proportion to the size of the scores. The deterministic paper avoids computing that estimate. It only asks, for each spot, which end of a range the answer is forced towards. It splits the range in half again and again. It gives each spot weights that rise whenever the recursion gains ground. Along any branch, those rises can happen only about as often as the logarithm of the number of spots.\n\nThe deterministic paper claims an algorithm without randomness that returns the exact winning set. Its cost is at most 2 raised to C times the square of log₂(L + 2). Here L is the total length of the input in binary digits, and C is some fixed constant. Such a bound is called quasipolynomial. Here is our own example. For an input of 1,000 digits, log₂(1,002) is about 9.97 and its square is about 99.4. So the bound is 2 to roughly 99 times C. A polynomial bound would be 2 to a fixed multiple of about 9.97. The paper notes that a polynomial bound would be a further improvement. The same paper claims to compute every spot's exact value and optimal positional strategies for both players.\n\nTwo newer papers claim to stretch the method. The first adds chance spots, where a stated probability picks the next move. It claims to find every spot whose expected long-run average is zero or more, with zeros included. In a simple stochastic game, one player tries to reach a target spot and the other tries to stop them. Some moves are made by a fair coin. As a side result, the paper claims to decide whether such a game can be won with probability at least one half. The second adds a parity condition. Each spot carries a whole number called its priority. Max must also make the smallest priority seen infinitely often an even number. These two goals can pull against each other, and the paper claims to handle them together.\n\nA companion paper gives a randomized version. It returns the whole winning set correctly with probability at least 7/8. Its time bound holds on every run, even when the answer is wrong. The paper adds that a fast check catches a wrong answer. Repeating until the check passes then gives an always-correct method. That repeated version is not part of the Lean check. Truffet has claimed a strongly polynomial method. The paper shows that one printed step of it loses the optimum on an explicit example.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the randomized theorem. That covers the 7/8 success chance and the time bound on every run. Lean has also checked the finite counterexample to Truffet's step. The deterministic algorithm, exact values, chance spots and parity condition are outside that check. No specialists have published a review yet.",
+  "explanation": "Picture a game board with two spots, A and B. Max moves from A and Min moves from B. Every move scores points for Max, and a negative score is a loss. From A, Max can stay at A for −1 or move to B for +3. From B, Min can stay at B for +1 or return to A for −2. Play goes on forever. Max wins if the long-run average score per move is at least zero.\n\nWork it out. If Max stays at A, the average is −1. If Max moves to B, Min gets the choice. Staying at B gives Max +1 per move. Returning to A makes a loop worth 3 − 2 = 1 over two moves, so 0.5 per move. Min picks 0.5, and Max prefers that to −1. So Max wins from A, and the game's value there is 0.5. The value is the best average Max can guarantee. Now change the −2 to −4. The loop now averages (3 − 4)/2 = −0.5, and Max loses from both spots.\n\nThis is a mean-payoff game (a two-player game on a network where only the long-run average score counts). The winning set is every starting spot from which Max can force an average of zero or more. In 1979, Ehrenfeucht and Mycielski proved that both players have optimal positional strategies. A positional strategy picks a move using only the current spot, never the history. That is why checking the four fixed plans above was enough.\n\nThe trouble is the size of the numbers. A computer writes each score in binary digits. Our own example: a score of about 1.15 quintillion (2 to the 60th) needs only 61 binary digits. In 1996, Zwick and Paterson gave pseudopolynomial algorithms. Their cost can be polynomial in the largest score, yet exponential in the number of digits. Faster methods existed for other measures. Björklund and Vorobyov proved an expected bound in terms of the number of spots. It counts arithmetic steps, not work on digits. A related game, the parity game, got a quasipolynomial algorithm in 2017. But the known translation runs from parity games to mean-payoff games, so that result did not carry over.\n\nThe single obstacle is simple to state. A natural method raises a running estimate for each spot step by step. With huge scores, the number of steps can grow in proportion to the size of the scores. The deterministic paper avoids computing that estimate[8]. It only asks, for each spot, which end of a range the answer is forced towards. It splits the range in half again and again. It gives each spot weights that rise whenever the recursion gains ground[9]. Along any branch, those rises can happen only about as often as the logarithm of the number of spots.\n\nThe deterministic paper claims an algorithm without randomness that returns the exact winning set. Its cost is at most 2 raised to C times the square of log₂(L + 2)[10]. Here L is the total length of the input in binary digits, and C is some fixed constant. Such a bound is called quasipolynomial. Here is our own example. For an input of 1,000 digits, log₂(1,002) is about 9.97 and its square is about 99.4. So the bound is 2 to roughly 99 times C. A polynomial bound would be 2 to a fixed multiple of about 9.97. The paper notes that a polynomial bound would be a further improvement[11]. The same paper claims to compute every spot's exact value and optimal positional strategies for both players[12].\n\nTwo newer papers claim to stretch the method. The first adds chance spots, where a stated probability picks the next move[13]. It claims to find every spot whose expected long-run average is zero or more, with zeros included[14]. In a simple stochastic game, one player tries to reach a target spot and the other tries to stop them. Some moves are made by a fair coin. As a side result, the paper claims to decide whether such a game can be won with probability at least one half[15]. The second adds a parity condition. Each spot carries a whole number called its priority. Max must also make the smallest priority seen infinitely often an even number. These two goals can pull against each other, and the paper claims to handle them together[17].\n\nA companion paper gives a randomized version. It returns the whole winning set correctly with probability at least 7/8[18]. Its time bound holds on every run, even when the answer is wrong[19]. The paper adds that a fast check catches a wrong answer. Repeating until the check passes then gives an always-correct method[20]. That repeated version is not part of the Lean check. Truffet has claimed a strongly polynomial method. The paper shows that one printed step of it loses the optimum on an explicit example[22].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the randomized theorem. That covers the 7/8 success chance and the time bound on every run. Lean has also checked the finite counterexample to Truffet's step. The deterministic algorithm, exact values, chance spots and parity condition are outside that check. No specialists have published a review yet.",
   "hypeCheck": "Major if the proofs hold. Only the randomized algorithm and the Truffet counterexample have Lean proofs listed. The deterministic algorithm and both extensions are not machine-checked, and no specialist review is published. Quasipolynomial is still slower than polynomial.",
   "glossary": [
     {
@@ -175,48 +175,56 @@
       "text": "The deterministic method asks which boundary labels are forced without computing the solution.",
       "verdict": "supported",
       "sourceLine": "We instead ask which boundary labels are forced, without computing",
+      "paper": 3,
       "sourceId": 5
     },
     {
       "text": "Only logarithmically many weight increases occur along a branch.",
       "verdict": "supported",
       "sourceLine": "such product increases can therefore occur along a branch",
+      "paper": 3,
       "sourceId": 5
     },
     {
       "text": "The bound is 2 to C times the squared log of L+2 bit operations for an absolute constant C.",
       "verdict": "supported",
       "sourceLine": "For an absolute constant",
+      "paper": 2,
       "sourceId": 5
     },
     {
       "text": "A polynomial bound would be a further improvement.",
       "verdict": "supported",
       "sourceLine": "A polynomial bound for the complete binary input would be a further improvement.",
+      "paper": 3,
       "sourceId": 5
     },
     {
       "text": "The deterministic paper derives exact values and optimal positional strategies for both players.",
       "verdict": "supported",
       "sourceLine": "derives the exact rational value at every starting vertex and globally optimal positional strategies for both players",
+      "paper": 3,
       "sourceId": 5
     },
     {
       "text": "In the stochastic version, chance vertices draw the next edge from a rational distribution.",
       "verdict": "supported",
       "sourceLine": "the next edge is drawn from a prescribed rational probability distribution",
+      "paper": 1,
       "sourceId": 7
     },
     {
       "text": "Vertices of value zero are included.",
       "verdict": "supported",
       "sourceLine": "Vertices of value zero are included.",
+      "paper": 1,
       "sourceId": 7
     },
     {
       "text": "The stochastic result also decides whether a simple stochastic game has reachability value at least one half.",
       "verdict": "supported",
       "sourceLine": "also gives a deterministic quasipolynomial algorithm for deciding whether the reachability value of a simple stochastic game is at least",
+      "paper": 1,
       "sourceId": 7
     },
     {
@@ -229,24 +237,28 @@
       "text": "The two objectives can conflict.",
       "verdict": "supported",
       "sourceLine": "repeatedly visiting a favorable priority may incur a loss, even when a nonnegative mean reward is achievable on its own.",
+      "paper": 2,
       "sourceId": 8
     },
     {
       "text": "The randomized algorithm returns the whole set correctly with probability at least 7/8.",
       "verdict": "supported",
       "sourceLine": "correctly with probability at least",
+      "paper": 3,
       "sourceId": 6
     },
     {
       "text": "The time bound holds even when the output is wrong.",
       "verdict": "supported",
       "sourceLine": "The probability statement concerns the whole returned set, and the time bound holds even when that output is wrong.",
+      "paper": 4,
       "sourceId": 6
     },
     {
       "text": "Repeating until the check succeeds gives an always-correct version.",
       "verdict": "supported",
       "sourceLine": "always-correct, or Las Vegas, version obtained by repeating until the check succeeds",
+      "paper": 4,
       "sourceId": 6
     },
     {
@@ -259,6 +271,7 @@
       "text": "The appendix gives an explicit instance on which Truffet's printed rule loses the optimum.",
       "verdict": "supported",
       "sourceLine": "and gives an explicit instance on which it loses the optimum",
+      "paper": 4,
       "sourceId": 6
     },
     {

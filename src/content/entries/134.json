@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "It answers whether a fixed bound on generalized star height exists for all regular languages. The gap between one and three remains."
   },
-  "explanation": "Take every word made of the letters a and b that contains ab somewhere. There are 16 words of length four, and 11 of them qualify. The five that do not are aaaa, baaa, bbaa, bbba and bbbb. A regular expression (a short formula for a set of words) can describe this set. The usual formula reads: anything, then ab, then anything. Writing \"anything\" needs a star. The star means \"repeat as often as you like.\"\n\nNow allow one more operation, the complement. It means every word not in a given set. The empty set contains no words, so its complement is every word. That writes \"anything\" with no star at all. So once complement is allowed, the set above needs zero stars. Some sets still need a star. Over the single letter a, take the words of even length. Up to length ten, that is 6 of the 11 possible lengths. Without a star, a one-letter set is always finite or cofinite (missing only finitely many words). The even lengths are neither, so this set needs one star.\n\nThe generalized star height of a set of words counts stars inside stars. It is the smallest nesting depth of stars that any formula for the set needs, when complement is allowed. The sets in question are regular languages. These are the sets a finite automaton can recognize. A finite automaton is a machine with finitely many states that reads a word letter by letter. The question asks whether one fixed depth works for every regular language.\n\nWithout complement, the answer is no. In 1963, Lawrence Eggan linked ordinary star height to the loops in an automaton's diagram. In 1966, Françoise Dejean and Marcel-Paul Schützenberger showed ordinary star height is unbounded, even with two letters. Those lower bounds do not carry over once complement is added. In 1965, Schützenberger described exactly which languages need no star in the generalized setting. Later work proved a depth of one for special families. Pin, Straubing and Thérien did this in 1992 for languages recognized by certain finite groups. Nothing gave a bound for every regular language.\n\nThat was the obstacle: the known results covered only restricted families. A general regular language has no special structure to exploit. Every regular language does come with a finite monoid. That is a finite table recording how each word moves the automaton between states. The task is to compute that table's value for any word with only a few nested stars.\n\nThese papers prove a uniform bound (Lean proof listed). Every regular language, over any finite alphabet, has generalized star height at most three. The formulas use the same letters as the language, and complement means all other words over those letters. Three separate papers give three separate proofs, of the bounds thirteen, four and three. None uses another's numerical result. The proof of three cuts each word into pieces called episodes, which can be found in only one way. It checks the front and back of each piece separately. A clock (a word-length counter that cycles) forces the two checks to agree, or to differ in one way only. The paper builds each piece's computation so that this one mismatch still gives the right answer. Two such splitting steps, each adding one star, reach depth three.\n\nThe bound limits the nesting only. The paper gives no bound on how long the formulas are or how long building them takes. It also does not show that any language needs more than one star. Whether depth one always suffices is still undecided. Howard Straubing's 2002 account treats that as a different question from the existence of a fixed bound.\n\nHow sure is this? A computer proof checker called Lean has checked a formal proof of the main statement. It says every regular language over a finite alphabet has depth at most three. Complements are taken over the same alphabet. The formal statement does not separately encode every construction step of the paper with the bound thirteen. No specialist review has been published.",
+  "explanation": "Take every word made of the letters a and b that contains ab somewhere. There are 16 words of length four, and 11 of them qualify. The five that do not are aaaa, baaa, bbaa, bbba and bbbb. A regular expression (a short formula for a set of words) can describe this set. The usual formula reads: anything, then ab, then anything. Writing \"anything\" needs a star. The star means \"repeat as often as you like.\"\n\nNow allow one more operation, the complement. It means every word not in a given set. The empty set contains no words, so its complement is every word. That writes \"anything\" with no star at all. So once complement is allowed, the set above needs zero stars. Some sets still need a star. Over the single letter a, take the words of even length. Up to length ten, that is 6 of the 11 possible lengths. Without a star, a one-letter set is always finite or cofinite (missing only finitely many words). The even lengths are neither, so this set needs one star.\n\nThe generalized star height of a set of words counts stars inside stars. It is the smallest nesting depth of stars that any formula for the set needs, when complement is allowed. The sets in question are regular languages. These are the sets a finite automaton can recognize. A finite automaton is a machine with finitely many states that reads a word letter by letter. The question asks whether one fixed depth works for every regular language.\n\nWithout complement, the answer is no. In 1963, Lawrence Eggan linked ordinary star height to the loops in an automaton's diagram. In 1966, Françoise Dejean and Marcel-Paul Schützenberger showed ordinary star height is unbounded, even with two letters. Those lower bounds do not carry over once complement is added. In 1965, Schützenberger described exactly which languages need no star in the generalized setting. Later work proved a depth of one for special families. Pin, Straubing and Thérien did this in 1992 for languages recognized by certain finite groups. Nothing gave a bound for every regular language.\n\nThat was the obstacle: the known results covered only restricted families. A general regular language has no special structure to exploit. Every regular language does come with a finite monoid. That is a finite table recording how each word moves the automaton between states. The task is to compute that table's value for any word with only a few nested stars.\n\nThese papers prove a uniform bound (Lean proof listed). Every regular language, over any finite alphabet, has generalized star height at most three[12]. The formulas use the same letters as the language, and complement means all other words over those letters[13]. Three separate papers give three separate proofs, of the bounds thirteen, four and three. None uses another's numerical result[14]. The proof of three cuts each word into pieces called episodes, which can be found in only one way[15]. It checks the front and back of each piece separately. A clock (a word-length counter that cycles) forces the two checks to agree, or to differ in one way only[16]. The paper builds each piece's computation so that this one mismatch still gives the right answer[10]. Two such splitting steps, each adding one star, reach depth three[17].\n\nThe bound limits the nesting only. The paper gives no bound on how long the formulas are or how long building them takes[18]. It also does not show that any language needs more than one star[19]. Whether depth one always suffices is still undecided. Howard Straubing's 2002 account treats that as a different question from the existence of a fixed bound[20].\n\nHow sure is this? A computer proof checker called Lean has checked a formal proof of the main statement. It says every regular language over a finite alphabet has depth at most three. Complements are taken over the same alphabet. The formal statement does not separately encode every construction step of the paper with the bound thirteen. No specialist review has been published.",
   "hypeCheck": "Major for automata theory if the proof holds. Lean has checked a formal proof of the depth-three statement. The formulas may be huge, the question of depth one stays open, and no specialist review is published.",
   "glossary": [
     {
@@ -170,7 +170,8 @@
     {
       "text": "The clock leaves only agreement or one possible unequal pair, and the affine translation is defined so that this pair transmits the right output.",
       "verdict": "supported",
-      "sourceLine": "they agree, or there is only one possible unequal pair"
+      "sourceLine": "they agree, or there is only one possible unequal pair",
+      "paper": 3
     },
     {
       "text": "The theorem gives a positive answer to the boundedness question.",
@@ -180,47 +181,56 @@
     {
       "text": "Every regular language over a finite alphabet has generalized star height at most three, with complement in the same free monoid.",
       "verdict": "supported",
-      "sourceLine": "Every regular language over a finite alphabet has generalized star height"
+      "sourceLine": "Every regular language over a finite alphabet has generalized star height",
+      "paper": 2
     },
     {
       "text": "The expressions use the letters of the alphabet itself.",
       "verdict": "supported",
-      "sourceLine": "The expressions in the theorem use the letters of $\\Sigma$ itself."
+      "sourceLine": "The expressions in the theorem use the letters of $\\Sigma$ itself.",
+      "paper": 3
     },
     {
       "text": "Each of the three papers gives its own complete proof; the numerical theorem of one is not used to prove another.",
       "verdict": "supported",
-      "sourceLine": "the numerical theorem of"
+      "sourceLine": "the numerical theorem of",
+      "paper": 3
     },
     {
       "text": "The episode language is a prefix code, which makes episode boundaries unique.",
       "verdict": "supported",
-      "sourceLine": "This makes the episode boundaries unique."
+      "sourceLine": "This makes the episode boundaries unique.",
+      "paper": 3
     },
     {
       "text": "A clock restricts the pairs the prefix and suffix tests can jointly realize.",
       "verdict": "supported",
-      "sourceLine": "A clock restricts the pairs they can jointly realize"
+      "sourceLine": "A clock restricts the pairs they can jointly realize",
+      "paper": 3
     },
     {
       "text": "The inner split gives height two and the outer split gives height three.",
       "verdict": "supported",
-      "sourceLine": "height three."
+      "sourceLine": "height three.",
+      "paper": 3
     },
     {
       "text": "The construction gives no bound on expression size or running time.",
       "verdict": "supported",
-      "sourceLine": "construction gives an upper bound on nesting, without a bound on"
+      "sourceLine": "construction gives an upper bound on nesting, without a bound on",
+      "paper": 3
     },
     {
       "text": "The theorem does not exhibit a language of height greater than one and does not decide whether one suffices.",
       "verdict": "supported",
-      "sourceLine": "and does not decide whether one always suffices."
+      "sourceLine": "and does not decide whether one always suffices.",
+      "paper": 3
     },
     {
       "text": "Straubing distinguishes a universal finite bound from a universal bound of one.",
       "verdict": "supported",
-      "sourceLine": "Straubing distinguishes them explicitly in his"
+      "sourceLine": "Straubing distinguishes them explicitly in his",
+      "paper": 3
     },
     {
       "text": "Lean formalization proves the height-three bound; the selected statement does not separately encode every construction step of the finite-monoid paper.",

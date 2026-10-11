@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "It replaces quasipolynomial-size hitting sets with polynomial ones for formulas, with and without division."
   },
-  "explanation": "Take the expression x·y − y·x. Put in any two ordinary numbers and you get 0, because 3·5 equals 5·3. Now put in two small grids of numbers called matrices. Let X have rows (0, 1) and (0, 0). Let Y have rows (0, 0) and (1, 0). Then X·Y has rows (1, 0) and (0, 0). But Y·X has rows (0, 0) and (0, 1). Their difference has rows (1, 0) and (0, −1), which is not zero. Matrices can expose an expression that ordinary numbers make look like zero.\n\nMatrices do this because their order of multiplication matters. Variables whose order matters are called noncommutative. A noncommutative formula builds an expression from variables and numbers using only addition and multiplication, arranged as a tree. Its size counts every piece of the tree, numbers and variables included. The basic question is identity testing: does a given formula compute zero once everything is multiplied out?\n\nThese papers ask for the hardest version of that test. You may not look inside the formula. You may only plug matrices in and see the result. Worse, you must choose the matrices in advance, knowing only the number of variables and a size limit. A hitting point is one fixed choice that gives a nonzero answer for every nonzero formula within those limits. A hitting list is a short list of choices where at least one works.\n\nThe obstacle is that a small formula can hide a huge expression. Multiply x₁ + x₂ by itself 10 times, keeping the order. The formula has 39 pieces. Multiplied out, it has 1024 different words, such as x₁x₂x₂x₁… in every order. A fixed set of matrices must keep all of them from cancelling, for every formula, without seeing any of them.\n\nEarlier work left a gap. Ran Raz and Amir Shpilka gave a fast exact test in 2005, but it needs to read the formula. Andrej Bogdanov and Hoeteck Wee gave a test that only plugs in matrices, but it relies on random choices. In 2013, Michael Forbes and Amir Shpilka built fixed hitting sets without randomness. Their sets have quasipolynomial size, which grows faster than any fixed power of the formula size. In 2026, Foram Lakhani and Partha Mukhopadhyay built one fixed matrix tuple for sparse expressions, those with few words. A small formula can have very many words, as the example shows.\n\nThe first paper proves that one fixed tuple is enough over the rational numbers (fractions). For n variables and size limit s, the paper also claims at most 2ns² rows. It claims a build time that grows like a fixed power of n and s. The same tuple works over every number system where no whole number other than 0 equals zero. For the example, n = 2 and s = 39, so 6084 rows suffice. The idea is to turn each word into its own distinct infinite list of numbers. A small formula's list cannot begin with too many zeros, so a finite window of the list is enough.\n\nThe second Lean-checked paper handles division. A rational formula may also invert a matrix, which only works when that matrix is invertible. It proves a polynomial-size list of fraction-valued matrix tuples for such formulas with fraction constants. Every nonzero formula with some defined matrix value gets a defined, invertible value on some listed tuple. This holds however deeply inverses nest and however large the constants are. Earlier hitting sets of V. Arvind, Abhranil Chatterjee and Partha Mukhopadhyay had quasipolynomial size.\n\nThe third paper moves to characteristic p, for a prime p. There, adding p copies of 1 gives 0. The fraction method breaks there. It divides by whole numbers, and dividing by p is impossible there. Slopes also fail: when p = 2, the slope of z² is 2z, which is 0. The paper replaces slopes with a shift that multiplies z by a new symbol. It claims to prove that one tuple works in each characteristic p, including p = 2. Its matrices have on the order of n³s⁶ rows, more than in the fraction case. It is built in time polynomial in n, s and the number of digits of p.\n\nThese results do not say formulas can be evaluated quickly. The time bounds cover building the matrices, not plugging in an unknown formula. The first paper asserts no bound for circuits that reuse shared pieces. How sure is this? A computer proof checker called Lean has checked two statements. One is that a single fraction-valued tuple hits every nonzero formula of size at most s. That Lean statement does not include the 2ns² row bound or the time bound. The other is the full hitting-list theorem for formulas with division, including its polynomial bounds. The characteristic p paper is outside the Lean scope note. No specialist review has been published.",
+  "explanation": "Take the expression x·y − y·x. Put in any two ordinary numbers and you get 0, because 3·5 equals 5·3. Now put in two small grids of numbers called matrices. Let X have rows (0, 1) and (0, 0). Let Y have rows (0, 0) and (1, 0). Then X·Y has rows (1, 0) and (0, 0). But Y·X has rows (0, 0) and (0, 1). Their difference has rows (1, 0) and (0, −1), which is not zero. Matrices can expose an expression that ordinary numbers make look like zero.\n\nMatrices do this because their order of multiplication matters. Variables whose order matters are called noncommutative. A noncommutative formula builds an expression from variables and numbers using only addition and multiplication, arranged as a tree. Its size counts every piece of the tree, numbers and variables included. The basic question is identity testing: does a given formula compute zero once everything is multiplied out?\n\nThese papers ask for the hardest version of that test. You may not look inside the formula. You may only plug matrices in and see the result. Worse, you must choose the matrices in advance, knowing only the number of variables and a size limit. A hitting point is one fixed choice that gives a nonzero answer for every nonzero formula within those limits. A hitting list is a short list of choices where at least one works.\n\nThe obstacle is that a small formula can hide a huge expression. Multiply x₁ + x₂ by itself 10 times, keeping the order. The formula has 39 pieces. Multiplied out, it has 1024 different words, such as x₁x₂x₂x₁… in every order. A fixed set of matrices must keep all of them from cancelling, for every formula, without seeing any of them.\n\nEarlier work left a gap. Ran Raz and Amir Shpilka gave a fast exact test in 2005, but it needs to read the formula. Andrej Bogdanov and Hoeteck Wee gave a test that only plugs in matrices, but it relies on random choices. In 2013, Michael Forbes and Amir Shpilka built fixed hitting sets without randomness. Their sets have quasipolynomial size, which grows faster than any fixed power of the formula size. In 2026, Foram Lakhani and Partha Mukhopadhyay built one fixed matrix tuple for sparse expressions, those with few words. A small formula can have very many words, as the example shows[7].\n\nThe first paper proves that one fixed tuple is enough over the rational numbers (fractions). For n variables and size limit s, the paper also claims at most 2ns² rows[13]. It claims a build time that grows like a fixed power of n and s[13]. The same tuple works over every number system where no whole number other than 0 equals zero[14]. For the example, n = 2 and s = 39, so 6084 rows suffice. The idea is to turn each word into its own distinct infinite list of numbers[15]. A small formula's list cannot begin with too many zeros, so a finite window of the list is enough[16].\n\nThe second Lean-checked paper handles division. A rational formula may also invert a matrix, which only works when that matrix is invertible. It proves a polynomial-size list of fraction-valued matrix tuples for such formulas with fraction constants. Every nonzero formula with some defined matrix value gets a defined, invertible value on some listed tuple[18]. This holds however deeply inverses nest and however large the constants are[19]. Earlier hitting sets of V. Arvind, Abhranil Chatterjee and Partha Mukhopadhyay had quasipolynomial size.\n\nThe third paper moves to characteristic p, for a prime p. There, adding p copies of 1 gives 0. The fraction method breaks there. It divides by whole numbers, and dividing by p is impossible there[21]. Slopes also fail: when p = 2, the slope of z² is 2z, which is 0. The paper replaces slopes with a shift that multiplies z by a new symbol[22]. It claims to prove that one tuple works in each characteristic p, including p = 2[23]. Its matrices have on the order of n³s⁶ rows, more than in the fraction case. It is built in time polynomial in n, s and the number of digits of p[25].\n\nThese results do not say formulas can be evaluated quickly. The time bounds cover building the matrices, not plugging in an unknown formula[26]. The first paper asserts no bound for circuits that reuse shared pieces[27]. How sure is this? A computer proof checker called Lean has checked two statements. One is that a single fraction-valued tuple hits every nonzero formula of size at most s. That Lean statement does not include the 2ns² row bound or the time bound. The other is the full hitting-list theorem for formulas with division, including its polynomial bounds. The characteristic p paper is outside the Lean scope note. No specialist review has been published.",
   "hypeCheck": "Major if the proofs hold. Lean has checked the single-tuple hitting property and the division hitting-list theorem. The single tuple's size and time bounds and the whole characteristic p paper are not in that check. No specialist review has been published.",
   "glossary": [
     {
@@ -165,7 +165,8 @@
     {
       "text": "A small formula may contain exponentially many words after expansion.",
       "verdict": "supported",
-      "sourceLine": "The obstacle is that a small formula may contain exponentially many words after expansion."
+      "sourceLine": "The obstacle is that a small formula may contain exponentially many words after expansion.",
+      "paper": 2
     },
     {
       "text": "Raz and Shpilka gave deterministic polynomial-time tests that use the formula's internal structure.",
@@ -195,22 +196,26 @@
     {
       "text": "One rational tuple of dimension at most 2ns², built in polynomial bit time, hits every nonzero formula over every characteristic-zero field.",
       "verdict": "supported",
-      "sourceLine": "in time polynomial in … measured in bit operations"
+      "sourceLine": "in time polynomial in … measured in bit operations",
+      "paper": 2
     },
     {
       "text": "The tuple works for every field of characteristic zero.",
       "verdict": "supported",
-      "sourceLine": "For every field … of characteristic zero and every"
+      "sourceLine": "For every field … of characteristic zero and every",
+      "paper": 2
     },
     {
       "text": "Words are encoded by iterated integrals, which are linearly independent.",
       "verdict": "supported",
-      "sourceLine": "We encode words by iterated integrals in one variable."
+      "sourceLine": "We encode words by iterated integrals in one variable.",
+      "paper": 2
     },
     {
       "text": "The order bound ensures a finite truncation retains a nonzero coefficient.",
       "verdict": "supported",
-      "sourceLine": "the order bound ensures that this finite truncation retains a nonzero coefficient"
+      "sourceLine": "the order bound ensures that this finite truncation retains a nonzero coefficient",
+      "paper": 2
     },
     {
       "text": "Evaluation of a rational formula is defined only when every inverse gate meets an invertible matrix.",
@@ -220,12 +225,14 @@
     {
       "text": "Every nonzero admissible formula has a defined evaluation with invertible value at some listed tuple.",
       "verdict": "supported",
-      "sourceLine": "some tuple in … is a defined evaluation of … with invertible value"
+      "sourceLine": "some tuple in … is a defined evaluation of … with invertible value",
+      "paper": 3
     },
     {
       "text": "The list works regardless of constants' bit lengths or inverse depth.",
       "verdict": "supported",
-      "sourceLine": "The same list works for all such formulas, regardless of the bit lengths of their rational constants or their inverse depth."
+      "sourceLine": "The same list works for all such formulas, regardless of the bit lengths of their rational constants or their inverse depth.",
+      "paper": 3
     },
     {
       "text": "Arvind, Chatterjee and Mukhopadhyay handled unrestricted inverse nesting with quasipolynomial-size hitting sets.",
@@ -235,17 +242,20 @@
     {
       "text": "Formal integration divides by positive integers and differentiation annihilates pth powers in characteristic p.",
       "verdict": "supported",
-      "sourceLine": "formal integration divides by positive integers, ordinary differentiation annihilates"
+      "sourceLine": "formal integration divides by positive integers, ordinary differentiation annihilates",
+      "paper": 1
     },
     {
       "text": "The paper replaces the differential operator by a multiplicative shift.",
       "verdict": "supported",
-      "sourceLine": "replacing the differential operator by an infinite-order multiplicative shift"
+      "sourceLine": "replacing the differential operator by an infinite-order multiplicative shift",
+      "paper": 1
     },
     {
       "text": "The positive-characteristic tuple has dimension O(n³s⁶), and applies to p = 2.",
       "verdict": "supported",
-      "sourceLine": "applies to … without any relation between the characteristic and the formula size"
+      "sourceLine": "applies to … without any relation between the characteristic and the formula size",
+      "paper": 1
     },
     {
       "text": "The dimension bound is larger than in the companion but polynomial.",
@@ -255,17 +265,20 @@
     {
       "text": "The construction is polynomial in formula size and the binary length of the characteristic.",
       "verdict": "supported",
-      "sourceLine": "the construction here is polynomial in formula size and in the binary length of the characteristic"
+      "sourceLine": "the construction here is polynomial in formula size and in the binary length of the characteristic",
+      "paper": 1
     },
     {
       "text": "The time bound concerns construction; evaluating an unknown formula is separate.",
       "verdict": "supported",
-      "sourceLine": "The time to evaluate a formula over an unspecified coefficient field is separate from the bit complexity of constructing the tuple."
+      "sourceLine": "The time to evaluate a formula over an unspecified coefficient field is separate from the bit complexity of constructing the tuple.",
+      "paper": 1
     },
     {
       "text": "No bound for arbitrary shared circuits is asserted.",
       "verdict": "supported",
-      "sourceLine": "No bound for arbitrary shared circuits is asserted."
+      "sourceLine": "No bound for arbitrary shared circuits is asserted.",
+      "paper": 2
     },
     {
       "text": "Lean covers the universal hitting property of the single rational tuple, not its dimension or bit-time bounds, and the full rational hitting-list theorem with polynomial bounds.",

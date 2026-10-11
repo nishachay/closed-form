@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "It matches the 2007 upper bound up to exponent constants; the best earlier lower bound was of order log d."
   },
-  "explanation": "Take the eight-symbol word 01010101 and shift it one place to get 10101010. All eight positions now hold different symbols. Yet two edits turn one word into the other. Delete the first 0, then add a 0 at the end. The edit distance between two words is the fewest single-symbol insertions, deletions and substitutions that turn one into the other. Each edit costs one. Here it is 2.\n\nNow try to file words as points, so that distances between points stand in for edit distances. The natural first attempt lists each word's symbols as coordinates. The distance between two lists is then the sum of the coordinate gaps, called the ℓ1 distance. For words of one length, this counts the positions that disagree. For our pair it gives 8, while the edit distance is 2. So this map stretches that pair four times. A check of all 256 binary words of length 8 finds no pair stretched more than four times. None is shrunk. Longer alternating words do worse: at length n the stretch is n/2.\n\nThe worst stretch, times the worst shrink, is the map's distortion. A map with distortion 1 keeps every distance exactly, up to one common scale. The question is how low the distortion can go. Fix a cap d and take every word of length at most d, including the empty word. Let E(d) be the least distortion of any map of all these words into ℓ1. The map may use any number of coordinates and need not be easy to compute.\n\nThe upper side has been known since 2007. Rafail Ostrovsky and Yuval Rabani built maps for binary words of one fixed length. Their distortion grows like exp(√(log d · log log d)), up to a constant in the exponent. The logarithms are natural ones. Lower bounds stayed far below this. Alexandr Andoni and four coauthors found binary word sets needing distortion close to 3/2 in 2003. Subhash Khot and Assaf Naor reached roughly the square root of log d in 2006. Robert Krauthgamer and Rabani reached order log d in 2009.\n\nThe gap is large. At d equal to one million, log d is about 13.8. The expression exp(√(log d · log log d)) is about 413. Multiply d by 1,000, and log d only grows to about 20.7. The expression grows about 6.7 times, to about 2,768. Meanwhile, log d itself grew only 1.5 times.\n\nThese three papers prove that the upper scale is the truth (Lean proof listed). There are fixed numbers c and C above zero with the following property. For every large cap d, E(d) sits between exp(c√(log d · log log d)) and exp(C√(log d · log log d)). The same constants work for every finite alphabet with at least two symbols. They work even when the alphabet grows with d. Binary words that all share one length already force the lower bound.\n\nRead the statement carefully. It pins down log E(d) within a constant factor, not E(d) itself. The paper does not say what c and C are, and they need not agree. At d equal to one million, it only places E(d) between 413 to the power c and 413 to the power C. What it does settle is the growth law. E(d) grows faster than every fixed power of log d, yet more slowly than every fixed power of d.\n\nThe obstacle was the cheap shift from the first example. A hard word set needs one change that every alignment must pay for. But an alignment may match symbols across the boundaries used to build the words, and hide the change. The papers build words from long lists of rows, each ending in a marker of a fresh symbol. A row whose matches spill into several rows must skip a whole marker. The skipped stretches for different rows never overlap, so the cost adds up. Shifts with different prime periods then make some change expensive at every level. The three papers give five independent lower-bound constructions along these lines.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the two-sided theorem. The Lean scope note also lists the circle and tree lower bounds and the uniform upper map. Each has a Comparator statement, a fixed reference statement the proof must match. For the tree paper, the note selects only its lower bounds. That paper's constant-factor binary conversion lies outside the check. No specialist review has been published.",
+  "explanation": "Take the eight-symbol word 01010101 and shift it one place to get 10101010. All eight positions now hold different symbols. Yet two edits turn one word into the other. Delete the first 0, then add a 0 at the end. The edit distance between two words is the fewest single-symbol insertions, deletions and substitutions that turn one into the other. Each edit costs one. Here it is 2.\n\nNow try to file words as points, so that distances between points stand in for edit distances. The natural first attempt lists each word's symbols as coordinates. The distance between two lists is then the sum of the coordinate gaps, called the ℓ1 distance. For words of one length, this counts the positions that disagree. For our pair it gives 8, while the edit distance is 2. So this map stretches that pair four times. A check of all 256 binary words of length 8 finds no pair stretched more than four times. None is shrunk. Longer alternating words do worse: at length n the stretch is n/2.\n\nThe worst stretch, times the worst shrink, is the map's distortion. A map with distortion 1 keeps every distance exactly, up to one common scale. The question is how low the distortion can go. Fix a cap d and take every word of length at most d, including the empty word. Let E(d) be the least distortion of any map of all these words into ℓ1. The map may use any number of coordinates and need not be easy to compute.\n\nThe upper side has been known since 2007. Rafail Ostrovsky and Yuval Rabani built maps for binary words of one fixed length. Their distortion grows like exp(√(log d · log log d)), up to a constant in the exponent. The logarithms are natural ones. Lower bounds stayed far below this. Alexandr Andoni and four coauthors found binary word sets needing distortion close to 3/2 in 2003. Subhash Khot and Assaf Naor reached roughly the square root of log d in 2006. Robert Krauthgamer and Rabani reached order log d in 2009.\n\nThe gap is large. At d equal to one million, log d is about 13.8. The expression exp(√(log d · log log d)) is about 413. Multiply d by 1,000, and log d only grows to about 20.7. The expression grows about 6.7 times, to about 2,768. Meanwhile, log d itself grew only 1.5 times.\n\nThese three papers prove that the upper scale is the truth (Lean proof listed). There are fixed numbers c and C above zero with the following property. For every large cap d, E(d) sits between exp(c√(log d · log log d)) and exp(C√(log d · log log d))[8]. The same constants work for every finite alphabet with at least two symbols. They work even when the alphabet grows with d[9]. Binary words that all share one length already force the lower bound[10].\n\nRead the statement carefully. It pins down log E(d) within a constant factor, not E(d) itself[11]. The paper does not say what c and C are, and they need not agree[12]. At d equal to one million, it only places E(d) between 413 to the power c and 413 to the power C. What it does settle is the growth law. E(d) grows faster than every fixed power of log d, yet more slowly than every fixed power of d[13].\n\nThe obstacle was the cheap shift from the first example. A hard word set needs one change that every alignment must pay for. But an alignment may match symbols across the boundaries used to build the words, and hide the change[14]. The papers build words from long lists of rows, each ending in a marker of a fresh symbol[15]. A row whose matches spill into several rows must skip a whole marker. The skipped stretches for different rows never overlap, so the cost adds up[16]. Shifts with different prime periods then make some change expensive at every level[17]. The three papers give five independent lower-bound constructions along these lines[18,19].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the two-sided theorem. The Lean scope note also lists the circle and tree lower bounds and the uniform upper map. Each has a Comparator statement, a fixed reference statement the proof must match. For the tree paper, the note selects only its lower bounds. That paper's constant-factor binary conversion lies outside the check[20]. No specialist review has been published.",
   "hypeCheck": "Major if the proofs hold. Lean checks formal versions of the main two-sided theorem and the lower-bound constructions. The constants in the exponent remain unknown, and no specialist review is published.",
   "glossary": [
     {
@@ -159,67 +159,80 @@
     {
       "text": "For every large d and every finite alphabet with at least two symbols, the distortion lies between exp(c sqrt(log d log log d)) and exp(C sqrt(log d log log d)).",
       "verdict": "supported",
-      "sourceLine": "There are absolute constants … and an integer … such that, for every integer … and every finite alphabet … with"
+      "sourceLine": "There are absolute constants … and an integer … such that, for every integer … and every finite alphabet … with",
+      "paper": 1
     },
     {
       "text": "The constants are independent of the alphabet, including when its size grows with d.",
       "verdict": "supported",
-      "sourceLine": "The constants and threshold in the theorem are independent of the alphabet, including when its size grows with"
+      "sourceLine": "The constants and threshold in the theorem are independent of the alphabet, including when its size grows with",
+      "paper": 1
     },
     {
       "text": "The lower bound is witnessed by binary strings of one common length.",
       "verdict": "supported",
-      "sourceLine": "The lower bound is witnessed by a subset of binary strings of one common length at most"
+      "sourceLine": "The lower bound is witnessed by a subset of binary strings of one common length at most",
+      "paper": 1
     },
     {
       "text": "The theorem determines the order of log E(d); the constants in the exponent remain unspecified.",
       "verdict": "supported",
-      "sourceLine": "the constants in the exponent remain unspecified."
+      "sourceLine": "the constants in the exponent remain unspecified.",
+      "paper": 1
     },
     {
       "text": "The constants in the two exponents need not agree.",
       "verdict": "supported",
-      "sourceLine": "the constants in its two exponents need not agree."
+      "sourceLine": "the constants in its two exponents need not agree.",
+      "paper": 2
     },
     {
       "text": "The lower bound grows faster than every fixed power of log d while remaining d^{o(1)}.",
       "verdict": "supported",
-      "sourceLine": "The resulting lower bound grows faster than every fixed power of … while remaining"
+      "sourceLine": "The resulting lower bound grows faster than every fixed power of … while remaining",
+      "paper": 2
     },
     {
       "text": "Any lower bound must control arbitrary increasing matchings, even those crossing construction boundaries.",
       "verdict": "supported",
-      "sourceLine": "A lower bound must therefore control arbitrary increasing matchings, even when they cross many of the boundaries used to construct the words."
+      "sourceLine": "A lower bound must therefore control arbitrary increasing matchings, even when they cross many of the boundaries used to construct the words.",
+      "paper": 2
     },
     {
       "text": "Each row ends in a long marker of a fresh symbol; a payload spread over several target rows skips a complete marker.",
       "verdict": "supported",
-      "sourceLine": "In that event, the matching skips a complete target marker: the source payload contains no copy of the marker symbol."
+      "sourceLine": "In that event, the matching skips a complete target marker: the source payload contains no copy of the marker symbol.",
+      "paper": 1
     },
     {
       "text": "The skipped markers for different payloads are disjoint.",
       "verdict": "supported",
-      "sourceLine": "The skipped markers for different payloads are disjoint."
+      "sourceLine": "The skipped markers for different payloads are disjoint.",
+      "paper": 1
     },
     {
       "text": "Components cycle with distinct prime periods.",
       "verdict": "supported",
-      "sourceLine": "In each component, repeatedly adding one distinguished step cycles the state with a prime period; different components use different primes."
+      "sourceLine": "In each component, repeatedly adding one distinguished step cycles the state with a prime period; different components use different primes.",
+      "paper": 1
     },
     {
       "text": "The circle paper gives two lower constructions.",
       "verdict": "supported",
-      "sourceLine": "Each of our two lower constructions supplies a binary subset whose words have one common length at most"
+      "sourceLine": "Each of our two lower constructions supplies a binary subset whose words have one common length at most",
+      "paper": 2
     },
     {
       "text": "The tree paper proves the lower bound in two independent ways.",
       "verdict": "supported",
-      "sourceLine": "We prove the following lower bound in two independent ways."
+      "sourceLine": "We prove the following lower bound in two independent ways.",
+      "paper": 3
     },
     {
       "text": "The tree paper's appendix gives a separate constant-distortion code with factor 804, not needed for the lower bounds.",
       "verdict": "supported",
-      "sourceLine": "preserve edit distance up to scale and an absolute factor"
+      "sourceLine": "preserve edit distance up to scale and an absolute factor",
+      "paper": 3
     },
     {
       "text": "The Lean scope note covers the two-sided theorem, the circle and tree lower bounds and the histogram upper embedding, each with Comparator links; the constant-distortion binary conversion is outside.",

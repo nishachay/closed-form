@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "If the October 5 proof holds, it settles the generalized Lax conjecture and its weaker projected form in the negative."
   },
-  "explanation": "Take a square grid of numbers that reads the same across its diagonal. Rows (2, 1) and (1, 2) make one. Such a grid is a symmetric matrix. It has special numbers called eigenvalues, the amounts by which it stretches certain directions. Here they are 1 and 3. Swap to rows (1, 2) and (2, 1), and they become 3 and −1. A matrix is positive semidefinite when none of its eigenvalues is negative. The first matrix passes. The second fails.\n\nThat test hides a polynomial. The eigenvalues are the roots of a formula in t built from the matrix. For the first matrix it is t² − 4t + 3, with roots 1 and 3. A hyperbolic polynomial behaves like this along every line through one fixed direction: all its roots are real. Its hyperbolicity cone is the set of points where all those roots are nonnegative. The positive semidefinite matrices form the basic example. Lars Gårding proved in 1959 that every such cone is convex, meaning it has no dents.\n\nA spectrahedron is a set cut out by one matrix test. Each coordinate of a point feeds linearly into the entries of a fixed symmetric matrix. The point belongs exactly when that matrix is positive semidefinite. A spectrahedral shadow also allows hidden extra variables. The point belongs when some choice of hidden values makes the matrix pass. Such a description is called a semidefinite lift.\n\nThe question began with Peter Lax in 1958, for polynomials in three variables. Helton and Vinnikov's 2007 theorem, with an equivalence explained by Lewis, Parrilo and Ramana, answered it yes. The generalized Lax conjecture says every hyperbolicity cone is a spectrahedron. Netzer and Sanyal posed a weaker version, the Projected Lax Conjecture: every such cone is a spectrahedral shadow. They proved it when every nonzero boundary point is a smooth point of the polynomial. Other positive results covered special families or assumed extra regularity. In 2018 Claus Scheiderer asked whether his methods for ruling out lifts could settle the question.\n\nThe obstacle is that a cone is not its polynomial. Many polynomials and many matrices can describe one cone. In 2011 Petter Brändén found a polynomial with no determinant formula for any of its powers. That does not stop another polynomial from having the same cone. Mario Kummer showed the gap is real. The specialized Vámos polynomial has no such formula for any power, yet its cone has a 7-by-7 matrix description. So a counterexample must defeat every matrix of every size, with any real coefficients.\n\nThe September 24 paper meets that demand without hidden variables. It writes down one polynomial in 23 variables, of degree 20. A reduced version of degree 16 has the same cone. It proves this cone is not a spectrahedron for any matrix size. Its key ingredient is the Choi–Lam form, a fourth-degree formula b(z, y) in two triples of numbers. It is never negative. At z = y = (1, 0, 0) it equals 1. At z = y = (1, 1, 1) it equals 0. Its rigid feature is this: no nonzero bilinear form has a square that stays below it everywhere. A bilinear form is a sum of terms, each a z-coordinate times a y-coordinate. A 2026 preprint by Alejandro González Nevado had stated a positive solution. The September paper gives a counterexample to one step it uses.\n\nThat cone does have a lift. A companion paper of October 5 claims a description of it with a 100-by-100 matrix and 307 hidden variables. So hidden variables can rescue a cone that fails the direct test. The Projected Lax Conjecture survives this example.\n\nThe main October 5 paper claims to prove that it does not survive in general. It claims a hyperbolic polynomial whose closed cone has no semidefinite lift at all. That rules out every matrix size, any number of hidden variables, and any real coefficients. If correct, this disproves the Projected Lax Conjecture and hence the generalized Lax conjecture. The paper names its main difficulty plainly. It must force an obstruction while a certain matrix built from the input stays positive semidefinite for every input. Its building block is a special 36-by-36 matrix. Its rank facts are certified by explicit determinants written out in arithmetic modulo 7. A separate argument carries them back to real numbers. A program reproduces the calculation, but the proof does not rely on it.\n\nThe new cone is far from explicit. A matrix at its core has 20N − 1 rows, and the paper allows any N above 12,960. That means at least 259,219 rows. The paper calls its construction an existence argument in high dimension. It gives no lower bound on the size of any particular representation.\n\nHow sure is this? Lean, a computer proof checker, has checked the September result. The degree-20 polynomial is hyperbolic, and no finite symmetric matrix test in its original variables describes its cone. The October 5 no-lift claim and the 307-variable lift are outside that check. No specialist review of either has been published.",
+  "explanation": "Take a square grid of numbers that reads the same across its diagonal. Rows (2, 1) and (1, 2) make one. Such a grid is a symmetric matrix. It has special numbers called eigenvalues, the amounts by which it stretches certain directions. Here they are 1 and 3. Swap to rows (1, 2) and (2, 1), and they become 3 and −1. A matrix is positive semidefinite when none of its eigenvalues is negative. The first matrix passes. The second fails.\n\nThat test hides a polynomial. The eigenvalues are the roots of a formula in t built from the matrix. For the first matrix it is t² − 4t + 3, with roots 1 and 3. A hyperbolic polynomial behaves like this along every line through one fixed direction: all its roots are real. Its hyperbolicity cone is the set of points where all those roots are nonnegative. The positive semidefinite matrices form the basic example. Lars Gårding proved in 1959 that every such cone is convex, meaning it has no dents.\n\nA spectrahedron is a set cut out by one matrix test. Each coordinate of a point feeds linearly into the entries of a fixed symmetric matrix. The point belongs exactly when that matrix is positive semidefinite. A spectrahedral shadow also allows hidden extra variables. The point belongs when some choice of hidden values makes the matrix pass. Such a description is called a semidefinite lift.\n\nThe question began with Peter Lax in 1958, for polynomials in three variables. Helton and Vinnikov's 2007 theorem, with an equivalence explained by Lewis, Parrilo and Ramana, answered it yes. The generalized Lax conjecture says every hyperbolicity cone is a spectrahedron. Netzer and Sanyal posed a weaker version, the Projected Lax Conjecture: every such cone is a spectrahedral shadow. They proved it when every nonzero boundary point is a smooth point of the polynomial. Other positive results covered special families or assumed extra regularity. In 2018 Claus Scheiderer asked whether his methods for ruling out lifts could settle the question.\n\nThe obstacle is that a cone is not its polynomial. Many polynomials and many matrices can describe one cone. In 2011 Petter Brändén found a polynomial with no determinant formula for any of its powers. That does not stop another polynomial from having the same cone. Mario Kummer showed the gap is real. The specialized Vámos polynomial has no such formula for any power, yet its cone has a 7-by-7 matrix description. So a counterexample must defeat every matrix of every size, with any real coefficients.\n\nThe September 24 paper meets that demand without hidden variables. It writes down one polynomial in 23 variables, of degree 20. A reduced version of degree 16 has the same cone[14]. It proves this cone is not a spectrahedron for any matrix size[13]. Its key ingredient is the Choi–Lam form, a fourth-degree formula b(z, y) in two triples of numbers. It is never negative. At z = y = (1, 0, 0) it equals 1. At z = y = (1, 1, 1) it equals 0. Its rigid feature is this: no nonzero bilinear form has a square that stays below it everywhere[15]. A bilinear form is a sum of terms, each a z-coordinate times a y-coordinate. A 2026 preprint by Alejandro González Nevado had stated a positive solution. The September paper gives a counterexample to one step it uses[16].\n\nThat cone does have a lift. A companion paper of October 5 claims a description of it with a 100-by-100 matrix and 307 hidden variables[17]. So hidden variables can rescue a cone that fails the direct test. The Projected Lax Conjecture survives this example.\n\nThe main October 5 paper claims to prove that it does not survive in general. It claims a hyperbolic polynomial whose closed cone has no semidefinite lift at all[18]. That rules out every matrix size, any number of hidden variables, and any real coefficients. If correct, this disproves the Projected Lax Conjecture and hence the generalized Lax conjecture[18]. The paper names its main difficulty plainly. It must force an obstruction while a certain matrix built from the input stays positive semidefinite for every input[19]. Its building block is a special 36-by-36 matrix. Its rank facts are certified by explicit determinants written out in arithmetic modulo 7[20]. A separate argument carries them back to real numbers. A program reproduces the calculation, but the proof does not rely on it.\n\nThe new cone is far from explicit. A matrix at its core has 20N − 1 rows, and the paper allows any N above 12,960[21]. That means at least 259,219 rows. The paper calls its construction an existence argument in high dimension. It gives no lower bound on the size of any particular representation[21].\n\nHow sure is this? Lean, a computer proof checker, has checked the September result. The degree-20 polynomial is hyperbolic, and no finite symmetric matrix test in its original variables describes its cone. The October 5 no-lift claim and the 307-variable lift are outside that check. No specialist review of either has been published.",
   "hypeCheck": "Major if the October 5 proof holds. Only the weaker September result, about one explicit cone without hidden variables, has a Lean check listed. The no-lift claim rests on a long argument and a finite-field certificate that no one outside has reviewed in print.",
   "glossary": [
     {
@@ -228,54 +228,63 @@
       "text": "The September polynomial has 23 variables and degree 20 and its cone is not spectrahedral for any finite matrix size.",
       "verdict": "supported",
       "sourceLine": "The ambient space has dimension",
+      "paper": 2,
       "sourceId": 12
     },
     {
       "text": "A reduced polynomial of degree 16 has the same cone.",
       "verdict": "supported",
       "sourceLine": "extends to a homogeneous polynomial of degree",
+      "paper": 2,
       "sourceId": 12
     },
     {
       "text": "The Choi–Lam form is nonnegative and nonzero, and every bilinear form whose square it dominates is zero.",
       "verdict": "supported",
       "sourceLine": "is nonnegative and nonzero. If a real bilinear form",
+      "paper": 2,
       "sourceId": 12
     },
     {
       "text": "The September paper records a counterexample to a step used in González Nevado's stated positive solution.",
       "verdict": "supported",
       "sourceLine": "records a counterexample to the path-containment assertion used in that argument.",
+      "paper": 2,
       "sourceId": 12
     },
     {
       "text": "The companion lift has a 100-by-100 pencil and 307 auxiliary variables.",
       "verdict": "supported",
       "sourceLine": "The lift is a homogeneous real symmetric pencil of size",
+      "paper": 3,
       "sourceId": 13
     },
     {
       "text": "The no-lift claim allows arbitrary real coefficients and any number of auxiliary variables, and disproves both conjectures.",
       "verdict": "supported",
       "sourceLine": "This disproves the Projected Lax Conjecture and hence the generalized Lax conjecture.",
+      "paper": 1,
       "sourceId": 11
     },
     {
       "text": "The difficulty is forcing the obstruction while keeping Q(y) positive semidefinite for every y.",
       "verdict": "supported",
       "sourceLine": "The difficulty is to force such an obstruction while keeping",
+      "paper": 1,
       "sourceId": 11
     },
     {
       "text": "Nonvanishing assertions about the seed matrix are certified by explicit minors over the field with 7 elements.",
       "verdict": "supported",
       "sourceLine": "All nonvanishing assertions are certified below by explicit minors over",
+      "paper": 1,
       "sourceId": 11
     },
     {
       "text": "The construction uses r = 20N − 1 with N above 10·36², and is an existence argument rather than a size lower bound.",
       "verdict": "supported",
       "sourceLine": "The construction is an existence argument in high dimension, not a lower bound on the size of a particular representation.",
+      "paper": 1,
       "sourceId": 11
     },
     {

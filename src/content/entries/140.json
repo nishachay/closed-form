@@ -55,7 +55,7 @@
     "significance": "Solid",
     "significanceWhy": "It gives a lower bound for the exact-clue form of a 2019 precision question, for memory up to order d²."
   },
-  "explanation": "Hide an arrow of length 1 in 100-dimensional space. Each clue is a list of 100 random numbers plus one exact answer. The answer is the sum of each random number times the matching coordinate of the arrow. No clue has any noise. Keep the first 100 clues and you can solve for the arrow exactly. But storing them takes 10,100 real numbers, each with endless digits.\n\nNow suppose you may not store clues. A classic method, the Kaczmarz step, keeps only a running guess. Each clue nudges the guess so that it fits that one clue exactly. The paper computes its average squared error. That error shrinks by a factor of 1 − 1/d per clue, where d is the dimension. With d = 100, that factor is 0.99. A typical miss of 0.01 means an average squared miss of 0.0001. Reaching it takes about 917 clues. A typical miss of 0.0001 takes about 1,833. Each extra two digits of accuracy costs another 916 clues or so.\n\nThat pattern has a name in the paper: the scale d log(1/ε), where ε is the allowed error. Here log is the natural logarithm, and the error is measured as an angle. For small errors, the angle and the distance nearly agree. But the Kaczmarz guess stores real numbers with endless digits. The paper says it gives no recipe for a learner with a fixed number of bits. So the real question is this. Suppose a learner keeps only a fixed number of bits between clues. Must it still pay that price for accuracy?\n\nThe paper's model is a finite-state learner. It reads each clue once, in order, and may compute anything with it. Afterwards it keeps only a state, one of at most 2^M possibilities, where M is its memory in bits. It may use randomness. Its final guess may depend only on its last state, when it stopped, and fresh randomness. A discarded clue can never be read again.\n\nThe closest earlier result is a 2019 paper by Vatsal Sharan, Aaron Sidford and Gregory Valiant. They studied the same kind of clues with a tiny amount of added noise. With at most d²/4 bits, they gave a lower bound on clues for very small errors. They also asked whether this cost of precision was optimal under bounded memory. The obstacle is that exact clues tell you more than noisy ones. A lower bound with noise does not by itself cover the exact case.\n\nThis paper proves a lower bound for the exact case. Fix any number A, and allow A·d² bits of memory. Hide the arrow at a uniformly random direction. Then success with probability at least 2/3 needs at least c·d·log(1/ε) clues. Here c is a positive constant that depends on A, and ε may be any error up to 1/10. For memory that grows more slowly than d², the constant c can be the same for every memory budget. For that slower-growing memory, a companion paper makes it explicit. It needs at least 2^−16 times d times log₂(1/ε) clues in large dimension.\n\nExactness is also what makes the proof hard. One exact clue pins the arrow to a thin slice of the sphere of possible directions. The usual way to track what the learner believes then breaks down. The paper works backwards from the end instead. It keeps the original random direction fixed. It asks how tightly the directions on which the learner would still succeed can cluster. Each block of about d clues can loosen that clustering only by a bounded factor.\n\nReturn to d = 100, with 10,000 bits of memory. That budget is about one bit per number in the 100 clues that would settle the arrow. The theorem says the number of clues must grow at least in step with the digits of accuracy. It fixes that growth rate, not the exact count. Still, the theorem only applies above some large dimension that the paper does not state. The explicit constant 2^−16 is also tiny. And it is a lower bound only: it does not show that a finite-memory learner can reach that cost.\n\nHow sure is this? The Lean scope note says a computer proof checker, Lean, has a formal proof of the main statement. It also covers the memory below d² case, the every-direction version for that case, and the 2^−16 bound. A stronger variant with success 3/5 is outside that scope, and so is an auxiliary two-dimensional case. No specialist review has been published.",
+  "explanation": "Hide an arrow of length 1 in 100-dimensional space. Each clue is a list of 100 random numbers plus one exact answer. The answer is the sum of each random number times the matching coordinate of the arrow. No clue has any noise. Keep the first 100 clues and you can solve for the arrow exactly. But storing them takes 10,100 real numbers, each with endless digits.\n\nNow suppose you may not store clues. A classic method, the Kaczmarz step, keeps only a running guess. Each clue nudges the guess so that it fits that one clue exactly. The paper computes its average squared error. That error shrinks by a factor of 1 − 1/d per clue, where d is the dimension[2]. With d = 100, that factor is 0.99. A typical miss of 0.01 means an average squared miss of 0.0001. Reaching it takes about 917 clues. A typical miss of 0.0001 takes about 1,833. Each extra two digits of accuracy costs another 916 clues or so.\n\nThat pattern has a name in the paper: the scale d log(1/ε), where ε is the allowed error. Here log is the natural logarithm, and the error is measured as an angle. For small errors, the angle and the distance nearly agree. But the Kaczmarz guess stores real numbers with endless digits. The paper says it gives no recipe for a learner with a fixed number of bits[4]. So the real question is this. Suppose a learner keeps only a fixed number of bits between clues. Must it still pay that price for accuracy?\n\nThe paper's model is a finite-state learner. It reads each clue once, in order, and may compute anything with it. Afterwards it keeps only a state, one of at most 2^M possibilities, where M is its memory in bits[5]. It may use randomness. Its final guess may depend only on its last state, when it stopped, and fresh randomness[6]. A discarded clue can never be read again.\n\nThe closest earlier result is a 2019 paper by Vatsal Sharan, Aaron Sidford and Gregory Valiant. They studied the same kind of clues with a tiny amount of added noise. With at most d²/4 bits, they gave a lower bound on clues for very small errors. They also asked whether this cost of precision was optimal under bounded memory. The obstacle is that exact clues tell you more than noisy ones. A lower bound with noise does not by itself cover the exact case[9].\n\nThis paper proves a lower bound for the exact case. Fix any number A, and allow A·d² bits of memory. Hide the arrow at a uniformly random direction. Then success with probability at least 2/3 needs at least c·d·log(1/ε) clues[11]. Here c is a positive constant that depends on A, and ε may be any error up to 1/10[17]. For memory that grows more slowly than d², the constant c can be the same for every memory budget[12]. For that slower-growing memory, a companion paper makes it explicit. It needs at least 2^−16 times d times log₂(1/ε) clues in large dimension[13].\n\nExactness is also what makes the proof hard. One exact clue pins the arrow to a thin slice of the sphere of possible directions[14]. The usual way to track what the learner believes then breaks down. The paper works backwards from the end instead. It keeps the original random direction fixed[15]. It asks how tightly the directions on which the learner would still succeed can cluster. Each block of about d clues can loosen that clustering only by a bounded factor[16].\n\nReturn to d = 100, with 10,000 bits of memory. That budget is about one bit per number in the 100 clues that would settle the arrow. The theorem says the number of clues must grow at least in step with the digits of accuracy. It fixes that growth rate, not the exact count. Still, the theorem only applies above some large dimension that the paper does not state. The explicit constant 2^−16 is also tiny. And it is a lower bound only: it does not show that a finite-memory learner can reach that cost.\n\nHow sure is this? The Lean scope note says a computer proof checker, Lean, has a formal proof of the main statement. It also covers the memory below d² case, the every-direction version for that case, and the 2^−16 bound. A stronger variant with success 3/5 is outside that scope, and so is an auxiliary two-dimensional case. No specialist review has been published.",
   "hypeCheck": "Solid if the proofs hold. Lean covers the main lower bound. But the constant is unstated or tiny, and the dimension must be large. No specialist review is published.",
   "glossary": [
     {
@@ -125,7 +125,8 @@
     {
       "text": "The Kaczmarz step's expected squared error shrinks by 1 − 1/d per observation.",
       "verdict": "supported",
-      "sourceLine": "This calculation explains the scale … for fresh isotropic observations."
+      "sourceLine": "This calculation explains the scale … for fresh isotropic observations.",
+      "paper": 1
     },
     {
       "text": "With d = 100, errors 0.01 and 0.0001 need about 917 and 1,833 Kaczmarz steps.",
@@ -135,17 +136,20 @@
     {
       "text": "The Kaczmarz update stores real numbers and gives no finite-bit upper bound.",
       "verdict": "supported",
-      "sourceLine": "The displayed update stores real scalars and supplies no finite-bit upper bound."
+      "sourceLine": "The displayed update stores real scalars and supplies no finite-bit upper bound.",
+      "paper": 1
     },
     {
       "text": "The learner reads pairs once, in order, keeps at most 2^M states, and computation is unrestricted.",
       "verdict": "supported",
-      "sourceLine": "A learner reads the pairs once, in order. After each number of samples its persistent state belongs to a prescribed set of at most"
+      "sourceLine": "A learner reads the pairs once, in order. After each number of samples its persistent state belongs to a prescribed set of at most",
+      "paper": 1
     },
     {
       "text": "The output depends only on the terminal state, the stopping index and fresh randomness.",
       "verdict": "supported",
-      "sourceLine": "is generated from the terminal state, the stopping index, and fresh randomness only. In particular, a discarded observation cannot be read again by the output rule."
+      "sourceLine": "is generated from the terminal state, the stopping index, and fresh randomness only. In particular, a discarded observation cannot be read again by the output rule.",
+      "paper": 1
     },
     {
       "text": "Sharan, Sidford and Valiant used small uniform additive noise.",
@@ -160,7 +164,8 @@
     {
       "text": "A lower bound with noise does not by itself cover the exact experiment.",
       "verdict": "supported",
-      "sourceLine": "A lower bound with additive noise does not by itself bound the more informative exact experiment."
+      "sourceLine": "A lower bound with additive noise does not by itself bound the more informative exact experiment.",
+      "paper": 1
     },
     {
       "text": "Their bound used at most d²/4 bits.",
@@ -170,37 +175,44 @@
     {
       "text": "For fixed A, memory at most A·d² bits and success at least 2/3, T ≥ c_A d log(1/ε).",
       "verdict": "supported",
-      "sourceLine": "For every fixed finite … there are constants … and … such that the following holds."
+      "sourceLine": "For every fixed finite … there are constants … and … such that the following holds.",
+      "paper": 1
     },
     {
       "text": "For memory o(d²) the constant is absolute.",
       "verdict": "supported",
-      "sourceLine": "The constant is absolute for"
+      "sourceLine": "The constant is absolute for",
+      "paper": 1
     },
     {
       "text": "The companion paper gives the explicit bound 2^−16 d log₂(1/ε).",
       "verdict": "supported",
-      "sourceLine": "require at least … samples for all sufficiently large"
+      "sourceLine": "require at least … samples for all sufficiently large",
+      "paper": 6
     },
     {
       "text": "One exact observation confines the signal to a hyperplane section of the sphere.",
       "verdict": "supported",
-      "sourceLine": "Conditioning the uniform prior on one raw exact observation almost surely confines the signal to a hyperplane section of the sphere."
+      "sourceLine": "Conditioning the uniform prior on one raw exact observation almost surely confines the signal to a hyperplane section of the sphere.",
+      "paper": 1
     },
     {
       "text": "The proof keeps the original prior fixed and studies future success from a state.",
       "verdict": "supported",
-      "sourceLine": "We instead keep the original prior fixed and study the probability of future success from a prescribed state."
+      "sourceLine": "We instead keep the original prior fixed and study the probability of future success from a prescribed state.",
+      "paper": 1
     },
     {
       "text": "Moving backward across a block of order d observations multiplies R by at most a constant.",
       "verdict": "supported",
-      "sourceLine": "observations multiplies … by at most a constant for fixed"
+      "sourceLine": "observations multiplies … by at most a constant for fixed",
+      "paper": 1
     },
     {
       "text": "The theorem's constants may depend on A and it makes no uniform claim when A grows.",
       "verdict": "supported",
-      "sourceLine": "The statement makes no uniform claim when"
+      "sourceLine": "The statement makes no uniform claim when",
+      "paper": 1
     },
     {
       "text": "Lean formalizes the main bound, the o(d²) case, the every-signal version and the 2^−16 bound; the 3/5 variant and the dimension-two case are outside.",

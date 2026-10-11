@@ -40,7 +40,7 @@
     "significance": "Major",
     "significanceWhy": "If the proofs hold, they settle Bogomolov's pro-ℓ question in its standard form. In characteristic p this recovers the perfect closure, up to Frobenius, not the field itself. They need no extra data and work from two variables up."
   },
-  "explanation": "Take a fraction of polynomials in two variables, s and t, such as 4s³(t − 1)². Now blur it. Treat two functions as the same when one equals the other times a perfect square. Divide our function by s and you get 4s²(t − 1)², which is the square of 2s(t − 1). So in the blurred view, 4s³(t − 1)² looks exactly like s. The constant 4 has vanished, and so has the squared factor (t − 1)².\n\nThis blurred version keeps only multiplication, and only roughly. Mathematicians call it the first Milnor K-group modulo 2. Squares can be replaced by ℓ-th powers for any prime ℓ, giving the group modulo ℓ. One more piece of data carries a trace of addition. For each function x other than 0 and 1, the pair x and 1 − x is marked as special. Take x = s/t. Then 1 − x = (t − s)/t. So the marked pair ties s, t and t − s together. These marks, called Steinberg relations, define a second group and a product between the two.\n\nThe question is whether this thin record still pins down the whole field. A field here is a system of numbers or functions where you can add, subtract, multiply and divide. The fields in question are function fields: all fractions of polynomials in several variables. Their constants come from an algebraically closed field, one where every polynomial equation has a root, like the complex numbers. The number of independent variables is the transcendence degree. The papers need at least two.\n\nThe idea goes back to Bogomolov in 1991. He proposed recovering such fields from a small piece of their Galois group. That group records the symmetries of the field's extensions. The piece is the pro-ℓ quotient in which commutators are central. Bogomolov and Tschinkel proved this for surfaces over algebraic closures of finite fields in 2008. They reached higher dimensions in 2011. Pop independently completed that case in 2012. For general constants, Pop's 2018 preprint used extra inertia data and more than two variables. For the blurred mod-ℓ data, Topaz's 2016 theorem needed at least five variables. It also needed an extra supplied list of rational subgroups.\n\nThe October 2026 paper claims to remove both extra requirements. Suppose ℓ differs from the field's characteristic. Then the two groups and their product alone determine the field's perfect closure and its constants. The characteristic is p when adding p copies of 1 gives 0, and zero when no such p exists. The perfect closure adds every p-th root, and changes nothing in characteristic zero. Any matching of the data comes from a field isomorphism, up to one scalar. When ℓ = 2 that scalar ambiguity disappears. A September 2026 companion claims the same for Bogomolov's original Galois data. It claims to resolve the Bogomolov–Pop conjecture in its pro-ℓ abelian-by-central form.\n\nThe main obstacle is that the blur destroys information. A class records the order of each zero or pole only modulo ℓ. So a zero of multiplicity divisible by ℓ simply disappears, as (t − 1)² did above. The paper controls this loss with a uniform bound. Fix one function t. Then all the transformed classes of t − a, for every constant a, stay bounded in complexity. The bound comes from five fixed members of that family. From these families it recovers one-variable subfields, then points, then addition itself.\n\nA third paper treats the case ℓ = p, blurring by p-th powers in characteristic p. There the blurred group becomes a geometry over the subfield of p-th powers. With p = 3 and two variables, the field is 3² = 9 times as big as that subfield. Its basis is the nine products sᶦtʲ, with i and j from 0 to 2. The paper recovers lines in this geometry by a calculation with derivatives. It claims this recovers the field itself and its named base, not just the perfect closure.\n\nThe results stop at clear edges. They need algebraically closed constants and at least two variables, so curves are not covered. When ℓ differs from the characteristic, p-th roots are invisible to the data. So only the perfect closure is recovered. The field isomorphism is also fixed only up to Frobenius, the map raising everything to the p-th power.\n\nHow sure is this? A computer proof checker called Lean has checked one half of the Galois version. Two field isomorphisms that give the same Galois data agree up to Frobenius. The other half, that every admissible matching of Galois data comes from some field isomorphism, is outside that check. The Lean scope note covers neither Milnor K-theory paper. No specialist review has been published.",
+  "explanation": "Take a fraction of polynomials in two variables, s and t, such as 4s³(t − 1)². Now blur it. Treat two functions as the same when one equals the other times a perfect square. Divide our function by s and you get 4s²(t − 1)², which is the square of 2s(t − 1). So in the blurred view, 4s³(t − 1)² looks exactly like s. The constant 4 has vanished, and so has the squared factor (t − 1)².\n\nThis blurred version keeps only multiplication, and only roughly. Mathematicians call it the first Milnor K-group modulo 2. Squares can be replaced by ℓ-th powers for any prime ℓ, giving the group modulo ℓ. One more piece of data carries a trace of addition. For each function x other than 0 and 1, the pair x and 1 − x is marked as special. Take x = s/t. Then 1 − x = (t − s)/t. So the marked pair ties s, t and t − s together. These marks, called Steinberg relations, define a second group and a product between the two.\n\nThe question is whether this thin record still pins down the whole field. A field here is a system of numbers or functions where you can add, subtract, multiply and divide. The fields in question are function fields: all fractions of polynomials in several variables. Their constants come from an algebraically closed field, one where every polynomial equation has a root, like the complex numbers. The number of independent variables is the transcendence degree. The papers need at least two.\n\nThe idea goes back to Bogomolov in 1991. He proposed recovering such fields from a small piece of their Galois group. That group records the symmetries of the field's extensions. The piece is the pro-ℓ quotient in which commutators are central. Bogomolov and Tschinkel proved this for surfaces over algebraic closures of finite fields in 2008. They reached higher dimensions in 2011. Pop independently completed that case in 2012. For general constants, Pop's 2018 preprint used extra inertia data and more than two variables. For the blurred mod-ℓ data, Topaz's 2016 theorem needed at least five variables. It also needed an extra supplied list of rational subgroups.\n\nThe October 2026 paper claims to remove both extra requirements[9]. Suppose ℓ differs from the field's characteristic. Then the two groups and their product alone determine the field's perfect closure and its constants[10]. The characteristic is p when adding p copies of 1 gives 0, and zero when no such p exists. The perfect closure adds every p-th root, and changes nothing in characteristic zero. Any matching of the data comes from a field isomorphism, up to one scalar[11]. When ℓ = 2 that scalar ambiguity disappears[12]. A September 2026 companion claims the same for Bogomolov's original Galois data. It claims to resolve the Bogomolov–Pop conjecture in its pro-ℓ abelian-by-central form[16].\n\nThe main obstacle is that the blur destroys information. A class records the order of each zero or pole only modulo ℓ. So a zero of multiplicity divisible by ℓ simply disappears, as (t − 1)² did above. The paper controls this loss with a uniform bound. Fix one function t. Then all the transformed classes of t − a, for every constant a, stay bounded in complexity. The bound comes from five fixed members of that family[15]. From these families it recovers one-variable subfields, then points, then addition itself.\n\nA third paper treats the case ℓ = p, blurring by p-th powers in characteristic p. There the blurred group becomes a geometry over the subfield of p-th powers[19]. With p = 3 and two variables, the field is 3² = 9 times as big as that subfield. Its basis is the nine products sᶦtʲ, with i and j from 0 to 2. The paper recovers lines in this geometry by a calculation with derivatives[21]. It claims this recovers the field itself and its named base, not just the perfect closure[17,18].\n\nThe results stop at clear edges. They need algebraically closed constants and at least two variables, so curves are not covered. When ℓ differs from the characteristic, p-th roots are invisible to the data. So only the perfect closure is recovered. The field isomorphism is also fixed only up to Frobenius, the map raising everything to the p-th power[11].\n\nHow sure is this? A computer proof checker called Lean has checked one half of the Galois version. Two field isomorphisms that give the same Galois data agree up to Frobenius. The other half, that every admissible matching of Galois data comes from some field isomorphism, is outside that check. The Lean scope note covers neither Milnor K-theory paper. No specialist review has been published.",
   "hypeCheck": "Lean has checked only the uniqueness half of the Galois version. The existence half and both Milnor K-theory papers have no Lean check listed, and no specialist review is published.",
   "glossary": [
     {
@@ -180,22 +180,26 @@
     {
       "text": "The new paper obtains rational subfields from the product itself, in every dimension at least two.",
       "verdict": "supported",
-      "sourceLine": "obtains the required rational subfields from the product itself, and its point-value argument applies in every relative dimension at least two"
+      "sourceLine": "obtains the required rational subfields from the product itself, and its point-value argument applies in every relative dimension at least two",
+      "paper": 1
     },
     {
       "text": "The two groups and their product determine the perfect closure and its constant field.",
       "verdict": "supported",
-      "sourceLine": "together with their full bilinear product, determine the perfect closure and its constant field"
+      "sourceLine": "together with their full bilinear product, determine the perfect closure and its constant field",
+      "paper": 1
     },
     {
       "text": "Matchings are induced by a field isomorphism up to one scalar, with Frobenius ambiguity in positive characteristic.",
       "verdict": "supported",
-      "sourceLine": "Every compatible isomorphism of these data is induced by a field isomorphism up to a single scalar"
+      "sourceLine": "Every compatible isomorphism of these data is induced by a field isomorphism up to a single scalar",
+      "paper": 1
     },
     {
       "text": "At ℓ = 2 the scalar ambiguity is trivial.",
       "verdict": "supported",
-      "sourceLine": "at $\\ell=2$ this ambiguity is trivial"
+      "sourceLine": "at $\\ell=2$ this ambiguity is trivial",
+      "paper": 1
     },
     {
       "text": "The perfect closure equals the field in characteristic zero.",
@@ -210,27 +214,32 @@
     {
       "text": "Five fixed members of the pencil bound the support degree of every class Θ([t − a]).",
       "verdict": "supported",
-      "sourceLine": "applying Riemann--Hurwitz to five fixed members of its pencil bounds the total degree of the divisor support"
+      "sourceLine": "applying Riemann--Hurwitz to five fixed members of its pencil bounds the total degree of the divisor support",
+      "paper": 1
     },
     {
       "text": "The Galois paper resolves the pro-ℓ abelian-by-central Bogomolov–Pop conjecture.",
       "verdict": "supported",
-      "sourceLine": "Thus the theorem resolves the pro-$\\ell$ abelian-by-central Bogomolov--Pop reconstruction conjecture positively."
+      "sourceLine": "Thus the theorem resolves the pro-$\\ell$ abelian-by-central Bogomolov--Pop reconstruction conjecture positively.",
+      "paper": 3
     },
     {
       "text": "In characteristic p, the mod-p invariant determines the field and its isomorphisms up to scalar.",
       "verdict": "supported",
-      "sourceLine": "The invariant therefore determines the field and its isomorphisms, with exactly the scalar identification in the displayed target."
+      "sourceLine": "The invariant therefore determines the field and its isomorphisms, with exactly the scalar identification in the displayed target.",
+      "paper": 2
     },
     {
       "text": "It also recovers the named base.",
       "verdict": "supported",
-      "sourceLine": "The argument also recovers the named algebraically closed base from the field itself."
+      "sourceLine": "The argument also recovers the named algebraically closed base from the field itself.",
+      "paper": 2
     },
     {
       "text": "The blurred group is a projective geometry over the subfield of p-th powers.",
       "verdict": "supported",
-      "sourceLine": "This is a projective geometry over $C_F$, not over the original constant field $\\kappa$."
+      "sourceLine": "This is a projective geometry over $C_F$, not over the original constant field $\\kappa$.",
+      "paper": 2
     },
     {
       "text": "In characteristic p the field has finite degree p to the transcendence degree over its p-th powers.",
@@ -240,7 +249,8 @@
     {
       "text": "Lines are recovered by a calculation with derivations.",
       "verdict": "supported",
-      "sourceLine": "The proof recovers projective lines over the subfields of $p$th powers by an elementary calculation with derivations."
+      "sourceLine": "The proof recovers projective lines over the subfields of $p$th powers by an elementary calculation with derivations.",
+      "paper": 2
     },
     {
       "text": "Lean formalizes injectivity of the Galois reconstruction map modulo Frobenius; existence is outside it.",

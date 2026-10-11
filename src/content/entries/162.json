@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "It refutes a long-standing conjecture that had been proved only for small numbers of parts."
   },
-  "explanation": "Draw a 3-by-3 grid of 9 dots that wraps around at its edges, like a clock with 3 hours. Lines run in 4 directions: across, down, and two diagonals. Each direction has 3 parallel lines, so there are 12 lines in all. Now turn each dot into a list of 4 lines: the line through it in each direction. Any two dots lie on a common line. So any two lists share an entry.\n\nNow ask a covering question. What is the smallest set of lines that touches every list? The 3 across lines do it, because every dot sits on one of them. No 2 lines are enough. Each line holds only 3 dots, so 2 lines reach at most 6 of the 9. So the answer is 3, one less than the 4 directions.\n\nMathematicians call this kind of object a hypergraph. Its vertices here are the 12 lines, sorted into 4 groups called parts. Its edges are the 9 lists, and each edge takes exactly one vertex from every part. The hypergraph is intersecting: every two edges share a vertex. Its covering number is the size of the smallest vertex set that meets every edge.\n\nRyser's covering conjecture makes a prediction about such objects. For an intersecting hypergraph with r parts, it says the covering number is at most r − 1. The grid meets that bound exactly: 4 parts, covering number 3. The bound cannot fail by much. Any single edge meets every other edge, so it is itself a cover. The covering number therefore never exceeds r. A counterexample has to reach exactly r, the largest value possible.\n\nMuch was known before. With two parts, the bound is König's matching theorem. Henderson's 1971 thesis contains an equivalent form of the general conjecture. Aharoni proved the three-part case in 2001. In the intersecting case, Gyárfás proved it up to four parts and Tuza for five. In 2017, Francetić, Herke, McKay and Wanless reached nine parts for linear hypergraphs. Linear means any two distinct edges share exactly one vertex. Haxell and Scott built intersecting examples with covering number at least r − 4 for every large r.\n\nThe single obstacle is that a cover may mix vertices from different parts. Growing every part bigger does not stop a small mixed cover. A counterexample must defeat every mixed choice at once.\n\nTwo papers in this family build such examples, and each starts from a grid like the one above. The September 23 paper uses a grid with q = sⁿ dots per side. Here s is a large prime leaving remainder 2 when divided by 3. The power n is a large odd number. It adds extra edges whose labels are changed in some directions. The September 27 paper uses a grid whose side q is any large prime. In each direction it merges two parallel lines into one block and splits two others into two blocks. The count per direction becomes (q − 4) + 1 + 4 = q + 1. That is the fewest vertices per part a counterexample can have.\n\nBoth papers end with q + 1 parts and covering number q + 1. In the small grid, 3 lines from one direction always sufficed. In these hypergraphs, no choice of q vertices covers every edge. Every cover needs as many vertices as a whole edge holds. The result holds for every q beyond some threshold, but neither paper gives a number for it. Both papers also turn the result into coloured complete graphs. That refutes Gyárfás's tree-cover conjecture at these sizes.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main results. They cover the equal-part examples for every large prime q, and the examples with r = sⁿ + 1 parts. The extension-field statements do not assert equal parts, and none gives a numerical threshold. The tree-cover consequence is not in the Lean scope note. No specialist review of either paper has been published.",
+  "explanation": "Draw a 3-by-3 grid of 9 dots that wraps around at its edges, like a clock with 3 hours. Lines run in 4 directions: across, down, and two diagonals. Each direction has 3 parallel lines, so there are 12 lines in all. Now turn each dot into a list of 4 lines: the line through it in each direction. Any two dots lie on a common line. So any two lists share an entry.\n\nNow ask a covering question. What is the smallest set of lines that touches every list? The 3 across lines do it, because every dot sits on one of them. No 2 lines are enough. Each line holds only 3 dots, so 2 lines reach at most 6 of the 9. So the answer is 3, one less than the 4 directions.\n\nMathematicians call this kind of object a hypergraph. Its vertices here are the 12 lines, sorted into 4 groups called parts. Its edges are the 9 lists, and each edge takes exactly one vertex from every part. The hypergraph is intersecting: every two edges share a vertex. Its covering number is the size of the smallest vertex set that meets every edge.\n\nRyser's covering conjecture makes a prediction about such objects. For an intersecting hypergraph with r parts, it says the covering number is at most r − 1. The grid meets that bound exactly: 4 parts, covering number 3. The bound cannot fail by much. Any single edge meets every other edge, so it is itself a cover. The covering number therefore never exceeds r. A counterexample has to reach exactly r, the largest value possible.\n\nMuch was known before. With two parts, the bound is König's matching theorem. Henderson's 1971 thesis contains an equivalent form of the general conjecture. Aharoni proved the three-part case in 2001. In the intersecting case, Gyárfás proved it up to four parts and Tuza for five. In 2017, Francetić, Herke, McKay and Wanless reached nine parts for linear hypergraphs. Linear means any two distinct edges share exactly one vertex. Haxell and Scott built intersecting examples with covering number at least r − 4 for every large r.\n\nThe single obstacle is that a cover may mix vertices from different parts[1]. Growing every part bigger does not stop a small mixed cover[2]. A counterexample must defeat every mixed choice at once.\n\nTwo papers in this family build such examples, and each starts from a grid like the one above. The September 23 paper uses a grid with q = sⁿ dots per side[14]. Here s is a large prime leaving remainder 2 when divided by 3. The power n is a large odd number. It adds extra edges whose labels are changed in some directions[15]. The September 27 paper uses a grid whose side q is any large prime[13]. In each direction it merges two parallel lines into one block and splits two others into two blocks[12]. The count per direction becomes (q − 4) + 1 + 4 = q + 1. That is the fewest vertices per part a counterexample can have[11].\n\nBoth papers end with q + 1 parts and covering number q + 1[13]. In the small grid, 3 lines from one direction always sufficed. In these hypergraphs, no choice of q vertices covers every edge. Every cover needs as many vertices as a whole edge holds. The result holds for every q beyond some threshold, but neither paper gives a number for it[16,17]. Both papers also turn the result into coloured complete graphs[19]. That refutes Gyárfás's tree-cover conjecture at these sizes[18].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main results. They cover the equal-part examples for every large prime q, and the examples with r = sⁿ + 1 parts. The extension-field statements do not assert equal parts, and none gives a numerical threshold. The tree-cover consequence is not in the Lean scope note. No specialist review of either paper has been published.",
   "hypeCheck": "Major if it holds. Lean checks formal versions of the main counterexamples. The thresholds are not numerical, the tree-cover consequence is outside the scope note, and no specialist review is published.",
   "glossary": [
     {
@@ -128,12 +128,14 @@
       "text": "A vertex cover may use vertices from several parts, which is the central obstacle to a counterexample.",
       "verdict": "supported",
       "sourceLine": "The vertices of a cover may lie in several different parts, which is the central obstacle in constructing a counterexample.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "Making each part large does not by itself prevent a small cover.",
       "verdict": "supported",
       "sourceLine": "A cover may use vertices from any of the parts, so making each individual part large does not by itself obstruct a small cover.",
+      "paper": 1,
       "sourceId": 1
     },
     {
@@ -188,54 +190,63 @@
       "text": "A hypergraph with covering number r needs at least r nonisolated vertices in every part, and the balanced construction attains this.",
       "verdict": "supported",
       "sourceLine": "must have at least $r$ such vertices in every part. Our construction attains this minimum simultaneously in all parts.",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The balanced construction merges two parallel lines and splits two others, giving q + 1 blocks.",
       "verdict": "supported",
       "sourceLine": "In a given direction, merge two parallel lines into one block, and split two other parallel lines into two blocks each. The count becomes",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The balanced theorem holds for every prime q at least some q0, with q + 1 equal parts and covering number q + 1.",
       "verdict": "supported",
       "sourceLine": "There exists $q_0$ such that, for every prime $q\\ge q_0$, there is a finite intersecting $(q+1)$-partite $(q+1)$-uniform hypergraph",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The extension-field theorem uses primes s ≡ 2 mod 3 and odd n with q = s^n.",
       "verdict": "supported",
       "sourceLine": "For every odd integer $n\\ge n_0(s)$, put $q=s^n$.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "The extension-field construction inserts exceptional edges whose labels are changed in some directions.",
       "verdict": "supported",
       "sourceLine": "We retain many of these point edges and add exceptional edges whose labels are changed in some directions.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "The balanced threshold is not numerical.",
       "verdict": "supported",
       "sourceLine": "that threshold is not numerical",
+      "paper": 1,
       "sourceId": 1
     },
     {
       "text": "The extension-field proof gives no numerical threshold.",
       "verdict": "supported",
       "sourceLine": "The result is asymptotic; the proof does not give a numerical threshold.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "Gyárfás's cover conjecture fails at the extension-field ranks.",
       "verdict": "supported",
       "sourceLine": "Thus Gy\\'arf\\'as's cover conjecture fails at these extension-field ranks.",
+      "paper": 2,
       "sourceId": 2
     },
     {
       "text": "The balanced paper gives complete graphs with q + 1 colours needing q + 1 monochromatic trees.",
       "verdict": "supported",
       "sourceLine": "graph with a $(q+1)$-edge-coloring whose vertices require exactly $q+1$ monochromatic trees to cover",
+      "paper": 1,
       "sourceId": 1
     },
     {

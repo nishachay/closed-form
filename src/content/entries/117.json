@@ -33,7 +33,7 @@
     "significance": "Major",
     "significanceWhy": "If the hardness proof holds, constant-factor hardness for this problem no longer needs an unproved hypothesis."
   },
-  "explanation": "Picture six computers in two groups of three. Inside each group, every pair shares a cable. One extra cable joins the two groups. That makes 7 cables among 15 pairs of computers. Where is this network weakest? One way to answer is to split the computers into two sides. Count the cables that cross the split. Then divide by the number of pairs the split separates. Splitting the two groups apart cuts 1 cable and separates 3 × 3 = 9 pairs. Its ratio is 1/9, about 0.11. Cutting off one corner computer cuts 2 cables and separates 1 × 5 = 5 pairs. Its ratio is 2/5, which is 3.6 times worse. Checking all 62 ways to pick one side confirms that 1/9 is the lowest ratio.\n\nThis lowest ratio is called the uniform sparsest cut. \"Uniform\" means every pair of computers counts once in the bottom number. In general each link carries a capacity, a weight that replaces the plain count of cables. Six computers are easy to check by hand. With thousands, the number of splits explodes. So people look for fast methods that come close. A method with factor C must return a split whose ratio is at most C times the lowest one.\n\nGood fast methods exist. Leighton and Rao built one around network flows, with guarantees that grow like the logarithm of the network size. Arora, Rao and Vazirani improved the factor to grow like the square root of that logarithm. Their work was first presented in 2004. It uses a semidefinite relaxation. That is an easier problem that places the computers as points in a high-dimensional space instead of on two sides. Its best value can be computed fast, and it is never above the true lowest ratio.\n\nOn the other side, finding the exact lowest ratio was already known to be NP-hard. That means a fast exact method would give fast methods for a huge class of hard problems, called NP. Matula and Shahrokhi showed this in 1990. Ruling out a rough answer is a different question. Earlier lower bounds of that kind leaned on unproved assumptions. One, by Raghavendra, Steurer and Tulsiani, rests on the Small-Set Expansion hypothesis.\n\nThe first paper claims to prove that, for every fixed factor C above 1, getting within factor C is NP-hard. It uses no unproved hypothesis. It turns any logic formula of a standard kind into a network and a threshold number. If the formula can be satisfied, the lowest ratio is at most the threshold. If not, every split has a ratio above C times the threshold. The main difficulty is a split that separates very little. Such a split must still reveal a solution to the formula. So every error has to be measured against the pairs the split separates, not against one fixed allowance. In the six-computer picture, a factor-3 method may return any split with ratio up to 1/3. The claim says no fast method can promise even that in general, unless every NP problem has a fast method.\n\nThe second paper studies the relaxation itself. Its integrality gap is the true lowest ratio divided by the relaxation's best value. A large gap means the relaxation badly underestimates some networks. Here n counts the computers. The Arora, Rao and Vazirani method caps this gap at a constant times the square root of log n. Before, the best lower bounds were much smaller. Devanur, Khot, Saket and Vishnoi showed a gap growing like log log n in 2006. Kane and Meka raised it in 2013. The second paper proves gaps of at least a constant times √log n, divided by (log log n)³. That matches the known cap up to a power of log log n.\n\nThe obstacle here was averaging. For networks where only chosen pairs count, Naor and Young had already reached the square-root size in 2018. Those examples fail only on a few pairs. They do not carry over when every pair counts equally. The new construction builds point positions that are far apart on average. It then shows that every way of squashing them into split-friendly form loses most of that average distance.\n\nThe gap grows very slowly, and the bound carries an unknown constant. With natural logarithms and n = 10^100, the square root of log n is about 15.2. The full expression is about 0.094 before the constant. So the result says something only for astronomically large networks. It also holds along a sequence of sizes, not for every size. Neither paper rules out a fast method whose factor grows with n.\n\nHow sure is this? A computer proof checker called Lean has checked the second paper's main statement. It covers the gap of at least a constant times √log n over (log log n)³. The check holds along a sequence of sizes, with every pair counting once. The Lean scope note lists nothing for the first paper's hardness claim, so that claim rests on its written proof. No specialists have published a review yet.",
+  "explanation": "Picture six computers in two groups of three. Inside each group, every pair shares a cable. One extra cable joins the two groups. That makes 7 cables among 15 pairs of computers. Where is this network weakest? One way to answer is to split the computers into two sides. Count the cables that cross the split. Then divide by the number of pairs the split separates. Splitting the two groups apart cuts 1 cable and separates 3 × 3 = 9 pairs. Its ratio is 1/9, about 0.11. Cutting off one corner computer cuts 2 cables and separates 1 × 5 = 5 pairs. Its ratio is 2/5, which is 3.6 times worse. Checking all 62 ways to pick one side confirms that 1/9 is the lowest ratio.\n\nThis lowest ratio is called the uniform sparsest cut. \"Uniform\" means every pair of computers counts once in the bottom number. In general each link carries a capacity, a weight that replaces the plain count of cables. Six computers are easy to check by hand. With thousands, the number of splits explodes. So people look for fast methods that come close. A method with factor C must return a split whose ratio is at most C times the lowest one.\n\nGood fast methods exist. Leighton and Rao built one around network flows, with guarantees that grow like the logarithm of the network size. Arora, Rao and Vazirani improved the factor to grow like the square root of that logarithm. Their work was first presented in 2004. It uses a semidefinite relaxation. That is an easier problem that places the computers as points in a high-dimensional space instead of on two sides. Its best value can be computed fast, and it is never above the true lowest ratio.\n\nOn the other side, finding the exact lowest ratio was already known to be NP-hard. That means a fast exact method would give fast methods for a huge class of hard problems, called NP. Matula and Shahrokhi showed this in 1990. Ruling out a rough answer is a different question. Earlier lower bounds of that kind leaned on unproved assumptions. One, by Raghavendra, Steurer and Tulsiani, rests on the Small-Set Expansion hypothesis.\n\nThe first paper claims to prove that, for every fixed factor C above 1, getting within factor C is NP-hard[9]. It uses no unproved hypothesis[10]. It turns any logic formula of a standard kind into a network and a threshold number. If the formula can be satisfied, the lowest ratio is at most the threshold. If not, every split has a ratio above C times the threshold[11]. The main difficulty is a split that separates very little[12]. Such a split must still reveal a solution to the formula. So every error has to be measured against the pairs the split separates, not against one fixed allowance. In the six-computer picture, a factor-3 method may return any split with ratio up to 1/3. The claim says no fast method can promise even that in general, unless every NP problem has a fast method.\n\nThe second paper studies the relaxation itself. Its integrality gap is the true lowest ratio divided by the relaxation's best value. A large gap means the relaxation badly underestimates some networks. Here n counts the computers. The Arora, Rao and Vazirani method caps this gap at a constant times the square root of log n. Before, the best lower bounds were much smaller. Devanur, Khot, Saket and Vishnoi showed a gap growing like log log n in 2006. Kane and Meka raised it in 2013. The second paper proves gaps of at least a constant times √log n, divided by (log log n)³[15]. That matches the known cap up to a power of log log n[16].\n\nThe obstacle here was averaging[18]. For networks where only chosen pairs count, Naor and Young had already reached the square-root size in 2018. Those examples fail only on a few pairs. They do not carry over when every pair counts equally. The new construction builds point positions that are far apart on average. It then shows that every way of squashing them into split-friendly form loses most of that average distance[19].\n\nThe gap grows very slowly, and the bound carries an unknown constant. With natural logarithms and n = 10^100, the square root of log n is about 15.2. The full expression is about 0.094 before the constant. So the result says something only for astronomically large networks. It also holds along a sequence of sizes, not for every size[15]. Neither paper rules out a fast method whose factor grows with n.\n\nHow sure is this? A computer proof checker called Lean has checked the second paper's main statement. It covers the gap of at least a constant times √log n over (log log n)³. The check holds along a sequence of sizes, with every pair counting once. The Lean scope note lists nothing for the first paper's hardness claim, so that claim rests on its written proof. No specialists have published a review yet.",
   "hypeCheck": "Probably major, but only the gap result has a Lean proof listed. The NP-hardness claim has not been checked by Lean or reviewed by specialists. The gap bound also only matters for astronomically large networks.",
   "glossary": [
     {
@@ -174,25 +174,29 @@
       "text": "For every fixed C > 1, approximating uniform sparsest cut within factor C is NP-hard (claimed).",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "In particular, approximating Uniform Sparsest Cut within any fixed factor $C>1$ is NP-hard."
+      "sourceLine": "In particular, approximating Uniform Sparsest Cut within any fixed factor $C>1$ is NP-hard.",
+      "paper": 1
     },
     {
       "text": "The reduction uses no unproved complexity hypothesis.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "The reduction uses no unproved complexity hypothesis."
+      "sourceLine": "The reduction uses no unproved complexity hypothesis.",
+      "paper": 1
     },
     {
       "text": "The reduction maps 3CNF formulas to graphs and a threshold: satisfiable gives at most a, unsatisfiable gives more than Ca.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "there is a polynomial-time reduction from $3$CNF satisfiability to finite undirected graphs with nonnegative rational capacities and exactly unit demands, together with a positive rational threshold $a$"
+      "sourceLine": "there is a polynomial-time reduction from $3$CNF satisfiability to finite undirected graphs with nonnegative rational capacities and exactly unit demands, together with a positive rational threshold $a$",
+      "paper": 1
     },
     {
       "text": "The main difficulty is that the separated demand can be arbitrarily small, so errors are measured relative to it.",
       "verdict": "supported",
       "sourceId": 1,
-      "sourceLine": "The main difficulty in this converse is that the separated demand can be arbitrarily small. Errors must therefore be controlled relative to that demand, rather than by one fixed additive tolerance."
+      "sourceLine": "The main difficulty in this converse is that the separated demand can be arbitrarily small. Errors must therefore be controlled relative to that demand, rather than by one fixed additive tolerance.",
+      "paper": 1
     },
     {
       "text": "Devanur, Khot, Saket and Vishnoi obtained an Ω(log log n) gap; Kane and Meka proved a stronger bound.",
@@ -210,13 +214,15 @@
       "text": "The gap is at least c√log n/(log log n)³ along a sequence of sizes.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "We construct uniform sparsest-cut instances whose Goemans--Linial semidefinite integrality gap is at least $c\\sqrt{\\log n}/(\\log\\log n)^3$ along a sequence $n\\to\\infty$."
+      "sourceLine": "We construct uniform sparsest-cut instances whose Goemans--Linial semidefinite integrality gap is at least $c\\sqrt{\\log n}/(\\log\\log n)^3$ along a sequence $n\\to\\infty$.",
+      "paper": 2
     },
     {
       "text": "This matches the Arora–Rao–Vazirani upper bound up to a power of log log n.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "This matches the Arora--Rao--Vazirani upper bound up to a power of $\\log\\log n$."
+      "sourceLine": "This matches the Arora--Rao--Vazirani upper bound up to a power of $\\log\\log n$.",
+      "paper": 2
     },
     {
       "text": "Naor and Young obtained the general-demand bound Ω(√log n), which does not imply the uniform case.",
@@ -228,13 +234,15 @@
       "text": "The obstacle is the difference between worst-pair distortion and average-distance preservation.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "This distinction between worst-pair distortion and average-distance preservation is the obstacle addressed here."
+      "sourceLine": "This distinction between worst-pair distortion and average-distance preservation is the obstacle addressed here.",
+      "paper": 2
     },
     {
       "text": "Every contraction into ℓ1 preserves only a small fraction of the average distance.",
       "verdict": "supported",
       "sourceId": 2,
-      "sourceLine": "for which every contraction into $\\ell_1$ preserves only a small fraction of the average distance."
+      "sourceLine": "for which every contraction into $\\ell_1$ preserves only a small fraction of the average distance.",
+      "paper": 2
     },
     {
       "text": "All logarithms are natural.",

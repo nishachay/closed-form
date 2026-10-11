@@ -30,7 +30,7 @@
     "significance": "Major",
     "significanceWhy": "It claims the near-boundary form of a classical conjecture without symmetry or closeness-to-an-ellipse assumptions."
   },
-  "explanation": "Take an elliptical table with half-width 5 and half-height 3. Its two foci sit at −4 and 4 on the long axis, since 5² − 3² = 4². Now draw a smaller ellipse inside it with half-width √20, about 4.47, and half-height 2. It has the same foci, since 20 − 4 = 16. Roll a ball along a line that just touches the small ellipse. It hits the edge, bounces, and the new line again just touches the small ellipse. A short computer run of six bounces confirms this to rounding error. The small ellipse is called a caustic. It is a curve that every segment of the path keeps touching.\n\nA billiard here is a ball moving in straight lines inside a flat convex table. At the edge it reflects like light in a mirror. The table is smooth and strictly convex, meaning it bulges outward everywhere. It also has positive curvature, so no part of the edge is flat. In an ellipse, the confocal ellipses near the edge form an unbroken family of caustics. In a circle they are smaller circles with the same centre. This orderly behaviour is called integrability.\n\nBirkhoff's conjecture asks whether integrability forces the table to be an ellipse. Birkhoff developed the convex billiard as a model in 1927. Poritsky gave an early printed form of the question in 1950. In 1973 Lazutkin showed that sufficiently smooth tables with positive curvature have many caustics near the edge. But his family has gaps, like a Cantor set, so it is not a full band. In 1993 Bialy showed a circle is forced if invariant curves fill the whole space of ball motions. An invariant curve is a family of motions that the bounces keep inside itself. Avila, De Simoi and Kaloshin in 2016, and Kaloshin and Sorrentino in 2018, treated tables close to ellipses.\n\nThe papers claim the near-boundary version. Suppose a smooth, positively curved table has a continuous caustic collar. That is a band next to the edge, filled without gaps by smooth closed convex caustics. The caustics must vary continuously, but no smoothness across them is assumed. The paper on rigidity of smooth billiards claims such a table is an ellipse. Circles count as ellipses. The band may be very thin, and nothing is assumed about motion deeper inside.\n\nThe companion paper on phase foliations weakens the input further. It works in phase space, the record of where the ball hits and at what angle. It assumes only that continuous closed curves fill a thin band near grazing. Each curve is kept in place by the bounce map, the rule taking one hit to the next. Grazing means the ball skims almost along the edge. The paper claims these curves come from a smooth collar of real caustics. Then the first paper's theorem gives an ellipse.\n\nThe key obstacle is regularity. A merely continuous curve of motions need not be the tangent lines of any smooth caustic. The papers use periodic orbits, paths that close up after a fixed number of bounces. They claim that for each small fraction p/q, a whole curve consists of orbits that circle the table p times in q bounces. Their lengths give equations for the shape of the edge. Solving these equations shows the edge is real analytic, so a power series describes it near every point. Complex-variable arguments then force an ellipse.\n\nThe gap matters. Many tables have Lazutkin's gappy caustics, and these results say nothing about them. They need a band filled completely, with no missing caustics.\n\nHow sure is this? No Lean formalization is listed for either paper in the openai/math release. So no computer proof checker has checked these claims. The phase-foliation paper also relies on the collar paper's estimates and its ellipse theorem. No specialist review has been published.",
+  "explanation": "Take an elliptical table with half-width 5 and half-height 3. Its two foci sit at −4 and 4 on the long axis, since 5² − 3² = 4². Now draw a smaller ellipse inside it with half-width √20, about 4.47, and half-height 2. It has the same foci, since 20 − 4 = 16. Roll a ball along a line that just touches the small ellipse. It hits the edge, bounces, and the new line again just touches the small ellipse. A short computer run of six bounces confirms this to rounding error. The small ellipse is called a caustic. It is a curve that every segment of the path keeps touching.\n\nA billiard here is a ball moving in straight lines inside a flat convex table. At the edge it reflects like light in a mirror. The table is smooth and strictly convex, meaning it bulges outward everywhere. It also has positive curvature, so no part of the edge is flat. In an ellipse, the confocal ellipses near the edge form an unbroken family of caustics. In a circle they are smaller circles with the same centre. This orderly behaviour is called integrability.\n\nBirkhoff's conjecture asks whether integrability forces the table to be an ellipse. Birkhoff developed the convex billiard as a model in 1927. Poritsky gave an early printed form of the question in 1950. In 1973 Lazutkin showed that sufficiently smooth tables with positive curvature have many caustics near the edge. But his family has gaps, like a Cantor set, so it is not a full band. In 1993 Bialy showed a circle is forced if invariant curves fill the whole space of ball motions. An invariant curve is a family of motions that the bounces keep inside itself. Avila, De Simoi and Kaloshin in 2016, and Kaloshin and Sorrentino in 2018, treated tables close to ellipses.\n\nThe papers claim the near-boundary version. Suppose a smooth, positively curved table has a continuous caustic collar. That is a band next to the edge, filled without gaps by smooth closed convex caustics. The caustics must vary continuously, but no smoothness across them is assumed[11]. The paper on rigidity of smooth billiards claims such a table is an ellipse[10]. Circles count as ellipses[12]. The band may be very thin, and nothing is assumed about motion deeper inside[13].\n\nThe companion paper on phase foliations weakens the input further. It works in phase space, the record of where the ball hits and at what angle. It assumes only that continuous closed curves fill a thin band near grazing[15]. Each curve is kept in place by the bounce map, the rule taking one hit to the next. Grazing means the ball skims almost along the edge. The paper claims these curves come from a smooth collar of real caustics. Then the first paper's theorem gives an ellipse.\n\nThe key obstacle is regularity. A merely continuous curve of motions need not be the tangent lines of any smooth caustic[16]. The papers use periodic orbits, paths that close up after a fixed number of bounces. They claim that for each small fraction p/q, a whole curve consists of orbits that circle the table p times in q bounces[17]. Their lengths give equations for the shape of the edge. Solving these equations shows the edge is real analytic, so a power series describes it near every point[18]. Complex-variable arguments then force an ellipse.\n\nThe gap matters. Many tables have Lazutkin's gappy caustics, and these results say nothing about them[14]. They need a band filled completely, with no missing caustics.\n\nHow sure is this? No Lean formalization is listed for either paper in the openai/math release. So no computer proof checker has checked these claims. The phase-foliation paper also relies on the collar paper's estimates and its ellipse theorem[19]. No specialist review has been published.",
   "hypeCheck": "Major only if both proofs hold. No Lean formalization is listed and no specialist review is published. Tables whose edge caustics leave gaps are not covered.",
   "glossary": [
     {
@@ -162,52 +162,62 @@
     {
       "text": "A table with a continuous caustic collar is an ellipse.",
       "verdict": "supported",
-      "sourceLine": "If \\(\\Omega\\) has a continuous caustic collar, then \\(\\Omega\\) is an ellipse."
+      "sourceLine": "If \\(\\Omega\\) has a continuous caustic collar, then \\(\\Omega\\) is an ellipse.",
+      "paper": 2
     },
     {
       "text": "No differentiability across the leaves is assumed.",
       "verdict": "supported",
-      "sourceLine": "no differentiability of the foliation across its leaves is required."
+      "sourceLine": "no differentiability of the foliation across its leaves is required.",
+      "paper": 2
     },
     {
       "text": "Circles are included.",
       "verdict": "supported",
-      "sourceLine": "Circles are included."
+      "sourceLine": "Circles are included.",
+      "paper": 1
     },
     {
       "text": "Nothing is assumed about the dynamics farther inside.",
       "verdict": "supported",
-      "sourceLine": "The hypothesis makes no assertion about the billiard dynamics farther inside the domain."
+      "sourceLine": "The hypothesis makes no assertion about the billiard dynamics farther inside the domain.",
+      "paper": 2
     },
     {
       "text": "A Cantor family of invariant curves does not satisfy the hypothesis.",
       "verdict": "supported",
-      "sourceLine": "A Cantor family of invariant curves, even one accumulating at the boundary, does not satisfy this assumption."
+      "sourceLine": "A Cantor family of invariant curves, even one accumulating at the boundary, does not satisfy this assumption.",
+      "paper": 2
     },
     {
       "text": "The companion paper starts from a continuous foliation of a grazing annulus by invariant curves.",
       "verdict": "supported",
-      "sourceLine": "a continuous foliation of a full grazing annulus by individually invariant essential curves forces an analytic boundary and a jointly analytic collar of smooth strictly convex caustics."
+      "sourceLine": "a continuous foliation of a full grazing annulus by individually invariant essential curves forces an analytic boundary and a jointly analytic collar of smooth strictly convex caustics.",
+      "paper": 1
     },
     {
       "text": "A continuous phase curve need not be tangent lines of a smooth caustic.",
       "verdict": "supported",
-      "sourceLine": "The main issue is that a continuous essential phase curve need not initially be given as the tangent lines of a smooth convex caustic."
+      "sourceLine": "The main issue is that a continuous essential phase curve need not initially be given as the tangent lines of a smooth convex caustic.",
+      "paper": 1
     },
     {
       "text": "Small rational rotations occur on curves made entirely of periodic orbits.",
       "verdict": "supported",
-      "sourceLine": "every sufficiently small rational rotation occurs on a curve entirely made of periodic orbits."
+      "sourceLine": "every sufficiently small rational rotation occurs on a curve entirely made of periodic orbits.",
+      "paper": 2
     },
     {
       "text": "Rational caustics force analytic regularity.",
       "verdict": "supported",
-      "sourceLine": "First, rational caustics force analytic regularity."
+      "sourceLine": "First, rational caustics force analytic regularity.",
+      "paper": 2
     },
     {
       "text": "The phase-foliation paper uses estimates from the collar paper.",
       "verdict": "supported",
-      "sourceLine": "Theorem~\\ref{thm:collar-regularity} uses the mesh and Fourier estimates from"
+      "sourceLine": "Theorem~\\ref{thm:collar-regularity} uses the mesh and Fourier estimates from",
+      "paper": 1
     },
     {
       "text": "No Lean formalization is listed for either paper.",

@@ -35,7 +35,7 @@
     "significance": "Major",
     "significanceWhy": "If the proofs hold, they settle a conjecture of Kollár and Pardon and answer their bounded-domain question."
   },
-  "explanation": "Take the disc of complex numbers whose size is less than 1. Write each number as z = x + iy. Then the disc is the set where x² + y² < 1. Now apply the map that sends z to (0.5 − z)/(1 − 0.5z). It sends 0 to 0.5, and 0.5 back to 0. Apply it twice and every point comes home: 0.3 goes out and returns to 0.3. Points on the rim stay on the rim, so 1 goes to −1. Exactly one point inside stays put: 2 − √3, about 0.268. Its neighbours swap sides. The point 0.278 lands near 0.258.\n\nSo the disc has a flip, like a mirror, centred at 0.268. Maps of the same kind give such a flip at every point of the disc. A finite-sized region with this property at every point is called a bounded symmetric domain. The disc has a second property. One polynomial inequality describes it. A set described by finitely many real polynomial equations and inequalities is called semialgebraic.\n\nThe disc is one of three answers to an old question about curved surfaces. Take a closed surface and unroll every loop in it. The result is its universal cover: a space with no loops left that wraps onto the surface. For complex curves, only three covers occur. They are the round sphere (the projective line), the flat plane, and the disc. A doughnut unrolls onto the plane. A surface with two or more holes unrolls onto the disc.\n\nIn higher dimensions the shapes are projective varieties. These are solution sets of polynomial equations, closed up so that nothing runs off to infinity. Their covers can be very wild. In 2012, János Kollár and John Pardon asked what happens when the cover itself has a finite polynomial description. More precisely, the cover should match a semialgebraic open part of a projective variety. Their conjecture says this happens exactly when the cover is a product of three pieces. One is a bounded symmetric domain. One is flat complex space of some dimension m. The last is a projective variety that is simply connected, meaning every loop in it shrinks to a point. For example, a disc times a plane times a sphere is such a product.\n\nPartial answers came first. In 1999, Noboru Nakayama treated covers equal to flat space, assuming a condition called abundance. In 2013, Benoît Claudon, Andreas Höring and Kollár classified covers that are quasi-projective varieties, assuming smooth abundance. Quasi-projective means a projective variety with a closed part removed. The bounded piece is the new feature in the semialgebraic case. Kollár and Pardon proved one case where it appears, under strong conditions on the fundamental group. That group records the loops of the shape. In 2024, Vasily Rogov proved a version that also assumes a well-behaved distance on the cover.\n\nThe main paper claims to prove the conjecture for connected normal projective varieties. Normal allows mild singular points. The maps that shift the cover over itself need not be given by polynomials. The paper also claims that a cover is quasi-projective exactly when the bounded piece is missing. Then a smooth projective variety covered by flat space is, up to a finite cover, an abelian variety. That is a higher-dimensional doughnut. These claims lean on other OpenAI preprints from the same release. The main proof uses one on the loops of special shapes. The quasi-projective step uses another on abundance.\n\nThe paper names the main obstacle. The cover can contain closed pieces of positive dimension. Its edge can also break down in several stages. Zooming in near one part of the edge therefore need not show the whole cover. The paper zooms in again and again, one stage at a time. It ends with a model described by inequalities between positive matrices. It then shows that this model describes the whole cover, not just one corner.\n\nA companion paper isolates the bounded piece. Take a bounded semialgebraic open set inside an affine variety, a shape cut out by polynomials in ordinary space. Suppose a group of its symmetries folds it into a closed, finite quotient. Kollár and Pardon asked whether such a set must be symmetric. The companion paper proves that it is smooth and is a bounded symmetric domain. Earlier results needed more. S. Frankel handled convex domains in 1989. J. Vey handled a special class, called generalized Siegel domains, in 1970. Here the edge may have corners. The paper zooms in at a well-chosen edge point. It shows the zoomed picture does not collapse. That reaches a case Vey's theorem covers. Its proof does not use the main classification.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the companion theorem on bounded domains. That version allows symmetries with fixed points and a singular ambient variety. The full three-piece classification is outside that check. So are the quasi-projective and flat-space statements, and the two other OpenAI preprints they rely on. No specialist review of either paper has been published.",
+  "explanation": "Take the disc of complex numbers whose size is less than 1. Write each number as z = x + iy. Then the disc is the set where x² + y² < 1. Now apply the map that sends z to (0.5 − z)/(1 − 0.5z). It sends 0 to 0.5, and 0.5 back to 0. Apply it twice and every point comes home: 0.3 goes out and returns to 0.3. Points on the rim stay on the rim, so 1 goes to −1. Exactly one point inside stays put: 2 − √3, about 0.268. Its neighbours swap sides. The point 0.278 lands near 0.258.\n\nSo the disc has a flip, like a mirror, centred at 0.268. Maps of the same kind give such a flip at every point of the disc. A finite-sized region with this property at every point is called a bounded symmetric domain. The disc has a second property. One polynomial inequality describes it. A set described by finitely many real polynomial equations and inequalities is called semialgebraic.\n\nThe disc is one of three answers to an old question about curved surfaces. Take a closed surface and unroll every loop in it. The result is its universal cover: a space with no loops left that wraps onto the surface. For complex curves, only three covers occur. They are the round sphere (the projective line), the flat plane, and the disc. A doughnut unrolls onto the plane. A surface with two or more holes unrolls onto the disc.\n\nIn higher dimensions the shapes are projective varieties. These are solution sets of polynomial equations, closed up so that nothing runs off to infinity. Their covers can be very wild. In 2012, János Kollár and John Pardon asked what happens when the cover itself has a finite polynomial description. More precisely, the cover should match a semialgebraic open part of a projective variety. Their conjecture says this happens exactly when the cover is a product of three pieces. One is a bounded symmetric domain. One is flat complex space of some dimension m. The last is a projective variety that is simply connected, meaning every loop in it shrinks to a point. For example, a disc times a plane times a sphere is such a product.\n\nPartial answers came first. In 1999, Noboru Nakayama treated covers equal to flat space, assuming a condition called abundance. In 2013, Benoît Claudon, Andreas Höring and Kollár classified covers that are quasi-projective varieties, assuming smooth abundance. Quasi-projective means a projective variety with a closed part removed. The bounded piece is the new feature in the semialgebraic case[8]. Kollár and Pardon proved one case where it appears, under strong conditions on the fundamental group. That group records the loops of the shape. In 2024, Vasily Rogov proved a version that also assumes a well-behaved distance on the cover.\n\nThe main paper claims to prove the conjecture for connected normal projective varieties[4]. Normal allows mild singular points. The maps that shift the cover over itself need not be given by polynomials[5]. The paper also claims that a cover is quasi-projective exactly when the bounded piece is missing[11]. Then a smooth projective variety covered by flat space is, up to a finite cover, an abelian variety[12]. That is a higher-dimensional doughnut. These claims lean on other OpenAI preprints from the same release. The main proof uses one on the loops of special shapes[13]. The quasi-projective step uses another on abundance[14].\n\nThe paper names the main obstacle. The cover can contain closed pieces of positive dimension[15]. Its edge can also break down in several stages. Zooming in near one part of the edge therefore need not show the whole cover[16]. The paper zooms in again and again, one stage at a time. It ends with a model described by inequalities between positive matrices[17]. It then shows that this model describes the whole cover, not just one corner.\n\nA companion paper isolates the bounded piece. Take a bounded semialgebraic open set inside an affine variety, a shape cut out by polynomials in ordinary space. Suppose a group of its symmetries folds it into a closed, finite quotient. Kollár and Pardon asked whether such a set must be symmetric. The companion paper proves that it is smooth and is a bounded symmetric domain[18,19]. Earlier results needed more. S. Frankel handled convex domains in 1989. J. Vey handled a special class, called generalized Siegel domains, in 1970. Here the edge may have corners[22]. The paper zooms in at a well-chosen edge point. It shows the zoomed picture does not collapse[23]. That reaches a case Vey's theorem covers. Its proof does not use the main classification[24].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the companion theorem on bounded domains. That version allows symmetries with fixed points and a singular ambient variety. The full three-piece classification is outside that check. So are the quasi-projective and flat-space statements, and the two other OpenAI preprints they rely on. No specialist review of either paper has been published.",
   "hypeCheck": "Only the bounded-domain theorem has a Lean proof. The three-piece classification is not machine-checked and depends on two other OpenAI preprints. No specialist review of either paper is published.",
   "glossary": [
     {
@@ -155,12 +155,14 @@
     {
       "text": "This proves Conjecture 2 of Kollár and Pardon in its normal-projective scope.",
       "verdict": "supported",
-      "sourceLine": "This proves Conjecture~2 of Koll\\'ar and Pardon"
+      "sourceLine": "This proves Conjecture~2 of Koll\\'ar and Pardon",
+      "paper": 1
     },
     {
       "text": "No algebraicity of the deck transformations is assumed.",
       "verdict": "supported",
-      "sourceLine": "No algebraicity of the deck transformations is assumed."
+      "sourceLine": "No algebraicity of the deck transformations is assumed.",
+      "paper": 1
     },
     {
       "text": "Nakayama derived the affine-space statement from abundance.",
@@ -175,7 +177,8 @@
     {
       "text": "Semialgebraic openness admits the additional bounded symmetric factor.",
       "verdict": "supported",
-      "sourceLine": "Semialgebraic openness admits the additional bounded symmetric factor"
+      "sourceLine": "Semialgebraic openness admits the additional bounded symmetric factor",
+      "paper": 1
     },
     {
       "text": "Kollár and Pardon established a nonabelian lattice case of the conjecture.",
@@ -190,47 +193,56 @@
     {
       "text": "A cover is quasi-projective exactly when it is affine space times a simply connected projective variety.",
       "verdict": "supported",
-      "sourceLine": "is biholomorphic to a quasi-projective variety. … For some integer \\(m\\geq0\\) and some simply connected projective variety \\(F\\), there is a biholomorphism"
+      "sourceLine": "is biholomorphic to a quasi-projective variety. … For some integer \\(m\\geq0\\) and some simply connected projective variety \\(F\\), there is a biholomorphism",
+      "paper": 1
     },
     {
       "text": "A smooth projective variety covered by C^n has a finite étale cover by an abelian variety.",
       "verdict": "supported",
-      "sourceLine": "then there is a finite \\'etale Galois cover \\(A\\to X\\) with \\(A\\) an abelian variety."
+      "sourceLine": "then there is a finite \\'etale Galois cover \\(A\\to X\\) with \\(A\\) an abelian variety.",
+      "paper": 1
     },
     {
       "text": "The main proof uses OpenAI's compact special abelianity theorem, proved in a companion article.",
       "verdict": "supported",
-      "sourceLine": "That theorem is proved in the separately cited companion article."
+      "sourceLine": "That theorem is proved in the separately cited companion article.",
+      "paper": 1
     },
     {
       "text": "The quasi-projective corollary applies OpenAI's log-abundance theorem.",
       "verdict": "supported",
-      "sourceLine": "We now apply the log-abundance theorem to supply that premise."
+      "sourceLine": "We now apply the log-abundance theorem to supply that premise.",
+      "paper": 1
     },
     {
       "text": "The cover can contain compact positive-dimensional subvarieties and its boundary can have successive degeneracies.",
       "verdict": "supported",
-      "sourceLine": "The given cover can contain compact positive-dimensional subvarieties, and its semialgebraic boundary can have several successive degeneracies."
+      "sourceLine": "The given cover can contain compact positive-dimensional subvarieties, and its semialgebraic boundary can have several successive degeneracies.",
+      "paper": 1
     },
     {
       "text": "Scaling near one boundary face need not produce the whole cover.",
       "verdict": "supported",
-      "sourceLine": "A scaling near one boundary face therefore need not produce the whole cover or a bounded domain."
+      "sourceLine": "A scaling near one boundary face therefore need not produce the whole cover or a bounded domain.",
+      "paper": 1
     },
     {
       "text": "Repeated scaling terminates in a finite tower of positive-matrix inequalities.",
       "verdict": "supported",
-      "sourceLine": "Repeating on that lower-dimensional model terminates in a finite tower of positive-matrix inequalities."
+      "sourceLine": "Repeating on that lower-dimensional model terminates in a finite tower of positive-matrix inequalities.",
+      "paper": 1
     },
     {
       "text": "A bounded semialgebraic open subset of an affine variety with a cocompact properly discontinuous group is smooth and a bounded symmetric domain.",
       "verdict": "supported",
-      "sourceLine": "Then \\(U\\) is smooth and is biholomorphic to a bounded symmetric domain."
+      "sourceLine": "Then \\(U\\) is smooth and is biholomorphic to a bounded symmetric domain.",
+      "paper": 2
     },
     {
       "text": "This answers the bounded-domain question of Kollár and Pardon.",
       "verdict": "supported",
-      "sourceLine": "This answers the bounded-domain question of Koll\\'ar and Pardon affirmatively."
+      "sourceLine": "This answers the bounded-domain question of Koll\\'ar and Pardon affirmatively.",
+      "paper": 2
     },
     {
       "text": "Frankel proved that convex hyperbolic domains with compact quotient are bounded symmetric domains.",
@@ -245,17 +257,20 @@
     {
       "text": "Semialgebraicity does not make the boundary a smooth hypersurface; corners may occur.",
       "verdict": "supported",
-      "sourceLine": "Semialgebraicity provides finite geometric descriptions, but it does not make the relevant boundary a smooth hypersurface."
+      "sourceLine": "Semialgebraicity provides finite geometric descriptions, but it does not make the relevant boundary a smooth hypersurface.",
+      "paper": 2
     },
     {
       "text": "Analytic discs prevent the normal limit from collapsing.",
       "verdict": "supported",
-      "sourceLine": "This is the step that prevents the normal limit from collapsing."
+      "sourceLine": "This is the step that prevents the normal limit from collapsing.",
+      "paper": 2
     },
     {
       "text": "The companion proof is independent of the classification.",
       "verdict": "supported",
-      "sourceLine": "The proof below is independent of that classification."
+      "sourceLine": "The proof below is independent of that classification.",
+      "paper": 2
     },
     {
       "text": "The Lean formalization covers the bounded-domain symmetry theorem; the action need not be free and the ambient set may be singular.",
