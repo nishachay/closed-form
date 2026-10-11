@@ -243,9 +243,16 @@ function stripRefs(s: string): string {
   return s.replace(/\\(?:cite[a-zA-Z]*|ref|eqref|cref|Cref|label)\s*(?:\[[^\]]*\])?\s*\{[^}]*\}/g, ' ');
 }
 
-/** Quote-side skeleton: drops bracketed citation labels like [Tao16, Theorem 1.3]. */
+/**
+ * Quote-side skeleton: drops bracketed citation labels like [Tao16, Theorem 1.3].
+ * Brackets inside `$…$` math are kept: they are mathematics, as in `$\mathbb Z[\omega]$`.
+ */
 export function quoteSkeleton(quote: string): string {
-  return baseSkeleton(stripRefs(quote).replace(/\[[^\]]*\]/g, ' '));
+  const noLabels = stripRefs(quote)
+    .split(/(?<!\\)(\$+[^$]*\$+)/)
+    .map((part) => (part.startsWith('$') ? part : part.replace(/\[[^\]]*\]/g, ' ')))
+    .join('');
+  return baseSkeleton(noLabels);
 }
 
 /** True when every "…"/"..."-separated segment of `quote` occurs, in order, in the skeleton. */

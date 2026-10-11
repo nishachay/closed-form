@@ -293,6 +293,13 @@ into NP-hardness results.`;
     expect(quoteFound('…', skel)).toBe(false);
   });
 
+  it('keeps brackets inside math, still drops citation labels outside it', () => {
+    const skel = texSkeleton(String.raw`Write $\OO=\OO_K=\mathbb Z[\omega]$, where $\omega=e^{2\pi\mathrm i/3}$.`);
+    expect(quoteFound(String.raw`Write $\OO=\OO_K=\mathbb Z[\omega]$, where $\omega=e^{2\pi\mathrm i/3}$.`, skel)).toBe(true);
+    expect(quoteFound(String.raw`Write $\OO=\OO_K=\mathbb Z[\omega]$ [Kub69], where $\omega=e^{2\pi\mathrm i/3}$.`, skel)).toBe(true);
+    expect(quoteFound(String.raw`Write $\OO=\OO_K=\mathbb Z[\lambda]$, where $\omega=e^{2\pi\mathrm i/3}$.`, skel)).toBe(false);
+  });
+
   it('gap segments must appear in order', () => {
     const skel = texSkeleton(tex);
     expect(quoteFound('turns established … Elliott extended', skel)).toBe(false);
