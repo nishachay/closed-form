@@ -1,0 +1,206 @@
+{
+  "id": "064",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Topological-triviality-of-mu-constant-families-of-surface-singularities-September-24-2026/main.pdf",
+      "label": "Topological triviality of mu-constant families of surface singularities"
+    }
+  ],
+  "headline": "A claimed proof that surface singularities with a constant Milnor number keep the same topology along a family.",
+  "scope": "The claim covers one-parameter holomorphic families of isolated singularities of functions of three complex variables.",
+  "plain": "A singular point of a surface is a spot where it is not smooth, like the tip of a cone. The Milnor number is a whole number that measures how complicated such a point is. The μ-constant problem asks whether keeping this number fixed keeps the shape fixed. It was solved long ago in every dimension except surfaces. This paper claims to solve the surface case: the functions stay the same up to continuous changes of coordinates.",
+  "doesNot": "This does not give smooth or Whitney-regular coordinate changes, and it says nothing about families with several parameters.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1976",
+    "firstStepBy": "Lê Dũng Tráng and C. P. Ramanujam, every dimension except surfaces",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims a positive answer to the one dimension left open by Lê and Ramanujam's 1976 theorem."
+  },
+  "explanation": "Take the function f(x, y, z) = x² + y² + z³ of three complex variables. Its zero set is a surface with one bad point at the origin, called a singularity. There all three partial derivatives, 2x, 2y and 3z², vanish together. The Milnor number μ measures how degenerate that point is. It counts the monomials left after setting x, y and z² to zero. Only 1 and z survive, so μ = 2. Cut a nearby smooth level, such as f = 0.01, inside a small ball. Milnor showed it has the shape of μ spheres joined at one point[1].\n\nNow let the function move with a parameter t. The family x² + y² + z³ + tz² does not keep μ fixed. For t ≠ 0 its z-derivative is z(3z + 2t), which vanishes only simply at z = 0. So μ drops to 1 there. The family x² + y² + z³ + tz⁴ keeps μ = 2 for every t. Near the origin its z-derivative is z² times 3 + 4tz, a factor close to 3.\n\nThe μ-constant problem asks whether a constant μ forces the topology to stay the same. The precise form is topological right-triviality[2]. A homeomorphism is a continuous map with a continuous inverse. Right-triviality asks for homeomorphisms φ_t fixing the origin with f_t(φ_t(x)) = f_0(x). The maps and their inverses must also vary continuously with t together.\n\nLê Dũng Tráng and C. P. Ramanujam proved constant topological type in 1976 for hypersurfaces of every dimension except two[4]. Their method links nearby smooth levels through a cobordism, a space whose boundary is the two shapes. In higher dimensions, the h-cobordism theorem turns that link into a product. Complex dimension two is exactly where that step fails[5]. Outside dimension two, Timourian and King later proved full triviality of the functions themselves[6]. Teissier, Briançon and Speder tied a stronger condition, Whitney regularity, to constancy of a longer list of Milnor numbers. Briançon and Speder also found families that are topologically trivial but not Whitney regular[7]. So a proof from μ alone cannot lean on Whitney regularity. In 2024, Fernández de Bobadilla and Pełka proved that constant μ keeps the multiplicity constant[8].\n\nThis paper claims a positive answer in the surface case[9,3]. The dependence on t may be any holomorphic one, meaning given by convergent power series[10]. The main obstacle is numerical. Some singularities belong to a milder class called log canonical. For the others, the paper must show that Wahl's invariant β stays constant, using μ alone[11]. That invariant is read from a resolution, which replaces the bad point by smooth curves.\n\nThe proof rests on a cancellation of Euler characteristics[12]. An Euler characteristic is a count like vertices minus edges plus faces. Constant μ keeps one such count fixed on the surfaces of the family[13]. A comparison then writes zero as a sum of counts for extra surfaces plus a correction term. A theorem of Greuel and Steenbrink makes that correction never negative[14]. Langer's form of the Bogomolov–Miyaoka–Yau inequality supplies the opposite sign[15]. So every extra square term must vanish, and β stays constant[16].\n\nOkuma's theorem then gives a resolution of all the surfaces at once, after a finite cover of the disk[17]. The paper lifts the motion in t to these resolved surfaces. The lifts push down to the zero sets and extend to nearby levels, keeping f fixed[18]. Log-canonical singularities and double points are handled by a separate argument[19].\n\nHow sure is this? There is no Lean scope note for this result, so no computer proof checker has tested it. The paper claims to prove the full surface case. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. It is a single long paper with no Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Singularity",
+      "meaning": "A point where a surface fails to be smooth, like the tip of a cone."
+    },
+    {
+      "term": "Milnor number",
+      "meaning": "A whole number measuring how degenerate an isolated singular point of a function is."
+    },
+    {
+      "term": "Homeomorphism",
+      "meaning": "A continuous map with a continuous inverse."
+    },
+    {
+      "term": "Topologically right-trivial",
+      "meaning": "A family whose functions all match the first one after continuous changes of coordinates that vary continuously with the parameter."
+    },
+    {
+      "term": "Whitney regularity",
+      "meaning": "A stronger, geometric form of a family staying the same along its singular points."
+    },
+    {
+      "term": "Resolution",
+      "meaning": "A smooth surface that maps onto a singular one, replacing each bad point by smooth curves."
+    },
+    {
+      "term": "Euler characteristic",
+      "meaning": "A count of a shape's pieces, like vertices minus edges plus faces."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Topological triviality of mu-constant families of surface singularities” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Topological-triviality-of-mu-constant-families-of-surface-singularities-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "Lê Dũng Tráng and C. P. Ramanujam, “The invariance of Milnor's number implies the invariance of the topological type”, American Journal of Mathematics 98 (1976), 67–78",
+      "url": "https://doi.org/10.2307/2373614"
+    },
+    {
+      "id": 4,
+      "cite": "J. Fernández de Bobadilla and T. Pełka, “Symplectic monodromy at radius zero and equimultiplicity of μ-constant families”, Annals of Mathematics 200 (2024), 153–299",
+      "url": "https://doi.org/10.4007/annals.2024.200.1.4"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Milnor fiber has the homotopy type of a bouquet of spheres, one for each unit of the Milnor number.",
+      "verdict": "supported",
+      "sourceLine": "fiber has the homotopy type of a bouquet of spheres, with one sphere for each unit of the Milnor number",
+      "sourceQuote": "The Milnor number measures the topology of a nearby smooth level of an isolated hypersurface singularity: its Milnor fiber has the homotopy type of a bouquet of spheres, with one sphere for each unit of the Milnor number \\cite[Theorems~6.5 and~7.2]{Milnor1968}; the analytic formulation in terms of the Jacobian algebra is recalled in \\cite[Section~1, Theorem~1.5]{LeRamanujam1976}."
+    },
+    {
+      "text": "Topological right-triviality: a homeomorphism germ preserving the parameter and origin section identifies each function with the central one.",
+      "verdict": "supported",
+      "sourceLine": "if a homeomorphism germ of the ambient family, preserving the parameter and the origin section, identifies each defining function with the central one.",
+      "sourceQuote": "The family is \\emph{topologically right-trivial} if a homeomorphism germ of the ambient family, preserving the parameter and the origin section, identifies each defining function with the central one."
+    },
+    {
+      "text": "Main theorem: for a μ-constant family there is a homeomorphism germ Φ with f_t(φ_t(x)) = f_0(x), jointly continuous with its inverse.",
+      "verdict": "supported",
+      "sourceLine": "After shrinking the disk and the germ representatives, there is a homeomorphism germ",
+      "sourceQuote": "After shrinking the disk and the germ representatives, there is a homeomorphism germ \\[ \\Phi(x,t)=(\\phi_t(x),t),\\qquad \\phi_t(0)=0,\\quad \\phi_0=\\mathrm{id},\\qquad f_t\\bigl(\\phi_t(x)\\bigr)=f_0(x). \\]"
+    },
+    {
+      "text": "Lê and Ramanujam proved constant embedded topological type when the hypersurface dimension is not two.",
+      "verdict": "supported",
+      "sourceLine": "has constant embedded topological type when the hypersurface dimension is different from two",
+      "sourceQuote": "L\\^e and Ramanujam proved that a $\\mu$-constant family of isolated hypersurface singularities has constant embedded topological type when the hypersurface dimension is different from two \\cite[Theorem~2.1]{LeRamanujam1976}."
+    },
+    {
+      "text": "Complex dimension two is where the cobordism argument leaves the product structure unresolved.",
+      "verdict": "supported",
+      "sourceLine": "Complex dimension two is the dimension in which this argument leaves the product structure unresolved.",
+      "sourceQuote": "Complex dimension two is the dimension in which this argument leaves the product structure unresolved."
+    },
+    {
+      "text": "Outside complex dimension two, Timourian and King established local triviality of families of function germs.",
+      "verdict": "supported",
+      "sourceLine": "Timourian and King established local triviality of families of function germs",
+      "sourceQuote": "Outside complex dimension two, Timourian and King established local triviality of families of function germs \\cite{Timourian1977,King1980}."
+    },
+    {
+      "text": "Briançon and Speder's examples show topological triviality need not imply Whitney regularity.",
+      "verdict": "supported",
+      "sourceLine": "Their examples also show that topological triviality need not imply Whitney regularity",
+      "sourceQuote": "Their examples also show that topological triviality need not imply Whitney regularity \\cite{BrianconSpeder1975}\\cite[Section~3]{BrianconSpeder1976}."
+    },
+    {
+      "text": "Fernández de Bobadilla and Pełka proved constant finite Milnor number gives constant multiplicity.",
+      "verdict": "supported",
+      "sourceLine": "a family with constant finite Milnor number has constant multiplicity in every dimension",
+      "sourceQuote": "The equimultiplicity theorem of Fern\\'andez de Bobadilla and Pe\\l ka settles a separate part of this numerical comparison: a family with constant finite Milnor number has constant multiplicity in every dimension \\cite[Theorem~1.1]{FernandezBobadillaPelka2024}."
+    },
+    {
+      "text": "The surface case of the μ-constant problem has a positive answer.",
+      "verdict": "supported",
+      "sourceLine": "Thus the surface case of the $\\mu$-constant problem has a positive answer.",
+      "sourceQuote": "Thus the surface case of the $\\mu$-constant problem has a positive answer."
+    },
+    {
+      "text": "The parameter dependence may be arbitrary and holomorphic.",
+      "verdict": "supported",
+      "sourceLine": "The parameter dependence may be arbitrary and holomorphic, and",
+      "sourceQuote": "The parameter dependence may be arbitrary and holomorphic, and the surface singularities need not be log canonical."
+    },
+    {
+      "text": "The main numerical task is to deduce constancy of Wahl's invariant from μ alone.",
+      "verdict": "supported",
+      "sourceLine": "our main numerical task is to deduce constancy of Wahl's logarithmic surface invariant from $\\mu$ alone",
+      "sourceQuote": "For non-log-canonical germs, our main numerical task is to deduce constancy of Wahl's logarithmic surface invariant from $\\mu$ alone."
+    },
+    {
+      "text": "The proof rests on a cancellation of Euler characteristics.",
+      "verdict": "supported",
+      "sourceLine": "The proof rests on a cancellation of Euler characteristics.",
+      "sourceQuote": "The proof rests on a cancellation of Euler characteristics."
+    },
+    {
+      "text": "Constancy of μ keeps the Euler characteristic of the punctured projective fibers constant.",
+      "verdict": "supported",
+      "sourceLine": "keeps the Euler characteristic of the punctured projective fibers constant.",
+      "sourceQuote": "Constancy of $\\mu$ keeps the Euler characteristic of the punctured projective fibers constant."
+    },
+    {
+      "text": "Greuel–Steenbrink's theorem makes the excess terms nonnegative.",
+      "verdict": "supported",
+      "sourceLine": "first-Betti-number theorem makes these excesses nonnegative",
+      "sourceQuote": "Greuel--Steenbrink's first-Betti-number theorem makes these excesses nonnegative \\cite{GreuelSteenbrink1983}."
+    },
+    {
+      "text": "Langer's orbifold Bogomolov–Miyaoka–Yau inequality supplies the other sign.",
+      "verdict": "supported",
+      "sourceLine": "orbifold Bogomolov--Miyaoka--Yau inequality supplies the other sign",
+      "sourceQuote": "Langer's orbifold Bogomolov--Miyaoka--Yau inequality supplies the other sign \\cite{Langer2003}: \\[ 0\\le (K_{S_a}+B_{S_a})^2\\le3\\chi_c(S_a^\\circ) \\qquad\\text{for every }a. \\]"
+    },
+    {
+      "text": "Every extra logarithmic square vanishes, and specialization gives constancy of β.",
+      "verdict": "supported",
+      "sourceLine": "Thus every extra logarithmic square vanishes. Specialization of projective intersections then gives constancy of",
+      "sourceQuote": "Thus every extra logarithmic square vanishes. Specialization of projective intersections then gives constancy of $\\beta$."
+    },
+    {
+      "text": "Okuma's theorem produces a simultaneous minimal semigood resolution after a finite disk cover.",
+      "verdict": "supported",
+      "sourceLine": "theorem produces a simultaneous minimal semigood resolution",
+      "sourceQuote": "In the non-log-canonical branch, Okuma's theorem produces a simultaneous minimal semigood resolution after a finite disk cover \\cite[Theorem~1.2]{Okuma2004}."
+    },
+    {
+      "text": "The lifts descend to the punctured zero fibers and extend to ambient nonzero levels preserving the function.",
+      "verdict": "supported",
+      "sourceLine": "These descend to the punctured zero fibers and extend to the ambient nonzero levels while preserving the defining function.",
+      "sourceQuote": "These descend to the punctured zero fibers and extend to the ambient nonzero levels while preserving the defining function."
+    },
+    {
+      "text": "The log-canonical branch is handled separately.",
+      "verdict": "supported",
+      "sourceLine": "The log-canonical branch is handled separately.",
+      "sourceQuote": "The log-canonical branch is handled separately."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
