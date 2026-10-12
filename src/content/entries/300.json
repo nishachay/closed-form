@@ -1,0 +1,169 @@
+{
+  "id": "300",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf",
+      "label": "Approximation Paving over Arbitrary Maximal Abelian Subalgebras"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf",
+      "label": "Quadratic Strong-Operator Paving over Arbitrary Maximal Abelian Subalgebras"
+    }
+  ],
+  "headline": "Claims to settle both paving conjectures of Popa and Vaes for every maximal abelian subalgebra of a von Neumann algebra.",
+  "scope": "Self-adjoint operators in any complex von Neumann algebra, paved over any maximal abelian subalgebra, with no separability or conditional-expectation assumption.",
+  "plain": "Paving means cutting an operator into a fixed number of diagonal blocks so the off-diagonal part becomes small. The Kadison–Singer problem asked this for the standard diagonal and was solved in 2015. Popa and Vaes conjectured two weaker forms of paving for every maximal commutative subalgebra. Two companion papers claim to prove both forms, with explicit counts of blocks. There is no Lean check.",
+  "doesNot": "This does not give norm paving of the original operator for general subalgebras, which is known to fail. The first paper's bound is not claimed to be quadratic.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1959",
+    "firstStepBy": "Kadison and Singer, who posed the pure-state extension problem for the diagonal subalgebra of B(ℓ²)",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It would settle both parts of a 2015 conjecture of Popa and Vaes extending Kadison–Singer paving to all maximal abelian subalgebras."
+  },
+  "explanation": "Take the 4-by-4 matrix x with 0 on the diagonal and 1 everywhere else. Its norm, the most it stretches any vector, is 3. Cut the four coordinates into two groups, {1, 2} and {3, 4}. Keep only the entries inside each group and delete the rest. This is called a pinching. What remains is two copies of the 2-by-2 matrix with 0 on the diagonal and 1 off it. Its norm is 1, a third of the original. With four groups of one coordinate each, nothing off the diagonal survives. So more groups give smaller off-diagonal parts.\n\nPaving asks for a fixed number of groups that works for every operator. The groups come from a maximal abelian subalgebra, or MASA: a largest family of commuting operators, like the diagonal matrices. After the pinching, one subtracts an element a of the MASA. The aim is that what is left has norm at most ε times the norm of x. The original question, from Kadison and Singer, concerned the diagonal of the infinite matrix space[3]. Marcus, Spielman and Srivastava solved it by mixed characteristic polynomials[4]. For general MASAs, norm paving fails[5]. So Popa and Vaes proposed two weaker forms and conjectured both hold for every MASA[6].\n\nThe first paper claims the approximation form. Every self-adjoint operator is a strong limit of operators of norm at most three times its own. Each of these can be paved with error at most ε times its own norm[1]. The number of groups is at most C·ε^−6 for a universal constant C[2]. The second paper claims the quadratic strong-operator form[7]. Here the pinching only has to be small after a compression. The compressing projection must be close to the identity on any chosen finite set of vectors. The number of groups is at most 5 × 10⁸ · ε^−2[8]. For ε = 1/2, the exact count is 1,600,000,009, below the bound of 2,000,000,000. Neither paper needs separability or a conditional expectation onto the MASA[9].\n\nThe obstacle is that earlier proofs split into two kinds of MASA, Cartan and singular, with different methods. Popa and Vaes noted the need to unite the two arguments[10]. The papers do this without any expectation onto the MASA. The first paper does not claim a quadratic count for its own bound[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The arguments are long and technical. No specialist review is published.",
+  "hypeCheck": "Major if correct: it claims both Popa–Vaes paving conjectures in full generality. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Von Neumann algebra",
+      "meaning": "A family of operators on a Hilbert space closed under sums, products, adjoints and pointwise limits."
+    },
+    {
+      "term": "MASA",
+      "meaning": "Maximal abelian subalgebra: a largest family of commuting operators inside the algebra, like the diagonal matrices."
+    },
+    {
+      "term": "Pinching",
+      "meaning": "Keeping only the diagonal blocks p x p of an operator for a partition of the identity into projections p."
+    },
+    {
+      "term": "Paving",
+      "meaning": "Finding a fixed number of blocks so that the pinched operator is close to an element of the MASA."
+    },
+    {
+      "term": "Norm",
+      "meaning": "The most an operator stretches any vector of length one."
+    },
+    {
+      "term": "Strong-operator topology",
+      "meaning": "Convergence of operators measured by how they act on each fixed vector."
+    },
+    {
+      "term": "Conditional expectation",
+      "meaning": "A projection from the algebra onto a subalgebra that behaves like averaging."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Approximation Paving over Arbitrary Maximal Abelian Subalgebras” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Quadratic Strong-Operator Paving over Arbitrary Maximal Abelian Subalgebras” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Every self-adjoint operator is a strong limit of self-adjoint operators of norm at most three times its norm, each with a norm paving of relative error at most ε.",
+      "sourceLine": "self-adjoint operators of norm at most three times its norm, each admitting a",
+      "sourceQuote": "For each \\(0<\\varepsilon<1\\), every self-adjoint operator is a strong limit of self-adjoint operators of norm at most three times its norm, each admitting a norm paving with error at most \\(\\varepsilon\\) times the approximant's own norm.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The number of projections is at most Cε^−6 for a universal constant C.",
+      "sourceLine": "norm. The number of projections is at most \\(C\\varepsilon^{-6}\\) for a universal constant \\(C\\).",
+      "sourceQuote": "For each \\(0<\\varepsilon<1\\), every self-adjoint operator is a strong limit of self-adjoint operators of norm at most three times its norm, each admitting a norm paving with error at most \\(\\varepsilon\\) times the approximant's own norm. The number of projections is at most \\(C\\varepsilon^{-6}\\) for a universal constant \\(C\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Kadison and Singer posed the pure-state extension problem for the atomic diagonal MASA of B(ℓ²).",
+      "sourceLine": "Kadison and Singer posed the pure-state extension problem for the atomic",
+      "sourceQuote": "Kadison and Singer posed the pure-state extension problem for the atomic diagonal MASA of \\(\\mathcal B(\\ell^2)\\) \\cite{KS59}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Marcus, Spielman, and Srivastava resolved the classical Kadison–Singer paving problem by mixed characteristic polynomials.",
+      "sourceLine": "Marcus, Spielman, and Srivastava resolved it by their mixed-characteristic-polynomial method",
+      "sourceQuote": "Marcus, Spielman, and Srivastava resolved it by their mixed-characteristic-polynomial method \\cite{MSS15}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Norm paving fails for general masas.",
+      "sourceLine": "which fails for general masas",
+      "sourceQuote": "Requiring a small norm for $S_P(x)-a$ itself is norm paving, which fails for general masas \\cite[Theorem~3.3]{PV15}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Popa and Vaes introduced strong-operator and approximation versions of paving and conjectured that every MASA has both.",
+      "sourceLine": "approximation versions of paving and conjectured that every MASA has",
+      "sourceQuote": "Popa and Vaes introduced strong-operator and approximation versions of paving and conjectured that every MASA has both properties \\cite[Definitions~2.2--2.3 and Conjecture~2.8(1)]{PV15}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The second paper proves the quadratic strong-operator paving conjecture of Popa and Vaes.",
+      "sourceLine": "We prove the quadratic strong-operator paving conjecture of Popa and Vaes.",
+      "sourceQuote": "We prove the quadratic strong-operator paving conjecture of Popa and Vaes.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Strong-operator paving over each masa holds with at most 5×10⁸ε^−2 projections.",
+      "sourceLine": "$5\\times10^8\\eps^{-2}$ projections.",
+      "sourceQuote": "For every $0<\\eps<1$, every self-adjoint element of a von Neumann algebra admits strong-operator paving over each maximal abelian subalgebra with at most $5\\times10^8\\eps^{-2}$ projections.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "No separability or conditional-expectation assumption is required.",
+      "sourceLine": "requires no separability or conditional-expectation assumption.",
+      "sourceQuote": "The bound is uniform over representations and requires no separability or conditional-expectation assumption.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Popa and Vaes explicitly identified the need to unite the Cartan and singular arguments.",
+      "sourceLine": "They explicitly identified the need to unite the Cartan and singular arguments",
+      "sourceQuote": "They explicitly identified the need to unite the Cartan and singular arguments \\cite[Remark~2.9(ii)]{PV15}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The first paper claims no quadratic bound for R(ε).",
+      "sourceLine": "We claim no quadratic bound for \\(R(\\varepsilon)\\).",
+      "sourceQuote": "We claim no quadratic bound for \\(R(\\varepsilon)\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
