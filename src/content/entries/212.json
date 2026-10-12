@@ -1,0 +1,198 @@
+{
+  "id": "212",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf",
+      "label": "No bigeodesics in planar first-passage percolation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strict-convexity-and-differentiability-of-the-planar-exponential-first-passage-limit-shape-September-24-2026/main.pdf",
+      "label": "Strict convexity and differentiability of the planar exponential first-passage limit shape"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/212.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Planar random-metric grids are claimed to have no route that is fastest forever both ways, and a smooth limit shape.",
+  "scope": "First-passage percolation on the square grid: iid nonatomic weights with a moment condition for bigeodesics; exponential and Gamma weights for the shape.",
+  "plain": "Give each road of a square grid a random travel time and measure distance by the fastest route. One paper claims that no route is fastest forever in both directions, under a mild moment condition. The other studies the large-scale shape of the reachable region. For exponential travel times it claims the shape has no flat edges and no corners. Lean has a formal proof of the no-corners part, for every Gamma law.",
+  "doesNot": "This does not give a formula for the limit shape, or remove the moment condition from the no-bigeodesics result.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "John Hammersley and Dominic Welsh, first-passage percolation",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It would settle two long-standing planar conjectures, one of them with a partial Lean proof."
+  },
+  "explanation": "Picture a square grid of roads. Each road segment has its own random travel time. Take one small square of four segments. Going right then up costs 0.5 + 0.4 = 0.9 hours. Going up then right costs 0.2 + 0.9 = 1.1 hours. So the fastest time between opposite corners is 0.9 hours, along the first route. This is first-passage percolation: a random grid whose distance is the fastest travel time[1]. A fastest route is called a geodesic.\n\nNow make the grid infinite. Over long distances, travel time grows in proportion to the distance, but at different rates in different directions. The set of points reachable within time t, shrunk by a factor of t, settles into a fixed convex shape[2]. This is the limit shape. Its exact form is unknown even for simple weights. For exponential travel times, its fine geometry was a long-open question[3].\n\nTwo papers address this setting. The first asks about routes that are fastest in both directions forever. Such a route is called a bigeodesic. The question goes back to Furstenberg, as recorded by Kesten[4]. The conjecture says that, for continuous random weights, no bigeodesic exists[5]. The first paper claims to prove this, with one condition[6]. The smallest of four independent weights must have finite average square[6]. It rules out all bigeodesics at once, with no assumption on the limit shape[7].\n\nThe second paper looks at the limit shape itself, for exponential weights. Two things could make the shape irregular. A flat edge is a straight piece of boundary. A corner is a point where the boundary has more than one tangent line[8]. The paper claims the shape has neither: it is strictly convex and its boundary is smooth, a C¹ curve[9]. It also proves smoothness for every Gamma law of weights, a wider family that includes the exponential[10].\n\nEarlier results came with assumptions. Newman showed that routes have directions, but needed curvature of the shape and an extra moment condition[11]. Damron and Hanson excluded some bigeodesics, but needed the shape to be smooth in places[12]. Licea and Newman excluded bigeodesics only for directions chosen in advance[13]. The single obstacle was that every method needed some regularity of the unknown shape. The first paper removes that need. Its argument handles every possible direction at once.\n\nHow sure is this? A computer proof checker called Lean has a formal proof that the shape's boundary is smooth. It covers every Gamma law of weights, including the exponential one. Strict convexity of the exponential shape lies outside that check. So does the absence of bigeodesics. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. Smoothness of the shape for Gamma weights has a Lean proof; strict convexity and the no-bigeodesics result do not. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "First-passage percolation",
+      "meaning": "A grid with random travel times on its edges, where distance is the fastest total travel time."
+    },
+    {
+      "term": "Geodesic",
+      "meaning": "A fastest route between two points."
+    },
+    {
+      "term": "Bigeodesic",
+      "meaning": "A path, infinite in both directions, every piece of which is a fastest route."
+    },
+    {
+      "term": "Limit shape",
+      "meaning": "The convex shape that the region reachable within time t approaches after shrinking by t."
+    },
+    {
+      "term": "Strictly convex",
+      "meaning": "Having no straight pieces on the boundary."
+    },
+    {
+      "term": "C¹ boundary",
+      "meaning": "A boundary with a single tangent line at every point, so no corners."
+    },
+    {
+      "term": "Gamma law",
+      "meaning": "A family of probability laws for positive numbers that includes the exponential law."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “No bigeodesics in planar first-passage percolation” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/No-bigeodesics-in-planar-first-passage-percolation-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Strict convexity and differentiability of the planar exponential first-passage limit shape” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strict-convexity-and-differentiability-of-the-planar-exponential-first-passage-limit-shape-September-24-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 212 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/212.md"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "First-passage percolation equips a lattice with a random metric by assigning independent passage times to edges.",
+      "verdict": "supported",
+      "sourceLine": "First-passage percolation, introduced by Hammersley and",
+      "sourceQuote": "First-passage percolation, introduced by Hammersley and Welsh~\\cite{HammersleyWelsh1965}, equips a lattice with a random metric by assigning independent passage times to its edges.",
+      "paper": 1
+    },
+    {
+      "text": "The shape theorem gives a deterministic norm whose unit ball is the limit shape.",
+      "verdict": "supported",
+      "sourceLine": "Its unit ball $\\Bcal=\\{v:\\mu(v)\\le1\\}$ is the limit shape.",
+      "sourceQuote": "Its unit ball $\\Bcal=\\{v:\\mu(v)\\le1\\}$ is the limit shape.",
+      "paper": 2
+    },
+    {
+      "text": "The fine geometry of the convex limit shape is much harder to determine.",
+      "verdict": "supported",
+      "sourceLine": "geometry is much harder to determine; see the survey of Auffinger,",
+      "sourceQuote": "Although the shape theorem gives a convex deterministic body, its fine geometry is much harder to determine; see the survey of Auffinger, Damron, and Hanson \\cite{ADH2017}.",
+      "paper": 2
+    },
+    {
+      "text": "The question was attributed to Furstenberg by Kesten; the planar conjecture asserts bigeodesics are absent for continuous laws.",
+      "verdict": "supported",
+      "sourceLine": "The question was attributed to Furstenberg by",
+      "sourceQuote": "The question was attributed to Furstenberg by Kesten~\\cite[Remark 9.22]{Kesten}.",
+      "paper": 1
+    },
+    {
+      "text": "The planar no-bigeodesics conjecture asserts bigeodesics are absent for iid continuous laws.",
+      "verdict": "supported",
+      "sourceLine": "The planar no-bigeodesics conjecture asserts that bigeodesics are absent",
+      "sourceQuote": "The planar no-bigeodesics conjecture asserts that bigeodesics are absent for iid continuous edge-weight laws; see \\cite[Conjecture 1 and the discussion preceding it]{DamronHanson}.",
+      "paper": 1
+    },
+    {
+      "text": "The paper proves the no-bigeodesics conjecture under the minimum-of-four second-moment assumption.",
+      "verdict": "supported",
+      "sourceLine": "We prove the conjecture under the minimum-of-four second-moment",
+      "sourceQuote": "We prove the conjecture under the minimum-of-four second-moment assumption.",
+      "paper": 1
+    },
+    {
+      "text": "No differentiability, strict convexity or curvature of the limit shape is assumed.",
+      "verdict": "supported",
+      "sourceLine": "strict convexity, or curvature of the limit shape.",
+      "sourceQuote": "We assume no differentiability, strict convexity, or curvature of the limit shape.",
+      "paper": 1
+    },
+    {
+      "text": "A flat face has more than one point on a supporting line; a corner has more than one supporting line at a point.",
+      "verdict": "supported",
+      "sourceLine": "line, whereas a corner has more than one supporting line at a point",
+      "sourceQuote": "Strict convexity and differentiability exclude different features of a convex boundary: a flat face has more than one point on a supporting line, whereas a corner has more than one supporting line at a point (Figure~\\ref{fig:geometry}).",
+      "paper": 2
+    },
+    {
+      "text": "The exponential limit shape is strictly convex with a C^1 boundary.",
+      "verdict": "supported",
+      "sourceLine": "weights is strictly convex and has a $C^1$ boundary.",
+      "sourceQuote": "We prove that the limit shape of undirected nearest-neighbor first-passage percolation on $\\Z^2$ with independent exponential edge weights is strictly convex and has a $C^1$ boundary.",
+      "paper": 2
+    },
+    {
+      "text": "Differentiability holds for every Gamma edge-weight law with positive shape and rate.",
+      "verdict": "supported",
+      "sourceLine": "time-constant norm for every Gamma edge-weight law with positive shape",
+      "sourceQuote": "More generally, we prove differentiability of the time-constant norm for every Gamma edge-weight law with positive shape and rate.",
+      "paper": 2
+    },
+    {
+      "text": "Newman's direction results required an exponential moment and uniform curvature.",
+      "verdict": "supported",
+      "sourceLine": "rays exist in every direction was established by Newman under an",
+      "sourceQuote": "The complementary assertion that every ray has a direction and that rays exist in every direction was established by Newman under an exponential moment and uniform curvature \\cite[Theorem~2.1]{Newman1995}.",
+      "paper": 1
+    },
+    {
+      "text": "Damron and Hanson obtained one-end exclusions under local differentiability assumptions.",
+      "verdict": "supported",
+      "sourceLine": "one-end exclusions in fixed tangent-contact sectors under local",
+      "sourceQuote": "Damron and Hanson subsequently obtained one-end exclusions in fixed tangent-contact sectors under local differentiability assumptions~\\cite[Theorem~1]{DamronHanson}.",
+      "paper": 1
+    },
+    {
+      "text": "Licea and Newman excluded bigeodesics with end-directions prescribed in a full-measure set.",
+      "verdict": "supported",
+      "sourceLine": "excluded bigeodesics whose two end-directions are prescribed in that",
+      "sourceQuote": "Licea and Newman proved coalescence for each direction in a deterministic set of full Lebesgue measure and excluded bigeodesics whose two end-directions are prescribed in that set~\\cite{LiceaNewman}; see also \\cite[Theorem~3.1 and Remark~2 after Theorem~1]{DamronHanson}.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes differentiability (C^1 boundary) for every Gamma law, including exponential; strict convexity is outside.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
