@@ -1,0 +1,269 @@
+{
+  "id": "068",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Anticanonical-nonvanishing-from-smooth-semipositivity-September-26-2026/main.pdf",
+      "label": "Anticanonical nonvanishing from smooth semipositivity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Invariant-anticanonical-indices-and-conversion-of-twisted-differentials-September-26-2026/main.pdf",
+      "label": "Invariant anticanonical indices and conversion of twisted differentials"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-anticanonical-metrics-on-klt-pairs-and-torus-quotients-September-26-2026/main.pdf",
+      "label": "Bounded anticanonical metrics on klt pairs and torus quotients"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cohomological-transfer-and-equivariant-anticanonical-sections-September-26-2026/main.pdf",
+      "label": "Cohomological transfer and equivariant anticanonical sections"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Metric-descent-and-rank-preserving-contractions-September-26-2026/main.pdf",
+      "label": "Metric descent and rank-preserving contractions"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integrable-metrics-and-effectivity-with-controlled-boundary-September-26-2026/main.pdf",
+      "label": "Integrable metrics and effectivity with controlled boundary"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-orders-and-invariant-anticanonical-linear-systems-September-26-2026/main.pdf",
+      "label": "Exact orders and invariant anticanonical linear systems"
+    }
+  ],
+  "headline": "A claimed proof that a smooth nonnegatively curved anticanonical bundle always has a section of some power.",
+  "scope": "The claim covers every smooth connected complex projective variety whose anticanonical bundle has a smooth semipositive metric. Seven papers build it.",
+  "plain": "Every smooth algebraic variety carries a line of combined tangent directions, its anticanonical bundle. A section is a nonzero holomorphic choice of a value in that line at every point. Yau asked whether a nonnegatively curved anticanonical bundle must have a section of some power. These papers claim yes, in every dimension, when the metric is smooth. The power can matter: an example has no section at the first power but has one at the second.",
+  "doesNot": "This does not say how large the power m must be, and it does not cover metrics that are only singular.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "Shing-Tung Yau, problem list in Lectures on Differential Geometry",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims a positive answer to a question from Yau's problem list in every dimension, where earlier results reached dimension three."
+  },
+  "explanation": "Take an Enriques surface E, a compact complex surface with a special twist. Its canonical bundle K_E is not trivial, but its square is trivial. K_E has no nonzero section[1]. A section of a line bundle is a holomorphic choice of a value in the line at every point. Now form X = E × P¹, the surface times a sphere. Its anticanonical bundle is the dual of K_E on the E side, times degree 2 on the sphere. The dual of K_E equals K_E, so the E side has no sections. On the sphere, degree 2 has 3 independent sections. The product formula gives 0 × 3 = 0 sections for the first power[2]. The square is trivial on E, with 1 section, and degree 4 on the sphere, with 5. So the second power has 1 × 5 = 5 independent sections.\n\nThe anticanonical bundle −K_X is the top exterior power of the tangent bundle, one complex line at each point. A smooth Hermitian metric measures lengths in that line. It is semipositive when its curvature is never negative. In the example, a flat metric on E and the round metric on the sphere give one[3]. Such a metric makes −K_X nef, meaning it has degree at least zero on every curve[4]. Nef alone is not known to give a section.\n\nYau asked for a nonzero section of some power −mK_X with m > 0[5]. The paper claims yes whenever −K_X has a smooth semipositive metric[6]. The power matters. In the example, −K_X is not torsion, meaning no power of it is trivial[7]. Yet the first power still has no section.\n\nEarlier structure theorems split the universal cover into flat, Ricci-flat and remaining compact pieces[8]. The universal cover is the simply connected space that wraps around X. Ricci-flat means a special kind of zero curvature. In 2023, Lazić, Matsumura, Peternell, Tsakanikas and Xie proved numerical effectivity for log canonical threefold pairs[9]. That is weaker, since a section needs linear effectivity[10]. Müller proved actual nonvanishing in dimension three for a related class[11].\n\nThe main obstacle is a leftover symmetry. A section on the compact piece passes down to X only if it respects the deck transformations[12]. These are the symmetries of the universal cover that fold it back onto X. After a finite step, they act on the compact piece through a compact torus, a product of circles. The paper builds an anticanonical section on that piece that the torus fixes[13]. Its product with frames on the other pieces descends to a finite cover of X[14]. A norm map then pushes it down to X itself.\n\nThe key tool is a finite-volume theorem, proved by induction on dimension[15]. It applies to varieties with no holomorphic forms. Rationally connected varieties, where rational curves join any two points, satisfy that condition[16]. Six companion papers in the release develop related tools. They treat torus actions, klt pairs, metric descent and error terms in twisted sections.\n\nHow sure is this? There is no Lean scope note for these papers, so no computer proof checker has tested them. The main paper claims the theorem in every dimension and relies on its companions and on published results. No specialist review has been published.",
+  "hypeCheck": "Major if the argument holds. It spans seven papers with no Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Anticanonical bundle",
+      "meaning": "The top exterior power of the tangent bundle: one complex line of combined tangent directions at each point."
+    },
+    {
+      "term": "Section",
+      "meaning": "A holomorphic choice of a value in a line bundle at every point."
+    },
+    {
+      "term": "Semipositive metric",
+      "meaning": "A smooth way of measuring lengths in a line bundle whose curvature is never negative."
+    },
+    {
+      "term": "Nef",
+      "meaning": "Having degree at least zero on every curve."
+    },
+    {
+      "term": "Torsion",
+      "meaning": "A line bundle some power of which is trivial."
+    },
+    {
+      "term": "Enriques surface",
+      "meaning": "A compact complex surface whose canonical bundle is nontrivial but has trivial square."
+    },
+    {
+      "term": "Universal cover",
+      "meaning": "The simply connected space that wraps around a variety, folding back onto it by deck transformations."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Anticanonical nonvanishing from smooth semipositivity” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Anticanonical-nonvanishing-from-smooth-semipositivity-September-26-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Invariant anticanonical indices and conversion of twisted differentials” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Invariant-anticanonical-indices-and-conversion-of-twisted-differentials-September-26-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “Bounded anticanonical metrics on klt pairs and torus quotients” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-anticanonical-metrics-on-klt-pairs-and-torus-quotients-September-26-2026/main.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Cohomological transfer and equivariant anticanonical sections” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cohomological-transfer-and-equivariant-anticanonical-sections-September-26-2026/main.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “Metric descent and rank-preserving contractions” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Metric-descent-and-rank-preserving-contractions-September-26-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Integrable metrics and effectivity with controlled boundary” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integrable-metrics-and-effectivity-with-controlled-boundary-September-26-2026/main.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Exact orders and invariant anticanonical linear systems” (September 26, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-orders-and-invariant-anticanonical-linear-systems-September-26-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 9,
+      "cite": "S.-T. Yau, “Open problems in geometry”, in Lectures on Differential Geometry (1994)",
+      "url": "https://www.intlpress.com/site/pub/files/preview/bookpubs/00000308.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "V. Lazić, S. Matsumura, T. Peternell, N. Tsakanikas and Z. Xie, “The nonvanishing problem for varieties with nef anticanonical bundle”, Documenta Mathematica (2023)",
+      "url": "https://doi.org/10.4171/DM/936"
+    },
+    {
+      "id": 11,
+      "cite": "N. Müller, “Two non-vanishing results concerning the anti-canonical bundle”, Nagoya Mathematical Journal (2025)",
+      "url": "https://doi.org/10.1017/nmj.2024.21"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For an Enriques surface, K_E is nontrivial of order two and has no section.",
+      "verdict": "supported",
+      "sourceLine": "is nontrivial of order two and has no section",
+      "sourceQuote": "For a complex Enriques surface \\(E\\), \\(K_E\\) is nontrivial of order two and has no section \\cite[Section~3]{Dolgachev2016}.",
+      "paper": 1
+    },
+    {
+      "text": "For E × P¹ the product formula gives no first-power section, whereas the square has sections.",
+      "verdict": "supported",
+      "sourceLine": "The product formula for sections gives no first-power section, whereas the square has sections.",
+      "sourceQuote": "The product formula for sections gives no first-power section, whereas the square has sections.",
+      "paper": 1
+    },
+    {
+      "text": "The flat metric on E and the Fubini–Study metric on P¹ make the anticanonical line smoothly semipositive.",
+      "verdict": "supported",
+      "sourceLine": "The flat metric on the first factor and Fubini--Study metric on the second make it smoothly semipositive.",
+      "sourceQuote": "The flat metric on the first factor and Fubini--Study metric on the second make it smoothly semipositive.",
+      "paper": 1
+    },
+    {
+      "text": "A smooth semipositive metric makes the numerical class nef.",
+      "verdict": "supported",
+      "sourceLine": "Such a metric makes the numerical class nef.",
+      "sourceQuote": "Such a metric makes the numerical class nef.",
+      "paper": 1
+    },
+    {
+      "text": "This is the positive-multiple form of Yau's anticanonical nonvanishing question.",
+      "verdict": "supported",
+      "sourceLine": "This is the positive-multiple formulation associated with Yau's anticanonical nonvanishing question",
+      "sourceQuote": "This is the positive-multiple formulation associated with Yau's anticanonical nonvanishing question \\cite[Problem~75, p.~395]{Yau1994}.",
+      "paper": 1
+    },
+    {
+      "text": "If −K_X admits a smooth semipositive Hermitian metric then H⁰(X, −mK_X) ≠ 0 for some m > 0.",
+      "verdict": "supported",
+      "sourceLine": "admits a smooth Hermitian metric of semipositive curvature",
+      "sourceQuote": "If \\(-K_X\\) admits a smooth Hermitian metric of semipositive curvature, then \\(H^0(X,-mK_X)\\ne0\\) for some integer \\(m>0\\).",
+      "paper": 1
+    },
+    {
+      "text": "Restriction to a P¹ fiber shows the anticanonical line of E × P¹ is not torsion.",
+      "verdict": "supported",
+      "sourceLine": "fiber shows that this anticanonical line is not torsion",
+      "sourceQuote": "Restriction to a \\(\\mathbb P^1\\) fiber shows that this anticanonical line is not torsion.",
+      "paper": 1
+    },
+    {
+      "text": "Structure results describe the universal cover by flat, compact Ricci-flat and remaining compact factors.",
+      "verdict": "supported",
+      "sourceLine": "describe the universal cover by its flat, compact Ricci-flat, and remaining compact factors",
+      "sourceQuote": "The structure results of Demailly--Peternell--Schneider \\cite[Structure Theorem, p.~218]{DPS1996} and Campana--Demailly--Peternell \\cite[Theorem~1.4]{CDP2015} describe the universal cover by its flat, compact Ricci-flat, and remaining compact factors.",
+      "paper": 1
+    },
+    {
+      "text": "Lazić–Matsumura–Peternell–Tsakanikas–Xie proved numerical effectivity for log canonical threefold pairs.",
+      "verdict": "supported",
+      "sourceLine": "proved numerical effectivity for projective log canonical threefold pairs",
+      "sourceQuote": "In the broader nef setting, Lazi\\'c--Matsumura--Peternell--Tsakanikas--Xie proved numerical effectivity for projective log canonical threefold pairs with rational boundary and nef log-anticanonical divisor, under \\(\\mathbb Q\\)-factoriality or rational singularities \\cite[Theorem~A]{LMPTX2023}.",
+      "paper": 1
+    },
+    {
+      "text": "A section requires rational linear effectivity.",
+      "verdict": "supported",
+      "sourceLine": "the existence of a section requires rational \\emph{linear} effectivity",
+      "sourceQuote": "Numerical effectivity means that the divisor class is numerically equivalent to an effective rational divisor; the existence of a section requires rational \\emph{linear} effectivity.",
+      "paper": 1
+    },
+    {
+      "text": "Müller proved actual nonvanishing in dimension three.",
+      "verdict": "supported",
+      "sourceLine": "proved actual nonvanishing in dimension three",
+      "sourceQuote": "For projective klt \\(\\mathbb Q\\)-pairs with nef log-anticanonical divisor, M\\\"uller proved actual nonvanishing in dimension three, and in arbitrary dimension when the log-anticanonical divisor of a general fiber of the maximal rationally connected quotient is semiample \\cite[Theorem~A and Corollary~B]{Muller2025}.",
+      "paper": 1
+    },
+    {
+      "text": "A section on the compact factor descends only if compatible with the deck transformations.",
+      "verdict": "supported",
+      "sourceLine": "A section on the compact factor descends only if it is compatible with the deck transformations.",
+      "sourceQuote": "A section on the compact factor descends only if it is compatible with the deck transformations.",
+      "paper": 1
+    },
+    {
+      "text": "On the remaining factor the paper constructs an anticanonical section fixed by the torus.",
+      "verdict": "supported",
+      "sourceLine": "on the remaining factor we construct an anticanonical section fixed by the torus",
+      "sourceQuote": "The flat and Ricci-flat factors supply canonical frames; on the remaining factor we construct an anticanonical section fixed by the torus, for the natural action on that factor's anticanonical bundle.",
+      "paper": 1
+    },
+    {
+      "text": "Its product with the frames descends to a finite étale cover, and its norm gives a section on X.",
+      "verdict": "supported",
+      "sourceLine": "Its product with those frames descends",
+      "sourceQuote": "Its product with those frames descends to a finite \\'etale cover, and its finite \\'etale norm then gives a section on \\(X\\).",
+      "paper": 1
+    },
+    {
+      "text": "The finite-volume theorem is proved by induction on dimension.",
+      "verdict": "supported",
+      "sourceLine": "is proved by induction on dimension.",
+      "sourceQuote": "Theorem~\\ref{thm:finite-volume} is proved by induction on dimension.",
+      "paper": 1
+    },
+    {
+      "text": "Rationally connected varieties satisfy the no-forms hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "Rationally connected varieties satisfy the no-forms hypothesis",
+      "sourceQuote": "Rationally connected varieties satisfy the no-forms hypothesis, but the theorem also applies more generally.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
