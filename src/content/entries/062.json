@@ -1,0 +1,242 @@
+{
+  "id": "062",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Contact-Fano-manifolds-and-the-LeBrun-Salamon-conjecture-September-23-2026/paper.pdf",
+      "label": "Contact Fano manifolds and the LeBrun–Salamon conjecture"
+    }
+  ],
+  "headline": "Contact Fano manifolds are homogeneous, which settles the LeBrun–Salamon conjecture on quaternionic-Kähler spaces.",
+  "scope": "Complex projective contact Fano manifolds of dimension at least three; positive quaternionic-Kähler manifolds of real dimension at least eight.",
+  "plain": "A contact structure is a field of maximally twisted hyperplanes on an odd-dimensional manifold. The paper claims every smooth projective contact Fano manifold is on a known list built from simple Lie algebras. A corollary is the LeBrun–Salamon conjecture. Every closed positive quaternionic-Kähler manifold of real dimension at least eight would be a symmetric Wolf space, up to scale. The paper also claims a classification of all projective contact manifolds.",
+  "doesNot": "This does not cover quaternionic-Kähler manifolds with negative or zero scalar curvature, or real dimension four.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "C. LeBrun and S. Salamon, strong rigidity of positive quaternion-Kähler manifolds",
+    "significance": "Major",
+    "significanceWhy": "If correct, it settles a decades-old classification problem linking complex contact geometry and Riemannian holonomy.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Take ordinary three-dimensional space with coordinates x, y and z. Consider the one-form α = dz − y dx. At each point it picks out a plane of directions, the ones on which α is zero. Its derivative is dα = dx ∧ dy. Then α ∧ dα = dz ∧ dx ∧ dy, which is never zero. That is exactly the condition for a contact structure[1]. The planes twist so much that no surface is tangent to all of them, even locally.\n\nOn a complex manifold of odd dimension 2n + 1, a contact structure is such a field of hyperplanes. A contact Fano manifold is a compact projective one whose anticanonical bundle is ample, a strong positivity condition. There is a family of standard examples. Each simple complex Lie algebra, an algebra of infinitesimal symmetries, has a closed adjoint orbit. Projectivized, it gives the adjoint variety, with a canonical contact structure[2]. For example, three-dimensional projective space arises from the symplectic Lie algebra of 4 × 4 matrices[3].\n\nThe contact-Fano homogeneity conjecture says these are the only examples. This paper claims to prove it[4]. Every smooth connected complex projective contact Fano manifold of dimension at least three is one of these adjoint varieties[5]. The match also carries the given contact structure to the canonical one[5].\n\nThe second payoff is in Riemannian geometry. A quaternionic-Kähler manifold has real dimension 4m and a metric whose holonomy lies in the group Sp(m)Sp(1)[6]. Holonomy records how directions turn when carried around loops. Positive means positive scalar curvature, a kind of average curvature. The compact symmetric examples are called Wolf spaces[6]. The LeBrun–Salamon conjecture concerns the case m ≥ 2. It says every closed positive quaternionic-Kähler manifold is a Wolf space up to scale. The paper claims to prove this as a corollary[7,8]. For m = 2 the real dimension is 8.\n\nThe link is the twistor space. Each such manifold of real dimension 4m has a twistor space, a two-sphere bundle over it. Its real dimension is 4m + 2, so its complex dimension is 2m + 1. Salamon showed this twistor space is a contact Fano manifold[9]. So the algebraic theorem applies to it[8]. From the twistor space the paper then recovers the original metric[8].\n\nWhat was known before? Poon and Salamon settled real dimension eight[10]. Buczyński and Wiśniewski settled real dimensions twelve and sixteen[11]. Several results needed extra hypotheses, such as a reductive symmetry group[12]. Brendle and Semmelmann proved symmetry under nonnegative sectional curvature[13]. Earlier preprints by Kobayashi and Yasukura claimed broad classifications. Later comments by Yasukura identified errors in two of his versions[14].\n\nThe obstacle is to find enough symmetries. The paper must build global vector fields that preserve the contact structure and span every tangent space[15]. It does this with contact lines, the simplest rational curves in the manifold. Two such lines are joined and smoothed into a conic[16]. The paper builds a symmetric section on pairs of points whose behaviour near the diagonal forces the fields to span[17]. Then the symmetry group acts transitively, and the manifold is homogeneous.\n\nThe paper also claims a classification of all projective contact manifolds of dimension at least three. With second Betti number 1, they are adjoint varieties[18]. With second Betti number at least 2, the manifold is the projectivized cotangent bundle of a smooth projective variety[18].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. Earlier claimed proofs of this classification were later found to contain errors. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Contact structure",
+      "meaning": "A field of hyperplanes that twists so much that no hypersurface is tangent to all of them."
+    },
+    {
+      "term": "Fano",
+      "meaning": "Having an ample anticanonical bundle, a strong form of positive curvature."
+    },
+    {
+      "term": "Adjoint variety",
+      "meaning": "The projectivized smallest nonzero nilpotent orbit of a simple Lie algebra, with its canonical contact structure."
+    },
+    {
+      "term": "Quaternionic-Kähler manifold",
+      "meaning": "A Riemannian manifold of real dimension 4m whose holonomy lies in Sp(m)Sp(1)."
+    },
+    {
+      "term": "Holonomy",
+      "meaning": "The way directions turn when carried around closed loops."
+    },
+    {
+      "term": "Wolf space",
+      "meaning": "A compact symmetric positive quaternionic-Kähler space."
+    },
+    {
+      "term": "Twistor space",
+      "meaning": "A two-sphere bundle over a quaternionic-Kähler manifold that carries a complex structure."
+    },
+    {
+      "term": "Homothetic",
+      "meaning": "Equal after rescaling the metric by a constant."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Contact Fano manifolds and the LeBrun–Salamon conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Contact-Fano-manifolds-and-the-LeBrun-Salamon-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "C. LeBrun and S. Salamon, “Strong rigidity of positive quaternion-Kähler manifolds”, Inventiones Mathematicae 118 (1994), 109–132",
+      "url": "https://doi.org/10.1007/BF01231528"
+    },
+    {
+      "id": 4,
+      "cite": "S. Salamon, “Quaternionic Kähler manifolds”, Inventiones Mathematicae 67 (1982), 143–171",
+      "url": "https://doi.org/10.1007/BF01393378"
+    },
+    {
+      "id": 5,
+      "cite": "C. LeBrun, “Fano manifolds, contact structures, and quaternionic geometry”, International Journal of Mathematics 6 (1995), 419–437",
+      "url": "https://doi.org/10.1142/S0129167X95000146"
+    },
+    {
+      "id": 6,
+      "cite": "Y. S. Poon and S. M. Salamon, “Quaternionic Kähler 8-manifolds with positive scalar curvature”, Journal of Differential Geometry 33 (1991), 363–378",
+      "url": "https://doi.org/10.4310/jdg/1214446322"
+    },
+    {
+      "id": 7,
+      "cite": "J. Buczyński and J. A. Wiśniewski, “Algebraic torus actions on contact manifolds”, Journal of Differential Geometry 121 (2022), 227–289",
+      "url": "https://doi.org/10.4310/jdg/1659987892"
+    },
+    {
+      "id": 8,
+      "cite": "S. Brendle and U. Semmelmann, “Quaternionic-Kähler manifolds with nonnegative sectional curvature”, arXiv:2506.22181 (2025)",
+      "url": "https://arxiv.org/abs/2506.22181v1"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A contact structure has a nondegenerate Levi pairing, equivalent to α ∧ (dα)^n nowhere zero; contact Fano means −K_X ample.",
+      "sourceLine": "The condition is equivalent to",
+      "sourceQuote": "The condition is equivalent to $\\alpha\\wedge(d\\alpha)^n$ being nowhere zero.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Y_g, the projectivized minimal nilpotent orbit, is the unique closed adjoint orbit with a canonical contact structure.",
+      "sourceLine": "This is the unique closed adjoint orbit in",
+      "sourceQuote": "This is the unique closed adjoint orbit in $\\PP(\\mathfrak g)$.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "P^{2n+1} with L = O(2) corresponds to sp_{2n+2}.",
+      "sourceLine": "In the first, the adjoint embedding is the quadratic Veronese embedding",
+      "sourceQuote": "In the first, the adjoint embedding is the quadratic Veronese embedding, so its hyperplane bundle is $\\OO(2)$.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The theorem resolves the smooth contact-Fano homogeneity conjecture positively.",
+      "sourceLine": "resolves the smooth contact-Fano homogeneity conjecture positively.",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves the smooth contact-Fano homogeneity conjecture positively.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Every smooth connected projective contact Fano manifold of dimension 2n+1 ≥ 3 is contact-isomorphic to the adjoint variety of a simple Lie algebra.",
+      "sourceLine": "Every smooth connected complex projective contact Fano manifold of complex dimension at least three, with its given contact distribution, is contact-isomorphic to the adjoint variety of a simple complex Lie algebra.",
+      "sourceQuote": "Every smooth connected complex projective contact Fano manifold of complex dimension at least three, with its given contact distribution, is contact-isomorphic to the adjoint variety of a simple complex Lie algebra.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Quaternionic-Kähler means holonomy in Sp(m)Sp(1); compact symmetric positive ones are Wolf spaces.",
+      "sourceLine": "quaternionic-K\\\"ahler spaces are the",
+      "sourceQuote": "The compact symmetric positive quaternionic-K\\\"ahler spaces are the \\emph{Wolf spaces}.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "A closed connected positive quaternionic-Kähler manifold of dimension 4m, m ≥ 2, is homothetic to a Wolf space.",
+      "sourceLine": "is homothetic to a compact symmetric positive",
+      "sourceQuote": "Moreover, $(M,g)$ is homothetic to a compact symmetric positive quaternionic-K\\\"ahler Wolf space.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "This gives the positive resolution of the Riemannian LeBrun–Salamon conjecture via the twistor construction; the metric is recovered from the twistor space.",
+      "sourceLine": "The link is the positive twistor construction: the twistor space is contact Fano, so the general algebraic theorem applies to it.",
+      "sourceQuote": "The link is the positive twistor construction: the twistor space is contact Fano, so the general algebraic theorem applies to it.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Salamon's twistor construction associates a contact Fano manifold to a positive quaternionic-Kähler manifold.",
+      "sourceLine": "associates a contact Fano manifold to a closed connected positive",
+      "sourceQuote": "The twistor construction of Salamon, independently due to B\\'erard-Bergery, associates a contact Fano manifold to a closed connected positive quaternionic-K\\\"ahler manifold~\\cite{Salamon1982,LeBrun1995}.",
+      "sourceId": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Poon and Salamon classified real dimension eight.",
+      "sourceLine": "Earlier low-dimensional classifications were obtained by Poon and Salamon",
+      "sourceQuote": "Earlier low-dimensional classifications were obtained by Poon and Salamon for compact positive quaternionic-K\\\"ahler manifolds in real dimension eight~\\cite{PoonSalamon1991}, and by Ye and Druel for contact Fano manifolds in complex dimensions three and five, respectively \\cite{Ye1994,Druel1998}.",
+      "sourceId": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Buczyński and Wiśniewski classified real dimensions twelve and sixteen.",
+      "sourceLine": "manifolds in real dimensions twelve and sixteen",
+      "sourceQuote": "Buczy\\'nski and Wi\\'sniewski classify the closed positive quaternionic-K\\\"ahler manifolds in real dimensions twelve and sixteen, and the contact Fano manifolds in complex dimensions three through nine with reductive automorphism group~\\cite[Theorems~1.1--1.2]{BW2022}.",
+      "sourceId": 7,
+      "verdict": "supported"
+    },
+    {
+      "text": "Several classification results impose additional geometric or group-theoretic hypotheses.",
+      "sourceLine": "Several classification results impose additional geometric or",
+      "sourceQuote": "Several classification results impose additional geometric or group-theoretic hypotheses.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Brendle and Semmelmann establish symmetry under nonnegative sectional curvature.",
+      "sourceLine": "Brendle and Semmelmann establish symmetry for",
+      "sourceQuote": "On the Riemannian side, Brendle and Semmelmann establish symmetry for compact positive quaternionic-K\\\"ahler manifolds of real dimension at least eight under nonnegative sectional curvature \\cite[Corollary~2]{BrendleSemmelmann2025}.",
+      "sourceId": 8,
+      "verdict": "supported"
+    },
+    {
+      "text": "Yasukura's later comments identify errors in earlier versions of his preprint.",
+      "sourceLine": "The author's later comments identify an error in Theorem",
+      "sourceQuote": "The author's later comments identify an error in Theorem~3.2(ii) of the former version~\\cite{Yasukura2009v4}, and identify Theorem~A and Corollary~B of the latter version as false~\\cite{Yasukura2023v12}.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The objective is to produce enough global vector fields preserving F to span every tangent space.",
+      "sourceLine": "The objective is to produce enough global vector fields preserving",
+      "sourceQuote": "The objective is to produce enough global vector fields preserving $F$ to span every tangent space.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The union of two free contact lines can be smoothed into a very free conic.",
+      "sourceLine": "Their union can be smoothed while its two outer values move.",
+      "sourceQuote": "Their union can be smoothed while its two outer values move.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "A symmetric section on X × X with prescribed local behaviour near the diagonal forces the global contact fields to span.",
+      "sourceLine": "This local behavior will force the global contact fields to span.",
+      "sourceQuote": "This local behavior will force the global contact fields to span.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Projective contact manifolds: b2 = 1 gives adjoint varieties; b2 ≥ 2 gives P(T*Z).",
+      "sourceLine": "Thus these are precisely the underlying manifolds of smooth connected complex projective contact manifolds in these dimensions.",
+      "sourceQuote": "Thus these are precisely the underlying manifolds of smooth connected complex projective contact manifolds in these dimensions.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
