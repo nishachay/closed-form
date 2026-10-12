@@ -1,0 +1,197 @@
+{
+  "id": "247",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-infinite-finitely-presented-residually-finite-2-group-October-5-2026/residually-finite-torsion.pdf",
+      "label": "An infinite finitely presented residually finite 2-group"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-infinite-finitely-presented-periodic-group-September-23-2026/paper.pdf",
+      "label": "An infinite finitely presented periodic group"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/247.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims an infinite finitely presented group where every element has finite order, answering a Burnside question.",
+  "scope": "Abstract groups with an ordinary finite presentation; the group is a Steinberg group of size 12 over an algebra of characteristic two.",
+  "plain": "A group is periodic if repeating any element enough times brings you back to the start. The finitely presented Burnside question asked whether such a group, described by finitely many generators and rules, must be finite. The papers build an infinite one from 12-by-12 matrices over a special algebra. A follow-up claims part of it is residually finite with only powers of two as orders. Lean checks the main existence theorem only.",
+  "doesNot": "This does not give a common bound on element orders; the orders are unbounded, and the nil-algebra and residual-finiteness results are outside the Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1902",
+    "firstStepBy": "William Burnside, finiteness questions for periodic groups",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "It answers a well-known open form of Burnside's problem, a central question of group theory."
+  },
+  "explanation": "Take 3-by-3 matrices whose entries are 0 or 1, with arithmetic where 1 + 1 = 0. Let A be the identity matrix with an extra 1 in row 1, column 2. Let B have an extra 1 in row 2, column 3. Then A times A is the identity, because the two extra 1s add to 0. So A has order 2. Now compute A B A⁻¹ B⁻¹. The answer is the identity with a 1 in row 1, column 3. That pattern, a commutator of two such matrices giving a third, is a Steinberg relation. Next, let N be a 4-by-4 matrix with 1s just above the diagonal and 0s elsewhere. N⁴ = 0, so N is nilpotent. With 1 + 1 = 0, (I + N)⁴ = I + N⁴ = I. So I + N has order 4. Nilpotent pieces give elements of finite order.\n\nA group is periodic if every element has finite order. An ordinary finite presentation lists finitely many generators and finitely many rules. Burnside asked in 1902 how finite-order conditions limit a group[4]. Golod built infinite periodic groups with finitely many generators, using nil algebras[5]. Novikov and Adian built infinite ones where all orders share one bound[6]. The paper notes these are different questions from asking for finitely many rules[13]. Whether finitely many rules could still allow an infinite periodic group stayed open[7].\n\nThe earlier paper claims that it can[8]. It builds an algebra R over the field with two elements. It is graded: split into pieces of degree 1, 2, 3 and so on, each finite-dimensional. Every square matrix with entries in its positive-degree part is nilpotent[9]. The group is the Steinberg group of 12-by-12 matrices over R. It has generators x_ij(a) and rules like the ones above[2]. The obstacle is to make R finitely presented while keeping every such matrix nilpotent. The paper also claims a finitely presented nil algebra that is not nilpotent[10].\n\nThe later paper claims more. A finite-index subgroup is infinite, finitely presented and residually finite, and each of its elements has order a power of 2[11]. Residually finite means every non-identity element survives in some finite image. The element orders must be unbounded[12].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main existence theorem. It covers an infinite finitely presented periodic group, realized as a Steinberg group over an algebra of characteristic two. The nil-algebra results are outside that check. The residually finite 2-group result is not listed in the Lean scope either. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. The infinite finitely presented periodic group has a Lean proof. The residual finiteness and nil-algebra results rest on the papers alone. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Order of an element",
+      "meaning": "The least number of times you repeat the element to get back to the identity."
+    },
+    {
+      "term": "Periodic group",
+      "meaning": "A group in which every element has finite order."
+    },
+    {
+      "term": "Finite presentation",
+      "meaning": "A description of a group by finitely many generators and finitely many rules among them."
+    },
+    {
+      "term": "Nilpotent",
+      "meaning": "Some power of it is zero. For an algebra, all products of some fixed length are zero."
+    },
+    {
+      "term": "Nil algebra",
+      "meaning": "An algebra where each element has some power equal to zero, possibly with no common power."
+    },
+    {
+      "term": "Steinberg group",
+      "meaning": "A group built from symbols for elementary matrices, keeping only the basic addition and commutator rules they satisfy."
+    },
+    {
+      "term": "Residually finite",
+      "meaning": "Every non-identity element stays non-identity in some finite image of the group."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “An infinite finitely presented residually finite 2-group” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-infinite-finitely-presented-residually-finite-2-group-October-5-2026/residually-finite-torsion.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “An infinite finitely presented periodic group” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-infinite-finitely-presented-periodic-group-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 247",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/247.md",
+      "quote": "The formalization gives a negative answer by constructing an infinite finitely presented periodic group, including a witness realized as a Steinberg group over an algebra of characteristic two."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A group is periodic if every element has finite order; an ordinary finite presentation uses finitely many generators and relators.",
+      "sourceLine": "A group is \\emph{periodic} if every element has finite order.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The Steinberg group St_n(R) has generators x_ij(a) with addition and commutator relations.",
+      "sourceLine": "The Steinberg group $\\St_n(R)$ is generated by symbols $x_{ij}(a)$",
+      "sourceQuote": "The Steinberg group $\\St_n(R)$ is generated by symbols $x_{ij}(a)$ subject to the elementary addition and nonopposite-root commutator relations; these are written explicitly in Section~\\ref{sec:steinberg}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Steinberg relations include that the commutator of x_ij(a) and x_jk(b) is x_ik(ab).",
+      "sourceLine": "[x_{ij}(a),x_{jk}(b)]&=x_{ik}(ab),",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Burnside's questions initiated the study of finiteness under restrictions on element orders.",
+      "sourceLine": "Burnside's questions initiated the study of finiteness under restrictions on element orders",
+      "sourceQuote": "Burnside's questions initiated the study of finiteness under restrictions on element orders \\cite{Burnside1902}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Golod constructed infinite finitely generated periodic groups from nil algebras.",
+      "sourceLine": "Golod constructed infinite finitely generated periodic groups by passing from nil algebras to groups",
+      "sourceQuote": "Golod constructed infinite finitely generated periodic groups by passing from nil algebras to groups, using the Golod--Shafarevich inequality \\cite{Golod1964,GolodShafarevich1964}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Novikov and Adian constructed infinite finitely generated groups of bounded exponent.",
+      "sourceLine": "Novikov and Adian constructed infinite finitely generated groups of bounded exponent",
+      "sourceQuote": "Novikov and Adian constructed infinite finitely generated groups of bounded exponent \\cite{NovikovAdian1968}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The question whether an infinite periodic group can have an ordinary finite presentation is recorded by Ol'shanskii and Sapir and by Haettel and Osajda.",
+      "sourceLine": "The question whether an infinite periodic group can have an ordinary finite presentation is recorded in",
+      "sourceQuote": "The question whether an infinite periodic group can have an ordinary finite presentation is recorded in \\cite[p.~45]{OlshanskiiSapir2003} and again in \\cite[Section~2.2(IX)]{HaettelOsajda2025}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "There is an infinite periodic group with an ordinary finite presentation.",
+      "sourceLine": "There is an infinite periodic group with an ordinary finite presentation.",
+      "sourceQuote": "There is an infinite periodic group with an ordinary finite presentation.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The companion supplies a finitely presented graded algebra in which every matrix over the positive-degree ideal is nilpotent.",
+      "sourceLine": "such that every matrix in $M_n(I)$ is nilpotent, for every finite $n$.",
+      "sourceQuote": "The companion supplies an infinite finitely presented graded algebra \\[ R=\\F_2\\oplus I,\\qquad I=\\bigoplus_{d\\ge1}R_d, \\] such that every matrix in $M_n(I)$ is nilpotent, for every finite $n$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper constructs an infinite-dimensional finitely presented nil algebra over F2 that is Jacobson radical but not nilpotent.",
+      "sourceLine": "finitely presented nonunital nil associative algebra over $\\F_2$ that is Jacobson radical but not nilpotent.",
+      "sourceQuote": "We also construct an infinite-dimensional finitely presented nonunital nil associative algebra over $\\F_2$ that is Jacobson radical but not nilpotent.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The finite-index subgroup G is infinite, finitely presented, residually finite, and every element has finite 2-power order.",
+      "sourceLine": "presented, and residually finite, and every element of $G$ has finite $2$-power order.",
+      "sourceQuote": "Its finite-index subgroup $G=\\ker(\\Gamma\\to\\St_{12}(\\F_2))$ is infinite, ordinarily finitely presented, and residually finite, and every element of $G$ has finite $2$-power order.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The orders of the elements are unbounded.",
+      "sourceLine": "The orders of its elements are necessarily unbounded.",
+      "sourceQuote": "The orders of its elements are necessarily unbounded.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "These Burnside-type results are different finiteness questions from the requirement of an ordinary finite presentation.",
+      "sourceLine": "These are different finiteness questions from the requirement of an ordinary finite presentation.",
+      "sourceQuote": "These are different finiteness questions from the requirement of an ordinary finite presentation.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the infinite finitely presented periodic group; the nil-algebra and radical-algebra conclusions are outside it.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
