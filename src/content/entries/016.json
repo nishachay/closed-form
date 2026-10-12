@@ -1,0 +1,274 @@
+{
+  "id": "016",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Abelian-Zilber-Pink-Conjecture-September-24-2026/paper.pdf",
+      "label": "The abelian Zilber–Pink conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-E-times-CM-Component-of-Zilber-Pink-for-Curves-in-A2-September-24-2026/paper.pdf",
+      "label": "The E×CM component of Zilber–Pink for curves in A2"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quaternionic-Division-Points-on-Curves-in-the-Siegel-Threefold-September-24-2026/paper.pdf",
+      "label": "Quaternionic division points on curves in the Siegel threefold"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Elliptic-Squares-and-Zilber-Pink-for-Curves-in-A2-September-24-2026/paper.pdf",
+      "label": "Elliptic squares and Zilber–Pink for curves in A2"
+    }
+  ],
+  "headline": "Unlikely intersections in abelian varieties are claimed to be finite in number, in every dimension.",
+  "scope": "The first result covers every subvariety of every abelian variety over the algebraic numbers; the others cover Hodge-generic curves in the Siegel threefold A₂.",
+  "plain": "An abelian variety is a geometric shape with a way to add its points. A dimension count predicts how big its intersections with special pieces should be. The abelian Zilber–Pink conjecture says the bigger-than-expected intersections fall into finitely many families. The first paper claims to prove it over the algebraic numbers in every dimension. Three more papers claim the curve case in A₂, a space whose points stand for abelian surfaces.",
+  "doesNot": "This does not bound how many atypical pieces there are, and it does not cover Zilber–Pink in general Shimura varieties.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2002",
+    "firstStepBy": "B. Zilber, who formulated the unlikely-intersection principle for semiabelian varieties",
+    "significance": "Major",
+    "significanceWhy": "Earlier results covered curves or added extra conditions; the paper claims every dimension and codimension, if the proof holds.",
+    "field": "Number theory"
+  },
+  "explanation": "Take the curve y² = x³ − x. Its points, with one extra point at infinity, can be added by a geometric rule. That makes it an elliptic curve, the simplest abelian variety (a shape whose points can be added). The points (0, 0), (1, 0) and (−1, 0) are torsion points. Adding any one of them to itself gives the zero point. Products of such curves give abelian varieties of any dimension.\n\nInside an abelian variety A, the special pieces are torsion cosets. A torsion coset is a smaller abelian variety shifted by a torsion point[1]. Now take a subvariety X, a curved shape inside A. Dimensions predict how big X meets a special piece T: dim X + dim T − dim A. Take A as a product of three elliptic curves, so dimension 3. Let X be a curve, dimension 1, and T a shifted elliptic curve, dimension 1. The prediction is 1 + 1 − 3 = −1, so they should not meet at all. A meeting point is atypical: bigger than predicted[2].\n\nSuch meetings can happen, because the pieces T vary without end. The abelian Zilber–Pink conjecture says they are rare in a precise sense. All the largest atypical pieces fall into a finite list[3]. The case where every T is a single torsion point is the Manin–Mumford theorem, proved by Raynaud in 1983[4]. Zilber stated the general principle in 2002, and Pink gave a related form in 2005[5].\n\nBefore this paper, the curve case was known. Habegger and Pila proved finiteness for curves in any abelian variety over number fields in 2016[6]. Barroero, Kühne and Schmidt extended it to semiabelian varieties[7]. In higher dimensions, results needed extra conditions on how X sits under quotient maps[8]. Some covered powers of a single elliptic curve in codimension two[9].\n\nThe first paper claims the conjecture over number fields in every dimension[10]. For every abelian variety and every subvariety X, the largest atypical pieces form a finite list[3]. No condition on A is imposed, such as complex multiplication (extra symmetries of the curve)[11]. The theorem gives no bound for how many pieces there are[12]. In the example, a curve in the triple product has only finitely many such atypical meeting points.\n\nThe hard part is height. Height measures how complicated the coordinates of a point are. Earlier non-density results held below each fixed height bound[13]. The paper uses a height argument in the tradition of Vojta and Faltings[14]. It adds geometric results of Ax and of Habegger and Pila. It then passes from non-density to finiteness with a reduction by Barroero and Dill[15].\n\nThree companion papers treat curves in A₂ (a space whose points stand for abelian surfaces with a fixed kind of polarization). A curve there is Hodge generic when it lies in no proper special subvariety[16]. One paper claims finiteness for points whose surface is like E × E for a non-CM elliptic curve E[17]. The other two cover products with a CM factor, and quaternion division points[18]. Together they claim the curve case of Zilber–Pink in A₂[19].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The A₂ result depends on all three linked papers. No specialist review has been published.",
+  "hypeCheck": "Major only if the proofs hold. No Lean formalization is listed and no specialist review is published. The results are ineffective: they give no bound on how many atypical pieces occur.",
+  "glossary": [
+    {
+      "term": "Abelian variety",
+      "meaning": "A geometric shape defined by polynomial equations whose points can be added like numbers."
+    },
+    {
+      "term": "Elliptic curve",
+      "meaning": "An abelian variety of dimension one, such as the points of y² = x³ − x plus a point at infinity."
+    },
+    {
+      "term": "Torsion point",
+      "meaning": "A point that returns to zero after being added to itself some number of times."
+    },
+    {
+      "term": "Torsion coset",
+      "meaning": "A smaller abelian variety shifted by a torsion point; the special pieces in this problem."
+    },
+    {
+      "term": "Atypical intersection",
+      "meaning": "An intersection piece of larger dimension than a dimension count predicts."
+    },
+    {
+      "term": "Height",
+      "meaning": "A measure of how complicated the coordinates of an algebraic point are."
+    },
+    {
+      "term": "Hodge generic",
+      "meaning": "For a curve in A₂, lying in no proper special subvariety."
+    },
+    {
+      "term": "Complex multiplication (CM)",
+      "meaning": "Extra symmetries of an elliptic curve beyond multiplication by whole numbers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The abelian Zilber–Pink conjecture”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Abelian-Zilber-Pink-Conjecture-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The E×CM component of Zilber–Pink for curves in A2”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-E-times-CM-Component-of-Zilber-Pink-for-Curves-in-A2-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Quaternionic division points on curves in the Siegel threefold”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quaternionic-Division-Points-on-Curves-in-the-Siegel-Threefold-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Elliptic squares and Zilber–Pink for curves in A2”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Elliptic-Squares-and-Zilber-Pink-for-Curves-in-A2-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "B. Zilber, “Exponential sums equations and the Schanuel conjecture”, Journal of the London Mathematical Society 65 (2002), 27–44",
+      "url": "https://doi.org/10.1112/S0024610701002861"
+    },
+    {
+      "id": 6,
+      "cite": "R. Pink, “A common generalization of the conjectures of André–Oort, Manin–Mumford, and Mordell–Lang”, ETH Zürich preprint (2005)",
+      "url": "https://people.math.ethz.ch/~pink/ftp/AOMMML.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "M. Raynaud, “Sous-variétés d'une variété abélienne et points de torsion”, in Arithmetic and Geometry I, Progress in Mathematics 35, Birkhäuser (1983), 327–352",
+      "url": "https://doi.org/10.1007/978-1-4757-9284-3_14"
+    },
+    {
+      "id": 8,
+      "cite": "P. Habegger and J. Pila, “O-minimality and certain atypical intersections”, Annales scientifiques de l'École Normale Supérieure 49 (2016), 813–858",
+      "url": "https://doi.org/10.24033/asens.2296"
+    },
+    {
+      "id": 9,
+      "cite": "F. Barroero, L. Kühne and H. Schmidt, “Unlikely intersections of curves with algebraic subgroups in semiabelian varieties”, Selecta Mathematica 29 (2023), article 18",
+      "url": "https://doi.org/10.1007/s00029-022-00823-w"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A special subvariety is a torsion coset B + τ.",
+      "verdict": "supported",
+      "sourceLine": "$B+\\tau$, where $B$ is an abelian subvariety and $\\tau$ is a torsion",
+      "sourceQuote": "A \\emph{special subvariety} of $A_{\\bar K}$ is a torsion coset $B+\\tau$, where $B$ is an abelian subvariety and $\\tau$ is a torsion point.",
+      "paper": 1
+    },
+    {
+      "text": "A component Y of X ∩ T is atypical if dim Y > dim X + dim T − dim S.",
+      "verdict": "supported",
+      "sourceLine": "is \\emph{atypical for $X$ in $S$} if",
+      "sourceQuote": "An irreducible component $Y$ of $X\\cap T$, for a special $T\\subseteq S$, is \\emph{atypical for $X$ in $S$} if \\begin{equation}\\label{eq:atypical} \\dim Y>\\dim X+\\dim T-\\dim S. \\end{equation}",
+      "paper": 1
+    },
+    {
+      "text": "There are only finitely many maximal atypical subvarieties of X in S.",
+      "verdict": "supported",
+      "sourceLine": "irreducible subvariety $X\\subseteq A_{\\bar K}$, there are only finitely",
+      "sourceQuote": "For every number field $K$, every abelian variety $A/K$, and every irreducible subvariety $X\\subseteq A_{\\bar K}$, there are only finitely many maximal atypical subvarieties of $X$ in $S=\\langle X\\rangle_{\\mathrm{sp}}$.",
+      "paper": 1
+    },
+    {
+      "text": "The torsion-point case is the Manin–Mumford theorem of Raynaud.",
+      "verdict": "supported",
+      "sourceLine": "The torsion-point case belongs to the Manin--Mumford theorem of Raynaud",
+      "sourceQuote": "The torsion-point case belongs to the Manin--Mumford theorem of Raynaud \\cite[p.~327, Th\\'eor\\`eme]{Raynaud1983Torsion}: a subvariety with dense torsion points is a torsion coset.",
+      "paper": 1
+    },
+    {
+      "text": "Zilber formulated the unlikely-intersection principle; Pink's formulation specializes to the statement considered.",
+      "verdict": "supported",
+      "sourceLine": "Zilber formulated the unlikely-intersection principle for semiabelian",
+      "sourceQuote": "Zilber formulated the unlikely-intersection principle for semiabelian varieties \\cite{Zilber2002}.",
+      "paper": 1
+    },
+    {
+      "text": "Habegger and Pila proved finiteness for curves in arbitrary abelian varieties over number fields.",
+      "verdict": "supported",
+      "sourceLine": "finiteness for curves in arbitrary abelian varieties over number fields",
+      "sourceQuote": "Habegger and Pila proved finiteness for curves in arbitrary abelian varieties over number fields \\cite[Theorem~1.1]{HabeggerPila2016}.",
+      "paper": 1
+    },
+    {
+      "text": "Barroero, Kühne and Schmidt established the curve theorem for semiabelian varieties.",
+      "verdict": "supported",
+      "sourceLine": "subsequently established the corresponding curve theorem for general",
+      "sourceQuote": "Barroero, K\\\"uhne and Schmidt subsequently established the corresponding curve theorem for general semiabelian varieties over number fields \\cite[Theorem~1.1]{BarroeroKuhneSchmidt2023}.",
+      "paper": 1
+    },
+    {
+      "text": "Higher-dimensional non-density was known under additional geometric or height restrictions.",
+      "verdict": "supported",
+      "sourceLine": "Higher-dimensional non-density was known under additional geometric",
+      "sourceQuote": "Higher-dimensional non-density was known under additional geometric or height restrictions.",
+      "paper": 1
+    },
+    {
+      "text": "Codimension-two maximal-atypical finiteness was proved for powers of an elliptic curve.",
+      "verdict": "supported",
+      "sourceLine": "torsion coset, maximal-atypical finiteness was proved in the CM case by",
+      "sourceQuote": "For codimension-two subvarieties of powers of an elliptic curve contained in no proper torsion coset, maximal-atypical finiteness was proved in the CM case by Checcoli, Veneziano and Viada \\cite[Corollary~1.5]{CheccoliVenezianoViada2014} and without the CM restriction by Hubschmid and Viada \\cite[Theorem~1.1]{HubschmidViada2019}.",
+      "paper": 1
+    },
+    {
+      "text": "The paper proves the conjecture over number fields in arbitrary dimension.",
+      "verdict": "supported",
+      "sourceLine": "the conjecture over number fields in arbitrary dimension.",
+      "sourceQuote": "We prove the conjecture over number fields in arbitrary dimension.",
+      "paper": 1
+    },
+    {
+      "text": "No simplicity, endomorphism, or complex multiplication hypothesis is imposed on A.",
+      "verdict": "supported",
+      "sourceLine": "intersection points is assumed, and no simplicity, endomorphism, or",
+      "sourceQuote": "No bound on the degrees or heights of the intersection points is assumed, and no simplicity, endomorphism, or complex multiplication hypothesis is imposed on $A$.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem gives no effective or uniform bound.",
+      "verdict": "supported",
+      "sourceLine": "effective or uniform bound for the number of maximal atypical",
+      "sourceQuote": "The theorem concerns torsion cosets in abelian varieties; it gives no effective or uniform bound for the number of maximal atypical subvarieties.",
+      "paper": 1
+    },
+    {
+      "text": "Habegger–Pila's Theorem 1.3(i) gives non-density at every fixed height bound.",
+      "verdict": "supported",
+      "sourceLine": "their Theorem~1.3(i) gives non-density at every fixed height bound when",
+      "sourceQuote": "Without that condition, their Theorem~1.3(i) gives non-density at every fixed height bound when $X$ is contained in no proper torsion coset.",
+      "paper": 1
+    },
+    {
+      "text": "The height argument follows Vojta and Faltings; geometric inputs are Ax's theorem and Habegger–Pila.",
+      "verdict": "supported",
+      "sourceLine": "The height argument follows Vojta's curve method",
+      "sourceQuote": "The height argument follows Vojta's curve method \\cite{Vojta1991}, Faltings' extension to abelian varieties \\cite{Faltings1991}, and R\\'emond's generalized inequality \\cite{Remond2005Vojta}.",
+      "paper": 1
+    },
+    {
+      "text": "The passage to finiteness uses the optimal-subvariety reduction of Barroero and Dill.",
+      "verdict": "supported",
+      "sourceLine": "optimal-subvariety reduction of Barroero and Dill.",
+      "sourceQuote": "The passage from this assertion to Theorem~\\ref{thm:main} uses the optimal-subvariety reduction of Barroero and Dill.",
+      "paper": 1
+    },
+    {
+      "text": "A curve in A_2 is Hodge generic if it is contained in no proper Shimura-special subvariety.",
+      "verdict": "supported",
+      "sourceLine": "surfaces. A curve in $\\A_2$ is \\emph{Hodge generic} if it is contained in no",
+      "sourceQuote": "Let $\\A_2$ be the coarse moduli variety of principally polarized abelian surfaces. A curve in $\\A_2$ is \\emph{Hodge generic} if it is contained in no proper Shimura-special subvariety.",
+      "paper": 4
+    },
+    {
+      "text": "Every Hodge-generic curve contains finitely many points isogenous to E^2 with E non-CM.",
+      "verdict": "supported",
+      "sourceLine": "$C$ is Hodge generic, then $\\Sigma_{E^2}(C)$ is",
+      "sourceQuote": "If $C$ is Hodge generic, then $\\Sigma_{E^2}(C)$ is finite.",
+      "paper": 4
+    },
+    {
+      "text": "The two companion branches (E×CM and quaternionic division) are finite.",
+      "verdict": "supported",
+      "sourceLine": "The two remaining special-curve loci are treated by the following",
+      "sourceQuote": "The two remaining special-curve loci are treated by the following companion theorems.",
+      "paper": 4
+    },
+    {
+      "text": "This resolves the Hodge-generic-curve case of Zilber–Pink in A_2.",
+      "verdict": "supported",
+      "sourceLine": "resolves positively the Hodge-generic-curve",
+      "sourceQuote": "\\Cref{intro:zp} resolves positively the Hodge-generic-curve case of the Zilber--Pink conjecture in $\\A_2$ over $\\Qbar$.",
+      "paper": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
