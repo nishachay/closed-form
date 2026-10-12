@@ -1,0 +1,281 @@
+{
+  "id": "238",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Optimal-order-mixing-of-the-Thorp-shuffle-September-26-2026/paper.pdf",
+      "label": "Optimal-order mixing of the Thorp shuffle"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Random-coordinate-frames-and-partial-permutation-laws-September-26-2026/main.pdf",
+      "label": "Random coordinate frames and partial permutation laws"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/From-partial-permutation-information-to-Fourier-bounds-September-26-2026/main.pdf",
+      "label": "From partial permutation information to Fourier bounds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-information-under-deterministic-coordinate-sweeps-September-26-2026/main.pdf",
+      "label": "Conditional information under deterministic coordinate sweeps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-permutations-in-a-revealed-switching-environment-September-26-2026/paper.pdf",
+      "label": "Conditional permutations in a revealed switching environment"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Routing-densities-and-representation-contraction-for-Thorp-sweeps-September-26-2026/paper.pdf",
+      "label": "Routing densities and representation contraction for Thorp sweeps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Row-column-symmetry-and-contraction-of-coordinate-sweeps-September-26-2026/paper.pdf",
+      "label": "Row–column symmetry and contraction of coordinate sweeps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Random-subspace-tests-and-trace-smoothing-for-coordinate-sweeps-September-26-2026/paper.pdf",
+      "label": "Random-subspace tests and trace smoothing for coordinate sweeps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Compatibility-entropy-and-the-spectrum-of-a-Thorp-sweep-September-26-2026/paper.pdf",
+      "label": "Compatibility entropy and the spectrum of a Thorp sweep"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Signed-tensor-densities-and-diagram-budgets-for-coordinate-sweeps-September-26-2026/paper.pdf",
+      "label": "Signed tensor densities and diagram budgets for the Thorp shuffle"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-coordinate-sweeps-and-analytic-transfer-September-26-2026/main.pdf",
+      "label": "Conditional coordinate sweeps and analytic transfer"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026/main.pdf",
+      "label": "A strict four-row permanent inequality and permutation moments"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/238.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims the Thorp shuffle on 2^d cards randomizes the whole deck in order d shuffles, the best possible order.",
+  "scope": "The Thorp shuffle on decks of 2^d cards, measured by total-variation distance of the full permutation from uniform, from any starting deck.",
+  "plain": "The Thorp shuffle cuts a deck in half and interleaves the two halves, with a coin flip deciding the order of each matched pair. With 2^d cards, each single card is spread out after d shuffles. The papers claim the whole deck is close to random after 1600d shuffles, and at least about 2d are needed. So the right number is a constant times d. Lean proofs check the main mixing theorem and many supporting estimates.",
+  "doesNot": "This does not find the exact leading constant or a sharp cutoff. It does not cover decks whose size is not a power of two.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2008",
+    "firstStepBy": "Ben Morris, the first bound polynomial in d via evolving sets",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It settles the order of the mixing time for a well-studied shuffle with uses in cryptography."
+  },
+  "explanation": "Take 8 cards, so d = 3. Cut the deck into two halves of 4. Pair the first card of each half, then the second cards, and so on. For each pair, flip a fair coin to decide which card goes first. Then lay the pairs down in order. That is one Thorp shuffle. Each shuffle uses 4 coin flips, so 3 shuffles give at most 2¹² = 4,096 different orders. But there are 8! = 40,320 orders of 8 cards. So after 3 shuffles, the deck is still far from random, even though each single card is now equally likely to be anywhere. An exact computer count gives a distance from uniform of about 0.898 after 3 shuffles. It falls to about 0.20 after 5 shuffles and 0.026 after 8.\n\nThat distance is total variation. It is half the summed gap between the shuffled deck's probabilities and the perfectly random ones. The general lower bound is 1 − 2^(tn/2)/n! after t shuffles of n cards[1]. For n = 8 and t = 3 it gives 1 − 4,096/40,320, about 0.898, matching the exact count. The mixing time is the first t where the distance is at most 1/4. The bound says this takes about 2d − O(1) shuffles at least.\n\nThorp introduced the shuffle in 1973[2]. For 2^d cards, Morris got the first bound polynomial in d, of order d⁴⁴[3]. Montenegro and Tetali improved it to d²⁹, and Morris later to d³[4,5]. The obstacle is that single cards mix fast, but the joint order of all n cards holds far more information.\n\nThe main paper claims 1600d shuffles bring the whole deck close to random as d grows, from any starting deck[6]. With the lower bound, the mixing time is a constant times d[1]. The constant 1600 is a convenient choice, not a sharp one[7]. The proof labels positions by binary strings, the corners of a cube[8]. It tracks most cards one at a time, then recovers the rest with Fourier analysis on the group of all orders. Companion papers claim other routes to the same order. One gives 512d shuffles[9]. Another reaches distance ½n⁻⁵ after a fixed number of full sweeps[10]. A third uses a new inequality for 4-by-4 permanents[11].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main theorem. After 1600d shuffles the distance tends to zero, from every starting deck. Lean also covers the trace-smoothing bound and many supporting estimates, including the four-row permanent inequality. Several papers' full conclusions sit outside their selected Lean statements. No specialist review of these papers has been published.",
+  "hypeCheck": "The headline mixing theorem has a Lean proof. It settles the order, not the exact constant. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Thorp shuffle",
+      "meaning": "Cut the deck in half, pair matching positions, flip a coin for each pair's order, and interleave."
+    },
+    {
+      "term": "Total variation distance",
+      "meaning": "Half the sum, over all orders of the deck, of the gap between their actual and perfectly random probabilities."
+    },
+    {
+      "term": "Mixing time",
+      "meaning": "The number of shuffles needed before the deck is within distance 1/4 of uniformly random."
+    },
+    {
+      "term": "Uniform",
+      "meaning": "Every order of the deck is equally likely."
+    },
+    {
+      "term": "Fourier analysis on a group",
+      "meaning": "Breaking a probability law on permutations into pieces, one for each basic symmetry pattern, and bounding each piece."
+    },
+    {
+      "term": "Permanent",
+      "meaning": "Like a determinant of a square matrix, but every term is added with a plus sign."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Optimal-order mixing of the Thorp shuffle” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Optimal-order-mixing-of-the-Thorp-shuffle-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Random coordinate frames and partial permutation laws” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Random-coordinate-frames-and-partial-permutation-laws-September-26-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “From partial permutation information to Fourier bounds” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/From-partial-permutation-information-to-Fourier-bounds-September-26-2026/main.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Conditional information under deterministic coordinate sweeps” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-information-under-deterministic-coordinate-sweeps-September-26-2026/main.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Conditional permutations in a revealed switching environment” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-permutations-in-a-revealed-switching-environment-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Routing densities and representation contraction for Thorp sweeps” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Routing-densities-and-representation-contraction-for-Thorp-sweeps-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “Row–column symmetry and contraction of coordinate sweeps” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Row-column-symmetry-and-contraction-of-coordinate-sweeps-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "OpenAI, “Random-subspace tests and trace smoothing for coordinate sweeps” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Random-subspace-tests-and-trace-smoothing-for-coordinate-sweeps-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "OpenAI, “Compatibility entropy and the spectrum of a Thorp sweep” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Compatibility-entropy-and-the-spectrum-of-a-Thorp-sweep-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "OpenAI, “Signed tensor densities and diagram budgets for the Thorp shuffle” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Signed-tensor-densities-and-diagram-budgets-for-coordinate-sweeps-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "OpenAI, “Conditional coordinate sweeps and analytic transfer” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-coordinate-sweeps-and-analytic-transfer-September-26-2026/main.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "OpenAI, “A strict four-row permanent inequality and permutation moments” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-strict-four-row-permanent-inequality-and-permutation-moments-September-26-2026/main.pdf"
+    },
+    {
+      "id": 13,
+      "cite": "openai/math, Lean scope note for family 238",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/238.md",
+      "quote": "The formalization proves optimal-order mixing of the Thorp shuffle on $2^d$ cards."
+    },
+    {
+      "id": 14,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The distance after t shuffles is at least 1 − 2^(tn/2)/n!, so the mixing time is 2d − O(1) at least and Θ(d) overall.",
+      "sourceLine": "\\ge 1-\\frac{2^{tn/2}}{n!}.",
+      "sourceQuote": "For every integer $t\\ge0$, \\[ \\|q_d^{*t}-U_n\\|_{\\mathrm{TV}} \\ge 1-\\frac{2^{tn/2}}{n!}. \\]",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Thorp introduced the model in his 1973 study of nonrandom shuffling.",
+      "sourceLine": "Thorp introduced the model in his 1973 study of the effects of nonrandom shuffling on Faro",
+      "sourceQuote": "Thorp introduced the model in his 1973 study of the effects of nonrandom shuffling on Faro \\cite[Section~3.1]{thorp}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Morris obtained the first bound polynomial in d, O(d^44).",
+      "sourceLine": "For dyadic decks, Morris obtained the first bound polynomial in $d$, namely $O(d^{44})$",
+      "sourceQuote": "For dyadic decks, Morris obtained the first bound polynomial in $d$, namely $O(d^{44})$, using evolving sets and a chameleon process that tracks conditional card probabilities \\cite{morris44}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Montenegro and Tetali sharpened this to O(d^29).",
+      "sourceLine": "Montenegro and Tetali sharpened this analysis to $O(d^{29})$",
+      "sourceQuote": "Montenegro and Tetali sharpened this analysis to $O(d^{29})$ by spectral-profile and evolving-set methods \\cite[Theorems~6.14--6.15]{montenegro-tetali2006}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Morris proved O(d^3) for n = 2^d.",
+      "sourceLine": "He then proved $O(d^3)$ for $n=2^d$",
+      "sourceQuote": "He then proved $O(d^3)$ for $n=2^d$ by a stronger contraction over a block of $d$ shuffles \\cite{morris3}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "After 1600d shuffles the full permutation law converges to uniform in total variation, uniformly over the initial deck.",
+      "sourceLine": "The full permutation law after $1600d$ shuffles converges to uniform in total variation as $d\\to\\infty$, uniformly over the initial deck",
+      "sourceQuote": "The full permutation law after $1600d$ shuffles converges to uniform in total variation as $d\\to\\infty$, uniformly over the initial deck, while a support count gives a lower bound of $2d-O(1)$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The constant 1600 is an explicit choice in the proof, not a proposed sharp constant.",
+      "sourceLine": "the constant $1600$ is an explicit choice in the proof, not a proposed sharp constant.",
+      "sourceQuote": "The upper bound is asymptotic in $d$; the constant $1600$ is an explicit choice in the proof, not a proposed sharp constant.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Positions are labelled by binary strings, the vertices of a cube.",
+      "sourceLine": "Label positions by binary strings of length $d$, the vertices of a cube.",
+      "sourceQuote": "Label positions by binary strings of length $d$, the vertices of a cube.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Combining the fixed-list estimate with the companion Fourier transfer improves the bound to 512d shuffles.",
+      "sourceLine": "Combining our fixed-list estimate with the companion Fourier transfer improves this bound to $512d$ shuffles.",
+      "sourceQuote": "Combining our fixed-list estimate with the companion Fourier transfer improves this bound to $512d$ shuffles.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An absolute number of coordinate sweeps brings the permutation within ½n^−5 of uniform.",
+      "sourceLine": "We prove that an absolute number of coordinate sweeps of the Thorp shuffle on $n=2^d$ positions brings the full permutation to total-variation distance at most $\\frac12n^{-5}$ from uniform",
+      "sourceQuote": "We prove that an absolute number of coordinate sweeps of the Thorp shuffle on $n=2^d$ positions brings the full permutation to total-variation distance at most $\\frac12n^{-5}$ from uniform, uniformly over the initial deck.",
+      "paper": 8,
+      "verdict": "supported"
+    },
+    {
+      "text": "A strict four-row permanent inequality, applied to a recursion, gives optimal-order mixing.",
+      "sourceLine": "Applied to a four-row recursion, it shows that an absolute number of coordinate sweeps brings the full permutation of the Thorp shuffle",
+      "sourceQuote": "Applied to a four-row recursion, it shows that an absolute number of coordinate sweeps brings the full permutation of the Thorp shuffle on $N=2^d$ cards to total-variation distance tending to zero from uniform as $N\\to\\infty$.",
+      "paper": 12,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the 1600d mixing theorem and many supporting estimates; several papers' full conclusions are outside their selected statements.",
+      "verdict": "external",
+      "sourceId": 13
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 14
+    }
+  ]
+}
