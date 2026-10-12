@@ -1,0 +1,213 @@
+{
+  "id": "230",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-exact-Hausdorff-gauge-for-SLE-September-25-2026/An-exact-Hausdorff-gauge-for-SLE-September-25-2026.pdf",
+      "label": "An exact Hausdorff gauge for SLE"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-exact-Hausdorff-gauge-for-SLE-September-26-2026/An-explicit-exact-Hausdorff-gauge-for-SLE-September-26-2026.pdf",
+      "label": "An explicit exact Hausdorff gauge for SLE"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/230.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "An explicit size rule gives every piece of an SLE random curve a positive, finite Hausdorff measure.",
+  "scope": "It covers ordinary chordal SLE for every κ between 0 and 8. It does not relate the two exact gauges to each other.",
+  "plain": "SLE curves are random, very wiggly curves in the plane. Their dimension was known, but the matching power of distance gives them zero size. The papers claim a corrected size rule that gives every piece a positive, finite size, first implicitly and then as a formula. They also show that Schramm's own suggested rule is too large.",
+  "doesNot": "This does not say how the explicit gauge relates to the first paper's gauge.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2007",
+    "firstStepBy": "Oded Schramm, Hausdorff-measure problem for SLE",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It answers Schramm's question with an explicit gauge and rules out his suggested candidate."
+  },
+  "explanation": "To measure a smooth curve, cover it with small discs and add up their sizes. A curve of length 1 needs about 1/r discs of width r. Their widths add up to about 1, whatever r is. The power of r that makes the total settle down is the curve's dimension, here 1.\n\nSome random curves are so wiggly that this fails. Schramm–Loewner evolution, or SLE, is a family of random curves in the plane. They describe boundaries in critical models of physics, such as percolation clusters. A parameter κ sets how wiggly the curve is. For κ between 0 and 8, Beffara showed that the dimension is d = 1 + κ/8[1]. So with κ = 4, d = 1.5.\n\nOne might then measure the curve with r^1.5 in place of r. Rezaei showed that this gives zero[2]. The pure power is slightly too small. It needs a tiny correction factor, and the full size rule is called a gauge. Schramm asked for a gauge that gives the curve a sensible, nonzero size[3]. He suggested r^d × log log(1/r).\n\nThe first paper claims that a suitable gauge exists for every κ between 0 and 8[4]. It gives every piece of the curve a positive, finite size. But the gauge is defined through integrals, and its shape need not be a neat formula[5].\n\nThe second paper names the gauge outright. It is h(r) = r^d × (log log(1/r))^((2−d)/2). It claims this gives every positive-time piece of the curve a positive, finite size[6]. The paper calls this an explicit solution to Schramm's problem[7]. The whole curve inside any bounded disc also has finite expected size[8].\n\nTry κ = 4 and r = 10^(−6). Then log(1/r) is about 13.8, and its log is about 2.63. The correction is 2.63^0.25, about 1.27. Schramm's suggestion uses the full 2.63. The ratio of the two corrections is 2.63^(−0.75), about 0.48. At r = 10^(−100), it falls to about 0.28, and it keeps shrinking. So Schramm's gauge grows too fast in the limit. The paper claims it gives no sensible size on any piece of the curve[9].\n\nThe obstacle is that both directions need fine control at every scale. A lower bound needs a mass spread on the curve that is never too heavy in any small disc[12]. An upper bound needs covers whose total cost stays small on average[13]. For the lower bound, the paper deletes small squares that hold too much mass. The cost of reaching a square, its mass, and the number of squares balance out exactly[11]. With κ = 4, the exponents 0.5 and 1.5 add to 2, the dimension of the plane.\n\nOther ways to measure SLE exist. The natural parametrization measures the curve along its own path. Holden and Yuan found a different log correction for ordered pieces of the curve. The gauge here belongs to arbitrary covers instead[14]. The argument needs no link to those other measures[15]. How the two exact gauges relate is still open[10].\n\nHow sure is this? Lean, a computer proof checker, has a formal version of one direction. For the explicit gauge, it states that every piece of the curve gets positive size, almost surely. The finite upper bound and the first paper's gauge are not in the scope note. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has a formal version only of the positive lower bound for the explicit gauge; no specialist review is published.",
+  "glossary": [
+    {
+      "term": "SLE",
+      "meaning": "Schramm–Loewner evolution: a family of random curves in the plane, set by a parameter κ."
+    },
+    {
+      "term": "Hausdorff dimension",
+      "meaning": "The power of size that makes the total of a fine cover settle to a nonzero, finite value, when one exists."
+    },
+    {
+      "term": "Gauge",
+      "meaning": "A size rule h(r) used in place of a pure power of the width r."
+    },
+    {
+      "term": "Hausdorff measure",
+      "meaning": "The smallest total gauge cost of covers by small sets, in the limit of finer covers."
+    },
+    {
+      "term": "Sigma-finite",
+      "meaning": "Splittable into countably many pieces of finite size."
+    },
+    {
+      "term": "Natural parametrization",
+      "meaning": "A way to measure an SLE curve along its own path, not by covers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “An exact Hausdorff gauge for SLE” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-exact-Hausdorff-gauge-for-SLE-September-25-2026/An-exact-Hausdorff-gauge-for-SLE-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “An explicit exact Hausdorff gauge for SLE” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-exact-Hausdorff-gauge-for-SLE-September-26-2026/An-explicit-exact-Hausdorff-gauge-for-SLE-September-26-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 230 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/230.md"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "cite": "V. Beffara, “The dimension of the SLE curves”, Annals of Probability 36(4) (2008), 1421–1452",
+      "url": "https://doi.org/10.1214/07-AOP364",
+      "id": 5
+    }
+  ],
+  "claims": [
+    {
+      "text": "Beffara identified the dimension d = 1 + κ/8.",
+      "verdict": "supported",
+      "sourceLine": "Beffara identified the dimension",
+      "sourceQuote": "For ordinary chordal $\\mathrm{SLE}_\\kappa$, $0<\\kappa<8$, Beffara identified the dimension $d=1+\\kappa/8$ \\cite[main Theorem]{beffara2008}; Rezaei proved that its $d$-dimensional Hausdorff measure is zero \\cite[Theorem~1.1]{rezaei2018}.",
+      "paper": 2
+    },
+    {
+      "text": "Rezaei proved the d-dimensional Hausdorff measure is zero.",
+      "verdict": "supported",
+      "sourceLine": "Hausdorff measure is zero",
+      "sourceQuote": "For ordinary chordal $\\mathrm{SLE}_\\kappa$, $0<\\kappa<8$, Beffara identified the dimension $d=1+\\kappa/8$ \\cite[main Theorem]{beffara2008}; Rezaei proved that its $d$-dimensional Hausdorff measure is zero \\cite[Theorem~1.1]{rezaei2018}.",
+      "paper": 2
+    },
+    {
+      "text": "Schramm asked for a sigma-finite Hausdorff measure and suggested r^d log log(1/r).",
+      "verdict": "supported",
+      "sourceLine": "Schramm asked for a sigma-finite Hausdorff measure of the SLE trace",
+      "sourceQuote": "Schramm asked for a sigma-finite Hausdorff measure of the SLE trace and suggested the following candidate \\cite[Problem~7.1 and the following discussion]{schramm2007}: \\[ r^d\\log\\log(1/r). \\]",
+      "paper": 2
+    },
+    {
+      "text": "A deterministic gauge gives positive finite measure to every compact positive-time segment, answering Schramm's existence problem.",
+      "verdict": "supported",
+      "sourceLine": "This answers Schramm's Hausdorff-measure existence problem in this",
+      "sourceQuote": "This answers Schramm's Hausdorff-measure existence problem in this parameter range.",
+      "paper": 1
+    },
+    {
+      "text": "The gauge is explicit in deterministic integrals but its asymptotics need not be regular.",
+      "verdict": "supported",
+      "sourceLine": "in terms of deterministic integrals, although its asymptotics need not",
+      "sourceQuote": "The gauge is explicit in terms of deterministic integrals, although its asymptotics need not have a regular form.",
+      "paper": 1
+    },
+    {
+      "text": "The explicit gauge almost surely gives positive finite measure to every positive-time segment.",
+      "verdict": "supported",
+      "sourceLine": "radii almost surely gives positive finite Hausdorff measure to every",
+      "sourceQuote": "The gauge $h(r)=r^d(\\log\\log(1/r))^{(2-d)/2}$ at sufficiently small radii almost surely gives positive finite Hausdorff measure to every nontrivial positive-time compact segment of chordal $\\mathrm{SLE}_\\kappa$.",
+      "paper": 2
+    },
+    {
+      "text": "This gives an explicit solution to Schramm's problem.",
+      "verdict": "supported",
+      "sourceLine": "This gives an explicit solution to Schramm's Hausdorff-measure problem",
+      "sourceQuote": "This gives an explicit solution to Schramm's Hausdorff-measure problem in this parameter range.",
+      "paper": 2
+    },
+    {
+      "text": "The entire trace has finite expected measure in every bounded disk.",
+      "verdict": "supported",
+      "sourceLine": "The entire trace has finite expected measure",
+      "sourceQuote": "The entire trace has finite expected measure in every bounded disk.",
+      "paper": 2
+    },
+    {
+      "text": "Schramm's exponent-one gauge is not sigma-finite on any segment.",
+      "verdict": "supported",
+      "sourceLine": "suggested by Schramm is not sigma-finite on any such segment.",
+      "sourceQuote": "The exponent-one iterated-logarithm gauge suggested by Schramm is not sigma-finite on any such segment.",
+      "paper": 2
+    },
+    {
+      "text": "The relation between the two exact gauges remains open.",
+      "verdict": "supported",
+      "sourceLine": "two exact gauges remains open.",
+      "sourceQuote": "The relation between the two exact gauges remains open.",
+      "paper": 2
+    },
+    {
+      "text": "The powers cancel because p + d = 2.",
+      "verdict": "supported",
+      "sourceLine": "The powers cancel because",
+      "sourceQuote": "The powers cancel because $p+d=2$.",
+      "paper": 2
+    },
+    {
+      "text": "The lower bound needs a positive measure with small mass in every small ball.",
+      "verdict": "supported",
+      "sourceLine": "For the lower Hausdorff bound we need a positive measure on a piece",
+      "sourceQuote": "For the lower Hausdorff bound we need a positive measure on a piece of the trace whose mass in every small ball is at most a constant times $h(r)$.",
+      "paper": 2
+    },
+    {
+      "text": "The upper bound needs covers with bounded expected cost.",
+      "verdict": "supported",
+      "sourceLine": "For the upper bound we need spatial covers whose total",
+      "sourceQuote": "For the upper bound we need spatial covers whose total $h$-cost has a bounded expectation.",
+      "paper": 2
+    },
+    {
+      "text": "The different log correction belongs to arbitrary spatial covers, not ordered partitions.",
+      "verdict": "supported",
+      "sourceLine": "The different logarithmic correction here belongs to",
+      "sourceQuote": "The different logarithmic correction here belongs to arbitrary spatial covers.",
+      "paper": 2
+    },
+    {
+      "text": "No identification with natural parametrization or Minkowski content is required.",
+      "verdict": "supported",
+      "sourceLine": "Our argument requires no identification",
+      "sourceQuote": "Our argument requires no identification of $\\mathcal H^h$ with either natural parametrization or Minkowski content.",
+      "paper": 2
+    },
+    {
+      "text": "Lean formalizes that the explicit gauge almost surely gives positive measure to every positive-time segment.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
