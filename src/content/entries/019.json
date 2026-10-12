@@ -1,0 +1,203 @@
+{
+  "id": "019",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Etale-covers-with-a-prescribed-exterior-sheet-September-24-2026/main.pdf",
+      "label": "Étale covers with a prescribed exterior sheet"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-p-adic-section-conjecture-October-6-2026/main.pdf",
+      "label": "The p-adic section conjecture"
+    }
+  ],
+  "headline": "Points on p-adic curves of genus two or more are claimed to match exactly the sections of their fundamental group.",
+  "scope": "The curves are smooth, proper and of genus at least two, over any finite extension of the p-adic numbers.",
+  "plain": "Grothendieck predicted in 1983 that, for curves of genus two or more, points can be read off from symmetry groups alone. Each point gives a splitting of a certain group, called a section. The conjecture says every section comes from exactly one point. The second paper claims to prove the local version, over the p-adic numbers. It also claims the global version for some curves over number fields, including the modular curves X₀(N) and X₁(N).",
+  "doesNot": "This does not prove Grothendieck's global section conjecture for every curve over a number field; that still needs an extra descent condition.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1983",
+    "firstStepBy": "A. Grothendieck, in his letter to G. Faltings",
+    "significance": "Major",
+    "significanceWhy": "The local p-adic section conjecture was a central open problem in anabelian geometry, if this proof holds.",
+    "field": "Number theory"
+  },
+  "explanation": "Take the curve y² = x⁵ + 1. A few points with whole-number coordinates sit on it. For example, (0, 1) works because 1² = 0 + 1. So do (0, −1) and (−1, 0). The right-hand side has degree 5, which gives this curve genus 2. Genus counts the holes in the curve’s complex picture, like the two holes of a double doughnut.\n\nNow change the numbers you allow. The p-adic numbers, for a prime p, measure size by divisibility by p instead of by distance. A curve still has points with p-adic coordinates. The curve also has a fundamental group, written π₁(X) (a group recording how loops and coverings of the curve fit together). It sits over the Galois group of the base field (the symmetries of its numbers). A section is a way to lift each base symmetry into π₁(X), compatibly.\n\nEvery point gives a section[1]. Grothendieck’s section conjecture, from his 1983 letter to Faltings, predicts the converse for curves of genus at least two[2]. Every section should come from a point, and different points should give different sections. Then the points could be recovered from groups alone. The local p-adic form asks this over a finite extension of the p-adic numbers[1].\n\nEarlier work came close. Koenigsmann proved a birational version, using a larger Galois group of the curve’s function field[3]. Pop and Stix showed that each section sits at a valuation extending the p-adic one[4]. A valuation here is a way to measure size on the curve’s functions. The open step was passing from such a valuation to an actual point[5].\n\nThe second paper claims the local conjecture in full[6]. For every prime p, every finite extension of the p-adic numbers and every such curve, points and sections match one to one[7]. Back on y² = x⁵ + 1 over the 5-adic numbers, each section would mark exactly one 5-adic point.\n\nThe key step is a statement about completions of fields of functions. It claims a section at a valuation lifts to the larger Galois group[8]. Then Koenigsmann’s theorem and a classical argument about two valuations finish the case. The geometry is a gluing problem. Near a branch point, a cover can be replaced by a trivial cover and glued back. But that needs roots on every sheet above a ring around the point, not just one[9]. The paper builds those roots in two stages.\n\nThe paper also draws a global consequence for curves over number fields[10]. There, the section conjecture follows when a descent condition holds: the descent locus must equal the rational points[10]. Stoll’s criteria give that condition for the modular curves X₀(N) and X₁(N) of genus at least two over the rationals[11]. For other curves the condition stays a real extra hypothesis[12]. The first paper builds a related cover with prescribed behavior on small p-adic disks[13].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The argument draws on many deep published results in p-adic geometry. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The global result needs an extra descent condition, met for the modular curves named.",
+  "glossary": [
+    {
+      "term": "Genus",
+      "meaning": "The number of holes in a curve’s complex picture; a double doughnut has genus 2."
+    },
+    {
+      "term": "p-adic numbers",
+      "meaning": "A number system for a prime p where a number is small when it is divisible by a high power of p."
+    },
+    {
+      "term": "Fundamental group",
+      "meaning": "A group that records how loops and finite coverings of a curve fit together."
+    },
+    {
+      "term": "Galois group",
+      "meaning": "The group of symmetries of a field of numbers that respect addition and multiplication."
+    },
+    {
+      "term": "Section",
+      "meaning": "A way to lift every symmetry of the base field into the curve’s fundamental group, compatibly."
+    },
+    {
+      "term": "Valuation",
+      "meaning": "A rule that measures how large or small the functions on a curve are."
+    },
+    {
+      "term": "Modular curve",
+      "meaning": "A curve, such as X₀(N), whose points describe elliptic curves with extra level structure."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Étale covers with a prescribed exterior sheet”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Etale-covers-with-a-prescribed-exterior-sheet-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The p-adic section conjecture”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-p-adic-section-conjecture-October-6-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "A. Grothendieck, “Letter to G. Faltings” (English translation), in Geometric Galois Actions 1, LMS Lecture Note Series 242, Cambridge University Press (1997), 285–293",
+      "url": "https://doi.org/10.1017/CBO9780511758874.018"
+    },
+    {
+      "id": 4,
+      "cite": "J. Koenigsmann, “On the ‘section conjecture’ in anabelian geometry”, Journal für die reine und angewandte Mathematik 588 (2005), 221–235",
+      "url": "https://doi.org/10.1515/crll.2005.2005.588.221"
+    },
+    {
+      "id": 5,
+      "cite": "F. Pop and J. Stix, “Arithmetic in the fundamental group of a p-adic curve”, Journal für die reine und angewandte Mathematik 725 (2017), 1–40",
+      "url": "https://doi.org/10.1515/crelle-2014-0077"
+    },
+    {
+      "id": 6,
+      "cite": "M. Stoll, “Finite descent obstructions and rational points on curves”, Algebra & Number Theory 1 (2007), 349–391",
+      "url": "https://doi.org/10.2140/ant.2007.1.349"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A rational point induces a section; the local conjecture says this accounts for all sections and distinguishes points.",
+      "verdict": "supported",
+      "sourceLine": "$p$-adic section conjecture asserts that this construction accounts for",
+      "sourceQuote": "The local $p$-adic section conjecture asserts that this construction accounts for all sections, and distinguishes all rational points.",
+      "paper": 2
+    },
+    {
+      "text": "It is a local analogue of the section conjecture in Grothendieck's letter to Faltings of 27 June 1983.",
+      "verdict": "supported",
+      "sourceLine": "letter to Faltings of 27 June 1983, formulated over fields finitely",
+      "sourceQuote": "It is a local analogue of the section conjecture in Grothendieck's letter to Faltings of 27 June 1983, formulated over fields finitely generated over the prime field \\cite[equation~(7) and the subsequent properness correction]{GrothendieckLetter}.",
+      "paper": 2
+    },
+    {
+      "text": "Koenigsmann proves every birational section over a finite extension of Q_p lies in the decomposition group of a rational point.",
+      "verdict": "supported",
+      "sourceLine": "Koenigsmann proves that every birational section over a finite extension",
+      "sourceQuote": "Koenigsmann proves that every birational section over a finite extension of $\\mathbb Q_p$ is contained in the decomposition group of a rational point \\cite[preprint version, Proposition~2.4(2)]{Koenigsmann}.",
+      "paper": 2
+    },
+    {
+      "text": "Pop–Stix localize every étale section at a valuation extending the p-adic valuation.",
+      "verdict": "supported",
+      "sourceLine": "Pop--Stix localize every \\'etale section at a valuation extending the",
+      "sourceQuote": "Pop--Stix localize every \\'etale section at a valuation extending the $p$-adic valuation \\cite[preprint version, Theorem~26]{PopStix}.",
+      "paper": 2
+    },
+    {
+      "text": "The passage from a fixed valuation to a rational point remains the geometric issue.",
+      "verdict": "supported",
+      "sourceLine": "The passage from a fixed valuation to a rational point remains the",
+      "sourceQuote": "The passage from a fixed valuation to a rational point remains the geometric issue addressed here.",
+      "paper": 2
+    },
+    {
+      "text": "The paper proves the local p-adic section conjecture for curves of genus at least two over every finite extension of Q_p.",
+      "verdict": "supported",
+      "sourceLine": "We prove the local $p$-adic section conjecture for smooth proper",
+      "sourceQuote": "We prove the local $p$-adic section conjecture for smooth proper geometrically connected curves of genus at least two, over every finite extension of $\\mathbb Q_p$.",
+      "paper": 2
+    },
+    {
+      "text": "For every p, every finite k/Q_p and every such curve, the map from X(k) to section classes is bijective.",
+      "verdict": "supported",
+      "sourceLine": "For every prime $p$, every finite extension $k/\\mathbb Q_p$, and every",
+      "sourceQuote": "For every prime $p$, every finite extension $k/\\mathbb Q_p$, and every smooth proper geometrically connected curve $X/k$ of genus at least two, the map \\[ X(k)\\longrightarrow \\left\\{\\begin{gathered} s:G_k\\to\\pi_1(X)\\text{ a continuous group homomorphism}\\\\ \\text{such that }(\\pi_1(X)\\to G_k)\\circ s=\\mathrm{id}_{G_k} \\end{gathered}\\right\\}\\big/\\pi_1(X_{\\bar k}) \\] is bijective.",
+      "paper": 2
+    },
+    {
+      "text": "A section localized at a rank-one valuation lifts to a birational section.",
+      "verdict": "supported",
+      "sourceLine": "A section localized at a rank-one valuation therefore lifts to a",
+      "sourceQuote": "A section localized at a rank-one valuation therefore lifts to a birational section.",
+      "paper": 2
+    },
+    {
+      "text": "Roots must exist on the entire inverse image of the annulus; a root on one sheet does not suffice.",
+      "verdict": "supported",
+      "sourceLine": "a root on only one sheet does not trivialize the full cover needed",
+      "sourceQuote": "The roots must exist on the \\emph{entire} inverse image of the annulus: a root on only one sheet does not trivialize the full cover needed for gluing.",
+      "paper": 2
+    },
+    {
+      "text": "Combined with finite-descent theorems this yields the global section conjecture when the finite-cover descent locus equals the rational points.",
+      "verdict": "supported",
+      "sourceLine": "Combined with established finite-descent theorems, this also yields the",
+      "sourceQuote": "Combined with established finite-descent theorems, this also yields the global section conjecture for smooth proper geometrically connected curves of genus at least two over number fields when their finite-cover descent locus equals their rational points; this includes $X_0(N)$ and $X_1(N)$ of genus at least two over $\\mathbb Q$.",
+      "paper": 2
+    },
+    {
+      "text": "Stoll's criteria cover X_0(N) and X_1(N) of genus at least two over Q.",
+      "verdict": "supported",
+      "sourceLine": "$X_1(N)$ of genus at least two over $\\mathbb Q$",
+      "sourceQuote": "Combined with established finite-descent theorems, this also yields the global section conjecture for smooth proper geometrically connected curves of genus at least two over number fields when their finite-cover descent locus equals their rational points; this includes $X_0(N)$ and $X_1(N)$ of genus at least two over $\\mathbb Q$.",
+      "paper": 2
+    },
+    {
+      "text": "The general implication retains the finite-cover equality as a genuine arithmetic hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "The general implication retains the finite-cover equality as a genuine",
+      "sourceQuote": "The general implication retains the finite-cover equality as a genuine arithmetic hypothesis; local point-theoreticity alone does not supply it.",
+      "paper": 2
+    },
+    {
+      "text": "Given disjoint small disks, there is one connected finite étale cover with a sheet isomorphic to their exterior and degree divisible by p above each disk.",
+      "verdict": "supported",
+      "sourceLine": "we construct one connected finite \\'etale cover with a sheet isomorphic",
+      "sourceQuote": "Given finitely many disjoint small open disks, we construct one connected finite \\'etale cover with a sheet isomorphic to their entire exterior and with degree divisible by $p$ on every connected component above each disk.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
