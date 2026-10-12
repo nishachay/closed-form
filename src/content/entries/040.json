@@ -1,0 +1,224 @@
+{
+  "id": "040",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Blochs-Conjecture-for-Surfaces-with-pg-equals-q-equals-0-September-24-2026/paper.pdf",
+      "label": "Bloch’s conjecture for surfaces with p_g=0"
+    }
+  ],
+  "headline": "On a complex surface with no holomorphic two-forms, zero-cycles carry only their degree and Albanese data.",
+  "scope": "It covers smooth connected projective complex surfaces with p_g = 0, with whole-number coefficients.",
+  "plain": "A zero-cycle is a formal sum of points with whole-number coefficients. Bloch predicted that on surfaces with no holomorphic two-forms, very little information survives in such sums. Surfaces that are not of general type were handled in 1976. This paper claims to prove the remaining general-type case. No computer has checked the proof.",
+  "doesNot": "This does not say anything about surfaces that carry a nonzero holomorphic two-form.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1976",
+    "firstStepBy": "Bloch, Kas and Lieberman, non-general-type surfaces",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a well-known conjecture on algebraic cycles that has been open for about 50 years."
+  },
+  "explanation": "Mark three points a, b and c on a flat plane, extended to include its points at infinity. Write the bookkeeping sum 3a − 2b + c. Such a formal sum of points, with whole-number coefficients, is called a zero-cycle. Its degree is the sum of the coefficients, here 3 − 2 + 1 = 2. On this plane, the degree is all that matters. Any two points lie on a line. Along a line, one point can be slid to the other by an allowed move, called rational equivalence. So 3a − 2b + c is equivalent to 2 times any single point.\n\nThe rule comes from curves. On a curve inside the surface, a ratio of polynomials has zeros and poles. The zeros minus the poles count as a cycle equivalent to nothing. The Chow group of zero-cycles collects all zero-cycles, up to these moves[1]. The question is how much of this group survives beyond the degree.\n\nThe answer depends on special forms on the surface. A holomorphic two-form is a smooth complex way to measure small areas on the surface. Their count is written p_g. Mumford showed in 1969 that one such form makes the zero-cycles uncontrollably large[4]. They then admit no description by finitely many parameters. A second number, q, counts holomorphic one-forms. These give the Albanese variety, a torus that records what a zero-cycle of degree 0 can still detect. The map from zero-cycles of degree 0 to this torus is the Albanese map.\n\nBloch's conjecture predicts the converse of Mumford's result. If p_g is 0, the degree and the Albanese map should account for every zero-cycle[2]. When q is also 0, the torus is a single point. Then any two points of the surface should be equivalent[3]. In 1976, Bloch, Kas and Lieberman proved this for every surface that is not of general type[5]. Surfaces of general type are the most twisted class. So the open problem was general-type surfaces with p_g = q = 0[6].\n\nThese surfaces are rare and hard to build. For a minimal surface of general type with p_g = q = 0, one has b₂ = 10 − K²[15]. Here b₂ counts independent two-dimensional loops, and K² is a number between 1 and 9 attached to the surface. A Godeaux surface has K² = 1, so b₂ = 9. A surface with K² = 9 has b₂ = 1, like the plane. Earlier proofs needed extra structure on the surface, such as symmetries or quotient pictures[7]. Voisin handled Catanese and Barlow surfaces in 2014 through families of surfaces. Each method covered only some constructions.\n\nThis paper claims to prove Bloch's conjecture for every smooth projective complex surface with p_g = 0[9]. It treats p_g = q = 0 with no assumption on how the surface was built[10]. The remaining surfaces come from Bloch, Kas and Lieberman[11]. The argument needs no special family, cover or symmetry of the surface[8]. When p_g = q = 0, the paper also claims a consequence for powers of the surface. Every rational class on them is fixed by its cohomology class[16].\n\nThe obstacle is that loops and forms do not see rational equivalence. For these surfaces, all the loop data is algebraic. Even so, identities in cohomology do not settle rational equivalence by themselves[12]. The paper builds a relation among cycles on two copies of the surface. In it, the diagonal appears with a nonzero coefficient. The diagonal acts as the identity on zero-cycles, while the other terms kill zero-cycles of degree 0[14]. So degree-0 zero-cycles vanish, after allowing fractions. A known torsion theorem then removes the fractions. The relation comes from counting quotients of line bundles on the surface, with weights from a torus symmetry.\n\nRecent preprints by Guletskii and Banerjee also propose proofs with overlapping scope[13]. The paper cites them as proposed proofs and uses a different method.\n\nHow sure is this? No Lean formalization is listed for this result. The proof rests on long calculations in enumerative geometry that no computer has checked. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. Other recent preprints propose proofs too, and no specialist review of any of them is published.",
+  "glossary": [
+    {
+      "term": "Zero-cycle",
+      "meaning": "A formal sum of points on a shape, with whole-number coefficients."
+    },
+    {
+      "term": "Rational equivalence",
+      "meaning": "The allowed moves on zero-cycles, coming from zeros and poles of functions on curves."
+    },
+    {
+      "term": "Chow group",
+      "meaning": "All zero-cycles up to rational equivalence."
+    },
+    {
+      "term": "Holomorphic two-form",
+      "meaning": "A smooth complex way to measure small areas on a surface; their count is p_g."
+    },
+    {
+      "term": "Albanese variety",
+      "meaning": "A torus built from the holomorphic one-forms, which records what degree-0 zero-cycles can detect."
+    },
+    {
+      "term": "Surface of general type",
+      "meaning": "A member of the most twisted class of complex surfaces."
+    },
+    {
+      "term": "Degree",
+      "meaning": "The sum of the coefficients of a zero-cycle."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "D. Mumford, “Rational equivalence of 0-cycles on surfaces”, Journal of Mathematics of Kyoto University 9 (1969), 195–204",
+      "url": "https://doi.org/10.1215/kjm/1250523940"
+    },
+    {
+      "id": 2,
+      "cite": "S. Bloch, A. Kas and D. Lieberman, “Zero cycles on surfaces with p_g=0”, Compositio Mathematica 33 (1976), 135–145",
+      "url": "https://www.numdam.org/item/CM_1976__33_2_135_0.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "S. Bloch, Lectures on Algebraic Cycles, second edition, Cambridge University Press (2010); first edition Duke University (1980)",
+      "url": "https://doi.org/10.1017/CBO9780511760693"
+    },
+    {
+      "id": 4,
+      "cite": "C. Voisin, “Bloch's conjecture for Catanese and Barlow surfaces”, Journal of Differential Geometry 97 (2014), 149–175",
+      "url": "https://arxiv.org/abs/1210.3935v2"
+    },
+    {
+      "id": 5,
+      "cite": "V. Guletskii, “The Bloch conjecture”, preprint (13 December 2025)",
+      "url": "https://arxiv.org/abs/2512.12451v1"
+    },
+    {
+      "id": 6,
+      "cite": "K. Banerjee, “Bloch's conjecture on surfaces with p_g=q=0, K^2=9”, preprint (version of 19 September 2026)",
+      "url": "https://arxiv.org/abs/2508.13594v2"
+    },
+    {
+      "id": 7,
+      "cite": "R. Barlow, “Rational equivalence of zero cycles for some more surfaces with p_g=0”, Inventiones Mathematicae 79 (1985), 303–308",
+      "url": "https://doi.org/10.1007/BF01388975"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Chow group of zero-cycles is integral zero-cycles modulo rational equivalence.",
+      "verdict": "supported",
+      "sourceLine": "The Chow group $\\CH_0(S)$ is the group of integral zero-cycles modulo",
+      "paper": 1,
+      "sourceQuote": "The Chow group $\\CH_0(S)$ is the group of integral zero-cycles modulo rational equivalence, where the relations are generated by divisors of rational functions on curves in $S$."
+    },
+    {
+      "text": "Bloch's conjecture predicts the Albanese map is an isomorphism when p_g is 0.",
+      "verdict": "supported",
+      "sourceLine": "Bloch's conjecture predicts that it is an isomorphism when",
+      "paper": 1,
+      "sourceQuote": "Bloch's conjecture predicts that it is an isomorphism when \\(p_g(S)=0\\)."
+    },
+    {
+      "text": "When q is 0, the prediction is that any two complex points are rationally equivalent.",
+      "verdict": "supported",
+      "sourceLine": "is that any two complex points are rationally equivalent.",
+      "paper": 1,
+      "sourceQuote": "The main theorem treats the case \\(q=0\\), when the Albanese variety is a point and the prediction is that any two complex points are rationally equivalent."
+    },
+    {
+      "text": "Mumford showed a nonzero holomorphic two-form prevents a finite-dimensional parametrization of zero-cycles.",
+      "verdict": "supported",
+      "sourceLine": "Mumford showed that a nonzero holomorphic two-form prevents the",
+      "paper": 1,
+      "sourceQuote": "Mumford showed that a nonzero holomorphic two-form prevents the zero-cycles on a surface from admitting a finite-dimensional parametrization modulo rational equivalence \\cite{Mumford}."
+    },
+    {
+      "text": "Bloch, Kas and Lieberman proved the integral assertion for Kodaira dimension less than two.",
+      "verdict": "supported",
+      "sourceLine": "Bloch, Kas, and Lieberman proved this integral assertion for every",
+      "paper": 1,
+      "sourceQuote": "Bloch, Kas, and Lieberman proved this integral assertion for every surface of Kodaira dimension less than two \\cite[pp.~135--136]{BKL}."
+    },
+    {
+      "text": "The remaining general-type problem concerns p_g = q = 0.",
+      "verdict": "supported",
+      "sourceLine": "Thus the remaining general-type problem concerns $p_g=q=0$, where",
+      "paper": 1,
+      "sourceQuote": "Thus the remaining general-type problem concerns $p_g=q=0$, where the Albanese variety carries no information and the degree map is predicted to determine a zero-cycle completely."
+    },
+    {
+      "text": "Earlier approaches use additional geometry of the surface, such as group actions.",
+      "verdict": "supported",
+      "sourceLine": "Several successful approaches use additional geometry of the surface.",
+      "paper": 1,
+      "sourceQuote": "Several successful approaches use additional geometry of the surface."
+    },
+    {
+      "text": "The present argument requires no prescribed family, covering construction, or automorphism.",
+      "verdict": "supported",
+      "sourceLine": "The present argument requires no prescribed family, covering construction, or automorphism of the",
+      "paper": 1,
+      "sourceQuote": "The present argument requires no prescribed family, covering construction, or automorphism of the surface."
+    },
+    {
+      "text": "The paper claims the conjecture for all surfaces with p_g = 0.",
+      "verdict": "supported",
+      "sourceLine": "We prove Bloch's conjecture for smooth connected projective complex",
+      "paper": 1,
+      "sourceQuote": "We prove Bloch's conjecture for smooth connected projective complex surfaces with \\(p_g=0\\): the Albanese homomorphism on integral degree-zero zero-cycles is an isomorphism."
+    },
+    {
+      "text": "The main theorem imposes no minimality, fundamental-group or construction hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "imposes no minimality, fundamental-group, or",
+      "paper": 1,
+      "sourceQuote": "Theorem~\\ref{thm:bloch} imposes no minimality, fundamental-group, or surface-construction hypothesis."
+    },
+    {
+      "text": "Other cases come from Bloch–Kas–Lieberman.",
+      "verdict": "supported",
+      "sourceLine": "The other cases are the theorem of",
+      "paper": 1,
+      "sourceQuote": "The other cases are the theorem of Bloch--Kas--Lieberman \\cite{BKL}."
+    },
+    {
+      "text": "Cohomological identities alone do not settle rational equivalence.",
+      "verdict": "supported",
+      "sourceLine": "but cohomological identities alone do not settle rational",
+      "paper": 1,
+      "sourceQuote": "The rational cohomology of a surface with $p_g=q=0$ is generated by algebraic classes, but cohomological identities alone do not settle rational equivalence."
+    },
+    {
+      "text": "Recent preprints by Guletskii and Banerjee propose proofs with overlapping scope.",
+      "verdict": "supported",
+      "sourceLine": "Recent preprints propose proofs with overlapping scope.",
+      "paper": 1,
+      "sourceQuote": "Recent preprints propose proofs with overlapping scope."
+    },
+    {
+      "text": "The diagonal acts as the identity on zero-cycles; external products kill degree-zero zero-cycles.",
+      "verdict": "supported",
+      "sourceLine": "The diagonal acts as the identity on zero-cycles, whereas every external",
+      "paper": 1,
+      "sourceQuote": "The diagonal acts as the identity on zero-cycles, whereas every external product of total codimension two kills degree-zero zero-cycles."
+    },
+    {
+      "text": "For a minimal general-type surface with p_g = q = 0, b_2 = 10 − K^2.",
+      "verdict": "supported",
+      "sourceLine": "one has $b_2=10-K^2$.",
+      "paper": 1,
+      "sourceQuote": "For a minimal general-type surface with $p_g=q=0$ and canonical class $K$, one has $b_2=10-K^2$."
+    },
+    {
+      "text": "Every rational Chow class on powers and Hilbert schemes is determined by its cohomology class.",
+      "verdict": "supported",
+      "sourceLine": "In particular, every rational Chow class on the stated powers and Hilbert",
+      "paper": 1,
+      "sourceQuote": "In particular, every rational Chow class on the stated powers and Hilbert schemes is determined by its cohomology class."
+    },
+    {
+      "text": "The manuscript was produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}
