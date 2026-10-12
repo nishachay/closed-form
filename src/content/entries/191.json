@@ -1,0 +1,165 @@
+{
+  "id": "191",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-improvement-in-the-Heilbronn-triangle-lower-bound-September-25-2026/main.pdf",
+      "label": "A power improvement in the Heilbronn triangle lower bound"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/191.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Some n points in a unit square keep every triangle above n^(−2+η) in area, beating 1/n² by a fixed power.",
+  "scope": "The exponent η is a fixed positive number but extremely small; the claim is for every sufficiently large n.",
+  "plain": "Heilbronn's problem asks how to place n points in a square so the smallest triangle they form is as large as possible. Simple constructions give about 1/n², and a 1982 result gained a logarithm. Many expected that no fixed power of n could be gained. This paper shows that one can be gained, though the power is extremely small.",
+  "doesNot": "This does not give a usable exponent; the gain is real in principle but extremely small.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It breaks a widely discussed form of Heilbronn's problem by a power of n, though a tiny one."
+  },
+  "explanation": "Put four points at the corners of a square with sides of length 1. Any three of them make a triangle of area 1/2. Now add a fifth point at the centre. Two opposite corners and the centre lie on one line. Their triangle is flat, with area 0. So adding one point in the obvious place ruined everything.\n\nHeilbronn's triangle problem asks how to place n points in a unit square to keep every triangle large. Look at all triangles the points form, and take the smallest area. Call the best possible value Δ(n). The question is how fast Δ(n) shrinks as n grows.\n\nThe original guess was that Δ(n) shrinks at least as fast as a constant times 1/n²[2]. For 100 points, 1/n² is 0.0001. Simple constructions reach that scale, including one by Erdős based on a parabola[3]. In 1982, Komlós, Pintz and Szemerédi beat it by a factor of log n. That disproved the original guess[4]. A weaker guess survived. It says Δ(n) is at most about n^(−2+ε), for every small ε, once n is large[5]. In words, nobody can beat 1/n² by a fixed power of n.\n\nThis paper proves that weaker guess false[6]. It claims more: for every large n, some n points have all triangles of area at least c·n^(−2+η). Here c and η are fixed positive numbers. The gain η is a real power of n, not a logarithm. But the paper says the explicit η it can give is extremely small[7]. So the improvement matters in principle, not at any size one could draw.\n\nFrom the other side, upper limits have also improved. In 1951, Roth proved the first upper bound that beats 1/n[8]. Cohen, Pohoata and Zakharov later showed Δ(n) is at most about n^(−7/6)[9]. The true rate lies somewhere between these lower and upper bounds.\n\nThe difficulty is that random points form many thin triangles. Scattering points at random and deleting thin triangles only reaches the 1/n² scale[3]. The paper starts from Erdős's parabola over a finite number system, where no three distinct labelled points line up[11]. It lifts these to whole-number coordinates, using careful digit expansions to keep triangle areas away from zero. Only rare bad triples remain, and these are deleted.\n\nThe paper notes that earlier preprints claimed stronger lower bounds[10]. It points to specific gaps in their arguments. It does not claim those bounds are false.\n\nHow sure is this? A computer proof checker called Lean has checked part of the claim. The Lean scope note says it builds point sets for an unbounded sequence of sizes n, with every triangle at least n^(−2+η) in area. That is enough to refute the weaker guess. The paper's statement for every large n is broader and lies outside that check. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds, with a tiny exponent. Lean has checked a version for an unbounded sequence of n; the every-large-n statement and specialist review are missing.",
+  "glossary": [
+    {
+      "term": "Heilbronn's triangle problem",
+      "meaning": "How to place n points in a unit square so the smallest triangle they form is as large as possible."
+    },
+    {
+      "term": "Δ(n)",
+      "meaning": "The largest possible smallest-triangle area for n points in the unit square."
+    },
+    {
+      "term": "Collinear",
+      "meaning": "Lying on one straight line, which makes a triangle with zero area."
+    },
+    {
+      "term": "Finite field",
+      "meaning": "A number system with finitely many values where adding, multiplying and dividing all work."
+    },
+    {
+      "term": "Power improvement",
+      "meaning": "A gain by a factor n^η for a fixed η > 0, rather than a slowly growing factor like log n."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A power improvement in the Heilbronn triangle lower bound”, openai/math release preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-improvement-in-the-Heilbronn-triangle-lower-bound-September-25-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 191 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/191.md",
+      "quote": "The linked construction is for an unbounded sequence of sizes; the paper's statement for every sufficiently large $n$ is broader."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Three points in a line give a triangle of area zero.",
+      "verdict": "supported",
+      "sourceLine": "a collinear triple makes $\\Delta(P)=0$.",
+      "sourceQuote": "In particular, a collinear triple makes $\\Delta(P)=0$.",
+      "sourceId": 1
+    },
+    {
+      "text": "The original Heilbronn conjecture asked whether Δ(n) = O(n^-2).",
+      "verdict": "supported",
+      "sourceLine": "The original Heilbronn conjecture asked whether $\\Delta(n)=O(n^{-2})$;",
+      "sourceQuote": "The original Heilbronn conjecture asked whether $\\Delta(n)=O(n^{-2})$; see Roth~\\cite[p.~198]{Roth1951}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Two elementary constructions attain the n^-2 scale.",
+      "verdict": "supported",
+      "sourceLine": "Two elementary constructions attain this",
+      "sourceQuote": "Two elementary constructions attain this scale.",
+      "sourceId": 1
+    },
+    {
+      "text": "Komlós, Pintz and Szemerédi improved this to (log n)/n², disproving the original conjecture.",
+      "verdict": "supported",
+      "sourceLine": "$\\Delta(n)\\gg(\\log n)/n^2$, disproving the original",
+      "sourceQuote": "Koml\\'os, Pintz and Szemer\\'edi improved this to $\\Delta(n)\\gg(\\log n)/n^2$, disproving the original conjecture~\\cite{KPS1982}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The almost n^-2 formulation is discussed in Zakharov's survey.",
+      "verdict": "supported",
+      "sourceLine": "The almost $n^{-2}$ formulation, discussed in",
+      "sourceQuote": "The almost $n^{-2}$ formulation, discussed in Zakharov's survey~\\cite[Section~3]{Zakharov2026}, asks whether, for every $\\varepsilon>0$, there are constants $C_\\varepsilon$ and $n_0(\\varepsilon)$ such that \\begin{equation}\\label{intro:almost} \\Delta(n)\\le C_\\varepsilon n^{-2+\\varepsilon} \\qquad(n\\ge n_0(\\varepsilon)). \\end{equation}",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper disproves this formulation by a power improvement in the lower bound.",
+      "verdict": "supported",
+      "sourceLine": "We disprove this formulation by a power improvement in the lower bound.",
+      "sourceQuote": "We disprove this formulation by a power improvement in the lower bound.",
+      "sourceId": 1
+    },
+    {
+      "text": "The explicit admissible exponent is extremely small.",
+      "verdict": "supported",
+      "sourceLine": "extremely small, admissible exponent.",
+      "sourceQuote": "Section~\\ref{alt:section} gives an explicit, though extremely small, admissible exponent.",
+      "sourceId": 1
+    },
+    {
+      "text": "Roth proved the first o(n^-1) upper bound.",
+      "verdict": "supported",
+      "sourceLine": "On the upper-bound side, Roth~\\cite{Roth1951} proved the first",
+      "sourceQuote": "On the upper-bound side, Roth~\\cite{Roth1951} proved the first $o(n^{-1})$ estimate by a density-increment argument, followed by refinements of Schmidt~\\cite{Schmidt1972} and Roth~\\cite{Roth1972a,Roth1972b}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Cohen, Pohoata and Zakharov proved Δ(n) ≪ n^(-7/6+ε).",
+      "verdict": "supported",
+      "sourceLine": "$\\Delta(n)\\ll_\\varepsilon n^{-7/6+\\varepsilon}$ for every",
+      "sourceQuote": "Cohen, Pohoata and Zakharov developed new incidence-geometric approaches, first obtaining $\\Delta(n)\\le n^{-8/7-1/2000}$ for sufficiently large $n$~\\cite[Theorem~1.1]{CPZ2023}, and subsequently proving $\\Delta(n)\\ll_\\varepsilon n^{-7/6+\\varepsilon}$ for every $\\varepsilon>0$~\\cite[Theorem~1.8]{CPZ2025}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Earlier preprints claimed stronger power lower bounds, with unresolved issues.",
+      "verdict": "supported",
+      "sourceLine": "Earlier preprints claim stronger power lower bounds than ours, with",
+      "sourceQuote": "Earlier preprints claim stronger power lower bounds than ours, with unresolved issues in the following versions.",
+      "sourceId": 1
+    },
+    {
+      "text": "Columns on the finite-field parabola have nonzero determinant whenever their labels are distinct.",
+      "verdict": "supported",
+      "sourceLine": "have nonzero determinant whenever their labels are distinct.",
+      "sourceQuote": "The columns $(1,\\xi,\\xi^2)^{\\mathsf T}$ have nonzero determinant whenever their labels are distinct.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the bound for an unbounded sequence of sizes; the every-large-n statement is outside it.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
