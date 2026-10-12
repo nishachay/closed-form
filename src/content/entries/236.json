@@ -1,0 +1,196 @@
+{
+  "id": "236",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-sharp-factor-of-IID-threshold-for-the-free-Ising-model-on-regular-trees-September-26-2026/article.pdf",
+      "label": "The sharp factor-of-IID threshold for the free Ising model on regular trees"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/236.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The free Ising state on a regular tree can be built from independent labels exactly up to tanh β = 1/√(d−1).",
+  "scope": "It covers the free zero-field Ising state on every d-regular tree with d ≥ 3 and every β ≥ 0. It gives no coding radius or uniform bounds.",
+  "plain": "Put plus or minus spins on an endless branching tree, with neighbors tending to agree. The question is whether a fixed rule can make these spins from independent random labels, with no starting vertex. The paper claims this works exactly up to a known cut-off, including the cut-off itself. Past the cut-off it was already known to fail.",
+  "doesNot": "This does not say how many labels are needed to decide one spin.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2022",
+    "firstStepBy": "Danny Nam, Allan Sly and Lingfu Zhang, factor for large d and small θ",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It settles the Nam–Sly–Zhang conjecture on the exact range, including the critical point."
+  },
+  "explanation": "Take a tree where every point, called a vertex, has exactly three neighbors, and the branching never stops. Put a spin, +1 or −1, on every vertex. Start at one vertex with a fair coin. Each neighbor then copies its parent's spin with probability (1 + θ)/2, and flips it otherwise. Keep going outward along every branch. Here θ = tanh β, and β is the inverse temperature. A large β means spins agree more often.\n\nTry θ = 0.7. A child agrees with its parent 85% of the time. Two spins n steps apart have correlation θ to the power n. So at distance 10 the correlation is 0.7^10, about 0.028.\n\nThis random picture is the free Ising state on the tree. Its rules mention a starting vertex, but the final law does not depend on which one. The question is whether you can build it with no starting vertex at all. You give every vertex its own independent random number, a label. Then one fixed rule turns all the labels into spins. The rule must treat every vertex alike: rotate or reflect the tree, and the output moves with it. Such a rule is called a factor of IID, short for independent, identically distributed labels.\n\nThe paper studies trees where every vertex has d neighbors, with d at least 3. It claims a factor of IID exists exactly when tanh β ≤ 1/√(d−1)[3]. For d = 3 that cut-off is θ = 1/√2, about 0.7071. So θ = 0.7 is just inside, and θ = 0.72 is just outside.\n\nSome of this was known. Past the cut-off, no factor exists, by an argument of Sly recorded by Lyons[5]. Well below it, a simpler construction from finite clusters works[8]. In 2022, Nam, Sly and Zhang built a factor for large d and small θ. Their method used random equations driven by independent Brownian motions, a model of continuous random noise. They left the full range as a conjecture. The paper claims the positive direction, including the cut-off itself[4]. So it claims to settle their conjecture for every d ≥ 3[7].\n\nThe cut-off has a second meaning. It is the point where distant spins stop carrying information about one spin[6]. But that fact alone does not give a rule built from labels[9].\n\nThe paper follows the observation method of Nam, Sly and Zhang. Imagine watching every spin through noise that slowly fades. Remove the part of what you see that you could already predict. What remains is fresh noise, called innovations, independent at each vertex[10]. Labels can produce such noise directly. The hard step is to show that the innovations alone determine the spins.\n\nThe paper's test runs two copies of the observations with the same innovations. It shows the copies must agree. Below the cut-off, a size-weighted sum shrinks fast at each distance, and that gives agreement easily. At the cut-off it does not shrink at all[11]. For d = 3 there are 3 × 2^(n−1) vertices at distance n. Multiply by θ^(2n) with θ = 1/√2. You get 1.5 at every distance n. The paper replaces the lost decay with three new estimates[12]. They end in a growth inequality that forces the gap between the copies to be zero[13].\n\nThe result has limits. It does not say how many labels decide one spin[14]. It gives no bounds that hold across all d and β at once[15].\n\nHow sure is this? Lean, a computer proof checker, has a formal version of the main statement. It covers every d ≥ 3 and β ≥ 0, including equality at the cut-off. The scope note says finitary coding and coding-radius bounds are not included. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. Lean has a formal version of the threshold statement; no specialist review is published, and no coding-radius bound is given.",
+  "glossary": [
+    {
+      "term": "Factor of IID",
+      "meaning": "A fixed rule that turns independent random labels at every vertex into the desired random pattern, treating all vertices alike."
+    },
+    {
+      "term": "d-regular tree",
+      "meaning": "An endless tree in which every vertex has exactly d neighbors."
+    },
+    {
+      "term": "Free Ising state",
+      "meaning": "Random ±1 spins made by copying from a vertex outward, each step agreeing with probability (1 + θ)/2."
+    },
+    {
+      "term": "Inverse temperature β",
+      "meaning": "A strength setting: larger β makes neighboring spins agree more often."
+    },
+    {
+      "term": "Innovations",
+      "meaning": "The part of a noisy observation that could not be predicted from what was seen before."
+    },
+    {
+      "term": "Reconstruction",
+      "meaning": "Guessing one spin better than chance from spins very far away."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The sharp factor-of-IID threshold for the free Ising model on regular trees” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-sharp-factor-of-IID-threshold-for-the-free-Ising-model-on-regular-trees-September-26-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 236 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/236.md"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "cite": "D. Nam, A. Sly and L. Zhang, “Ising Model on Trees and Factors of IID”, Communications in Mathematical Physics 389(2) (2022), 1009–1046",
+      "url": "https://doi.org/10.1007/s00220-021-04260-2",
+      "id": 4
+    },
+    {
+      "cite": "R. Lyons, “Factors of IID on Trees”, Combinatorics, Probability and Computing 26(2) (2017), 285–300",
+      "url": "https://doi.org/10.1017/S096354831600033X",
+      "id": 5
+    },
+    {
+      "cite": "Á. Backhausz, B. Szegedy and B. Virág, “Ramanujan graphings and correlation decay in local algorithms”, Random Structures & Algorithms 47(3) (2015), 424–435",
+      "url": "https://doi.org/10.1002/rsa.20562",
+      "id": 6
+    }
+  ],
+  "claims": [
+    {
+      "text": "The free Ising law broadcasts a fair spin and lets a child agree with its parent with probability (1+θ)/2.",
+      "verdict": "supported",
+      "sourceLine": "letting a child agree with its parent with probability"
+    },
+    {
+      "text": "The input contains no distinguished root or end.",
+      "verdict": "supported",
+      "sourceLine": "The input contains no distinguished root or end."
+    },
+    {
+      "text": "The free zero-field Ising measure is a factor of IID exactly when tanh β ≤ (d−1)^(−1/2).",
+      "verdict": "supported",
+      "sourceLine": "a factor of IID exactly when",
+      "sourceQuote": "For every integer \\(d\\ge3\\) and inverse temperature \\(\\beta\\ge0\\), the free zero-field ferromagnetic Ising measure on the infinite \\(d\\)-regular tree is a factor of IID exactly when \\(\\tanh\\beta\\le(d-1)^{-1/2}\\)."
+    },
+    {
+      "text": "The construction proves the positive implication, including equality.",
+      "verdict": "supported",
+      "sourceLine": "The construction proves the positive implication, including equality.",
+      "sourceQuote": "The construction proves the positive implication, including equality."
+    },
+    {
+      "text": "The strict converse is known: the obstruction is due to Sly, recorded by Lyons.",
+      "verdict": "supported",
+      "sourceLine": "The strict converse is known: the obstruction beyond the reconstruction threshold is due to Sly",
+      "sourceQuote": "The strict converse is known: the obstruction beyond the reconstruction threshold is due to Sly, as recorded and proved in Lyons~\\cite[Section~3 and Corollary~3.2]{Lyons}."
+    },
+    {
+      "text": "Reconstruction from distant levels is possible exactly when bθ² > 1.",
+      "verdict": "supported",
+      "sourceLine": "reconstruction from distant levels is possible exactly when",
+      "sourceQuote": "For the free state on $T_d$, reconstruction from distant levels is possible exactly when $b\\theta^2>1$; equivalently, the free Gibbs state is extremal exactly when $b\\theta^2\\le1$."
+    },
+    {
+      "text": "Nam, Sly and Zhang used posterior-drift SDEs driven by IID Brownian motions; the theorem proves their conjecture for every d ≥ 3.",
+      "verdict": "supported",
+      "sourceLine": "including equality and their pointwise convention for equivariance.",
+      "sourceQuote": "Theorem~\\ref{thm:main} proves their conjecture for every $d\\ge3$, including equality and their pointwise convention for equivariance."
+    },
+    {
+      "text": "In the uniqueness range a finite-cluster construction gives the factor.",
+      "verdict": "supported",
+      "sourceLine": "a finite-cluster construction gives the factor",
+      "sourceQuote": "In the uniqueness range $\\theta\\le b^{-1}$, including equality, a finite-cluster construction gives the factor; see Lyons~\\cite[Section~3]{Lyons}."
+    },
+    {
+      "text": "Nonreconstruction supplies no factor rule.",
+      "verdict": "supported",
+      "sourceLine": "Nonreconstruction supplies no such",
+      "sourceQuote": "Nonreconstruction supplies no such rule, and a weak limit of factor laws need not itself be a factor \\cite[Corollary~3.3]{Lyons}."
+    },
+    {
+      "text": "The innovations are independent Brownian motions in the observation filtration.",
+      "verdict": "supported",
+      "sourceLine": "These innovations are independent Brownian motions in the observation",
+      "sourceQuote": "These innovations are independent Brownian motions in the observation filtration."
+    },
+    {
+      "text": "At bθ² = 1 the squared factor and the shell size cancel exactly.",
+      "verdict": "supported",
+      "sourceLine": "those two factors cancel exactly.",
+      "sourceQuote": "At $b\\theta^2=1$ those two factors cancel exactly."
+    },
+    {
+      "text": "Three estimates replace the lost geometric decay.",
+      "verdict": "supported",
+      "sourceLine": "Three estimates replace the lost geometric decay.",
+      "sourceQuote": "Three estimates replace the lost geometric decay."
+    },
+    {
+      "text": "An integrable Osgood-type inequality forces the copies' difference to vanish.",
+      "verdict": "supported",
+      "sourceLine": "gives an integrable Osgood-type",
+      "sourceQuote": "The complete noise and drift calculation then gives an integrable Osgood-type inequality for $V$, forcing $V=0$."
+    },
+    {
+      "text": "No finitary coding or coding-radius estimate is asserted.",
+      "verdict": "supported",
+      "sourceLine": "no finitary coding or coding-radius",
+      "sourceQuote": "Measurability does not require a spin to be determined by finitely many labels; no finitary coding or coding-radius estimate is asserted."
+    },
+    {
+      "text": "No parameter-uniform or computational bound is asserted.",
+      "verdict": "supported",
+      "sourceLine": "no parameter-uniform or computational bound is asserted.",
+      "sourceQuote": "The map is obtained for each fixed $d$ and $\\beta$ in the permitted range; no parameter-uniform or computational bound is asserted."
+    },
+    {
+      "text": "Lean formalizes the threshold statement for every d ≥ 3 and β ≥ 0, including equality; finitary coding is not included.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
