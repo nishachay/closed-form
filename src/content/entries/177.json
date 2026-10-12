@@ -1,0 +1,196 @@
+{
+  "id": "177",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-degree-coboundary-expanders-in-every-dimension-September-24-2026/paper.pdf",
+      "label": "Bounded-degree coboundary expanders in every dimension"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/177.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Large higher-dimensional expanders with a bounded number of faces at each point exist in every dimension.",
+  "scope": "The paper builds complexes in every dimension of at least 3, with coefficients 0 and 1. The one- and two-dimensional cases come from earlier work. Constants may depend on the dimension.",
+  "plain": "An expander is a network with no bottlenecks, even when very large. Coboundary expanders are the higher-dimensional version, built from triangles, tetrahedra and beyond. This paper builds them for every dimension from 3 up, with a bounded number of faces at each point. With earlier cases, they now exist in every dimension.",
+  "doesNot": "This does not give explicit values for the degree bound or the expansion constant.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2010",
+    "firstStepBy": "Mikhail Gromov, who asked for bounded-degree complexes with uniform filling bounds",
+    "significance": "Solid",
+    "significanceWhy": "It completes the existence question for bounded-degree coboundary expanders, a central object in high-dimensional expansion.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Put ten points around a ring and join each point to its two neighbors. Pick five points in a row. Only two links leave that group, so the ratio is 2 to 5, or 0.4. Take a ring of a thousand points and pick half of them in a row. Still only two links leave, and the ratio falls to 0.004. A large ring has a bottleneck.\n\nThe Petersen graph does much better. It has ten points, each joined to three others. Check every group of at most five points. At least as many links leave the group as there are points in it. The worst ratio is exactly 1. Networks that keep such a ratio above a fixed number, as they grow, are called expanders. In an expander, the links leaving a group measure how far the group is from nothing or everything[1].\n\nCoboundary expansion carries this idea to higher dimensions. Build a shape from points, links, filled triangles, filled tetrahedra and so on. Such a shape is a simplicial complex, and its pieces are called faces. Choose a set of links. Its coboundary is the set of triangles that contain an odd number of the chosen links[2]. Some sets of links have an empty coboundary for a trivial reason: they come from a set of points. Take all links leaving some group of points, and every triangle contains zero or two of them. A complex is a coboundary expander when the converse holds in a strong, measured form. A small coboundary forces the set to be close to one of those trivial sets. The same must hold one level up, two levels up, and so on.\n\nThere is a catch. Some complexes have holes, like the hollow inside a doughnut. A hole gives a set whose coboundary is empty, yet it is not close to any trivial set. So coboundary expansion also demands that the complex have no such holes, at every level below the top[3].\n\nMikhail Gromov asked in 2010 for large complexes of this kind with a bounded number of faces at each point[4]. In 2019, Lubotzky, Luria and Rosenthal built random expanders in every dimension[5]. But in their complexes, the number of faces at each point grows with the size[6]. Evra and Kaufman got bounded-degree complexes in every dimension with a weaker property that allows holes[7]. Chapman and Lubotzky settled the two-dimensional case in 2025[8]. Other work did not give the needed absence of holes at every level[9].\n\nThis paper proves the remaining case: every dimension from 3 up[10]. For each such dimension d, it builds a family of ever larger d-dimensional complexes. Every point lies in at most a fixed number of top faces. The expansion constant is the same for every member of the family, at every level below d[11]. Together with graphs and the two-dimensional case, this gives such expanders in every dimension.\n\nThe obstacle was proving there are no holes. A weaker measured inequality was already known for this family of complexes. It measures distance only to sets with empty coboundary, so it tolerates holes. The family comes from matrix groups built from polynomials. Small fixed groups describe the neighborhood of each point, which keeps the number of faces bounded[12]. The new work shows that every finite member of the family has no holes below the top level. That lets the earlier inequality be upgraded into full coboundary expansion[13].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the construction for every dimension of at least 3. The graph and two-dimensional cases, used to cover every dimension, are separate results. The constants may depend on the dimension. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. Lean has checked a formal version of the construction in dimensions 3 and up. The lower-dimensional cases are earlier results, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Expander",
+      "meaning": "A network where every group of points, up to half of them, has many links leaving it, compared with its size."
+    },
+    {
+      "term": "Simplicial complex",
+      "meaning": "A shape built from points, links, filled triangles, filled tetrahedra and higher versions."
+    },
+    {
+      "term": "Face",
+      "meaning": "One of the pieces of a simplicial complex: a point, link, triangle, tetrahedron and so on."
+    },
+    {
+      "term": "Coboundary",
+      "meaning": "For a set of faces, the faces one level up that contain an odd number of them."
+    },
+    {
+      "term": "Hole",
+      "meaning": "Here, a set of faces with empty coboundary that does not come from a lower level; it signals nonzero cohomology."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Gromov, “Singularities, expanders and topology of maps. Part 2: From combinatorics to topology via algebraic isoperimetry”, Geometric and Functional Analysis 20(2) (2010), 416–526",
+      "url": "https://doi.org/10.1007/s00039-010-0073-8"
+    },
+    {
+      "id": 2,
+      "cite": "A. Lubotzky, Z. Luria and R. Rosenthal, “Random Steiner systems and bounded degree coboundary expanders of every dimension”, Discrete & Computational Geometry 62(4) (2019), 813–831",
+      "url": "https://doi.org/10.1007/s00454-018-9991-2"
+    },
+    {
+      "id": 3,
+      "cite": "S. Evra and T. Kaufman, “Bounded degree cosystolic expanders of every dimension”, Journal of the AMS 37(1) (2024), 39–68",
+      "url": "https://doi.org/10.1090/jams/1019"
+    },
+    {
+      "id": 4,
+      "cite": "M. Chapman and A. Lubotzky, “Stability of homomorphisms, coverings and cocycles II: Examples, applications and open problems”, Advances in Mathematics 463 (2025), 110117",
+      "url": "https://doi.org/10.1016/j.aim.2025.110117"
+    },
+    {
+      "id": 5,
+      "cite": "I. Oppenheim and I. Valentiner-Branth, “New cosystolic high-dimensional expanders from KMS groups”, arXiv:2504.05823 (2025)",
+      "url": "https://arxiv.org/abs/2504.05823v2"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Bounded-degree coboundary expanders in every dimension” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-degree-coboundary-expanders-in-every-dimension-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for family 177 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/177.md"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "In an expander graph, the edge boundary of a vertex set controls its distance from the empty or full set.",
+      "verdict": "supported",
+      "sourceLine": "In an expander graph, the edge boundary of a set of vertices controls",
+      "sourceQuote": "In an expander graph, the edge boundary of a set of vertices controls its distance from the empty set or the whole vertex set."
+    },
+    {
+      "text": "Over F2, the coboundary of a set of i-faces is the set of (i+1)-faces containing an odd number of them.",
+      "verdict": "supported",
+      "sourceLine": "the $(i+1)$-faces containing an odd number of them. We construct",
+      "sourceQuote": "Over $\\F$, the coboundary of a set of $i$-faces consists of the $(i+1)$-faces containing an odd number of them. We construct complexes of increasing size for which this boundary controls distance from the space of coboundaries, uniformly in the size and with a bounded number of top-dimensional faces at each vertex."
+    },
+    {
+      "text": "The distinction between cocycles and coboundaries is essential.",
+      "verdict": "supported",
+      "sourceLine": "The distinction between cocycles and coboundaries is essential. If",
+      "sourceQuote": "The distinction between cocycles and coboundaries is essential. If $f\\in Z^i(Y)\\setminus B^i(Y)$, its coboundary vanishes while its distance from $B^i(Y)$ is positive."
+    },
+    {
+      "text": "Gromov asked for arbitrarily large complexes with bounded vertex incidence and uniform filling bounds.",
+      "verdict": "supported",
+      "sourceLine": "topological overlap and asked for arbitrarily large complexes with",
+      "sourceQuote": "Gromov connected cohomological filling inequalities with topological overlap and asked for arbitrarily large complexes with bounded vertex incidence and uniform filling bounds \\cite[Sections~2.3--2.5 and~2.14]{Gromov2010}."
+    },
+    {
+      "text": "Lubotzky, Luria and Rosenthal built random Steiner-system coboundary expanders in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "random Steiner-system coboundary expanders in every dimension",
+      "sourceQuote": "Lubotzky and Meshulam constructed random Latin-square coboundary expanders in dimension two \\cite{LM2015}; Lubotzky, Luria, and Rosenthal constructed random Steiner-system coboundary expanders in every dimension \\cite{LLR2019}."
+    },
+    {
+      "text": "In those constructions, in dimension at least two, vertex degrees grow with the size.",
+      "verdict": "supported",
+      "sourceLine": "a complete $(d-1)$-skeleton. In dimensions at least two, vertex degrees",
+      "sourceQuote": "The Latin-square complexes have a complete tripartite $1$-skeleton, and the Steiner-system complexes have a complete $(d-1)$-skeleton. In dimensions at least two, vertex degrees grow with the size."
+    },
+    {
+      "text": "Evra and Kaufman obtained bounded-degree cosystolic expanders in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "bounded-degree cosystolic expanders in every dimension through a",
+      "sourceQuote": "Evra and Kaufman obtained bounded-degree cosystolic expanders in every dimension through a local-to-global theorem \\cite{EK2024}."
+    },
+    {
+      "text": "Chapman and Lubotzky proved bounded-degree two-dimensional coboundary expanders exist over F2.",
+      "verdict": "supported",
+      "sourceLine": "Chapman and Lubotzky proved the existence of bounded-degree",
+      "sourceQuote": "Chapman and Lubotzky proved the existence of bounded-degree two-dimensional coboundary expanders over $\\F$ \\cite[Theorem~1.9]{CL2025}."
+    },
+    {
+      "text": "Earlier degree-one and cosystolic results do not give the vanishing needed in every degree.",
+      "verdict": "supported",
+      "sourceLine": "give the vanishing in every degree required by \\cref{thm:main}.",
+      "sourceQuote": "Those degree-one results and the cosystolic constructions above do not give the vanishing in every degree required by \\cref{thm:main}."
+    },
+    {
+      "text": "With the two-dimensional result and the graph case, the theorem gives bounded-degree expanders in every positive dimension.",
+      "verdict": "supported",
+      "sourceLine": "Together with the two-dimensional result and the graph case, our theorem",
+      "sourceQuote": "Together with the two-dimensional result and the graph case, our theorem gives bounded-degree $\\F$ coboundary expanders in every positive dimension."
+    },
+    {
+      "text": "The constants are independent of m, i and f.",
+      "verdict": "supported",
+      "sourceLine": "The constants are independent of $m$, $i$, and $f$.",
+      "sourceQuote": "The constants are independent of $m$, $i$, and $f$."
+    },
+    {
+      "text": "The local groups are fixed finite groups, giving uniform degree bounds.",
+      "verdict": "supported",
+      "sourceLine": "The local groups are fixed finite groups, which gives uniform",
+      "sourceQuote": "The local groups are fixed finite groups, which gives uniform degree bounds; the congruence quotients grow with $m$."
+    },
+    {
+      "text": "The cohomology vanishing replaces cocycles by coboundaries and completes the proof.",
+      "verdict": "supported",
+      "sourceLine": "inequality. The cohomology vanishing replaces cocycles by coboundaries",
+      "sourceQuote": "This factor cancels in the expansion inequality. The cohomology vanishing replaces cocycles by coboundaries and completes the proof."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "Lean formalizes the construction for every dimension d ≥ 3; the graph and two-dimensional cases are separate.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
