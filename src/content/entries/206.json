@@ -1,0 +1,215 @@
+{
+  "id": "206",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Congruence-Lattices-Characterization-and-Undecidability-September-24-2026/paper.pdf",
+      "label": "Finite congruence lattices: characterization and undecidability"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Negative-Solution-to-the-Finite-Lattice-Representation-Problem-September-24-2026/paper.pdf",
+      "label": "A negative solution to the finite lattice representation problem"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/206.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Some finite lattices are not the congruence lattice of any finite algebra, and no program can tell which.",
+  "scope": "Finite nonempty lattices and finite algebras with any finite list of operations. Also full subgroup intervals in finite groups.",
+  "plain": "An algebra's congruences are the groupings its operations respect, and they form a lattice. The finite lattice representation problem asks whether every finite lattice arises this way from a finite algebra. These papers claim the answer is no. They also claim no program can decide which finite lattices arise. A colored-graph test for which lattices arise has a Lean proof.",
+  "doesNot": "This does not give the size of a counterexample, or a way to compute it.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Péter Pálfy and Pavel Pudlák, the link to subgroup intervals",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "It would settle a central open question of universal algebra, in the negative, and add an undecidability result."
+  },
+  "explanation": "Take three objects, a, b and c. Sort them into groups. There are five ways: all apart, three ways to pair two of them, or all together. Ordered by merging, these five groupings form a small diagram. Mathematicians call such a diagram a lattice: any two of its points have a least point above both and a greatest point below both.\n\nNow add a rule that moves a to b, b to c, and c to a. Call a grouping a congruence if the rule respects it. Objects in one group must land in one group. Pairing a with b now fails, because the rule then pairs b with c. Only two groupings survive: all apart and all together. A finite algebra is a finite set with finitely many such rules. Its congruences, ordered by merging, always form a lattice. Different rules give different lattices.\n\nThe finite lattice representation problem runs the other way. Pick any finite lattice. Is there a finite algebra whose congruences form exactly that lattice, with nothing extra? The rules may be anything at all, and as many as needed.\n\nGrätzer and Schmidt showed in 1963 that every lattice of a broad kind is the congruence lattice of some algebra[1]. That algebra need not be finite[2]. In 1980, Pálfy and Pudlák tied the finite question to finite groups. Every finite lattice has a finite algebra exactly when every finite lattice is an interval in the subgroup lattice of a finite group[3]. That interval is the set of subgroups between two fixed ones. Many lattices were known to work. Every finite lattice of width at most two does[4]. Among lattices with at most seven elements, only one possible exception was left, and the paper handles it[5].\n\nThe two papers claim the answer is no. One claims there is a finite lattice that no finite algebra of any kind realizes[6]. The other claims something stronger. No computer program can take a lattice's table and always decide whether a finite algebra realizes it[7]. If every lattice worked, the program that always says yes would decide it. So the stronger claim also gives the negative answer[11]. The same undecidability is claimed for subgroup intervals in finite groups[8]. There is a smallest counterexample, with more than seven elements[9]. Its description uses a Busy Beaver number, so its actual size is not computed[12].\n\nThe single obstacle is that nothing about a hypothetical algebra is bounded. Every lattice in the argument is finite. But a group realizing it could have any order, any rank and any field size[13]. The paper builds lattices whose shapes force long chains of simple subgroups inside any such group. It then needs a bound on those chains that holds for every finite group at once[14]. The classification of finite simple groups, a large body of earlier work, supplies the key inputs[15].\n\nThere is also a positive tool. The paper turns a lattice into a question about finite colored graphs. A lattice is realizable exactly when a suitable colored graph exists[10]. Searching through graphs finds every yes answer. What fails is a stopping rule for the no answers[16].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the colored-graph criterion. That covers the equivalence between realizability and the graph test. The undecidability results, the subgroup-interval result and the counterexample lie outside that check. They rest on long arguments using the classification of finite simple groups. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. Only the colored-graph criterion has a Lean proof; the negative answer and undecidability rest on long arguments using the classification of finite simple groups. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Lattice",
+      "meaning": "An ordered set where any two elements have a least element above both and a greatest element below both."
+    },
+    {
+      "term": "Finite algebra",
+      "meaning": "A finite nonempty set with a finite list of operations, each taking a fixed number of inputs."
+    },
+    {
+      "term": "Congruence",
+      "meaning": "A grouping of an algebra's elements that its operations respect: grouped inputs give grouped outputs."
+    },
+    {
+      "term": "Subgroup interval",
+      "meaning": "All subgroups of a group lying between two fixed subgroups, ordered by inclusion."
+    },
+    {
+      "term": "Undecidable",
+      "meaning": "No computer program can answer every instance of the question correctly and always stop."
+    },
+    {
+      "term": "Busy Beaver number",
+      "meaning": "A specific whole number defined from small computer programs; it exists, but no general method computes such numbers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Finite congruence lattices: characterization and undecidability” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Congruence-Lattices-Characterization-and-Undecidability-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “A negative solution to the finite lattice representation problem” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Negative-Solution-to-the-Finite-Lattice-Representation-Problem-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 206 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/206.md"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Grätzer and Schmidt proved that every algebraic lattice is a full congruence lattice of an algebra.",
+      "verdict": "supported",
+      "sourceLine": "Gr\\\"atzer and Schmidt proved that every algebraic lattice is the full",
+      "sourceQuote": "Gr\\\"atzer and Schmidt proved that every algebraic lattice is the full congruence lattice of an algebra \\citep[Theorem~I]{GratzerSchmidt1963}.",
+      "paper": 1
+    },
+    {
+      "text": "The carrier in that theorem need not be finite.",
+      "verdict": "supported",
+      "sourceLine": "The carrier in that theorem need not be finite.",
+      "sourceQuote": "The carrier in that theorem need not be finite.",
+      "paper": 1
+    },
+    {
+      "text": "Pálfy and Pudlák proved the equivalence of the congruence and subgroup-interval statements.",
+      "verdict": "supported",
+      "sourceLine": "P\\'alfy and Pudl\\'ak proved that every finite lattice is a congruence lattice",
+      "sourceQuote": "P\\'alfy and Pudl\\'ak proved that every finite lattice is a congruence lattice of a finite algebra if and only if every finite lattice is an interval in a subgroup lattice of a finite group \\citep[Theorem~2]{PalfyPudlak1980}.",
+      "paper": 1
+    },
+    {
+      "text": "All finite lattices of width at most two are representable.",
+      "verdict": "supported",
+      "sourceLine": "results include all finite lattices of width at most two",
+      "sourceQuote": "Positive representation results include all finite lattices of width at most two \\citep[Theorem~4.2]{Snow2000}.",
+      "paper": 1
+    },
+    {
+      "text": "DeMeo left only one possible exception among lattices of at most seven elements, represented in the paper.",
+      "verdict": "supported",
+      "sourceLine": "DeMeo's analysis leaves only one possible exception among lattices with at",
+      "sourceQuote": "DeMeo's analysis leaves only one possible exception among lattices with at most seven elements \\citep[Theorem~6.1.1 and Figure~6.2]{DeMeo2012}.",
+      "paper": 1
+    },
+    {
+      "text": "There is a finite lattice not isomorphic to the congruence lattice of any finite algebra; the problem has a negative answer.",
+      "verdict": "supported",
+      "sourceLine": "Thus the finite lattice representation problem has a negative answer.",
+      "sourceQuote": "Thus the finite lattice representation problem has a negative answer.",
+      "paper": 2
+    },
+    {
+      "text": "No Turing machine decides representability from the order table of a finite lattice.",
+      "verdict": "supported",
+      "sourceLine": "There is no deterministic Turing machine that, given the order table",
+      "sourceQuote": "There is no deterministic Turing machine that, given the order table of a finite nonempty lattice, always halts and decides \\(\\mathcal R(L)\\).",
+      "paper": 1
+    },
+    {
+      "text": "Recognizing full subgroup intervals of finite groups is undecidable.",
+      "verdict": "supported",
+      "sourceLine": "that recognition of full subgroup intervals in finite groups is undecidable.",
+      "sourceQuote": "We also prove that recognition of full subgroup intervals in finite groups is undecidable.",
+      "paper": 1
+    },
+    {
+      "text": "There is a minimum-cardinality nonrepresentable lattice with more than seven elements.",
+      "verdict": "supported",
+      "sourceLine": "Every finite lattice of smaller cardinality is representable, and",
+      "sourceQuote": "Every finite lattice of smaller cardinality is representable, and \\(\\lvert L_0\\rvert>7\\).",
+      "paper": 1
+    },
+    {
+      "text": "A finite nonempty lattice is representable if and only if it satisfies the finite colored-graph criterion.",
+      "verdict": "supported",
+      "sourceLine": "A finite nonempty lattice is representable if and only if it satisfies",
+      "sourceQuote": "A finite nonempty lattice is representable if and only if it satisfies the finite colored-graph criterion in \\Cref{f:criterion}.",
+      "paper": 1
+    },
+    {
+      "text": "Undecidability resolves the problem negatively, since the constant affirmative algorithm would otherwise decide it.",
+      "verdict": "supported",
+      "sourceLine": "negatively, since otherwise the constant affirmative algorithm would be a",
+      "sourceQuote": "Part~\\textup{(ii)} resolves the finite lattice representation problem negatively, since otherwise the constant affirmative algorithm would be a decider.",
+      "paper": 1
+    },
+    {
+      "text": "The minimum lattice's constants include one Busy Beaver integer, which is not evaluated.",
+      "verdict": "supported",
+      "sourceLine": "one ordinary Busy Beaver integer.  The description does not evaluate",
+      "sourceQuote": "Its constants include one ordinary Busy Beaver integer. The description does not evaluate that integer, the minimum cardinality, or the entries of the order table.",
+      "paper": 1
+    },
+    {
+      "text": "A hypothetical representing group has no prescribed bound on its order, Lie rank or field size.",
+      "verdict": "supported",
+      "sourceLine": "group has no prescribed bound on its order, Lie rank, or field size.",
+      "sourceQuote": "Uniformity is the obstacle: every lattice in the construction is finite, but a hypothetical representing group has no prescribed bound on its order, Lie rank, or field size.",
+      "paper": 2
+    },
+    {
+      "text": "The crucial conclusion is an absolute upper bound on chain length, independent of the group.",
+      "verdict": "supported",
+      "sourceLine": "The bound must be independent of the finite group in which the",
+      "sourceQuote": "The bound must be independent of the finite group in which the configuration is represented.",
+      "paper": 2
+    },
+    {
+      "text": "The classification of finite simple groups enters through maximal-subgroup structure and representation theory.",
+      "verdict": "supported",
+      "sourceLine": "The classification of finite simple groups enters this stage through",
+      "sourceQuote": "The classification of finite simple groups enters this stage through maximal-subgroup structure and representation theory.",
+      "paper": 2
+    },
+    {
+      "text": "The graph criterion gives a search that terminates on representable lattices but no computable stopping rule for negative instances.",
+      "verdict": "supported",
+      "sourceLine": "in Part~\\textup{(i)} gives a search that terminates on representable",
+      "sourceQuote": "The criterion in Part~\\textup{(i)} gives a search that terminates on representable lattices; it does not provide a computable stopping rule for negative instances.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes the colored-graph characterization; undecidability and subgroup-interval conclusions are outside it.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
