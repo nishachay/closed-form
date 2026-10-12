@@ -1,0 +1,221 @@
+{
+  "id": "171",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-hypercube-Ramsey-number-has-linear-order-September-23-2026/paper.pdf",
+      "label": "The hypercube Ramsey number has linear order"
+    }
+  ],
+  "headline": "Two-coloring the links among a constant times 2ⁿ points always gives a one-color n-dimensional cube, the paper claims.",
+  "scope": "The result covers the two-color Ramsey number of the n-dimensional cube graph, for every n. The constant is absolute but not given as a number.",
+  "plain": "The n-dimensional cube graph has 2ⁿ corners, linked when they differ in one coordinate. Color every link between M points red or blue, and ask how large M must be to force a one-color cube. Burr and Erdős asked in 1975 whether M can be a fixed constant times 2ⁿ. This paper claims to prove that it can, which settles the order of growth.",
+  "doesNot": "This does not give a numerical value for the constant, or say what R(Qₙ)/2ⁿ tends to.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Stefan Burr and Paul Erdős, who posed the cube question",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a well-known question from 1975, with the best possible order of growth."
+  },
+  "explanation": "Picture an ordinary cube. It has 8 corners and 12 edges. Label each corner by three digits, each 0 or 1, such as 010. Two corners share an edge exactly when their labels differ in one digit. Do the same with n digits and you get the n-dimensional cube graph Qₙ. It has 2ⁿ corners, and each corner has n links.\n\nNow take M points and join every pair. Color each of these links red or blue. The Ramsey number R(Qₙ) is the smallest M that always leaves a one-color copy of the cube[1]. The copy may use extra links too; it only needs the cube's own links in one color.\n\nHere is why M must be well above 2ⁿ. Take n = 3, and split 10 points into a block of 7 and a block of 3. Color links inside each block red, and links between blocks blue. A red cube would need 8 points inside one block, and the biggest has 7. A blue cube must put its two halves of 4 corners in opposite blocks, and one block has only 3[6]. So no one-color cube appears, and R(Q₃) is at least 11. In general this coloring shows R(Qₙ) is at least 3 × 2ⁿ⁻¹ − 1[5].\n\nIn 1975 Burr and Erdős asked a sharper question. Is R(Qₙ) at most a fixed constant times 2ⁿ, for every n[2,3]? Cubes are a hard test case. Among families that could have this property, they have about as many links per corner as the known limit allows[4].\n\nRelated results came first. Graphs where every vertex has at most a fixed number of links have Ramsey numbers linear in their size, by a 1983 theorem[8]. Lee proved the same for a broader sparseness class in 2017[9]. Neither settles the cube, because each corner of Qₙ has n links, and n grows[10].\n\nBounds for the cube itself improved slowly. Write m = 2ⁿ for the number of corners. Shi showed in 2001 that R(Qₙ) is at most a fixed power of m[11]. Conlon, Fox and Sudakov got 2^(2n+6), which is 64m²[12]. Lee's work gives about m² plus n²m for large n[13]. Tikhomirov then pushed the power of m below 2[14]. For n = 10, the cube has 1,024 corners. The lower bound is 1,535, while Lee's upper bound is 1,150,976.\n\nThis paper claims that R(Qₙ) is at most C × 2ⁿ, with one absolute constant C, for every n[1]. That answers the Burr–Erdős question positively[18]. With the lower bound above, the order of growth is settled. The paper gives no number for C, and does not say what R(Qₙ)/2ⁿ approaches[7]. Earlier results for a cube against a fixed clique do not imply this one[15].\n\nThe single hard part is keeping the loss to a constant factor. The proof must handle colorings on only a slowly growing multiple of 2ⁿ points[16]. It assumes a coloring with no one-color cube in either color. From that it derives an imbalance in how the colors are spread, called discrepancy[17]. It then uses that imbalance to place the cube piece by piece.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. The constant C is not given as a number. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Cube graph Qₙ",
+      "meaning": "The graph whose vertices are all strings of n zeros and ones, linked when they differ in exactly one place."
+    },
+    {
+      "term": "Ramsey number R(H)",
+      "meaning": "The fewest points such that coloring every link among them red or blue always leaves a one-color copy of the graph H."
+    },
+    {
+      "term": "Monochromatic",
+      "meaning": "All in one color."
+    },
+    {
+      "term": "Order",
+      "meaning": "The number of vertices of a graph."
+    },
+    {
+      "term": "Degeneracy",
+      "meaning": "A sparseness measure: a graph is d-degenerate if every part of it has a vertex with at most d links."
+    },
+    {
+      "term": "Bipartite graph",
+      "meaning": "A graph whose vertices split into two sides, with every link going between the sides."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "S. A. Burr and P. Erdős, “On the magnitude of generalized Ramsey numbers for graphs”, in Infinite and Finite Sets, Vol. I, Colloquia Mathematica Societatis János Bolyai 10, North-Holland (1975), 215–240",
+      "url": "https://www.renyi.hu/~p_erdos/1975-26.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "V. Chvátal, V. Rödl, E. Szemerédi and W. T. Trotter, Jr., “The Ramsey number of a graph with bounded maximum degree”, Journal of Combinatorial Theory, Series B 34(3) (1983), 239–243",
+      "url": "https://doi.org/10.1016/0095-8956(83)90037-0"
+    },
+    {
+      "id": 3,
+      "cite": "L. Shi, “Cube Ramsey numbers are polynomial”, Random Structures & Algorithms 19(2) (2001), 99–101",
+      "url": "https://doi.org/10.1002/rsa.1021"
+    },
+    {
+      "id": 4,
+      "cite": "D. Conlon, J. Fox and B. Sudakov, “Short proofs of some extremal results II”, Journal of Combinatorial Theory, Series B 121 (2016), 173–196",
+      "url": "https://doi.org/10.1016/j.jctb.2016.03.005"
+    },
+    {
+      "id": 5,
+      "cite": "C. Lee, “Ramsey numbers of degenerate graphs”, Annals of Mathematics 185(3) (2017), 791–829",
+      "url": "https://doi.org/10.4007/annals.2017.185.3.2"
+    },
+    {
+      "id": 6,
+      "cite": "K. Tikhomirov, “A remark on the Ramsey number of the hypercube”, European Journal of Combinatorics 120 (2024), 103954",
+      "url": "https://doi.org/10.1016/j.ejc.2024.103954"
+    },
+    {
+      "id": 7,
+      "cite": "D. Conlon, J. Fox, C. Lee and B. Sudakov, “Ramsey numbers of cubes versus cliques”, Combinatorica 36 (2016), 37–70",
+      "url": "https://doi.org/10.1007/s00493-014-3010-x"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 171: “The hypercube Ramsey number has linear order” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-hypercube-Ramsey-number-has-linear-order-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "There is an absolute constant C > 0 with R(Qₙ) ≤ C·2ⁿ for every n ≥ 0.",
+      "verdict": "supported",
+      "sourceLine": "There is an absolute constant $C>0$ such that",
+      "sourceQuote": "There is an absolute constant $C>0$ such that \\[ R(Q_n)\\le C2^n \\qquad\\text{for every integer }n\\ge0. \\]"
+    },
+    {
+      "text": "Burr and Erdős called a family an L-set if one constant bounds every member's Ramsey number by that constant times its order.",
+      "verdict": "supported",
+      "sourceLine": "called a family of graphs an",
+      "sourceQuote": "In their 1975 paper, Burr and Erd\\H{o}s called a family of graphs an \\emph{$L$-set} if one constant bounds the Ramsey number of every member by that constant times its order~\\cite[Section~1]{burr-erdos1975}."
+    },
+    {
+      "text": "Burr and Erdős raised the cube question separately, asking whether the cubes form an L-set.",
+      "verdict": "supported",
+      "sourceLine": "asking whether the cubes form an",
+      "sourceQuote": "Burr and Erd\\H{o}s raised the cube question separately in Section~7, asking whether the cubes form an $L$-set."
+    },
+    {
+      "text": "Cubes reach the largest edges-per-vertex order that the necessary condition still permits.",
+      "verdict": "supported",
+      "sourceLine": "Thus cubes reach the logarithmic order of edges per vertex that this",
+      "sourceQuote": "Thus cubes reach the logarithmic order of edges per vertex that this necessary condition still permits."
+    },
+    {
+      "text": "A standard two-block coloring gives R(Qₙ) ≥ 3·2^{n−1} − 1.",
+      "verdict": "supported",
+      "sourceLine": "The standard lower-bound coloring",
+      "sourceQuote": "The standard lower-bound coloring with two blocks~\\cite[Introduction]{conlon-fox-lee-sudakov2016} gives $R(Q_n)\\ge3\\cdot2^{n-1}-1$."
+    },
+    {
+      "text": "Each red component is too small, while a blue copy would need 2^{n−1} vertices in each block.",
+      "verdict": "supported",
+      "sourceLine": "Each red component is too small for",
+      "sourceQuote": "Each red component is too small for $Q_n$, while a blue copy would need $2^{n-1}$ vertices in each block."
+    },
+    {
+      "text": "The theorem determines the order of R(Qₙ) but gives no value for C and does not determine whether R(Qₙ)/2ⁿ converges.",
+      "verdict": "supported",
+      "sourceLine": "It gives no numerical value for",
+      "sourceQuote": "It gives no numerical value for $C$ and does not determine whether $R(Q_n)/2^n$ converges or what its limiting value would be."
+    },
+    {
+      "text": "Chvátal, Rödl, Szemerédi and Trotter proved linear Ramsey numbers for fixed maximum degree.",
+      "verdict": "supported",
+      "sourceLine": "graphs of any fixed maximum degree have Ramsey number linear in",
+      "sourceQuote": "Chv\\'atal, R\\\"odl, Szemer\\'edi and Trotter proved in 1983 that graphs of any fixed maximum degree have Ramsey number linear in their order, with a constant depending on the degree~\\cite{chvatal-rodl-szemeredi-trotter1983}."
+    },
+    {
+      "text": "Lee resolved the bounded-degeneracy form of the Burr–Erdős conjecture.",
+      "verdict": "supported",
+      "sourceLine": "resolving the bounded-degeneracy form of the",
+      "sourceQuote": "Lee later proved the corresponding assertion for every fixed degeneracy, resolving the bounded-degeneracy form of the Burr--Erd\\H{o}s conjecture~\\cite[Theorem~1.1]{lee2017}."
+    },
+    {
+      "text": "These results did not settle the cube question because the cube's maximum degree and degeneracy equal n.",
+      "verdict": "supported",
+      "sourceLine": "These results did not settle the cube question",
+      "sourceQuote": "These results did not settle the cube question because both the maximum degree and the degeneracy of $Q_n$ equal $n$: their constants may grow with the dimension."
+    },
+    {
+      "text": "Shi's bound moved the cube problem from a growing exponent to a fixed exponent.",
+      "verdict": "supported",
+      "sourceLine": "This moved the cube problem from a growing exponent in",
+      "sourceQuote": "This moved the cube problem from a growing exponent in $m$ to a fixed exponent."
+    },
+    {
+      "text": "Conlon, Fox and Sudakov obtained R(Qₙ) ≤ 2^{2n+6}.",
+      "verdict": "supported",
+      "sourceLine": "Fox and Sudakov obtained",
+      "sourceQuote": "For positive integers $n$, Fox and Sudakov obtained $R(Q_n)\\le n2^{2n+5}$~\\cite[Corollary~1.3]{fox-sudakov2009}, and Conlon, Fox and Sudakov obtained $R(Q_n)\\le2^{2n+6}$~\\cite[Corollary~4.2]{conlon-fox-sudakov2016}."
+    },
+    {
+      "text": "Lee's result gives R(Qₙ) ≤ 2^{2n} + n²2ⁿ for large n.",
+      "verdict": "supported",
+      "sourceLine": "Lee's Theorem~1.3 and the paragraph following it give",
+      "sourceQuote": "Lee's Theorem~1.3 and the paragraph following it give $R(Q_n)\\le2^{2n}+n^2 2^n$ for all sufficiently large $n$~\\cite{lee2017}."
+    },
+    {
+      "text": "Tikhomirov's improvement brought the exponent of m = 2ⁿ below 2; the present theorem reaches a constant multiple of m.",
+      "verdict": "supported",
+      "sourceLine": "The present theorem reaches a constant",
+      "sourceQuote": "The present theorem reaches a constant multiple of $m$."
+    },
+    {
+      "text": "Results for a cube against a fixed clique do not imply the diagonal cube theorem.",
+      "verdict": "supported",
+      "sourceLine": "These conclusions for a fixed clique do not imply the diagonal",
+      "sourceQuote": "These conclusions for a fixed clique do not imply the diagonal cube theorem, where the target in both colors grows with $n$."
+    },
+    {
+      "text": "The task is to keep a constant loss when the host order is only a slowly diverging multiple of 2ⁿ.",
+      "verdict": "supported",
+      "sourceLine": "The task in the present diagonal problem is to retain a constant",
+      "sourceQuote": "The task in the present diagonal problem is to retain a constant multiplicative loss when the host order is only a slowly diverging multiple of $2^n$."
+    },
+    {
+      "text": "The proof uses the absence of a cube in both colors of a counterexample to derive discrepancy.",
+      "verdict": "supported",
+      "sourceLine": "absence of a cube in both colors of a counterexample to derive discrepancy.",
+      "sourceQuote": "The present proof uses the absence of a cube in both colors of a counterexample to derive discrepancy."
+    },
+    {
+      "text": "The theorem resolves the Burr–Erdős cube question positively.",
+      "verdict": "supported",
+      "sourceLine": "resolves that question positively",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves that question positively."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
