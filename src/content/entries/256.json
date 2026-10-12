@@ -1,0 +1,185 @@
+{
+  "id": "256",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonsingular-systems-of-equations-over-arbitrary-groups-October-5-2026/nonsingular-systems-over-arbitrary-groups.pdf",
+      "label": "Nonsingular systems of equations over arbitrary groups"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kervaire-Theorem-for-Groups-September-24-2026/The-Kervaire-Theorem-for-Groups-September-24-2026.pdf",
+      "label": "The Kervaire theorem for groups"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/256.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims every nonsingular system of equations over any group is solvable in a larger group, settling Howie's conjecture.",
+  "scope": "Finite systems of equations with coefficients in an arbitrary group. Lean covers the one-relator unimodular injectivity theorem behind Kervaire's conjecture, not the multi-equation theorem.",
+  "plain": "An equation over a group mixes known group elements with unknowns. It is solvable if a larger group contains the original one and values for the unknowns. The first paper claims this always works when a simple count of the unknowns, done with ordinary integers, gives independent rows. A companion paper proves the one-equation case behind Kervaire's conjecture, with a Lean formalization listed.",
+  "doesNot": "This does not give a Lean proof of the many-equation theorem, or say the larger group is finite or specially structured.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1962",
+    "firstStepBy": "Murray Gerstenhaber and Oscar Rothaus, who solved nonsingular systems over finite groups and compact Lie groups",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "Kervaire's conjecture and Howie's conjecture are long-standing open problems in combinatorial group theory."
+  },
+  "explanation": "Take a group A with an element a ≠ 1. Add a new unknown t and impose the equation t a t⁻¹ = 1. Conjugating back gives a = 1. So this equation destroys a, and no larger group can solve it while keeping a. Count how often t appears, with signs: +1 − 1 = 0. That count is the exponent sum. Now try t a t a² t⁻¹ = 1. Its exponent sum is 1 + 1 − 1 = 1. The Kervaire–Laudenbach question asks whether a nonzero exponent sum always prevents such collapse.\n\nAn equation over a group G is a word mixing elements of G with unknowns[1]. A solution is a larger group containing a copy of G, with values for the unknowns that make every word equal 1[1]. For several equations, the exponent sums form an integer matrix. For example, x₁x₂g and x₁x₂⁻¹h give rows (1, 1) and (1, −1). The determinant is 1·(−1) − 1·1 = −2, which is not zero. So the rows are independent. A system is nonsingular when its rows have full rank over the rationals[2].\n\nGerstenhaber and Rothaus in 1962 solved nonsingular systems over finite groups and compact Lie groups[3]. Howie solved them over locally indicable groups[4]. Klyachko treated one equation over torsion-free groups with exponent sum ±1[5]. The obstacle was arbitrary coefficient groups. These may have torsion, be uncountable, or have no nice finite models.\n\nThe companion paper proves the one-variable case: for every group A and every word with exponent sum ±1, A embeds in the quotient[6]. The Kervaire conjecture follows: one new generator and one new relation never kill a nontrivial group[7]. For other exponent sums d, the quotient maps onto the nontrivial cyclic group of order |d|, or onto the integers when d = 0[8].\n\nThe first paper claims the general statement. If the exponent-sum matrix has full row rank, G embeds in the quotient, so the system has a solution in an overgroup[9]. This is Howie's conjecture[10]. The proof turns a hypothetical lost element into a flat surface with disks and bands. Full row rank forces matching numbers of positive and negative disks for each equation[11]. A spectral phase function, measured through the regular representation of G, then forces the lost element to be the identity.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the one-relator theorem with exponent sum ±1. The many-equation theorem has no Lean formalization. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. Lean covers the unimodular one-relator theorem behind Kervaire's conjecture, not the many-equation theorem. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Equation over a group",
+      "meaning": "A word mixing fixed group elements with unknowns, to be set equal to the identity."
+    },
+    {
+      "term": "Overgroup",
+      "meaning": "A larger group that contains a copy of the original group."
+    },
+    {
+      "term": "Exponent sum",
+      "meaning": "The total number of times an unknown appears, counting its inverse as minus one."
+    },
+    {
+      "term": "Nonsingular system",
+      "meaning": "A system whose matrix of exponent sums has independent rows over the rational numbers."
+    },
+    {
+      "term": "Normal closure",
+      "meaning": "The smallest normal subgroup containing given elements; quotienting by it imposes those elements as relations."
+    },
+    {
+      "term": "Torsion",
+      "meaning": "Elements other than the identity that have finite order."
+    },
+    {
+      "term": "Locally indicable",
+      "meaning": "Every nontrivial finitely generated subgroup maps onto the integers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Nonsingular systems of equations over arbitrary groups” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonsingular-systems-of-equations-over-arbitrary-groups-October-5-2026/nonsingular-systems-over-arbitrary-groups.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The Kervaire theorem for groups” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kervaire-Theorem-for-Groups-September-24-2026/The-Kervaire-Theorem-for-Groups-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 256",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/256.md",
+      "quote": "for any group $A$ and any relator in $A*\\mathbb Z$ whose exponent sum in the cyclic generator is $1$ or $-1$, the natural map from $A$ into the quotient by that relator is injective."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "An equation over a group permits coefficients from it and asks if unknowns can be realized in a larger group without identifying distinct coefficients.",
+      "sourceLine": "An equation over a group permits coefficients from that group and asks whether the unknowns can be realized in a larger group without identifying distinct coefficients.",
+      "sourceQuote": "An equation over a group permits coefficients from that group and asks whether the unknowns can be realized in a larger group without identifying distinct coefficients.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The system is nonsingular if the exponent-sum matrix has rank m over Q.",
+      "sourceLine": "The system is \\emph{nonsingular} if $\\operatorname{rank}_{\\mathbb Q}A=m$.",
+      "sourceQuote": "The system is \\emph{nonsingular} if $\\operatorname{rank}_{\\mathbb Q}A=m$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Gerstenhaber and Rothaus solved square nonsingular systems over compact connected Lie groups and finite groups.",
+      "sourceLine": "The foundational system theorem is due to Gerstenhaber and Rothaus",
+      "sourceQuote": "The foundational system theorem is due to Gerstenhaber and Rothaus \\cite{GerstenhaberRothaus1962}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Howie proved solvability of finite independent systems over locally indicable groups.",
+      "sourceLine": "Howie proved solvability of finite independent systems over locally indicable groups",
+      "sourceQuote": "Howie proved solvability of finite independent systems over locally indicable groups \\cite[Corollary~4.2]{Howie1981}; locally indicable means that every nontrivial finitely generated subgroup maps onto $\\mathbb Z$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Klyachko's theorem treats one equation in one variable over a torsion-free group with exponent sum ±1.",
+      "sourceLine": "Klyachko's theorem treats a single equation in one variable over a torsion-free group when the exponent sum is $\\pm1$",
+      "sourceQuote": "Klyachko's theorem treats a single equation in one variable over a torsion-free group when the exponent sum is $\\pm1$ \\cite{Klyachko1993}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every group A and every unimodular word w in A ∗ ⟨t⟩, the canonical map A → quotient is injective.",
+      "sourceLine": "For every group $A$ and every unimodular word $w\\in A*\\langle t\\rangle$, the canonical homomorphism",
+      "sourceQuote": "For every group $A$ and every unimodular word $w\\in A*\\langle t\\rangle$, the canonical homomorphism \\[ A\\longrightarrow (A*\\langle t\\rangle)/\\langle\\!\\langle w\\rangle\\!\\rangle_H \\] is injective.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No free product of a nontrivial group with an infinite cyclic group is normally generated by one element.",
+      "sourceLine": "We prove that no free product of a nontrivial group with an infinite cyclic group is normally generated by one element.",
+      "sourceQuote": "We prove that no free product of a nontrivial group with an infinite cyclic group is normally generated by one element.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "For other exponent sums d, the quotient surjects onto the nontrivial group Z/dZ, with Z/0Z = Z.",
+      "sourceLine": "the map $p$ induces a surjection from the quotient onto the nontrivial group $\\Z/d\\Z$, where $\\Z/0\\Z=\\Z$.",
+      "sourceQuote": "For every other integer $d=p(w)$, the map $p$ induces a surjection from the quotient onto the nontrivial group $\\Z/d\\Z$, where $\\Z/0\\Z=\\Z$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "If the exponent-sum matrix has row rank m over Q, the canonical map from G is injective; equivalently the system has a solution in an overgroup.",
+      "sourceLine": "Equivalently, the system has a simultaneous solution in an overgroup of $G$.",
+      "sourceQuote": "Equivalently, the system has a simultaneous solution in an overgroup of $G$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The general solvability assertion for nonsingular systems is commonly called Howie's conjecture.",
+      "sourceLine": "The general solvability assertion for nonsingular systems is commonly called Howie's conjecture",
+      "sourceQuote": "The general solvability assertion for nonsingular systems is commonly called Howie's conjecture; see \\cite[Introduction]{KlyachkoMikheenkoRomankov2024} for this formulation and terminology.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Full row rank forces equal numbers of positive and negative disks of each relator type.",
+      "sourceLine": "First, full row rank forces equal numbers of positive and negative disks of each relator type.",
+      "sourceQuote": "First, full row rank forces equal numbers of positive and negative disks of each relator type.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes coefficient injectivity for one relator in A ∗ Z with exponent sum ±1, the result underlying Kervaire's conjecture.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
