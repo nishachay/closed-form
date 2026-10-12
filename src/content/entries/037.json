@@ -1,0 +1,228 @@
+{
+  "id": "037",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-ordinary-double-point-gap-in-every-dimension-September-24-2026/paper.pdf",
+      "label": "The ordinary-double-point gap in every dimension"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-normalized-volume-gap-in-dimension-four-September-24-2026/paper.pdf",
+      "label": "The normalized-volume gap in dimension four"
+    }
+  ],
+  "headline": "Every singular point of a mild kind is at most as roomy as a double cone, in any dimension.",
+  "scope": "It covers klt points of complex algebraic shapes with zero boundary, in every dimension n of at least 2.",
+  "plain": "Normalized volume is a number that says how roomy a shape is near one point. Smooth points score highest, n to the power n. A double cone point scores 2 times (n − 1) to the power n. These papers claim that no other singular point of a mild kind scores more, in any dimension. They also claim that only the double cone point reaches that score.",
+  "doesNot": "This does not give the third-largest value, or classify points with scores just below the gap.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2017",
+    "firstStepBy": "Spotti and Sun, the gap conjecture",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a well-known conjecture on singularities and K-stability in every dimension."
+  },
+  "explanation": "Stand at a point of a flat plane and draw a small disc around it. Now stand at the tip of a double cone, like two ice-cream cones joined at their points. Near the tip, the shape is squeezed. Mathematicians have a number for how roomy a shape is near one point. It is called the normalized volume. A point of a smooth n-dimensional space scores n to the power n. A flat plane is 2-dimensional, so its points score 2² = 4.\n\nThe double cone is the simplest singular point, meaning a point where the shape is not smooth. In dimension 2, it is the set of solutions of x² + y² = z². It scores 2, half of the plane's 4. One way to see this: the cone is the plane folded onto itself by the map that sends each point to its opposite. Folding by a group of two halves the room near the tip. In dimension n, the same kind of point is called an ordinary double point. It is the zero set of a sum of n + 1 squares. Its score is 2 times (n − 1) to the power n. That gives 16 in dimension 3, against 27 for a smooth point. In dimension 4 it gives 162, against 256.\n\nThe score is built from valuations. A valuation is a rule that measures how fast functions vanish as they approach the point. For each rule, one multiplies two quantities. One is a weight called the log discrepancy, raised to the power n. The other counts how many independent functions vanish slowly under that rule. The normalized volume is the smallest such product over all rules. Chi Li introduced it to measure the size of a klt singularity[1]. Klt is short for Kawamata log terminal. It names a broad class of mild singular points, the class where this score is defined.\n\nThe top score was known. Liu and Xu showed that n to the power n is the largest value, reached exactly at smooth points[2]. The question was the runner-up. The gap conjecture says every singular klt point scores at most 2(n − 1)^n. It also says only the ordinary double point reaches that value[3]. An ordinary double point is the germ of a nondegenerate quadratic form[4]. A germ is the shape of a space close to one point. Spotti and Sun proposed the conjecture in 2017, from the study of limits of Kähler–Einstein metrics[5]. These are especially balanced ways to measure distance on a shape. The ratio of the two scores grows with the dimension, from 0.5 in dimension 2 toward 2/e, about 0.736. So the gap narrows but never closes.\n\nSome cases were already settled. In dimension 2, the folding picture with finite groups gives the answer. Liu and Xu proved the threefold case for every klt point[6]. Liu proved it in all dimensions for local complete intersections, points cut out by the right number of equations[7]. Moraga and Süß treated toric points, built from simple monomial equations. In general, though, a singular point can need many equations and have no special symmetry.\n\nThis family of two papers claims the full conjecture. The main paper claims the bound in every dimension, for klt points with zero boundary[8]. It also claims equality only at an analytic ordinary double point[9]. The singular point need not be isolated from other singular points[10]. The companion paper claims the case of dimension 4, where the bound is 162[12]. The main paper starts from dimensions 2, 3 and 4, and then climbs one dimension at a time[13].\n\nThe obstacle is that the hypothesis is only a number. The conjecture covers every singular klt point, not just those defined by one equation. So the proof must get structure out of a large score alone[11]. The paper first replaces the point by a simpler cone with the same score. The large score then forces that cone to be smooth away from its tip, with an especially simple canonical form. These facts come out of the argument, not out of extra assumptions[14].\n\nThe local result also limits global shapes. A Fano variety is a shape that curves positively, like a sphere, and has a volume number of its own. The gap gives restrictions on K-semistable Fano varieties, a balanced class of such shapes[15]. The paper states a smaller volume bound for singular ones. It does not claim that this bound is the best possible[16].\n\nHow sure is this? No Lean formalization is listed for this result. Its proof is a long written argument that leans on many earlier theorems. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. The claim rests on a long unchecked induction, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Normalized volume",
+      "meaning": "A number measuring how roomy a shape is near one point; smooth n-dimensional points score n to the power n."
+    },
+    {
+      "term": "Singular point",
+      "meaning": "A point where a shape is not smooth, such as the tip of a cone."
+    },
+    {
+      "term": "Ordinary double point",
+      "meaning": "The tip of the zero set of a sum of squares, the simplest kind of singular point."
+    },
+    {
+      "term": "Klt singularity",
+      "meaning": "Kawamata log terminal: a broad class of mild singular points where normalized volume is defined."
+    },
+    {
+      "term": "Valuation",
+      "meaning": "A rule that measures how fast functions vanish as they approach a point."
+    },
+    {
+      "term": "Germ",
+      "meaning": "The shape of a space close to one point."
+    },
+    {
+      "term": "Fano variety",
+      "meaning": "A shape that curves positively, like a sphere."
+    },
+    {
+      "term": "Local complete intersection",
+      "meaning": "A singular point cut out by the smallest possible number of equations."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "C. Li, “Minimizing normalized volumes of valuations”, Mathematische Zeitschrift 289 (2018), 491–513",
+      "url": "https://doi.org/10.1007/s00209-017-1963-3"
+    },
+    {
+      "id": 2,
+      "cite": "Y. Liu and C. Xu, “K-stability of cubic threefolds”, Duke Mathematical Journal 168 (2019), 2029–2073",
+      "url": "https://doi.org/10.1215/00127094-2019-0006"
+    },
+    {
+      "id": 3,
+      "cite": "C. Spotti and S. Sun, “Explicit Gromov–Hausdorff compactifications of moduli spaces of Kähler–Einstein Fano manifolds”, Pure and Applied Mathematics Quarterly 13 (2017), 477–515",
+      "url": "https://doi.org/10.4310/PAMQ.2017.v13.n3.a5"
+    },
+    {
+      "id": 4,
+      "cite": "C. Li and Y. Liu, “Kähler–Einstein metrics and volume minimization”, Advances in Mathematics 341 (2019), 440–492",
+      "url": "https://doi.org/10.1016/j.aim.2018.10.038"
+    },
+    {
+      "id": 5,
+      "cite": "Y. Liu, “K-stability of cubic fourfolds”, Journal für die reine und angewandte Mathematik 786 (2022), 55–77",
+      "url": "https://doi.org/10.1515/crelle-2022-0002"
+    },
+    {
+      "id": 6,
+      "cite": "J. Moraga and H. Süß, “Bounding toric singularities with normalized volume”, Bulletin of the London Mathematical Society 56 (2024), 2212–2229",
+      "url": "https://doi.org/10.1112/blms.13052"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Normalized volume measures the size of a klt singularity.",
+      "verdict": "supported",
+      "sourceLine": "measures the size of a klt singularity by balancing",
+      "sourceQuote": "Normalized volume, introduced by Chi Li \\cite{Li18}, measures the size of a klt singularity by balancing the discrepancy of a valuation against the asymptotic colength of its valuation ideals.",
+      "paper": 1
+    },
+    {
+      "text": "The largest normalized volume is n^n, attained exactly at smooth points.",
+      "verdict": "supported",
+      "sourceLine": "attained exactly at smooth points",
+      "sourceQuote": "In dimension \\(n\\), the largest normalized volume is \\(n^n\\), attained exactly at smooth points \\cite[Theorem~1.6]{LX19}.",
+      "paper": 1
+    },
+    {
+      "text": "The conjecture predicts the next largest value, 2(n-1)^n, and that it characterizes the ordinary double point.",
+      "verdict": "supported",
+      "sourceLine": "The ordinary double point gap conjecture predicts the next largest value",
+      "sourceQuote": "The ordinary double point gap conjecture predicts the next largest value: every singular klt germ should have normalized volume at most \\(2(n-1)^n\\), and this value should characterize the ordinary double point.",
+      "paper": 1
+    },
+    {
+      "text": "An ordinary double point is the germ of a nondegenerate quadratic form.",
+      "verdict": "supported",
+      "sourceLine": "An ordinary double point is the analytic hypersurface germ of a nondegenerate quadratic form.",
+      "sourceQuote": "An ordinary double point is the analytic hypersurface germ of a nondegenerate quadratic form.",
+      "paper": 1
+    },
+    {
+      "text": "Spotti and Sun proposed that the ordinary double point has the largest density among singular cones.",
+      "verdict": "supported",
+      "sourceLine": "proposed that the ordinary double point has the largest density among singular Ricci-flat",
+      "sourceQuote": "Spotti--Sun proposed that the ordinary double point has the largest density among singular Ricci-flat K\\\"ahler cones with isolated vertex, and formulated the corresponding normalized-volume conjecture for arbitrary singular klt germs \\cite[Conjectures~1.2 and~5.5]{SpottiSun17}.",
+      "paper": 1
+    },
+    {
+      "text": "Liu and Xu proved the threefold case for arbitrary klt germs.",
+      "verdict": "supported",
+      "sourceLine": "proved the threefold theorem for arbitrary klt germs",
+      "sourceQuote": "Liu--Xu proved the threefold theorem for arbitrary klt germs \\cite[Theorem~1.3]{LX19}.",
+      "paper": 1
+    },
+    {
+      "text": "Liu proved the conjecture for local complete intersections in higher dimensions.",
+      "verdict": "supported",
+      "sourceLine": "In higher dimensions, Liu proved the conjecture for local complete intersections",
+      "sourceQuote": "In higher dimensions, Liu proved the conjecture for local complete intersections \\cite[Theorem~1.3]{Liu22}.",
+      "paper": 1
+    },
+    {
+      "text": "The paper claims the gap for boundary-zero klt germs in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "We prove the ordinary-double-point gap conjecture for boundary-zero complex algebraic klt germs in every dimension",
+      "sourceQuote": "We prove the ordinary-double-point gap conjecture for boundary-zero complex algebraic klt germs in every dimension: a singular \\(n\\)-dimensional germ has normalized volume at most \\(2(n-1)^n\\), with equality precisely at an analytic ordinary double point.",
+      "paper": 1
+    },
+    {
+      "text": "Equality holds precisely at an analytic ordinary double point.",
+      "verdict": "supported",
+      "sourceLine": "with equality precisely at an analytic ordinary double point.",
+      "sourceQuote": "We prove the ordinary-double-point gap conjecture for boundary-zero complex algebraic klt germs in every dimension: a singular \\(n\\)-dimensional germ has normalized volume at most \\(2(n-1)^n\\), with equality precisely at an analytic ordinary double point.",
+      "paper": 1
+    },
+    {
+      "text": "The point need not be isolated in the singular locus.",
+      "verdict": "supported",
+      "sourceLine": "The point need not be isolated in the singular locus.",
+      "sourceQuote": "The point need not be isolated in the singular locus.",
+      "paper": 1
+    },
+    {
+      "text": "An essential part of the problem is extracting structure from a numerical bound on volume.",
+      "verdict": "supported",
+      "sourceLine": "Thus an essential part of the problem is to extract structural information from a numerical lower bound on volume.",
+      "sourceQuote": "Thus an essential part of the problem is to extract structural information from a numerical lower bound on volume.",
+      "paper": 1
+    },
+    {
+      "text": "The fourfold companion resolves the conjecture in dimension four.",
+      "verdict": "supported",
+      "sourceLine": "This resolves the ordinary-double-point volume-gap conjecture in dimension four.",
+      "sourceQuote": "This resolves the ordinary-double-point volume-gap conjecture in dimension four.",
+      "paper": 2
+    },
+    {
+      "text": "The proof argues by induction from dimensions two, three and the fourfold companion.",
+      "verdict": "supported",
+      "sourceLine": "Starting from the known cases in dimensions two and three and the fourfold companion, we argue by induction.",
+      "sourceQuote": "Starting from the known cases in dimensions two and three and the fourfold companion, we argue by induction.",
+      "paper": 1
+    },
+    {
+      "text": "Smoothness off the vertex and Gorenstein structure are conclusions of the reduction, not assumptions.",
+      "verdict": "supported",
+      "sourceLine": "These are conclusions of the reduction, rather than assumptions on the germ.",
+      "sourceQuote": "These are conclusions of the reduction, rather than assumptions on the germ.",
+      "paper": 1
+    },
+    {
+      "text": "The gap gives global restrictions on K-semistable Fano varieties.",
+      "verdict": "supported",
+      "sourceLine": "such a gap gives global restrictions on K-semistable Fano varieties through the local-to-global volume inequality",
+      "sourceQuote": "Besides distinguishing a basic singularity by a numerical invariant, such a gap gives global restrictions on K-semistable Fano varieties through the local-to-global volume inequality \\cite[Theorem~21]{Liu18}.",
+      "paper": 1
+    },
+    {
+      "text": "The smaller singular Fano bound comes with no claim of sharpness.",
+      "verdict": "supported",
+      "sourceLine": "is not accompanied by an assertion of sharpness or a classification of its equality cases.",
+      "sourceQuote": "The smaller singular bound in Corollary~\\ref{cor:global} is not accompanied by an assertion of sharpness or a classification of its equality cases.",
+      "paper": 1
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}
