@@ -1,0 +1,211 @@
+{
+  "id": "053",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-high-arity-counterexample-to-Pixton-completeness-in-Chow-September-24-2026/paper.pdf",
+      "label": "A high-arity counterexample to Pixton completeness in Chow"
+    }
+  ],
+  "headline": "A tautological relation in genus 10^60 that Pixton’s original relations miss, in Chow and in cohomology.",
+  "scope": "One explicit class on the space of stable curves of genus 10^60 with about 5 × 10^179 marked points.",
+  "plain": "The space of stable curves carries natural classes, and mathematicians want every relation among them. Pixton proposed a system of relations and conjectured that it gives all of them. This paper claims to build a class that is zero in the Chow ring, and so in rational cohomology. It also claims that this class does not come from Pixton’s original system. The example has genus 10^60, far from any small case.",
+  "doesNot": "This does not show that Pixton’s system fails in small genus, or give a corrected complete list.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "A. Pixton, who proposed the relation system and conjectured completeness",
+    "significance": "Major",
+    "significanceWhy": "If correct, it disproves the Chow and cohomological forms of a central conjecture about relations on moduli of curves.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Suppose you know three facts about some numbers a, b and c. You know a − b = 0 and b − c = 0. From those two rules you can derive a − c = 0. A list of rules is complete when every true relation can be derived this way. Proving rules is one problem. Knowing that the list is complete is a different and harder one.\n\nAlgebraic geometers face this problem for curves. A moduli space is a space whose points are themselves shapes. Here each point is a stable curve. That is a curve of some genus g, maybe with simple pinches called nodes, and n marked points. This space, written M̄_{g,n}, has a family of natural classes. These are building blocks for its Chow ring, a way of doing algebra with subspaces and how they intersect. The natural classes form the tautological ring. Describing every relation among them is a central problem in this area[1].\n\nPixton proposed a uniform system of relations in 2012 and conjectured that it is complete[2,3]. The relations themselves were later shown to hold. Pandharipande, Pixton and Zvonkine proved them in cohomology. Janda proved them in Chow[4]. Those results establish the relations. Completeness asks whether any further relations exist[5].\n\nThis paper claims a negative answer. It builds an explicit formal class Y outside Pixton’s original span[6]. Yet the image of Y in the rational Chow ring is zero[6]. So Y is a true relation that Pixton’s list does not produce. Applying the cycle-class map then gives the same failure in rational cohomology[7]. Cohomology is a coarser way of measuring a space, so a relation that holds in Chow also holds there.\n\nThe example is enormous. The genus is g = 10^60. The construction uses g colours and one factor for each set of three colours[8]. The number of such triples is D = g(g − 1)(g − 2)/6. That is about 1.67 × 10^179. The number of marked points is n = 3D, about 5.0 × 10^179[6]. To see the pattern at small size, take 5 colours. Then there would be 10 triples and 30 marked points. The paper does not claim the result for such small numbers. The large sizes leave room in the estimates and are not proposed as minimal[9].\n\nThe difficulty is that two separate claims are needed about the same class. One is that Y is not in Pixton’s span. The other is that Y is still zero in Chow. The paper proves them with two different algebras[10]. A formal algebra can carry independent cubic coefficients and still kill everything in Pixton’s span. That shows Y lies outside the span[10]. The actual Chow correspondences of a curve satisfy an extra identity that forces Y to vanish[10]. That identity comes from a Quot scheme, a space that parametrizes quotients of a fixed sheaf on a surface.\n\nCompleteness is not the same as the Gorenstein property, which concerns pairings between classes of complementary degree[11]. Pixton showed that a related ring in genus 25 is not Gorenstein, while still proving completeness there[12]. Canning, Larson and Schmitt found a similar split on some compact-type spaces. This paper’s relation instead lives on the full space of stable curves[13]. It concerns Pixton’s original system, fixed precisely in the paper. The comparison throughout is with that explicit span[14].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The example is astronomically large and says nothing about small genus.",
+  "glossary": [
+    {
+      "term": "Moduli space",
+      "meaning": "A space whose points are themselves shapes, here curves with marked points."
+    },
+    {
+      "term": "Stable curve",
+      "meaning": "A curve that may have simple pinches, called nodes, with finitely many symmetries once marked."
+    },
+    {
+      "term": "Chow ring",
+      "meaning": "An algebra built from subspaces of a space, where multiplication records how they intersect."
+    },
+    {
+      "term": "Tautological ring",
+      "meaning": "The part of the Chow ring generated by the natural classes of the moduli space of curves."
+    },
+    {
+      "term": "Complete",
+      "meaning": "A list of relations is complete when every true relation follows from it."
+    },
+    {
+      "term": "Cohomology",
+      "meaning": "A coarser algebraic measurement of a space's shape; relations true in Chow stay true there."
+    },
+    {
+      "term": "Quot scheme",
+      "meaning": "A space that parametrizes quotients of a fixed sheaf, used here to produce an identity."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A high-arity counterexample to Pixton completeness in Chow”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-high-arity-counterexample-to-Pixton-completeness-in-Chow-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "A. Pixton, “Conjectural relations in the tautological ring of M̄_{g,n}”, arXiv:1207.1918 (2012)",
+      "url": "https://arxiv.org/abs/1207.1918v1"
+    },
+    {
+      "id": 4,
+      "cite": "R. Pandharipande, A. Pixton and D. Zvonkine, “Relations on M̄_{g,n} via 3-spin structures”, Journal of the AMS 28 (2015), 279–309",
+      "url": "https://arxiv.org/abs/1303.1043v3"
+    },
+    {
+      "id": 5,
+      "cite": "F. Janda, “Relations on M̄_{g,n} via equivariant Gromov–Witten theory of P¹”, Algebraic Geometry 4 (2017), 311–336",
+      "url": "https://doi.org/10.14231/AG-2017-018"
+    },
+    {
+      "id": 6,
+      "cite": "S. Canning, “The tautological ring of M̄_{g,n} is rarely Gorenstein”, Geometry & Topology 29 (2025), 3905–3919",
+      "url": "https://doi.org/10.2140/gt.2025.29.3905"
+    },
+    {
+      "id": 7,
+      "cite": "S. Canning, H. Larson and J. Schmitt, “The Gorenstein property and Pixton's conjecture for compact type moduli”, arXiv:2607.02249 (2026)",
+      "url": "https://arxiv.org/abs/2607.02249v2"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Describing all relations among the natural classes is a central problem.",
+      "sourceLine": "Describing all relations among these natural classes is a central problem in the intersection theory of moduli spaces.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Describing all relations among these natural classes is a central problem in the intersection theory of moduli spaces."
+    },
+    {
+      "text": "Pixton proposed a uniform system of stable-graph relations and conjectured it is complete.",
+      "sourceLine": "Pixton proposed a uniform system of stable-graph relations and conjectured that it is complete.",
+      "sourceId": 3,
+      "verdict": "supported",
+      "sourceQuote": "Pixton proposed a uniform system of stable-graph relations and conjectured that it is complete."
+    },
+    {
+      "text": "Pixton's 2012 graph formula proposes a complete set of relations on M̄_{g,n}.",
+      "sourceLine": "and proposes a complete set of relations",
+      "sourceId": 3,
+      "verdict": "supported",
+      "sourceQuote": "Pixton's 2012 graph formula extends the Faber--Zagier system to \\(\\Mbar_{g,n}\\) and proposes a complete set of relations \\cite[Sections~1--3, Conjecture~2]{Pixton}."
+    },
+    {
+      "text": "PPZ proved cohomological validity; Janda proved Chow validity.",
+      "sourceLine": "proved the cohomological validity of this",
+      "sourceId": 5,
+      "verdict": "supported",
+      "sourceQuote": "Pandharipande--Pixton--Zvonkine proved the cohomological validity of this system using the \\(3\\)-spin CohFT \\cite{PPZ}; Janda proved its Chow validity using equivariant Gromov--Witten theory of \\(\\mathbb P^1\\) \\cite{Janda}."
+    },
+    {
+      "text": "Completeness asks whether further relations exist.",
+      "sourceLine": "These results establish relations, while completeness asks whether any further relations exist.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "These results establish relations, while completeness asks whether any further relations exist."
+    },
+    {
+      "text": "For g = 10^60, D = C(g,3), n = 3D, the class Y has q(Y) = 0 and is not in Pixton's span.",
+      "sourceLine": "Consequently Pixton's original relation span does not exhaust the tautological Chow relations",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Consequently Pixton's original relation span does not exhaust the tautological Chow relations: the equality \\(\\ker q_{g,n}=\\Pspan_{g,n}\\) fails for this stable pair."
+    },
+    {
+      "text": "The same class gives the rational-cohomological consequence.",
+      "sourceLine": "The same class gives the rational-cohomological consequence.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The same class gives the rational-cohomological consequence."
+    },
+    {
+      "text": "The construction uses g colors and one three-label factor per increasing triple of colors.",
+      "sourceLine": "The construction uses … colors and one three-label factor for each increasing triple of colors.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The construction uses \\(g\\) colors and one three-label factor for each increasing triple of colors. Each factor is a product of two rational-tail divisor sums, corrected by a class supported on two-node rational bridges."
+    },
+    {
+      "text": "The large parameters are not proposed as minimal.",
+      "sourceLine": "they are not proposed as minimal parameters.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The large parameters leave ample room in the support and color estimates; they are not proposed as minimal parameters."
+    },
+    {
+      "text": "A formal algebra proves nonmembership; actual Chow correspondences satisfy an extra nilpotence identity proving vanishing.",
+      "sourceLine": "The first algebra proves nonmembership; the second proves vanishing.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The first algebra proves nonmembership; the second proves vanishing."
+    },
+    {
+      "text": "Completeness is distinct from the Gorenstein property.",
+      "sourceLine": "Completeness is distinct from the Gorenstein property.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Completeness is distinct from the Gorenstein property."
+    },
+    {
+      "text": "Pixton proved R*(M_25) is not Gorenstein while establishing Faber–Zagier completeness there.",
+      "sourceLine": "is not Gorenstein while establishing Faber--Zagier completeness there",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Pixton proved that \\(R^*(\\mathcal M_{25})\\) is not Gorenstein while establishing Faber--Zagier completeness there \\cite[Theorem~1.1 and Section~2.2]{Pixton2026}."
+    },
+    {
+      "text": "The relation lies on the full stable compactification.",
+      "sourceLine": "Our relation lies on the full stable compactification.",
+      "sourceId": 7,
+      "verdict": "supported",
+      "sourceQuote": "Our relation lies on the full stable compactification."
+    },
+    {
+      "text": "The comparison is with the explicitly fixed span.",
+      "sourceLine": "The comparison throughout this paper is with the explicitly fixed span",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The comparison throughout this paper is with the explicitly fixed span \\(\\Pspan_{g,n}\\)."
+    },
+    {
+      "text": "Completeness in both Chow and cohomology is recorded as Pixton's conjecture.",
+      "sourceLine": "is explicitly recorded as Pixton's conjecture in",
+      "sourceId": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
