@@ -1,0 +1,187 @@
+{
+  "id": "063",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Generalized-Mukai-Conjecture-September-24-2026/article.pdf",
+      "label": "The generalized Mukai conjecture"
+    }
+  ],
+  "headline": "A claimed proof that rational curves on a Fano manifold cap its Picard number, with equality only for product spaces.",
+  "scope": "The claim covers every smooth complex Fano manifold of positive dimension. It gives the bound and the full equality case.",
+  "plain": "A Fano manifold is a smooth, closed shape that curves positively in a precise algebraic sense. Its Picard number counts independent ways to measure curves on it. Its pseudoindex is the smallest positivity degree of any sphere-shaped curve on it. This paper claims that Picard number times pseudoindex minus one never exceeds the dimension. It also claims equality happens only for a product of identical projective spaces.",
+  "doesNot": "This does not come with a computer-checked proof, and no Lean scope note exists for it.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Shigeru Mukai, index version of the bound",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle, in every dimension, a bound that earlier work proved only up to dimension five or under extra conditions."
+  },
+  "explanation": "Take the projective plane P², an ordinary plane with a line at infinity added. It has dimension n = 2. A rational curve is a curve shaped like a sphere, such as a line. The anticanonical degree of a curve measures how strongly the space bends positively along it. For a line in P² that degree is 3, and no rational curve has less. The smallest such degree is called the pseudoindex, written ι. The Picard number ρ counts the independent ways to measure curves. For P², ρ = 1. So ρ(ι − 1) = 1 × 2 = 2, which equals n.\n\nNow take P¹ × P¹, a product of two lines. Here n = 2 and ρ = 2. A line in either direction has anticanonical degree 2, so ι = 2. Then ρ(ι − 1) = 2 × 1 = 2, again equal to n. The product P¹ × P² has n = 3, ρ = 2 and ι = 2. There ρ(ι − 1) = 2, which is below 3. Blow up one point of the plane, replacing it by a small sphere. That sphere has anticanonical degree 1, so ι = 1 and ρ(ι − 1) = 0.\n\nAll of these are Fano manifolds. A Fano manifold is a smooth, closed algebraic space whose anticanonical class is ample, meaning positive on every curve. That positivity forces rational curves to exist, so ι makes sense. The generalized Mukai conjecture says ρ(ι − 1) ≤ n for every such space of positive dimension n. It adds that equality happens only for a product of ρ copies of the projective space P^(ι−1). The examples fit: P² is one copy of P², and P¹ × P¹ is two copies of P¹.\n\nShigeru Mukai posed the first version in 1988, using the Fano index[3]. The Fano index is the largest integer dividing the anticanonical class, and it can differ from ι[2]. Jarosław Wiśniewski introduced the pseudoindex and proved that 2ι > n + 2 forces ρ = 1[4]. Bonavero, Casagrande, Debarre and Druel stated the pseudoindex form and proved it up to dimension four[5]. Andreatta, Chierici and Occhetta extended this to dimension five[6]. Casagrande settled a broad class of toric Fano varieties, built from combinatorial data, in every dimension[7]. Novelli proved both parts whenever ι > n/3[8]. Each of these results needs a limit on dimension, symmetry or ι. The paper claims a proof with no such limit[9,1].\n\nThe approach uses quantum cohomology. Ordinary cohomology records how subspaces meet. Quantum cohomology also counts rational curves that run between them. Multiplying by a divisor class, a basic way to measure curves, then gives a matrix. Its entries mix ordinary intersection with counts of curves of each degree. A curve count of anticanonical degree d lowers codimension by d − 1[10]. Codimension is the number of conditions that cut out a subspace. Each step lowers it by at least ι − 1, and it can only fall from n to 0. So a nonzero product built from ρ independent curve degrees gives ρ(ι − 1) ≤ n.\n\nThe main obstacle is producing that nonzero product without assuming semisimplicity[11]. Semisimple roughly means the matrices split into independent one-by-one blocks. The paper first proves a lower bound for certain curve counts called point descendants[12]. A recurrence then shows that one joint eigenvalue list has ρ algebraically independent entries[13]. A trace argument turns that independence into the needed product of curve counts[14]. At equality, the paper builds chains of actual rational curves. It then applies Occhetta's description of products of projective spaces[15].\n\nHow sure is this? There is no Lean scope note for this result, so no computer proof checker has tested it. The paper claims to prove both the bound and the equality case. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. It is a single paper with no Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Fano manifold",
+      "meaning": "A smooth, closed algebraic space whose anticanonical class is positive on every curve."
+    },
+    {
+      "term": "Rational curve",
+      "meaning": "A curve in the space shaped like a sphere, such as a line."
+    },
+    {
+      "term": "Pseudoindex",
+      "meaning": "The smallest anticanonical degree of any rational curve in the space."
+    },
+    {
+      "term": "Picard number",
+      "meaning": "The number of independent ways to measure curves in the space."
+    },
+    {
+      "term": "Fano index",
+      "meaning": "The largest integer that divides the anticanonical class."
+    },
+    {
+      "term": "Quantum cohomology",
+      "meaning": "A way of multiplying subspaces that also counts rational curves running between them."
+    },
+    {
+      "term": "Codimension",
+      "meaning": "The number of conditions needed to cut out a subspace."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The generalized Mukai conjecture” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Generalized-Mukai-Conjecture-September-24-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "S. Mukai, “Problems on characterization of the complex projective space”, 23rd Taniguchi Symposium, Katata (1988), 57–60",
+      "url": "https://www.kurims.kyoto-u.ac.jp/~mukai/paper/Taniguchi1988.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "L. Bonavero, C. Casagrande, O. Debarre and S. Druel, “Sur une conjecture de Mukai”, Commentarii Mathematici Helvetici 78 (2003), 601–626",
+      "url": "https://doi.org/10.1007/s00014-003-0765-x"
+    },
+    {
+      "id": 5,
+      "cite": "C. Novelli, “On Fano manifolds with an unsplit dominating family of rational curves”, Kodai Mathematical Journal 35 (2012), 425–438",
+      "url": "https://doi.org/10.2996/kmj/1352985447"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Let X be a smooth connected Fano manifold of positive dimension n, Picard number ρ and pseudoindex ι; then ρ(ι−1) ≤ n, with equality iff X is (P^(ι−1))^ρ.",
+      "verdict": "supported",
+      "sourceLine": "Let $X$ be a smooth connected complex projective Fano manifold of positive dimension $n$, Picard number $\\rho_X$ and pseudoindex $\\iota_X$.",
+      "sourceQuote": "Let $X$ be a smooth connected complex projective Fano manifold of positive dimension $n$, Picard number $\\rho_X$ and pseudoindex $\\iota_X$."
+    },
+    {
+      "text": "The pseudoindex need not equal the Fano index, the largest integer dividing −K_X.",
+      "verdict": "supported",
+      "sourceLine": "The pseudoindex records the smallest anticanonical curve degree; it need not equal the largest integer dividing $-K_X$ in",
+      "sourceQuote": "The pseudoindex records the smallest anticanonical curve degree; it need not equal the largest integer dividing $-K_X$ in $\\operatorname{Pic}(X)$, which is the Fano index."
+    },
+    {
+      "text": "The index version originates in Mukai's work.",
+      "verdict": "supported",
+      "sourceLine": "The index version originates in Mukai's work",
+      "sourceQuote": "The index version originates in Mukai's work~\\cite{Mukai1988}."
+    },
+    {
+      "text": "Wiśniewski introduced the pseudoindex and proved 2ι > n+2 forces ρ = 1.",
+      "verdict": "supported",
+      "sourceLine": "introduced the pseudoindex and proved that $2\\iota_X>n+2$ forces $\\rho_X=1$",
+      "sourceQuote": "Wi\\'{s}niewski introduced the pseudoindex and proved that $2\\iota_X>n+2$ forces $\\rho_X=1$~\\cite[Theorem~A]{Wisniewski1990}."
+    },
+    {
+      "text": "Bonavero, Casagrande, Debarre and Druel formulated the pseudoindex version and proved it in dimension at most four.",
+      "verdict": "supported",
+      "sourceLine": "Bonavero, Casagrande, Debarre and Druel formulate the pseudoindex strengthening and establish it for Fano manifolds of dimension at most four",
+      "sourceQuote": "Bonavero, Casagrande, Debarre and Druel formulate the pseudoindex strengthening and establish it for Fano manifolds of dimension at most four, and for smooth toric Fano manifolds when $n\\le7$ or $3\\iota_X\\ge n+3$~\\cite{BCDD2003}."
+    },
+    {
+      "text": "Andreatta, Chierici and Occhetta extended the low-dimensional result to dimension five.",
+      "verdict": "supported",
+      "sourceLine": "Andreatta, Chierici and Occhetta extend the low-dimensional result to dimension five",
+      "sourceQuote": "Andreatta, Chierici and Occhetta extend the low-dimensional result to dimension five and prove high-pseudoindex cases subject to contraction hypotheses \\cite{AndreattaChiericiOcchetta2004}."
+    },
+    {
+      "text": "Casagrande settled the bound and equality classification for Q-factorial Gorenstein toric Fano varieties in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "Casagrande settles the bound and equality classification for",
+      "sourceQuote": "For varieties with additional symmetry, Casagrande settles the bound and equality classification for $\\mathbb Q$-factorial Gorenstein toric Fano varieties in every dimension~\\cite[Theorem~1(ii)]{Casagrande2006}, and Pasquier treats $\\mathbb Q$-factorial Gorenstein horospherical Fano varieties~\\cite[Theorem~1]{Pasquier2010}."
+    },
+    {
+      "text": "Novelli enlarged the large-pseudoindex range to ι > n/3.",
+      "verdict": "supported",
+      "sourceLine": "Novelli later enlarges this range to $\\iota_X>n/3$",
+      "sourceQuote": "Novelli and Occhetta prove both conclusions for all smooth Fano manifolds with $\\iota_X\\ge(n+3)/3$~\\cite{NovelliOcchetta2010}, and Novelli later enlarges this range to $\\iota_X>n/3$~\\cite[Theorem~5.1]{Novelli2012}."
+    },
+    {
+      "text": "The main theorem imposes no restriction on dimension, Picard number or geometry.",
+      "verdict": "supported",
+      "sourceLine": "imposes no restriction on the dimension, Picard number or geometry",
+      "sourceQuote": "Theorem~\\ref{thm:main} imposes no restriction on the dimension, Picard number or geometry of the smooth Fano manifold."
+    },
+    {
+      "text": "A correspondence of anticanonical degree d lowers cohomological codimension by d−1.",
+      "verdict": "supported",
+      "sourceLine": "A correspondence of anticanonical degree $d$ lowers cohomological codimension by $d-1$.",
+      "sourceQuote": "A correspondence of anticanonical degree $d$ lowers cohomological codimension by $d-1$."
+    },
+    {
+      "text": "The main task is to produce the product without assuming quantum cohomology is semisimple.",
+      "verdict": "supported",
+      "sourceLine": "The main task is to produce that product without assuming that quantum cohomology is semisimple.",
+      "sourceQuote": "The main task is to produce that product without assuming that quantum cohomology is semisimple."
+    },
+    {
+      "text": "The paper first proves a lower bound for a point descendant.",
+      "verdict": "supported",
+      "sourceLine": "We first prove a lower bound for a point descendant, an intersection",
+      "sourceQuote": "We first prove a lower bound for a point descendant, an intersection number on the space of one-pointed rational stable maps involving the $(d-2)$nd power of the marked cotangent class."
+    },
+    {
+      "text": "One joint eigenvalue tuple has r algebraically independent coordinates.",
+      "verdict": "supported",
+      "sourceLine": "Thus one joint tuple has $r$ algebraically independent coordinates",
+      "sourceQuote": "Thus one joint tuple has $r$ algebraically independent coordinates (Section~\\ref{sec:spectral})."
+    },
+    {
+      "text": "A trace argument converts algebraic independence into the required curve correspondences.",
+      "verdict": "supported",
+      "sourceLine": "converts this algebraic independence into the required curve correspondences.",
+      "sourceQuote": "Section~\\ref{sec:trace} converts this algebraic independence into the required curve correspondences."
+    },
+    {
+      "text": "At equality, Occhetta's characterization of products of projective spaces gives rigidity.",
+      "verdict": "supported",
+      "sourceLine": "and Occhetta's characterization of products of projective spaces gives the asserted rigidity",
+      "sourceQuote": "A cyclic reordering makes every family covering, and Occhetta's characterization of products of projective spaces gives the asserted rigidity~\\cite{Occhetta2006}."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
