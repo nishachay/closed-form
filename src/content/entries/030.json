@@ -1,0 +1,173 @@
+{
+  "id": "030",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Modularity-of-elliptic-curves-over-imaginary-quadratic-fields-October-4-2026/paper.pdf",
+      "label": "Modularity of elliptic curves over imaginary quadratic fields"
+    }
+  ],
+  "headline": "Every elliptic curve over every imaginary quadratic field is claimed to match an automorphic form, place by place.",
+  "scope": "The result covers every elliptic curve over every imaginary quadratic field, such as the field of numbers a + bi with a, b rational.",
+  "plain": "An elliptic curve is a cubic equation whose solutions can be counted modulo each prime. Modularity says these counts are the coefficients of a highly symmetric function, an automorphic form. Over the rational numbers this was proved by 2001, completing work that gave Fermat's Last Theorem. The paper claims to prove it over every imaginary quadratic field, such as the numbers a + bi with a, b rational. It also claims the match holds at every prime, including the bad ones.",
+  "doesNot": "This does not cover other fields, such as real quadratic fields or fields of higher degree.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "A. Wiles and R. Taylor–A. Wiles, who proved modularity for semistable elliptic curves over the rationals",
+    "significance": "Landmark",
+    "significanceWhy": "Modularity over imaginary quadratic fields was known only for some curves or some fields, if this proof holds.",
+    "field": "Number theory"
+  },
+  "explanation": "Work with numbers of the form a + bi, where i² = −1 and a, b are fractions. Take the curve y² = x³ + x + i. To count its points modulo 5, note that 5 = (2 + i)(2 − i). Working modulo 2 + i turns i into 3, since 3² = 9 leaves −1 after dividing by 5. The curve becomes y² = x³ + x + 3 with remainders mod 5. It has 3 solutions with ordinary x and y, plus one point at infinity, so 4 points. The number 5 + 1 − 4 = 2 is the curve’s count at this prime.\n\nAn elliptic curve is an equation like this one, with no repeated roots on the right. Do the same count at every prime and you get an endless list of numbers. Modularity says one symmetric object produces that whole list. That object is an automorphic representation (a highly symmetric function built from the field, here acting by 2 × 2 matrices). The conjecture asks for even more. At the bad primes, where the curve breaks, the full local data must match too[1].\n\nThe field of numbers a + bi is one imaginary quadratic field. Others use √−2, √−3, and so on. Over the ordinary fractions, Wiles and Taylor–Wiles proved modularity for semistable curves in 1995. Breuil, Conrad, Diamond and Taylor finished every curve in 2001[3]. A key method lifts a match from a simpler “residual” version of the curve’s data, its pattern modulo one prime[4].\n\nImaginary quadratic fields resisted this method. The relevant data occur in more than one cohomology degree, a technical layer the method uses[5]. Potential modularity was proved: every curve becomes modular after enlarging the field[6]. But proving it over the original field is a further problem[7]. Caraiani and Newton proved modularity for some curves and fields. Their results include every curve over a field where a certain curve, X₀(15), has rank zero[8]. The paper claims to remove the remaining restrictions on the curve and the field[9]. It still relies on Caraiani and Newton’s lifting theorem as an essential input[9].\n\nThe paper claims the full statement[2]. For every imaginary quadratic field and every elliptic curve over it, a matching automorphic representation exists. The L-function of the curve (a function that packages all its point counts) equals the automorphic one, shifted by 1/2[10]. In the example, the count 2 at the prime 2 + i is one coefficient of a single automorphic object.\n\nThe obstacle is reaching a residual pattern that the known theorem accepts. The paper builds a chain of linked objects from one family of curves of higher genus[11]. Each link agrees with the next modulo a prime: first modulo p, then modulo 3, then modulo p again. Matches pass along the chain, from a curve at one end that is shown modular first, to the given curve. This echoes Wiles’s switch between the primes 3 and 5[4].\n\nThe claim stays inside its setting. It is about imaginary quadratic fields only. It does not cover real quadratic fields or larger fields.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. The proof combines a new construction with deep published theorems. No specialist review has been published.",
+  "hypeCheck": "Landmark only if the proof holds. No Lean formalization is listed and no specialist review is published. It covers imaginary quadratic fields only.",
+  "glossary": [
+    {
+      "term": "Elliptic curve",
+      "meaning": "The solutions of a cubic equation like y² = x³ + ax + b with no repeated roots, plus one point at infinity."
+    },
+    {
+      "term": "Imaginary quadratic field",
+      "meaning": "The numbers a + b√−d with a, b fractions, for a fixed positive whole number d, such as a + bi."
+    },
+    {
+      "term": "Modular",
+      "meaning": "Matched by an automorphic form, so the curve’s point counts are that form’s coefficients."
+    },
+    {
+      "term": "Automorphic representation",
+      "meaning": "A highly symmetric object built from a number field whose numbers can match the counts of a curve."
+    },
+    {
+      "term": "L-function",
+      "meaning": "A function that packages all the point counts of a curve, or all the numbers of an automorphic object."
+    },
+    {
+      "term": "Residual representation",
+      "meaning": "The pattern of a curve’s symmetry data reduced modulo one prime."
+    },
+    {
+      "term": "Potential modularity",
+      "meaning": "Modularity that holds only after the field is enlarged."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Modularity of elliptic curves over imaginary quadratic fields”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Modularity-of-elliptic-curves-over-imaginary-quadratic-fields-October-4-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "A. Wiles, “Modular elliptic curves and Fermat's Last Theorem”, Annals of Mathematics 141 (1995), 443–551",
+      "url": "https://doi.org/10.2307/2118559"
+    },
+    {
+      "id": 3,
+      "cite": "R. Taylor and A. Wiles, “Ring-theoretic properties of certain Hecke algebras”, Annals of Mathematics 141 (1995), 553–572",
+      "url": "https://doi.org/10.2307/2118560"
+    },
+    {
+      "id": 4,
+      "cite": "C. Breuil, B. Conrad, F. Diamond and R. Taylor, “On the modularity of elliptic curves over Q: wild 3-adic exercises”, Journal of the AMS 14 (2001), 843–939",
+      "url": "https://doi.org/10.1090/S0894-0347-01-00370-8"
+    },
+    {
+      "id": 5,
+      "cite": "P. B. Allen et al., “Potential automorphy over CM fields”, Annals of Mathematics 197 (2023), 897–1113",
+      "url": "https://doi.org/10.4007/annals.2023.197.3.2"
+    },
+    {
+      "id": 6,
+      "cite": "A. Caraiani and J. Newton, “On the modularity of elliptic curves over imaginary quadratic fields”, arXiv:2301.10509 (2025)",
+      "url": "https://arxiv.org/abs/2301.10509v3"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "At a bad place the automorphy conjecture requires the full local parameter, including inertia and monodromy.",
+      "verdict": "supported",
+      "sourceLine": "place it requires the full local parameter, including its inertia and",
+      "sourceQuote": "At a place of good reduction this requires the Hecke polynomial to recover the point count of the reduced curve; at a bad place it requires the full local parameter, including its inertia and monodromy."
+    },
+    {
+      "text": "The paper proves this conjecture for every K and E.",
+      "verdict": "supported",
+      "sourceLine": "We prove this conjecture for every $K$ and $E$.",
+      "sourceQuote": "We prove this conjecture for every $K$ and $E$."
+    },
+    {
+      "text": "Wiles and Taylor–Wiles proved modularity of semistable curves; BCDT proved every elliptic curve over Q.",
+      "verdict": "supported",
+      "sourceLine": "Breuil--Conrad--Diamond--Taylor proved modularity of every elliptic",
+      "sourceQuote": "Over $\\Q$, Wiles and Taylor--Wiles proved modularity of semistable elliptic curves~\\cite{Wiles,TaylorWiles}, and Breuil--Conrad--Diamond--Taylor proved modularity of every elliptic curve~\\cite{BCDT}."
+    },
+    {
+      "text": "A central method is to lift automorphy from a residual Galois representation; Wiles's 3–5 switch uses an auxiliary curve.",
+      "verdict": "supported",
+      "sourceLine": "curve~\\cite{BCDT}. A central method is to lift automorphy from a residual",
+      "sourceQuote": "Over $\\Q$, Wiles and Taylor--Wiles proved modularity of semistable elliptic curves~\\cite{Wiles,TaylorWiles}, and Breuil--Conrad--Diamond--Taylor proved modularity of every elliptic curve~\\cite{BCDT}. A central method is to lift automorphy from a residual Galois representation."
+    },
+    {
+      "text": "For imaginary quadratic fields, the relevant cohomology occurs in more than one degree.",
+      "verdict": "supported",
+      "sourceLine": "For imaginary quadratic fields, the relevant cohomology occurs in more",
+      "sourceQuote": "For imaginary quadratic fields, the relevant cohomology occurs in more than one degree."
+    },
+    {
+      "text": "The ACC potential automorphy theorem implies potential modularity of every elliptic curve over a CM field.",
+      "verdict": "supported",
+      "sourceLine": "implies potential modularity of every elliptic curve over a CM",
+      "sourceQuote": "The potential automorphy theorem of Allen--Calegari--Caraiani--Gee--Helm--Le Hung--Newton--Scholze--Taylor--Thorne implies potential modularity of every elliptic curve over a CM field~\\cite[Theorem~1.0.1]{ACC}."
+    },
+    {
+      "text": "Automorphy over the original field is a further problem.",
+      "verdict": "supported",
+      "sourceLine": "an extension of the ground field; automorphy over the original field is a",
+      "sourceQuote": "Potential modularity permits an extension of the ground field; automorphy over the original field is a further problem."
+    },
+    {
+      "text": "Caraiani–Newton give modularity of every elliptic curve over K when X_0(15)(K) has rank zero.",
+      "verdict": "supported",
+      "sourceLine": "$K$ for which $X_0(15)(K)$ has rank zero",
+      "sourceQuote": "Their results give modularity under suitable residual-image hypotheses in characteristic $3$ or $5$, modularity for $100\\%$ of Weierstrass equations, ordered by height, over each Galois CM field not containing $\\zeta_5$, and modularity of every elliptic curve over an imaginary quadratic field $K$ for which $X_0(15)(K)$ has rank zero \\cite[Theorem~6.1 and Corollaries~6.1.2 and~7.1.2]{CN}."
+    },
+    {
+      "text": "The theorem removes the remaining restrictions; Caraiani–Newton's lifting theorem remains an essential input.",
+      "verdict": "supported",
+      "sourceLine": "and the imaginary quadratic field. Caraiani--Newton's lifting theorem",
+      "sourceQuote": "Theorem~\\ref{thm:main} removes the remaining restrictions on the curve and the imaginary quadratic field. Caraiani--Newton's lifting theorem and residual-image criterion for modularity of elliptic curves remain essential inputs."
+    },
+    {
+      "text": "L(E/K,s) = L(π_E, s − 1/2).",
+      "verdict": "supported",
+      "sourceLine": "In particular every local factor agrees, and",
+      "sourceQuote": "In particular every local factor agrees, and \\[ L(E/K,s)=L(\\pi_E,s-1/2). \\]"
+    },
+    {
+      "text": "The intermediate representations are character pieces of a single family of Jacobians.",
+      "verdict": "supported",
+      "sourceLine": "as character pieces of a single family of Jacobians.",
+      "sourceQuote": "We construct the intermediate representations as character pieces of a single family of Jacobians."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
