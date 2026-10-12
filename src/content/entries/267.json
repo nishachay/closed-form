@@ -1,0 +1,215 @@
+{
+  "id": "267",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bose-Einstein-condensation-at-positive-temperature-in-the-dilute-hard-sphere-gas-October-5-2026/positive-temperature-hard-spheres.pdf",
+      "label": "Bose–Einstein condensation at positive temperature in the dilute hard-sphere gas"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantum-Depletion-and-Momentum-Distribution-in-the-Dilute-Hard-Sphere-Bose-Gas-October-5-2026/Quantum-Depletion-in-the-Dilute-Hard-Sphere-Bose-Gas.pdf",
+      "label": "Quantum Depletion and Momentum Distribution in the Dilute Hard-Sphere Bose Gas"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantum-Depletion-for-Fixed-Bounded-Repulsive-Potentials-October-5-2026/fixed-repulsion-quantum-depletion.pdf",
+      "label": "Quantum Depletion for Fixed Bounded Repulsive Potentials"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-density-uniform-condensate-bound-for-dilute-Bose-gases-September-27-2026/paper.pdf",
+      "label": "A density-uniform condensate bound for dilute Bose gases"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ground-state-condensation-in-the-dilute-hard-sphere-gas-September-24-2026/paper.pdf",
+      "label": "Ground-state condensation in the dilute hard-sphere gas"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/267.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves Bose–Einstein condensation in every ground state of the dilute hard-sphere gas; claims positive-temperature and depletion laws.",
+  "scope": "Three-dimensional Bose gases of hard spheres or bounded repulsive interactions, at fixed small density in the thermodynamic limit.",
+  "plain": "Bose–Einstein condensation means a positive share of all particles sits in one single state. For interacting gases at fixed density, no one had proved it happens, even in the simplest model of hard balls. One paper shows a fixed positive share condenses in every ground state of a dilute hard-sphere gas, and Lean checks this. Four more papers claim condensation at small positive temperature and the exact share knocked out of the condensate.",
+  "doesNot": "This does not show condensation at every temperature below the critical one, or in dense gases such as liquid helium.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1925",
+    "firstStepBy": "Satyendra Nath Bose and Albert Einstein, condensation prediction for the ideal Bose gas",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "Condensation in an interacting gas at fixed density is a famous open problem; a 2025 survey calls it a major open problem."
+  },
+  "explanation": "Put N bosons, particles that may share a state, in a large box. Make them hard balls of diameter a: no two centres can come closer than a. The density ρ is particles per unit volume. The key number is the gas parameter ρa³, a rough measure of how crowded the gas is. Take ρa³ = 10⁻⁶, a very thin gas. Without interactions, at zero temperature, every particle would sit in the same flat, constant wave. Collisions knock some out of it. That missing share is called the depletion.\n\nBose–Einstein condensation means a single one-particle state holds a macroscopic part of the system[1]. Penrose and Onsager gave the test: the occupation of one state must stay a fixed fraction of N[2]. Lee, Huang and Yang predicted a depleted fraction of order √(ρa³)[3]. For our gas that is of order 0.001, so about 99.9% should stay in the condensate.\n\nThe energy of this gas has been worked out in detail. But those energy results do not settle single-state occupation, because the energy gap between states shrinks as the box grows[4]. A tiny gap means many states have almost the same energy. Particles could spread over them without costing much. Solovej's 2025 survey calls fixed-density ground-state condensation a major open problem[5].\n\nThe fifth paper settles the ground-state case. For a small enough fixed gas parameter, the constant wave holds a positive fraction of the particles as the box grows[6]. It holds for every ground state, and one fraction works for all small ρa³. It does not find the best fraction[7].\n\nThe other papers claim more. For hard spheres at zero temperature, the share outside the condensate is claimed to be (8/(3√π))√(ρa³), plus smaller terms[8]. The factor 8/(3√π) is about 1.5045. At ρa³ = 10⁻⁶ the depletion is about 0.0015, or 0.15%. The same law is claimed for bounded, repulsive, short-range interactions[9]. At positive temperature, one paper claims condensation persists up to a fixed temperature that does not depend on the box size[10]. For bounded repulsive interactions, another claims a condensate bound for all temperatures from zero up to ρ²[11].\n\nHow sure is this? Lean, a computer proof checker, proves the ground-state result. It covers every pure ground state and every mixture of them, with one constant for all small gas parameters. It does not cover positive temperature or the depletion law. Those rest on four long papers, and no specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. Ground-state condensation for hard spheres has a Lean proof; the positive-temperature and exact depletion claims rest on unreviewed papers.",
+  "glossary": [
+    {
+      "term": "Boson",
+      "meaning": "A kind of particle that can share the same quantum state with others of its kind."
+    },
+    {
+      "term": "Bose–Einstein condensation",
+      "meaning": "A fixed positive share of all particles sitting in one single quantum state."
+    },
+    {
+      "term": "Hard-sphere gas",
+      "meaning": "A model where particles are hard balls of diameter a that cannot overlap and otherwise do not interact."
+    },
+    {
+      "term": "Gas parameter ρa³",
+      "meaning": "Density times the cube of the ball size; small values mean a dilute gas."
+    },
+    {
+      "term": "Thermodynamic limit",
+      "meaning": "Letting the number of particles and the box volume grow together at fixed density."
+    },
+    {
+      "term": "Depletion",
+      "meaning": "The share of particles outside the condensate state."
+    },
+    {
+      "term": "Ground state",
+      "meaning": "The lowest-energy state of the whole system, at zero temperature."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Bose–Einstein condensation at positive temperature in the dilute hard-sphere gas” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bose-Einstein-condensation-at-positive-temperature-in-the-dilute-hard-sphere-gas-October-5-2026/positive-temperature-hard-spheres.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Quantum Depletion and Momentum Distribution in the Dilute Hard-Sphere Bose Gas” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantum-Depletion-and-Momentum-Distribution-in-the-Dilute-Hard-Sphere-Bose-Gas-October-5-2026/Quantum-Depletion-in-the-Dilute-Hard-Sphere-Bose-Gas.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Quantum Depletion for Fixed Bounded Repulsive Potentials” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantum-Depletion-for-Fixed-Bounded-Repulsive-Potentials-October-5-2026/fixed-repulsion-quantum-depletion.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “A density-uniform condensate bound for dilute Bose gases” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-density-uniform-condensate-bound-for-dilute-Bose-gases-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Ground-state condensation in the dilute hard-sphere gas” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ground-state-condensation-in-the-dilute-hard-sphere-gas-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 267",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/267.md",
+      "quote": "The formalization proves ground-state Bose–Einstein condensation in the dilute hard-sphere gas."
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Bose–Einstein condensation means a single one-particle state carries a macroscopic part of a many-particle system.",
+      "sourceLine": "Bose--Einstein condensation means that a single one-particle state carries a macroscopic part of a many-particle system.",
+      "sourceQuote": "Bose--Einstein condensation means that a single one-particle state carries a macroscopic part of a many-particle system.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "The Penrose–Onsager criterion identifies condensation through a macroscopic one-particle occupation.",
+      "sourceLine": "identifies condensation through a macroscopic one-particle occupation",
+      "sourceQuote": "For an interacting gas, the density-matrix criterion of Penrose and Onsager~\\cite{PenroseOnsager1956} identifies condensation through a macroscopic one-particle occupation.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lee, Huang and Yang's calculation predicts a depleted fraction of order √(ρa³).",
+      "sourceLine": "Lee, Huang and Yang's pseudopotential calculation predicts a depleted fraction of order $\\sqrt{\\rho a^3}$",
+      "sourceQuote": "For hard spheres, Lee, Huang and Yang's pseudopotential calculation predicts a depleted fraction of order $\\sqrt{\\rho a^3}$ \\cite[Section~III]{LeeHuangYang1957}.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "Energy asymptotics do not determine single-orbital occupation as the one-particle spectral gap vanishes in large volume.",
+      "sourceLine": "These energy asymptotics do not determine single-orbital occupation as the one-particle spectral gap vanishes in large volume.",
+      "sourceQuote": "These energy asymptotics do not determine single-orbital occupation as the one-particle spectral gap vanishes in large volume.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "Solovej's 2025 survey identifies fixed-density ground-state condensation as a major open problem.",
+      "sourceLine": "Solovej's 2025 survey identifies fixed-density ground-state condensation as a major open problem",
+      "sourceQuote": "Solovej's 2025 survey identifies fixed-density ground-state condensation as a major open problem~\\cite[Section~5]{Solovej2025}.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "At every sufficiently small fixed gas parameter, the constant orbital contains a positive fraction of the particles.",
+      "sourceLine": "At every sufficiently small fixed gas parameter, the constant orbital contains a positive fraction of the particles in the thermodynamic limit.",
+      "sourceQuote": "At every sufficiently small fixed gas parameter, the constant orbital contains a positive fraction of the particles in the thermodynamic limit.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper does not estimate the optimal depletion.",
+      "sourceLine": "we do not estimate the optimal depletion",
+      "sourceQuote": "We prove a positive fraction; we do not estimate the optimal depletion or show that the fraction tends to one as $\\rho a^3$ tends to zero.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "The limiting nonzero-momentum occupation has total mass 8/(3√π), giving the depletion fraction (8/(3√π))√(ρa³).",
+      "sourceLine": "the limiting nonzero-momentum occupation measure has total mass $8/(3\\sqrt\\pi)$",
+      "sourceQuote": "All thermodynamic accumulation values have the same dilute asymptotic: the limiting nonzero-momentum occupation measure has total mass $8/(3\\sqrt\\pi)$, giving the depletion fraction $\\frac{8}{3\\sqrt\\pi}\\sqrt{\\rho a^3}+o(\\sqrt{\\rho a^3})$ for density $\\rho$ and hard-sphere exclusion distance $a$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The Bogoliubov depletion asymptotic holds for bounded, nonnegative, radial finite-range interactions.",
+      "sourceLine": "We prove the Bogoliubov quantum-depletion asymptotic for the ground state of a three-dimensional Bose gas with a fixed bounded, nonnegative, radial interaction of finite range",
+      "sourceQuote": "We prove the Bogoliubov quantum-depletion asymptotic for the ground state of a three-dimensional Bose gas with a fixed bounded, nonnegative, radial interaction of finite range and positive scattering length $a$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a positive temperature, independent of the volume, at which the canonical Gibbs state has a positive condensate fraction.",
+      "sourceLine": "there is a strictly positive temperature, independent of the volume, at which the exact canonical Gibbs state has a positive condensate fraction in the thermodynamic limit",
+      "sourceQuote": "For each fixed exclusion distance and every sufficiently small fixed density, there is a strictly positive temperature, independent of the volume, at which the exact canonical Gibbs state has a positive condensate fraction in the thermodynamic limit.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The condensate fraction has a positive lower bound for all temperatures between zero and the square of the density.",
+      "sourceLine": "a positive lower bound on the constant-orbital condensate fraction that is uniform over all sufficiently small densities and all temperatures between zero and the square of the density",
+      "sourceQuote": "For each fixed bounded measurable, nonnegative, radial interaction of finite range in three dimensions that is not zero almost everywhere, we prove a positive lower bound on the constant-orbital condensate fraction that is uniform over all sufficiently small densities and all temperatures between zero and the square of the density.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves ground-state Bose–Einstein condensation in the dilute hard-sphere gas, uniformly for small ρa³; positive temperature is not covered.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}
