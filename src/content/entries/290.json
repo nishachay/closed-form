@@ -1,0 +1,175 @@
+{
+  "id": "290",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026.pdf",
+      "label": "Expected amenable subalgebras preserving core commutants"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-recovery-for-modular-spectral-averages-September-23-2026/Bounded-recovery-for-modular-spectral-averages-September-23-2026.pdf",
+      "label": "Bounded recovery for modular spectral averages"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/290.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims every expected inclusion of von Neumann algebras holds an amenable piece with the same commutant in the core.",
+  "scope": "Inclusions N ⊂ M of von Neumann algebras with separable preduals and a faithful normal conditional expectation. It also treats bicentralizers of type III₁ factors.",
+  "plain": "A commutant is everything that commutes with a given set of operators. This paper asks whether a tame, amenable part of an algebra N can force the same commutation rules as all of N. It claims yes, inside a larger setting called the continuous core, for every expected inclusion with separable preduals. That settles Marrakchi's relative bicentralizer conjecture, if the proof holds. A companion paper proves, with a Lean check, a bounded recovery theorem used for the absolute bicentralizer problem.",
+  "doesNot": "This does not cover algebras without separable preduals, and Lean does not check the main theorem or the absolute bicentralizer result.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Alain Connes, bicentralizer problem in the classification of injective factors",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle the relative bicentralizer conjecture, a recent open problem in the structure of type III von Neumann algebras."
+  },
+  "explanation": "Start with 2-by-2 matrices. Which matrices commute with D = diag(1, 2)? Write a general matrix with entries a, b in the top row and c, d below. Multiplying by D on the right gives a, 2b, c, 2d. Multiplying on the left gives a, b, 2c, 2d. These agree only when b = 0 and c = 0. So the matrices commuting with D form a 2-dimensional set, the diagonal ones. Now also ask them to commute with the swap matrix, which has 1s off the diagonal. That forces a = d. Only multiples of the identity survive. Two well-chosen matrices impose the same rule as all four dimensions of matrices.\n\nThe set of everything commuting with a collection is its commutant. In infinite dimensions, the analogous question is harder. Take a von Neumann algebra N inside a larger one, M. Can a tame part P of N impose exactly the same commutation constraints as N? Tame here means amenable, also called injective. Popa's 1981 work gave a model for finding such pieces in one setting[1]. The inclusion must also be expected: there is a well-behaved averaging map from M onto N.\n\nThe harder setting involves the continuous core. This is a larger algebra that adds unitaries driving the modular flow, a built-in time evolution of type III algebras. Connes introduced the bicentralizer problem in classifying injective factors[2]. Haagerup solved the amenable type III₁ case[3]. Marrakchi formulated the relative bicentralizer conjecture. He proved it is equivalent, for separable preduals, to the statement this paper claims[4]. The obstacle is that the core holds those extra unitaries, so matching commutants inside M alone is not enough.\n\nThis paper claims that for every such inclusion there is an amenable P inside N with an averaging map onto P[5]. Its commutant inside the core matches that of N. This would resolve the conjecture, including inclusions with arbitrary centers and types[6]. Houdayer and Marrakchi have announced that every type III₁ factor with a faithful normal state has trivial bicentralizer[7]. The paper gives another proof of the separable case. The companion proves a bounded spectral recovery theorem for states whose centralizer is only scalars[8]. It uses this for another proof of bicentralizer triviality for separable type III₁ factors[9].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the bounded recovery theorem. It turns positive spectral averages into uniformly bounded algebra elements. The main core-commutant theorem and the absolute bicentralizer result are not part of that Lean statement. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if the main proof holds. Lean checks only the bounded recovery theorem, not the core-commutant theorem or bicentralizer triviality, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Von Neumann algebra",
+      "meaning": "An algebra of operators on a Hilbert space, closed under adjoints and under weak limits."
+    },
+    {
+      "term": "Amenable (injective)",
+      "meaning": "A tameness property of von Neumann algebras that allows averaging arguments."
+    },
+    {
+      "term": "Conditional expectation",
+      "meaning": "A well-behaved averaging map from a larger algebra onto a smaller one inside it."
+    },
+    {
+      "term": "Modular flow",
+      "meaning": "A built-in one-parameter time evolution that every faithful state gives a von Neumann algebra."
+    },
+    {
+      "term": "Continuous core",
+      "meaning": "A larger algebra built from M and the unitaries that drive its modular flow."
+    },
+    {
+      "term": "Type III₁ factor",
+      "meaning": "A kind of von Neumann algebra with no trace, whose modular flow is as rich as possible."
+    },
+    {
+      "term": "Bicentralizer",
+      "meaning": "The elements commuting asymptotically with every bounded sequence that asymptotically commutes with a given state."
+    },
+    {
+      "term": "Separable predual",
+      "meaning": "A size limit: the algebra is determined by countably many states."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Expected amenable subalgebras preserving core commutants” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Bounded recovery for modular spectral averages” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-recovery-for-modular-spectral-averages-September-23-2026/Bounded-recovery-for-modular-spectral-averages-September-23-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 290",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/290.md",
+      "quote": "For a faithful normal state with scalar centralizer in the stated standard-space representation, the formalized result converts positive modular spectral averages into uniformly bounded algebra elements."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Popa's solution of Kadison's problem gives a model for finding amenable subalgebras that retain prescribed commutation properties.",
+      "sourceLine": "provides a model for finding amenable subalgebras that retain prescribed commutation properties",
+      "sourceQuote": "Popa's solution of Kadison's problem for irreducible expected inclusions with separable preduals and type II bottom factor provides a model for finding amenable subalgebras that retain prescribed commutation properties \\cite{Popa1981}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Connes introduced the problem of bicentralizer triviality in the classification of injective factors.",
+      "sourceLine": "Connes introduced the problem of its triviality in the classification of injective factors",
+      "sourceQuote": "Connes introduced the problem of its triviality in the classification of injective factors \\cite{Connes1982,Connes1985}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Haagerup solved the amenable type III₁ case.",
+      "sourceLine": "Haagerup solved the amenable type $\\mathrm{III}_1$ case",
+      "sourceQuote": "Haagerup solved the amenable type $\\mathrm{III}_1$ case, completing the uniqueness theorem for the injective type $\\mathrm{III}_1$ factor \\cite{Haagerup}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Marrakchi formulated the relative bicentralizer conjecture and proved it equivalent, for separable preduals, to the paper's main conclusion.",
+      "sourceLine": "Marrakchi formulated the relative bicentralizer conjecture and proved that, for separable preduals, it is equivalent to the conclusion of",
+      "sourceQuote": "Marrakchi formulated the relative bicentralizer conjecture and proved that, for separable preduals, it is equivalent to the conclusion of Theorem~\\ref{thm:main} \\cite[Conjecture~C and Theorem~D]{M1}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "There exist a unital amenable subalgebra P ⊂ N and a faithful normal conditional expectation onto P with P′ ∩ c(M) = N′ ∩ c(M).",
+      "sourceLine": "There exist a unital amenable von Neumann subalgebra $P\\subset N$",
+      "sourceQuote": "There exist a unital amenable von Neumann subalgebra $P\\subset N$ and a faithful normal conditional expectation $F:N\\to P$ such that \\[ P'\\cap c(M)=N'\\cap c(M). \\]",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem resolves the relative bicentralizer conjecture positively, including inclusions with arbitrary centers and types.",
+      "sourceLine": "Our theorem therefore resolves that conjecture positively, including inclusions with arbitrary centers and types.",
+      "sourceQuote": "Our theorem therefore resolves that conjecture positively, including inclusions with arbitrary centers and types.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Houdayer and Marrakchi have announced that every type III₁ factor admitting a faithful normal state has trivial bicentralizer.",
+      "sourceLine": "Houdayer and Marrakchi have announced that every type $\\mathrm{III}_1$ factor admitting a faithful normal state has trivial bicentralizer",
+      "sourceQuote": "Houdayer and Marrakchi have announced that every type $\\mathrm{III}_1$ factor admitting a faithful normal state has trivial bicentralizer \\cite[Theorem~G]{HoudayerMarrakchi2026}; their theorem statement has no separability restriction.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A bounded spectral recovery theorem holds for a von Neumann algebra with a faithful normal state whose centralizer consists only of scalars.",
+      "sourceLine": "We prove a bounded spectral recovery theorem for a von Neumann algebra with a faithful normal state whose centralizer consists only of scalars.",
+      "sourceQuote": "We prove a bounded spectral recovery theorem for a von Neumann algebra with a faithful normal state whose centralizer consists only of scalars.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem gives an alternative proof of bicentralizer triviality for type III₁ factors with separable predual.",
+      "sourceLine": "obtain an alternative proof of bicentralizer triviality for type $\\mathrm{III}_1$ factors with separable predual.",
+      "sourceQuote": "We apply this theorem to spectral intertwining rigidity and obtain an alternative proof of bicentralizer triviality for type $\\mathrm{III}_1$ factors with separable predual.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the bounded recovery theorem for modular spectral averages; the absolute bicentralizer conjecture and the core-commutant theorem are not included.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
