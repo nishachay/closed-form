@@ -1,0 +1,148 @@
+{
+  "id": "309",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kervaire-Invariant-Problem-at-the-Prime-Three-September-24-2026/paper.pdf",
+      "label": "The Kervaire invariant problem at the prime three"
+    }
+  ],
+  "headline": "Claims to settle which odd-primary Kervaire classes survive at the prime three: stems 10, 106 and 322.",
+  "scope": "The standard Kervaire classes b_j in the mod-three Adams spectral sequence, at the prime three only.",
+  "plain": "Stable homotopy groups of spheres record ways to map one high-dimensional sphere onto another. A spectral sequence gives candidate classes, and some of them do not survive to real maps. At odd primes, one family of candidates is called the Kervaire classes. At primes 5 and up, all but the first fail. This paper claims that at the prime three exactly three survive, in stems 10, 106 and 322, each with a representative of order three.",
+  "doesNot": "This does not address the classical prime-two Kervaire invariant one problem, which has a different family and dimension convention.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "Douglas Ravenel, odd-primary Kervaire classes ruled out for primes 5 and above",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims to finish the odd-primary Kervaire invariant problem at the one prime left open by Ravenel's 1978 work."
+  },
+  "explanation": "Stable homotopy groups of spheres list the ways to map one high-dimensional sphere onto another, up to deformation. The stem is the difference in dimension. The Adams spectral sequence is a step-by-step calculation that offers candidate classes in each stem. Some candidates survive to real maps. Others are killed by a differential, a map between pages of the calculation. At the prime three, the Kervaire candidate b_j sits in stem 4 × 3^(j+1) − 2. For j = 0, 1, 2, 3 and 4 this gives stems 10, 34, 106, 322 and 970.\n\nThe paper asks two questions. Does b_j survive? And if so, does it come from a map of order three, one that gives zero when added to itself three times? Survival fixes a class only up to error terms, so the order is a separate question[8]. Toda showed that b₁ supports a nonzero differential at every odd prime[4]. Ravenel ruled out every b_j with j at least 1 for primes 5 and up[5]. At three this conclusion fails[6]. The survivor in stem 106 comes from a corrected combination of two classes. One of those classes itself does not survive[7]. That is the obstacle. A class's fate in the related Adams–Novikov calculation need not decide its fate in the Adams calculation.\n\nThe paper claims to settle the prime three completely. Exactly b₀, b₂ and b₃ survive, and each has a representative of order three[1]. So there are classes in stems 10, 106 and 322. The class b₁ and every b_j with j at least 4 do not survive[3]. In particular, the paper claims a new order-three Kervaire element in stem 322[2]. In Amelotte's notation this new class is θ₄[9].\n\nThe result also has consequences for spaces before stabilizing. One example concerns loop spaces of fibres built from spheres. A loop space is the space of loops in a space. The paper claims these split as a product of two pieces only for n equal to 3, 27 or 81, among n above 1[11]. For n = 81 the spaces involved have dimensions 163 and 487. The prime-two Kervaire problem is a different question with a different family[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof combines long spectral sequence calculations with careful tracking of correction terms. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It covers only the prime three and only the standard family. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Stable homotopy group of spheres",
+      "meaning": "The set of ways to map one high-dimensional sphere onto another, up to deformation, once dimensions are large."
+    },
+    {
+      "term": "Stem",
+      "meaning": "The difference between the dimensions of the two spheres in such a map."
+    },
+    {
+      "term": "Adams spectral sequence",
+      "meaning": "A step-by-step calculation that offers candidate classes in each stem."
+    },
+    {
+      "term": "Differential",
+      "meaning": "A map between pages of the calculation; a class that it moves does not survive."
+    },
+    {
+      "term": "Kervaire class",
+      "meaning": "One of a standard family of candidate classes b_j, named by analogy with Kervaire's prime-two problem."
+    },
+    {
+      "term": "Order three",
+      "meaning": "A map that gives zero when added to itself three times."
+    },
+    {
+      "term": "Loop space",
+      "meaning": "The space of all loops in a given space, starting and ending at one point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Kervaire invariant problem at the prime three” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kervaire-Invariant-Problem-at-the-Prime-Three-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The classes survive exactly at indices 0, 2 and 3, and each surviving detection coset contains an element of additive order three.",
+      "sourceLine": "These classes survive precisely at indices $0$, $2$, and $3$, and each surviving detection coset contains an element of additive order three.",
+      "sourceQuote": "These classes survive precisely at indices $0$, $2$, and $3$, and each surviving detection coset contains an element of additive order three.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is an order-three Kervaire element in stem 322.",
+      "sourceLine": "In particular, there is an order-three Kervaire element in stem $322$.",
+      "sourceQuote": "In particular, there is an order-three Kervaire element in stem $322$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The class b1 and every b_j with j at least 4 fail to survive.",
+      "sourceLine": "The class $b_1$ and every $b_j$ with $j\\geq4$ fail to survive.",
+      "sourceQuote": "The class $b_1$ and every $b_j$ with $j\\geq4$ fail to survive.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Toda proved that b1 supports a nonzero differential at every odd prime.",
+      "sourceLine": "Toda proved the first exclusion in the odd-primary family: $b_1$ supports a nonzero differential at every odd prime",
+      "sourceQuote": "Toda proved the first exclusion in the odd-primary family: $b_1$ supports a nonzero differential at every odd prime \\cite{TodaRelation}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For every odd prime at least 5, Ravenel excludes all b_j with j at least 1.",
+      "sourceLine": "For every odd prime $p\\geq5$, it excludes all standard Kervaire classes $b_j$ with $j\\geq1$",
+      "sourceQuote": "For every odd prime $p\\geq5$, it excludes all standard Kervaire classes $b_j$ with $j\\geq1$ \\cite[Theorem~17]{Ravenel1978}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "At three the same conclusion fails.",
+      "sourceLine": "At three, the same conclusion fails.",
+      "sourceQuote": "At three, the same conclusion fails.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The survivor in stem 106 is detected by a corrected combination, although one part supports a differential.",
+      "sourceLine": "The classical survivor in stem $106$ is detected by a corrected combination of $\\beta_{9/9}$ and $\\beta_7$, although $\\beta_{9/9}$ itself supports a differential.",
+      "sourceQuote": "The classical survivor in stem $106$ is detected by a corrected combination of $\\beta_{9/9}$ and $\\beta_7$, although $\\beta_{9/9}$ itself supports a differential.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Permanence determines an associated-graded class, while order depends on an extension in actual homotopy.",
+      "sourceLine": "permanence determines an associated-graded class, while the order of a representative also depends on an extension in actual homotopy",
+      "sourceQuote": "These are different questions: permanence determines an associated-graded class, while the order of a representative also depends on an extension in actual homotopy.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The new b3 class corresponds to Amelotte's theta4.",
+      "sourceLine": "the new $b_3$ class corresponds to $\\theta_4$",
+      "sourceQuote": "His class $\\theta_r$ is detected by $b_{r-1}$; thus $b_2$ here corresponds to $\\theta_3$, and the new $b_3$ class corresponds to $\\theta_4$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The prime-two Kervaire invariant one problem has a different family and dimension convention.",
+      "sourceLine": "the classical prime-two Kervaire invariant one problem has a different family and dimension convention",
+      "sourceQuote": "The problem here is the standard odd-primary Adams-family problem; the classical prime-two Kervaire invariant one problem has a different family and dimension convention.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The looped sphere fibre has a nontrivial product decomposition if and only if n is 3, 27 or 81.",
+      "sourceLine": "has a nontrivial product decomposition if and only if $n\\in\\{3,27,81\\}$",
+      "sourceQuote": "For every integer $n>1$, the underlying space $\\Omega S^{2n+1}\\{3\\}$ has a nontrivial product decomposition if and only if $n\\in\\{3,27,81\\}$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
