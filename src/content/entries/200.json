@@ -1,0 +1,185 @@
+{
+  "id": "200",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Artinian-Lex-Plus-Powers-Betti-Theorem-September-23-2026/paper.pdf",
+      "label": "The Artinian Lex-Plus-Powers Betti Theorem"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Commuting-Division-Coefficient-Forms-and-the-Artinian-Eisenbud-Green-Harris-Conjecture-September-23-2026/paper.pdf",
+      "label": "Commuting Division-Coefficient Forms and the Artinian Eisenbud--Green--Harris Conjecture"
+    }
+  ],
+  "headline": "Two papers claim the Eisenbud–Green–Harris and lex-plus-powers conjectures over every field of characteristic zero.",
+  "scope": "The claims cover polynomial rings over fields of characteristic zero, for regular sequences with all degrees at least two. Positive characteristic is not covered.",
+  "plain": "A Hilbert function counts, degree by degree, how many independent polynomials survive after dividing by some equations. The Eisenbud–Green–Harris conjecture says a simple monomial model can always match that count. The lex-plus-powers conjecture adds that this model has at least as many relations, of every kind, as the original. These papers claim to prove both over every field of characteristic zero.",
+  "doesNot": "This does not cover fields of positive characteristic, such as arithmetic modulo a prime.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1993",
+    "firstStepBy": "David Eisenbud, Mark Green and Joe Harris, “Higher Castelnuovo theory”",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle two well-known conjectures on polynomial ideals with no growth condition on degrees."
+  },
+  "explanation": "Take polynomials in two letters, x and y. Set x² = 0 and y² = 0, and count what survives in each degree. In degree 0 there is 1. In degree 1 there are x and y, so 2. In degree 2 only xy survives, so 1. In degree 3 nothing survives. This list, 1, 2, 1, is called the Hilbert function. The ideal here, written (x², y²), is the set of all multiples of x² and y².\n\nThis ideal contains x² and y³, a regular sequence of degrees 2 and 3. Regular means each one is a genuinely new condition on top of the ones before. The lex-plus-powers recipe now builds a model ideal from monomials only. Start with the pure powers x² and y³. Then, degree by degree, add the earliest monomials in dictionary order until the counts match. In degree 2 that adds xy. The model is (x², xy, y³), and it also leaves 1, 2, 1.\n\nNow compare relations. The original ideal has two generators of degree 2 and one relation between them, of degree 4. The model has generators of degrees 2, 2 and 3, and relations of degrees 3 and 4. Counted degree by degree, the model never has fewer. These counts are called graded Betti numbers.\n\nThe lex-plus-powers conjecture predicts one extremal ideal for both kinds of data[1]. Its Hilbert-function half is the Eisenbud–Green–Harris conjecture[3]. Eisenbud, Green and Harris raised it in work on higher Castelnuovo theory[5]. The Betti version is generally credited to Charalambous and Evans[6]. With no regular sequence at all, the matching statement for lex ideals was already a classical theorem[7].\n\nMany cases were known. Mermin and Murai proved the comparison when the regular sequence consists of monomials[8]. Other results needed the degrees to grow quickly, each roughly at least the sum of the earlier ones. This work imposes no such growth condition[9].\n\nThe companion paper claims the Artinian Eisenbud–Green–Harris conjecture over the complex numbers[11]. Artinian means the regular sequence is as long as the number of letters, so only finitely much survives. The main paper claims the full Artinian lex-plus-powers conjecture over the complex numbers[2]. It then removes the Artinian condition and extends to every field of characteristic zero, using known reductions[4]. Characteristic zero means 1 + 1 + … + 1 never equals 0.\n\nThe one obstacle is that matching the counts says nothing yet about the relations[10]. The trick is to swap the letters for new commuting linear expressions. Their coefficients come from a division algebra, a number system where every nonzero element can be divided by[12]. It also keeps an ordered list of building blocks for all polynomials. A resolution of the original ideal then carries over cleanly, with every Betti number multiplied by the same factor[13]. That produces a monomial ideal with matching counts and no fewer relations. The final monomial comparison was already known, and the paper says so[14].\n\nHow sure is this? No Lean formalization is listed for either paper. The claims rest on the papers' own arguments and the earlier reductions they cite. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if the proofs hold. No Lean check is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ideal",
+      "meaning": "A set of polynomials closed under adding and under multiplying by any polynomial, such as all multiples of x²."
+    },
+    {
+      "term": "Hilbert function",
+      "meaning": "The count, in each degree, of independent polynomials left after dividing by an ideal."
+    },
+    {
+      "term": "Regular sequence",
+      "meaning": "A list of polynomials where each one imposes a genuinely new condition on top of the earlier ones."
+    },
+    {
+      "term": "Graded Betti numbers",
+      "meaning": "Counts of an ideal's generators, its relations, the relations among those, and so on, sorted by degree."
+    },
+    {
+      "term": "Lex-plus-powers ideal",
+      "meaning": "An ideal made of pure powers plus the earliest monomials in dictionary order in each degree."
+    },
+    {
+      "term": "Division algebra",
+      "meaning": "A number system, possibly with non-commuting multiplication, in which every nonzero element can be divided by."
+    },
+    {
+      "term": "Artinian",
+      "meaning": "Here, a quotient in which only finitely many independent polynomials survive."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Artinian Lex-Plus-Powers Betti Theorem”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Artinian-Lex-Plus-Powers-Betti-Theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Commuting Division-Coefficient Forms and the Artinian Eisenbud–Green–Harris Conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Commuting-Division-Coefficient-Forms-and-the-Artinian-Eisenbud-Green-Harris-Conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "D. Eisenbud, M. Green and J. Harris, “Higher Castelnuovo theory”, Astérisque 218 (1993), 187–202",
+      "url": "https://www.numdam.org/item/AST_1993__218__187_0/"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The lex-plus-powers conjecture predicts one extremal ideal for both the Hilbert function and the Betti numbers.",
+      "verdict": "supported",
+      "sourceLine": "The lex-plus-powers conjecture predicts one extremal ideal for",
+      "sourceQuote": "The lex-plus-powers conjecture predicts one extremal ideal for both kinds of data when the original ideal contains a regular sequence.",
+      "paper": 1
+    },
+    {
+      "text": "The main theorem resolves the Artinian lex-plus-powers conjecture over C.",
+      "verdict": "supported",
+      "sourceLine": "Thus Theorem~\\ref{thm:main} resolves the Artinian lex-plus-powers",
+      "sourceQuote": "Thus Theorem~\\ref{thm:main} resolves the Artinian lex-plus-powers conjecture positively over \\(\\C\\).",
+      "paper": 1
+    },
+    {
+      "text": "Its Hilbert-function assertion is the Artinian Eisenbud–Green–Harris statement.",
+      "verdict": "supported",
+      "sourceLine": "Its Hilbert-function assertion is the Artinian Eisenbud--Green--Harris",
+      "sourceQuote": "Its Hilbert-function assertion is the Artinian Eisenbud--Green--Harris statement; the Betti inequalities are stronger.",
+      "paper": 1
+    },
+    {
+      "text": "The characteristic-zero corollary includes non-Artinian quotients and fields that are not algebraically closed.",
+      "verdict": "supported",
+      "sourceLine": "Corollary~\\ref{cor:characteristic-zero} includes non-Artinian quotients",
+      "sourceQuote": "Corollary~\\ref{cor:characteristic-zero} includes non-Artinian quotients and fields that are not algebraically closed.",
+      "paper": 1
+    },
+    {
+      "text": "The EGH conjecture arose in work on higher Castelnuovo theory.",
+      "verdict": "supported",
+      "sourceLine": "The Eisenbud--Green--Harris (EGH) Hilbert-function conjecture arose in",
+      "sourceQuote": "The Eisenbud--Green--Harris (EGH) Hilbert-function conjecture arose in their work on higher Castelnuovo theory \\cite[Section~4]{EGH}.",
+      "paper": 1
+    },
+    {
+      "text": "The lex-plus-powers conjecture is generally attributed to Charalambous and Evans.",
+      "verdict": "supported",
+      "sourceLine": "The lex-plus-powers conjecture, generally attributed to Charalambous",
+      "sourceQuote": "The lex-plus-powers conjecture, generally attributed to Charalambous and Evans, strengthens that prediction to graded Betti numbers.",
+      "paper": 1
+    },
+    {
+      "text": "Without a regular sequence, lex extremality is the theorem of Bigatti, Hulett and Pardue.",
+      "verdict": "supported",
+      "sourceLine": "at fixed Hilbert function is the theorem of Bigatti, Hulett, and",
+      "sourceQuote": "Without a prescribed regular sequence, the extremality of lex ideals at fixed Hilbert function is the theorem of Bigatti, Hulett, and Pardue \\cite{Bigatti,Hulett,Pardue}.",
+      "paper": 1
+    },
+    {
+      "text": "Mermin and Murai proved the comparison for ideals containing a monomial regular sequence.",
+      "verdict": "supported",
+      "sourceLine": "Mermin and Murai then proved the lex-plus-powers comparison for ideals",
+      "sourceQuote": "Mermin and Murai then proved the lex-plus-powers comparison for ideals containing a monomial regular sequence, again over every field \\cite[Theorems~3.1 and 8.1]{MM}.",
+      "paper": 1
+    },
+    {
+      "text": "No growth condition on the degrees is imposed here.",
+      "verdict": "supported",
+      "sourceLine": "No such growth condition is imposed here.",
+      "sourceQuote": "No such growth condition is imposed here.",
+      "paper": 1
+    },
+    {
+      "text": "Matching Hilbert functions alone cannot give the Betti comparison.",
+      "verdict": "supported",
+      "sourceLine": "Matching Hilbert functions alone cannot give the second conclusion.",
+      "sourceQuote": "Matching Hilbert functions alone cannot give the second conclusion.",
+      "paper": 1
+    },
+    {
+      "text": "The Artinian EGH conjecture is resolved positively over C.",
+      "verdict": "supported",
+      "sourceLine": "Thus the Artinian Eisenbud--Green--Harris conjecture is resolved positively over $\\C$.",
+      "sourceQuote": "Thus the Artinian Eisenbud--Green--Harris conjecture is resolved positively over $\\C$.",
+      "paper": 2
+    },
+    {
+      "text": "The construction replaces the variables by commuting linear forms with division-algebra coefficients.",
+      "verdict": "supported",
+      "sourceLine": "it replaces the polynomial variables by commuting linear forms with division-algebra coefficients",
+      "sourceQuote": "The main construction provides more than the Hilbert-function comparison: it replaces the polynomial variables by commuting linear forms with division-algebra coefficients and retains an ordered basis of the entire polynomial algebra.",
+      "paper": 2
+    },
+    {
+      "text": "A minimal resolution of S/I gives a minimal resolution over the new ring, multiplying every Betti number by the same factor.",
+      "verdict": "supported",
+      "sourceLine": "A minimal \\(S\\)-resolution of \\(S/I\\) therefore gives a",
+      "sourceQuote": "A minimal \\(S\\)-resolution of \\(S/I\\) therefore gives a \\emph{minimal} \\(T\\)-resolution of \\(N/IN\\), multiplying every Betti number by the same factor \\(m\\).",
+      "paper": 1
+    },
+    {
+      "text": "The monomial comparison is included for completeness; its conclusion is not new.",
+      "verdict": "supported",
+      "sourceLine": "is included for completeness; its conclusion is not new.",
+      "sourceQuote": "Our proof of the subsequent monomial comparison is included for completeness; its conclusion is not new.",
+      "paper": 1
+    }
+  ],
+  "sourceHash": "28bc866640752f9678c5f16c47a97826b9e66cebdc9759df055dc3748ba8533c",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
