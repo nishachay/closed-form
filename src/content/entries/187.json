@@ -1,0 +1,186 @@
+{
+  "id": "187",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf",
+      "label": "Snaky in 21 Maker moves"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/187.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "On an endless grid, the first player can always build the six-square Snaky shape within 21 moves.",
+  "scope": "The game starts on an empty infinite square grid, Maker moves first, and turned or flipped copies of Snaky count.",
+  "plain": "Two players take turns claiming squares of an endless grid. Maker wants six squares forming the Snaky shape; Breaker only blocks. Whether Maker can win on a flat board without a head start was long undecided. This paper proves Maker wins within 21 of its own moves.",
+  "doesNot": "This does not show that 21 moves is the fewest possible, and it says nothing about the game where both players race for Snaky.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Solid",
+    "significanceWhy": "It settles a long-open case of polyomino achievement games, with a checked strategy."
+  },
+  "explanation": "Draw a row of four squares on graph paper. Step up one square from the last, then add one more square to the right. That six-square shape is called Snaky. It can be turned and flipped. Counting carefully, there are eight different versions of it on the grid.\n\nNow play a game on an endless grid. Two players, Maker and Breaker, take turns claiming one empty square each. Maker goes first[3]. Maker wins by owning all six squares of some copy of Snaky, in any of its turned or flipped forms[1,2]. Breaker only tries to stop Maker. Breaker does not need a shape of its own. This is called a Maker–Breaker game.\n\nEarlier work settled Snaky only in other settings. Sieben showed in 2004 that Maker wins in 41 dimensions[8]. Halupczok and Schlage-Puchta showed in 2007 that Maker wins in three dimensions, but loses on an 8 by 8 board[9]. They also showed Maker wins in the plane with a handicap of one. That means Maker places two squares on its first turn[10]. In 2008, Sieben described the ordinary flat game as undecided[11].\n\nThis paper proves that Maker wins on the empty flat grid, with no handicap. Maker can always complete Snaky within 21 of its own moves[4]. Breaker may play anywhere, by any legal rule. In whole turns, Maker wins by the 41st turn of the game[5]. The paper says the same bound holds on a finite 17 by 17 board[6]. It does not claim that 21 is the fewest moves possible[7].\n\nThe difficulty is that the board never ends. Breaker can play far away, or right next to Maker's squares. A computer cannot search every game on an endless board. The paper turns the strategy into a finite record, called a certificate. It lists 728 numbered winning positions, each built from simpler ones[12]. Each position names squares Maker must own, a region Breaker must avoid, and a move budget. The final position needs no Maker squares, a region of 251 squares, and 21 moves[13].\n\nThe key step is simple to state. Maker claims a square that keeps several winning plans alive at once. Breaker's next single square cannot block all of them[14]. So at least one plan always survives. Squares Breaker claims outside the region do not matter.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main claim. The Lean scope note says it gives a legal strategy that wins within 21 Maker moves on the endless board. It checks against every legal Breaker play. The smaller finite-board statement is outside that check. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid. Lean has checked the 21-move strategy on the endless board; the finite-board claim is outside the check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Snaky",
+      "meaning": "A six-square shape: a row of four squares, then a step up and one more square."
+    },
+    {
+      "term": "Maker–Breaker game",
+      "meaning": "A game where one player tries to build a shape and the other only tries to block it."
+    },
+    {
+      "term": "Polyomino",
+      "meaning": "A shape made of squares joined edge to edge."
+    },
+    {
+      "term": "Handicap",
+      "meaning": "Extra squares given to Maker at the start; a handicap of one means two squares on the first turn."
+    },
+    {
+      "term": "Certificate",
+      "meaning": "A finite list of positions and moves that records a full winning strategy."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Snaky in 21 Maker moves”, openai/math release preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Snaky-in-21-Maker-moves-September-25-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 187 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/187.md",
+      "quote": "The formalization gives a legal strategy that wins within $21$ actual Maker moves against every legal Breaker play from the empty infinite board."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Snaky is the six-cell target shape.",
+      "verdict": "supported",
+      "sourceLine": "Snaky is the six-cell target",
+      "sourceQuote": "Snaky is the six-cell target \\begin{equation}\\label{eq:target} S=\\{(0,0),(1,0),(2,0),(3,0),(3,1),(4,1)\\}\\subset\\Z^2. \\end{equation}",
+      "sourceId": 1
+    },
+    {
+      "text": "Reflections and quarter turns are permitted, and scaling is not.",
+      "verdict": "supported",
+      "sourceLine": "Thus reflections and quarter turns are permitted, and scaling is not.",
+      "sourceQuote": "Thus reflections and quarter turns are permitted, and scaling is not.",
+      "sourceId": 1
+    },
+    {
+      "text": "Maker moves first; then the players alternate, each claiming one unclaimed cell.",
+      "verdict": "supported",
+      "sourceLine": "thereafter Maker and Breaker alternate, each claiming one previously",
+      "sourceQuote": "Maker moves first, and thereafter Maker and Breaker alternate, each claiming one previously unclaimed cell.",
+      "sourceId": 1
+    },
+    {
+      "text": "One Maker policy completes Snaky within at most 21 Maker claims against every Breaker play.",
+      "verdict": "supported",
+      "sourceLine": "an allowed copy of $S$ within at most $21$ actual Maker claims against",
+      "sourceQuote": "In this game, there is one globally legal Maker policy that completes an allowed copy of $S$ within at most $21$ actual Maker claims against every legal continuation of Breaker.",
+      "sourceId": 1
+    },
+    {
+      "text": "This is a win no later than the 41st individual turn.",
+      "verdict": "supported",
+      "sourceLine": "$41$st individual turn of the alternating game.",
+      "sourceQuote": "It corresponds to a win no later than the $41$st individual turn of the alternating game.",
+      "sourceId": 1
+    },
+    {
+      "text": "The same bound holds on a finite 17×17 board.",
+      "verdict": "supported",
+      "sourceLine": "also gives the same bound on a finite $17\\times17$ board.",
+      "sourceQuote": "Corollary~\\ref{cor:finite-board} also gives the same bound on a finite $17\\times17$ board.",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper does not assert optimal move counts or board sizes.",
+      "verdict": "supported",
+      "sourceLine": "assert optimal move counts or board sizes, or a result for the strong",
+      "sourceQuote": "We do not assert optimal move counts or board sizes, or a result for the strong game in which both players seek a copy.",
+      "sourceId": 1
+    },
+    {
+      "text": "Sieben proved Snaky wins in 41 dimensions.",
+      "verdict": "supported",
+      "sourceLine": "nonexistence of a pairing defense for Snaky, and proves victory in",
+      "sourceQuote": "His account records handicap-two strategies of Harary, Harborth and Seemann and the nonexistence of a pairing defense for Snaky, and proves victory in $41$ dimensions \\cite[Section~4 and Proposition~4.1]{Sieben2004}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Halupczok and Schlage-Puchta proved Snaky wins in three dimensions and loses on an 8×8 board.",
+      "verdict": "supported",
+      "sourceLine": "dimensions, loses on an $8\\times8$ board, and has planar handicap",
+      "sourceQuote": "Halupczok and Schlage-Puchta proved that Snaky wins in three dimensions, loses on an $8\\times8$ board, and has planar handicap number at most one \\cite[Theorem~1]{HSP2007}.",
+      "sourceId": 1
+    },
+    {
+      "text": "A handicap of one allows Maker two stones on the opening turn.",
+      "verdict": "supported",
+      "sourceLine": "A handicap of one allows Maker two stones on the opening turn,",
+      "sourceQuote": "A handicap of one allows Maker two stones on the opening turn, before Breaker's first reply.",
+      "sourceId": 1
+    },
+    {
+      "text": "Sieben described the ordinary planar problem as undecided at the time.",
+      "verdict": "supported",
+      "sourceLine": "and described the ordinary planar problem as undecided at the time",
+      "sourceQuote": "Sieben subsequently gave a finite proof sequence for that handicap and described the ordinary planar problem as undecided at the time \\cite[Section~1 and Appendix~B]{Sieben2008}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The certificate has 728 numbered conditions.",
+      "verdict": "supported",
+      "sourceLine": "specifies $728$ numbered conditions,",
+      "sourceQuote": "Section~\\ref{sec:certificate} specifies $728$ numbered conditions, including the six bases, by exact integer coordinates and backward references.",
+      "sourceId": 1
+    },
+    {
+      "text": "The final condition has an envelope of 251 cells and height 21.",
+      "verdict": "supported",
+      "sourceLine": "The final one has $A=\\varnothing$, an envelope of $251$",
+      "sourceQuote": "The final one has $A=\\varnothing$, an envelope of $251$ cells, and height $21$.",
+      "sourceId": 1
+    },
+    {
+      "text": "One new Breaker cell cannot lie in every child envelope, so a continuation remains.",
+      "verdict": "supported",
+      "sourceLine": "cannot lie in every child envelope, and at least one continuation",
+      "sourceQuote": "Consequently one new Breaker cell cannot lie in every child envelope, and at least one continuation remains available.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes a legal 21-move winning strategy on the infinite board; the finite-board restriction is outside it.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
