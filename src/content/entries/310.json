@@ -1,0 +1,142 @@
+{
+  "id": "310",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rational-homology-and-Quillens-conjecture-September-24-2026/paper.pdf",
+      "label": "Rational homology and Quillen's conjecture"
+    }
+  ],
+  "headline": "Claims Quillen's 1978 conjecture on subgroup posets for every finite group and every prime, in a stronger homology form.",
+  "scope": "Every finite group and every prime, in the rational-homology form; the odd-prime case was already deduced by Díaz Ramos in 2026.",
+  "plain": "For a finite group and a prime p, Quillen built a shape from its small p-subgroups. If the group has a nontrivial normal p-subgroup, this shape can be shrunk to a point. Quillen conjectured the converse in 1978. Earlier work settled odd primes and narrowed the prime two to a few families. This paper claims the remaining cases, with a stronger conclusion: the shape always has a hole visible to rational homology.",
+  "doesNot": "This does not give a new proof of the odd-prime case from scratch; it uses earlier reductions and results for most cases.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "Daniel Quillen, homotopy properties of the poset of nontrivial p-subgroups",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims to finish a well-known 1978 conjecture in finite group theory after decades of partial reductions."
+  },
+  "explanation": "Take the group S₃ of all reorderings of three objects, and the prime 2. An elementary abelian 2-subgroup is a subgroup where every element squares to the identity and any two commute. S₃ has three such subgroups besides the trivial one. Each is a single swap of two objects together with the identity. None contains another. So Quillen's shape for S₃ is three separate points. Three points cannot shrink to one point. Reduced homology counts this: it has rank 3 − 1 = 2.\n\nNow take A₄, the even reorderings of four objects. It has three subgroups of order 2 and one of order 4 that contains all three. So the shape is a cone over the three points, which shrinks to a point. The difference is that A₄ has a normal 2-subgroup, the one of order 4. A normal subgroup is one that conjugation by any element maps to itself. A nontrivial normal p-subgroup always makes the shape contractible[3].\n\nQuillen conjectured the converse in 1978. He proved it for solvable groups and some other families[4]. The almost-simple case came next[5]. Aschbacher and Smith then reduced the problem for primes above 5 to special cases of unitary groups. Díaz Ramos later deduced the rational-homology form for every finite group at odd primes[6]. At the prime two, successive steps narrowed the remaining families[7]. The obstacle was the last families of classical groups at the prime two.\n\nThis paper claims the conjecture for all finite groups and all primes[1]. It proves a stronger form. If the group has no nontrivial normal p-subgroup, the shape has nonzero rational homology[2]. Rational homology counts holes with rational-number coefficients. So the shape has a real hole, not just a failure to shrink. With the converse, a fixed field of coefficients detects exactly when such a normal subgroup exists[8].\n\nTo build the needed holes, the paper uses frames. A frame splits a vector space into lines[9]. Flipping signs on each line gives an elementary abelian subgroup. The paper links frames that differ only inside a plane, so that boundary terms cancel[10]. This produces cycles, which are the holes it needs.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof depends on several earlier reductions and on case-by-case work for families of groups. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Much of the reduction was done in earlier work. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Elementary abelian p-subgroup",
+      "meaning": "A subgroup where any two elements commute and every element raised to the power p gives the identity."
+    },
+    {
+      "term": "Quillen's shape",
+      "meaning": "The shape built from the nontrivial elementary abelian p-subgroups, with a link for each inclusion."
+    },
+    {
+      "term": "Normal subgroup",
+      "meaning": "A subgroup that conjugation by any element of the group maps to itself."
+    },
+    {
+      "term": "Contractible",
+      "meaning": "Able to be shrunk continuously to a single point."
+    },
+    {
+      "term": "Reduced homology",
+      "meaning": "An algebraic count of holes, adjusted so that a single point counts as zero."
+    },
+    {
+      "term": "Rational homology",
+      "meaning": "Homology computed with rational-number coefficients."
+    },
+    {
+      "term": "Frame",
+      "meaning": "A splitting of a vector space into lines."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Rational homology and Quillen's conjecture” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rational-homology-and-Quillens-conjecture-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Quillen's conjecture holds for all finite groups and all primes.",
+      "sourceLine": "We prove Quillen's conjecture for all finite groups and all primes.",
+      "sourceQuote": "We prove Quillen's conjecture for all finite groups and all primes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If the largest normal p-subgroup is trivial, the poset has nonzero augmented reduced rational homology.",
+      "sourceLine": "the poset of nontrivial elementary abelian $p$-subgroups of $G$ has nonzero augmented reduced rational homology",
+      "sourceQuote": "More precisely, if a finite group $G$ has trivial largest normal $p$-subgroup $O_p(G)$, then the poset of nontrivial elementary abelian $p$-subgroups of $G$ has nonzero augmented reduced rational homology.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A nontrivial p-core makes the poset contractible.",
+      "sourceLine": "Conversely, a nontrivial $p$-core makes $\\Ap(G)$ contractible",
+      "sourceQuote": "Conversely, a nontrivial $p$-core makes $\\Ap(G)$ contractible \\citep[Proposition~2.4]{Quillen1978}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Quillen formulated the conjecture in 1978 and established it for solvable groups.",
+      "sourceLine": "He formulated the contractibility conjecture in 1978 and established it for solvable groups",
+      "sourceQuote": "He formulated the contractibility conjecture in 1978 and established it for solvable groups, groups of elementary abelian $p$-rank at most two, and groups of Lie type in defining characteristic \\citep[Conjecture~2.9, Proposition~2.10, Theorem~3.1, and Corollary~12.2]{Quillen1978}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The almost-simple case was established earlier.",
+      "sourceLine": "The almost-simple case was established by",
+      "sourceQuote": "The almost-simple case was established by \\citet{AschbacherKleidman1990}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Díaz Ramos proved the unitary result and deduced the rational homological assertion for every finite group at odd primes.",
+      "sourceLine": "proved the required unitary result and deduced the rational homological assertion for every finite group at odd primes",
+      "sourceQuote": "\\citet[Theorems~B and~C]{DiazRamos2026} proved the required unitary result and deduced the rational homological assertion for every finite group at odd primes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "At two, successive component eliminations narrowed the remaining families.",
+      "sourceLine": "At two, successive component eliminations narrowed the remaining families.",
+      "sourceQuote": "At two, successive component eliminations narrowed the remaining families.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Acyclicity over any fixed field characterizes the existence of a nontrivial normal p-subgroup.",
+      "sourceLine": "Thus acyclicity over any fixed field characterizes the existence of a nontrivial normal $p$-subgroup.",
+      "sourceQuote": "Thus acyclicity over any fixed field characterizes the existence of a nontrivial normal $p$-subgroup.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A frame is a decomposition of a finite-dimensional vector space into lines.",
+      "sourceLine": "A frame is a decomposition of a finite-dimensional vector space into lines",
+      "sourceQuote": "A frame is a decomposition of a finite-dimensional vector space into lines; when a form is present, the lines are nondegenerate and mutually orthogonal.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Relations between frames that differ inside a plane make the boundaries of apartment chains cancel.",
+      "sourceLine": "We impose relations between frames that differ only inside a plane, so that the boundaries of their apartment chains cancel.",
+      "sourceQuote": "We impose relations between frames that differ only inside a plane, so that the boundaries of their apartment chains cancel.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
