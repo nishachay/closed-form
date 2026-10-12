@@ -1,0 +1,227 @@
+{
+  "id": "231",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-free-uniform-spanning-forest-is-a-factor-of-IID-September-25-2026/The-free-uniform-spanning-forest-is-a-factor-of-IID-September-25-2026.pdf",
+      "label": "The free uniform spanning forest is a factor of IID"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/231.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One fixed rule builds the free uniform spanning forest from independent random labels on every infinite graph.",
+  "scope": "It covers every infinite, connected graph where each vertex has finitely many neighbors and no edge weights. The rule is measurable but not finitary.",
+  "plain": "A spanning tree connects every point of a network without loops. On infinite networks a random version, the free uniform spanning forest, arises as a limit. The paper proves that one fixed rule can build it from independent random numbers at each point, on every such network. It also proves a similar result for a wider family of random sets on groups.",
+  "doesNot": "This does not say how far away the rule must look to decide one edge.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2013",
+    "firstStepBy": "Russell Lyons, factor question for the free forest",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It settles the general factor question for the free uniform spanning forest, which a December 2025 paper listed as open."
+  },
+  "explanation": "Draw a square: four corners, four sides. A spanning tree keeps enough sides to connect all four corners, with no loop. Here that means dropping exactly one side, so there are four spanning trees. Pick one of them at random, each with chance 1/4. Each side then survives with probability 3/4.\n\nNow give the sides weights, and make heavy sides more likely to stay. Nudge one weight and every survival chance shifts a little. The paper uses a clean rule for the total shift. For a side kept with probability p, the summed responses equal 2p(1 − p), never more than 1/2[10]. For the square, p = 3/4 gives 2 × 3/4 × 1/4 = 0.375. With uneven weights 1, e, e^(−0.5) and e², the first side's chance becomes about 0.683. Its total response is then about 0.433, again equal to 2p(1 − p).\n\nOn an infinite graph, such as an endless grid, a random spanning tree can be taken as a limit of finite ones. Grow larger and larger finite pieces, pick a uniform spanning tree in each, and look at the limit[1]. When nothing is glued at the boundary, the result is the free uniform spanning forest. It is a forest, not a tree, because it may split into several pieces.\n\nA factor of IID asks for a recipe. Give every vertex its own independent random number, called a label. Then one fixed rule turns all the labels into a choice of edges. The rule may not pick a starting vertex, and it must treat all vertices alike. Lyons discussed this question for the free forest on graphs of groups in 2013[2]. For a related object, the wired forest, a recipe was known on transient graphs[3]. A graph is transient when a random walk on it eventually leaves every region for good. Timár built a recipe for recurrent and invariantly amenable random graphs[4]. Amenable roughly means the graph can be cut into big pieces with small boundaries. His December 2025 paper still listed the general question as open[5].\n\nThe paper proves the free uniform spanning forest is a factor of IID on every infinite connected graph with finitely many neighbors per vertex[6]. One rule works for all such graphs at once, and it uses no root[7]. No amenability, no transience and no degree bound is assumed[8]. The rule is measurable, but it need not decide an edge from a bounded region of labels[16].\n\nThe obstacle is to draw one sample from the infinite forest, treating every vertex alike, while controlling all the edges together[9]. The paper adapts an observation method that Nam, Sly and Zhang used for Ising spins on trees[17]. Imagine watching each edge through slowly fading noise. Remove the part of what you see that you could already predict. What is left is fresh noise, called innovations, and it is independent across edges[11]. Labels can make such noise directly. The response rule above shows that predictions change only gently when the noise changes. That lets the paper run the process backwards from any noise input[12]. Running it for a long time then reveals which edges belong to the forest[13].\n\nThe same method gives a second result. Strongly Rayleigh processes are random sets whose generating polynomial never vanishes in a certain region. They include determinantal processes, which are built from a matrix. On every countable group, a strongly Rayleigh process that looks the same everywhere is a factor of IID[14]. This needs no amenability[15].\n\nHow sure is this? Lean, a computer proof checker, has formal versions of both results. The scope note says one equivariant rule works for all such graphs and uses no root. It also lists the group results for strongly Rayleigh and determinantal laws. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. Lean has formal versions of the forest result and the group results; no specialist review is published, and no finitary coding is claimed.",
+  "glossary": [
+    {
+      "term": "Spanning tree",
+      "meaning": "A set of edges that connects every vertex of a graph with no loops."
+    },
+    {
+      "term": "Free uniform spanning forest",
+      "meaning": "The limit of uniform random spanning trees on larger and larger finite pieces of an infinite graph, with nothing glued at the boundary."
+    },
+    {
+      "term": "Factor of IID",
+      "meaning": "A fixed rule that turns independent random labels at the vertices into the random object, treating every vertex alike."
+    },
+    {
+      "term": "Innovations",
+      "meaning": "The part of a noisy observation that could not be predicted from what was seen before."
+    },
+    {
+      "term": "Strongly Rayleigh process",
+      "meaning": "A random set whose generating polynomial is never zero when every variable has positive imaginary part."
+    },
+    {
+      "term": "Amenable",
+      "meaning": "Roughly, a graph or group that can be cut into large pieces with relatively small boundaries."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The free uniform spanning forest is a factor of IID” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-free-uniform-spanning-forest-is-a-factor-of-IID-September-25-2026/The-free-uniform-spanning-forest-is-a-factor-of-IID-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 231 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/231.md"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "cite": "I. Benjamini, R. Lyons, Y. Peres and O. Schramm, “Uniform Spanning Forests”, The Annals of Probability 29(1) (2001), 1–65",
+      "url": "https://doi.org/10.1214/aop/1008956321",
+      "id": 4
+    },
+    {
+      "cite": "Á. Timár, “Factor of iid's through stochastic domination”, Israel Journal of Mathematics (2025), arXiv:2306.15120",
+      "url": "https://doi.org/10.1007/s11856-025-2884-1",
+      "id": 5
+    },
+    {
+      "cite": "D. Nam, A. Sly and L. Zhang, “Ising Model on Trees and Factors of IID”, Communications in Mathematical Physics 389(2) (2022), 1009–1046",
+      "url": "https://doi.org/10.1007/s00220-021-04260-2",
+      "id": 6
+    }
+  ],
+  "claims": [
+    {
+      "text": "The free forest is the weak limit of uniform spanning trees on finite exhaustions, without identifying boundary vertices.",
+      "verdict": "supported",
+      "sourceLine": "The free uniform spanning forest is obtained by taking",
+      "sourceQuote": "The free uniform spanning forest is obtained by taking weak limits of uniform spanning trees on finite connected exhaustions, without identifying boundary vertices.",
+      "paper": 1
+    },
+    {
+      "text": "Lyons discussed the FUSF factor question in his 2013 Oberwolfach report.",
+      "verdict": "supported",
+      "sourceLine": "Lyons explicitly discussed the FUSF factor question for",
+      "sourceQuote": "Lyons explicitly discussed the FUSF factor question for the group action on Cayley graphs in his report for the 2013 Oberwolfach workshop~\\cite[p.~2392]{Lyons2013}.",
+      "paper": 1
+    },
+    {
+      "text": "On transient graphs the wired forest has an IID construction through Wilson's algorithm rooted at infinity.",
+      "verdict": "supported",
+      "sourceLine": "On transient graphs, the wired forest has an IID construction through",
+      "sourceQuote": "On transient graphs, the wired forest has an IID construction through cycle popping and Wilson's algorithm rooted at infinity; see \\cite[Theorem~5.1]{BLPS2001}.",
+      "paper": 1
+    },
+    {
+      "text": "Timár proved FIID representability on recurrent and invariantly amenable unimodular random graphs.",
+      "verdict": "supported",
+      "sourceLine": "invariantly amenable unimodular random graphs",
+      "sourceQuote": "For general graph laws, Tim\\'ar proves FIID representability of the free forest on recurrent unimodular random graphs and, more generally, on invariantly amenable unimodular random graphs \\cite[arXiv version, Theorem~1 and Corollary~5]{Timar2025}.",
+      "paper": 1
+    },
+    {
+      "text": "The December 2025 version states the unrestricted question as open.",
+      "verdict": "supported",
+      "sourceLine": "states the unrestricted FUSF factor question as open.",
+      "sourceQuote": "The introduction to that December 2025 version states the unrestricted FUSF factor question as open.",
+      "paper": 1
+    },
+    {
+      "text": "The free uniform spanning forest is a factor of IID on every infinite connected locally finite simple unweighted graph.",
+      "verdict": "supported",
+      "sourceLine": "We prove that the free uniform spanning forest is a factor of IID on every",
+      "sourceQuote": "We prove that the free uniform spanning forest is a factor of IID on every infinite connected locally finite simple unweighted graph.",
+      "paper": 1
+    },
+    {
+      "text": "One Borel rule works for all such graphs and uses no root.",
+      "verdict": "supported",
+      "sourceLine": "for all such graphs and uses no root, answering affirmatively the general factor",
+      "sourceQuote": "One Borel rule works for all such graphs and uses no root, answering affirmatively the general factor question for unimodular random graphs.",
+      "paper": 1
+    },
+    {
+      "text": "No amenability, transience, uniform degree bound or degree moment is assumed.",
+      "verdict": "supported",
+      "sourceLine": "In particular, no amenability, transience, uniform degree",
+      "sourceQuote": "In particular, no amenability, transience, uniform degree bound, or degree moment is assumed.",
+      "paper": 1
+    },
+    {
+      "text": "The challenge is a single equivariant sample controlling all edges jointly.",
+      "verdict": "supported",
+      "sourceLine": "The challenge is to obtain a single equivariant sample",
+      "sourceQuote": "The challenge is to obtain a single equivariant sample from the infinite-volume law while controlling all edges jointly.",
+      "paper": 1
+    },
+    {
+      "text": "For a finite weighted spanning tree the summed responses equal 2p(1−p) ≤ 1/2.",
+      "verdict": "supported",
+      "sourceLine": "Negative off-diagonal covariances and the fixed size of a finite tree give",
+      "sourceQuote": "Negative off-diagonal covariances and the fixed size of a finite tree give this identity.",
+      "paper": 1
+    },
+    {
+      "text": "The innovations are independent Brownian motions.",
+      "verdict": "supported",
+      "sourceLine": "They are independent Brownian motions.",
+      "sourceQuote": "They are independent Brownian motions.",
+      "paper": 1
+    },
+    {
+      "text": "The decoding equation is uniquely solvable by a Borel Picard iteration for every continuous input.",
+      "verdict": "supported",
+      "sourceLine": "uniquely solvable by a Borel Picard iteration for every continuous input",
+      "sourceQuote": "The response bound makes the integral equation \\[ Z_e(t)=w_e(t)+\\int_0^t b_e(s,Z(s))\\,ds \\] uniquely solvable by a Borel Picard iteration for every continuous input field $w$.",
+      "paper": 1
+    },
+    {
+      "text": "Integer-time slopes recover the forest.",
+      "verdict": "supported",
+      "sourceLine": "Integer-time slopes recover",
+      "sourceQuote": "Integer-time slopes recover $X$.",
+      "paper": 1
+    },
+    {
+      "text": "Every translation-invariant strongly Rayleigh process on a countable group is a factor of IID.",
+      "verdict": "supported",
+      "sourceLine": "translation-invariant strongly Rayleigh process indexed by a",
+      "sourceQuote": "We also show that every translation-invariant strongly Rayleigh process indexed by a countable group is a factor of IID, including invariant determinantal processes with Hermitian positive-contraction kernels.",
+      "paper": 1
+    },
+    {
+      "text": "The group-action conclusion requires no amenability.",
+      "verdict": "supported",
+      "sourceLine": "conclusion requires no amenability.",
+      "sourceQuote": "This group-action conclusion requires no amenability.",
+      "paper": 1
+    },
+    {
+      "text": "The result is an ordinary Borel factor, without a finitary coding radius.",
+      "verdict": "supported",
+      "sourceLine": "factor, without a finitary coding radius or a finite input alphabet.",
+      "sourceQuote": "The result asserts an ordinary Borel factor, without a finitary coding radius or a finite input alphabet.",
+      "paper": 1
+    },
+    {
+      "text": "Nam, Sly and Zhang are a close antecedent for the observation mechanism.",
+      "verdict": "supported",
+      "sourceLine": "close antecedent is Nam, Sly and",
+      "sourceQuote": "A particularly close antecedent is Nam, Sly and Zhang~\\cite[Theorem~1 and Section~2.2]{NamSlyZhang2022}: for free Ising measures on regular trees in their parameter range, they obtain FIID codings through Brownian-driven systems with posterior-mean drift and recover spins at large times.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes the universal FUSF factor and the strongly Rayleigh and determinantal group results.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
