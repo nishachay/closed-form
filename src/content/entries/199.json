@@ -1,0 +1,217 @@
+{
+  "id": "199",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-counterexample-to-the-Auslander-Reiten-conjecture-September-23-2026/paper.pdf",
+      "label": "An explicit counterexample to the Auslander-Reiten conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Tachikawas-second-conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to Tachikawa's second conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/199.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A module with no self-extensions in any degree can still fail to be projective, against Auslander–Reiten and Tachikawa.",
+  "scope": "The examples are finite-dimensional algebras over one field of characteristic 2 with three free parameters, and every larger field. The commutative case stays open.",
+  "plain": "In module theory, projective modules are the basic building blocks. The Auslander–Reiten conjecture says a module with no extensions to itself or to the algebra, in any degree, must be projective. Two papers claim this is false, using algebras over a field where 1 + 1 = 0. One counterexample also refutes Tachikawa's second conjecture. A derived algebra then refutes several Nakayama-type conjectures as well.",
+  "doesNot": "This does not settle the commutative version of these conjectures.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Maurice Auslander and Idun Reiten, “On a generalized version of the Nakayama conjecture”",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they disprove a cluster of conjectures central to the representation theory of algebras since the 1970s."
+  },
+  "explanation": "The heart of the proof is a small two-by-two table of numbers. Its rows are H₁ to the power −m, then 1, and H₂ to the power −m, then 1. Its determinant is H₁^(−m) − H₂^(−m). The table can be undone exactly when that is not zero. As a stand-in, try H₁ = 2 and H₂ = 3. For m = 1, 2, 3 the determinant is 1/6, 5/36 and 19/216. It is never zero, because a power of 2 never equals the same power of 3.\n\nNow try H₁ = −1 and H₂ = 1. For m = 2 the determinant is 1 − 1 = 0, and the table cannot be undone. The ratio −1 returns to 1 after two steps. The paper picks H₁ and H₂ whose ratio never returns to 1[10]. Then the table can be undone for every m at once[9]. That is what removes every obstruction in the proof.\n\nSome words first. An algebra here is a finite-dimensional space of numbers with a multiplication, such as square matrices. A module is something the algebra acts on, like vectors under matrices. Projective modules are the basic building blocks: pieces of free copies of the algebra. Ext groups measure the ways two modules can be glued together, one for each degree 1, 2, 3, and so on.\n\nThe Auslander–Reiten conjecture asks this. If a module has no gluings with itself or with the algebra, in any positive degree, must it be projective[1]? It comes from Maurice Auslander and Idun Reiten's 1975 work on the generalized Nakayama conjecture[2]. It was proved in many cases. These include large classes of commutative rings[7]. They also include algebras whose radical cubed is zero[6]. Schulz found a module with no self-gluings, but over a skew field, outside this setting[8].\n\nThe first paper claims a counterexample[3]. The field is built from arithmetic where 1 + 1 = 0, extended by three independent unknowns q, H₁ and H₂. Over it the paper builds a finite-dimensional algebra and a module Z. The module is not projective, yet all its positive-degree gluings with itself and with the algebra vanish[3]. Z is also Gorenstein-projective, so a second conjecture about such modules fails too[4]. The examples survive every enlargement of the field[5].\n\nHow do the gluings vanish? The paper starts from a ten-dimensional algebra whose gluings form a very sparse pattern. It twists that algebra in two ways, scaled by H₁ and by H₂. Each degree-3m gluing gets multiplied by H₁^(−m) or by H₂^(−m). The two-by-two table compares the two twists. Because it can always be undone, every gluing of positive degree cancels, while the module stays non-projective.\n\nThe second paper aims at a stricter target. A self-injective algebra is one where the algebra itself has a strong symmetry. Tachikawa's second conjecture says a module with no positive self-gluings over such an algebra must be projective[12]. The paper builds a symmetric algebra, a special self-injective kind, with such a module that is not projective[13]. The extra difficulty is that gluings in negative degrees must also vanish[17].\n\nFrom this second example the paper builds another algebra. That algebra refutes the classical Nakayama conjecture[15]. It also refutes the Auslander–Gorenstein conjecture[14]. It refutes the Wakamatsu tilting conjecture too[16]. The commutative version of these questions is not settled by either construction[11].\n\nHow sure is this? A computer proof checker called Lean has checked formal statements of both main counterexamples. For Auslander–Reiten, it includes the eight simple modules and survival under field extension. For Tachikawa, it covers the symmetric algebra and its module. Lean does not include the later Nakayama-type consequences. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean checks both main counterexamples, but not the Nakayama-type consequences. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Module",
+      "meaning": "Something an algebra acts on, the way matrices act on vectors."
+    },
+    {
+      "term": "Projective module",
+      "meaning": "A basic building block: a piece split off from free copies of the algebra."
+    },
+    {
+      "term": "Ext group",
+      "meaning": "A measure of the ways two modules can be glued together, one for each degree."
+    },
+    {
+      "term": "Self-injective algebra",
+      "meaning": "An algebra that, as a module over itself, is both a building block and an injective module."
+    },
+    {
+      "term": "Symmetric algebra",
+      "meaning": "A self-injective algebra that matches its own dual space in a balanced way."
+    },
+    {
+      "term": "Gorenstein-projective module",
+      "meaning": "A module inside an endless exact chain of building blocks that stays exact after dualizing."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “An explicit counterexample to the Auslander-Reiten conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-explicit-counterexample-to-the-Auslander-Reiten-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A counterexample to Tachikawa's second conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Tachikawas-second-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 199 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/199.md"
+    },
+    {
+      "id": 4,
+      "cite": "M. Auslander and I. Reiten, “On a generalized version of the Nakayama conjecture”, Proceedings of the AMS 52 (1975), 69–74",
+      "url": "https://doi.org/10.1090/S0002-9939-1975-0389977-6"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Auslander–Reiten conjecture asks whether a finitely generated module with Ext^i(M, M ⊕ R) = 0 for i > 0 must be projective.",
+      "verdict": "supported",
+      "sourceLine": "The Auslander--Reiten conjecture asks whether a finitely generated module",
+      "sourceQuote": "The Auslander--Reiten conjecture asks whether a finitely generated module $M$ over an Artin algebra $R$ must be projective when \\begin{equation}\\label{eq:arc} \\Ext_R^i(M,M\\oplus R)=0\\qquad\\text{for every }i>0. \\end{equation}",
+      "paper": 1
+    },
+    {
+      "text": "The conjecture originates in Auslander and Reiten's work on the generalized Nakayama conjecture.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture originates in the work of Maurice Auslander and",
+      "sourceQuote": "The conjecture originates in the work of Maurice Auslander and Idun Reiten on the generalized Nakayama conjecture \\cite{AuslanderReiten1975}; its module and generator formulations are recalled in \\cite[Introduction]{HunekeLeuschke2004}.",
+      "paper": 1
+    },
+    {
+      "text": "There is a finite-dimensional algebra over F2(q,H1,H2) and a nonprojective module Z with all positive Ext(Z,Z) and Ext(Z,Λ) zero.",
+      "verdict": "supported",
+      "sourceLine": "and a finite-dimensional nonprojective left $\\Lambda$-module $Z$ such that",
+      "sourceQuote": "There exist a finite-dimensional $\\kk$-algebra $\\Lambda$ and a finite-dimensional nonprojective left $\\Lambda$-module $Z$ such that \\[ \\Ext^i_\\Lambda(Z,Z)=0=\\Ext^i_\\Lambda(Z,\\Lambda) \\qquad\\text{for every integer }i\\geq1. \\]",
+      "paper": 1
+    },
+    {
+      "text": "The module Z is Gorenstein-projective.",
+      "verdict": "supported",
+      "sourceLine": "The module $Z$ is Gorenstein-projective.",
+      "sourceQuote": "The module $Z$ is Gorenstein-projective.",
+      "paper": 1
+    },
+    {
+      "text": "Both conjectures fail, including over an algebraically closed field of characteristic two.",
+      "verdict": "supported",
+      "sourceLine": "Thus both conjectures fail for Artin algebras, including finite-dimensional",
+      "sourceQuote": "Thus both conjectures fail for Artin algebras, including finite-dimensional algebras over an algebraically closed field of characteristic two: one can extend scalars to an algebraic closure of $\\kk$.",
+      "paper": 1
+    },
+    {
+      "text": "Zhang and Zhou proved the conjecture for split finite-dimensional algebras with radical cube zero.",
+      "verdict": "supported",
+      "sourceLine": "Zhang and Zhou subsequently proved the conjecture for split",
+      "sourceQuote": "Zhang and Zhou subsequently proved the conjecture for split finite-dimensional algebras with radical cube zero \\cite[Theorem~1.1]{ZhangZhou2026}.",
+      "paper": 1
+    },
+    {
+      "text": "Huneke and Leuschke proved it for a large class of commutative rings.",
+      "verdict": "supported",
+      "sourceLine": "Huneke and Leuschke proved the conjecture for excellent commutative",
+      "sourceQuote": "Huneke and Leuschke proved the conjecture for excellent commutative Cohen--Macaulay normal domains containing the rational numbers, among other classes \\cite[Theorem~0.1]{HunekeLeuschke2004}.",
+      "paper": 1
+    },
+    {
+      "text": "Schulz's skew-field example lies outside the Artin-algebra setting.",
+      "verdict": "supported",
+      "sourceLine": "Schulz's construction of a nonprojective module without self-extensions",
+      "sourceQuote": "Schulz's construction of a nonprojective module without self-extensions \\cite{Schulz1994} is an important antecedent, but its particular skew-field example lies outside the Artin-algebra setting above; see \\cite[Introduction]{DiverisPurin2012}.",
+      "paper": 1
+    },
+    {
+      "text": "The comparison matrix is invertible for every m > 0.",
+      "verdict": "supported",
+      "sourceLine": "This matrix is invertible for every $m>0$.",
+      "sourceQuote": "This matrix is invertible for every $m>0$.",
+      "paper": 1
+    },
+    {
+      "text": "H1/H2 has infinite multiplicative order.",
+      "verdict": "supported",
+      "sourceLine": "resolution with uniform kernel formulas, and $H_1/H_2$ has infinite",
+      "sourceQuote": "The powers of $q$ give an infinite resolution with uniform kernel formulas, and $H_1/H_2$ has infinite multiplicative order.",
+      "paper": 1
+    },
+    {
+      "text": "The commutative restriction is not resolved by either construction.",
+      "verdict": "supported",
+      "sourceLine": "The commutative restriction is not resolved by either construction; see",
+      "sourceQuote": "The commutative restriction is not resolved by either construction; see \\cite[Appendix A]{ChristensenHolm2010} for its relationship with the various Auslander and Tachikawa conditions.",
+      "paper": 1
+    },
+    {
+      "text": "Tachikawa's second conjecture asserts that self-orthogonal modules over self-injective algebras are projective.",
+      "verdict": "supported",
+      "sourceLine": "Tachikawa's second conjecture asserts that every finite-dimensional",
+      "sourceQuote": "Tachikawa's second conjecture asserts that every finite-dimensional self-orthogonal module over a finite-dimensional self-injective algebra is projective.",
+      "paper": 2
+    },
+    {
+      "text": "A symmetric algebra and nonprojective self-orthogonal module show Tachikawa's second conjecture is false.",
+      "verdict": "supported",
+      "sourceLine": "In particular, Tachikawa's second conjecture is false.",
+      "sourceQuote": "In particular, Tachikawa's second conjecture is false.",
+      "paper": 2
+    },
+    {
+      "text": "The endomorphism algebra refutes the Auslander–Gorenstein conjecture.",
+      "verdict": "supported",
+      "sourceLine": "It also refutes the Auslander--Gorenstein conjecture:",
+      "sourceQuote": "It also refutes the Auslander--Gorenstein conjecture: $\\pd_\\Gamma I^j=0\\leq j$ for every $j\\geq0$, whereas the left self-injective dimension is already infinite.",
+      "paper": 2
+    },
+    {
+      "text": "It refutes the classical Nakayama conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This proves the first assertion and refutes the classical Nakayama",
+      "sourceQuote": "This proves the first assertion and refutes the classical Nakayama conjecture.",
+      "paper": 2
+    },
+    {
+      "text": "It refutes the Wakamatsu tilting conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Hence $W$ is not tilting, which refutes the Wakamatsu",
+      "sourceQuote": "Hence $W$ is not tilting, which refutes the Wakamatsu tilting conjecture.",
+      "paper": 2
+    },
+    {
+      "text": "The symmetric case needs vanishing in negative degrees too.",
+      "verdict": "supported",
+      "sourceLine": "The passage to a symmetric algebra requires vanishing in negative",
+      "sourceQuote": "The passage to a symmetric algebra requires vanishing in negative degrees of a complete self-extension complex as well as positive Ext vanishing.",
+      "paper": 2
+    },
+    {
+      "text": "Lean has formal statements for both main counterexamples; the later consequences are not included.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "a650b51af75cde2e52bdcb5da1ec2953d1202c6cd42a2f4ad84b83b3832af924",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
