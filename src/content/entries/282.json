@@ -1,0 +1,130 @@
+{
+  "id": "282",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Scale-and-conformal-symmetry-in-four-dimensional-operational-quantum-field-theory-September-26-2026/main.pdf",
+      "label": "Scale and conformal symmetry in four-dimensional operational quantum field theory"
+    }
+  ],
+  "headline": "Claims that scale symmetry forces local conformal symmetry for a broad class of four-dimensional quantum field theories.",
+  "scope": "Unitary, positive-energy quantum field theories in four spacetime dimensions with a discrete spectrum of scaling dimensions and a bounded local net.",
+  "plain": "A theory has scale symmetry when it looks the same after every length is stretched by one factor. Conformal symmetry is stronger: the theory also looks the same under maps that stretch by different amounts at different points. Physicists have long asked whether the first forces the second in four dimensions. This paper claims to prove it does, for a class of theories defined by explicit technical conditions. The conclusion is local and does not build a global conformal action.",
+  "doesNot": "This does not cover every four-dimensional theory, and it does not build a global conformal action on the whole local net.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Joseph Polchinski, scale implies conformal symmetry in two dimensions under suitable hypotheses",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "Whether scale symmetry implies conformal symmetry in four dimensions is a long-standing question in quantum field theory."
+  },
+  "explanation": "Start with the simplest example, a free massless field φ in four-dimensional spacetime. Its energy and momentum are packed into a table of numbers called the stress tensor, T. Add up the table's diagonal with the spacetime signs and you get its trace. For this field the trace equals −(∂φ)², minus the squared gradient of φ. Treat φ as an ordinary function to see the numbers. Take φ = t·x, time times one space coordinate, which solves the wave equation. Its squared gradient is x² − t². At t = 1 and x = 2 that is 3, so the trace is −3.\n\nScale symmetry means the theory looks the same after every length is stretched by one factor. Conformal symmetry also allows maps that stretch by different amounts at different points. A theory with conformal symmetry needs a stress tensor with zero trace. Here the trace is −3, not zero. But the trace is a total second derivative. The wave operator □ of Q = φ² is 2x² − 2t², which is 6 at our point. So the trace equals □(−Q/2), and −6/2 = −3. In the paper's words, the needed scalar is already present, L = −Q/2[1]. Adding a correction built from Q gives a new tensor. Its trace is −3 + (4·6 − 6)/6 = 0. This fix is called an improvement, and it leaves the energy and momentum unchanged.\n\nThe general question is whether such a scalar always exists. In two dimensions, Zamolodchikov's c-theorem and Polchinski's 1988 argument settled it under suitable hypotheses[2]. In four dimensions, consistency conditions give a perturbative answer, valid only at weak coupling. The positivity those arguments need is not established at arbitrary coupling[3]. The obstacle is to find the scalar L inside the theory's own fields. Dividing the trace by a wave operator gives a candidate, but it may not be a genuine local field.\n\nThis paper claims that scale symmetry implies local conformal symmetry for a class of four-dimensional theories[4]. The theories must be unitary, have positive energy and a vacuum that looks the same at every scale. Their scaling dimensions must form a discrete list bounded below. The paper claims a physical scalar field L of dimension two exists[5]. With it, the stress tensor gets a symmetric, conserved, traceless improvement with unchanged translation and Lorentz charges[6]. No scattering states or assumed crossing relation enter the argument[7]. The result is local. Building a global conformal action on the whole local net remains a separate question[8].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The argument is a long chain of operator estimates in an abstract framework. Its hypotheses are explicit, and checking that a given interacting theory meets them is a separate task. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It covers only theories meeting explicit technical conditions and gives a local result. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Stress tensor",
+      "meaning": "A table of numbers at each point that records the density and flow of energy and momentum."
+    },
+    {
+      "term": "Trace",
+      "meaning": "The sum of the stress tensor's diagonal entries, with the signs that spacetime uses."
+    },
+    {
+      "term": "Scale symmetry",
+      "meaning": "The theory looks the same after every length is stretched by the same factor."
+    },
+    {
+      "term": "Conformal symmetry",
+      "meaning": "The theory looks the same under maps that stretch by different amounts at different points while keeping angles."
+    },
+    {
+      "term": "Improvement",
+      "meaning": "A correction added to the stress tensor that leaves the total energy, momentum and angular momentum unchanged."
+    },
+    {
+      "term": "Wave operator □",
+      "meaning": "The second time derivative minus the sum of the second space derivatives."
+    },
+    {
+      "term": "Local net",
+      "meaning": "An assignment of an algebra of measurements to each bounded region of spacetime."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Scale and conformal symmetry in four-dimensional operational quantum field theory” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Scale-and-conformal-symmetry-in-four-dimensional-operational-quantum-field-theory-September-26-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For the free scalar, the needed scalar is already present: L = −Q/2.",
+      "sourceLine": "Here the scalar is already present, $L=-Q/2$",
+      "sourceQuote": "Here the scalar is already present, $L=-Q/2$, and \\eqref{eq:intro-improvement} is the familiar improvement $t_{\\mu\\nu}=T^{\\mathrm{can}}_{\\mu\\nu} +(\\eta_{\\mu\\nu}\\Box-\\partial_\\mu\\partial_\\nu)Q/6$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The two-dimensional history runs through Zamolodchikov's c-theorem and Polchinski's enhancement result under suitable hypotheses.",
+      "sourceLine": "The two-dimensional history runs through Zamolodchikov's $c$-theorem and Polchinski's enhancement result under suitable hypotheses",
+      "sourceQuote": "The two-dimensional history runs through Zamolodchikov's $c$-theorem and Polchinski's enhancement result under suitable hypotheses \\cite{Zamolodchikov1986,Polchinski1988}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The required positivity is not established by perturbative consistency identities at arbitrary coupling.",
+      "sourceLine": "The required positivity is not established by those consistency identities at arbitrary coupling.",
+      "sourceQuote": "The required positivity is not established by those consistency identities at arbitrary coupling.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Scale symmetry implies local conformal symmetry for a class of four-dimensional unitary, positive-energy quantum field theories.",
+      "sourceLine": "We prove that scale symmetry implies local conformal symmetry for a class of four-dimensional unitary, positive-energy quantum field theories",
+      "sourceQuote": "We prove that scale symmetry implies local conformal symmetry for a class of four-dimensional unitary, positive-energy quantum field theories with a Poincar\\'e- and scale-invariant vacuum.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a Hermitian physical scalar field L of dimension two giving the improvement.",
+      "sourceLine": "There is a Hermitian physical scalar field $L$ of dimension two such that",
+      "sourceQuote": "There is a Hermitian physical scalar field $L$ of dimension two such that \\begin{equation}\\label{eq:intro-improvement} \\partial^\\mu V^{(3)}_\\mu=\\Box L, \\qquad t_{\\mu\\nu}=T^{(4)}_{\\mu\\nu} +\\frac13(\\partial_\\mu\\partial_\\nu-\\eta_{\\mu\\nu}\\Box)L \\end{equation} is symmetric, conserved and traceless.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The stress tensor admits a symmetric, conserved, traceless improvement with unchanged translation and Lorentz charges.",
+      "sourceLine": "the stress tensor admits a symmetric, conserved, traceless improvement with unchanged translation and Lorentz charges.",
+      "sourceQuote": "Under these hypotheses, the stress tensor admits a symmetric, conserved, traceless improvement with unchanged translation and Lorentz charges.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No asymptotic scattering states or independently assumed crossing relation enter the argument.",
+      "sourceLine": "No asymptotic scattering states or independently assumed crossing relation enter the argument.",
+      "sourceQuote": "No asymptotic scattering states or independently assumed crossing relation enter the argument.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Integration to a global conformal action on the whole bounded net remains a separate question.",
+      "sourceLine": "integration to a global conformal action on the whole bounded net remains a separate question.",
+      "sourceQuote": "The conclusion is local; integration to a global conformal action on the whole bounded net remains a separate question.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
