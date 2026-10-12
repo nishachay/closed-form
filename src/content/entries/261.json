@@ -1,0 +1,185 @@
+{
+  "id": "261",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Absolutely-Continuous-Spectrum-for-Weak-Disorder-Anderson-Models-in-Dimensions-at-Least-Three-September-23-2026/paper.pdf",
+      "label": "Absolutely Continuous Spectrum for Weak-Disorder Anderson Models in Dimensions at Least Three"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf",
+      "label": "Pure-Point Spectrum for the Two-Dimensional Anderson Model at Every Positive Disorder"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/261.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims electrons stay trapped on a random square grid at any disorder, and can spread at weak disorder in 3D.",
+  "scope": "The nearest-neighbour Anderson model with independent uniform random potentials: the square lattice at every disorder, and dimensions three and up at weak disorder.",
+  "plain": "The Anderson model describes an electron hopping on a grid where each site has a random energy. Physicists expect that in two dimensions any amount of randomness traps the electron, while in three dimensions weak randomness lets it spread on some energies. Two papers claim to prove both pictures for uniform random energies. Lean proves only that the allowed energies on the square grid fill the interval from −4 − h to 4 + h.",
+  "doesNot": "This does not prove exponential decay of eigenfunctions, dynamical localization, the location of the mobility edge, or quantum diffusion.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1958",
+    "firstStepBy": "Philip W. Anderson, random site energies as a mechanism that suppresses quantum transport",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "Planar localization at weak disorder and absolutely continuous spectrum in three dimensions are listed open problems from Simon's 2000 problem list."
+  },
+  "explanation": "Picture an electron on a square grid, like a sheet of graph paper. At each step it can hop to one of its 4 neighbours. Each site x also has a random energy v_x, drawn uniformly between −h and h. The number h is the disorder strength. Without randomness, a wave spreading evenly across the grid has energy 2cos k₁ + 2cos k₂ for some wave numbers k₁ and k₂. Those values fill the interval from −4 to 4. Random energies widen this to −4 − h up to 4 + h. For h = 0.5 the allowed energies, called the spectrum, run from −4.5 to 4.5.\n\nThe question is whether the electron spreads or stays put. Anderson introduced random site energies as a way to suppress quantum transport[1]. In maths language, staying put means pure-point spectrum: the grid has a full set of trapped wave shapes, called eigenvectors. Spreading means absolutely continuous spectrum, with no trapped states at those energies. A physical scaling theory predicts no true metal in two dimensions[2]. So in the plane, any disorder h > 0 should trap the electron.\n\nEarlier proofs worked only for strong disorder or for energies near the edges. Fröhlich, Martinelli, Scoppola and Spencer showed pure-point spectrum in those regimes[3]. Edge results remain restricted to a bottom interval of energies[4]. Weak disorder in the middle of the band is the hard case. There the randomness is a small push, and it must still beat the wave's tendency to spread.\n\nThe second paper claims the planar case. For each h > 0, almost surely the square-grid operator has pure-point spectrum and a complete basis of eigenvectors[5]. The paper says this resolves the pure-point part of the two-dimensional Anderson localization conjecture for uniform energies[6]. It does not claim exponential decay or dynamical localization[7].\n\nThe first paper goes the other way, in dimension 3 and higher. There Simon's Problem 1 asks for an energy range with purely absolutely continuous spectrum[8]. The paper claims such a range for small disorder: on a fixed open interval of energies, the spectrum is purely absolutely continuous[9]. On a tree-shaped lattice, the Bethe lattice, Klein proved this decades earlier[10]. In three dimensions the interval sits just above the bottom edge −6 of the free band. The paper does not locate the full mobility edge, the energy where spreading switches to trapping[11].\n\nHow sure is this? Lean, a computer proof checker, proves one supporting fact. On the square grid, the spectrum is almost surely the interval from −4 − h to 4 + h. The trapping and spreading claims are outside Lean. They rest on two long papers, and no specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. Lean proves only the spectral interval on the square grid. The trapping and spreading claims rest on two long papers with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Anderson model",
+      "meaning": "An electron hopping between neighbouring grid sites, where each site has its own random energy."
+    },
+    {
+      "term": "Disorder strength h",
+      "meaning": "The width of the random energies: each site's energy is uniform between −h and h."
+    },
+    {
+      "term": "Spectrum",
+      "meaning": "The set of energies the electron can have in this model."
+    },
+    {
+      "term": "Pure-point spectrum",
+      "meaning": "The case where trapped wave shapes (eigenvectors) span everything; it means the electron stays localized."
+    },
+    {
+      "term": "Absolutely continuous spectrum",
+      "meaning": "Energies with no trapped states, where waves spread out, like in a metal."
+    },
+    {
+      "term": "Almost surely",
+      "meaning": "With probability one over the random choice of site energies."
+    },
+    {
+      "term": "Mobility edge",
+      "meaning": "An energy where behaviour switches from spreading to trapped."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Absolutely Continuous Spectrum for Weak-Disorder Anderson Models in Dimensions at Least Three” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Absolutely-Continuous-Spectrum-for-Weak-Disorder-Anderson-Models-in-Dimensions-at-Least-Three-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Pure-Point Spectrum for the Two-Dimensional Anderson Model at Every Positive Disorder” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 261",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/261.md",
+      "quote": "This selected statement identifies the spectral set. It does not assert the pure-point spectral type claimed in the accompanying paper."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Anderson introduced random site energies as a mechanism for suppressing quantum transport.",
+      "sourceLine": "Anderson introduced random site energies as a mechanism for suppressing quantum transport",
+      "sourceQuote": "Anderson introduced random site energies as a mechanism for suppressing quantum transport, motivated by spin diffusion and impurity conduction \\cite{Anderson1958}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The scaling theory of Abrahams, Anderson, Licciardello and Ramakrishnan predicts no true metallic behaviour in two dimensions.",
+      "sourceLine": "The conductance-scaling theory of Abrahams, Anderson, Licciardello and Ramakrishnan predicts the absence of true metallic behavior in two dimensions",
+      "sourceQuote": "The conductance-scaling theory of Abrahams, Anderson, Licciardello and Ramakrishnan predicts the absence of true metallic behavior in two dimensions \\cite{AbrahamsAndersonLicciardelloRamakrishnan1979}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Earlier work established pure-point spectrum in large-disorder and tail-energy regimes.",
+      "sourceLine": "established pure-point spectrum with exponentially decaying eigenfunctions for independent identically distributed diagonal potentials with a bounded density in sufficiently large-disorder and suitable tail-energy regimes",
+      "sourceQuote": "Fr\\\"ohlich, Martinelli, Scoppola and Spencer subsequently established pure-point spectrum with exponentially decaying eigenfunctions for independent identically distributed diagonal potentials with a bounded density in sufficiently large-disorder and suitable tail-energy regimes \\cite{FMSS1985}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Planar edge-localization theorems remain restricted to a bottom interval.",
+      "sourceLine": "The latter localization theorems remain restricted to a bottom interval",
+      "sourceQuote": "The latter localization theorems remain restricted to a bottom interval, even though their distributional assumptions are broader.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "For each fixed h > 0, almost surely the operator has pure-point spectral type and a complete orthonormal eigenbasis.",
+      "sourceLine": "For each fixed $h>0$, almost surely $H_v$ has pure-point spectral type, admits a complete orthonormal eigenbasis",
+      "sourceQuote": "For each fixed $h>0$, almost surely $H_v$ has pure-point spectral type, admits a complete orthonormal eigenbasis, and has spectrum \\[ \\sigma(H_v)=[-4-h,4+h]. \\]",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "It resolves the pure-point assertion of the two-dimensional Anderson localization conjecture for a uniform single-site distribution.",
+      "sourceLine": "It resolves the pure-point assertion of the two-dimensional Anderson localization conjecture for a uniform single-site distribution",
+      "sourceQuote": "It resolves the pure-point assertion of the two-dimensional Anderson localization conjecture for a uniform single-site distribution, as formulated in \\cite[Problem~2]{Simon2000}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No dynamical-localization theorem or uniform bound in energy is asserted.",
+      "sourceLine": "We do not assert one probability-one event for all disorder strengths, a bound uniform in energy, or a dynamical-localization theorem.",
+      "sourceQuote": "We do not assert one probability-one event for all disorder strengths, a bound uniform in energy, or a dynamical-localization theorem.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Simon's Problem 1 asks for a purely absolutely continuous energy range in dimensions at least three.",
+      "sourceLine": "Simon's Problem~1 asks for a purely absolutely continuous energy range for the nearest-neighbor model with iid uniform potentials in dimensions at least three",
+      "sourceQuote": "Simon's Problem~1 asks for a purely absolutely continuous energy range for the nearest-neighbor model with iid uniform potentials in dimensions at least three, at suitable disorder widths~\\cite{Simon2000}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In every fixed dimension d ≥ 3 at weak disorder, on a fixed open interval the spectrum is purely absolutely continuous with nonzero weight.",
+      "sourceLine": "We prove a weak-disorder delocalization result for independent uniform site potentials in every fixed dimension $d\\ge3$: on a fixed open interval, the spectrum is purely absolutely continuous and has nonzero weight.",
+      "sourceQuote": "We prove a weak-disorder delocalization result for independent uniform site potentials in every fixed dimension $d\\ge3$: on a fixed open interval, the spectrum is purely absolutely continuous and has nonzero weight.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "On the Bethe lattice, Klein proved purely absolutely continuous spectrum inside the free band at weak disorder.",
+      "sourceLine": "On the Bethe lattice, Klein proved purely absolutely continuous spectrum on compact intervals inside the free band at sufficiently weak disorder",
+      "sourceQuote": "On the Bethe lattice, Klein proved purely absolutely continuous spectrum on compact intervals inside the free band at sufficiently weak disorder~\\cite{Klein1994,Klein1998}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The result does not locate the full mobility edge.",
+      "sourceLine": "It does not locate the full mobility edge discussed after Problem~1",
+      "sourceQuote": "It does not locate the full mobility edge discussed after Problem~1 or resolve the diffusion question stated separately as Problem~3.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves that the planar Anderson operator almost surely has spectrum [−4−h, 4+h]; it does not assert pure-point spectral type.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
