@@ -1,0 +1,221 @@
+{
+  "id": "093",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-dimension-free-logarithmic-Sobolev-inequality-for-subgaussian-log-concave-measures-September-23-2026/paper.pdf",
+      "label": "A dimension-free logarithmic Sobolev inequality for subgaussian log-concave measures"
+    }
+  ],
+  "headline": "Log-concave laws with bell-curve tails in every direction obey a dimension-free log-Sobolev bound, the paper claims.",
+  "scope": "The result covers centered log-concave probability laws with a density on n-dimensional space, whose linear projections all have bell-curve tails with a common scale a.",
+  "plain": "A logarithmic Sobolev inequality bounds how uneven a function can be by how steep it is on average. The question is whether bell-curve tails in every straight direction are enough to get one, for one-hump (log-concave) distributions. This paper claims they are, with constant C times a squared, where C is the same in every dimension. Earlier bounds grew with the dimension, like n or the square root of n. No Lean formalization is listed.",
+  "doesNot": "This does not give a numerical value for the universal constant C, and it does not cover laws without the log-concave shape.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2023",
+    "firstStepBy": "Pierre Bizeul, who formulated the conjecture",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a stated conjecture on log-concave laws by removing all dependence on dimension."
+  },
+  "explanation": "Start with the bell curve, the standard normal distribution. Draw X from it and compute the average of exp(X²/a²). The answer is 1 divided by the square root of 1 − 2/a². That equals 2 exactly when a² = 8/3, so a is about 1.63. In the paper's terms, X is a-subgaussian with a ≈ 1.63. Being linearly a-subgaussian means every straight projection passes this test with the same a[13].\n\nNow take a standard bell curve in n dimensions. Every straight projection of it is again a standard bell curve. So the same a ≈ 1.63 works in every dimension, even a million. The question is whether that kind of tail control buys something much stronger.\n\nThe stronger thing is a logarithmic Sobolev inequality. It bounds the entropy of a function [a number measuring how uneven its values are] by its Dirichlet energy [the average squared steepness][1]. It also gives bell-curve concentration for every Lipschitz function [a function that cannot change faster than a fixed rate][2]. Write the bound as entropy ≤ constant × energy. For the bell curve, a classical result of Bakry and Émery keeps the constant fixed in every dimension[3]. Their method needs the density to curve downward at a guaranteed rate.\n\nThis paper works with log-concave laws [densities whose logarithm is concave, giving one hump and light tails]. Log-concavity alone promises no guaranteed downward curvature[4]. So the classical method has nothing to push against. The question is whether bell-curve tails in every straight direction can replace that curvature[5]. The tails are necessary, up to universal constants[6]. Pierre Bizeul formulated their sufficiency as a conjecture in 2023[7].\n\nEarlier bounds grew with dimension. A criterion of Bobkov from 1999 gives a constant of order n × a²[8]. Bizeul improved this to order √n × a²[9]. In 10,000 dimensions, those are 10,000a² and 100a². Bizeul also proved the dimension-free bound for laws that look the same in every direction[10].\n\nThe paper claims the constant is C × a², with one universal C[11]. The same C works in every dimension[12]. No smoothness of the density or positive curvature is needed[14]. So the theorem includes uniform measures on convex bodies [solid shapes with no dents][15]. The theorem names no numerical value for C. It needs the law to be centered, with average zero, and to have a density.\n\nThe hard part is the gap between hypothesis and conclusion. The tail condition speaks only about straight, linear functions. The conclusion controls the entropy of every nonlinear test function[16]. The paper argues by contradiction. A failure would give laws whose log-Sobolev constant stays at 1 while their tail scale a shrinks to zero[17]. The paper then derives two incompatible descriptions of how these laws fluctuate[18].\n\nThere is also a standard consequence. By a 2000 result of Otto and Villani, the bound implies a transport–entropy inequality with the same constant[19]. That inequality limits how far a distribution can be moved, in an average-distance sense, by its relative entropy.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. The constant C is universal but not given as a number, and the law must be centered and log-concave. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Logarithmic Sobolev inequality",
+      "meaning": "A bound on the entropy of a function by a constant times its average squared steepness."
+    },
+    {
+      "term": "Entropy",
+      "meaning": "Here, a number that measures how uneven the values of a function are under a given distribution."
+    },
+    {
+      "term": "Log-concave",
+      "meaning": "A density whose logarithm is concave, so it has a single hump and light tails."
+    },
+    {
+      "term": "Linearly subgaussian",
+      "meaning": "Every straight projection has tails no heavier than a bell curve of a fixed width a."
+    },
+    {
+      "term": "Dimension-free",
+      "meaning": "The constant stays the same no matter how many dimensions the space has."
+    },
+    {
+      "term": "Lipschitz function",
+      "meaning": "A function that cannot change faster than a fixed rate."
+    },
+    {
+      "term": "Convex body",
+      "meaning": "A solid shape with no dents: the segment between any two of its points stays inside."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "L. Gross, “Logarithmic Sobolev inequalities”, American Journal of Mathematics 97(4) (1975), 1061–1083",
+      "url": "https://www.jstor.org/stable/2373688"
+    },
+    {
+      "id": 2,
+      "cite": "D. Bakry and M. Émery, “Diffusions hypercontractives”, Séminaire de probabilités XIX, Lecture Notes in Math. 1123 (1985), 177–206",
+      "url": "https://numdam.org/item/SPS_1985__19__177_0/"
+    },
+    {
+      "id": 3,
+      "cite": "S. G. Bobkov, “Isoperimetric and analytic inequalities for log-concave probability measures”, Annals of Probability 27(4) (1999), 1903–1921",
+      "url": "https://doi.org/10.1214/aop/1022874820"
+    },
+    {
+      "id": 4,
+      "cite": "P. Bizeul, “On the log-Sobolev constant of log-concave vectors”, Journal of Functional Analysis 290(9) (2026), 111368; arXiv:2306.12997",
+      "url": "https://arxiv.org/abs/2306.12997v3"
+    },
+    {
+      "id": 5,
+      "cite": "F. Otto and C. Villani, “Generalization of an Inequality by Talagrand and Links with the Logarithmic Sobolev Inequality”, Journal of Functional Analysis 173(2) (2000), 361–400",
+      "url": "https://doi.org/10.1006/jfan.1999.3557"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, family 093: “A dimension-free logarithmic Sobolev inequality for subgaussian log-concave measures” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-dimension-free-logarithmic-Sobolev-inequality-for-subgaussian-log-concave-measures-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A logarithmic Sobolev inequality controls entropy by Dirichlet energy.",
+      "verdict": "supported",
+      "sourceLine": "A logarithmic Sobolev inequality controls the entropy of a function by its Dirichlet energy.",
+      "sourceQuote": "A logarithmic Sobolev inequality controls the entropy of a function by its Dirichlet energy."
+    },
+    {
+      "text": "It gives Gaussian concentration for Lipschitz functions.",
+      "verdict": "supported",
+      "sourceLine": "it gives Gaussian concentration for Lipschitz functions",
+      "sourceQuote": "Besides implying a Poincar\\'e inequality, it gives Gaussian concentration for Lipschitz functions."
+    },
+    {
+      "text": "Bakry–Émery gives the inequality when the Hessian of the potential is at least κ > 0.",
+      "verdict": "supported",
+      "sourceLine": "gives the inequality for a density",
+      "sourceQuote": "The diffusion approach of Bakry and \\'Emery \\cite{BakryEmery1985} gives the inequality for a density $e^{-V}$ when $D^2V\\ge\\kappa\\Id$ with $\\kappa>0$: in the convention used below, its constant is at most $\\kappa^{-1}$."
+    },
+    {
+      "text": "Log-concavity alone asserts only nonnegative Hessian.",
+      "verdict": "supported",
+      "sourceLine": "Log-concavity alone asserts only",
+      "sourceQuote": "Log-concavity alone asserts only $D^2V\\ge0$ when the potential is smooth."
+    },
+    {
+      "text": "The question is whether tail assumptions on linear functions can replace positive curvature.",
+      "verdict": "supported",
+      "sourceLine": "The question addressed here is whether a global assumption on the tails of linear functions can supply the logarithmic Sobolev bound without positive curvature.",
+      "sourceQuote": "The question addressed here is whether a global assumption on the tails of linear functions can supply the logarithmic Sobolev bound without positive curvature."
+    },
+    {
+      "text": "Uniformly subgaussian linear marginals are necessary, by the Herbst argument.",
+      "verdict": "supported",
+      "sourceLine": "Uniformly subgaussian linear marginals are necessary, up to universal constants",
+      "sourceQuote": "Uniformly subgaussian linear marginals are necessary, up to universal constants, by the same Herbst argument."
+    },
+    {
+      "text": "Bizeul formulated their sufficiency within the log-concave class in 2023.",
+      "verdict": "supported",
+      "sourceLine": "Bizeul formulated their sufficiency within the log-concave class in 2023",
+      "sourceQuote": "Bizeul formulated their sufficiency within the log-concave class in 2023 \\cite[Conjecture~2]{Bizeul2026}."
+    },
+    {
+      "text": "Bobkov's criterion yields a coefficient of order n a².",
+      "verdict": "supported",
+      "sourceLine": "so that criterion yields a coefficient of order",
+      "sourceQuote": "Under \\eqref{eq:intro-subgaussian}, H\\\"older's inequality gives $\\E\\exp(|X|^2/(na^2))\\le2$, so that criterion yields a coefficient of order $na^2$."
+    },
+    {
+      "text": "Bizeul's improvement gives an entropy coefficient of order √n a².",
+      "verdict": "supported",
+      "sourceLine": "Thus for linear subgaussian scale $a$ it gives an entropy coefficient of order",
+      "sourceQuote": "Thus for linear subgaussian scale $a$ it gives an entropy coefficient of order $\\sqrt n\\,a^2$."
+    },
+    {
+      "text": "Bizeul obtained the dimension-free conclusion for rotationally invariant laws.",
+      "verdict": "supported",
+      "sourceLine": "Bizeul also obtained the dimension-free conclusion for rotationally invariant log-concave laws",
+      "sourceQuote": "Bizeul also obtained the dimension-free conclusion for rotationally invariant log-concave laws \\cite[Theorem~8]{Bizeul2026}."
+    },
+    {
+      "text": "Every centered log-concave law with linear subgaussian parameter a satisfies Ent(f²) ≤ C a² ∫|Df|² with universal C.",
+      "verdict": "supported",
+      "sourceLine": "satisfies $\\operatorname{Ent}_\\mu(f^2)\\le Ca^2\\int|Df|^2\\,d\\mu$",
+      "sourceQuote": "We prove that every centered log-concave probability measure with a Lebesgue density on $\\mathbb R^n$ and linear subgaussian parameter $a$ satisfies $\\operatorname{Ent}_\\mu(f^2)\\le Ca^2\\int|Df|^2\\,d\\mu$ for compactly supported smooth $f$, with one universal constant $C$."
+    },
+    {
+      "text": "The same constant works in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "The same constant works in every dimension.",
+      "sourceQuote": "The same constant works in every dimension."
+    },
+    {
+      "text": "The linearly a-subgaussian definition concerns only linear functions.",
+      "verdict": "supported",
+      "sourceLine": "This definition concerns only linear functions of",
+      "sourceQuote": "This definition concerns only linear functions of \\(X\\)."
+    },
+    {
+      "text": "No smoothness or positive lower curvature bound is required.",
+      "verdict": "supported",
+      "sourceLine": "No smoothness of the density or positive lower curvature bound is required.",
+      "sourceQuote": "No smoothness of the density or positive lower curvature bound is required."
+    },
+    {
+      "text": "The theorem includes uniform measures on convex bodies.",
+      "verdict": "supported",
+      "sourceLine": "In particular, the theorem includes uniform measures on convex bodies.",
+      "sourceQuote": "In particular, the theorem includes uniform measures on convex bodies."
+    },
+    {
+      "text": "The hypothesis controls linear functions; the conclusion controls entropy of nonlinear tests.",
+      "verdict": "supported",
+      "sourceLine": "while its conclusion controls the entropy of nonlinear tests",
+      "sourceQuote": "The theorem's marginal hypothesis concerns more than covariance: it controls the tails of every linear function, while its conclusion controls the entropy of nonlinear tests."
+    },
+    {
+      "text": "Failure would give laws with R = 1 while linear subgaussian parameters tend to zero.",
+      "verdict": "supported",
+      "sourceLine": "while their linear subgaussian parameters tend to zero",
+      "sourceQuote": "Failure of Theorem~\\ref{thm:main} would give, after truncation, a weak quadratic tilt, and dilation, a sequence of compactly supported log-concave laws \\(\\mu\\) such that \\(R(\\mu)=1\\) while their linear subgaussian parameters tend to zero."
+    },
+    {
+      "text": "The argument derives incompatible descriptions of fluctuations.",
+      "verdict": "supported",
+      "sourceLine": "The argument derives incompatible descriptions of fluctuations",
+      "sourceQuote": "The argument derives incompatible descriptions of fluctuations associated with these normalized laws."
+    },
+    {
+      "text": "The Otto–Villani implication gives a quadratic transport–entropy inequality with the same constant.",
+      "verdict": "supported",
+      "sourceLine": "gives the following standard consequence, with the same constant",
+      "sourceQuote": "The Otto--Villani implication from logarithmic Sobolev to quadratic transport--entropy inequalities \\cite[Theorem~1]{OttoVillani2000} gives the following standard consequence, with the same constant."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
