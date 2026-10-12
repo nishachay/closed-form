@@ -1,0 +1,206 @@
+{
+  "id": "067",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Campana-Peternell-conjecture-in-dimension-six-September-25-2026/main.pdf",
+      "label": "The Campana–Peternell conjecture in dimension six"
+    }
+  ],
+  "headline": "A claimed proof that every six-dimensional Fano manifold with nef tangent bundle is a symmetric, homogeneous space.",
+  "scope": "The claim is the Campana–Peternell conjecture in complex dimension six only. Dimensions seven and up stay open.",
+  "plain": "A Fano manifold is a smooth, closed algebraic shape that curves positively in a precise sense. Its tangent bundle is nef when it is never negative along any curve. The Campana–Peternell conjecture says such a manifold must be rational homogeneous, meaning symmetries can carry any point to any other. This paper claims the conjecture in dimension six. The hardest case is pinned down by a quadratic equation whose roots force one specific shape.",
+  "doesNot": "This does not settle the conjecture in dimension seven or higher.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1991",
+    "firstStepBy": "Frédéric Campana and Thomas Peternell, who posed the conjecture",
+    "field": "Algebraic and complex geometry",
+    "significance": "Solid",
+    "significanceWhy": "It extends a known classification from dimension five to six, with one new hard case."
+  },
+  "explanation": "Start with a small equation that sits at the heart of the proof: 32 − 20u + 3u² = 0. Its discriminant is 20² − 4 × 3 × 32 = 400 − 384 = 16. So u = (20 ± 4)/6, which gives u = 4 or u = 8/3. Now take the product P¹ × P² of a projective line and a projective plane. The Segre map places it inside five-dimensional projective space P⁵ by multiplying coordinates in pairs. On this threefold, write c₁ for its first Chern class, a basic curvature class, and L for the hyperplane class. Multiplying out gives L³ = 3 and c₁ · L² = 8. Their ratio is 8/3, one of the two roots.\n\nThe setting is a Fano manifold. That is a smooth, closed algebraic space whose anticanonical class is positive on every curve. Its tangent bundle collects the tangent directions at all its points. The bundle is nef when it is never negative along any curve, in a precise sense. A variety is rational homogeneous when a group of symmetries can carry any point to any other. Projective spaces, smooth quadrics and Grassmannians are examples. The Grassmannian Gr(2,5) is the space of two-dimensional planes through the origin in five-dimensional space. It has dimension 6.\n\nTangent bundles of rational homogeneous varieties are always nef[2]. In 1991 Campana and Peternell asked whether the converse holds for every Fano manifold[3]. They proved it in dimension at most three and for fourfolds of Picard number above one[4]. The Picard number counts independent ways to measure curves. Work of Mok and Hwang settled the remaining fourfolds[5]. Watanabe proved the fivefold case of Picard number above one[6]. Kanemitsu completed dimension five[7]. Kanemitsu also proved the conjecture whenever the Picard number exceeds the dimension minus five. For sixfolds, that leaves only Picard number one[8].\n\nThis paper claims the conjecture in dimension six[1]. With Picard number one, standard results reduce the problem to pseudoindex four or five[9]. The pseudoindex is the smallest anticanonical degree of a rational curve, a curve shaped like a sphere. Watanabe had treated pseudoindex four, and the paper gives its own argument for it[10]. The main new step is pseudoindex five[11].\n\nThe obstacle is to identify the tangent directions of the shortest rational curves through a point[12]. At a general point, those directions form a threefold inside P⁵. It is called the variety of minimal rational tangents. Positivity alone does not say which threefold it is[13]. The paper uses the family of these curves in two ways at once. That gives the identity 32 − 20u + 3u² = 0 for a ratio u of curvature numbers[14]. A sectional-genus formula rules out u = 4 and forces L³ = 3 when u = 8/3[15]. So the threefold of directions is the Segre threefold P¹ × P²[16]. Mok's recognition theorem then identifies the sixfold with Gr(2,5)[17]. The paper prints a complete program that checks the finite calculation behind the identity[18].\n\nThe paper also claims a consequence for compact Kähler manifolds, a class of complex spaces that need not be algebraic. It covers such manifolds with nef tangent bundle, in particular every one of dimension at most six[19]. For them, the paper describes the universal cover as a rational homogeneous space times a complex coordinate space.\n\nHow sure is this? There is no Lean scope note for this result, so no computer proof checker has tested the proof. The printed program checks only the finite calculation, not the geometric argument. No specialist review has been published.",
+  "hypeCheck": "Solid if the proof holds. It finishes one dimension of a long-standing conjecture. There is no Lean scope note, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Fano manifold",
+      "meaning": "A smooth, closed algebraic space whose anticanonical class is positive on every curve."
+    },
+    {
+      "term": "Nef tangent bundle",
+      "meaning": "A tangent bundle that is never negative along any curve, in a precise algebraic sense."
+    },
+    {
+      "term": "Rational homogeneous",
+      "meaning": "A variety on which a group of symmetries can carry any point to any other."
+    },
+    {
+      "term": "Grassmannian Gr(2,5)",
+      "meaning": "The space of two-dimensional planes through the origin in five-dimensional space."
+    },
+    {
+      "term": "Pseudoindex",
+      "meaning": "The smallest anticanonical degree of a rational curve on the variety."
+    },
+    {
+      "term": "Variety of minimal rational tangents",
+      "meaning": "The set of tangent directions, at a general point, of the shortest rational curves through it."
+    },
+    {
+      "term": "Segre threefold",
+      "meaning": "The product of a line and a plane, placed in five-dimensional projective space by multiplying coordinates."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The Campana–Peternell conjecture in dimension six” (September 25, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Campana-Peternell-conjecture-in-dimension-six-September-25-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "F. Campana and T. Peternell, “Projective manifolds whose tangent bundles are numerically effective”, Mathematische Annalen 289 (1991), 169–187",
+      "url": "https://doi.org/10.1007/BF01446566"
+    },
+    {
+      "id": 4,
+      "cite": "A. Kanemitsu, “Fano n-folds with nef tangent bundle and Picard number greater than n−5”, Mathematische Zeitschrift 284 (2016), 195–208",
+      "url": "https://doi.org/10.1007/s00209-016-1652-7"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Every smooth connected complex projective Fano sixfold with nef tangent bundle is rational homogeneous.",
+      "verdict": "supported",
+      "sourceLine": "Every smooth connected complex projective Fano variety of dimension six with nef tangent bundle is rational homogeneous.",
+      "sourceQuote": "Every smooth connected complex projective Fano variety of dimension six with nef tangent bundle is rational homogeneous."
+    },
+    {
+      "text": "The tangent bundle of a rational homogeneous variety is globally generated and so nef.",
+      "verdict": "supported",
+      "sourceLine": "The tangent bundle of a rational homogeneous variety is generated by global sections and is therefore nef.",
+      "sourceQuote": "The tangent bundle of a rational homogeneous variety is generated by global sections and is therefore nef."
+    },
+    {
+      "text": "The Campana–Peternell conjecture asks whether every smooth Fano variety with nef tangent bundle is rational homogeneous.",
+      "verdict": "supported",
+      "sourceLine": "The Campana--Peternell conjecture asks whether every smooth complex Fano variety with nef tangent bundle is rational homogeneous",
+      "sourceQuote": "The Campana--Peternell conjecture asks whether every smooth complex Fano variety with nef tangent bundle is rational homogeneous \\cite{CampanaPeternell1991}."
+    },
+    {
+      "text": "Campana and Peternell proved it in dimension at most three and for fourfolds of Picard number above one.",
+      "verdict": "supported",
+      "sourceLine": "Campana and Peternell established it in dimensions at most three and for fourfolds of Picard number greater than one",
+      "sourceQuote": "Campana and Peternell established it in dimensions at most three and for fourfolds of Picard number greater than one \\cite{CampanaPeternell1991,CampanaPeternell1993}."
+    },
+    {
+      "text": "The remaining fourfold case was settled through Mok's and Hwang's work.",
+      "verdict": "supported",
+      "sourceLine": "The remaining fourfold case was settled through Mok's and Hwang's",
+      "sourceQuote": "The remaining fourfold case was settled through Mok's and Hwang's study of the tangent directions of minimal rational curves \\cite{Mok2002,Hwang2006}."
+    },
+    {
+      "text": "Watanabe proved the fivefold case of Picard number greater than one.",
+      "verdict": "supported",
+      "sourceLine": "Watanabe proved the fivefold case of Picard number greater than one",
+      "sourceQuote": "Watanabe proved the fivefold case of Picard number greater than one \\cite[Theorem~1.2]{Watanabe2014}, and Kanemitsu completed the fivefold classification \\cite[Theorem~0.2]{Kanemitsu2017}."
+    },
+    {
+      "text": "Kanemitsu completed the fivefold classification.",
+      "verdict": "supported",
+      "sourceLine": "Kanemitsu completed the fivefold classification",
+      "sourceQuote": "Watanabe proved the fivefold case of Picard number greater than one \\cite[Theorem~1.2]{Watanabe2014}, and Kanemitsu completed the fivefold classification \\cite[Theorem~0.2]{Kanemitsu2017}."
+    },
+    {
+      "text": "Kanemitsu's ρ > n − 5 theorem covers every sixfold with ρ ≥ 2, leaving Picard number one.",
+      "verdict": "supported",
+      "sourceLine": "For a sixfold, this covers every $\\rho(X)\\geq2$, leaving only Picard number one.",
+      "sourceQuote": "For a sixfold, this covers every $\\rho(X)\\geq2$, leaving only Picard number one."
+    },
+    {
+      "text": "Standard characterization results reduce the problem to pseudoindices four and five.",
+      "verdict": "supported",
+      "sourceLine": "standard characterization results reduce the problem to pseudoindices four and five",
+      "sourceQuote": "In that range, standard characterization results reduce the problem to pseudoindices four and five."
+    },
+    {
+      "text": "Watanabe treated the pseudoindex-four sixfold case; the paper includes an independent argument.",
+      "verdict": "supported",
+      "sourceLine": "Watanabe treated the pseudoindex-four sixfold case",
+      "sourceQuote": "Watanabe treated the pseudoindex-four sixfold case \\cite[Theorem~2.4]{Watanabe2021}."
+    },
+    {
+      "text": "The principal new step is pseudoindex five.",
+      "verdict": "supported",
+      "sourceLine": "the principal new step is pseudoindex five, where a characteristic-number constraint leads to the Grassmannian",
+      "sourceQuote": "We include an independent intersection argument for it; the principal new step is pseudoindex five, where a characteristic-number constraint leads to the Grassmannian."
+    },
+    {
+      "text": "The difficulty is passing from positivity of T_X to a specific model for the tangent directions of minimal rational curves.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to pass from positivity of $T_X$ to a specific projective model for the tangent directions of minimal rational curves.",
+      "sourceQuote": "The difficulty is to pass from positivity of $T_X$ to a specific projective model for the tangent directions of minimal rational curves."
+    },
+    {
+      "text": "Nefness alone does not identify the threefold of directions in pseudoindex five.",
+      "verdict": "supported",
+      "sourceLine": "properties do not by themselves identify the threefold of directions that occurs in pseudoindex five",
+      "sourceQuote": "Nefness gives strong smoothness and deformation properties, but these properties do not by themselves identify the threefold of directions that occurs in pseudoindex five."
+    },
+    {
+      "text": "The central numerical step is 32 − 20u + 3u² = 0.",
+      "verdict": "supported",
+      "sourceLine": "The central numerical step is",
+      "sourceQuote": "The central numerical step is \\[ 32-20u+3u^2=0, \\qquad u=\\frac{c_1(T_F)\\cdot L^2}{L^3}. \\]"
+    },
+    {
+      "text": "The sectional-genus formula excludes u = 4 and forces L³ = 3 when u = 8/3.",
+      "verdict": "supported",
+      "sourceLine": "formula excludes $u=4$ and forces $L^3=3$ when $u=8/3$",
+      "sourceQuote": "The sectional-genus formula excludes $u=4$ and forces $L^3=3$ when $u=8/3$."
+    },
+    {
+      "text": "The VMRT is the Segre threefold P¹ × P².",
+      "verdict": "supported",
+      "sourceLine": "The variety of minimal rational tangents is consequently the Segre threefold",
+      "sourceQuote": "The variety of minimal rational tangents is consequently the Segre threefold $\\mathbb P^1\\times\\mathbb P^2\\subset\\mathbb P^5$."
+    },
+    {
+      "text": "Mok's recognition theorem identifies X with Gr(2,5).",
+      "verdict": "supported",
+      "sourceLine": "Mok's recognition theorem … identifies $X$ with",
+      "sourceQuote": "The VMRT method of Hwang and Mok \\cite[Propositions~1.2.1--1.2.2]{HwangMok1999} supplies the nondegeneracy criterion, and Mok's recognition theorem \\cite{Mok2008Recognition} identifies $X$ with $\\operatorname{Gr}(2,5)$, the Grassmannian of two-dimensional subspaces of $\\mathbb C^5$."
+    },
+    {
+      "text": "The paper includes a complete executable certificate for the finite calculation.",
+      "verdict": "supported",
+      "sourceLine": "includes the complete executable certificate for the finite calculation",
+      "sourceQuote": "Appendix~\\ref{app:certificate} includes the complete executable certificate for the finite calculation."
+    },
+    {
+      "text": "The Kähler corollary's conclusions hold whenever the dimension is at most six.",
+      "verdict": "supported",
+      "sourceLine": "In particular, these conclusions hold whenever $\\dim_{\\mathbb C}X\\leq6$.",
+      "sourceQuote": "In particular, these conclusions hold whenever $\\dim_{\\mathbb C}X\\leq6$."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
