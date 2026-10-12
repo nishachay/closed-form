@@ -1,0 +1,144 @@
+{
+  "id": "276",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf",
+      "label": "Classical capacity and entropy inequalities for generalized amplitude damping"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/276.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves an exact formula for the classical capacity of every generalized amplitude-damping qubit channel.",
+  "scope": "Unassisted classical capacity of the qubit generalized amplitude-damping channel, for every damping strength and thermal occupation in [0,1].",
+  "plain": "A qubit that leaks energy to warm surroundings is modelled by the generalized amplitude-damping channel. The question is how many classical bits per use it can carry reliably. This paper gives the exact answer as a one-variable maximum, and shows entangled inputs across uses do not help. Lean checks this capacity result; the additivity with arbitrary partner channels is a further claim.",
+  "doesNot": "This does not cover capacity with shared entanglement or feedback, quantum capacity, or Lean-checked additivity with other partner channels.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2018",
+    "firstStepBy": "Leditzky, Kaur, Datta and Wilde, who named the unrestricted classical capacity of amplitude damping as an open problem",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It gives an exact capacity for a standard noise model of quantum hardware, where only bounds were known."
+  },
+  "explanation": "A qubit is a two-level quantum system with states 0 and 1. Amplitude damping models a qubit that loses its excitation, from 1 down to 0. If the surroundings are warm, the qubit can also be kicked back up. The generalized amplitude-damping channel describes both, plus the fading of quantum coherence[3]. It has two numbers: the damping strength γ and the stationary excited population ν.\n\nTake γ = 0.5 and ν = 0.2. Send the signals √(1 − p)|0⟩ ± √p|1⟩, each half the time. With p = 0.5 the output's excited population is t = 0.5 × 0.5 + 0.5 × 0.2 = 0.35. The paper's formula subtracts two entropies. The first is the binary entropy of 0.35, about 0.934 bits. The second depends on v = 0.5 × 0.2 × 0.8 + 0.25 × 0.3² = 0.1025, and is about 0.518 bits. Their difference is about 0.416 bits per use. Scanning p gives a slightly better value, about 0.419 bits at p ≈ 0.46.\n\nClassical capacity is the best rate of bits per use with error tending to zero. The sender may entangle her inputs across many uses. The receiver may measure all outputs together. Optimizing one use gives an achievable rate, but entangled signals might do better[4]. Holevo information is the standard measure of how much classical information an ensemble of quantum signals can carry. For some channels entangled signals really do better, because Holevo additivity can fail. For ordinary amplitude damping, Leditzky, Kaur, Datta and Wilde listed the capacity as an open problem in 2018[5]. Earlier work gave the one-use optimum and upper bounds, but not a matching answer.\n\nThe paper proves the exact capacity for every γ and ν between 0 and 1[1]. It equals the one-use Holevo capacity, given by a one-variable maximum[1]. Two equiprobable pure signals with opposite phases attain it, and their independent products attain it at every block length[6]. So entangling inputs across uses never helps for this channel.\n\nThe obstacle was the warm case. A known method covers qubit channels with a pure output, including ordinary amplitude damping[7]. With positive damping and strictly interior thermal occupation, the channel has no pure output, so that method does not apply[7]. The paper extends a block entropy inequality to the thermal structure.\n\nThe paper also claims additivity when this channel runs alongside any finite-dimensional partner channel[2]. This covers one-shot Holevo capacity, minimum output entropy and classical capacity[2].\n\nHow sure is this? Lean, a computer proof checker, has a formal proof of the capacity formula for all parameters. It covers additivity across repeated uses and attainment by the paired signals. Additivity with an arbitrary different partner channel is outside the Lean statement. That part rests on the paper's argument, which has no published specialist review.",
+  "hypeCheck": "Solid. Lean covers the capacity formula and additivity for repeated uses; additivity with arbitrary partner channels rests on the paper, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Qubit",
+      "meaning": "A two-level quantum system, the quantum version of a bit."
+    },
+    {
+      "term": "Amplitude damping",
+      "meaning": "Noise in which a qubit loses energy and relaxes from 1 toward 0."
+    },
+    {
+      "term": "Generalized amplitude damping",
+      "meaning": "Amplitude damping toward a warm environment, so the qubit can also be excited; ν is the long-run excited population."
+    },
+    {
+      "term": "Classical capacity",
+      "meaning": "The highest rate of ordinary bits per channel use that can be sent with error tending to zero."
+    },
+    {
+      "term": "Holevo information",
+      "meaning": "A measure of how much classical information an ensemble of quantum signals carries through a channel."
+    },
+    {
+      "term": "Additivity",
+      "meaning": "The property that using channels together gives no more than the sum of their single-use values."
+    },
+    {
+      "term": "Binary entropy",
+      "meaning": "The uncertainty, in bits, of a yes-or-no event with probability q: −q log₂ q − (1 − q) log₂(1 − q)."
+    },
+    {
+      "term": "Minimum output entropy",
+      "meaning": "The least disorder a channel's output can have over all inputs."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Classical capacity and entropy inequalities for generalized amplitude damping” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 276",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/276.md",
+      "quote": "The formalized result determines the unassisted classical capacity of every generalized amplitude-damping channel with parameters in $[0,1]^2$."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper determines the unassisted classical capacity of every qubit generalized amplitude-damping channel; it equals the one-shot Holevo capacity and is a one-variable maximum.",
+      "sourceLine": "It equals the one-shot Holevo capacity and is given by a one-variable maximum.",
+      "sourceQuote": "It equals the one-shot Holevo capacity and is given by a one-variable maximum.",
+      "verdict": "supported"
+    },
+    {
+      "text": "One-shot Holevo capacity, minimum output entropy and regularized classical capacity are additive with every finite-dimensional partner channel.",
+      "sourceLine": "We also prove that one-shot Holevo capacity, minimum output entropy, and regularized unassisted classical capacity are additive under tensor product with every finite-dimensional completely positive trace-preserving partner channel.",
+      "sourceQuote": "We also prove that one-shot Holevo capacity, minimum output entropy, and regularized unassisted classical capacity are additive under tensor product with every finite-dimensional completely positive trace-preserving partner channel.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Generalized amplitude damping describes relaxation in both directions together with the decay of coherence.",
+      "sourceLine": "generalized amplitude damping describes this relaxation together with the decay of coherence",
+      "sourceQuote": "At nonzero stationary excited-state population, transitions in both directions are possible; generalized amplitude damping describes this relaxation together with the decay of coherence.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Optimizing a single use does not rule out an advantage from entangled signals; general Holevo additivity fails.",
+      "sourceLine": "Optimizing a single use gives an achievable rate, but does not by itself rule out an advantage from entangled signals.",
+      "sourceQuote": "Optimizing a single use gives an achievable rate, but does not by itself rule out an advantage from entangled signals.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Leditzky, Kaur, Datta and Wilde identified the unrestricted classical capacity of amplitude damping as an open problem in 2018.",
+      "sourceLine": "identified its unrestricted classical capacity as an open problem in their 2018 study of approximate additivity.",
+      "sourceQuote": "Leditzky, Kaur, Datta, and Wilde \\cite{LeditzkyEtAl2018} identified its unrestricted classical capacity as an open problem in their 2018 study of approximate additivity.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A binary pure-state ensemble attains the one-use optimum, and its independent products attain the optimum at every block length.",
+      "sourceLine": "A binary pure-state ensemble attains the one-use optimum, and its independent products attain the optimum at every block length.",
+      "sourceQuote": "A binary pure-state ensemble attains the one-use optimum, and its independent products attain the optimum at every block length.",
+      "verdict": "supported"
+    },
+    {
+      "text": "At positive damping and strictly interior thermal occupation the channel has no pure output, so the earlier criterion does not apply.",
+      "sourceLine": "At positive damping and strictly interior thermal occupation, the generalized channel has no pure output, so that channel criterion does not apply.",
+      "sourceQuote": "At positive damping and strictly interior thermal occupation, the generalized channel has no pure output, so that channel criterion does not apply.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the capacity of every generalized amplitude-damping channel, with additivity across repeated uses; additivity with an arbitrary partner channel is not included.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
