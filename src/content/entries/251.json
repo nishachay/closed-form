@@ -1,0 +1,189 @@
+{
+  "id": "251",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Unitarizability-Implies-Amenability-for-Countable-Groups-September-23-2026/paper.pdf",
+      "label": "Unitarizability implies amenability for discrete groups"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strong-Ulam-Stability-Characterizes-Amenability-October-5-2026/strong-ulam-stability.pdf",
+      "label": "Strong Ulam Stability Characterizes Amenability"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/251.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A discrete group is amenable exactly when every uniformly bounded representation can be made unitary.",
+  "scope": "Discrete groups and their representations on complex Hilbert spaces. The Dixmier equivalence has a Lean formalization; the Ulam stability result, for countable groups, does not.",
+  "plain": "Some groups have a fair way to average over all their elements; these are called amenable. In 1950 Dixmier asked if this matches a property of their actions by matrices. Every bounded action becomes length-keeping after one change of ruler. The first paper proves yes for every discrete group, with a Lean formalization listed. A second paper claims a similar answer for approximate actions of countable groups.",
+  "doesNot": "This does not settle Dixmier's question for non-discrete groups, and the strong Ulam stability result has no Lean formalization.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1950",
+    "firstStepBy": "Jacques Dixmier, who asked whether unitarizability characterizes amenable groups",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "Dixmier's unitarizability problem has been a central open question in representation theory since 1950."
+  },
+  "explanation": "Start with one 2×2 matrix, T = [[1, 1], [0, −1]]. Multiply it by itself and you get the identity matrix. So its powers just alternate between T and the identity. Its largest stretch factor, the operator norm, is (1 + √5)/2 ≈ 1.618. A unitary matrix keeps every length, so its norm is 1. T is not unitary, but it is close to one. Take S = [[1, −0.5], [0, 1]]. Then S⁻¹TS is the diagonal matrix with entries 1 and −1, which is unitary. Changing the ruler, by the matrix S, turned T into a length-keeping matrix.\n\nThat small case is a group at work. A representation sends each group element to an invertible operator, respecting multiplication. It is uniformly bounded when all those operators have norms below one fixed number[1]. It is unitarizable when one change of ruler S makes every operator unitary at once[1]. Sz.-Nagy showed in 1947 that an invertible operator with uniformly bounded powers is always similar to a unitary one[2]. That covers the integers.\n\nA group is amenable when it has an invariant mean: a fair average over all bounded functions on the group, unchanged by shifting. The integers are amenable. The free group on two letters is not. Day and Dixmier showed amenability implies unitarizability, and Dixmier asked whether the converse holds[3]. Counterexamples for free groups were known. Nonunitarizability passes from a subgroup to a larger group[4]. So groups with free subgroups were covered. The obstacle was nonamenable groups without free subgroups.\n\nThe first paper proves the converse: a discrete group is amenable if and only if it is unitarizable[5]. Take any nonamenable group and any ε > 0. The paper builds a representation with norm bound at most 1 + ε that no ruler change makes unitary[6]. The construction uses scalar kernels whose rows and columns have bounded sums, weighted by positive rank-one pieces[7].\n\nA second paper treats almost representations. These are maps to unitary operators that respect multiplication only up to a small error, called the defect. A group is strongly Ulam stable when every small-defect map is close to a genuine representation on the same space[8]. Kazhdan proved that amenable groups have this property[9]. The paper claims the converse for countable groups: strong Ulam stability holds exactly for amenable groups[10]. Infinite-dimensional spaces are essential; with finite dimensions only, some nonamenable groups are stable[11].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of Dixmier's equivalence for every discrete group. The Ulam stability paper has no Lean formalization. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds, and the Dixmier equivalence has a Lean formalization. The strong Ulam stability claim has no Lean formalization. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Representation",
+      "meaning": "A rule sending each group element to an invertible operator on a space, so that products match products."
+    },
+    {
+      "term": "Operator norm",
+      "meaning": "The largest factor by which an operator can stretch the length of a vector."
+    },
+    {
+      "term": "Unitary",
+      "meaning": "An operator that keeps every length and angle the same."
+    },
+    {
+      "term": "Uniformly bounded",
+      "meaning": "All operators of the representation have norm below one fixed number."
+    },
+    {
+      "term": "Unitarizable",
+      "meaning": "Some single change of coordinates makes every operator of the representation unitary."
+    },
+    {
+      "term": "Amenable group",
+      "meaning": "A group with an invariant mean: a fair average of bounded functions on it that shifting does not change."
+    },
+    {
+      "term": "Hilbert space",
+      "meaning": "A space of vectors, possibly infinite-dimensional, with lengths and angles like ordinary space."
+    },
+    {
+      "term": "Strongly Ulam stable",
+      "meaning": "Every map that is nearly a unitary representation is uniformly close to a true one on the same space."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Unitarizability implies amenability for discrete groups” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Unitarizability-Implies-Amenability-for-Countable-Groups-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Strong Ulam Stability Characterizes Amenability” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strong-Ulam-Stability-Characterizes-Amenability-October-5-2026/strong-ulam-stability.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 251",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/251.md",
+      "quote": "The formalization establishes this equivalence for every discrete group."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A representation is uniformly bounded if sup ‖π(g)‖ is finite, and unitarizable if one bounded invertible S makes every Sπ(g)S⁻¹ unitary.",
+      "sourceLine": "The representation is \\emph{unitarizable} if some bounded invertible \\(S\\) makes every \\(S\\pi(g)S^{-1}\\) unitary.",
+      "sourceQuote": "The representation is \\emph{unitarizable} if some bounded invertible \\(S\\) makes every \\(S\\pi(g)S^{-1}\\) unitary.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Sz.-Nagy: an invertible operator whose integer powers are uniformly bounded is similar to a unitary operator.",
+      "sourceLine": "an invertible operator whose integer powers are uniformly bounded is similar to a unitary operator",
+      "sourceQuote": "The one-operator case goes back to Sz.-Nagy: an invertible operator whose integer powers are uniformly bounded is similar to a unitary operator \\cite[Theorem~I]{SzNagy1947}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Amenability implies unitarizability, and Dixmier asked whether this property characterizes groups with an invariant mean.",
+      "sourceLine": "Dixmier explicitly asked whether this property characterizes groups admitting an invariant mean",
+      "sourceQuote": "Dixmier explicitly asked whether this property characterizes groups admitting an invariant mean \\cite[\\S5, p.~221]{Dixmier1950}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Nonunitarizability passes from a subgroup to the ambient group by induction.",
+      "sourceLine": "Nonunitarizability passes from a subgroup to the ambient group by induction.",
+      "sourceQuote": "Nonunitarizability passes from a subgroup to the ambient group by induction.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A discrete group is amenable if and only if it is unitarizable.",
+      "sourceLine": "A discrete group is amenable if and only if it is unitarizable.",
+      "sourceQuote": "A discrete group is amenable if and only if it is unitarizable.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every nonamenable G and ε > 0 there is a representation with |π| ≤ 1 + ε not similar to a unitary representation.",
+      "sourceLine": "that is not similar to a unitary representation.",
+      "sourceQuote": "The proposition therefore gives a representation on \\[ \\mathcal K= \\left(\\bigoplus_{\\ell\\ge1}\\mathcal H_\\ell\\right) \\oplus\\left(\\bigoplus_{\\ell\\ge1}\\mathcal H_\\ell\\right) \\] with uniform bound at most \\(1+\\varepsilon\\) that is not similar to a unitary representation.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Positive rank-one weights preserve the row and column bounds while increasing the kernel's Hilbert–Schmidt energy.",
+      "sourceLine": "Positive rank-one weights preserve the row and column bounds while increasing the kernel's Hilbert--Schmidt energy relative to the fibre dimension.",
+      "sourceQuote": "Positive rank-one weights preserve the row and column bounds while increasing the kernel's Hilbert--Schmidt energy relative to the fibre dimension.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Strong Ulam stability: every map with small defect is uniformly within ε of a unitary representation on the same space.",
+      "sourceLine": "The number $\\delta$ must work simultaneously for all Hilbert spaces, including infinite-dimensional ones.",
+      "sourceQuote": "The number $\\delta$ must work simultaneously for all Hilbert spaces, including infinite-dimensional ones.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kazhdan proved the implication from amenability to strong Ulam stability.",
+      "sourceLine": "Kazhdan proved the implication from amenability to strong Ulam stability",
+      "sourceQuote": "Kazhdan proved the implication from amenability to strong Ulam stability \\cite{Kazhdan}; see also \\cite[Theorems~3.1 and~3.2]{BurgerOzawaThom}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A countable discrete group is strongly Ulam stable if and only if it is amenable.",
+      "sourceLine": "A countable discrete group is strongly Ulam stable if and only if it is amenable.",
+      "sourceQuote": "A countable discrete group is strongly Ulam stable if and only if it is amenable.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Infinite-dimensional spaces are essential; nonamenable groups can satisfy the finite-dimensional Ulam stability property.",
+      "sourceLine": "Nonamenable groups can satisfy that property.",
+      "sourceQuote": "Nonamenable groups can satisfy that property.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes that a discrete group is amenable exactly when it is unitarizable, with nonunitarizable witnesses of bound at most 1 + ε.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
