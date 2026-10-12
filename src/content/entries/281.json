@@ -1,0 +1,189 @@
+{
+  "id": "281",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/QAOA-attains-the-SK-ground-state-energy-in-the-thermodynamic-first-limit-September-25-2026/QAOA-attains-the-SK-ground-state-energy-in-the-thermodynamic-first-limit-September-25-2026.pdf",
+      "label": "QAOA attains the SK ground-state energy in the thermodynamic-first limit"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Full-support-of-the-zero-temperature-Sherrington-Kirkpatrick-order-parameter-September-27-2026/main.pdf",
+      "label": "Full support of the zero-temperature Sherrington-Kirkpatrick order parameter"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/281.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims QAOA reaches the Sherrington–Kirkpatrick ground-state energy as size grows first and depth then increases.",
+  "scope": "QAOA with fixed deterministic angles on the zero-field Gaussian SK model, size to infinity first; plus full support of the zero-temperature Parisi order parameter.",
+  "plain": "The Sherrington–Kirkpatrick model is a random magnet whose best spin arrangement is hard to find. QAOA is a quantum algorithm that alternates two simple operations. These papers claim that, with enough layers, QAOA reaches the model's optimal energy per spin in the large-size limit. Lean checks supporting value identities and a full-support theorem, but not the QAOA convergence itself.",
+  "doesNot": "This does not bound the depth needed, give an efficient way to choose angles, or say anything for a fixed finite number of spins.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2022",
+    "firstStepBy": "Basso, Farhi, Marwaha, Villalonga and Zhou, who conjectured QAOA eventually attains the Parisi optimum",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It settles a stated conjecture about QAOA's limiting performance on a central spin-glass benchmark, though with no depth bound."
+  },
+  "explanation": "Take three spins, each pointing up (+1) or down (−1). Give each pair a random coupling: J₁₂ = 1.0, J₁₃ = −0.5 and J₂₃ = 0.8. The energy adds J times the two spins for each pair, divided by √3. A positive coupling likes the pair to agree; a negative one likes them to differ. Here all three wishes cannot hold at once. Checking all eight arrangements, the best is all spins up, with energy 1.3/√3 ≈ 0.751. That is about 0.250 per spin.\n\nThis is the Sherrington–Kirkpatrick model, a mean-field spin glass with independent Gaussian couplings[3]. A spin glass is a magnet with conflicting random interactions. For n spins, finding the best arrangement means searching 2ⁿ options. As n grows, the best energy per spin approaches a fixed constant P*. Parisi's theory describes P* through an order parameter, a function that records how pairs of good states overlap[9]. Auffinger and Chen gave the ground-state version of Parisi's formula.\n\nQAOA, the quantum approximate optimization algorithm, alternates two steps on qubits[10]. One step applies the energy function; the other mixes with a transverse field. A list of angles sets each step's strength. The depth p is the number of alternations. For each fixed instance, more depth eventually reaches its optimum[5]. That does not give one finite depth that works as the number of spins grows[5]. Basso and co-authors conjectured that QAOA's limiting energy approaches the Parisi optimum as depth grows[4].\n\nThe first paper claims that conjecture in its fixed-parameter thermodynamic form[11]. Let the number of spins go to infinity first, then raise the depth. For every accuracy, some finite depth and fixed angles reach it in expected energy per spin[1]. The angles do not depend on the system size or the couplings[1]. The paper gives no bound on the depth and no efficient way to choose the angles[2].\n\nThe second paper supplies a key input. It proves the zero-temperature order parameter has full support on [0, 1)[6]. This means its support has no gaps at any overlap scale below one[6]. Chen proved the same support conclusion separately[7]. The QAOA paper also gives a separate positive-temperature route[8].\n\nHow sure is this? Lean, a computer proof checker, has formal proofs of the full-support theorem for any minimizer. It also proves value identities for the SK ground-state energy, given a Parisi minimizer. The Lean statement does not assert convergence of QAOA circuit energies. That main claim rests on the paper's long construction. No specialist review has been published.",
+  "hypeCheck": "Solid. Lean covers full support and the SK value identities, not QAOA convergence; there is no depth bound, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Spin glass",
+      "meaning": "A magnet whose spins have random, conflicting interactions, so no arrangement satisfies them all."
+    },
+    {
+      "term": "Sherrington–Kirkpatrick (SK) model",
+      "meaning": "A spin glass in which every pair of spins has an independent Gaussian coupling."
+    },
+    {
+      "term": "Ground-state energy",
+      "meaning": "Here the best (largest) energy per spin over all spin arrangements, in the large-size limit."
+    },
+    {
+      "term": "Parisi order parameter",
+      "meaning": "A function in Parisi's formula that records how overlaps between good spin arrangements are distributed."
+    },
+    {
+      "term": "QAOA",
+      "meaning": "A quantum algorithm alternating an energy step and a mixing step, with tunable angles, to find good solutions."
+    },
+    {
+      "term": "Depth",
+      "meaning": "The number of alternating QAOA layers."
+    },
+    {
+      "term": "Thermodynamic-first limit",
+      "meaning": "Taking the number of spins to infinity before raising the depth."
+    },
+    {
+      "term": "Full support",
+      "meaning": "The order parameter strictly increases across every interval below one, so no overlap scale is skipped."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “QAOA attains the SK ground-state energy in the thermodynamic-first limit” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/QAOA-attains-the-SK-ground-state-energy-in-the-thermodynamic-first-limit-September-25-2026/QAOA-attains-the-SK-ground-state-energy-in-the-thermodynamic-first-limit-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Full support of the zero-temperature Sherrington-Kirkpatrick order parameter” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Full-support-of-the-zero-temperature-Sherrington-Kirkpatrick-order-parameter-September-27-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 281",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/281.md",
+      "quote": "The selected statement covers these value and approximation results; it does not itself assert convergence of QAOA circuit energies."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "QAOA approaches the SK ground-state energy per spin when size tends to infinity first and depth then increases; some finite depth and deterministic angles achieve any accuracy.",
+      "sourceLine": "For every accuracy, some finite depth and deterministic angles, independent of system size and disorder, achieve that accuracy in the limiting expected energy per spin",
+      "sourceQuote": "For every accuracy, some finite depth and deterministic angles, independent of system size and disorder, achieve that accuracy in the limiting expected energy per spin using the standard cost Hamiltonian and transverse-field mixer.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper gives no quantitative depth bound or efficient angle-selection procedure.",
+      "sourceLine": "We give no quantitative bound on the required depth or efficient angle-selection procedure.",
+      "sourceQuote": "We give no quantitative bound on the required depth or efficient angle-selection procedure.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The SK model is a mean-field Ising spin glass with independent Gaussian pair interactions; Parisi's description uses a hierarchy of order parameters.",
+      "sourceLine": "as a mean-field Ising spin glass with independent Gaussian pair interactions",
+      "sourceQuote": "The Sherrington--Kirkpatrick (SK) model was introduced by Sherrington and Kirkpatrick~\\cite{SK1975} as a mean-field Ising spin glass with independent Gaussian pair interactions.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Basso, Farhi, Marwaha, Villalonga and Zhou conjectured that increasing depth eventually attains the Parisi optimum.",
+      "sourceLine": "conjectured that increasing depth eventually attains the Parisi optimum",
+      "sourceQuote": "Basso, Farhi, Marwaha, Villalonga, and Zhou related that limit to QAOA on large-degree trees and conjectured that increasing depth eventually attains the Parisi optimum \\cite[Section~7, Equation~(7.2)]{BFMVZ2022}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Fixed-instance optimality does not provide a finite depth that works as the number of spins tends to infinity.",
+      "sourceLine": "That result does not provide a finite depth that works as the number of spins tends to infinity.",
+      "sourceQuote": "That result does not provide a finite depth that works as the number of spins tends to infinity.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every admissible integrable minimizer of the zero-temperature Parisi functional has full relative support on [0,1).",
+      "sourceLine": "has full relative Stieltjes support on $[0,1)$. Thus its support has no gaps at any overlap scale below one.",
+      "sourceQuote": "We prove that every admissible integrable minimizer of the zero-temperature Parisi functional for the pure, zero-field Sherrington--Kirkpatrick model has full relative Stieltjes support on $[0,1)$. Thus its support has no gaps at any overlap scale below one.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Chen proves the same full-relative-support conclusion.",
+      "sourceLine": "proves the same full-relative-support conclusion",
+      "sourceQuote": "Chen~\\cite[Theorem~1.3]{Chen2026} proves the same full-relative-support conclusion, together with smooth absolute continuity of the minimizing Stieltjes measure.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The QAOA paper gives an independent positive-temperature route.",
+      "sourceLine": "We also give an independent positive-temperature route.",
+      "sourceQuote": "We also give an independent positive-temperature route.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Parisi's replica-symmetry-breaking description uses a hierarchy of order parameters.",
+      "sourceLine": "Parisi's replica-symmetry-breaking description uses a hierarchy of order parameters",
+      "sourceQuote": "Parisi's replica-symmetry-breaking description uses a hierarchy of order parameters~\\cite{Parisi1979}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Farhi, Goldstone and Gutmann introduced QAOA as alternating evolution under an objective Hamiltonian and a transverse-field mixer.",
+      "sourceLine": "Farhi, Goldstone, and Gutmann introduced the quantum approximate optimization algorithm (QAOA) as alternating evolution under an objective Hamiltonian and a transverse-field mixer",
+      "sourceQuote": "Farhi, Goldstone, and Gutmann introduced the quantum approximate optimization algorithm (QAOA) as alternating evolution under an objective Hamiltonian and a transverse-field mixer, starting from the uniform superposition~\\cite{FGG2014}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "This proves the eventual Parisi-optimality conjecture in its fixed-parameter thermodynamic formulation.",
+      "sourceLine": "This proves the eventual Parisi-optimality conjecture of Basso, Farhi, Marwaha, Villalonga, and Zhou in its fixed-parameter thermodynamic formulation.",
+      "sourceQuote": "This proves the eventual Parisi-optimality conjecture of Basso, Farhi, Marwaha, Villalonga, and Zhou in its fixed-parameter thermodynamic formulation.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes full support of every admissible zero-temperature Parisi minimizer and, conditional on a minimizer, SK ground-state value identities; QAOA convergence is not asserted.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
