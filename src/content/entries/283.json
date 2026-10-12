@@ -1,0 +1,132 @@
+{
+  "id": "283",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf",
+      "label": "Polynomial-Time Unitary Synthesis from a Boolean Oracle"
+    }
+  ],
+  "headline": "Claims a polynomial-size quantum circuit can carry out any n-qubit operation, given a suitable Boolean oracle.",
+  "scope": "The constant-error form of the Aaronson–Kuperberg unitary synthesis problem, with diamond-norm error at most 1/2.",
+  "plain": "Describing a general quantum operation on n qubits takes far more numbers than any small circuit can hold. A Boolean oracle is a black box that answers yes-or-no questions, and it can hold that description instead. Aaronson and Kuperberg asked in 2007 whether a small circuit plus such an oracle could run any operation. This paper claims yes, with error at most 1/2 in the diamond norm. The oracle depends on the target operation, and the paper gives no fast way to build it.",
+  "doesNot": "This does not give a fast classical way to build the oracle, and it does not reach small error, only error at most 1/2.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2007",
+    "firstStepBy": "Scott Aaronson and Greg Kuperberg, who posed the unitary synthesis problem",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "It answers a named open problem in quantum query complexity in its constant-error form."
+  },
+  "explanation": "A quantum computer with 10 qubits holds a state described by 2¹⁰ = 1,024 complex numbers. An operation on those qubits, a unitary, is a square table of 1,024 by 1,024 entries. Pinning down a general one takes 4¹⁰ = 1,048,576 real numbers. At 50 qubits that becomes about 1.27 × 10³⁰ numbers. A circuit with a few million gates cannot store that much detail.\n\nOne way around this is an oracle. An oracle is a black box that answers yes-or-no questions about a long string of bits. A quantum circuit can ask it questions in superposition, many at once. The unitary's description can live inside the oracle, while the circuit stays small. Aaronson and Kuperberg asked in 2007 whether every unitary can be run this way in polynomial time[1]. Polynomial means the cost grows like a fixed power of n, such as n³. For n = 50 qubits, n³ is 125,000.\n\nEarlier results fell short. Rosenthal gave a method whose running time grows like 2^(n/2), up to polynomial factors[2]. At 50 qubits, 2^25 is 33,554,432, before those factors. In the other direction, Lombardi, Ma and Wright showed that one query is not enough in general[3]. The obstacle is coherence. The circuit must act correctly on every input at once, including superpositions. Preparing one target column is easier, but it leaves behind a record of which input was used.\n\nThis paper claims a positive answer to the constant-error form of the problem[4]. One circuit, built from n alone, uses polynomially many gates, qubits and queries, each of polynomial length[5]. Its error is at most 1/2 in the diamond norm, a worst-case distance between two operations. This norm can be as large as 2, so 1/2 is a quarter of the maximum. The bound holds even for inputs entangled with an outside system[6]. The oracle may depend on the target unitary, and the paper gives no fast way to build it[7].\n\nThe key step trades one big task for one smaller task. Each step removes at least a fixed polynomial fraction of the dimension[8]. Suppose each step removed one fiftieth. Starting from dimension 2⁵⁰, about 1,716 steps would bring it down to 1. The smaller circuit is used exactly once at each step[9]. That stops the recursion from growing into an exponentially large circuit.\n\nHow sure is this? A computer proof checker called Lean has not checked any part of it. The argument rests on the paper's own analysis of the recursion and its error terms. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It reaches only constant error, gives no fast way to build the oracle, and has no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Qubit",
+      "meaning": "The basic unit of quantum information, which can be in a blend of 0 and 1."
+    },
+    {
+      "term": "Unitary",
+      "meaning": "A reversible operation on qubits; for n qubits it is a 2ⁿ by 2ⁿ table of complex numbers."
+    },
+    {
+      "term": "Boolean oracle",
+      "meaning": "A black box that answers yes-or-no questions about bit strings; a quantum circuit can query it in superposition."
+    },
+    {
+      "term": "Polynomial",
+      "meaning": "Growing like a fixed power of n, such as n³, rather than exponentially like 2ⁿ."
+    },
+    {
+      "term": "Diamond norm",
+      "meaning": "A worst-case distance between two quantum operations, allowing inputs linked to an outside system; it ranges from 0 to 2 here."
+    },
+    {
+      "term": "Entangled",
+      "meaning": "Linked so that two quantum systems cannot be described separately."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Polynomial-Time Unitary Synthesis from a Boolean Oracle” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Aaronson and Kuperberg posed the unitary synthesis question in 2007.",
+      "sourceLine": "Aaronson and Kuperberg posed this question in 2007",
+      "sourceQuote": "Aaronson and Kuperberg posed this question in 2007~\\cite[Section~7, Problem~(4)]{AK2007}; Aaronson later highlighted it among open problems in quantum query complexity~\\cite[Problem~6]{Aaronson2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Rosenthal gave a running-time upper bound of order 2^(n/2) up to polynomial factors.",
+      "sourceLine": "Rosenthal gave a running-time upper bound of order $2^{n/2}$ up to polynomial factors",
+      "sourceQuote": "For unitary synthesis, Rosenthal gave a running-time upper bound of order $2^{n/2}$ up to polynomial factors, using an oracle suited to the target unitary~\\cite{Rosenthal2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lombardi, Ma, and Wright proved a general one-query lower bound.",
+      "sourceLine": "Lombardi, Ma, and Wright proved a general one-query lower bound",
+      "sourceQuote": "In the other direction, Lombardi, Ma, and Wright proved a general one-query lower bound, which also rules out polynomially many parallel queries of polynomial length~\\cite{LMW2024}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper gives a positive answer to the constant-error formulation.",
+      "sourceLine": "We give a positive answer to the constant-error formulation.",
+      "sourceQuote": "We give a positive answer to the constant-error formulation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The circuit uses polynomially many gates, qubits, and queries, and each query has polynomial length.",
+      "sourceLine": "The circuit uses polynomially many gates, qubits, and queries, and each query has polynomial length.",
+      "sourceQuote": "The circuit uses polynomially many gates, qubits, and queries, and each query has polynomial length.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The error bound holds for arbitrary input states, including states entangled with a reference system.",
+      "sourceLine": "The error bound holds for arbitrary input states, including states entangled with a reference system.",
+      "sourceQuote": "The error bound holds for arbitrary input states, including states entangled with a reference system.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The oracle may depend on the target unitary; the theorem gives no efficient classical procedure for constructing it.",
+      "sourceLine": "The oracle may depend on the target unitary; the theorem does not give an efficient classical procedure for constructing it.",
+      "sourceQuote": "The oracle may depend on the target unitary; the theorem does not give an efficient classical procedure for constructing it.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Each reduction removes a fraction at least 1/poly(n) of the dimension.",
+      "sourceLine": "Each reduction removes a fraction at least $1/\\poly(n)$ of the dimension",
+      "sourceQuote": "Each reduction removes a fraction at least $1/\\poly(n)$ of the dimension, so only polynomially many reductions are needed even when $d=2^n$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The smaller synthesis circuit is used exactly once at each step.",
+      "sourceLine": "The smaller synthesis circuit is used exactly once at each step.",
+      "sourceQuote": "The smaller synthesis circuit is used exactly once at each step.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
