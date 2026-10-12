@@ -1,0 +1,157 @@
+{
+  "id": "226",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-curve-scaling-limit-of-half-plane-double-dimers-September-23-2026/paper.pdf",
+      "label": "The curve scaling limit of half-plane double dimers"
+    }
+  ],
+  "headline": "Loops from two overlaid random domino tilings of the half-plane converge, as curves, to nested CLE₄.",
+  "scope": "The standard Temperleyan square-lattice law in the upper half-plane; other domains and boundary conditions are not covered.",
+  "plain": "Lay two independent random domino tilings on top of each other. Where they differ, the dominoes form closed loops. Physicists predicted that these loops, zoomed out, follow a known random family called CLE₄. This paper claims to prove that, for the upper half-plane, matching every large loop as an actual curve. No computer proof checker has checked it.",
+  "doesNot": "This does not cover general bounded domains, or domino tilings that are not Temperleyan.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2011",
+    "firstStepBy": "Kenyon and Wilson, double-dimer boundary pairings matching Gaussian free field contour lines",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles the half-plane Temperleyan form of the double-dimer CLE₄ conjecture."
+  },
+  "explanation": "Tile a 2-by-2 square with two dominoes. There are two ways: both flat or both upright. Now pick two tilings at random, independently, and lay one over the other. Half the time they agree, and every domino is doubled. Half the time they differ. Then the four dominoes join into one closed loop around the square. A domino tiling is also called a dimer covering, a perfect matching of neighbouring cells. Overlaying two of them always gives doubled dominoes and closed loops[1].\n\nBigger regions have many more tilings. A 4-by-4 square has 36. An 8-by-8 board has 12,988,816. Kasteleyn, and Temperley and Fisher, found exact formulas for these counts in 1961. Overlay two random tilings of a big region, and you get a whole nested family of loops of every size.\n\nThe prediction is that these loops have a conformally invariant limit, the conformal loop ensemble CLE₄[2]. CLE₄ is a random family of non-crossing loops. It is built here from a Brownian loop soup, a random scatter of Brownian loops. Nested means the same law repeats inside every loop[3].\n\nEarlier work got close without reaching the curves. Kenyon proved that dimer height fluctuations tend to the Gaussian free field, a standard random landscape. That alone does not give the loops as curves[4]. Kenyon and Wilson matched the boundary pairing probabilities, leaving convergence of the paths open[5]. Dubédat, then Basok and Chelkak, Bai and Wan, and Basok and Izyurov, matched topological data. Those results describe which marked points each loop surrounds.\n\nThis paper claims the full curve limit in the upper half-plane. It uses the standard Temperleyan law, a specific way of building the tilings from coarse-grid polygons with one corner removed[6]. Every large loop is matched to a CLE₄ loop as a curve, along the full limit of shrinking mesh[7]. The paper says this resolves the half-plane Temperleyan form of the double-dimer CLE₄ conjecture[8].\n\nThe obstacle is the gap between topology and geometry. Knowing which points a loop surrounds does not control thin excursions, retraced pieces, or a trace run over twice[9]. A long thin finger may surround none of the chosen points. The paper adds two geometric estimates in a rectangle[10]. One bounds how many times loops cross a strip. The other rules out a crossing being cancelled by a hidden return path. Both come from a transfer matrix, which counts tilings one column at a time.\n\nThe claim has limits. It covers the upper half-plane with the Temperleyan construction. It says nothing about general bounded domains in this form.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major if it holds. It settles one stated form of the conjecture, but no Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Dimer covering",
+      "meaning": "A tiling of a region by dominoes, equivalently a perfect matching of neighbouring cells."
+    },
+    {
+      "term": "Double-dimer loops",
+      "meaning": "The closed loops formed where two overlaid domino tilings disagree."
+    },
+    {
+      "term": "Temperleyan",
+      "meaning": "A standard way of building the region, from a coarse-grid polygon with one boundary corner removed."
+    },
+    {
+      "term": "CLE₄",
+      "meaning": "Conformal loop ensemble with parameter 4: a random family of non-crossing loops with a conformal symmetry."
+    },
+    {
+      "term": "Brownian loop soup",
+      "meaning": "A random scatter of closed Brownian paths of all sizes, used to build CLE."
+    },
+    {
+      "term": "Gaussian free field",
+      "meaning": "The standard random landscape in two dimensions, with heights correlated like minus the log of distance."
+    },
+    {
+      "term": "Transfer matrix",
+      "meaning": "A matrix that counts configurations one column at a time."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The curve scaling limit of half-plane double dimers” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-curve-scaling-limit-of-half-plane-double-dimers-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "R. W. Kenyon and D. B. Wilson, “Boundary partitions in trees and dimers”, Transactions of the AMS 363 (2011), 1325–1364",
+      "url": "https://doi.org/10.1090/S0002-9947-2010-04964-5"
+    },
+    {
+      "id": 4,
+      "cite": "P. W. Kasteleyn, “The statistics of dimers on a lattice: I. The number of dimer arrangements on a quadratic lattice”, Physica 27 (1961), 1209–1225",
+      "url": "https://doi.org/10.1016/0031-8914(61)90063-5"
+    },
+    {
+      "id": 5,
+      "cite": "H. N. V. Temperley and M. E. Fisher, “Dimer problem in statistical mechanics: an exact result”, Philosophical Magazine 6 (1961), 1061–1063",
+      "url": "https://doi.org/10.1080/14786436108243366"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The superposition of two matchings consists of doubled edges and finite simple even cycles.",
+      "sourceLine": "Almost surely their superposition consists of doubled edges and finite simple even cycles",
+      "sourceQuote": "Almost surely their superposition consists of doubled edges and finite simple even cycles \\cite[opening of Section~2]{BI}; see also \\cite[Section~5.4, Lemma~26]{Dubedat}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For the square lattice, the predicted limit is CLE with parameter 4.",
+      "sourceLine": "For the square lattice, the predicted limit is the conformal loop ensemble with parameter \\(4\\).",
+      "sourceQuote": "For the square lattice, the predicted limit is the conformal loop ensemble with parameter \\(4\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Nested CLE4 is CLE4 followed recursively by independent copies inside every loop.",
+      "sourceLine": "Nested \\(\\CLE_4\\) means an ordinary nonnested \\(\\CLE_4\\), followed recursively by conditionally independent copies inside every loop.",
+      "sourceQuote": "Nested \\(\\CLE_4\\) means an ordinary nonnested \\(\\CLE_4\\), followed recursively by conditionally independent copies inside every loop.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kenyon's field limit does not by itself give convergence of loop curves.",
+      "sourceLine": "That field limit motivates the connection with \\(\\CLE_4\\), but does not by itself give convergence of loop curves:",
+      "sourceQuote": "That field limit motivates the connection with \\(\\CLE_4\\), but does not by itself give convergence of loop curves: passing from a distribution-valued field to its interfaces requires additional control.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kenyon and Wilson identified boundary pairings but left path convergence open.",
+      "sourceLine": "This identifies the boundary pairings, while leaving convergence of the paths open.",
+      "sourceQuote": "This identifies the boundary pairings, while leaving convergence of the paths open.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Temperleyan law starts from a coarse-grid polygon with one boundary vertex deleted.",
+      "sourceLine": "To specify its infinite-volume law, start with a simple lattice polygon in",
+      "sourceQuote": "To specify its infinite-volume law, start with a simple lattice polygon in the coarse grid \\((0,\\delta)+2\\delta\\mathbb Z^2\\), retain the fine-grid vertices and edges in its closure, and delete one coarse boundary vertex, called the root.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The convergence holds along the full mesh limit and matches all macroscopic loops as curves.",
+      "sourceLine": "The convergence holds along the full mesh limit and matches all macroscopic loops as curves.",
+      "sourceQuote": "The convergence holds along the full mesh limit and matches all macroscopic loops as curves.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem resolves the half-plane Temperleyan form of the conjecture.",
+      "sourceLine": "resolves the half-plane Temperleyan form of the double-dimer \\(\\CLE_4\\) scaling-limit conjecture.",
+      "sourceQuote": "This resolves the half-plane Temperleyan form of the double-dimer \\(\\CLE_4\\) scaling-limit conjecture.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Puncture data do not control thin excursions, retraced pieces or repeated traversal.",
+      "sourceLine": "knowing which punctures a loop surrounds does not control thin excursions, invisible retraced pieces, or repeated traversal of a limiting trace.",
+      "sourceQuote": "The distinction between geometric and topological convergence is important here: knowing which punctures a loop surrounds does not control thin excursions, invisible retraced pieces, or repeated traversal of a limiting trace.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The new input is two geometric estimates in a corner-rooted Temperleyan rectangle.",
+      "sourceLine": "The new input consists of two geometric estimates in a corner-rooted Temperleyan rectangle.",
+      "sourceQuote": "The new input consists of two geometric estimates in a corner-rooted Temperleyan rectangle.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
