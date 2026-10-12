@@ -1,0 +1,227 @@
+{
+  "id": "029",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026/primitive-roots-all-integer-bases.pdf",
+      "label": "Primitive roots for every admissible integer base"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Simultaneous-primitive-roots-a-conditional-lower-bound-for-prime-bases-October-4-2026/simultaneous-primitive-roots-conditional-lower-bound-prime-bases.pdf",
+      "label": "Simultaneous primitive roots: a conditional lower bound for prime bases"
+    }
+  ],
+  "headline": "Every whole number except −1 and perfect squares is claimed to be a primitive root for infinitely many primes.",
+  "scope": "The base is any fixed integer that is not −1 and not a square; the count is a lower bound, not the predicted share.",
+  "plain": "For a prime p, a number a is a primitive root when its powers run through every nonzero remainder mod p. In 1927 Artin conjectured that every suitable base does this for infinitely many primes. The first paper claims to prove that infinitude part for every base that is not −1 and not a square. It gives a lower count of such primes, below the size Artin predicted. A second paper claims the same for several prime bases at once, assuming four inputs from the first.",
+  "doesNot": "This does not prove Artin's predicted share of primes, only a smaller lower count.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1927",
+    "firstStepBy": "E. Artin, who formulated the primitive root conjecture",
+    "significance": "Landmark",
+    "significanceWhy": "The infinitude part of Artin's conjecture was open for every single base, including 2, if this proof holds.",
+    "field": "Number theory"
+  },
+  "explanation": "Take the prime 5 and keep doubling, keeping only the remainder after dividing by 5. You get 2, 4, 3, 1. Every nonzero remainder appears before the cycle repeats. So 2 is a primitive root mod 5 (its powers reach every nonzero remainder). Try the prime 7 instead. Doubling gives 2, 4, 1, and the cycle restarts after three steps. So 2 is not a primitive root mod 7. Among primes below 60, base 2 works for 3, 5, 11, 13, 19, 29, 37, 53 and 59.\n\nSome bases can never do this for large primes. Powers of −1 only reach 1 and −1. A perfect square such as 4 always falls short too. Mod 5, its powers are 4 and 1. The paper calls the other integers admissible: not −1 and not a square[1]. In 1927 Artin conjectured that every admissible integer is a primitive root for infinitely many primes[2]. He also predicted what share of primes it should be.\n\nProgress came in two forms. In 1967 Hooley proved Artin’s predicted count, but only if a version of the Riemann hypothesis holds[3]. That hypothesis is still unproved. Without it, results only handled a short list of bases at once. Heath-Brown proved in 1986 that at least one of 2, 3 and 5 works[4]. Results on average over many bases also exist. But the exceptions there can shift as the range grows, so they do not settle any one base[5].\n\nThe first paper claims the infinitude part for every admissible base, including 2[6]. For each base, it claims at least a fixed multiple of x/(log x)² such primes between x and 2x[7]. Here log is the natural logarithm. At x = 1,000,000, x/(log x)² is about 5,239. The predicted size, x/log x, is about 72,382. So the count is smaller than Artin’s prediction, but it never runs out. The constant depends on the base.\n\nThe paper names two obstacles[8]. Whether a works for p depends on hidden factors of p − 1. Each possible factor brings its own number field (a number system that extends the fractions). One obstacle is analytic. The paper needs one uniform zero-free region for a whole growing family of L-functions (functions built from primes in those fields). Take cyclotomic fields (number fields built from roots of unity) that contain the 12th roots of unity. For these, it claims no zeros where the real part of the input s is above 1 − 10⁻⁶[14]. The same width serves every such field and character[9]. Standard zero-free regions instead get thinner as the field grows[15]. The other obstacle is to build many primes p whose p − 1 has factors only in ranges this strip controls.\n\nThe argument leans on companion papers in the same release. The prime construction uses an estimate from a paper on the prime factors of p − 1[10]. The analytic part builds on another companion paper on zero-free regions[11]. A second paper claims a version for several prime bases at once[12]. It assumes four inputs from the first paper and does not prove them[13].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The result rests on new zero-free regions and on companion papers. No specialist review has been published.",
+  "hypeCheck": "Landmark only if the proof holds, including its new zero-free region and the companion papers it uses. No Lean formalization is listed and no specialist review is published. The count is below Artin's predicted share.",
+  "glossary": [
+    {
+      "term": "Primitive root",
+      "meaning": "A number whose powers, taken mod a prime p, reach every nonzero remainder before repeating."
+    },
+    {
+      "term": "Admissible base",
+      "meaning": "An integer that is neither −1 nor a perfect square."
+    },
+    {
+      "term": "Number field",
+      "meaning": "A number system that extends the fractions by adding roots of polynomial equations."
+    },
+    {
+      "term": "L-function",
+      "meaning": "A function built from primes that encodes how they behave in a number field."
+    },
+    {
+      "term": "Zero-free region",
+      "meaning": "A part of the complex plane where an L-function is shown to have no zeros."
+    },
+    {
+      "term": "Cyclotomic field",
+      "meaning": "A number field made by adding roots of unity, the complex solutions of z^n = 1."
+    },
+    {
+      "term": "Riemann hypothesis",
+      "meaning": "An unproved conjecture that places all nontrivial zeros of certain L-functions on one line."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Primitive roots for every admissible integer base”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026/primitive-roots-all-integer-bases.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Simultaneous primitive roots: a conditional lower bound for prime bases”, openai/math release preprint (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Simultaneous-primitive-roots-a-conditional-lower-bound-for-prime-bases-October-4-2026/simultaneous-primitive-roots-conditional-lower-bound-prime-bases.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "C. Hooley, “On Artin's conjecture”, Journal für die reine und angewandte Mathematik 225 (1967), 209–220",
+      "url": "https://doi.org/10.1515/crll.1967.225.209"
+    },
+    {
+      "id": 4,
+      "cite": "R. Gupta and M. R. Murty, “A remark on Artin's conjecture”, Inventiones Mathematicae 78 (1984), 127–130",
+      "url": "https://doi.org/10.1007/BF01388719"
+    },
+    {
+      "id": 5,
+      "cite": "D. R. Heath-Brown, “Artin's conjecture for primitive roots”, Quarterly Journal of Mathematics 37 (1986), 27–38",
+      "url": "https://doi.org/10.1093/qmath/37.1.27"
+    },
+    {
+      "id": 6,
+      "cite": "O. Klurman, I. E. Shparlinski and J. Teräväinen, “On Artin's conjecture on average and short character sums”, Bulletin of the London Mathematical Society 57 (2025), 2429–2443",
+      "url": "https://doi.org/10.1112/blms.70103"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “The Poisson–Dirichlet law for prime predecessors”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Admissible means a ≠ −1 and a not a square; these are necessary conditions.",
+      "verdict": "supported",
+      "sourceLine": "$a\\ne-1$ and $a$ is not the square of an integer. These are necessary",
+      "sourceQuote": "Call $a$ \\emph{admissible} if $a\\ne-1$ and $a$ is not the square of an integer. These are necessary conditions for primitive-root behavior at infinitely many primes: the order of $-1$ is at most $2$, and a nonzero square modulo an odd prime has order dividing $(p-1)/2$.",
+      "paper": 1
+    },
+    {
+      "text": "Artin's conjecture (1927) asserts every admissible integer is a primitive root modulo infinitely many primes.",
+      "verdict": "supported",
+      "sourceLine": "Artin's primitive root conjecture, formulated in 1927, asserts that",
+      "sourceQuote": "Artin's primitive root conjecture, formulated in 1927, asserts that every admissible integer is a primitive root modulo infinitely many primes; its quantitative form predicts a positive-density asymptotic \\cite[Section~17.2]{ArtinHasse08}.",
+      "paper": 1
+    },
+    {
+      "text": "Hooley proved the predicted asymptotic under the Riemann hypothesis for Kummer-field zeta functions.",
+      "verdict": "supported",
+      "sourceLine": "Hooley proved Artin's predicted asymptotic under the Riemann hypothesis",
+      "sourceQuote": "Hooley proved Artin's predicted asymptotic under the Riemann hypothesis for the Dedekind zeta functions of the Kummer fields $\\Q(\\mu_n,a^{1/n})$, with $n$ squarefree~\\cite{Hooley67}.",
+      "paper": 1
+    },
+    {
+      "text": "Heath-Brown proved at most two prime bases fail, so one of 2, 3, 5 works.",
+      "verdict": "supported",
+      "sourceLine": "one of $2,3,5$ satisfies it",
+      "sourceQuote": "Heath-Brown proved that at most two prime bases fail the infinitude assertion, so at least one of $2,3,5$ satisfies it~\\cite{HeathBrown86}.",
+      "paper": 1
+    },
+    {
+      "text": "Average results do not by themselves settle a prescribed base.",
+      "verdict": "supported",
+      "sourceLine": "The exceptional set may depend on $x$, so these average results",
+      "sourceQuote": "The exceptional set may depend on $x$, so these average results do not by themselves settle a prescribed base.",
+      "paper": 1
+    },
+    {
+      "text": "The predicted scale is x/log x; the theorem gives x/(log x)^2 and proves infinitude for each admissible base, including 2.",
+      "verdict": "supported",
+      "sourceLine": "admissible integer, including the prescribed base $2$.",
+      "sourceQuote": "In particular, it proves the infinitude assertion for each fixed admissible integer, including the prescribed base $2$.",
+      "paper": 1
+    },
+    {
+      "text": "At least c_a x/(log x)^2 primes in (x,2x) have primitive root a.",
+      "verdict": "supported",
+      "sourceLine": "at least $c_a x/(\\log x)^2$ primes in $(x,2x)$ with primitive root $a$,",
+      "sourceQuote": "We prove the infinitude assertion in Artin's primitive root conjecture: for every integer $a$ that is neither $-1$ nor a square, there are at least $c_a x/(\\log x)^2$ primes in $(x,2x)$ with primitive root $a$, for some $c_a>0$ and every sufficiently large $x$.",
+      "paper": 1
+    },
+    {
+      "text": "Two difficulties must be addressed for a fixed base: analytic and prime construction.",
+      "verdict": "supported",
+      "sourceLine": "Two difficulties must be addressed for a fixed base.",
+      "sourceQuote": "Two difficulties must be addressed for a fixed base.",
+      "paper": 1
+    },
+    {
+      "text": "The width is common to all fields and characters in the statement.",
+      "verdict": "supported",
+      "sourceLine": "The width is common to all fields and characters in the statement,",
+      "sourceQuote": "The width is common to all fields and characters in the statement, with no conductor or height cutoff.",
+      "paper": 1
+    },
+    {
+      "text": "The marked prime estimate is an input from the Poisson–Dirichlet companion paper.",
+      "verdict": "supported",
+      "sourceLine": "The marked prime estimate is an input from",
+      "sourceQuote": "The marked prime estimate is an input from \\emph{The Poisson--Dirichlet law for the prime factors of $p-1$} \\cite[Theorem~3.1]{PoissonDirichlet}.",
+      "paper": 1
+    },
+    {
+      "text": "A companion manuscript, The Quasi-Riemann Hypothesis, develops a coefficient reflection and an additive probe.",
+      "verdict": "supported",
+      "sourceLine": "develops a coefficient reflection and an additive probe over that",
+      "sourceQuote": "The companion manuscript \\emph{The Quasi-Riemann Hypothesis} develops a coefficient reflection and an additive probe over that field while retaining unrestricted cube factors \\cite[Part~I, Sections~5--7]{QuasiRH}.",
+      "paper": 1
+    },
+    {
+      "text": "For every fixed finite set of distinct positive primes, at least cx/(log x)^2 primes have all of them as primitive roots, under inputs.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed finite set of distinct positive primes, we prove that",
+      "sourceQuote": "For every fixed finite set of distinct positive primes, we prove that at least $cx/(\\log x)^2$ primes in $(x,2x)$ have every member of the set as a primitive root, for some $c>0$ and all sufficiently large $x$.",
+      "paper": 2
+    },
+    {
+      "text": "The four inputs are hypotheses of the theorem; their proofs are outside its scope.",
+      "verdict": "supported",
+      "sourceLine": "the following theorem; their proofs in \\cite{PrimitiveRoot2} and its cited",
+      "sourceQuote": "They are hypotheses of the following theorem; their proofs in \\cite{PrimitiveRoot2} and its cited companion manuscripts are outside the scope of this paper.",
+      "paper": 2
+    },
+    {
+      "text": "For cyclotomic F containing the 12th roots of unity, L_F(s,η) has no zeros with Re s > 1 − 10^-6.",
+      "verdict": "supported",
+      "sourceLine": "continuation of $L_F(s,\\eta)$ has no zeros in",
+      "sourceQuote": "For every finite-order Hecke character $\\eta$ of $F$, the meromorphic continuation of $L_F(s,\\eta)$ has no zeros in \\[ \\re s>1-10^{-6}. \\]",
+      "paper": 1
+    },
+    {
+      "text": "A standard simultaneous zero-free region has logarithmic width depending on the field, conductors and height.",
+      "verdict": "supported",
+      "sourceLine": "an abelian extension has logarithmic width depending on the field,",
+      "sourceQuote": "A standard simultaneous zero-free region for Hecke characters associated with an abelian extension has logarithmic width depending on the field, conductors, and height, and permits at most one simple real exceptional zero~\\cite[Theorem~3.1]{ThornerZaman19}.",
+      "paper": 1
+    },
+    {
+      "text": "Gupta and Murty found a 13-element set of bases from three primes, one of which works.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
