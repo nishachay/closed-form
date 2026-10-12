@@ -1,0 +1,242 @@
+{
+  "id": "197",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Group-Algebra-That-Is-Not-Directly-Finite-October-4-2026/direct-finiteness.pdf",
+      "label": "A Torsion-Free Group Algebra That Is Not Directly Finite"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026/paper.pdf",
+      "label": "A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Characteristic Two"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-the-Group-Ring-Determinant-Conjecture-September-23-2026/paper.pdf",
+      "label": "A Counterexample to the Group-Ring Determinant Conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Odd-Characteristic-September-26-2026/paper.pdf",
+      "label": "A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Odd Characteristic"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/197.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "In some group algebras, a left inverse is not a right inverse, which disproves Kaplansky's direct-finiteness conjecture.",
+  "scope": "The counterexamples use specific finite fields and specific groups, one of them torsion-free. In characteristic zero the conjecture was already known to hold.",
+  "plain": "For square matrices, if AB equals the identity then BA does too. Kaplansky conjectured the same for sums of group moves with coefficients from any field. Four papers claim this fails, first over arithmetic modulo 2, then for one odd prime. One group used has no moves of finite order, and the groups cannot be sofic. Related examples disprove Gottschalk's conjecture on cellular automata and the group-ring Determinant Conjecture.",
+  "doesNot": "This does not write down a group or elements small enough to check by hand.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1972",
+    "firstStepBy": "Irving Kaplansky, Fields and Rings (2nd edition)",
+    "field": "Algebra",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle Kaplansky's question and give groups that are not sofic, which was a long-open question."
+  },
+  "explanation": "Take an endless list of numbers, like 5, 7, 9, and so on. Let S shift everything right and put 0 in front, giving 0, 5, 7, 9. Let L drop the first entry. Apply S and then L, and you get 5, 7, 9 back. So L undoes S. Now apply L first and then S. You get 0, 7, 9. The 5 is gone. So L is a left inverse of S but not a right inverse.\n\nFor an ordinary square matrix this cannot happen. If AB is the identity, then BA is too. The endless list escaped that rule because it has infinitely many entries. There is also a neat certificate. Let c be the list 1, 0, 0, and so on. L sends c to all zeros, but c is not zero. If L followed by S were the identity, then c would equal S applied to L of c, which is zero. So one nonzero c with L c = 0 proves the order matters.\n\nA ring is directly finite when ab = 1 always forces ba = 1. A group is a set of moves that can be combined and undone. A group algebra is made of finite sums of moves, with coefficients from a field, multiplied out like brackets. Each element uses only finitely many moves, so it feels finite. Kaplansky's direct-finiteness conjecture asserts that every such group algebra is directly finite[1].\n\nOver the complex numbers and other fields of characteristic zero, this was proved long ago, by an operator argument[5]. Characteristic is about which whole number equals zero in the field: in arithmetic modulo 2, 1 + 1 = 0. In positive characteristic, positive results came for large classes of groups. Elek and Szabó proved it for every sofic group. A sofic group is one whose multiplication can be imitated, ever more closely, by shuffles of finite sets. Whether every group is sofic is itself a well-known open question.\n\nThe newest paper claims the conjecture fails even in a very tame setting[2]. It builds a group with finitely many moves and rules, where no move except doing nothing ever returns to the start. That is called torsion-free. It gives sums a, b and c, counting each move odd or even times, with ab = 1, ac = 0 and c not zero[3]. Exactly as with the endless list, c certifies that ba is not 1[4]. Because Elek and Szabó's theorem would forbid this, the group cannot be sofic[6].\n\nThe cancellation comes from parity. The paper builds labelled graphs and reads group moves off their paths. When certain pieces of a graph have an even number of points, their contributions cancel modulo 2[7]. Seven extra labels, arranged around a small finite geometry called the Fano plane, leave exactly one piece that does not cancel[8]. That leftover piece gives the product 1.\n\nThe hard part is not the parity count. It is keeping the group honest, so that distinct paths really give distinct moves and no hidden finite-order move appears[9]. The paper rules out the bad configurations with a counting estimate and a planar cutting argument.\n\nThree companion papers come at the problem from other sides. One gives a counterexample over a finite field of characteristic 2, for a finitely presented group that has a move of odd prime order[10]. Its recipe is proved to finish but has never been run[11]. It also yields an injective cellular automaton that is not surjective, against Gottschalk's conjecture[12]. A cellular automaton updates a pattern on the group by one fixed local rule. Another paper handles one huge, specific odd prime[15].\n\nThe last paper disproves a related claim about determinants[13]. An ordinary integer matrix that can be inverted has determinant at least 1 in size[14]. The Fuglede–Kadison determinant extends this idea to matrices of group sums. The paper claims a matrix of integer group sums whose determinant lies strictly between 0 and 1.\n\nHow sure is this? A computer proof checker called Lean has checked formal statements for three of the papers. They cover the characteristic-2 counterexample with odd-order moves, the odd-prime counterexample with its cellular automaton, and the determinant claim. Lean does not check the newest torsion-free paper. It also leaves out the conclusion that the groups are not sofic. No specialist review of these papers has been published.",
+  "hypeCheck": "Landmark if the proofs hold. Lean checks three of the four main statements, but not the torsion-free paper or the nonsofic conclusion. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Group algebra",
+      "meaning": "Finite sums of group moves with coefficients from a field, multiplied out term by term."
+    },
+    {
+      "term": "Directly finite",
+      "meaning": "A ring where ab = 1 always forces ba = 1."
+    },
+    {
+      "term": "Torsion-free group",
+      "meaning": "A group where no move except doing nothing returns to the start when repeated."
+    },
+    {
+      "term": "Characteristic",
+      "meaning": "The least positive whole number that equals zero in a field, or zero if there is none."
+    },
+    {
+      "term": "Sofic group",
+      "meaning": "A group whose multiplication can be imitated ever more closely by shuffles of finite sets."
+    },
+    {
+      "term": "Cellular automaton",
+      "meaning": "A map on patterns over a group that updates every position by the same local rule."
+    },
+    {
+      "term": "Fuglede–Kadison determinant",
+      "meaning": "A determinant for operators built from group sums, defined using a trace of a logarithm."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Torsion-Free Group Algebra That Is Not Directly Finite”, openai/math preprint (4 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Group-Algebra-That-Is-Not-Directly-Finite-October-4-2026/direct-finiteness.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Characteristic Two”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Characteristic-Two-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “A Counterexample to the Group-Ring Determinant Conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-the-Group-Ring-Determinant-Conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “A Counterexample to Kaplansky's Direct-Finiteness Conjecture in Odd Characteristic”, openai/math preprint (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Kaplanskys-Direct-Finiteness-Conjecture-in-Odd-Characteristic-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, Lean scope note for family 197 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/197.md"
+    },
+    {
+      "id": 6,
+      "cite": "I. Kaplansky, Fields and Rings, 2nd edition, University of Chicago Press (1972) (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 7,
+      "cite": "M. S. Montgomery, “Left and right inverses in group algebras”, Bulletin of the AMS 75 (1969), 539–540",
+      "url": "https://doi.org/10.1090/S0002-9904-1969-12234-2"
+    },
+    {
+      "id": 8,
+      "cite": "G. Elek and E. Szabó, “Sofic groups and direct finiteness”, Journal of Algebra 280 (2004), 426–434",
+      "url": "https://doi.org/10.1016/j.jalgebra.2004.06.023"
+    },
+    {
+      "id": 9,
+      "cite": "W. Gottschalk, “Some general dynamical notions”, Lecture Notes in Mathematics 318 (1973), 120–125",
+      "url": "https://doi.org/10.1007/BFb0061728"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Kaplansky's direct finiteness conjecture asserts that every group algebra over a field is directly finite.",
+      "verdict": "supported",
+      "sourceLine": "finiteness conjecture asserts that every such group algebra is directly finite.",
+      "sourceQuote": "Kaplansky's direct finiteness conjecture asserts that every such group algebra is directly finite.",
+      "paper": 1
+    },
+    {
+      "text": "The implication can fail even when the field is finite and the group is finitely presented and torsion-free.",
+      "verdict": "supported",
+      "sourceLine": "We prove that the implication can fail even when the field is finite and the",
+      "sourceQuote": "We prove that the implication can fail even when the field is finite and the group is finitely presented and torsion-free.",
+      "paper": 1
+    },
+    {
+      "text": "There exist a finitely presented torsion-free group G and a, b, c in F2[G] with ab = 1, ac = 0, c ≠ 0.",
+      "verdict": "supported",
+      "sourceLine": "There exist a finitely presented torsion-free group $G$ and elements",
+      "sourceQuote": "There exist a finitely presented torsion-free group $G$ and elements $a,b,c\\in\\Ftwo[G]$ such that \\[ ab=1,\\qquad ac=0,\\qquad c\\ne0. \\]",
+      "paper": 1
+    },
+    {
+      "text": "The auxiliary element c certifies failure of the reverse identity.",
+      "verdict": "supported",
+      "sourceLine": "The auxiliary element $c$ certifies failure of the reverse identity:",
+      "sourceQuote": "The auxiliary element $c$ certifies failure of the reverse identity: if $ba=1$, then $c=(ba)c=b(ac)=0$.",
+      "paper": 1
+    },
+    {
+      "text": "In characteristic zero, group algebras are directly finite for every group.",
+      "verdict": "supported",
+      "sourceLine": "In characteristic zero, group algebras are directly",
+      "sourceQuote": "In characteristic zero, group algebras are directly finite for every group.",
+      "paper": 1
+    },
+    {
+      "text": "Elek and Szabó's theorem implies the group in the main theorem is not sofic.",
+      "verdict": "supported",
+      "sourceLine": "Their theorem implies that the group in",
+      "sourceQuote": "Their theorem implies that the group in Theorem~\\ref{thm:main} is not sofic.",
+      "paper": 1
+    },
+    {
+      "text": "A component of even cardinality has contributions that cancel over F2.",
+      "verdict": "supported",
+      "sourceLine": "even cardinality and its contributions cancel over $\\Ftwo$.",
+      "sourceQuote": "If every vertex of a simultaneous-step component has odd degree, the component has even cardinality and its contributions cancel over $\\Ftwo$.",
+      "paper": 1
+    },
+    {
+      "text": "Seven additional labels, organized by complements of lines in the Fano plane, create the required exception.",
+      "verdict": "supported",
+      "sourceLine": "Seven additional labels, organized by complements of",
+      "sourceQuote": "Seven additional labels, organized by complements of lines in the Fano plane, create the required exception while keeping every inverse-label incidence count balanced.",
+      "paper": 1
+    },
+    {
+      "text": "The main difficulty is asphericity and nontrivial images of root paths.",
+      "verdict": "supported",
+      "sourceLine": "The main difficulty is to make the cone attachments aspherical while ensuring",
+      "sourceQuote": "The main difficulty is to make the cone attachments aspherical while ensuring that a path from a root to a different graph vertex has nontrivial image in the group.",
+      "paper": 1
+    },
+    {
+      "text": "A characteristic-two counterexample uses a finitely presented group with an element of odd prime order.",
+      "verdict": "supported",
+      "sourceLine": "a finitely presented group $G$ containing an element of odd prime order",
+      "sourceQuote": "There exist a finite field $K$ of characteristic two, a finitely presented group $G$ containing an element of odd prime order, and elements $a_{\\mathrm{out}},b_{\\mathrm{out}}\\in K[G]$ such that \\[ a_{\\mathrm{out}}b_{\\mathrm{out}}=1, \\qquad b_{\\mathrm{out}}a_{\\mathrm{out}}\\ne1. \\]",
+      "paper": 2
+    },
+    {
+      "text": "The prescription has not been executed; its termination is proved.",
+      "verdict": "supported",
+      "sourceLine": "The prescription need not be computationally practical and has not been executed",
+      "sourceQuote": "The prescription need not be computationally practical and has not been executed: its termination is proved, and the two product assertions have algebraic certificates independent of any decision procedure for the group word problem.",
+      "paper": 2
+    },
+    {
+      "text": "It gives a negative resolution of Gottschalk's conjecture for that group.",
+      "verdict": "supported",
+      "sourceLine": "It gives a negative resolution of Gottschalk's conjecture for the group in Theorem",
+      "sourceQuote": "It gives a negative resolution of Gottschalk's conjecture for the group in Theorem~\\ref{thm:main}; it requires no further existence theorem or approximation assumption.",
+      "paper": 2
+    },
+    {
+      "text": "The unrestricted group-ring Determinant Conjecture has a negative resolution.",
+      "verdict": "supported",
+      "sourceLine": "Thus the unrestricted group-ring Determinant Conjecture",
+      "sourceQuote": "Thus the unrestricted group-ring Determinant Conjecture has a negative resolution.",
+      "paper": 3
+    },
+    {
+      "text": "A nonsingular integer matrix has determinant of absolute value at least one.",
+      "verdict": "supported",
+      "sourceLine": "A nonsingular integer matrix has determinant of absolute",
+      "sourceQuote": "A nonsingular integer matrix has determinant of absolute value at least one.",
+      "paper": 3
+    },
+    {
+      "text": "For one specified odd prime p, there is a field of order p^4 and a finitely generated group with torsion giving ab = 1, ba ≠ 1.",
+      "verdict": "supported",
+      "sourceLine": "It concerns the displayed prime, not every odd prime.",
+      "sourceQuote": "It concerns the displayed prime, not every odd prime.",
+      "paper": 4
+    },
+    {
+      "text": "Lean has formal statements for the characteristic-two, determinant and odd-characteristic counterexamples; nonsoficity and the torsion-free paper are outside them.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ],
+  "sourceHash": "a2c82d813cc693c8cccca773523fac6650a617e6277b49da3c547f37c8e2edbc",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
