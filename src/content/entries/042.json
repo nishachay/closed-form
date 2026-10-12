@@ -1,0 +1,219 @@
+{
+  "id": "042",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Every-complex-K3-surface-is-Oka-September-23-2026/paper.pdf",
+      "label": "Every complex K3 surface is Oka"
+    }
+  ],
+  "headline": "A claimed proof that every complex K3 surface is Oka: local holomorphic maps into it can be copied by entire maps.",
+  "scope": "It covers every complex K3 surface, projective or not; the class VII claim covers minimal surfaces only.",
+  "plain": "An Oka space is one where a holomorphic map defined near a small convex set can be copied by a map defined everywhere. K3 surfaces are compact complex surfaces with a special two-form, and many contain no curves. Earlier work showed the property for special K3 surfaces and for a dense set of them. This paper claims it for every complex K3 surface. No computer has checked the proof.",
+  "doesNot": "This does not cover blown-up surfaces or properly elliptic surfaces in its classification.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2000",
+    "firstStepBy": "Buzzard and Lu, dominability of elliptic and Kummer K3 surfaces",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it answers a named problem in Oka theory for a central class of complex surfaces."
+  },
+  "explanation": "Take the function 1/(1 − z) on the disc of complex numbers z with size at most 1/2. Add up the polynomial 1 + z + z² + … + z¹⁰. On that disc, the polynomial differs from the function by at most (1/2)¹⁰, which is 1/1024. A polynomial is defined on the whole complex plane, not just the disc. So a map defined near a small set has been copied, almost exactly, by a map defined everywhere. Maps that are complex-differentiable are called holomorphic. Maps defined on the whole of ℂᵐ are called entire.\n\nNow change the target. Ask for entire maps into the unit disc, instead of into the plane. A classical theorem of Liouville says every bounded entire function is constant. So no entire map can copy the identity map of a small disc. The disc is too rigid for this game. A target space is called Oka when the game always works. Take any holomorphic map from near a compact convex set in ℂᵐ, in any dimension m. Entire maps must copy it as closely as one likes. Forstnerič proved that this convex approximation property characterizes Oka manifolds[3].\n\nA K3 surface is a compact complex surface where every loop can shrink to a point. It carries a nowhere-zero holomorphic two-form[1]. That form measures small complex areas. K3 surfaces have a rigid topology, but many have very few curves. A K3 surface need not be projective, meaning it may not fit inside any projective space defined by polynomial equations. It may contain no curves at all[2]. That makes them a natural test for flexibility.\n\nPartial results built up over 25 years. Buzzard and Lu showed in 2000 that elliptic and Kummer K3 surfaces receive maps from ℂ² that cover open sets[4]. Kamenova, Lu and Verbitsky showed in 2014 that a certain distance, the Kobayashi pseudodistance, is zero on every K3 surface[5]. That removed one obstruction but gave no approximation[6]. Alarcón and Forstnerič proved a one-dimensional version, Oka-1, for Kummer and elliptic K3 surfaces[7]. Xie and Zhao showed in 2026 that Oka K3 surfaces are dense among all K3 surfaces[8]. Dense is not all, though. A dense set of good surfaces does not settle each surface[9].\n\nThis paper claims to prove that every complex K3 surface is Oka[10]. That includes surfaces with no curves, with no condition on special fibrations[11]. One consequence is a single entire curve that passes through any chosen point with any chosen nonzero velocity. Its image comes as close as one likes to every point of the surface[14]. The paper also claims that every minimal compact complex surface of Kodaira dimension zero is Oka[15]. Here minimal means no part can be blown down. Kodaira dimension zero means its special forms neither vanish nor multiply. For class VII surfaces, a further family, it claims Oka holds exactly for Hopf and Enoki surfaces. That part depends on a separate OpenAI manuscript, not on the K3 argument[16].\n\nThe main obstacle is building maps on a surface that may have no curves to work with. On projective K3 surfaces, families of genus-one curves supply flows that run for all complex time[13]. On the others, the paper builds long chains of thin annular pieces. Annuli are ring-shaped regions. Small errors at each join must be fixed without the chain growing thin[12]. The paper then uses the dynamics of K3 periods to carry the property to every surface. A period is a plane in a fixed lattice that records the two-form.\n\nHow sure is this? No Lean formalization is listed for this result. The argument combines complex analysis, period dynamics and earlier deep theorems. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. The proof is long and analytic, the class VII part leans on another unreviewed manuscript, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Holomorphic map",
+      "meaning": "A map between complex spaces that is complex-differentiable."
+    },
+    {
+      "term": "Entire map",
+      "meaning": "A holomorphic map defined on the whole of ℂᵐ."
+    },
+    {
+      "term": "Oka manifold",
+      "meaning": "A complex space where maps from near a compact convex set can always be approximated by entire maps."
+    },
+    {
+      "term": "K3 surface",
+      "meaning": "A compact, simply connected complex surface with a nowhere-zero holomorphic two-form."
+    },
+    {
+      "term": "Projective",
+      "meaning": "Fitting inside a projective space as the zero set of polynomial equations."
+    },
+    {
+      "term": "Kodaira dimension",
+      "meaning": "A measure of how fast special forms on a shape multiply; zero means they stay constant."
+    },
+    {
+      "term": "Period",
+      "meaning": "The plane in a fixed lattice that records a K3 surface's holomorphic two-form."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "F. Forstnerič and F. Lárusson, “Survey of Oka theory”, New York Journal of Mathematics 17a (2011), 11–38",
+      "url": "https://nyjm.albany.edu/j/2011/17a-2.html"
+    },
+    {
+      "id": 2,
+      "cite": "G. T. Buzzard and S. S. Y. Lu, “Algebraic surfaces holomorphically dominable by ℂ²”, Inventiones Mathematicae 139 (2000), 617–659",
+      "url": "https://doi.org/10.1007/s002220050021"
+    },
+    {
+      "id": 3,
+      "cite": "L. Kamenova, S. Lu and M. Verbitsky, “Kobayashi pseudometric on hyperkähler manifolds”, Journal of the London Mathematical Society 90 (2014), 436–450",
+      "url": "https://doi.org/10.1112/jlms/jdu038"
+    },
+    {
+      "id": 4,
+      "cite": "A. Alarcón and F. Forstnerič, “Oka-1 manifolds”, Mathematische Zeitschrift 311 (2025), Paper No. 33",
+      "url": "https://doi.org/10.1007/s00209-025-03833-4"
+    },
+    {
+      "id": 5,
+      "cite": "S.-Y. Xie and S. Zhao, “Periods of Oka K3 surfaces are dense”, preprint arXiv:2608.24392v2 (2026)",
+      "url": "https://arxiv.org/abs/2608.24392v2"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Global Spherical Shells on Minimal Surfaces of Class VII” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Spherical-Shells-on-Minimal-Surfaces-of-Class-VII-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A K3 surface is a compact, simply connected complex surface with trivial canonical bundle.",
+      "verdict": "supported",
+      "sourceLine": "Thus it carries a nowhere-zero holomorphic two-form.",
+      "sourceQuote": "Thus it carries a nowhere-zero holomorphic two-form.",
+      "paper": 1
+    },
+    {
+      "text": "Every K3 surface is Kähler, but need not be projective or contain any curve.",
+      "verdict": "supported",
+      "sourceLine": "K\\\"ahler, but it need not be projective or contain any curve",
+      "sourceQuote": "Every complex K3 surface is K\\\"ahler, but it need not be projective or contain any curve \\cite[Chapters~1 and~7]{Huybrechts}.",
+      "paper": 1
+    },
+    {
+      "text": "Forstnerič proved that the convex approximation property characterizes Oka manifolds.",
+      "verdict": "supported",
+      "sourceLine": "proved that CAP characterizes Oka",
+      "sourceQuote": "Forstneri\\v c proved that CAP characterizes Oka manifolds \\cite{ForstnericCAP,Forstneric}.",
+      "paper": 1
+    },
+    {
+      "text": "Buzzard and Lu proved elliptic and Kummer K3 surfaces are dominable by C^2.",
+      "verdict": "supported",
+      "sourceLine": "proved that elliptic and Kummer K3 surfaces are holomorphically",
+      "sourceQuote": "Buzzard and Lu proved that elliptic and Kummer K3 surfaces are holomorphically dominable by $\\C^2$ \\cite[Propositions~4.4--4.5]{BuzzardLu}.",
+      "paper": 1
+    },
+    {
+      "text": "Kamenova, Lu and Verbitsky proved the Kobayashi pseudodistance vanishes on every K3 surface.",
+      "verdict": "supported",
+      "sourceLine": "that the Kobayashi pseudodistance vanishes",
+      "sourceQuote": "For arbitrary complex K3 surfaces, Kamenova, Lu and Verbitsky proved that the Kobayashi pseudodistance vanishes \\cite[Corollary~2.2]{KamenovaLuVerbitsky}; the period-dynamics argument is corrected in \\cite[Section~4]{VerbitskyErratum}.",
+      "paper": 1
+    },
+    {
+      "text": "This removes an obstruction but gives no approximation.",
+      "verdict": "supported",
+      "sourceLine": "This removes an intrinsic obstruction to holomorphic flexibility, but does not",
+      "sourceQuote": "This removes an intrinsic obstruction to holomorphic flexibility, but does not provide approximation or interpolation.",
+      "paper": 1
+    },
+    {
+      "text": "Alarcón and Forstnerič established the Oka-1 property for Kummer and elliptic K3 surfaces.",
+      "verdict": "supported",
+      "sourceLine": "introduced the Oka-1 property and established",
+      "sourceQuote": "Alarc\\'on and Forstneri\\v c introduced the Oka-1 property and established it for Kummer surfaces and elliptic K3 surfaces \\cite[Proposition~8.4 and Corollary~8.6]{AlarconForstneric}.",
+      "paper": 1
+    },
+    {
+      "text": "Xie and Zhao proved that Oka K3 periods are dense.",
+      "verdict": "supported",
+      "sourceLine": "established dense $G_\\delta$ sets of Oka",
+      "sourceQuote": "More recently, Xie and Zhao proved that smooth $(2,2,2)$ hypersurfaces in $(\\PP^1)^3$ are Oka and established dense $G_\\delta$ sets of Oka K3 periods and corresponding local deformation parameters \\cite[Theorems~A, B, and~E]{XieZhao}.",
+      "paper": 1
+    },
+    {
+      "text": "A dense collection of Oka surfaces does not settle the property for each surface.",
+      "verdict": "supported",
+      "sourceLine": "A dense collection of Oka surfaces does not by itself settle the",
+      "sourceQuote": "A dense collection of Oka surfaces does not by itself settle the property for each surface: the transfer must address every possible rational subspace of its period plane.",
+      "paper": 1
+    },
+    {
+      "text": "The paper claims every complex K3 surface is Oka.",
+      "verdict": "supported",
+      "sourceLine": "We prove that every complex K3 surface $X$ is Oka, resolving the K3 Oka",
+      "sourceQuote": "We prove that every complex K3 surface $X$ is Oka, resolving the K3 Oka conjecture.",
+      "paper": 1
+    },
+    {
+      "text": "The scope includes nonprojective surfaces with no Picard-rank or fibration condition.",
+      "verdict": "supported",
+      "sourceLine": "Its scope includes nonprojective",
+      "sourceQuote": "Its scope includes nonprojective surfaces and imposes no condition on the Picard rank or existence of an elliptic fibration.",
+      "paper": 1
+    },
+    {
+      "text": "Errors at the joins of long chains of annuli must be corrected without losing a fixed width.",
+      "verdict": "supported",
+      "sourceLine": "errors at their joins must be corrected without exhausting a fixed",
+      "sourceQuote": "Moreover, the geometric constructions produce long chains of annuli; errors at their joins must be corrected without exhausting a fixed positive transverse width.",
+      "paper": 1
+    },
+    {
+      "text": "Chen and Gounelas families of genus-one curves supply flows on projective K3 surfaces.",
+      "verdict": "supported",
+      "sourceLine": "Their complete genus-one fibers supply",
+      "sourceQuote": "Their complete genus-one fibers supply holomorphic flows for all complex times, and the difference in degrees forces their tangent directions to be generically independent.",
+      "paper": 1
+    },
+    {
+      "text": "Every K3 surface has a dense entire curve with prescribed point and tangent vector.",
+      "verdict": "supported",
+      "sourceLine": "there is a holomorphic immersion",
+      "sourceQuote": "For every $x\\in S$ and every nonzero vector $v\\in T_xS$, there is a holomorphic immersion $f:\\C\\to S$ such that \\[ f(0)=x,\\qquad f'(0)=v,\\qquad \\overline{f(\\C)}=S, \\] where closure is taken in the ordinary complex topology.",
+      "paper": 1
+    },
+    {
+      "text": "Every minimal compact complex surface of Kodaira dimension zero is Oka.",
+      "verdict": "supported",
+      "sourceLine": "More generally, every connected",
+      "sourceQuote": "More generally, every connected minimal compact complex surface of Kodaira dimension zero is Oka.",
+      "paper": 1
+    },
+    {
+      "text": "The class VII assertion relies on the separate global spherical shell theorem.",
+      "verdict": "supported",
+      "sourceLine": "assertion has a separate input: the global spherical shell theorem",
+      "sourceQuote": "Its class-VII assertion has a separate input: the global spherical shell theorem \\cite[Theorem~1.1]{OpenAIGSS}, which is not used in the K3 proof.",
+      "paper": 1
+    },
+    {
+      "text": "The manuscript was produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}
