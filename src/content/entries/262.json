@@ -1,0 +1,174 @@
+{
+  "id": "262",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equality-cases-in-the-sharp-one-dimensional-matrix-Lieb-Thirring-inequality-October-5-2026/sharp-one-dimensional-lieb-thirring-inequalities-matrix-potentials.pdf",
+      "label": "Equality cases in the sharp one-dimensional matrix Lieb–Thirring inequality"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-one-dimensional-Lieb-Thirring-inequalities-for-matrix-potentials-October-5-2026/sharp-matrix-lieb-thirring.pdf",
+      "label": "Sharp one-dimensional Lieb–Thirring inequalities for matrix potentials"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-One-Dimensional-Lieb-Thirring-Constants-September-23-2026/paper.pdf",
+      "label": "Sharp one-dimensional Lieb–Thirring constants"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/262.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves the sharp one-dimensional Lieb–Thirring constant for 1/2 < γ < 3/2; claims the matrix version and all equality cases.",
+  "scope": "Schrödinger operators on the line with a nonnegative potential, scalar or finite-matrix valued, for exponents γ strictly between 1/2 and 3/2.",
+  "plain": "The Lieb–Thirring inequality limits how many deep energy levels a potential well can hold, using only an integral of the well. The best constant on the line was known only at the end points γ = 1/2 and γ = 3/2. One paper shows the best constant for every γ in between is the one for a single bound state, and Lean checks this. Two more papers claim the same constant for matrix potentials of every size and list every case of equality.",
+  "doesNot": "This does not settle the Lieb–Thirring constants in two or more dimensions, and Lean does not check the matrix or equality-case papers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1976",
+    "firstStepBy": "Elliott Lieb and Walter Thirring, spectral inequalities for the stability of matter, with the one-dimensional constant conjecture",
+    "field": "Mathematical physics",
+    "significance": "Notable",
+    "significanceWhy": "It settles the remaining cases of the scalar one-dimensional Lieb–Thirring conjecture, a well-known open question in spectral theory."
+  },
+  "explanation": "Take a particle on a line in a potential well W(x) = 3 sech²(2x). Here sech is 1/cosh, so the well is deepest at x = 0, where W = 3. The energy operator is H = −d²/dx² − W. This well holds exactly one bound state, with energy −1. You can check it: the wave ψ(x) = sech(2x)^(1/2) satisfies −ψ'' − Wψ = −ψ. Now measure the well by the integral of W^(3/2) over the line. That integral is 3^(3/2) × π/4, about 4.081.\n\nThe Lieb–Thirring inequality bounds the negative energies by such an integral. For an exponent γ, it says the sum of |E|^γ over all bound states is at most a constant L times the integral of W^(γ+1/2). Lieb and Thirring introduced these inequalities to study the stability of matter[1]. The question is the best constant. One natural guess is the constant for wells with a single bound state, called the one-bound-state constant. The conjecture predicts that value for 1/2 < γ < 3/2. For our example, take γ = 1. The predicted constant is 2/√3 × 2/(3π), about 0.2450. Then 0.2450 × 4.081 is 1.000, which equals |−1|. So this well sits exactly on the bound.\n\nThe end points were known. At γ = 3/2 the sharp value 3/16 came from trace identities for the Korteweg–de Vries equation[2]. At γ = 1/2, Hundertmark, Lieb and Thomas found the sharp value 1/2[3]. In between, Hundertmark, Laptev and Weidl showed L is at most twice the semiclassical constant[4]. At γ = 1 that constant is 2/(3π). At γ = 1 the conjecture asks for a factor of only 2/√3, about 1.155. The obstacle is wells with many bound states. Many shallow levels could, in principle, add up to more than one deep level.\n\nThe third paper settles the scalar case. For every γ between 1/2 and 3/2, the optimal constant is the one-bound-state constant[5]. Equality is reached by the wells (r + 1) sech²(rx), where r = 1/(γ − 1/2)[6]. Our example is the case γ = 1, r = 2. The second paper claims the same constant for wells whose values are Hermitian matrices of any size[7]. The first paper claims to list every equality case. They are sums of separate one-level wells in a fixed basis, plus zero channels[8].\n\nHow sure is this? Lean, a computer proof checker, proves the scalar result. It covers every nonnegative W with a finite integral, all bound states included, and the sech² equality wells. The matrix inequality and the classification of equality cases are not in Lean. They rest on two papers, and no specialist review of them has been published.",
+  "hypeCheck": "Notable. The scalar sharp constant has a Lean proof; the matrix extension and the equality classification rest on unreviewed papers.",
+  "glossary": [
+    {
+      "term": "Lieb–Thirring inequality",
+      "meaning": "A bound on the total size of the negative energy levels of a quantum particle in terms of an integral of its potential."
+    },
+    {
+      "term": "Bound state",
+      "meaning": "A wave that stays trapped in the well; its energy is negative."
+    },
+    {
+      "term": "Exponent γ",
+      "meaning": "The power used when adding the energy sizes |E|. Different γ give different inequalities."
+    },
+    {
+      "term": "One-bound-state constant",
+      "meaning": "The best constant if you only allow wells that trap a single level."
+    },
+    {
+      "term": "Semiclassical constant",
+      "meaning": "The constant predicted by treating the particle almost classically; here 2/(3π) at γ = 1."
+    },
+    {
+      "term": "sech",
+      "meaning": "The function 1/cosh(x); sech² makes a smooth, single well."
+    },
+    {
+      "term": "Hermitian matrix potential",
+      "meaning": "A well whose value at each point is a matrix, as for a particle with several internal channels."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Equality cases in the sharp one-dimensional matrix Lieb–Thirring inequality” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equality-cases-in-the-sharp-one-dimensional-matrix-Lieb-Thirring-inequality-October-5-2026/sharp-one-dimensional-lieb-thirring-inequalities-matrix-potentials.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Sharp one-dimensional Lieb–Thirring inequalities for matrix potentials” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-one-dimensional-Lieb-Thirring-inequalities-for-matrix-potentials-October-5-2026/sharp-matrix-lieb-thirring.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Sharp one-dimensional Lieb–Thirring constants” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-One-Dimensional-Lieb-Thirring-Constants-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 262",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/262.md",
+      "quote": "The formalized result determines the sharp one-dimensional Lieb–Thirring constant for $1/2<\\gamma<3/2$."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Lieb and Thirring introduced these spectral inequalities in work on the kinetic energy of fermions and the stability of matter.",
+      "sourceLine": "Lieb and Thirring introduced these spectral inequalities in their work on the kinetic energy of fermions and the stability of matter",
+      "sourceQuote": "Lieb and Thirring introduced these spectral inequalities in their work on the kinetic energy of fermions and the stability of matter \\cite{LiebThirring1975,LiebThirring1976}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Inverse-scattering trace identities for the Korteweg–de Vries equation give the sharp value 3/16 at γ = 3/2.",
+      "sourceLine": "Inverse-scattering trace identities for the Korteweg--de Vries equation give the sharp value $L_{3/2,1}=3/16$",
+      "sourceQuote": "Inverse-scattering trace identities for the Korteweg--de Vries equation give the sharp value $L_{3/2,1}=3/16$ \\cite{ZakharovFaddeev1971,GardnerGreeneKruskalMiura1974}; Lieb and Thirring explicitly credit Gardner, Greene, Kruskal and Miura in \\cite[Section~4(B)]{LiebThirring1976}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Hundertmark, Lieb and Thomas obtained the sharp value 1/2 at γ = 1/2.",
+      "sourceLine": "Hundertmark, Lieb and Thomas obtained its sharp value $1/2$",
+      "sourceQuote": "At the other endpoint, Weidl first proved finiteness of $L_{1/2,1}$ \\cite{Weidl1996}, and Hundertmark, Lieb and Thomas obtained its sharp value $1/2$ \\cite[Theorem~1]{HundertmarkLiebThomas1998}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Hundertmark, Laptev and Weidl proved L ≤ 2 L^cl for 1/2 ≤ γ < 3/2.",
+      "sourceLine": "Hundertmark, Laptev and Weidl proved $L_{\\gamma,1}\\le2L_{\\gamma,1}^{\\cl}$ for $1/2\\le\\gamma<3/2$",
+      "sourceQuote": "Hundertmark, Laptev and Weidl proved $L_{\\gamma,1}\\le2L_{\\gamma,1}^{\\cl}$ for $1/2\\le\\gamma<3/2$ \\cite[Theorem~4.1]{HLW2000}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every 1/2 < γ < 3/2 the optimal constant is the one-bound-state constant.",
+      "sourceLine": "for every $\\frac12<\\gamma<\\frac32$, the optimal constant is the one-bound-state constant.",
+      "sourceQuote": "We resolve affirmatively the remaining cases of the scalar one-dimensional Lieb--Thirring conjecture: for every $\\frac12<\\gamma<\\frac32$, the optimal constant is the one-bound-state constant.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Equality is attained by W(x) = (r+1)sech²(rx) with r = (γ−1/2)^(−1).",
+      "sourceLine": "equality is attained by $W(x)=(r+1)\\sech^2(rx)$",
+      "sourceQuote": "More precisely, if $r=(\\gamma-1/2)^{-1}$, equality is attained by $W(x)=(r+1)\\sech^2(rx)$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The optimal matrix constant is the scalar one-bound-state constant, independently of the matrix size.",
+      "sourceLine": "The optimal constant is the scalar one-bound-state constant, independently of the matrix size.",
+      "sourceQuote": "The optimal constant is the scalar one-bound-state constant, independently of the matrix size.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Equality holds precisely for direct sums, in one constant unitary basis, of scalar one-bound-state solitons and zero channels.",
+      "sourceLine": "equality holds precisely for direct sums, in one constant unitary basis, of scalar one-bound-state solitons and zero channels",
+      "sourceQuote": "For measurable Hermitian positive semidefinite potentials $W$ with $\\int_\\R\\tr(W^{\\gamma+1/2})<\\infty$, equality holds precisely for direct sums, in one constant unitary basis, of scalar one-bound-state solitons and zero channels.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the sharp scalar one-dimensional Lieb–Thirring constant for 1/2 < γ < 3/2, attained by (r+1)sech²(rx).",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}
