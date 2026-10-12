@@ -1,0 +1,165 @@
+{
+  "id": "189",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cycle-clique-Ramsey-numbers-September-25-2026/Cycle-clique-Ramsey-numbers-September-25-2026.pdf",
+      "label": "Cycle--clique Ramsey numbers"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/189.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Exact Ramsey numbers for a cycle versus a clique: R(C_m, K_n) = (m − 1)(n − 1) + 1 when m ≥ n ≥ 3.",
+  "scope": "Holds for all whole numbers m ≥ n ≥ 3 except m = n = 3, where the answer is 6.",
+  "plain": "Colour every line between N points red or blue. How large must N be to force either a red loop through exactly m points or a blue group of n points all joined? Erdős, Faudree, Rousseau and Schelp conjectured the answer (m − 1)(n − 1) + 1 in 1978. This paper proves it for every m ≥ n ≥ 3, apart from the known exception m = n = 3.",
+  "doesNot": "This does not cover cycles shorter than the clique size, where m is less than n.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles a 1978 conjecture of Erdős and coauthors in its full stated range."
+  },
+  "explanation": "Take six people and draw a line between every pair. Colour each line red or blue. Split the six into two groups of three. Colour lines inside each group red and lines between groups blue. Then no four people form a red loop, since each red cluster has only three people. And no three people are joined all in blue, since any three include two from the same group.\n\nAdd a seventh person, and this escape is gone. Whatever colours you choose, you get a red loop through exactly four people or a blue triangle. The paper's formula gives exactly that seven. In the language of the subject, R(C₄, K₃) = 7.\n\nHere is the general setting. Join N points in every possible way and colour each line red or blue. A cycle C_m is a loop through exactly m points. A clique K_n is a set of n points all joined to each other. The Ramsey number R(C_m, K_n) is the smallest N that always forces a red C_m or a blue K_n[1].\n\nIn 1978, Erdős, Faudree, Rousseau and Schelp conjectured a formula. For m at least n at least 3, the answer should be (m − 1)(n − 1) + 1. The only exception is R(C₃, K₃) = 6. A red five-sided loop, with blue diagonals, shows why five points are not enough there. The lower bound comes from the opening picture, scaled up: n − 1 red clusters of m − 1 points, with blue lines between[3].\n\nMany cases were settled one by one. The case n = 3 goes back to Chartrand and Schuster[4]. Bondy and Erdős handled very long cycles, and later work completed the cases n = 4 through 7[5]. In 2021, Keevash, Long and Skokan proved the formula for all large enough n. That left at most finitely many pairs open[6].\n\nThis paper proves the conjecture in full[2]. It does not need the size of the unknown constant from the 2021 result. It studies a smallest failing case and first finds a large clique inside it[7]. Then it grows paths between clique points and shows that certain improvements would close a loop of exactly the right length. The last small cases come down to 3,099 finite patterns across 42 parameter pairs[8]. A computer rules them out using proved rules. It searches patterns, not graphs or colourings[9]. Two separate programs do this, with full records of each deduction[10].\n\nThe difficulty is that the cycle length is exact[11]. A loop through more or fewer than m points does not count. That is why the paper tracks paths so carefully.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the theorem. The Lean scope note says it covers every m at least n at least 3, plus the exception R(C₃, K₃) = 6. That is the paper's full range. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds. Lean has checked the full theorem; part of the paper's own proof uses computer checks of finite patterns, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ramsey number",
+      "meaning": "The smallest number of points that forces a given red shape or blue shape in every red–blue colouring."
+    },
+    {
+      "term": "Cycle",
+      "meaning": "A closed loop through a set of points, each visited once."
+    },
+    {
+      "term": "Clique",
+      "meaning": "A set of points with every pair joined."
+    },
+    {
+      "term": "Complete graph",
+      "meaning": "A set of points with every pair joined by a line."
+    },
+    {
+      "term": "Colouring",
+      "meaning": "An assignment of red or blue to each line."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Cycle--clique Ramsey numbers”, openai/math release preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cycle-clique-Ramsey-numbers-September-25-2026/Cycle-clique-Ramsey-numbers-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 189 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/189.md",
+      "quote": "This is the complete parameter range of the paper's main theorem."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "R(H,J) is the least N such that every red–blue colouring of the complete graph on N vertices has a red H or a blue J.",
+      "verdict": "supported",
+      "sourceLine": "least integer $N$ such that every red--blue colouring of the edges of the",
+      "sourceQuote": "For finite simple graphs $H$ and $J$, the Ramsey number $R(H,J)$ is the least integer $N$ such that every red--blue colouring of the edges of the complete graph on $N$ vertices contains a red copy of $H$ or a blue copy of $J$.",
+      "sourceId": 1
+    },
+    {
+      "text": "The theorem establishes the cycle–clique conjecture of Erdős, Faudree, Rousseau and Schelp.",
+      "verdict": "supported",
+      "sourceLine": "establishes the cycle--clique conjecture of",
+      "sourceQuote": "This establishes the cycle--clique conjecture of Erd\\H{o}s, Faudree, Rousseau and Schelp.",
+      "sourceId": 1
+    },
+    {
+      "text": "The lower bound comes from n−1 disjoint red cliques of order m−1, with blue edges between them.",
+      "verdict": "supported",
+      "sourceLine": "disjoint red cliques of order $m-1$, with all edges between them blue.",
+      "sourceQuote": "Its lower bound comes from $n-1$ disjoint red cliques of order $m-1$, with all edges between them blue.",
+      "sourceId": 1
+    },
+    {
+      "text": "The case n = 3 goes back to Chartrand and Schuster.",
+      "verdict": "supported",
+      "sourceLine": "The case $n=3$ goes back to Chartrand and Schuster",
+      "sourceQuote": "The case $n=3$ goes back to Chartrand and Schuster \\cite{ChartrandSchuster1971}; see also Bondy and Erd\\H{o}s \\cite[p.~47]{BondyErdos1973}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bondy and Erdős established the formula when m ≥ n² − 2; the full range was done for n = 4.",
+      "verdict": "supported",
+      "sourceLine": "$m\\ge n^2-2$. The complete conjectured range was established for $n=4$",
+      "sourceQuote": "Bondy and Erd\\H{o}s \\cite[Theorem~4]{BondyErdos1973} established the formula when $m\\ge n^2-2$. The complete conjectured range was established for $n=4$ by Yang, Huang and Zhang~\\cite{YangHuangZhang1999}, for $n=5$ by Bollob\\'as and coauthors~\\cite{BollobasEtAl2000}, for $n=6$ by Schiermeyer~\\cite{Schiermeyer2003}, and for $n=7$ by Chen, Cheng and Zhang~\\cite{ChenChengZhang2008}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Keevash, Long and Skokan's theorem leaves at most finitely many pairs.",
+      "verdict": "supported",
+      "sourceLine": "Thus their theorem leaves at most",
+      "sourceQuote": "Thus their theorem leaves at most finitely many pairs in the range of Theorem~\\ref{thm:main}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The first structural step finds a large clique.",
+      "verdict": "supported",
+      "sourceLine": "The first structural step finds a clique of order",
+      "sourceQuote": "The first structural step finds a clique of order \\[ t\\ge\\max\\{3,\\lfloor k/2\\rfloor\\}. \\]",
+      "sourceId": 1
+    },
+    {
+      "text": "There are 3,099 parameter-pattern instances across 42 admissible pairs.",
+      "verdict": "supported",
+      "sourceLine": "parameter-pattern instances across the $42$ admissible",
+      "sourceQuote": "There are $3{,}099$ parameter-pattern instances across the $42$ admissible pairs $(k,t)$.",
+      "sourceId": 1
+    },
+    {
+      "text": "The computation enumerates patterns, rather than graphs or edge colourings.",
+      "verdict": "supported",
+      "sourceLine": "patterns, rather than graphs or edge colourings.",
+      "sourceQuote": "The computation enumerates these patterns, rather than graphs or edge colourings.",
+      "sourceId": 1
+    },
+    {
+      "text": "Two separate exact implementations and deduction traces accompany the computation.",
+      "verdict": "supported",
+      "sourceLine": "describes two separate exact implementations and the accompanying",
+      "sourceQuote": "Appendix~\\ref{app:implementation} describes two separate exact implementations and the accompanying deduction traces.",
+      "sourceId": 1
+    },
+    {
+      "text": "The cycle length in the theorem is exact.",
+      "verdict": "supported",
+      "sourceLine": "The cycle length in the theorem is exact.",
+      "sourceQuote": "The cycle length in the theorem is exact.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the full parameter range of the main theorem, including R(C₃, K₃) = 6.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
