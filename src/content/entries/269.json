@@ -1,0 +1,178 @@
+{
+  "id": "269",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Stability-of-the-Spherical-Laughlin-Gap-October-5-2026/uniform-stability-spherical-laughlin-gap.pdf",
+      "label": "Uniform Stability of the Spherical Laughlin Gap"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf",
+      "label": "A Fock-space inequality and the Laughlin spectral gap"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/269.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a uniform energy gap of at least 1/25 above the Laughlin state on the sphere; claims it survives weak disorder.",
+  "scope": "The fermionic Laughlin state at filling 1/3 with Haldane's V₁ pair interaction on expanding round spheres, with and without weak projected potentials.",
+  "plain": "Laughlin's 1983 wave function describes electrons in a strong magnetic field forming the fractional quantum Hall state at filling 1/3. A simple energy rule has this state as its unique lowest state, and physicists expected a fixed energy gap above it, however large the system. One paper shows the gap is at least 1/25 on large spheres, and Lean checks this. A second paper claims the gap and unique ground state survive weak random potentials.",
+  "doesNot": "This does not give an explicit system size where the bound starts, and Lean does not check the stability under disorder.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1983",
+    "firstStepBy": "Robert Laughlin, wave function for the fractional quantum Hall state at filling 1/3",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "The Laughlin spectral-gap conjecture is a long-standing open question in the mathematics of the fractional quantum Hall effect."
+  },
+  "explanation": "Start with just two electrons on a sphere with a magnetic monopole at its centre. Give the sphere Q = 3 flux quanta, units of magnetic flux. In the lowest energy band, called the lowest Landau level, each electron has 4 possible states. Two electrons, which must be antisymmetric, then have 6 joint states. Their pair spin, a measure of how they orbit each other, is either 2 or 0. Five states have pair spin 2, which is relative angular momentum one, the closest approach. One state has pair spin 0, so the electrons stay further apart.\n\nHaldane's energy rule charges each pair energy one in relative angular momentum one, and zero otherwise[1]. So here 5 states cost 1 and one state costs 0. The free state is the Laughlin state for N = 2. Its gap, the step from the lowest energy to the next, is 1. In general the rule uses N electrons and Q = 3(N − 1) flux quanta. This is filling 1/3: about three flux quanta per electron. Laughlin's wave function describes the fractional quantum Hall state at that filling[2].\n\nThe Laughlin state always has energy 0. The question is whether the gap stays above a fixed size as N grows. Haldane and Rezayi found numerical evidence, but noted it was not a proof[3]. The obstacle is that a gap needs a lower bound over every competing many-electron state[4]. Exact gaps were known only for truncated versions on thin cylinders and thin tori[5].\n\nThe second paper settles the spherical gap conjecture[6]. For all large enough systems, the gap above the Laughlin state is at least 1/25[7]. The full result is stronger. It is the operator inequality H² ≥ γH on the whole space of states, for some γ above 1/25. The number used is 0.04616733319001, while 1/25 is 0.04. The size where the bound starts is not made explicit[8].\n\nThe first paper adds disorder. It applies a weak, bounded outside potential, like impurities in a sample. It claims a unique ground state and a uniform gap survive[9]. The allowed strength exists, but the paper does not compute or optimize it[10].\n\nHow sure is this? Lean, a computer proof checker, proves the unperturbed results. These include the 1/25 gap at flux 3(N − 1) for large N. They also include H² ≥ γH for every γ below 0.04616733319001 at large flux. Stability under the outside potential and uniqueness of the perturbed ground state are outside Lean. That part rests on one long paper, and no specialist review of it has been published.",
+  "hypeCheck": "Major if it holds. The 1/25 gap has a Lean proof; the stability under weak disorder rests on an unreviewed paper.",
+  "glossary": [
+    {
+      "term": "Fractional quantum Hall state",
+      "meaning": "A strongly correlated state of electrons in two dimensions in a strong magnetic field."
+    },
+    {
+      "term": "Filling 1/3",
+      "meaning": "One electron for about every three units of magnetic flux."
+    },
+    {
+      "term": "Lowest Landau level",
+      "meaning": "The lowest energy band an electron can occupy in a strong magnetic field."
+    },
+    {
+      "term": "Laughlin state",
+      "meaning": "Laughlin's explicit wave function for filling 1/3, where every pair of electrons keeps well apart."
+    },
+    {
+      "term": "V₁ interaction",
+      "meaning": "Haldane's energy rule: each electron pair in its closest orbit, relative angular momentum one, costs energy one."
+    },
+    {
+      "term": "Spectral gap",
+      "meaning": "The step from the lowest energy to the next energy."
+    },
+    {
+      "term": "Flux quantum",
+      "meaning": "The basic unit of magnetic flux through a surface."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Uniform Stability of the Spherical Laughlin Gap” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Stability-of-the-Spherical-Laughlin-Gap-October-5-2026/uniform-stability-spherical-laughlin-gap.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Fock-space inequality and the Laughlin spectral gap” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 269",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/269.md",
+      "quote": "At flux $q=3(N-1)$ and all sufficiently large particle numbers $N$, every antisymmetric state has $V_1$ energy at least $1/25$ times its squared distance from the Laughlin ground-state line."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Haldane's parent Hamiltonian charges every pair energy one in relative angular momentum one and zero otherwise.",
+      "sourceLine": "every pair pays energy one in relative angular momentum one and zero in the other pair sectors",
+      "sourceQuote": "Haldane's spherical geometry and pseudopotentials identify a particularly simple parent Hamiltonian: every pair pays energy one in relative angular momentum one and zero in the other pair sectors~\\cite{Haldane}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Laughlin's wave function describes the fractional quantum Hall state at filling 1/3.",
+      "sourceLine": "Laughlin's wave function gave an explicit description of the fractional quantum Hall state at filling $1/3$",
+      "sourceQuote": "Laughlin's wave function gave an explicit description of the fractional quantum Hall state at filling $1/3$~\\cite{Laughlin}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Haldane and Rezayi supplied numerical evidence and distinguished the expected gap from a formal proof.",
+      "sourceLine": "Haldane and Rezayi's finite-size study supplied numerical evidence and explicitly distinguished the expected hard-core gap from a formal proof",
+      "sourceQuote": "Haldane and Rezayi's finite-size study supplied numerical evidence and explicitly distinguished the expected hard-core gap from a formal proof~\\cite{HaldaneRezayi1985FiniteSize}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A uniform lower bound on the positive spectrum requires control of all competing many-particle states.",
+      "sourceLine": "a uniform lower bound on the positive spectrum requires control of all competing many-particle states",
+      "sourceQuote": "Its exact Laughlin zero mode is known, but a uniform lower bound on the positive spectrum requires control of all competing many-particle states.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Rigorous uniform gaps were established for truncated pseudopotentials in thin-cylinder and thin-torus geometries.",
+      "sourceLine": "Rigorous uniform gaps were established for truncated pseudopotentials in thin-cylinder and thin-torus geometries",
+      "sourceQuote": "Rigorous uniform gaps were established for truncated pseudopotentials in thin-cylinder and thin-torus geometries by Nachtergaele, Warzel, and Young~\\cite{NWY} and Warzel and Young~\\cite{WY}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper resolves the spherical fermionic Laughlin spectral-gap conjecture.",
+      "sourceLine": "resolving positively the spherical fermionic Laughlin spectral-gap conjecture",
+      "sourceQuote": "We prove this bound for the full interaction on the round sphere, resolving positively the spherical fermionic Laughlin spectral-gap conjecture.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The gap above the Laughlin state at filling 1/3 is at least 1/25 for all sufficiently large systems.",
+      "sourceLine": "the gap above the Laughlin state at filling \\(1/3\\) on the round sphere is at least \\(1/25\\) for all sufficiently large systems",
+      "sourceQuote": "With coefficient one for each pair projector, the gap above the Laughlin state at filling \\(1/3\\) on the round sphere is at least \\(1/25\\) for all sufficiently large systems.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof does not give an explicit flux threshold.",
+      "sourceLine": "The proof does not give an explicit flux threshold",
+      "sourceQuote": "The proof does not give an explicit flux threshold or the endpoint coefficient \\(\\gamma_*\\) on finite spheres.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Under weak bounded scalar potentials projected to the lowest Landau level, the Hamiltonian retains a unique ground state and a uniform gap.",
+      "sourceLine": "retains a unique ground state and a uniform spectral gap under sufficiently weak bounded real scalar one-body potentials projected to the lowest Landau level",
+      "sourceQuote": "We prove that the fermionic Laughlin $V_1$ Hamiltonian at filling $1/3$ on expanding round spheres retains a unique ground state and a uniform spectral gap under sufficiently weak bounded real scalar one-body potentials projected to the lowest Landau level.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The constants are existential and the disorder threshold is not optimized.",
+      "sourceLine": "We give existential constants; the proof does not optimize the disorder threshold.",
+      "sourceQuote": "We give existential constants; the proof does not optimize the disorder threshold.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the uniform unperturbed Laughlin gap of 1/25 and the Fock-space inequality; stability under one-body potentials is outside it.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
