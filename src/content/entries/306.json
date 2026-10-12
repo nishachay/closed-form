@@ -1,0 +1,148 @@
+{
+  "id": "306",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Purely-Cosmetic-Surgery-on-Knots-in-the-Three-Sphere-September-23-2026/paper.pdf",
+      "label": "Purely cosmetic surgery on knots in the three-sphere"
+    }
+  ],
+  "headline": "Claims that two different surgeries on a nontrivial knot never give the same oriented three-dimensional space.",
+  "scope": "Every nontrivial smooth knot in the three-sphere and every pair of distinct surgery slopes, including the meridian.",
+  "plain": "Dehn surgery cuts a thickened knot out of ordinary three-dimensional space and glues it back with a twist. The twist is recorded by a fraction called the slope. The purely cosmetic surgery conjecture says that two different slopes on a nontrivial knot always give different oriented spaces. Earlier work left only one case: slopes +2 and −2 on a knot of genus two. This paper claims to close that case with gauge-theory counts.",
+  "doesNot": "This does not cover orientation-reversing coincidences, called chirally cosmetic surgeries, or knots in spaces other than the three-sphere.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1990",
+    "firstStepBy": "Cameron Gordon, cosmetic surgery conjecture in his ICM address on Dehn surgery",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims a well-known conjecture in low-dimensional topology that many earlier results had narrowed to one case."
+  },
+  "explanation": "Take a knot, a closed loop tied in ordinary three-dimensional space. Cut out a thin tube around it. Then glue a solid tube back in a new way. This is Dehn surgery. The gluing is fixed by a fraction p/q called the slope. The result is a closed three-dimensional space, a three-manifold. Its first homology group is a simple count of loops. For slope p/q with p not zero, it is a cycle of |p| elements[2]. Slope 2 gives a cycle of 2 elements and slope 3 gives one of 3. So surgeries at slopes 2 and 3 give different spaces. But slopes +2 and −2 both give a cycle of 2 elements. This count cannot tell them apart.\n\nThe knot must be nontrivial, meaning it cannot be untied. For the unknot, every slope 1/q gives back ordinary space. Two different slopes giving the same oriented space are called purely cosmetic. Cameron Gordon posed the conjecture that this never happens for a nontrivial knot. Gordon and Luecke showed that nontrivial surgery on a nontrivial knot never gives back ordinary space[3]. That handled the slope at infinity, called the meridian.\n\nMany tools then cut down the remaining cases. Heegaard Floer homology is an algebraic invariant built from curves on surfaces. Using it, Hanselman reduced the possible pairs to ±2 or ±1/q. He showed the ±2 case needs a knot of genus two[4]. The genus is the fewest handles on a surface that the knot bounds. Futer, Purcell and Schleimer settled all knots up to 19 crossings by computer[5]. Daemi, Lidman and Miller Eismeier excluded the pairs ±1/q[6]. That left one case: slopes −2 and 2 on a genus-two knot[7].\n\nThe obstacle is that ordinary invariants agree on this last pair. The paper claims to rule it out for every nontrivial knot[1]. It assumes a map that keeps orientation from the −2 surgery to the +2 surgery. It does not assume the map respects the knot[10]. It then builds two counts of solutions to gauge-theory equations. These equations describe connections, which are rules for moving data around a space. The first count is a nonzero whole number[8]. The second count comes from a one-dimensional family of solutions. Its boundary forces a multiple of the first count to be zero. That contradiction ends the proof[9]. Maps that reverse orientation are a separate question[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The paper is long and relies on heavy analysis of these equations. Each step depends on careful bounds and gluing estimates. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It closes the last case left by earlier work. The analysis is long and there is no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Knot",
+      "meaning": "A closed loop in three-dimensional space that does not cross itself."
+    },
+    {
+      "term": "Dehn surgery",
+      "meaning": "Cutting out a tube around a knot and gluing a solid tube back with a chosen twist."
+    },
+    {
+      "term": "Slope",
+      "meaning": "The fraction p/q that records how the solid tube is glued back."
+    },
+    {
+      "term": "Three-manifold",
+      "meaning": "A space that looks like ordinary three-dimensional space near every point."
+    },
+    {
+      "term": "Purely cosmetic",
+      "meaning": "Two different slopes that give the same space, with orientation kept."
+    },
+    {
+      "term": "Genus",
+      "meaning": "The fewest handles on a surface whose edge is the knot."
+    },
+    {
+      "term": "Gauge theory",
+      "meaning": "The study of equations for connections, which describe how to move data around a space."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Purely cosmetic surgery on knots in the three-sphere” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Purely-Cosmetic-Surgery-on-Knots-in-the-Three-Sphere-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Distinct Dehn surgery slopes on a nontrivial smooth knot never give orientation-preservingly homeomorphic manifolds.",
+      "sourceLine": "Distinct Dehn surgery slopes on a nontrivial smooth knot never give orientation-preservingly homeomorphic manifolds.",
+      "sourceQuote": "Distinct Dehn surgery slopes on a nontrivial smooth knot never give orientation-preservingly homeomorphic manifolds.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The first homology of p/q surgery is cyclic of order |p| when p is not zero.",
+      "sourceLine": "is cyclic of order $|p|$ for $p\\ne0$ and is infinite cyclic for $p=0$",
+      "sourceQuote": "For completeness, the zero slope causes no additional case: $H_1(S^3_{p/q}(K);\\Z)$ is cyclic of order $|p|$ for $p\\ne0$ and is infinite cyclic for $p=0$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gordon and Luecke showed that nontrivial surgery on a nontrivial knot cannot produce the three-sphere.",
+      "sourceLine": "Gordon and Luecke's theorem that nontrivial surgery on a nontrivial knot cannot produce $S^3$",
+      "sourceQuote": "Gordon and Luecke's theorem that nontrivial surgery on a nontrivial knot cannot produce $S^3$ \\cite[Theorem~2]{GordonLuecke1989} settles the meridional case.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hanselman restricted the possible pairs to ±2 or ±1/q and showed that ±2 requires genus two.",
+      "sourceLine": "Hanselman restricted the possibilities to $\\pm2$ or $\\pm1/q$ for a positive integer $q$, and showed that the $\\pm2$ case requires genus two",
+      "sourceQuote": "Using graded Floer information through immersed curves, Hanselman restricted the possibilities to $\\pm2$ or $\\pm1/q$ for a positive integer $q$, and showed that the $\\pm2$ case requires genus two~\\cite[Theorem~2]{Hanselman2023}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Futer, Purcell and Schleimer established the conjecture through 19 crossings.",
+      "sourceLine": "to establish the conjecture through $19$ crossings and for the one-cusped SnapPy census",
+      "sourceQuote": "Futer, Purcell, and Schleimer combined knot invariants, hyperbolic estimates, and verified computations to establish the conjecture through $19$ crossings and for the one-cusped SnapPy census \\cite{FuterPurcellSchleimer2025}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Daemi, Lidman and Miller Eismeier excluded the pairs ±1/q.",
+      "sourceLine": "The filtered instanton argument of Daemi, Lidman, and Miller Eismeier excludes the pairs $\\pm1/q$.",
+      "sourceQuote": "The filtered instanton argument of Daemi, Lidman, and Miller Eismeier excludes the pairs $\\pm1/q$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Earlier results left only opposite integer slopes of magnitude two on a genus-two knot.",
+      "sourceLine": "leaves only opposite integer slopes of magnitude two on a genus-two knot",
+      "sourceQuote": "Combined with the earlier restrictions, their Corollary~1.4 leaves only opposite integer slopes of magnitude two on a genus-two knot; it also imposes additional Alexander and Jones polynomial conditions~\\cite{DaemiLidmanMillerEismeier2025}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The first count is a nonzero integer instanton count.",
+      "sourceLine": "The first is an integer instanton count $\\Omega\\ne0$ on a closed parameterized cobordism.",
+      "sourceQuote": "The first is an integer instanton count $\\Omega\\ne0$ on a closed parameterized cobordism.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The oriented boundary formula contradicts the nonzero count.",
+      "sourceLine": "The oriented boundary formula now contradicts $\\Omega\\ne0$.",
+      "sourceQuote": "The oriented boundary formula now contradicts $\\Omega\\ne0$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The homeomorphism need not preserve a surgery core or the knot exterior.",
+      "sourceLine": "it need not preserve a surgery core or the knot exterior",
+      "sourceQuote": "The homeomorphism in its statement is a map of the entire filled manifolds; it need not preserve a surgery core or the knot exterior.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Orientation-reversing coincidences are a different phenomenon.",
+      "sourceLine": "coincidences are a different phenomenon",
+      "sourceQuote": "The orientation hypothesis is essential to the question: orientation-reversing, or \\emph{chirally cosmetic}, coincidences are a different phenomenon.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
