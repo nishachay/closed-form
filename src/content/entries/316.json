@@ -1,0 +1,158 @@
+{
+  "id": "316",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Stable-Hurewicz-Image-of-the-Sphere-at-Two-September-25-2026/paper.pdf",
+      "label": "The Stable Hurewicz Image of the Sphere at Two"
+    }
+  ],
+  "headline": "A paper claims to prove Curtis's 1975 conjecture: only η, ν, σ and Kervaire classes show up in mod-2 sphere homology.",
+  "scope": "The mod-2 stable Hurewicz map of the sphere in every positive degree, and Eccles's conjecture for spheres only.",
+  "plain": "Stable homotopy groups record the ways one sphere can wrap around another, after enough room is added. The Hurewicz map turns each such wrapping into a homology class, a count of holes taken mod 2. Curtis guessed in 1975 that almost every wrapping becomes zero this way. The paper claims to prove that only the classes η, ν, σ and the Kervaire-invariant-one classes survive. It follows that the surviving image sits in at most nine degrees, all at or below 126.",
+  "doesNot": "This does not say which of the nine possible degrees actually carry a nonzero image, or settle Eccles's conjecture for spaces other than spheres.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Edward Curtis, study of the Dyer–Lashof and lambda algebras",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle a fifty-year-old conjecture about which stable homotopy classes of spheres homology can see."
+  },
+  "explanation": "Start with the eighth stable stem. It is the group of ways an (n + 8)-dimensional sphere can wrap around an n-dimensional sphere, when n is large. This group has four elements. Now ask a coarser question about each element. Turn the wrapping into a map into a large space called Q₀S⁰. Then read off the homology class it hits, counting holes with coefficients taken mod 2. This rule is the mod-2 Hurewicz map. In degree 8 the paper says every element maps to zero. Homology cannot tell any of the four wrappings apart from doing nothing.\n\nSome wrappings do survive. The class η lives in degree 1, ν in degree 3, and σ in degree 7. These are the Hopf-invariant-one classes. A second family is the Kervaire-invariant-one classes θⱼ. A class has Kervaire invariant one when a matching framed manifold carries a certain invariant equal to one. These classes can only sit in degrees 2^(j+1) − 2. For j from 1 to 6 those degrees are 2, 6, 14, 30, 62 and 126.\n\nCurtis proposed that these are the only survivors, in his study of the Dyer–Lashof and lambda algebras[1]. Later, May's account recorded a gap that Wellington found in the proposed proof[2]. So the question stayed open. The main theorem says the image in positive degrees is spanned by the images of η, ν, σ and the θⱼ that exist[4]. It claims that Curtis's conjecture holds in all positive degrees[3].\n\nThe degrees become finite because of an earlier result. Hill, Hopkins and Ravenel proved that θⱼ can exist only for j at most 6[5]. So the image vanishes above degree 126, the paper claims[6]. That leaves 9 possible degrees between 1 and 126, namely 1, 2, 3, 6, 7, 14, 30, 62 and 126. The other 117 degrees in that range always map to zero. This is only an upper bound. The paper does not claim a nonzero image in every listed degree[7]. Separately, Lin, Wang and Xu claim in a preprint that θ₆ exists in degree 126[8].\n\nWhy was this hard? A homology class hit by a sphere must pass simple tests. It must be primitive, which means it splits in the simplest possible way under the diagonal map. It must also be killed by the positive Steenrod operations, a standard set of tools that act on homology. But these tests alone do not show that a sphere really hits the class[9]. The homology algebra is large, and many classes pass the tests. The obstacle is to rule them out one by one, using only that an actual sphere map exists.\n\nThe paper follows a class through repeated suspensions, each one shifting the picture up a dimension. It looks at the last step where the class is still nonzero. There it shows the class is a square. At the bottom level, it rules out fourth and higher powers. Eccles and Zare had already reached that conclusion by other means[10]. The paper then uses the cone of the sphere map and an algebraic argument about Dickson algebras. In the last case, Kuhn's theorem and Browder's work identify the class as a Kervaire class[11]. As a consequence, the paper claims Eccles's conjecture for every sphere Sⁿ with n > 0[12].\n\nHow sure is this? The paper gives a full proof, but no Lean check covers it. No specialist review has been published. The argument is long and builds on deep earlier results. Treat the result as a claim until experts confirm it.",
+  "hypeCheck": "Major if correct. The paper claims a full proof of Curtis's conjecture, but no Lean check covers it and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Stable stem",
+      "meaning": "The group of ways a sphere of dimension n + d can wrap around a sphere of dimension n, once n is large enough that the answer stops changing."
+    },
+    {
+      "term": "Homology mod 2",
+      "meaning": "A way of counting the holes of a space, keeping only whether each count is even or odd."
+    },
+    {
+      "term": "Mod-2 Hurewicz map",
+      "meaning": "The rule that sends a map from a sphere to the mod-2 homology class it hits."
+    },
+    {
+      "term": "Q₀S⁰",
+      "meaning": "A large space whose homotopy groups are the stable stems. Its homology is known explicitly."
+    },
+    {
+      "term": "η, ν, σ",
+      "meaning": "The Hopf-invariant-one classes, in degrees 1, 3 and 7. They come from the Hopf maps."
+    },
+    {
+      "term": "Kervaire-invariant-one class θⱼ",
+      "meaning": "A class in degree 2^(j+1) − 2 whose matching framed manifold has a certain invariant equal to one."
+    },
+    {
+      "term": "Primitive class",
+      "meaning": "A homology class that splits in the simplest possible way under the diagonal map of the space."
+    },
+    {
+      "term": "Steenrod operations",
+      "meaning": "Standard operations that act on mod-2 homology and cohomology of every space."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Stable Hurewicz Image of the Sphere at Two” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Stable-Hurewicz-Image-of-the-Sphere-at-Two-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Curtis proposed the Hopf–Kervaire description in his study of the Dyer–Lashof and lambda algebras.",
+      "sourceLine": "Curtis proposed the Hopf--Kervaire description in his study of the Dyer--Lashof and lambda algebras",
+      "sourceQuote": "Curtis proposed the Hopf--Kervaire description in his study of the Dyer--Lashof and lambda algebras \\cite{Curtis1975}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "May's account records a gap found by Wellington in Curtis's proposed proof.",
+      "sourceLine": "May's subsequent account records a gap found by Wellington in the proposed proof",
+      "sourceQuote": "May's subsequent account records a gap found by Wellington in the proposed proof \\cite[p.~484, footnote~3]{May1977}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Curtis's conjecture is true in all positive degrees.",
+      "sourceLine": "In particular, Curtis's conjecture is true in all positive degrees.",
+      "sourceQuote": "In particular, Curtis's conjecture is true in all positive degrees.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The positive-degree image is spanned by the images of η, ν, σ and the Kervaire-invariant-one classes θⱼ in degrees 2^(j+1) − 2, whenever they exist.",
+      "sourceLine": "the Kervaire-invariant-one classes \\(\\theta_j\\), in degrees \\(2^{j+1}-2\\), \\(j\\ge1\\), whenever they exist.",
+      "sourceQuote": "The image of \\(\\bigoplus_{d>0}h_d\\) is spanned over \\(\\F_2\\) by the Hurewicz images of the Hopf-invariant-one classes \\(\\eta,\\nu,\\sigma\\), in degrees \\(1,3,7\\), and the Kervaire-invariant-one classes \\(\\theta_j\\), in degrees \\(2^{j+1}-2\\), \\(j\\ge1\\), whenever they exist.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hill, Hopkins and Ravenel prove that θⱼ can exist only for j ≤ 6.",
+      "sourceLine": "Hill, Hopkins, and Ravenel prove that \\(\\theta_j\\) can exist only for \\(j\\le6\\)",
+      "sourceQuote": "Hill, Hopkins, and Ravenel prove that \\(\\theta_j\\) can exist only for \\(j\\le6\\) \\cite[Theorem~1.1]{HillHopkinsRavenel2016}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The positive stable mod-2 Hurewicz image vanishes above degree 126.",
+      "sourceLine": "In particular, the positive stable mod-2 Hurewicz image vanishes above degree \\(126\\).",
+      "sourceQuote": "In particular, the positive stable mod-2 Hurewicz image vanishes above degree \\(126\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The listed support is an upper bound, not a claim of nonvanishing in every listed degree.",
+      "sourceLine": "it does not assert nonvanishing in every listed degree or an exact dimension of the image.",
+      "sourceQuote": "The support in Corollary~\\ref{cor:finite-image} is an upper bound; it does not assert nonvanishing in every listed degree or an exact dimension of the image.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lin, Wang and Xu prove existence in dimension 126 in their preprint.",
+      "sourceLine": "In their preprint, Lin, Wang, and Xu prove existence in that dimension",
+      "sourceQuote": "In their preprint, Lin, Wang, and Xu prove existence in that dimension \\cite[Theorems~1.1 and~1.4]{LinWangXu2025}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Primitivity and Steenrod annihilation are necessary for a spherical class but do not establish realization.",
+      "sourceLine": "A spherical class must be primitive and annihilated by positive Steenrod operations, but these necessary conditions alone do not establish its realization.",
+      "sourceQuote": "A spherical class must be primitive and annihilated by positive Steenrod operations, but these necessary conditions alone do not establish its realization.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The exclusion of fourth powers is already present in prior work of Eccles and Zare.",
+      "sourceLine": "the conclusion itself is already present in that prior work",
+      "sourceQuote": "Section~\\ref{sec:powers} proves the exclusion of fourth powers by spectrum pairings and integral characteristic classes; the conclusion itself is already present in that prior work.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kuhn's theorem bounds the Adams filtration by two, and Browder's identification gives Kervaire detection.",
+      "sourceLine": "Kuhn's theorem bounds its Adams filtration by two, and Browder's identification gives Kervaire detection.",
+      "sourceQuote": "Kuhn's theorem bounds its Adams filtration by two, and Browder's identification gives Kervaire detection.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Eccles's conjecture holds for every sphere Sⁿ with n > 0.",
+      "sourceLine": "Consequently Eccles's conjecture holds for every sphere \\(S^n\\), \\(n>0\\)",
+      "sourceQuote": "Consequently Eccles's conjecture holds for every sphere \\(S^n\\), \\(n>0\\): the alternatives are the bottom stably spherical class and Hopf-invariant-one classes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
