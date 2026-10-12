@@ -1,0 +1,288 @@
+{
+  "id": "260",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spacetime-Penrose-inequality-with-charge-and-original-data-rigidity-October-5-2026/paper.pdf",
+      "label": "The spacetime Penrose inequality with charge and original-data rigidity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Charged-Reduction-of-the-Spacetime-Penrose-Inequality-in-Spatial-Dimensions-at-Least-Four-October-5-2026/paper.pdf",
+      "label": "A Charged Reduction of the Spacetime Penrose Inequality in Spatial Dimensions at Least Four"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spacetime-Penrose-inequalities-enclosing-area-charge-and-rigidity-October-5-2026/paper.pdf",
+      "label": "Spacetime Penrose inequalities: enclosing area, charge, and rigidity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kerr-Newman-Penrose-Inequality-for-Axisymmetric-Electrovacuum-Exteriors-October-5-2026/paper.pdf",
+      "label": "The Kerr–Newman Penrose Inequality for Axisymmetric Electrovacuum Exteriors"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Electromagnetic-tails-and-the-Kerr-Newman-Penrose-inequality-October-5-2026/paper.pdf",
+      "label": "Electromagnetic tails and the Kerr–Newman Penrose inequality"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-nonmaximal-anti-de-Sitter-Penrose-Inequality-and-original-data-rigidity-October-5-2026/paper.pdf",
+      "label": "The nonmaximal anti-de Sitter Penrose Inequality and original-data rigidity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Penrose-inequality-for-maximal-asymptotically-hyperbolic-initial-data-October-5-2026/paper.pdf",
+      "label": "The Penrose inequality for maximal asymptotically hyperbolic initial data"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-local-Penrose-inequality-for-conformal-perturbations-of-Schwarzschild-anti-de-Sitter-data-October-5-2026/paper.pdf",
+      "label": "A local Penrose inequality for conformal perturbations of Schwarzschild–anti-de Sitter data"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spacetime-Penrose-inequality-and-enclosing-area-September-27-2026/paper.pdf",
+      "label": "The spacetime Penrose inequality and enclosing area"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conformal-flow-and-the-Riemannian-Penrose-inequality-with-minimizing-frontiers-September-27-2026/paper.pdf",
+      "label": "Conformal flow and the Riemannian Penrose inequality with minimizing frontiers"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equality-and-rigidity-in-the-spacetime-Penrose-inequality-September-27-2026/paper.pdf",
+      "label": "Equality and rigidity in the spacetime Penrose inequality"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Boundary-graph-deformations-for-the-spacetime-Penrose-inequality-September-27-2026/paper.pdf",
+      "label": "Boundary graph deformations for the spacetime Penrose inequality"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Area-controlled-end-replacement-and-the-Bondi-Penrose-inequality-in-the-CKS-class-September-27-2026/paper.pdf",
+      "label": "Area-controlled end replacement and the Bondi Penrose inequality in the CKS class"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/260.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims the spacetime Penrose inequality: a black hole's enclosing area caps how small the total mass can be.",
+  "scope": "Asymptotically flat and anti-de Sitter initial data in general relativity, with trapped boundaries, charge or rotation, across thirteen companion papers.",
+  "plain": "The Penrose inequality says a spacetime holding a black hole must carry at least a set mass, fixed by the horizon's area. It was known for the special case where the data has no time motion, but the general spacetime case was open. Thirteen papers claim to prove it in the general setting, plus versions with charge, rotation and a negative cosmological constant. Lean checks only one supporting construction and a family of equality examples.",
+  "doesNot": "This does not prove cosmic censorship, and Lean does not check the main inequality, the charged or rotating versions, or the rigidity theorems.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1973",
+    "firstStepBy": "Roger Penrose, null-shell argument linking mass, horizon area and cosmic censorship",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "The spacetime Penrose inequality is a long-standing central conjecture of mathematical general relativity."
+  },
+  "explanation": "Take the simplest black hole, the Schwarzschild solution of Einstein's equations. Use units where the speed of light and the gravity constant are 1. A black hole of mass m = 1 then has a horizon of radius 2m = 2. Its area is 4π × 2², which is 16π, about 50.27. In everyday units, a black hole as heavy as the Sun has a horizon radius near 2.95 km. Its area is near 110 square km. Turn this around. If a horizon has area A, the mass should be at least the square root of A/(16π). For A = 16π, that gives 1, so Schwarzschild sits exactly on the line.\n\nPenrose's null-shell argument made this comparison concrete[1]. It came from a test of cosmic censorship, the idea that collapse ends in a black hole hidden by a horizon. To state it as a theorem, you describe one moment of time by initial data. This is a space, its metric (the rule for distances), and its second fundamental form (how the slice bends inside spacetime). The mass is the ADM mass, read off far away. The horizon is replaced by a trapped boundary, a surface where outgoing light cannot spread out.\n\nThe case with zero bending was settled long ago. Bray's conformal flow proves the sharp bound for the total area of a possibly disconnected horizon[2]. With general bending, nonzero second fundamental form, the method breaks. Neither scalar curvature nor the boundary mean curvature has the required Riemannian sign[3]. That sign problem is the main obstacle.\n\nThe papers claim that the enclosing-area form of the spacetime Penrose conjecture holds in their class of data[4]. The area used is the smallest area of any surface that encloses the boundary. They do not assume the boundary is outermost or area-minimizing[5]. With electric and magnetic charge Q, they claim m ≥ Q and r_A ≤ m + √(m² − Q²), where r_A is the enclosing-area radius[6]. For m = 1 and Q = 0.6, the radius is at most 1.8, so the area is at most about 40.7. A rotating version, the Kerr–Newman Penrose inequality, is also claimed[7]. One paper builds examples that break that rotating version when the angular momentum omits its electromagnetic part[8]. Another set claims versions for a negative cosmological constant, the anti-de Sitter setting[9]. For equality cases, the papers claim the data must be a slice of a Schwarzschild–Tangherlini exterior[10].\n\nHow sure is this? Lean, a computer proof checker, covers only one supporting step. It formalizes replacing one type of curved end by a flat end while keeping energy and area under control. It also checks that Schwarzschild data gives equality at every positive mass. The main inequality, the charged, rotating and anti-de Sitter versions, and the equality theorems rest on thirteen long papers. No specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. Lean covers one end-replacement step and the Schwarzschild equality examples only; the main inequalities rest on thirteen long papers with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Penrose inequality",
+      "meaning": "The claim that total mass is at least the square root of the horizon area divided by 16π, in units where light speed and the gravity constant are 1."
+    },
+    {
+      "term": "Initial data",
+      "meaning": "A snapshot of spacetime at one moment: a space with a distance rule (metric) and a record of how it bends in time (second fundamental form)."
+    },
+    {
+      "term": "ADM mass",
+      "meaning": "The total mass of a spacetime, measured from the shape of space very far away."
+    },
+    {
+      "term": "Trapped boundary",
+      "meaning": "A closed surface where light sent outward does not spread out, the sign of a black hole."
+    },
+    {
+      "term": "Enclosing area",
+      "meaning": "The smallest area of any surface that separates the trapped boundary from infinity."
+    },
+    {
+      "term": "Schwarzschild solution",
+      "meaning": "The simplest black hole: no spin, no charge, perfectly round. It is the equality case."
+    },
+    {
+      "term": "Anti-de Sitter",
+      "meaning": "A spacetime with a negative cosmological constant, so space curves like a saddle at large distances."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The spacetime Penrose inequality with charge and original-data rigidity” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spacetime-Penrose-inequality-with-charge-and-original-data-rigidity-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Charged Reduction of the Spacetime Penrose Inequality in Spatial Dimensions at Least Four” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Charged-Reduction-of-the-Spacetime-Penrose-Inequality-in-Spatial-Dimensions-at-Least-Four-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Spacetime Penrose inequalities: enclosing area, charge, and rigidity” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spacetime-Penrose-inequalities-enclosing-area-charge-and-rigidity-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “The Kerr–Newman Penrose Inequality for Axisymmetric Electrovacuum Exteriors” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kerr-Newman-Penrose-Inequality-for-Axisymmetric-Electrovacuum-Exteriors-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Electromagnetic tails and the Kerr–Newman Penrose inequality” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Electromagnetic-tails-and-the-Kerr-Newman-Penrose-inequality-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “The nonmaximal anti-de Sitter Penrose Inequality and original-data rigidity” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-nonmaximal-anti-de-Sitter-Penrose-Inequality-and-original-data-rigidity-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “The Penrose inequality for maximal asymptotically hyperbolic initial data” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Penrose-inequality-for-maximal-asymptotically-hyperbolic-initial-data-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "OpenAI, “A local Penrose inequality for conformal perturbations of Schwarzschild–anti-de Sitter data” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-local-Penrose-inequality-for-conformal-perturbations-of-Schwarzschild-anti-de-Sitter-data-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "OpenAI, “The spacetime Penrose inequality and enclosing area” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spacetime-Penrose-inequality-and-enclosing-area-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "OpenAI, “Conformal flow and the Riemannian Penrose inequality with minimizing frontiers” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conformal-flow-and-the-Riemannian-Penrose-inequality-with-minimizing-frontiers-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "OpenAI, “Equality and rigidity in the spacetime Penrose inequality” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equality-and-rigidity-in-the-spacetime-Penrose-inequality-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "OpenAI, “Boundary graph deformations for the spacetime Penrose inequality” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Boundary-graph-deformations-for-the-spacetime-Penrose-inequality-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 13,
+      "cite": "OpenAI, “Area-controlled end replacement and the Bondi Penrose inequality in the CKS class” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Area-controlled-end-replacement-and-the-Bondi-Penrose-inequality-in-the-CKS-class-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 14,
+      "cite": "openai/math, Lean scope note for family 260",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/260.md",
+      "quote": "The paper's general Bondi–Penrose inequality for possibly disconnected weakly trapped boundaries remains unformalized."
+    },
+    {
+      "id": 15,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Penrose's null-shell argument made the mass and area comparison concrete.",
+      "sourceLine": "Penrose's null-shell argument made this comparison concrete",
+      "sourceQuote": "Penrose's null-shell argument made this comparison concrete \\cite{Penrose1973}.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "Bray's conformal flow proved the sharp Riemannian bound for the total area of a possibly disconnected horizon.",
+      "sourceLine": "Bray's conformal flow changes the metric, preserving the horizon area and making mass nonincreasing, and proves the sharp bound for the total area of a possibly disconnected horizon",
+      "sourceQuote": "Bray's conformal flow changes the metric, preserving the horizon area and making mass nonincreasing, and proves the sharp bound for the total area of a possibly disconnected horizon \\cite{Bray2001}.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "With nonzero K, neither scalar curvature nor boundary mean curvature has the Riemannian sign.",
+      "sourceLine": "neither scalar curvature nor the boundary mean curvature has the required Riemannian sign",
+      "sourceQuote": "Nonzero $K$ introduces a different difficulty: neither scalar curvature nor the boundary mean curvature has the required Riemannian sign.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "The enclosing-area form of the spacetime Penrose conjecture holds in the paper's class.",
+      "sourceLine": "Thus the enclosing-area form of the spacetime Penrose conjecture holds in this class.",
+      "sourceQuote": "Thus the enclosing-area form of the spacetime Penrose conjecture holds in this class.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "Neither outermostness nor outer area minimization of the boundary is assumed.",
+      "sourceLine": "Neither outermostness nor outer area minimization of $S$ is assumed.",
+      "sourceQuote": "Neither outermostness nor outer area minimization of $S$ is assumed.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "For charged data the bound is m ≥ Q and r_A ≤ m + √(m² − Q²).",
+      "sourceLine": "$m\\ge Q$ and $r_A\\le m+\\sqrt{m^2-Q^2}$",
+      "sourceQuote": "Writing $m$ for invariant ADM mass, $Q$ for total charge magnitude, and $r_A$ for the minimum-enclosing-area radius, the bound is $m\\ge Q$ and $r_A\\le m+\\sqrt{m^2-Q^2}$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The sharp Kerr–Newman Penrose inequality is claimed for axisymmetric electrovacuum exteriors.",
+      "sourceLine": "We prove the sharp Kerr--Newman Penrose inequality",
+      "sourceQuote": "We prove the sharp Kerr--Newman Penrose inequality \\[ m^2\\ge \\frac{A}{16\\pi}+\\frac{Q^2}{2} +\\frac{\\pi(Q^4+4J^2)}{A}. \\]",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Smooth axisymmetric exteriors violate the Kerr–Newman inequality when J is the bare gravitational ADM angular momentum.",
+      "sourceLine": "violate the Kerr--Newman Penrose inequality when \\(J\\) is the bare gravitational ADM angular momentum",
+      "sourceQuote": "We construct smooth axisymmetric electrovacuum exteriors that violate the Kerr--Newman Penrose inequality when \\(J\\) is the bare gravitational ADM angular momentum and the electromagnetic fields have only \\(O(r^{-2})\\) decay, allowing angularly varying leading tails.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "For maximal asymptotically hyperbolic data, mass is bounded below by the Schwarzschild–anti-de Sitter mass of the enclosing area.",
+      "sourceLine": "the invariant mass is bounded below by the Schwarzschild--anti-de Sitter mass associated with the minimum enclosing area of a weakly future outer-trapped boundary",
+      "sourceQuote": "Under the dominant energy condition, the stated decay and integrability assumptions, and a future-timelike mass covector, the invariant mass is bounded below by the Schwarzschild--anti-de Sitter mass associated with the minimum enclosing area of a weakly future outer-trapped boundary.",
+      "paper": 7,
+      "verdict": "supported"
+    },
+    {
+      "text": "Equality identifies the data as a spacelike slice of a Schwarzschild–Tangherlini exterior.",
+      "sourceLine": "Equality in the spacetime Penrose inequality identifies the original initial data as a spacelike slice of a Schwarzschild--Tangherlini exterior",
+      "sourceQuote": "Equality in the spacetime Penrose inequality identifies the original initial data as a spacelike slice of a Schwarzschild--Tangherlini exterior, smoothly attached to its horizon, under the stated outermostness and decay hypotheses.",
+      "paper": 11,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes an area-controlled end replacement and Schwarzschild equality examples; the general Penrose inequalities are not formalized.",
+      "verdict": "external",
+      "sourceId": 14
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 15
+    }
+  ]
+}
