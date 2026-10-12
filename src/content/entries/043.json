@@ -1,0 +1,193 @@
+{
+  "id": "043",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/P-equals-W-in-composite-rank-for-fixed-determinant-September-24-2026/P-equals-W-in-composite-rank-for-fixed-determinant-September-24-2026.pdf",
+      "label": "P=W in composite rank for fixed determinant"
+    }
+  ],
+  "headline": "Two ways of layering the cohomology of SL_n Higgs moduli are claimed to agree in every composite coprime rank.",
+  "scope": "It covers fixed-determinant, trace-free moduli in composite rank, with coprime degree, over curves of genus at least 2.",
+  "plain": "Two very different spaces, one built from matrices and one from Higgs bundles, have the same shape. Each sorts its holes into layers in its own way. The P = W conjecture says the two layerings agree. This paper claims it for the fixed-determinant version in every composite rank. With known prime-rank cases, that covers every coprime rank.",
+  "doesNot": "This does not treat ranks and degrees with a common factor, where the spaces are singular.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "de Cataldo, Hausel and Migliorini, rank two",
+    "field": "Algebraic and complex geometry",
+    "significance": "Solid",
+    "significanceWhy": "If the proof holds, it completes the fixed-determinant P = W conjecture after the 2024 general linear case."
+  },
+  "explanation": "Pick four 4-by-4 complex matrices A₁, B₁, A₂, B₂, each with determinant 1. Form the commutator [A, B] = ABA⁻¹B⁻¹ of each pair. Ask that the product of the two commutators equal i times the identity matrix. The determinant check works, since i⁴ = 1. All solutions, up to changing basis in the same way for every matrix, form a space called a character variety. It records the ways to attach matrices to the loops of a two-holed surface, which has genus 2. Here the rank is n = 4 and the genus is g = 2.\n\nA second space looks very different. It is built from Higgs bundles on a fixed algebraic curve of the same genus. A Higgs bundle is a family of vector spaces over the curve, with an extra matrix-valued form attached. The two spaces have the same shape as smooth manifolds, by a theorem called nonabelian Hodge theory. Each space has complex dimension 2(n² − 1)(g − 1). For n = 4 and g = 2, that is 2 × 15 × 1 = 30.\n\nEach space sorts its cohomology into layers in its own way. Cohomology is an algebraic count of holes of each dimension. On the Higgs side, a map called the Hitchin map gives the perverse filtration[2]. On the matrix side, the algebraic equations give the weight filtration, from Hodge theory. The two spaces are linked, but the two filtrations come from unrelated structures[1]. The P = W conjecture says they agree once the perverse indices are doubled[3]. That is the meaning of P = W.\n\nDe Cataldo, Hausel and Migliorini stated the conjecture in 2012 and proved it in rank 2[5]. For the general linear group GL_n, Maulik and Shen proved it in every rank and genus in 2024[6]. The version here fixes the determinant and the trace, which gives SL_n. That version has an extra symmetry group Γ. It comes from line bundles on the curve whose n-th power is trivial. The group Γ has n to the power 2g elements, so 4⁴ = 256 when n = 4 and g = 2. The GL_n methods see only the part of cohomology fixed by Γ. They miss the rest, called the variant part[7]. In 2022, de Cataldo, Maulik and Shen settled the variant part for prime ranks such as 2, 3 and 5[8]. Composite ranks such as 4 and 6 stayed open.\n\nThis paper claims P = W for every composite rank and coprime degree, on the full cohomology[9]. Coprime means the degree shares no factor with the rank, like 1 and 4. That makes both spaces smooth[4]. The claim covers every character of Γ, not just the invariant part[11]. With the prime cases, it would settle every coprime rank[10].\n\nThe obstacle was the variant part. No known set of generating classes reaches it. The paper builds one operator on the whole cohomology before taking invariant parts[12]. It moves a pole of a connection around the curve and records the effect. The operator lowers the perverse index by 2 and the weight index by 4. Together with a known class, it forms a copy of a small symmetry algebra called sl₂. A standard argument then shows that both filtrations are built from the same eigenspaces of one operator[13]. So they must agree.\n\nHow sure is this? No Lean formalization is listed for this result. The proof combines several hard comparison theorems, each with its own hypotheses. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. The general linear case was already proved, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Character variety",
+      "meaning": "The space of ways to attach matrices to the loops of a surface, up to a common change of basis."
+    },
+    {
+      "term": "Higgs bundle",
+      "meaning": "A family of vector spaces over a curve with an extra matrix-valued form attached."
+    },
+    {
+      "term": "Nonabelian Hodge theory",
+      "meaning": "A theorem that makes the Higgs and matrix spaces the same smooth manifold."
+    },
+    {
+      "term": "Cohomology",
+      "meaning": "An algebraic count of the holes of a space, in each dimension."
+    },
+    {
+      "term": "Filtration",
+      "meaning": "A way of sorting cohomology into nested layers."
+    },
+    {
+      "term": "Coprime",
+      "meaning": "Sharing no common factor other than 1."
+    },
+    {
+      "term": "Variant part",
+      "meaning": "The part of cohomology not fixed by the symmetry group Γ."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. A. de Cataldo, T. Hausel and L. Migliorini, “Topology of Hitchin systems and Hodge theory of character varieties: the case A₁”, Annals of Mathematics 175 (2012), 1329–1407",
+      "url": "https://doi.org/10.4007/annals.2012.175.3.7"
+    },
+    {
+      "id": 2,
+      "cite": "D. Maulik and J. Shen, “The P=W conjecture for GL_n”, Annals of Mathematics 200 (2024), 529–556",
+      "url": "https://doi.org/10.4007/annals.2024.200.2.3"
+    },
+    {
+      "id": 3,
+      "cite": "M. A. de Cataldo, D. Maulik and J. Shen, “On the P=W conjecture for SL_n”, Selecta Mathematica 28 (2022), 90",
+      "url": "https://doi.org/10.1007/s00029-022-00803-0"
+    },
+    {
+      "id": 4,
+      "cite": "T. Hausel and M. Thaddeus, “Mirror symmetry, Langlands duality, and the Hitchin system”, Inventiones Mathematicae 153 (2003), 197–229",
+      "url": "https://doi.org/10.1007/s00222-003-0286-7"
+    },
+    {
+      "id": 5,
+      "cite": "T. Hausel, A. Mellit, A. Minets and O. Schiffmann, “P=W via H₂”, preprint arXiv:2209.05429v2 (2025)",
+      "url": "https://arxiv.org/abs/2209.05429v2"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Nonabelian Hodge theory identifies two moduli spaces whose cohomology carries different filtrations.",
+      "verdict": "supported",
+      "sourceLine": "Nonabelian Hodge theory identifies two moduli spaces whose cohomology carries very different geometric filtrations.",
+      "sourceQuote": "Nonabelian Hodge theory identifies two moduli spaces whose cohomology carries very different geometric filtrations.",
+      "paper": 1
+    },
+    {
+      "text": "On the Higgs side the Hitchin map defines the perverse filtration; on the character side the mixed Hodge structure defines the weight filtration.",
+      "verdict": "supported",
+      "sourceLine": "On the Higgs-bundle side, the Hitchin map defines the perverse Leray filtration.",
+      "sourceQuote": "On the Higgs-bundle side, the Hitchin map defines the perverse Leray filtration.",
+      "paper": 1
+    },
+    {
+      "text": "P=W asserts the filtrations coincide after doubling the indices of the first.",
+      "verdict": "supported",
+      "sourceLine": "conjecture asserts that these filtrations coincide after doubling the indices of the first.",
+      "sourceQuote": "The $P=W$ conjecture asserts that these filtrations coincide after doubling the indices of the first.",
+      "paper": 1
+    },
+    {
+      "text": "Coprimality makes both spaces smooth and every representation irreducible.",
+      "verdict": "supported",
+      "sourceLine": "Coprimality makes both spaces smooth and makes every representation in",
+      "sourceQuote": "Coprimality makes both spaces smooth and makes every representation in \\eqref{intro:betti} irreducible.",
+      "paper": 1
+    },
+    {
+      "text": "De Cataldo, Hausel and Migliorini formulated the comparison and established it in rank two.",
+      "verdict": "supported",
+      "sourceLine": "formulated the filtration comparison and established it in rank two",
+      "sourceQuote": "De Cataldo, Hausel, and Migliorini formulated the filtration comparison and established it in rank two \\cite{dCHM2012}.",
+      "paper": 1
+    },
+    {
+      "text": "Maulik and Shen proved the coprime GL_n conjecture in arbitrary rank and genus.",
+      "verdict": "supported",
+      "sourceLine": "Maulik and Shen proved the coprime",
+      "sourceQuote": "Maulik and Shen proved the coprime $\\GL_n$ conjecture in arbitrary rank and genus \\cite{MS2024}.",
+      "paper": 1
+    },
+    {
+      "text": "The quotient by Γ detects only the invariant cohomology; it does not generate the variant part.",
+      "verdict": "supported",
+      "sourceLine": "It does not generate the variant part.",
+      "sourceQuote": "It does not generate the variant part.",
+      "paper": 1
+    },
+    {
+      "text": "De Cataldo, Maulik and Shen determined the variant part in prime rank.",
+      "verdict": "supported",
+      "sourceLine": "determined the two filtrations on the variant part in prime rank",
+      "sourceQuote": "De Cataldo, Maulik, and Shen determined the two filtrations on the variant part in prime rank and reduced $\\SL_p$ to $\\GL_p$ \\cite{dCMS2022}; together with the general $\\GL_p$ theorem, this gives the prime-rank cases cited above.",
+      "paper": 1
+    },
+    {
+      "text": "The paper claims P=W on the full cohomology in composite rank and coprime degree.",
+      "verdict": "supported",
+      "sourceLine": "on the full rational cohomology of",
+      "sourceQuote": "We prove the $P=W$ conjecture on the full rational cohomology of fixed-determinant, trace-free Higgs moduli spaces in composite rank and coprime degree, for smooth projective complex curves of genus at least two.",
+      "paper": 1
+    },
+    {
+      "text": "With the prime-rank cases, this gives the equality in every coprime rank.",
+      "verdict": "supported",
+      "sourceLine": "Together with the established prime-rank cases, this gives the equality in",
+      "sourceQuote": "Together with the established prime-rank cases, this gives the equality in every coprime rank.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem includes every nontrivial Γ-character, not only the invariant part.",
+      "verdict": "supported",
+      "sourceLine": "the theorem includes every nontrivial $\\Gamma$-character, not only the invariant part.",
+      "sourceQuote": "Thus, after complexification, the theorem includes every nontrivial $\\Gamma$-character, not only the invariant part.",
+      "paper": 1
+    },
+    {
+      "text": "The argument constructs an operator on the full cohomology before taking invariants.",
+      "verdict": "supported",
+      "sourceLine": "Our argument constructs an operator on the full cohomology, before taking",
+      "sourceQuote": "Our argument constructs an operator on the full cohomology, before taking $\\Gamma$-invariants.",
+      "paper": 1
+    },
+    {
+      "text": "An elementary Lefschetz-module argument identifies both filtrations as eigenspace sums of one operator.",
+      "verdict": "supported",
+      "sourceLine": "An elementary Lefschetz-module argument then identifies both filtrations as sums of eigenspaces of the same operator",
+      "sourceQuote": "An elementary Lefschetz-module argument then identifies both filtrations as sums of eigenspaces of the same operator $[e,f]$.",
+      "paper": 1
+    },
+    {
+      "text": "The manuscript was produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}
