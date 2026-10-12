@@ -1,0 +1,340 @@
+{
+  "id": "056",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Termination-of-generalized-log-canonical-flips-on-compact-Kahler-fourfolds-October-7-2026/termination-generalized-lc-kahler-fourfolds.pdf",
+      "label": "Termination of generalized log canonical flips on compact Kähler fourfolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Termination-of-generalized-canonical-flips-on-compact-Kahler-fourfolds-October-6-2026/termination-generalized-terminal-flips-compact-kahler-fourfolds.pdf",
+      "label": "Termination of generalized-canonical flips on compact Kähler fourfolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Termination-for-projective-log-canonical-fourfolds-with-rational-boundary-September-24-2026/paper.pdf",
+      "label": "Termination for projective log canonical fourfolds with rational boundary"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-ordinary-minimal-model-programs-on-compact-Kahler-fourfolds-October-6-2026/paper.pdf",
+      "label": "Finite ordinary minimal model programs on compact Kähler fourfolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-ordinary-minimal-model-programs-on-compact-Kahler-fourfolds-September-24-2026/paper.pdf",
+      "label": "Finite ordinary minimal model programs on compact Kähler fourfolds"
+    }
+  ],
+  "headline": "Every permitted minimal model program on a projective log canonical fourfold claims to stop after finitely many steps.",
+  "scope": "Fourfolds: projective log canonical pairs with rational boundary, and compact Kähler pairs under global Q-factoriality and projective-flip hypotheses.",
+  "plain": "The minimal model program simplifies a shape step by step, removing parts where a canonical divisor is negative. A key question is whether every such sequence must stop. One paper claims this for projective four-dimensional log canonical pairs with rational boundary, for every allowed choice of steps. Four companion papers claim related termination results on compact Kähler fourfolds. Those need stated technical hypotheses on the flips and divisors.",
+  "doesNot": "This does not settle termination in dimension five or higher, or prove that the Kähler flips exist.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "Kawamata, Matsuda and Matsuki, termination of terminal fourfold flips",
+    "significance": "Major",
+    "significanceWhy": "If correct, it removes the positivity hypotheses from termination for log canonical fourfolds, a long-standing goal.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Start with a smooth surface and blow up one point. Blowing up replaces the point by a whole curve E, one point for each direction through it. This curve has self-intersection E·E = −1. Let K be the canonical divisor and g the genus of E. The adjunction formula says K·E + E·E = 2g − 2. Here E is a sphere, so g = 0 and the right side is −2. That gives K·E = −2 − (−1) = −1. The canonical divisor is negative on E. The classical first step of simplifying the surface is to contract E back to a point.\n\nThe minimal model program, or MMP, does this in every dimension. It repeatedly finds curves where the canonical divisor, or an adjusted version K + B, is negative. It then performs an operation that removes that negativity. A divisorial contraction collapses a whole hypersurface[9]. A flip is subtler. It cuts out a small piece and glues in a different small piece where K + B becomes positive[22]. The program should end at one of two kinds of model[23]. In one, K + B is nef, never negative on curves. The other is a Mori fibre space, a fibration of a standard shape.\n\nThe danger is that the program might never end. Termination asks that every sequence of choices reaches an endpoint after finitely many steps[10]. That is stronger than finding one good sequence[10]. Flips make this hard. Since flips contract no divisors, their number cannot be bounded by counting divisors that disappear[1].\n\nThe standard tool is a difficulty, a whole-number count that should drop at each step and never go below zero. A count like that cannot drop forever. Shokurov introduced such a count[11]. Kawamata, Matsuda and Matsuki used it for terminal fourfold flips, and Alexeev, Hacon and Kawamata refined it[12,13]. More recent work proved termination for pseudo-effective log canonical fourfolds[14]. Han, Liu and Zhuang proved it for klt fourfold programs with big boundary[15]. Those results needed an extra positivity hypothesis.\n\nThe third paper in this family claims termination for projective log canonical fourfolds with rational boundary. It covers every permitted program, with no pseudo-effectivity hypothesis[16]. Log canonical is a broad class of mild singularities. The result holds over every algebraically closed field of characteristic zero[17]. The proof first works over the complex numbers and then transfers to other such fields[18].\n\nThe obstacle shows up in rounding. The difficulty uses weights rounded up to whole numbers[19]. Rounding up a sum can lose ground against rounding up its parts. For example, ⌈0.4 + 0.4⌉ = 1, while ⌈0.4⌉ + ⌈0.4⌉ = 2. The paper’s inequality says the loss with r parts is at most r − 1[20]. Here r = 2 and the loss is exactly 1. The new geometric input pays for this loss using other positive terms of the count[21].\n\nThe other four papers move to compact Kähler fourfolds. These are complex spaces that need not be cut out by polynomial equations. The first paper claims that every sequence of generalized log canonical flips terminates on such spaces[2]. It assumes the flips are projective small diagrams with the stated signs[2]. It also assumes a global form of Q-factoriality, a technical condition on divisors. The theorem concerns existing flip sequences. It does not assert that every needed contraction or flip exists[3]. The second paper claims the same for generalized-canonical flips, a narrower class[4].\n\nThe last two papers treat ordinary programs for klt pairs, a slightly narrower class of mild singularities. One claims that every maximal ordinary program terminates[5]. The other claims that some finite ordinary program exists, starting on the given pair[7]. Both end at a nef model when the adjoint is pseudo-effective and at a Mori fibre space otherwise[6,8].\n\nHow sure is this? No Lean formalization is listed for these five papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Major only if the proofs hold. No Lean formalization is listed and no specialist review is published. The Kähler results carry strong factoriality and projectivity hypotheses, and endpoint consequences use other OpenAI preprints.",
+  "glossary": [
+    {
+      "term": "Minimal model program",
+      "meaning": "A step-by-step procedure that simplifies a shape by removing parts where its canonical divisor is negative."
+    },
+    {
+      "term": "Flip",
+      "meaning": "A step that cuts out a small piece of a shape and glues in a different one."
+    },
+    {
+      "term": "Divisorial contraction",
+      "meaning": "A step that collapses a whole hypersurface of the shape."
+    },
+    {
+      "term": "Termination",
+      "meaning": "The property that every allowed sequence of steps stops after finitely many."
+    },
+    {
+      "term": "Log canonical",
+      "meaning": "A broad class of mild singularities, measured by discrepancies."
+    },
+    {
+      "term": "Klt",
+      "meaning": "A slightly narrower class of mild singularities than log canonical."
+    },
+    {
+      "term": "Mori fibre space",
+      "meaning": "A fibration of a standard shape, one of the two expected endpoints of the program."
+    },
+    {
+      "term": "Kähler space",
+      "meaning": "A complex space with a compatible way to measure lengths, not necessarily described by polynomials."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Termination of generalized log canonical flips on compact Kähler fourfolds”, openai/math preprint (7 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Termination-of-generalized-log-canonical-flips-on-compact-Kahler-fourfolds-October-7-2026/termination-generalized-lc-kahler-fourfolds.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Termination of generalized-canonical flips on compact Kähler fourfolds”, openai/math preprint (6 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Termination-of-generalized-canonical-flips-on-compact-Kahler-fourfolds-October-6-2026/termination-generalized-terminal-flips-compact-kahler-fourfolds.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Termination for projective log canonical fourfolds with rational boundary”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Termination-for-projective-log-canonical-fourfolds-with-rational-boundary-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Finite ordinary minimal model programs on compact Kähler fourfolds”, openai/math preprint (6 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-ordinary-minimal-model-programs-on-compact-Kahler-fourfolds-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Finite ordinary minimal model programs on compact Kähler fourfolds”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-ordinary-minimal-model-programs-on-compact-Kahler-fourfolds-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 7,
+      "cite": "V. V. Shokurov, “The nonvanishing theorem”, Mathematics of the USSR-Izvestiya 26 (1986), 591–604",
+      "url": "https://doi.org/10.1070/IM1986v026n03ABEH001160"
+    },
+    {
+      "id": 8,
+      "cite": "Y. Kawamata, K. Matsuda and K. Matsuki, “Introduction to the minimal model problem”, Advanced Studies in Pure Mathematics 10 (1987), 283–360",
+      "url": "https://doi.org/10.2969/aspm/01010283"
+    },
+    {
+      "id": 9,
+      "cite": "V. Alexeev, C. Hacon and Y. Kawamata, “Termination of (many) 4-dimensional log flips”, Inventiones Mathematicae 168 (2007), 433–448",
+      "url": "https://doi.org/10.1007/s00222-007-0038-1"
+    },
+    {
+      "id": 10,
+      "cite": "G. Chen and N. Tsakanikas, “On the termination of flips for log canonical generalized pairs”, Acta Mathematica Sinica 39 (2023), 967–994",
+      "url": "https://doi.org/10.1007/s10114-023-0116-3"
+    },
+    {
+      "id": 11,
+      "cite": "J. Moraga, “Termination of pseudo-effective 4-fold flips”, Mathematische Zeitschrift 310 (2025), 73",
+      "url": "https://doi.org/10.1007/s00209-025-03766-y"
+    },
+    {
+      "id": 12,
+      "cite": "J. Han, J. Liu and Z. Zhuang, “Effective termination of general type MMPs in dimension at most five”, arXiv:2509.01501 (2025)",
+      "url": "https://arxiv.org/abs/2509.01501v1"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Since flips contract no divisors, their number cannot be bounded by counting divisors that disappear.",
+      "sourceLine": "Since flips contract no divisors, their number cannot be bounded by counting divisors that disappear.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Since flips contract no divisors, their number cannot be bounded by counting divisors that disappear."
+    },
+    {
+      "text": "Every sequence of generalized lc flips on a globally Weil Q-factorial compact Kähler fourfold terminates, given projective small diagrams with opposite ample signs.",
+      "sourceLine": "provided the flips are projective small diagrams with the stated opposite ample signs",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Every sequence of generalized log canonical flips on a normal irreducible globally Weil \\(\\Q\\)-factorial compact K\\\"ahler fourfold terminates, provided the flips are projective small diagrams with the stated opposite ample signs."
+    },
+    {
+      "text": "The theorem concerns existing flip sequences; it does not assert existence of all contractions or flips.",
+      "sourceLine": "it does not assert the existence of all contractions or flips",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The theorem concerns existing flip sequences; it does not assert the existence of all contractions or flips."
+    },
+    {
+      "text": "Every sequence of generalized-canonical flips on compact Kähler fourfolds with rational boundary and fixed nef b-divisor terminates when the small morphisms are projective.",
+      "sourceLine": "Every sequence of generalized-canonical flips on compact",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "Every sequence of generalized-canonical flips on compact K\\\"ahler fourfolds with rational boundary and fixed rational analytically nef b-divisor terminates when the small morphisms are projective."
+    },
+    {
+      "text": "Every maximal ordinary negative-ray program from a compact Kähler klt fourfold pair with effective rational boundary terminates.",
+      "sourceLine": "Then every maximal ordinary negative-ray program starting on",
+      "paper": 4,
+      "verdict": "supported",
+      "sourceId": 4,
+      "sourceQuote": "Then every maximal ordinary negative-ray program starting on $(X,\\Delta)$ terminates."
+    },
+    {
+      "text": "It ends at a nef model when the adjoint is pseudo-effective and at a projective Mori fibre space otherwise.",
+      "sourceLine": "It ends at a nef model when the adjoint is pseudo-effective and at a projective Mori fibre space otherwise.",
+      "paper": 4,
+      "verdict": "supported",
+      "sourceId": 4,
+      "sourceQuote": "It ends at a nef model when the adjoint is pseudo-effective and at a projective Mori fibre space otherwise."
+    },
+    {
+      "text": "A globally Weil-Q-factorial compact Kähler klt fourfold pair admits a finite ordinary MMP starting on the given pair.",
+      "sourceLine": "admits a finite ordinary minimal model program starting on the given pair.",
+      "paper": 5,
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceQuote": "We prove that a globally Weil-$\\Q$-factorial compact Kähler klt fourfold pair with effective rational boundary and canonical rational line bundle admits a finite ordinary minimal model program starting on the given pair."
+    },
+    {
+      "text": "It ends at a nef model when the adjoint class is pseudo-effective and at a Mori fibre space otherwise.",
+      "sourceLine": "It ends at a nef model when the adjoint class is pseudo-effective and at a Mori fibre space otherwise.",
+      "paper": 5,
+      "verdict": "supported",
+      "sourceId": 5,
+      "sourceQuote": "It ends at a nef model when the adjoint class is pseudo-effective and at a Mori fibre space otherwise."
+    },
+    {
+      "text": "A divisorial contraction removes a divisor.",
+      "sourceLine": "A divisorial contraction removes a divisor.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "A divisorial contraction removes a divisor."
+    },
+    {
+      "text": "Termination ensures every sequence of choices reaches an endpoint; it is stronger than existence of one minimal model or termination of a program with scaling.",
+      "sourceLine": "termination ensures that a sequence of choices actually reaches an endpoint.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "Existence of the required operations makes the program possible; termination ensures that a sequence of choices actually reaches an endpoint."
+    },
+    {
+      "text": "Shokurov introduced discrepancy-counting difficulty.",
+      "sourceLine": "Shokurov introduced discrepancy-counting difficulty",
+      "paper": 3,
+      "sourceId": 7,
+      "verdict": "supported",
+      "sourceQuote": "Shokurov introduced discrepancy-counting difficulty \\cite[Definition~2.15 and Corollaries~2.16--2.17]{Shokurov1985}."
+    },
+    {
+      "text": "Kawamata proved termination for terminal fourfolds.",
+      "sourceLine": "Kawamata proved termination for terminal fourfolds",
+      "paper": 3,
+      "sourceId": 8,
+      "verdict": "supported",
+      "sourceQuote": "Kawamata proved termination for terminal fourfolds \\cite{KMM87}, and Fujino extended the method to canonical pairs with rational boundary; the weighted difficulty and precise hypotheses are corrected in \\cite{FujinoCanonical,FujinoCanonicalAddendum}."
+    },
+    {
+      "text": "Alexeev–Hacon–Kawamata developed weighted difficulties.",
+      "sourceLine": "developed weighted difficulties that subtract the families of valuations",
+      "paper": 3,
+      "sourceId": 9,
+      "verdict": "supported",
+      "sourceQuote": "Alexeev--Hacon--Kawamata developed weighted difficulties that subtract the families of valuations arising along a boundary component and include cycle-rank terms on its normalization \\cite{AHK}."
+    },
+    {
+      "text": "Termination for pseudo-effective lc fourfolds is available through Chen–Tsakanikas and Moraga.",
+      "sourceLine": "Arbitrary termination for pseudo-effective lc fourfolds is now",
+      "paper": 3,
+      "sourceId": 11,
+      "verdict": "supported",
+      "sourceQuote": "Arbitrary termination for pseudo-effective lc fourfolds is now available through the generalized-pair theorem of Chen--Tsakanikas \\cite[Theorem~1.1]{ChenTsakanikas} and Moraga's termination theorem \\cite[Theorem~1]{Moraga2025}."
+    },
+    {
+      "text": "Han–Liu–Zhuang proved termination of every klt fourfold MMP with big boundary.",
+      "sourceLine": "proved termination of every klt fourfold MMP with big boundary",
+      "paper": 3,
+      "sourceId": 12,
+      "verdict": "supported",
+      "sourceQuote": "More recently, Han--Liu--Zhuang proved termination of every klt fourfold MMP with big boundary, including the non-pseudo-effective case \\cite[Corollary~3.2(3)]{HanLiuZhuang2025}."
+    },
+    {
+      "text": "Every permitted MMP for a projective lc fourfold with rational boundary terminates, without pseudo-effectivity or big-boundary hypothesis.",
+      "sourceLine": "The result below treats ordinary lc fourfolds with rational boundary without a pseudo-effectivity or big-boundary hypothesis.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "The result below treats ordinary lc fourfolds with rational boundary without a pseudo-effectivity or big-boundary hypothesis."
+    },
+    {
+      "text": "The theorem holds over every algebraically closed field of characteristic zero.",
+      "sourceLine": "algebraically closed characteristic-zero field.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "We first prove the theorem over $\\mathbb C$, where the branch estimate uses topology, and then transfer the full assertion to every algebraically closed characteristic-zero field."
+    },
+    {
+      "text": "The theorem is first proved over C and then transferred.",
+      "sourceLine": "We first prove the theorem over",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "We first prove the theorem over $\\mathbb C$, where the branch estimate uses topology, and then transfer the full assertion to every algebraically closed characteristic-zero field."
+    },
+    {
+      "text": "The weights are ceilings w(u) = ⌈N max{u,0}⌉.",
+      "sourceLine": "The weights are ceilings",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "The weights are ceilings \\(w(u)=\\lceil N\\max\\{u,0\\}\\rceil\\), with $N$ clearing only the original and fixed coefficients; a valuation of log discrepancy $a$ has weight $w(2-a)$."
+    },
+    {
+      "text": "The inequality ⌈x1+…+xr⌉ ≥ Σ⌈xj⌉ − (r−1) identifies the possible deficit as r − 1.",
+      "sourceLine": "identifies the possible deficit as",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "The elementary inequality \\[ \\lceil x_1+\\cdots+x_r\\rceil \\geq\\sum_{j=1}^r\\lceil x_j\\rceil-(r-1) \\] identifies the possible deficit as $r-1$."
+    },
+    {
+      "text": "The branch estimate pays for the excess using terms already positive in the difficulty.",
+      "sourceLine": "These are already positive terms in",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "These are already positive terms in $\\mathcal D$, so the estimate makes $\\mathcal D$ nonnegative at every crepant junction."
+    },
+    {
+      "text": "A flip replaces a small contraction by a model on which the adjoint becomes relatively ample.",
+      "sourceLine": "A flip replaces a small contraction by a birational model on which the adjoint becomes relatively ample.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "A flip replaces a small contraction by a birational model on which the adjoint becomes relatively ample."
+    },
+    {
+      "text": "The expected endpoint is a nef adjoint or a Mori fibre space.",
+      "sourceLine": "The expected endpoint is a nef adjoint or a Mori fibre space.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "The expected endpoint is a nef adjoint or a Mori fibre space."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
