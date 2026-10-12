@@ -1,0 +1,169 @@
+{
+  "id": "270",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/paper.pdf",
+      "label": "The unique threshold bound state of the SU(N) BFSS model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/positive-eigenvalues-relative-su2-bfss.pdf",
+      "label": "Positive eigenvalues of the relative SU(2) BFSS Hamiltonian"
+    }
+  ],
+  "headline": "Claims the BFSS matrix model has exactly one zero-energy bound state for every N, and many positive-energy ones at N = 2.",
+  "scope": "Undeformed SU(N) BFSS supersymmetric matrix quantum mechanics with the centre of mass removed, for every finite N ≥ 2.",
+  "plain": "The BFSS model is a quantum system of nine large matrices and their fermion partners, proposed as a description of M-theory. Witten predicted that, for every matrix size N, it has exactly one trapped state of zero energy. Physics arguments supported this, but they relied on assumptions about far-away regions. One paper claims to prove the prediction for every N, and a second claims infinitely many trapped positive-energy states at N = 2. There is no Lean check.",
+  "doesNot": "This does not prove the BFSS matrix-theory conjecture itself, or anything about the large-N limit.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1996",
+    "firstStepBy": "Edward Witten, prediction of a unique D0-brane threshold bound state",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "The threshold-bound-state conjecture is a central assumption of the BFSS matrix-theory proposal in string theory."
+  },
+  "explanation": "Take two vectors x¹ and x² in a plane, and use the energy V = |x¹ ∧ x²|². This is the squared area of the parallelogram they span. Put x¹ = (r, 0) and x² = (0, s). Then V = r²s². At r = 10 and s = 0.1, V = 1. If the vectors point the same way, V = 0 however long they are. So the energy has flat valleys running off to infinity. A classical ball can roll out along such a valley. A quantum particle might not, because the valley gets narrower as r grows.\n\nThe BFSS model uses a potential of this kind. It has nine Hermitian matrices, plus fermion partners, linked by supersymmetry. Supersymmetric matrix quantum mechanics first appeared in the study of supermembranes[1]. With SU(N) matrices it has 9(N² − 1) position coordinates. That is 27 for N = 2 and 72 for N = 3. Witten predicted that, with the centre of mass removed, every N has exactly one normalizable zero-energy state[2]. Normalizable means the wave stays concentrated, so the particles stay bound. In matrix theory, this state is the inner state of a single supergraviton carrying N units of momentum[3].\n\nThe state is hard to see because it sits at a threshold. The continuous spectrum, the energies of states that escape, starts at zero[4]. So the bound state has the same energy as states flying apart. Physicists counted zero-energy states with a supersymmetric index. In this noncompact problem, contributions from infinity are essential[5]. Sethi and Stern obtained the N = 2 index by including such a boundary term[6]. A general-N argument by Konechny assumed that certain matrix differences all grow at the same rate[7]. Controlling the regions where they do not is the main obstacle.\n\nThe first paper claims the full result. For every N ≥ 2, the model has exactly one normalizable zero-energy state after removing the centre of mass[8]. The paper calls this a proof of the threshold-bound-state conjecture.\n\nThe second paper looks at N = 2 above zero energy. The flat valleys appear when the three vectors in the model line up[9]. The paper claims an unbounded sequence of positive energies with trapped wave functions[10]. In some symmetry sectors, oscillation across the valley costs enough energy to hold the state in. The paper says this refutes, at N = 2, the original BFSS paper's exclusion of such states[11].\n\nHow sure is this? There is no Lean formalization for these papers. The claims rest on two papers, one of them long. No specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. There is no Lean check. Both the unique bound state and the N = 2 positive-energy states rest on two papers with no published specialist review.",
+  "glossary": [
+    {
+      "term": "BFSS model",
+      "meaning": "Banks–Fischler–Shenker–Susskind matrix quantum mechanics: nine Hermitian matrices and fermions, proposed as a description of M-theory."
+    },
+    {
+      "term": "Supersymmetry",
+      "meaning": "A symmetry pairing boson and fermion degrees of freedom; here it makes zero the lowest possible energy."
+    },
+    {
+      "term": "Normalizable state",
+      "meaning": "A wave function with finite total probability, so the system stays bound rather than flying apart."
+    },
+    {
+      "term": "Threshold bound state",
+      "meaning": "A bound state whose energy equals the lowest energy of escaping states, here zero."
+    },
+    {
+      "term": "Continuous spectrum",
+      "meaning": "The range of energies of states that are not bound, such as particles moving apart."
+    },
+    {
+      "term": "Supersymmetric index",
+      "meaning": "A count of zero-energy states, bosonic minus fermionic, used by physicists to predict bound states."
+    },
+    {
+      "term": "SU(N)",
+      "meaning": "The group of N × N unitary matrices with determinant one; it sets the matrix size of the model."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The unique threshold bound state of the SU(N) BFSS model” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Positive eigenvalues of the relative SU(2) BFSS Hamiltonian” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/positive-eigenvalues-relative-su2-bfss.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Supersymmetric matrix quantum mechanics appears in the regularization of supermembranes and in the BFSS conjecture.",
+      "sourceLine": "Supersymmetric matrix quantum mechanics appears in the regularization of supermembranes",
+      "sourceQuote": "Supersymmetric matrix quantum mechanics appears in the regularization of supermembranes~\\cite[Section~3]{DeWitHoppeNicolai1988} and in the matrix-theory conjecture of Banks, Fischler, Shenker, and Susskind~\\cite{BFSS1997}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Witten's prediction is that after removing the centre of mass every finite matrix size has exactly one normalizable zero-energy state.",
+      "sourceLine": "after removing the free center of mass every finite matrix size has exactly one normalizable state of zero energy",
+      "sourceQuote": "The D0-brane bound-state prediction of Witten~\\cite[Section~4.2]{Witten1996BoundStates}, subsequently central to matrix theory, is that after removing the free center of mass every finite matrix size has exactly one normalizable state of zero energy.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The relative bound state supplies the internal state of a single supergraviton carrying N units of longitudinal momentum.",
+      "sourceLine": "this relative bound state supplies the internal state of a single supergraviton carrying \\(N\\) units of longitudinal momentum",
+      "sourceQuote": "In the matrix-theory interpretation, this relative bound state supplies the internal state of a single supergraviton carrying \\(N\\) units of longitudinal momentum~\\cite[Section~5]{BFSS1997}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The continuous spectrum starts at zero.",
+      "sourceLine": "The continuous spectrum starts at zero",
+      "sourceQuote": "The continuous spectrum starts at zero~\\cite{DeWitLuscherNicolai1989}, so the proposed eigenstate lies at its threshold rather than below a gapped continuum.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In the noncompact problem, contributions from infinity to the index are essential.",
+      "sourceLine": "In the present noncompact problem, contributions from infinity are essential.",
+      "sourceQuote": "In the present noncompact problem, contributions from infinity are essential.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Sethi and Stern obtained the two-particle index by including its boundary term.",
+      "sourceLine": "obtained the two-particle index by including its boundary term",
+      "sourceQuote": "Yi~\\cite{Yi1997} computed the $\\SU(2)$ bulk term and proposed a free-particle argument for its boundary correction; Sethi--Stern~\\cite{SethiStern1998} obtained the two-particle index by including its boundary term.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Konechny's expansion assumes that the eigenvalue differences of one diagonalized matrix grow at the same order.",
+      "sourceLine": "His expansion assumes that the eigenvalue differences of one diagonalized matrix grow at the same order.",
+      "sourceQuote": "His expansion assumes that the eigenvalue differences of one diagonalized matrix grow at the same order.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every finite N ≥ 2, undeformed SU(N) BFSS has exactly one normalizable zero-energy state after removing the centre of mass.",
+      "sourceLine": "we prove that undeformed \\(\\SU(N)\\) BFSS matrix quantum mechanics has exactly one normalizable zero-energy state after removing the center of mass",
+      "sourceQuote": "For every finite \\(N\\ge2\\), we prove that undeformed \\(\\SU(N)\\) BFSS matrix quantum mechanics has exactly one normalizable zero-energy state after removing the center of mass.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The SU(2) quartic potential vanishes when the three vectors are collinear, leaving an unbounded set along which confinement can fail.",
+      "sourceLine": "It vanishes when the three spatial vectors are collinear, leaving an unbounded set along which confinement can fail.",
+      "sourceQuote": "It vanishes when the three spatial vectors are collinear, leaving an unbounded set along which confinement can fail.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The relative SU(2) Hamiltonian has an unbounded sequence of positive eigenvalues with square-integrable eigenvectors.",
+      "sourceLine": "we prove an unbounded sequence of positive eigenvalues with square-integrable eigenvectors",
+      "sourceQuote": "For the relative $\\SU(2)$ Hamiltonian defined below, we prove an unbounded sequence of positive eigenvalues with square-integrable eigenvectors.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "This refutes, at N = 2, the exclusion of normalizable positive-energy states stated in the original BFSS paper.",
+      "sourceLine": "This refutes, at $N=2$, the exclusion of normalizable positive-energy states stated in the original BFSS paper.",
+      "sourceQuote": "This refutes, at $N=2$, the exclusion of normalizable positive-energy states stated in the original BFSS paper.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
