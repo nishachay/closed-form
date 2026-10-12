@@ -1,0 +1,142 @@
+{
+  "id": "311",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Stabilizer-Orbits-and-Thick-Tensor-Ideals-of-Dualizable-Kn-Local-Spectra-September-24-2026/paper.pdf",
+      "label": "Stabilizer orbits and thick tensor ideals of dualizable K(n)-local spectra"
+    }
+  ],
+  "headline": "Claims Chai's invariant-ideal conjecture at every prime and height, and with it the Hovey–Strickland classification.",
+  "scope": "Lubin–Tate rings over finite residue fields at every prime and positive height n, and dualizable K(n)-local spectra.",
+  "plain": "Chromatic homotopy theory splits stable homotopy theory into layers indexed by a height n. Hovey and Strickland conjectured that one layer's dualizable objects have exactly n+2 thick tensor ideals, a list of closed families. Barthel, Heard and Naumann showed this would follow from Chai's conjecture about symmetric ideals in a ring of power series. This paper claims Chai's conjecture at every prime and height. So it also claims the Hovey–Strickland count.",
+  "doesNot": "This does not classify ideals in the larger category of all K(n)-local spectra, only the dualizable ones.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1999",
+    "firstStepBy": "Mark Hovey and Neil Strickland, Morava K-theories and localisation",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims two linked conjectures at every height, where the spectral one was known only at height two."
+  },
+  "explanation": "Start with a ring of power series. At height n = 3 it is E₀ = W(F_{p³})[[u₁, u₂]]. Here W(F_{p³}) is a ring of p-adic integers built from a finite field with p³ elements. This ring has many prime ideals, the basic building blocks of its ideals. But a large symmetry group acts on it, called the Morava stabilizer group. Only some ideals stay fixed under that action. There are obvious ones, the height ideals: 0, (p), (p, u₁) and (p, u₁, u₂). That is n + 1 = 4 fixed primes. Adding the whole ring gives 5 fixed radical ideals, which is n + 2.\n\nChai proposed that the fixed loci should be exactly these height loci[10]. The paper claims that the fixed proper prime ideals are exactly 0 and the height ideals[3]. This holds for every open subgroup of the stabilizer, which extends the earlier formulation[9]. So the paper claims Chai's conjecture in its standard form[1]. The hard part is the layers in characteristic p. There, small symmetry directions alone do not control the fixed equations[7].\n\nWhy does this matter for topology? Hopkins and Smith classified the thick subcategories of finite spectra by chromatic type[6]. A thick subcategory is a family closed under the basic building moves. Hovey and Strickland proposed the same kind of list for dualizable K(n)-local spectra[5]. Dualizable objects have a well-behaved dual. This class is larger than the compact objects[8]. Barthel, Heard and Naumann proved this list at height two. They also showed that Chai's conjecture would give it at every height[4].\n\nWith that implication, the paper claims the Hovey–Strickland conjecture. The dualizable K(n)-local category has exactly n + 2 thick tensor ideals. Its Balmer spectrum, the space of prime ideals, is a chain of n + 1 points[2]. At height 3 that is 5 ideals and 4 points. This matches the 4 fixed primes in the example above.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof uses deep tools from p-adic geometry. The topological part relies on the earlier Barthel–Heard–Naumann implication. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. The topological conclusion depends on earlier published work. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Height",
+      "meaning": "The index n of a layer in chromatic homotopy theory."
+    },
+    {
+      "term": "Prime ideal",
+      "meaning": "An ideal that plays the role of a prime number in a ring."
+    },
+    {
+      "term": "Radical ideal",
+      "meaning": "An ideal that contains every element some power of which lies in it."
+    },
+    {
+      "term": "Morava stabilizer group",
+      "meaning": "A large symmetry group that acts on the Lubin–Tate ring."
+    },
+    {
+      "term": "Thick tensor ideal",
+      "meaning": "A family of objects closed under the basic building moves and under tensoring with anything."
+    },
+    {
+      "term": "Dualizable",
+      "meaning": "An object with a well-behaved dual, so that maps out of it match maps into its dual."
+    },
+    {
+      "term": "Balmer spectrum",
+      "meaning": "The space of prime thick tensor ideals of a tensor category."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Stabilizer orbits and thick tensor ideals of dualizable K(n)-local spectra” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Stabilizer-Orbits-and-Thick-Tensor-Ideals-of-Dualizable-Kn-Local-Spectra-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Chai's invariant-ideal conjecture holds in the standard finite-residue-field formulation.",
+      "sourceLine": "This proves Chai's invariant-ideal conjecture in the standard finite-residue-field formulation.",
+      "sourceQuote": "This proves Chai's invariant-ideal conjecture in the standard finite-residue-field formulation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The dualizable K(n)-local category has exactly n+2 thick tensor ideals, and its Balmer spectrum is a chain of n+1 points.",
+      "sourceLine": "the dualizable \\(K(n)\\)-local category has exactly \\(n+2\\) thick tensor ideals, and its Balmer spectrum is a chain of \\(n+1\\) points",
+      "sourceQuote": "It also proves the Hovey--Strickland conjecture: the dualizable \\(K(n)\\)-local category has exactly \\(n+2\\) thick tensor ideals, and its Balmer spectrum is a chain of \\(n+1\\) points.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proper prime ideals stabilized by an open subgroup are exactly 0 and the height ideals.",
+      "sourceLine": "The proper prime ideals of \\(E_0\\) stabilized by \\(U\\) are precisely",
+      "sourceQuote": "The proper prime ideals of \\(E_0\\) stabilized by \\(U\\) are precisely \\[ 0,\\ I_1,\\ldots,I_n. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "Barthel, Heard and Naumann proved the conjecture at height two and the implication from Chai's assertion.",
+      "sourceLine": "Barthel, Heard, and Naumann proved the Hovey--Strickland conjecture at height two for every prime and established the general implication from Chai's invariant-ideal assertion to the spectral classification",
+      "sourceQuote": "Barthel, Heard, and Naumann proved the Hovey--Strickland conjecture at height two for every prime and established the general implication from Chai's invariant-ideal assertion to the spectral classification \\cite[Theorems~4.9 and~4.15]{BHN22}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hovey and Strickland proposed the dualizable K(n)-local counterpart.",
+      "sourceLine": "Hovey and Strickland proposed the dualizable \\(K(n)\\)-local counterpart in their study of Morava \\(K\\)-theory and localization",
+      "sourceQuote": "Hovey and Strickland proposed the dualizable \\(K(n)\\)-local counterpart in their study of Morava \\(K\\)-theory and localization \\cite[Section~12, p.~61]{HS99}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hopkins and Smith classify thick subcategories of finite spectra by chromatic type.",
+      "sourceLine": "The thick subcategory theorem of Hopkins and Smith classifies thick subcategories of finite spectra by chromatic type",
+      "sourceQuote": "The thick subcategory theorem of Hopkins and Smith classifies thick subcategories of finite spectra by chromatic type, while their periodicity theorem supplies the corresponding self-maps \\cite[Theorems~7 and~9]{HopkinsSmith98}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In characteristic p, infinitesimal stabilizer directions alone do not control invariant equations.",
+      "sourceLine": "The main issue addressed here is the characteristic-\\(p\\) height strata, where infinitesimal stabilizer directions alone do not give the required control of invariant equations.",
+      "sourceQuote": "The main issue addressed here is the characteristic-\\(p\\) height strata, where infinitesimal stabilizer directions alone do not give the required control of invariant equations.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Dualizability is more general than compactness in the K(n)-local category.",
+      "sourceLine": "it is more general than compactness in the \\(K(n)\\)-local category",
+      "sourceQuote": "Dualizability is essential here: it is more general than compactness in the \\(K(n)\\)-local category \\cite[Theorems~8.5--8.6]{HS99}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The result extends the formulation from the full stabilizer to every open subgroup.",
+      "sourceLine": "extends that formulation from the full stabilizer to every open subgroup",
+      "sourceQuote": "This proves the invariant-ideal assertion called Chai's Hope in the finite-residue-field formulation of \\cite[Hope~4.1 and Remark~4.2]{BHN22}, and extends that formulation from the full stabilizer to every open subgroup.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Chai proposed that invariant irreducible formal loci should be height loci.",
+      "sourceLine": "proposed that invariant irreducible formal loci should be height loci",
+      "sourceQuote": "Chai studied the action on the closed fiber of Lubin--Tate space and proposed that invariant irreducible formal loci should be height loci \\cite{Chai96}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
