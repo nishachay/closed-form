@@ -1,0 +1,196 @@
+{
+  "id": "086",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-L3-bound-for-the-trilinear-Hilbert-transform-October-5-2026/paper.pdf",
+      "label": "An L³ bound for the trilinear Hilbert transform"
+    }
+  ],
+  "headline": "A singular average of three shifted functions obeys an L³ × L³ × L³ to L¹ size bound, the paper claims.",
+  "scope": "The result covers one operator, with shifts x − t, x − 2t and x − 3t. It covers one choice of exponents: three L³ inputs and an L¹ output.",
+  "plain": "The trilinear Hilbert transform multiplies three functions at points x − t, x − 2t and x − 3t. It then averages over t with weight 1/t. The question is whether the output stays controlled by the sizes of the inputs. This paper claims to prove that its total size is at most a fixed constant times the product of the inputs' L³ sizes. This is one case of a standard conjecture.",
+  "doesNot": "This does not cover the other exponents in the full trilinear Hilbert transform conjecture, or other choices of slopes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1997",
+    "firstStepBy": "Lacey and Thiele, the two-function (bilinear) version",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles one case of a well-known open bound for straight-line trilinear averages."
+  },
+  "explanation": "Take a function f that equals 2 on an interval of length 1/8, and 0 elsewhere. Its L³ size [the cube root of the total area under |f| cubed] is the cube root of 8 × 1/8. That is exactly 1. Its L¹ size [the total area under |f|] is 2 × 1/8, which is 0.25. Sizes like these measure how big a function is overall.\n\nNow multiply three copies of f. The product equals 8 on the same short interval, so its L¹ size is 8 × 1/8 = 1. That equals 1 × 1 × 1, the product of the three L³ sizes. A classical rule called Hölder's inequality says this never fails: three L³ sizes multiplied always bound the L¹ size of the product. The exponents fit because 1/3 + 1/3 + 1/3 = 1.\n\nThe trilinear Hilbert transform makes this much harder. At each point x, it multiplies f₁ at x − t, f₂ at x − 2t and f₃ at x − 3t. Then it adds these products over every shift t, weighting each by 1/t. Positive and negative shifts get opposite signs, so much of the sum cancels. The weight blows up near t = 0, so the sum is a principal value [a symmetric interval around zero is removed, then shrunk][12].\n\nThe paper claims the Hölder pattern survives this averaging, up to a constant. The L¹ size of the output is at most a fixed number C times the three L³ sizes multiplied[1]. The constant is not computed. The paper calls this the L³ × L³ × L³ to L¹ case of the standard conjecture for slopes 1, 2 and 3.\n\nThe two-function version, with shifts x − t and x − 2t, was treated by Lacey and Thiele in 1997 and 1999[2]. With three functions, progress stalled. In 2015 Terence Tao showed some cancellation for truncated versions[14]. That improved the simple logarithmic bound to a smaller, sublogarithmic one[3]. In the account of Hu and Lie, the straight-line three-function problem remained open[4]. Their own results on curved versions address a different source of oscillation[5].\n\nThe paper names the difficulty as cancellation across scales meeting quadratic modulation[13]. A scale here is a range of shift sizes, such as t near 1, near 2, or near 4. Quadratic modulation is a wave whose phase grows like the square of position. Here is why it bites. Take the four points 0, 1, 2, 3 and the weights −1, 3, −3, 1. The weights sum to 0. The weighted positions give 0 + 3 − 6 + 3 = 0. The weighted squares give 0 + 3 − 12 + 9 = 0. Only the cubes fail, giving 0 + 3 − 24 + 27 = 6.\n\nSo a quadratic wave can line up across all four points and dodge the cancellation. The paper says such matched quadratic phases can persist in the related four-function form[6]. What is learned at one scale must not cost a loss that grows with the number of scales[7]. The paper's main outside tool is a 2024 inverse theorem of Leng, Sah and Sawhney[8]. Roughly, it says a function that defeats this kind of cancellation must partly match a structured, quadratic-like pattern. That theorem alone does not add up the scales[9]. The paper adds its own machinery to keep the loss from growing.\n\nThe scope is narrow on purpose. The full conjecture asks for a wider range of exponents[10]. The paper concerns only the one operator with slopes 1, 2 and 3[11]. Other exponent cases and other slopes stay open as far as this paper goes.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. It covers one exponent case and one set of slopes, not the full conjecture. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "L³ size",
+      "meaning": "The cube root of the total area under the cube of a function's absolute value (its L³ norm)."
+    },
+    {
+      "term": "L¹ size",
+      "meaning": "The total area under a function's absolute value (its L¹ norm)."
+    },
+    {
+      "term": "Hölder's inequality",
+      "meaning": "A classical rule that bounds the size of a product of functions by the sizes of the factors."
+    },
+    {
+      "term": "Trilinear Hilbert transform",
+      "meaning": "The operator that multiplies three functions at x − t, x − 2t, x − 3t and sums over t with weight 1/t."
+    },
+    {
+      "term": "Principal value",
+      "meaning": "A way to sum a weight that blows up at zero: cut out a symmetric interval around zero, then shrink it."
+    },
+    {
+      "term": "Quadratic modulation",
+      "meaning": "A wave-like factor whose phase grows like the square of position."
+    },
+    {
+      "term": "Inverse theorem",
+      "meaning": "A result saying that a function which defeats a certain cancellation must have a specific structure."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Lacey and C. Thiele, “Lᵖ estimates on the bilinear Hilbert transform for 2<p<∞”, Annals of Mathematics 146(3) (1997), 693–724",
+      "url": "https://doi.org/10.2307/2952458"
+    },
+    {
+      "id": 2,
+      "cite": "M. Lacey and C. Thiele, “On Calderón's conjecture”, Annals of Mathematics 149(2) (1999), 475–496",
+      "url": "https://arxiv.org/abs/math/9903203"
+    },
+    {
+      "id": 3,
+      "cite": "T. Tao, “Cancellation for the multilinear Hilbert transform”, arXiv:1505.06479 (2015)",
+      "url": "https://arxiv.org/abs/1505.06479v3"
+    },
+    {
+      "id": 4,
+      "cite": "B. Hu and V. Lie, “On the curved trilinear Hilbert transform”, arXiv:2308.10706 (2023)",
+      "url": "https://arxiv.org/abs/2308.10706"
+    },
+    {
+      "id": 5,
+      "cite": "B. Hu and V. Lie, “On the boundedness of the curved trilinear Hilbert transform and the curved n-linear maximal operator in the quasi-Banach regime”, arXiv:2511.07373 (2025)",
+      "url": "https://arxiv.org/abs/2511.07373v1"
+    },
+    {
+      "id": 6,
+      "cite": "J. Leng, A. Sah and M. Sawhney, “Quasipolynomial bounds on the inverse theorem for the Gowers U^{s+1}[N]-norm”, arXiv:2402.17994 (2024)",
+      "url": "https://arxiv.org/abs/2402.17994v3"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 086: “An L³ bound for the trilinear Hilbert transform” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-L3-bound-for-the-trilinear-Hilbert-transform-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The trilinear Hilbert transform with slopes 1, 2, 3 maps L³ × L³ × L³ to L¹.",
+      "verdict": "supported",
+      "sourceLine": "We prove that the trilinear Hilbert transform with fixed slopes $1,2,3$ maps",
+      "sourceQuote": "We prove that the trilinear Hilbert transform with fixed slopes $1,2,3$ maps $L^3(\\R)\\times L^3(\\R)\\times L^3(\\R)$ to $L^1(\\R)$, resolving this case of the trilinear Hilbert transform conjecture."
+    },
+    {
+      "text": "The bilinear predecessor was treated by Lacey and Thiele.",
+      "verdict": "supported",
+      "sourceLine": "The bilinear predecessor was treated by Lacey and Thiele",
+      "sourceQuote": "The bilinear predecessor was treated by Lacey and Thiele~\\cite{LT1997,LT1999}."
+    },
+    {
+      "text": "Tao improved the elementary logarithmic truncation bound to a sublogarithmic one.",
+      "verdict": "supported",
+      "sourceLine": "improving the elementary logarithmic truncation bound to a sublogarithmic one",
+      "sourceQuote": "Tao~\\cite{Tao2015} obtained cancellation for truncated multilinear Hilbert transforms, improving the elementary logarithmic truncation bound to a sublogarithmic one."
+    },
+    {
+      "text": "The straight-line trilinear problem remained open in Hu and Lie's account.",
+      "verdict": "supported",
+      "sourceLine": "The straight-line trilinear boundedness problem remained open in the account of Hu and Lie",
+      "sourceQuote": "The straight-line trilinear boundedness problem remained open in the account of Hu and Lie~\\cite[Section~1.2]{HuLie2025}."
+    },
+    {
+      "text": "Hu and Lie's curved results address a different source of oscillation.",
+      "verdict": "supported",
+      "sourceLine": "address a different source of oscillation",
+      "sourceQuote": "Their results for curved transforms~\\cite{HuLie2023,HuLie2025} address a different source of oscillation."
+    },
+    {
+      "text": "Matched quadratic phases can persist in the associated four-linear form.",
+      "verdict": "supported",
+      "sourceLine": "Thus matched quadratic phases can persist in the associated four-linear form.",
+      "sourceQuote": "Thus matched quadratic phases can persist in the associated four-linear form."
+    },
+    {
+      "text": "Information at one scale must not produce a loss proportional to the number of scales.",
+      "verdict": "supported",
+      "sourceLine": "this persistence does not produce a loss proportional to the number of scales",
+      "sourceQuote": "Quantitative information at one scale must be organized so that this persistence does not produce a loss proportional to the number of scales."
+    },
+    {
+      "text": "The Leng–Sah–Sawhney inverse theorem provides the structural input.",
+      "verdict": "supported",
+      "sourceLine": "provides the quantitative structural input used below",
+      "sourceQuote": "The inverse theorem of Leng, Sah and Sawhney~\\cite[Theorem~1.2]{LSS2024} provides the quantitative structural input used below."
+    },
+    {
+      "text": "The inverse theorem alone does not sum the scales.",
+      "verdict": "supported",
+      "sourceLine": "The inverse theorem alone does not sum the scales.",
+      "sourceQuote": "The inverse theorem alone does not sum the scales."
+    },
+    {
+      "text": "The full conjecture asks for a broader range of exponents.",
+      "verdict": "supported",
+      "sourceLine": "The full conjecture asks for a broader range of exponents",
+      "sourceQuote": "The full conjecture asks for a broader range of exponents; see \\cite[Conjecture~1.7]{HuLie2023}."
+    },
+    {
+      "text": "The result concerns the displayed fixed operator.",
+      "verdict": "supported",
+      "sourceLine": "The result here concerns the displayed fixed operator.",
+      "sourceQuote": "The result here concerns the displayed fixed operator."
+    },
+    {
+      "text": "The principal value removes a symmetric interval about the origin.",
+      "verdict": "supported",
+      "sourceLine": "The principal value removes a symmetric interval about the origin.",
+      "sourceQuote": "The principal value removes a symmetric interval about the origin."
+    },
+    {
+      "text": "The trilinear difficulty is cancellation across scales interacting with quadratic modulation.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty in the trilinear setting is the interaction of cancellation across scales with quadratic modulation",
+      "sourceQuote": "The difficulty in the trilinear setting is the interaction of cancellation across scales with quadratic modulation."
+    },
+    {
+      "text": "Tao obtained cancellation for truncated multilinear Hilbert transforms.",
+      "verdict": "supported",
+      "sourceLine": "obtained cancellation for truncated multilinear Hilbert transforms",
+      "sourceQuote": "Tao~\\cite{Tao2015} obtained cancellation for truncated multilinear Hilbert transforms, improving the elementary logarithmic truncation bound to a sublogarithmic one."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
