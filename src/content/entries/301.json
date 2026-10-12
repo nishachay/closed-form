@@ -1,0 +1,144 @@
+{
+  "id": "301",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-trace-cone-classifies-Razak-Jacelon-stabilizations-September-25-2026/The-trace-cone-classifies-Razak-Jacelon-stabilizations-September-25-2026.pdf",
+      "label": "The trace cone classifies Razak–Jacelon stabilizations"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/301.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims the cone of traces determines every separable nuclear C*-algebra once it is stabilized by the Razak–Jacelon algebra.",
+  "scope": "Separable nuclear complex C*-algebras A and B, compared after spatial tensoring with the Razak–Jacelon algebra W and the compact operators K.",
+  "plain": "A trace measures the size of positive elements in an operator algebra, and the traces together form a cone. Tensoring with the Razak–Jacelon algebra W erases some fine data and leaves the traces in charge. Leonel Robert asked whether the trace cone then determines the algebra completely. This paper claims yes, for every separable nuclear algebra, with any ideal structure. Lean checks only one supporting step, about how ideals are carried along.",
+  "doesNot": "This does not classify the algebras themselves, only their stabilizations A ⊗ W ⊗ K, and Lean does not check the main isomorphism theorem.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "Leonel Robert's trace-cone question, recorded in Santiago's 2012 conference abstract",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It would answer Robert's trace-cone classification question, listed as Problem LXVIII in a recent survey, for all separable nuclear algebras."
+  },
+  "explanation": "Take the simplest algebra with two pieces: pairs of complex numbers (a, b), multiplied entry by entry. A trace on its positive pairs has the form τ(a, b) = s·a + t·b. The weights s and t lie anywhere from 0 to ∞, with ∞ allowed. So the traces form a cone of pairs (s, t). Adding traces adds weights. For example, (1, 2) + (1, 2) = (2, 4).\n\nSome traces only take the values 0 and ∞. The trace (0, ∞) is 0 on pairs (a, 0) and ∞ when b > 0. It marks the ideal of pairs (a, 0). An ideal is a piece of the algebra that absorbs products from outside. The trace (∞, ∞) marks the zero ideal. These traces satisfy τ + τ = τ: (0, ∞) + (0, ∞) = (0, ∞). The paper notes that ideal inclusion I ⊆ J holds exactly when τ_I + τ_J = τ_I[4]. Here the zero ideal sits inside the ideal of pairs (a, 0). Indeed (∞, ∞) + (0, ∞) = (∞, ∞), as the rule predicts. So the trace cone records the ideals as well as the sizes.\n\nA C*-algebra is a family of operators closed under sums, products, adjoints and limits. Nuclear algebras are a large, well-behaved class. The Razak–Jacelon algebra W is simple, has one trace and no nonzero projections[5]. Tensoring with W removes the K-theory part of the classification problem, leaving the traces visible[6]. Leonel Robert asked whether the trace cone then determines the algebra. The question appears as Problem LXVIII in a recent survey[7]. Earlier results covered simple algebras and the traceless case. The obstacle is an arbitrary ideal structure, where traces can be finite on some ideals and infinite on others.\n\nSuppose A and B have isomorphic trace cones. The paper claims that A ⊗ W ⊗ K and B ⊗ W ⊗ K are then isomorphic[1]. Here K is the algebra of compact operators, which makes the result insensitive to matrix size. It assumes only separability and nuclearity, and allows any ideal structure[2]. The isomorphism can also be chosen to realize the given map between the trace cones[3].\n\nHow sure is this? Lean, a computer proof checker, checks one supporting step. A trace-cone equivalence carries the ideals across in order, and the ideal traces are exactly those with τ + τ = τ. So the paper proves that step, as far as the Lean statement matches. The main isomorphism theorem is outside the Lean check. It rests on the paper's long existence, uniqueness and intertwining argument. No specialist review is published.",
+  "hypeCheck": "Major if correct. Lean covers only the ideal-transport step; the classification itself rests on the paper's long argument, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "C*-algebra",
+      "meaning": "A family of operators on a Hilbert space closed under sums, products, adjoints and limits."
+    },
+    {
+      "term": "Nuclear",
+      "meaning": "A large, well-behaved class of C*-algebras that can be approximated by matrix algebras in a precise sense."
+    },
+    {
+      "term": "Trace (extended)",
+      "meaning": "An additive size function on positive elements with values in [0, ∞], with τ(x*x) = τ(xx*)."
+    },
+    {
+      "term": "Trace cone",
+      "meaning": "The set of all extended traces, which can be added and scaled by positive numbers, with its natural topology."
+    },
+    {
+      "term": "Ideal",
+      "meaning": "A closed piece of the algebra that contains every product of its elements with elements of the algebra."
+    },
+    {
+      "term": "Razak–Jacelon algebra W",
+      "meaning": "A simple, nuclear C*-algebra with exactly one trace and no nonzero projections."
+    },
+    {
+      "term": "Compact operators K",
+      "meaning": "Limits of finite-rank operators; tensoring with K removes dependence on matrix size."
+    },
+    {
+      "term": "K-theory",
+      "meaning": "An invariant built from projections and unitaries that often blocks classification by traces alone."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The trace cone classifies Razak–Jacelon stabilizations” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-trace-cone-classifies-Razak-Jacelon-stabilizations-September-25-2026/The-trace-cone-classifies-Razak-Jacelon-stabilizations-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 301",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/301.md",
+      "quote": "Spatial classification, existence of the stabilization models, norm uniqueness, and final intertwining are outside this supporting comparison."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "If T(A) and T(B) are isomorphic as topological cones, then A ⊗ W ⊗ K ≅ B ⊗ W ⊗ K.",
+      "sourceLine": "If \\(T(A)\\) and \\(T(B)\\) are isomorphic as topological cones, then",
+      "sourceQuote": "If \\(T(A)\\) and \\(T(B)\\) are isomorphic as topological cones, then \\[ A\\otimes\\W\\otimes\\K\\ \\cong\\ B\\otimes\\W\\otimes\\K, \\] where \\(\\K=\\K(\\ell^2(\\N))\\) and all tensor products are spatial.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Their only regularity assumptions are separability and nuclearity.",
+      "sourceLine": "Their only regularity assumptions are separability and nuclearity.",
+      "sourceQuote": "Their only regularity assumptions are separability and nuclearity.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The isomorphism can realize the prescribed cone map.",
+      "sourceLine": "Moreover, the isomorphism can realize the prescribed cone map",
+      "sourceQuote": "Moreover, the isomorphism can realize the prescribed cone map: after transporting the given map to \\(F:T(B\\otimes\\W\\otimes\\K)\\to T(A\\otimes\\W\\otimes\\K)\\), we obtain an isomorphism \\(\\Phi\\) with \\(\\tau\\circ\\Phi=F(\\tau)\\) for every extended trace \\(\\tau\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ideal inclusion I ⊆ J holds exactly when τ_I + τ_J = τ_I.",
+      "sourceLine": "I\\subseteq J \\quad\\Longleftrightarrow\\quad \\tau_I+\\tau_J=\\tau_I.",
+      "sourceQuote": "For example, \\[ I\\subseteq J \\quad\\Longleftrightarrow\\quad \\tau_I+\\tau_J=\\tau_I. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Razak–Jacelon algebra W is a simple, monotracial, stably projectionless nuclear C*-algebra.",
+      "sourceLine": "The Razak--Jacelon algebra \\(\\W\\) is a simple, monotracial,",
+      "sourceQuote": "The Razak--Jacelon algebra \\(\\W\\) is a simple, monotracial, stably projectionless nuclear \\(C^*\\)-algebra \\cite{Jacelon}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Tensoring by W removes the K-theoretic part of the classification problem.",
+      "sourceLine": "Tensoring by \\(\\W\\) removes the",
+      "sourceQuote": "Tensoring by \\(\\W\\) removes the \\(K\\)-theoretic part of the classification problem and makes the order on the Cuntz semigroup visible through traces.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Robert's trace-cone question appears as Problem LXVIII in the survey of Schafhauser, Tikuisis, and White.",
+      "sourceLine": "as Problem~LXVIII in the survey of Schafhauser, Tikuisis, and White",
+      "sourceQuote": "It was recorded in Santiago's 2012 conference abstract \\cite{SantiagoWStable} and appears as Problem~LXVIII in the survey of Schafhauser, Tikuisis, and White \\cite{STW}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the ideal-transport step: a trace-cone equivalence carries ideals across in order, and ideal traces are exactly the additive idempotents. The classification theorem itself is outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
