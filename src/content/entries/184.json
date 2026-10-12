@@ -1,0 +1,287 @@
+{
+  "id": "184",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Correspondence-Coloring-Graphs-with-a-Forbidden-Clique-October-5-2026/correspondence-coloring-forbidden-clique.pdf",
+      "label": "Correspondence coloring graphs with a forbidden clique"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Logarithmic-Independence-Bound-for-Clique-Free-Graphs-September-25-2026/paper.pdf",
+      "label": "A logarithmic independence bound for clique-free graphs"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/184.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Networks with no fixed-size clique have larger independent sets and need fewer colors, by a log factor.",
+  "scope": "The results cover every finite network with no clique of a fixed size r of at least 4. The coloring bound needs a large maximum degree. Constants depend on r and have no stated value.",
+  "plain": "An independent set is a group of points in a network with no links between them. If no four points are all linked, such sets should be larger than in general networks. One paper proves they are larger by a factor of order log d, where d is the average number of links. A second paper claims a matching saving in colors, even for a harder kind of coloring.",
+  "doesNot": "This does not give values for the constants, or claim a fast method for finding the independent sets.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1981",
+    "firstStepBy": "Ajtai, Erdős, Komlós and Szemerédi, who posed the independence conjecture",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles two long-standing conjectures on independent sets and coloring in clique-free graphs."
+  },
+  "explanation": "Draw five points in a ring, each joined to its two neighbors. Pick points so that no two picked points are joined. Such a choice is an independent set. In the ring of five, you can pick two points, but never three. Now draw six points as two separate triangles. Again you can pick only two, one from each triangle.\n\nA simple rule says how many you can always pick. Say there are n points with d links each on average. Then you can always pick at least n divided by d + 1. Groups of points that are all joined to each other, called cliques, show the rule cannot be improved in general[1]. The two triangles fit it exactly: 6 divided by 3 is 2.\n\nWhat if the network has no large clique? Suppose no four points are all joined to each other. Then much larger independent sets should exist. For triangle-free networks, Ajtai, Komlós and Szemerédi showed this in 1980[2]. The gain is a factor of about log d, the natural logarithm of the average number of links. For a million points with 1,000 links each on average, the simple rule promises about 999 points. A bound of n log d divided by d would give about 6,908.\n\nIn 1981, Ajtai, Erdős, Komlós and Szemerédi conjectured the same gain when any fixed clique is banned. They proved a weaker gain, of order log log d[3]. Shearer later came within a factor of log log d of the goal[4]. A log log is tiny, about 1.9 when d is 1,000, but it grows without limit.\n\nOne paper proves the conjecture for every fixed clique size r of at least 4[5,6]. Every network with no r points all joined has an independent set of at least a constant times n log d divided by d. The constant depends only on r. The order cannot be improved, even for triangle-free networks[7].\n\nA second paper turns to coloring. Give each point a color so that joined points differ. If each point has at most Δ links, Δ + 1 colors always suffice. Color the points one at a time, avoiding colors their neighbors already use[8]. Correspondence coloring is a harder version, introduced by Dvořák and Postle[9]. Each point gets its own list of options, and each link says which options clash across it. Take a ring of four points with two options each. Ordinary coloring works by alternating. But let one link clash option 1 with option 2, and vice versa. Then no choice works, as a check of all 16 cases confirms. Any correspondence bound also covers ordinary coloring[10].\n\nWithout triangles, Johansson showed that about Δ divided by log Δ colors are enough. With a fixed clique banned, his bound kept an extra log log Δ factor[11]. That was still the best general correspondence bound for r of at least 4[12]. Dhawan, Janzer and Methuku had removed the extra factor for ordinary coloring in a narrower family of cases[13].\n\nThat paper claims a bound of order Δ divided by log Δ for every network with no r-point clique, once Δ is large[14]. It applies to correspondence coloring, and so to ordinary coloring too. The same holds when any fixed network F is banned as a part. This settles a conjecture of Alon, Krivelevich and Sudakov in a stronger form[15]. When F contains a closed loop, the order Δ divided by log Δ cannot be improved[16]. Neither paper gives a value for its constants[17].\n\nThe main obstacle was triangles. Banning four-point cliques still allows many triangles, and triangles spoil the counting that works when they are absent. The independence proof spreads weights over the points. Its central step bounds the weight on triangles by a constant times the weight on links[18]. The coloring proof colors a few points at a time in random rounds[19]. Removing one option can knock out two clashing options at once, which creates unwanted correlations[20]. It reuses and extends the triangle tools of the independence paper to pay for this[21].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the independence bound. It covers every network with no r-point clique, for each r of at least 4, with average degree at least 2. The coloring paper is not in the Lean scope note, so its result remains a claim. The independence proof claims no efficient method for finding the sets[22]. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has checked a formal version of the independence bound. The coloring result is outside the Lean note, the constants have no stated value, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Independent set",
+      "meaning": "A group of points in a network with no link between any two of them."
+    },
+    {
+      "term": "Clique",
+      "meaning": "A group of points that are all linked to each other."
+    },
+    {
+      "term": "Average degree",
+      "meaning": "The average number of links at a point, written d."
+    },
+    {
+      "term": "Correspondence coloring",
+      "meaning": "Coloring where each point has its own list of options and each link says which options clash across it."
+    },
+    {
+      "term": "Logarithm",
+      "meaning": "A slowly growing function; the natural log of 1,000 is about 6.9."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Ajtai, J. Komlós and E. Szemerédi, “A note on Ramsey numbers”, Journal of Combinatorial Theory, Series A 29(3) (1980), 354–360",
+      "url": "https://doi.org/10.1016/0097-3165(80)90030-8"
+    },
+    {
+      "id": 2,
+      "cite": "M. Ajtai, P. Erdős, J. Komlós and E. Szemerédi, “On Turán’s theorem for sparse graphs”, Combinatorica 1(4) (1981), 313–317",
+      "url": "https://doi.org/10.1007/BF02579451"
+    },
+    {
+      "id": 3,
+      "cite": "J. B. Shearer, “On the independence number of sparse graphs”, Random Structures & Algorithms 7(3) (1995), 269–271",
+      "url": "https://doi.org/10.1002/rsa.3240070305"
+    },
+    {
+      "id": 4,
+      "cite": "N. Alon, M. Krivelevich and B. Sudakov, “Coloring graphs with sparse neighborhoods”, Journal of Combinatorial Theory, Series B 77(1) (1999), 73–82",
+      "url": "https://doi.org/10.1006/jctb.1999.1910"
+    },
+    {
+      "id": 5,
+      "cite": "Z. Dvořák and L. Postle, “Correspondence coloring and its application to list-coloring planar graphs without cycles of lengths 4 to 8”, Journal of Combinatorial Theory, Series B 129 (2018), 38–54",
+      "url": "https://doi.org/10.1016/j.jctb.2017.09.001"
+    },
+    {
+      "id": 6,
+      "cite": "A. Dhawan, O. Janzer and A. Methuku, “Independent sets and colorings of K_{t,t,t}-free graphs”, arXiv:2511.17191 (2025)",
+      "url": "https://arxiv.org/abs/2511.17191"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “A logarithmic independence bound for clique-free graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Logarithmic-Independence-Bound-for-Clique-Free-Graphs-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Correspondence coloring graphs with a forbidden clique” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Correspondence-Coloring-Graphs-with-a-Forbidden-Clique-October-5-2026/correspondence-coloring-forbidden-clique.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 184 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/184.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For general graphs, n/(d+1) is best possible, as disjoint unions of cliques show.",
+      "verdict": "supported",
+      "sourceLine": "is best possible, as disjoint unions of cliques",
+      "sourceQuote": "For general graphs, the elementary bound $\\alpha(G)\\ge n/(d+1)$ is best possible, as disjoint unions of cliques show.",
+      "paper": 2
+    },
+    {
+      "text": "Ajtai, Komlós and Szemerédi proved the logarithmic improvement for triangle-free graphs.",
+      "verdict": "supported",
+      "sourceLine": "proved the logarithmic improvement when triangles are excluded.",
+      "sourceQuote": "Ajtai, Koml\\'os and Szemer\\'edi~\\cite{AKS1980} proved the logarithmic improvement when triangles are excluded.",
+      "paper": 2
+    },
+    {
+      "text": "Ajtai, Erdős, Komlós and Szemerédi proved an n log log d / d bound for each fixed forbidden clique.",
+      "verdict": "supported",
+      "sourceLine": "so excluding any fixed clique already improves on the general bound.",
+      "sourceQuote": "They proved the lower bound $\\Omega_r(n\\log\\log d/d)$ as $d\\to\\infty$, so excluding any fixed clique already improves on the general bound.",
+      "paper": 2
+    },
+    {
+      "text": "Shearer improved this to n log d / (d log log d); the theorem removes the remaining log log d.",
+      "verdict": "supported",
+      "sourceLine": "removes this remaining $\\log\\log d$",
+      "sourceQuote": "Theorem~\\ref{thm:main} removes this remaining $\\log\\log d$ denominator.",
+      "paper": 2
+    },
+    {
+      "text": "Excluding a fixed clique improves the independence bound by a factor of order log d.",
+      "verdict": "supported",
+      "sourceLine": "We prove that the improvement is a factor of order",
+      "sourceQuote": "We prove that the improvement is a factor of order $\\log d$.",
+      "paper": 2
+    },
+    {
+      "text": "The theorem answers the fixed-clique-size independence conjecture of Ajtai, Erdős, Komlós and Szemerédi.",
+      "verdict": "supported",
+      "sourceLine": "The theorem gives a positive answer to the fixed-clique-size",
+      "sourceQuote": "The theorem gives a positive answer to the fixed-clique-size independence conjecture of Ajtai, Erd\\H{o}s, Koml\\'os and Szemer\\'edi, also recorded as Erd\\H{o}s Problem~802.",
+      "paper": 2
+    },
+    {
+      "text": "The order n log d / d is best possible up to a constant, even for triangle-free graphs.",
+      "verdict": "supported",
+      "sourceLine": "possible up to a constant factor even for triangle-free graphs, and",
+      "sourceQuote": "The order $n\\log d/d$ is best possible up to a constant factor even for triangle-free graphs, and hence for the larger class of $K_r$-free graphs \\cite[pp.~314--315]{AEKS1981}.",
+      "paper": 2
+    },
+    {
+      "text": "Correspondence chromatic number is at most Δ + 1 by greedy coloring.",
+      "verdict": "supported",
+      "sourceLine": "where the last inequality follows by greedy coloring.",
+      "sourceQuote": "Thus \\[ \\chi(G)\\le \\chi_{\\mathrm{list}}(G)\\le\\chi_{\\mathrm{DP}}(G) \\le \\Delta(G)+1, \\] where the last inequality follows by greedy coloring.",
+      "paper": 1
+    },
+    {
+      "text": "Dvořák and Postle introduced correspondence coloring to let color identifications vary from edge to edge.",
+      "verdict": "supported",
+      "sourceLine": "introduced correspondence coloring in their",
+      "sourceQuote": "Dvo\\v{r}\\'ak and Postle introduced correspondence coloring in their 2015 preprint, published as~\\cite{DvorakPostle}, to allow the identification of colors to vary from edge to edge.",
+      "paper": 1
+    },
+    {
+      "text": "Correspondence coloring includes list coloring, and so ordinary coloring.",
+      "verdict": "supported",
+      "sourceLine": "This notion includes list coloring: replace each color in each list by",
+      "sourceQuote": "This notion includes list coloring: replace each color in each list by a distinct copy, and match copies of the same color along an edge.",
+      "paper": 1
+    },
+    {
+      "text": "Johansson obtained O(Δ/log Δ) for triangle-free and O(Δ log log Δ / log Δ) for K_r-free graphs.",
+      "verdict": "supported",
+      "sourceLine": "Johansson subsequently obtained the list-coloring bounds",
+      "sourceQuote": "Johansson subsequently obtained the list-coloring bounds $O(\\Delta/\\log\\Delta)$ for triangle-free graphs and $O_r(\\Delta\\log\\log\\Delta/\\log\\Delta)$ for $K_r$-free graphs.",
+      "paper": 1
+    },
+    {
+      "text": "The previous general correspondence bound for fixed r ≥ 4 was O(Δ log log Δ / log Δ).",
+      "verdict": "supported",
+      "sourceLine": "the previous general upper bound for fixed",
+      "sourceQuote": "In particular, the previous general upper bound for fixed $r\\ge4$ was \\[ \\chi_{\\mathrm{DP}}(G) =O_r\\!\\left(\\frac{\\Delta\\log\\log\\Delta}{\\log\\Delta}\\right). \\]",
+      "paper": 1
+    },
+    {
+      "text": "Dhawan, Janzer and Methuku proved O(Δ/log Δ) for ordinary coloring with any fixed three-colorable forbidden graph.",
+      "verdict": "supported",
+      "sourceLine": "graphs, and hence for every fixed three-colorable forbidden graph.",
+      "sourceQuote": "More recently, Dhawan, Janzer, and Methuku~\\cite[Theorems~1.4 and~1.5]{DhawanJanzerMethuku} proved $O_t(\\Delta/\\log\\Delta)$ for ordinary coloring of $K_{t,t,t}$-free graphs, and hence for every fixed three-colorable forbidden graph.",
+      "paper": 1
+    },
+    {
+      "text": "The coloring paper proves a logarithmic improvement when the clique number is bounded.",
+      "verdict": "supported",
+      "sourceLine": "logarithmic improvement when the clique number is bounded.",
+      "sourceQuote": "We prove a logarithmic improvement when the clique number is bounded.",
+      "paper": 1
+    },
+    {
+      "text": "The corollary proves the Alon–Krivelevich–Sudakov conjecture in the stronger correspondence form.",
+      "verdict": "supported",
+      "sourceLine": "The corollary therefore proves that conjecture in the stronger",
+      "sourceQuote": "The corollary therefore proves that conjecture in the stronger correspondence-coloring form.",
+      "paper": 1
+    },
+    {
+      "text": "If F contains a cycle, the order Δ/log Δ cannot be improved in general.",
+      "verdict": "supported",
+      "sourceLine": "cannot be improved in general: graphs with girth",
+      "sourceQuote": "If $F$ contains a cycle, the order $\\Delta/\\log\\Delta$ cannot be improved in general: graphs with girth larger than $|V(F)|$ can have maximum degree at most $\\Delta$ and chromatic number of this order~\\cite{Bollobas1978}; see also the proof of \\cite[Proposition~1.2]{AKS1999}.",
+      "paper": 1
+    },
+    {
+      "text": "The constant and degree threshold are not optimized.",
+      "verdict": "supported",
+      "sourceLine": "We do not optimize the constant or the",
+      "sourceQuote": "We do not optimize the constant or the degree threshold.",
+      "paper": 1
+    },
+    {
+      "text": "The central step bounds weighted triangle mass by a constant times edge mass at an optimal weighting.",
+      "verdict": "supported",
+      "sourceLine": "The central step is to show that",
+      "sourceQuote": "The central step is to show that $T_G(w)$ is at most a constant depending only on $r$ times $M_G(w)$ when $w$ maximizes, over nonnegative vertex weights, \\[ F_G(w)=\\sum_v w_v(1-\\log w_v)-M_G(w). \\]",
+      "paper": 2
+    },
+    {
+      "text": "The coloring proof builds a partial coloring in small random rounds.",
+      "verdict": "supported",
+      "sourceLine": "The proof constructs a partial coloring in small random rounds.",
+      "sourceQuote": "The proof constructs a partial coloring in small random rounds.",
+      "paper": 1
+    },
+    {
+      "text": "A shared deletion at a common neighbor creates a positive edge correlation.",
+      "verdict": "supported",
+      "sourceLine": "this shared deletion creates a positive edge",
+      "sourceQuote": "Even after compensating their individual losses to first order, this shared deletion creates a positive edge correlation.",
+      "paper": 1
+    },
+    {
+      "text": "The coloring proof develops the multiplier and entropy-splitting methods of the independence paper.",
+      "verdict": "supported",
+      "sourceLine": "The structural argument develops the multiplier and entropy-splitting",
+      "sourceQuote": "The structural argument develops the multiplier and entropy-splitting methods of the companion manuscript \\emph{A logarithmic independence bound for clique-free graphs} \\cite[Sections~2--5]{OpenAIIndependence}.",
+      "paper": 1
+    },
+    {
+      "text": "The independence proof gives existence only, with no efficient algorithm or optimal constant claimed.",
+      "verdict": "supported",
+      "sourceLine": "it makes no claim of an efficient algorithm or",
+      "sourceQuote": "The proof gives an existence result with an $r$-dependent constant; it makes no claim of an efficient algorithm or an optimal leading constant.",
+      "paper": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "Lean formalizes the independence bound c_r n log d / d for K_r-free graphs, r ≥ 4, d ≥ 2; the coloring paper is not in the scope note.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
