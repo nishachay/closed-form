@@ -1,0 +1,193 @@
+{
+  "id": "044",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-equivariant-cohomological-Hikita-conjecture-for-arbitrary-quivers-September-24-2026/main.pdf",
+      "label": "The equivariant cohomological Hikita conjecture for arbitrary quivers"
+    }
+  ],
+  "headline": "For every finite quiver, the cohomology of a Nakajima variety is claimed to equal functions on a Coulomb fixed scheme.",
+  "scope": "It needs a regular stability: semistable points stable with free gauge action. It covers the cohomological, not quantized, form.",
+  "plain": "Hikita's conjecture says the cohomology of one space equals the functions on a fixed part of a partner space. The match must keep nilpotent functions, which square or cube to zero. Earlier work proved it for special quivers. This paper claims it for every finite quiver, with loops and multiple arrows allowed. No computer has checked the proof.",
+  "doesNot": "This does not prove the quantized Hikita conjecture or cover gauge groups beyond quiver theories.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2017",
+    "firstStepBy": "Hikita, Hilbert schemes of points in the plane",
+    "field": "Algebraic and complex geometry",
+    "significance": "Solid",
+    "significanceWhy": "If the proof holds, it settles a central conjecture of symplectic duality for all quiver gauge theories."
+  },
+  "explanation": "The complex projective plane has three cells: a point, a line and a plane. Its cohomology, a ring that counts its holes, is spanned by 1, x and x², with x³ = 0. So the ring is ℂ[x]/(x³), of dimension 3. Now take a different space, the set of triples (u, v, w) with uv = w³. Let a circle of symmetries scale u up and v down, leaving w fixed. Divide out every function that changes under this scaling. That sets u and v to zero, and so forces w³ = uv = 0. What remains is ℂ[w]/(w³), again with basis 1, w and w². The two rings match, though one came from holes and the other from functions.\n\nThat match is a small case of Hikita's conjecture. It relates the cohomology of one space to the functions on a fixed part of a partner space[1]. The partner is called a Coulomb branch. The fixed part is a scheme, meaning it keeps nilpotent functions like w, whose cube is zero. These nilpotents carry the higher cohomology classes, like x and x²[2]. Ignoring them would leave just one point, and lose the match.\n\nThe spaces come from quivers. A quiver is a directed graph: dots joined by arrows, possibly with loops. Put a vector space at each dot and a linear map along each arrow. The Higgs side is a Nakajima variety, a smooth space of such data up to change of basis. One dot with three framing directions gives the cotangent bundle of the plane, which has the same holes as the plane. The Coulomb side, defined by Braverman, Finkelberg and Nakajima, is built from loop groups. Both sides receive the same ring of coefficients. The question is whether those coefficients obey the same relations on both sides[3].\n\nHikita proposed this in 2017 and proved it for the Hilbert scheme of points in the plane[4]. Krylov and Shlykov later proved the Gieseker case, one dot with one loop[5]. Dumanski and Krylov treated many finite-type quivers. Their result covers types A, D and E₆, with restrictions on framing in types E₇ and E₈[6]. A general quiver, with loops and many arrows, remained open.\n\nThis paper claims the equivariant cohomological Hikita conjecture for every finite quiver, including loops and multiple arrows[7]. It needs no finite-type or similar condition[8]. It does need a stability choice under which the space is smooth and the symmetries act freely. Equivariant means the statement also tracks an extra torus of symmetries, the flavor torus. The claimed match is an isomorphism of graded algebras. It keeps the nilpotents and even covers the empty case, where both rings are zero[9].\n\nThe obstacle is that matching sizes is not enough[10]. Both rings may have the same dimension and still have different relations. Counting fixed points, or working after inverting general parameters, misses the nilpotent structure[11]. The paper shows one ring maps onto the other, using a test on stable pairs. It then matches their sizes, using Hausel's formula for the Betti numbers[13]. A map onto a ring of equal size has no kernel left. A separate step compares two different fixed schemes on the Coulomb side.\n\nThe scope has edges. The paper does not claim the quantized form of the conjecture. It does not extend to arbitrary gauge groups beyond quivers[12].\n\nHow sure is this? No Lean formalization is listed for this result. The argument rests on many deep inputs from representation theory. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. The proof leans on many recent deep results, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Cohomology ring",
+      "meaning": "An algebra that counts the holes of a space and how they intersect."
+    },
+    {
+      "term": "Quiver",
+      "meaning": "A directed graph of dots and arrows, possibly with loops and repeated arrows."
+    },
+    {
+      "term": "Nakajima variety",
+      "meaning": "A smooth space of linear maps along a quiver's arrows, up to change of basis."
+    },
+    {
+      "term": "Coulomb branch",
+      "meaning": "A partner space built from loop groups by Braverman, Finkelberg and Nakajima."
+    },
+    {
+      "term": "Scheme",
+      "meaning": "A geometric space that keeps nilpotent functions, such as w with w³ = 0."
+    },
+    {
+      "term": "Nilpotent",
+      "meaning": "An element that becomes zero when raised to some power."
+    },
+    {
+      "term": "Equivariant",
+      "meaning": "Tracking an extra group of symmetries throughout."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "T. Hikita, “An algebro-geometric realization of the cohomology ring of Hilbert scheme of points in the affine plane”, International Mathematics Research Notices 2017 (2017), 2538–2561",
+      "url": "https://doi.org/10.1093/imrn/rnw115"
+    },
+    {
+      "id": 2,
+      "cite": "V. Krylov and P. Shlykov, “Hikita–Nakajima conjecture for the Gieseker variety”, Selecta Mathematica 31 (2025), Article 37",
+      "url": "https://doi.org/10.1007/s00029-025-01028-7"
+    },
+    {
+      "id": 3,
+      "cite": "I. Dumanski and V. Krylov, “K-theoretic Hikita conjecture for quiver gauge theories”, preprint arXiv:2509.06226v2 (2025)",
+      "url": "https://arxiv.org/abs/2509.06226v2"
+    },
+    {
+      "id": 4,
+      "cite": "A. Braverman, M. Finkelberg and H. Nakajima, “Towards a mathematical definition of Coulomb branches of 3-dimensional N=4 gauge theories, II”, Advances in Theoretical and Mathematical Physics 22 (2018), 1071–1147",
+      "url": "https://doi.org/10.4310/ATMP.2018.v22.n5.a1"
+    },
+    {
+      "id": 5,
+      "cite": "H. Nakajima, “Instantons on ALE spaces, quiver varieties, and Kac–Moody algebras”, Duke Mathematical Journal 76 (1994), 365–416",
+      "url": "https://doi.org/10.1215/S0012-7094-94-07613-8"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Hikita's conjecture relates the cohomology of a symplectic resolution and functions on a fixed subscheme of a Coulomb branch.",
+      "verdict": "supported",
+      "sourceLine": "Hikita's conjecture relates two different kinds of algebra: the cohomology",
+      "sourceQuote": "Hikita's conjecture relates two different kinds of algebra: the cohomology of a symplectic resolution and the functions on a fixed subscheme of a corresponding Coulomb branch.",
+      "paper": 1
+    },
+    {
+      "text": "The scheme structure is essential: nilpotent functions can encode positive-degree cohomology.",
+      "verdict": "supported",
+      "sourceLine": "its nilpotent functions can",
+      "sourceQuote": "Even when the underlying fixed-point set is small, its nilpotent functions can encode positive-degree cohomology.",
+      "paper": 1
+    },
+    {
+      "text": "The question is whether the relations among the common coefficients agree.",
+      "verdict": "supported",
+      "sourceLine": "The question is whether the relations among those coefficients agree.",
+      "sourceQuote": "The question is whether the relations among those coefficients agree.",
+      "paper": 1
+    },
+    {
+      "text": "Hikita established the realization for the Hilbert scheme of points in the plane.",
+      "verdict": "supported",
+      "sourceLine": "Hikita formulated a fixed-scheme",
+      "sourceQuote": "In the setting of symplectic duality \\cite{BLPW16}, Hikita formulated a fixed-scheme realization of cohomology and established it for the Hilbert scheme of points in the plane, with related type-$A$ Spaltenstein and smooth hypertoric examples \\cite{Hikita17}.",
+      "paper": 1
+    },
+    {
+      "text": "Krylov and Shlykov prove the Gieseker, or framed Jordan-quiver, case.",
+      "verdict": "supported",
+      "sourceLine": "prove the Gieseker, or framed Jordan-quiver, case",
+      "sourceQuote": "Krylov--Shlykov prove the Gieseker, or framed Jordan-quiver, case \\cite{KrylovShlykov25}.",
+      "paper": 1
+    },
+    {
+      "text": "Dumanski and Krylov's finite-type conclusion includes types A, D and E6, with framing restrictions in E7 and E8.",
+      "verdict": "supported",
+      "sourceLine": "Their finite-type conclusion includes types",
+      "sourceQuote": "Their finite-type conclusion includes types $A,D,E_6$; in types $E_7,E_8$ it imposes the framing restrictions in \\cite[Corollary~2.17]{DK25}.",
+      "paper": 1
+    },
+    {
+      "text": "The paper claims the conjecture for arbitrary finite quivers, including loops and multiple arrows.",
+      "verdict": "supported",
+      "sourceLine": "We prove the equivariant cohomological Hikita conjecture for arbitrary finite",
+      "sourceQuote": "We prove the equivariant cohomological Hikita conjecture for arbitrary finite quivers, including loops and multiple arrows.",
+      "paper": 1
+    },
+    {
+      "text": "No finite-type, Dynkin, conical, or good/ugly hypothesis is imposed.",
+      "verdict": "supported",
+      "sourceLine": "No finite-type, Dynkin, conical, or good/ugly hypothesis is imposed.",
+      "sourceQuote": "No finite-type, Dynkin, conical, or good/ugly hypothesis is imposed.",
+      "paper": 1
+    },
+    {
+      "text": "The isomorphism retains nilpotents and includes the empty case.",
+      "verdict": "supported",
+      "sourceLine": "retaining nilpotents and including the empty case.",
+      "sourceQuote": "This is an isomorphism of graded algebras over the common coefficient ring, retaining nilpotents and including the empty case.",
+      "paper": 1
+    },
+    {
+      "text": "The difficulty is not just to match dimensions.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is not just to match dimensions.",
+      "sourceQuote": "The difficulty is not just to match dimensions.",
+      "paper": 1
+    },
+    {
+      "text": "Neither a fixed-point calculation nor a generic isomorphism establishes the assertion.",
+      "verdict": "supported",
+      "sourceLine": "Neither a calculation on closed fixed points nor an isomorphism after inverting",
+      "sourceQuote": "Neither a calculation on closed fixed points nor an isomorphism after inverting generic parameters establishes that assertion.",
+      "paper": 1
+    },
+    {
+      "text": "It does not assert the quantized statement nor extend to arbitrary reductive gauge groups.",
+      "verdict": "supported",
+      "sourceLine": "It does not assert the quantized statement in",
+      "sourceQuote": "It does not assert the quantized statement in \\cite[Equation~(2.2)]{DK25}, nor extend the theorem to arbitrary reductive gauge groups; outside this setting, proposed Hikita-type identifications can fail \\cite[Example~6.7]{HoangKrylovMatvieievskyi24}.",
+      "paper": 1
+    },
+    {
+      "text": "Hausel's Fourier-transform formula computes the Betti numbers that determine the size of the quotient.",
+      "verdict": "supported",
+      "sourceLine": "computes the Betti numbers",
+      "sourceQuote": "Hausel's arithmetic Fourier-transform formula computes the Betti numbers that eventually determine the size of the coefficient quotient \\cite{Hausel06}.",
+      "paper": 1
+    },
+    {
+      "text": "The manuscript was produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}
