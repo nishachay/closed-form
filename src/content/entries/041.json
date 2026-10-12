@@ -1,0 +1,239 @@
+{
+  "id": "041",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Projective-Space-Bases-of-Lagrangian-Fibrations-September-23-2026/main.pdf",
+      "label": "Projective-space bases of Lagrangian fibrations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Strong-Hyperkahler-SYZ-Conjecture-September-23-2026/main.pdf",
+      "label": "The strong hyperkähler SYZ conjecture"
+    }
+  ],
+  "headline": "Every nonzero nef isotropic line bundle on a compact hyperkähler manifold is claimed to give a torus fibration.",
+  "scope": "It covers compact irreducible holomorphic symplectic Kähler manifolds of every dimension and deformation type.",
+  "plain": "A hyperkähler manifold is a compact complex space with a special nondegenerate two-form. The SYZ conjecture says certain boundary classes on it always come from a fibration by tori. The first paper claims to prove this in every dimension. The second claims that the base of such a fibration is always projective space. No computer has checked either proof.",
+  "doesNot": "This does not show that the fibers are smooth, or describe the singular fibers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2001",
+    "firstStepBy": "Hassett and Tschinkel, an explicit nef-isotropic formulation",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle two central conjectures about hyperkähler manifolds in every dimension."
+  },
+  "explanation": "Take the quartic surface in projective three-space, the zero set of one equation of degree 4. Many such surfaces contain a straight line. Slice the surface with every plane through that line. Each slice is the line plus a leftover curve of degree 3. Call the class of that leftover curve E. Its self-intersection is E·E = 4 − 2 + (−2) = 0. Here 4 is the degree of a plane slice. The middle term counts twice the one point where the line meets a plane. The line itself has self-intersection −2. A class with self-intersection 0 is called isotropic. The planes through the line form a projective line, so the leftover curves sweep the surface as a family over it. Each curve is a torus.\n\nA quartic surface of this kind is a K3 surface. K3 surfaces are the two-dimensional case of hyperkähler manifolds. A hyperkähler manifold here is a compact complex space where every loop can shrink to a point. It has one holomorphic two-form, nondegenerate everywhere[1]. Its complex dimension is even, 2n. On its second cohomology there is a quadratic form, the Beauville–Bogomolov–Fujiki form, which plays the role of E·E. For the surface, n = 1.\n\nThe example turns a class into a map. A line bundle attaches a line to each point. Its sections are like functions with prescribed poles. Nef means the bundle meets every curve nonnegatively. Semiample means some power of the bundle has enough sections to define a map, with no common zero[2]. For E above, the sections give the map to the projective line, and the tori are its fibers.\n\nThe strong hyperkähler SYZ conjecture asks for this in every dimension. Every line bundle with a nonzero nef isotropic class should be semiample[3]. The map would go to a base of dimension n, with fibers of dimension n. The name points to Strominger, Yau and Zaslow's 1996 picture of mirror symmetry through torus fibers. The difficulty is that the numbers alone give no sections, and no control over where sections vanish together[4]. Hassett and Tschinkel, and Sawon, gave early explicit versions around 2001 to 2003[5]. Matsushita showed that any such fibration has half-dimensional fibers of a special kind, called Lagrangian[6]. Soldatenkov and Verbitsky proved that semiampleness spreads through deformations. With earlier constructions, this settled all known types of hyperkähler manifolds[7]. But it is not known whether other types exist.\n\nThe first paper here claims to prove the conjecture in full[8]. It imposes no limit on dimension, deformation type or the second Betti number[9]. After the deformation theorem, one semiample deformation of the given class is enough[10]. The paper claims to build one. It builds a special torus near a degenerating family, then rotates the complex structure[11]. A rotation is a change to one of the other complex structures that every hyperkähler metric carries. After rotation, a known theorem of Greb, Lehn and Rollenske turns the torus into a fibration.\n\nThe second paper asks what the base of such a map looks like. Hwang showed in 2008 that a smooth base must be projective space, of dimension n[12]. So the open question was a singular base[13]. This paper claims that the normal projective base of any projective Lagrangian fibration is projective space, in every dimension and type[14]. Its proof first shows that the base is smooth, then applies Hwang's theorem[15]. It uses the first paper as an input. A further consequence is claimed: in each dimension there are only finitely many deformation types with second Betti number at least 5[16]. That step also uses a recent boundedness theorem of Engel, Filipazzi, Greer, Mauri and Svaldi.\n\nHow sure is this? No Lean formalization is listed for either paper. Both proofs combine metric analysis, period theory and many earlier theorems. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. Earlier work already covered all known types, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Hyperkähler manifold",
+      "meaning": "A compact, simply connected complex space with one holomorphic two-form that is nondegenerate everywhere."
+    },
+    {
+      "term": "Line bundle",
+      "meaning": "A rule that attaches a complex line to each point; its sections act like functions with set poles."
+    },
+    {
+      "term": "Nef",
+      "meaning": "Meeting every curve nonnegatively; on the boundary of the positive classes."
+    },
+    {
+      "term": "Isotropic",
+      "meaning": "Having self-pairing zero under the Beauville–Bogomolov–Fujiki form."
+    },
+    {
+      "term": "Semiample",
+      "meaning": "Having a power whose sections define a map with no common zero."
+    },
+    {
+      "term": "Lagrangian fibration",
+      "meaning": "A map whose fibers are half-dimensional, with the two-form vanishing on them."
+    },
+    {
+      "term": "K3 surface",
+      "meaning": "A hyperkähler manifold of complex dimension 2."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Verbitsky, “Hyperkähler SYZ conjecture and semipositive line bundles”, Geometric and Functional Analysis 19 (2010), 1481–1493",
+      "url": "https://doi.org/10.1007/s00039-009-0037-z"
+    },
+    {
+      "id": 2,
+      "cite": "B. Hassett and Y. Tschinkel, “Rational curves on holomorphic symplectic fourfolds”, Geometric and Functional Analysis 11 (2001), 1201–1228",
+      "url": "https://doi.org/10.1007/s00039-001-8229-1"
+    },
+    {
+      "id": 3,
+      "cite": "J. Sawon, “Abelian fibred holomorphic symplectic manifolds”, Turkish Journal of Mathematics 27 (2003), 197–230",
+      "url": "https://arxiv.org/abs/math/0404362v1"
+    },
+    {
+      "id": 4,
+      "cite": "D. Matsushita, “On fibre space structures of a projective irreducible symplectic manifold”, Topology 38 (1999), 79–83",
+      "url": "https://doi.org/10.1016/S0040-9383(98)00003-2"
+    },
+    {
+      "id": 5,
+      "cite": "A. Soldatenkov and M. Verbitsky, “The abundance and SYZ conjectures in families of hyperkähler manifolds”, Épijournal de Géométrie Algébrique 9 (2025)",
+      "url": "https://doi.org/10.46298/epiga.2025.14370"
+    },
+    {
+      "id": 6,
+      "cite": "D. Greb, C. Lehn and S. Rollenske, “Lagrangian fibrations on hyperkähler manifolds — on a question of Beauville”, Annales scientifiques de l'ÉNS 46 (2013), 375–403",
+      "url": "https://doi.org/10.24033/asens.2191"
+    },
+    {
+      "id": 7,
+      "cite": "J.-M. Hwang, “Base manifolds for fibrations of projective irreducible symplectic manifolds”, Inventiones Mathematicae 174 (2008), 625–644",
+      "url": "https://doi.org/10.1007/s00222-008-0143-9"
+    },
+    {
+      "id": 8,
+      "cite": "A. Strominger, S.-T. Yau and E. Zaslow, “Mirror symmetry is T-duality”, Nuclear Physics B 479 (1996), 243–259",
+      "url": "https://doi.org/10.1016/0550-3213(96)00434-8"
+    },
+    {
+      "id": 9,
+      "cite": "P. Engel, S. Filipazzi, F. Greer, M. Mauri and R. Svaldi, “Boundedness of some fibered K-trivial varieties”, preprint arXiv:2507.00973v1 (2025)",
+      "url": "https://arxiv.org/abs/2507.00973v1"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A compact irreducible holomorphic symplectic manifold is simply connected with a unique everywhere nondegenerate holomorphic two-form.",
+      "verdict": "supported",
+      "sourceLine": "which is nondegenerate everywhere",
+      "sourceQuote": "A compact irreducible holomorphic symplectic K\\\"ahler manifold is a simply connected compact K\\\"ahler manifold $X$ such that $H^0(X,\\Omega_X^2)=\\C\\sigma$ for a holomorphic two-form $\\sigma$ which is nondegenerate everywhere.",
+      "paper": 2
+    },
+    {
+      "text": "Semiample means some positive power is generated by its global sections.",
+      "verdict": "supported",
+      "sourceLine": "if some positive tensor power is generated by its",
+      "sourceQuote": "A line bundle $L$ is \\emph{nef} if $c_1(L)$ lies in the closure of the K\\\"ahler cone, \\emph{isotropic} if $q(c_1(L))=0$, and \\emph{semiample} if some positive tensor power is generated by its global holomorphic sections.",
+      "paper": 2
+    },
+    {
+      "text": "The strong hyperkähler SYZ conjecture asks whether every line bundle with a nonzero nef isotropic class is semiample.",
+      "verdict": "supported",
+      "sourceLine": "The strong hyperk\\\"ahler SYZ conjecture asks whether every",
+      "sourceQuote": "The strong hyperk\\\"ahler SYZ conjecture asks whether every line bundle with such a class is semiample \\cite[Conjecture~1.7]{VerbitskySYZ}.",
+      "paper": 2
+    },
+    {
+      "text": "The numerical condition by itself supplies neither sections nor control of their base locus.",
+      "verdict": "supported",
+      "sourceLine": "The numerical condition by itself supplies neither sections nor control of their base locus.",
+      "sourceQuote": "The numerical condition by itself supplies neither sections nor control of their base locus.",
+      "paper": 2
+    },
+    {
+      "text": "Hassett–Tschinkel and Sawon gave early explicit nef-isotropic formulations.",
+      "verdict": "supported",
+      "sourceLine": "Early explicit nef-isotropic formulations appear in",
+      "sourceQuote": "Early explicit nef-isotropic formulations appear in Hassett--Tschinkel~\\cite[Remark~3.12]{HassettTschinkel} and Sawon~\\cite[Conjecture~4.1]{Sawon}.",
+      "paper": 2
+    },
+    {
+      "text": "Matsushita established the half-dimensional and Lagrangian character of such fibrations.",
+      "verdict": "supported",
+      "sourceLine": "established the",
+      "sourceQuote": "Matsushita established the half-dimensional and Lagrangian character of fibrations from projective irreducible symplectic manifolds \\cite{Matsushita1999,MatsushitaAddendum}; his equidimensionality theorem also controls every component of every fiber \\cite[Theorem~1]{MatsushitaEquidimensional}.",
+      "paper": 2
+    },
+    {
+      "text": "Soldatenkov–Verbitsky's theorem implies the conjecture for all known deformation classes.",
+      "verdict": "supported",
+      "sourceLine": "deformation theorem implies the strong conjecture for all known",
+      "sourceQuote": "Soldatenkov--Verbitsky's deformation theorem implies the strong conjecture for all known hyperk\\\"ahler deformation classes~\\cite[Section~1.3]{SV}.",
+      "paper": 2
+    },
+    {
+      "text": "The paper claims to resolve the strong SYZ conjecture positively.",
+      "verdict": "supported",
+      "sourceLine": "resolves the strong hyperk\\\"ahler SYZ",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves the strong hyperk\\\"ahler SYZ conjecture positively.",
+      "paper": 2
+    },
+    {
+      "text": "No restriction on dimension, deformation type or second Betti number is imposed.",
+      "verdict": "supported",
+      "sourceLine": "No restriction on the dimension, deformation type, or second Betti",
+      "sourceQuote": "No restriction on the dimension, deformation type, or second Betti number is imposed.",
+      "paper": 2
+    },
+    {
+      "text": "The task is to produce one semiample deformation of the prescribed class.",
+      "verdict": "supported",
+      "sourceLine": "The task left by this deformation theorem is to produce one",
+      "sourceQuote": "The task left by this deformation theorem is to produce one semiample deformation of the \\emph{prescribed} class.",
+      "paper": 2
+    },
+    {
+      "text": "They construct a torus and rotate the complex structure.",
+      "verdict": "supported",
+      "sourceLine": "constructing a torus and rotating the complex structure.",
+      "sourceQuote": "We do so by constructing a torus and rotating the complex structure.",
+      "paper": 2
+    },
+    {
+      "text": "Hwang proved the projective-space conclusion when the base is smooth.",
+      "verdict": "supported",
+      "sourceLine": "Hwang proved the projective-space conclusion when",
+      "sourceQuote": "Hwang proved the projective-space conclusion when \\(X\\) is projective and \\(B\\) is smooth \\cite[Theorem~1.2]{Hwang2008}.",
+      "paper": 1
+    },
+    {
+      "text": "These results reduce the base problem to the possible singularities of B.",
+      "verdict": "supported",
+      "sourceLine": "These results reduce the base problem to",
+      "sourceQuote": "These results reduce the base problem to the possible singularities of \\(B\\).",
+      "paper": 1
+    },
+    {
+      "text": "The companion claims the projective-space base conjecture in every dimension and deformation type.",
+      "verdict": "supported",
+      "sourceLine": "This resolves the projective-space base conjecture",
+      "sourceQuote": "This resolves the projective-space base conjecture for such fibrations in every dimension and deformation type.",
+      "paper": 1
+    },
+    {
+      "text": "The base paper first establishes smoothness and then applies Hwang's theorem.",
+      "verdict": "supported",
+      "sourceLine": "Our proof first establishes smoothness and then applies Hwang's",
+      "sourceQuote": "Our proof first establishes smoothness and then applies Hwang's theorem.",
+      "paper": 1
+    },
+    {
+      "text": "There are only finitely many deformation types in each dimension with b_2 at least 5.",
+      "verdict": "supported",
+      "sourceLine": "there are only finitely many smooth",
+      "sourceQuote": "For each integer $n\\ge1$, there are only finitely many smooth deformation types of compact irreducible holomorphic symplectic K\\\"ahler manifolds of complex dimension $2n$ with $b_2\\ge5$.",
+      "paper": 2
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ]
+}
