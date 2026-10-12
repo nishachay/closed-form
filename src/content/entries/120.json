@@ -1,0 +1,186 @@
+{
+  "id": "120",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Almost-Linear-Time-Maximum-Cardinality-Matching-in-Sparse-General-Graphs-September-24-2026/main.pdf",
+      "label": "Almost-Linear-Time Maximum-Cardinality Matching in General Graphs"
+    }
+  ],
+  "headline": "A randomized algorithm finds a largest matching in any graph in almost-linear time, the paper claims.",
+  "scope": "The result covers simple undirected graphs without weights, on a standard word-based machine model, with success probability at least 2/3.",
+  "plain": "A matching pairs up vertices of a network along its links, using each vertex at most once. The task is to find a matching with as many pairs as possible. This paper claims a randomized algorithm that does this for any graph in time close to the size of the input. The time bound holds even on unlucky runs, and the answer is right with probability at least 2/3. No Lean formalization is listed.",
+  "doesNot": "This does not handle weighted matching, and it does not give a deterministic algorithm.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Jack Edmonds, blossom algorithm for general graphs",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it brings exact general-graph matching to almost-linear time, matching what flows gave for bipartite graphs."
+  },
+  "explanation": "Take five people sitting in a ring, each friends with the two beside them. You want to pair friends off, with no one in two pairs. A set of such pairs is a matching [a set of links with no shared endpoint][1]. The best you can do here is two pairs. With five people, one is always left out.\n\nOdd rings like this are the classic trap. Try a triangle and give each of its three links a weight of ½. Every person then has total weight 1, so the per-person limits are met[4]. The weights add up to 1.5, yet a real matching in a triangle has just one pair. Rules about single people miss the odd-set problem.\n\nFor graphs without odd rings, called bipartite, matching is a kind of network flow. Recent flow algorithms run in almost-linear time [time close to the size of the input]. That gives almost-linear exact bipartite matching[7]. General graphs require extra control of odd blocks[8]. Edmonds handled odd blocks in 1965 by shrinking them into single points, called blossoms[3]. The Micali–Vazirani algorithm runs in time of order m√n, with n vertices and m links[5].\n\nPut numbers on that. Take a network with a million vertices and three million links. The input has about four million items. The m√n bound is 3,000,000 × 1,000, or three billion steps. Algebraic methods run at matrix-multiplication speed instead, which helps most on dense graphs[6].\n\nThis paper claims one randomized algorithm that finds a largest matching in (n + m) raised to the power 1 + o(1) steps[2]. The o(1) is an extra exponent that shrinks toward zero as graphs grow. The paper gives no numerical value for it. The time bound holds on every run, even unlucky ones[9]. With probability at least 2/3, the output is an explicit list of matched links[10].\n\nThe same guarantees cover a wider task[11]. Each vertex gets a target number of links, between zero and its full count. The algorithm decides whether some set of links hits every target exactly, and finds one if so.\n\nThe hard part sits in a core subproblem: a perfect matching in a graph where every vertex has at most three links[12]. The algorithm keeps a current matching organized around odd blocks. When the structure changes, it must repair this record without rescanning every odd block[13]. The paper does this with layered accounts that allow small temporary debts, then pays them back with bounded work. It also builds on the almost-linear flow framework for its search directions[14].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. The algorithm is randomized, succeeds with probability at least 2/3, and has an unquantified o(1) in its exponent. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Graph",
+      "meaning": "A set of points, called vertices, with links, called edges, between some pairs."
+    },
+    {
+      "term": "Matching",
+      "meaning": "A set of edges in which no two share an endpoint."
+    },
+    {
+      "term": "Maximum-cardinality matching",
+      "meaning": "A matching with the largest possible number of edges."
+    },
+    {
+      "term": "Bipartite graph",
+      "meaning": "A graph whose vertices split into two sides with every edge crossing between them, so it has no odd cycles."
+    },
+    {
+      "term": "Almost-linear time",
+      "meaning": "Running time of the input size raised to 1 + o(1), where the extra exponent shrinks to zero."
+    },
+    {
+      "term": "Randomized algorithm",
+      "meaning": "An algorithm that flips coins and may fail with some small chance."
+    },
+    {
+      "term": "f-factor",
+      "meaning": "A set of edges giving each vertex exactly a prescribed number of links."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Edmonds, “Paths, Trees, and Flowers”, Canadian Journal of Mathematics 17 (1965), 449–467",
+      "url": "https://doi.org/10.4153/CJM-1965-045-4"
+    },
+    {
+      "id": 2,
+      "cite": "S. Micali and V. V. Vazirani, “An O(√|V| |E|) Algorithm for Finding Maximum Matching in General Graphs”, FOCS 1980, 17–27",
+      "url": "https://ics.uci.edu/~vazirani/MV.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "J. E. Hopcroft and R. M. Karp, “An n^{5/2} Algorithm for Maximum Matchings in Bipartite Graphs”, SIAM Journal on Computing 2(4) (1973), 225–231",
+      "url": "https://doi.org/10.1137/0202019"
+    },
+    {
+      "id": 4,
+      "cite": "L. Chen, R. Kyng, Y. P. Liu, R. Peng, M. Probst Gutenberg and S. Sachdeva, “Maximum Flow and Minimum-Cost Flow in Almost-Linear Time”, FOCS 2022, 612–623",
+      "url": "https://arxiv.org/abs/2203.00671v2"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, family 120: “Almost-Linear-Time Maximum-Cardinality Matching in General Graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Almost-Linear-Time-Maximum-Cardinality-Matching-in-Sparse-General-Graphs-September-24-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A matching is a set of edges with pairwise disjoint endpoints.",
+      "verdict": "supported",
+      "sourceLine": "A matching in a graph is a set of edges with pairwise disjoint endpoints.",
+      "sourceQuote": "A matching in a graph is a set of edges with pairwise disjoint endpoints."
+    },
+    {
+      "text": "Maximum-cardinality matching in a simple graph can be found by one randomized algorithm in (n+m)^{1+o(1)} time.",
+      "verdict": "supported",
+      "sourceLine": "We prove that maximum-cardinality matching in a simple undirected graph",
+      "sourceQuote": "We prove that maximum-cardinality matching in a simple undirected graph with $n$ vertices and $m$ edges can be found by one uniform randomized algorithm in $(n+m)^{1+o(1)}$ time."
+    },
+    {
+      "text": "Edmonds made the augmenting-path approach algorithmic in general graphs through blossom contraction and expansion.",
+      "verdict": "supported",
+      "sourceLine": "Edmonds made this approach algorithmic in general graphs through blossom contraction and expansion",
+      "sourceQuote": "Edmonds made this approach algorithmic in general graphs through blossom contraction and expansion~\\cite{EdmondsPaths}."
+    },
+    {
+      "text": "Vertex-degree inequalities alone allow value 1/2 on each edge of a triangle.",
+      "verdict": "supported",
+      "sourceLine": "vertex-degree inequalities alone allow, for example, value $1/2$ on each edge of a triangle",
+      "sourceQuote": "His matching-polytope theorem gives a complementary explanation of the odd-set constraints~\\cite{EdmondsPolytope}: vertex-degree inequalities alone allow, for example, value $1/2$ on each edge of a triangle."
+    },
+    {
+      "text": "Micali–Vazirani has running time O(m√n).",
+      "verdict": "supported",
+      "sourceLine": "The latter has running time",
+      "sourceQuote": "The latter has running time $O(m\\sqrt n)$ on a RAM; reading the explicit input and removing isolates gives the convenient universal bound $O(n+m\\sqrt n)$."
+    },
+    {
+      "text": "The matrix-multiplication bound is most competitive on dense graphs.",
+      "verdict": "supported",
+      "sourceLine": "Their matrix-multiplication bound is most competitive on dense graphs.",
+      "sourceQuote": "Their matrix-multiplication bound is most competitive on dense graphs."
+    },
+    {
+      "text": "Almost-linear exact flow algorithms yield almost-linear exact bipartite matching.",
+      "verdict": "supported",
+      "sourceLine": "then yield almost-linear exact bipartite matching",
+      "sourceQuote": "The almost-linear exact integral-flow algorithms of Chen et al.~\\cite{FlowRandomized} and van den Brand et al.~\\cite{FlowDeterministic} then yield almost-linear exact bipartite matching."
+    },
+    {
+      "text": "General graphs require additional control of odd blocks.",
+      "verdict": "supported",
+      "sourceLine": "General graphs require additional control of odd blocks.",
+      "sourceQuote": "General graphs require additional control of odd blocks."
+    },
+    {
+      "text": "The bound holds on every computation path.",
+      "verdict": "supported",
+      "sourceLine": "The bound holds on every computation path",
+      "sourceQuote": "The bound holds on every computation path in a logarithmic-word model, and the algorithm returns an explicit maximum matching with probability at least $2/3$."
+    },
+    {
+      "text": "The algorithm returns an explicit maximum matching with probability at least 2/3.",
+      "verdict": "supported",
+      "sourceLine": "the algorithm returns an explicit maximum matching with probability at least",
+      "sourceQuote": "The bound holds on every computation path in a logarithmic-word model, and the algorithm returns an explicit maximum matching with probability at least $2/3$."
+    },
+    {
+      "text": "The same guarantees hold for prescribed-degree spanning subgraphs.",
+      "verdict": "supported",
+      "sourceLine": "An explicit reduction gives the same time and probability guarantees for deciding whether a simple host graph has a spanning subgraph with prescribed valid vertex degrees",
+      "sourceQuote": "An explicit reduction gives the same time and probability guarantees for deciding whether a simple host graph has a spanning subgraph with prescribed valid vertex degrees, and for finding one when it exists."
+    },
+    {
+      "text": "The central subproblem is perfect matching in a graph of maximum degree three.",
+      "verdict": "supported",
+      "sourceLine": "The central subproblem is to find a perfect matching in a graph of maximum degree three.",
+      "sourceQuote": "The central subproblem is to find a perfect matching in a graph of maximum degree three."
+    },
+    {
+      "text": "The difficulty is to repair the representation without repeatedly scanning all odd blocks.",
+      "verdict": "supported",
+      "sourceLine": "The difficulty is to repair this representation after structural changes without repeatedly scanning all its odd blocks.",
+      "sourceQuote": "The difficulty is to repair this representation after structural changes without repeatedly scanning all its odd blocks."
+    },
+    {
+      "text": "Approximate minimum-ratio circulations have their antecedent in the almost-linear flow framework.",
+      "verdict": "supported",
+      "sourceLine": "has its modern antecedent in the almost-linear flow framework",
+      "sourceQuote": "The use of approximate minimum-ratio circulations as optimization directions has its modern antecedent in the almost-linear flow framework~\\cite{FlowRandomized,FlowDeterministic}."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
