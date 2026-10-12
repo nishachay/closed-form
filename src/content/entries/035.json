@@ -1,0 +1,209 @@
+{
+  "id": "035",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Log-abundance-in-numerical-dimension-one-for-threefolds-in-positive-characteristic-October-5-2026/paper.pdf",
+      "label": "Log abundance in numerical dimension one for threefolds in positive characteristic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Abundance-in-numerical-dimension-one-for-terminal-threefolds-in-positive-characteristic-September-24-2026/paper.pdf",
+      "label": "Abundance in numerical dimension one for terminal threefolds in positive characteristic"
+    }
+  ],
+  "headline": "In characteristic above 3, a nef log canonical threefold divisor of numerical dimension one is claimed to give a map.",
+  "scope": "It covers projective log canonical threefold pairs with rational boundary over algebraically closed fields of characteristic p > 3.",
+  "plain": "Abundance predicts that a certain positive divisor on a shape always comes from a map. Over the complex numbers, the threefold case was settled in the 1990s. In positive characteristic, one case stayed open: numerical dimension one. These papers claim that case for characteristic above 3, first for terminal threefolds, then for log canonical pairs. No computer has checked the proofs.",
+  "doesNot": "This does not cover characteristics 2 and 3, or numerical dimension zero.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Miyaoka, the complex case of numerical dimension one",
+    "field": "Algebraic and complex geometry",
+    "significance": "Solid",
+    "significanceWhy": "If the proofs hold, they close one remaining case of threefold abundance in characteristic above 3."
+  },
+  "explanation": "Take a line times a plane, the product of a projective line and a projective plane. A divisor on it is a surface inside it, counted with a multiplicity. Let L be the surface sitting above one point of the line. Let H be the sum of L and the surface above a line in the plane. Then L·H·H = 1 but L·L·H = 0, since two different copies of L never meet. A nef divisor with these two kinds of numbers has numerical dimension one. Here L comes from a map to the line, and its copies are the fibers.\n\nAbundance asks for such maps in general. On a shape X there is a special divisor, the canonical divisor K_X. Nef means it meets every curve with nonnegative degree. Abundance predicts that a nef canonical divisor is semiample[1]. That means some multiple of it is cut out by enough functions with prescribed poles to define a map with no base points. Semiampleness turns positive numbers into an actual map[2]. When the numerical dimension is one, the map goes to a curve. The log version adds a boundary B, a weighted sum of surfaces, and asks the same of K_X + B. Log canonical is the mildest class of singular pairs where this makes sense.\n\nOver the complex numbers, threefolds have been settled for decades. Miyaoka proved this case for minimal threefolds in 1988[3]. Kawamata gave another proof in 1992. Keel, Matsuki and McKernan proved log abundance for log canonical threefold pairs in 1994[4]. This family works in positive characteristic. That means arithmetic where some prime p counts as zero. With p = 5, adding 1 five times gives 0. Many tools from complex geometry fail in that world. Zheng Xu proved key cases for characteristic above 3. These include nonvanishing and the case of nef dimension at most two[5]. Nef dimension counts how many directions the divisor can see. Xu then proved the case of numerical dimension two[6]. One case stayed open: numerical dimension one with nef dimension three[7].\n\nThe companion paper treats terminal threefolds, which have the mildest singularities. It claims that if K_X is nef of numerical dimension one, then K_X is semiample. So it gives a map to a curve[13]. The danger it rules out is a divisor with the right numbers but only one section, which could never give a map[14].\n\nThe main paper claims the log case. For a projective log canonical threefold pair in characteristic above 3, a nef K_X + B of numerical dimension one is semiample[8]. The threefold X need not be terminal or Q-factorial, a technical tidiness condition[9]. The boundary coefficients can be any rationals that log canonicity allows.\n\nThe obstacle is the boundary. The companion's tool, a ban on a certain kind of curve-like divisor, speaks about the canonical bundle alone[10,11]. Near the log divisor, the boundary and the resolution's extra pieces get in the way. So the proof needs a relation for a power of the canonical bundle there[12]. It first shows each boundary piece either lies inside the divisor's support or misses it entirely. A bend-and-break argument with rational curves supplies that split. The forbidden divisor then appears, giving a contradiction.\n\nHow sure is this? No Lean formalization is listed for either paper. Both rest on the positive-characteristic minimal model program and many earlier results. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. The proof uses many recent positive-characteristic results, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Divisor",
+      "meaning": "A weighted sum of codimension-one pieces, such as surfaces inside a threefold."
+    },
+    {
+      "term": "Canonical divisor",
+      "meaning": "A divisor built from the top-degree forms on a shape."
+    },
+    {
+      "term": "Nef",
+      "meaning": "Meeting every curve with nonnegative degree."
+    },
+    {
+      "term": "Semiample",
+      "meaning": "Having a multiple cut out by enough functions to define a map with no base points."
+    },
+    {
+      "term": "Numerical dimension",
+      "meaning": "How many times a nef divisor can meet itself before the result vanishes."
+    },
+    {
+      "term": "Positive characteristic",
+      "meaning": "Arithmetic where a prime number p counts as zero."
+    },
+    {
+      "term": "Log canonical",
+      "meaning": "The mildest class of singular pairs of a shape and a boundary where these questions make sense."
+    },
+    {
+      "term": "Terminal",
+      "meaning": "A class of especially mild singularities."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "Y. Miyaoka, “Abundance conjecture for 3-folds: case ν=1”, Compositio Mathematica 68 (1988), 203–220",
+      "url": "https://www.numdam.org/item/CM_1988__68_2_203_0/"
+    },
+    {
+      "id": 2,
+      "cite": "Y. Kawamata, “Abundance theorem for minimal threefolds”, Inventiones Mathematicae 108 (1992), 229–246",
+      "url": "https://doi.org/10.1007/BF02100604"
+    },
+    {
+      "id": 3,
+      "cite": "S. Keel, K. Matsuki and J. McKernan, “Log abundance theorem for threefolds”, Duke Mathematical Journal 75 (1994), 99–119",
+      "url": "https://doi.org/10.1215/S0012-7094-94-07504-2"
+    },
+    {
+      "id": 4,
+      "cite": "Z. Xu, “Note on the three-dimensional log canonical abundance in characteristic >3”, Nagoya Mathematical Journal 255 (2024), 694–723",
+      "url": "https://doi.org/10.1017/nmj.2024.3"
+    },
+    {
+      "id": 5,
+      "cite": "Z. Xu, “Abundance for threefolds in positive characteristic when ν=2”, Compositio Mathematica 162 (2026), 2065–2099",
+      "url": "https://doi.org/10.1017/S0010437X26103406"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Abundance predicts a nef log canonical divisor is semiample.",
+      "verdict": "supported",
+      "sourceLine": "The abundance conjecture predicts that a nef log canonical divisor",
+      "sourceQuote": "The abundance conjecture predicts that a nef log canonical divisor $K_X+B$ on a projective log canonical pair is semiample: some positive Cartier multiple is generated by its global sections.",
+      "paper": 1
+    },
+    {
+      "text": "Semiampleness turns the numerical positivity of the divisor into a morphism.",
+      "verdict": "supported",
+      "sourceLine": "turns the numerical positivity of the divisor into a morphism.",
+      "sourceQuote": "Semiampleness turns the numerical positivity of the divisor into a morphism.",
+      "paper": 1
+    },
+    {
+      "text": "Miyaoka proved abundance for minimal threefolds of numerical dimension one over the complex numbers.",
+      "verdict": "supported",
+      "sourceLine": "Over the complex numbers, Miyaoka proved abundance for minimal",
+      "sourceQuote": "Over the complex numbers, Miyaoka proved abundance for minimal threefolds of numerical dimension one \\cite{Miyaoka}; Kawamata completed abundance for minimal threefolds and gave another proof of this case \\cite[Section~4]{Kawamata}.",
+      "paper": 1
+    },
+    {
+      "text": "Keel, Matsuki and McKernan established log abundance for log canonical threefold pairs.",
+      "verdict": "supported",
+      "sourceLine": "Keel, Matsuki, and McKernan established",
+      "sourceQuote": "Keel, Matsuki, and McKernan established log abundance for log canonical threefold pairs \\cite{KMM,KMMCorrection}.",
+      "paper": 1
+    },
+    {
+      "text": "Xu established nonvanishing in characteristic greater than three and abundance in nef dimension at most two.",
+      "verdict": "supported",
+      "sourceLine": "Zheng Xu established nonvanishing for pseudoeffective log",
+      "sourceQuote": "Zheng Xu established nonvanishing for pseudoeffective log canonical divisors on projective lc threefold pairs in characteristic greater than three, together with abundance in nef dimension at most two \\cite[Theorems~1.4 and~1.8]{XuNonvanishing}; he subsequently proved abundance in numerical dimension two \\cite[Theorem~1.1]{XuNuTwo}.",
+      "paper": 1
+    },
+    {
+      "text": "Xu proved abundance in numerical dimension two.",
+      "verdict": "supported",
+      "sourceLine": "he subsequently proved",
+      "sourceQuote": "Zheng Xu established nonvanishing for pseudoeffective log canonical divisors on projective lc threefold pairs in characteristic greater than three, together with abundance in nef dimension at most two \\cite[Theorems~1.4 and~1.8]{XuNonvanishing}; he subsequently proved abundance in numerical dimension two \\cite[Theorem~1.1]{XuNuTwo}.",
+      "paper": 1
+    },
+    {
+      "text": "The remaining case has numerical dimension one and nef dimension three.",
+      "verdict": "supported",
+      "sourceLine": "the remaining case has numerical dimension",
+      "sourceQuote": "For the present problem, the remaining case has numerical dimension one and nef dimension three.",
+      "paper": 1
+    },
+    {
+      "text": "The paper claims the numerical-dimension-one case of log abundance for threefolds in characteristic p > 3.",
+      "verdict": "supported",
+      "sourceLine": "We prove the numerical-dimension-one case of log abundance for threefolds",
+      "sourceQuote": "We prove the numerical-dimension-one case of log abundance for threefolds over algebraically closed fields of characteristic $p>3$.",
+      "paper": 1
+    },
+    {
+      "text": "Neither terminality nor Q-factoriality of X is required.",
+      "verdict": "supported",
+      "sourceLine": "Neither terminality nor $\\Q$-factoriality of $X$",
+      "sourceQuote": "Neither terminality nor $\\Q$-factoriality of $X$ is required.",
+      "paper": 1
+    },
+    {
+      "text": "The companion treats terminal threefolds with nef canonical divisor of numerical dimension one.",
+      "verdict": "supported",
+      "sourceLine": "treats terminal threefolds with",
+      "sourceQuote": "The companion paper \\cite{Companion} treats terminal threefolds with nef canonical divisor of numerical dimension one.",
+      "paper": 1
+    },
+    {
+      "text": "The companion's obstruction is an essential input to the proof.",
+      "verdict": "supported",
+      "sourceLine": "The companion's obstruction is an",
+      "sourceQuote": "The companion's obstruction is an essential input to the proof.",
+      "paper": 1
+    },
+    {
+      "text": "The main issue is a relation for a power of the canonical bundle near a component of the log canonical divisor.",
+      "verdict": "supported",
+      "sourceLine": "The main additional issue is to obtain a relation for a power of the",
+      "sourceQuote": "The main additional issue is to obtain a relation for a power of the canonical bundle near a component of this \\emph{log} canonical divisor.",
+      "paper": 1
+    },
+    {
+      "text": "The terminal theorem gives a morphism to a curve.",
+      "verdict": "supported",
+      "sourceLine": "Geometrically, the theorem gives a morphism",
+      "sourceQuote": "Geometrically, the theorem gives a morphism $f:X\\to C$ with connected fibers to a normal projective curve and an ample Cartier divisor $A$ on $C$ such that $mK_X\\sim f^*A$ for some $m>0$.",
+      "paper": 2
+    },
+    {
+      "text": "An effective canonical divisor of numerical dimension one could a priori have Kodaira dimension zero and maximal nef dimension.",
+      "verdict": "supported",
+      "sourceLine": "divisor of numerical dimension one could a priori still have Kodaira",
+      "sourceQuote": "His theorem for nef dimension at most two \\cite[Theorem~1.8]{xu2024} and his subsequent numerical-dimension-two abundance theorem \\cite[Theorem~1.1]{xu2026} leave a specific issue in the present setting: an effective canonical divisor of numerical dimension one could a priori still have Kodaira dimension zero and maximal nef dimension.",
+      "paper": 2
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}
