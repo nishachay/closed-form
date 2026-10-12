@@ -1,0 +1,162 @@
+{
+  "id": "327",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nontrivial-Markov-Type-Forces-Superreflexivity-September-23-2026/paper.pdf",
+      "label": "Nontrivial Markov Type Forces Superreflexivity"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/327.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that a Banach space with nontrivial Markov type is superreflexive, answering a question of Naor.",
+  "scope": "Every real Banach space with Markov type p for some p greater than 1.",
+  "plain": "Markov type measures how far a random walk can drift when its positions are mapped into a space of vectors. Superreflexivity means the space has an equivalent norm with round, uniformly curved balls. It was known that superreflexive spaces have nontrivial Markov type. This paper proves the converse for real Banach spaces, and Lean checks the result. So nontrivial Markov type and superreflexivity are the same property.",
+  "doesNot": "This does not cover general metric spaces. The theorem is stated for real Banach spaces only.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "Assaf Naor, who asked the question in his survey of the Ribe program",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It completes a metric characterization of superreflexivity that the Ribe program had left open, with a Lean check."
+  },
+  "explanation": "Flip a fair coin and step one unit left or right on the number line. After 100 steps, the average squared distance from the start is exactly 100. So a typical walker is only about 10 units away, not 100. Random walks in straight-line spaces drift like the square root of time.\n\nMarkov type turns this into a test for a space of vectors. A Banach space is a space of vectors with a norm, a rule for length, in which limits behave well. Take a Markov chain, a random walk on finitely many states that moves by fixed chances. Call it stationary and reversible if it looks the same run forward or backward. Map its states to vectors by any function f. Look at the p-th power of the distance moved, averaged over the walk. The space has Markov type p with constant K if, after t steps, this average is at most K^p times t times the one-step average. Keith Ball introduced this idea to study how maps extend between spaces[3].\n\nA Banach space is superreflexive if it has an equivalent norm that is uniformly convex. Uniformly convex means the midpoint of two far-apart unit vectors is clearly shorter than one. Bourgain showed earlier that such spaces are exactly those that cannot hold large binary trees with small distortion[4]. Naor, Peres, Schramm and Sheffield showed that suitably smooth norms give Markov type[5]. So every superreflexive space has nontrivial Markov type, meaning Markov type for some p above 1. Naor asked whether the converse holds[6]. One obstacle is that a weaker test fails. Rademacher type, which controls sums with random signs, does not force superreflexivity[7].\n\nThe paper proves the converse: every real Banach space with Markov type p for some p above 1 is superreflexive[1]. The proof argues by contradiction[8]. If the space is not superreflexive, it builds a special norm on finite lists of numbers. In that norm, adding neighbouring entries together never makes a list longer[9]. For each time n, it then builds a reversible walk whose steps all have length 1. With chance at least 3/20, the sum of its first n steps has length at least n/24[2]. The 3/20 comes from 1/4 minus 1/10. The walk reaches a reduced length of at least n/4 with chance at least 1/4. It fails a technical condition with chance at most 1/10[10]. Then dividing n/4 by 6 gives n/24.\n\nHere is why that breaks Markov type 2. The average squared length after n steps is at least 3/20 times (n/24) squared. For n = 384,000, n/24 is 16,000. Then 3/20 times 16,000 squared is 38,400,000, which is 100 times n. Markov type 2 says, roughly, that this average stays below K squared times n. Here K squared would have to be at least n divided by 3,840. As n grows, no fixed K works.\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the full result. It says nontrivial Markov type holds exactly when the space has an equivalent uniformly convex norm. So the paper proves this, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "Major and Lean-checked. It settles Naor's question for real Banach spaces, not for general metric spaces. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Banach space",
+      "meaning": "A space of vectors with a length rule, called a norm, in which limits of sequences behave well."
+    },
+    {
+      "term": "Norm",
+      "meaning": "A rule that gives each vector a length, with the usual triangle rule."
+    },
+    {
+      "term": "Markov chain",
+      "meaning": "A random walk on a set of states where each move depends only on the current state."
+    },
+    {
+      "term": "Stationary and reversible",
+      "meaning": "A chain whose statistics stay the same over time and look the same run backward."
+    },
+    {
+      "term": "Markov type",
+      "meaning": "A bound saying a walk mapped into the space drifts no faster than a fixed power law in time."
+    },
+    {
+      "term": "Uniformly convex",
+      "meaning": "A norm where the midpoint of two far-apart unit vectors is shorter than 1 by a fixed margin."
+    },
+    {
+      "term": "Superreflexive",
+      "meaning": "A Banach space that has an equivalent uniformly convex norm."
+    },
+    {
+      "term": "Rademacher type",
+      "meaning": "A bound on the length of sums of vectors with independent random plus or minus signs."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Nontrivial Markov Type Forces Superreflexivity” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nontrivial-Markov-Type-Forces-Superreflexivity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 327",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/327.md",
+      "quote": "The formalized result proves that a real Banach space has nontrivial Markov type exactly when it admits an equivalent uniformly convex norm, hence exactly when it is superreflexive."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every real Banach space with Markov type p for some p greater than 1 is superreflexive.",
+      "sourceLine": "Every real Banach space with Markov type $p$ for at least one $p>1$",
+      "sourceQuote": "Every real Banach space with Markov type $p$ for at least one $p>1$ is superreflexive.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For each time n the paper builds a reversible walk with unit edge labels whose sum has norm at least n/24 with probability at least 3/20.",
+      "sourceLine": "least $n/24$ with probability at least $3/20$. Before normalization,",
+      "sourceQuote": "For each time $n$, the central task is a finite reversible walk with unit edge labels, changing sign under reversal, whose sum has norm at least $n/24$ with probability at least $3/20$. Before normalization, the labels are sums of signed differences of standard basis vectors in finite coefficient sequences.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ball introduced Markov type to study Lipschitz extension.",
+      "sourceLine": "Ball introduced Markov type to study Lipschitz extension from metric",
+      "sourceQuote": "Ball introduced Markov type to study Lipschitz extension from metric spaces \\cite{Ball}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Bourgain characterized superreflexivity by the distortion of finite complete binary trees.",
+      "sourceLine": "Bourgain characterized it by the distortion of finite complete binary trees",
+      "sourceQuote": "Bourgain characterized it by the distortion of finite complete binary trees \\cite{Bourgain}; finite diamonds provide another metric test \\cite{JohnsonSchechtman}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Naor, Peres, Schramm and Sheffield showed that uniform smoothness of power type p implies Markov type p.",
+      "sourceLine": "Naor, Peres, Schramm, and Sheffield showed that uniform smoothness of",
+      "sourceQuote": "Naor, Peres, Schramm, and Sheffield showed that uniform smoothness of power type $p$ implies Markov type $p$ for $1<p\\leq2$ \\cite{NPSS}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Naor asked whether a Banach space could have nontrivial Markov type without an equivalent uniformly smooth norm.",
+      "sourceLine": "invariant under equivalent norms. Naor asked whether a Banach space",
+      "sourceQuote": "Pisier's power-type renorming theorem \\cite{Pisier} therefore gives nontrivial Markov type to every superreflexive space; Markov type is invariant under equivalent norms. Naor asked whether a Banach space could have nontrivial Markov type without an equivalent uniformly smooth norm \\cite[Question~4]{Naor}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Rademacher type does not suffice: James constructed nonreflexive spaces of Rademacher type 2.",
+      "sourceLine": "signs, does not suffice for this conclusion: James constructed",
+      "sourceQuote": "Ordinary Rademacher type, which controls sums with independent random signs, does not suffice for this conclusion: James constructed nonreflexive spaces of Rademacher type $2$ \\cite{JamesType2}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof argues by contradiction.",
+      "sourceLine": "We argue by contradiction.",
+      "sourceQuote": "We argue by contradiction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The constructed spreading norm makes summing consecutive entries contractive.",
+      "sourceLine": "finite sequences for which summing consecutive entries is contractive.",
+      "sourceQuote": "From it we construct a spreading norm $N$ on finite sequences for which summing consecutive entries is contractive.",
+      "verdict": "supported"
+    },
+    {
+      "text": "With probability at least 1/4 - 1/10 = 3/20 all steps are good and the reduced length is at least n/4.",
+      "sourceLine": "With probability at least $1/4-1/10=3/20$, all steps are good and",
+      "sourceQuote": "With probability at least $1/4-1/10=3/20$, all steps are good and $\\ell\\geq n/4$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes that a real Banach space has nontrivial Markov type exactly when it is superreflexive.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
