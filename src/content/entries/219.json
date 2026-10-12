@@ -1,0 +1,186 @@
+{
+  "id": "219",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fixed-energy-universality-for-weak-Anderson-disorder-on-random-regular-graphs-October-5-2026/fixed-energy-universality-weak-anderson-disorder-random-regular-graphs.pdf",
+      "label": "Fixed-energy universality for weak Anderson disorder on random regular graphs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/GOE-bulk-universality-for-fixed-degree-random-regular-graphs-September-23-2026/paper.pdf",
+      "label": "GOE bulk universality for fixed-degree random regular graphs"
+    }
+  ],
+  "headline": "Eigenvalue spacings of random regular graphs, even with weak random potentials, match those of Gaussian random matrices.",
+  "scope": "Uniform random d-regular graphs with d at least 3 fixed, at a fixed energy strictly inside the spectrum; disorder only weak and uniform.",
+  "plain": "A regular graph is a network where every node has the same number of links. Its adjacency matrix has eigenvalues, special numbers that describe the network. Physicists predicted that nearby eigenvalues are spaced like those of a Gaussian random matrix. These two papers claim to prove this for every fixed degree from 3 up, and with weak random potentials added. No computer proof checker has checked them.",
+  "doesNot": "This does not cover the spectral edges, strong disorder, or disorder that depends on the graph size.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1999",
+    "firstStepBy": "Jakobson, Miller, Rivin and Rudnick, the GOE prediction with numerical evidence",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it settles the fixed-degree bulk universality conjecture, including cubic graphs."
+  },
+  "explanation": "Take a network of n points where every point has exactly 3 links. Choose it uniformly at random among all such networks. Write its adjacency matrix: a table with a 1 wherever two points are linked. Each row then has exactly three 1s, so the table is almost empty[1]. The matrix has n eigenvalues, special numbers that summarise how things spread over the network.\n\nFor large n, the eigenvalues fill the interval from −2√2 to 2√2, about −2.83 to 2.83. Their density follows the Kesten–McKay formula[2]. At the centre, with degree 3, that density is about 0.150. So with a thousand points, neighbouring eigenvalues near zero sit about 0.0067 apart on average. The density gives counts on big intervals. It says nothing about the exact spacings between neighbours[3].\n\nThe prediction concerns those spacings. Zoom in so the average gap is 1. Physicists expected the gaps to look like those of the Gaussian orthogonal ensemble, or GOE. That is a dense symmetric matrix filled with independent bell-curve numbers. Its eigenvalues repel each other, so very small gaps are rare. Jakobson, Miller, Rivin and Rudnick stated the prediction for fixed degree and gave numerical evidence[4]. The striking part is the mismatch in structure. The sparse network looks locally like a tree, yet its spacings should match a dense random matrix[5].\n\nEarlier proofs needed the degree to grow. In 2026, Bourgade and Huang proved fixed-energy universality when the degree lies between (log n) to the 24th power and the square root of n[6]. Picture a million points. Then (log n)^24 is about 2.3 × 10^27, while the square root of n is only 1000. So at that size the range, read literally, is empty. They stated the fixed-degree case as a conjecture.\n\nThe first paper here claims to prove that conjecture for every fixed degree from 3 up[7]. It covers each fixed energy strictly inside the spectrum. It identifies the full pattern of nearby eigenvalues, not just one average[8]. No condition such as connectedness is placed on the graph.\n\nThe obstacle is that a sparse graph gives little randomness per row. The proof studies eigenvectors, the patterns that go with each eigenvalue. It shows their values at the two ends of a random link behave like Gaussian pairs, to high accuracy[9]. It then uses link swaps, which keep the graph regular, to insert a small Gaussian matrix. A known theorem about Dyson's matrix motion finishes the comparison.\n\nThe second paper adds disorder. Each point gets an independent random potential, uniform between −w and w, added on the diagonal[10]. This is the Anderson model, a basic model of how randomness can trap electrons. The paper claims the same GOE spacings when w is positive, small and fixed[11]. The allowed size of w depends on the degree and on the distance from the band edges[12]. The eigenvalues are rescaled by the density of states of the matching infinite tree.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Major if both papers hold. They settle a stated conjecture for fixed degree, but no Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Regular graph",
+      "meaning": "A network in which every point has the same number of links, called the degree."
+    },
+    {
+      "term": "Adjacency matrix",
+      "meaning": "A table with a 1 where two points are linked and a 0 elsewhere."
+    },
+    {
+      "term": "Eigenvalue",
+      "meaning": "A special number attached to a matrix; together they summarise how the matrix acts."
+    },
+    {
+      "term": "GOE",
+      "meaning": "Gaussian orthogonal ensemble: a symmetric matrix of independent bell-curve entries, the reference for eigenvalue spacings."
+    },
+    {
+      "term": "Bulk universality",
+      "meaning": "The claim that eigenvalue spacings inside the spectrum match the GOE pattern, whatever the matrix's details."
+    },
+    {
+      "term": "Kesten–McKay density",
+      "meaning": "The formula for how densely the eigenvalues of a large random regular graph fill their interval."
+    },
+    {
+      "term": "Anderson model",
+      "meaning": "A model where each point gets an independent random potential, used to study how disorder traps waves."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Fixed-energy universality for weak Anderson disorder on random regular graphs” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fixed-energy-universality-for-weak-Anderson-disorder-on-random-regular-graphs-October-5-2026/fixed-energy-universality-weak-anderson-disorder-random-regular-graphs.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “GOE bulk universality for fixed-degree random regular graphs” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/GOE-bulk-universality-for-fixed-degree-random-regular-graphs-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "D. Jakobson, S. D. Miller, I. Rivin and Z. Rudnick, “Eigenvalue spacings for regular graphs”, in Emerging Applications of Number Theory, IMA Vol. 109, Springer (1999), 317–327",
+      "url": "https://doi.org/10.1007/978-1-4612-1544-8_12"
+    },
+    {
+      "id": 5,
+      "cite": "P. Bourgade and J. Huang, “Loop equations characterize random matrix statistics”, arXiv:2607.07617 (2026)",
+      "url": "https://arxiv.org/abs/2607.07617v2"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Each row of a random regular graph's adjacency matrix has exactly d nonzero entries.",
+      "sourceLine": "each row of its adjacency matrix has exactly \\(d\\) nonzero entries.",
+      "sourceQuote": "A random regular graph is sparse even when its order tends to infinity: each row of its adjacency matrix has exactly \\(d\\) nonzero entries.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The limiting density is the Kesten–McKay density.",
+      "sourceLine": "The limiting density is the Kesten--McKay density",
+      "sourceQuote": "The limiting density is the Kesten--McKay density \\[ \\rho_d(t)=\\frac{d\\sqrt{4(d-1)-t^2}}{2\\pi(d^2-t^2)} \\qquad \\bigl(|t|<2\\sqrt{d-1}\\bigr). \\]",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The density describes macroscopic counts but not spacings.",
+      "sourceLine": "It describes eigenvalue counts on macroscopic intervals, but does not determine the spacings between consecutive eigenvalues.",
+      "sourceQuote": "It describes eigenvalue counts on macroscopic intervals, but does not determine the spacings between consecutive eigenvalues.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Jakobson, Miller, Rivin and Rudnick formulated the GOE prediction and gave numerical evidence.",
+      "sourceLine": "formulated the GOE prediction for fixed-degree regular graphs and gave numerical evidence for it.",
+      "sourceQuote": "Jakobson, Miller, Rivin, and Rudnick \\cite[Sections~1 and~5]{JakobsonEtAl} formulated the GOE prediction for fixed-degree regular graphs and gave numerical evidence for it.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Local tree geometry persists while statistics should match a dense Gaussian matrix.",
+      "sourceLine": "local tree geometry persists, whereas the proposed eigenvalue statistics agree with those of a dense Gaussian matrix.",
+      "sourceQuote": "The prediction is particularly striking at fixed degree: local tree geometry persists, whereas the proposed eigenvalue statistics agree with those of a dense Gaussian matrix.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Bourgade and Huang obtained fixed-energy universality for (log n)^24 << d <= n^(1/2) and stated the fixed-degree conjecture.",
+      "sourceLine": "obtained fixed-energy point-process universality for \\((\\log n)^{24}\\ll d\\le n^{1/2}\\) by loop equations, and stated the remaining fixed-degree problem in their Conjecture 2.11.",
+      "sourceQuote": "More recently, Bourgade and Huang \\cite[Proposition 2.10]{BourgadeHuang} obtained fixed-energy point-process universality for \\((\\log n)^{24}\\ll d\\le n^{1/2}\\) by loop equations, and stated the remaining fixed-degree problem in their Conjecture 2.11.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the GOE prediction for every fixed degree d >= 3 at each fixed bulk energy.",
+      "sourceLine": "We prove this prediction for every fixed degree \\(d\\ge3\\), at each fixed energy in the interior of the limiting spectrum.",
+      "sourceQuote": "We prove this prediction for every fixed degree \\(d\\ge3\\), at each fixed energy in the interior of the limiting spectrum.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem identifies the full local point-process limit.",
+      "sourceLine": "identifies the full local point-process limit, not only its one-point density or an energy-averaged statistic.",
+      "sourceQuote": "Thus Theorem~\\ref{thm:main} identifies the full local point-process limit, not only its one-point density or an energy-averaged statistic.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Joint moments of eigenvector values at edge endpoints are polynomially close to Gaussian moments.",
+      "sourceLine": "every fixed joint moment of these sampled values is polynomially close to the corresponding Gaussian moment,",
+      "sourceQuote": "The first part of the proof shows that, for any fixed number of eigenvectors near \\(E\\), every fixed joint moment of these sampled values is polynomially close to the corresponding Gaussian moment, with probability tending to one over the graph.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The disorder is independent uniform on [-1,1], scaled by w and added on the diagonal.",
+      "sourceLine": "Let $(\\omega_v)_{v=1}^n$ be independent uniform random variables on $[-1,1]$, independent of the graph.",
+      "sourceQuote": "Let $(\\omega_v)_{v=1}^n$ be independent uniform random variables on $[-1,1]$, independent of the graph.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The result holds for sufficiently weak positive disorder fixed as the graph grows.",
+      "sourceLine": "The present paper answers this question in the clean bulk for sufficiently weak positive disorder that remains fixed as the graph grows.",
+      "sourceQuote": "The present paper answers this question in the clean bulk for sufficiently weak positive disorder that remains fixed as the graph grows.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The permitted disorder strength depends on the degree and the distance from the clean spectral edges.",
+      "sourceLine": "The permitted disorder strength depends on the degree and the distance from the clean spectral edges.",
+      "sourceQuote": "The permitted disorder strength depends on the degree and the distance from the clean spectral edges.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
