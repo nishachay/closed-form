@@ -1,0 +1,230 @@
+{
+  "id": "176",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-second-Kahn-Kalai-conjecture-September-24-2026/paper.pdf",
+      "label": "The second Kahn–Kalai conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/176.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A random graph contains a target graph soon after simple expected counts say it could, up to a log factor.",
+  "scope": "The result covers every finite simple target graph with at least one edge. The loss factor grows with the logarithm of the target's edge count, and the constants are very large.",
+  "plain": "A random graph keeps each possible link with some probability p. Kahn and Kalai conjectured that simple expected counts predict when it first contains a given graph, within a log factor. This paper proves that conjecture for every target graph. The loss is a fixed constant times one plus the base-2 log of the number of target links.",
+  "doesNot": "This does not give the exact threshold, and its constants are far too large for small graphs.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2007",
+    "firstStepBy": "Jeff Kahn and Gil Kalai, who posed the conjecture",
+    "significance": "Major",
+    "significanceWhy": "It settles the second Kahn–Kalai conjecture, a central question about thresholds in random graphs.",
+    "field": "Combinatorics"
+  },
+  "visual": {
+    "type": "record",
+    "title": "Power of the logarithm in the best general loss factor",
+    "note": "Lower is better. The conjecture asks for power 1. Tran's bound is in terms of the edge count.",
+    "lowerIsBetter": true,
+    "points": [
+      {
+        "year": 2025,
+        "value": 3,
+        "who": "Dubroff, Kahn and Park",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 2,
+        "who": "Tran",
+        "source": 4
+      },
+      {
+        "year": 2026,
+        "value": 1,
+        "who": "This paper",
+        "claim": true,
+        "source": 5
+      }
+    ]
+  },
+  "explanation": "Take four points and allow a link between every pair, six possible links in all. Keep each link with probability p, independently, like a biased coin flip. The result is a random graph. Now ask a question: does it contain a perfect matching? That means two links that share no point, so together they touch all four points. Four points allow exactly three such pairs of links. Checking all 64 possible graphs gives the exact answer. The chance of a perfect matching reaches one half at p of about 0.454.\n\nThere is a cheap way to guess that number without the full check. Count expected copies of the target and of each of its parts. The expected number of perfect matchings is 3p², and the expected number of single links is 6p. The graph expectation threshold is the smallest p where every part has an expected count of at least one half. Here 3p² equals one half at p of about 0.408, and that is the binding part. The true answer, 0.454, is only about 11 percent higher.\n\nThe guess can never be too high[2]. If the target appears half the time, so does each of its parts. So each part's expected count is at least one half. Jeff Kahn and Gil Kalai conjectured in 2007 that the guess is never far too low either[1]. They allowed a loss of one logarithmic factor, the same for every target graph. A logarithm grows very slowly: log base 2 of a million is about 20. This is the second Kahn–Kalai conjecture.\n\nSome loss is unavoidable. Take a perfect matching on n points, with n large. Expected counts suggest that p near 1/n is enough. The true threshold is near (log n)/n[5]. The extra factor is needed so that no point is left without links, since a matching must cover every point[6]. Round trips through every point, called Hamilton cycles, show the same gap[7].\n\nThe problem has a sister version. It measures cost with any covering family of small sets, not only copies of the target's own parts. Park and Pham proved that abstract version in 2024[8]. But its threshold can sit above the graph guess, so it does not settle the graph question[9]. In 2025, Dubroff, Kahn and Park reached a loss of the cube of log n[10]. In 2026, Tran cut the general loss to a squared logarithm[11]. He also proved the conjecture for trees and some other classes[12].\n\nThis paper proves the conjecture for every graph with at least one edge[3]. The loss is a fixed constant times 1 + log₂ h, where h is the number of links in the target. Since h is less than n², this also gives a constant times log₂ n. The constants are written out, and they do not depend on the target[4]. They are very large, about 2048 times e⁵⁰, so the bound is only about how the loss grows.\n\nThe obstacle was that losses piled up. Earlier proofs grew the target in stages and paid a logarithmic sampling cost at each stage. Tran suggested a coupling that would pay that cost only once[13]. The paper takes a different route. It keeps every possible history of growth steps in one tree. Then it trims every level of the tree with the same random set of links[14]. Because the pieces added along any one history never overlap, the reuse stays under control. Only logarithmically many successful rounds are needed[15].\n\nBack in the four-point example, the bound is far above 1, so it says nothing there. Its force is for large targets. For a perfect matching on a million points, the target has 500,000 links. Then 1 + log₂ h is about 20. The true threshold is at most a fixed constant times 20 times the cheap guess.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both bounds. They cover every graph with at least one edge and at most n points, using the actual thresholds. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean has checked formal versions of both bounds. The constants are very large, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Random graph",
+      "meaning": "A graph on n points where each possible link is kept independently with probability p."
+    },
+    {
+      "term": "Perfect matching",
+      "meaning": "A set of links that share no points and together touch every point."
+    },
+    {
+      "term": "Containment threshold",
+      "meaning": "The smallest p at which the random graph contains the target with probability at least one half."
+    },
+    {
+      "term": "Graph expectation threshold",
+      "meaning": "The smallest p at which every part of the target has expected count at least one half."
+    },
+    {
+      "term": "Logarithm",
+      "meaning": "How many times you multiply a base by itself to reach a number; log base 2 of 1,024 is 10."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Kahn and G. Kalai, “Thresholds and expectation thresholds”, Combinatorics, Probability and Computing 16(3) (2007), 495–502, arXiv:math/0603218",
+      "url": "https://arxiv.org/abs/math/0603218"
+    },
+    {
+      "id": 2,
+      "cite": "J. Park and H. T. Pham, “A proof of the Kahn–Kalai conjecture”, Journal of the American Mathematical Society 37(1) (2024), 235–243, arXiv:2203.17207",
+      "url": "https://arxiv.org/abs/2203.17207"
+    },
+    {
+      "id": 3,
+      "cite": "Q. Dubroff, J. Kahn and J. Park, “On the “second” Kahn–Kalai conjecture”, arXiv:2508.14269 (2025)",
+      "url": "https://arxiv.org/abs/2508.14269v1"
+    },
+    {
+      "id": 4,
+      "cite": "T. Tran, “Fractional expectation thresholds and the “second” Kahn–Kalai conjecture”, arXiv:2609.20546 (2026)",
+      "url": "https://arxiv.org/abs/2609.20546v2"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “The second Kahn–Kalai conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-second-Kahn-Kalai-conjecture-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 176 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/176.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Kahn and Kalai conjectured that the subgraph-count obstruction determines the containment threshold within a logarithmic factor.",
+      "verdict": "supported",
+      "sourceLine": "that this elementary obstruction determines the containment threshold",
+      "sourceQuote": "Kahn and Kalai~\\cite{KK07} conjectured that this elementary obstruction determines the containment threshold within a logarithmic factor, uniformly over the target graph."
+    },
+    {
+      "text": "The graph expectation threshold is at most the containment threshold.",
+      "verdict": "supported",
+      "sourceLine": "its expected count is at least one half. Thus $\\pE(n,H)\\le\\pc(n,H)$.",
+      "sourceQuote": "If $H$ appears with probability at least one half, then so does every $F\\subseteq H$, and its expected count is at least one half. Thus $\\pE(n,H)\\le\\pc(n,H)$."
+    },
+    {
+      "text": "The paper proves the conjecture, with the logarithm depending on the number of target edges.",
+      "verdict": "supported",
+      "sourceLine": "this conjecture, with the logarithm depending on the number of target",
+      "sourceQuote": "We prove this conjecture, with the logarithm depending on the number of target edges."
+    },
+    {
+      "text": "The constants are explicit and universal, and the graph H may vary with n.",
+      "verdict": "supported",
+      "sourceLine": "explicit and universal; the graph $H$ may vary with $n$.",
+      "sourceQuote": "The constants are explicit and universal; the graph $H$ may vary with $n$."
+    },
+    {
+      "text": "For a perfect matching, the expectation threshold is of order 1/n while the containment threshold is of order log n / n.",
+      "verdict": "supported",
+      "sourceLine": "vertices. Then $\\pE(n,H)=\\Theta(1/n)$, whereas",
+      "sourceQuote": "For example, let $H$ be a perfect matching on an even number $n$ of vertices. Then $\\pE(n,H)=\\Theta(1/n)$, whereas $\\pc(n,H)=\\Theta(\\log n/n)$~\\cite{ER66,KK07}."
+    },
+    {
+      "text": "The larger scale is needed to remove isolated vertices, since a perfect matching covers every vertex.",
+      "verdict": "supported",
+      "sourceLine": "The larger scale is needed to eliminate isolated vertices of the host:",
+      "sourceQuote": "The larger scale is needed to eliminate isolated vertices of the host: a perfect matching must cover every vertex."
+    },
+    {
+      "text": "Hamilton cycles show the same logarithmic gap.",
+      "verdict": "supported",
+      "sourceLine": "a perfect matching must cover every vertex. Hamilton cycles exhibit",
+      "sourceQuote": "The larger scale is needed to eliminate isolated vertices of the host: a perfect matching must cover every vertex. Hamilton cycles exhibit the same logarithmic gap~\\cite{KK07}."
+    },
+    {
+      "text": "Park and Pham resolved the abstract Kahn–Kalai conjecture.",
+      "verdict": "supported",
+      "sourceLine": "bound with $q$ in place of $q_f$, resolving the abstract Kahn--Kalai",
+      "sourceQuote": "Park and Pham~\\cite{PP24} proved the corresponding bound with $q$ in place of $q_f$, resolving the abstract Kahn--Kalai conjecture by a minimum-fragment argument."
+    },
+    {
+      "text": "The abstract theorem alone does not give the bound in terms of the graph expectation threshold.",
+      "verdict": "supported",
+      "sourceLine": "$\\pE(n,H)\\le q(\\mathcal F_H)$, and the abstract theorem alone does",
+      "sourceQuote": "Thus $\\pE(n,H)\\le q(\\mathcal F_H)$, and the abstract theorem alone does not give the desired bound in terms of $\\pE(n,H)$."
+    },
+    {
+      "text": "Dubroff, Kahn and Park proved a containment bound with a log-cubed loss.",
+      "verdict": "supported",
+      "sourceLine": "$\\pc(n,H)=O(\\pE(n,H)\\log^3 n)$, using a rooted-extension",
+      "sourceQuote": "Dubroff, Kahn, and Park~\\cite[Theorems~1.2--1.5]{DKP25} proved $q_f(\\mathcal F_H)=O(\\pE(n,H)\\log^2 n)$ and hence $\\pc(n,H)=O(\\pE(n,H)\\log^3 n)$, using a rooted-extension decomposition."
+    },
+    {
+      "text": "Tran reduced the general containment loss to the square of a logarithm.",
+      "verdict": "supported",
+      "sourceLine": "containment loss to $O(\\log^2(2e(H)))$. He removed the loss in the",
+      "sourceQuote": "Tran~\\cite{Tran26} then obtained $q_f(\\mathcal F_H)=O(\\pE(n,H)\\log(2e(H)))$, reducing the general containment loss to $O(\\log^2(2e(H)))$. He removed the loss in the comparison of expectation thresholds for trees and for graphs whose average degree is at least the logarithm of their maximum degree, thereby proving the second conjecture for these classes."
+    },
+    {
+      "text": "Tran proved the second conjecture for trees and some other classes.",
+      "verdict": "supported",
+      "sourceLine": "thereby proving the second conjecture for these classes.",
+      "sourceQuote": "He removed the loss in the comparison of expectation thresholds for trees and for graphs whose average degree is at least the logarithm of their maximum degree, thereby proving the second conjecture for these classes."
+    },
+    {
+      "text": "Tran proposed a coupling that would pay the logarithmic sampling cost once.",
+      "verdict": "supported",
+      "sourceLine": "that would absorb successive conditional extensions while paying the",
+      "sourceQuote": "Tran~\\cite[Section~4]{Tran26} also proposed a coupling conjecture that would absorb successive conditional extensions while paying the logarithmic sampling cost once."
+    },
+    {
+      "text": "The proof keeps all extension histories in a tree and reduces every level with the same random set.",
+      "verdict": "supported",
+      "sourceLine": "in a tree and reduce every level with the same random set. Disjointness along a",
+      "sourceQuote": "We prove the required containment bound through a tree reduction: we keep all possible extension histories in a tree and reduce every level with the same random set. Disjointness along a history supplies the precise control of dependence that this reuse requires."
+    },
+    {
+      "text": "Iteration needs only logarithmically many successful draws.",
+      "verdict": "supported",
+      "sourceLine": "only logarithmically many successful draws. Finally,",
+      "sourceQuote": "Iteration needs only logarithmically many successful draws. Finally, Section~\\ref{sec:graphs} constructs the graph hierarchy, with the ordinary-copy normalization explicit, and applies the tree covering theorem."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes the bound with factor 1 + log2 h, and hence log2 n, using the actual thresholds.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
