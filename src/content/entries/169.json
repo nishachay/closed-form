@@ -1,0 +1,215 @@
+{
+  "id": "169",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Elementary-Positivity-of-Chromatic-Quasisymmetric-Functions-September-24-2026/paper.pdf",
+      "label": "Elementary positivity of chromatic quasisymmetric functions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/169.md",
+      "label": "Lean scope doc",
+      "note": "The scope doc says the formalization proves elementary positivity over ℕ[q] and links 1 Comparator challenge."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/ElementaryPositivity.json",
+      "label": "Comparator challenge ElementaryPositivity.json",
+      "note": "Names 1 definition: OAI.elementaryPositivityWitness."
+    }
+  ],
+  "headline": "A coloring count with an extra q-weight always splits into elementary pieces with nonnegative coefficients.",
+  "scope": "The result covers every natural unit interval graph, a family of graphs built from overlapping runs of consecutive vertices. It does not address the companion unimodality conjecture.",
+  "plain": "Count the ways to color a graph so that linked vertices differ. Weight each coloring by q raised to its number of rising edges. Shareshian and Wachs conjectured that, for natural unit interval graphs, this weighted count splits into elementary pieces with never-negative whole-number coefficients. This paper proves it, with each coefficient counting an explicit set of permutations.",
+  "doesNot": "This does not prove the elementary unimodality part of the Shareshian–Wachs conjecture.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1993",
+    "firstStepBy": "Richard Stanley and John Stembridge, the q = 1 conjecture",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles the positivity part of a well-known refined conjecture, and gives each coefficient a counting meaning."
+  },
+  "explanation": "Take three vertices in a row, labeled 1, 2 and 3, with links 1–2 and 2–3. Color each vertex red, green or blue, so linked vertices never match. Such a coloring is called proper, and there are 12 of them. Rank the colors red < green < blue.\n\nNow tag each coloring by its rising edges. An edge rises when its lower-numbered vertex gets the lower color. Coloring 1, 2, 3 red, green, blue makes both edges rise. Blue, green, red makes neither rise. The other ten colorings each have exactly one rising edge. Give each coloring the weight q raised to its number of rising edges. The 12 weights add up to 1 + 10q + q².\n\nAllow any number of colors, and keep track of which colors are used. The result is the chromatic quasisymmetric function of the graph. With q set to 1, it is Stanley's chromatic symmetric function from 1995, which refines the usual count of colorings[9].\n\nFormulas like this can be rewritten in elementary pieces. The piece e_k adds up all products of k different color variables. For the three-vertex path, the paper's expansion is q·e₂e₁ + (1 + q + q²)·e₃[3]. Check it with three colors. Then e₂e₁ counts 3 × 3 = 9 and e₃ counts 1. So the total is 9q + 1 + q + q², which is the 1 + 10q + q² found above. Every coefficient here is a polynomial in q with nonnegative whole-number coefficients. That property is called elementary positivity over ℕ[q].\n\nShareshian and Wachs proved that this function is symmetric for natural unit interval graphs[2]. In such a graph, vertex i links to a run of the next few vertices, and these runs never shrink as i grows. They conjectured that every such graph is elementary-positive over ℕ[q][2]. The q = 1 version is the older Stanley–Stembridge conjecture from 1993[10]. Hikita proved that q = 1 version in 2024. His formula gives positive values for every positive real q, but not whole-number coefficients[12]. Griffin, Mellit, Romero, Weigl and Wen gave an independent proof of the q = 1 version[13]. Earlier formulas did not give a nonnegative coefficient for each separate elementary piece[14].\n\nThis paper proves the refined conjecture for every natural unit interval graph[1]. It also says what each coefficient counts. Take permutations of the vertex labels where any drop between neighbors in the list is a linked pair. Weight each by q raised to its number of out-of-order linked pairs[4]. A step-by-step procedure then sends each such permutation to one elementary piece. For the three-vertex path, the permitted lists are 123, 132, 213 and 321, with weights 1, q, q and q². One of the two q lists goes to e₂e₁ and the other three go to e₃[5]. Setting q to 1 recovers the Stanley–Stembridge theorem[11].\n\nThe single hard part is subtraction. Counting colorings gives nonnegative numbers, but rewriting in elementary pieces can introduce minus signs[8]. The paper first matches each coefficient with an algebraic object known to be positive. It then turns those algebraic identities into explicit one-to-one matchings of finite sets[15]. The procedure always finishes, but its running time may be large[7]. The paper makes no claim about unimodality, the second half of the conjecture[6].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the elementary expansion over ℕ[q]. It covers every finite number of color variables, with each permutation weighted as above. No specialist review of the paper has been published.",
+  "hypeCheck": "Major. Lean checks a formal version of the elementary expansion over ℕ[q]. The paper leaves the unimodality part open, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Proper coloring",
+      "meaning": "A way to give each vertex a color so that no two linked vertices share one."
+    },
+    {
+      "term": "Natural unit interval graph",
+      "meaning": "A graph on vertices 1 to n where each vertex links to a run of the next few vertices, and these runs never shrink as you move right."
+    },
+    {
+      "term": "Chromatic quasisymmetric function",
+      "meaning": "A formula that lists every proper coloring and tags it with q raised to its number of rising edges."
+    },
+    {
+      "term": "Elementary symmetric function",
+      "meaning": "The sum of all products of k different variables, written e_k."
+    },
+    {
+      "term": "Elementary-positive",
+      "meaning": "Writable as a sum of products of elementary symmetric functions, using only coefficients that are never negative."
+    },
+    {
+      "term": "ℕ[q]",
+      "meaning": "Polynomials in q whose coefficients are whole numbers 0, 1, 2 and so on."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "R. P. Stanley and J. R. Stembridge, “On immanants of Jacobi–Trudi matrices and permutations with restricted position”, Journal of Combinatorial Theory, Series A 62 (1993), 261–279",
+      "url": "https://doi.org/10.1016/0097-3165(93)90048-D"
+    },
+    {
+      "id": 2,
+      "cite": "R. P. Stanley, “A symmetric function generalization of the chromatic polynomial of a graph”, Advances in Mathematics 111(1) (1995), 166–194",
+      "url": "https://doi.org/10.1006/aima.1995.1020"
+    },
+    {
+      "id": 3,
+      "cite": "J. Shareshian and M. L. Wachs, “Chromatic quasisymmetric functions”, Advances in Mathematics 295 (2016), 497–551, arXiv:1405.4629",
+      "url": "https://doi.org/10.1016/j.aim.2015.12.018"
+    },
+    {
+      "id": 4,
+      "cite": "T. Hikita, “A proof of the Stanley–Stembridge conjecture”, arXiv:2410.12758 (2024)",
+      "url": "https://arxiv.org/abs/2410.12758v2"
+    },
+    {
+      "id": 5,
+      "cite": "S. T. Griffin, A. Mellit, M. Romero, K. Weigl and J. J. Wen, “On Macdonald expansions of q-chromatic symmetric functions and the Stanley–Stembridge Conjecture”, arXiv:2504.06936 (2025)",
+      "url": "https://arxiv.org/abs/2504.06936"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, family 169: “Elementary positivity of chromatic quasisymmetric functions” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Elementary-Positivity-of-Chromatic-Quasisymmetric-Functions-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean doc for family 169 (scope of the formalization and Comparator link)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/169.md"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The chromatic quasisymmetric function of every natural unit interval graph is elementary-positive over ℕ[q], resolving the elementary-positivity part of the Shareshian–Wachs conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This proves the elementary-positivity part of the Shareshian--Wachs",
+      "sourceQuote": "This proves the elementary-positivity part of the Shareshian--Wachs conjecture."
+    },
+    {
+      "text": "Shareshian and Wachs proved the function is symmetric for this class and conjectured elementary coefficients in ℕ[q].",
+      "verdict": "supported",
+      "sourceLine": "Shareshian and Wachs proved that this function is symmetric for this graph",
+      "sourceQuote": "Shareshian and Wachs proved that this function is symmetric for this graph class and conjectured that its coefficients in the elementary basis belong to $\\N[q]$ \\cite{SW16}."
+    },
+    {
+      "text": "For the path 1–2–3 the expansion is q e_(2,1) + (1+q+q²) e_(3); colorings with a repeated color give q m_(2,1) and the rest (1+4q+q²) m_(1,1,1).",
+      "verdict": "supported",
+      "sourceLine": "To check this directly, the colorings with a repeated color contribute",
+      "sourceQuote": "To check this directly, the colorings with a repeated color contribute $q\\,m_{(2,1)}(X)$, while those with three distinct colors contribute $(1+4q+q^2)m_{(1,1,1)}(X)$."
+    },
+    {
+      "text": "Each coefficient counts permutations with no forbidden descents, weighted by q to the number of inversions on edges.",
+      "verdict": "supported",
+      "sourceLine": "counts only inversions supported on edges",
+      "sourceQuote": "Thus $D_G^0$ forbids adjacent descents between nonneighbors, and $\\ginv_G$ counts only inversions supported on edges."
+    },
+    {
+      "text": "For the path, the theorem assigns one degree-one permutation to (2,1) and the other three permutations to (3).",
+      "verdict": "supported",
+      "sourceLine": "The theorem assigns one of the two degree-one",
+      "sourceQuote": "The theorem assigns one of the two degree-one permutations to $(2,1)$ and the other three permutations to $(3)$."
+    },
+    {
+      "text": "The theorem makes no assertion of elementary unimodality.",
+      "verdict": "supported",
+      "sourceLine": "The theorem makes no assertion of elementary unimodality.",
+      "sourceQuote": "The theorem makes no assertion of elementary unimodality."
+    },
+    {
+      "text": "The procedure's running time may be large.",
+      "verdict": "supported",
+      "sourceLine": "Its running time may nevertheless be large.",
+      "sourceQuote": "Its running time may nevertheless be large."
+    },
+    {
+      "text": "Rewriting in the elementary basis can involve subtraction, which makes positivity hard.",
+      "verdict": "supported",
+      "sourceLine": "whereas rewriting it in the elementary basis can involve subtraction",
+      "sourceQuote": "The positivity question is difficult because the coloring definition already has nonnegative coefficients in the monomial variables, whereas rewriting it in the elementary basis can involve subtraction."
+    },
+    {
+      "text": "Stanley introduced the chromatic symmetric function as a refinement of the chromatic polynomial; it is the q = 1 case.",
+      "verdict": "supported",
+      "sourceLine": "Stanley introduced the chromatic symmetric function",
+      "sourceQuote": "Stanley introduced the chromatic symmetric function as a symmetric-function refinement of the chromatic polynomial \\cite{Sta95}; it is the specialization of Equation~\\eqref{main:csf} at $q=1$."
+    },
+    {
+      "text": "The Stanley–Stembridge conjecture asks for elementary positivity of incomparability graphs of (3+1)-free posets.",
+      "verdict": "supported",
+      "sourceLine": "conjecture asks for elementary positivity of the",
+      "sourceQuote": "In this language, the Stanley--Stembridge conjecture asks for elementary positivity of the incomparability graphs of $(3+1)$-free posets \\cite[Conjecture~5.5]{SS93}."
+    },
+    {
+      "text": "Specializing at q = 1 also proves the classical positivity theorem, previously established by Hikita.",
+      "verdict": "supported",
+      "sourceLine": "theorem at $q=1$ therefore also proves the classical positivity",
+      "sourceQuote": "Specializing our theorem at $q=1$ therefore also proves the classical positivity theorem, previously established by Hikita \\cite{Hik24}."
+    },
+    {
+      "text": "Hikita's formula gives nonnegativity for every positive real q but not coefficientwise nonnegativity in ℕ[q].",
+      "verdict": "supported",
+      "sourceLine": "nonnegativity for every positive real $q$, while its rational",
+      "sourceQuote": "His formula gives numerical nonnegativity for every positive real $q$, while its rational $q$-weights do not establish coefficientwise nonnegativity in $\\N[q]$; the refined conjecture remains explicitly distinguished in \\cite[Section~1.3]{Hik24}."
+    },
+    {
+      "text": "Griffin, Mellit, Romero, Weigl and Wen gave an independent proof through Macdonald expansions.",
+      "verdict": "supported",
+      "sourceLine": "an independent proof through Macdonald expansions",
+      "sourceQuote": "Griffin, Mellit, Romero, Weigl and Wen gave an independent proof through Macdonald expansions, recovering Hikita's elementary formula \\cite{GMRWW25}."
+    },
+    {
+      "text": "Earlier descriptions did not determine a nonnegative coefficient formula for each elementary partition.",
+      "verdict": "supported",
+      "sourceLine": "These descriptions do not determine a nonnegative",
+      "sourceQuote": "These descriptions do not determine a nonnegative coefficient formula for each elementary partition."
+    },
+    {
+      "text": "The proof first identifies each coefficient with a positive algebraic object, then realizes the identities by finite bijections.",
+      "verdict": "supported",
+      "sourceLine": "It first identifies",
+      "sourceQuote": "It first identifies each relevant elementary coefficient with a positive algebraic object."
+    },
+    {
+      "text": "Lean formalizes elementary positivity over ℕ[q] with an explicit expansion indexed by permitted nondescent permutations, for every finite number of color variables.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
