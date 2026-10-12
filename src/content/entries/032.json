@@ -1,0 +1,279 @@
+{
+  "id": "032",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-rational-Hodge-conjecture-for-CM-abelian-varieties-October-6-2026/paper.pdf",
+      "label": "The rational Hodge conjecture for CM abelian varieties"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Algebraic-Kuga-Satake-correspondences-and-Hodge-conjectures-on-a-K3-quadratic-locus-September-30-2026/paper.pdf",
+      "label": "Algebraic Kuga–Satake correspondences and Hodge conjectures on a K3 quadratic locus"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weil-classes-and-Hodge-classes-on-abelian-powers-October-6-2026/paper.pdf",
+      "label": "Weil classes and Hodge classes on abelian powers"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Abelian-covers-Gale-correspondences-and-the-Hodge-conjecture-for-powers-October-6-2026/paper.pdf",
+      "label": "Abelian covers, Gale correspondences, and the Hodge conjecture for powers"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Conditional-Reduction-for-Algebraic-Kuga-Satake-Correspondences-September-10-2026/paper.pdf",
+      "label": "A Conditional Reduction for Algebraic Kuga–Satake Correspondences"
+    }
+  ],
+  "headline": "The rational Hodge conjecture is claimed for every abelian variety with complex multiplication, in every dimension.",
+  "scope": "The main result covers complex abelian varieties of CM type, every dimension and codimension; companion papers treat some K3 surfaces and other varieties.",
+  "plain": "The Hodge conjecture predicts which shapes inside a space can be built from polynomial equations, judged only by their cohomology. It is one of the best-known open problems in geometry. The main paper claims to prove its rational form for every abelian variety with complex multiplication, a highly symmetric kind. Through theorems of Milne, it also claims the Tate conjecture for abelian varieties over finite fields. OpenAI withdrew three related papers on 6 October 2026, and they are not part of this claim.",
+  "doesNot": "This does not prove the Hodge conjecture for all abelian varieties or for all smooth projective varieties.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1950",
+    "firstStepBy": "W. V. D. Hodge, who asked for this algebraicity criterion in his 1950 ICM address",
+    "significance": "Landmark",
+    "significanceWhy": "It would settle a large, long-studied case of the Hodge conjecture, if the proof holds. Through Milne, it also gives the Tate conjecture for abelian varieties over finite fields.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Take the curve y² = x³ − x. It has an extra symmetry: send (x, y) to (−x, iy), where i² = −1. Check it at x = 2: the right side becomes (−2)³ + 2 = −6, and (iy)² = −y² = −6 too. Extra symmetries like this are called complex multiplication, or CM. Multiply four copies of this curve together. The result is an abelian variety of dimension 4 (a shape whose points can be added), and it is of CM type[1].\n\nCohomology is a way to count the holes of a shape, sorted by dimension. For this fourfold, the middle layer used here has dimension C(8, 4) = 70. Each class there has a type (p, q). The classes of type (2, 2) form a 36-dimensional part, since C(4, 2) × C(4, 2) = 36. A Hodge class is a rational class of type (p, p). An algebraic cycle is a shape cut out by polynomial equations. Its class is always a Hodge class.\n\nThe rational Hodge conjecture asks for the converse. Every rational Hodge class should be a rational combination of classes of algebraic cycles[2]. For classes of codimension one this is the Lefschetz (1,1) theorem[3]. Hodge asked for an extension to higher dimensions[3]. Products of codimension-one classes give some Hodge classes, but not all of them on an abelian variety[4]. Weil classes are a key hard case. They need not come from such products, already on some abelian fourfolds[5]. Markman recently proved algebraicity of Weil classes on certain sixfolds and deduced the conjecture for all abelian fourfolds[6].\n\nFor CM varieties, earlier work by Deligne and André reduced Hodge classes to Weil-type classes on auxiliary CM varieties[7]. That reduction named the classes to build but did not build them in all dimensions[8]. The paper claims to build them. It claims the rational Hodge conjecture for every complex CM abelian variety, in every codimension[9]. In the example, all rational classes in the 36-dimensional (2, 2) part would come from algebraic cycles.\n\nThe obstacle was constructing actual cycles. The paper reduces everything to four-factor tensors that balance, like v₁ + v₂ = v₃ + v₄[10]. It realizes each one through a surface mapped into a product of CM varieties[11]. The surface comes from a quotient of the complex two-ball, a curved space, where theta forms supply a nonzero period[12].\n\nThe paper also claims consequences through earlier theorems of Milne. They include the Tate conjecture for all abelian varieties over finite fields[13]. They also include the Hodge standard conjecture for abelian varieties in every characteristic[13]. Companion papers in the family claim the conjecture on some K3 surfaces and their powers[14]. Another treats abelian varieties with an imaginary quadratic action, using the main theorem[15].\n\nThe family has a history of gaps. On 6 October 2026, OpenAI withdrew three related papers after a sign error in one proof. One had claimed the rational Hodge conjecture for products of K3 surfaces. The withdrawal concerns the proofs and does not say the statements are false. The release notes also list this Hodge result as an exception to the procedure used for most results, without saying how.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. Related papers in this family were withdrawn after an error was found. No specialist review has been published.",
+  "hypeCheck": "Landmark only if the proof holds, and caution is warranted: three related papers were withdrawn on 6 October 2026 after a sign error. No Lean formalization is listed and no specialist review is published. It covers CM abelian varieties, not all varieties.",
+  "glossary": [
+    {
+      "term": "Abelian variety",
+      "meaning": "A shape defined by polynomial equations whose points can be added like numbers."
+    },
+    {
+      "term": "Complex multiplication (CM)",
+      "meaning": "Extra symmetries of an abelian variety, as many as its dimension allows."
+    },
+    {
+      "term": "Cohomology",
+      "meaning": "A way to count and organize the holes of a shape, sorted by dimension."
+    },
+    {
+      "term": "Hodge class",
+      "meaning": "A rational cohomology class of type (p, p), the kind that algebraic cycles always give."
+    },
+    {
+      "term": "Algebraic cycle",
+      "meaning": "A combination of sub-shapes cut out by polynomial equations."
+    },
+    {
+      "term": "Weil class",
+      "meaning": "A special Hodge class on an abelian variety with an imaginary quadratic action, often hard to build from cycles."
+    },
+    {
+      "term": "Tate conjecture",
+      "meaning": "A parallel prediction for varieties over finite fields, using Galois symmetry instead of Hodge type."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The rational Hodge conjecture for CM abelian varieties”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-rational-Hodge-conjecture-for-CM-abelian-varieties-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Algebraic Kuga–Satake correspondences and Hodge conjectures on a K3 quadratic locus”, openai/math release preprint (September 30, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Algebraic-Kuga-Satake-correspondences-and-Hodge-conjectures-on-a-K3-quadratic-locus-September-30-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Weil classes and Hodge classes on abelian powers”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weil-classes-and-Hodge-classes-on-abelian-powers-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Abelian covers, Gale correspondences, and the Hodge conjecture for powers”, openai/math release preprint (October 6, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Abelian-covers-Gale-correspondences-and-the-Hodge-conjecture-for-powers-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “A Conditional Reduction for Algebraic Kuga–Satake Correspondences”, openai/math release preprint (September 10, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Conditional-Reduction-for-Algebraic-Kuga-Satake-Correspondences-September-10-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "W. V. D. Hodge, “The topological invariants of algebraic varieties”, Proceedings of the ICM 1950, vol. 1, AMS (1952), 182–192",
+      "url": "https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1950.1/ICM1950.1.ocr.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "P. Deligne, “Hodge cycles on abelian varieties”, in Hodge Cycles, Motives, and Shimura Varieties, Lecture Notes in Mathematics 900, Springer (1982), 9–100",
+      "url": "https://doi.org/10.1007/978-3-540-38955-2_3"
+    },
+    {
+      "id": 8,
+      "cite": "E. Markman, “Cycles on abelian 2n-folds of Weil type from secant sheaves on abelian n-folds”, arXiv:2502.03415 (2025)",
+      "url": "https://arxiv.org/abs/2502.03415v2"
+    },
+    {
+      "id": 9,
+      "cite": "J. S. Milne, “Lefschetz motives and the Tate conjecture”, Compositio Mathematica 117 (1999), 45–76",
+      "url": "https://doi.org/10.1023/A:1000776613765"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, history: October 7, 2026 withdrawals",
+      "url": "https://github.com/openai/math/blob/main/history.md",
+      "quote": "a sign error invalidates a stabilization-trace cancellation argument and the construction used by two dependent papers"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math, withdrawal notice: “The rational Hodge conjecture for products of K3 surfaces”",
+      "url": "https://github.com/openai/math/tree/main/preprints/The-rational-Hodge-conjecture-for-products-of-K3-surfaces-October-4-2026"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math release notes (2026): how the results were produced",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "Exceptions to this fixed procedure include work on a zero-free region for the Riemann zeta function and proof of the Hodge Conjecture for CM abelian varieties."
+    },
+    {
+      "id": 13,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A complex abelian variety is CM if End(A)⊗Q contains a commutative semisimple algebra of dimension 2 dim A; products and powers stay CM.",
+      "verdict": "supported",
+      "sourceLine": "Finite products and powers of CM abelian",
+      "sourceQuote": "Finite products and powers of CM abelian varieties are again CM.",
+      "paper": 1
+    },
+    {
+      "text": "The rational Hodge conjecture asks whether every rational (p,p) class is a rational combination of algebraic cycle classes.",
+      "verdict": "supported",
+      "sourceLine": "conjecture asks whether every rational cohomology class of type",
+      "sourceQuote": "For a smooth projective complex variety \\(X\\), the rational Hodge conjecture asks whether every rational cohomology class of type \\((p,p)\\) is a rational linear combination of codimension-\\(p\\) algebraic cycle classes.",
+      "paper": 1
+    },
+    {
+      "text": "The codimension-one case is the Lefschetz (1,1) theorem; Hodge asked for an extension.",
+      "verdict": "supported",
+      "sourceLine": "The codimension-one case of the Hodge conjecture is the Lefschetz",
+      "sourceQuote": "The codimension-one case of the Hodge conjecture is the Lefschetz \\((1,1)\\) theorem.",
+      "paper": 1
+    },
+    {
+      "text": "For an abelian variety, the cohomology is an exterior algebra, but not every Hodge class is a combination of divisor products.",
+      "verdict": "supported",
+      "sourceLine": "cohomology does not make every Hodge class a linear combination of",
+      "sourceQuote": "For an abelian variety, \\(H^*(A,\\Q)=\\Lambda^*H^1(A,\\Q)\\), but this description of its cohomology does not make every Hodge class a linear combination of divisor products.",
+      "paper": 1
+    },
+    {
+      "text": "Weil classes need not lie in the algebra generated by divisor classes, already on abelian fourfolds.",
+      "verdict": "supported",
+      "sourceLine": "divisor classes; this occurs already on abelian fourfolds",
+      "sourceQuote": "Weil classes need not lie in the algebra generated by divisor classes; this occurs already on abelian fourfolds \\cite[Theorem~0.1]{MoonenZarhin1999}.",
+      "paper": 1
+    },
+    {
+      "text": "Markman proves algebraicity of Weil classes on certain sixfolds and deduces the Hodge conjecture for all abelian fourfolds.",
+      "verdict": "supported",
+      "sourceLine": "discriminant \\(-1\\), and deduces the Hodge conjecture for all abelian",
+      "sourceQuote": "Recent work of Markman proves algebraicity of the Weil classes on polarized abelian sixfolds of Weil type for an imaginary quadratic field, with polarization discriminant \\(-1\\), and deduces the Hodge conjecture for all abelian fourfolds \\cite[Theorem~1.5.1 and Corollary~1.6.1]{Markman2025Secant}.",
+      "paper": 1
+    },
+    {
+      "text": "The CM arguments of Deligne and André reduce these Hodge classes to Weil-type classes on auxiliary CM varieties.",
+      "verdict": "supported",
+      "sourceLine": "The CM arguments of Deligne and Andr\\'e reduce these Hodge classes to",
+      "sourceQuote": "The CM arguments of Deligne and Andr\\'e reduce these Hodge classes to Weil-type classes on auxiliary CM abelian varieties \\cite{Deligne1982,Andre1992}.",
+      "paper": 1
+    },
+    {
+      "text": "That reduction identifies classes whose algebraicity would suffice but does not supply algebraic representatives.",
+      "verdict": "supported",
+      "sourceLine": "classes whose algebraicity would suffice; it does not supply their",
+      "sourceQuote": "This reduction identifies classes whose algebraicity would suffice; it does not supply their algebraic representatives in all dimensions.",
+      "paper": 1
+    },
+    {
+      "text": "The paper proves the rational Hodge conjecture for CM abelian varieties in every dimension and codimension.",
+      "verdict": "supported",
+      "sourceLine": "varieties with complex multiplication, in every dimension and",
+      "sourceQuote": "We prove this assertion for abelian varieties with complex multiplication, in every dimension and codimension.",
+      "paper": 1
+    },
+    {
+      "text": "The elementary relation needed is v1 + v2 = v3 + v4.",
+      "verdict": "supported",
+      "sourceLine": "The elementary relation needed in the proof is",
+      "sourceQuote": "The elementary relation needed in the proof is \\[ v_1+v_2=v_3+v_4. \\]",
+      "paper": 1
+    },
+    {
+      "text": "The geometric construction of a four-factor class takes place on a surface.",
+      "verdict": "supported",
+      "sourceLine": "The geometric construction of a four-factor class takes place on a",
+      "sourceQuote": "The geometric construction of a four-factor class takes place on a surface.",
+      "paper": 1
+    },
+    {
+      "text": "The period is constructed on a compact arithmetic quotient of the complex two-ball.",
+      "verdict": "supported",
+      "sourceLine": "constructs the period on a compact arithmetic",
+      "sourceQuote": "Section~\\ref{sec:theta} constructs the period on a compact arithmetic quotient of the complex two-ball.",
+      "paper": 1
+    },
+    {
+      "text": "Two theorems of Milne give the Tate conjecture for abelian varieties over finite fields and the Hodge standard conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Two theorems of Milne then give the Tate conjecture for all abelian",
+      "sourceQuote": "Two theorems of Milne then give the Tate conjecture for all abelian varieties over finite fields, which asks for algebraic representatives of Galois-invariant \\(\\ell\\)-adic classes, and the Hodge standard conjecture for abelian varieties in arbitrary characteristic, which asserts positivity of the intersection form on primitive algebraic classes \\cite{Milne1999Tate,Milne2002Polarizations}.",
+      "paper": 1
+    },
+    {
+      "text": "The K3 paper proves the rational and generalized Hodge conjectures on every self-power of K3 surfaces on a stated locus.",
+      "verdict": "supported",
+      "sourceLine": "We prove the rational Hodge and generalized Hodge conjectures in every",
+      "sourceQuote": "We prove the rational Hodge and generalized Hodge conjectures in every cohomological degree of every self-power of a projective complex K3 surface whose transcendental quadratic space, with its cup-product form, admits a rational isometric embedding in $\\mathbb U_{\\Q}^{\\oplus2}\\perp\\langle-1\\rangle^4$.",
+      "paper": 2
+    },
+    {
+      "text": "The abelian-powers paper uses the companion theorem on CM abelian varieties.",
+      "verdict": "supported",
+      "sourceLine": "The proof uses the companion theorem on the rational Hodge conjecture for",
+      "sourceQuote": "The proof uses the companion theorem on the rational Hodge conjecture for CM abelian varieties.",
+      "paper": 3
+    },
+    {
+      "text": "OpenAI withdrew three related manuscripts on 6–7 October 2026 after a sign error; the withdrawal does not assert the statements false.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "The withdrawn paper had claimed the rational Hodge conjecture for products of K3 surfaces.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "The README lists the Hodge Conjecture for CM abelian varieties as an exception to the fixed procedure.",
+      "verdict": "external",
+      "sourceId": 12
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 13
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
