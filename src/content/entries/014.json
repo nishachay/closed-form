@@ -1,0 +1,296 @@
+{
+  "id": "014",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Arthur-Enhancements-of-Cuspidal-Excursion-Parameters-October-5-2026/manuscript.pdf",
+      "label": "Global Arthur Enhancements of Cuspidal Excursion Parameters"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rationality-of-the-Canonical-Unramified-Arthur-Filtration-September-24-2026/paper.pdf",
+      "label": "Rationality of the Canonical Unramified Arthur Filtration"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ramanujan-Arthur-Decompositions-of-Cuspidal-Functions-at-Full-Finite-Level-September-24-2026/paper.pdf",
+      "label": "Ramanujan-Arthur Decompositions of Cuspidal Functions at Full Finite Level"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Temperedness-at-ramified-places-for-globally-generic-exceptional-groups-October-5-2026/ramified-ramanujan.pdf",
+      "label": "Temperedness at ramified places for globally generic exceptional groups"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Restricted-Geometric-Langlands-Equivalence-in-Positive-Characteristic-September-24-2026/paper.pdf",
+      "label": "The Restricted Geometric Langlands Equivalence in Positive Characteristic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Constructible-tame-Hecke-eigensheaves-in-positive-characteristic-October-5-2026/constructible-tame-hecke-eigensheaves-positive-characteristic.pdf",
+      "label": "Constructible tame Hecke eigensheaves in positive characteristic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tame-Hecke-Eigensheaves-with-Several-Marked-Points-October-5-2026/Tame-Hecke-Eigensheaves-with-Several-Marked-Points.pdf",
+      "label": "Tame Hecke Eigensheaves with Several Marked Points"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Frobenius-Structures-on-Tame-Hecke-Eigensheaves-October-5-2026/tame-hecke-frobenius.pdf",
+      "label": "Frobenius Structures on Tame Hecke Eigensheaves"
+    }
+  ],
+  "headline": "Linked papers claim the restricted geometric Langlands equivalence in characteristic p, plus Ramanujan bounds.",
+  "scope": "The results are over curves and function fields of positive characteristic, under stated characteristic conditions on the group.",
+  "plain": "The Langlands program predicts a dictionary between symmetric functions built from a field and symmetries of its equations. Over curves in characteristic p, Gaitsgory and Raskin built part of a geometric form of this dictionary. One paper claims to show no part of the dictionary is missing, under stated conditions. Other papers claim the generalized Ramanujan size bound for certain representations, including at ramified places for exceptional groups. Some further results depend on an input stated as a hypothesis.",
+  "doesNot": "This does not cover number fields such as the rationals; every result here is about curves or function fields in positive characteristic.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2022",
+    "firstStepBy": "D. Arinkin, D. Gaitsgory, D. Kazhdan, S. Raskin, N. Rozenblyum and Y. Varshavsky, who introduced the restricted local-system stack",
+    "significance": "Major",
+    "significanceWhy": "It claims a full-support conjecture of Gaitsgory and Raskin and generic Ramanujan bounds over function fields, if the proofs hold.",
+    "field": "Number theory"
+  },
+  "explanation": "Expand the product q(1 − q)²⁴(1 − q²)²⁴(1 − q³)²⁴ and so on forever. The coefficients that come out are Ramanujan’s τ numbers. The first few are 1, −24, 252, −1472 and 4830. At the prime 2, τ(2) = −24, and 2 × 2^5.5 is about 90.5. At the prime 3, τ(3) = 252, and 2 × 3^5.5 is about 841.8. At 5 and 7 the same limit holds. Deligne proved in 1974 that this size limit holds at every prime.\n\nThat limit is the simplest case of a Ramanujan bound. In modern terms, the τ numbers come from an automorphic representation (a highly symmetric object built from a field). The generalized Ramanujan conjecture predicts tempered local pieces for generic ones, a precise form of “not too large”[3]. Temperedness means the local piece sits weakly inside the regular representation[3]. These papers work over function fields instead of the rationals. A function field is built from a curve over a finite field, the way the rationals are built from whole numbers.\n\nOver function fields, much was known. Drinfeld proved Ramanujan for GL₂, and Laurent Lafforgue for GLₙ[4]. Lomelí proved the generic case for split classical groups[5]. The fourth paper claims it for exceptional groups, such as G₂ and E₈, at every place[6]. That includes ramified places, where the representation is more complicated. There is no restriction on characteristic or ramification depth[6]. It builds on the third paper[7]. That paper claims temperedness at unramified places from one generic unramified place, for split adjoint simple groups[8].\n\nThe geometric side asks for more than numbers. Geometric Langlands compares two categories (collections of objects with maps between them). One side holds sheaves on the space of G-bundles over a curve. The other side holds sheaves on the space of local systems, the curve’s symmetry data. In characteristic zero, a nine-author project proved the geometric Langlands theorem[9]. In characteristic p, Gaitsgory and Raskin built an equivalence onto a union of pieces of the spectral side[10]. The open question was whether any piece is missing[10].\n\nThe fifth paper claims that no piece is missing, in two settings[10]. If correct, this proves Conjecture 1.3.10 of Gaitsgory and Raskin there[11]. One setting is a curve over the algebraic closure of a finite field. The other is any algebraically closed field, with two extra conditions on p[12]. It must be very good for the group and must not divide the Weyl group’s order. Very good excludes small primes such as 2 and 3 for E₇[13].\n\nThe argument works by contradiction. A missing piece would give a nonzero sheaf in characteristic zero that vanishes on passing to characteristic p[14]. Careful local tests with Hecke modifications show this cannot happen.\n\nThe other papers fill in pieces. One claims that a canonical Arthur filtration is defined over the rationals, as Gaitsgory, Lafforgue and Raskin conjectured[15]. Another builds Arthur enhancements, but only under the finite-level decomposition stated as a hypothesis[16]. It does not claim Arthur-packet classification or multiplicity formulas[17]. Three more construct Hecke eigensheaves with tame ramification at marked points[18].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The papers are long, linked and rely on deep recent work. No specialist review has been published.",
+  "hypeCheck": "Major only if the linked papers hold. No Lean formalization is listed and no specialist review is published. All results are over function fields in positive characteristic, and the Arthur-enhancement result is conditional.",
+  "glossary": [
+    {
+      "term": "Automorphic representation",
+      "meaning": "A highly symmetric object built from a field whose numbers, like τ(p), encode arithmetic."
+    },
+    {
+      "term": "Tempered",
+      "meaning": "For a local piece of a representation, being no larger than the regular representation allows; the Ramanujan size bound."
+    },
+    {
+      "term": "Function field",
+      "meaning": "A field built from a curve over a finite field, the way the rationals are built from whole numbers."
+    },
+    {
+      "term": "Category",
+      "meaning": "A collection of objects together with the maps between them."
+    },
+    {
+      "term": "Local system",
+      "meaning": "Symmetry data of a curve: a way its loops act on a fixed vector space."
+    },
+    {
+      "term": "Hecke eigensheaf",
+      "meaning": "A geometric object on the space of bundles that the Hecke operators only rescale."
+    },
+    {
+      "term": "Ramified place",
+      "meaning": "A point of the curve where the representation has extra complication, not the simplest local form."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Global Arthur Enhancements of Cuspidal Excursion Parameters”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Arthur-Enhancements-of-Cuspidal-Excursion-Parameters-October-5-2026/manuscript.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Rationality of the Canonical Unramified Arthur Filtration”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rationality-of-the-Canonical-Unramified-Arthur-Filtration-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Ramanujan-Arthur Decompositions of Cuspidal Functions at Full Finite Level”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ramanujan-Arthur-Decompositions-of-Cuspidal-Functions-at-Full-Finite-Level-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Temperedness at ramified places for globally generic exceptional groups”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Temperedness-at-ramified-places-for-globally-generic-exceptional-groups-October-5-2026/ramified-ramanujan.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “The Restricted Geometric Langlands Equivalence in Positive Characteristic”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Restricted-Geometric-Langlands-Equivalence-in-Positive-Characteristic-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Constructible tame Hecke eigensheaves in positive characteristic”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Constructible-tame-Hecke-eigensheaves-in-positive-characteristic-October-5-2026/constructible-tame-hecke-eigensheaves-positive-characteristic.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “Tame Hecke Eigensheaves with Several Marked Points”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tame-Hecke-Eigensheaves-with-Several-Marked-Points-October-5-2026/Tame-Hecke-Eigensheaves-with-Several-Marked-Points.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "OpenAI, “Frobenius Structures on Tame Hecke Eigensheaves”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Frobenius-Structures-on-Tame-Hecke-Eigensheaves-October-5-2026/tame-hecke-frobenius.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "D. Gaitsgory and S. Raskin, “Geometric Langlands in positive characteristic from characteristic zero”, arXiv:2508.02237 (2025)",
+      "url": "https://arxiv.org/abs/2508.02237v1"
+    },
+    {
+      "id": 10,
+      "cite": "D. Arinkin, D. Gaitsgory, D. Kazhdan, S. Raskin, N. Rozenblyum and Y. Varshavsky, “The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support”, arXiv:2010.01906 (2022)",
+      "url": "https://arxiv.org/abs/2010.01906"
+    },
+    {
+      "id": 11,
+      "cite": "P. Deligne, “La conjecture de Weil. I”, Publications Mathématiques de l'IHÉS 43 (1974), 273–307",
+      "url": "https://doi.org/10.1007/BF02684373"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Cusp spaces at fixed level are finite dimensional.",
+      "verdict": "supported",
+      "sourceLine": "All these cusp spaces at fixed level are finite dimensional.",
+      "paper": 3
+    },
+    {
+      "text": "The Ramanujan–Arthur prediction organizes departures from temperedness by SL_2 homomorphisms into the dual group.",
+      "verdict": "supported",
+      "sourceLine": "The absolute values of unramified Hecke eigenvalues measure the departure",
+      "paper": 3
+    },
+    {
+      "text": "The generalized Ramanujan conjecture predicts tempered local components for globally generic representations; temperedness means weak containment in the regular representation.",
+      "verdict": "supported",
+      "sourceLine": "The generalized Ramanujan conjecture predicts tempered local",
+      "sourceQuote": "The generalized Ramanujan conjecture predicts tempered local components for such representations.",
+      "paper": 4
+    },
+    {
+      "text": "Drinfeld proved Ramanujan for GL_2 and Laurent Lafforgue for GL_n over function fields.",
+      "verdict": "supported",
+      "sourceLine": "Over function fields, Drinfeld proved Ramanujan for",
+      "sourceQuote": "Over function fields, Drinfeld proved Ramanujan for $\\GL_2$ \\cite{Dri88}, and Laurent Lafforgue proved it for $\\GL_n$ \\cite[Th\\'eor\\`eme~VI.10(i)]{Laf02}.",
+      "paper": 4
+    },
+    {
+      "text": "Lomelí proved generic Ramanujan for split classical groups and quasi-split unitary groups.",
+      "verdict": "supported",
+      "sourceLine": "Lomel\\'i developed this method over function fields and proved",
+      "sourceQuote": "Lomel\\'i developed this method over function fields and proved generic Ramanujan for split classical groups and quasi-split unitary groups \\cite{Lom09,LomeliLS,Lom19}.",
+      "paper": 4
+    },
+    {
+      "text": "For split adjoint exceptional G, every globally generic cuspidal π is tempered at every place, with no restriction on characteristic or ramification depth.",
+      "verdict": "supported",
+      "sourceLine": "of $F$, the ramification depth, or the local representation type.",
+      "sourceQuote": "There is no restriction on the characteristic of $F$, the ramification depth, or the local representation type.",
+      "paper": 4
+    },
+    {
+      "text": "The global input is the unramified Ramanujan theorem of the companion paper.",
+      "verdict": "supported",
+      "sourceLine": "The global input is the unramified",
+      "sourceQuote": "The global input is the unramified Ramanujan theorem of the companion paper \\cite[Corollary~1.2]{UnramifiedRamanujan}.",
+      "paper": 4
+    },
+    {
+      "text": "A cuspidal representation with one generic unramified component is tempered at every unramified place.",
+      "verdict": "supported",
+      "sourceLine": "unramified place into temperedness at all unramified places in the",
+      "sourceQuote": "Its common orbit also turns genericity at one unramified place into temperedness at all unramified places in the adjoint absolutely simple case.",
+      "paper": 3
+    },
+    {
+      "text": "The characteristic-zero geometric Langlands theorem was established in a five-part project.",
+      "verdict": "supported",
+      "sourceLine": "The characteristic-zero geometric Langlands theorem was established in",
+      "sourceQuote": "The characteristic-zero geometric Langlands theorem was established in the five-part project of Arinkin, Beraldo, Campbell, Chen, Faergeman, Gaitsgory, Lin, Raskin, and Rozenblyum.",
+      "paper": 5
+    },
+    {
+      "text": "Gaitsgory–Raskin construct an equivalence onto a union of components; the paper proves none is absent in two settings.",
+      "verdict": "supported",
+      "sourceLine": "any component can be absent. We prove that none is absent in the two",
+      "sourceQuote": "The remaining support question asks whether any component can be absent. We prove that none is absent in the two precise settings below.",
+      "paper": 5
+    },
+    {
+      "text": "This proves Conjecture 1.3.10 of Gaitsgory–Raskin in the two regimes.",
+      "verdict": "supported",
+      "sourceLine": "This proves Conjecture~1.3.10 of \\cite{GR} in the two displayed",
+      "sourceQuote": "This proves Conjecture~1.3.10 of \\cite{GR} in the two displayed regimes.",
+      "paper": 5
+    },
+    {
+      "text": "Regime B: any algebraically closed field, p very good and p not dividing |W_G|.",
+      "verdict": "supported",
+      "sourceLine": "Hypothesis~\\ref{hyp:common} holds, $p$ is very good for $G$, and",
+      "sourceQuote": "Hypothesis~\\ref{hyp:common} holds, $p$ is very good for $G$, and $p\\nmid |W_G|$.",
+      "paper": 5
+    },
+    {
+      "text": "Very good: for G2, F4, E6, E7, p ≠ 2, 3.",
+      "verdict": "supported",
+      "sourceLine": "Here very good has its usual root-system meaning: for type $A_n$,",
+      "sourceQuote": "Here very good has its usual root-system meaning: for type $A_n$, $p\\nmid n+1$; for $B_n,C_n,D_n$, $p\\ne2$; for $G_2,F_4,E_6,E_7$, $p\\ne2,3$; and for $E_8$, $p\\ne2,3,5$, on every irreducible factor.",
+      "paper": 5
+    },
+    {
+      "text": "A missing component produces a nonzero compact sheaf F with ΨF = 0.",
+      "verdict": "supported",
+      "sourceLine": "from a missing component, a nonzero compact sheaf $F$ on",
+      "sourceQuote": "The established specialization formalism and characteristic-zero equivalence produce, from a missing component, a nonzero compact sheaf $F$ on $\\mathcal B_K$ with $\\Psi F=0$.",
+      "paper": 5
+    },
+    {
+      "text": "The canonical Arthur filtration is defined over Q, establishing the Gaitsgory–Lafforgue–Raskin rationality conjecture in this setting.",
+      "verdict": "supported",
+      "sourceLine": "we prove that the canonical Arthur filtration on finitely supported",
+      "sourceQuote": "Under the characteristic hypotheses of restricted geometric Langlands theory, we prove that the canonical Arthur filtration on finitely supported unramified automorphic functions is defined over $\\Q$ for split connected semisimple groups.",
+      "paper": 2
+    },
+    {
+      "text": "Arthur enhancements are constructed under the finite-level Ramanujan–Arthur decomposition.",
+      "verdict": "supported",
+      "sourceLine": "Under the finite-level Ramanujan--Arthur decomposition stated in",
+      "sourceQuote": "Under the finite-level Ramanujan--Arthur decomposition stated in Theorem~\\ref{thm:parent}, we construct a global Arthur enhancement for every occurring cuspidal excursion parameter at a specified full finite level for a split connected semisimple group over a global function field.",
+      "paper": 1
+    },
+    {
+      "text": "The result does not assert ellipticity, Arthur-packet classification, or a multiplicity formula.",
+      "verdict": "supported",
+      "sourceLine": "The result does not assert ellipticity, Arthur-packet classification, or a multiplicity formula.",
+      "sourceQuote": "The result does not assert ellipticity, Arthur-packet classification, or a multiplicity formula.",
+      "paper": 1
+    },
+    {
+      "text": "Nonzero locally constructible perverse Hecke eigensheaves with Borel level at one marked point are constructed.",
+      "verdict": "supported",
+      "sourceLine": "We construct nonzero locally constructible perverse Hecke eigensheaves with Borel",
+      "sourceQuote": "We construct nonzero locally constructible perverse Hecke eigensheaves with Borel level at one marked point on a smooth projective curve of genus at least two over an algebraic closure of a finite field.",
+      "paper": 6
+    },
+    {
+      "text": "Deligne's 1974 theorem implies the Ramanujan bound for τ.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
