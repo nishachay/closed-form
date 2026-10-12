@@ -1,0 +1,199 @@
+{
+  "id": "183",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-planar-halving-lines-September-25-2026/main.pdf",
+      "label": "A power saving for planar halving lines"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/183.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The maximum number of halving lines for n points in the plane is below n to the power 4/3 by a fixed margin.",
+  "scope": "The result covers large even sets of points in the plane with no three on a line. The saving in the exponent is fixed but has no stated value.",
+  "plain": "A halving line passes through two of n points and splits the rest evenly. Since 1998 the best upper bound on their number was about n to the power 4/3. This paper proves the power can be lowered by some fixed amount. The proof gives no value for that amount.",
+  "doesNot": "This does not give a numerical value for the saving in the exponent.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "László Lovász, with an n^(3/2) upper bound",
+    "significance": "Major",
+    "significanceWhy": "It improves an exponent that had stood since 1998 on a central problem in discrete geometry.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Put six points at the corners of a regular hexagon. Draw the line through two of them. Ask whether it leaves the other four split evenly, two on each side. Only the three long diagonals do. Such a pair is a halving pair, and its line is a halving line[1]. Move the six points around, keeping no three on one line, and the count changes. A computer search finds six-point arrangements with six halving lines.\n\nHow many halving lines can n points have? There are about n²/2 pairs in all, but only a few can split the rest evenly. Lovász, and then Erdős, Lovász, Simmons and Straus, showed the count is at most about n to the power 3/2[4]. In 1992, Pach, Steiger and Szemerédi shaved this by a very slowly growing factor[5]. In 1998, Tamal Dey lowered the power to 4/3[6]. For a million points, n to the 4/3 is a hundred million, while n to the 3/2 is a billion.\n\nFrom below, the known examples are much smaller. Erdős, Lovász, Simmons and Straus built sets with about n log n halving lines[7]. Géza Tóth, and later Gabriel Nivasch, built better ones[8]. But all known examples stay below n to any fixed power above 1[9]. So the truth lies somewhere between just over n and n to the 4/3. Later work improved smaller terms in the upper bound but kept the power 4/3[10].\n\nThis paper proves a small drop in the power. Take any large enough even set of n points, with no three on a line. It has at most C times n to the power 4/3 − ε halving lines. Here ε is one fixed number above zero, the same for every set[2]. The catch is that the proof gives no value for ε, or for C[3]. It shows a saving exists, but not how big it is.\n\nThe paper also claims a matching bound for k-sets. A k-set is a group of k points that a straight line can cut off from the rest. Dey's method bounded their number by about n times (k + 1) to the 1/3. The paper lowers that power of k by a fixed amount too[11]. This k-set bound concerns straight lines only, not curved versions of the problem[12].\n\nThe obstacle was a counting step that had looked tight. Turn a line slowly, and track which points sit below it. Points swap in and out at each halving line. Dey's crossing argument counts how many busy stretches of this sweep can fit[13]. The new proof shows that count can never be met, up to a constant, for huge sets. To do this it imagines a sequence of near-extreme examples. It then studies the shapes they approach in the limit. Positions measured by rank do not directly give real distances[15]. So the paper uses the order of the sweep directions to recover geometric control. A contradiction follows. One fixed scale then feeds a repeating argument, which yields the power saving[14].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main bound. It says some fixed ε above zero and some C bound the halving pairs, for all large enough even sets. It also covers the related count for every rank of the sweep. The constants are not given as numbers. The k-set corollary is not named in the Lean scope note. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean has checked a formal version of the halving-line bound. The saving has no stated value, the k-set corollary is outside the Lean note, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Halving line",
+      "meaning": "A line through two of the points that leaves the same number of other points on each side."
+    },
+    {
+      "term": "k-set",
+      "meaning": "A group of k points that a straight line can separate from all the others."
+    },
+    {
+      "term": "Exponent",
+      "meaning": "The power in a growth rate; n to the 4/3 grows faster than n but slower than n²."
+    },
+    {
+      "term": "Power saving",
+      "meaning": "A lowering of the exponent in a bound by a fixed positive amount."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "L. Lovász, “On the Number of Halving Lines”, Annales Univ. Sci. Budapest, Sectio Math. 14 (1971), 107–108 (no online copy found)",
+      "noUrl": true
+    },
+    {
+      "id": 2,
+      "cite": "T. K. Dey, “Improved Bounds for Planar k-Sets and Related Problems”, Discrete & Computational Geometry 19(3) (1998), 373–382",
+      "url": "https://doi.org/10.1007/PL00009354"
+    },
+    {
+      "id": 3,
+      "cite": "G. Tóth, “Point Sets with Many k-Sets”, Discrete & Computational Geometry 26(2) (2001), 187–194",
+      "url": "https://doi.org/10.1007/s004540010022"
+    },
+    {
+      "id": 4,
+      "cite": "G. Nivasch, “An Improved, Simple Construction of Many Halving Edges”, Contemporary Mathematics 453 (2008), 299–305",
+      "url": "https://doi.org/10.1090/conm/453/08804"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “A power saving for planar halving lines” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-planar-halving-lines-September-25-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 183 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/183.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A halving pair is a pair whose line leaves exactly (n − 2)/2 other points on each side.",
+      "verdict": "supported",
+      "sourceLine": "if its line leaves exactly $(n-2)/2$ other points in each open halfplane.",
+      "sourceQuote": "A pair of points is a \\emph{halving pair} if its line leaves exactly $(n-2)/2$ other points in each open halfplane."
+    },
+    {
+      "text": "The improvement is in the exponent and uniform over all configurations.",
+      "verdict": "supported",
+      "sourceLine": "The improvement is in the exponent and is uniform over all configurations.",
+      "sourceQuote": "The improvement is in the exponent and is uniform over all configurations."
+    },
+    {
+      "text": "The proof is nonquantitative and gives no numerical value of ε or effective C and n0.",
+      "verdict": "supported",
+      "sourceLine": "The proof is nonquantitative: it supplies neither a numerical value of",
+      "sourceQuote": "The proof is nonquantitative: it supplies neither a numerical value of $\\varepsilon$ nor effective values of $C$ and $n_0$."
+    },
+    {
+      "text": "Lovász and Erdős, Lovász, Simmons and Straus established the O(n^{3/2}) scale.",
+      "verdict": "supported",
+      "sourceLine": "the $O(n^{3/2})$ scale for halving lines and developed",
+      "sourceQuote": "The early work of Lov\\'asz and of Erd\\H{o}s, Lov\\'asz, Simmons and Straus established the $O(n^{3/2})$ scale for halving lines and developed the rotating-line and dissection-graph viewpoint \\cite{Lovasz1971,ErdosLovaszSimmonsStraus1973}."
+    },
+    {
+      "text": "Pach, Steiger and Szemerédi improved the upper bound by an iterated-logarithm factor.",
+      "verdict": "supported",
+      "sourceLine": "Pach, Steiger and Szemer\\'edi improved the upper bound by an",
+      "sourceQuote": "Pach, Steiger and Szemer\\'edi improved the upper bound by an iterated-logarithm factor \\cite{PachSteigerSzemeredi1992}."
+    },
+    {
+      "text": "Dey proved O(n(k+1)^{1/3}) for k-sets, giving O(n^{4/3}) for halving lines.",
+      "verdict": "supported",
+      "sourceLine": "$1\\le k\\le n/2$, giving $O(n^{4/3})$ for halving lines",
+      "sourceQuote": "Dey then proved the bound $O(n(k+1)^{1/3})$ for $k$-sets with $1\\le k\\le n/2$, giving $O(n^{4/3})$ for halving lines \\cite{Dey1998}."
+    },
+    {
+      "text": "Erdős, Lovász, Simmons and Straus constructed sets with Ω(n log n) halving lines.",
+      "verdict": "supported",
+      "sourceLine": "$\\Omega(n\\log n)$ halving lines",
+      "sourceQuote": "Erd\\H{o}s, Lov\\'asz, Simmons and Straus constructed configurations with $\\Omega(n\\log n)$ halving lines \\cite{ErdosLovaszSimmonsStraus1973}."
+    },
+    {
+      "text": "Tóth obtained n·exp(Ω(√log n)) halving pairs, and Nivasch improved the construction.",
+      "verdict": "supported",
+      "sourceLine": "$n\\exp(\\Omega(\\sqrt{\\log n}))$ halving pairs, and Nivasch subsequently",
+      "sourceQuote": "T{\\'o}th obtained $n\\exp(\\Omega(\\sqrt{\\log n}))$ halving pairs, and Nivasch subsequently simplified the construction and improved its exponential constant \\cite{Toth2001,Nivasch2008}."
+    },
+    {
+      "text": "These lower bounds remain far below a fixed power n^{1+δ}.",
+      "verdict": "supported",
+      "sourceLine": "\\cite{Toth2001,Nivasch2008}. These bounds remain far below a fixed",
+      "sourceQuote": "T{\\'o}th obtained $n\\exp(\\Omega(\\sqrt{\\log n}))$ halving pairs, and Nivasch subsequently simplified the construction and improved its exponential constant \\cite{Toth2001,Nivasch2008}. These bounds remain far below a fixed power $n^{1+\\delta}$."
+    },
+    {
+      "text": "Alonso, López and Rodrigo improved a lower-order term while keeping the exponent 4/3.",
+      "verdict": "supported",
+      "sourceLine": "improved a lower-order term in the upper bound while retaining the",
+      "sourceQuote": "More recently, Alonso, L{\\'o}pez and Rodrigo improved a lower-order term in the upper bound while retaining the exponent $4/3$ \\cite{AlonsoLopezRodrigo2024}."
+    },
+    {
+      "text": "The number of k-sets is at most C0 n (k+1)^{1/3 − ε0}.",
+      "verdict": "supported",
+      "sourceLine": "the number of $k$-sets of any $n$-point set $Q\\subset\\mathbb R^2$ with",
+      "sourceQuote": "There are absolute constants $\\varepsilon_0>0$ and $C_0<\\infty$ such that, for every integer $n\\ge2$ and every integer $1\\le k\\le n/2$, the number of $k$-sets of any $n$-point set $Q\\subset\\mathbb R^2$ with no three collinear is at most \\begin{equation}\\label{eq:k-sensitive} C_0 n(k+1)^{1/3-\\varepsilon_0}. \\end{equation}"
+    },
+    {
+      "text": "The corollary asserts no saving for pseudolines or line segments.",
+      "verdict": "supported",
+      "sourceLine": "only; it asserts no corresponding saving for pseudolines or line segments.",
+      "sourceQuote": "This corollary concerns planar point sets and complete straight lines only; it asserts no corresponding saving for pseudolines or line segments."
+    },
+    {
+      "text": "The usual crossing argument bounds the number of active intervals by O((n/b)^{4/3}).",
+      "verdict": "supported",
+      "sourceLine": "activity at least $b$. The usual crossing argument bounds their number",
+      "sourceQuote": "The central estimate concerns disjoint intervals of sweep steps with activity at least $b$. The usual crossing argument bounds their number by $O((n/b)^{4/3})$."
+    },
+    {
+      "text": "One large fixed scale gives a contracting recurrence and the power saving.",
+      "verdict": "supported",
+      "sourceLine": "large fixed scale then gives a contracting recurrence and the power",
+      "sourceQuote": "Choosing one sufficiently large fixed scale then gives a contracting recurrence and the power saving in Theorem~\\ref{thm:halving-power}."
+    },
+    {
+      "text": "Compact rank coordinates alone do not control physical distances.",
+      "verdict": "supported",
+      "sourceLine": "Compact rank coordinates alone do not control physical distances:",
+      "sourceQuote": "Compact rank coordinates alone do not control physical distances: a small region in the rank square could represent a highly distorted part of the original plane."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes the halving-pair bound and the level-switch bound; the constants are existential.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
