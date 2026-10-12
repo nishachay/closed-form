@@ -1,0 +1,206 @@
+{
+  "id": "307",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Failure-of-rational-injectivity-for-maximal-coarse-assembly-October-5-2026/paper.pdf",
+      "label": "Failure of rational injectivity for maximal coarse assembly"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-coarse-Novikov-conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to the coarse Novikov conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/307.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Graph families where coarse assembly forgets a class of infinite order; Lean checks the reduced version.",
+  "scope": "Two linked papers on spaces made of finite graphs of bounded degree; Lean covers only the reduced Roe-algebra result.",
+  "plain": "Coarse assembly turns large-scale shape data of a space into an index, a number-like invariant of operators. The coarse Novikov conjecture predicted that no shape class of infinite order is lost this way, even after allowing fractions. One paper proves a counterexample, with a Lean proof listed: a union of finite graphs of bounded degree. A second paper claims the same failure for the larger maximal Roe algebra.",
+  "doesNot": "This does not refute coarse assembly for spaces with extra geometric conditions, such as finite asymptotic dimension or embeddings into Hilbert space.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1993",
+    "firstStepBy": "John Roe, coarse cohomology and coarse index theory",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It refutes the rational coarse Novikov conjecture for bounded-geometry spaces, a long-standing prediction in coarse geometry."
+  },
+  "explanation": "Start with four points on a square, joined around the edge. Neighbours are 1 step apart and opposite corners are 2 steps apart. The Rips complex at scale r fills in every group of points within distance r of each other. At scale 1 only the edges appear, so the square keeps its hole. At scale 2 all four points lie within distance 2, so the hole fills in. The loop was a real feature at one scale and nothing at a larger one. In general, a loop at one scale can bound at a larger scale[8]. Coarse geometry studies the features that survive every scale.\n\nCoarse K-homology collects these surviving features. Coarse assembly sends each feature to an index. The index lives in the K-theory of the Roe algebra, an algebra of operators that move points only a bounded distance. The coarse Novikov conjecture asked that no feature of infinite order map to zero, even after allowing fractions. Bounded geometry means each ball of fixed radius holds a bounded number of points.\n\nEarlier results added conditions. Yu proved assembly is an isomorphism for bounded-geometry spaces of finite asymptotic dimension[9]. He also built a kernel class for a space without bounded geometry[11]. The obstacle was to keep bounded geometry and still lose a class at every scale.\n\nThe second paper proves that the conjecture fails[7]. Begin with discs in the triangular lattice, with radius j, and their boundary loops[12]. Above each point of a disc sits a finite quotient of the matrix group SL₃(ℤ). Twisting prevents short loops from winding around the centre once j is large[14]. So the boundary loop survives as a class of infinite order. Through the filled discs, the index of that class is zero[13]. Thus bounded geometry alone is not enough[10].\n\nThe first paper claims a stronger result for the maximal Roe algebra, a larger completion of the same operators[1]. Its base graphs are three-dimensional discrete tori whose sides grow longer[4]. Over each one sits a finite quotient of SL₃(ℤ)[5]. Kazhdan's property (T), a rigidity property of that group, supplies the averaging step[6]. A zero reduced index alone does not force a zero maximal index[2]. The new class also lies in the reduced kernel[3].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the reduced counterexample. It covers the graph union, the infinite-order class and its zero index after allowing fractions. The maximal Roe algebra result is outside that check. No specialist review of either paper has been published.",
+  "hypeCheck": "Major. Lean covers the reduced counterexample. The maximal version has no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Rips complex",
+      "meaning": "A shape built from points by filling in every group of points that lie close together."
+    },
+    {
+      "term": "Coarse K-homology",
+      "meaning": "An algebraic record of the shape features of a space that survive at every large scale."
+    },
+    {
+      "term": "Roe algebra",
+      "meaning": "An algebra of operators that move points of the space only a bounded distance."
+    },
+    {
+      "term": "Coarse assembly",
+      "meaning": "A map that sends each large-scale shape feature to an index in the Roe algebra's K-theory."
+    },
+    {
+      "term": "Bounded geometry",
+      "meaning": "Every ball of a fixed radius contains at most a fixed number of points."
+    },
+    {
+      "term": "Maximal Roe algebra",
+      "meaning": "The largest natural completion of the bounded-distance operators."
+    },
+    {
+      "term": "Property (T)",
+      "meaning": "A rigidity property of some groups that makes averaging over them behave well."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Failure of rational injectivity for maximal coarse assembly” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Failure-of-rational-injectivity-for-maximal-coarse-assembly-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A counterexample to the coarse Novikov conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-coarse-Novikov-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 307",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/307.md",
+      "quote": "The class remains nonzero after tensoring with $\\mathbb Q$, so rational injectivity fails."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "A uniformly discrete bounded-geometry space has an infinite-order element in the kernel of maximal coarse assembly.",
+      "sourceLine": "We construct a uniformly discrete bounded-geometry space whose maximal coarse assembly map has an infinite-order element in its kernel.",
+      "sourceQuote": "We construct a uniformly discrete bounded-geometry space whose maximal coarse assembly map has an infinite-order element in its kernel.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Vanishing of a reduced index does not imply vanishing of its maximal lift.",
+      "sourceLine": "vanishing of a reduced index alone does not imply vanishing of its maximal lift",
+      "sourceQuote": "The stronger conclusion requires a proof in the universal norm: vanishing of a reduced index alone does not imply vanishing of its maximal lift.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The class also lies in the reduced assembly kernel.",
+      "sourceLine": "therefore also lies in the reduced assembly kernel",
+      "sourceQuote": "Our class $\\alpha$ therefore also lies in the reduced assembly kernel.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The base graphs are three-dimensional discrete tori whose side lengths tend to infinity.",
+      "sourceLine": "The base graphs are three-dimensional discrete tori $B_j$ whose side lengths tend to infinity.",
+      "sourceQuote": "The base graphs are three-dimensional discrete tori $B_j$ whose side lengths tend to infinity.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Over each base torus sits a finite quotient of SL3(Z).",
+      "sourceLine": "we place a finite quotient of $\\SL_3(\\Z)$",
+      "sourceQuote": "Over each $B_j$ we place a finite quotient of $\\SL_3(\\Z)$, obtaining a graph $Y_j$ with Cayley edges inside the fibers.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Kazhdan's property (T) supplies averaging in the full group C*-algebra.",
+      "sourceLine": "supplies averaging in the full group C*-algebra",
+      "sourceQuote": "Kazhdan's property~(T) \\cite{Kazhdan67,BHV08} supplies averaging in the full group C*-algebra.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The coarse Novikov conjecture is disproved.",
+      "sourceLine": "We disprove the coarse Novikov conjecture",
+      "sourceQuote": "We disprove the coarse Novikov conjecture: ordinary coarse assembly need not be rationally injective for uniformly discrete spaces of bounded geometry.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A cycle at one Rips scale can bound at a larger scale.",
+      "sourceLine": "a cycle at one scale can bound at a larger scale",
+      "sourceQuote": "Passing through all Rips scales is essential: a cycle at one scale can bound at a larger scale and therefore represent zero in $KX_*$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Yu proved coarse assembly isomorphism for bounded-geometry spaces of finite asymptotic dimension.",
+      "sourceLine": "Yu proved coarse assembly isomorphism for bounded-geometry spaces of finite asymptotic dimension",
+      "sourceQuote": "Yu proved coarse assembly isomorphism for bounded-geometry spaces of finite asymptotic dimension \\cite[Theorem~7.1]{Yu98}, and subsequently for those admitting a coarse embedding into Hilbert space \\cite{Yu00}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Bounded geometry alone does not suffice.",
+      "sourceLine": "Our result shows that bounded geometry alone does not suffice.",
+      "sourceQuote": "Our result shows that bounded geometry alone does not suffice.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Yu constructed a non-bounded-geometry example with a nontrivial class of zero index.",
+      "sourceLine": "Yu already constructed a non-bounded-geometry example with a nontrivial coarse K-homology class of zero index",
+      "sourceQuote": "Yu already constructed a non-bounded-geometry example with a nontrivial coarse K-homology class of zero index, using spheres of increasing dimension and size \\cite[Section~8, Proposition~8.1]{Yu98}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The construction begins with finite discs of radius j in the triangular lattice and their boundary cycles.",
+      "sourceLine": "Begin with finite discs $D_j$ of radii $j$ in the triangular lattice, and let $C_j$ be their boundary cycles.",
+      "sourceQuote": "Begin with finite discs $D_j$ of radii $j$ in the triangular lattice, and let $C_j$ be their boundary cycles.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Since the boundary classes bound the filled discs, assembly gives zero.",
+      "sourceLine": "Since the boundary classes bound the filled discs, naturality of assembly then gives $\\mu_X(\\alpha)=0$",
+      "sourceQuote": "Since the boundary classes bound the filled discs, naturality of assembly then gives $\\mu_X(\\alpha)=0$ in Section~\\ref{sec:vanishing}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The twisting prevents short loops from winding around the centre once j is large.",
+      "sourceLine": "the twisting prevents short loops in $X_j$ from winding around the center once $j$ is sufficiently large",
+      "sourceQuote": "First, the twisting prevents short loops in $X_j$ from winding around the center once $j$ is sufficiently large.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the counterexample to rational injectivity of ordinary coarse assembly into the reduced Roe algebra; the maximal version is outside it.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
