@@ -1,0 +1,190 @@
+{
+  "id": "285",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026/paper.pdf",
+      "label": "A torsion-free counterexample to reduced Baum–Connes injectivity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026/paper.pdf",
+      "label": "A torsion-free counterexample to the Kadison–Kaplansky projection conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Irrational-Trace-Counterexample-to-Reduced-Baum-Connes-September-23-2026/paper.pdf",
+      "label": "An irrational-trace counterexample to reduced Baum–Connes"
+    }
+  ],
+  "headline": "Claims torsion-free groups that break the Kadison–Kaplansky projection conjecture and reduced Baum–Connes.",
+  "scope": "Coefficient-free reduced Baum–Connes assembly for countable discrete groups, and projections in reduced group C*-algebras of torsion-free groups.",
+  "plain": "To each group one can attach an algebra of operators, the reduced group C*-algebra. Two famous conjectures predict what this algebra looks like for well-behaved groups. Three companion papers claim to build groups where these predictions fail. One group has no elements of finite order, yet its algebra holds a projection other than 0 and 1. Another group's algebra holds a projection whose trace is irrational, which the Baum–Connes conjecture forbids.",
+  "doesNot": "This does not disprove the classical Novikov conjecture or maximal rational injectivity, and it gives no finitely presented example.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Paul Baum and Alain Connes, manuscript formulating the conjecture",
+    "field": "Operator algebras",
+    "significance": "Landmark",
+    "significanceWhy": "Baum–Connes and Kadison–Kaplansky are central conjectures linking group geometry and operator algebras; counterexamples would reshape the field."
+  },
+  "explanation": "Start with a group that has two elements, 1 and g, where g times g is 1. Build formal sums a·1 + b·g with complex numbers a and b. Now take e = (1 + g)/2. Squaring gives (1 + 2g + g²)/4 = (2 + 2g)/4, which is e again. An element equal to its own square is a projection. The trace of a sum is its coefficient on 1, so e has trace 1/2. This projection exists because g has finite order. An element of finite order other than 1 is called torsion.\n\nTorsion-free groups seem to behave differently. Take the integers under addition. Their operator algebra turns out to be the continuous functions on a circle. A projection is then a function taking only the values 0 and 1. On a connected circle, such a function must be constant. So the only projections are 0 and 1.\n\nThe Kadison–Kaplansky conjecture says this holds for every torsion-free group. The algebra is the reduced group C*-algebra, the closure of the group's sums acting on square-summable sequences. Pimsner and Voiculescu proved the conjecture for free groups[7]. A main route to it is the Baum–Connes conjecture. That conjecture says an assembly map, from the group's topology to the algebra's K-theory, is an isomorphism[1]. K-theory sorts projections into classes. Baum and Connes circulated it in 1982 and published it in 2000[2]. It is known for large classes of groups, including all countable amenable groups[6]. Earlier counterexamples of Higson, Lafforgue and Skandalis used extra coefficients. They do not break the coefficient-free form[12]. The obstacle was to find a group, with no coefficients, whose algebra escapes the topology.\n\nThe three papers claim to do that. The first builds a finitely generated torsion-free group whose assembly map sends a class of infinite order to zero[3]. The group is finitely generated, but finite presentation is not part of the conclusion[5]. It disproves neither maximal rational injectivity nor the classical Novikov conjecture[4]. The second builds a finitely generated torsion-free group with a projection other than 0 and the identity[8]. Its trace lies strictly between 0 and 1/2. That projection is in the completed algebra, not in the group ring of finite sums[9]. The third uses Lück's theorem: every assembly class has a rational trace[10]. It then builds a finitely generated group with a projection of irrational trace[11]. That projection cannot come from assembly. The constructions use expander graphs, sparse networks that are still very well connected.\n\nHow sure is this? A computer proof checker called Lean has not checked any part of it. Each claim rests on a long chain of graph, spectral and operator estimates. No specialist review of the papers has been published.",
+  "hypeCheck": "Landmark if it holds: these are counterexamples to two central conjectures. There is no Lean check and no published specialist review, so the claims are unconfirmed.",
+  "glossary": [
+    {
+      "term": "Torsion-free group",
+      "meaning": "A group in which no element other than the identity returns to the identity after finitely many repeats."
+    },
+    {
+      "term": "Projection",
+      "meaning": "An element of an algebra equal to its own square and to its own adjoint, like e = (1 + g)/2 above."
+    },
+    {
+      "term": "Trace",
+      "meaning": "Here, the coefficient on the identity element; for the example e it is 1/2."
+    },
+    {
+      "term": "Reduced group C*-algebra",
+      "meaning": "The algebra of operators made by letting the group act on square-summable sequences and closing up in norm."
+    },
+    {
+      "term": "K-theory",
+      "meaning": "A way of sorting projections in an algebra into classes that can be added."
+    },
+    {
+      "term": "Assembly map",
+      "meaning": "A map from topological data about the group to the K-theory of its reduced C*-algebra."
+    },
+    {
+      "term": "Finitely generated",
+      "meaning": "Every element is a product of finitely many fixed generators and their inverses."
+    },
+    {
+      "term": "Expander graph",
+      "meaning": "A sparse network of points and links that is still very well connected."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A torsion-free counterexample to reduced Baum–Connes injectivity” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Counterexample-to-Reduced-Baum-Connes-Injectivity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A torsion-free counterexample to the Kadison–Kaplansky projection conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Torsion-Free-Counterexample-to-the-Kadison-Kaplansky-Projection-Conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “An irrational-trace counterexample to reduced Baum–Connes” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Irrational-Trace-Counterexample-to-Reduced-Baum-Connes-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Baum–Connes conjecture asserts that the assembly map is an isomorphism.",
+      "sourceLine": "The Baum--Connes conjecture asserts that this map is an isomorphism",
+      "sourceQuote": "The Baum--Connes conjecture asserts that this map is an isomorphism \\cite{BCH94}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Baum and Connes introduced this comparison in a preprint circulated in 1982 and published in 2000.",
+      "sourceLine": "Baum and Connes introduced this index-theoretic comparison in a preprint circulated in 1982 and published in 2000",
+      "sourceQuote": "Baum and Connes introduced this index-theoretic comparison in a preprint circulated in 1982 and published in 2000 \\cite[Section~1 and editors' note]{BC00}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A finitely generated torsion-free discrete group has a degree-zero assembly kernel class of infinite order.",
+      "sourceLine": "we construct a finitely generated torsion-free discrete group whose degree-zero assembly map has a kernel class of infinite order.",
+      "sourceQuote": "Specifically, we construct a finitely generated torsion-free discrete group whose degree-zero assembly map has a kernel class of infinite order.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The result disproves neither maximal rational injectivity nor the classical Novikov conjecture.",
+      "sourceLine": "Our result disproves neither maximal rational injectivity nor this classical assertion",
+      "sourceQuote": "Our result disproves neither maximal rational injectivity nor this classical assertion; in particular, higher signatures associated to low-degree cohomology already have the homotopy invariance established in \\cite[Corollary~1.3]{HS08}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The group is finitely generated; finite presentation is not part of the conclusion.",
+      "sourceLine": "The group is finitely generated; finite presentation is not part of the conclusion.",
+      "sourceQuote": "The group is finitely generated; finite presentation is not part of the conclusion.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Higson and Kasparov prove the conjecture with coefficients for groups acting properly by affine isometries on Hilbert space, including countable amenable groups.",
+      "sourceLine": "Higson and Kasparov prove it with separable coefficients for groups acting properly by affine isometries on Hilbert space, including countable amenable groups",
+      "sourceQuote": "Higson and Kasparov prove it with separable coefficients for groups acting properly by affine isometries on Hilbert space, including countable amenable groups \\cite[Theorem~9.1 and Corollary~9.2]{HK01}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Pimsner and Voiculescu proved the free-group case.",
+      "sourceLine": "Pimsner and Voiculescu proved the free-group case",
+      "sourceQuote": "Pimsner and Voiculescu proved the free-group case by computing the \\(K\\)-theory of reduced crossed products by free groups \\cite[p.~131]{PimsnerVoiculescu1982}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A finitely generated torsion-free group's reduced C*-algebra contains a projection other than zero and the identity, resolving the projection form of Kadison–Kaplansky negatively.",
+      "sourceLine": "resolves the projection form of the Kadison--Kaplansky conjecture negatively.",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves the projection form of the Kadison--Kaplansky conjecture negatively.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The projection lies in the reduced completion but not in the group ring.",
+      "sourceLine": "Thus the projection \\(e\\) lies in the reduced completion but not in the group ring.",
+      "sourceQuote": "Thus the projection \\(e\\) lies in the reduced completion but not in the group ring.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lück's trace theorem implies the trace on every degree-zero assembly class is rational.",
+      "sourceLine": "L\\\"uck's trace theorem implies that its value on every degree-zero assembly class is rational.",
+      "sourceQuote": "L\\\"uck's trace theorem implies that its value on every degree-zero assembly class is rational.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a finitely generated discrete group with a projection of irrational canonical trace in its reduced C*-algebra.",
+      "sourceLine": "There exist a finitely generated discrete group \\(\\Gsur\\) and a projection \\(b_0\\in C_r^*(\\Gsur)\\) with irrational canonical trace.",
+      "sourceQuote": "There exist a finitely generated discrete group \\(\\Gsur\\) and a projection \\(b_0\\in C_r^*(\\Gsur)\\) with irrational canonical trace.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The Higson–Lafforgue–Skandalis constructions do not give a counterexample to the coefficient-free group assertion.",
+      "sourceLine": "Those constructions do not give a counterexample to the coefficient-free group assertion above.",
+      "sourceQuote": "Those constructions do not give a counterexample to the coefficient-free group assertion above.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
