@@ -1,0 +1,300 @@
+{
+  "id": "227",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universality-of-critical-quench-autocorrelations-in-the-Sherrington-Kirkpatrick-model-October-5-2026/main.pdf",
+      "label": "Universality of critical quench autocorrelations in the Sherrington–Kirkpatrick model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Functional-universality-of-critical-SK-autocorrelations-October-5-2026/critical-sk-autocorrelations.pdf",
+      "label": "Functional universality of critical SK autocorrelations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-spectral-gap-throughout-the-high-temperature-Sherrington-Kirkpatrick-phase-September-24-2026/main.pdf",
+      "label": "A spectral gap throughout the high-temperature Sherrington–Kirkpatrick phase"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cutoff-throughout-the-high-temperature-Sherrington-Kirkpatrick-phase-September-24-2026/paper.pdf",
+      "label": "Cutoff throughout the high-temperature Sherrington–Kirkpatrick phase"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-slowing-down-in-the-Sherrington-Kirkpatrick-model-September-24-2026/paper.pdf",
+      "label": "Critical slowing down in the Sherrington–Kirkpatrick model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Stretched-exponential-barriers-for-typical-SK-initial-states-September-24-2026/paper.pdf",
+      "label": "Stretched-exponential barriers for typical SK initial states"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-typical-start-upper-bound-for-low-temperature-SK-Glauber-dynamics-September-24-2026/paper.pdf",
+      "label": "A typical-start upper bound for low-temperature SK Glauber dynamics"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-mixing-in-the-Sherrington-Kirkpatrick-model-September-25-2026/paper.pdf",
+      "label": "Critical mixing in the Sherrington–Kirkpatrick model"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/227.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Heat-bath mixing in the SK spin glass is fast below β = 1, takes n^(2/3) at β = 1, and slows sharply above it.",
+  "scope": "It covers zero-field SK heat-bath dynamics, in probability over the random strengths. The critical universality results are at β = 1 only.",
+  "plain": "The Sherrington–Kirkpatrick model is a classic random magnet with n interacting spins. The papers study how fast a natural random update process reaches equilibrium. They claim fast mixing with a sharp cutoff at high temperature and a time of about n^(2/3) at the critical point. Below the critical temperature, typical starts take much longer.",
+  "doesNot": "This does not give a cutoff or a leading constant at the critical point.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "David Sherrington and Scott Kirkpatrick, the infinite-range spin glass",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It covers the whole high-temperature phase and fixes the critical mixing exponent for a central spin-glass model."
+  },
+  "explanation": "Take n tiny magnets, called spins, each pointing up or down. Every pair is joined by a random strength, positive or negative. This is the Sherrington–Kirkpatrick (SK) model, introduced in 1975[1]. A number β, the inverse temperature, sets how strongly the spins feel those pulls. At β = 1 the model changes phase. Below 1 it behaves like a hot, loose system. Above 1 it becomes a spin glass, frozen in a rugged landscape.\n\nNow let the spins move. Each spin carries a clock that rings on average once per time unit. When it rings, the spin is redrawn at random, given its neighbors. This is heat-bath dynamics. The mixing time is how long it takes, from the worst start, to look like a typical equilibrium sample.\n\nThe papers find three regimes. Take n = 1,000 spins. At β = 1, the mixing time grows like n^(2/3), here about 100 time units. That is about 100,000 single-spin updates, since each time unit has n of them. Below β = 1, mixing takes only about log n time units, here about 6.9 times a constant. Above β = 1, typical starts take time that grows faster than any power of n.\n\nEarlier proofs covered only part of the hot phase. Bauerschmidt and Bodineau proved a key inequality for β below 1/4[3]. Others turned results like this into fast mixing in that range. Later work pushed the range up to 1/2, and slightly past it at zero field[4]. None of these bounds reach β = 1 by taking a limit[5]. Physicists had seen the n^(2/3) scale in simulations[2].\n\nThe spectral-gap paper proves that the dynamics stays well-mixed at every β below 1[7]. Equivalently, the equilibrium law satisfies a Poincaré inequality, a bound on how much any function can vary, that does not grow with n[6]. A second paper claims cutoff for every β below 1[8]. Cutoff means the distance from equilibrium stays near its maximum and then drops suddenly, at time log n / (2λ(β)) for an explicit rate λ(β).\n\nAt β = 1, one paper proves that typical equilibrium starts are still far from equilibrium before time n^(2/3)[12]. The critical mixing paper claims the matching upper bound, so the mixing time is n^(2/3 + o(1))[10]. The o(1) means the exponent is right up to any small slack. It does not claim a cutoff or a leading constant[11]. The obstacle at β = 1 is that equilibrium fluctuations are much larger than for independent spins[19]. Every bound must hold from every start and for every test function.\n\nAbove β = 1, one paper proves a barrier for typical starts. Starting from a sampled equilibrium state, the dynamics is still far from equilibrium at time exp(n^(1/10000))[13]. That bound only matters for huge n. For a million spins it is about 2.72 time units. Another paper claims an upper bound for typical starts, below exp(n) by a tiny power[14].\n\nTwo more papers look at β = 1 more closely. They scale time by n^(2/3) and multiply the average spin autocorrelation by n^(1/3)[16]. With n = 1,000 that factor is 10. The limit is the same for Gaussian and ±1 strengths[9]. It stays random from sample to sample[15]. One paper starts from independent fair spins, a sudden cooling called a quench[18]. Its limit relaxes to the equilibrium one over long waiting times[17].\n\nHow sure is this? Lean, a computer proof checker, has formal versions of several pieces. They include the spectral gap for every β below 1, and cutoff for β below 1/2. At β = 1, Lean bounds the mixing time between n^(2/3−ε) and e^(εn), so the matching upper bound is not in it. It also covers the β > 1 barrier. The universality papers and the β > 1 upper bound are not covered. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean covers the spectral gap, cutoff below β = 1/2, critical lower bounds and the β > 1 barrier. The critical upper exponent and universality are not covered, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "SK model",
+      "meaning": "n spins with independent random pairwise strengths, all pairs interacting."
+    },
+    {
+      "term": "Inverse temperature β",
+      "meaning": "A setting that scales how strongly spins feel their interactions."
+    },
+    {
+      "term": "Heat-bath dynamics",
+      "meaning": "A process that repeatedly redraws one spin from its correct conditional law given the others."
+    },
+    {
+      "term": "Mixing time",
+      "meaning": "How long the process needs, from the worst start, to be close to equilibrium."
+    },
+    {
+      "term": "Spectral gap",
+      "meaning": "A rate that controls how fast averages settle; bounded away from zero means fast settling."
+    },
+    {
+      "term": "Cutoff",
+      "meaning": "A sudden drop from far to near equilibrium within a short time window."
+    },
+    {
+      "term": "Autocorrelation",
+      "meaning": "How much a spin still agrees with its earlier value after a time lag."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Universality of critical quench autocorrelations in the Sherrington–Kirkpatrick model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universality-of-critical-quench-autocorrelations-in-the-Sherrington-Kirkpatrick-model-October-5-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Functional universality of critical SK autocorrelations” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Functional-universality-of-critical-SK-autocorrelations-October-5-2026/critical-sk-autocorrelations.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “A spectral gap throughout the high-temperature Sherrington–Kirkpatrick phase” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-spectral-gap-throughout-the-high-temperature-Sherrington-Kirkpatrick-phase-September-24-2026/main.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Cutoff throughout the high-temperature Sherrington–Kirkpatrick phase” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cutoff-throughout-the-high-temperature-Sherrington-Kirkpatrick-phase-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “Critical slowing down in the Sherrington–Kirkpatrick model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-slowing-down-in-the-Sherrington-Kirkpatrick-model-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Stretched-exponential barriers for typical SK initial states” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Stretched-exponential-barriers-for-typical-SK-initial-states-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “A typical-start upper bound for low-temperature SK Glauber dynamics” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-typical-start-upper-bound-for-low-temperature-SK-Glauber-dynamics-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, “Critical mixing in the Sherrington–Kirkpatrick model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-mixing-in-the-Sherrington-Kirkpatrick-model-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean scope note for family 227 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/227.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Sherrington and Kirkpatrick introduced the infinite-range spin glass in 1975.",
+      "verdict": "supported",
+      "sourceLine": "Sherrington and Kirkpatrick introduced the infinite-range spin-glass",
+      "sourceQuote": "Sherrington and Kirkpatrick introduced the infinite-range spin-glass model in 1975 \\cite{SherringtonKirkpatrick1975}.",
+      "paper": 8
+    },
+    {
+      "text": "Billoire and Campbell measured equilibrium autocorrelation and tested the n^(2/3) scaling form numerically.",
+      "verdict": "supported",
+      "sourceLine": "the finite-size scaling form",
+      "sourceQuote": "For heat-bath updates, with time measured in updates per spin, it tested the finite-size scaling form $q_c(n,t)\\sim n^{-1/3}F(t/n^{2/3})$ \\cite[equation~(7)]{BilloireCampbell2011CriticalDynamics}.",
+      "paper": 8
+    },
+    {
+      "text": "Bauerschmidt and Bodineau proved a log-Sobolev inequality for SK at β < 1/4.",
+      "verdict": "supported",
+      "sourceLine": "Bauerschmidt and Bodineau proved a logarithmic",
+      "sourceQuote": "Bauerschmidt and Bodineau proved a logarithmic Sobolev inequality under a spectral-width condition that applies to SK for fixed $\\beta<1/4$ \\cite[Theorem~1 and Corollary~2]{BauerschmidtBodineau2019}.",
+      "paper": 8
+    },
+    {
+      "text": "At zero field, Boban, Li and Oveis Gharan obtained a constant per-site gap for β < 1/2 + ε0.",
+      "verdict": "supported",
+      "sourceLine": "At zero field, Boban, Li, and Oveis Gharan obtained a constant per-site",
+      "sourceQuote": "At zero field, Boban, Li, and Oveis Gharan obtained a constant per-site spectral gap and an $O(n^2)$ attempted-update bound for $\\beta<1/2+\\varepsilon_0$, with a universal $\\varepsilon_0>0$ \\cite[Theorem~1.5 and Corollary~1.6]{BobanLiOveisGharan2026}.",
+      "paper": 8
+    },
+    {
+      "text": "None of the fixed-subcritical bounds supplies a bound at β = 1 by a limit.",
+      "verdict": "supported",
+      "sourceLine": "None of these fixed-subcritical bounds",
+      "sourceQuote": "None of these fixed-subcritical bounds supplies a bound at $\\beta=1$ by taking a limit.",
+      "paper": 8
+    },
+    {
+      "text": "The Gibbs law satisfies a dimension-free Poincaré inequality.",
+      "verdict": "supported",
+      "sourceLine": "Equivalently, the Gibbs law satisfies a",
+      "sourceQuote": "Equivalently, the Gibbs law satisfies a dimension-free Poincar\\'e inequality for all functions.",
+      "paper": 3
+    },
+    {
+      "text": "For every 0 < β < 1 the unscaled heat-bath spectral gap is bounded away from zero.",
+      "verdict": "supported",
+      "sourceLine": "spectral gap of single-site heat-bath dynamics for the zero-field Gaussian",
+      "sourceQuote": "For every fixed inverse temperature $0<\\beta<1$, we prove that the unscaled spectral gap of single-site heat-bath dynamics for the zero-field Gaussian Sherrington--Kirkpatrick model is bounded away from zero with probability tending to one over the disorder.",
+      "paper": 3
+    },
+    {
+      "text": "Worst-case total-variation cutoff holds at every 0 ≤ β < 1.",
+      "verdict": "supported",
+      "sourceLine": "We prove worst-case total-variation cutoff for the zero-field Gaussian",
+      "sourceQuote": "We prove worst-case total-variation cutoff for the zero-field Gaussian Sherrington--Kirkpatrick heat-bath dynamics at every fixed inverse temperature \\(0\\leq\\beta<1\\).",
+      "paper": 4
+    },
+    {
+      "text": "The stationary autocorrelation has a common functional limit for Gaussian and Rademacher couplings.",
+      "verdict": "supported",
+      "sourceLine": "functional scaling limit for Gaussian and Rademacher couplings.",
+      "sourceQuote": "We prove that the stationary spin autocorrelation of the zero-field Sherrington--Kirkpatrick model at inverse temperature $\\beta=1$ has a common functional scaling limit for Gaussian and Rademacher couplings.",
+      "paper": 2
+    },
+    {
+      "text": "At β = 1 the worst-start mixing time is n^(2/3+o(1)).",
+      "verdict": "supported",
+      "sourceLine": "we determine the worst-start",
+      "sourceQuote": "At the critical inverse temperature $\\beta=1$, we determine the worst-start total-variation mixing exponent for single-site heat-bath dynamics in the zero-field Gaussian Sherrington--Kirkpatrick model.",
+      "paper": 8
+    },
+    {
+      "text": "It does not assert a cutoff, window or leading constant.",
+      "verdict": "supported",
+      "sourceLine": "It gives the mixing exponent and does not assert a cutoff, a cutoff",
+      "sourceQuote": "It gives the mixing exponent and does not assert a cutoff, a cutoff window, or a leading constant.",
+      "paper": 8
+    },
+    {
+      "text": "At β = 1, typical fixed starts are far from equilibrium for t = o(n^(2/3)).",
+      "verdict": "supported",
+      "sourceLine": "we prove slow mixing for zero-field Gaussian",
+      "sourceQuote": "At the critical inverse temperature $\\beta=1$, we prove slow mixing for zero-field Gaussian Sherrington--Kirkpatrick heat-bath dynamics from typical equilibrium configurations held fixed as initial states.",
+      "paper": 5
+    },
+    {
+      "text": "At β > 1, typical starts are far from equilibrium at time exp(n^(1/10000)).",
+      "verdict": "supported",
+      "sourceLine": "we prove a stretched-exponential",
+      "sourceQuote": "At every fixed inverse temperature $\\beta>1$, we prove a stretched-exponential obstruction to mixing for the zero-field Sherrington--Kirkpatrick model from typical equilibrium configurations held fixed as initial states.",
+      "paper": 6
+    },
+    {
+      "text": "At β > 1, typical starts are within 1/4 by time exp(n^(1−1/40000000)).",
+      "verdict": "supported",
+      "sourceLine": "we prove subexponential",
+      "sourceQuote": "For every fixed inverse temperature $\\beta>1$, we prove subexponential mixing for rate-one-per-site heat-bath dynamics in the zero-field Gaussian Sherrington--Kirkpatrick model from a typical equilibrium configuration.",
+      "paper": 7
+    },
+    {
+      "text": "The limiting law is not a point mass and its functions decay to zero.",
+      "verdict": "supported",
+      "sourceLine": "is not a point mass: it retains sample-to-sample randomness, and its",
+      "sourceQuote": "Their limiting law is not a point mass: it retains sample-to-sample randomness, and its functions decay to zero at large times.",
+      "paper": 2
+    },
+    {
+      "text": "Time is scaled by n^(2/3) and the mean autocorrelation multiplied by n^(1/3).",
+      "verdict": "supported",
+      "sourceLine": "rate-one heat-bath clocks at every site, time is scaled by",
+      "sourceQuote": "With rate-one heat-bath clocks at every site, time is scaled by $n^{2/3}$ and the mean spin autocorrelation is multiplied by $n^{1/3}$.",
+      "paper": 2
+    },
+    {
+      "text": "The quench limit relaxes to the stationary limit as waiting time grows.",
+      "verdict": "supported",
+      "sourceLine": "relaxes to the stationary limiting autocorrelation as the waiting time",
+      "sourceQuote": "The quench limit is selected by these initial states and relaxes to the stationary limiting autocorrelation as the waiting time tends to infinity.",
+      "paper": 1
+    },
+    {
+      "text": "The quench starts from independent fair spins.",
+      "verdict": "supported",
+      "sourceLine": "The quench starts from independent fair",
+      "sourceQuote": "The quench starts from independent fair spins, and convergence is uniform on compact sets of positive waiting times and lags.",
+      "paper": 1
+    },
+    {
+      "text": "At criticality, equilibrium fluctuations are much larger than for independent spins.",
+      "verdict": "supported",
+      "sourceLine": "At criticality, equilibrium fluctuations are much larger than for",
+      "sourceQuote": "At criticality, equilibrium fluctuations are much larger than for independent spins.",
+      "paper": 8
+    },
+    {
+      "text": "Lean formalizes the spectral gap for β < 1, ratio cutoff for β < 1/2, critical bounds between n^(2/3−ε) and e^(εn), and the β > 1 barrier.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
