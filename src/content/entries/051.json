@@ -1,0 +1,230 @@
+{
+  "id": "051",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Canonical-ampleness-of-compact-hyperbolic-Kahler-manifolds-September-23-2026/canonical-ampleness.pdf",
+      "label": "Canonical ampleness of compact hyperbolic Kähler manifolds"
+    }
+  ],
+  "headline": "Compact Kähler manifolds with no entire curves have ample canonical bundle, as Kobayashi conjectured.",
+  "scope": "Compact connected Kähler manifolds of positive dimension in which every holomorphic map from the complex plane is constant.",
+  "plain": "A complex space is hyperbolic when every holomorphic map from the whole complex plane into it is constant. Kobayashi conjectured that compact hyperbolic Kähler manifolds have an ample canonical bundle. This paper claims to prove that in every positive dimension. A consequence is that such a manifold can be described by polynomial equations in projective space. Earlier proofs needed an extra assumption of negative curvature.",
+  "doesNot": "This does not address singular spaces, non-Kähler manifolds, or the converse direction from ampleness to hyperbolicity.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2016",
+    "firstStepBy": "D. Wu and S.-T. Yau, under negative holomorphic sectional curvature",
+    "significance": "Major",
+    "significanceWhy": "If correct, it settles a central conjecture of complex hyperbolic geometry in the smooth compact Kähler setting.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Start with closed surfaces, counted by their holes. A sphere has none, a doughnut has one, and a pretzel shape has two. Each can be given a complex structure, which makes it a compact Riemann surface. On such a surface one can ask about entire curves. An entire curve is a non-constant smooth complex map from the whole complex plane into the surface.\n\nThe sphere and the doughnut both receive entire curves. The plane wraps onto the doughnut by rolling it up in two directions. Surfaces with two or more holes receive none. Every such map from the plane is constant. A space with no entire curves is called hyperbolic.\n\nThere is a second test. Each surface carries a canonical bundle, the line bundle built from its holomorphic one-forms. Its degree is 2g − 2, where g counts the holes. That gives −2 for the sphere, 0 for the doughnut, and 2 for two holes. Three holes give 4. The bundle is ample, a strong algebraic kind of positivity, exactly when the degree is positive. So among curves, the two tests agree. No entire curves happens exactly when the canonical bundle is ample.\n\nKobayashi’s canonical-ampleness conjecture asks for one direction of this match in every dimension. Take a compact Kähler manifold, a compact complex space with a compatible way to measure lengths. If it has no entire curves, its canonical bundle should be ample[3]. Ample means some power of the bundle has enough sections to embed the space in projective space. So the conjecture links a ban on maps from the plane to positivity and to being described by polynomial equations[3].\n\nThis paper claims to prove the conjecture in every positive dimension[2]. If every holomorphic map from the plane is constant, the canonical bundle is ample. In particular the manifold is projective, meaning it sits inside a complex projective space[2].\n\nEarlier results needed an extra curvature assumption. Wu and Yau showed in 2016 that negative holomorphic sectional curvature forces canonical ampleness on projective manifolds[4]. Tosatti and Yang removed the projectivity assumption in 2017[5]. Diverio and Trapani allowed curvature that is only quasi-negative[6]. Chen and Yang proved ampleness under Gromov’s Kähler hyperbolicity, a different condition[7]. The paper notes that these metric assumptions give curvature inequalities that the absence of entire curves alone does not supply[8].\n\nA weaker conclusion was already known. Ou, and Cao and Höring, showed the canonical bundle is nef when there are no rational curves[9]. Nef is a borderline form of positivity. The remaining issue for ampleness is positive canonical volume[10]. Volume here is a number measuring how much positivity the bundle has in total.\n\nThe obstacle is that hyperbolicity gives no curvature at all. It only bounds how fast a holomorphic disc can stretch at its centre[17]. The paper works with extremal discs, maps of the unit disc that maximise a chosen quantity. The hard part sits at the disc’s boundary circle. There, the usual limit arguments do not justify varying an integral over the whole disc[11]. The paper first shows enough regularity at the boundary. It then builds holomorphic families of discs with a fixed centre. One second-derivative identity from these families then gives two positivity estimates[12]. One estimate gives a uniform lower bound on volume. A limit then gives positive top self-intersection of the canonical class[13]. Standard theorems turn that into bigness, projectivity and ampleness.\n\nThe paper also claims two consequences. Let n be the dimension. Every power of the canonical bundle of order n + 2 or more is generated by its sections[14]. In dimension 2, that means every power from 4 upward. This step uses a separate OpenAI preprint on Fujita freeness. The second describes a finite cover when the universal cover has a semialgebraic form[15]. It uses another OpenAI preprint. Neither is used in the proof of the main theorem[16].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the analytic disc argument holds. No Lean formalization is listed and no specialist review is published. The two consequences also rely on other OpenAI preprints.",
+  "glossary": [
+    {
+      "term": "Entire curve",
+      "meaning": "A non-constant holomorphic map from the whole complex plane into a space."
+    },
+    {
+      "term": "Hyperbolic",
+      "meaning": "Here: a space into which every holomorphic map from the complex plane is constant."
+    },
+    {
+      "term": "Canonical bundle",
+      "meaning": "The line bundle built from a complex manifold's top-degree holomorphic forms."
+    },
+    {
+      "term": "Ample",
+      "meaning": "A positivity property: some power of the bundle has enough sections to embed the space in projective space."
+    },
+    {
+      "term": "Kähler manifold",
+      "meaning": "A complex manifold with a compatible way to measure lengths and areas."
+    },
+    {
+      "term": "Projective",
+      "meaning": "Describable by polynomial equations inside a complex projective space."
+    },
+    {
+      "term": "Nef",
+      "meaning": "A borderline form of positivity, weaker than ample."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Canonical ampleness of compact hyperbolic Kähler manifolds”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Canonical-ampleness-of-compact-hyperbolic-Kahler-manifolds-September-23-2026/canonical-ampleness.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "D. Wu and S.-T. Yau, “Negative holomorphic curvature and positive canonical bundle”, Inventiones Mathematicae 204 (2016), 595–604",
+      "url": "https://doi.org/10.1007/s00222-015-0621-9"
+    },
+    {
+      "id": 4,
+      "cite": "V. Tosatti and X. Yang, “An extension of a theorem of Wu–Yau”, Journal of Differential Geometry 107 (2017), 573–579",
+      "url": "https://doi.org/10.4310/jdg/1508551226"
+    },
+    {
+      "id": 5,
+      "cite": "S. Diverio and S. Trapani, “Quasi-negative holomorphic sectional curvature and positivity of the canonical bundle”, Journal of Differential Geometry 111 (2019), 303–314",
+      "url": "https://doi.org/10.4310/jdg/1549422103"
+    },
+    {
+      "id": 6,
+      "cite": "B.-L. Chen and X. Yang, “Compact Kähler manifolds homotopic to negatively curved Riemannian manifolds”, Mathematische Annalen 370 (2018), 1477–1489",
+      "url": "https://doi.org/10.1007/s00208-017-1521-7"
+    },
+    {
+      "id": 7,
+      "cite": "J. Cao and A. Höring, “Rational curves on compact Kähler manifolds”, Journal of Differential Geometry 114 (2020), 1–39",
+      "url": "https://arxiv.org/abs/1502.03936"
+    },
+    {
+      "id": 8,
+      "cite": "W. Ou, “A characterization of uniruled compact Kähler manifolds”, arXiv:2501.18088 (2025)",
+      "url": "https://arxiv.org/abs/2501.18088v1"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A complex manifold is Brody hyperbolic if every holomorphic map from C is constant.",
+      "sourceLine": "if every holomorphic map",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "If every holomorphic map C → X is constant, K_X is ample, and a power of K_X embeds X in projective space.",
+      "sourceLine": "is constant, then",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "If every holomorphic map $\\C\\to X$ is constant, then $K_X$ is ample."
+    },
+    {
+      "text": "The conjecture predicts that absence of entire curves forces K_X ample, connecting holomorphic maps with positivity and projective algebraicity.",
+      "sourceLine": "Kobayashi's canonical-ampleness conjecture predicts that the absence of nonconstant entire curves forces",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Kobayashi's canonical-ampleness conjecture predicts that the absence of nonconstant entire curves forces $K_X$ to be ample on a compact K\\\"ahler manifold."
+    },
+    {
+      "text": "Wu and Yau: negative holomorphic sectional curvature forces canonical ampleness on a smooth projective manifold.",
+      "sourceLine": "negative holomorphic sectional curvature of a K\\\"ahler metric forces",
+      "sourceId": 3,
+      "verdict": "supported",
+      "sourceQuote": "A major preceding advance is the theorem of Wu and Yau: negative holomorphic sectional curvature of a K\\\"ahler metric forces canonical ampleness on a smooth projective manifold \\cite{WuYau2016}."
+    },
+    {
+      "text": "Tosatti and Yang extended that to compact Kähler manifolds without assuming projectivity.",
+      "sourceLine": "extended that implication to compact",
+      "sourceId": 4,
+      "verdict": "supported",
+      "sourceQuote": "Tosatti and Yang extended that implication to compact K\\\"ahler manifolds without assuming projectivity \\cite{TosattiYang2017}."
+    },
+    {
+      "text": "Diverio and Trapani extended the conclusion to quasi-negative holomorphic sectional curvature.",
+      "sourceLine": "extended the conclusion to quasi-negative holomorphic",
+      "sourceId": 5,
+      "verdict": "supported",
+      "sourceQuote": "Diverio--Trapani extended the conclusion to quasi-negative holomorphic sectional curvature: the curvature is nonpositive everywhere and strictly negative in every nonzero tangent direction at one point \\cite{DiverioTrapani2019}."
+    },
+    {
+      "text": "Chen and Yang proved canonical ampleness under Kähler hyperbolicity, a condition distinct from Brody hyperbolicity.",
+      "sourceLine": "This condition is distinct from Brody hyperbolicity",
+      "sourceId": 6,
+      "verdict": "supported",
+      "sourceQuote": "This condition is distinct from Brody hyperbolicity \\cite[Corollary~4.4]{ChenYang2018}."
+    },
+    {
+      "text": "These metric hypotheses give curvature inequalities unavailable from the absence of entire curves alone.",
+      "sourceLine": "These metric hypotheses give curvature inequalities unavailable from the absence of entire curves alone.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "These metric hypotheses give curvature inequalities unavailable from the absence of entire curves alone."
+    },
+    {
+      "text": "Nefness is already known under the weaker hypothesis of no rational curves.",
+      "sourceLine": "Thus nefness is already known under this weaker hypothesis.",
+      "sourceId": 7,
+      "verdict": "supported",
+      "sourceQuote": "Thus nefness is already known under this weaker hypothesis."
+    },
+    {
+      "text": "The further issue for ampleness is positive canonical volume.",
+      "sourceLine": "The further issue for ampleness is positive canonical volume.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The further issue for ampleness is positive canonical volume."
+    },
+    {
+      "text": "The difficulty is at the boundary: compact convergence does not justify variations of an integral over the whole disc.",
+      "sourceLine": "is at the boundary: compact convergence does not by itself justify",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Its difficulty is at the boundary: compact convergence does not by itself justify variations of an integral over the whole unit disc."
+    },
+    {
+      "text": "These steps make one Hessian calculation available for two positivity estimates.",
+      "sourceLine": "These steps make one Hessian calculation available for",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "These steps make one Hessian calculation available for two different positivity estimates."
+    },
+    {
+      "text": "A volume lower bound and a limit in cohomology prove positive top self-intersection of K_X.",
+      "sourceLine": "Passing to the limit in cohomology as",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Passing to the limit in cohomology as $t\\downarrow0$ proves $\\int_X c_1(K_X)^n>0$."
+    },
+    {
+      "text": "K_X^m is generated by global sections for every m ≥ n+2, using the Fujita freeness preprint.",
+      "sourceLine": "is generated by its global sections for every integer",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Then $K_X^{\\otimes m}$ is generated by its global sections for every integer $m\\ge n+2$."
+    },
+    {
+      "text": "A second corollary describes a finite cover when the universal cover is semialgebraic, using another preprint.",
+      "sourceLine": "The second describes a finite cover when the universal cover has an additional semialgebraic realization.",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The second describes a finite cover when the universal cover has an additional semialgebraic realization."
+    },
+    {
+      "text": "Neither companion result is used in the proof of the main theorem.",
+      "sourceLine": "Neither companion result is used in the proof of",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Neither companion result is used in the proof of Theorem~\\ref{thm:main}."
+    },
+    {
+      "text": "Compact hyperbolicity bounds the central derivative of every holomorphic disc by a constant.",
+      "sourceLine": "Compact hyperbolicity bounds the squared",
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Compact hyperbolicity bounds the squared $k$-norm of the central derivative of every holomorphic disc by a constant $D$."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
