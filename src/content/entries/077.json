@@ -1,0 +1,191 @@
+{
+  "id": "077",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026.pdf",
+      "label": "Elliptic capacity propagation and Fourier restriction to the sphere"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026.pdf",
+      "label": "Diagonal Fourier extension for positively curved surfaces in three dimensions"
+    }
+  ],
+  "headline": "Claimed proofs of the full Fourier restriction range p > 3 for the sphere and for positively curved surfaces.",
+  "scope": "The claims are in three dimensions only, for compact smooth surfaces that curve the same way in every direction.",
+  "plain": "Fourier extension builds a wave pattern in space by adding up waves whose frequencies lie on a curved surface. The restriction conjecture asks which size measures, called Lᵖ norms, keep that pattern finite. For curved surfaces in three dimensions the conjectured answer is every p above 3. One paper claims this for the sphere with bounded input. A second claims the matching Lᵖ-to-Lᵖ form for every compact positively curved surface.",
+  "doesNot": "This does not settle the restriction conjecture in four or more dimensions, or the endpoint p = 3.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Peter Tomas, L² restriction theorem (with Stein)",
+    "field": "Real and complex analysis",
+    "significance": "Landmark",
+    "significanceWhy": "Restriction in three dimensions is a central open problem in harmonic analysis, and these papers claim its full conjectured range."
+  },
+  "explanation": "Start with the unit sphere in three-dimensional space and the constant function 1 on it. At each point x of space, add up the waves e^(2πi x·ω) over all points ω of the sphere. The total, called the extension E1(x), has an exact formula: 2 sin(2π|x|)/|x|. At x = 0 it equals 4π, about 12.57, the sphere's area. At distance 1/4 it equals 8. Far away it shrinks like 2/|x|.\n\nNow measure its size with an Lᵖ norm: integrate |E1|ᵖ over all of space. For p = 3, each shell from radius R to 2R adds about the same amount. That amount is (128/3) × ln 2, about 29.57. Numerical integration gives 29.57 for R = 10, 20 and 40. Infinitely many shells make the total infinite. For p = 4 the shell totals halve at each doubling: about 3.77, 1.88 and 0.94. So that total is finite. The paper notes the integral diverges for every p up to 3[2].\n\nThe Fourier extension operator does the same for any function f on a surface. It weights each wave by the value of f. The restriction problem asks for which p this output has finite Lᵖ size, bounded by the size of f. In the bounded-data form, f is measured by its largest value. In the diagonal form, f is measured by the same Lᵖ norm on the surface. For surfaces that curve the same way in every direction, the conjectured range is every p above 3. The sphere example shows that p = 3 itself fails.\n\nElias Stein started the problem. The Tomas–Stein theory gives the classical bound from L² data to L⁴[3]. Bourgain tied restriction to the geometry of thin tubes. A wave packet is a piece of the output concentrated along such a tube. Curvature separates packet directions, but many tubes can still pass through a small region[4]. In 2016, Guth's polynomial partitioning reached bounded data for p > 13/4, which is 3.25[5]. Wang and Wu reached the diagonal bound for p > 22/7, about 3.143[6].\n\nThe sphere paper claims the full bounded-data range p > 3 for the sphere[1]. The second paper claims the diagonal bound for every p > 3[7]. It covers every compact smooth positively curved surface, including ones with a smooth edge. That includes the sphere, pieces of the elliptic paraboloid and smooth elliptic graphs[8]. Positive curvature means the surface bends the same way in every direction, like part of a ball.\n\nThe diagonal proof uses two theorem inputs[9]. One is the packet propagation theorem from the sphere paper. The other is a Kakeya maximal theorem from another paper in the same release[10]. It limits how weighted tubes pile up. The second paper also gives a consequence for the free Schrödinger equation in two space dimensions. It claims local smoothing for every p > 3 above Sobolev order 2 − 6/p[11]. A necessary condition of Rogers shows that this order cannot be lowered[12].\n\nHow sure is this? There is no Lean scope note for either paper, so no computer proof checker has tested them. The diagonal result depends on the sphere paper and on a Kakeya paper from the same release. No specialist review has been published.",
+  "hypeCheck": "Landmark if the papers hold, since they claim a central conjecture in three dimensions. They have no Lean scope note and depend on another unreviewed paper from the same release. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Fourier extension",
+      "meaning": "Building a function on space by adding up waves whose frequencies lie on a surface, each weighted by a given function."
+    },
+    {
+      "term": "Lᵖ norm",
+      "meaning": "A measure of a function's size: the p-th root of the integral of its absolute value to the power p."
+    },
+    {
+      "term": "Bounded data",
+      "meaning": "The form of the problem where the input function is measured by its largest value."
+    },
+    {
+      "term": "Diagonal estimate",
+      "meaning": "A bound where input and output are measured with the same exponent p."
+    },
+    {
+      "term": "Wave packet",
+      "meaning": "A piece of a wave pattern concentrated along a thin tube in one direction."
+    },
+    {
+      "term": "Positively curved surface",
+      "meaning": "A surface that bends the same way in every direction at every point, like part of a ball."
+    },
+    {
+      "term": "Local smoothing",
+      "meaning": "A gain in smoothness for a wave or Schrödinger solution when averaged over a short time interval."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Elliptic capacity propagation and Fourier restriction to the sphere” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Diagonal Fourier extension for positively curved surfaces in three dimensions” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "P. A. Tomas, “A restriction theorem for the Fourier transform”, Bulletin of the American Mathematical Society 81 (1975), 477–478",
+      "url": "https://doi.org/10.1090/S0002-9904-1975-13790-6"
+    },
+    {
+      "id": 5,
+      "cite": "L. Guth, “A restriction estimate using polynomial partitioning”, Journal of the American Mathematical Society 29 (2016), 371–413",
+      "url": "https://arxiv.org/abs/1407.1916v3"
+    },
+    {
+      "id": 6,
+      "cite": "H. Wang and S. Wu, “Restriction estimates using decoupling theorems and two-ends Furstenberg inequalities” (2024)",
+      "url": "https://arxiv.org/abs/2411.08871v3"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For every p > 3 there is C_p with ‖Eg‖_{L^p(ℝ³)} ≤ C_p‖g‖_{L^∞(S²)}.",
+      "verdict": "supported",
+      "sourceLine": "For every real \\(p>3\\), there is a finite constant \\(C_p\\), depending",
+      "sourceQuote": "For every real \\(p>3\\), there is a finite constant \\(C_p\\), depending only on \\(p\\), such that \\[ \\|Eg\\|_{L^p(\\R^3)} \\le C_p\\|g\\|_{L^\\infty(S^2,\\sigma)} \\] for every bounded measurable complex-valued function \\(g\\) on \\(S^2\\).",
+      "paper": 1
+    },
+    {
+      "text": "The radial integral of |E1|^p diverges for 0 < p ≤ 3.",
+      "verdict": "supported",
+      "sourceLine": "The radial integral of \\(|E1|^p\\) diverges for \\(0<p\\le3\\).",
+      "sourceQuote": "The radial integral of \\(|E1|^p\\) diverges for \\(0<p\\le3\\).",
+      "paper": 1
+    },
+    {
+      "text": "Tomas–Stein theory gives the classical L²(S²) → L⁴(ℝ³) extension estimate.",
+      "verdict": "supported",
+      "sourceLine": "Tomas--Stein theory gives the classical",
+      "sourceQuote": "The restriction problem originates in Stein's work, and the Tomas--Stein theory gives the classical $L^2(S^2)\\to L^4(\\mathbb R^3)$ extension estimate~\\cite{Stein1979,Tomas1975,Tomas1979}.",
+      "paper": 1
+    },
+    {
+      "text": "Curvature separates packet directions, but many tubes can still pass through a small region of space.",
+      "verdict": "supported",
+      "sourceLine": "curvature separates packet directions, but many tubes can still pass through a small region of space",
+      "sourceQuote": "Bourgain's connection between restriction and tube geometry~\\cite{Bourgain1991Besicovitch} made concentration of wave packets a central issue: curvature separates packet directions, but many tubes can still pass through a small region of space.",
+      "paper": 1
+    },
+    {
+      "text": "Guth's polynomial partitioning established the bounded-data estimate for p > 13/4.",
+      "verdict": "supported",
+      "sourceLine": "established the bounded-data estimate for \\(p>13/4\\)",
+      "sourceQuote": "Guth's polynomial-partitioning argument established the bounded-data estimate for \\(p>13/4\\) \\cite[Theorem~0.1]{Guth2016}.",
+      "paper": 2
+    },
+    {
+      "text": "Wang and Wu proved the diagonal bound for p > 22/7 on compact positively curved surfaces.",
+      "verdict": "supported",
+      "sourceLine": "Wang and Wu proved the diagonal bound for \\(p>22/7\\) on compact positively curved",
+      "sourceQuote": "Wang and Wu proved the diagonal bound for \\(p>22/7\\) on compact positively curved surfaces, including surfaces with boundary, using decoupling and two-ends Furstenberg inequalities \\cite[Theorem~0.2]{WangWu2024}.",
+      "paper": 2
+    },
+    {
+      "text": "For a compact smooth positively curved surface, possibly with boundary, ‖E_Σ f‖_p ≤ C‖f‖_p for every 3 < p < ∞.",
+      "verdict": "supported",
+      "sourceLine": "be a compact smooth positively curved surface, possibly with smooth boundary.",
+      "sourceQuote": "Let \\(\\Sigma\\subset\\R^3\\) be a compact smooth positively curved surface, possibly with smooth boundary.",
+      "paper": 2
+    },
+    {
+      "text": "It includes the sphere, compact elliptic paraboloid patches and general smooth elliptic graphs.",
+      "verdict": "supported",
+      "sourceLine": "It includes the sphere, compact elliptic paraboloid patches, and general smooth elliptic graphs.",
+      "sourceQuote": "It includes the sphere, compact elliptic paraboloid patches, and general smooth elliptic graphs.",
+      "paper": 2
+    },
+    {
+      "text": "The proof uses two theorem inputs.",
+      "verdict": "supported",
+      "sourceLine": "uses two theorem inputs.",
+      "sourceQuote": "The proof of Theorem~\\ref{thm:main} uses two theorem inputs.",
+      "paper": 2
+    },
+    {
+      "text": "The Kakeya maximal theorem controls nonnegative weighted tube concentration.",
+      "verdict": "supported",
+      "sourceLine": "controls nonnegative weighted tube concentration",
+      "sourceQuote": "The Kakeya maximal theorem \\cite[Theorem~1.1]{OpenAIKakeya2026} controls nonnegative weighted tube concentration.",
+      "paper": 2
+    },
+    {
+      "text": "For 3 < p < ∞ and s > 2 − 6/p the free Schrödinger propagator extends boundedly from W^{s,p}(ℝ²) to L^p(ℝ² × [0,1]).",
+      "verdict": "supported",
+      "sourceLine": "For every \\(3<p<\\infty\\) and \\(s>2-6/p\\), the free Schr\\\"odinger",
+      "sourceQuote": "For every \\(3<p<\\infty\\) and \\(s>2-6/p\\), the free Schr\\\"odinger propagator, initially defined on Schwartz functions, extends boundedly from \\(W^{s,p}(\\R^2)\\) to \\(L^p(\\R^2\\times[0,1])\\): \\begin{equation}\\label{eq:schrodinger-smoothing} \\|e^{it\\Delta}f\\|_{L^p(\\R^2\\times[0,1])} \\le C_{p,s}\\|f\\|_{W^{s,p}(\\R^2)}. \\end{equation}",
+      "paper": 2
+    },
+    {
+      "text": "Rogers's necessary condition shows the Sobolev threshold cannot be lowered.",
+      "verdict": "supported",
+      "sourceLine": "shows that the Sobolev threshold cannot be lowered",
+      "sourceQuote": "Rogers's necessary condition \\cite[Section~2]{Rogers2008} shows that the Sobolev threshold cannot be lowered.",
+      "paper": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
