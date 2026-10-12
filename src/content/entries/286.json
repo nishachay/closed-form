@@ -1,0 +1,152 @@
+{
+  "id": "286",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Arithmeticity-of-twisted-finite-correspondences-for-lattices-over-local-fields-September-23-2026/paper.pdf",
+      "label": "Arithmeticity of twisted finite correspondences for lattices over local fields"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-arithmetic-category-and-stable-recovery-of-lattice-factors-September-23-2026/paper.pdf",
+      "label": "The arithmetic category and stable recovery of lattice factors"
+    }
+  ],
+  "headline": "Claims the von Neumann algebra of a property (T) lattice remembers its group, its twist and its scale.",
+  "scope": "Scalar-twisted group factors of ICC groups commensurable with property (T) lattices over characteristic-zero local fields, compared with any countable ICC group.",
+  "plain": "From any group one can build an operator algebra called its group factor. A long-standing question asks how much of the group survives in that algebra. Two companion papers study groups like SL₃(ℤ), integer 3-by-3 matrices of determinant 1, and their relatives. They claim every finite-index link between such a factor and another group factor comes from actual subgroup matches. From this they claim the factor recovers the group, its twist and its scale.",
+  "doesNot": "This does not cover every property (T) group, and other papers show property (T) alone does not ensure recovery.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Alain Connes, countability of the fundamental group of a property (T) group factor",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It gives stable recovery of the group from its factor for a broad class of lattices, answering Connes- and Popa-type rigidity questions there."
+  },
+  "explanation": "Take the group SL₃(ℤ), all 3-by-3 integer matrices with determinant 1. Reduce each entry modulo 2. You get a map onto the 3-by-3 matrices over the two-element field with determinant 1. That finite group has (8 − 1)(8 − 2)(8 − 4) = 7 × 6 × 4 = 168 elements. The matrices that map to the identity form a subgroup of index 168. Index counts how many copies of the subgroup fill the whole group.\n\nFrom a group one can build an operator algebra, its group factor. Each group element becomes a unitary operator, and the algebra is their closure. A scalar twist multiplies products by fixed complex numbers of size one. The question is how much of the group the factor remembers. Connes proved that the fundamental group of a property (T) group factor is countable[1]. That fundamental group lists the scales t at which the factor matches its own resized copy. Property (T) is a strong rigidity condition on unitary representations. But property (T) alone does not ensure recovery. OpenAI and Zhou independently built different property (T) groups with the same group factor[2]. The obstacle is that the comparison group can be any group, with no geometry to start from.\n\nThe papers work with a looser link called a bifinite correspondence. It is a space where both factors act, with finite size on each side. The subgroup above gives one. Match it to itself and use a one-dimensional representation. The formula then gives size n × 168 on each side, with n = 1, so 168[3]. The first paper claims every bifinite correspondence is built from such models[4]. These come from real finite-index subgroup isomorphisms and finite-dimensional projective representations. A nonzero correspondence forces the two groups to be commensurable, sharing isomorphic finite-index subgroups[5].\n\nThe class is broad. It covers groups commensurable with lattices in products of simple groups over the real numbers, the complex numbers or p-adic fields. Lattices are discrete subgroups of finite covolume. SL₃(ℤ) and every finite-index subgroup belong to it[6]. The second paper claims stable recovery. Two resized twisted factors match only when the scales agree and the groups are isomorphic, with matching twists[7]. Every factor in the class has trivial fundamental group[8].\n\nHow sure is this? A computer proof checker called Lean has not checked any part of it. The argument builds geometry inside the correspondence over many long sections, including rank-one quaternionic and Cayley cases. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if it holds, for a wide class of lattices. It does not cover all property (T) groups, and it has no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Group factor",
+      "meaning": "The operator algebra made by turning each group element into a unitary operator and closing up; a factor has trivial centre."
+    },
+    {
+      "term": "ICC",
+      "meaning": "Infinite conjugacy classes: every element other than the identity has infinitely many conjugates."
+    },
+    {
+      "term": "Property (T)",
+      "meaning": "A rigidity condition: any unitary representation with almost-invariant vectors has a truly invariant vector."
+    },
+    {
+      "term": "Commensurable",
+      "meaning": "Two groups are commensurable if they have isomorphic subgroups of finite index."
+    },
+    {
+      "term": "Bifinite correspondence",
+      "meaning": "A Hilbert space on which one factor acts from the left and another from the right, with finite size on both sides."
+    },
+    {
+      "term": "Scalar twist (cocycle)",
+      "meaning": "A rule assigning a complex number of size one to each pair of elements, used to twist multiplication."
+    },
+    {
+      "term": "Fundamental group of a factor",
+      "meaning": "The set of scales t at which the factor is isomorphic to its own resized copy."
+    },
+    {
+      "term": "Projective representation",
+      "meaning": "A map to matrices that respects multiplication up to fixed scalar factors."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Arithmeticity of twisted finite correspondences for lattices over local fields” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Arithmeticity-of-twisted-finite-correspondences-for-lattices-over-local-fields-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The arithmetic category and stable recovery of lattice factors” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-arithmetic-category-and-stable-recovery-of-lattice-factors-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Connes proved countability of the fundamental group of a property (T) group factor.",
+      "sourceLine": "Connes proved countability of the fundamental group of a property-$(T)$ group factor",
+      "sourceQuote": "Connes proved countability of the fundamental group of a property-$(T)$ group factor \\cite{Connes1980}; his later problems ask whether nonisomorphic ICC property-$(T)$ groups have nonisomorphic factors and ask for the fundamental groups of those factors \\cite[Chapter~V, Appendix~B.$\\varepsilon$, Problems~1--2]{Connes1994}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Independent constructions of OpenAI and Zhou give nonisomorphic ICC property (T) groups with isomorphic group factors.",
+      "sourceLine": "concurrent constructions of OpenAI and Zhou give nonisomorphic ICC property-$(T)$ groups with isomorphic group factors",
+      "sourceQuote": "Property $(T)$ alone does not ensure group reconstruction: independent, concurrent constructions of OpenAI and Zhou give nonisomorphic ICC property-$(T)$ groups with isomorphic group factors \\cite[Theorem~1.2]{OpenAI2026ConnesCounterexample} \\cite[Theorem~A]{Zhou2026Counterexamples}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "If n is the dimension of the representation, the elementary model has dimensions n[Λ:B] and n[Γ:A].",
+      "sourceLine": "the elementary model has dimensions",
+      "sourceQuote": "If $n=\\dim_{\\mathbb C}V_\\sigma$, the elementary model has dimensions \\[ \\dim_{L_\\mu(\\Gamma)}E(A,B,\\delta,\\sigma)=n[\\Lambda:B],\\qquad \\dim E(A,B,\\delta,\\sigma)_{L_\\omega(\\Lambda)}=n[\\Gamma:A]. \\]",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every bifinite correspondence is a closed summand of a finite direct sum of models from finite-index subgroup isomorphisms and finite-dimensional projective representations.",
+      "sourceLine": "Every bifinite $L_\\mu(\\Gamma)$--$L_\\omega(\\Lambda)$ correspondence is unitarily isomorphic to a closed bimodule summand of a finite direct sum",
+      "sourceQuote": "Every bifinite $L_\\mu(\\Gamma)$--$L_\\omega(\\Lambda)$ correspondence is unitarily isomorphic to a closed bimodule summand of a finite direct sum of the models $E(A,B,\\delta,\\sigma)$ in Equation~\\eqref{eq:intro-model}, where $A\\leq\\Gamma$ and $B\\leq\\Lambda$ have finite index, $\\delta:A\\to B$ is an actual group isomorphism, and $\\sigma$ is a finite-dimensional projective unitary representation satisfying Equation~\\eqref{eq:intro-multiplier}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Existence of a nonzero correspondence forces the groups to be abstractly commensurable.",
+      "sourceLine": "In particular, existence of a nonzero correspondence forces $\\Gamma$ and $\\Lambda$ to be abstractly commensurable.",
+      "sourceQuote": "In particular, existence of a nonzero correspondence forces $\\Gamma$ and $\\Lambda$ to be abstractly commensurable.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "SL₃(ℤ) and every finite-index subgroup belong to the class.",
+      "sourceLine": "For example, $\\mathrm{SL}_3(\\mathbb Z)$ and every finite-index subgroup belong to $\\mathscr K$.",
+      "sourceQuote": "For example, $\\mathrm{SL}_3(\\mathbb Z)$ and every finite-index subgroup belong to $\\mathscr K$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Amplified twisted factors are isomorphic if and only if the scales agree and the groups are isomorphic with cohomologous cocycles.",
+      "sourceLine": "if and only if $t=s$ and there are an isomorphism $\\delta:\\Lambda\\to\\Pi$",
+      "sourceQuote": "Then \\[ L_\\omega(\\Lambda)^t\\cong L_\\nu(\\Pi)^s \\] if and only if $t=s$ and there are an isomorphism $\\delta:\\Lambda\\to\\Pi$ and a normalized cochain $b:\\Lambda\\to\\mathbb T$ such that \\begin{equation}\\label{eq:intro-cochain} \\omega(g,h)=b(g)b(h)b(gh)^{-1}\\nu(\\delta(g),\\delta(h)). \\end{equation}",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every factor in this class has trivial fundamental group.",
+      "sourceLine": "In particular every factor $L_\\omega(\\Lambda)$ in this class has trivial fundamental group.",
+      "sourceQuote": "In particular every factor $L_\\omega(\\Lambda)$ in this class has trivial fundamental group.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
