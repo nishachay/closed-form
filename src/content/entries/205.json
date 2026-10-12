@@ -1,0 +1,193 @@
+{
+  "id": "205",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-Tensor-Squares-for-Symmetric-Groups-September-24-2026/main.pdf",
+      "label": "Universal Tensor Squares for Symmetric Groups"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Cyclic-Polytabloid-Proof-of-Saxls-Conjecture-September-24-2026/paper.pdf",
+      "label": "A Cyclic Polytabloid Proof of Saxl's Conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/205.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The staircase representation's tensor square contains every irreducible representation, proving Saxl's conjecture.",
+  "scope": "The results are about symmetric groups and their complex representations. The tensor-square statement holds in every size except 2, 4 and 9, where it is false.",
+  "plain": "The symmetric group shuffles n objects, and its basic building-block representations are labelled by partitions of n. Saxl conjectured in 2012 that the staircase partition's representation, multiplied by itself, contains every building block. Two papers prove this, with a Lean check. They also prove that, for every n except 2, 4 and 9, some building block's square contains all of them.",
+  "doesNot": "This does not compute the multiplicities, called Kronecker coefficients; it only shows they are all positive.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2012",
+    "firstStepBy": "Jan Saxl, UCLA Combinatorics Seminar (recorded by Pak, Panova and Vallejo)",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "It settles Saxl's conjecture and the tensor square conjecture, both well-known problems in algebraic combinatorics, with a Lean check."
+  },
+  "explanation": "Take the six shuffles of three objects, the symmetric group S₃. It has three irreducible representations, the building blocks that cannot be split further. They have dimensions 1, 1 and 2: the trivial one, the sign, and the standard one. Multiply the standard one by itself, a tensor square. Its dimension is 2 × 2 = 4. A character calculation shows it splits as 1 + 1 + 2. Every building block appears exactly once.\n\nTry S₄, with 24 shuffles. Its building blocks have dimensions 1, 3, 2, 3 and 1. The only candidate with a chance is the two-dimensional one, for a reason explained below. Its square has dimension 4, and it splits as 1 + 1 + 2. Both three-dimensional blocks are missing. So for four objects no building block works.\n\nBuilding blocks of the symmetric group on n objects are labelled by partitions of n: ways to write n as a decreasing sum. The standard block of S₃ is the partition 2 + 1, drawn as a staircase of rows 2 and 1. The number of times one block appears in the product of two others is a Kronecker coefficient. These numbers are notoriously hard to understand.\n\nSaxl's conjecture is about staircases, with rows m, m − 1, down to 1. It says the square of the staircase block contains every building block. Jan Saxl proposed it at a UCLA seminar on 20 March 2012[2]. Much partial support existed. Ikenmeyer proved it for blocks comparable with the staircase in a natural order[3]. Luo and Sellke showed the square contains almost all blocks[8].\n\nThe cyclic polytabloid paper proves Saxl's conjecture for every staircase[1]. The proof works inside one explicitly generated piece of the square[12]. The S₃ example above is the case m = 2.\n\nThe universal tensor squares paper goes further. For every n except 2, 4 and 9, some building block has a square containing every building block[4,5]. Pak, Panova and Vallejo had stated this as the tensor square conjecture[7]. A working block must equal its own mirror image, the partition flipped across its diagonal[6]. That is why only the two-dimensional block of S₄ had a chance.\n\nStaircases exist only when n is a triangle number, like 3, 6 or 10. The new task is to reach every other n[13]. The paper enlarges a staircase by matching additions to its first two rows and columns. The one obstacle is that added boxes can create terms that cancel[9]. Two separate tests show that the enlarged square still contains each target block. It reuses the stronger form of the staircase result[11]. An exact computer calculation checks every remaining size up to 64[10].\n\nHow sure is this? A computer proof checker called Lean has checked both main statements. It confirms the staircase result for every m. It confirms that for every n except 2, 4 and 9 some block's square contains every block. The stronger claim about one explicitly generated piece is not included. No specialist review of these papers has been published.",
+  "hypeCheck": "Major. Lean checks both main statements; the stronger cyclic form is not checked. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Symmetric group",
+      "meaning": "All the ways to shuffle n objects, combined by doing one shuffle after another."
+    },
+    {
+      "term": "Irreducible representation",
+      "meaning": "A way for the group to act by matrices that cannot be split into smaller such actions."
+    },
+    {
+      "term": "Partition",
+      "meaning": "A way to write n as a decreasing sum of positive whole numbers, drawn as rows of boxes."
+    },
+    {
+      "term": "Tensor square",
+      "meaning": "A representation multiplied by itself, so the group acts on pairs at once."
+    },
+    {
+      "term": "Kronecker coefficient",
+      "meaning": "How many times one building block appears inside the product of two others."
+    },
+    {
+      "term": "Staircase partition",
+      "meaning": "The partition with rows m, m − 1, down to 1."
+    },
+    {
+      "term": "Self-conjugate",
+      "meaning": "A partition that looks the same after flipping it across its diagonal."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Universal Tensor Squares for Symmetric Groups”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-Tensor-Squares-for-Symmetric-Groups-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Cyclic Polytabloid Proof of Saxl's Conjecture”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Cyclic-Polytabloid-Proof-of-Saxls-Conjecture-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 205 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/205.md"
+    },
+    {
+      "id": 4,
+      "cite": "I. Pak, G. Panova and E. Vallejo, “Kronecker products, characters, partitions, and the tensor square conjectures”, Advances in Mathematics 288 (2016), 702–731",
+      "url": "https://doi.org/10.1016/j.aim.2015.11.002"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For every m ≥ 1 and every partition λ of N_m, g(ρ_m, ρ_m, λ) > 0.",
+      "verdict": "supported",
+      "sourceLine": "For every integer $m\\ge1$ and every partition $\\lambda\\vdash N_m$,",
+      "sourceQuote": "For every integer $m\\ge1$ and every partition $\\lambda\\vdash N_m$, \\[ g(\\rho_m,\\rho_m,\\lambda)>0. \\]",
+      "paper": 2
+    },
+    {
+      "text": "Saxl proposed the staircase assertion at a UCLA seminar on 20 March 2012.",
+      "verdict": "supported",
+      "sourceLine": "Saxl proposed the staircase assertion in a UCLA Combinatorics Seminar on",
+      "sourceQuote": "Saxl proposed the staircase assertion in a UCLA Combinatorics Seminar on 20 March 2012, as recorded by Pak, Panova, and Vallejo \\cite[Conjecture~1.2 and Footnote~2]{pakpanovavallejo2016}.",
+      "paper": 2
+    },
+    {
+      "text": "Ikenmeyer proved positivity when λ and ρ_m are comparable in dominance order.",
+      "verdict": "supported",
+      "sourceLine": "Ikenmeyer proved positivity when $\\lambda$ and $\\rho_m$ are comparable",
+      "sourceQuote": "Ikenmeyer proved positivity when $\\lambda$ and $\\rho_m$ are comparable in the dominance order \\cite[Theorem~2.1]{ikenmeyer2015}.",
+      "paper": 2
+    },
+    {
+      "text": "For every n not in {2,4,9} there is λ with g(λ,λ,ν) > 0 for all ν.",
+      "verdict": "supported",
+      "sourceLine": "For every positive integer $n\\notin\\{2,4,9\\}$ there is a partition",
+      "sourceQuote": "For every positive integer $n\\notin\\{2,4,9\\}$ there is a partition $\\lambda\\vdash n$ such that \\[ g(\\lambda,\\lambda,\\nu)>0\\qquad\\text{for every }\\nu\\vdash n. \\]",
+      "paper": 1
+    },
+    {
+      "text": "One irreducible representation has a tensor square containing every irreducible.",
+      "verdict": "supported",
+      "sourceLine": "Thus one irreducible representation has a tensor square containing every",
+      "sourceQuote": "Thus one irreducible representation has a tensor square containing every irreducible representation of $S_n$.",
+      "paper": 1
+    },
+    {
+      "text": "The sign representation occurring forces λ to be self-conjugate.",
+      "verdict": "supported",
+      "sourceLine": "The latter forces $\\lambda$ to be",
+      "sourceQuote": "The latter forces $\\lambda$ to be self-conjugate, since \\[ g(\\lambda,\\lambda,(1^n)) =\\dim\\Hom_{S_n}(S^\\lambda,S^{\\lambda^t}) =\\begin{cases}1,&\\lambda=\\lambda^t,\\\\0,&\\lambda\\ne\\lambda^t. \\end{cases} \\] Our construction meets this necessary condition throughout.",
+      "paper": 1
+    },
+    {
+      "text": "Pak, Panova and Vallejo formulated this as the tensor square conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Pak, Panova, and Vallejo formulate the assertion for $n\\ge3$, with",
+      "sourceQuote": "Pak, Panova, and Vallejo formulate the assertion for $n\\ge3$, with $n\\ne4,9$, as the \\emph{tensor square conjecture} for symmetric groups \\cite[Conjecture~1.1]{PPV}.",
+      "paper": 1
+    },
+    {
+      "text": "Luo and Sellke proved staircase squares contain almost all partitions.",
+      "verdict": "supported",
+      "sourceLine": "Luo and Sellke proved that staircase squares contain almost all",
+      "sourceQuote": "Luo and Sellke proved that staircase squares contain almost all partitions under both the uniform and Plancherel measures, and obtained full fourth-power coverage in all sufficiently large degrees, using modified shapes at nontriangular degrees \\cite[Theorems~1.4--1.6]{LuoSellke}.",
+      "paper": 1
+    },
+    {
+      "text": "The obstacle is that attachments can introduce cancelling alternating terms.",
+      "verdict": "supported",
+      "sourceLine": "The obstacle is not simply to place a smaller staircase inside a larger",
+      "sourceQuote": "The obstacle is not simply to place a smaller staircase inside a larger diagram.",
+      "paper": 1
+    },
+    {
+      "text": "A finite computation verifies every eligible degree at most 64.",
+      "verdict": "supported",
+      "sourceLine": "verifies every eligible degree at most $64$.",
+      "sourceQuote": "The Murnaghan--Nakayama recursion of Section~\\ref{sec:finite} verifies every eligible degree at most $64$.",
+      "paper": 1
+    },
+    {
+      "text": "The paper uses the stronger cyclic form of the staircase result.",
+      "verdict": "supported",
+      "sourceLine": "We use the stronger cyclic form of the staircase result proved in",
+      "sourceQuote": "We use the stronger cyclic form of the staircase result proved in \\emph{A Cyclic Polytabloid Proof of Saxl's Conjecture} \\cite[Theorem~3.1]{SaxlCyclic}.",
+      "paper": 1
+    },
+    {
+      "text": "The proof works inside one explicitly generated submodule of the tensor square.",
+      "verdict": "supported",
+      "sourceLine": "The proof establishes it inside one explicitly generated submodule of",
+      "sourceQuote": "The proof establishes it inside one explicitly generated submodule of the tensor square, a stronger conclusion that retains the vector needed at each induction step.",
+      "paper": 2
+    },
+    {
+      "text": "The new task is to pass from staircase degrees to all degrees.",
+      "verdict": "supported",
+      "sourceLine": "The new task here is to pass from staircase",
+      "sourceQuote": "The new task here is to pass from staircase degrees to all the degrees in Theorem~\\ref{thm:main}.",
+      "paper": 1
+    },
+    {
+      "text": "Lean proves the universal tensor-square statement for n not in {2,4,9} and Saxl's conjecture for every m; the cyclic orbit-span claim is not included.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "390ab68473de650c93d932cb1b7b39be327d36176c054d1442f4a1cf0e5c617e",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
