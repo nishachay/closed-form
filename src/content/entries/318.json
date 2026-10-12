@@ -1,0 +1,238 @@
+{
+  "id": "318",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Filtered-chromatic-splitting-at-generic-primes-September-25-2026/paper.pdf",
+      "label": "Filtered chromatic splitting at generic primes"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-height-three-chromatic-overlap-an-explicit-filtration-and-its-attachments-September-27-2026/paper.pdf",
+      "label": "The height-three chromatic overlap: an explicit filtration and its attachments"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-rational-obstruction-to-strong-chromatic-splitting-at-height-three-September-25-2026/paper.pdf",
+      "label": "A rational obstruction to strong chromatic splitting at height three"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Failure-of-finite-assembly-for-a-chromatic-overlap-at-the-prime-three-September-25-2026/paper.pdf",
+      "label": "Failure of finite assembly for a chromatic overlap at the prime three"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Counterexamples-to-weak-chromatic-splitting-sphere-kernels-and-descent-exponents-September-27-2026/paper.pdf",
+      "label": "Counterexamples to weak chromatic splitting: sphere kernels and descent exponents"
+    }
+  ],
+  "headline": "Five papers claim Hopkins' chromatic splitting conjecture fails in its strong and weak forms, and offer a filtered fix.",
+  "scope": "The p-complete sphere spectrum. The papers treat strong and weak splitting, finite assembly at p = 3, and a filtration when p > n + 1.",
+  "plain": "Chromatic homotopy theory studies the sphere spectrum one height at a time, like splitting light into colours. Hopkins predicted that a key overlap piece breaks into a simple sum of known pieces. Three of these papers claim it fails in three different forms. They name height three, the prime 3, and heights p and p + 1. Two other papers claim the predicted pieces still appear, stacked in a filtration with nonzero glue instead of a plain sum.",
+  "doesNot": "This does not settle weak splitting at other heights. It makes no claim that the prime bounds are sharp.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1993",
+    "firstStepBy": "Mike Hopkins, chromatic splitting conjecture, as recorded by Mark Hovey",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims to disprove the strong and weak forms of a central conjecture in chromatic homotopy theory, and gives a corrected filtered form."
+  },
+  "explanation": "Take three numbers, −1, −3 and −5. Add up every subset of them, including the empty subset. You get eight sums: 0, −1, −3, −4, −5, −6, −8 and −9. These eight numbers are the heart of a thirty-year-old prediction in topology.\n\nHere is the setting. A spectrum is the stable version of a space, the object that stable homotopy theory studies. The most basic one is the sphere spectrum. Topologists study it one height at a time, a little like splitting white light into colours. Height 0 is the rational part, where only fractions matter. Higher heights see finer and finer information, through tools called Morava K-theories. Localizing at a height means keeping only what that height can see. Here p is a fixed prime number.\n\nGluing heights back together needs one extra piece, called the overlap. At height n it is the height-n part of the sphere, viewed from the heights below n. Hopkins' strong conjecture, recorded by Hovey, prescribes how to build this overlap from localized spheres[1]. At height three it predicts a plain sum of eight shifted pieces. Their shifts are exactly the eight numbers above. Barthel, Schlank, Stapleton and Weinstein found the rational homotopy of the height-n local sphere. It is an exterior algebra, with generators in degrees 1 − 2i[2]. At height three those generators sit in degrees −1, −3 and −5. So the numbers alone cannot tell the prediction from the truth[3].\n\nSome low cases were already known. Goerss, Henn and Mahowald proved the height-two splitting at the prime three[4]. At height two and the prime two, Beaudry disproved the original strong form[5]. The obstacle is that the pieces are glued by maps. Matching the pieces does not show that the gluing maps vanish.\n\nThe third paper looks at a natural map out of the overlap. In the predicted sum it must vanish in degree −3. The paper claims it is nonzero there for every prime p ≥ 5. So the height-three strong formula is false in this range, it says[6]. The failure holds even with no condition on the summand maps[7]. The fourth paper asks a weaker question at the prime 3. Can a finite list of sums, shifts, cones and retracts build the overlap from the lower local spheres? It claims the answer is no, disproving the ordinary finite-assembly statement[8].\n\nThe fifth paper tests the weak conjecture. That predicts a retraction, a map back that undoes the natural map from the lower-height sphere into the overlap[9]. The paper claims a counterexample using the sphere itself[10]. Its witness is a power of a classical element called β₁. At p = 5, β₁ lives in degree 2 × 5 × 4 − 2 = 38. Its 16th power lives in degree 38 × 16 = 608. The paper claims this class is nonzero and is killed by the natural map[11]. A map back cannot undo a map that kills a nonzero class. At p = 7 the class has degree 82 × 36 = 2952. It claims kernels at heights seven and eight[12].\n\nThe first two papers give the positive side. For p > n + 1, the first paper claims a filtered form of splitting[13]. The predicted pieces appear in order, but the glue between them is kept. It does not claim a plain sum or a retraction[14]. At height three and p ≥ 5, the second paper claims formulas for all the glue maps[15]. It claims that the first height-one gluing map is nonzero[16].\n\nHow sure is this? No Lean check covers any of the five papers. No specialist review has been published. The arguments rely on deep calculations by others, so treat every result as a claim.",
+  "hypeCheck": "Major if correct. Five unreviewed papers with no Lean check; the counterexamples and the filtered form remain claims until specialists review them.",
+  "glossary": [
+    {
+      "term": "Spectrum",
+      "meaning": "The stable version of a space; the basic object of stable homotopy theory."
+    },
+    {
+      "term": "Height",
+      "meaning": "A level in chromatic homotopy theory. Height 0 is rational information; higher heights see finer information."
+    },
+    {
+      "term": "Localization",
+      "meaning": "Keeping only the part of a spectrum that a chosen tool, such as a Morava K-theory, can see."
+    },
+    {
+      "term": "Morava K-theory",
+      "meaning": "A family of tools, one per height and prime, used to sort information by height."
+    },
+    {
+      "term": "Overlap",
+      "meaning": "The height-n part of the sphere viewed from the heights below n; it holds the gluing information."
+    },
+    {
+      "term": "Exterior algebra",
+      "meaning": "An algebra where each generator squares to zero, so its elements correspond to subsets of the generators."
+    },
+    {
+      "term": "Retraction",
+      "meaning": "A map back that undoes a given map, so that going there and back is the identity."
+    },
+    {
+      "term": "β₁",
+      "meaning": "A classical element of the stable homotopy groups of spheres at an odd prime p, in degree 2p(p − 1) − 2."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Filtered chromatic splitting at generic primes” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Filtered-chromatic-splitting-at-generic-primes-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The height-three chromatic overlap: an explicit filtration and its attachments” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-height-three-chromatic-overlap-an-explicit-filtration-and-its-attachments-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “A rational obstruction to strong chromatic splitting at height three” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-rational-obstruction-to-strong-chromatic-splitting-at-height-three-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Failure of finite assembly for a chromatic overlap at the prime three” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Failure-of-finite-assembly-for-a-chromatic-overlap-at-the-prime-three-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Counterexamples to weak chromatic splitting: sphere kernels and descent exponents” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Counterexamples-to-weak-chromatic-splitting-sphere-kernels-and-descent-exponents-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Hopkins' strong formulation, recorded by Hovey, prescribes an assembly of the overlap from localized spheres.",
+      "sourceLine": "Hopkins' strong formulation, recorded by Hovey",
+      "sourceQuote": "Hopkins' strong formulation, recorded by Hovey \\cite[Conjecture~4.2]{Hovey1995}, prescribes an assembly of this overlap from localized spheres.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Barthel, Schlank, Stapleton and Weinstein identify the rational homotopy algebra with an exterior algebra with generators in degrees 1 − 2i.",
+      "sourceLine": "identify their algebra with an exterior algebra over \\(\\Q_p\\), with primitive generators in degrees \\(1-2i\\), \\(1\\leq i\\leq n\\)",
+      "sourceQuote": "Barthel--Schlank--Stapleton--Weinstein identify their algebra with an exterior algebra over \\(\\Q_p\\), with primitive generators in degrees \\(1-2i\\), \\(1\\leq i\\leq n\\) \\cite[Theorem~A]{BSSW2025}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The rational degree pattern does not distinguish the proposed wedge from the actual overlap.",
+      "sourceLine": "Thus the rational degree pattern does not distinguish the proposed wedge from the actual overlap.",
+      "sourceQuote": "Thus the rational degree pattern does not distinguish the proposed wedge from the actual overlap.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Goerss, Henn and Mahowald proved the height-two splitting at the prime three.",
+      "sourceLine": "Goerss--Henn--Mahowald later proved the height-two splitting at the prime three",
+      "sourceQuote": "Goerss--Henn--Mahowald later proved the height-two splitting at the prime three \\cite[Theorem~1.2]{GoerssHennMahowald2014}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "At height two and the prime two, Beaudry disproved the original strong form.",
+      "sourceLine": "At height two and the prime two, Beaudry disproved the original strong form",
+      "sourceQuote": "At height two and the prime two, Beaudry disproved the original strong form \\cite[Theorem~1.4]{Beaudry2017}; Beaudry--Goerss--Henn established a corrected decomposition with Moore-spectrum terms that retains the weak unit splitting \\cite[Theorem~1.1.6]{BGH2022}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The height-three strong chromatic splitting formula is false for every prime p ≥ 5.",
+      "sourceLine": "Thus the height-three strong chromatic splitting formula is false in this range",
+      "sourceQuote": "Thus the height-three strong chromatic splitting formula is false in this range, whether or not an equivalence is required to preserve its specified unit summand.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Even the underlying equivalence of E(2)-local spectra fails.",
+      "sourceLine": "We disprove even the underlying equivalence of \\(E(2)\\)-local spectra.",
+      "sourceQuote": "We disprove even the underlying equivalence of \\(E(2)\\)-local spectra.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "At p = n = 3 the overlap is not in the thick subcategory of the lower local spheres, disproving the ordinary finite-assembly statement.",
+      "sourceLine": "This disproves the ordinary finite-assembly statement",
+      "sourceQuote": "This disproves the ordinary finite-assembly statement \\eqref{eq:finite-assembly-question}.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The weak chromatic splitting conjecture predicts a homotopy retraction of the unit map for derived p-completions of finite spectra.",
+      "sourceLine": "The weak chromatic splitting conjecture predicts a homotopy retraction of this map whenever $X$ is the derived $p$-completion of a finite spectrum.",
+      "sourceQuote": "The weak chromatic splitting conjecture predicts a homotopy retraction of this map whenever $X$ is the derived $p$-completion of a finite spectrum.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper disproves this universal assertion with finite input the sphere.",
+      "sourceLine": "We disprove this universal assertion with finite input the sphere.",
+      "sourceQuote": "We disprove this universal assertion with finite input the sphere.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "At p = 5 the image of β₁^16 in degree 608 is nonzero and lies in the kernel of the unit map.",
+      "sourceLine": "At $p=5$, the image of $\\beta_1^{16}$ in $\\pi_{608}L_4X$ is nonzero and belongs to the kernel of $\\pi_{608}(i_{5,X})$.",
+      "sourceQuote": "At $p=5$, the image of $\\beta_1^{16}$ in $\\pi_{608}L_4X$ is nonzero and belongs to the kernel of $\\pi_{608}(i_{5,X})$.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "At p = 7 the class β₁^36 has degree 2952 and gives kernels at heights seven and eight.",
+      "sourceLine": "For example, at $p=7$ the class $\\beta_1^{36}$ has degree $82\\cdot36=2952$ and gives kernels at both heights seven and eight.",
+      "sourceQuote": "For example, at $p=7$ the class $\\beta_1^{36}$ has degree $82\\cdot36=2952$ and gives kernels at both heights seven and eight.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves a filtered form of chromatic splitting for p > n + 1.",
+      "sourceLine": "We prove a filtered form of chromatic splitting in the range \\(p>n+1\\).",
+      "sourceQuote": "We prove a filtered form of chromatic splitting in the range \\(p>n+1\\).",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The filtered theorem does not assert the classical wedge decomposition or a retraction of the unit.",
+      "sourceLine": "it does not assert the classical wedge decomposition or a retraction of the unit.",
+      "sourceQuote": "Thus the theorem answers the ordered-filtration formulation studied here; it does not assert the classical wedge decomposition or a retraction of the unit.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Two signed fracture formulas identify all attachments of the height-three filtration.",
+      "sourceLine": "two signed fracture formulas identify all attachments for the chosen local maps and compatibility homotopy",
+      "sourceQuote": "The map from its first stage to the overlap is the canonical unit, and two signed fracture formulas identify all attachments for the chosen local maps and compatibility homotopy.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The first height-one attachment is nonzero.",
+      "sourceLine": "implies that the first height-one attachment is nonzero.",
+      "sourceQuote": "A companion canonical-map theorem further implies that the first height-one attachment is nonzero.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}
