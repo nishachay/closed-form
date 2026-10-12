@@ -1,0 +1,213 @@
+{
+  "id": "194",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Lechs-multiplicity-conjecture-September-23-2026/paper.pdf",
+      "label": "Lech's multiplicity conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/194.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Hilbert–Samuel multiplicity is claimed never to drop along a flat local map, settling Lech's 1960 conjecture.",
+  "scope": "For every flat local homomorphism of nonzero Noetherian local rings, in any dimension and any characteristic.",
+  "plain": "The multiplicity of a ring at a point measures how singular that point is. Lech conjectured that it cannot go down along a flat map, a map where one ring varies evenly over another. Earlier proofs covered small dimensions and special rings. This paper claims to prove it in every case.",
+  "doesNot": "This does not say when equality e(R) = e(S) holds, and Lean has not checked the full theorem.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1960",
+    "firstStepBy": "Christer Lech, Note on multiplicities of ideals",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "It would settle a conjecture of commutative algebra open since 1960, in full generality."
+  },
+  "explanation": "Take the curve xy = 0: two lines crossing at the origin. Study it very close to the crossing. Write down the monomials in x and y, but drop any of degree N or more. Since xy = 0, only 1, x, …, x^(N−1) and y, …, y^(N−1) survive. That makes 2N − 1. For N = 100 it is 199. Divide by N and let N grow, and you get 2. A single smooth line keeps only N monomials, so its limit is 1.\n\nThat limit is the Hilbert–Samuel multiplicity, written e. It measures how singular a point is. A smooth point has e = 1, and the crossing has e = 2. In general, the count grows like a multiple of N^d, where d is the dimension. One multiplies the count by d! and divides by N^d[1]. In dimension zero, e is simply the length, the number of independent quantities[2]. The setting is a Noetherian local ring: the algebraic model of the neighbourhood of a single point, with a finiteness condition.\n\nNow add a third variable z to the crossing lines. The new ring describes two planes crossing along a line. Monomials of degree below N now number N². For N = 100 that is 10,000. Multiply by 2! and divide by N², and e is again 2. Adding a variable is the simplest flat map. A flat map from one local ring R to another, S, makes S vary evenly over R, with no sudden jumps. Christer Lech asked whether multiplicity can ever go down along such a map[3]. His conjecture says e(R) ≤ e(S) always.\n\nLech proved it when R has dimension at most two, and in some special cases[5]. Linquan Ma proved dimension three in equal characteristic, where the ring and its point share the same arithmetic[6]. Ma also proved a weaker inequality, with a factor max{1, d!/2^d}[6]. For d = 10 that factor is about 3,544. Ma also proved it in every dimension when R is a standard graded ring over a perfect field[7]. One popular method needed special sequences of modules over every ring. Yhee showed some two-dimensional rings have none[8].\n\nThis paper claims to prove Lech's conjecture with no restriction on dimension, residue field or characteristic[4].\n\nThe obstacle is a mismatch. Flatness controls powers of R's maximal ideal pushed into S. But e(S) uses powers of S's own maximal ideal. That difference blocks a direct comparison of the leading terms[9]. Two problems remained: keeping the factor exactly 1 in every dimension, and estimating lengths in mixed characteristic[10]. The paper solves both with one estimate for chains of matrices, called free complexes. Its constants depend only on the number of parameters and the sizes of the matrices[11]. In characteristic p, the Frobenius map raises matrix entries to high powers without changing sizes[12]. In mixed characteristic, the paper uses perfectoid normalized lengths instead[13]. In residue characteristic zero, it shows a counterexample would give one in characteristic p, which cannot exist[14].\n\nThe same estimate gives a side result. For a complete local domain of characteristic p, a quantity called the Dutta multiplicity is at least e[15].\n\nHow sure is this? A computer proof checker called Lean has checked a supporting statement. It proves that side result, the Dutta comparison for complete local domains of characteristic p. The full conjecture in every characteristic is outside that check. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds. Lean checks only a supporting characteristic-p statement; the main theorem is unchecked and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Noetherian local ring",
+      "meaning": "The algebraic model of the neighbourhood of a single point, with a finiteness condition."
+    },
+    {
+      "term": "Hilbert–Samuel multiplicity",
+      "meaning": "A number e that measures how singular the point is; smooth points have e = 1."
+    },
+    {
+      "term": "Flat local homomorphism",
+      "meaning": "A map between local rings that makes the target vary evenly over the source."
+    },
+    {
+      "term": "Length",
+      "meaning": "A count of independent quantities in a module, like the dimension of a vector space."
+    },
+    {
+      "term": "Characteristic",
+      "meaning": "The arithmetic of a ring: characteristic p means p copies of 1 add to 0."
+    },
+    {
+      "term": "Free complex",
+      "meaning": "A chain of matrices where each product of neighbours is zero."
+    },
+    {
+      "term": "Dutta multiplicity",
+      "meaning": "A characteristic-p measure of a free complex, built by raising its entries to powers of p."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "C. Lech, “Note on multiplicities of ideals”, Arkiv för Matematik 4 (1960), 63–86",
+      "url": "https://doi.org/10.1007/BF02591323"
+    },
+    {
+      "id": 2,
+      "cite": "L. Ma, “Lech's conjecture in dimension three”, Advances in Mathematics 322 (2017), 940–970, arXiv:1609.00095",
+      "url": "https://arxiv.org/abs/1609.00095v3"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Lech's multiplicity conjecture”, openai/math release preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Lechs-multiplicity-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 194 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/194.md",
+      "quote": "This selected statement is the complete-domain Dutta comparison."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Hilbert–Samuel multiplicity is the limit of d! times the length of A/a^N, divided by N^d.",
+      "verdict": "supported",
+      "sourceLine": "its Hilbert--Samuel multiplicity is",
+      "sourceQuote": "For a nonzero Noetherian local ring $(A,\\mathfrak a)$ of dimension $d$, its Hilbert--Samuel multiplicity is \\[ e(A)=\\lim_{N\\longrightarrow\\infty} \\frac{d!\\,\\length_A(A/\\mathfrak a^N)}{N^d}. \\]",
+      "sourceId": 3
+    },
+    {
+      "text": "In dimension zero the multiplicity is simply the length.",
+      "verdict": "supported",
+      "sourceLine": "In dimension zero this is simply the length of $A$.",
+      "sourceQuote": "In dimension zero this is simply the length of $A$.",
+      "sourceId": 3
+    },
+    {
+      "text": "Lech asked whether multiplicity can decrease under a flat local homomorphism.",
+      "verdict": "supported",
+      "sourceLine": "can decrease under a flat local homomorphism~\\cite{Lech,Lech64}.",
+      "sourceQuote": "Lech asked whether this invariant can decrease under a flat local homomorphism~\\cite{Lech,Lech64}.",
+      "sourceId": 3
+    },
+    {
+      "text": "There is no restriction on the dimensions, the residue fields, or the characteristics.",
+      "verdict": "supported",
+      "sourceLine": "There is no restriction on the dimensions, the residue fields, or the",
+      "sourceQuote": "There is no restriction on the dimensions, the residue fields, or the characteristics of the rings.",
+      "sourceId": 3
+    },
+    {
+      "text": "Lech established the inequality when the source has dimension at most two, and in important complete-intersection cases.",
+      "verdict": "supported",
+      "sourceLine": "Lech's original work established the inequality when the source has",
+      "sourceQuote": "Lech's original work established the inequality when the source has dimension at most two and in important cases with complete-intersection closed fiber~\\cite{Lech,Lech64}.",
+      "sourceId": 3
+    },
+    {
+      "text": "Ma proved the conjecture for equal-characteristic sources of dimension three and a general bound with factor max{1, d!/2^d}.",
+      "verdict": "supported",
+      "sourceLine": "Ma proved the conjecture for equal-characteristic sources of",
+      "sourceQuote": "Ma proved the conjecture for equal-characteristic sources of dimension three and established the general bound \\[ e(R)\\leq \\max\\{1,d!/2^d\\}\\,e(S),\\qquad d=\\dim R, \\] in equal characteristic~\\cite[Theorems~1.2 and~1.3]{Ma}.",
+      "sourceId": 3
+    },
+    {
+      "text": "In arbitrary dimension, Ma proved the conjecture when the source is a standard graded algebra over a perfect field.",
+      "verdict": "supported",
+      "sourceLine": "In arbitrary dimension, Ma proved the conjecture when the source",
+      "sourceQuote": "In arbitrary dimension, Ma proved the conjecture when the source is a standard graded algebra over a perfect field, localized at its homogeneous maximal ideal; the flat local target need not be graded~\\cite[Theorem~3.8]{MaUlrich}.",
+      "sourceId": 3
+    },
+    {
+      "text": "Yhee constructed complete two-dimensional local domains admitting no weakly lim Ulrich sequence.",
+      "verdict": "supported",
+      "sourceLine": "Yhee constructed complete two-dimensional local domains admitting",
+      "sourceQuote": "Nor can one require weakly lim Ulrich sequences over every domain: Yhee constructed complete two-dimensional local domains admitting no such sequence~\\cite[Theorem~6.2]{Yhee}.",
+      "sourceId": 3
+    },
+    {
+      "text": "The difference between the two filtrations prevents a direct comparison of leading terms.",
+      "verdict": "supported",
+      "sourceLine": "this difference prevents a direct comparison of their leading terms",
+      "sourceQuote": "Even when the closed fiber is zero-dimensional, so that both filtrations have finite colength, this difference prevents a direct comparison of their leading terms from giving the asserted lower bound for $e(S)$.",
+      "sourceId": 3
+    },
+    {
+      "text": "The remaining difficulties were retaining coefficient 1 in every dimension and getting length estimates in mixed characteristic.",
+      "verdict": "supported",
+      "sourceLine": "unrestricted theorem: retaining coefficient $1$ in every dimension,",
+      "sourceQuote": "Two difficulties remain in passing from such results to the unrestricted theorem: retaining coefficient $1$ in every dimension, and obtaining the required length estimates in mixed characteristic.",
+      "sourceId": 3
+    },
+    {
+      "text": "The estimate for free complexes has constants depending only on the number of parameters and the ranks.",
+      "verdict": "supported",
+      "sourceLine": "settings. Its constants depend only on the number of parameters and the ranks,",
+      "sourceQuote": "Our argument uses a single estimate for free complexes in both settings. Its constants depend only on the number of parameters and the ranks, even when the auxiliary ring or its length function changes.",
+      "sourceId": 3
+    },
+    {
+      "text": "In characteristic p, Frobenius raises the differential entries to arbitrarily high order without changing their ranks.",
+      "verdict": "supported",
+      "sourceLine": "$p$, Frobenius raises the differential entries to arbitrarily high",
+      "sourceQuote": "In characteristic $p$, Frobenius raises the differential entries to arbitrarily high order without changing their ranks.",
+      "sourceId": 3
+    },
+    {
+      "text": "Mixed characteristic uses the perfectoid normalized lengths of Cai, Lee, Ma, Schwede and Tucker.",
+      "verdict": "supported",
+      "sourceLine": "perfectoid normalized lengths of Cai--Lee--Ma--Schwede--Tucker in mixed",
+      "sourceQuote": "For the present problem we use perfection in characteristic $p$ and the perfectoid normalized lengths of Cai--Lee--Ma--Schwede--Tucker in mixed characteristic~\\cite{CLMST}.",
+      "sourceId": 3
+    },
+    {
+      "text": "In residue characteristic zero, a strict counterexample would contradict the characteristic-p case.",
+      "verdict": "supported",
+      "sourceLine": "in positive characteristic. A strict counterexample would therefore",
+      "sourceQuote": "Artin approximation~\\cite{Artin} and specialization preserve these identities in positive characteristic. A strict counterexample would therefore contradict the characteristic-$p$ case.",
+      "sourceId": 3
+    },
+    {
+      "text": "The Dutta multiplicity of every short complex over a complete local domain of characteristic p is at least e(R).",
+      "verdict": "supported",
+      "sourceLine": "Corollary~\\ref{cor:dutta-domain} proves",
+      "sourceQuote": "Corollary~\\ref{cor:dutta-domain} proves $\\chi_\\infty(F)\\geq e(R)$ for every short complex over a complete Noetherian local domain of characteristic $p>0$.",
+      "sourceId": 3
+    },
+    {
+      "text": "Lean formalizes the complete-domain Dutta comparison in characteristic p; the full flat-local result is outside it.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
