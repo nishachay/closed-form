@@ -1,0 +1,162 @@
+{
+  "id": "317",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Thomason-Model-Structures-in-Every-Strict-Higher-Dimension-September-25-2026/paper.pdf",
+      "label": "Thomason Model Structures in Every Strict Higher Dimension"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/317.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Strict n-categories carry a Thomason model structure in every dimension, settling an Ara–Maltsiniotis conjecture.",
+  "scope": "Small strict globular n-categories for every positive finite n and for n = ω, compared with simplicial sets through the Street nerve.",
+  "plain": "A category is a collection of objects and arrows, and its nerve turns it into a shape built from triangles. In 1980 Thomason showed that ordinary categories can stand in for all shapes of spaces, with full tools for comparing them. Ara and Maltsiniotis conjectured the same for strict higher categories, which also have arrows between arrows. The paper proves this conjecture in every dimension, and Lean checks the main theorem.",
+  "doesNot": "This does not treat weak higher categories, where composition holds only up to further cells, and it gives no new facts about any particular space.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Robert Thomason, model structure on small categories",
+    "field": "Topology",
+    "significance": "Solid",
+    "significanceWhy": "It settles the Ara–Maltsiniotis conjecture, extending Thomason's 1980 theorem from categories to strict higher categories of every dimension."
+  },
+  "explanation": "Take a small category with three objects, 0, 1 and 2. It has one arrow 0 → 1, one arrow 1 → 2, and their composite 0 → 2. Each object also has an identity arrow. Its nerve turns this category into a shape. Objects become points, arrows become edges, and each pair of arrows that compose becomes a filled triangle. The nerve has 3 points and 6 edges counting the identities. Without the identities it has 3 points, 3 edges and 1 filled triangle. That is a solid triangle. Its Euler characteristic is 3 − 3 + 1 = 1, the same as a single point. Indeed the solid triangle can shrink to a point.\n\nThis is the idea behind Thomason's work. Call a functor between categories a weak equivalence when it gives the same shape after taking nerves. Here the functor to the one-object category qualifies. Thomason handled ordinary categories, the case n = 1, by moving the standard structure on simplicial sets across a nerve adjunction[1]. Simplicial sets are shapes glued from points, edges, triangles and their higher versions. The result is a model structure, a full toolkit of weak equivalences, fibrations and cofibrations. With it, categories model every shape of space.\n\nA strict n-category adds more layers. It has arrows between arrows, called 2-cells, and so on up to dimension n. Composition is exactly associative. Street's orientals, standard higher triangles, extend the nerve to these strict higher categories[2]. Ara and Maltsiniotis built the model structure in dimension two[3]. They also proved one of two sufficient conditions in every dimension[4]. Gagna's work showed more. Strict higher categories already described the homotopy category of spaces in every dimension[5]. But the full model structure needs more than that.\n\nThe obstacle is gluing. A model structure must let you attach new cells to any strict n-category, step by step. The construction depends on controlling actual categorical pushouts, the result of gluing two categories along a shared part[6]. Gluing can create new composites that were not in either piece. The nerve of the glued category can then differ from the glued nerves. The paper says the argument must allow attachments to categories that need not be cofibrant or freely generated[7].\n\nThe paper proves the conjecture of Ara and Maltsiniotis in every dimension[8]. For every n from 1 upward, and for n = ω, the strict n-categories get a proper combinatorial model structure. It is Quillen equivalent to simplicial sets, meaning the two toolkits describe the same homotopy theory. So strict higher categories model the homotopy theory of spaces in every positive finite dimension and in dimension ω[9]. A related result already existed for a different shape of cell. Fiore and Paoli built a Thomason model structure on small n-fold categories[10]. The present theorem concerns globular categories, whose cells nest like discs inside spheres.\n\nHow sure is this? Lean, a computer proof checker, proves the main theorem for small strict globular n-categories in every positive finite dimension and in dimension ω. Lean also covers the description of weak equivalences by the Street nerve. No specialist review has been published, but the main statement has a Lean proof.",
+  "hypeCheck": "Solid. The main model-structure theorem has a Lean proof in every dimension. It is a result about models of spaces, not about any one space.",
+  "glossary": [
+    {
+      "term": "Category",
+      "meaning": "A collection of objects with arrows between them that can be composed, each object having an identity arrow."
+    },
+    {
+      "term": "Nerve",
+      "meaning": "A way to turn a category into a shape: objects become points, arrows become edges, and chains of composable arrows become triangles and higher simplices."
+    },
+    {
+      "term": "Simplicial set",
+      "meaning": "A shape glued from points, edges, triangles and their higher-dimensional versions."
+    },
+    {
+      "term": "Model structure",
+      "meaning": "A toolkit of three kinds of maps (weak equivalences, fibrations, cofibrations) that lets you do homotopy theory in a category."
+    },
+    {
+      "term": "Weak equivalence",
+      "meaning": "A map that counts as 'the same shape', here one whose nerve gives the same homotopy type."
+    },
+    {
+      "term": "Strict n-category",
+      "meaning": "A category with arrows between arrows up to dimension n, where composition is exactly associative."
+    },
+    {
+      "term": "Street nerve",
+      "meaning": "The nerve for strict higher categories, built from Street's orientals."
+    },
+    {
+      "term": "Quillen equivalence",
+      "meaning": "A pair of maps between two model structures showing they describe the same homotopy theory."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Thomason Model Structures in Every Strict Higher Dimension” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Thomason-Model-Structures-in-Every-Strict-Higher-Dimension-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 317",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/317.md",
+      "quote": "The formalization proves the higher-dimensional Thomason model-structure theorem for small strict globular $n$-categories in every positive finite dimension and in dimension $\\omega$."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Thomason established the case n = 1 by transferring the simplicial model structure through a nerve adjunction.",
+      "sourceLine": "Thomason established the case $n=1$ by transferring the simplicial model structure",
+      "sourceQuote": "Thomason established the case $n=1$ by transferring the simplicial model structure through $c_1\\Sd^2\\dashv\\Ex^2N_1$ \\cite{Thomason1980}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Street's orientals extend the nerve to strict higher categories.",
+      "sourceLine": "Street's orientals extend the nerve to strict higher categories",
+      "sourceQuote": "Street's orientals extend the nerve to strict higher categories \\cite{Street1987}, providing the weak equivalences in the question considered here.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ara and Maltsiniotis established the proper combinatorial model structure in dimension two.",
+      "sourceLine": "and established the proper combinatorial model structure in dimension two",
+      "sourceQuote": "Ara and Maltsiniotis developed an abstract transfer theorem, drawing on the homotopy theory of categories developed by Grothendieck and Cisinski, and established the proper combinatorial model structure in dimension two.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ara and Maltsiniotis proved the poset-unit condition in all dimensions.",
+      "sourceLine": "Ara and Maltsiniotis proved the poset-unit condition in all these dimensions",
+      "sourceQuote": "Ara and Maltsiniotis proved the poset-unit condition in all these dimensions \\cite[Corollary~10.11 and Scholie~10.12]{AraMaltsiniotis2015}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Strict higher categories already described the homotopy category of spaces in every dimension.",
+      "sourceLine": "Thus strict higher categories already described the homotopy category of spaces in every dimension.",
+      "sourceQuote": "Thus strict higher categories already described the homotopy category of spaces in every dimension.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction of the model structure depends on controlling actual categorical pushouts.",
+      "sourceLine": "whose construction depends on controlling actual categorical pushouts",
+      "sourceQuote": "The prescribed model structure requires the additional lifting and factorization statements, whose construction depends on controlling actual categorical pushouts.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The small object argument must allow attachments to categories that need not be cofibrant or freely generated.",
+      "sourceLine": "the small object argument must allow attachments to categories that need not be cofibrant or freely generated.",
+      "sourceQuote": "Its arbitrary-target scope is essential: the small object argument must allow attachments to categories that need not be cofibrant or freely generated.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the higher-dimensional analogue in every dimension, resolving the Ara–Maltsiniotis conjecture.",
+      "sourceLine": "We prove this analogue in every dimension, resolving positively the higher-dimensional Thomason model-structure conjecture of Ara and Maltsiniotis.",
+      "sourceQuote": "We prove this analogue in every dimension, resolving positively the higher-dimensional Thomason model-structure conjecture of Ara and Maltsiniotis.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Strict higher categories model the homotopy theory of spaces in every positive finite dimension and in dimension ω.",
+      "sourceLine": "Thus strict higher categories model the homotopy theory of spaces in every positive finite dimension and in dimension $\\omega$.",
+      "sourceQuote": "Thus strict higher categories model the homotopy theory of spaces in every positive finite dimension and in dimension $\\omega$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Fiore and Paoli constructed a Thomason model structure on small n-fold categories.",
+      "sourceLine": "Fiore and Paoli constructed a Thomason model structure on small $n$-fold categories",
+      "sourceQuote": "Fiore and Paoli constructed a Thomason model structure on small $n$-fold categories, whose weak equivalences are detected by the diagonal of the $n$-fold nerve and which is Quillen equivalent to simplicial sets \\cite[Theorem~9.28]{FiorePaoli2010}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the higher-dimensional Thomason model-structure theorem for small strict globular n-categories in every positive finite dimension and in dimension ω.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
