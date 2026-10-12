@@ -1,0 +1,165 @@
+{
+  "id": "264",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generic-Future-Inextendibility-with-Square-Integrable-Connection-Near-a-Fixed-Kerr-Spacetime-September-23-2026/paper.pdf",
+      "label": "Generic Future Inextendibility with Square-Integrable Connection Near a Fixed Kerr Spacetime"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generic-C1-Future-Inextendibility-Near-Rotating-Subextremal-Kerr-Spacetimes-September-23-2026/paper.pdf",
+      "label": "Generic C1 Future Inextendibility Near Rotating Subextremal Kerr Spacetimes"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantitative-Near-Kerr-Evolution-and-Generic-C2-Future-Inextendibility-September-23-2026/paper.pdf",
+      "label": "Quantitative Near-Kerr Evolution and Generic C2 Future Inextendibility"
+    }
+  ],
+  "headline": "Claims that typical vacuum perturbations of a rotating Kerr black hole cannot be smoothly continued past the inner horizon.",
+  "scope": "Smooth, two-ended vacuum initial data close to a fixed rotating subextremal Kerr black hole, with no symmetry assumed.",
+  "plain": "Strong cosmic censorship asks whether Einstein's equations predict the future uniquely from initial data. An exact rotating black hole fails this, because spacetime can be continued past its inner horizon in many ways. Three papers claim that for typical small vacuum perturbations of such a black hole, no continuation exists past that point, even at low smoothness. The claims are local to each fixed black hole, and no Lean check exists.",
+  "doesNot": "This does not prove strong cosmic censorship in general, rule out continuous (C⁰) extensions, or describe what forms at the inner horizon.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Roger Penrose, strong formulation of cosmic censorship tied to the inner-horizon blueshift",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "Strong cosmic censorship near Kerr is a central question in mathematical general relativity, and these papers claim a generic form without symmetry."
+  },
+  "explanation": "A rotating black hole in vacuum is described by the Kerr solution. It has a mass M and a rotation a, with 0 < a < M for the subextremal case. Such a black hole has two horizons, at r = M ± √(M² − a²). Take M = 1 and a = 0.6. The outer horizon sits at r = 1.8 and the inner one at r = 0.2. The inner one is a Cauchy horizon. Past it, the initial data no longer decide what happens.\n\nHere is the background. Einstein's equations turn an initial snapshot of space into a spacetime. Choquet-Bruhat and Geroch showed there is a largest such spacetime, unique up to relabeling[1]. It is called the maximal globally hyperbolic development. For exact Kerr, the interior contains a Cauchy horizon, so the solution can be continued past it[2]. That continuation is not fixed by the data, which breaks determinism. Strong cosmic censorship hopes this is not typical. Penrose linked it to the infinite blueshift at an inner horizon[3]. Light falling in piles up there, which may destroy the smoothness needed to continue.\n\nThe answer depends on how smooth a continuation must be. Dafermos and Luk showed that a continuous extension across part of the Cauchy horizon persists under perturbation[4]. So the metric itself can survive. The question becomes whether its derivatives can. Luk and Oh proved a generic C² version, but only in a spherically symmetric model with matter[5]. Here C² means two continuous derivatives. Removing the symmetry is the main obstacle.\n\nThe three papers claim results in this setting, near each fixed rotating Kerr black hole. The data are smooth, two-ended vacuum data with no symmetry condition[6]. Genericity is measured in the sense of Baire category. A meagre set is a negligible, thin set; its complement is generic. One paper claims that data admitting a C² future extension are meagre[7]. Another claims a dense, generic set of data with no future C¹ extension[8]. The third goes lower. It claims extensions whose metric is continuous but whose derivatives are only square-integrable also form a meagre set[9]. So a typical perturbation leaves no continuation at these levels of smoothness.\n\nHow sure is this? There is no Lean formalization for these papers. The claims rest on three long papers. No specialist review of them has been published. The results are local to each fixed Kerr black hole. They do not rule out continuous extensions, which Dafermos and Luk showed can exist.",
+  "hypeCheck": "Major if it holds. There is no Lean check. The claims rest on three long papers with no published specialist review, and they are local near each Kerr black hole.",
+  "glossary": [
+    {
+      "term": "Kerr solution",
+      "meaning": "The exact solution of Einstein's vacuum equations for a rotating black hole with mass M and rotation a."
+    },
+    {
+      "term": "Subextremal",
+      "meaning": "Rotation smaller than mass, 0 < a < M, so the black hole has two separate horizons."
+    },
+    {
+      "term": "Cauchy horizon",
+      "meaning": "A boundary past which the initial data no longer determine the spacetime."
+    },
+    {
+      "term": "Maximal globally hyperbolic development",
+      "meaning": "The largest spacetime that the initial data determine uniquely through Einstein's equations."
+    },
+    {
+      "term": "Strong cosmic censorship",
+      "meaning": "The conjecture that, for typical data, that largest spacetime cannot be continued, so physics stays deterministic."
+    },
+    {
+      "term": "C¹, C²",
+      "meaning": "Smoothness levels: one or two continuous derivatives of the metric."
+    },
+    {
+      "term": "Meagre set",
+      "meaning": "A thin, negligible set in the sense of Baire category; data outside it are called generic."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Generic Future Inextendibility with Square-Integrable Connection Near a Fixed Kerr Spacetime” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generic-Future-Inextendibility-with-Square-Integrable-Connection-Near-a-Fixed-Kerr-Spacetime-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Generic C1 Future Inextendibility Near Rotating Subextremal Kerr Spacetimes” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generic-C1-Future-Inextendibility-Near-Rotating-Subextremal-Kerr-Spacetimes-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Quantitative Near-Kerr Evolution and Generic C2 Future Inextendibility” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantitative-Near-Kerr-Evolution-and-Generic-C2-Future-Inextendibility-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Choquet-Bruhat and Geroch established a maximal globally hyperbolic development, unique up to isometry.",
+      "sourceLine": "Choquet-Bruhat and Geroch established a maximal globally hyperbolic development, unique up to an isometry preserving the initial data",
+      "sourceQuote": "Four\\`es-Bruhat proved local existence and geometric uniqueness \\cite{ChoquetBruhat1952}; Choquet-Bruhat and Geroch established a maximal globally hyperbolic development, unique up to an isometry preserving the initial data \\cite{ChoquetBruhatGeroch1969}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kerr's subextremal interiors contain Cauchy horizons, so the exact solutions admit continuations.",
+      "sourceLine": "Their subextremal interiors contain Cauchy horizons, so the exact solutions admit continuations beyond their maximal Cauchy developments",
+      "sourceQuote": "Their subextremal interiors contain Cauchy horizons, so the exact solutions admit continuations beyond their maximal Cauchy developments \\cite{Carter1968}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Penrose related strong cosmic censorship to global hyperbolicity and the infinite blueshift at an inner horizon.",
+      "sourceLine": "Penrose's discussion of the strong formulation relates this question to global hyperbolicity and to the infinite blueshift at an inner horizon",
+      "sourceQuote": "Penrose's discussion of the strong formulation relates this question to global hyperbolicity and to the infinite blueshift at an inner horizon \\cite[Section~12.3.2]{Penrose1979}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Dafermos and Luk prove persistence of a continuously extendible Cauchy-horizon portion.",
+      "sourceLine": "prove persistence of a continuously extendible Cauchy-horizon portion from suitable Cauchy data already inside a black hole",
+      "sourceQuote": "Dafermos and Luk \\cite{DafermosLuk2025} prove persistence of a continuously extendible Cauchy-horizon portion from suitable Cauchy data already inside a black hole.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "In the spherically symmetric Einstein–Maxwell–scalar-field model, Luk and Oh proved generic C² inextendibility.",
+      "sourceLine": "In that model, Luk and Oh proved a generic $C^2$ inextendibility theorem for admissible complete two-ended asymptotically flat data",
+      "sourceQuote": "In that model, Luk and Oh proved a generic $C^2$ inextendibility theorem for admissible complete two-ended asymptotically flat data, combining exterior lower bounds with an interior instability argument \\cite{LukOh2019I,LukOh2019II}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The data are smooth, complete, two-ended vacuum data with no symmetry condition.",
+      "sourceLine": "The data are smooth, complete, two-ended vacuum data with no symmetry condition.",
+      "sourceQuote": "The data are smooth, complete, two-ended vacuum data with no symmetry condition.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Data admitting any C² future extension are meagre in a weighted smooth neighbourhood of the Kerr bridge data.",
+      "sourceLine": "we prove that data admitting any \\(C^2\\) future extension are meagre in a weighted smooth neighborhood of its bridge data",
+      "sourceQuote": "Nevertheless, we prove that data admitting any \\(C^2\\) future extension are meagre in a weighted smooth neighborhood of its bridge data.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "A dense G-delta set of nearby data has a development with no future C¹ extension.",
+      "sourceLine": "a dense \\(G_\\delta\\) set of nearby smooth, complete two-ended vacuum data has a maximal globally hyperbolic development with no future \\(C^1\\) extension",
+      "sourceQuote": "For each fixed Kerr spacetime with mass \\(M>0\\) and rotation \\(0<\\mathfrak a<M\\), we prove that a dense \\(G_\\delta\\) set of nearby smooth, complete two-ended vacuum data has a maximal globally hyperbolic development with no future \\(C^1\\) extension.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Data whose development admits a future extension with continuous metric and square-integrable connection form a meagre set.",
+      "sourceLine": "admits a future $C^0\\cap W^{1,2}_{\\mathrm{loc}}$ extension form a meagre set in the weighted smooth topology",
+      "sourceQuote": "For each fixed rotating subextremal Kerr background with mass $M>0$ and rotation $0<|\\mathfrak a|<M$, we prove that the smooth vacuum data near its complete two-ended bridge whose full maximal globally hyperbolic development admits a future $C^0\\cap W^{1,2}_{\\mathrm{loc}}$ extension form a meagre set in the weighted smooth topology.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
