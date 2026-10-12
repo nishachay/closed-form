@@ -1,0 +1,285 @@
+{
+  "id": "011",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weighted-Dilation-Graphs-Smooth-Shifted-Primes-and-Totient-Fibers-September-24-2026/paper.pdf",
+      "label": "Weighted dilation graphs, smooth shifted primes and totient fibers"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026/paper.pdf",
+      "label": "The Poisson-Dirichlet law for prime predecessors"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Prime-Predecessors-with-an-Even-Number-of-Prime-Factors-September-17-2026/paper.pdf",
+      "label": "Prime Predecessors with an Even Number of Prime Factors"
+    }
+  ],
+  "headline": "The prime factors of p − 1, for a random prime p, are claimed to split like a randomly broken stick.",
+  "scope": "The law concerns the prime factors of p − 1 on a log scale, for primes p up to x chosen evenly.",
+  "plain": "Pick a prime p at random and factor p − 1. Measure each prime factor by its share of the logarithm of p − 1. The second paper claims these shares follow the Poisson–Dirichlet law, the pattern of a stick broken at random points, as Ford, Konyagin and Luca conjectured. The first paper claims to prove Erdős's conjecture that some n are values of Euler's totient in nearly n ways. A third paper adds a parity result.",
+  "doesNot": "This does not give rates of convergence, and it does not prove the independence assumptions used in models of prime chains.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1956",
+    "firstStepBy": "P. Erdős, who recorded the expectation that p − 1 can have only small prime factors",
+    "significance": "Major",
+    "significanceWhy": "It claims two named conjectures on shifted primes, one of Erdős and one of Ford, Konyagin and Luca.",
+    "field": "Number theory"
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven exponent c with totient fibers larger than n^c infinitely often",
+    "note": "Higher is better. 1 is the largest possible exponent.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 1998,
+        "value": 0.7039,
+        "who": "Baker and Harman",
+        "source": 5
+      },
+      {
+        "year": 2022,
+        "value": 0.7156,
+        "who": "Lichtman",
+        "source": 6
+      },
+      {
+        "year": 2026,
+        "value": 1,
+        "who": "This paper",
+        "claim": true,
+        "source": 1
+      }
+    ]
+  },
+  "explanation": "Take the prime 31. Then 31 − 1 = 30, which factors as 5 × 3 × 2. Measure each prime factor by its logarithm, divided by the logarithm of 30. The three shares come out near 0.473, 0.323 and 0.204. They add up to exactly 1, because the logarithms of the factors add up to the logarithm of 30. So the prime factors of p − 1 split a unit length into pieces.\n\nFor ordinary whole numbers chosen at random, the shape of this split has long been known. Dickman described the largest piece in 1930, and Billingsley found the joint law of the large pieces in 1972[3]. The answer is the Poisson–Dirichlet law (the paper calls it PD(1)). Here is a picture of it. Break a stick of length 1 at a uniformly random point and set one part aside. Break the rest the same way, again and again. Then sort the pieces from largest to smallest.\n\nPrimes are harder. Asking that a large number divides p − 1 puts p in a fixed pattern of remainders. Standard tools count primes in such patterns only when the number is below a fixed power of x[5]. But the full split involves products of factors right up to x. Ford, Konyagin and Luca conjectured in 2010 that p − 1 still follows PD(1)[2]. Before this, Bharadwaj and Rodgers had shown it only under an unproved hypothesis about primes in patterns[6].\n\nThe second paper claims that conjecture in full[2]. For a prime p chosen evenly up to x, the sorted shares converge to PD(1) as x grows[1]. That covers the largest share, the first two together, and any fixed number of them. One consequence concerns smooth predecessors, where every prime factor of p − 1 is small. It confirms Granville’s predicted share of primes p up to x with every prime factor of p − 1 at most x^(1/u)[7].\n\nThe first paper comes first in the chain of proofs. Fix any δ between 0 and 1/4. The paper claims at least x^(1 − o(1)) primes between 2x and 5x whose p − 1 has no prime factor above x^δ[10]. Here x^(1 − o(1)) means nearly x, up to a factor that grows slower than any power. Earlier work reached only smoothness thresholds near x^0.2961 and x^0.2844[17].\n\nThat input bears on Euler’s totient φ(m). It counts the numbers from 1 to m sharing no factor with m. Several m can give the same value. For example, φ(m) = 24 for exactly ten values of m. They are 35, 39, 45, 52, 56, 70, 72, 78, 84 and 90. Fix any ε > 0. The paper claims infinitely many n are hit by more than n^(1−ε) values of m[8]. If correct, this settles a conjecture of Erdős, recorded by Pomerance in 1980[9]. The exponent is the best possible, since the count can never exceed about n[9]. Earlier proven exponents were 0.7039 and then 0.7156[11,18].\n\nA third paper claims infinitely many primes p of a special kind[12]. For them, p − 1 has no repeated prime factor and an even number of prime factors. Parity is a classic blind spot of sieve methods (ways of counting by removing multiples of small primes)[13]. It builds on the first paper’s tools[14].\n\nThe main new step in the second paper is a counting estimate for products of two parts[15]. The difficulty is that one side must carry marks recording chosen small prime factors of p − 1. The paper claims this works while the other side is only roughly controlled. The result is a limit law: it does not give how fast the limit is reached. It also does not prove the extra independence assumptions behind Ford, Konyagin and Luca’s prime-chain model[16].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The three papers depend on each other. No specialist review has been published.",
+  "hypeCheck": "Major only if the chain of three linked papers holds. No Lean formalization is listed and no specialist review is published. The main law gives a limit without a rate.",
+  "glossary": [
+    {
+      "term": "Predecessor",
+      "meaning": "For a prime p, the number p − 1 just before it."
+    },
+    {
+      "term": "Poisson–Dirichlet law",
+      "meaning": "The random way a stick of length 1 splits when you break it at random points again and again, with pieces sorted by size."
+    },
+    {
+      "term": "Smooth number",
+      "meaning": "A number whose prime factors are all below a chosen limit."
+    },
+    {
+      "term": "Euler’s totient",
+      "meaning": "φ(m), the count of numbers from 1 to m that share no factor with m."
+    },
+    {
+      "term": "Totient fiber",
+      "meaning": "All the numbers m that give the same totient value n."
+    },
+    {
+      "term": "Sieve method",
+      "meaning": "A way of counting numbers with a property by removing multiples of small primes step by step."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Weighted dilation graphs, smooth shifted primes and totient fibers”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weighted-Dilation-Graphs-Smooth-Shifted-Primes-and-Totient-Fibers-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The Poisson–Dirichlet law for prime predecessors”, openai/math release preprint (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Prime Predecessors with an Even Number of Prime Factors”, openai/math release preprint (September 17, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Prime-Predecessors-with-an-Even-Number-of-Prime-Factors-September-17-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "K. Ford, S. V. Konyagin and F. Luca, “Prime chains and Pratt trees”, Geometric and Functional Analysis 20 (2010), 1231–1258",
+      "url": "https://doi.org/10.1007/s00039-010-0089-0"
+    },
+    {
+      "id": 5,
+      "cite": "R. C. Baker and G. Harman, “Shifted primes without large prime factors”, Acta Arithmetica 83 (1998), 331–361",
+      "url": "https://doi.org/10.4064/aa-83-4-331-361"
+    },
+    {
+      "id": 6,
+      "cite": "J. D. Lichtman, “Primes in arithmetic progressions to large moduli, and shifted primes without large prime factors”, arXiv:2211.09641 (2022)",
+      "url": "https://arxiv.org/abs/2211.09641v1"
+    },
+    {
+      "id": 7,
+      "cite": "C. Pomerance, “Popular values of Euler's function”, Mathematika 27 (1980), 84–89",
+      "url": "https://doi.org/10.1112/S0025579300009967"
+    },
+    {
+      "id": 8,
+      "cite": "P. Erdős, “On pseudoprimes and Carmichael numbers”, Publicationes Mathematicae Debrecen 4 (1956), 201–206",
+      "url": "https://doi.org/10.5486/PMD.1956.4.3-4.16"
+    },
+    {
+      "id": 9,
+      "cite": "P. Billingsley, “On the distribution of large prime divisors”, Periodica Mathematica Hungarica 2 (1972), 283–289",
+      "url": "https://doi.org/10.1007/BF02018667"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For every fixed k and bounded continuous F, the averages over primes of F(V_1,…,V_k) converge to the PD(1) expectation.",
+      "verdict": "supported",
+      "sourceLine": "The limit holds through all real $x$ and uses ordinary equal",
+      "sourceQuote": "The limit holds through all real $x$ and uses ordinary equal weighting of the primes.",
+      "paper": 2
+    },
+    {
+      "text": "The theorem resolves the conjecture of Ford, Konyagin and Luca.",
+      "verdict": "supported",
+      "sourceLine": "Konyagin and Luca \\cite[Section~6, Conjecture~5]{FordKonyaginLuca2010}.",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves positively the conjecture of Ford, Konyagin and Luca \\cite[Section~6, Conjecture~5]{FordKonyaginLuca2010}.",
+      "paper": 2
+    },
+    {
+      "text": "Billingsley proved the joint limiting law of the ordered large prime divisors; the law begins with Dickman.",
+      "verdict": "supported",
+      "sourceLine": "Billingsley proved the joint limiting law of the ordered large prime divisors",
+      "sourceQuote": "Billingsley proved the joint limiting law of the ordered large prime divisors \\cite{Billingsley}.",
+      "paper": 2
+    },
+    {
+      "text": "The decreasing rearrangement of stick fragments has the Poisson–Dirichlet distribution with parameter one.",
+      "verdict": "supported",
+      "sourceLine": "Poisson--Dirichlet distribution with parameter one, denoted",
+      "paper": 2
+    },
+    {
+      "text": "Standard distribution estimates give information only for products below a fixed power of x.",
+      "verdict": "supported",
+      "sourceLine": "estimates give useful information for products below a fixed power",
+      "sourceQuote": "Standard distribution estimates give useful information for products below a fixed power of $x$, whereas the full factor partition involves products throughout the range below $x$.",
+      "paper": 2
+    },
+    {
+      "text": "Bharadwaj and Rodgers' theorem gives the full law under the Elliott–Halberstam conjecture.",
+      "verdict": "supported",
+      "sourceLine": "full law under the Elliott--Halberstam conjecture, as anticipated in",
+      "sourceQuote": "For shifted primes this gives the full law under the Elliott--Halberstam conjecture, as anticipated in \\cite[Section~6]{FordKonyaginLuca2010}.",
+      "paper": 2
+    },
+    {
+      "text": "The theorem resolves Granville's fixed-u conjecture for smooth shifted primes.",
+      "verdict": "supported",
+      "sourceLine": "resolves this fixed-$u$ conjecture",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves this fixed-$u$ conjecture positively and proves the complete joint limiting law.",
+      "paper": 2
+    },
+    {
+      "text": "For every ε > 0, infinitely many n have g(n) > n^(1−ε).",
+      "verdict": "supported",
+      "sourceLine": "For every real $\\eps>0$, there are infinitely many positive integers",
+      "sourceQuote": "For every real $\\eps>0$, there are infinitely many positive integers $n$ such that \\[ g(n)>n^{1-\\eps}. \\]",
+      "paper": 1
+    },
+    {
+      "text": "This resolves Erdős's conjecture as formulated by Pomerance; the exponent is optimal by an elementary upper bound.",
+      "verdict": "supported",
+      "sourceLine": "it in \\Cref{sec:totients}. Thus the power exponent of $n$ in the theorem is",
+      "sourceQuote": "An elementary upper bound is $g(n)\\ll_\\eta n^{1+\\eta}$ for every $\\eta>0$; we recall it in \\Cref{sec:totients}. Thus the power exponent of $n$ in the theorem is optimal.",
+      "paper": 1
+    },
+    {
+      "text": "For every fixed 0<δ<1/4 there are at least x^(1−o(1)) primes in (2x,5x] with P+(p−1) ≤ x^δ.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed $0<\\delta<1/4$, as $x\\to\\infty$,",
+      "sourceQuote": "For every fixed $0<\\delta<1/4$, as $x\\to\\infty$, \\begin{equation}\\label{eq:main-smooth} \\#\\{p:\\ p\\text{ prime},\\ 2x<p\\le5x, \\ P^+(p-1)\\le x^\\delta\\} \\ge x^{1-o(1)}. \\end{equation}",
+      "paper": 1
+    },
+    {
+      "text": "Baker and Harman obtained smoothness exponent 0.2961 with totient multiplicity exponent 0.7039.",
+      "verdict": "supported",
+      "sourceLine": "totient multiplicity exponent $0.7039$",
+      "sourceQuote": "Baker and Harman \\cite[Section~1, Theorem~1 and Corollary~1]{BakerHarman1998} obtained exponent $0.2961$ for shifted primes, with the corresponding totient multiplicity exponent $0.7039$.",
+      "paper": 1
+    },
+    {
+      "text": "There are infinitely many primes p with p − 1 squarefree and Ω(p − 1) even.",
+      "verdict": "supported",
+      "sourceLine": "There are infinitely many primes $p$ such that $p-1$ is squarefree",
+      "sourceQuote": "There are infinitely many primes $p$ such that $p-1$ is squarefree and $\\Omega(p-1)$ is even.",
+      "paper": 3
+    },
+    {
+      "text": "Prime-factor parity is a classical obstruction in sieve theory.",
+      "verdict": "supported",
+      "sourceLine": "Prime-factor parity is a classical obstruction in sieve theory:",
+      "sourceQuote": "Prime-factor parity is a classical obstruction in sieve theory: congruence information alone need not distinguish the two Liouville signs.",
+      "paper": 3
+    },
+    {
+      "text": "The parity paper uses the dilation-graph and other estimates of the companion paper S without reproving them.",
+      "verdict": "supported",
+      "sourceLine": "Our structural inputs are the dilation-graph transference, ideal-kernel,",
+      "sourceQuote": "Our structural inputs are the dilation-graph transference, ideal-kernel, weighted-sieve, and proxy estimates of the companion paper \\emph{Weighted dilation graphs, smooth shifted primes and totient fibers}~\\cite{SmoothShifted}, hereafter S. Their hypotheses and the conclusions needed here are stated where they enter the proof.",
+      "paper": 3
+    },
+    {
+      "text": "The main new estimate is a marked Type II estimate.",
+      "verdict": "supported",
+      "sourceLine": "The main new estimate is Theorem~\\ref{thm:type-II}: a marked",
+      "sourceQuote": "The main new estimate is Theorem~\\ref{thm:type-II}: a marked Type~II estimate in which only the predecessor side carries divisor marks, namely weights recording selected small prime divisors.",
+      "paper": 2
+    },
+    {
+      "text": "The recursive independence assumptions for later generations of the prime-chain model are additional hypotheses.",
+      "verdict": "supported",
+      "sourceLine": "recursive independence assumptions used for later generations are",
+      "sourceQuote": "Theorem~\\ref{thm:main} supplies the factorization law at the root of their probabilistic model; the recursive independence assumptions used for later generations are additional hypotheses.",
+      "paper": 2
+    },
+    {
+      "text": "Baker–Harman and Lichtman obtained thresholds x^0.2961 and x^0.2844.",
+      "verdict": "supported",
+      "sourceLine": "thresholds $x^{0.2961}$ for $p\\le x$ and $x^{0.2844}$ for",
+      "sourceQuote": "Baker and Harman \\cite[Theorem~1]{BakerHarman1998} and Lichtman \\cite[Theorem~1.1]{Lichtman2022} obtained lower bounds of the form $x/(\\log x)^C$ for primes with smooth predecessors, at thresholds $x^{0.2961}$ for $p\\le x$ and $x^{0.2844}$ for $x<p\\le2x$, respectively.",
+      "paper": 2
+    },
+    {
+      "text": "Lichtman obtained multiplicity exponent 0.7156.",
+      "verdict": "supported",
+      "sourceLine": "and obtained multiplicity exponent $0.7156$.",
+      "sourceQuote": "Lichtman \\cite[Theorem~1.1 and Corollary~1.3]{Lichtman2022} proved a lower bound $x/(\\log x)^C$ for $x<p\\le2x$ and $P^+(p-1)\\le x^\\beta$ whenever \\[ \\beta>\\frac{15}{32\\sqrt e}=0.284311\\ldots, \\] and obtained multiplicity exponent $0.7156$.",
+      "paper": 1
+    },
+    {
+      "text": "Dickman's work dates to 1930; Erdős's conjecture appears in his 1956 paper.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
