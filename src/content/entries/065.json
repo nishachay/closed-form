@@ -1,0 +1,231 @@
+{
+  "id": "065",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Virasoro-Constraints-under-Projectivization-October-5-2026/virasoro-constraints-under-projectivization.pdf",
+      "label": "Virasoro Constraints under Projectivization"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Virasoro-Constraints-for-Projective-Complete-Intersections-September-24-2026/article.pdf",
+      "label": "Virasoro Constraints for Projective Complete Intersections"
+    }
+  ],
+  "headline": "Claimed proofs that curve counts on complete intersections and on projective bundles obey the Virasoro equations.",
+  "scope": "One paper covers smooth complete intersections in projective space. The other passes the equations from a base to any projective bundle over it.",
+  "plain": "Gromov–Witten invariants count curves of each shape inside a space. The Virasoro conjecture says that all these counts obey one infinite family of equations. One paper claims this for every smooth complete intersection in projective space, the zero set of several polynomials. A second paper claims the equations pass from a space to any projective bundle built over it. Both cover every genus and every kind of cohomology class.",
+  "doesNot": "This does not prove the Virasoro conjecture for every smooth projective variety, and nothing here has a Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1997",
+    "firstStepBy": "Eguchi, Hori and Xiong, who proposed the constraints",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims the conjecture for a large, standard class of spaces without the semisimplicity hypothesis that earlier all-genus results used."
+  },
+  "explanation": "Start with curves mapped to the simplest target, a single point. Fix a genus g, the number of handles of a surface, and n marked points on it. For each point pick a whole number k. These choices give an intersection number on the space of all such curves, written ⟨τ_k1 … τ_kn⟩_g. It can be nonzero only when the k's add up to 3g − 3 + n. Two standard values are ⟨τ_0 τ_0 τ_0⟩_0 = 1 and ⟨τ_1⟩_1 = 1/24.\n\nThese numbers obey linear rules. The dilaton rule says that adding a τ_1 multiplies the number by 2g − 2 + n. Here n counts the points before the new one. So ⟨τ_1 τ_0 τ_0 τ_0⟩_0 = (0 − 2 + 3) × 1 = 1. Likewise ⟨τ_1 τ_1⟩_1 = (2 − 2 + 1) × 1/24 = 1/24. The string rule says that adding a τ_0 lowers one other k by one, summed over the choices. So ⟨τ_0 τ_2⟩_1 = ⟨τ_1⟩_1 = 1/24. Witten's conjecture and Kontsevich's theorem fix the whole generating function of these numbers[1]. Its equations include these two rules.\n\nGromov–Witten invariants make the same kind of count for curves inside a space X. Descendant invariants also record powers of a natural class at each marked point, as k does above. The Virasoro conjecture says their generating function Z obeys equations L_k Z = 0 for every k ≥ −1. The operators L_k depend on X through its pairing of classes, a Hodge grading and its first Chern class[2]. The Hodge grading sorts the cohomology classes of X into types. The first Chern class is a basic curvature class of X.\n\nEguchi, Hori and Xiong proposed such equations for Fano varieties in 1997[3]. Liu and Tian proved them in genus zero[4]. Givental's methods with Teleman's theorem give all genera when quantum cohomology is generically semisimple[5]. Semisimple roughly means the curve-count multiplication splits into independent one-dimensional pieces. Okounkov and Pandharipande proved the equations for smooth target curves[6]. Coates, Givental and Tseng passed them between a base and toric bundles built from sums of line bundles[7].\n\nThe September paper claims the full conjecture for every smooth complete intersection in projective space[8]. A complete intersection is the common zero set of the right number of polynomials, like a smooth cubic surface. The claim covers every genus and curve class. Primitive and odd classes are included, with no semisimplicity hypothesis[9]. The October paper claims a transfer theorem. The equations pass from a base B to the projectivization of any vector bundle of rank at least two[10]. Projectivization replaces each point of B by all lines through the origin of its fiber. The bundle need not split, and it needs no positivity condition[11]. So the result applies again and again to towers of projective bundles[12]. With Okounkov and Pandharipande's theorem, it covers every projective bundle over a smooth curve[13].\n\nThe September paper breaks X into simpler pieces glued along a seam, a step called degeneration. Its main obstacle is primitive cohomology. Primitive classes need not extend one at a time through a degeneration[14]. So the paper treats the error in each equation as a single object and probes it with allowed tests[15]. Pairing an error with its complex conjugate, in a second copy of the theory, gives its squared size[16]. That size is positive unless the error is zero, so the error must vanish[17].\n\nHow sure is this? There is no Lean scope note for either paper, so no computer proof checker has tested them. Each paper claims its theorem in full, using earlier published results as inputs. No specialist review has been published.",
+  "hypeCheck": "Major if both papers hold. Neither has a Lean scope note, and both depend on long chains of earlier theorems. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Gromov–Witten invariant",
+      "meaning": "A number that counts curves of a given genus and shape inside a space."
+    },
+    {
+      "term": "Descendant invariant",
+      "meaning": "A Gromov–Witten count that also records powers of a natural class at each marked point."
+    },
+    {
+      "term": "Virasoro constraints",
+      "meaning": "An infinite family of linear equations that the generating function of descendant counts is conjectured to obey."
+    },
+    {
+      "term": "Complete intersection",
+      "meaning": "The common zero set of the right number of polynomial equations in projective space."
+    },
+    {
+      "term": "Projectivization",
+      "meaning": "A space built over a base by replacing each point with all lines through the origin of a vector space."
+    },
+    {
+      "term": "Semisimple",
+      "meaning": "A property where curve-count multiplication splits into independent one-dimensional pieces."
+    },
+    {
+      "term": "Degeneration",
+      "meaning": "Breaking a space into simpler pieces glued along a seam, while keeping track of curve counts."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Virasoro Constraints under Projectivization” (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Virasoro-Constraints-under-Projectivization-October-5-2026/virasoro-constraints-under-projectivization.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Virasoro Constraints for Projective Complete Intersections” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Virasoro-Constraints-for-Projective-Complete-Intersections-September-24-2026/article.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "E. Witten, “Two-dimensional gravity and intersection theory on moduli space”, Surveys in Differential Geometry 1 (1991)",
+      "url": "https://archive.intlpress.com/site/pub/files/_fulltext/journals/sdg/1990/0001/0001/SDG-1990-0001-0001-a005.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "M. Kontsevich, “Intersection theory on the moduli space of curves and the matrix Airy function”, Communications in Mathematical Physics 147 (1992), 1–23",
+      "url": "https://doi.org/10.1007/BF02099526"
+    },
+    {
+      "id": 6,
+      "cite": "T. Eguchi, K. Hori and C.-S. Xiong, “Quantum cohomology and Virasoro algebra”, Physics Letters B 402 (1997), 71–80",
+      "url": "https://doi.org/10.1016/S0370-2693(97)00401-2"
+    },
+    {
+      "id": 7,
+      "cite": "T. Coates, A. Givental and H.-H. Tseng, “Virasoro constraints for toric bundles”, Forum of Mathematics, Pi 12 (2024), e4",
+      "url": "https://doi.org/10.1017/fmp.2024.2"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Witten's conjecture and Kontsevich's theorem identify the point generating function with the distinguished KdV solution.",
+      "verdict": "supported",
+      "sourceLine": "identify the corresponding generating function with the distinguished solution of the KdV hierarchy",
+      "sourceQuote": "Its simplest instance is the intersection theory of the moduli spaces of curves: Witten's conjecture and Kontsevich's theorem identify the corresponding generating function with the distinguished solution of the KdV hierarchy \\cite{Witten1991,Kontsevich1992}.",
+      "paper": 2
+    },
+    {
+      "text": "The operators L_k are formed from the Poincaré pairing, the first Hodge index and cup product with c_1(TX).",
+      "verdict": "supported",
+      "sourceLine": "are formed from the Poincar\\'e pairing, the first Hodge index $p$ on $H^{p,q}(X)$, and cup product with $c_1(TX)$",
+      "sourceQuote": "The conjecture asserts \\[ L_k^X Z_X=0\\qquad(k\\geq-1), \\] where the target-dependent differential operators $L_k^X$ are formed from the Poincar\\'e pairing, the first Hodge index $p$ on $H^{p,q}(X)$, and cup product with $c_1(TX)$.",
+      "paper": 2
+    },
+    {
+      "text": "Eguchi, Hori and Xiong proposed a target-dependent Virasoro system for Fano varieties.",
+      "verdict": "supported",
+      "sourceLine": "Eguchi, Hori, and Xiong proposed a target-dependent Virasoro system for Fano varieties",
+      "sourceQuote": "Eguchi, Hori, and Xiong proposed a target-dependent Virasoro system for Fano varieties \\cite{EHX1997}.",
+      "paper": 2
+    },
+    {
+      "text": "Liu and Tian prove the constraints in genus zero.",
+      "verdict": "supported",
+      "sourceLine": "Liu--Tian prove the constraints in genus zero",
+      "sourceQuote": "Liu--Tian prove the constraints in genus zero \\cite{LiuTian}.",
+      "paper": 1
+    },
+    {
+      "text": "Givental's quantization and Teleman's reconstruction establish the constraints for generically semisimple targets.",
+      "verdict": "supported",
+      "sourceLine": "establish them for targets with generically semisimple quantum cohomology",
+      "sourceQuote": "In all genera, Givental's quantization formalism and Teleman's reconstruction theorem establish them for targets with generically semisimple quantum cohomology \\cite{GiventalQuant,GiventalSemisimple,Teleman}.",
+      "paper": 1
+    },
+    {
+      "text": "Okounkov and Pandharipande prove them for smooth target curves.",
+      "verdict": "supported",
+      "sourceLine": "Okounkov--Pandharipande prove them for smooth target curves",
+      "sourceQuote": "Okounkov--Pandharipande prove them for smooth target curves, including odd insertions \\cite{OkounkovPandharipande}.",
+      "paper": 1
+    },
+    {
+      "text": "Coates–Givental–Tseng: constraints hold for the base of a toric bundle iff for its total space.",
+      "verdict": "supported",
+      "sourceLine": "Virasoro constraints hold for the base of a toric bundle if and only if they hold for its total space",
+      "sourceQuote": "They prove that the Virasoro constraints hold for the base of a toric bundle if and only if they hold for its total space, for toric bundles constructed from sums of line bundles.",
+      "paper": 1
+    },
+    {
+      "text": "A smooth complete intersection in projective space satisfies the Virasoro constraints in every genus and curve class, with arbitrary insertions.",
+      "verdict": "supported",
+      "sourceLine": "Its ordinary, unreduced total descendant potential satisfies the Virasoro constraints in every genus and curve class, with arbitrary insertions from",
+      "sourceQuote": "Its ordinary, unreduced total descendant potential satisfies the Virasoro constraints in every genus and curve class, with arbitrary insertions from \\(H^*(X;\\C)\\).",
+      "paper": 2
+    },
+    {
+      "text": "Primitive and odd insertions are included, with no semisimplicity hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "Primitive and odd insertions are included, with no semisimplicity hypothesis.",
+      "sourceQuote": "Primitive and odd insertions are included, with no semisimplicity hypothesis.",
+      "paper": 2
+    },
+    {
+      "text": "If V(B) holds and E is an algebraic vector bundle of rank r ≥ 2 on B, then V(P_B(E)) holds.",
+      "verdict": "supported",
+      "sourceLine": "let $E$ be an algebraic vector bundle of rank $r\\geq2$ on $B$.",
+      "sourceQuote": "Let $B$ be a smooth connected projective variety over $\\C$, and let $E$ be an algebraic vector bundle of rank $r\\geq2$ on $B$.",
+      "paper": 1
+    },
+    {
+      "text": "The bundle need not split and has no positivity condition.",
+      "verdict": "supported",
+      "sourceLine": "it need not split or admit a filtration by line bundles, and it is subject to no positivity condition",
+      "sourceQuote": "The bundle is arbitrary: it need not split or admit a filtration by line bundles, and it is subject to no positivity condition.",
+      "paper": 1
+    },
+    {
+      "text": "The assertion applies successively to towers of projective bundles.",
+      "verdict": "supported",
+      "sourceLine": "In particular the assertion applies successively to towers of projective bundles once the constraints hold on the initial base.",
+      "sourceQuote": "In particular the assertion applies successively to towers of projective bundles once the constraints hold on the initial base.",
+      "paper": 1
+    },
+    {
+      "text": "With Okounkov–Pandharipande, this gives every projective bundle over a smooth projective curve.",
+      "verdict": "supported",
+      "sourceLine": "this gives the full constraints for every projective bundle over a smooth projective curve",
+      "sourceQuote": "Together with Theorem~\\ref{thm:main}, this gives the full constraints for every projective bundle over a smooth projective curve, and for towers of such bundles.",
+      "paper": 1
+    },
+    {
+      "text": "Primitive insertions need not extend individually through a degeneration.",
+      "verdict": "supported",
+      "sourceLine": "Primitive insertions need not extend individually through a degeneration.",
+      "sourceQuote": "Primitive insertions need not extend individually through a degeneration.",
+      "paper": 2
+    },
+    {
+      "text": "Scalar contractions are the tests that detect the error without extending each primitive input.",
+      "verdict": "supported",
+      "sourceLine": "These are the tests that will detect the error without extending each primitive input.",
+      "sourceQuote": "These are the tests that will detect the error without extending each primitive input.",
+      "paper": 2
+    },
+    {
+      "text": "Pairing an error tensor with its conjugate in a second replica produces its squared norm.",
+      "verdict": "supported",
+      "sourceLine": "Pairing a Virasoro error tensor with its conjugate in a second replica produces its squared norm.",
+      "sourceQuote": "Pairing a Virasoro error tensor with its conjugate in a second replica produces its squared norm.",
+      "paper": 2
+    },
+    {
+      "text": "Positivity forces the error tensor to vanish.",
+      "verdict": "supported",
+      "sourceLine": "positivity forces the tensor itself to vanish",
+      "sourceQuote": "The contraction is among the allowed tests, and positivity forces the tensor itself to vanish.",
+      "paper": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
