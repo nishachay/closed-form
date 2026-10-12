@@ -1,0 +1,199 @@
+{
+  "id": "250",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-algebraic-envelopes-and-the-Boone-Higman-conjecture-September-23-2026/paper.pdf",
+      "label": "Finite algebraic envelopes and the Boone–Higman conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Simple-F-infinity-overgroups-of-groups-with-decidable-word-problem-September-23-2026/paper.pdf",
+      "label": "Simple F∞ overgroups of groups with decidable word problem"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-universal-group-of-type-F-infinity-September-23-2026/paper.pdf",
+      "label": "A universal group of type F∞"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/250.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A group has a word-solving algorithm exactly when it sits inside a finitely presented simple group.",
+  "scope": "Finitely generated groups with decidable word problem, embedded in simple groups. Three companion papers; the main theorems have Lean formalizations.",
+  "plain": "A group's word problem asks whether a string of moves undoes itself. The Boone–Higman conjecture says a program can solve it exactly when the group fits inside a simple group with finitely many rules. The papers prove this, with Lean formalizations listed. They also make the simple group finite in every dimension, and build one such group holding every finitely presented group.",
+  "doesNot": "This does not give a fast algorithm for any word problem, and the Lean scope note leaves out the converse about recursively presented subgroups.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "William Boone and Graham Higman, who embedded such groups in a simple group inside a finitely presented one",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "The Boone–Higman conjecture has been a central open question linking algorithms and group structure since 1974."
+  },
+  "explanation": "Take the integers under addition, written with one generator a. A word is a string like a a a⁻¹ a⁻¹. It means \"step forward twice, then back twice\". To test if a word returns to the start, add the exponents. Here 1 + 1 − 1 − 1 = 0, so the word is the identity. The word a a a⁻¹ has sum 1, so it is not. This adding rule is an algorithm, so the integers have a decidable word problem. In general, the word problem is decidable when an algorithm answers it for every word[1].\n\nA group is simple when it is nontrivial and its only normal subgroups are the trivial one and the whole group. A normal subgroup is one that is unchanged when you conjugate it by any element. The integers are not simple: the even numbers form a normal subgroup. A finitely presented group is one described by finitely many generators and finitely many rules.\n\nIn 1974, Boone and Higman matched decidable word problem with a chain G ≤ H ≤ K[2]. Here H is simple and K is finitely presented. Here ≤ means \"sits inside as a subgroup\". They asked whether the simple group H could itself be finitely presented[2]. The obstacle is that finite presentation does not in general pass to subgroups[3]. So the two good properties lived in different groups. Thompson later made H finitely generated, but not finitely presented[4].\n\nThe first paper proves the conjecture. A finitely generated group has decidable word problem exactly when it embeds in a finitely presented simple group[5]. The easy direction is classical. A nontrivial finitely presented simple group has decidable word problem[6]. The hard direction builds a finitely presented group with a faithful two-transitive action on an infinite set[7]. Two-transitive means any ordered pair of distinct points can be moved to any other such pair. A construction of Belk and Zaremsky then turns that action into a simple group.\n\nThe second paper asks for more. A group has type F∞ when some space modelling it has finitely many cells in each dimension[8]. Type F₂ is the same as finite presentation[8]. The paper proves every such group embeds in a nontrivial simple group of type F∞[9]. The third paper builds one group H of type F∞ that contains every finitely presented group[10]. Its finitely generated subgroups are exactly the recursively presented groups, those with a program that lists their rules[11].\n\nHow sure is this? A computer proof checker called Lean has formal proofs of the Boone–Higman equivalence, the simple F∞ overgroups, and the universal F∞ group. The Lean note leaves out the converse about recursively presented subgroups. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if it holds, and the three main theorems have Lean formalizations. The Lean note omits the recursively presented converse. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Word problem",
+      "meaning": "The question of whether a given string of generators and their inverses equals the identity element."
+    },
+    {
+      "term": "Decidable",
+      "meaning": "Answerable by a computer program that always stops with the right yes-or-no answer."
+    },
+    {
+      "term": "Simple group",
+      "meaning": "A nontrivial group whose only normal subgroups are the identity subgroup and the whole group."
+    },
+    {
+      "term": "Normal subgroup",
+      "meaning": "A subgroup that stays the same when every element is conjugated by any element of the group."
+    },
+    {
+      "term": "Finitely presented",
+      "meaning": "Described by finitely many generators and finitely many defining rules."
+    },
+    {
+      "term": "Embed",
+      "meaning": "To map one group into another by an injective homomorphism, so it sits inside as a copy."
+    },
+    {
+      "term": "Type F∞",
+      "meaning": "Having a classifying space with finitely many cells in each dimension; a strong finiteness condition."
+    },
+    {
+      "term": "Recursively presented",
+      "meaning": "Having finitely many generators and a list of rules that a computer program can enumerate."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Finite algebraic envelopes and the Boone–Higman conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-algebraic-envelopes-and-the-Boone-Higman-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Simple F∞ overgroups of groups with decidable word problem” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Simple-F-infinity-overgroups-of-groups-with-decidable-word-problem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “A universal group of type F∞” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-universal-group-of-type-F-infinity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 250",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/250.md",
+      "quote": "The formalization proves the equivalence in full: a finitely generated group has a computable word problem for a finite generating set exactly when it embeds by an injective homomorphism into a finitely presented simple group."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The word problem is decidable if an algorithm answers it for every word.",
+      "sourceLine": "It is \\emph{decidable} if an algorithm answers this question for every word.",
+      "sourceQuote": "It is \\emph{decidable} if an algorithm answers this question for every word.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Boone and Higman characterized decidable word problem by embeddings G ≤ H ≤ K, H simple, K finitely presented, and asked if H could be finitely presented.",
+      "sourceLine": "Boone and Higman characterized this condition by the existence of embeddings",
+      "sourceQuote": "Boone and Higman characterized this condition by the existence of embeddings \\[ G\\ \\leq\\ H\\ \\leq\\ K, \\qquad H\\text{ simple},\\quad K\\text{ finitely presented} \\] \\cite[Theorem~I]{BH74}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Finite presentation does not in general pass to subgroups.",
+      "sourceLine": "finite presentation does not in general pass to subgroups",
+      "sourceQuote": "The two properties in their theorem belong to different groups, and finite presentation does not in general pass to subgroups.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Thompson obtained a finitely generated simple overgroup, which does not supply finite presentation.",
+      "sourceLine": "This strengthens the conclusion to finite generation of the simple overgroup, but does not supply its finite presentation.",
+      "sourceQuote": "This strengthens the conclusion to finite generation of the simple overgroup, but does not supply its finite presentation.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A finitely generated group has decidable word problem if and only if it embeds in a finitely presented simple group.",
+      "sourceLine": "A finitely generated group has decidable word problem if and only if it embeds in a finitely presented simple group.",
+      "sourceQuote": "A finitely generated group has decidable word problem if and only if it embeds in a finitely presented simple group.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A nontrivial finitely presented simple group has decidable word problem.",
+      "sourceLine": "A nontrivial finitely presented simple group has decidable word problem",
+      "sourceQuote": "A nontrivial finitely presented simple group has decidable word problem: in parallel, enumerate consequences of its defining relations and consequences after adding the input word as a relation.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every finitely generated group with decidable word problem embeds in a finitely presented group with a faithful two-transitive action on a countably infinite set.",
+      "sourceLine": "finitely presented group \\(\\Gamma\\) admitting a faithful two-transitive action on a countably infinite set.",
+      "sourceQuote": "Every finitely generated group with decidable word problem embeds in a finitely presented group \\(\\Gamma\\) admitting a faithful two-transitive action on a countably infinite set.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Type F∞ means a classifying space with finitely many cells in each dimension; type F₂ is finite presentation.",
+      "sourceLine": "Type \\(F_1\\) is finite generation and type \\(F_2\\) is finite presentation.",
+      "sourceQuote": "Type \\(F_1\\) is finite generation and type \\(F_2\\) is finite presentation.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every finitely generated group with decidable word problem embeds in a simple group of type F∞.",
+      "sourceLine": "Every finitely generated group with decidable word problem embeds in a simple group of type \\(F_\\infty\\).",
+      "sourceQuote": "Every finitely generated group with decidable word problem embeds in a simple group of type \\(F_\\infty\\).",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a single group of type F∞ containing every finitely presented group.",
+      "sourceLine": "We construct a single group of type $\\Finfty$ containing every finitely presented group.",
+      "sourceQuote": "We construct a single group of type $\\Finfty$ containing every finitely presented group.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Its finitely generated subgroups, up to isomorphism, are exactly the finitely generated recursively presented groups.",
+      "sourceLine": "Its finitely generated subgroups, up to isomorphism, are exactly the finitely generated recursively presented groups.",
+      "sourceQuote": "Its finitely generated subgroups, up to isomorphism, are exactly the finitely generated recursively presented groups.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the Boone–Higman equivalence, the simple type F∞ overgroups, and the universal group of type F∞.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}
