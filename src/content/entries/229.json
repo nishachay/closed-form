@@ -1,0 +1,242 @@
+{
+  "id": "229",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Reconstruction-Threshold-for-the-Ferromagnetic-Four-State-Potts-Model-October-5-2026/four-state-potts.pdf",
+      "label": "The Reconstruction Threshold for the Ferromagnetic Four-State Potts Model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Capacity-Criterion-for-Four-State-Potts-Reconstruction-on-Trees-October-5-2026/four-state-capacity.pdf",
+      "label": "A Capacity Criterion for Four-State Potts Reconstruction on Trees"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-exact-reconstruction-threshold-for-the-three-state-symmetric-channel-September-25-2026/paper.pdf",
+      "label": "The exact reconstruction threshold for the three-state symmetric channel"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/229.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "For three and four colors, guessing a tree's root from far leaves works exactly above the Kesten–Stigum bound.",
+  "scope": "It covers symmetric three-state channels and favoring four-state channels on regular and Poisson trees. The four-state proof uses computer checks.",
+  "plain": "A color passes down a branching tree, changing at random at each step. The question is when far-off colors still reveal the starting color. The papers claim the classic counting rule is exactly right for three colors, and for four colors when the channel favors staying the same. This also fixes when hidden groups can be found in a three-group random network.",
+  "doesNot": "This does not cover four colors when the channel favors switching.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1966",
+    "firstStepBy": "Harry Kesten and Bernt Stigum, the second-moment bound",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It removes the large-degree restriction for three and four states, and fixes a three-community recovery threshold."
+  },
+  "explanation": "Start a rumor with one person, called the root. The rumor is one of three colors: red, green or blue. The root passes it to two children, each child passes it to two more, and so on forever. Each passing is noisy. With a strength setting λ = 1/2, a child keeps the parent's color with chance 2/3. It switches to each of the other two colors with chance 1/6. Now look only at the colors far down the tree, many generations later. Can you still guess the root's color better than chance?\n\nThis is the reconstruction problem[1]. Two forces compete. Each step loses information, by a factor λ. But the number of descendants grows, by a factor d each generation. A classical count, the Kesten–Stigum bound, says you can guess well when d × λ² > 1. In the example, 2 × (1/2)² = 0.5, so the count gives no help. At λ = 1/√2, about 0.707, the product reaches exactly 1.\n\nThe bound always works in one direction. The question is whether it is also the exact cut-off, or whether clever guessing beats it[2]. For five or more colors, Sly showed that clever guessing can beat it[3]. For three colors, Sly proved the bound exact on regular trees with many children per person[4]. Mossel, Sly and Sohn did the same for large random trees[5]. Small trees were open.\n\nThe three-state paper claims the exact answer for every regular tree with at least two children, and every random Poisson tree with mean above one. A Poisson tree gives each person a random number of children with a set average. Guessing works exactly when d × λ² > 1, and fails at equality, for either sign of λ[6]. Negative λ means a child tends to avoid the parent's color. The paper says this settles the all-degree three-state prediction[7]. At λ = −1/2, a child never keeps the parent's color, and each other color has chance 1/2. That is a random three-coloring. With four children, 4 × (−1/2)² = 1, so guessing fails there too[8]. For random trees the score is averaged over all trees, including ones that die out[15].\n\nThis has a network consequence. In a stochastic block model, people fall into three hidden groups. Pairs in the same group link at rate a, and pairs across groups at rate b. The paper claims that the groups can be partly recovered exactly when (a − b)² > 3(a + 2b). Above that line a fast method works, and at or below it no method can succeed[9]. With a = 10 and b = 1, 81 is larger than 36, so recovery works. With a = 6 and b = 2, 16 is smaller than 30, so it fails.\n\nA second paper treats four colors, where the channel favors staying the same. Four colors sit on the border between three, where the bound is exact, and five, where it is not[11]. It claims guessing fails at and below the bound for every regular and Poisson tree, including equality[10]. This part is computer assisted. The probability arguments are written out, and exact-arithmetic programs check the remaining polynomial inequalities[12]. Without the favoring of sameness, four colors can beat the bound[13]. A third paper claims an exact test for four colors on any fixed tree with bounded branching. It needs no regular structure or growth rate[14].\n\nThe obstacle is that a far-off guess is not one number. It is a whole probability spread over the colors[17]. The papers track how that spread changes from one generation to the next. Showing it fades exactly at the bound is the hard step. Above the bound, a simple linear estimate already works[16].\n\nHow sure is this? Lean, a computer proof checker, covers only part of the three-color result. It checks that guessing succeeds above the bound, on regular and Poisson trees. It does not cover failure at or below the bound, the network result, or the four-color papers. No specialist review of these papers has been published.",
+  "hypeCheck": "Solid if the proofs hold. Lean covers only the easier direction for three states; the four-state proof relies on exact-arithmetic computer checks, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Reconstruction",
+      "meaning": "Guessing the root's state better than chance from states far down the tree."
+    },
+    {
+      "term": "Broadcast channel",
+      "meaning": "The random rule by which each child's state is copied, with noise, from its parent."
+    },
+    {
+      "term": "Kesten–Stigum bound",
+      "meaning": "The condition d × λ² > 1, where d is the number of children and λ measures how much the channel keeps."
+    },
+    {
+      "term": "Poisson tree",
+      "meaning": "A random tree where each vertex has a random number of children with a given average."
+    },
+    {
+      "term": "Stochastic block model",
+      "meaning": "A random network whose people belong to hidden groups that link at different rates."
+    },
+    {
+      "term": "Ferromagnetic",
+      "meaning": "Here, a channel that favors keeping the parent's state over switching."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The Reconstruction Threshold for the Ferromagnetic Four-State Potts Model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Reconstruction-Threshold-for-the-Ferromagnetic-Four-State-Potts-Model-October-5-2026/four-state-potts.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “A Capacity Criterion for Four-State Potts Reconstruction on Trees” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Capacity-Criterion-for-Four-State-Potts-Reconstruction-on-Trees-October-5-2026/four-state-capacity.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “The exact reconstruction threshold for the three-state symmetric channel” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-exact-reconstruction-threshold-for-the-three-state-symmetric-channel-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 229 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/229.md"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "cite": "H. Kesten and B. P. Stigum, “Additional limit theorems for indecomposable multidimensional Galton–Watson processes”, Annals of Mathematical Statistics 37 (1966), 1463–1481",
+      "url": "https://doi.org/10.1214/aoms/1177699139",
+      "id": 6
+    },
+    {
+      "cite": "A. Sly, “Reconstruction for the Potts model”, Annals of Probability 39(4) (2011), 1365–1406",
+      "url": "https://doi.org/10.1214/10-AOP584",
+      "id": 7
+    }
+  ],
+  "claims": [
+    {
+      "text": "The reconstruction problem asks whether distant descendants retain information about their ancestor.",
+      "verdict": "supported",
+      "sourceLine": "The reconstruction problem asks whether many distant, noisy descendants",
+      "sourceQuote": "The reconstruction problem asks whether many distant, noisy descendants retain information about their common ancestor.",
+      "paper": 3
+    },
+    {
+      "text": "Whether the Kesten–Stigum condition is also necessary depends on the channel.",
+      "verdict": "supported",
+      "sourceLine": "necessary depends on the channel.",
+      "sourceQuote": "Whether this condition is also necessary depends on the channel.",
+      "paper": 3
+    },
+    {
+      "text": "Nonlinear information changes the threshold for symmetric channels with five or more states.",
+      "verdict": "supported",
+      "sourceLine": "This possibility occurs for symmetric channels with five or more states",
+      "sourceQuote": "This possibility occurs for symmetric channels with five or more states \\cite[Theorem~1.2]{Sly2011}; the three-state assertion therefore needs more than the second-moment bound.",
+      "paper": 3
+    },
+    {
+      "text": "Sly proved three-state sharpness for all sufficiently large regular branching parameters.",
+      "verdict": "supported",
+      "sourceLine": "Sly proved this for all sufficiently large regular branching parameters,",
+      "sourceQuote": "Sly proved this for all sufficiently large regular branching parameters, including non-reconstruction at equality \\cite[Theorem~1.1]{Sly2011}.",
+      "paper": 3
+    },
+    {
+      "text": "Mossel, Sly and Sohn established the large-mean Poisson-tree result.",
+      "verdict": "supported",
+      "sourceLine": "Mossel, Sly, and Sohn established the",
+      "sourceQuote": "Mossel, Sly, and Sohn established the corresponding large-mean Poisson-tree result, for both signs and including equality \\cite[Theorem~1.12]{MosselSlySohn2025}.",
+      "paper": 3
+    },
+    {
+      "text": "Reconstruction occurs exactly when dλ² > 1, with non-reconstruction at equality for either sign.",
+      "verdict": "supported",
+      "sourceLine": "there is non-reconstruction at equality for either sign",
+      "sourceQuote": "Reconstruction occurs exactly when $d\\lambda^2>1$, with $d=b$ in the regular model; there is non-reconstruction at equality for either sign of the channel parameter.",
+      "paper": 3
+    },
+    {
+      "text": "This resolves the all-degree three-state regular-tree prediction.",
+      "verdict": "supported",
+      "sourceLine": "This resolves the all-degree three-state regular-tree prediction.",
+      "sourceQuote": "This resolves the all-degree three-state regular-tree prediction.",
+      "paper": 3
+    },
+    {
+      "text": "The three-coloring channel λ = −1/2 is non-reconstructible at branching parameter four.",
+      "verdict": "supported",
+      "sourceLine": "is non-reconstructible at branching parameter four in",
+      "sourceQuote": "In particular, the three-coloring channel $\\lambda=-1/2$ is non-reconstructible at branching parameter four in both models.",
+      "paper": 3
+    },
+    {
+      "text": "Three-community weak recovery is possible exactly when (a−b)² > 3(a+2b), in O(n log n) time above it, and impossible at or below it.",
+      "verdict": "supported",
+      "sourceLine": "information-theoretically impossible.",
+      "sourceQuote": "Above this threshold it is achievable in $O(n\\log n)$ time; at or below it, weak recovery is information-theoretically impossible.",
+      "paper": 3
+    },
+    {
+      "text": "For the ferromagnetic four-state model, nonreconstruction holds at and below the threshold, including equality.",
+      "verdict": "supported",
+      "sourceLine": "nonreconstruction at and below the threshold, including equality.",
+      "sourceQuote": "Reconstruction occurs exactly when $d\\lambda^2>1$; we prove nonreconstruction at and below the threshold, including equality.",
+      "paper": 1
+    },
+    {
+      "text": "The four-state case lies at the boundary between three and five states.",
+      "verdict": "supported",
+      "sourceLine": "The four-state case lies at the boundary between",
+      "sourceQuote": "The four-state case lies at the boundary between these behaviors.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem is computer assisted, with polynomial inequalities checked by exact-arithmetic programs.",
+      "verdict": "supported",
+      "sourceLine": "The theorem is computer assisted: all probabilistic arguments are proved",
+      "sourceQuote": "The theorem is computer assisted: all probabilistic arguments are proved below, and the remaining polynomial inequalities are verified by the complete exact-arithmetic programs in Appendix~\\ref{app:verifiers}.",
+      "paper": 1
+    },
+    {
+      "text": "The four-state antiferromagnetic model can reconstruct below the threshold.",
+      "verdict": "supported",
+      "sourceLine": "four-state antiferromagnetic model can",
+      "sourceQuote": "The restriction $\\lambda\\geq0$ matters: the four-state antiferromagnetic model can reconstruct below the Kesten--Stigum threshold \\cite{MosselSlySohn2025}.",
+      "paper": 1
+    },
+    {
+      "text": "An L³ capacity criterion gives an exact test without regularity or growth assumptions.",
+      "verdict": "supported",
+      "sourceLine": "This gives an exact criterion without",
+      "sourceQuote": "This gives an exact criterion without regularity or growth-rate assumptions on the tree, including at the exponential critical boundary.",
+      "paper": 2
+    },
+    {
+      "text": "In the Poisson case the advantage is averaged over tree and spins without conditioning on survival.",
+      "verdict": "supported",
+      "sourceLine": "In the Poisson case this expectation includes both the tree and the",
+      "sourceQuote": "In the Poisson case this expectation includes both the tree and the spins, \\emph{without conditioning on survival}.",
+      "paper": 3
+    },
+    {
+      "text": "A linear estimator proves reconstruction above the threshold.",
+      "verdict": "supported",
+      "sourceLine": "A linear estimator proves reconstruction above the threshold.",
+      "sourceQuote": "A linear estimator proves reconstruction above the threshold.",
+      "paper": 3
+    },
+    {
+      "text": "The key object is the distribution of a posterior probability vector.",
+      "verdict": "supported",
+      "sourceLine": "The key object is the distribution of a posterior probability vector",
+      "sourceQuote": "The key object is the distribution of a posterior probability vector $p=(p_1,p_2,p_3,p_4)$, not an individual vector.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes only three-state reconstruction above the Kesten–Stigum threshold on regular and Poisson trees.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
