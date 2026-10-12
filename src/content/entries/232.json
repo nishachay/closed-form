@@ -1,0 +1,217 @@
+{
+  "id": "232",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Gaussian-free-field-limits-of-weighted-integer-Lipschitz-heights-October-6-2026/paper.pdf",
+      "label": "Gaussian free-field limits of weighted integer Lipschitz heights"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Gaussian-free-field-limit-of-integer-Lipschitz-heights-with-two-arc-boundary-data-October-6-2026/paper.pdf",
+      "label": "The Gaussian free field limit of integer Lipschitz heights with two-arc boundary data"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-real-Lipschitz-surfaces-on-the-triangular-lattice-October-6-2026/paper.pdf",
+      "label": "Uniform real Lipschitz surfaces on the triangular lattice"
+    }
+  ],
+  "headline": "Random Lipschitz height surfaces on the triangular lattice converge to the Gaussian free field.",
+  "scope": "It covers integer heights with weights x from 1/√2 to 1, odd two-arc integer heights, and real heights, on smooth domains.",
+  "plain": "Give each point of a triangular grid a height, with neighbors differing by at most one. The papers claim that, seen from far away, these random surfaces look like the Gaussian free field. One paper also claims a boundary curve converges to the random curve SLE₄. Together they address Schramm's field questions for these models.",
+  "doesNot": "This does not settle the interface question for the integer two-arc model.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2006",
+    "firstStepBy": "Oded Schramm, Problems 2.2 and 2.3 on Lipschitz heights",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It addresses Schramm's field questions for integer and real Lipschitz heights, plus the real-height interface."
+  },
+  "explanation": "Picture a floor of triangles, where every point has six neighbors. Give each point a whole-number height. The one rule is that neighbors differ by at most 1. This is an integer Lipschitz height function, a random surface with a hard limit on its slope.\n\nStart tiny. One point sits in the middle of six neighbors, all held at height 0. The middle point can be −1, 0 or 1. Pick one at random, each equally likely. The average squared height, called the variance, is then 2/3. Now add a weight x for every edge where the height changes. Height 0 changes no edges and gets weight 1. Heights 1 and −1 change all six edges and get x^6 each. With x = 1/√2, x^6 = 1/8. So height 0 has chance 0.8, and each of ±1 has chance 0.1. The variance drops to 0.2.\n\nOn a large region these local rules add up to a random landscape. Physicists expect it to look like a Gaussian free field from far away. A Gaussian free field is a random surface, the two-dimensional cousin of Brownian motion. Schramm listed questions of this kind in 2006, for integer and real heights[7,12]. The obstacle is the hard slope rule. Smooth, gently curved interaction rules were already handled by Miller, but a hard cut-off is outside those methods[15,17]. Glazman and Lammers studied how much these surfaces wander. Their 2025 paper still called the free field limit a conjecture[9]. Knowing the size of the wandering alone does not give the limit[10].\n\nThe first paper uses the weight x from the example[1]. The contours where the height changes form loops, a model physicists call the loop O(2) model[2]. The paper claims a free field limit for every x from 1/√2 to 1, with height 0 on the boundary[3]. That range includes the uniform case x = 1, and the predicted critical end point x = 1/√2[4]. The field is divided by a constant that depends only on x. The paper gives no formula for that constant[5]. The surface is averaged over small patches, with no extra log rescaling[6].\n\nThe second paper uses odd heights that step by 0 or 2. The boundary is held at +1 on one arc and −1 on the other. It claims this resolves the field part of Schramm's integer problem[7]. Its tools include reflection positivity, a spectral sum rule and boundary comparison[11]. The curve where the height crosses zero is a separate question, not settled here[8].\n\nThe third paper lets heights be any real numbers, with neighbors still within 1 of each other[12]. It claims a free field limit for the centered heights. It also claims that, at one tuned boundary height, the zero-level curve converges to SLE₄[13]. SLE₄ is a specific random curve linked to the free field. The paper calls this a resolution of Schramm's real-valued problem. Approximating the hard rule by smooth ones does not, by itself, give this result[16]. The tuning involves a stiffness constant, and the paper gives no closed formula for it[14].\n\nHow sure is this? No Lean formalization is listed for these papers. They are long and technical, and they build on several recent preprints. No specialist review of them has been published.",
+  "hypeCheck": "Solid if the proofs hold. No Lean formalization is listed and no specialist review is published; the normalizing constants have no closed formula.",
+  "glossary": [
+    {
+      "term": "Lipschitz height function",
+      "meaning": "A height on each grid point, with neighbors differing by at most 1."
+    },
+    {
+      "term": "Gaussian free field",
+      "meaning": "A random surface that is the two-dimensional cousin of Brownian motion."
+    },
+    {
+      "term": "Variance",
+      "meaning": "The average squared distance from the mean."
+    },
+    {
+      "term": "Loop O(2) model",
+      "meaning": "A model of random non-crossing loops, here the contours where the height changes."
+    },
+    {
+      "term": "SLE₄",
+      "meaning": "A specific random curve, linked to the zero level lines of the Gaussian free field."
+    },
+    {
+      "term": "Reflection positivity",
+      "meaning": "A symmetry property under mirror images that gives useful inequalities."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Gaussian free-field limits of weighted integer Lipschitz heights” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Gaussian-free-field-limits-of-weighted-integer-Lipschitz-heights-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “The Gaussian free field limit of integer Lipschitz heights with two-arc boundary data” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Gaussian-free-field-limit-of-integer-Lipschitz-heights-with-two-arc-boundary-data-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “Uniform real Lipschitz surfaces on the triangular lattice” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-real-Lipschitz-surfaces-on-the-triangular-lattice-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Each unit height change is weighted by a parameter x.",
+      "verdict": "supported",
+      "sourceLine": "each unit height change by a parameter",
+      "sourceQuote": "We weight each unit height change by a parameter $x$.",
+      "paper": 1
+    },
+    {
+      "text": "The associated contours form the loop O(2) model on the hexagonal lattice.",
+      "verdict": "supported",
+      "sourceLine": "The associated contours form",
+      "sourceQuote": "The associated contours form the loop $O(2)$ model on the hexagonal lattice.",
+      "paper": 1
+    },
+    {
+      "text": "Weighted integer Lipschitz heights with zero boundary converge to the Dirichlet GFF for every x in [1/√2, 1].",
+      "verdict": "supported",
+      "sourceLine": "by a positive constant depending only on",
+      "sourceQuote": "With zero boundary values and a factor $x$ for each edge on which the height changes, the field converges after division by a positive constant depending only on $x$ to the zero-Dirichlet Gaussian free field, for every fixed $x\\in[1/\\sqrt2,1]$.",
+      "paper": 1
+    },
+    {
+      "text": "This includes the uniform model and the predicted critical endpoint.",
+      "verdict": "supported",
+      "sourceLine": "includes the uniform height model and the predicted critical endpoint.",
+      "sourceQuote": "This includes the uniform height model and the predicted critical endpoint.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem does not specify a formula for σ(x).",
+      "verdict": "supported",
+      "sourceLine": "it neither specifies",
+      "sourceQuote": "The theorem is for each fixed $x$; it neither specifies a formula for $\\sigma(x)$ nor asserts that this constant is independent of $x$.",
+      "paper": 1
+    },
+    {
+      "text": "There is no logarithmic rescaling of the amplitude.",
+      "verdict": "supported",
+      "sourceLine": "There is no logarithmic rescaling of the amplitude.",
+      "sourceQuote": "There is no logarithmic rescaling of the amplitude.",
+      "paper": 1
+    },
+    {
+      "text": "The two-arc odd height result resolves the field part of Schramm's Problem 2.2.",
+      "verdict": "supported",
+      "sourceLine": "This resolves the field part of Schramm's",
+      "sourceQuote": "This resolves the field part of Schramm's Problem~2.2.",
+      "paper": 2
+    },
+    {
+      "text": "The interface assertion is a separate question.",
+      "verdict": "supported",
+      "sourceLine": "interface assertion is a separate question.",
+      "sourceQuote": "The interface assertion is a separate question.",
+      "paper": 2
+    },
+    {
+      "text": "Glazman and Lammers' 2025 article discusses the GFF limit as a conjecture.",
+      "verdict": "supported",
+      "sourceLine": "discusses the Gaussian free field limit as a conjecture",
+      "sourceQuote": "Their 2025 article discusses the Gaussian free field limit as a conjecture \\cite[Section~1.2.4]{GL2025}.",
+      "paper": 2
+    },
+    {
+      "text": "Logarithmic fluctuations alone do not determine a Gaussian scaling limit.",
+      "verdict": "supported",
+      "sourceLine": "Logarithmic fluctuations alone do not determine a Gaussian scaling limit.",
+      "sourceQuote": "Logarithmic fluctuations alone do not determine a Gaussian scaling limit.",
+      "paper": 2
+    },
+    {
+      "text": "The proof combines reflection positivity, a spectral sum rule and boundary comparison.",
+      "verdict": "supported",
+      "sourceLine": "The proof combines reflection positivity, a spectral sum rule, and boundary comparison",
+      "sourceQuote": "The proof combines reflection positivity, a spectral sum rule, and boundary comparison with Gaussian moment identities.",
+      "paper": 2
+    },
+    {
+      "text": "Uniform real Lipschitz heights have GFF and SLE₄ limits, resolving Schramm's Problem 2.3.",
+      "verdict": "supported",
+      "sourceLine": "sampled real nearest-neighbor Lipschitz heights on the triangular lattice,",
+      "sourceQuote": "We prove the Gaussian free field and SLE$_4$ scaling limits for uniformly sampled real nearest-neighbor Lipschitz heights on the triangular lattice, resolving Schramm's Problem~2.3.",
+      "paper": 3
+    },
+    {
+      "text": "At one tuned two-arc amplitude the zero-height interface converges to chordal SLE₄.",
+      "verdict": "supported",
+      "sourceLine": "At one tuned two-arc boundary",
+      "sourceQuote": "At one tuned two-arc boundary amplitude, the zero-height interface converges in uniform curve distance to chordal SLE$_4$.",
+      "paper": 3
+    },
+    {
+      "text": "No elementary closed form for the stiffness is proposed.",
+      "verdict": "supported",
+      "sourceLine": "closed form for it is proposed.",
+      "sourceQuote": "The stiffness is $vA$; no elementary closed form for it is proposed.",
+      "paper": 3
+    },
+    {
+      "text": "The hard potential does not satisfy the convexity hypotheses of earlier work.",
+      "verdict": "supported",
+      "sourceLine": "It does not satisfy those convexity hypotheses.",
+      "sourceQuote": "It does not satisfy those convexity hypotheses.",
+      "paper": 3
+    },
+    {
+      "text": "Approximation by smooth potentials is not, by itself, a solution.",
+      "verdict": "supported",
+      "sourceLine": "by smooth potentials is therefore not, by itself, a solution.",
+      "sourceQuote": "An approximation by smooth potentials is therefore not, by itself, a solution.",
+      "paper": 3
+    },
+    {
+      "text": "The integer law with its hard edge constraint lies outside Miller's hypotheses.",
+      "verdict": "supported",
+      "sourceLine": "studied here, with its hard constraint on every edge increment",
+      "sourceQuote": "The integer-valued law studied here, with its hard constraint on every edge increment, lies outside those hypotheses.",
+      "paper": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
