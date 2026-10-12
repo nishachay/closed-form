@@ -1,0 +1,142 @@
+{
+  "id": "278",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Coulomb-Ground-State-Density-without-Kohn-Sham-Ensemble-Representation-September-25-2026/paper.pdf",
+      "label": "A Coulomb ground-state density without Kohn-Sham ensemble representation"
+    }
+  ],
+  "headline": "Claims a three-electron molecule whose ground-state density no Kohn–Sham ensemble can reproduce.",
+  "scope": "One explicit three-electron Coulomb molecule with two equal integer nuclear charges; noninteracting ensembles in one real, spin-independent potential in L^(3/2) + L^∞.",
+  "plain": "Kohn–Sham theory, the workhorse of computational chemistry, replaces interacting electrons by imaginary non-interacting ones with the same density. It assumes a suitable common potential always exists. This paper claims an explicit three-electron molecule where none exists in the usual class of potentials, even allowing mixtures of ground states. It is a single carefully built example, not a statement about everyday molecules.",
+  "doesNot": "This does not rule out distributional, spin-dependent or nonlocal potentials, and it does not say Kohn–Sham calculations fail for typical molecules.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Kohn and Sham, who proposed reproducing interacting densities by noninteracting electrons in a common local potential",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It gives a rigorous counterexample, for a real Coulomb system, to a representability assumption that underlies density functional theory."
+  },
+  "explanation": "A helium atom has two electrons in one shared orbital. Its electron density, the expected number of electrons near each point, integrates to 2. Kohn–Sham theory pretends those electrons do not repel each other. It then looks for one local potential whose noninteracting ground state has exactly the same density. For two electrons sharing an orbital, this is easy: take the orbital to be the square root of half the density.\n\nKohn–Sham density functional theory makes this replacement for any molecule[2]. A local potential is a single energy landscape felt by every electron at each point. The method assumes such a potential exists. Allowing ensembles, mixtures of several tied ground states, makes more densities reachable[3]. So failure of one simple orbital guess does not settle the question[3]. Explicit prescribed densities were already known to fail in this potential class[5]. Numerical studies of atoms also hinted at failures[6]. Neither gave a rigorous counterexample from an actual Coulomb ground state.\n\nThe paper claims such a counterexample[1]. It is a molecule with three electrons and two nuclei of equal positive integer charge[1]. The ground-state density cannot be matched by any noninteracting ground-state ensemble in one real, spin-independent potential[1]. The potential class is L^(3/2) + L^∞, a standard space that contains Coulomb potentials. No limit is placed on how degenerate the representing ground space is[4].\n\nThe molecule is extreme. In scaled units the nuclei sit at distance D = 10^200 on either side of a centre plane. The two lowest one-electron orbitals are an even orbital b and an odd orbital e. Their energy splitting is below 100/D, here less than 10^−198. Two electrons occupy b with opposite spins and one occupies e. The odd orbital vanishes on the centre plane. Gori-Giorgi, Gál and Baerends studied what happens next. Coupling to other ionic channels can make the density decay at the same exponential rate on and off the plane[7]. On the plane it gets an extra polynomial suppression[7]. The paper argues that this tail forces any representing potential to leave the allowed class.\n\nThe exact charge Z is given by a formula, not a number. The paper asserts no effective numerical bound for it[8]. The density also blocks a local-potential first variation of the ensemble exchange-correlation functional[9]. The result says nothing about larger classes of potentials, such as spin-dependent or nonlocal ones[10].\n\nHow sure is this? No Lean formalization accompanies this paper. The claim rests on the paper's long analytic estimates. No specialist review has been published. The example is a single, highly stretched molecule. It shows a limit in principle, not a failure of everyday chemistry calculations.",
+  "hypeCheck": "Solid if correct, and narrow: one explicit, extremely stretched molecule. There is no Lean formalization and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Electron density",
+      "meaning": "The expected number of electrons per unit volume at each point in space."
+    },
+    {
+      "term": "Kohn–Sham theory",
+      "meaning": "A method that replaces interacting electrons by noninteracting ones in a shared potential chosen to give the same density."
+    },
+    {
+      "term": "Local potential",
+      "meaning": "An energy landscape v(x) that every electron feels at its own position x."
+    },
+    {
+      "term": "Ground-state ensemble",
+      "meaning": "A mixture of several states that all have the lowest possible energy."
+    },
+    {
+      "term": "v-representable",
+      "meaning": "A density that some potential's ground state, or ensemble, reproduces exactly."
+    },
+    {
+      "term": "L^(3/2) + L^∞",
+      "meaning": "Potentials that split into a part with finite 3/2-power integral and a bounded part; Coulomb attractions fit here."
+    },
+    {
+      "term": "Orbital",
+      "meaning": "A one-electron wave function; up to two electrons of opposite spin can share one."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Coulomb ground-state density without Kohn-Sham ensemble representation” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Coulomb-Ground-State-Density-without-Kohn-Sham-Ensemble-Representation-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper constructs a finite three-electron Coulomb molecule with two equal positive integer charges whose ground-state density has no noninteracting ensemble representation in one real spin-independent potential in L^(3/2)+L^∞.",
+      "sourceLine": "We construct a finite three-electron Coulomb molecule whose spin-summed ground-state density cannot be reproduced by any ground-state ensemble of noninteracting electrons in a single real, spin-independent local potential",
+      "sourceQuote": "We construct a finite three-electron Coulomb molecule whose spin-summed ground-state density cannot be reproduced by any ground-state ensemble of noninteracting electrons in a single real, spin-independent local potential in \\(L^{3/2}(\\R^3)+L^\\infty(\\R^3)\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kohn–Sham theory seeks to reproduce an interacting density by noninteracting electrons in a common local potential.",
+      "sourceLine": "Kohn--Sham density functional theory seeks to reproduce the density of an interacting electronic ground state by noninteracting electrons in a common local potential",
+      "sourceQuote": "Kohn--Sham density functional theory seeks to reproduce the density of an interacting electronic ground state by noninteracting electrons in a common local potential~\\cite{KS65}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ensembles enlarge the class, so failure of one orbital ansatz does not settle ensemble representability.",
+      "sourceLine": "Thus a failure of a particular orbital ansatz does not settle the ensemble representability question.",
+      "sourceQuote": "Thus a failure of a particular orbital ansatz does not settle the ensemble representability question.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No restriction is placed on the degeneracy of a putative representing ground space.",
+      "sourceLine": "No restriction is placed on the degeneracy of a putative representing ground space",
+      "sourceQuote": "No restriction is placed on the degeneracy of a putative representing ground space or on the complex spinful states in its ensemble.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Explicit prescribed densities can already fail noninteracting v-representability in this class.",
+      "sourceLine": "Explicit prescribed densities can already fail noninteracting \\(v\\)-representability in \\(\\mathcal V\\).",
+      "sourceQuote": "Explicit prescribed densities can already fail noninteracting \\(v\\)-representability in \\(\\mathcal V\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Trushin, Erhard and Görling report numerical indications of failures from atomic density inversions.",
+      "sourceLine": "report numerical indications of failures of ground-state noninteracting representability from atomic density inversions",
+      "sourceQuote": "Trushin, Erhard, and G\\\"orling report numerical indications of failures of ground-state noninteracting representability from atomic density inversions~\\cite{TEG24}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "With a nodal plane, coupling to other ionic channels can give the density the same decay rate on and off the plane, with polynomial suppression on it.",
+      "sourceLine": "When the leading removal amplitude has a nodal plane, coupling to other ionic channels can give the density the same exponential decay rate on and off that plane, with an additional polynomial suppression on the plane.",
+      "sourceQuote": "When the leading removal amplitude has a nodal plane, coupling to other ionic channels can give the density the same exponential decay rate on and off that plane, with an additional polynomial suppression on the plane.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The charge is specified nonnumerically and no effective numerical bound is asserted.",
+      "sourceLine": "It is a nonnumerical specification, and no effective numerical bound for the charge is asserted.",
+      "sourceQuote": "It is a nonnumerical specification, and no effective numerical bound for the charge is asserted.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The density also obstructs a local-potential first variation of the ensemble Hartree–exchange–correlation functional.",
+      "sourceLine": "The same density also obstructs a local-potential first variation of the ensemble Hartree--exchange--correlation functional.",
+      "sourceQuote": "The same density also obstructs a local-potential first variation of the ensemble Hartree--exchange--correlation functional.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The result makes no assertion about distributional, spin-dependent or nonlocal potentials.",
+      "sourceLine": "The result makes no assertion about larger classes of distributional potentials, spin-dependent potentials, or nonlocal one-particle operators.",
+      "sourceQuote": "The result makes no assertion about larger classes of distributional potentials, spin-dependent potentials, or nonlocal one-particle operators.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
