@@ -1,0 +1,164 @@
+{
+  "id": "328",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fixed-Points-of-Nonexpansive-Maps-in-Reflexive-Banach-Spaces-September-24-2026/paper.pdf",
+      "label": "Fixed Points of Nonexpansive Maps in Reflexive Banach Spaces"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/328.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that every nonexpansive map of a closed bounded convex set in a reflexive Banach space has a fixed point.",
+  "scope": "Nonexpansive self-maps of nonempty closed bounded convex subsets of real reflexive Banach spaces, with distances measured in the given norm.",
+  "plain": "A nonexpansive map moves points without ever pulling two of them further apart. A fixed point is a point the map leaves where it is. In some infinite-dimensional spaces such maps can move every point. This paper proves that this cannot happen in real reflexive Banach spaces, a broad class that includes all Hilbert spaces. Lean checks the main theorem.",
+  "doesNot": "This does not extend to non-reflexive spaces: weakly compact convex sets in L1 can still carry a nonexpansive map with no fixed point.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Browder, Göhde and Kirk, who proved fixed point theorems for uniformly convex spaces and for sets with normal structure",
+    "field": "Functional analysis",
+    "significance": "Landmark",
+    "significanceWhy": "It answers, with a Lean check, the reflexive-space question that fixed point theory had left open since the 1960s."
+  },
+  "explanation": "Turn a round disk by a quarter turn about its centre. The point (1, 0) goes to (0, 1). Any two points keep their distance; for (1, 0) and (0, 1) it stays √2, about 1.414. The centre does not move. A point a map leaves in place is a fixed point. A map that never pulls two points further apart is nonexpansive.\n\nIn ordinary finite-dimensional space, every nonexpansive map of a closed bounded convex set has a fixed point. Convex means the set contains the straight segment between any two of its points. In infinite dimensions this can fail. Take the space c0 of number sequences that tend to 0, with length the largest entry. Let C be the decreasing sequences between 0 and 1. Let F put a 1 in front: F(0.5, 0.2, 0, …) = (1, 0.5, 0.2, 0, …). F keeps all distances. A fixed point would have to be (1, 1, 1, …), which does not tend to 0. So F moves every point.\n\nThe question is which spaces avoid such examples. A Banach space is a space of vectors with a length, called a norm, where limits behave well. It is reflexive if its double dual, the space of linear measurements of linear measurements, is the space itself. Browder and Göhde proved the fixed point property for uniformly convex spaces[3]. Kirk proved it for reflexive spaces with an extra shape condition called normal structure[4]. Later work covered more classes[5]. Alspach found a weakly compact convex set in the space L1 with a fixed-point-free nonexpansive map[6]. So compactness of that kind alone is not enough. A 2026 paper still records the reflexive question as unresolved[7]. An earlier claimed proof by Hanebaly exists, and this paper treats it as separate[8].\n\nThe paper proves the reflexive case in the given norm[1]. Every nonexpansive self-map of a nonempty closed bounded convex set in a real reflexive Banach space has a fixed point. As usual, the proof supposes a counterexample[9]. A classical reduction shrinks it to a small set of diameter one. There, nearly fixed points are almost as far as possible from every point of the set, by the Goebel–Karlovitz lemma[10]. The obstacle is turning this spread into a contradiction without any extra geometry. The paper builds an anchor point and a tree of nearly fixed images. A weighted bound on differences along the tree finds one vector that a whole branch of linear measurements detects. Yet those measurements tend to zero on the space, which is impossible[2]. A corollary extends the result to any family of commuting nonexpansive maps[11].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main theorem. It covers every real reflexive Banach space, with no uniform convexity or normal structure assumed. So the paper proves this, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "Landmark-level claim with a Lean check of the main theorem. It is about the original norm on reflexive spaces only; non-reflexive spaces such as L1 can still fail. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Banach space",
+      "meaning": "A space of vectors with a length rule, called a norm, in which limits of sequences behave well."
+    },
+    {
+      "term": "Nonexpansive map",
+      "meaning": "A map that never makes the distance between two points larger."
+    },
+    {
+      "term": "Fixed point",
+      "meaning": "A point that the map sends to itself."
+    },
+    {
+      "term": "Convex set",
+      "meaning": "A set that contains the straight segment between any two of its points."
+    },
+    {
+      "term": "Reflexive",
+      "meaning": "A Banach space that equals its double dual, the space of linear measurements of its linear measurements."
+    },
+    {
+      "term": "Uniformly convex",
+      "meaning": "A norm where the midpoint of two far-apart unit vectors is shorter than 1 by a fixed margin."
+    },
+    {
+      "term": "Normal structure",
+      "meaning": "A shape condition: every convex piece with two or more points has a point closer than the diameter to all of the piece."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Fixed Points of Nonexpansive Maps in Reflexive Banach Spaces” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fixed-Points-of-Nonexpansive-Maps-in-Reflexive-Banach-Spaces-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 328",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/328.md",
+      "quote": "every nonexpansive self-map of a nonempty closed bounded convex subset of a real reflexive Banach space has a fixed point in the original norm"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every nonexpansive selfmap of a nonempty closed bounded convex subset of a real reflexive Banach space has a fixed point.",
+      "sourceLine": "Every nonexpansive selfmap of a nonempty closed bounded convex subset of a real reflexive Banach space has a fixed point.",
+      "sourceQuote": "Every nonexpansive selfmap of a nonempty closed bounded convex subset of a real reflexive Banach space has a fixed point.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Weak compactness of the unit ball gives one vector detected along an infinite branch while the same functionals tend pointwise to zero.",
+      "sourceLine": "detected along an infinite branch, while the same functionals tend",
+      "sourceQuote": "Finally, weak compactness of the unit ball of $\\overline{\\operatorname{span}}(K-K)$ gives one vector detected along an infinite branch, while the same functionals tend pointwise to zero on that space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Browder and Göhde proved the fixed point property for uniformly convex spaces.",
+      "sourceLine": "The classical results of Browder and G\\\"ohde prove the fixed point",
+      "sourceQuote": "The classical results of Browder and G\\\"ohde prove the fixed point property for uniformly convex spaces \\cite{Browder1965,Gohde1965}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kirk's theorem applies when the domain in a reflexive space has normal structure.",
+      "sourceLine": "\\cite{Browder1965,Gohde1965}. Kirk's theorem applies when the closed",
+      "sourceQuote": "The classical results of Browder and G\\\"ohde prove the fixed point property for uniformly convex spaces \\cite{Browder1965,Gohde1965}. Kirk's theorem applies when the closed bounded convex domain $C$ in a reflexive space has normal structure \\cite{Kirk1965}: every convex subset $D\\subseteq C$ with more than one point must contain a point $a$ with $\\sup_{z\\in D}\\norm{a-z}<\\diam D$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Maurey proved the property for reflexive subspaces of L1.",
+      "sourceLine": "the uniformly convex case. Maurey proved it for reflexive subspaces of",
+      "sourceQuote": "Further results established the property for substantial classes beyond the uniformly convex case. Maurey proved it for reflexive subspaces of $L^1$ in the inherited norm \\cite[Theorem~1]{Maurey1981}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Alspach constructed a weakly compact convex subset of L1[0,1] with a fixed-point-free nonexpansive selfmap.",
+      "sourceLine": "Theorem~\\ref{thm:main}. Alspach constructed a weakly compact convex",
+      "sourceQuote": "Two other results distinguish the hypotheses of Theorem~\\ref{thm:main}. Alspach constructed a weakly compact convex subset of $L_1[0,1]$ with a fixed-point-free nonexpansive selfmap \\cite{Alspach1981}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Recent discussion records the general question as unresolved.",
+      "sourceLine": "records it as unresolved. These statements of the literature are distinct",
+      "sourceQuote": "More recent discussion of the general question appears in \\citet[Section~1]{Nourouzi2026}, who records it as unresolved. These statements of the literature are distinct from the argument given here.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hanebaly previously proposed a proof of the same assertion.",
+      "sourceLine": "Hanebaly previously proposed a proof of this same original-norm",
+      "sourceQuote": "Hanebaly previously proposed a proof of this same original-norm assertion \\cite[Theorem~1]{Hanebaly2019}, and subsequently announced a further proof \\cite{Hanebaly2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof begins by supposing a counterexample exists.",
+      "sourceLine": "Suppose a counterexample exists. The classical minimal invariant set",
+      "sourceQuote": "Suppose a counterexample exists. The classical minimal invariant set method reduces the problem to a separable weakly compact convex set $K$ of diameter one.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Approximate fixed points become asymptotically diametral, by the Goebel–Karlovitz lemma.",
+      "sourceLine": "This is the Goebel--Karlovitz lemma",
+      "sourceQuote": "This is the Goebel--Karlovitz lemma \\cite{Goebel1975,Karlovitz1976}, proved in Lemma~\\ref{lem:diametral} below.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For a pairwise commuting family of nonexpansive selfmaps, the common fixed set is nonempty.",
+      "sourceLine": "is nonempty and is a nonexpansive retract of $C$. That is, there is a",
+      "sourceQuote": "For any pairwise commuting family $\\mathcal S$ of nonexpansive selfmaps of $C$, the common fixed set \\[ \\operatorname{Fix}(\\mathcal S) =\\{x\\in C:T(x)=x\\text{ for every }T\\in\\mathcal S\\} \\] is nonempty and is a nonexpansive retract of $C$. That is, there is a nonexpansive map $R:C\\to\\operatorname{Fix}(\\mathcal S)$ that is the identity on $\\operatorname{Fix}(\\mathcal S)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes that every nonexpansive self-map of a nonempty closed bounded convex subset of a real reflexive Banach space has a fixed point.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
