@@ -1,0 +1,179 @@
+{
+  "id": "336",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spectral-scalar-curvature-and-uniform-Urysohn-width-October-5-2026/main.pdf",
+      "label": "Spectral scalar curvature and uniform Urysohn width"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spectral-scalar-curvature-and-Urysohn-width-in-dimension-three-October-5-2026/spectral-urysohn-three-manifolds.pdf",
+      "label": "Spectral scalar curvature and Urysohn width in dimension three"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-scalar-curvature-and-uniform-codimension-two-width-September-23-2026/paper.pdf",
+      "label": "Positive scalar curvature and uniform codimension-two width"
+    }
+  ],
+  "headline": "Claims Gromov's codimension-two width bound for positive scalar curvature in every dimension, and a spectral version.",
+  "scope": "Complete connected boundaryless Riemannian manifolds of dimension 3 and up, under a pointwise or spectral scalar curvature bound, plus universal covers of closed manifolds.",
+  "plain": "Scalar curvature at least 1 is a local condition on a curved space. Gromov predicted a global effect: a map onto a space two dimensions lower where each set landing on one point is small. The earliest of three papers claims this in every dimension from four up. The other two claim it under a weaker, averaged spectral condition, with an explicit bound of 500 in dimension three. There is no Lean check.",
+  "doesNot": "This does not bound the size of the manifold itself, only the size of the fibres of a map to a lower-dimensional space.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Mikhail Gromov, whose macroscopic dimension program first posed the quantitative width question",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "If correct, it settles the quantitative form of Gromov's codimension-two width conjecture and extends it to spectral curvature bounds."
+  },
+  "explanation": "Take a round sphere of radius √2, about 1.414, and multiply it by a flat plane. You get a four-dimensional space. Its scalar curvature is 2 divided by the radius squared, which is exactly 1 everywhere. Scalar curvature measures, at each point, how the volume of small balls differs from flat space. Now project the space onto the plane. Every point of the plane comes from one sphere. Each sphere has diameter π × √2, about 4.443, measured along its surface. So the four-dimensional space is squashed onto a two-dimensional one, and every piece over a point is small.\n\nThe space itself is not small, since the plane goes on forever. Gromov's macroscopic dimension program predicts that this squashing always works[4]. Take any complete manifold of dimension n with scalar curvature at least 1. A manifold is a space that looks like ordinary n-dimensional space near every point. It should map onto a simplicial complex, a space glued from triangles and their higher-dimensional versions, of dimension n − 2. Every fibre, the set of points sent to one place, should have diameter at most a constant C_n that depends only on n. The smallest such bound is called the Urysohn width. Earlier work reached this only in special cases, such as dimension three.\n\nThe third paper claims the full conjecture for every dimension n ≥ 4[1]. No orientability, spin or bounded geometry is assumed. As a result, closed manifolds with scalar curvature at least σ² have filling radius at most C_n/(2σ), a case of another Gromov conjecture[7]. It also claims that no closed aspherical manifold of dimension at least four carries positive scalar curvature[8]. Universal covers of closed manifolds with positive scalar curvature have continuous macroscopic dimension at most n − 2[9].\n\nThe first two papers weaken the curvature condition. The spectral bound says −4Δ + Scal ≥ 1, an inequality averaged against every test function. It allows negative scalar curvature on parts of the space[5]. The first paper claims the same width conclusion under this weaker bound for n ≥ 4[2]. It uses the third paper's width theorem as its geometric input[6]. The second paper treats dimension three. There, the target is a graph, and every fibre has diameter at most 500/√λ[3]. For λ = 1 that is 500, and for λ = 4 it is 250. The obstacle in dimension three is that a curvature bound alone does not bound the diameter, as the sphere times a line shows[10]. The paper notes that 500 is not optimised[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of these papers. They are long and rely on heavy geometric analysis. The spectral paper in dimensions four and up depends on the third paper. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if correct: it would settle the quantitative codimension-two width conjecture and extend it to spectral bounds. There is no Lean check, the papers depend on each other, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Manifold",
+      "meaning": "A space that looks like ordinary n-dimensional space near every point."
+    },
+    {
+      "term": "Scalar curvature",
+      "meaning": "A number at each point saying how the volume of small balls differs from flat space."
+    },
+    {
+      "term": "Spectral scalar curvature bound",
+      "meaning": "The inequality −4Δ + Scal ≥ λ, which holds on average against every test function rather than at each point."
+    },
+    {
+      "term": "Simplicial complex",
+      "meaning": "A space glued from points, segments, triangles and their higher-dimensional versions."
+    },
+    {
+      "term": "Fibre",
+      "meaning": "The set of all points that a map sends to one given point."
+    },
+    {
+      "term": "Urysohn width",
+      "meaning": "The smallest possible largest fibre diameter over maps to complexes of a given dimension."
+    },
+    {
+      "term": "Aspherical",
+      "meaning": "A manifold whose universal cover, the fully unwrapped version, has no holes of any dimension."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Spectral scalar curvature and uniform Urysohn width” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spectral-scalar-curvature-and-uniform-Urysohn-width-October-5-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Spectral scalar curvature and Urysohn width in dimension three” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spectral-scalar-curvature-and-Urysohn-width-in-dimension-three-October-5-2026/spectral-urysohn-three-manifolds.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Positive scalar curvature and uniform codimension-two width” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-scalar-curvature-and-uniform-codimension-two-width-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The third paper proves the quantitative form of Gromov's macroscopic dimension assertion for complete manifolds in dimensions at least four.",
+      "sourceLine": "quantitative form of this assertion for arbitrary complete manifolds",
+      "sourceQuote": "We prove the quantitative form of this assertion for arbitrary complete manifolds in dimensions at least four.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Under the spectral bound, every complete n-manifold with n ≥ 4 maps to an (n-2)-complex with fibres of diameter at most C_n.",
+      "sourceLine": "uniform width conclusion survives this weakening. The geometric input",
+      "sourceQuote": "We show that the uniform width conclusion survives this weakening. The geometric input is the stabilized width theorem of \\cite{OpenAIWidth}, stated precisely in Theorem~\\ref{interface:width}; the work here constructs its hypotheses from the spectral inequality.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every complete three-manifold with −4Δ+Scal ≥ λ > 0 maps to a graph with fibres of diameter at most 500/√λ.",
+      "sourceLine": "diameter at most $500/\\sqrt\\lambda$ in the original metric.",
+      "sourceQuote": "Every connected complete smooth Riemannian three-manifold without boundary satisfying $-4\\Delta+\\Scal\\ge\\lambda>0$ as a quadratic-form inequality admits a continuous map to a graph whose entire fibers have diameter at most $500/\\sqrt\\lambda$ in the original metric.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The quantitative formulation goes back to Gromov's 1986 work.",
+      "sourceLine": "$(n-2)$-dimensional polyhedron. This formulation goes back to",
+      "sourceQuote": "The quantitative formulation asks whether a fixed positive scalar-curvature normalization forces a dimension-dependent bound for the fibers of a map to an $(n-2)$-dimensional polyhedron. This formulation goes back to \\cite[\\S\\,2.A(c)]{Gromov1986}; see also \\cite[\\S\\,$2\\frac12$]{Gromov1996} and \\cite{Gromov2023}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A spectral lower bound permits negative scalar curvature on parts of the manifold.",
+      "sourceLine": "mixes scalar curvature with the energy of a test function and permits",
+      "sourceQuote": "A spectral lower bound mixes scalar curvature with the energy of a test function and permits negative scalar curvature on parts of the manifold.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The geometric input is the stabilized width theorem of the companion paper.",
+      "sourceLine": "is the stabilized width theorem of \\cite{OpenAIWidth}, stated precisely",
+      "sourceQuote": "The geometric input is the stabilized width theorem of \\cite{OpenAIWidth}, stated precisely in Theorem~\\ref{interface:width}; the work here constructs its hypotheses from the spectral inequality.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Closed manifolds with Scal ≥ σ^2 have filling radius at most C_n/(2σ), the closed case of Gromov's Conjecture A-.",
+      "sourceLine": "four of Gromov's filling-radius Conjecture~\\(A^{-}\\)",
+      "sourceQuote": "The next corollary gives the closed-manifold case in dimensions at least four of Gromov's filling-radius Conjecture~\\(A^{-}\\) \\citep[\\S3]{gromov2017Dozen}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "No closed smooth aspherical manifold of dimension at least four admits positive scalar curvature.",
+      "sourceLine": "No closed smooth aspherical manifold of dimension \\(n\\ge4\\) admits",
+      "sourceQuote": "No closed smooth aspherical manifold of dimension \\(n\\ge4\\) admits a Riemannian metric of strictly positive scalar curvature.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Universal covers of closed manifolds with positive scalar curvature have continuous macroscopic dimension at most n-2.",
+      "sourceLine": "\\dim_{\\mathrm{mc}}(\\widetilde M,\\widetilde h)\\le n-2.",
+      "sourceQuote": "Its universal cover, with the lifted original metric $\\widetilde h$, satisfies \\[ \\dim_{\\mathrm{mc}}(\\widetilde M,\\widetilde h)\\le n-2. \\]",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "A positive scalar-curvature lower bound need not bound the diameter of a three-manifold, as the sphere times a line shows.",
+      "sourceLine": "A positive scalar-curvature lower bound need not bound the diameter of a",
+      "sourceQuote": "A positive scalar-curvature lower bound need not bound the diameter of a three-manifold: the product of a round two-sphere with a line is a basic example.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The constant 500 is convenient and is not optimized.",
+      "sourceLine": "The constant $500$ is convenient and",
+      "sourceQuote": "The constant $500$ is convenient and is not optimized.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
