@@ -1,0 +1,192 @@
+{
+  "id": "360",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Support-and-Convex-Injectivity-Domains-under-Weak-MTW-September-25-2026/paper.pdf",
+      "label": "Global Support and Convex Injectivity Domains under Weak MTW"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Bi-Holder-Transport-from-Weak-MTW-September-25-2026/paper.pdf",
+      "label": "Uniform Bi-Holder Transport from Weak MTW"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/360.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves weak MTW curvature makes every injectivity domain convex, as Villani conjectured, and transport maps Hölder.",
+  "scope": "Compact connected boundaryless Riemannian manifolds of dimension at least two satisfying the weak Ma–Trudinger–Wang condition, with transport between densities bounded above and below.",
+  "plain": "Optimal transport asks for the cheapest way to move one spread of mass to another, with cost equal to half the squared distance. On a curved space, a curvature condition called weak MTW controls this cost where it is smooth. The first paper proves that this condition makes every injectivity domain convex, as Villani conjectured. The second proves that the best transport map and its inverse are Hölder continuous, with one constant for a whole class of densities. Lean, a computer proof checker, has formal statements of both main results.",
+  "doesNot": "This does not give an explicit Hölder exponent, or constants that stay uniform when the metric changes. The Lean scope also omits the paper's arbitrary-potential local-injectivity assertion.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2005",
+    "firstStepBy": "Xi-Nan Ma, Neil Trudinger and Xu-Jia Wang, a curvature condition for optimal transport regularity",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles Villani's conjecture without nonfocality and gives class-uniform transport regularity, both with Lean statements."
+  },
+  "explanation": "Take a flat square torus of side 1, like a video-game screen where leaving one edge brings you back on the opposite edge. Stand at a point x and walk straight with velocity v. If v = (0.4, 0.3), you travel length 0.5 and no shorter path exists. If v = (0.6, 0), you end 0.4 away on the other side, so your straight path was not the shortest. The velocities whose straight paths stay shortest a little beyond time one form an open set called the injectivity domain[2]. On this torus it is the open square where both coordinates lie strictly between −1/2 and 1/2. That square is convex: the midpoint of (0.45, 0.1) and (0.1, 0.45) is (0.275, 0.275), still inside.\n\nOptimal transport moves one spread of mass to another at least total cost. Here the cost of moving from x to y is half the squared distance. The Ma–Trudinger–Wang condition, MTW for short, is a curvature condition on this cost. The weak version only asks for a sign in directions perpendicular to each other[3]. Villani proposed that weak MTW forces every injectivity domain to be convex[4]. Figalli, Gallouët and Rifford proved this for nonfocal manifolds, where shortest paths stop being shortest before nearby paths refocus[5]. The obstacle is that the cost stops being smooth along some proposed paths. Weak MTW controls only directions perpendicular to the path[6].\n\nThe first paper proves the conjecture on every compact connected manifold of dimension at least two without boundary[1]. Points where nearby paths refocus are allowed[7]. It also shows that every ordinary subgradient of a cost potential is a shortest velocity with a global supporting mountain[8]. No assumption on densities is used.\n\nThe second paper uses this to control the transport map. Fix densities with upper bound Λ and positive lower bound λ. The best map T and its inverse then obey d(T(x), T(x′)) ≤ C d(x, x′)^α[9]. This is Hölder continuity. For example, with α = 1/2, points 0.01 apart go to points at most 0.1 C apart. The constants α and C work for the whole class of densities on a fixed manifold[10]. The exponent is found by contradiction, so no explicit value is given[11]. With an earlier result of Figalli, Rifford and Villani, this gives an equivalence between weak MTW and continuity of transport[12].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of both main results. So the papers prove them, as far as the Lean statements match the papers. One local-injectivity statement is covered only for finite target families. No specialist review is published.",
+  "hypeCheck": "Major, with Lean statements of both main results. The Hölder exponent is not explicit, and the constants depend on the fixed manifold. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Optimal transport",
+      "meaning": "Moving one spread of mass to another at the least total cost."
+    },
+    {
+      "term": "Injectivity domain",
+      "meaning": "The set of starting velocities whose straight paths stay shortest a little beyond time one."
+    },
+    {
+      "term": "Weak MTW condition",
+      "meaning": "A sign condition on a fourth derivative of the squared-distance cost, asked only in perpendicular directions."
+    },
+    {
+      "term": "Convex",
+      "meaning": "Containing the whole straight segment between any two of its points."
+    },
+    {
+      "term": "Nonfocal",
+      "meaning": "A manifold where shortest paths stop being shortest strictly before nearby paths refocus."
+    },
+    {
+      "term": "Hölder continuous",
+      "meaning": "Moving close points to close points, with distance controlled by a power of the original distance."
+    },
+    {
+      "term": "Subgradient",
+      "meaning": "A slope that supports a function from below at a point, even where it has a corner."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Global Support and Convex Injectivity Domains under Weak MTW” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Support-and-Convex-Injectivity-Domains-under-Weak-MTW-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Uniform Bi-Holder Transport from Weak MTW” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Bi-Holder-Transport-from-Weak-MTW-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 360",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/360.md",
+      "quote": "On a compact connected smooth Riemannian manifold of dimension at least two, the formalized result proves that weak MTW curvature implies convexity of every open tangent injectivity domain."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Weak MTW curvature on a compact connected manifold of dimension at least two without boundary implies convexity of every tangent injectivity domain.",
+      "sourceLine": "convexity of every tangent injectivity domain, resolving Villani's conjecture",
+      "sourceQuote": "We prove that weak Ma--Trudinger--Wang curvature on a smooth, connected, compact Riemannian manifold of dimension at least two without boundary implies convexity of every tangent injectivity domain, resolving Villani's conjecture in this setting.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The geodesics of velocities in the open injectivity domain remain minimizing beyond time one.",
+      "sourceLine": "Its geodesics remain minimizing beyond time one.",
+      "sourceQuote": "Its geodesics remain minimizing beyond time one.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The weak MTW condition controls the cost Hessian only in directions perpendicular to a velocity segment.",
+      "sourceLine": "controls the cost Hessian only in",
+      "sourceQuote": "The weak Ma--Trudinger--Wang condition controls the cost Hessian only in directions perpendicular to a velocity segment.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Villani proposed that weak MTW should force convexity of every tangent injectivity domain.",
+      "sourceLine": "Villani proposed that weak MTW should force convexity of every tangent",
+      "sourceQuote": "Villani proposed that weak MTW should force convexity of every tangent injectivity domain \\cite[Section~4.2]{Villani2011}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Figalli, Gallouët and Rifford proved the implication for nonfocal manifolds.",
+      "sourceLine": "proved the implication for nonfocal manifolds",
+      "sourceQuote": "Figalli, Gallou\\\"et and Rifford proved the implication for nonfocal manifolds \\cite[Theorem~1.7]{FGR2014}, where minimizing geodesics reach cut strictly before their first conjugate point.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The cost may cease to be smooth along a proposed velocity segment, and weak MTW controls only perpendicular directions.",
+      "sourceLine": "weak MTW controls only directions perpendicular to that segment.",
+      "sourceQuote": "The cost may cease to be smooth along a proposed velocity segment, and weak MTW controls only directions perpendicular to that segment.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Conjugate cut endpoints are allowed in every dimension n ≥ 2.",
+      "sourceLine": "conjugate cut endpoints are allowed in every dimension",
+      "sourceQuote": "\\Cref{thm:main} removes this restriction: conjugate cut endpoints are allowed in every dimension $n\\geq2$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Every ordinary subgradient of a squared-distance cost potential is a minimizing velocity with a global supporting mountain.",
+      "sourceLine": "velocity with a global supporting mountain.",
+      "sourceQuote": "More generally, every ordinary subgradient of a squared-distance cost potential is a minimizing velocity with a global supporting mountain.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The optimal map between densities with fixed bounds has a homeomorphic representative, and it and its inverse obey a common Hölder bound.",
+      "sourceLine": "The almost-everywhere unique optimal map from $\\rho_0\\vol$ to",
+      "sourceQuote": "The almost-everywhere unique optimal map from $\\rho_0\\vol$ to $\\rho_1\\vol$ for the cost $c$ has a homeomorphic representative $\\widetilde T:M\\to M$, and \\[ d(\\widetilde T(x),\\widetilde T(x'))\\leq C d(x,x')^\\alpha, \\qquad d(\\widetilde T^{-1}(y),\\widetilde T^{-1}(y')) \\leq C d(y,y')^\\alpha \\] for all $x,x',y,y'\\in M$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The constants are common to the full density class on the fixed manifold.",
+      "sourceLine": "The constants are common to the full density class on the fixed",
+      "sourceQuote": "The constants are common to the full density class on the fixed manifold.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A positive exponent is obtained by contradiction; no explicit exponent or uniformity over varying metrics is asserted.",
+      "sourceLine": "We obtain a positive exponent by contradiction",
+      "sourceQuote": "We obtain a positive exponent by contradiction; no explicit exponent or uniformity over varying metrics is asserted.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Combined with the necessity result of Figalli, Rifford and Villani, the theorem yields the weak-MTW–transport-continuity equivalence.",
+      "sourceLine": "Combined with their necessity result, it yields the",
+      "sourceQuote": "Combined with their necessity result, it yields the weak-MTW--transport-continuity equivalence, with the forward direction strengthened to the class-uniform estimates above.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the convexity of every open tangent injectivity domain under weak MTW, and uniform bi-Hölder optimal transport for densities between fixed bounds.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
