@@ -1,0 +1,169 @@
+{
+  "id": "368",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strong-diffeomorphic-approximation-in-three-dimensions-for-1-le-p-le-2-September-24-2026/main.pdf",
+      "label": "Strong diffeomorphic approximation in three dimensions for 1≤p≤2"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strong-diffeomorphic-approximation-in-three-dimensions-for-p-gt-2-September-24-2026/main.pdf",
+      "label": "Strong diffeomorphic approximation in three dimensions for p>2"
+    }
+  ],
+  "headline": "Claims to solve the Ball–Evans problem in 3D: every Sobolev homeomorphism is a strong limit of smooth diffeomorphisms.",
+  "scope": "Sobolev homeomorphisms between any two bounded connected open sets in ℝ³, for every exponent 1 ≤ p < ∞. Two companion papers split the range of p.",
+  "plain": "Engineers model a squashed solid as a map that sends each point to its new place. The map must be one-to-one, so no two bits of material overlap. Mathematicians asked whether such a rough map can be approached by smooth one-to-one maps, with the derivatives also close. This was known in the plane and false in dimension four and up for some exponents. Two papers claim a yes in three dimensions, for every finite exponent.",
+  "doesNot": "This does not claim the inverse maps converge in a Sobolev sense, and it says nothing about dimensions four and up. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2001",
+    "firstStepBy": "John Ball, who attributed the question to Lawrence Evans",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle a well-known problem from nonlinear elasticity in the physical dimension three, for every finite exponent."
+  },
+  "explanation": "Start with a ball of rubber of radius 1. Move each point x to a point in the same direction, at distance √r, where r is the old distance from the centre. A point at r = 0.25 moves out to 0.5. A point at r = 0.01 moves out to 0.1. This map is one-to-one and fills the same ball. Near the centre it stretches hard. At r = 0.01 it stretches lengths around the centre by 10 and lengths away from it by 5. At r = 0.25 these numbers are 2 and 1. So the map has no derivative at the centre itself. Still, the total of the squared stretch over the ball is finite: it is 4.5π, about 14.14.\n\nMaps like this are Sobolev homeomorphisms. A homeomorphism is a one-to-one, onto map that is continuous both ways. It is in W^{1,p} if its values and its weak derivative, a derivative defined by averages, have finite p-th power totals. Engineers use such maps for elastic solids. One-to-one means no two pieces of material overlap.\n\nThe question is whether smooth maps can copy this one. A diffeomorphism is a smooth one-to-one map with a smooth inverse. We want diffeomorphisms onto the same target whose values and derivatives get close in the p-th power sense. Ball posed this and credited the question to Evans[3]. Smoothing alone is easy, but the usual averaging, called convolution, can break one-to-one[4]. For example, average the identity map with the half-turn x ↦ −x. Both are one-to-one, but the average sends every point to 0.\n\nIn the plane, Iwaniec, Kovalev and Onninen solved the problem for p > 1[5]. Hencl and Pratelli handled p = 1[6]. In dimension four and up, Campbell, Hencl and Tengvall built counterexamples for some small p[7]. Dimension three stayed open.\n\nThe first paper claims the answer is yes in three dimensions for 1 ≤ p ≤ 2[1]. The second paper claims yes for every finite p > 2[2]. Neither paper assumes anything about the boundary of either set[8]. The main obstacle is that three-dimensional topology gives one-to-one replacements but no bound on their derivatives[9]. So each paper must measure energy directly. The first paper builds a one-to-one map that stretches only by bounded amounts and is close in energy. It then smooths that map with fine control[10]. The papers do not claim the inverse maps converge in the Sobolev sense[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. Both proofs are long and technical. No specialist review of either paper has been published.",
+  "hypeCheck": "A major claim if the proofs hold: it would settle a well-known problem in three dimensions. The proofs are long, there is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Homeomorphism",
+      "meaning": "A one-to-one, onto map that is continuous, with a continuous inverse."
+    },
+    {
+      "term": "Diffeomorphism",
+      "meaning": "A smooth one-to-one, onto map whose inverse is also smooth."
+    },
+    {
+      "term": "Weak derivative",
+      "meaning": "A derivative defined through averages, so it can exist for maps with corners or spikes."
+    },
+    {
+      "term": "Sobolev space W^{1,p}",
+      "meaning": "The maps whose values and weak derivatives have finite p-th power totals over the domain."
+    },
+    {
+      "term": "Strong approximation",
+      "meaning": "Getting close in both values and derivatives, measured by p-th power totals."
+    },
+    {
+      "term": "Convolution",
+      "meaning": "Smoothing a map by replacing each value with a weighted average of nearby values."
+    },
+    {
+      "term": "Domain",
+      "meaning": "A nonempty, connected open set."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Strong diffeomorphic approximation in three dimensions for 1≤p≤2” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strong-diffeomorphic-approximation-in-three-dimensions-for-1-le-p-le-2-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Strong diffeomorphic approximation in three dimensions for p>2” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strong-diffeomorphic-approximation-in-three-dimensions-for-p-gt-2-September-24-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For 1 ≤ p ≤ 2, every W^{1,p} homeomorphism between bounded domains in ℝ³ is a strong W^{1,p} limit of smooth diffeomorphisms onto the same target.",
+      "sourceLine": "is a strong $W^{1,p}$ limit of smooth diffeomorphisms onto the same",
+      "sourceQuote": "Every $W^{1,p}$ homeomorphism between arbitrary bounded domains in $\\R^3$ is a strong $W^{1,p}$ limit of smooth diffeomorphisms onto the same target.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The same approximation holds for every finite p > 2.",
+      "sourceLine": "We resolve the three-dimensional Ball--Evans approximation problem for every",
+      "sourceQuote": "We resolve the three-dimensional Ball--Evans approximation problem for every finite $p>2$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Ball's formulation attributes the question to Evans.",
+      "sourceLine": "Ball's formulation explicitly attributes the question to Evans",
+      "sourceQuote": "Ball's formulation explicitly attributes the question to Evans \\cite[Section~3, p.~8]{Ball2001}; his later discussion and Hencl's survey explain the surrounding variational questions \\cite{Ball2010,Hencl2025}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Smooth approximation is easy without injectivity, but convolution need not preserve injectivity.",
+      "sourceLine": "Smooth approximation is elementary if injectivity is discarded, but convolution need not preserve it.",
+      "sourceQuote": "Smooth approximation is elementary if injectivity is discarded, but convolution need not preserve it.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In the plane, Iwaniec, Kovalev and Onninen proved strong diffeomorphic approximation for 1 < p < ∞.",
+      "sourceLine": "In the plane, Iwaniec, Kovalev, and Onninen proved strong diffeomorphic",
+      "sourceQuote": "In the plane, Iwaniec, Kovalev, and Onninen proved strong diffeomorphic approximation for $1<p<\\infty$ \\cite[Theorem~1.1]{IwaniecKovalevOnninen2011}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Hencl and Pratelli established the planar endpoint p = 1.",
+      "sourceLine": "Hencl and Pratelli established the endpoint $p=1$",
+      "sourceQuote": "Hencl and Pratelli established the endpoint $p=1$, including approximation by locally finite piecewise affine homeomorphisms \\cite[Theorem~1.1]{HenclPratelli2018}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Campbell, Hencl and Tengvall gave counterexamples in dimensions n ≥ 4 for 1 ≤ p < ⌊n/2⌋.",
+      "sourceLine": "Campbell, Hencl, and Tengvall corrected a gap in that construction and",
+      "sourceQuote": "Campbell, Hencl, and Tengvall corrected a gap in that construction and extended the range to $1\\le p<\\lfloor n/2\\rfloor$ in dimensions $n\\ge4$, with Jacobian determinants of both signs on sets of positive measure \\cite{CampbellHenclTengvall2018}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "No smoothness at the boundary, boundary extension of f, or boundary regularity is assumed.",
+      "sourceLine": "No smoothness at the boundary, boundary extension of $f$, or regularity of either boundary is assumed.",
+      "sourceQuote": "No smoothness at the boundary, boundary extension of $f$, or regularity of either boundary is assumed.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Three-dimensional PL topology gives topological flexibility but no strong derivative estimate.",
+      "sourceLine": "It supplies no strong derivative estimate.",
+      "sourceQuote": "It supplies no strong derivative estimate.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof first builds an onto locally bi-Lipschitz map with small Sobolev error, then smooths it with fine pointwise control.",
+      "sourceLine": "It first constructs an onto locally bi-Lipschitz map with small strong",
+      "sourceQuote": "It first constructs an onto locally bi-Lipschitz map with small strong Sobolev error, and then proves a smoothing theorem with arbitrarily fine pointwise control.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Smooth invertibility of each approximant is not a claim of Sobolev convergence of the inverses.",
+      "sourceLine": "is not a claim of Sobolev convergence of the inverses.",
+      "sourceQuote": "Smooth invertibility of each approximant in Theorem~\\ref{main:theorem} is not a claim of Sobolev convergence of the inverses.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
