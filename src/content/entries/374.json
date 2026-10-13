@@ -1,0 +1,156 @@
+{
+  "id": "374",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026/article.pdf",
+      "label": "Sharp One-Third Stability of Brenier Maps"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/374.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves optimal transport maps from a uniform convex source change at most like the cube root of the target change.",
+  "scope": "Quadratic optimal transport from the uniform measure on a compact convex body in ℝ^d, d ≥ 2. Targets are any probability measures in one fixed compact set.",
+  "plain": "Optimal transport asks for the cheapest way to move a pile of sand into a new shape. The best plan is a map that tells each grain where to go. If the target shape changes a little, how much can that map change? The paper shows the change is at most a constant times the cube root of the target change. It also shows the cube root cannot be improved, which disproves a conjectured square root.",
+  "doesNot": "This does not cover sources that are not uniform on a convex body. It does not give the best constant, and it does not improve bounds stated with the W₁ distance.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Partial differential equations",
+    "significance": "Solid",
+    "significanceWhy": "It finds the exact exponent for a well-studied stability question and disproves a recent conjecture, with a Lean statement of both parts."
+  },
+  "explanation": "Start with sand spread evenly over the square from −1 to 1 in both directions. We send it to three points. Sand with first coordinate below −a goes to (−1, 0). Sand above a goes to (1, 0). The middle strip, of width 2a, goes to (0, 0). Now tilt the strip slightly. Its edges move to |x₁| < a + (a/2)·x₂, and the middle point moves to (0, a/2). The strip keeps the same amount of sand.\n\nHow far apart are the two targets? The Wasserstein distance W₂ measures the cheapest way to move one target into the other. Here only the middle point moves, by a/2, carrying mass a. So W₂ = a^{3/2}/2. For a = 0.01 this is 0.0005. How far apart are the two maps? Some sand near the strip edges switches destination by about 1. The average squared gap gives an L² distance of about 0.0500. Shrink a to 0.001. Then W₂ ≈ 0.0000158 and the map gap is ≈ 0.0158.\n\nDivide the map gap by W₂ raised to a power. With power 1/2 the ratio grows: 2.24, then 3.98. With power 1/3 it stays near 0.63. So a square-root bound cannot hold, but a cube-root bound might.\n\nThe best map for squared distance is called a Brenier map. A Hölder bound with exponent 1/3 says the map gap is at most C·W₂^{1/3}. Earlier bounds had weaker exponents, such as 2/15 and 1/6, in a related distance W₁[5,6]. One sharper bound had a constant that depended on the number and masses of the points[7]. Letrouit conjectured a square-root bound for uniform convex sources[4].\n\nThe paper claims the cube-root bound for the uniform measure on any compact convex body, in every dimension d ≥ 2[1]. The constant does not depend on the number of points, their masses, or their spacing[2]. The body need not be smooth[10]. The tilted-strip family above, with three target points, shows no larger exponent works. This disproves the square-root conjecture[3,8]. The new step is a linear bound, in W₂, on how much the potential function behind the map changes[9].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of both the cube-root bound and its sharpness. So the paper proves them, as far as the Lean statements match the paper. No specialist review of the paper is published.",
+  "hypeCheck": "A solid, sharp result with Lean statements of the bound and its sharpness. It covers only uniform sources on convex bodies. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Optimal transport",
+      "meaning": "Finding the cheapest way to move one distribution of mass into another."
+    },
+    {
+      "term": "Brenier map",
+      "meaning": "The optimal transport map when cost is the squared distance moved."
+    },
+    {
+      "term": "Wasserstein distance W₂",
+      "meaning": "The square root of the least average squared distance needed to turn one distribution into another."
+    },
+    {
+      "term": "L² distance",
+      "meaning": "The square root of the average squared gap between two maps."
+    },
+    {
+      "term": "Hölder bound",
+      "meaning": "A bound of the form C times a distance raised to a fixed power, here 1/3."
+    },
+    {
+      "term": "Convex body",
+      "meaning": "A bounded closed shape with interior that contains the segment between any two of its points."
+    },
+    {
+      "term": "Sharp exponent",
+      "meaning": "A power that works, while every larger power fails."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Sharp One-Third Stability of Brenier Maps” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 374",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/374.md",
+      "quote": "The formalization proves one-third Hölder stability of Brenier maps from the uniform measure on a compact convex body with nonempty interior"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For the uniform measure on a compact convex body in ℝ^d, d ≥ 2, quadratic optimal transport maps are one-third Hölder continuous in L²(ρ) with respect to W₂ of the target.",
+      "sourceLine": "quadratic optimal transport maps are one-third",
+      "sourceQuote": "For the uniform probability measure \\(\\rho\\) on a compact convex body in \\(\\R^d\\), \\(d\\ge2\\), quadratic optimal transport maps are one-third H\\\"older continuous in \\(L^2(\\rho)\\) with respect to the target's \\(2\\)-Wasserstein distance.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The constant is independent of atom count, atom masses, site separation and density bounds.",
+      "sourceLine": "The constant is independent of atom count, positive atom masses, site separation, and density bounds.",
+      "sourceQuote": "The constant is independent of atom count, positive atom masses, site separation, and density bounds.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A three-atom family on a fixed cube disproves Letrouit's conjectured uniform square-root estimate.",
+      "sourceLine": "A three-atom family on a fixed cube disproves Letrouit's conjectured",
+      "sourceQuote": "A three-atom family on a fixed cube disproves Letrouit's conjectured uniform square-root estimate.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Letrouit formulated uniform square-root stability in W₂ for a uniform convex source as a conjecture.",
+      "sourceLine": "formulated uniform square-root stability in \\(W_2\\) for a uniform convex source as a conjecture",
+      "sourceQuote": "Letrouit proved an obstruction to exponents above \\(1/3\\) for a nonconvex source and formulated uniform square-root stability in \\(W_2\\) for a uniform convex source as a conjecture \\cite[Theorem~2 and Conjecture~3]{Letrouit2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mérigot, Delalande and Chazal proved a dimension-independent W₁^{2/15} bound for a uniform convex source.",
+      "sourceLine": "proved a dimension-independent \\(W_1^{2/15}\\) bound for a uniform convex source",
+      "sourceQuote": "M\\'erigot, Delalande, and Chazal used dualization to obtain target-uniform bounds from Berman's work, with dimension-dependent exponents, and then proved a dimension-independent \\(W_1^{2/15}\\) bound for a uniform convex source \\cite[Corollary~2.4 and Theorem~3.1]{MerigotDelalandeChazal2020}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Delalande and Mérigot proved an L²-map bound of order W₁^{1/6}.",
+      "sourceLine": "an \\(L^2\\)-map bound of order \\(W_1^{1/6}\\)",
+      "sourceQuote": "Delalande and M\\'erigot proved an \\(L^2\\)-map bound of order \\(W_1^{1/6}\\) for source densities bounded above and below on a convex domain and targets in a fixed compact set \\cite[Theorem~4.2]{DelalandeMerigot2023}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The W₂^{1/3} estimate of Divol, Niles-Weed and Pooladian has a constant depending on the number of atoms and a lower bound for their masses.",
+      "sourceLine": "Its constant depends on the number of atoms, a positive lower bound for their masses",
+      "sourceQuote": "Its constant depends on the number of atoms, a positive lower bound for their masses, and separation and angular geometry, whereas \\Cref{main:stability} has one constant for all Borel targets, including degenerating atomic measures.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Tilting the middle affine function preserves its cell mass but switches source points between slopes at order-one separation.",
+      "sourceLine": "Tilting the middle affine function preserves its cell mass but switches source points between slopes at order-one separation.",
+      "sourceQuote": "Tilting the middle affine function preserves its cell mass but switches source points between slopes at order-one separation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The improvement is a linear W₂ estimate for potential differences.",
+      "sourceLine": "the improvement here is the linear \\(W_2\\) estimate for potential differences.",
+      "sourceQuote": "Their interpolation inequality \\cite[Proposition~4.1]{DelalandeMerigot2023} is the antecedent of our last step; the improvement here is the linear \\(W_2\\) estimate for potential differences.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Neither smoothness nor strict convexity of K is required.",
+      "sourceLine": "Neither smoothness nor strict convexity of \\(K\\) is required",
+      "sourceQuote": "Neither smoothness nor strict convexity of \\(K\\) is required, and \\(Y\\) need not be convex.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the one-third Hölder stability bound with a uniform constant, and the three-atom examples on a cube that rule out every larger exponent.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
