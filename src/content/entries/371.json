@@ -1,0 +1,166 @@
+{
+  "id": "371",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Stable-Self-Similar-Blowup-for-a-Supercritical-Defocusing-Schrodinger-Equation-on-the-Torus-September-24-2026/paper.pdf",
+      "label": "Stable self-similar blowup for a supercritical defocusing Schrödinger equation on the torus"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/371.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that blowup is stable for a defocusing Schrödinger equation on a 12-dimensional torus, for some large odd power.",
+  "scope": "The scalar defocusing equation i∂ₜu + Δu = |u|^{p−1}u on the twelve-dimensional torus, for one large odd power p. Data lie in a Sobolev space H^k, k > 8.",
+  "plain": "The Schrödinger equation describes waves, and the defocusing kind has a force that pushes waves apart. One might expect such waves to stay smooth forever. The paper builds an open set of smooth starting waves that still blow up in finite time. Open means small changes to the start do not stop the blowup. As a result, some random starting waves blow up with positive probability.",
+  "doesNot": "This does not say which odd power works or give a number for it. It does not claim blowup with probability one, and it treats only dimension twelve.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It gives a stable, open set of blowup data for a scalar defocusing equation, where earlier constructions gave only thinner families of data."
+  },
+  "explanation": "Start with the simplest wave: a constant, u = c, spread evenly over the space. The equation here is i∂ₜu + Δu = |u|^{p−1}u. For constant data the derivative term Δu is zero. The solution only turns its phase: u(t) = c·e^{−i|c|^{p−1}t}. Its size |u| stays equal to |c| forever. Nothing blows up. The question is whether a wave that is not flat can concentrate into a point of infinite height.\n\nHere u is a complex wave on the torus. The torus is a box whose opposite faces are glued, so waves leave one side and come back on the other. The symbol Δ is the Laplacian, which spreads the wave out. Defocusing means the right side also pushes the wave apart. Blowup means the solution stops being smooth at some finite time T.\n\nThe energy of the wave stays fixed and positive. In twelve dimensions, though, it does not control the smoothness needed to continue the solution[3]. Each power p has a critical smoothness level, d/2 − 2/(p−1). For d = 12 this is 5 when p = 3 and 5.98 when p = 101, far above 1.\n\nEarlier work built blowup in nearby settings. Tao used a specially designed vector system with forcing[4]. Merle, Raphaël, Rodnianski and Szeftel found radial blowup for four pairs of dimension and power, under a stated condition[5]. Cao-Labora, Gómez-Serrano, Shi and Staffilani did the cubic case on an eight-dimensional torus[6]. Those two gave only thin families of starting data. One recent result did not claim an open set of data[7].\n\nThe paper claims that for some large odd power, an open set of starting data in a Sobolev space H^k blows up[1]. A Sobolev space measures smoothness through k derivatives. The blowup is self-similar: the spike has width (T−t)^{1/2} and height (T−t)^{−1/(p−1)}[8]. To show the scaling, suppose p were 5. When T − t = 0.0001, the width is 0.01 and the height grows tenfold. Because the set is open, random Gaussian starting data hit it with positive probability[2,9]. The paper does not claim blowup with probability one[10]. The key tool is a limit of very large powers. There, the spike profile has a flat core and a free outer part[11].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the open blowup set and the Gaussian result. So the paper proves them, as far as the Lean statement matches the paper. Lean gives arbitrarily large odd powers, not every large odd power. No specialist review of the paper is published.",
+  "hypeCheck": "A major result with a Lean statement of both main claims. The power is not specified, only dimension twelve is treated, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Nonlinear Schrödinger equation",
+      "meaning": "An equation for a complex wave whose motion depends on the wave's own size."
+    },
+    {
+      "term": "Defocusing",
+      "meaning": "The nonlinear term pushes the wave apart rather than pulling it together."
+    },
+    {
+      "term": "Torus",
+      "meaning": "A box whose opposite faces are glued, so the space has no edge."
+    },
+    {
+      "term": "Blowup",
+      "meaning": "The solution stops being smooth at a finite time, here by growing without bound at a point."
+    },
+    {
+      "term": "Sobolev space H^k",
+      "meaning": "The functions whose first k derivatives have finite total square size."
+    },
+    {
+      "term": "Open set",
+      "meaning": "A set of starting data where every small enough change stays in the set."
+    },
+    {
+      "term": "Self-similar",
+      "meaning": "The spike keeps the same shape while it narrows and grows by fixed power laws in time."
+    },
+    {
+      "term": "Gaussian data",
+      "meaning": "Random starting waves built from independent bell-curve random numbers, one per frequency."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Stable self-similar blowup for a supercritical defocusing Schrödinger equation on the torus” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Stable-Self-Similar-Blowup-for-a-Supercritical-Defocusing-Schrodinger-Equation-on-the-Torus-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 371",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/371.md",
+      "quote": "The formalization constructs stable self-similar finite-time blowup for defocusing nonlinear Schrödinger equations on the twelve-dimensional torus."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For a sufficiently large odd power, the blowup initial data contain a nonempty open set in a high Sobolev space.",
+      "sourceLine": "For a sufficiently large odd power, the blowup initial data contain a nonempty open set in a high Sobolev space.",
+      "sourceQuote": "For a sufficiently large odd power, the blowup initial data contain a nonempty open set in a high Sobolev space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gaussian Fourier initial data of arbitrarily high Sobolev regularity can have positive probability of finite-time blowup.",
+      "sourceLine": "Gaussian Fourier initial data of arbitrarily high Sobolev regularity can have positive probability of finite-time blowup.",
+      "sourceQuote": "As a consequence, Gaussian Fourier initial data of arbitrarily high Sobolev regularity can have positive probability of finite-time blowup.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In the energy-supercritical range, the conserved energy does not control the regularity required for classical continuation.",
+      "sourceLine": "the positive conserved energy does not control the regularity required for classical continuation.",
+      "sourceQuote": "In the energy-supercritical range $s_{\\mathrm{cr}}>1$, the positive conserved energy does not control the regularity required for classical continuation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A forced vector-valued defocusing system showed that conservation and scaling alone cannot settle scalar global regularity.",
+      "sourceLine": "scaling alone cannot settle scalar global regularity",
+      "sourceQuote": "An earlier counterexample for a specially designed vector-valued, forced defocusing Schr\\\"odinger system showed that conservation and scaling alone cannot settle scalar global regularity \\cite[Theorem~1.2]{Tao2018}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Merle, Raphaël, Rodnianski and Szeftel obtain radial whole-space type-II blowup for four pairs (d, p), under a nondegeneracy condition.",
+      "sourceLine": "obtain radial whole-space type-II blowup",
+      "sourceQuote": "For the unforced scalar energy-supercritical equation, Merle, Rapha\\\"el, Rodnianski, and Szeftel \\cite[Theorem~1.1]{MRRS2022} obtain radial whole-space type-II blowup on a finite-codimension family for the pairs $(5,9),(6,5),(8,3),(9,3)$, subject to a stated profile nondegeneracy condition.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Cao-Labora, Gómez-Serrano, Shi and Staffilani construct periodic nonradial blowup for the cubic equation in dimension eight.",
+      "sourceLine": "construct periodic nonradial blowup for the cubic equation in dimension eight",
+      "sourceQuote": "Cao-Labora, G\\'omez-Serrano, Shi, and Staffilani \\cite[Theorem~1.1]{CLGSS2024} construct periodic nonradial blowup for the cubic equation in dimension eight, again on a finite-codimension family.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem of Buck, Carballeira, Gómez-Serrano and Shi does not assert a physical Sobolev-open blowup set.",
+      "sourceLine": "their theorem does not assert a physical Sobolev-open blowup set.",
+      "sourceQuote": "Their computer-assisted profile matching and nonlinear stability yield a finite-codimension family; their theorem does not assert a physical Sobolev-open blowup set.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The spatial scale is (T−t)^{1/2} and the amplitude is (T−t)^{−1/(p−1)}, with a logarithmic phase rotation.",
+      "sourceLine": "Here the spatial scale is $(T-t)^{1/2}$, the amplitude is",
+      "sourceQuote": "Here the spatial scale is $(T-t)^{1/2}$, the amplitude is $(T-t)^{-1/(p-1)}$, and there is a logarithmic phase rotation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Full support of a Gaussian measure charges every nonempty open set.",
+      "sourceLine": "full support of a Gaussian measure charges every nonempty open set",
+      "sourceQuote": "The open neighborhood in Theorem~\\ref{thm:blowup} is essential for Corollary~\\ref{cor:gaussian}: full support of a Gaussian measure charges every nonempty open set, whereas a finite-codimension existence theorem alone does not give this conclusion.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper does not claim probability-one blowup or a lower probability bound uniform in α.",
+      "sourceLine": "We do not claim probability-one blowup or a lower probability bound uniform in $\\alpha$.",
+      "sourceQuote": "We do not claim probability-one blowup or a lower probability bound uniform in $\\alpha$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "As a → 0, a radial profile develops a flat core with positive limiting pressure and a free exterior.",
+      "sourceLine": "As $a\\to0$, a radial profile develops a flat core",
+      "sourceQuote": "As $a\\to0$, a radial profile develops a flat core with positive limiting pressure and a free exterior.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the open set of blowup data on the twelve-dimensional torus and the positive-probability Gaussian blowup, for arbitrarily large odd powers.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
