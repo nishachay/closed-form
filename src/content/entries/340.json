@@ -1,0 +1,146 @@
+{
+  "id": "340",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-nearby-Lagrangian-conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to the nearby Lagrangian conjecture"
+    }
+  ],
+  "headline": "Claims a counterexample to Arnold's nearby Lagrangian conjecture, in the cotangent bundle of a product of two spheres.",
+  "scope": "One closed exact Lagrangian in T*(S⁹ × S^(N−1)) for some sufficiently large even N, which is not given explicitly.",
+  "plain": "A cotangent bundle is the space of all positions and momenta over a base space. Arnold's nearby Lagrangian conjecture says that a certain kind of closed surface in it, an exact Lagrangian, can always be slid back onto the base. Strong results showed such surfaces always look like the base from the point of view of topology. This paper claims a surface that has the same shape as the base but cannot be slid back. The base is a product of two spheres of very high dimension.",
+  "doesNot": "This does not give the dimension N explicitly or settle the conjecture for low-dimensional bases such as surfaces. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Vladimir Arnold, whose discussion of Lagrangian knots set the problem",
+    "field": "Differential geometry",
+    "significance": "Landmark",
+    "significanceWhy": "It claims to disprove a central conjecture of symplectic topology that many deep results had supported."
+  },
+  "explanation": "Start with a cylinder. Think of its circle as positions q, measured as an angle. Think of its height as a momentum p. This cylinder is the cotangent bundle of the circle, the space of all positions and momenta. The circle at height zero is the zero section. Now draw the closed curve p = cos q. The area between it and the zero section, counted with sign, is the integral of cos q from 0 to 2π, which is 0. A curve with zero signed area like this is called exact. It can be slid back onto the zero section by a Hamiltonian isotopy, a motion that follows the equations of classical mechanics. The curve p = 1 has signed area 2π, so it is not exact. Such a motion keeps signed area, so it cannot bring that curve back.\n\nIn higher dimensions the curves become Lagrangians. A Lagrangian is a smooth piece of the same dimension as the base, on which a basic area form vanishes[2]. Exact means a certain one-form on it is the derivative of a function[2]. Arnold's nearby Lagrangian conjecture asks whether every closed exact Lagrangian can be slid back onto the zero section this way[3]. Low-dimensional cases were known, such as the case over the two-sphere[4]. Abouzaid showed that projecting such a Lagrangian to the base is a homotopy equivalence when one class vanishes[5]. Kragh removed that condition[6]. A homotopy equivalence means the two have the same shape up to stretching. Abouzaid and Kragh later proved a finer version. But these results are about topology. They do not say whether the slide exists[7].\n\nThe paper claims a no[1]. For some large even N, it builds a closed exact Lagrangian over the product of a 9-sphere and an (N−1)-sphere. The Lagrangian has the same smooth shape as the base, but no slide carries the zero section to it[8]. So the base has dimension 9 + N − 1 = N + 8. N is not given as a number.\n\nThe key obstacle is to find a hidden invariant that ordinary topology misses. The paper uses smooth tubes, which are regions shaped like the negative part of a quadratic form. A family of them over the 9-sphere gives a class a. This class a is nonzero, yet its coarser sphere-bundle shadow is trivial[9]. Using Morse theory, the paper shows that a slide to the zero section would make a vanish[10]. The second sphere factor is used to make the Lagrangian embedded, without self-crossings.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The argument relies on deep results in algebraic K-theory, such as Waldhausen's tube fibration and Rognes's calculations. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark-level claim if it holds: it would disprove Arnold's nearby Lagrangian conjecture in general. The example is in very high dimension, with N not given explicitly. There is no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Cotangent bundle",
+      "meaning": "The space of all positions on a base space together with all momenta at each position."
+    },
+    {
+      "term": "Zero section",
+      "meaning": "The copy of the base inside the cotangent bundle where every momentum is zero."
+    },
+    {
+      "term": "Lagrangian",
+      "meaning": "A smooth piece of the cotangent bundle, of the same dimension as the base, on which the basic area form vanishes."
+    },
+    {
+      "term": "Exact Lagrangian",
+      "meaning": "A Lagrangian on which the canonical one-form is the derivative of a single function."
+    },
+    {
+      "term": "Hamiltonian isotopy",
+      "meaning": "A smooth motion that follows the equations of classical mechanics for some changing energy function."
+    },
+    {
+      "term": "Homotopy equivalence",
+      "meaning": "A map showing two spaces have the same shape up to continuous stretching."
+    },
+    {
+      "term": "Morse theory",
+      "meaning": "Studying a space through the critical points, such as peaks and saddles, of a function on it."
+    },
+    {
+      "term": "Generating family",
+      "meaning": "A function with extra variables whose critical points describe a Lagrangian."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A counterexample to the nearby Lagrangian conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-nearby-Lagrangian-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper disproves the unrestricted nearby Lagrangian conjecture.",
+      "sourceLine": "We disprove the unrestricted nearby Lagrangian conjecture.",
+      "sourceQuote": "We disprove the unrestricted nearby Lagrangian conjecture.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A Lagrangian has dimension dim Q with dλ vanishing on it; exact means λ restricted to it is df.",
+      "sourceLine": "submanifold $L\\subset T^*Q$ is Lagrangian if it has dimension $\\dim Q$",
+      "sourceQuote": "A smooth submanifold $L\\subset T^*Q$ is Lagrangian if it has dimension $\\dim Q$ and $d\\lambda$ vanishes on it; it is exact if $\\lambda|_L=df$ for a globally defined function $f:L\\to\\R$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Arnold's nearby Lagrangian conjecture asks whether every closed exact embedded Lagrangian in T*Q is Hamiltonian isotopic to the zero section.",
+      "sourceLine": "Arnold's nearby Lagrangian conjecture asks whether every closed",
+      "sourceQuote": "Arnold's nearby Lagrangian conjecture asks whether every closed exact embedded Lagrangian in $T^*Q$ is Hamiltonian isotopic to the zero section.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hind's theorem, the projection theorem and the classification of surfaces give the closed exact case over S².",
+      "sourceLine": "closed surfaces, gives the closed exact case over $S^2$.",
+      "sourceQuote": "The former, together with the projection theorem recalled next and the classification of closed surfaces, gives the closed exact case over $S^2$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Abouzaid proved the projection is a homotopy equivalence when the Maslov class vanishes.",
+      "sourceLine": "Abouzaid proved that the projection is a homotopy equivalence when the",
+      "sourceQuote": "Abouzaid proved that the projection is a homotopy equivalence when the Maslov class vanishes \\cite{Abouzaid2012}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kragh's parametrized spectra, with Abouzaid's appendix, removed that hypothesis.",
+      "sourceLine": "Kragh's\nparametrized spectra, together with Abouzaid's appendix, removed that",
+      "sourceQuote": "Kragh's parametrized spectra, together with Abouzaid's appendix, removed that hypothesis \\cite[Corollary~1.2 and Theorem~E.2]{Kragh2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "These results concern the topology of the projection and do not identify the ambient Hamiltonian isotopy class.",
+      "sourceLine": "topology of the projection and do not identify the ambient Hamiltonian",
+      "sourceQuote": "These results concern the topology of the projection and do not identify the ambient Hamiltonian isotopy class.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For some large even N, Q = S⁹ × S^(N−1) has a closed exact Lagrangian diffeomorphic to Q that no compactly supported Hamiltonian isotopy reaches from the zero section.",
+      "sourceLine": "$L\\subset T^*Q$ such that $L$ is diffeomorphic to $Q$ and no compactly",
+      "sourceQuote": "For some sufficiently large even integer $N$, the manifold $Q=S^9\\times S^{N-1}$ admits a closed exact smoothly embedded Lagrangian $L\\subset T^*Q$ such that $L$ is diffeomorphic to $Q$ and no compactly supported Hamiltonian isotopy carries the zero section to $L$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The smooth tube family remains nontrivial after its associated stable spherical fibration has become trivial.",
+      "sourceLine": "Thus the smooth tube family remains nontrivial after its associated",
+      "sourceQuote": "Thus the smooth tube family remains nontrivial after its associated stable spherical fibration has become trivial.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A hypothetical Hamiltonian isotopy to the zero section would give exactly the excluded family, a contradiction.",
+      "sourceLine": "$S^9$ slice then gives precisely the family excluded by",
+      "sourceQuote": "Restricting to a fixed $S^9$ slice then gives precisely the family excluded by Proposition~\\ref{prop:one-critical}, completing the contradiction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
