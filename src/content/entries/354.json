@@ -1,0 +1,164 @@
+{
+  "id": "354",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Isoperimetric-Conjecture-for-the-Cubic-Flat-Three-Torus-September-24-2026/article.pdf",
+      "label": "The Isoperimetric Conjecture for the Cubic Flat Three-Torus"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/354.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves the isoperimetric conjecture for the cubic flat three-torus: balls, tubes, slabs and their complements.",
+  "scope": "Finite-perimeter regions of every volume in the unit cubic flat three-torus ℝ³/ℤ³, including the equality cases at the two transition volumes.",
+  "plain": "Picture a cube whose opposite faces are glued, so leaving one face brings you back through the opposite one. The question is how to enclose a given volume inside it with the least surface area. The paper proves the long-standing guess: small volumes use a ball, middle volumes a tube around a straight loop, and larger ones a flat slab. Past half the volume, the answers are the complements of these. A Lean proof covers the full result.",
+  "doesNot": "This does not treat flat tori of other shapes, such as non-cubic boxes, or higher dimensions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Hauswirth, Pérez, Romon and Ros, who state the ball–tube–slab prediction explicitly",
+    "field": "Differential geometry",
+    "significance": "Solid",
+    "significanceWhy": "It settles a concrete, well-known periodic isoperimetric problem and classifies every minimizer, including the transition cases."
+  },
+  "explanation": "Start with a unit cube whose opposite faces are glued. A bug leaving through the top comes back through the bottom. This space is the cubic flat three-torus. Now enclose one tenth of its volume with as little surface area as you can. A ball has surface area (36π)^(1/3) × 0.1^(2/3), about 1.042. A solid tube around a straight loop that closes up through two faces has area 2√(0.1π), about 1.121. A slab between two parallel faces always has area 2. At volume 0.1 the ball wins.\n\nAt volume one quarter, the ball needs about 1.919 and the tube about 1.772. The tube now wins. At larger volumes the slab wins, since its area stays at 2. The guess was that the best shape always follows this order. It appears in work of Hauswirth, Pérez, Romon and Ros[1]. Some pieces were known. Balls win for small enough volumes, by Morgan and Johnson[2]. Slabs are the only winners near half the volume, by Acerbi, Fusco and Morini[3]. But those results did not reach the switching volumes[4]. Milman reduced the full guess to checking just two volumes[5].\n\nThe paper proves the full guess[6]. The least area at volume V is the smallest of the three numbers above[6]. Above one half, use 1 − V in place of V. The ball wins up to volume 4π/81, about 0.155. There the ball has radius 1/3, the tube radius 2/9, and both have area 4π/9, about 1.396. The tube wins up to volume 1/π, about 0.318. There tube and slab both have area 2. Then the slab wins up to one half. Past one half, the winners are the complements[7]. At each switch both shapes win and nothing else does[8].\n\nThe remaining difficulty was to rule out a surface with handles, of higher genus, that might do better[9]. The new ingredient slices a possible rival by parallel planes near the tube–slab switch[10]. Nesting of those slices forces extra length in some of them, which adds up to too much area. Explicit arithmetic bounds finish the last one-variable estimate[11].\n\nHow sure is this? The Lean scope note says the formalization determines the least-area profile and all minimizers in the unit cubic flat three-torus. It includes every equality case at the volumes 4π/81 and 1/π. No specialist review has been published.",
+  "hypeCheck": "Solid. Lean covers the full profile and the classification of minimizers, including the transition cases. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Flat three-torus",
+      "meaning": "A cube with opposite faces glued, so that moving out through one face brings you back through the opposite one."
+    },
+    {
+      "term": "Isoperimetric problem",
+      "meaning": "The question of how to enclose a fixed volume with the least boundary area."
+    },
+    {
+      "term": "Isoperimetric profile",
+      "meaning": "The least boundary area needed to enclose each volume."
+    },
+    {
+      "term": "Minimizer",
+      "meaning": "A region that achieves the least boundary area for its volume."
+    },
+    {
+      "term": "Shortest closed geodesic",
+      "meaning": "A shortest straight loop in the torus, here a line that runs across the cube parallel to one edge."
+    },
+    {
+      "term": "Slab",
+      "meaning": "The region between two parallel flat faces of the cube."
+    },
+    {
+      "term": "Genus",
+      "meaning": "The number of handles of a surface; a sphere has genus 0 and a doughnut surface genus 1."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Isoperimetric Conjecture for the Cubic Flat Three-Torus” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Isoperimetric-Conjecture-for-the-Cubic-Flat-Three-Torus-September-24-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 354",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/354.md",
+      "quote": "The formalization determines the isoperimetric profile and all minimizers in the unit cubic flat three-torus."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The ball–cylinder–slab prediction appears in the periodic isoperimetric problem of Hauswirth, Pérez, Romon and Ros.",
+      "sourceLine": "The ball--cylinder--slab prediction appears explicitly in the periodic",
+      "sourceQuote": "The ball--cylinder--slab prediction appears explicitly in the periodic isoperimetric problem of Hauswirth, P\\'erez, Romon, and Ros \\cite[Introduction]{HPRR} and in Ros's account of the cubic torus and cube \\cite[Section~1.6]{Ros}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Morgan and Johnson's comparison implies that balls minimize on a compact flat manifold for sufficiently small volumes.",
+      "sourceLine": "minimize on a compact flat manifold for sufficiently small volumes",
+      "sourceQuote": "Morgan and Johnson's sharp small-volume comparison implies that balls minimize on a compact flat manifold for sufficiently small volumes \\cite[Theorem~4.4]{MorganJohnson}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Acerbi, Fusco and Morini proved that coordinate slabs are the only minimizers near half volume.",
+      "sourceLine": "Acerbi, Fusco, and Morini proved that coordinate slabs are the only",
+      "sourceQuote": "Acerbi, Fusco, and Morini proved that coordinate slabs are the only minimizers near half volume in the cubic three-torus, up to translations and coordinate permutations \\cite[Theorem~5.3]{AcerbiFuscoMorini}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "These small-volume and near-half-volume results lacked effective bounds reaching the transitions.",
+      "sourceLine": "without effective bounds reaching the proposed transitions.",
+      "sourceQuote": "These small-volume and near-half-volume neighborhoods were obtained without effective bounds reaching the proposed transitions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Milman reduced the profile conjecture to the volumes 4π/81 and 1/π.",
+      "sourceLine": "He also made explicit the reduction of the",
+      "sourceQuote": "He also made explicit the reduction of the profile conjecture to $4\\pi/81$ and $1/\\pi$, using the method of Hauswirth, P\\'erez, Romon, and Ros \\cite[Theorem~1.3 and Section~4.3]{Milman}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the isoperimetric conjecture for the cubic flat three-torus and classifies all minimizers.",
+      "sourceLine": "We prove the isoperimetric conjecture for the cubic flat three-torus",
+      "sourceQuote": "We prove the isoperimetric conjecture for the cubic flat three-torus and classify all minimizers, including the equality cases at the transition volumes $4\\pi/81$ and $1/\\pi$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For V > 1/2, the minimizing regions are the complements of those at volume 1 − V.",
+      "sourceLine": "the minimizing regions are the complements of those",
+      "sourceQuote": "For \\(V>1/2\\), the minimizing regions are the complements of those at volume \\(1-V\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Both listed types occur at each common endpoint of adjacent ranges, and there are no further equality cases.",
+      "sourceLine": "Both listed types occur at each common endpoint of adjacent ranges,",
+      "sourceQuote": "For \\(0<V\\le1/2\\), every minimizing region is, up to an ambient isometry and a null set, one of the following: \\[ \\begin{array}{c|c} \\text{volume range}&\\text{region}\\\\ \\hline 0<V\\le 4\\pi/81 & \\text{a ball of radius }(3V/(4\\pi))^{1/3}\\\\[2pt] 4\\pi/81\\le V\\le1/\\pi &\\text{a solid circular tube of radius }\\sqrt{V/\\pi}\\\\ &\\text{about a shortest closed geodesic}\\\\[2pt] 1/\\pi\\le V\\le1/2 &\\text{a slab of width }V\\text{ between coordinate tori}. \\end{array} \\] Both listed types occur at each common endpoint of adjacent ranges, and there are no further equality cases.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The remaining geometric difficulty is to exclude connected boundaries of higher genus.",
+      "sourceLine": "The remaining geometric difficulty is to exclude",
+      "sourceQuote": "The remaining geometric difficulty is to exclude connected boundaries of higher genus.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The main new ingredient is a quantitative use of nested planar sections at the cylinder–slab transition.",
+      "sourceLine": "The main new ingredient is a quantitative use of nested planar",
+      "sourceQuote": "The main new ingredient is a quantitative use of nested planar sections at the cylinder--slab transition.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Explicit outward arithmetic bounds complete the remaining one-variable estimate.",
+      "sourceLine": "bounds complete the remaining one-variable estimate.",
+      "sourceQuote": "The other configurations are excluded by scalar inequalities, and explicit outward arithmetic bounds complete the remaining one-variable estimate.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the isoperimetric profile and all minimizers in the unit cubic flat three-torus, including the equality cases at 4π/81 and 1/π.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
