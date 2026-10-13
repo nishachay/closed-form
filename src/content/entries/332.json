@@ -1,0 +1,142 @@
+{
+  "id": "332",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Metric-Markov-Cotype-Two-of-l1-October-5-2026/l1-markov-cotype.pdf",
+      "label": "Metric Markov Cotype Two of ℓ1"
+    }
+  ],
+  "headline": "Claims to prove that ℓ1 has metric Markov cotype two, settling Ball's extension problem for maps into ℓ1.",
+  "scope": "The real Banach space ℓ1, with constant N₂(ℓ1) at most 12√21, and Lipschitz maps from subsets of real Hilbert space into ℓ1.",
+  "plain": "Metric Markov cotype asks whether points on a random walk can be nudged to make each step short, at a cost set by longer stretches. Mendel and Naor asked whether the space ℓ1 has this property with exponent two. This paper claims yes, with a constant at most 12√21. As a result, Lipschitz maps from any subset of Hilbert space into ℓ1 would extend to the whole space with a fixed loss. There is no Lean check.",
+  "doesNot": "This does not extend to every subspace of ℓ1: a known closed subspace still fails metric Markov cotype at every finite exponent.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1992",
+    "firstStepBy": "Keith Ball, who introduced Markov type and cotype to study Lipschitz extension",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "If correct, it answers a question of Mendel and Naor and resolves Ball's extension problem for maps into ℓ1."
+  },
+  "explanation": "Toss three independent coins, each landing heads with chance 0.3. What is the chance that most of them show heads? It is 3 × 0.3² × 0.7 + 0.3³, which equals 0.189 + 0.027 = 0.216. In general, the chance is 3h² − 2h³ when each coin shows heads with chance h. This small formula, a \"majority of three\" rule, is the heart of this paper.\n\nThe setting is the space ℓ1. Its points are infinite lists of numbers whose absolute values have a finite sum. The distance between two lists is the sum of the absolute differences of their entries. Take a Markov chain, a random walk on finitely many states that moves by fixed chances. Call it reversible if it looks the same run backward. Put a point x_i of the space at each state i. Metric Markov cotype two asks for new points y_i with two properties. Each step between new points is short. And the total cost of moving from x to y is small. Both must be paid for by how far the original points spread over t steps, up to a fixed constant[2].\n\nKeith Ball introduced Markov type and cotype to study when Lipschitz maps extend[3]. A Lipschitz map stretches distances by at most a fixed factor. His linear version of cotype fails for ℓ1[4]. Mendel and Naor gave the metric form and asked whether ℓ1 has it[5]. One obstacle was a known example. Using a construction of Kalton, they found a subspace of ℓ1 that fails metric Markov cotype at every exponent[6]. So the new points must be allowed to leave any subspace that holds the data.\n\nThe paper claims that ℓ1 does have metric Markov cotype two[1]. Its constant N₂(ℓ1) is at most 12√21, about 54.99. Squared, that is 144 × 21 = 3,024[7]. The proof writes finitely many points of ℓ1 as weighted cuts, which are 0-or-1 coordinates. It runs the walk for a random number of steps, with mean t. It then applies the rule φ(r) = 3r² − 2r³ to each coordinate. The slope of φ is zero at 0 and at 1, which keeps the steps small[8]. Each new point y_i turns out to be the average coordinatewise middle value of three random walk endpoints that start at i[9].\n\nThe main consequence concerns Ball's extension problem[10]. It asks whether a Lipschitz map from any subset of Hilbert space into ℓ1 extends to the whole space with only a fixed loss. Hilbert space is the infinite-dimensional version of ordinary Euclidean space. Mendel and Naor showed earlier that a yes to their question gives such an extension. So, if the proof holds, the answer is yes.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The paper says its main proof is elementary and does not rely on extension theorems. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if correct: it would close a question of Mendel and Naor and Ball's extension problem for ℓ1. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "ℓ1",
+      "meaning": "The space of infinite lists of numbers whose absolute values have a finite sum, with distance the sum of absolute differences."
+    },
+    {
+      "term": "Markov chain",
+      "meaning": "A random walk on a set of states where each move depends only on the current state."
+    },
+    {
+      "term": "Reversible",
+      "meaning": "A chain whose statistics look the same when run backward."
+    },
+    {
+      "term": "Metric Markov cotype",
+      "meaning": "A property: points on any reversible walk can be moved so each step is short, at a cost bounded by longer-range spread."
+    },
+    {
+      "term": "Lipschitz map",
+      "meaning": "A map that stretches every distance by at most a fixed factor."
+    },
+    {
+      "term": "Hilbert space",
+      "meaning": "An infinite-dimensional version of ordinary Euclidean space, with lengths and angles."
+    },
+    {
+      "term": "Cut",
+      "meaning": "A split of a finite set of points into two parts, used here as a 0-or-1 coordinate."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Metric Markov Cotype Two of ℓ1” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Metric-Markov-Cotype-Two-of-l1-October-5-2026/l1-markov-cotype.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The real Banach space ℓ1 has metric Markov cotype two, answering a question of Mendel and Naor.",
+      "sourceLine": "We prove that the real Banach space $\\ell_1$ has metric Markov cotype two,",
+      "sourceQuote": "We prove that the real Banach space $\\ell_1$ has metric Markov cotype two, answering a question of Mendel and Naor.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Metric Markov cotype asks whether values on a reversible chain can be modified so one-step variation is small, with cost controlled over a longer interval.",
+      "sourceLine": "variation becomes small, while the cost of the modification is",
+      "sourceQuote": "Metric Markov cotype asks whether the values of a map on a finite reversible Markov chain can be modified so that their one-step variation becomes small, while the cost of the modification is controlled by the original variation over a longer time interval.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ball introduced Markov type and cotype in his study of Lipschitz extension.",
+      "sourceLine": "Ball introduced Markov type and cotype in his study of Lipschitz",
+      "sourceQuote": "Ball introduced Markov type and cotype in his study of Lipschitz extension \\cite{Ball92}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "ℓ1 fails Ball's stronger linear Markov cotype condition.",
+      "sourceLine": "spaces uses specified linear averages, and $\\ell_1$ fails that",
+      "sourceQuote": "His Markov cotype condition for Banach spaces uses specified linear averages, and $\\ell_1$ fails that stronger condition.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mendel and Naor asked explicitly whether N_2(ℓ1) is finite.",
+      "sourceLine": "whether $N_2(\\ell_1)$ is finite",
+      "sourceQuote": "Mendel and Naor developed the Ces\\`aro formulation above, proved its equivalence to Ball's metric definition, and asked explicitly whether $N_2(\\ell_1)$ is finite \\cite[Question~1.15 and Section~7]{MendelNaor13}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Using a construction of Kalton, Mendel and Naor found a closed linear subspace of ℓ1 that fails metric Markov cotype at every finite exponent.",
+      "sourceLine": "$\\ell_1$ that fails metric Markov cotype at every finite exponent",
+      "sourceQuote": "Using a construction of Kalton, Mendel and Naor found a closed linear subspace of $\\ell_1$ that fails metric Markov cotype at every finite exponent \\cite[Theorem~1.14]{MendelNaor13}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The square of the constant may be taken to be 3024.",
+      "sourceLine": "to be $3024$, independently of the number of points, the number of",
+      "sourceQuote": "Thus the square of the constant in \\eqref{eq:cotype} may be taken to be $3024$, independently of the number of points, the number of coordinates, and the time parameter.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Because φ' vanishes at the binary values, a fourth-power potential controls the variation after applying Φ.",
+      "sourceLine": "binary values, a fourth-power Hilbert potential controls the",
+      "sourceQuote": "Because $\\phi'$ vanishes at the binary values, a fourth-power Hilbert potential controls the total squared weighted-$\\ell_1$ variation after applying $\\Phi$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Each y_i is the expected coordinatewise median of three independent geometric-walk endpoints started at i.",
+      "sourceLine": "median of three independent geometric-walk endpoints started at",
+      "sourceQuote": "The resulting points have a simple interpretation: each $y_i$ is the expected coordinatewise median of three independent geometric-walk endpoints started at $i$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ball's extension problem asks whether a Lipschitz map from a subset of Hilbert space into ℓ1 extends with a universal loss.",
+      "sourceLine": "domain. Ball's extension problem asks whether a Lipschitz map from",
+      "sourceQuote": "For a map $f$ between metric spaces, $\\Lip(f)$ denotes the least $L\\geq0$ such that $d(f(x),f(y))\\leq Ld(x,y)$ for all $x,y$ in its domain. Ball's extension problem asks whether a Lipschitz map from an arbitrary subset of Hilbert space into $\\ell_1$ admits an extension with a universal multiplicative loss in its Lipschitz constant.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
