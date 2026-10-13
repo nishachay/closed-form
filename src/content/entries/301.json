@@ -18,7 +18,7 @@
       "label": "Lean scope note"
     }
   ],
-  "headline": "Claims the cone of traces determines every separable nuclear C*-algebra once it is stabilized by the Razak–Jacelon algebra.",
+  "headline": "Claims the trace cone determines every separable nuclear C*-algebra once stabilized by the Razak–Jacelon algebra.",
   "scope": "Separable nuclear complex C*-algebras A and B, compared after spatial tensoring with the Razak–Jacelon algebra W and the compact operators K.",
   "plain": "A trace measures the size of positive elements in an operator algebra, and the traces together form a cone. Tensoring with the Razak–Jacelon algebra W erases some fine data and leaves the traces in charge. Leonel Robert asked whether the trace cone then determines the algebra completely. This paper claims yes, for every separable nuclear algebra, with any ideal structure. Lean checks only one supporting step, about how ideals are carried along.",
   "doesNot": "This does not classify the algebras themselves, only their stabilizations A ⊗ W ⊗ K, and Lean does not check the main isomorphism theorem.",

@@ -18,7 +18,7 @@
       "label": "Lean scope note"
     }
   ],
-  "headline": "Proves Kaplansky's quasitrace conjecture false, and shows two stably finite C*-algebras can have a properly infinite tensor product.",
+  "headline": "Proves Kaplansky's quasitrace conjecture false, and that stable finiteness can fail for tensor products.",
   "scope": "Separable unital complex C*-algebras, normalized 2-quasitraces on them, and minimal tensor products of unital simple stably finite C*-algebras.",
   "plain": "A trace is a way to measure the size of elements of an operator algebra that adds up correctly. A quasitrace keeps most of a trace's rules but only has to add up for elements that commute. Kaplansky's conjecture said that, with one extra matrix condition, every quasitrace is a trace. This paper builds an algebra where every such quasitrace fails to add up on one fixed pair, and Lean checks it. As a result, two well-behaved algebras can combine into one that is not well behaved.",
   "doesNot": "This does not affect exact C*-algebras, where Haagerup showed every 2-quasitrace is a trace, and it does not make the main algebra simple.",
