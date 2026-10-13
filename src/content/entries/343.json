@@ -1,0 +1,152 @@
+{
+  "id": "343",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Symplectic-Ball-Packings-in-Higher-Dimensions-September-23-2026/paper.pdf",
+      "label": "Symplectic Ball Packings in Higher Dimensions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/343.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves Siegel and Yao's conjecture: from dimension six, ball packings are limited only by volume and the two-ball test.",
+  "scope": "Finitely many closed standard symplectic balls of any positive capacities, packed into the interior of one ball, in real dimension 2n with n ≥ 3.",
+  "plain": "A symplectic embedding moves a shape while keeping a special kind of area, not just volume. Gromov found that two balls can fail to fit in a bigger ball even when their volumes are small enough. Siegel and Yao conjectured that, from dimension six up, volume and Gromov's two-ball test are the only limits. This paper proves that conjecture for any number of balls of any sizes. Lean, a computer proof checker, has formal statements of this criterion.",
+  "doesNot": "This does not cover dimension four, where extra obstructions are known to matter. It also does not give an explicit formula for the embeddings.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1985",
+    "firstStepBy": "Mikhail Gromov, whose two-ball obstruction started symplectic packing rigidity",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It gives, with Lean statements, a complete packing criterion for balls in all dimensions from six up, settling a conjecture of Siegel and Yao."
+  },
+  "explanation": "Take a six-dimensional ball of capacity 1, the target. Capacity is π times the squared radius. Try to fit two smaller balls of capacity 0.6 inside it. Their volumes compare as cubes in six dimensions, so together they need 2 × 0.6³ = 0.432 of the target's volume. By volume alone they fit. But a symplectic map must keep a special kind of area, not just volume. Under that rule, two balls fit only if their capacities add to less than 1. Here 0.6 + 0.6 = 1.2, so they do not fit. Now try eight balls of capacity 0.49. Each pair adds to 0.98, below 1. The volumes add to 8 × 0.49³, about 0.941. The paper says these eight balls do fit, filling about 94% of the volume. Nine such balls would need about 1.059, too much.\n\nThe setting is a symplectic space, a space with a rule for measuring signed area in pairs of directions. A symplectic embedding is a map that keeps that rule. The question is when several balls embed this way, without overlap, inside a bigger ball. The first test is volume. The second is Gromov's two-ball obstruction: any two capacities must add to less than the target[2]. In dimension four, other obstructions also matter, so these two tests are not enough there[3]. Siegel and Yao conjectured that in higher dimensions they are enough[4].\n\nEarlier work showed volume suffices in special regimes. Biran showed this for many equal balls in dimension four. Buse and Hind extended it to higher dimensions[5]. Buse, Hind and Opshtein did the same for unequal balls when all are very small[6].\n\nThe paper proves the full criterion for n at least 3. Balls of capacities R1 to Rk fit in the open ball of capacity R under two tests. The n-th powers of the capacities must add to less than Rⁿ. Each pair must add to less than R. The paper proves these two tests are exactly right[1]. The key obstacle is that the volume test is only an average over a region. It does not say the leftover area is positive at every point, so the balls cannot simply be stacked[7]. The paper fixes this with a Hamiltonian comparison, a controlled motion from classical mechanics that rearranges the leftover area[8]. It builds its models over a curved surface with a handle, using tools from algebraic geometry. The proof splits into three cases, by whether one capacity is at least half the target and whether n is 3[9].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of the full criterion for every n at least 3. It also states the necessity direction alone. So the paper proves this result, as far as the Lean statements match the paper. No specialist review is published.",
+  "hypeCheck": "Major, with Lean statements of the full criterion. It covers dimension six and up only; dimension four has extra obstructions. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Symplectic space",
+      "meaning": "A space with a rule that measures signed area in pairs of directions."
+    },
+    {
+      "term": "Symplectic embedding",
+      "meaning": "A map of one shape into another that keeps the symplectic area rule exactly."
+    },
+    {
+      "term": "Capacity",
+      "meaning": "For a ball, π times the square of its ordinary radius."
+    },
+    {
+      "term": "Packing",
+      "meaning": "Placing several shapes inside one larger shape with no overlaps."
+    },
+    {
+      "term": "Gromov's two-ball obstruction",
+      "meaning": "Two balls fit symplectically in a ball only if their capacities add to less than the target's."
+    },
+    {
+      "term": "Hamiltonian map",
+      "meaning": "A motion that follows the equations of classical mechanics for some energy function."
+    },
+    {
+      "term": "Volume obstruction",
+      "meaning": "The simple test that the pieces' total volume must be less than the target's volume."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Symplectic Ball Packings in Higher Dimensions” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Symplectic-Ball-Packings-in-Higher-Dimensions-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 343",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/343.md",
+      "quote": "The formalization proves Siegel and Yao's ball-packing criterion in every symplectic dimension $2n$ with $n\\ge3$."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For n ≥ 3, closed symplectic 2n-balls of capacities R_i embed disjointly into the interior of a ball of capacity R if and only if the sum of R_iⁿ is less than Rⁿ and R_i + R_j < R.",
+      "sourceLine": "the closed standard\nsymplectic \\(2n\\)-balls of these capacities embed disjointly into the interior",
+      "sourceQuote": "We prove that, for all integers \\(n\\ge3\\) and \\(k\\ge1\\) and all positive real capacities \\(R_1,\\ldots,R_k\\), the closed standard symplectic \\(2n\\)-balls of these capacities embed disjointly into the interior of a ball of capacity \\(R>0\\) if and only if \\[ \\sum_{i=1}^k R_i^n<R^n, \\qquad R_i+R_j<R\\quad(i\\ne j). \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "The first inequality is the volume obstruction; the second is Gromov's two-ball obstruction.",
+      "sourceLine": "The first inequality is the volume obstruction. The second is Gromov's",
+      "sourceQuote": "The first inequality is the volume obstruction. The second is Gromov's two-ball obstruction~\\cite{Gromov1985}; it expresses a restriction invisible to volume alone.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In real dimension four, additional obstructions remain essential, so the two inequalities do not give a criterion there.",
+      "sourceLine": "In real dimension four,\nadditional obstructions remain essential",
+      "sourceQuote": "In real dimension four, additional obstructions remain essential, so the two inequalities in Theorem~\\ref{intro:main} do not give a criterion there.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem resolves Siegel and Yao's Conjecture A.",
+      "sourceLine": "resolving\nSiegel and Yao's Conjecture~A positively",
+      "sourceQuote": "Theorem~\\ref{intro:main} proves that these obstructions are complete in every real dimension at least six, resolving Siegel and Yao's Conjecture~A positively~\\cite{SiegelYao2025}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Buse and Hind extended equal-ball stability to higher-dimensional balls and to all closed rational symplectic manifolds.",
+      "sourceLine": "Buse and Hind extended equal-ball\nstability to higher-dimensional balls",
+      "sourceQuote": "Buse and Hind extended equal-ball stability to higher-dimensional balls and projective spaces and then to all closed rational symplectic manifolds~\\cite{BuseHind2011,BuseHind2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Buse, Hind and Opshtein proved strong packing stability for unequal balls on closed four-manifolds, with all capacities sufficiently small.",
+      "sourceLine": "For unequal balls, Buse, Hind, and Opshtein proved strong packing",
+      "sourceQuote": "For unequal balls, Buse, Hind, and Opshtein proved strong packing stability on every closed symplectic four-manifold, with all capacities required to be sufficiently small~\\cite{BuseHindOpshtein2016}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The integral condition need not make the unused-area profile positive at each moment, the obstacle to stacking the balls.",
+      "sourceLine": "This integral condition need not make \\(P\\) positive",
+      "sourceQuote": "This integral condition need not make \\(P\\) positive at each moment, which is the obstacle to simply stacking the balls.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hamiltonian comparison overcomes that obstacle.",
+      "sourceLine": "Section~\\ref{cmp:section} overcomes that obstacle by Hamiltonian",
+      "sourceQuote": "Section~\\ref{cmp:section} overcomes that obstacle by Hamiltonian comparison.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The pairwise inequalities leave three cases.",
+      "sourceLine": "The pairwise inequalities leave three cases",
+      "sourceQuote": "The pairwise inequalities leave three cases, summarized in Figure~\\ref{fig:proof-flow}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the full packing criterion in every dimension 2n with n ≥ 3, and the necessity direction separately.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
