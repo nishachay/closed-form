@@ -1,0 +1,146 @@
+{
+  "id": "330",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Failure-of-Bounded-Approximation-in-a-Lipschitz-Free-Space-over-a-Uniformly-Discrete-Metric-Space-September-26-2026/main.pdf",
+      "label": "A uniformly discrete counterexample to bounded approximation in Lipschitz-free spaces"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/330.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a uniformly discrete metric space can have a Lipschitz-free space lacking the bounded approximation property.",
+  "scope": "One countable, unbounded, nonproper metric space with all distinct points at least distance 1 apart, over the real scalars, plus renormings of real ℓ1.",
+  "plain": "A Lipschitz-free space turns the points of a metric space into vectors whose distances match the original ones. When points stay at least a fixed distance apart, these spaces were known to have the approximation property. Kalton asked whether the approximating operators can always obey one size bound. This paper builds a space where no bound works, and Lean checks the construction. It also gives a renorming of ℓ1 that fails the metric approximation property.",
+  "doesNot": "This does not cover proper metric spaces, where closed bounded balls are compact; countable proper spaces are known to behave well.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Nigel Kalton, who asked the question in his paper on spaces of Lipschitz and Hölder functions",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It answers a question of Kalton that Godefroy and Ozawa restated, with a Lean check of the construction."
+  },
+  "explanation": "Put the whole numbers on a line with the usual distance. Turn each point x into a vector δ_x. Build the norm so that the distance between δ_x and δ_y is the distance between x and y. Then δ_3 − δ_1 has length 2. Fix one base point o and set δ_o = 0. The vectors δ_x then span a Banach space, a space of vectors with a length rule where limits behave well. This is the Lipschitz-free space of the metric space[3].\n\nA metric space is uniformly discrete if distinct points are at least a fixed distance apart, here at least 1. For such spaces the Lipschitz-free space has the approximation property. That means the identity map can be imitated as closely as you like on any compact set by a finite-rank operator. A finite-rank operator is a linear map whose outputs fill only a finite-dimensional piece. Kalton asked whether these operators can always have one bound on their size, their norm[2]. Having one bound is the bounded approximation property. The obstacle is that earlier finite obstructions control only projections with a fixed range, not every finite-rank operator.\n\nThe paper answers no[1]. It builds a countable, unbounded metric space with all distinct points at least 1 apart. Its free space has the approximation property but fails every size bound. The space is built in blocks, one for each whole number p. Each block is bounded, with diameter at most B_p = 300p² + 150p + 5. On a finite set of anchor points, every finite-rank operator of norm at most p makes an error of at least 1/2[4]. For p = 1, B_p = 300 + 150 + 5 = 455. For p = 2, it is 1,200 + 300 + 5 = 1,505.\n\nThe blocks are glued at the base point. Each block can be pulled back out by a map that never stretches distances. So one bound for the whole space would give a bound for every block, which the anchors forbid[5]. The blocks come from large random-like graphs with coloured vertices that look locally like trees.\n\nThere are two side results. Each block gives a new norm on real ℓ1, the space of absolutely summable sequences. For p = 1, that norm has the bound 2 × 455 = 910, but fails the metric approximation property, the case of bound 1[6]. The free space is also not approximable, a nonlinear form of approximation Kalton asked about[7]. The example must avoid proper spaces, where closed bounded balls are compact. Dalet proved the metric approximation property for countable proper spaces[8].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main space and the ℓ1 renorming result. So the paper proves these, as far as the Lean statements match the paper. No specialist review is published.",
+  "hypeCheck": "A clear negative answer to Kalton's question, with a Lean check. The example is unbounded and not proper by necessity. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Metric space",
+      "meaning": "A set of points with a distance between each pair that obeys the triangle rule."
+    },
+    {
+      "term": "Uniformly discrete",
+      "meaning": "All distinct points are at least a fixed positive distance apart."
+    },
+    {
+      "term": "Lipschitz-free space",
+      "meaning": "A Banach space whose basic vectors are the points of a metric space, with the same distances."
+    },
+    {
+      "term": "Finite-rank operator",
+      "meaning": "A linear map whose outputs all lie in a finite-dimensional piece of the space."
+    },
+    {
+      "term": "Approximation property",
+      "meaning": "The identity map can be matched as closely as wanted on each compact set by finite-rank operators."
+    },
+    {
+      "term": "Bounded approximation property",
+      "meaning": "The approximation property with one fixed bound on the norms of all the operators used."
+    },
+    {
+      "term": "Proper metric space",
+      "meaning": "A metric space whose closed bounded balls are compact."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A uniformly discrete counterexample to bounded approximation in Lipschitz-free spaces” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Failure-of-Bounded-Approximation-in-a-Lipschitz-Free-Space-over-a-Uniformly-Discrete-Metric-Space-September-26-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 330",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/330.md",
+      "quote": "The formalization constructs a countable metric space with all distinct points at distance at least one whose real Lipschitz-free space has the approximation property but fails every bounded approximation bound."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "There is a countable uniformly discrete metric space whose real Lipschitz-free space has AP but fails BAP, answering Kalton's question negatively.",
+      "sourceLine": "bounded approximation property, answering Kalton's question negatively.",
+      "sourceQuote": "We construct a countable uniformly discrete metric space whose real Lipschitz-free space has the approximation property but fails the bounded approximation property, answering Kalton's question negatively.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kalton asked whether the approximating operators can always be chosen with one bound on their norms.",
+      "sourceLine": "by finite-rank operators. Kalton asked whether the approximating operators",
+      "sourceQuote": "For its Lipschitz-free space, this separation guarantees the approximation property: the identity can be approximated on each compact set by finite-rank operators. Kalton asked whether the approximating operators can always be chosen with one bound on their norms \\cite[Proposition~4.4 and following remarks, p.~185]{Kalton04}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Lipschitz-free space construction originates in the molecular spaces of Arens and Eells.",
+      "sourceLine": "The construction originates in the molecular spaces of Arens and Eells",
+      "sourceQuote": "The construction originates in the molecular spaces of Arens and Eells \\cite[\\S2]{ArensEells56}; its linearization properties and complemented free subspaces are central to the work of Godefroy and Kalton \\cite[\\S2]{GodefroyKalton03}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Each block has diameter at most B_p = 300p^2+150p+5 and every finite-rank operator of norm at most p errs by at least 1/2 at some anchor.",
+      "sourceLine": "\\operatorname{diam}M_p\\le B_p:=300p^2+150p+5,",
+      "sourceQuote": "For each integer $p\\ge1$, there are a bounded countably infinite pointed metric space $(M_p,d_p,o)$ and a finite set $A_p\\subseteq M_p$ containing $o$ such that \\[ d_p(x,y)\\ge1\\quad(x\\ne y),\\qquad \\operatorname{diam}M_p\\le B_p:=300p^2+150p+5, \\] and every bounded finite-rank linear operator $T_0:\\F(M_p)\\to\\F(M_p)$ with $\\norm{T_0}\\le p$ satisfies \\[ \\max_{a\\in A_p}\\norm{T_0\\delta_a-\\delta_a}\\ge\\frac12. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "A BAP bound for the wedge would be a bound for every block, contradicting the block theorem.",
+      "sourceLine": "a bound for every block, contradicting \\Cref{thm:blocks}.",
+      "sourceQuote": "Thus a BAP bound for the wedge would be a bound for every block, contradicting \\Cref{thm:blocks}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For p = 1 the equivalent norm on real ℓ1 fails MAP.",
+      "sourceLine": "For $p=1$, this norm fails MAP.",
+      "sourceQuote": "For $p=1$, this norm fails MAP.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The free space is not approximable, although it has AP.",
+      "sourceLine": "is not approximable, although it has AP. \\Cref{sec:nonlinear} explains the",
+      "sourceQuote": "The space $X=\\F(M)$ in \\Cref{thm:main} is not approximable, although it has AP. \\Cref{sec:nonlinear} explains the short implication from Kalton's net theorem that gives this consequence.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Dalet proved MAP for free spaces over countable proper metric spaces.",
+      "sourceLine": "proper case: Dalet proved MAP for free spaces over countable proper metric",
+      "sourceQuote": "The example is necessarily outside the countable proper case: Dalet proved MAP for free spaces over countable proper metric spaces \\cite[Theorem~2.6]{Dalet15}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the countable uniformly discrete metric space whose free space has the approximation property but no bounded approximation bound, and the renorming of real ℓ1.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
