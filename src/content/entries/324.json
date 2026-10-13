@@ -1,0 +1,210 @@
+{
+  "id": "324",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Lipschitz-Equivalent-Separable-Banach-Spaces-Need-Not-Be-Linearly-Isomorphic-September-24-2026/paper.pdf",
+      "label": "Lipschitz Equivalent Separable Banach Spaces Need Not Be Linearly Isomorphic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bi-Lipschitz-Absorption-of-c0-Without-a-Linear-Copy-of-c0-September-26-2026/paper.pdf",
+      "label": "Bi-Lipschitz Absorption of c0 Without a Linear Copy of c0"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/324.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Two separable Banach spaces match distances up to fixed factors but are not linearly the same, answering Kalton.",
+  "scope": "Separable real Banach spaces: one bi-Lipschitz but nonisomorphic pair, and one space that absorbs c₀ bi-Lipschitzly with no linear copy of c₀.",
+  "plain": "A bi-Lipschitz map stretches or shrinks every distance by at most fixed factors, but need not respect addition. A long-standing question asked whether such a map between two separable Banach spaces forces them to be linearly the same. The first paper proves the answer is no, with explicit factors 4/21 and 76/25, and Lean checks it. The second paper proves a related result: a space that swallows c₀ nonlinearly but contains no linear copy of it. Lean checks that too.",
+  "doesNot": "This does not give complex-scalar or reflexive examples, and it does not say the space Y lacks an ordinary copy of c₀.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1978",
+    "firstStepBy": "Israel Aharoni and Joram Lindenstrauss, nonseparable examples and the question for separable spaces",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It answers two problems from Kalton's 2008 survey that had stayed open for separable Banach spaces."
+  },
+  "explanation": "Take the map f(x) = x + sin(x)/2 on the real line. Its slope always lies between 1/2 and 3/2. So f never shrinks a distance below half, or stretches it beyond one and a half times. It sends 0 to 0 and π to π. But it sends π/2 to about 2.071, not to π/2 ≈ 1.571. So f is not linear, yet it controls every distance. A map like this, onto and with two-sided distance bounds, is called bi-Lipschitz.\n\nA Banach space is a vector space with a length for each vector, where good sequences always have limits. It is separable if a countable set comes arbitrarily close to every point. Two Banach spaces are linearly isomorphic if a linear map matches them with bounded distortion. Every linear isomorphism is bi-Lipschitz. The question is the reverse. If a bi-Lipschitz map exists, must a linear isomorphism exist too?\n\nAharoni and Lindenstrauss built nonseparable counterexamples and asked for separable ones[1]. Ribe later built separable spaces that are uniformly homeomorphic but not isomorphic[2]. That is a weaker kind of matching, with no fixed distance factors. Godefroy, Kalton and Lancien proved a rigidity result. Any Banach space bi-Lipschitz equivalent to c₀ is linearly isomorphic to c₀[3]. Here c₀ is the space of sequences that tend to zero, measured by their largest entry. In the wider quasi-Banach setting, Albiac and Kalton found separable counterexamples for every 0 < p < 1[4]. Kalton listed the separable question as Problem 3 in his 2008 survey[5].\n\nThe first paper answers the question negatively for separable Banach spaces[6]. It builds spaces X and Y and a bijection between them. Every distance changes by a factor between 4/21 and 76/25. In decimals that is between about 0.190 and 3.04. Two points 10 apart in X land between about 1.905 and 30.4 apart in Y. Yet X contains a copy of c₀(ℓ₂), a c₀ of Hilbert spaces, while Y contains none[7]. The paper notes this does not rule out an ordinary c₀ inside Y[8]. It also gives no complex-scalar or reflexive version[9].\n\nThe obstacle is that a bi-Lipschitz map ignores addition, yet the conclusion is linear. The paper bridges this with Lipschitz-free spaces. These turn a distance-preserving picture into a linear one. A careful geometric condition makes a key linear map completely continuous. Such a map sends every weakly null sequence to a norm-null one[10]. That property blocks any copy of c₀(ℓ₂) in Y.\n\nThe second paper treats Kalton's Problem 2[11]. It builds a separable space Z with no linear copy of c₀. Yet Z is bi-Lipschitz equivalent to Z combined with an extra copy of c₀[12]. So Z contains c₀ in the bi-Lipschitz sense, but not linearly. Aharoni proved that every separable metric space embeds bi-Lipschitzly into c₀[13]. So the same Z contains a bi-Lipschitz copy of every separable metric space[14].\n\nHow sure is this? Lean, a computer proof checker, proves both main results. It covers the pair X and Y with the bounds 4/21 and 76/25, and the missing copy of c₀(ℓ₂). It also covers the space Z that absorbs c₀ without a linear copy. No specialist review has been published, but both statements have Lean proofs.",
+  "hypeCheck": "Major. Both main theorems have Lean proofs; they answer two of Kalton's 2008 problems for separable real Banach spaces.",
+  "glossary": [
+    {
+      "term": "Banach space",
+      "meaning": "A vector space with a notion of length in which every Cauchy sequence has a limit."
+    },
+    {
+      "term": "Separable",
+      "meaning": "Having a countable set of points that comes arbitrarily close to every point."
+    },
+    {
+      "term": "Bi-Lipschitz map",
+      "meaning": "A map that changes every distance by a factor between two fixed positive numbers."
+    },
+    {
+      "term": "Linearly isomorphic",
+      "meaning": "Matched by a linear map that is bounded with a bounded inverse."
+    },
+    {
+      "term": "c₀",
+      "meaning": "The space of real sequences that tend to zero, with length given by the largest entry."
+    },
+    {
+      "term": "c₀(ℓ₂)",
+      "meaning": "Sequences of vectors from the Hilbert space ℓ₂ whose lengths tend to zero."
+    },
+    {
+      "term": "Lipschitz-free space",
+      "meaning": "A Banach space built from a metric space so that Lipschitz maps become linear maps."
+    },
+    {
+      "term": "Completely continuous map",
+      "meaning": "A linear map that turns every weakly null sequence into a sequence whose lengths tend to zero."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Lipschitz Equivalent Separable Banach Spaces Need Not Be Linearly Isomorphic” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Lipschitz-Equivalent-Separable-Banach-Spaces-Need-Not-Be-Linearly-Isomorphic-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Bi-Lipschitz Absorption of c0 Without a Linear Copy of c0” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bi-Lipschitz-Absorption-of-c0-Without-a-Linear-Copy-of-c0-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 324",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/324.md",
+      "quote": "The formalized counterexample gives separable real Banach spaces $X,Y$ that are bi-Lipschitz equivalent but not linearly isomorphic."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Aharoni and Lindenstrauss constructed Lipschitz equivalent nonisomorphic nonseparable Banach spaces and asked for separable examples.",
+      "sourceLine": "Aharoni and Lindenstrauss constructed Lipschitz equivalent, nonisomorphic nonseparable Banach spaces and explicitly asked for separable examples",
+      "sourceQuote": "At the same time, Aharoni and Lindenstrauss constructed Lipschitz equivalent, nonisomorphic nonseparable Banach spaces and explicitly asked for separable examples \\cite[pp.~281--282]{AL78}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Ribe later constructed separable uniformly homeomorphic, nonisomorphic spaces.",
+      "sourceLine": "Ribe later constructed separable uniformly homeomorphic, nonisomorphic spaces",
+      "sourceQuote": "Ribe later constructed separable uniformly homeomorphic, nonisomorphic spaces \\cite{Ribe84}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Godefroy, Kalton and Lancien proved that a Banach space Lipschitz isomorphic to c₀ is linearly isomorphic to c₀.",
+      "sourceLine": "Godefroy, Kalton and Lancien proved that a Banach space Lipschitz isomorphic to \\(c_0\\) is linearly isomorphic to \\(c_0\\)",
+      "sourceQuote": "Godefroy, Kalton and Lancien proved that a Banach space Lipschitz isomorphic to \\(c_0\\) is linearly isomorphic to \\(c_0\\), and that being linearly isomorphic to a subspace of \\(c_0\\) is invariant under Lipschitz isomorphism \\cite[Theorems~2.1--2.2]{GKL00}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In the quasi-Banach setting, Albiac and Kalton obtained separable counterexamples for every 0 < p < 1.",
+      "sourceLine": "In the quasi-Banach setting, Albiac and Kalton obtained separable counterexamples for every \\(0<p<1\\)",
+      "sourceQuote": "In the quasi-Banach setting, Albiac and Kalton obtained separable counterexamples for every \\(0<p<1\\) \\cite[Theorem~5.4]{AK09}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kalton recorded the separable Lipschitz-isomorphism question as Problem 3 in his 2008 survey.",
+      "sourceLine": "Kalton recorded the separable Lipschitz-isomorphism question as Problem~3 in his 2008 survey",
+      "sourceQuote": "Kalton recorded the separable Lipschitz-isomorphism question as Problem~3 in his 2008 survey \\cite[Section~2.2]{Kalton08}; Albiac, Ansorena, B\\'{i}ma and C\\'{u}th still described the Banach case as open in the first paragraph of their paper published online in December 2025 \\cite{AABC26}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "This gives a negative answer to the separable Banach-space Lipschitz-isomorphism problem.",
+      "sourceLine": "This gives a negative answer to the separable Banach-space Lipschitz-isomorphism problem.",
+      "sourceQuote": "This gives a negative answer to the separable Banach-space Lipschitz-isomorphism problem.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "X contains a linearly isometric copy of c₀(ℓ₂), while Y contains no closed subspace linearly isomorphic to c₀(ℓ₂).",
+      "sourceLine": "The space \\(X\\) contains a linearly isometric copy of \\(c_0(\\ell_2)\\), while \\(Y\\) contains no closed subspace linearly isomorphic to \\(c_0(\\ell_2)\\).",
+      "sourceQuote": "The space \\(X\\) contains a linearly isometric copy of \\(c_0(\\ell_2)\\), while \\(Y\\) contains no closed subspace linearly isomorphic to \\(c_0(\\ell_2)\\).",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem does not say that Y contains no ordinary c₀.",
+      "sourceLine": "It does not say that \\(Y\\) contains no ordinary \\(c_0\\).",
+      "sourceQuote": "It does not say that \\(Y\\) contains no ordinary \\(c_0\\).",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem asserts neither reflexivity nor a complex-scalar analogue.",
+      "sourceLine": "It asserts neither reflexivity nor a complex-scalar analogue.",
+      "sourceQuote": "It asserts neither reflexivity nor a complex-scalar analogue.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Local orthogonality makes the linearization completely continuous: a weakly null sequence has norm-null image.",
+      "sourceLine": "a weakly null sequence in \\(E\\) has norm-null image",
+      "sourceQuote": "Section~\\ref{sec:localization} proves that local orthogonality makes \\(q\\) \\emph{completely continuous}: a weakly null sequence in \\(E\\) has norm-null image.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kalton recorded the c₀ embedding question as Problem 2.",
+      "sourceLine": "Kalton recorded the latter question as Problem~2",
+      "sourceQuote": "Kalton recorded the latter question as Problem~2, separately from the separable Lipschitz-isomorphism question in Problem~3 \\cite[pp.~21--22]{Kalton08}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a separable real Banach space Z with no linear copy of c₀ that is bi-Lipschitz equivalent to Z ⊕∞ c₀.",
+      "sourceLine": "We construct a separable real Banach space \\(Z\\) that contains no linear copy of \\(c_0\\), yet is bi-Lipschitz equivalent to \\(Z\\oplus_\\infty c_0\\).",
+      "sourceQuote": "We construct a separable real Banach space \\(Z\\) that contains no linear copy of \\(c_0\\), yet is bi-Lipschitz equivalent to \\(Z\\oplus_\\infty c_0\\).",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Aharoni proved that every separable metric space embeds bi-Lipschitzly into c₀.",
+      "sourceLine": "Aharoni proved that every separable metric space embeds bi-Lipschitzly into \\(c_0\\)",
+      "sourceQuote": "Aharoni proved that every separable metric space embeds bi-Lipschitzly into \\(c_0\\) \\cite{Aharoni74}; composition therefore makes this one space \\(Z\\) a bi-Lipschitz universal target for separable metric spaces.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The same space contains a bi-Lipschitz image of every separable metric space.",
+      "sourceLine": "The same space contains a bi-Lipschitz image of every separable metric space.",
+      "sourceQuote": "The same space contains a bi-Lipschitz image of every separable metric space.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves both results: a bi-Lipschitz but nonisomorphic separable pair with bounds 4/21 and 76/25, and a space bi-Lipschitz equivalent to X × c₀ with no linear copy of c₀.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
