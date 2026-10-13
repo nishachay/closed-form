@@ -1,0 +1,160 @@
+{
+  "id": "372",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+      "label": "Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/372.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that boundary push-and-measure data fix both stiffness values everywhere inside a smooth 3D elastic body.",
+  "scope": "Bounded connected smooth domains in ℝ³ filled with an isotropic elastic material. Its two smooth Lamé moduli satisfy μ > 0 and 3λ + 2μ > 0 up to the boundary.",
+  "plain": "Imagine a solid whose stiffness changes from place to place inside. You may push its surface in any way and measure the force it pushes back with. The question is whether all such surface data fix the stiffness everywhere inside. The paper shows yes for smooth materials that behave the same in every direction. Earlier proofs needed the stiffness to be nearly constant or very special.",
+  "doesNot": "This does not give a method or algorithm to compute the stiffness from the data. It does not treat rough materials or materials with direction-dependent stiffness.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It settles the three-dimensional elastic version of Calderón's problem for smooth isotropic materials. An earlier global claim had needed correction and a smallness assumption."
+  },
+  "explanation": "Start with two springs joined end to end. One has stiffness 2 and the other has stiffness 6. Pull the free ends and measure the force. The pair acts like one spring of stiffness 1/(1/2 + 1/6) = 1.5. Swap the order and you get 1.5 again. So measurements at the two ends cannot tell you where the stiff spring is. The question is whether a full three-dimensional body hides its inside in the same way.\n\nAn isotropic elastic material resists in the same way in every direction. Two numbers, the Lamé moduli λ and μ, describe it at each point. The shear modulus μ measures resistance to sliding layers. The bulk modulus λ + 2μ/3 measures resistance to squeezing[3]. Take μ = 80 and λ = 120 in gigapascals, roughly steel. The paper asks for μ > 0 and 3λ + 2μ > 0. Here 3λ + 2μ = 520. A material that grows fatter when stretched can have λ < 0. With μ = 200 and λ = −100, the test still gives 100 > 0.\n\nThe data are the displacement-to-traction map. You choose how to move every point of the surface. The map returns the force per area, called traction, that the surface then pushes back with. Calderón posed the matching question for electrical conductivity[4]. For elasticity, a first global claim by Nakamura and Uhlmann was later corrected[6]. The corrected version needed μ to vary only slightly[5]. In two dimensions, Imanuvilov and Yamamoto proved full uniqueness[7].\n\nThe paper claims that in three dimensions the full map fixes both λ and μ everywhere[1]. The moduli need not be analytic, close to constant, or known near the boundary[2]. Analytic means given everywhere by convergent power series. The obstacle was that a known reduction to simpler fields loses information. Its map to physical displacements is not one-to-one[8]. So the paper works with real displacements and keeps their actual divergence, the local rate of volume change[10]. Equal boundary data let it glue a solution in one body to a solution in the other across the surface[9]. Special exponential test solutions then compare the two bodies point by point.\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the uniqueness theorem. So the paper proves it, as far as the Lean statement matches the paper. Lean covers uniqueness only, not any way to recover the moduli. No specialist review of the paper is published.",
+  "hypeCheck": "A major result with a Lean statement of the main theorem. It gives uniqueness only, with no reconstruction method, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Isotropic",
+      "meaning": "Behaving the same in every direction at a given point."
+    },
+    {
+      "term": "Lamé moduli",
+      "meaning": "The two numbers λ and μ that describe the stiffness of an isotropic elastic material at a point."
+    },
+    {
+      "term": "Shear modulus",
+      "meaning": "The modulus μ, which measures resistance to layers sliding past each other."
+    },
+    {
+      "term": "Bulk modulus",
+      "meaning": "The value λ + 2μ/3, which measures resistance to being squeezed in all directions."
+    },
+    {
+      "term": "Traction",
+      "meaning": "The force per unit area that the surface of a body pushes back with."
+    },
+    {
+      "term": "Displacement-to-traction map",
+      "meaning": "The rule that sends each chosen surface movement to the traction the body returns."
+    },
+    {
+      "term": "Divergence",
+      "meaning": "The local rate at which a displacement field changes volume."
+    },
+    {
+      "term": "Analytic",
+      "meaning": "Given everywhere by a convergent power series, a strong smoothness condition."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 372",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/372.md",
+      "quote": "The formalization proves global uniqueness in the three-dimensional static isotropic elasticity inverse problem."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The full static displacement-to-traction map uniquely determines both real smooth Lamé moduli on every bounded connected smooth domain in ℝ³, given μ > 0 and 3λ + 2μ > 0.",
+      "sourceLine": "We prove that the full static displacement-to-traction map uniquely determines both real smooth Lam\\'e moduli",
+      "sourceQuote": "We prove that the full static displacement-to-traction map uniquely determines both real smooth Lam\\'e moduli on every bounded connected smooth domain in $\\R^3$, provided $\\mu>0$ and $3\\lambda+2\\mu>0$ on the closure.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The coefficients need not be analytic or close to constants, and agreement near the boundary is not an extra hypothesis.",
+      "sourceLine": "The coefficients need not be analytic or close to constants, and their agreement near the boundary is not an additional hypothesis.",
+      "sourceQuote": "The coefficients need not be analytic or close to constants, and their agreement near the boundary is not an additional hypothesis.",
+      "verdict": "supported"
+    },
+    {
+      "text": "μ is the shear modulus and λ + 2μ/3 is the bulk modulus.",
+      "sourceLine": "Here $\\mu$ is the shear modulus and $\\lambda+2\\mu/3$ is the bulk modulus.",
+      "sourceQuote": "Here $\\mu$ is the shear modulus and $\\lambda+2\\mu/3$ is the bulk modulus.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Calderón posed the scalar conductivity problem, an antecedent of this question.",
+      "sourceLine": "The scalar conductivity problem posed by Calder\\'on",
+      "sourceQuote": "The scalar conductivity problem posed by Calder\\'on \\cite{Calderon1980} and the complex geometric optics uniqueness theorem of Sylvester and Uhlmann \\cite{SylvesterUhlmann1987} are important antecedents, but elasticity couples two moduli through vector displacements.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The corrected Nakamura–Uhlmann theorem proves uniqueness when the gradients of μ are sufficiently small.",
+      "sourceLine": "Its corrected theorem proves uniqueness when both $\\|\\nabla\\mu_j\\|_{C^m}$ are sufficiently small.",
+      "sourceQuote": "Its corrected theorem proves uniqueness when both $\\|\\nabla\\mu_j\\|_{C^m}$ are sufficiently small.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Nakamura and Uhlmann's original global claim was later corrected.",
+      "sourceLine": "Their original global claim \\cite{NU1994} was corrected in \\cite{NU2003}.",
+      "sourceQuote": "Their original global claim \\cite{NU1994} was corrected in \\cite{NU2003}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In two dimensions, Imanuvilov and Yamamoto proved global uniqueness for smooth coefficients without a smallness assumption.",
+      "sourceLine": "In two dimensions, Imanuvilov and Yamamoto proved global uniqueness for",
+      "sourceQuote": "In two dimensions, Imanuvilov and Yamamoto proved global uniqueness for smooth coefficients satisfying $\\mu>0$ and $\\lambda+\\mu>0$, without a smallness assumption \\cite{ImanuvilovYamamoto2015Elasticity}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The map from Eskin and Ralston's auxiliary fields to physical displacement is noninjective.",
+      "sourceLine": "shows that it is noninjective",
+      "sourceQuote": "A direct inspection of the differential map from their auxiliary vector--scalar fields to physical displacement \\cite[Section~3]{EskinRalston2004} shows that it is noninjective.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Equal displacement and traction let a solution in the second medium be glued to one in the first across the boundary.",
+      "sourceLine": "Given a solution in the first medium, equality of displacement and traction then lets us glue a solution in the second medium to it across",
+      "sourceQuote": "Given a solution in the first medium, equality of displacement and traction then lets us glue a solution in the second medium to it across $\\partial\\Omega$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof transfers exact physical solutions while retaining their actual divergence.",
+      "sourceLine": "The proof here transfers exact physical solutions while retaining their actual divergence.",
+      "sourceQuote": "The proof here transfers exact physical solutions while retaining their actual divergence.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes global uniqueness of both smooth Lamé moduli from the full displacement-to-traction map; it gives no reconstruction algorithm.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
