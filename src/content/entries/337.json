@@ -1,0 +1,175 @@
+{
+  "id": "337",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generalized-Cartan-Hadamard-isoperimetry-and-Euclidean-equality-rigidity-September-23-2026/paper.pdf",
+      "label": "Generalized Cartan–Hadamard isoperimetry and Euclidean equality rigidity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-integral-fillings-in-CAT(0)-spaces-September-23-2026/paper.pdf",
+      "label": "Sharp integral fillings in CAT(0) spaces"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/337.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves sharp Euclidean fillings in CAT(0) spaces and claims the generalized Cartan–Hadamard isoperimetric inequality.",
+  "scope": "Complete simply connected manifolds with sectional curvature at most κ ≤ 0, and integral cycles of dimension 2 and up in proper CAT(0) spaces.",
+  "plain": "The isoperimetric inequality says a ball has the least boundary area for its volume. The Cartan–Hadamard conjecture says this stays true, or gets stronger, in spaces that curve like a saddle. One paper claims the conjecture in every dimension and for every curvature bound κ ≤ 0. It adds that only flat balls attain the flat bound. A second paper proves a sharp filling bound in CAT(0) spaces, which gives the flat case, and Lean checks it.",
+  "doesNot": "This does not cover spaces with some positive curvature, where the flat isoperimetric inequality can fail.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1926",
+    "firstStepBy": "André Weil, whose work began the surface case of the comparison",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles a long-standing conjecture of comparison geometry in every dimension; the flat case has a Lean check."
+  },
+  "explanation": "Take a unit cube. Its volume is 1 and its surface area is 6. A round ball with volume 1 has radius about 0.620. Its surface area is about 4.836. In ordinary three-dimensional space, every shape of volume V has surface area at least 3 × (4π/3)^(1/3) × V^(2/3). For V = 1 that is the 4.836 of the ball, and the cube's 6 is larger. This is the isoperimetric inequality: among shapes of a given volume, the ball has the least boundary.\n\nA Cartan–Hadamard manifold is a complete curved space with no holes to loop around and sectional curvature at most zero. Sectional curvature at most zero means it curves like a saddle or is flat in every direction. Suppose the curvature is at most some κ ≤ 0. The generalized Cartan–Hadamard conjecture says every region then has at least the boundary area of the equal-volume ball in constant curvature κ[3]. Comparing balls alone does not settle it, because arbitrary regions must be handled. Weil started the surface case in 1926[4]. Kleiner proved dimension three[5], and Croke proved the flat comparison in dimension four[6]. A recent preprint reached the flat comparison in dimensions three through nine[7].\n\nThe first paper claims the conjecture in every dimension, for every κ ≤ 0[1]. It covers every set of finite volume and finite perimeter, not only smooth regions. It also claims a rigidity result. If a bounded region meets the flat bound exactly, the region itself is a round flat ball. The space outside it need not be flat[8].\n\nThe second paper works in CAT(0) spaces. These are spaces where every triangle is at least as thin as a flat triangle with the same side lengths. It takes a closed n-dimensional cycle, a generalised surface that may have overlapping layers. It proves the cycle bounds a filling of mass at most c_n times the cycle's mass to the power (n + 1)/n[2]. For n = 2, c_2 = 1/(6√π), about 0.0940[9]. A unit sphere has area 4π, about 12.566. Then c_2 × (4π)^1.5 works out to exactly 4π/3, about 4.189, the volume of the unit ball. So round spheres show the constant cannot be improved. As a corollary, the flat Cartan–Hadamard inequality holds in every dimension from three up[10].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of the filling result and of the optimality of its constant. So the second paper proves these, as far as the Lean statements match the paper. Lean does not cover the first paper's curved comparison for κ < 0 or its rigidity result; those are claims. No specialist review is published.",
+  "hypeCheck": "Major. The flat case has a Lean-checked route through the filling paper. The curved case κ < 0 and the rigidity result rest on the first paper alone, without Lean or published specialist review.",
+  "glossary": [
+    {
+      "term": "Isoperimetric inequality",
+      "meaning": "A lower bound on boundary area in terms of enclosed volume, with balls as the best case."
+    },
+    {
+      "term": "Sectional curvature",
+      "meaning": "The curvature of a space along each two-dimensional direction; negative means saddle-like."
+    },
+    {
+      "term": "Cartan–Hadamard manifold",
+      "meaning": "A complete, simply connected curved space whose sectional curvature is never positive."
+    },
+    {
+      "term": "CAT(0) space",
+      "meaning": "A space where every triangle is at least as thin as the flat triangle with the same side lengths."
+    },
+    {
+      "term": "Integral cycle",
+      "meaning": "A generalised closed surface with whole-number layers, allowed to be singular."
+    },
+    {
+      "term": "Filling",
+      "meaning": "A higher-dimensional piece whose boundary is a given cycle."
+    },
+    {
+      "term": "Mass",
+      "meaning": "The total size of a cycle or filling, counting layers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Generalized Cartan–Hadamard isoperimetry and Euclidean equality rigidity” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Generalized-Cartan-Hadamard-isoperimetry-and-Euclidean-equality-rigidity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Sharp integral fillings in CAT(0) spaces”",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-integral-fillings-in-CAT(0)-spaces-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 337",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/337.md",
+      "quote": "The formalization proves the sharp Euclidean filling inequality for every compactly supported integral $n$-cycle in a proper $\\mathrm{CAT}(0)$ space, for $n\\ge2$."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The generalized Cartan–Hadamard isoperimetric conjecture holds in every dimension.",
+      "sourceLine": "We resolve the generalized Cartan--Hadamard isoperimetric conjecture",
+      "sourceQuote": "We resolve the generalized Cartan--Hadamard isoperimetric conjecture in every dimension.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The sharp Euclidean filling bound holds in every proper CAT(0) space, in all cycle dimensions at least two.",
+      "sourceLine": "holds in every proper CAT(0) space, in all cycle dimensions at least two.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The conjecture asserts that with sectional curvature at most κ ≤ 0 every domain has boundary area at least that of the equal-volume model ball.",
+      "sourceLine": "curvature is at most $\\kappa\\le0$, then every relatively compact smooth",
+      "sourceQuote": "The generalized Cartan--Hadamard isoperimetric conjecture asserts that if its sectional curvature is at most $\\kappa\\le0$, then every relatively compact smooth domain has boundary area at least that of the equal-volume ball in the simply connected space form of curvature $\\kappa$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The surface inequality originates in Weil's work.",
+      "sourceLine": "The surface inequality originates in Weil's work and the",
+      "sourceQuote": "The surface inequality originates in Weil's work and the subharmonic-function approach of Beckenbach and Rad\\'o; Bol developed the comparison with nonzero model curvature \\cite{Weil1926,BeckenbachRado1933,Bol1941}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kleiner proved the model comparison in dimension three.",
+      "sourceLine": "\\cite{ChavelFeldman1980}. Kleiner proved the model comparison in",
+      "sourceQuote": "We use the smooth surface formulation of Chavel and Feldman \\cite{ChavelFeldman1980}. Kleiner proved the model comparison in dimension three, including its equality case \\cite[Theorem~2]{Kleiner1992}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Croke proved the sharp Euclidean comparison in dimension four.",
+      "sourceLine": "\\cite[Theorem~2]{Kleiner1992}. Croke proved the sharp Euclidean",
+      "sourceQuote": "Kleiner proved the model comparison in dimension three, including its equality case \\cite[Theorem~2]{Kleiner1992}. Croke proved the sharp Euclidean comparison in dimension four \\cite{Croke1984}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Chen, Ghomi and Wang establish Euclidean comparison and rigidity in dimensions three through nine.",
+      "sourceLine": "Chen, Ghomi and Wang establish Euclidean comparison and rigidity in",
+      "sourceQuote": "Chen, Ghomi and Wang establish Euclidean comparison and rigidity in dimensions three through nine, report calibration verification through at least dimension thirteen, and announce generalized comparison in dimensions four and five \\cite[Theorems~1.1--1.2 and the subsequent discussion]{ChenGhomiWang2026HigherDimensions}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Rigidity does not require the ambient manifold outside the equality region to be flat.",
+      "sourceLine": "It does not require the ambient manifold outside that region to be",
+      "sourceQuote": "It does not require the ambient manifold outside that region to be flat.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For n = 2, c_2 = 1/(6√π).",
+      "sourceLine": "c_2=\\frac1{6\\sqrt\\pi},\\qquad",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Applied to boundary currents, the filling theorem gives the Euclidean Cartan–Hadamard inequality in dimensions at least three.",
+      "sourceLine": "following positive answer in dimensions at least three.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the sharp Euclidean filling inequality in proper CAT(0) spaces and the optimality of its constant.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
