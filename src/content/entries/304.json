@@ -1,0 +1,146 @@
+{
+  "id": "304",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Hilbert-Smith-conjecture-in-every-finite-dimension-September-23-2026/paper.pdf",
+      "label": "The Hilbert–Smith conjecture in every finite dimension"
+    }
+  ],
+  "headline": "Claims to prove the Hilbert–Smith conjecture: a locally compact group acting faithfully on a connected manifold is a Lie group.",
+  "scope": "Locally compact second-countable Hausdorff groups acting faithfully and jointly continuously on connected second-countable topological manifolds without boundary, in every finite dimension.",
+  "plain": "A Lie group is a group of symmetries that is smooth, like the rotations of a circle. The Hilbert–Smith conjecture says that any reasonable group that moves the points of a manifold faithfully must be a Lie group. It was known in dimensions up to three and under extra smoothness. This paper claims to prove it in every finite dimension, by ruling out actions of the p-adic integers. There is no Lean check.",
+  "doesNot": "This does not cover manifolds with boundary or infinite-dimensional spaces, which lie outside the theorem's hypotheses.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1902",
+    "firstStepBy": "Hilbert's fifth problem on continuous transformation groups (published as \"Mathematical problems\", 1902)",
+    "field": "Topology",
+    "significance": "Landmark",
+    "significanceWhy": "It would resolve the Hilbert–Smith conjecture, the open remaining form of Hilbert's fifth problem, in every dimension."
+  },
+  "explanation": "Start with the 2-adic integers. An element is a list of remainders: one mod 2, one mod 4, one mod 8, and so on, each agreeing with the last. The list 1, 3, 7, 15, … describes −1, since 7 + 1 = 8 leaves remainder 0 mod 8. Two elements are close when they agree mod a high power of 2. The elements with remainder 0 mod 8 form a subgroup, and so do those with remainder 0 mod 1024. So this group has subgroups inside every small neighbourhood of zero.\n\nA Lie group is a smooth group of symmetries, like the rotations of a circle. Lie groups never have such small subgroups: near the identity, the only subgroup is the trivial one. A manifold is a space that looks like ordinary n-dimensional space up close. An action is faithful when no element other than the identity fixes every point[3]. The Hilbert–Smith conjecture asks whether a locally compact group acting faithfully and continuously on a connected manifold must be a Lie group[4].\n\nThe question grew out of Hilbert's fifth problem. Gleason, Montgomery and Zippin settled the version where the group itself is a manifold in 1952[5]. Dimensions one and two were classical, and Pardon proved dimension three[6]. Other work added smoothness, such as Lipschitz actions[7]. Known structure theory reduces the conjecture to one case: ruling out faithful actions of the p-adic integers, for a prime p[8]. The obstacle is that such an action is merely continuous, so there are no derivatives to work with.\n\nThe paper claims that every continuous action of the p-adic integers on such a manifold has nonzero kernel[2]. So it claims the conjecture in every finite dimension[1]. The proof builds a group of signature classes, from sheaf duality, that lies inside a fixed lattice. A faithful action would give p^k equal classes adding up to 4 times a fixed class u. Each would be (4/p^k)·u. The lattice only allows multiples of u/L for a fixed whole number L[9]. Say L were 10 and p = 3. For k = 4, p^k = 81 exceeds 4·10 = 40. Then 4/81 is not a multiple of 1/10, a contradiction[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof is long and relies on delicate sheaf theory and Witt groups. A claim of this size needs careful expert reading, and no specialist review is published.",
+  "hypeCheck": "Landmark-level claim with no Lean check. It rests on a long argument in sheaf theory and Witt groups, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Lie group",
+      "meaning": "A group that is also a smooth space, with smooth multiplication, like the rotations of a circle."
+    },
+    {
+      "term": "Manifold",
+      "meaning": "A space that looks like ordinary n-dimensional space near each point."
+    },
+    {
+      "term": "Faithful action",
+      "meaning": "An action where only the identity element fixes every point."
+    },
+    {
+      "term": "Locally compact group",
+      "meaning": "A group with a topology in which every point has a small neighbourhood with compact closure."
+    },
+    {
+      "term": "p-adic integers",
+      "meaning": "Compatible lists of remainders mod p, p², p³, …, for a prime p; two are close when they agree mod a high power."
+    },
+    {
+      "term": "Kernel",
+      "meaning": "The set of group elements that act as the identity on every point."
+    },
+    {
+      "term": "Witt group",
+      "meaning": "A group of symmetric forms where forms with a half-sized isotropic part count as zero; it records signature data."
+    },
+    {
+      "term": "Signature",
+      "meaning": "A whole number from a symmetric form: positive directions minus negative directions."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Hilbert–Smith conjecture in every finite dimension” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Hilbert-Smith-conjecture-in-every-finite-dimension-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected finite-dimensional manifold without boundary is a Lie group.",
+      "sourceLine": "We prove the Hilbert--Smith conjecture in every finite dimension",
+      "sourceQuote": "We prove the Hilbert--Smith conjecture in every finite dimension: every locally compact second-countable Hausdorff group acting faithfully and jointly continuously on a connected Hausdorff second-countable finite-dimensional topological manifold without boundary is a Lie group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every jointly continuous action of the p-adic integers on a connected n-manifold without boundary has nonzero kernel.",
+      "sourceLine": "action of \\(\\Zp\\) on a connected Hausdorff second-countable topological",
+      "sourceQuote": "Every jointly continuous action of \\(\\Zp\\) on a connected Hausdorff second-countable topological \\(n\\)-manifold without boundary has nonzero kernel.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An action is faithful when its kernel is trivial: no nonidentity element fixes every point.",
+      "sourceLine": "no nonidentity element fixes every point.",
+      "sourceQuote": "An action is \\emph{faithful} when its kernel is trivial: no nonidentity element fixes every point.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The conjecture asks whether a locally compact group acting faithfully and continuously on a connected manifold must be a Lie group.",
+      "sourceLine": "The Hilbert--Smith conjecture asks whether a locally compact group acting",
+      "sourceQuote": "The Hilbert--Smith conjecture asks whether a locally compact group acting faithfully and continuously on a connected topological manifold must be a Lie group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gleason and Montgomery–Zippin resolved the locally Euclidean formulation in 1952.",
+      "sourceLine": "Euclidean. Gleason and Montgomery--Zippin resolved that formulation in",
+      "sourceQuote": "One central formulation concerns a group that is itself locally Euclidean. Gleason and Montgomery--Zippin resolved that formulation in 1952 \\cite{Gleason1952,MontgomeryZippin1952}, and Yamabe extended the structure theory to general locally compact groups \\cite{Yamabe1953a,Yamabe1953b}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Pardon proved the three-dimensional conjecture.",
+      "sourceLine": "Pardon proved the three-dimensional conjecture",
+      "sourceQuote": "Pardon proved the three-dimensional conjecture \\cite[Theorem~1.5]{Pardon2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Repovš–Ščepin proved the Lipschitz case on Riemannian manifolds.",
+      "sourceLine": "proved the Lipschitz case on Riemannian manifolds",
+      "sourceQuote": "Repov\\v{s}--\\v{S}\\v{c}epin proved the Lipschitz case on Riemannian manifolds \\cite[Theorem~1.1]{RepovsScepin1997}, and Maleshich obtained an obstruction for H\\\"older actions on closed manifolds when a common exponent exceeds $n/(n+2)$ \\cite[Theorem~3.1]{Maleshich1997}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The mechanism is the exclusion of faithful actions of the additive group of p-adic integers.",
+      "sourceLine": "The mechanism is the exclusion of faithful actions of the additive",
+      "sourceQuote": "The mechanism is the exclusion of faithful actions of the additive group of \\(p\\)-adic integers, for a prime \\(p\\), \\[ \\Zp=\\varprojlim_k\\Z/p^k\\Z, \\] with its profinite topology.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The rational images of the integral classes lie in a fixed lattice L_d^{-1}Z.",
+      "sourceLine": "We construct an abelian group \\(E_d(S^d)\\), an orientation",
+      "sourceQuote": "We construct an abelian group \\(E_d(S^d)\\), an orientation class \\(u_d\\), and a positive integer \\(L_d\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "p^k equal classes summing to 4u give (4/p^k)u, contradicting the lattice once p^k > 4L_d.",
+      "sourceLine": "contradicts \\Cref{intro:lattice} as soon as \\(p^k>4L_d\\).",
+      "sourceQuote": "Each image is therefore \\((4/p^k)\\overline{u}_d\\), which contradicts \\Cref{intro:lattice} as soon as \\(p^k>4L_d\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
