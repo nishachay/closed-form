@@ -1,0 +1,154 @@
+{
+  "id": "352",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-time-singularity-of-Calabi-flow-on-projective-space-September-24-2026/paper.pdf",
+      "label": "A finite-time singularity of Calabi flow on projective space"
+    }
+  ],
+  "headline": "Claims a smooth starting metric on complex projective 10-space whose Calabi flow breaks down in finite time.",
+  "scope": "Calabi flow from one smooth U(10)-invariant Kähler metric in the Fubini–Study class of CP¹⁰, and its products with constant-scalar-curvature factors.",
+  "plain": "Calabi flow is an equation that slowly reshapes a curved complex space, aiming to make its curvature even. Chen conjectured that it runs forever from any smooth start. The paper claims a smooth start on complex projective 10-space where the curvature becomes infinite at one point in finite time. The space even carries a perfectly even metric, so the failure is not caused by the space itself. There is no Lean check.",
+  "doesNot": "This does not show that weak versions of the flow fail, and it says nothing about complex dimensions below ten. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Eugenio Calabi, who introduced the flow",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims to disprove a standing conjecture of Chen on smooth long-time existence for Calabi flow."
+  },
+  "explanation": "Start with complex projective space of dimension 10, CP¹⁰. It is the set of complex lines through the origin in an 11-dimensional complex space. It carries a standard symmetric metric, the Fubini–Study metric. Scalar curvature is one number at each point that averages all the bending there. With the paper's normalization, Fubini–Study has scalar curvature 110 at every point. That is 10 × 11, the dimension times one more.\n\nA Kähler metric is a way to measure lengths on a complex space that fits its complex structure. Calabi flow changes such a metric over time. Where scalar curvature is above average it pushes one way, and below average the other. Calabi introduced it to find the most even metric in a family[1]. Chen conjectured that the flow runs smoothly forever from any smooth start[2]. On surfaces of complex dimension one this was known: Chruściel proved the flow lasts forever and settles down[3]. In higher dimensions the flow was known to continue while scalar curvature stays bounded[4].\n\nThe paper claims a no. It builds a smooth starting metric on CP¹⁰, in the same family as Fubini–Study[5]. The flow stops at a finite time T*. At one point p the scalar curvature grows like a constant times 1/√(T* − t)[5]. So when the time left falls from 0.01 to 0.0001, the curvature there grows about tenfold. Because the family contains the even Fubini–Study metric, the failure happens even where a perfect target exists[6]. Taking products with a fixed even factor gives the same breakdown in every complex dimension of at least 10[7].\n\nHow does the construction work? The metric is symmetric under a large group, U(10), so the flow reduces to one equation in one variable. At p the scalar curvature equals 110 times one minus a single value H(t,0)[8]. The paper builds an exact shrinking solution of a simpler flat model equation[9]. A computer calculation with exact arithmetic checks the matching inequalities for that solution[10]. The hard step is the correction on the compact space. It must stay smaller than the main term at p, so the blow-up survives[11]. The starting metric is chosen at the end, as a time slice of the solution[12].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at the analysis. The profile step relies on a computer certificate that the paper includes. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the construction holds: it would disprove Chen's long-time existence conjecture for Calabi flow. There is no Lean check, part of the proof is a computer certificate, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Kähler metric",
+      "meaning": "A way to measure lengths on a complex space that fits its complex structure."
+    },
+    {
+      "term": "Calabi flow",
+      "meaning": "An equation that changes a Kähler metric over time to even out its scalar curvature."
+    },
+    {
+      "term": "Scalar curvature",
+      "meaning": "One number at each point that averages all the ways the space bends there."
+    },
+    {
+      "term": "Complex projective space",
+      "meaning": "The space of complex lines through the origin; CP¹⁰ has complex dimension 10."
+    },
+    {
+      "term": "Fubini–Study metric",
+      "meaning": "The standard, fully symmetric metric on complex projective space; its scalar curvature is constant."
+    },
+    {
+      "term": "Kähler class",
+      "meaning": "The family of Kähler metrics that differ by a smooth potential function; the flow stays inside one class."
+    },
+    {
+      "term": "Finite-time singularity",
+      "meaning": "A time at which the flow cannot continue smoothly because curvature becomes infinite."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A finite-time singularity of Calabi flow on projective space” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-time-singularity-of-Calabi-flow-on-projective-space-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Calabi introduced the flow to seek canonical metrics within a Kähler class.",
+      "sourceLine": "Calabi introduced this flow to seek canonical metrics within a K\\\"ahler",
+      "sourceQuote": "Calabi introduced this flow to seek canonical metrics within a K\\\"ahler class~\\cite{Calabi1982}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Chen's conjecture asserts that the flow exists for all positive times from arbitrary smooth Kähler initial data.",
+      "sourceLine": "asserts that the flow exists for all positive times from arbitrary smooth",
+      "sourceQuote": "Chen's smooth long-time existence conjecture asserts that the flow exists for all positive times from arbitrary smooth K\\\"ahler initial data; see \\cite[Conjecture~1.1]{HeZeng2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "On compact Riemann surfaces, Chruściel proved global forward existence and convergence to a constant-curvature metric.",
+      "sourceLine": "On compact Riemann surfaces, Chru\\'sciel proved global forward existence",
+      "sourceQuote": "On compact Riemann surfaces, Chru\\'sciel proved global forward existence and convergence to a constant-curvature metric~\\cite[Theorem~2.1]{Chrusciel1991}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Chen and Cheng established extension under a uniform scalar-curvature bound.",
+      "sourceLine": "extension under a uniform scalar-curvature bound~\\cite[Theorem~1.8]{ChenCheng2021}.",
+      "sourceQuote": "Chen and He proved extension under a uniform Ricci-curvature bound~\\cite[Corollary~5.3]{ChenHe2008}, and Chen and Cheng established extension under a uniform scalar-curvature bound~\\cite[Theorem~1.8]{ChenCheng2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A smooth U(10)-invariant Kähler form in the Fubini–Study class of CP¹⁰ has Calabi flow that stops at a finite time, with scalar curvature at one point growing like a(T*−t)^(−1/2).",
+      "sourceLine": "There is a smooth \\(U(10)\\)-invariant K\\\"ahler form \\(\\omega_0\\) on",
+      "sourceQuote": "There is a smooth \\(U(10)\\)-invariant K\\\"ahler form \\(\\omega_0\\) on \\(\\CP^{10}\\), in the class \\([\\omega_{\\mathrm{FS}}]\\), whose maximal smooth Calabi flow has existence interval \\([0,T_*)\\) with \\(0<T_*<\\infty\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The example also answers negatively the smooth global-existence question for classes containing a constant-scalar-curvature metric.",
+      "sourceLine": "also answers negatively the smooth global-existence question for classes",
+      "sourceQuote": "Thus the example also answers negatively the smooth global-existence question for classes containing a constant-scalar-curvature K\\\"ahler metric, emphasized by Chen and Cheng~\\cite[p.~912, following Conjecture~1.3]{ChenCheng2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Finite-time smooth Calabi-flow singularities occur in every complex dimension n ≥ 10.",
+      "sourceLine": "In particular, finite-time smooth Calabi-flow singularities occur in",
+      "sourceQuote": "In particular, finite-time smooth Calabi-flow singularities occur in every complex dimension \\(n\\geq10\\), on \\(\\CP^{10}\\times\\CP^{n-10}\\), in a class containing a K\\\"ahler--Einstein metric.",
+      "verdict": "supported"
+    },
+    {
+      "text": "At the fixed affine origin p, the scalar curvature equals 110(1 − H(t,0)).",
+      "sourceLine": "affine origin \\(p\\), the scalar-curvature identity is",
+      "sourceQuote": "At the fixed affine origin \\(p\\), the scalar-curvature identity is \\[ S(t,p)=110\\bigl(1-H(t,0)\\bigr). \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper constructs a profile G so that F solves the scale-invariant flat equation exactly.",
+      "sourceLine": "constructs \\(G\\) so that \\(F\\) solves the scale-invariant flat equation exactly.",
+      "sourceQuote": "Section~\\ref{sec:profile} constructs \\(G\\) so that \\(F\\) solves the scale-invariant flat equation exactly.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A finite exact-arithmetic calculation certifies the matching inequalities.",
+      "sourceLine": "A finite exact-arithmetic calculation, with analytic enclosure and",
+      "sourceQuote": "A finite exact-arithmetic calculation, with analytic enclosure and nonlinear error bounds, certifies the matching inequalities.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The correction is smaller than the leading term at the origin, preserving the scalar-curvature divergence.",
+      "sourceLine": "The correction is therefore smaller than the leading term at the",
+      "sourceQuote": "The correction is therefore smaller than the leading term at the origin, preserving the desired scalar-curvature divergence.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A smooth interior time slice of the solution is the initial metric; none is fixed before the construction.",
+      "sourceLine": "A smooth interior time slice of this solution will be the initial metric;",
+      "sourceQuote": "A smooth interior time slice of this solution will be the initial metric; no initial metric needs to be fixed before the construction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
