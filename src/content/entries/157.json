@@ -1,0 +1,195 @@
+{
+  "id": "157",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Hadwigers-conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to Hadwiger's conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-Colin-de-Verdiere-chromatic-conjecture-September-23-2026/paper.pdf",
+      "label": "A counterexample to the Colin de Verdière chromatic conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-linear-list-coloring-bound-in-terms-of-the-Hadwiger-number-September-23-2026/paper.pdf",
+      "label": "A linear list-coloring bound in terms of the Hadwiger number"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/157.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves Hadwiger's 1943 coloring conjecture is false, and that a fixed multiple of the minor size still bounds coloring.",
+  "scope": "Three papers on coloring graphs by the size of their largest clique minor. Lean covers the Hadwiger counterexample and the linear list bound, not the Colin de Verdière paper.",
+  "plain": "Hadwiger guessed in 1943 that a graph needing k colors must contain a complete graph on k vertices as a minor. The first paper builds arbitrarily large graphs that break this guess, with room to spare. The third paper shows the guess is only off by a constant factor, even when each vertex has its own list of allowed colors. A computer proof checker has formal versions of both results. The second paper claims a counterexample to a related conjecture of Colin de Verdière, which has no Lean check.",
+  "doesNot": "This does not give an explicit small counterexample or a value for the constant factor; the constants are not optimized. The Colin de Verdière result and the fractional-coloring strengthening are outside the Lean scope.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1943",
+    "firstStepBy": "Hugo Hadwiger, conjecture that the chromatic number is at most the Hadwiger number",
+    "field": "Combinatorics",
+    "significance": "Landmark",
+    "significanceWhy": "It disproves one of the best-known conjectures in graph theory, and Lean has formal statements of the counterexample and the linear replacement bound."
+  },
+  "explanation": "Take a cycle of five vertices, a pentagon. Give each vertex a color so that neighbours differ. Two colors fail, since the colors would have to alternate around an odd cycle. Three colors work. So the chromatic number, the fewest colors needed, is 3. Now merge the two ends of one edge into one vertex. The pentagon becomes a square. Merge again and it becomes a triangle, a complete graph on three vertices. A graph obtained by deleting and merging like this is a minor. The Hadwiger number h is the size of the largest complete graph you can reach. The pentagon has only five edges, and a complete graph on four vertices needs six. So h = 3, matching the 3 colors.\n\nHadwiger's conjecture, formulated in 1943, says the chromatic number never exceeds the Hadwiger number[1]. Small cases were proved. The case of no five-vertex complete minor is equivalent to the Four-Color Theorem[2]. Robertson, Seymour and Thomas proved the six-vertex case[3]. For large graphs, the best general bounds had an extra slowly growing factor[4].\n\nThe first paper disproves the conjecture. It builds arbitrarily large graphs where every three vertices include at least one edge[5]. In such a graph, one color can be used on at most two vertices. So a graph on m vertices needs at least m/2 colors. The paper shows h is less than 26m/75 + 2/3[6]. Suppose a graph in the family has 1500 vertices. Then it needs at least 750 colors, but its largest complete minor has at most 520 vertices. The obstacle is to stop any large complete minor from forming. The graph is drawn at random, and some pairs are declared missing edges[7].\n\nThe third paper shows the conjecture is right up to a constant factor. There is one whole number C with chromatic number at most C times h, for every graph[8]. This holds even when each vertex picks from its own list of colors[9]. Such a C must be at least two[10]. The second paper claims a similar counterexample to a conjecture of Colin de Verdière, which bounds coloring by a matrix invariant[11].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of the first and third papers' main results. So those papers prove them, as far as the Lean statements match the papers. The Colin de Verdière result is outside the Lean scope, so it remains a claim. No specialist review of any of the papers is published.",
+  "hypeCheck": "Landmark if it holds up: it disproves a famous 1943 conjecture, and Lean has formal statements of the counterexample and the linear bound. The Colin de Verdière paper is a claim only. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Chromatic number",
+      "meaning": "The fewest colors needed so that every edge joins two different colors."
+    },
+    {
+      "term": "Minor",
+      "meaning": "A graph obtained from another by deleting vertices or edges and merging the two ends of edges."
+    },
+    {
+      "term": "Hadwiger number",
+      "meaning": "The number of vertices of the largest complete graph that is a minor of a given graph."
+    },
+    {
+      "term": "Complete graph",
+      "meaning": "A graph in which every two vertices are joined by an edge."
+    },
+    {
+      "term": "Independence number",
+      "meaning": "The largest number of vertices with no edge between any two of them."
+    },
+    {
+      "term": "List coloring",
+      "meaning": "Coloring where each vertex must take a color from its own given list."
+    },
+    {
+      "term": "Colin de Verdière invariant",
+      "meaning": "A number attached to a graph from the eigenvalues of matrices that follow its edges."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A counterexample to Hadwiger's conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-Hadwigers-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A counterexample to the Colin de Verdière chromatic conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-Colin-de-Verdiere-chromatic-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “A linear list-coloring bound in terms of the Hadwiger number” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-linear-list-coloring-bound-in-terms-of-the-Hadwiger-number-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 157",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/157.md",
+      "quote": "This disproves the ordinary chromatic form."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Hadwiger's conjecture, formulated in 1943, asserts that h(G) ≥ χ(G) for every finite nonempty simple graph.",
+      "sourceLine": "asserts that \\(h(G)\\ge\\chi(G)\\) for every finite nonempty simple",
+      "sourceQuote": "Hadwiger's conjecture, formulated in 1943~\\citep{hadwiger1943}, asserts that \\(h(G)\\ge\\chi(G)\\) for every finite nonempty simple graph \\(G\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Wagner's structure theorem makes four-colorability of graphs with no K5 minor equivalent to the Four-Color Theorem.",
+      "sourceLine": "four-colorability of graphs without a \\(K_5\\) minor equivalent to the Four-Color Theorem",
+      "sourceQuote": "Wagner's structure theorem~\\citep{Wagner1937} makes the four-colorability of graphs without a \\(K_5\\) minor equivalent to the Four-Color Theorem, proved by Appel and Haken, with Koch contributing to the reducibility part~\\citep{AppelHaken1977,AppelHakenKoch1977}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Robertson, Seymour, and Thomas proved that every graph without a K6 minor is five-colorable.",
+      "sourceLine": "proved that every graph without a \\(K_6\\) minor is five-colorable",
+      "sourceQuote": "Robertson, Seymour, and Thomas~\\citep{RobertsonSeymourThomas1993} proved that every graph without a \\(K_6\\) minor is five-colorable, by reducing the obstruction to a graph that becomes planar after one vertex is removed.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Delcourt and Postle reduced the general bound to O(t log log t) colors for graphs with no K_t minor.",
+      "sourceLine": "reduced the bound to \\(O(t\\log\\log t)\\)",
+      "sourceQuote": "Delcourt and Postle~\\citep[Theorem~1.5]{DelcourtPostle2025} reduced the bound to \\(O(t\\log\\log t)\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "There are arbitrarily large graphs with independence number at most two and small connected matching number.",
+      "sourceLine": "There are arbitrarily large integers \\(m\\) for which an \\(m\\)-vertex finite simple graph \\(G\\) satisfies",
+      "sourceQuote": "There are arbitrarily large integers \\(m\\) for which an \\(m\\)-vertex finite simple graph \\(G\\) satisfies \\[ \\alpha(G)\\le2 \\qquad\\text{and}\\qquad \\cm(G)<\\frac{m}{100}. \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The graphs satisfy h(G) < 26m/75 + 2/3 < m/2 ≤ χ_f(G) ≤ χ(G).",
+      "sourceLine": "Thus Hadwiger's conjecture and its fractional-coloring weakening \\(\\chi_f(G)\\le h(G)\\) are false.",
+      "sourceQuote": "Thus Hadwiger's conjecture and its fractional-coloring weakening \\(\\chi_f(G)\\le h(G)\\) are false.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The graph is built by sampling from a finite probability space and declaring some pairs to be holes, or missing edges.",
+      "sourceLine": "We build \\(G\\) by sampling from a finite probability space and declaring some pairs to be \\emph{holes}, or missing edges.",
+      "sourceQuote": "We build \\(G\\) by sampling from a finite probability space and declaring some pairs to be \\emph{holes}, or missing edges.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "There is an absolute integer C ≥ 1 such that every finite nonempty simple graph satisfies ℓ(G) ≤ C h(G).",
+      "sourceLine": "There is an absolute integer $C\\ge1$ such that every finite nonempty simple graph $G$ satisfies",
+      "sourceQuote": "There is an absolute integer $C\\ge1$ such that every finite nonempty simple graph $G$ satisfies \\[ \\ell(G)\\le C h(G). \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The bound holds for list coloring, which resolves the Linear List Hadwiger conjecture.",
+      "sourceLine": "This resolves the Linear List Hadwiger conjecture affirmatively.",
+      "sourceQuote": "This resolves the Linear List Hadwiger conjecture affirmatively.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "A universal constant in the theorem must be at least two, and the constants are not optimized.",
+      "sourceLine": "Thus a universal constant in Theorem~\\ref{thm:main} must be at least two.",
+      "sourceQuote": "Thus a universal constant in Theorem~\\ref{thm:main} must be at least two.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "There are graphs whose chromatic number exceeds their Colin de Verdière invariant by more than one.",
+      "sourceLine": "We disprove the Colin de Verdière chromatic conjecture by constructing graphs whose chromatic number exceeds their Colin de Verdière invariant by more than one.",
+      "sourceQuote": "We disprove the Colin de Verdière chromatic conjecture by constructing graphs whose chromatic number exceeds their Colin de Verdière invariant by more than one.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes arbitrarily large counterexamples with h(G) < 26m/75 + 2/3 < m/2 ≤ χ(G), and the bound χ_list(G) ≤ C·h(G).",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}
