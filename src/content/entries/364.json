@@ -1,0 +1,162 @@
+{
+  "id": "364",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Boltzmann-Grad-limit-for-stable-radial-potentials-on-regular-kinetic-intervals-September-23-2026/paper.pdf",
+      "label": "The Boltzmann–Grad limit for stable radial potentials on regular kinetic intervals"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hard-sphere-fluctuations-on-the-regular-Boltzmann-lifespan-September-23-2026/paper.pdf",
+      "label": "Hard-sphere fluctuations on the regular Boltzmann lifespan"
+    }
+  ],
+  "headline": "Claims the Boltzmann equation follows from Newton's laws for short-range forces for as long as it stays regular.",
+  "scope": "Three-dimensional grand-canonical Newtonian gases with stable finite-range radial potentials, on every finite interval where the Boltzmann solution keeps a uniform Gaussian bound.",
+  "plain": "The Boltzmann equation describes a thin gas through the density of molecules at each place and velocity. Lanford derived it from Newton's laws for hard spheres, but only for a short time. Deng, Hani and Ma recently extended the hard-sphere case to the whole time the solution stays regular. The first paper claims the same for smooth short-range forces, including attractive ones. The second claims that, for hard spheres, the small random fluctuations around the Boltzmann prediction become Gaussian over the same time span.",
+  "doesNot": "This does not prove that the Boltzmann equation stays regular forever; it assumes a regular solution on the chosen interval. It does not prove convergence of the whole fluctuation path, and it has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Oscar Lanford, short-time derivation of the Boltzmann equation for hard spheres",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It claims to extend the kinetic limit to smooth forces with attractive wells over the full regular lifespan, and adds a fluctuation theorem."
+  },
+  "explanation": "Imagine a gas of tiny balls of diameter ε. In the Boltzmann–Grad scaling, the number per unit volume is about μ = 1/ε²[2]. With ε = 0.1 that is 100. With ε = 0.01 it is 10,000, and with ε = 0.001 it is 1,000,000. A ball moving one unit sweeps a tube of cross-section about ε². So the expected number of hits per unit time is about μ × ε², which stays 1 in every case. The balls shrink, but collisions stay just as frequent. In this limit, Newton's laws for all the balls should reduce to the Boltzmann equation. It is one equation for the density f of molecules at each position and velocity.\n\nLanford proved this limit for hard spheres, but only for a short time[3]. The reason is that correlated collision histories grow too fast to control. Deng, Hani and Ma proved the hard-sphere limit on every finite time interval where the Boltzmann solution stays regular[4]. Smooth forces add difficulty, because encounters last for a positive time and several molecules can interact at once[5].\n\nThe first paper claims the limit for smooth forces. The force between two molecules depends only on their distance and vanishes beyond a fixed range. It may have attractive wells and a strong repulsive core. Its only sign condition is thermodynamic stability, which stops the gas from collapsing[6]. Take any finite interval where the Boltzmann solution keeps a Gaussian bound in velocity. There, the scaled statistics of any fixed number of molecules converge to products of f[1]. Wells, long scattering delays and clusters formed by the motion are allowed[7].\n\nThe second paper looks at the next order, for hard spheres. Take the empirical average and subtract its exact expected value, then multiply by √μ[8]. With μ = 1,000,000 that factor is 1,000, so it reveals deviations of size about 0.001. The paper claims these fluctuations converge, at finitely many fixed times, to a Gaussian field. That field solves the linear fluctuating Boltzmann equation[9]. It holds on the same regular lifespan, away from equilibrium. It does not claim convergence of the whole path in time[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. Both papers rely on long collision-history expansions that build on Deng, Hani and Ma. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if the proofs hold: they would extend the kinetic limit to smooth forces and give fluctuations over the full regular lifespan. They assume a regular Boltzmann solution and have no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Boltzmann equation",
+      "meaning": "An equation for the density of gas molecules at each place and velocity, with free flight and collisions."
+    },
+    {
+      "term": "Boltzmann–Grad limit",
+      "meaning": "Shrinking the molecules while raising their number so the collision rate stays fixed."
+    },
+    {
+      "term": "Grand-canonical",
+      "meaning": "A model where the number of molecules is itself random, set by an activity parameter."
+    },
+    {
+      "term": "Radial potential",
+      "meaning": "A force law that depends only on the distance between two molecules."
+    },
+    {
+      "term": "Thermodynamic stability",
+      "meaning": "A condition on the force that stops the potential energy from becoming arbitrarily negative per molecule."
+    },
+    {
+      "term": "Central limit theorem",
+      "meaning": "A result that sums of many small random effects become bell-shaped, or Gaussian."
+    },
+    {
+      "term": "Regular kinetic interval",
+      "meaning": "A time span on which the Boltzmann solution exists and stays smooth with Gaussian velocity decay."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Boltzmann–Grad limit for stable radial potentials on regular kinetic intervals” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Boltzmann-Grad-limit-for-stable-radial-potentials-on-regular-kinetic-intervals-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Hard-sphere fluctuations on the regular Boltzmann lifespan” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Hard-sphere-fluctuations-on-the-regular-Boltzmann-lifespan-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "All fixed-order rescaled factorial marginals converge in L¹, uniformly on every finite interval where the kinetic solution has a uniform Gaussian bound.",
+      "sourceLine": "All fixed-order rescaled factorial marginals converge in $L^1$,",
+      "sourceQuote": "All fixed-order rescaled factorial marginals converge in $L^1$, uniformly throughout every finite interval on which the classical kinetic solution has a uniform Gaussian bound.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "In three dimensions the activity is μ = ε⁻².",
+      "sourceLine": "dimensions the activity is $\\mu_\\varepsilon=\\varepsilon^{-2}$.",
+      "sourceQuote": "In three dimensions the activity is $\\mu_\\varepsilon=\\varepsilon^{-2}$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Lanford established the hard-sphere limit on a short time interval.",
+      "sourceLine": "Lanford established the hard-sphere limit on a short time",
+      "sourceQuote": "Lanford established the hard-sphere limit on a short time interval~\\cite{Lanford75}, and King's thesis treated positive finite-range potentials~\\cite{King75}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Deng, Hani and Ma proved the hard-sphere limit throughout every regular finite kinetic interval.",
+      "sourceLine": "Deng, Hani, and Ma proved the hard-sphere limit throughout every regular",
+      "sourceQuote": "Deng, Hani, and Ma proved the hard-sphere limit throughout every regular finite kinetic interval~\\cite[Theorem~1]{DHM25}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Smooth potentials need extra control because encounters last for positive time and several particles can interact at once.",
+      "sourceLine": "Smooth potentials require additional control because encounters last",
+      "sourceQuote": "Smooth potentials require additional control because encounters last for positive time and several particles can interact simultaneously.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The only sign condition on the potential is thermodynamic stability.",
+      "sourceLine": "Its only sign condition is thermodynamic stability",
+      "sourceQuote": "Its only sign condition is thermodynamic stability, in the classical sense of~\\cite{Ruelle69}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Attractive wells, long scattering delays and noninjective scattering maps are permitted.",
+      "sourceLine": "Attractive wells, long scattering delays, and noninjective scattering maps are permitted.",
+      "sourceQuote": "Attractive wells, long scattering delays, and noninjective scattering maps are permitted.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The fluctuation field is √μ times the empirical average minus its exact expectation.",
+      "sourceLine": "The expectation in \\eqref{eq:empirical-fluctuation} is exact.",
+      "sourceQuote": "The expectation in \\eqref{eq:empirical-fluctuation} is exact.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The fluctuations converge to the Gaussian solution of the linear fluctuating Boltzmann equation.",
+      "sourceLine": "Its fluctuations converge to the Gaussian solution of the linear",
+      "sourceQuote": "Its fluctuations converge to the Gaussian solution of the linear fluctuating Boltzmann equation.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The conclusion concerns finite-dimensional laws rather than process convergence.",
+      "sourceLine": "concerns finite-dimensional laws, rather than process convergence.",
+      "sourceQuote": "Our conclusion extends the time interval away from equilibrium but concerns finite-dimensional laws, rather than process convergence.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
