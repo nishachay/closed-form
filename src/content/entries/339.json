@@ -1,0 +1,146 @@
+{
+  "id": "339",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Entropy-equality-and-local-symmetry-in-negative-curvature-September-23-2026/paper.pdf",
+      "label": "Entropy equality and local symmetry in negative curvature"
+    }
+  ],
+  "headline": "Claims to prove Katok's entropy rigidity conjecture for negatively curved manifolds of dimension three and higher.",
+  "scope": "Closed connected smooth Riemannian manifolds of dimension at least three whose sectional curvatures are all strictly negative.",
+  "plain": "On a negatively curved space, geodesics, the straightest paths, spread apart quickly. Two numbers measure how complex their motion is: the topological entropy and the Liouville entropy. The second is never larger than the first. Katok conjectured in 1982 that they are equal only for the most symmetric spaces. He proved this for surfaces, and this paper claims to prove it in every dimension from three up.",
+  "doesNot": "This does not cover surfaces, which Katok already settled, or manifolds with some zero or positive curvature. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Anatole Katok, who stated the conjecture and proved the surface case",
+    "field": "Differential geometry",
+    "significance": "Landmark",
+    "significanceWhy": "It claims a central conjecture in the study of geodesic flows that had been open in higher dimensions for over 40 years."
+  },
+  "explanation": "Picture a closed three-dimensional space with constant curvature −1, a hyperbolic three-manifold. It is negatively curved, so nearby geodesics, the straightest paths, spread apart exponentially. One way to see this is to count closed geodesics. On this space the number with length at most L grows roughly like e^(2L)/(2L). For L = 10 that is about 24 million. The 2 in the exponent is the topological entropy, the growth rate of the motion's complexity. In dimension n with curvature −1 it equals n − 1. If we double all lengths, the curvature becomes −1/4 and the entropy halves to 1.\n\nThere is a second number. Liouville measure is the natural way to spread mass evenly over all positions and directions. Its entropy measures the complexity a typical path sees. A general principle says it is never larger than the topological entropy[2]. For the hyperbolic space the two are equal. Katok's conjecture asks whether equality, in negative curvature, picks out exactly the locally symmetric metrics[3]. A metric is locally symmetric if near each point it looks the same in every reflected direction. In negative curvature these are the real, complex, quaternionic and Cayley hyperbolic spaces[5]. So local symmetry need not mean constant curvature.\n\nKatok proved the surface case in 1982[4]. In higher dimensions, Flaminio showed that a key surface step fails[6]. Humbert later proved the result for metrics very close to a real or complex hyperbolic one[7]. The paper claims the full result. For every closed negatively curved manifold of dimension at least three, the two entropies are equal if and only if the metric is locally symmetric[1]. When the metric is not locally symmetric, the two natural measures are then mutually singular, meaning they live on separate sets[8].\n\nThe main obstacle is regularity across leaves[9]. Negative curvature splits each direction of motion into stable and unstable parts. These form smooth surfaces called leaves. But the way the leaves sit next to each other need not be smooth. The paper shows that equal entropies force this missing smoothness. It works with finite Taylor expansions, then uses algebra to sort the possible symmetries into two cases. One case is ruled out by the geometry at infinity. The other gives a smooth splitting. A theorem of Benoist, Foulon and Labourie then yields the symmetric model[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof is long and combines dynamics, normal forms and Lie algebra theory. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark-level claim if the proof holds: it would settle Katok's 1982 conjecture in dimensions three and up. The proof is long and has no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Geodesic",
+      "meaning": "A straightest possible path on a curved space."
+    },
+    {
+      "term": "Sectional curvature",
+      "meaning": "How a space bends in one flat two-dimensional direction; negative means saddle-like."
+    },
+    {
+      "term": "Geodesic flow",
+      "meaning": "The motion of points sliding along geodesics at unit speed, for every starting point and direction."
+    },
+    {
+      "term": "Topological entropy",
+      "meaning": "The exponential growth rate of the number of distinguishable paths of the flow."
+    },
+    {
+      "term": "Liouville measure",
+      "meaning": "The natural way to spread mass evenly over all positions and directions on the space."
+    },
+    {
+      "term": "Liouville entropy",
+      "meaning": "The complexity of the flow as seen by a typical point under Liouville measure."
+    },
+    {
+      "term": "Locally symmetric",
+      "meaning": "Looking the same, near each point, after reflection through that point."
+    },
+    {
+      "term": "Mutually singular",
+      "meaning": "Two measures that live on separate sets, so each gives zero weight to where the other lives."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Entropy equality and local symmetry in negative curvature” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Entropy-equality-and-local-symmetry-in-negative-curvature-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For closed negatively curved manifolds of dimension at least three, Liouville measure has maximal entropy if and only if the metric is locally symmetric.",
+      "sourceLine": "normalized Liouville measure has maximal entropy for the unit-speed",
+      "sourceQuote": "For every closed connected smooth Riemannian manifold of dimension at least three with strictly negative sectional curvature, we prove that normalized Liouville measure has maximal entropy for the unit-speed geodesic flow if and only if the metric is locally symmetric.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The variational principle bounds Liouville entropy by topological entropy.",
+      "sourceLine": "The variational principle bounds the latter by",
+      "sourceQuote": "The variational principle bounds the latter by the former.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Katok's conjecture asks whether equality, in negative curvature, characterizes locally symmetric metrics.",
+      "sourceLine": "Katok's entropy rigidity conjecture asks whether equality,",
+      "sourceQuote": "Katok's entropy rigidity conjecture asks whether equality, in negative curvature, characterizes locally symmetric metrics.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Katok formulated the conjecture and proved its surface case.",
+      "sourceLine": "formulated the conjecture and proved its",
+      "sourceQuote": "\\citet[p.~347]{Katok1982} formulated the conjecture and proved its surface case.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The rank-one conclusion includes real, complex, quaternionic and Cayley hyperbolic geometry.",
+      "sourceLine": "The rank-one conclusion includes real, complex, quaternionic and Cayley",
+      "sourceQuote": "The rank-one conclusion includes real, complex, quaternionic and Cayley hyperbolic geometry in the dimensions where these occur.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Flaminio's results show the surface strategy through a Liouville-entropy maximum does not extend directly to higher dimensions.",
+      "sourceLine": "surface strategy through a Liouville-entropy maximum does not extend",
+      "sourceQuote": "Thus the surface strategy through a Liouville-entropy maximum does not extend directly to higher dimensions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Humbert proved rigidity in a small neighborhood of any fixed real or complex hyperbolic metric.",
+      "sourceLine": "subsequently proved rigidity throughout",
+      "sourceQuote": "\\citet[Theorem~1]{Humbert2026} subsequently proved rigidity throughout a sufficiently small $C^N$ neighborhood of any fixed real or complex hyperbolic metric, for a suitable finite $N$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "When the metric is not locally symmetric, the maximal-entropy probability is mutually singular with Liouville measure.",
+      "sourceLine": "maximal-entropy probability is mutually singular with $m_L$",
+      "sourceQuote": "In that case the unique maximal-entropy probability is mutually singular with $m_L$: Theorem~\\ref{thm:main} makes them distinct, and distinct ergodic invariant probabilities are mutually singular.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The main obstacle is transverse regularity.",
+      "sourceLine": "The main obstacle is transverse regularity.",
+      "sourceQuote": "The main obstacle is transverse regularity.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Global smoothness lets the paper apply the theorem of Benoist, Foulon and Labourie.",
+      "sourceLine": "Smoothness of the weak stable distribution lets us apply the theorem",
+      "sourceQuote": "Smoothness of the weak stable distribution lets us apply the theorem of Benoist--Foulon--Labourie \\citep[Theorem~2]{BenoistFoulonLabourie1992}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
