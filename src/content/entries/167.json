@@ -1,0 +1,185 @@
+{
+  "id": "167",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-weak-pinned-planar-distance-theorem-September-23-2026/paper.pdf",
+      "label": "The weak pinned planar distance theorem"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-planar-unit-distances-September-23-2026/paper.pdf",
+      "label": "A power saving for planar unit distances"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/167.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves almost every point in a large planar set sees nearly n distances, and lowers the unit-distance exponent 4/3.",
+  "scope": "Two results on finite point sets in the plane: distinct distances seen from single points, and the number of pairs at distance one.",
+  "plain": "Put n points in the plane and stand at one of them. Erdős asked in 1957 whether some point always sees almost n different distances to the others. The first paper proves more: almost every point does. The second paper limits how many pairs can be exactly one unit apart, lowering a 1984 exponent of 4/3 by a fixed amount. A computer proof checker has formal versions of both main results.",
+  "doesNot": "This does not give explicit rates or constants. The first theorem has no rate of decay, and the second states no value for its new exponent. It also does not close the gap with the known lower bounds for unit distances.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1946",
+    "firstStepBy": "Paul Erdős, distinct-distance and repeated-distance problems",
+    "field": "Combinatorics",
+    "significance": "Landmark",
+    "significanceWhy": "It resolves Erdős's weak pinned distance conjecture and gives the first fixed power saving over the 1984 unit-distance bound, both with Lean statements."
+  },
+  "explanation": "Take a 4 by 4 square grid of 16 points, one unit apart. Stand at a corner and measure the distance to each other point. The squared distances take 9 different values: 1, 2, 4, 5, 8, 9, 10, 13 and 18. Now stand at the point one step in from that corner, diagonally. From there you see only 5 different distances. Next count pairs of points exactly one unit apart. Each row has 3 such pairs, and so does each column, giving 24 pairs.\n\nErdős started both questions in 1946[1]. The first asks how many distances a single point, called a pin, must see. The weak pinned conjecture says some point sees at least n^(1−ε) distances, for any small ε and large n[2]. Erdős stated this in 1957[2]. The best earlier pinned bound reached every exponent below about 0.864[3]. Some points can see very few distances. For points on a circle plus its centre, the centre sees only one[4].\n\nThe first paper proves the conjecture in a stronger form. For any fixed ε, all but a vanishing fraction of the n points see at least n^(1−ε) distances[5]. No assumption on spacing or position is needed, but the paper gives no rate[6]. The obstacle is that distances are real numbers with no structure to count. The proof moves each set into a number field, a system of algebraic numbers, without changing any equality between distances[7].\n\nThe second question asks for u(n), the largest number of unit-distance pairs among n points. For the grid above, 24 is well below 16^(4/3), about 40.3. Spencer, Szemerédi and Trotter proved u(n) is at most a constant times n^(4/3) in 1984[8]. An OpenAI construction already showed u(n) can exceed n^(1+ε) for some sizes[9]. The second paper shows u(n) is at most C·n^β for some fixed β below 4/3[10]. Its proof combines incidence counting with entropy and heights of algebraic numbers[11].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of both main theorems. So the papers prove them, as far as the Lean statements match the papers. The first paper gives no rate, and the second states no value for β. No specialist review of either paper is published.",
+  "hypeCheck": "Landmark if it holds up: it settles a named Erdős conjecture and improves a 1984 exponent, with Lean statements for both. Neither result has explicit constants, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Pin",
+      "meaning": "A chosen point from which distances to all other points are measured."
+    },
+    {
+      "term": "Distinct distances",
+      "meaning": "The number of different lengths among a set of measured distances."
+    },
+    {
+      "term": "Unit distance",
+      "meaning": "A pair of points exactly one unit apart."
+    },
+    {
+      "term": "Exponent",
+      "meaning": "The power in a bound like n^(4/3), which says how fast it grows with n."
+    },
+    {
+      "term": "Number field",
+      "meaning": "A number system built from the fractions by adding finitely many roots of polynomials."
+    },
+    {
+      "term": "Incidence",
+      "meaning": "A point lying on a given curve, such as a circle."
+    },
+    {
+      "term": "Entropy",
+      "meaning": "A measure of how much information a random choice carries."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The weak pinned planar distance theorem” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-weak-pinned-planar-distance-theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A power saving for planar unit distances” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-planar-unit-distances-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 167",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/167.md",
+      "quote": "The formalization proves that there are absolute constants $C>0$ and $1\\le\\beta<4/3$ such that every finite planar point set of size $n$ determines at most $Cn^\\beta$ unordered unit-distance pairs."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Erdős initiated the planar distinct-distance and repeated-distance problems in 1946.",
+      "sourceLine": "problems in 1946",
+      "sourceQuote": "Erd\\H{o}s initiated the planar distinct-distance and repeated-distance problems in 1946 \\cite{Erdos1946}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The weak pinned conjecture asks for a point with at least n^(1−ε) distances; Erdős stated it in 1957.",
+      "sourceLine": "stated this question in 1957",
+      "sourceQuote": "Erd\\H{o}s explicitly stated this question in 1957 \\cite[Problem~16]{Erdos1957}; the modern terminology appears, for example, in \\cite[Conjecture~4.7]{WeakPinned2025}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Katz and Tardos obtained every pinned exponent below (48−14e)/(55−16e) = 0.864137….",
+      "sourceLine": "Katz and Tardos refined that method to obtain every",
+      "sourceQuote": "Katz and Tardos refined that method to obtain every exponent below \\[ \\frac{48-14e}{55-16e}=0.864137\\ldots \\] \\cite{KatzTardos}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "An exceptional set is necessary: for points on a circle and its center, the center sees one distance.",
+      "sourceLine": "if $P$ consists of points on a circle and its center, the center sees just one nonzero distance.",
+      "sourceQuote": "An exceptional set is necessary: if $P$ consists of points on a circle and its center, the center sees just one nonzero distance.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "For every fixed ε > 0, all but o(n) points of any n-point planar set determine at least n^(1−ε) distinct distances.",
+      "sourceLine": "For every fixed $\\varepsilon>0$, all but $o(n)$ points of any $n$-point planar set determine at least $n^{1-\\varepsilon}$ distinct nonzero distances.",
+      "sourceQuote": "For every fixed $\\varepsilon>0$, all but $o(n)$ points of any $n$-point planar set determine at least $n^{1-\\varepsilon}$ distinct nonzero distances.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "No hypothesis on separation or position is imposed, and the theorem supplies no explicit rate of decay.",
+      "sourceLine": "the theorem supplies no explicit rate of decay.",
+      "sourceQuote": "Its exponent $s$ is fixed; the theorem supplies no explicit rate of decay.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Transfer for real closed fields preserves every distance equality and puts each configuration in a number field.",
+      "sourceLine": "Transfer for real closed fields preserves every distance equality and",
+      "sourceQuote": "Transfer for real closed fields preserves every distance equality and disequality and puts each finite configuration in a number field \\cite[Theorems~3.1 and~4.1]{RCFTransfer}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Spencer, Szemerédi and Trotter established u(n) = O(n^(4/3)) in 1984.",
+      "sourceLine": "established the upper bound",
+      "sourceQuote": "Spencer, Szemer\\'edi and Trotter established the upper bound \\(u(n)=O(n^{4/3})\\) in 1984 \\cite{sst1984}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "An OpenAI construction gave at least n^(1+ε) unit distances along an unbounded sequence of sizes.",
+      "sourceLine": "An OpenAI construction disproved it by giving",
+      "sourceQuote": "An OpenAI construction disproved it by giving at least \\(n^{1+\\varepsilon}\\) unit distances, for some fixed \\(\\varepsilon>0\\), along an unbounded sequence of sizes \\cite[Theorem~1.1]{openaiUnitLower2026}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "There are absolute constants C and 1 ≤ β < 4/3 with u(n) ≤ C n^β for every n.",
+      "sourceLine": "There are absolute constants \\(0<C<\\infty\\) and \\(1\\le\\beta<4/3\\) such that",
+      "sourceQuote": "There are absolute constants \\(0<C<\\infty\\) and \\(1\\le\\beta<4/3\\) such that \\(u(n)\\le Cn^\\beta\\) for every nonnegative integer \\(n\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The proof combines incidence counting, prediction from entropy, and heights from the product formula.",
+      "sourceLine": "The proof then combines these bounds with prediction and, at its",
+      "sourceQuote": "The proof then combines these bounds with prediction and, at its last stage, algebraic independence and quadratic extensions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the weak pinned distance theorem with its almost-every-pin consequence, and the bound u(n) ≤ C·n^β with β < 4/3.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
