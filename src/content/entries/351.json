@@ -1,0 +1,193 @@
+{
+  "id": "351",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-closed-Ricci-flow-with-bounded-scalar-curvature-and-finite-time-curvature-blowup-September-24-2026/paper.pdf",
+      "label": "A closed Ricci flow with bounded scalar curvature and finite-time curvature blowup"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-scalar-curvature-and-smooth-extension-of-four-dimensional-Ricci-flow-September-24-2026/paper.pdf",
+      "label": "Bounded scalar curvature and smooth extension of four-dimensional Ricci flow"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Path-selection-and-an-elliptic-inequality-on-degenerating-Ricci-flat-trees-September-24-2026/paper.pdf",
+      "label": "Path selection and an elliptic inequality on degenerating Ricci-flat trees"
+    }
+  ],
+  "headline": "Claims four-dimensional Ricci flow continues while scalar curvature is bounded, but not in some high dimension.",
+  "scope": "Smooth Ricci flows on closed manifolds. The extension theorem covers real dimension four; the counterexample lives on S² × S^(q+1) for some q ≥ 10.",
+  "plain": "Ricci flow is an equation that slowly reshapes a curved space, like heat evening out a temperature. It can break down at a finite time, when the curvature becomes infinite somewhere. An old question asks whether the simplest average of curvature, the scalar curvature, must also become infinite there. The papers claim yes for closed four-dimensional spaces and no in some high dimension. There is no Lean check.",
+  "doesNot": "This does not say what happens in dimensions five up to the dimension of the counterexample. It has no Lean check. The counterexample is only said to exist for some q ≥ 10.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "Richard Hamilton, who showed a closed flow stops only when full curvature blows up",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle a central extension question for Ricci flow in dimension four and to disprove its all-dimensions form."
+  },
+  "explanation": "Start with a round four-sphere of radius 1. Ricci flow changes a curved space over time, shrinking it where it bends like a sphere. Under the flow the radius squared falls by 6 per unit time, so it equals 1 − 6t. The sphere vanishes at time t = 1/6. Scalar curvature is a single number at each point that averages all the bending. For this sphere it is 12/(1 − 6t). At t = 0 it is 12. At t = 0.15 it is 120. At t = 0.166 it is 3000. So here the scalar curvature blows up exactly when the flow breaks down.\n\nMust this always happen? A smooth Ricci flow on a closed space can stop at a finite time only if its full curvature becomes unbounded[1]. Closed means finite in size with no edge. Full curvature records the bending in every direction, not just the average. The scalar-curvature extension conjecture asks if the average must blow up too[2]. Earlier, Šešum showed that a bound on the Ricci tensor, a middle-sized summary of curvature, is enough[3]. The difficulty is that scalar curvature can vanish in a blow-up limit while the full curvature does not[4]. The limit can then be Ricci-flat, curved but with zero Ricci tensor, without being flat.\n\nThe second paper claims a yes in dimension four. A flow on a closed four-manifold extends past any finite time at which scalar curvature stays bounded[5]. Bamler and Zhang had shown this when a certain topological invariant vanishes[6]. At a point where curvature might pile up, rescaling reveals a finite tree of Ricci-flat pieces[7]. The central problem is to stop the outermost piece from shrinking, while smaller pieces inside it may shrink[8]. The third paper supplies a key estimate for a renormalized energy on such trees of Ricci-flat spaces[9].\n\nThe first paper claims a no in high dimension. It builds a flow on the product of a two-sphere and a sphere of dimension q + 1, with q at least 10[10]. Its scalar curvature stays bounded, but its full curvature becomes infinite at a finite time[10]. This refutes the conjecture in its form for all dimensions of at least four[11]. It asserts nothing in dimension four[12]. The example builds on Stolarski's flows that form cone-shaped singularities[13]. The new step is a bound on scalar curvature near the tip of the forming cone.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The four-dimensional proof is long and depends on a companion paper for its key static estimate. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if the proofs hold. There is no Lean check, the four-dimensional proof is long and rests on a companion paper, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ricci flow",
+      "meaning": "An equation that changes a curved space over time, shrinking it where it bends like a sphere."
+    },
+    {
+      "term": "Scalar curvature",
+      "meaning": "One number at each point that averages all the ways the space bends there."
+    },
+    {
+      "term": "Full curvature",
+      "meaning": "The complete record of how the space bends in every pair of directions."
+    },
+    {
+      "term": "Ricci tensor",
+      "meaning": "A summary of curvature between the full record and the single scalar average."
+    },
+    {
+      "term": "Ricci-flat",
+      "meaning": "Having zero Ricci tensor; such a space can still be curved."
+    },
+    {
+      "term": "Closed manifold",
+      "meaning": "A space that is finite in size and has no edge."
+    },
+    {
+      "term": "Finite-time singularity",
+      "meaning": "A time at which the flow cannot continue smoothly because curvature becomes infinite."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A closed Ricci flow with bounded scalar curvature and finite-time curvature blowup” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-closed-Ricci-flow-with-bounded-scalar-curvature-and-finite-time-curvature-blowup-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Bounded scalar curvature and smooth extension of four-dimensional Ricci flow” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bounded-scalar-curvature-and-smooth-extension-of-four-dimensional-Ricci-flow-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Path selection and an elliptic inequality on degenerating Ricci-flat trees” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Path-selection-and-an-elliptic-inequality-on-degenerating-Ricci-flat-trees-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "A smooth Ricci flow on a closed manifold can fail to extend at a finite time only if its full curvature becomes unbounded.",
+      "sourceLine": "A smooth Ricci flow on a closed manifold can fail to extend at a finite time",
+      "sourceQuote": "A smooth Ricci flow on a closed manifold can fail to extend at a finite time only if its full curvature becomes unbounded~\\cite{Hamilton1995}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The scalar-curvature extension conjecture asks whether scalar curvature alone must detect such a singularity.",
+      "sourceLine": "The scalar-curvature extension conjecture asks whether scalar curvature",
+      "sourceQuote": "The scalar-curvature extension conjecture asks whether scalar curvature alone must detect such a singularity; see~\\cite[p.~756]{Bamler2018}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Šešum showed that a uniform bound for the Ricci tensor suffices for continuation.",
+      "sourceLine": "bound for the Ricci tensor also suffices \\cite{Sesum2005}.",
+      "sourceQuote": "\\v{S}e\\v{s}um showed that a uniform bound for the Ricci tensor also suffices \\cite{Sesum2005}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "In a possible blow-up, scalar curvature may vanish after rescaling while full curvature stays nonzero.",
+      "sourceLine": "is weaker: in a possible curvature blowup, the scalar curvature may",
+      "sourceQuote": "A scalar bound is weaker: in a possible curvature blowup, the scalar curvature may vanish after rescaling while the full curvature stays nonzero.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A smooth Ricci flow on a closed four-manifold extends through every finite time at which its scalar curvature remains uniformly bounded.",
+      "sourceLine": "We prove that a smooth Ricci flow on a closed real four-manifold extends on",
+      "sourceQuote": "We prove that a smooth Ricci flow on a closed real four-manifold extends on the same manifold through every finite time at which its scalar curvature remains uniformly bounded.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Bamler and Zhang's work gives smooth extension when the second homology vanishes over every field.",
+      "sourceLine": "extension when \\(H_2(M;\\mathbb F)=0\\) for every field \\(\\mathbb F\\)",
+      "sourceQuote": "Their work also gives smooth extension when \\(H_2(M;\\mathbb F)=0\\) for every field \\(\\mathbb F\\) \\cite[arXiv version, Corollary~1.10]{BamlerZhangI}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "At a hypothetical concentration point, successive rescalings produce a finite tree of Ricci-flat pieces.",
+      "sourceLine": "At a hypothetical concentration point, successive spatial rescalings",
+      "sourceQuote": "At a hypothetical concentration point, successive spatial rescalings produce a finite tree of Ricci-flat pieces.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The central problem is to rule out contraction of the outermost scale while allowing smaller descendants.",
+      "sourceLine": "The central problem is to rule out contraction of this outermost scale",
+      "sourceQuote": "The central problem is to rule out contraction of this outermost scale while allowing arbitrarily smaller descendants.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The paper proves the inequality E = o(M) for the renormalized Einstein–Hilbert functional on a fixed finite tree of four-dimensional Ricci-flat spaces.",
+      "sourceLine": "We prove a sequential elliptic inequality for the renormalized",
+      "sourceQuote": "We prove a sequential elliptic inequality for the renormalized Einstein--Hilbert functional on a fixed finite tree of four-dimensional Ricci-flat spaces.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "There is a Ricci flow on S² × S^(q+1), for some q ≥ 10, with bounded scalar curvature and full curvature tending to infinity at a finite time.",
+      "sourceLine": "\\(g(t)\\), \\(0\\le t<T\\), on the closed connected manifold",
+      "sourceQuote": "There are an integer \\(q\\ge10\\), a time \\(T>0\\), and a smooth Ricci flow \\(g(t)\\), \\(0\\le t<T\\), on the closed connected manifold \\(M=\\Sp^2\\times\\Sp^{q+1}\\), with smooth initial metric, such that \\[ \\sup_{M\\times[0,T)}|R_{g(t)}|<\\infty, \\qquad \\lim_{t\\uparrow T}\\max_M|\\Rm_{g(t)}|=\\infty. \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "This refutes the conjecture in its unrestricted all-dimensions formulation.",
+      "sourceLine": "Theorem~\\ref{thm:main} refutes this conjecture in its unrestricted",
+      "sourceQuote": "Theorem~\\ref{thm:main} refutes this conjecture in its unrestricted all-dimensions formulation: the assertion that every finite-time singularity of a closed Ricci flow in dimension at least four has unbounded scalar curvature.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "No dimension-four conclusion is asserted.",
+      "sourceLine": "no dimension-four conclusion is asserted.",
+      "sourceQuote": "The example is in sufficiently high dimension; no dimension-four conclusion is asserted.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The construction uses Stolarski's quantitative profile estimates for doubly warped flows with conical singularities.",
+      "sourceLine": "We use its quantitative profile estimates and establish that bound for a",
+      "sourceQuote": "We use its quantitative profile estimates and establish that bound for a choice of sufficiently large dimension and mode index.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
