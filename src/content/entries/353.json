@@ -1,0 +1,192 @@
+{
+  "id": "353",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-Nonquadratic-Affine-Maximal-Graph-in-Dimension-Ten-October-5-2026/affine-maximal-dimension-ten.pdf",
+      "label": "A Smooth Nonquadratic Entire Affine Maximal Graph in Dimension Ten"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-affine-Bernstein-theorem-in-dimensions-three-through-nine-September-24-2026/main.pdf",
+      "label": "The affine Bernstein theorem in dimensions three through nine"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/353.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves affine Bernstein rigidity for complete graphs in dimensions 3 to 9; claims a smooth dimension-ten counterexample.",
+  "scope": "Smooth affine maximal graphs with positive-definite Hessian, complete for the induced Euclidean metric, in dimensions 3 to 9; one entire smooth graph over ℝ¹⁰.",
+  "plain": "An affine maximal surface is a curved convex surface that is balanced for a kind of area that does not change under stretching and shearing. The affine Bernstein problem asks whether such a surface, if it goes on forever without an edge, must be a bowl-shaped paraboloid. The second paper proves yes for graphs in dimensions three through nine. The first paper claims a smooth example in dimension ten that is not a paraboloid. So nine is the last dimension where the yes answer holds.",
+  "doesNot": "This does not settle the problem when only the affine metric is complete in dimension ten. The Lean proof covers only the dimension three to nine graph theorem, not the dimension-ten example.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Shiing-Shen Chern, who posed the two-dimensional entire-graph problem",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It extends a classical rigidity theorem from dimension two to dimensions three through nine and shows the range is sharp."
+  },
+  "explanation": "Start with a convex function of three variables, u = (x² + 4y² + 9z²)/2. Its graph is a bowl called an elliptic paraboloid. The Hessian is the table of second derivatives. Here it is the diagonal table 1, 4, 9, and its determinant is 36 everywhere. The affine maximal equation is a fourth-order equation built from that determinant[1]. When the determinant is constant, every term vanishes, so this bowl solves it. Now try u = cosh(x) + (y² + z²)/2. Its Hessian determinant is cosh(x), which changes. At x = 0 the equation gives −0.8, not 0, so this graph is not a solution.\n\nSolutions are balanced for affine area, a notion of area that stays the same under stretching and shearing[1]. The affine Bernstein problem asks whether a complete solution must be a paraboloid. Complete means every path of finite length stays on the surface, with no missing edge. Chern posed the two-dimensional case[2]. Trudinger and Wang proved it for surfaces with Euclidean completeness[3]. They reduced higher dimensions to one estimate: a uniform control of how the graph separates from its tangent planes[4]. Getting that estimate without extra assumptions was the obstacle[5].\n\nThe second paper proves the answer is yes in dimensions three through nine[6]. A smooth graph with positive-definite Hessian, solving the equation and complete for ordinary distance, is a paraboloid[6]. No growth bound is assumed[7]. The proof rescales the graph and studies convex limits. It counts the directions in which a limit opens up, and shows only one is possible. The dimension limit enters through one quadratic estimate that stays positive only up to dimension nine[8].\n\nTrudinger and Wang had found a dimension-ten solution, √(|x|⁹ + t²), but it is not smooth at the origin[9]. The first paper claims a smooth solution over all of ten-dimensional space that is not quadratic[10]. It keeps the shape of their example but replaces |x|^(9/2) with a smooth convex function[11]. The main obstacle is to show an auxiliary function never reaches zero at a finite radius[12]. So the range three through nine cannot be extended to ten.\n\nHow sure is this? The Lean scope note says the formalization proves the Euclidean-complete graph theorem for dimensions three through nine. The extension to hypersurfaces that are not graphs is outside that note. The dimension-ten counterexample has no Lean check. No specialist review has been published.",
+  "hypeCheck": "Major. Lean covers the dimension three to nine graph theorem. The dimension-ten counterexample is unchecked by Lean, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Hessian",
+      "meaning": "The table of second derivatives of a function; positive definite means the graph curves upward in every direction."
+    },
+    {
+      "term": "Affine maximal equation",
+      "meaning": "A fourth-order equation whose solutions are balanced for affine area."
+    },
+    {
+      "term": "Affine area",
+      "meaning": "A way to measure the size of a convex surface that does not change under volume-preserving stretching and shearing."
+    },
+    {
+      "term": "Elliptic paraboloid",
+      "meaning": "A bowl-shaped graph of a positive quadratic function, such as z = x² + y²."
+    },
+    {
+      "term": "Complete",
+      "meaning": "Every path of finite length on the surface stays inside it; there is no missing edge."
+    },
+    {
+      "term": "Entire graph",
+      "meaning": "The graph of a function defined over the whole space, not just part of it."
+    },
+    {
+      "term": "Tangent plane",
+      "meaning": "The flat plane that touches the graph at one point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Smooth Nonquadratic Entire Affine Maximal Graph in Dimension Ten” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-Nonquadratic-Affine-Maximal-Graph-in-Dimension-Ten-October-5-2026/affine-maximal-dimension-ten.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The affine Bernstein theorem in dimensions three through nine” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-affine-Bernstein-theorem-in-dimensions-three-through-nine-September-24-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 353",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/353.md",
+      "quote": "The formalization proves the Euclidean-complete affine Bernstein theorem for graph dimensions $3\\le n\\le9$."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "The classical affine maximal equation is the Euler–Lagrange equation of the affine area functional.",
+      "sourceLine": "This is the classical affine maximal equation, the Euler--Lagrange",
+      "sourceQuote": "This is the classical affine maximal equation, the Euler--Lagrange equation of the affine area functional $\\int (\\det D^2u)^{1/(n+2)}$ under compactly supported variations; see \\cite{TrudingerWang2000}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Chern formulated the two-dimensional entire-graph problem.",
+      "sourceLine": "Chern formulated the two-dimensional",
+      "sourceQuote": "Chern formulated the two-dimensional entire-graph problem \\cite{Chern1979}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Trudinger and Wang proved the Euclidean-complete surface theorem without affine completeness.",
+      "sourceLine": "Trudinger and Wang proved the",
+      "sourceQuote": "Trudinger and Wang proved the Euclidean-complete surface theorem, dispensing with affine completeness \\cite[Theorem~1.1]{TW2000}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Trudinger and Wang reduced higher dimensions to a uniform modulus of strict convexity for tangent-plane sections.",
+      "sourceLine": "The analytic reduction in higher dimensions is also due to",
+      "sourceQuote": "The analytic reduction in higher dimensions is also due to Trudinger and Wang.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Obtaining uniform strict-convexity control in higher dimensions without an extra hypothesis is the obstacle addressed.",
+      "sourceLine": "an additional hypothesis is the obstacle addressed here.",
+      "sourceQuote": "Obtaining it in higher dimensions without an additional hypothesis is the obstacle addressed here.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "In dimensions three through nine, a smooth locally uniformly convex affine maximal graph with complete induced Euclidean metric is an elliptic paraboloid.",
+      "sourceLine": "We prove the Euclidean-complete affine Bernstein conjecture in dimensions",
+      "sourceQuote": "We prove the Euclidean-complete affine Bernstein conjecture in dimensions three through nine: a smooth locally uniformly convex affine maximal graph is an elliptic paraboloid whenever its induced Euclidean metric is complete.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The theorem imposes neither a growth bound nor completeness of the affine metric.",
+      "sourceLine": "imposes neither a growth bound nor completeness of the affine metric.",
+      "sourceQuote": "It includes the entire graph assertion and imposes neither a growth bound nor completeness of the affine metric.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The dimension restriction appears in a quadratic coercivity estimate whose strict positivity holds through dimension nine.",
+      "sourceLine": "dimension restriction in a quadratic coercivity estimate, whose strict",
+      "sourceQuote": "Our argument identifies the dimension restriction in a quadratic coercivity estimate, whose strict positivity holds through dimension nine.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Trudinger and Wang's dimension-ten example is not smooth at the origin and lacks a positive-definite Hessian everywhere.",
+      "sourceLine": "This example is not smooth",
+      "sourceQuote": "This example is not smooth at the origin and does not have positive definite Hessian everywhere.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "There is a nonquadratic smooth function on ℝ¹⁰ with positive-definite Hessian solving the affine maximal equation.",
+      "sourceLine": "We construct a smooth nonquadratic entire graph in dimension ten that",
+      "sourceQuote": "We construct a smooth nonquadratic entire graph in dimension ten that solves the classical affine maximal equation and has positive-definite Hessian everywhere.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The construction replaces F(x) = |x|^(9/2) by a smooth strictly convex radial function with F(0) = 1.",
+      "sourceLine": "strictly convex radial function with $F(0)=1$.",
+      "sourceQuote": "Our construction keeps the relation $u^2-t^2=F(x)^2$ suggested by \\eqref{eq:singular}, but replaces $F(x)=|x|^{9/2}$ by a smooth strictly convex radial function with $F(0)=1$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The main obstacle is global existence: the auxiliary function P could vanish at a finite radius.",
+      "sourceLine": "The main obstacle is then global",
+      "sourceQuote": "The main obstacle is then global existence: a priori the auxiliary function $P$ could vanish at a finite radius.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the Euclidean-complete affine Bernstein theorem for graphs in dimensions three through nine.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}
