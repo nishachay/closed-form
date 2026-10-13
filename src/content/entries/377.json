@@ -1,0 +1,164 @@
+{
+  "id": "377",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Interior-C1alpha-Estimates-for-Infinity-Harmonic-Functions-October-4-2026/interior-c1-infinity-harmonic.pdf",
+      "label": "Uniform Interior $C^{1,\\alpha}$ Estimates for Infinity-Harmonic Functions"
+    }
+  ],
+  "headline": "Claims the gradient of every infinity-harmonic function is Hölder continuous inside its domain, in dimension 3 and up.",
+  "scope": "Bounded infinity-harmonic functions on the unit ball in ℝ^d for every d ≥ 3. Estimates hold on the half ball; boundary regularity is not treated.",
+  "plain": "Infinity-harmonic functions fill in values between fixed boundary data so that the steepest slope is as small as possible. Their slopes can bend sharply, so it was hard to show the slope changes without jumps. In the plane this was known. The paper claims, for dimensions three and up, that the slope changes continuously. It also bounds how fast the slope can change.",
+  "doesNot": "This does not give the exponent as a number, and it does not show the exponent reaches the best possible value 1/3. It says nothing about regularity at the boundary.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1967",
+    "firstStepBy": "Gunnar Aronsson, who linked the equation to optimal Lipschitz extension",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It claims a continuous gradient for infinity-harmonic functions in dimensions three and up, where only differentiability at each point was known."
+  },
+  "explanation": "Start with Aronsson's function u(x) = |x₁|^{4/3} − |x₂|^{4/3}. Its slope in the x₁ direction is (4/3)·|x₁|^{1/3}, with the sign of x₁. At the origin the slope is 0. A step h away along x₁, the slope is (4/3)·h^{1/3}. For h = 0.001 that is 0.1333. For h = 0.000001 it is 0.01333. So the slope is continuous, but not smooth. Divide the change by h^{1/3} and you always get 4/3. Divide by h^{1/2} instead and you get 4.22, then 13.33, without bound.\n\nThis u is infinity-harmonic. That means it solves Δ∞u = 0, where Δ∞u is the second derivative of u along its own slope direction, times the slope squared. Only the second derivative in that one direction enters the equation[10]. For Aronsson's u, the two terms are 64/81 and −64/81, so they cancel. These functions solve a problem of filling in values between fixed boundary data with the smallest possible steepest slope. Aronsson found the equation for smooth solutions[4]. Jensen gave the right weak meaning, called viscosity solutions, and proved uniqueness[5].\n\nThe hard question is how smooth these solutions are. A Hölder estimate with exponent α says the slope changes by at most C·h^α over a distance h. Aronsson's example shows α can never exceed 1/3[11]. Savin proved the slope is continuous in the plane[6]. Evans and Savin then gave a Hölder estimate in the plane[7]. In higher dimensions, Evans and Smart proved each solution has a slope at every point[8]. Whether that slope changes continuously was a further question[9].\n\nThe paper claims an interior Hölder estimate for the slope in every dimension d ≥ 3[1]. On the half ball, the slope and its Hölder size are at most a constant times the spread of u on the full ball. So these functions have continuous slopes inside any open set[3]. The exponent is positive but not given as a number[2]. It comes from an argument by contradiction with limits, called compactness[13]. If the estimate failed, rescaled solutions would converge to a limit on all of space. A Liouville theorem, a result that all-space solutions must be simple, shows that limit is affine, a flat plane[12]. That contradicts the failure.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof uses delicate limit and scaling arguments. No specialist review of the paper has been published.",
+  "hypeCheck": "A major claim if the proof holds. The exponent is not explicit and is not shown to reach the optimal 1/3. There is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Infinity-harmonic function",
+      "meaning": "A solution of Δ∞u = 0, the equation for filling in values with the smallest possible steepest slope."
+    },
+    {
+      "term": "Infinity Laplacian (Δ∞)",
+      "meaning": "The second derivative of u along its own slope direction, times the slope squared."
+    },
+    {
+      "term": "Viscosity solution",
+      "meaning": "A weak meaning of solution, tested by smooth functions touching from above or below."
+    },
+    {
+      "term": "Gradient",
+      "meaning": "The slope of a function in every direction at once, written ∇u."
+    },
+    {
+      "term": "Hölder estimate",
+      "meaning": "A bound saying a quantity changes by at most C·h^α over a distance h."
+    },
+    {
+      "term": "Compactness argument",
+      "meaning": "A proof by contradiction that takes a limit of a sequence of failing examples."
+    },
+    {
+      "term": "Liouville theorem",
+      "meaning": "A result saying that a solution on all of space must have a simple form."
+    },
+    {
+      "term": "Affine",
+      "meaning": "Of the form a constant plus a linear function; its graph is flat."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Uniform Interior $C^{1,\\alpha}$ Estimates for Infinity-Harmonic Functions” (4 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Interior-C1alpha-Estimates-for-Infinity-Harmonic-Functions-October-4-2026/interior-c1-infinity-harmonic.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Bounded infinity-harmonic functions satisfy a uniform interior C^{1,α_d} estimate in every dimension d ≥ 3.",
+      "sourceLine": "We prove a uniform interior $C^{1,\\alpha_d}$ estimate for bounded infinity-harmonic functions in every dimension $d\\ge3$.",
+      "sourceQuote": "We prove a uniform interior $C^{1,\\alpha_d}$ estimate for bounded infinity-harmonic functions in every dimension $d\\ge3$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The exponent is not explicit, and no endpoint or boundary regularity claim is made.",
+      "sourceLine": "The exponent is not explicit, and no endpoint or boundary regularity claim is made.",
+      "sourceQuote": "The exponent is not explicit, and no endpoint or boundary regularity claim is made.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Infinity-harmonic functions are locally C¹ on every open subset of ℝ^d, d ≥ 3.",
+      "sourceLine": "In particular, infinity-harmonic functions are locally $C^1$ on every open subset",
+      "sourceQuote": "In particular, infinity-harmonic functions are locally $C^1$ on every open subset of $\\mathbb{R}^d$, for $d\\ge3$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Aronsson identified the equation for smooth absolute minimizers.",
+      "sourceLine": "Aronsson identified the equation for smooth absolute minimizers.",
+      "sourceQuote": "Aronsson identified the equation for smooth absolute minimizers.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Jensen established the viscosity characterization and uniqueness for the Dirichlet problem.",
+      "sourceLine": "Jensen established its viscosity characterization and uniqueness for the",
+      "sourceQuote": "Jensen established its viscosity characterization and uniqueness for the Dirichlet problem \\cite{Jensen1993}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Savin proved continuity of the gradient in the plane.",
+      "sourceLine": "Savin proved continuity of the gradient in the plane",
+      "sourceQuote": "Savin proved continuity of the gradient in the plane \\cite{Savin2005}, and Evans and Savin obtained planar interior $C^{1,\\alpha}$ estimates for some positive universal exponent \\cite{EvansSavin2008}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Evans and Savin obtained planar interior C^{1,α} estimates.",
+      "sourceLine": "Evans and Savin obtained planar interior $C^{1,\\alpha}$ estimates",
+      "sourceQuote": "Savin proved continuity of the gradient in the plane \\cite{Savin2005}, and Evans and Savin obtained planar interior $C^{1,\\alpha}$ estimates for some positive universal exponent \\cite{EvansSavin2008}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Evans and Smart proved differentiability at every point in every dimension.",
+      "sourceLine": "Evans and Smart subsequently proved differentiability at every point in every dimension",
+      "sourceQuote": "Evans and Smart subsequently proved differentiability at every point in every dimension \\cite{EvansSmart2011}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Continuity of that derivative is a further assertion.",
+      "sourceLine": "continuity of that derivative is a further assertion.",
+      "sourceQuote": "Their conclusion identifies a unique derivative at each point; continuity of that derivative is a further assertion.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Only the second derivative in the gradient direction enters the equation.",
+      "sourceLine": "Only the second derivative in the gradient direction enters the equation.",
+      "sourceQuote": "Only the second derivative in the gradient direction enters the equation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Aronsson's example rules out any exponent greater than 1/3 in every dimension d ≥ 2.",
+      "sourceLine": "It therefore rules out any exponent greater than $1/3$",
+      "sourceQuote": "It therefore rules out any exponent greater than $1/3$, in every dimension $d\\ge2$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Liouville theorem states that every entire solution with these fits is affine.",
+      "sourceLine": "Our Liouville Theorem states that every entire solution with these fits is affine.",
+      "sourceQuote": "Our Liouville Theorem states that every entire solution with these fits is affine.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The exponent arises from a compactness argument and is not explicit.",
+      "sourceLine": "The exponent arises from a compactness argument and is not explicit.",
+      "sourceQuote": "The exponent arises from a compactness argument and is not explicit.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
