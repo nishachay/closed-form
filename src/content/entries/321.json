@@ -1,0 +1,170 @@
+{
+  "id": "321",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Walls-D2-Problem-October-6-2026/wall-d2-counterexample.pdf",
+      "label": "A Counterexample to Wall's D(2) Problem"
+    }
+  ],
+  "headline": "A paper claims a negative answer to Wall's D(2) problem: a finite 3-complex that passes the test but has no 2-d model.",
+  "scope": "Finite connected CW complexes with infinite fundamental group; one explicit three-dimensional example.",
+  "plain": "Wall asked in 1965 whether a finite complex that passes certain algebraic two-dimensional tests is always deformable to a finite two-dimensional complex. The paper claims the answer is no. It builds a finite three-dimensional complex that passes the tests, yet no finite complex of dimension at most two has the same homotopy type. Its fundamental group is infinite. The obstruction is a twisted homology group that a short matrix calculation shows is zero.",
+  "doesNot": "This does not settle the problem for finite fundamental groups, where the known positive cases live.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "C. T. C. Wall, finiteness conditions for CW complexes",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims to answer a problem open since 1965 and listed in Wall's 1979 problem list."
+  },
+  "explanation": "Write down five letters, x₁, a₁, x₂, a₂ and s. Add four rules, such as x₁a₁x₁⁻¹ = a₁⁴ and x₁ = a₂¹³. Letters and rules like these define a group. They also define a space, the presentation complex B. It has one point, five loops, and four discs glued along the rules. Its Euler characteristic is 1 − 5 + 4 = 0.\n\nNow give each letter a complex number. Send x₁ and a₂ to −1. Send a₁ to ζ, a cube root of 1, x₂ to ζ², and s to 1. Each rule still holds. For example, ζ⁴ = ζ and (−1)¹³ = −1. This choice is a character, a way to read loops as numbers. It defines twisted homology, a count of holes where going around a loop multiplies by its number. For B, the key boundary map is a 4-by-5 matrix of complex numbers. Computed from the four rules, its rank is 4. So B has no twisted second homology.\n\nWhy does this matter? A CW complex is a space glued from points, edges, discs and higher cells. Wall's D(2) condition is an algebraic test. It says the complex looks two-dimensional to homology and cohomology. The finite D(2) problem asks whether every finite complex that passes the test is homotopy equivalent to a finite complex of dimension at most two[1]. Homotopy equivalent means the same shape up to continuous deformation. The problem reappeared as Problem D3 in Wall's 1979 list[2].\n\nPartial answers existed. Adding enough two-spheres always gives a two-dimensional complex[3]. But such stabilization does not answer the original question[4]. Hambleton proved the D(2) property for finite subgroups of SO(3), the rotation group of space[5]. Hofmann and Nicholson proved it for quaternion groups of orders 24 and 32[6]. Bridson and Tweedale had candidate counterexamples. Their failure was conditional on an unproved relation-gap assertion[7].\n\nThe paper claims a negative answer to the problem[8]. Its example has infinite fundamental group[9]. The construction starts with Quillen's plus construction. It kills a perfect subgroup, one equal to its own commutators, while keeping homology. Mannan showed that this turns a finite two-dimensional complex into a finite D(2) complex[10]. In the example, the subgroup is made perfect by coprime numbers: 4² − 1 = 15 and 3³ − 1 = 26 share no factor. The quotient group has an element of order two that the character sees[11]. Here x₁ squares to the identity, but the character sends it to −1. A short boundary calculation shows the twisted second homology is zero[12]. That is the rank computation above.\n\nThe obstacle is to show no two-dimensional model exists at all. The paper proves a rule for finite two-dimensional complexes. If twisted second homology vanishes, the character must send every finite-order element to 1. The proof follows the cyclic-tower method of Howie[13]. It climbs a tower of infinite cyclic covers. Each lifted image contains strictly more simplices, yet all come from one fixed finite complex[14]. That is a contradiction. Our example breaks the rule, since x₁ has order two and reads as −1.\n\nHow sure is this? No Lean check covers this paper. No specialist review has been published. The key matrix calculation is small and easy to repeat. The tower argument carries the main weight, so treat the result as a claim.",
+  "hypeCheck": "Major if correct. No Lean check and no specialist review. The matrix step is easy to recheck; the tower obstruction carries the proof.",
+  "glossary": [
+    {
+      "term": "CW complex",
+      "meaning": "A space glued together from points, edges, discs and higher-dimensional cells."
+    },
+    {
+      "term": "Presentation complex",
+      "meaning": "The two-dimensional space built from a group's generators (loops) and relations (discs)."
+    },
+    {
+      "term": "D(2) condition",
+      "meaning": "Wall's algebraic test that a complex looks two-dimensional to homology and cohomology."
+    },
+    {
+      "term": "Fundamental group",
+      "meaning": "The group formed by loops in a space, up to deformation."
+    },
+    {
+      "term": "Character",
+      "meaning": "A rule that assigns a nonzero complex number to each loop, compatible with joining loops."
+    },
+    {
+      "term": "Twisted homology",
+      "meaning": "A count of holes where travelling around a loop multiplies by the number the character assigns."
+    },
+    {
+      "term": "Perfect subgroup",
+      "meaning": "A subgroup generated by its own commutators, so it has no abelian quotient."
+    },
+    {
+      "term": "Plus construction",
+      "meaning": "Quillen's method of attaching cells to kill a perfect subgroup of the fundamental group while keeping homology."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Counterexample to Wall's D(2) Problem” (6 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-Walls-D2-Problem-October-6-2026/wall-d2-counterexample.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The finite D(2) problem asks whether every such X is homotopy equivalent to a finite CW complex of dimension at most two.",
+      "sourceLine": "The finite $D(2)$ problem asks whether every such $X$ is homotopy equivalent to a finite CW complex of dimension at most two",
+      "sourceQuote": "The finite $D(2)$ problem asks whether every such $X$ is homotopy equivalent to a finite CW complex of dimension at most two \\cite[Section~2]{Wall65}, \\cite[Problem~D3]{Wall79}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The problem reappeared as Problem D3 in Wall's 1979 list.",
+      "sourceLine": "The problem reappeared as Problem~D3 in his 1979 list",
+      "sourceQuote": "The problem reappeared as Problem~D3 in his 1979 list~\\cite{Wall79}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Adjoining sufficiently many two-spheres makes a finite D(2) complex homotopy equivalent to a finite two-dimensional complex.",
+      "sourceLine": "adjoining sufficiently many two-spheres makes a finite $D(2)$ complex homotopy equivalent to a finite two-dimensional complex.",
+      "sourceQuote": "A stable form of the problem has a positive answer: adjoining sufficiently many two-spheres makes a finite $D(2)$ complex homotopy equivalent to a finite two-dimensional complex.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Such stabilization does not answer the unstabilized question.",
+      "sourceLine": "Such stabilization does not answer the unstabilized question.",
+      "sourceQuote": "Such stabilization does not answer the unstabilized question.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hambleton proves the D(2) property for finite subgroups of SO(3).",
+      "sourceLine": "proves the $D(2)$ property for finite subgroups of $\\operatorname{SO}(3)$.",
+      "sourceQuote": "Hambleton~\\cite[Theorem~B]{Hambleton18} proves the $D(2)$ property for finite subgroups of $\\operatorname{SO}(3)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hofmann and Nicholson establish the D(2) property for the generalized quaternion groups of orders 24 and 32.",
+      "sourceLine": "establish the $D(2)$ property for the generalized quaternion groups of orders $24$ and $32$",
+      "sourceQuote": "More recently, Hofmann and Nicholson~\\cite[Theorem~A]{HofmannNicholson27} establish the $D(2)$ property for the generalized quaternion groups of orders $24$ and $32$ and recover the order-$28$ case previously proved using work of Mannan--Popiel and Nicholson~\\cite{MannanPopiel21,Nicholson21}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The failure of Bridson–Tweedale's examples to have finite two-dimensional models is conditional on a relation-gap assertion.",
+      "sourceLine": "Their failure to have finite two-dimensional models is conditional on a relation-gap assertion.",
+      "sourceQuote": "Their failure to have finite two-dimensional models is conditional on a relation-gap assertion.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper gives a negative answer to Wall's finite D(2) problem.",
+      "sourceLine": "We give a negative answer to Wall's finite $D(2)$ problem.",
+      "sourceQuote": "We give a negative answer to Wall's finite $D(2)$ problem.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The example has infinite fundamental group.",
+      "sourceLine": "The example has infinite fundamental group.",
+      "sourceQuote": "The example has infinite fundamental group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mannan shows the plus construction on a finite two-dimensional complex along a finitely normally generated perfect subgroup gives a finite D(2) complex.",
+      "sourceLine": "shows directly that applying it to a finite two-dimensional complex along a finitely normally generated perfect subgroup produces a finite $D(2)$ complex.",
+      "sourceQuote": "Mannan~\\cite[Section~2]{Mannan09} shows directly that applying it to a finite two-dimensional complex along a finitely normally generated perfect subgroup produces a finite $D(2)$ complex.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The quotient has an element of order two detected by a complex character.",
+      "sourceLine": "The quotient has an element of order two detected by a complex character.",
+      "sourceQuote": "The quotient has an element of order two detected by a complex character.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A four-row boundary calculation shows the presentation complex has zero second homology with that character.",
+      "sourceLine": "An exact four-row boundary calculation shows that the presentation complex has zero second homology with that character.",
+      "sourceQuote": "An exact four-row boundary calculation shows that the presentation complex has zero second homology with that character.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The obstruction follows the cyclic-tower method of Howie.",
+      "sourceLine": "following the cyclic-tower method of Howie",
+      "sourceQuote": "The method is a tower of infinite cyclic covers and image subcomplexes, following the cyclic-tower method of Howie~\\cite{Howie81Pairs}; see also the formulation of Louder--Wilton~\\cite[Section~3]{LouderWilton17} and its account of the earlier work of Papakyriakopoulos and Stallings.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Each lifted image contains strictly more simplices, although all are images of the same fixed triangulated F.",
+      "sourceLine": "Each lifted image contains strictly more simplices, although all are images of the same fixed triangulated $F$.",
+      "sourceQuote": "Each lifted image contains strictly more simplices, although all are images of the same fixed triangulated $F$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
