@@ -1,0 +1,160 @@
+{
+  "id": "373",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-Monge-ansatz-for-the-three-marginal-Coulomb-cost-September-25-2026/paper.pdf",
+      "label": "A counterexample to the Monge ansatz for the three-marginal Coulomb cost"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/373.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that the best three-electron Coulomb arrangement need not follow fixed maps, even for a smooth density.",
+  "scope": "Three-marginal optimal transport with Coulomb cost, where all three marginals equal one smooth density on ℝ³. Extensions cover inverse-power costs in every dimension d ≥ 2.",
+  "plain": "Chemists study how electrons arrange themselves when their repulsion dominates. One model asks for the cheapest way to place three electrons, each spread by the same density, under Coulomb repulsion. A common guess says the best arrangement fixes the second and third electron once the first is placed. This paper builds a smooth density where no such fixed rule is optimal. Fixed rules can still get as close to the best cost as you like.",
+  "doesNot": "This does not show that the guess fails for typical or physical densities from real atoms; it gives one constructed density. Lean covers only the three-dimensional Coulomb case.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Partial differential equations",
+    "significance": "Solid",
+    "significanceWhy": "It settles an open question about the co-motion ansatz in density functional theory, with a Lean statement of the three-dimensional Coulomb case."
+  },
+  "explanation": "Start with three charged particles. The Coulomb cost of a triple is the sum of 1 over each pairwise distance. Put one particle at 0 and the others at e₁ and −e₁, one unit away on each side. The cost is 1 + 1 + 1/2 = 2.5. Now put them at 0, e₁ and e₂, two directions at right angles. The cost is 1 + 1 + 1/√2 ≈ 2.707. The first triple is cheaper. The triple 0, e₂, −e₂ costs 2.5 too.\n\nOptimal transport here asks a question about a probability density, a rule for how mass spreads in space. Each of three electrons is spread by the same density. A plan is a joint rule for where all three sit at once. We want the plan with the least average cost. A Monge plan is a special plan: the first electron's position fixes the other two through maps. The guess that the best plan is a Monge plan is the Monge, or co-motion, ansatz. It comes from the strong-interaction limit of density functional theory, a method for computing electron behaviour[4].\n\nFor two electrons, Cotar, Friesecke and Klüppelberg proved an optimal map always exists[6]. Colombo and Di Marino showed that maps get as close to the best cost as you like[5]. Friesecke still listed the three-electron question as open in January 2026[7].\n\nThe paper claims a smooth density where no pair of maps reaches the minimum[1]. The density has five small blobs: one near 0 and one near each of ±e₁ and ±e₂. The triples (0, e_k, −e_k) have the same cost and the same pull at the centre[9]. So every best plan uses two families of triples, one along e₁ and one along e₂. The centre blob holds mass 1/3 and each outer blob holds 1/6. Suppose a map picks the e₁ family on a set S of the centre. It sends mass ν(S)/3 into a region holding only ν(S)/6[10]. That breaks the rule that each electron has the same density. So a best plan must split each point between the families, and no fixed map can. The idea adapts a splitting trick of Gerolin, Kausamo and Rajala[8].\n\nEven so, the best cost over maps equals the true minimum; it is just never reached[2]. The paper extends this to inverse-power costs in every dimension at least 2[3].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the three-dimensional Coulomb result. So the paper proves it, as far as the Lean statement matches the paper. The other powers and dimensions are not in the Lean scope. No specialist review of the paper is published.",
+  "hypeCheck": "A solid counterexample with a Lean statement of the Coulomb case in three dimensions. It uses one constructed density, so it says nothing about typical physical densities. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Coulomb cost",
+      "meaning": "For three points, the sum of 1 divided by each of the three pairwise distances."
+    },
+    {
+      "term": "Probability density",
+      "meaning": "A rule for how a total mass of 1 spreads through space."
+    },
+    {
+      "term": "Optimal transport",
+      "meaning": "Finding the cheapest way to couple distributions of mass under a given cost."
+    },
+    {
+      "term": "Marginal",
+      "meaning": "The distribution of one particle alone, ignoring where the others are."
+    },
+    {
+      "term": "Monge plan",
+      "meaning": "A plan in which the first particle's position fixes the others through maps."
+    },
+    {
+      "term": "Kantorovich minimum",
+      "meaning": "The least cost over all plans, including ones that split mass between options."
+    },
+    {
+      "term": "Co-motion ansatz",
+      "meaning": "The guess, from electron physics, that the best plan is a Monge plan."
+    },
+    {
+      "term": "Density functional theory",
+      "meaning": "A method that computes electron behaviour from the electron density alone."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A counterexample to the Monge ansatz for the three-marginal Coulomb cost” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-the-Monge-ansatz-for-the-three-marginal-Coulomb-cost-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 373",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/373.md",
+      "quote": "the formalization constructs a smooth compactly supported probability density, with smooth compactly supported square root, for which no pair of measure-preserving Borel maps attains the Kantorovich minimum"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "There is a smooth compactly supported density on ℝ³ for which the three-marginal Coulomb minimum is not attained by any pair of measure-preserving Borel maps.",
+      "sourceLine": "three-marginal Coulomb transport minimum is not attained by any pair of",
+      "sourceQuote": "We construct a smooth compactly supported probability density on \\(\\R^3\\), with a smooth compactly supported square root, for which the three-marginal Coulomb transport minimum is not attained by any pair of measure-preserving Borel maps.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Monge and Kantorovich infima agree: preserving maps have costs approaching the minimum.",
+      "sourceLine": "Nevertheless, the Monge and Kantorovich infima agree",
+      "sourceQuote": "Nevertheless, the Monge and Kantorovich infima agree: we construct preserving maps whose costs approach the Kantorovich minimum.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For every d ≥ 2 and s > 0 the same holds for the inverse-power interaction on ℝ^d.",
+      "sourceLine": "For every \\(d\\ge2\\) and \\(s>0\\), we also construct a smooth identical marginal",
+      "sourceQuote": "For every \\(d\\ge2\\) and \\(s>0\\), we also construct a smooth identical marginal with the same nonattainment and equality-of-infima properties for the inverse-power interaction \\(\\sum_{i<j}|x_i-x_j|^{-s}\\) on \\(\\R^d\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Coulomb multi-marginal transport arises in the strong-interaction limit of density functional theory.",
+      "sourceLine": "Coulomb multi-marginal transport arises in the strong-interaction limit of density functional theory.",
+      "sourceQuote": "Coulomb multi-marginal transport arises in the strong-interaction limit of density functional theory.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Colombo and Di Marino proved that the Coulomb Kantorovich minimum equals the infimum over measure-preserving cyclic maps.",
+      "sourceLine": "that the Coulomb Kantorovich minimum equals the infimum over",
+      "sourceQuote": "Colombo and Di Marino~\\cite[author version, Theorem~1.1]{CDM2015} proved that the Coulomb Kantorovich minimum equals the infimum over measure-preserving cyclic maps for identical non-atomic marginals.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For two particles, Cotar, Friesecke and Klüppelberg proved existence and uniqueness of an optimal map.",
+      "sourceLine": "proved existence and uniqueness of an optimal map for absolutely continuous marginals in every dimension.",
+      "sourceQuote": "For two particles, Cotar, Friesecke and Kl{\\\"u}ppelberg~\\cite[arXiv version, Theorem~3.6]{CFK2013} proved existence and uniqueness of an optimal map for absolutely continuous marginals in every dimension.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Friesecke stated the three-particle Coulomb question in ℝ³ as open in January 2026.",
+      "sourceLine": "was still stated as open in January 2026 by Friesecke",
+      "sourceQuote": "The three-particle Coulomb question in \\(\\R^3\\) was still stated as open in January 2026 by Friesecke~\\cite[Section~3.2]{Friesecke2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction adapts the shared-component splitting mechanism of Gerolin, Kausamo and Rajala.",
+      "sourceLine": "Our construction adapts the shared-component splitting mechanism",
+      "sourceQuote": "Our construction adapts the shared-component splitting mechanism of Gerolin, Kausamo and Rajala~\\cite{GKR2019} for the repulsive harmonic cost \\(-\\sum_{i<j}|x_i-x_j|^2\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The triples (0, e_k, −e_k) have the same Coulomb cost and the same central gradient.",
+      "sourceLine": "have the same Coulomb cost and the same central gradient.",
+      "sourceQuote": "The triples \\((0,e_k,-e_k)\\) have the same Coulomb cost and the same central gradient.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A map choosing branch H on S sends mass ν(S)/3 into H(S), which has marginal mass only ν(S)/6.",
+      "sourceLine": "which has marginal mass only \\(\\nu(S)/6\\).",
+      "sourceQuote": "If it chooses a branch \\(H\\) on a Borel set \\(S\\subset B\\), it sends mass \\(\\nu(S)/3\\) into \\(H(S)\\), which has marginal mass only \\(\\nu(S)/6\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the three-dimensional Coulomb density with no optimal pair of maps, and equality of the Monge and Kantorovich infima; the other powers and dimensions are outside it.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
