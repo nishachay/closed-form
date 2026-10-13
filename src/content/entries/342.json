@@ -1,0 +1,180 @@
+{
+  "id": "342",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Taming-implies-compatibility-on-four-manifolds-October-6-2026/paper.pdf",
+      "label": "Taming implies compatibility on four-manifolds"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/342.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves Donaldson's tamed-to-compatible conjecture for tamed almost-complex structures on closed four-manifolds.",
+  "scope": "Smooth almost-complex structures on closed connected smooth four-manifolds that are tamed by some symplectic form.",
+  "plain": "An almost-complex structure rotates each direction in a four-dimensional space by a right angle. A symplectic form is a closed rule for measuring signed area. Taming asks that the form be positive on each direction and its rotation, and compatibility also asks that the rotation not change the form. Donaldson asked in 2006 whether taming always gives a compatible form on closed four-manifolds. The paper proves yes, and Lean, a computer proof checker, has a formal statement of this result.",
+  "doesNot": "This does not say that every taming cohomology class contains a compatible form; it can fail when the anti-invariant dimension is small.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2006",
+    "firstStepBy": "Simon Donaldson, Question 2 in his study of two-forms on four-manifolds",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles, with a Lean statement, a well-known conjecture of Donaldson in four-dimensional symplectic geometry."
+  },
+  "explanation": "Work in four-dimensional space with coordinates x1 to x4. Let J rotate directions by a right angle: J sends (v1, v2, v3, v4) to (−v2, v1, −v4, v3). Take the area form ω = dx1 dx2 + dx3 dx4. For any direction v, ω(v, Jv) equals v1² + v2² + v3² + v4², which is positive. Now add c dx1 dx3. This extra term gives −v1v4 + v2v3 on the pair v, Jv. For v = (1, 0, 0, 1), the total is 2 − c. With c = 1 it is 1, still positive. With c = 3 it is −1, so positivity fails.\n\nA two-form ω tames J if ω(v, Jv) is positive for every nonzero v[2]. It is compatible if also ω(Ju, Jv) = ω(u, v)[3]. With c = 1 the form tames J but is not compatible. Averaging it with its rotated copy gives dx1 dx2 + dx3 dx4 + (c/2)(dx1 dx3 + dx2 dx4), which is compatible. A symplectic form is a closed nondegenerate two-form, and closed means its derivative is zero. Here the coefficients are constant, so the average stays closed. On a curved four-manifold, where J changes from point to point, this averaging keeps positivity but usually loses closedness[4]. That is the obstacle.\n\nDonaldson asked in 2006 whether a taming symplectic form on a closed four-manifold implies a compatible one exists[5]. Li and Zhang proved this for complex surfaces, where J comes from complex coordinates[6]. Taubes proved it for most tamed J when one topological number, b₂⁺, equals 1[7]. Li and Zhang extended this to some rational four-manifolds[8].\n\nThe paper proves the general case[1]. The compatible form works for the given J, but its cohomology class, a kind of fixed label, is not prescribed[9]. The proof argues by contradiction. If no compatible form existed, a separation argument would give a nonzero positive current, a kind of generalized surface, that kills all closed invariant forms[10]. The main step shows that the part of this current with positive two-dimensional density is closed[11]. Then the correction term must vanish, and the current cannot coexist with a closed taming form. The paper also describes exactly which classes hold compatible forms. When b₂⁺ = 1, every taming class has a compatible form[12]. A four-torus example shows this can fail in general[13].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main result for every closed connected four-manifold, with J kept fixed. So the paper proves this result, as far as the Lean statement matches the paper. The cone description and the four-torus example are not listed in the Lean scope. No specialist review is published.",
+  "hypeCheck": "Major, with a Lean statement of the main theorem. It does not put a compatible form in every taming class. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Almost-complex structure",
+      "meaning": "A rule J that rotates each tangent direction by a right angle, so applying it twice reverses the direction."
+    },
+    {
+      "term": "Two-form",
+      "meaning": "A rule that assigns a signed area to each pair of directions."
+    },
+    {
+      "term": "Symplectic form",
+      "meaning": "A closed two-form that is nondegenerate, so no direction pairs to zero with every other."
+    },
+    {
+      "term": "Tame",
+      "meaning": "A two-form tames J if it is positive on every nonzero direction paired with its rotation by J."
+    },
+    {
+      "term": "Compatible",
+      "meaning": "Taming, and also unchanged when both directions are rotated by J."
+    },
+    {
+      "term": "Cohomology class",
+      "meaning": "A label for a closed form that stays fixed under certain allowed changes."
+    },
+    {
+      "term": "Positive current",
+      "meaning": "A generalized surface, possibly spread out, that pairs positively with taming forms."
+    },
+    {
+      "term": "b₂⁺",
+      "meaning": "The number of independent positive directions in how surfaces in the four-manifold intersect."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Taming implies compatibility on four-manifolds” (6 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Taming-implies-compatibility-on-four-manifolds-October-6-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 342",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/342.md",
+      "quote": "The formalized result establishes this for every closed connected smooth four-manifold, keeping the almost-complex structure fixed."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A smooth almost-complex structure on a closed connected four-manifold tamed by a symplectic form has a compatible symplectic form.",
+      "sourceLine": "form. Then there is a smooth symplectic form compatible with \\(J\\).",
+      "sourceQuote": "Suppose that a smooth almost complex structure \\(J\\) on a closed connected smooth real four-manifold \\(X\\) is tamed by a symplectic form. Then there is a smooth symplectic form compatible with \\(J\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "A two-form tames J if ω(v,Jv) > 0 for every nonzero v.",
+      "sourceLine": "\\emph{tames} \\(J\\) if \\(\\omega(v,Jv)>0\\) for every nonzero tangent",
+      "sourceQuote": "A real two-form \\(\\omega\\) \\emph{tames} \\(J\\) if \\(\\omega(v,Jv)>0\\) for every nonzero tangent vector \\(v\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "A taming form is compatible with J if, in addition, ω(Ju,Jv) = ω(u,v).",
+      "sourceLine": "It is \\emph{compatible} with \\(J\\) if, in addition,",
+      "sourceQuote": "It is \\emph{compatible} with \\(J\\) if, in addition, \\(\\omega(Ju,Jv)=\\omega(u,v)\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The averaging projection preserves positivity on complex lines but generally loses closedness.",
+      "sourceLine": "but generally loses closedness",
+      "sourceQuote": "The elementary projection \\(\\omega\\mapsto \\frac12(\\omega+\\omega(J\\,\\cdot,J\\,\\cdot))\\) shows the obstacle: it preserves positivity on complex lines but generally loses closedness.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Donaldson asked whether a taming symplectic form on a closed four-manifold implies a compatible one.",
+      "sourceLine": "Donaldson asked whether the existence of a taming symplectic form",
+      "sourceQuote": "Donaldson asked whether the existence of a taming symplectic form on a closed four-manifold implies the existence of a compatible one \\cite[Section~5.2, Question~2]{Donaldson2006}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Li and Zhang proved the equivalence of taming and compatible forms on complex surfaces.",
+      "sourceLine": "Li and Zhang proved the equivalence between the existence of taming",
+      "sourceQuote": "Li and Zhang proved the equivalence between the existence of taming and compatible symplectic forms on complex surfaces \\cite[Theorem~1.2]{LiZhang2009}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Taubes obtained compatibility for a residual subset of tamed structures when b₂⁺ = 1.",
+      "sourceLine": "compatibility for a residual subset of the smooth almost complex",
+      "sourceQuote": "Taubes developed integration over curve moduli spaces to obtain compatibility for a residual subset of the smooth almost complex structures tamed by a fixed symplectic form when \\(b_2^+=1\\) \\cite{Taubes2011,Taubes2017}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Li and Zhang extended this to every tamed structure on S²×S² and CP²#CP²-bar, and further rational manifolds under hypotheses.",
+      "sourceLine": "Li and Zhang extended this approach to every tamed structure on",
+      "sourceQuote": "Li and Zhang extended this approach to every tamed structure on \\(S^2\\times S^2\\) and \\(\\mathbb{CP}^2\\#\\overline{\\mathbb{CP}}{}^2\\), and to further rational manifolds under hypotheses on embedded pseudoholomorphic spheres \\cite[Theorems~1.2 and~1.3]{LiZhang2015}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The conclusion imposes no condition on the cohomology class of the compatible form.",
+      "sourceLine": "The conclusion imposes no condition on the cohomology class of",
+      "sourceQuote": "The conclusion imposes no condition on the cohomology class of the compatible form.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If no compatible form exists, separation produces a nonzero positive current that annihilates closed invariant forms.",
+      "sourceLine": "exists, separation produces a nonzero positive current \\(P\\)",
+      "sourceQuote": "If no compatible form exists, separation produces a nonzero positive current \\(P\\) that annihilates closed invariant forms.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The principal step proves that the restriction of P to the positive-density set is closed.",
+      "sourceLine": "step, Theorem~\\ref{thm:splitting}, proves that the restriction",
+      "sourceQuote": "The principal step, Theorem~\\ref{thm:splitting}, proves that the restriction \\(P_E=\\ind_E P\\) is closed.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If b₂⁺ = 1, every taming class has a smooth compatible symplectic representative.",
+      "sourceLine": "compatible symplectic representative.",
+      "sourceQuote": "In particular, if \\(b_2^+(X)=1\\), then \\(\\mathcal K_J^t=\\mathcal K_J^c\\): every taming class has a smooth compatible symplectic representative.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The inclusion can be strict, and an explicit four-torus example is given.",
+      "sourceLine": "Example~\\ref{ex:strict-cones} gives an explicit four-torus.",
+      "sourceQuote": "The inclusion \\(\\mathcal K_J^c+H_J^-\\subseteq\\mathcal K_J^t\\) can be strict when \\(h_J^-<b_2^+-1\\), even if \\(H_J^-=0\\); Example~\\ref{ex:strict-cones} gives an explicit four-torus.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the tamed-to-compatible result for every closed connected smooth four-manifold, keeping the almost-complex structure fixed.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
