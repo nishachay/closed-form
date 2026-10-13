@@ -1,0 +1,169 @@
+{
+  "id": "346",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Codimension-One-Bound-for-the-Singular-Set-of-a-Stationary-Integral-Varifold-October-5-2026/varifold-singular-dimension.pdf",
+      "label": "A Codimension-One Bound for the Singular Set of a Stationary Integral Varifold"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Almost-everywhere-regularity-of-stationary-integral-varifolds-September-23-2026/paper.pdf",
+      "label": "Almost-everywhere regularity of stationary integral varifolds"
+    }
+  ],
+  "headline": "Claims that the singular points of a stationary integral varifold have dimension at most one less than the varifold.",
+  "scope": "Stationary integral varifolds of every dimension m and codimension in open subsets of Euclidean space; the measure-zero result also on round spheres.",
+  "plain": "A stationary integral varifold is a very general minimal surface, allowed to cross itself and to be stacked with whole-number thickness. Its singular points are where it is not a smooth sheet. A companion paper claims these points take up zero area, settling a conjecture of Brena, Decio and De Lellis. The main paper claims more: the singular points have dimension at most one less than the surface. Two flat sheets crossing along a line show this is the best possible.",
+  "doesNot": "This does not cover curved ambient metrics in general, where other examples behave differently. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1972",
+    "firstStepBy": "William Allard, regularity theory for varifolds",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims a sharp answer to a central regularity question for minimal surfaces, with no stability or codimension condition."
+  },
+  "explanation": "Take three straight rays in the plane, starting at one point and spaced 120 degrees apart. Their unit directions are (1, 0), (−1/2, √3/2) and (−1/2, −√3/2). These add up to (0, 0). So the three rays pull on their meeting point in perfect balance, like a soap-film junction. Small pushes do not lower their total length to first order. A shape with this balance is called stationary. The rays are one-dimensional, and the only bad point is the junction, of dimension zero. In space, two flat planes crossing along a line behave the same way. Their bad points form the line, one dimension less than the planes.\n\nA varifold is a very general surface. It may cross itself and carry whole-number thickness, called multiplicity. Stationary means its area does not change to first order under any small push[1]. A point is regular if, near it, the varifold is a whole-number multiple of one smooth minimal sheet[2]. All other points form the singular set.\n\nAllard showed that the regular points are dense, and that points of thickness one are regular[3]. The hard points sit where several layers stack on one flat plane[4]. There Allard's theorem does not apply. Brena, Decio and De Lellis conjectured that the singular set has zero area in the varifold's own dimension. They also conjectured the sharper dimension bound[5].\n\nThe second paper claims the zero-area result in every dimension and codimension[6]. Near almost every point, the varifold is a whole-number multiple of one smooth minimal sheet. It also claims the same on round spheres[7]. Its main estimate compares projected mass and tilt while keeping their leading terms signed[8].\n\nThe first paper claims the sharp bound. The singular set has Hausdorff dimension at most m − 1 for an m-dimensional stationary integral varifold[9]. Hausdorff dimension measures how big a rough set is; a line has dimension 1 and a point 0. The crossing planes show the bound cannot be improved[10]. The key obstacle is that zero area alone does not bound dimension[11]. The proof argues by contradiction. A too-large singular set would give measures on stacked points that survive a blow-up limit, which the paper rules out.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. Both papers rely on long, delicate estimates in geometric measure theory. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if the proofs hold: they would settle two conjectures of Brena, Decio and De Lellis on minimal surfaces in Euclidean space. The proofs are long and have no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Varifold",
+      "meaning": "A very general surface, allowed to cross itself and to be counted with whole-number thickness."
+    },
+    {
+      "term": "Stationary",
+      "meaning": "Having area that does not change to first order under any small push."
+    },
+    {
+      "term": "Integral",
+      "meaning": "Carrying whole-number thickness, or multiplicity, at almost every point."
+    },
+    {
+      "term": "Regular point",
+      "meaning": "A point near which the varifold is a whole-number multiple of one smooth minimal sheet."
+    },
+    {
+      "term": "Singular set",
+      "meaning": "All points of the surface that are not regular."
+    },
+    {
+      "term": "Hausdorff dimension",
+      "meaning": "A measure of how big a rough set is; a line has dimension 1 and a point 0."
+    },
+    {
+      "term": "Codimension",
+      "meaning": "How many dimensions the surrounding space has beyond those of the surface."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Codimension-One Bound for the Singular Set of a Stationary Integral Varifold” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Codimension-One-Bound-for-the-Singular-Set-of-a-Stationary-Integral-Varifold-October-5-2026/varifold-singular-dimension.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Almost-everywhere regularity of stationary integral varifolds” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Almost-everywhere-regularity-of-stationary-integral-varifolds-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Stationarity means the first variation of area vanishes under every compactly supported ambient deformation.",
+      "sourceLine": "the first variation of area vanishes under every",
+      "sourceQuote": "Stationarity is the weakest variational condition naturally imposed on a minimal submanifold: the first variation of area vanishes under every compactly supported ambient deformation.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A point is regular if near it the varifold is q times a smooth embedded minimal submanifold, for an integer q ≥ 1.",
+      "sourceLine": "A point $p\\in\\spt\\mu\\cap U$ is \\emph{regular} if there are a neighborhood",
+      "sourceQuote": "A point $p\\in\\spt\\mu\\cap U$ is \\emph{regular} if there are a neighborhood $W$ of $p$, a smooth embedded minimal $m$-submanifold $\\Sigma\\subset W$, and an integer $q\\geq1$ such that the restriction of the varifold to $W$ is $q|\\Sigma|$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Allard's theory gives a relatively open dense regular set and regularity at density-one points.",
+      "sourceLine": "Allard's regularity theory gives a relatively open dense regular set and, in",
+      "sourceQuote": "Allard's regularity theory gives a relatively open dense regular set and, in particular, regularity at density-one points \\cite{Allard1972}; see also \\cite[Theorem~23]{Allard1987} and \\cite[Chapter~5, Theorem~6.1 and Corollary~6.3]{Simon2018}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The remaining difficulty is the singular set at higher-multiplicity planar tangents, where Allard's theorem does not apply.",
+      "sourceLine": "The remaining difficulty",
+      "sourceQuote": "The remaining difficulty is therefore the singular set at higher-multiplicity planar tangents, where Allard's multiplicity-one regularity theorem does not apply.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Brena, Decio and De Lellis separate the dimension bound from the weaker assertion that the singular set has zero measure.",
+      "sourceLine": "separate the dimension bound from the weaker assertion",
+      "sourceQuote": "Brena, Decio, and De Lellis \\cite[Conjectures~1.1 and~1.2]{BDD2025} separate the dimension bound from the weaker assertion $\\Hh^m(\\Sing V)=0$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Every stationary integral m-varifold in an open subset of Euclidean space has singular set of zero m-dimensional measure.",
+      "sourceLine": "Every stationary integral $m$-varifold in an open subset of $\\R^{m+n}$ satisfies",
+      "sourceQuote": "Every stationary integral $m$-varifold in an open subset of $\\R^{m+n}$ satisfies \\[ \\HH^m(\\operatorname{Sing}V)=0. \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The corresponding statement also holds on round spheres.",
+      "sourceLine": "The corresponding statement also holds on round spheres.",
+      "sourceQuote": "The corresponding statement also holds on round spheres.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The main estimate compares projected mass and tilt with their leading terms kept signed.",
+      "sourceLine": "The main estimate compares projected mass and tilt with their leading terms",
+      "sourceQuote": "The main estimate compares projected mass and tilt with their leading terms kept signed.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The singular set of every stationary integral m-varifold has Hausdorff dimension at most m − 1.",
+      "sourceLine": "singular set of every stationary integral $m$-varifold in an open",
+      "sourceQuote": "The singular set of every stationary integral $m$-varifold in an open Euclidean set has Hausdorff dimension at most $m-1$, in every positive dimension and codimension.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The estimate is sharp: two distinct m-planes meeting along an (m−1)-plane give a stationary varifold with exactly that singular set.",
+      "sourceLine": "The estimate is sharp: the sum of the",
+      "sourceQuote": "The estimate is sharp: the sum of the varifolds of two distinct $m$-planes meeting along an $(m-1)$-plane is stationary, and its singular set is exactly that intersection.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "A set can have zero m-dimensional measure and still have Hausdorff dimension greater than m − 1.",
+      "sourceLine": "a set can have zero",
+      "sourceQuote": "The almost-everywhere regularity conclusion itself is not an input: a set can have zero $\\Hh^m$ measure and still have Hausdorff dimension greater than $m-1$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
