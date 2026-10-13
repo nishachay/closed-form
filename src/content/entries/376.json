@@ -1,0 +1,271 @@
+{
+  "id": "376",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Instructions-and-Solenoidal-Shear-Flows-September-27-2026/manuscript.pdf",
+      "label": "Finite Instructions and Solenoidal Shear Flows"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Fixed-Particle-Test-for-Computation-in-a-Forced-Viscous-Flow-September-27-2026/manuscript.pdf",
+      "label": "A Fixed Particle Test for Computation in a Forced Viscous Flow"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf",
+      "label": "Universal Computation with Eventually Stationary Navier–Stokes Forcing"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Geometric-Programs-for-Solenoidal-Forcing-September-27-2026/manuscript.pdf",
+      "label": "Geometric Programs for Solenoidal Forcing"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Prefix-Instructions-and-Incompressible-Flows-September-27-2026/manuscript.pdf",
+      "label": "Prefix Instructions and Incompressible Flows"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Computation-under-Rapidly-Vanishing-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf",
+      "label": "Computation under Rapidly Vanishing Navier–Stokes Forcing"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Velocity-Field-Detection-of-Computation-in-Forced-Navier-Stokes-Flows-September-27-2026/manuscript.pdf",
+      "label": "Velocity-Field Detection of Computation in Forced Navier–Stokes Flows"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Scalar-Potentials-and-Slow-Clocks-for-Forced-Fluid-Computation-September-27-2026/manuscript.pdf",
+      "label": "Scalar Potentials and Slow Clocks for Forced Fluid Computation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/manuscript.pdf",
+      "label": "Incompressible Box Transport and Finite Computation"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/376.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a pushed fluid can run any program: a marked particle enters a fixed box exactly when the program halts.",
+  "scope": "Smooth forced incompressible Navier–Stokes flows in three dimensions, starting from rest at any fixed positive computable viscosity. Nine companion papers vary the domain and force conditions.",
+  "plain": "A Turing machine is a simple model of any computer program. These nine papers turn any such machine and its input into a recipe for pushing a thick fluid, like honey in a box. The fluid starts at rest. One marked drop of fluid reaches a fixed target region exactly when the program stops. Since no method can decide in general whether a program stops, no method can decide in general where that drop goes.",
+  "doesNot": "This does not say that natural, unforced fluid flows compute, and it says nothing about whether Navier–Stokes solutions can blow up. The force is designed by hand for each program and input.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Partial differential equations",
+    "significance": "Solid",
+    "significanceWhy": "It moves fluid computation from specially chosen geometries to a fixed flat domain, with viscosity and a fluid at rest. Lean covers several versions."
+  },
+  "explanation": "Start with a simple flow on a cube whose opposite faces are glued, called a flat torus. Let the fluid move only in the X direction, with speed A(t)·sin(2πY). Here Y is height and A(t) is a strength you choose. This flow is incompressible: it never squeezes the fluid. For this flow the fluid needs no pressure. The force only has to speed it up and beat friction. With viscosity ν = 1 and A(t) = t, the needed force is (1 + 4π²t)·sin(2πY). At height Y = 1/4 and time 1 this is about 40.48. A drop at that height travels t²/2, so 0.5 units by time 1.\n\nThis is the basic trick. The Navier–Stokes equations describe a viscous, incompressible fluid. Viscosity is its internal friction. If you choose the motion first, the force that produces it is just acceleration minus the friction term[7]. So the hard part is not the force. It is to choose a motion that runs a program, written from the program's table of rules without running it first[8].\n\nA Turing machine is a simple model of a computer: a tape of symbols, a head, and a finite table of rules. It halts if it reaches a stop state. One step of the machine can erase information, but a smooth flow can always be run backward[3]. So the papers keep a record of past steps, an idea going back to Bennett[4]. Each step then becomes a reversible map on small rectangles or boxes. Shear flows like the one above carry out these maps[13].\n\nEarlier fluid computers used steady flows on specially shaped spaces. Cardona, Miranda, Peralta-Salas and Presas built one on a reshaped three-sphere[5]. Here the space is flat and fixed, and the fluid starts at rest[6].\n\nTake any machine and input. The papers claim a smooth force where a fixed particle enters a fixed region exactly when the machine halts[1]. So deciding where the particle goes is undecidable: no general method can answer it[2]. Variants make the force constant after time one[9], or let force and velocity fade faster than any power of time[10]. In another, the velocity at a fixed spot reveals halting[11]. The last paper puts the whole flow in one bounded region of ordinary space[12].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of several versions. They include the sheet maps, the fading-force memory, the velocity tests and the bounded-region computer in ordinary space. So those are proved, as far as the Lean statements match the papers. Other variants, such as the eventually constant force, are claims only. No specialist review is published.",
+  "hypeCheck": "Lean statements cover several of the main constructions. The forces are hand-built for each program; this says nothing about natural flows or about Navier–Stokes blowup. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Navier–Stokes equations",
+      "meaning": "The equations of motion for a viscous fluid, like water or honey."
+    },
+    {
+      "term": "Incompressible",
+      "meaning": "The fluid is never squeezed or stretched in volume; its velocity has zero divergence."
+    },
+    {
+      "term": "Viscosity",
+      "meaning": "The internal friction of a fluid, written ν."
+    },
+    {
+      "term": "Flat torus",
+      "meaning": "A cube whose opposite faces are glued, so fluid leaving one side comes back on the other."
+    },
+    {
+      "term": "Turing machine",
+      "meaning": "A simple model of a computer: a tape of symbols, a moving head, and a finite table of rules."
+    },
+    {
+      "term": "Halting",
+      "meaning": "A Turing machine reaching its stop state after finitely many steps."
+    },
+    {
+      "term": "Undecidable",
+      "meaning": "No single method can give the right yes-or-no answer for every case."
+    },
+    {
+      "term": "Shear flow",
+      "meaning": "A flow where layers slide past each other at different speeds."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Finite Instructions and Solenoidal Shear Flows” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Instructions-and-Solenoidal-Shear-Flows-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Fixed Particle Test for Computation in a Forced Viscous Flow” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Fixed-Particle-Test-for-Computation-in-a-Forced-Viscous-Flow-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Universal Computation with Eventually Stationary Navier–Stokes Forcing” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Geometric Programs for Solenoidal Forcing” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Geometric-Programs-for-Solenoidal-Forcing-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Prefix Instructions and Incompressible Flows” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Prefix-Instructions-and-Incompressible-Flows-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Computation under Rapidly Vanishing Navier–Stokes Forcing” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Computation-under-Rapidly-Vanishing-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “Velocity-Field Detection of Computation in Forced Navier–Stokes Flows” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Velocity-Field-Detection-of-Computation-in-Forced-Navier-Stokes-Flows-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "OpenAI, “Scalar Potentials and Slow Clocks for Forced Fluid Computation” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Scalar-Potentials-and-Slow-Clocks-for-Forced-Fluid-Computation-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "OpenAI, “Incompressible Box Transport and Finite Computation” (6 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/manuscript.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 376",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/376.md",
+      "quote": "The formalization constructs smooth forced three-dimensional Navier–Stokes flows from rest whose velocity fields detect whether a prescribed machine halts, at any positive computable viscosity."
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Smooth forces at any fixed positive computable viscosity make a fixed particle, starting from rest, enter a fixed open set exactly when a prescribed Turing machine halts.",
+      "sourceLine": "particle enters a fixed open set exactly when a prescribed Turing machine",
+      "sourceQuote": "We construct smooth external forces for incompressible Navier--Stokes flow on a fixed flat three-torus at any fixed positive computable viscosity, from zero initial velocity, such that a fixed particle enters a fixed open set exactly when a prescribed Turing machine halts.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The resulting reachability problem is undecidable.",
+      "sourceLine": "The resulting reachability problem is undecidable.",
+      "sourceQuote": "The resulting reachability problem is undecidable.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A tape instruction may erase information, whereas a smooth flow has invertible finite-time maps.",
+      "sourceLine": "A difficulty is that a tape instruction may erase information whereas a smooth flow has invertible finite-time maps.",
+      "sourceQuote": "A difficulty is that a tape instruction may erase information whereas a smooth flow has invertible finite-time maps.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Bennett implements reversible simulation by recording instruction indices.",
+      "sourceLine": "Bennett implements reversible simulation by recording instruction indices",
+      "sourceQuote": "Landauer discusses retaining intermediate information to avoid this loss \\cite[Section~3]{Landauer1961}; Bennett implements reversible simulation by recording instruction indices \\cite[Eqs.~(9)--(11)]{Bennett1973}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Cardona, Miranda, Peralta-Salas and Presas obtain stationary Euler flows on an adapted Riemannian three-sphere.",
+      "sourceLine": "Cardona, Miranda, Peralta-Salas and Presas obtain stationary Euler flows on an adapted Riemannian three-sphere",
+      "sourceQuote": "Cardona, Miranda, Peralta-Salas and Presas obtain stationary Euler flows on an adapted Riemannian three-sphere, using an area-preserving realization of generalized shifts and a suspension \\cite{CardonaMirandaPeraltaSalasPresas2021}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Here the flat metric is fixed and the fluid starts at rest.",
+      "sourceLine": "Here the flat metric is fixed and the fluid starts at rest.",
+      "sourceQuote": "Here the flat metric is fixed and the fluid starts at rest.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "For a prescribed incompressible velocity, material acceleration minus the viscous term is a body force.",
+      "sourceLine": "The force identity itself is elementary: for a prescribed incompressible velocity, its material acceleration minus its viscous term is a body force.",
+      "sourceQuote": "The force identity itself is elementary: for a prescribed incompressible velocity, its material acceleration minus its viscous term is a body force.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The substance is to prescribe the velocity from the finite machine table without running the machine.",
+      "sourceLine": "The substance of the argument is to prescribe the velocity from the finite machine table without running that machine.",
+      "sourceQuote": "The substance of the argument is to prescribe the velocity from the finite machine table without running that machine.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Mean-zero forces on the flat torus can be made stationary after time one.",
+      "sourceLine": "mean-zero forces on the flat three-torus that become stationary after",
+      "sourceQuote": "At every fixed positive computable viscosity, we construct smooth mean-zero forces on the flat three-torus that become stationary after time one and make a fixed particle, initially in a fluid at rest, enter a fixed open set exactly when a prescribed Turing machine halts.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every mixed derivative of the force and velocity can decrease faster than every inverse power of time.",
+      "sourceLine": "while every mixed derivative of the force and velocity decreases faster than every inverse power of time",
+      "sourceQuote": "At any fixed positive computable viscosity, smooth forces can make a fixed fluid particle detect the halting of an arbitrary machine, starting from rest, while every mixed derivative of the force and velocity decreases faster than every inverse power of time.",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Smooth forces can be chosen so that the velocity field detects whether a prescribed machine halts.",
+      "sourceLine": "whose velocity field detects whether a prescribed machine halts.",
+      "sourceQuote": "We construct smooth forces for three-dimensional incompressible Navier--Stokes flow, from rest at any fixed positive computable viscosity, whose velocity field detects whether a prescribed machine halts.",
+      "paper": 7,
+      "verdict": "supported"
+    },
+    {
+      "text": "A balanced three-stack recorder gives every machine and input a smooth force with one compact spatial support.",
+      "sourceLine": "every machine and finite input a smooth Navier--Stokes force with one compact spatial support",
+      "sourceQuote": "A balanced three-stack recorder then assigns every machine and finite input a smooth Navier--Stokes force with one compact spatial support, periodic after a loading interval, at any fixed positive computable viscosity.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "Finite reciprocal affine instruction maps are realized by smooth incompressible shear flows on a flat three-torus.",
+      "sourceLine": "We realize finite reciprocal affine instruction maps by smooth incompressible",
+      "sourceQuote": "We realize finite reciprocal affine instruction maps by smooth incompressible shear flows on a flat three-torus.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the coding-sheet maps, the fast-decaying memory construction, the velocity-field halting tests, box transport, and a bounded-support flow on ℝ³ where a fixed particle enters a fixed box exactly when the machine halts.",
+      "verdict": "external",
+      "sourceId": 10
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 11
+    }
+  ]
+}
