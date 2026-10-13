@@ -1,0 +1,152 @@
+{
+  "id": "375",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/De-Giorgis-conjecture-in-dimension-eight-September-26-2026/article.pdf",
+      "label": "A positive resolution of De Giorgi's conjecture in dimension eight"
+    }
+  ],
+  "headline": "Claims De Giorgi's conjecture in dimension eight: monotone Allen–Cahn solutions there are flat one-dimensional profiles.",
+  "scope": "Entire C² solutions u: ℝ⁸ → (−1, 1) of Δu = u³ − u that increase strictly in one direction. Also stable solutions on ℝ⁷ with values in [−1, 1].",
+  "plain": "The Allen–Cahn equation models a mixture of two phases, like oil and water, with a thin layer between them. De Giorgi asked in 1979 whether, up to dimension eight, every solution that rises steadily in one direction must be flat. Flat means it is just a single one-dimensional profile, the same along parallel planes. It was known up to dimension three, and through eight with an extra limit assumption. This paper claims the full dimension-eight case with no extra assumption.",
+  "doesNot": "This does not cover dimension nine and above, where nonflat monotone solutions are known to exist. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Ennio De Giorgi",
+    "field": "Partial differential equations",
+    "significance": "Landmark",
+    "significanceWhy": "It claims the dimension-eight case of De Giorgi's well-known conjecture without the extra limit assumption earlier proofs needed."
+  },
+  "explanation": "Start with the curve g(s) = tanh(s/√2). It rises from −1 to 1. It solves g″ = g³ − g. At s = 1, g ≈ 0.6089. Both g″ and g³ − g are then ≈ −0.3831. At s = 2 both are ≈ −0.1872. Now spread this curve across the plane. Set u(x, y) = g(0.6x + 0.8y). Every line 0.6x + 0.8y = constant is a level line, so the level sets are parallel. Because 0.8 > 0, u rises as y increases. This is a planar transition, also called a planar heteroclinic.\n\nThe equation Δu = u³ − u is the Allen–Cahn equation. Here Δ is the Laplacian, the sum of second derivatives in each direction. It models two phases, at −1 and +1, separated by a thin layer. A solution is entire if it is defined on all of space. De Giorgi asked whether, in dimension eight or less, every bounded entire solution that rises strictly in one direction is planar[3].\n\nThe question parallels minimal surfaces, which are soap-film shapes that locally minimize area. Nonflat area-minimizing cones exist in dimension eight. Nonflat minimal graphs over all of space first appear in dimension nine[11]. Ghoussoub and Gui proved the conjecture in dimension 2[4]. Ambrosio and Cabré proved it in dimension 3[5]. Savin proved it through dimension 8 assuming u tends to ±1 along each line in the rising direction[6]. Del Pino, Kowalczyk and Wei built nonplanar monotone solutions in dimension nine and up[7].\n\nThe paper claims the dimension-eight case with no limit assumption[1]. It needs no energy bound or minimizing property either[9]. The key is a second theorem about stable solutions. Stable means small local changes cannot lower the energy to second order. The paper claims every stable solution in seven dimensions is a constant, −1 or 1, or a planar transition[2]. This is sharp: Pacard and Wei built stable nonplanar solutions in dimension eight[8]. The limits of a monotone solution along its rising direction are stable in seven dimensions, so the second theorem feeds the first.\n\nThe main obstacle was a stable solution whose energy might grow too fast in large balls. The remaining task is to show this density stays finite[10]. The paper does this with new curvature estimates on the level set u = 0.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof is long and joins many delicate estimates. No specialist review of the paper has been published.",
+  "hypeCheck": "A landmark-level claim if the proof holds: it would settle the dimension-eight case of a famous conjecture. The proof is long, there is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Allen–Cahn equation",
+      "meaning": "The equation Δu = u³ − u, a model of two phases separated by a thin layer."
+    },
+    {
+      "term": "Laplacian (Δ)",
+      "meaning": "The sum of the second derivatives of a function in each direction."
+    },
+    {
+      "term": "Entire solution",
+      "meaning": "A solution defined on all of space."
+    },
+    {
+      "term": "Planar heteroclinic",
+      "meaning": "A solution of the form g(e·x − c) that rises from −1 to 1 and is constant along parallel planes."
+    },
+    {
+      "term": "Monotone",
+      "meaning": "Strictly increasing in one fixed direction."
+    },
+    {
+      "term": "Stable solution",
+      "meaning": "A solution whose energy cannot be lowered, to second order, by small local changes."
+    },
+    {
+      "term": "Minimal surface",
+      "meaning": "A surface, like a soap film, that locally has the least possible area."
+    },
+    {
+      "term": "Energy density",
+      "meaning": "The energy in a large ball divided by the size of a flat layer crossing it."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A positive resolution of De Giorgi's conjecture in dimension eight” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/De-Giorgis-conjecture-in-dimension-eight-September-26-2026/article.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every entire C² solution u: ℝ⁸ → (−1, 1) of Δu = u³ − u with an everywhere positive directional derivative is a planar heteroclinic.",
+      "sourceLine": "We resolve De Giorgi's conjecture positively in dimension eight",
+      "sourceQuote": "We resolve De Giorgi's conjecture positively in dimension eight: every entire $C^2$ solution $u:\\R^8\\to(-1,1)$ of $\\Delta u=u^3-u$ with an everywhere positive directional derivative is a planar heteroclinic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every stable solution v: ℝ⁷ → [−1, 1] is a constant well or a planar heteroclinic, without an energy-growth assumption.",
+      "sourceLine": "We prove that every stable solution $v:\\R^7\\to[-1,1]$ of this equation is a constant well or a planar heteroclinic,",
+      "sourceQuote": "We prove that every stable solution $v:\\R^7\\to[-1,1]$ of this equation is a constant well or a planar heteroclinic, without an energy-growth assumption.",
+      "verdict": "supported"
+    },
+    {
+      "text": "De Giorgi's conjecture asks whether every bounded entire solution strictly increasing in a fixed direction is planar, in dimension at most eight.",
+      "sourceLine": "De Giorgi's conjecture asks whether every bounded entire solution",
+      "sourceQuote": "De Giorgi's conjecture asks whether every bounded entire solution that is strictly increasing in a fixed direction has this form in ambient dimension at most eight \\cite{DeGiorgi1979}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ghoussoub and Gui established the conjecture in dimension two.",
+      "sourceLine": "Ghoussoub and Gui established the conjecture in dimension two",
+      "sourceQuote": "Ghoussoub and Gui established the conjecture in dimension two \\cite{GhoussoubGui1998}, and Ambrosio and Cabr\\'e in dimension three \\cite{AmbrosioCabre2000}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ambrosio and Cabré established it in dimension three.",
+      "sourceLine": "and Ambrosio and Cabr\\'e in dimension three",
+      "sourceQuote": "Ghoussoub and Gui established the conjecture in dimension two \\cite{GhoussoubGui1998}, and Ambrosio and Cabr\\'e in dimension three \\cite{AmbrosioCabre2000}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Savin proved the result through dimension eight under the additional assumption of limits ±1 in the monotone direction.",
+      "sourceLine": "Savin proved the result through dimension eight under the additional",
+      "sourceQuote": "Savin proved the result through dimension eight under the additional assumption \\[ \\lim_{t\\to-\\infty}u(x',t)=-1,\\qquad \\lim_{t\\to+\\infty}u(x',t)=1 \\quad\\text{for every }x'\\in\\R^{n-1} \\] \\cite[Theorem~2.4]{Savin2009}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Del Pino, Kowalczyk and Wei constructed nonplanar strictly monotone solutions in every dimension at least nine.",
+      "sourceLine": "Del Pino, Kowalczyk and Wei constructed nonplanar strictly monotone",
+      "sourceQuote": "Del Pino, Kowalczyk and Wei constructed nonplanar strictly monotone solutions in every ambient dimension at least nine, near large dilations of nonaffine minimal graphs \\cite{DPKW2011}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Pacard and Wei constructed bounded stable nonplanar solutions in dimension eight, so the stability endpoint is sharp.",
+      "sourceLine": "This stability endpoint is sharp: Pacard and Wei constructed bounded stable nonplanar solutions in dimension eight",
+      "sourceQuote": "This stability endpoint is sharp: Pacard and Wei constructed bounded stable nonplanar solutions in dimension eight \\cite{PacardWei2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Neither energy growth nor minimization is assumed.",
+      "sourceLine": "Neither energy growth nor minimization is assumed.",
+      "sourceQuote": "Neither energy growth nor minimization is assumed.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For stable solutions in ℝ⁷, the remaining task is to prove that the energy density is finite.",
+      "sourceLine": "For stable solutions in $\\R^7$, the remaining task is to prove that $M_\\infty$ is finite.",
+      "sourceQuote": "For stable solutions in $\\R^7$, the remaining task is to prove that $M_\\infty$ is finite.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Nonflat minimizing cones occur in ambient dimension eight, whereas nonaffine entire minimal graphs first occur in dimension nine.",
+      "sourceLine": "nonflat minimizing cones occur in ambient dimension eight, whereas nonaffine entire minimal graphs first occur in ambient dimension nine",
+      "sourceQuote": "The graph condition in the minimal-surface problem is important: nonflat minimizing cones occur in ambient dimension eight, whereas nonaffine entire minimal graphs first occur in ambient dimension nine \\cite{Simons1968,BDG1969}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
