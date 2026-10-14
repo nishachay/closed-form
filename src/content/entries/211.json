@@ -1,0 +1,255 @@
+{
+  "id": "211",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Random-Walks-on-Critical-FK-Ising-Maps-and-Liouville-Brownian-Motion-October-5-2026/fk-ising-walk-limit.pdf",
+      "label": "Random Walks on Critical FK–Ising Maps and Liouville Brownian Motion"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spectral-convergence-for-critical-FK-Ising-planar-maps-October-5-2026/spectral-convergence-critical-fk-ising-planar-maps.pdf",
+      "label": "Spectral convergence for critical FK–Ising planar maps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Linear-Clock-for-Random-Walk-on-Tree-Weighted-Planar-Maps-October-5-2026/linear-clock-random-walk-tree-weighted-planar-maps.pdf",
+      "label": "A Linear Clock for Random Walk on Tree-Weighted Planar Maps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Canonical-conformal-limits-of-subcritical-FK-planar-maps-September-24-2026/main.pdf",
+      "label": "Canonical conformal limits of subcritical FK planar maps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-Liouville-quantum-sphere-and-geometric-limits-of-FK-maps-at-q-equals-4-September-24-2026/main.pdf",
+      "label": "The critical Liouville quantum sphere and geometric limits of FK maps at q=4"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Metric-measure-limits-of-subcritical-FK-and-spanning-tree-planar-maps-September-24-2026/main.pdf",
+      "label": "Metric-measure limits of subcritical FK and spanning-tree planar maps"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Brownian-continuum-random-tree-limits-of-finite-Fortuin-Kasteleyn-maps-above-four-September-24-2026/main.pdf",
+      "label": "Brownian continuum random tree limits of finite Fortuin–Kasteleyn maps above four"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/211.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Random FK planar maps are claimed to look like random surfaces for q ≤ 4 and like a random tree above 4.",
+  "scope": "Critical spherical Fortuin–Kasteleyn planar maps for every fixed q > 0, plus random walks on FK–Ising and spanning-tree-weighted maps.",
+  "plain": "An FK planar map is a random network where a parameter q also shapes the network itself. These seven papers describe what such maps look like when they are very large. For q up to 4 they claim a random surface called a Liouville quantum gravity sphere. For q above 4 they prove, with Lean, a random tree. They also claim that random walks on two kinds of these maps converge to the natural motion on the limit surface.",
+  "doesNot": "This does not give a Lean check of the surface, q = 4, walk or spectral results. The spectral result depends on stated outside inputs.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2016",
+    "firstStepBy": "Scott Sheffield, the inventory encoding and the transition at q = 4",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It would settle the large-scale shape of FK maps across the whole range of q, with a Lean proof on the tree side."
+  },
+  "explanation": "Draw a network on a sphere with one link. There are two ways: a single dot with a loop, or two dots joined by a line. Now open or close the link. That gives four pictures. Give each picture a weight of √q for every boundary loop that separates open clusters from closed ones. The loop map with the link closed has one such loop, and with it open has two. The two-dot map has two loops when closed and one when open. With q = 9, the weights are 3, 9, 9 and 3. So the four pictures have chances 1/8, 3/8, 3/8 and 1/8. With q = 1, all four are equally likely.\n\nThis is a Fortuin–Kasteleyn planar map, or FK map, at parameter q[1]. Both the network and the open links are random, so q changes the shape of the network itself. The question is what a huge FK map looks like from far away. Shrink distances so the whole map has a fixed size, and let the number of links grow without bound.\n\nSheffield's work encoded these maps as walks and found a transition at q = 4[2]. His parameter is √q/(√q + 2). It is below one half for q below 4, and above one half for q above 4[3]. In the example, q = 9 gives 3/5. Below the transition the maps were predicted to look like a random surface, called a Liouville quantum gravity sphere. Above it they were predicted to look like a random tree. But a limit of the encoding walk does not by itself give the shape of the finite map[4].\n\nThe papers claim the full picture. For every q between 0 and 4, FK maps converge to Liouville quantum gravity spheres, decorated by random loops[5]. Distances, area and the loops all converge together. Another paper claims the distance part of a conjecture by Gwynne and Miller for these maps[6]. At exactly q = 4, the maps converge to a critical version of the sphere[7]. For every q above 4, distances shrink by a factor of the square root of the size. The map then looks like the Brownian continuum random tree, a standard random tree shape[8,9].\n\nThree papers study a walker that moves along a random link at each step. The shape of a surface does not by itself fix how a walker moves on it[10]. For q = 2, the FK–Ising case, the walk converges to Liouville Brownian motion, the natural random motion on the limiting sphere[11]. The same holds for maps weighted by their number of spanning trees[12]. A spectral paper claims that the vibration frequencies of these maps converge too[13]. That result uses stated inputs about Brownian motion and the sphere, taken from other work[14].\n\nThe single obstacle is that the claims concern one finite map of exact size, measured with all its links. An encoding walk without that size condition does not see this[4]. The tree paper finds an exact tree of blocks inside the map. It then controls the distances that each block adds along every path to the root.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the tree limit for every q above 4. The surface results, the q = 4 result and the random-walk and spectral results lie outside that check. The spectral result also depends on outside inputs that it states. No specialist review of any of the seven papers has been published.",
+  "hypeCheck": "Major if it holds. Only the tree limit for q above 4 has a Lean proof. The surface, walk and spectral claims rest on long papers, the spectral one on stated outside inputs. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Planar map",
+      "meaning": "A network drawn on a sphere without crossings, kept up to deformation; loops and repeated links allowed."
+    },
+    {
+      "term": "FK planar map",
+      "meaning": "A random planar map together with a random set of open links, weighted by √q per interface loop."
+    },
+    {
+      "term": "Liouville quantum gravity sphere",
+      "meaning": "A standard model of a random, rough surface with the topology of a sphere."
+    },
+    {
+      "term": "Brownian continuum random tree",
+      "meaning": "A standard random tree shape that arises as the limit of many large random trees."
+    },
+    {
+      "term": "Liouville Brownian motion",
+      "meaning": "The natural random motion on a Liouville quantum gravity surface."
+    },
+    {
+      "term": "Scaling limit",
+      "meaning": "The shape a sequence of growing random objects approaches after shrinking them to a fixed size."
+    },
+    {
+      "term": "Heat trace",
+      "meaning": "A sum over the vibration frequencies of a space that records how heat spreads in it."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Random Walks on Critical FK–Ising Maps and Liouville Brownian Motion” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Random-Walks-on-Critical-FK-Ising-Maps-and-Liouville-Brownian-Motion-October-5-2026/fk-ising-walk-limit.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Spectral convergence for critical FK–Ising planar maps” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spectral-convergence-for-critical-FK-Ising-planar-maps-October-5-2026/spectral-convergence-critical-fk-ising-planar-maps.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “A Linear Clock for Random Walk on Tree-Weighted Planar Maps” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Linear-Clock-for-Random-Walk-on-Tree-Weighted-Planar-Maps-October-5-2026/linear-clock-random-walk-tree-weighted-planar-maps.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Canonical conformal limits of subcritical FK planar maps” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Canonical-conformal-limits-of-subcritical-FK-planar-maps-September-24-2026/main.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “The critical Liouville quantum sphere and geometric limits of FK maps at q=4” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-Liouville-quantum-sphere-and-geometric-limits-of-FK-maps-at-q-equals-4-September-24-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Metric-measure limits of subcritical FK and spanning-tree planar maps” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Metric-measure-limits-of-subcritical-FK-and-spanning-tree-planar-maps-September-24-2026/main.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Brownian continuum random tree limits of finite Fortuin–Kasteleyn maps above four” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Brownian-continuum-random-tree-limits-of-finite-Fortuin-Kasteleyn-maps-above-four-September-24-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 211 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/211.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The FK law weights a map with an edge subset by q to the power of half the number of interface loops.",
+      "verdict": "supported",
+      "sourceLine": "Equivalently, the weight is $q^{\\ell(M,A)/2}$, where",
+      "sourceQuote": "Equivalently, the weight is $q^{\\ell(M,A)/2}$, where $\\ell(M,A)=2k_M(A)+|A|-|V(M)|$ is the number of FK interface loops.",
+      "paper": 7
+    },
+    {
+      "text": "Sheffield's unconditioned walk theorem identifies the transition at q=4.",
+      "verdict": "supported",
+      "sourceLine": "Sheffield's unconditioned walk theorem identifies the transition at",
+      "sourceQuote": "Sheffield's unconditioned walk theorem identifies the transition at $q=4$: above it, the limiting inventory fluctuations are one-dimensional~\\cite[Theorem~2.5]{Sheffield2016}.",
+      "paper": 7
+    },
+    {
+      "text": "The parameter p = sqrt(q)/(sqrt(q)+2) places q>4 exactly in the regime p>1/2.",
+      "verdict": "supported",
+      "sourceLine": "$p=\\sqrt q/(\\sqrt q+2)$ places $q>4$ exactly in the regime $p>1/2$.",
+      "sourceQuote": "Its parameter $p=\\sqrt q/(\\sqrt q+2)$ places $q>4$ exactly in the regime $p>1/2$.",
+      "paper": 7
+    },
+    {
+      "text": "A limit of an unconditioned encoding walk does not supply the conditioned, all-edge conclusions.",
+      "verdict": "supported",
+      "sourceLine": "A limit of an unconditioned encoding walk does not",
+      "sourceQuote": "A limit of an unconditioned encoding walk does not supply either conclusion.",
+      "paper": 7
+    },
+    {
+      "text": "For every fixed 0<q<4, FK maps converge jointly to the LQG sphere decorated by an independent CLE.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed $0<q<4$, we prove joint convergence of spherical",
+      "sourceQuote": "For every fixed $0<q<4$, we prove joint convergence of spherical Fortuin--Kasteleyn planar maps in their flag-triangle uniformization to the corresponding unit-area Liouville quantum gravity sphere decorated by an independent conformal loop ensemble.",
+      "paper": 4
+    },
+    {
+      "text": "The papers resolve the finite spherical cases of Gwynne and Miller's graph-metric conjecture for 0<q<4.",
+      "verdict": "supported",
+      "sourceLine": "We resolve the finite spherical cases of Gwynne and Miller's graph-metric",
+      "sourceQuote": "We resolve the finite spherical cases of Gwynne and Miller's graph-metric conjecture for critical Fortuin--Kasteleyn maps at each fixed \\(q\\in(0,4)\\) and for uniform spanning-tree-decorated maps.",
+      "paper": 6
+    },
+    {
+      "text": "At q=4, FK maps converge jointly to the critical Liouville quantum sphere with CLE_4.",
+      "verdict": "supported",
+      "sourceLine": "Fortuin--Kasteleyn planar maps at $q=4$, embedded by their equilateral flag",
+      "sourceQuote": "We then prove that spherical Fortuin--Kasteleyn planar maps at $q=4$, embedded by their equilateral flag uniformizations, converge jointly to this sphere decorated by an independent nested conformal loop ensemble $\\CLE_4$.",
+      "paper": 5
+    },
+    {
+      "text": "For every q>4, the finite-volume metric scaling limit is the Brownian continuum random tree.",
+      "verdict": "supported",
+      "sourceLine": "$q>4$: their finite-volume metric scaling limit is the Brownian",
+      "sourceQuote": "We prove that this happens for critical Fortuin--Kasteleyn maps at every fixed $q>4$: their finite-volume metric scaling limit is the Brownian continuum random tree.",
+      "paper": 7
+    },
+    {
+      "text": "Distances are rescaled by a constant times n^{-1/2}.",
+      "verdict": "supported",
+      "sourceLine": "distances by a constant times $n^{-1/2}$, an $n$-edge map with normalized",
+      "sourceQuote": "After rescaling graph distances by a constant times $n^{-1/2}$, an $n$-edge map with normalized degree measure converges to the Brownian continuum random tree in the Gromov--Hausdorff--Prokhorov topology.",
+      "paper": 7
+    },
+    {
+      "text": "The scaling limit of a surface does not by itself determine the scaling limit of a walk.",
+      "verdict": "supported",
+      "sourceLine": "The scaling limit of a random surface does not by itself determine the",
+      "sourceQuote": "The scaling limit of a random surface does not by itself determine the scaling limit of a walk on that surface.",
+      "paper": 1
+    },
+    {
+      "text": "Stationary random walks on critical FK–Ising maps converge to Liouville Brownian motion.",
+      "verdict": "supported",
+      "sourceLine": "We prove that stationary random walks on critical spherical FK--Ising",
+      "sourceQuote": "We prove that stationary random walks on critical spherical FK--Ising planar maps converge to Liouville Brownian motion on the ordinary unit-area $\\sqrt3$-quantum sphere, using the geometric and electrical results of the spectral companion.",
+      "paper": 1
+    },
+    {
+      "text": "Random walk on spanning-tree-weighted maps converges to Liouville Brownian motion.",
+      "verdict": "supported",
+      "sourceLine": "We prove that stationary random walk on a planar map sampled with weight",
+      "sourceQuote": "We prove that stationary random walk on a planar map sampled with weight equal to its number of spanning trees converges to Liouville Brownian motion on the unit-area $\\sqrt2$-Liouville quantum sphere.",
+      "paper": 3
+    },
+    {
+      "text": "Ordered eigenvalues and the heat trace converge jointly.",
+      "verdict": "supported",
+      "sourceLine": "all ordered eigenvalues with multiplicities and padding, and the heat trace",
+      "sourceQuote": "Accelerating time by the number of map edges gives joint convergence of the metric-measure space, all ordered eigenvalues with multiplicities and padding, and the heat trace locally uniformly at strictly positive times.",
+      "paper": 2
+    },
+    {
+      "text": "The spectral result uses the companion results and stated Brownian/LQG inputs.",
+      "verdict": "supported",
+      "sourceLine": "Using the conformal and metric-measure companion results and the stated",
+      "sourceQuote": "Using the conformal and metric-measure companion results and the stated Brownian/Liouville quantum gravity inputs, we prove spectral convergence for critical spherical FK--Ising maps to Liouville Brownian motion on the ordinary unit-area $\\sqrt3$-quantum sphere.",
+      "paper": 2
+    },
+    {
+      "text": "Lean formalizes the Brownian continuum random tree limit for finite FK maps at every q>4.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

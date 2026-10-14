@@ -1,0 +1,215 @@
+{
+  "id": "210",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Foulkes-Conjecture-for-the-Sixth-Symmetric-Power-September-25-2026/main.pdf",
+      "label": "Foulkes' conjecture for the sixth symmetric power"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quadratic-Stabilization-of-the-Canonical-Foulkes-Howe-Map-September-25-2026/paper.pdf",
+      "label": "Quadratic stabilization of the canonical Foulkes--Howe map"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/210.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Foulkes' conjecture is claimed for sixth powers, with a Lean-proved bound past which a natural map is onto.",
+  "scope": "Complex vector spaces of every finite dimension. The sixth case for all b ≥ 6, and the canonical map for a ≥ 2 and b ≥ a(a − 1).",
+  "plain": "Foulkes' conjecture compares two ways of nesting polynomial spaces and says one always fits inside the other. One paper proves that a natural map between them is onto once b is at least a(a − 1), in any dimension. For a = 6 that settles every b from 30 up. The other paper claims the remaining range, so the sixth case holds for every b ≥ 6.",
+  "doesNot": "This does not settle Foulkes' conjecture for a = 7 or larger when b is below a(a − 1).",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1950",
+    "firstStepBy": "H. O. Foulkes, the plethysm question",
+    "field": "Algebra",
+    "significance": "Solid",
+    "significanceWhy": "It settles the next open case of a 75-year-old conjecture and gives a uniform bound for every case."
+  },
+  "explanation": "Take three variables. The polynomials of degree 3 in them form a space of dimension 10. Now take polynomials of degree 2 whose variables are those 10 basic cubics. That space has dimension 55. Swap the roles. Degree-2 polynomials in three variables form a space of dimension 6. Degree-3 polynomials built from those 6 have dimension 56. The two nested constructions are called plethysms, and here 55 is at most 56.\n\nFoulkes' conjecture says this is no accident. Write Symᵏ for the space of degree-k polynomials. For a ≤ b, the space Symᵃ(Symᵇ V) should fit inside Symᵇ(Symᵃ V)[1]. Fitting inside means more than a dimension count. It must respect the symmetries of V, so the fit is called equivariant. Equivalently, every irreducible building block appears at least as often on the right as on the left[2]. With two variables the two sides are always equal, a fact called Hermite reciprocity[3]. In the example with a = 6 and b = 7, two variables give 1,716 on each side. Three variables give 4,496,388 on the left and 5,379,616 on the right.\n\nFoulkes raised the question in 1950[4]. The cases a = 1 and a = 2 follow from classical formulas[5]. Dent and Siemons proved a = 3[6]. McKay showed that one good starting case spreads to all larger b[7]. Computer work then gave a = 4 and a = 5[8]. Evseev, Paget and Wildon checked every case where a and b add up to at most 19[9]. Brion proved the conjecture for each fixed a once b is large, but with no uniform bound on how large[10].\n\nThese papers address the sixth case and a bound for every a. One paper proves that a natural map from Symᵇ(Symᵃ V) to Symᵃ(Symᵇ V) is onto whenever b is at least a(a − 1)[11]. The bound does not depend on the number of variables[12]. A map that is onto in that direction yields the embedding Foulkes asked for[13]. For a = 6 this covers every b from 30 up[13]. The other paper handles the remaining range, b from 6 to 29, and claims the full sixth case[14].\n\nThe single obstacle is that the natural map can fail. At (5, 5) and (6, 6), the canonical map has a nonzero kernel in large enough dimension, even though both sides match[15]. So one cannot simply prove the obvious map is one-to-one. The sixth-case paper instead compares the counts of building blocks directly. It bounds whole families of counts and leaves only a small band for exact computation[16].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the quadratic bound. It shows the canonical map is onto whenever b is at least a(a − 1), in every dimension. That proof also covers the sixth case for b at least 30. The range from 6 to 29 rests on the paper's exact computations, outside the Lean check. No specialist review of either paper has been published.",
+  "hypeCheck": "Solid. The quadratic bound has a Lean proof, which covers the sixth case for b ≥ 30; b from 6 to 29 rests on exact computation. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Symmetric power Symᵏ V",
+      "meaning": "The space of degree-k polynomials whose variables form a basis of V."
+    },
+    {
+      "term": "Plethysm",
+      "meaning": "Nesting one symmetric power inside another, such as Symᵃ(Symᵇ V)."
+    },
+    {
+      "term": "Equivariant",
+      "meaning": "Compatible with every invertible linear change of the variables."
+    },
+    {
+      "term": "Irreducible building block",
+      "meaning": "A piece of a symmetric space that cannot be split further; multiplicities count how often each appears."
+    },
+    {
+      "term": "Canonical Foulkes–Howe map",
+      "meaning": "A natural map between the two plethysms built by multiplying polynomials."
+    },
+    {
+      "term": "Surjective",
+      "meaning": "Onto: every element of the target is hit."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Foulkes' conjecture for the sixth symmetric power” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Foulkes-Conjecture-for-the-Sixth-Symmetric-Power-September-25-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Quadratic stabilization of the canonical Foulkes--Howe map” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quadratic-Stabilization-of-the-Canonical-Foulkes-Howe-Map-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 210 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/210.md"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For 1 <= a <= b, Foulkes' conjecture asks for a GL(V)-equivariant injection of Sym^a(Sym^b V) into Sym^b(Sym^a V).",
+      "verdict": "supported",
+      "sourceLine": "\\(1\\le a\\le b\\), it asks for a \\(\\GL(V)\\)-equivariant injection",
+      "sourceQuote": "For a finite-dimensional complex vector space \\(V\\) and integers \\(1\\le a\\le b\\), it asks for a \\(\\GL(V)\\)-equivariant injection \\[ \\Sym^a(\\Sym^b V)\\hookrightarrow\\Sym^b(\\Sym^a V). \\]",
+      "paper": 1
+    },
+    {
+      "text": "Over C this is equivalent to an inequality between multiplicities of every irreducible representation.",
+      "verdict": "supported",
+      "sourceLine": "Over \\(\\CC\\), complete reducibility makes this equivalent to an",
+      "sourceQuote": "Over \\(\\CC\\), complete reducibility makes this equivalent to an inequality between the multiplicities of every irreducible polynomial representation.",
+      "paper": 1
+    },
+    {
+      "text": "For binary forms, Hermite reciprocity gives an isomorphism between the two symmetric powers.",
+      "verdict": "supported",
+      "sourceLine": "For binary forms, classical Hermite reciprocity",
+      "sourceQuote": "For binary forms, classical Hermite reciprocity gives an isomorphism between the two symmetric powers for all \\(a,b\\); see \\cite[Introduction]{RaicuSamWeyman2022}.",
+      "paper": 1
+    },
+    {
+      "text": "The conjecture originates in Foulkes' study of concomitants.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture originates in Foulkes' study of concomitants",
+      "sourceQuote": "The conjecture originates in Foulkes' study of concomitants \\cite{Foulkes1950}.",
+      "paper": 1
+    },
+    {
+      "text": "The case a=1 is immediate and Thrall's formulas imply a=2.",
+      "verdict": "supported",
+      "sourceLine": "Thrall's decomposition formulas imply",
+      "sourceQuote": "Thrall's decomposition formulas imply \\(a=2\\) \\cite{Thrall1942}; see also \\cite[p.~237]{DentSiemons2000}.",
+      "paper": 1
+    },
+    {
+      "text": "Dent and Siemons proved a=3.",
+      "verdict": "supported",
+      "sourceLine": "Dent and Siemons proved \\(a=3\\)",
+      "sourceQuote": "Dent and Siemons proved \\(a=3\\) \\cite{DentSiemons2000}.",
+      "paper": 1
+    },
+    {
+      "text": "McKay proved that injectivity at a seed propagates to all larger b.",
+      "verdict": "supported",
+      "sourceLine": "McKay proved that injectivity",
+      "sourceQuote": "McKay proved that injectivity for every \\(V\\) at a seed \\((a,b_0)\\), with \\(b_0\\ge a\\), propagates to every \\((a,b)\\) with \\(b\\ge b_0\\) \\cite{McKay2008,Ikenmeyer2015}.",
+      "paper": 1
+    },
+    {
+      "text": "Computations at (4,4) and (5,6) yield a=4 and a=5.",
+      "verdict": "supported",
+      "sourceLine": "yields \\(a=4\\)",
+      "sourceQuote": "The computation at \\((4,4)\\) by M\\\"uller and Neunh\\\"offer therefore yields \\(a=4\\) \\cite{MuellerNeunhoeffer2005}; Cheung, Ikenmeyer, and Mkrtchyan's injectivity computation at \\((5,6)\\) yields \\(a=5\\), with the diagonal comparison again immediate \\cite[preprint, Theorem~6(a)]{CheungIkenmeyerMkrtchyan2017}.",
+      "paper": 1
+    },
+    {
+      "text": "Evseev, Paget and Wildon verified the inequalities when the parameters sum to at most 19.",
+      "verdict": "supported",
+      "sourceLine": "Evseev, Paget, and Wildon verified Foulkes' multiplicity inequalities",
+      "sourceQuote": "Evseev, Paget, and Wildon verified Foulkes' multiplicity inequalities when the two parameters sum to at most \\(19\\), including the sixth case through \\(b=13\\) \\cite[Corollary~5.2]{EvseevPagetWildon2014}.",
+      "paper": 1
+    },
+    {
+      "text": "Brion proved eventual truth for fixed a and later a dimension-dependent bound.",
+      "verdict": "supported",
+      "sourceLine": "Brion proved eventual truth for fixed \\(a\\)",
+      "sourceQuote": "Brion proved eventual truth for fixed \\(a\\) \\cite[Corollary~1.3]{Brion1993} and later gave a dimension-dependent bound for surjectivity of the canonical map in the opposite direction \\cite[Theorem~3.3]{Brion1997}.",
+      "paper": 1
+    },
+    {
+      "text": "The canonical Foulkes–Howe map is surjective for a at least 2 and b at least a(a-1).",
+      "verdict": "supported",
+      "sourceLine": "is surjective whenever",
+      "sourceQuote": "For every finite-dimensional complex vector space $V$, we prove that the canonical Foulkes--Howe map $\\Sym^b(\\Sym^a V)\\longrightarrow\\Sym^a(\\Sym^b V)$ is surjective whenever $a\\ge2$ and $b\\ge a(a-1)$.",
+      "paper": 2
+    },
+    {
+      "text": "The quadratic stabilization bound is independent of dim V.",
+      "verdict": "supported",
+      "sourceLine": "This gives a quadratic stabilization bound",
+      "sourceQuote": "This gives a quadratic stabilization bound independent of $\\dim V$.",
+      "paper": 2
+    },
+    {
+      "text": "At a=6, an invariant complement to the kernel supplies an embedding for b at least 30.",
+      "verdict": "supported",
+      "sourceLine": "At \\(a=6\\), an invariant complement to its kernel supplies an",
+      "sourceQuote": "At \\(a=6\\), an invariant complement to its kernel supplies an embedding for \\(b\\ge30\\).",
+      "paper": 1
+    },
+    {
+      "text": "The sixth case of Foulkes' conjecture holds for every b at least 6, with no restriction on dim V.",
+      "verdict": "supported",
+      "sourceLine": "positively, with no restriction on \\(\\dim V\\).",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves this case of Foulkes' conjecture positively, with no restriction on \\(\\dim V\\).",
+      "paper": 1
+    },
+    {
+      "text": "The canonical maps at (5,5) and (6,6) have nonzero kernels in suitable dimensions.",
+      "verdict": "supported",
+      "sourceLine": "The canonical maps at \\((5,5)\\) and \\((6,6)\\) have nonzero kernels in",
+      "sourceQuote": "The canonical maps at \\((5,5)\\) and \\((6,6)\\) have nonzero kernels in suitable dimensions, although their source and target representations coincide \\cite{MuellerNeunhoeffer2005,CheungIkenmeyerMkrtchyan2017}.",
+      "paper": 1
+    },
+    {
+      "text": "The certificates combine exact calculations with bounds on entire families of multiplicities, leaving a small band.",
+      "verdict": "supported",
+      "sourceLine": "calculations with bounds on entire families of multiplicities, leaving",
+      "sourceQuote": "The present certificates combine such calculations with bounds on entire families of multiplicities, leaving only a small band for exact comparison.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes surjectivity for b at least a(a-1) and the sixth case for b at least 30, not the full range b at least 6.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

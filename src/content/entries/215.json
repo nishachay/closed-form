@@ -1,0 +1,231 @@
+{
+  "id": "215",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/massive-continuum-o3.pdf",
+      "label": "The canonical massive continuum limit of the two-dimensional O(3) model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Isolated-Particle-Pole-for-the-Two-Dimensional-O3-Spin-Field-October-4-2026/o3-particle-pole.pdf",
+      "label": "An Isolated Particle Pole for the Two-Dimensional O(3) Spin Field"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-mass-asymptotics-for-the-two-dimensional-O4-lattice-model-October-5-2026/exact-mass-o4.pdf",
+      "label": "Exact mass asymptotics for the two-dimensional O(4) lattice model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-mass-bounds-for-the-two-dimensional-O4-model-September-23-2026/paper.pdf",
+      "label": "Sharp mass bounds for the two-dimensional O(4) model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exponential-decay-in-two-dimensional-classical-On-models-September-23-2026/paper.pdf",
+      "label": "Exponential decay in two-dimensional classical O(n) models"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/215.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Spin models with three or more components are proved to lose alignment exponentially at every temperature.",
+  "scope": "Nearest-neighbor O(n) models on the square grid: n ≥ 3 for decay, n = 4 for the mass, n = 3 for the continuum.",
+  "plain": "Put a unit arrow at each point of a flat grid, with neighbors preferring to align. With three or more components per arrow, this paper family proves the alignment fades exponentially with distance at every temperature. For four components it claims the exact fading rate at low temperature. For three components it claims a continuum quantum field theory with a mass gap.",
+  "doesNot": "This does not give a Lean check of the O(4) mass formula or the O(3) continuum theory, and it says nothing new about two-component spins.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1975",
+    "firstStepBy": "Alexander Polyakov, the prediction of mass generation",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It would settle a long-standing question about two-dimensional spin models, with a Lean proof of the decay part."
+  },
+  "explanation": "Take two arrows of length one that can point anywhere in three-dimensional space. Let them prefer to line up, with a strength called β. Pick their directions at random, weighted by e raised to β times the dot product of the two arrows. The dot product is 1 when they align and −1 when they oppose. At β = 1, the average dot product works out to coth(1) − 1, about 0.313. So the two arrows are mildly aligned.\n\nNow place such an arrow at every point of a flat square grid, with each neighbor pair preferring to align. This is the O(n) model, where n is the number of components of each arrow. For n = 3 it is the classical Heisenberg magnet. The question is how fast the alignment between two distant arrows fades with distance. In two dimensions there is no lasting order at any temperature[1]. But that leaves open whether the fading is exponential or slower[2].\n\nFor n = 2 the fading can be slow, by a polynomial law at low temperature[3]. For three or more components, Polyakov's argument predicted exponential fading at every positive temperature[4]. Rigorous results covered only high temperature or very many components[5]. Aru, Garban and Sepúlveda recorded the all-temperature question as open in 2025[6].\n\nThis family of five papers claims several answers. One paper proves exponential fading for every n of at least 3 and every temperature[7]. The bound is uniform over finite pieces of the grid with free edges[8]. For n = 4, another paper claims the exact rate at low temperature. The mass, the inverse of the fading length, behaves like 32·e^(π/4 − 1/2)·√β·e^(−πβ) as β grows[9]. The prefactor 32·e^(π/4 − 1/2) is about 42.57. At β = 2 the formula gives a mass near 0.112, a fading length near 9 grid steps. At β = 3 the length is near 168 steps. These numbers come from the leading formula, which is exact only in the limit. A companion paper claims upper and lower bounds of the same shape, and a positive gap at every temperature[10].\n\nFor n = 3, the remaining papers claim a continuum limit. Shrink the grid spacing while β grows, keeping a physical length fixed. The limit exists along every value of β, without choosing a subsequence[11]. It defines a genuine interacting quantum field theory with a positive mass gap[12]. Its lightest particle shows up as an isolated point in the spectrum[13].\n\nThe single obstacle is the low-temperature regime. There the fading length is exponentially large, and the system looks ordered over huge distances. Earlier bounds by McBryan and Spencer gave only polynomial fading, which allows a zero exponential rate[2]. A mass estimate on a fixed grid also does not by itself give the continuum theory[14].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of exponential fading on finite grid pieces. It covers every n of at least 3 and every temperature. The infinite-grid limit, the O(4) mass results and the O(3) continuum construction lie outside that check. No specialist review of any of the five papers has been published.",
+  "hypeCheck": "Major if it holds. Exponential decay on finite grid pieces has a Lean proof; the O(4) mass asymptotic and the O(3) continuum theory do not. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "O(n) model",
+      "meaning": "A grid of unit arrows with n components, where neighboring arrows prefer to align."
+    },
+    {
+      "term": "Inverse temperature β",
+      "meaning": "The strength of the preference to align; large β means low temperature."
+    },
+    {
+      "term": "Exponential decay",
+      "meaning": "Correlation falling at least as fast as a constant times e^(−m·distance), for some m > 0."
+    },
+    {
+      "term": "Mass gap",
+      "meaning": "A positive rate m of exponential decay; its inverse is the correlation length."
+    },
+    {
+      "term": "Continuum limit",
+      "meaning": "The theory obtained as the grid spacing shrinks to zero while a physical length stays fixed."
+    },
+    {
+      "term": "Free boundary",
+      "meaning": "No arrows are fixed at the edge of the finite grid piece."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The canonical massive continuum limit of the two-dimensional O(3) model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/massive-continuum-o3.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “An Isolated Particle Pole for the Two-Dimensional O(3) Spin Field” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Isolated-Particle-Pole-for-the-Two-Dimensional-O3-Spin-Field-October-4-2026/o3-particle-pole.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “Exact mass asymptotics for the two-dimensional O(4) lattice model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-mass-asymptotics-for-the-two-dimensional-O4-lattice-model-October-5-2026/exact-mass-o4.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Sharp mass bounds for the two-dimensional O(4) model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-mass-bounds-for-the-two-dimensional-O4-model-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “Exponential decay in two-dimensional classical O(n) models” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exponential-decay-in-two-dimensional-classical-On-models-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 215 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/215.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For the two-dimensional model, continuous symmetry prevents spontaneous magnetization.",
+      "verdict": "supported",
+      "sourceLine": "For the two-dimensional nearest-neighbor model, continuous symmetry",
+      "sourceQuote": "For the two-dimensional nearest-neighbor model, continuous symmetry prevents spontaneous magnetization, but it does not determine the rate at which distant spins decorrelate.",
+      "paper": 5
+    },
+    {
+      "text": "McBryan and Spencer's algebraic bounds allow a zero exponential decay rate.",
+      "verdict": "supported",
+      "sourceLine": "quantify the loss of order but allow a zero exponential decay rate.",
+      "sourceQuote": "Such bounds quantify the loss of order but allow a zero exponential decay rate.",
+      "paper": 5
+    },
+    {
+      "text": "Fröhlich and Spencer proved a polynomial lower bound for the plane rotator at low temperature.",
+      "verdict": "supported",
+      "sourceLine": "Spencer proved a polynomial lower bound for the ordinary plane rotator",
+      "sourceQuote": "Fr\\\"ohlich and Spencer proved a polynomial lower bound for the ordinary plane rotator at sufficiently low temperature~\\cite[Theorem~C]{FS}.",
+      "paper": 5
+    },
+    {
+      "text": "Polyakov's argument predicts mass generation at every positive temperature for three or more components.",
+      "verdict": "supported",
+      "sourceLine": "argument predicts mass generation at every positive",
+      "sourceQuote": "For three or more components, Polyakov's non-Abelian renormalization argument predicts mass generation at every positive temperature~\\cite{Polyakov}.",
+      "paper": 5
+    },
+    {
+      "text": "High-temperature and large-n regimes leave the question at small spin dimension and low temperature.",
+      "verdict": "supported",
+      "sourceLine": "These regimes leave the question at a prescribed small spin dimension",
+      "sourceQuote": "These regimes leave the question at a prescribed small spin dimension and arbitrarily low positive temperature.",
+      "paper": 5
+    },
+    {
+      "text": "Aru, Garban and Sepúlveda record the all-temperature assertion as an open conjecture in 2025.",
+      "verdict": "supported",
+      "sourceLine": "Sep\\'ulveda record the all-temperature lattice assertion as an open",
+      "sourceQuote": "Aru, Garban, and Sep\\'ulveda record the all-temperature lattice assertion as an open conjecture in their 2025 study~\\cite[Introduction, pp.~2--3]{AGS}.",
+      "paper": 5
+    },
+    {
+      "text": "Exponential decay holds for every n>=3 and every finite positive inverse temperature.",
+      "verdict": "supported",
+      "sourceLine": "nearest-neighbor $O(n)$ model on the square lattice, for every $n\\ge3$",
+      "sourceQuote": "We prove exponential decay of two-point correlations for the classical nearest-neighbor $O(n)$ model on the square lattice, for every $n\\ge3$ and every finite positive inverse temperature.",
+      "paper": 5
+    },
+    {
+      "text": "The estimate is uniform over finite free-boundary subgraphs and bounded edge strengths.",
+      "verdict": "supported",
+      "sourceLine": "The estimate is uniform over",
+      "sourceQuote": "The estimate is uniform over finite free-boundary subgraphs and bounded nonnegative edge strengths.",
+      "paper": 5
+    },
+    {
+      "text": "For O(4), m_lat(beta) ~ 32 exp(pi/4-1/2) sqrt(beta) exp(-pi beta).",
+      "verdict": "supported",
+      "sourceLine": "For the nearest-neighbor \\(O(4)\\) model on the square lattice at inverse",
+      "sourceQuote": "For the nearest-neighbor \\(O(4)\\) model on the square lattice at inverse temperature \\(\\beta\\), we prove the exact low-temperature asymptotic \\[ m_{\\mathrm{lat}}(\\beta)\\sim 32\\exp(\\pi/4-1/2)\\sqrt\\beta\\,\\exp(-\\pi\\beta) \\qquad (\\beta\\to\\infty). \\]",
+      "paper": 3
+    },
+    {
+      "text": "The O(4) full gap is bounded by multiples of sqrt(beta)e^{-pi beta}, with a positive gap at every beta.",
+      "verdict": "supported",
+      "sourceLine": "resolving the all-temperature lattice mass-generation",
+      "sourceQuote": "We also prove that the model has a unique periodic local limit and a positive full gap at every finite $\\beta>0$, resolving the all-temperature lattice mass-generation conjecture for this periodic state.",
+      "paper": 4
+    },
+    {
+      "text": "The O(3) continuum limit exists through all positive real couplings without subsequences.",
+      "verdict": "supported",
+      "sourceLine": "tends to infinity through all positive real values, without selecting",
+      "sourceQuote": "Normalized by susceptibility and second-moment correlation length, the limit exists as the bare coupling tends to infinity through all positive real values, without selecting subsequences.",
+      "paper": 1
+    },
+    {
+      "text": "The reconstructed theory has a nonzero connected four-point function, a unique vacuum and a positive gap.",
+      "verdict": "supported",
+      "sourceLine": "and have a nonzero connected four-point correlation on separated time",
+      "sourceQuote": "The limiting fields satisfy the Osterwalder--Schrader axioms and have a nonzero connected four-point correlation on separated time supports.",
+      "paper": 1
+    },
+    {
+      "text": "The spin field's spectral measure has a positive atom at the lowest mass, separated by a gap.",
+      "verdict": "supported",
+      "sourceLine": "paper. We prove that its vector two-point spectral measure has a positive",
+      "sourceQuote": "We consider the continuum spin field constructed from the nearest-neighbor two-dimensional $O(3)$ model by the fixed prescription of the companion paper. We prove that its vector two-point spectral measure has a positive atom corresponding to the lowest mass, separated by a positive gap from all remaining mass support.",
+      "paper": 2
+    },
+    {
+      "text": "A mass estimate at fixed lattice spacing does not settle the continuum problem.",
+      "verdict": "supported",
+      "sourceLine": "A mass estimate at fixed lattice spacing does",
+      "sourceQuote": "A mass estimate at fixed lattice spacing does not settle this problem: one must construct the same limiting fields on which the limiting gap acts.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes exponential spin-correlation decay for n>=3 at every temperature on finite free-boundary subgraphs; infinite-volume limits and O(4) claims are excluded.",
+      "verdict": "external",
+      "sourceId": 6
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

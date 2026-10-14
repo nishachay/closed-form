@@ -1,0 +1,237 @@
+{
+  "id": "216",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-logarithmic-correction-for-the-planar-XY-model-October-5-2026/paper.pdf",
+      "label": "The critical logarithmic correction for the planar XY model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-Center-Magnetization-in-the-Planar-XY-Model-October-5-2026/paper.pdf",
+      "label": "Critical Center Magnetization in the Planar XY Model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Critical-Spin-Field-of-the-Planar-XY-Model-October-5-2026/paper.pdf",
+      "label": "The Critical Spin Field of the Planar XY Model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Essential-Singularity-of-the-Correlation-Length-in-the-Planar-XY-Model-October-5-2026/paper.pdf",
+      "label": "Essential Singularity of the Correlation Length in the Planar XY Model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-correlation-exponent-of-the-planar-XY-model-September-24-2026/paper.pdf",
+      "label": "The critical correlation exponent of the planar XY model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/BKT-universality-for-height-and-planar-spin-fields-September-24-2026/paper.pdf",
+      "label": "BKT universality for height and planar spin fields"
+    }
+  ],
+  "headline": "Six papers claim exact critical laws for the planar XY model, as the Berezinskii–Kosterlitz–Thouless picture predicts.",
+  "scope": "The nearest-neighbor cosine XY model on the square lattice, its critical point and approach to it, plus discrete Gaussian height models.",
+  "plain": "In the XY model, needles on a grid prefer to point the same way. Physicists predicted exact laws for how alignment fades at and near the critical point. These papers claim to prove them: the critical power 1/4, with a logarithmic correction, and the predicted law for the fading length near the threshold. Two of the papers depend on stated inputs from the others.",
+  "doesNot": "This does not compute the constants in these laws, and two results rest on stated inputs from companion papers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "Vadim Berezinskii, the spin-wave prediction",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It would turn central predictions of the Berezinskii–Kosterlitz–Thouless theory into theorems for the standard XY model."
+  },
+  "explanation": "Put a compass needle at each point of a flat square grid. Each needle can point in any direction in the plane. Neighbors prefer to point the same way, with a strength b, weighted by e raised to b times the cosine of the angle between them. This is the XY model[1]. The question is how strongly two needles r steps apart stay aligned on average.\n\nAt the critical strength, the answer claimed here is a constant times r^(−1/4)·(log r)^(1/8)[2]. Take r = 100 and then r = 10,000. The plain power r^(−1/4) shrinks by a factor of about 0.316. The logarithm factor grows by 2^(1/8), about 1.090. Together the alignment shrinks by a factor of about 0.345. The logarithm is a small correction, but it never goes away[3].\n\nThis model has a famous transition. Berezinskii predicted in 1971 that alignment fades slowly, like a power of distance, at low temperature[4]. Kosterlitz and Thouless explained the transition by swirls of needles, called vortices, that pair up or come loose[5]. Above the critical temperature, alignment fades exponentially. Below it, it fades like a power. Physicists predicted that, exactly at the switch, the power is 1/4[6]. They also predicted a strange law for the fading length near the switch.\n\nRigorous work confirmed parts of the picture. McBryan and Spencer proved power-law upper bounds[7]. Fröhlich and Spencer proved the low-temperature phase with slow fading exists[8]. Van Engelenburg and Lis proved a power-law lower bound at the threshold, but not with the sharp power[9].\n\nThe six papers claim to settle several predictions. One claims the critical power is exactly 1/4[10]. Another claims the logarithmic correction above, with a positive constant[2]. A third claims the predicted law for the fading length ξ near the threshold. As the strength b rises toward its critical value, the square root of the gap times log ξ tends to a positive constant[11]. So ξ grows like e raised to a constant over that square root. As an illustration with constant 1, a gap of 0.04 gives a length near 148. A gap of 0.01 gives a length near 22,000. The real constant is not computed. A fourth paper claims the large-scale random heights of a related model look like a Gaussian field, with a universal critical value[12].\n\nTwo papers rest on stated inputs from their companions. One claims the alignment at the center of a square with fixed boundary needles[13]. It assumes stated inputs from the companion papers[13]. The other claims the limit of the whole needle field at the critical point[14]. It uses the companion theorems on heights and pins[14].\n\nThe single obstacle is that the transition is very gentle. Near it, standard methods see only slow, logarithmic changes. The papers work through a dual description by random integer heights[15]. Earlier work with these heights did not pin down the exact constant at the threshold or its power[15].\n\nHow sure is this? There is no Lean formalization for these results in the openai/math release, so no computer has checked the proofs. Two of the six papers depend on stated inputs from the others. The constants in the main formulas are shown to exist but are not computed. No specialist review of any of the papers has been published.",
+  "hypeCheck": "Major if it holds. There is no Lean check, two papers rest on stated companion inputs, the constants are not computed, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "XY model",
+      "meaning": "A grid of planar needles, where neighbors prefer to point the same way."
+    },
+    {
+      "term": "Critical point",
+      "meaning": "The coupling strength b_c where fading switches from exponential to power-law."
+    },
+    {
+      "term": "Correlation length ξ",
+      "meaning": "The distance over which alignment fades by a fixed factor in the exponential regime."
+    },
+    {
+      "term": "Vortex",
+      "meaning": "A spot around which the needles turn through a full circle."
+    },
+    {
+      "term": "Logarithmic correction",
+      "meaning": "An extra factor that grows like a power of log r, slower than any power of r."
+    },
+    {
+      "term": "Gaussian free field",
+      "meaning": "A standard random surface whose heights have a bell-curve law at every point."
+    },
+    {
+      "term": "Discrete Gaussian height model",
+      "meaning": "A random surface with integer heights at each grid point, linked to the XY model by duality."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The critical logarithmic correction for the planar XY model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-logarithmic-correction-for-the-planar-XY-model-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Critical Center Magnetization in the Planar XY Model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-Center-Magnetization-in-the-Planar-XY-Model-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, “The Critical Spin Field of the Planar XY Model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Critical-Spin-Field-of-the-Planar-XY-Model-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Essential Singularity of the Correlation Length in the Planar XY Model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Essential-Singularity-of-the-Correlation-Length-in-the-Planar-XY-Model-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “The critical correlation exponent of the planar XY model” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-correlation-exponent-of-the-planar-XY-model-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “BKT universality for height and planar spin fields” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/BKT-universality-for-height-and-planar-spin-fields-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The planar XY model with free boundary has weight exp(b sum cos(theta_x - theta_y)).",
+      "verdict": "supported",
+      "sourceLine": "The planar XY model at inverse temperature \\(b>0\\), with free boundary,",
+      "sourceQuote": "The planar XY model at inverse temperature \\(b>0\\), with free boundary, is the probability measure \\begin{equation}\\label{eq:xy-law} \\frac{1}{Z_{R,b}} \\exp\\left\\{b\\sum_{\\{x,y\\}\\in E_R}\\cos(\\theta_x-\\theta_y)\\right\\} \\prod_{x\\in\\Lambda_R}\\frac{\\dd\\theta_x}{2\\pi}, \\qquad \\theta_x\\in\\R/(2\\pi\\Z). \\end{equation}",
+      "paper": 1
+    },
+    {
+      "text": "At b_c, C(r) = B_XY r^{-1/4}(log r)^{1/8}(1+o(1)) with B_XY in (0,infinity).",
+      "verdict": "supported",
+      "sourceLine": "theorem establishes this correction and the existence of a positive",
+      "sourceQuote": "The theorem establishes this correction and the existence of a positive finite microscopic amplitude for the free-box thermodynamic correlation.",
+      "paper": 1
+    },
+    {
+      "text": "The logarithm prevents r^{1/4}C(r) from converging to a finite nonzero limit.",
+      "verdict": "supported",
+      "sourceLine": "smaller than every fixed power of \\(r\\), but it prevents",
+      "sourceQuote": "The logarithm is smaller than every fixed power of \\(r\\), but it prevents \\(r^{1/4}C_{b_c}(r)\\) from converging to a finite nonzero limit.",
+      "paper": 1
+    },
+    {
+      "text": "Berezinskii's spin-wave analysis predicted algebraic correlations at low temperature.",
+      "verdict": "supported",
+      "sourceLine": "Berezinskii's spin-wave analysis predicted algebraic correlations for",
+      "sourceQuote": "Berezinskii's spin-wave analysis predicted algebraic correlations for planar spins at low temperature \\cite{Berez1971}.",
+      "paper": 1
+    },
+    {
+      "text": "Kosterlitz and Thouless described a transition driven by vortex unbinding.",
+      "verdict": "supported",
+      "sourceLine": "Thouless described a transition driven by the unbinding of vortex",
+      "sourceQuote": "Kosterlitz and Thouless described a transition driven by the unbinding of vortex pairs \\cite{KT1973}, and Kosterlitz developed a renormalization-group analysis of the critical behavior of the nearest-neighbor model \\cite{Kosterlitz1974}.",
+      "paper": 1
+    },
+    {
+      "text": "BKT theory predicts the critical correlation exponent is exactly 1/4.",
+      "verdict": "supported",
+      "sourceLine": "Berezinskii--Kosterlitz--Thouless theory predicts that the",
+      "sourceQuote": "The Berezinskii--Kosterlitz--Thouless theory predicts that the correlation exponent at the boundary of that phase is exactly \\(1/4\\) \\cite{Berezinskii,BKT1973,Kosterlitz1974}.",
+      "paper": 5
+    },
+    {
+      "text": "McBryan and Spencer proved power-law upper bounds.",
+      "verdict": "supported",
+      "sourceLine": "McBryan and Spencer proved power-law upper bounds for planar",
+      "sourceQuote": "McBryan and Spencer proved power-law upper bounds for planar spin correlations \\cite{McBryanSpencer1977}.",
+      "paper": 5
+    },
+    {
+      "text": "Fröhlich and Spencer proved existence of the low-temperature algebraic phase.",
+      "verdict": "supported",
+      "sourceLine": "Spencer proved the existence of the low-temperature algebraic",
+      "sourceQuote": "Fr\\\"ohlich and Spencer proved the existence of the low-temperature algebraic phase by a Coulomb-gas analysis \\cite{FS}.",
+      "paper": 5
+    },
+    {
+      "text": "Van Engelenburg and Lis's critical lower bound is not sharp.",
+      "verdict": "supported",
+      "sourceLine": "Their critical lower bound is the",
+      "sourceQuote": "Their critical lower bound is the external endpoint input used here; its exponent is not sharp.",
+      "paper": 5
+    },
+    {
+      "text": "At the mass-defined critical inverse temperature, the correlation is n^{-1/4+o(1)}.",
+      "verdict": "supported",
+      "sourceLine": "the mass-defined critical inverse temperature, the infinite-volume",
+      "sourceQuote": "More precisely, at the mass-defined critical inverse temperature, the infinite-volume correlation is \\(n^{-1/4+o(1)}\\).",
+      "paper": 5
+    },
+    {
+      "text": "sqrt(b_c - b) log(1/m(b)) tends to a finite positive constant.",
+      "verdict": "supported",
+      "sourceLine": "As the inverse temperature \\(b\\) approaches \\(b_c\\) from the massive side,",
+      "sourceQuote": "As the inverse temperature \\(b\\) approaches \\(b_c\\) from the massive side, \\[ \\sqrt{b_c-b}\\log\\frac{1}{m(b)} \\longrightarrow A_{\\mathrm{XY}}, \\] where \\(A_{\\mathrm{XY}}\\) is a finite, strictly positive model-specific constant.",
+      "paper": 4
+    },
+    {
+      "text": "Discrete Gaussian heights have Gaussian scaling limits through the rough phase, with universal critical effective temperature 8 pi.",
+      "verdict": "supported",
+      "sourceLine": "After the natural lattice normalization, the critical",
+      "sourceQuote": "After the natural lattice normalization, the critical effective temperature has the universal value \\(8\\pi\\).",
+      "paper": 6
+    },
+    {
+      "text": "Assuming stated companion inputs, the center magnetization is A n^{-1/8}(log n)^{1/16}(1+o(1)).",
+      "verdict": "supported",
+      "sourceLine": "Assuming the stated critical-height, local-renormalization, and spin-field",
+      "sourceQuote": "Assuming the stated critical-height, local-renormalization, and spin-field inputs from the companion papers, we determine the center magnetization of the planar XY model in a square with aligned boundary spins at its mass-defined critical threshold.",
+      "paper": 2
+    },
+    {
+      "text": "Using companion theorems, the critical spin field converges to the imaginary exponential of a Gaussian free field.",
+      "verdict": "supported",
+      "sourceLine": "Using the companion critical Bessel-height and pin-limit theorems, we",
+      "sourceQuote": "Using the companion critical Bessel-height and pin-limit theorems, we prove that at the mass-defined critical inverse temperature of the nearest-neighbor XY model on the square lattice, the spin field on a square with boundary angles fixed to zero converges along the full sequence to the full-variance imaginary exponential of a zero-Dirichlet Gaussian free field with stiffness \\(2/\\pi\\).",
+      "paper": 3
+    },
+    {
+      "text": "Dual-height results do not identify the endpoint coefficient or its magnetic correlation exponent.",
+      "verdict": "supported",
+      "sourceLine": "do not identify the endpoint coefficient or its magnetic",
+      "sourceQuote": "These results do not identify the endpoint coefficient or its magnetic correlation exponent.",
+      "paper": 5
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

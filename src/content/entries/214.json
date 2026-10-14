@@ -1,0 +1,209 @@
+{
+  "id": "214",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-of-percolation-on-nonamenable-quasi-transitive-graphs-September-24-2026/paper.pdf",
+      "label": "Nonuniqueness of percolation on nonamenable quasi-transitive graphs"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/214.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Percolation on every fast-spreading symmetric graph has a range with infinitely many endless clusters.",
+  "scope": "Bernoulli bond percolation on every infinite, connected, locally finite, nonamenable quasi-transitive graph, including every Cayley graph of a nonamenable group.",
+  "plain": "Open each link of an infinite network at random with chance p. On fast-spreading networks, endless clusters may appear before they merge into one. Benjamini and Schramm conjectured in 1996 that a gap between these two thresholds always exists. This paper proves it for bond percolation, with a Lean proof. It also proves a stronger operator form conjectured by Hutchcroft.",
+  "doesNot": "This does not cover site percolation, or give the values of the thresholds.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1996",
+    "firstStepBy": "Itai Benjamini and Oded Schramm, the nonuniqueness conjecture",
+    "field": "Probability and statistical mechanics",
+    "significance": "Landmark",
+    "significanceWhy": "It settles the bond form of a central conjecture of percolation beyond the flat grid, with a Lean proof."
+  },
+  "explanation": "Take an infinite tree where every point has three links. Keep each link open with chance p, independently. This is bond percolation. Follow open links away from a point, one level at a time. Each point has two links leading further out. With p = 3/5, each point has on average 6/5 open links outward. A branch that grows this way survives forever with chance 5/9. So infinite open clusters appear. On this tree, they appear once p passes 1/2.\n\nBut there is never just one infinite cluster, for any p below 1. Every link of a tree is the only bridge between two halves. Each closed link cuts clusters apart, so infinitely many infinite clusters coexist. A tree has two separate thresholds: one where infinite clusters appear, called p_c, and one where they merge into a single cluster, called p_u[1]. On a flat grid, the two thresholds coincide.\n\nTrees spread out very fast. Graphs with this property are called nonamenable: every finite set of points has a boundary at least a fixed fraction of its size[2]. Benjamini and Schramm conjectured in 1996 that nonamenability alone forces a gap between p_c and p_u[4]. They asked this for graphs with finitely many kinds of points under symmetry, called quasi-transitive graphs[3].\n\nMany special cases were known. Benjamini and Schramm proved the gap for one-ended planar graphs of this kind[5]. Nachmias and Peres proved it when loops in the graph are long enough[6]. Gaboriau proved it for graphs carrying a certain kind of harmonic function[7]. Hutchcroft proved a stronger form for hyperbolic graphs[8]. For Cayley graphs of groups, others proved it for some choice of generators, not for all[9]. Each result added a geometric condition beyond nonamenability[10].\n\nThis paper proves the conjecture for bond percolation on every such graph[11]. There is a range of p where infinitely many infinite clusters exist at once[12]. It also proves Hutchcroft's stronger conjecture. A threshold defined through a connection operator lies strictly between p_c and p_u[13]. For Cayley graphs, it holds for every finite set of generators[14].\n\nThe single obstacle is that the tree's separation comes from its tree structure. The task was to get an equally robust separation from nonamenability alone, with no tree and no extra geometry[15]. The paper reduces the problem to graphs with a balanced kind of symmetry, called unimodular. Hutchcroft's earlier work handles the other kind[16].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main statements. These include the strict gap, the nonempty range with infinitely many infinite clusters, and the Cayley graph case. Lean also covers estimates at the critical point. Each is matched to a reference statement by a tool called Comparator. No specialist review of the paper has been published. The paper covers bond percolation; the site version is not included.",
+  "hypeCheck": "Landmark if it holds. The main statements have Lean proofs matched by Comparator. No specialist review is published, and only bond percolation is covered.",
+  "glossary": [
+    {
+      "term": "Bond percolation",
+      "meaning": "Keeping each link of a network open with chance p, independently."
+    },
+    {
+      "term": "Infinite cluster",
+      "meaning": "An endless connected set of points joined by open links."
+    },
+    {
+      "term": "p_c and p_u",
+      "meaning": "The chance at which infinite clusters first appear, and the chance at which there is exactly one."
+    },
+    {
+      "term": "Nonamenable graph",
+      "meaning": "A graph where every finite set has a boundary at least a fixed fraction of its size."
+    },
+    {
+      "term": "Quasi-transitive graph",
+      "meaning": "A graph with only finitely many kinds of points up to its symmetries."
+    },
+    {
+      "term": "Cayley graph",
+      "meaning": "A graph drawn from a group and a set of generators, joining each element to its products with generators."
+    },
+    {
+      "term": "Unimodular",
+      "meaning": "A balance condition on how a graph's symmetries move points around."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Nonuniqueness of percolation on nonamenable quasi-transitive graphs” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-of-percolation-on-nonamenable-quasi-transitive-graphs-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 214 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/214.md"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A regular tree of degree at least three is the basic example of separated thresholds.",
+      "verdict": "supported",
+      "sourceLine": "tree of degree at least three supplies the basic example of separated",
+      "sourceQuote": "A regular tree of degree at least three supplies the basic example of separated thresholds.",
+      "paper": 1
+    },
+    {
+      "text": "A graph is quasi-transitive if its automorphism group has finitely many vertex orbits, and nonamenable if h_V(G)>0.",
+      "verdict": "supported",
+      "sourceLine": "The graph is \\emph{nonamenable} if $h_V(G)>0$.",
+      "sourceQuote": "The graph is \\emph{nonamenable} if $h_V(G)>0$.",
+      "paper": 1
+    },
+    {
+      "text": "A graph is quasi-transitive if its automorphism group has finitely many orbits on vertices.",
+      "verdict": "supported",
+      "sourceLine": "It is \\emph{quasi-transitive} if its automorphism group $\\Aut(G)$ has",
+      "sourceQuote": "It is \\emph{quasi-transitive} if its automorphism group $\\Aut(G)$ has finitely many orbits on $V$.",
+      "paper": 1
+    },
+    {
+      "text": "Benjamini and Schramm conjectured a nonempty nonuniqueness phase for graphs with finitely many vertex orbits.",
+      "verdict": "supported",
+      "sourceLine": "mechanism always produces a nonempty nonuniqueness phase when the graph",
+      "sourceQuote": "Benjamini and Schramm conjectured that this mechanism always produces a nonempty nonuniqueness phase when the graph has finitely many vertex orbits \\cite[Conjecture~6]{BenjaminiSchramm1996}.",
+      "paper": 1
+    },
+    {
+      "text": "Benjamini and Schramm proved 0<pc<pu<1 for one-ended nonamenable transitive planar graphs.",
+      "verdict": "supported",
+      "sourceLine": "one-ended nonamenable transitive planar graphs, for both bond and site",
+      "sourceQuote": "Benjamini and Schramm proved $0<\\pc<\\pu<1$ for one-ended nonamenable transitive planar graphs, for both bond and site percolation \\cite[Theorem~1.1]{BenjaminiSchramm2001}.",
+      "paper": 1
+    },
+    {
+      "text": "Nachmias and Peres proved nonuniqueness for graphs of large girth relative to spectral radius.",
+      "verdict": "supported",
+      "sourceLine": "Nachmias and Peres proved nonuniqueness",
+      "sourceQuote": "Nachmias and Peres proved nonuniqueness and triangle estimates for nonamenable transitive graphs of sufficiently large girth relative to their spectral radius \\cite{NachmiasPeres2012}.",
+      "paper": 1
+    },
+    {
+      "text": "Gaboriau proved pc<pu for graphs admitting a nonconstant harmonic Dirichlet function.",
+      "verdict": "supported",
+      "sourceLine": "Gaboriau proved $\\pc<\\pu$ for unimodular transitive graphs admitting a",
+      "sourceQuote": "Gaboriau proved $\\pc<\\pu$ for unimodular transitive graphs admitting a nonconstant harmonic Dirichlet function, using $\\ell^2$ Betti numbers, and extended the argument to quasi-transitive graphs \\cite[Theorem~0.6 and Section~5]{Gaboriau2005}.",
+      "paper": 1
+    },
+    {
+      "text": "Hutchcroft proved pc<p_{2->2} for nonamenable Gromov hyperbolic quasi-transitive graphs.",
+      "verdict": "supported",
+      "sourceLine": "used here, proved $\\pc<\\ptwo$ for nonamenable Gromov hyperbolic",
+      "sourceQuote": "Hutchcroft introduced and developed the operator-threshold framework used here, proved $\\pc<\\ptwo$ for nonamenable Gromov hyperbolic quasi-transitive graphs, and proved it for graphs admitting a quasi-transitive nonunimodular automorphism group \\cite[Section~2 and Theorems~2.1 and~2.9]{Hutchcroft2019}.",
+      "paper": 1
+    },
+    {
+      "text": "Earlier Cayley-graph results permit a choice of generators.",
+      "verdict": "supported",
+      "sourceLine": "permit a choice of generators;",
+      "sourceQuote": "These results permit a choice of generators; \\cref{cor:cayley} treats an arbitrary prescribed generating set.",
+      "paper": 1
+    },
+    {
+      "text": "These results impose conditions beyond nonamenability.",
+      "verdict": "supported",
+      "sourceLine": "random-walk decay, while imposing conditions beyond nonamenability.",
+      "sourceQuote": "These results explain the usefulness of geometric separation and random-walk decay, while imposing conditions beyond nonamenability.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem resolves the bond-percolation nonuniqueness conjecture of Benjamini and Schramm.",
+      "verdict": "supported",
+      "sourceLine": "The theorem resolves the bond-percolation nonuniqueness conjecture of",
+      "sourceQuote": "The theorem resolves the bond-percolation nonuniqueness conjecture of Benjamini and Schramm positively, and proves Hutchcroft's stronger operator-threshold conjecture in the same graph class.",
+      "paper": 1
+    },
+    {
+      "text": "There is an interval of p with infinitely many infinite clusters simultaneously.",
+      "verdict": "supported",
+      "sourceLine": "many infinite open clusters simultaneously for every $p\\in[p_1,p_2]$.",
+      "sourceQuote": "There exist $\\pc<p_1<p_2<1$ such that, in the coupling obtained from independent uniform edge labels, almost surely there are infinitely many infinite open clusters simultaneously for every $p\\in[p_1,p_2]$.",
+      "paper": 1
+    },
+    {
+      "text": "It proves Hutchcroft's operator-threshold conjecture, pc<p_{2->2}<=pu.",
+      "verdict": "supported",
+      "sourceLine": "Schramm positively, and proves Hutchcroft's stronger",
+      "sourceQuote": "The theorem resolves the bond-percolation nonuniqueness conjecture of Benjamini and Schramm positively, and proves Hutchcroft's stronger operator-threshold conjecture in the same graph class.",
+      "paper": 1
+    },
+    {
+      "text": "For Cayley graphs, any finite symmetric generating set works.",
+      "verdict": "supported",
+      "sourceLine": "be any finite symmetric generating set with the identity removed.",
+      "sourceQuote": "Let $\\Lambda$ be a nonamenable finitely generated group, and let $S$ be any finite symmetric generating set with the identity removed.",
+      "paper": 1
+    },
+    {
+      "text": "The difficulty is to extract separation from nonamenability alone, without tree structure or extra geometry.",
+      "verdict": "supported",
+      "sourceLine": "thresholds. The difficulty is to extract an equally robust separation",
+      "sourceQuote": "A regular tree of degree at least three supplies the basic example of separated thresholds. The difficulty is to extract an equally robust separation from nonamenability alone, without a tree structure or an additional geometric hypothesis.",
+      "paper": 1
+    },
+    {
+      "text": "The nonunimodular theorem is used directly, so the new argument concerns a unimodular action.",
+      "verdict": "supported",
+      "sourceLine": "The nonunimodular theorem is used directly in our reduction.",
+      "sourceQuote": "The nonunimodular theorem is used directly in our reduction.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes pc<p_{2->2}<=pu, the nonuniqueness interval, the Cayley case, and critical estimates.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

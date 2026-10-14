@@ -1,0 +1,198 @@
+{
+  "id": "207",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-l1-Bass-Conjecture-for-Discrete-Groups-October-5-2026/l1-bass-conjecture.pdf",
+      "label": "The ℓ¹-Bass Conjecture for Discrete Groups"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026.pdf",
+      "label": "The Bass trace conjecture and the characteristic-zero Kaplansky idempotent conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/207.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Idempotents in group rings carry no trace at infinite-order elements, for every group; Kaplansky's problem follows.",
+  "scope": "Complex group rings of every discrete group; idempotents over characteristic-zero domains for torsion-free groups; and the ℓ¹ group algebra.",
+  "plain": "An idempotent is an element e with e times e equal to e. Bass conjectured that idempotent matrices over a group ring leave no trace on elements of infinite order. This family proves it for complex group rings of every group. It deduces that torsion-free groups have only the idempotents 0 and 1 over characteristic-zero coefficients. A second paper claims the same for the larger ℓ¹ algebra.",
+  "doesNot": "This does not settle Kaplansky's idempotent problem for coefficients of positive characteristic, such as the integers mod 2.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1976",
+    "firstStepBy": "Hyman Bass, the trace conjecture",
+    "field": "Algebra",
+    "significance": "Landmark",
+    "significanceWhy": "It removes every hypothesis on the group from two conjectures that were open for decades and checked case by case."
+  },
+  "explanation": "Take a group with two elements: 1 and a flip s, where flipping twice gives 1. Form sums like a + b·s with complex numbers a and b, and multiply them out using s·s = 1. This is the group ring. Now try e = ½ + ½s. Squaring gives ¼ + ½s + ¼s·s, which is ¼ + ½s + ¼, or ½ + ½s again. So e·e = e. An element with this property is called an idempotent.\n\nThe trick used that s has finite order: some power of s is 1. Try the same with a group where nothing but 1 has finite order, such as the whole numbers under addition, written as powers of t. Then (½ + ½t)² is ¼ + ½t + ¼t², which is not ½ + ½t. Kaplansky's idempotent problem asks whether this is always so. In a group with no elements of finite order other than 1, are 0 and 1 the only idempotents? Such a group is called torsion-free.\n\nBass asked a sharper question. Take an idempotent square matrix over the group ring. Add up its diagonal entries and sort the coefficients by conjugacy class. A conjugacy class is the set of elements that become each other after a change of viewpoint, g turned into h·g·h⁻¹. This sorted sum is the Hattori–Stallings trace. The Bass trace conjecture says its coefficients are zero on every class of infinite order[1]. Finite-order classes may be nonzero. In the flip example, e has coefficient ½ on the class of s[2].\n\nMany cases were known. Bass proved the vanishing for linear groups, groups made of invertible matrices[3]. Farrell and Linnell proved the complex statement for elementary amenable groups[4]. Berrick, Chatterji and Mislin covered amenable groups through a stronger statement on a larger algebra[5]. For idempotents, Formanek handled torsion-free groups with a chain condition on subgroups[6]. Each method needed a hypothesis on the group.\n\nOne paper proves the complex Bass trace conjecture for every group, with no hypothesis[7]. For torsion-free groups it deduces Kaplansky's conjecture in characteristic zero[8]. That means coefficients like whole numbers, rationals or complex numbers, and any domain built on them. A second paper claims the ℓ¹ version[9]. There the sums may have infinitely many terms, as long as the sizes of their coefficients add up to a finite number. It claims the trace lives on finitely many finite-order classes[10].\n\nThe single obstacle is that the group is arbitrary. Earlier methods asked the group to be amenable, hyperbolic or of finite dimension in some sense. The group-ring paper turns one trace coefficient into a number computed on a high-dimensional geometric object[11]. It then shows that number must be zero in high enough dimension, by cutting the object into small pieces[12]. For the ℓ¹ paper, products of coefficients can involve elements far from the identity[13]. Its estimates have to stay under control as the number of factors grows.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the complex Bass trace conjecture for every group. It also covers the torsion-free trace identity and Kaplansky's conjecture over every characteristic-zero domain. The ℓ¹ result lies outside that check, so for it the paper only claims a proof. No specialist review of either paper has been published.",
+  "hypeCheck": "The group-ring Bass conjecture and Kaplansky's characteristic-zero case have Lean proofs. The ℓ¹ version is only claimed. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Group ring",
+      "meaning": "Formal sums of group elements with numerical coefficients, multiplied using the group's own rule."
+    },
+    {
+      "term": "Idempotent",
+      "meaning": "An element e with e times e equal to e. 0 and 1 always qualify."
+    },
+    {
+      "term": "Torsion-free group",
+      "meaning": "A group where no element other than the identity returns to the identity when repeated."
+    },
+    {
+      "term": "Conjugacy class",
+      "meaning": "All elements of the form h·g·h⁻¹ for a fixed g, as h ranges over the group."
+    },
+    {
+      "term": "Hattori–Stallings trace",
+      "meaning": "The sum of an idempotent matrix's diagonal entries, with coefficients grouped by conjugacy class."
+    },
+    {
+      "term": "Characteristic zero",
+      "meaning": "Coefficients in which adding 1 to itself never gives 0, like the integers or the complex numbers."
+    },
+    {
+      "term": "ℓ¹ group algebra",
+      "meaning": "Infinite sums over the group whose coefficient sizes add up to a finite number."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The ℓ¹-Bass Conjecture for Discrete Groups” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-l1-Bass-Conjecture-for-Discrete-Groups-October-5-2026/l1-bass-conjecture.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “The Bass trace conjecture and the characteristic-zero Kaplansky idempotent conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026/The-Bass-trace-conjecture-for-complex-group-rings-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 207 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/207.md"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The complex group-ring Bass conjecture asks whether the trace coefficients vanish on every infinite-order class.",
+      "verdict": "supported",
+      "sourceLine": "The complex group-ring Bass conjecture asks whether these coefficients",
+      "sourceQuote": "The complex group-ring Bass conjecture asks whether these coefficients vanish on every infinite-order conjugacy class, for every group and every class in $K_0(\\C G)$; see \\cite[Conjecture 2.1]{BCM2004} and \\cite[Conjecture 2]{CM2011}.",
+      "paper": 2
+    },
+    {
+      "text": "For a finite group the averaging idempotent has coefficient |C|/|F| at every class.",
+      "verdict": "supported",
+      "sourceLine": "$|C|/|F|$ at every conjugacy class $C$. The conclusion therefore differs",
+      "sourceQuote": "Finite-order coefficients need not vanish away from the identity: for a finite group $F$, the idempotent $|F|^{-1}\\sum_{h\\in F}h$ has coefficient $|C|/|F|$ at every conjugacy class $C$. The conclusion therefore differs from the identity-only support assertion for integral group rings.",
+      "paper": 2
+    },
+    {
+      "text": "Bass proved complex trace vanishing for linear groups.",
+      "verdict": "supported",
+      "sourceLine": "Bass proved complex trace vanishing at infinite-order elements for linear",
+      "sourceQuote": "Bass proved complex trace vanishing at infinite-order elements for linear groups \\cite[Theorem (6.1)(f)]{Bass1979}.",
+      "paper": 2
+    },
+    {
+      "text": "Farrell and Linnell proved the complex Bass statement for elementary amenable groups.",
+      "verdict": "supported",
+      "sourceLine": "methods. Farrell and Linnell proved the complex Bass statement for",
+      "sourceQuote": "Broader group classes have been treated by algebraic and analytic methods. Farrell and Linnell proved the complex Bass statement for elementary amenable groups as part of a result over integral domains \\cite[Theorem 1.6]{FarrellLinnell2003}.",
+      "paper": 2
+    },
+    {
+      "text": "Berrick, Chatterji and Mislin obtained it for amenable groups via the stronger l1 assertion.",
+      "verdict": "supported",
+      "sourceLine": "obtained it for amenable groups through rational surjectivity of the",
+      "sourceQuote": "Berrick, Chatterji and Mislin obtained it for amenable groups through rational surjectivity of the degree-zero Bost assembly map for countable groups \\cite[Theorems 1.3--1.4 and Lemma 1.5]{BCM2004}.",
+      "paper": 2
+    },
+    {
+      "text": "Formanek proved the characteristic-zero idempotent conclusion for torsion-free groups with the ascending chain condition.",
+      "verdict": "supported",
+      "sourceLine": "Formanek proved the characteristic-zero conclusion for torsion-free",
+      "sourceQuote": "Formanek proved the characteristic-zero conclusion for torsion-free groups satisfying the ascending chain condition on subgroups \\cite[Theorem 1]{Formanek1973}.",
+      "paper": 2
+    },
+    {
+      "text": "The complex group-ring Bass trace conjecture holds for every discrete group.",
+      "verdict": "supported",
+      "sourceLine": "This resolves the complex group-ring formulation positively.",
+      "sourceQuote": "This resolves the complex group-ring formulation positively.",
+      "paper": 2
+    },
+    {
+      "text": "This resolves the characteristic-zero Kaplansky idempotent conjecture, including coefficient domains.",
+      "verdict": "supported",
+      "sourceLine": "conjecture positively, and includes coefficient domains as well as fields.",
+      "sourceQuote": "Part \\textup{(ii)} resolves the characteristic-zero Kaplansky idempotent conjecture positively, and includes coefficient domains as well as fields.",
+      "paper": 2
+    },
+    {
+      "text": "The l1-Bass conjecture holds for every discrete group.",
+      "verdict": "supported",
+      "sourceLine": "We prove this assertion for all discrete groups.",
+      "sourceQuote": "We prove this assertion for all discrete groups.",
+      "paper": 1
+    },
+    {
+      "text": "The trace of an l1 idempotent is supported on finitely many finite-order classes; finite support is part of the conclusion.",
+      "verdict": "supported",
+      "sourceLine": "The finite-support assertion is part of the conclusion, in addition to",
+      "sourceQuote": "The finite-support assertion is part of the conclusion, in addition to vanishing on infinite-order classes.",
+      "paper": 1
+    },
+    {
+      "text": "A Pfaffian cocycle evaluated on a cycle recovers the trace coefficient up to a factor.",
+      "verdict": "supported",
+      "sourceLine": "A Pfaffian cocycle evaluates on this cycle as",
+      "sourceQuote": "A Pfaffian cocycle evaluates on this cycle as $2^{-m}\\HS_G([e(\\C G)^q])([g]_G)$.",
+      "paper": 2
+    },
+    {
+      "text": "Every invariant cocycle evaluates to zero on such cycles in high dimension, via cutting into bounded-diameter pieces.",
+      "verdict": "supported",
+      "sourceLine": "shows that every invariant cocycle evaluates to zero on cycles of this",
+      "sourceQuote": "The geometric part, proved first in Sections~\\ref{sec:framework}--\\ref{sec:chains}, shows that every invariant cocycle evaluates to zero on cycles of this kind in sufficiently high dimension.",
+      "paper": 2
+    },
+    {
+      "text": "For an l1 idempotent the group elements may have arbitrarily large word length.",
+      "verdict": "supported",
+      "sourceLine": "For an $\\ell^1$ idempotent these elements may have",
+      "sourceQuote": "For an $\\ell^1$ idempotent these elements may have arbitrarily large word length, even after reduction to exponential decay.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes the complex Bass trace conjecture for every group, the torsion-free trace identity, and the characteristic-zero Kaplansky conjecture.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

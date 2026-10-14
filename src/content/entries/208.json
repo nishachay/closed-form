@@ -1,0 +1,180 @@
+{
+  "id": "208",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fiber-functors-for-finite-symmetric-tensor-categories-in-positive-characteristic-September-24-2026/paper.pdf",
+      "label": "Fiber functors for finite symmetric tensor categories in positive characteristic"
+    }
+  ],
+  "headline": "Every finite symmetric tensor category in characteristic p is claimed to map into one higher Verlinde category.",
+  "scope": "Finite symmetric tensor categories over an algebraically closed field of characteristic p > 0, including p = 2.",
+  "plain": "A symmetric tensor category is an abstract setting with objects that combine and can swap order. Benson, Etingof and Ostrik built a tower of model categories, the higher Verlinde categories. They conjectured every reasonable category maps faithfully into this tower. This paper claims to prove it for every finite such category, in every characteristic p > 0. The level of the tower used may depend on the category.",
+  "doesNot": "This does not cover symmetric tensor categories that are not finite, which the full conjecture also includes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2023",
+    "firstStepBy": "Dave Benson, Pavel Etingof and Victor Ostrik, the higher Verlinde conjecture",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "It would settle the finite case of the main structural conjecture for symmetric tensor categories in positive characteristic."
+  },
+  "explanation": "Work with arithmetic mod 5, where 5 counts as 0. Take the 3-by-3 matrix with 1s on the diagonal and 1s just above it. Raised to the fifth power it gives the identity, so it describes an action of a five-element cycle. Such a matrix is called a Jordan block of length 3. Now combine two copies into one 9-by-9 matrix, the tensor product. Computing its block structure mod 5 gives blocks of lengths 1, 3 and 5.\n\nThe block of length 5 is special. In a precise sense it is negligible, and one can throw it away. Keeping only blocks of lengths 1 to 4 gives a small world in which 3 times 3 is 1 plus 3. In the same world, 4 times 4 leaves only 1, since the rest is three blocks of length 5. This world is the first Verlinde category for the prime 5[1,2]. For the prime 2 it is ordinary vector spaces, and for 3 it is supervector spaces[3].\n\nA symmetric tensor category is an abstract setting with objects, a way to combine them, and a rule for swapping the order. Representations of a group are the basic example. A fiber functor is a faithful translation from one such setting into another that keeps all this structure[4]. Over the complex numbers, Deligne showed in 2002 that supervector spaces are a common target for every reasonable category of this kind[5]. In positive characteristic p, that fails. Ostrik proved that the semisimple ones, called fusion categories, translate into the first Verlinde category[6]. Benson, Etingof and Ostrik then built a tower of higher Verlinde categories, one level for each power of p[2]. They conjectured that every reasonable symmetric tensor category translates into this tower[7].\n\nThis paper claims to prove that conjecture for every finite symmetric tensor category[8]. That includes characteristic two[8]. The level of the tower may depend on the category[9]. Finite here means finitely many basic objects, finite-dimensional spaces of maps, and enough projective objects[10]. The paper makes no claim about larger categories that are not finite[9].\n\nThe single obstacle is that the natural translation tool can fail. It is called the Frobenius functor, and it need not be exact, meaning it can break short sequences of objects[11]. Higher versions of it, built by Coulembier and Flake, become usable once a specific conjecture about tilting modules holds[12]. The paper claims to prove that conjecture in full[13]. It then picks a version of the higher functor that is exact for the given category. A counting argument with dimensions finishes the descent into one level of the tower.\n\nThe result also classifies the finite categories that cannot be compressed further[14]. These are the ones where every structure-preserving translation out of them is faithful on maps.\n\nHow sure is this? There is no Lean formalization for this result in the openai/math release, so no computer has checked the proof. The argument builds on a large body of recent work on Verlinde categories and Frobenius functors. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds. There is no Lean check, it rests on recent heavy machinery, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Jordan block",
+      "meaning": "A square matrix with one repeated value on the diagonal and 1s just above it."
+    },
+    {
+      "term": "Symmetric tensor category",
+      "meaning": "An abstract setting of objects and maps with a way to combine objects and swap their order."
+    },
+    {
+      "term": "Fiber functor",
+      "meaning": "A faithful, exact translation between two such settings that keeps combining and swapping intact."
+    },
+    {
+      "term": "Verlinde category",
+      "meaning": "A model category built from Jordan blocks after throwing away negligible pieces; higher levels form a tower."
+    },
+    {
+      "term": "Characteristic p",
+      "meaning": "Arithmetic where adding 1 to itself p times gives 0."
+    },
+    {
+      "term": "Exact functor",
+      "meaning": "A translation that sends short exact sequences of objects to short exact sequences."
+    },
+    {
+      "term": "Frobenius functor",
+      "meaning": "A tool that raises structure to the p-th power; it can fail to be exact."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Fiber functors for finite symmetric tensor categories in positive characteristic” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fiber-functors-for-finite-symmetric-tensor-categories-in-positive-characteristic-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The first level is the semisimplification of Rep(Z/p); its simple objects are Jordan blocks of lengths 1 to p-1.",
+      "verdict": "supported",
+      "sourceLine": "Its simple objects are",
+      "sourceQuote": "Its simple objects are represented by Jordan blocks of lengths $1,\\ldots,p-1$ \\cite[Section~2.3]{EtingofOstrikFrobenius}.",
+      "paper": 1
+    },
+    {
+      "text": "Benson, Etingof and Ostrik's higher Verlinde categories form a tower of finite symmetric tensor categories.",
+      "verdict": "supported",
+      "sourceLine": "The higher Verlinde categories of Benson--Etingof--Ostrik form a tower",
+      "sourceQuote": "The higher Verlinde categories of Benson--Etingof--Ostrik form a tower \\[ \\operatorname{Ver}_{p}(k)\\subset \\operatorname{Ver}_{p^2}(k)\\subset \\operatorname{Ver}_{p^3}(k)\\subset\\cdots \\] of finite symmetric tensor categories \\cite{BEO2023,Coulembier2021Envelopes}.",
+      "paper": 1
+    },
+    {
+      "text": "Ver_2 is vector spaces and Ver_3 is supervector spaces.",
+      "verdict": "supported",
+      "sourceLine": "Thus $\\operatorname{Ver}_2$ is the category of vector spaces and",
+      "sourceQuote": "Thus $\\operatorname{Ver}_2$ is the category of vector spaces and $\\operatorname{Ver}_3$ is the category of supervector spaces with its sign symmetry.",
+      "paper": 1
+    },
+    {
+      "text": "A fiber functor is a k-linear exact faithful strong symmetric monoidal functor.",
+      "verdict": "supported",
+      "sourceLine": "A \\emph{fiber functor} between such categories is a $k$-linear exact",
+      "sourceQuote": "A \\emph{fiber functor} between such categories is a $k$-linear exact faithful strong symmetric monoidal functor.",
+      "paper": 1
+    },
+    {
+      "text": "In characteristic zero, Deligne's theorem makes supervector spaces a common target.",
+      "verdict": "supported",
+      "sourceLine": "In characteristic zero, Deligne's theorem makes supervector spaces a",
+      "sourceQuote": "In characteristic zero, Deligne's theorem makes supervector spaces a common target for fiber functors from symmetric tensor categories of moderate growth \\cite{Deligne2002}.",
+      "paper": 1
+    },
+    {
+      "text": "Ostrik proved that symmetric fusion categories admit fiber functors to Ver_p.",
+      "verdict": "supported",
+      "sourceLine": "In positive characteristic, Ostrik proved that",
+      "sourceQuote": "In positive characteristic, Ostrik proved that symmetric fusion categories admit fiber functors to $\\operatorname{Ver}_p$ \\cite[Theorem~1.5]{Ostrik2020}.",
+      "paper": 1
+    },
+    {
+      "text": "The full Benson–Etingof–Ostrik conjecture concerns categories of moderate growth, with the tower union as target.",
+      "verdict": "supported",
+      "sourceLine": "The full conjecture concerns symmetric tensor categories of",
+      "sourceQuote": "The full conjecture concerns symmetric tensor categories of \\emph{moderate growth}: for each object, the lengths of its tensor powers grow at most exponentially.",
+      "paper": 1
+    },
+    {
+      "text": "This proves the finite case of the Benson–Etingof–Ostrik conjecture, including characteristic two.",
+      "verdict": "supported",
+      "sourceLine": "This proves the finite case of the Benson--Etingof--Ostrik conjecture",
+      "sourceQuote": "This proves the finite case of the Benson--Etingof--Ostrik conjecture \\cite[Conjecture~1.4]{BEO2023}, including characteristic two.",
+      "paper": 1
+    },
+    {
+      "text": "The image lies in a single finite level depending on the category; no assertion is made about nonfinite categories.",
+      "verdict": "supported",
+      "sourceLine": "The theorem places the",
+      "sourceQuote": "The theorem places the image in a single finite level, whose height may depend on $\\mathcal C$; it makes no assertion about arbitrary nonfinite categories of moderate growth.",
+      "paper": 1
+    },
+    {
+      "text": "A finite symmetric tensor category has finite-dimensional morphism spaces, finitely many simple classes and enough projectives.",
+      "verdict": "supported",
+      "sourceLine": "A \\emph{finite symmetric tensor category over $k$} is an essentially small",
+      "sourceQuote": "A \\emph{finite symmetric tensor category over $k$} is an essentially small $k$-linear abelian rigid symmetric monoidal category with biexact tensor product, finite-dimensional morphism spaces, finite-length objects, finitely many isomorphism classes of simple objects, enough projectives, and $\\operatorname{End}(\\mathbf1)=k$.",
+      "paper": 1
+    },
+    {
+      "text": "Higher levels are needed because the ordinary Frobenius functor need not be exact.",
+      "verdict": "supported",
+      "sourceLine": "The higher levels are needed because the ordinary Frobenius functor",
+      "sourceQuote": "The higher levels are needed because the ordinary Frobenius functor need not be exact.",
+      "paper": 1
+    },
+    {
+      "text": "The Coulembier–Flake construction becomes symmetric monoidal once a restricted-tilting conjecture is established.",
+      "verdict": "supported",
+      "sourceLine": "Their construction becomes symmetric monoidal once a specific",
+      "sourceQuote": "Their construction becomes symmetric monoidal once a specific restricted-tilting conjecture is established.",
+      "paper": 1
+    },
+    {
+      "text": "The paper proves the full restricted-tilting conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Our independent representation-theoretic contribution is the full",
+      "sourceQuote": "Our independent representation-theoretic contribution is the full restricted-tilting conjecture, proved in Theorem~\\ref{thm:restricted-tilting}.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem with the subcategory classification classifies incompressible finite categories.",
+      "verdict": "supported",
+      "sourceLine": "of Benson--Etingof--Ostrik \\cite{BEO2023} classify these finite categories,",
+      "sourceQuote": "Theorem~\\ref{thm:main} and the higher Verlinde subcategory classification of Benson--Etingof--Ostrik \\cite{BEO2023} classify these finite categories, giving the finite case of Coulembier--Etingof--Ostrik's Conjecture~B \\cite{CoulembierEtingofOstrikIncompressible}.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
