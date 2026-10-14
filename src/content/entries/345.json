@@ -1,0 +1,154 @@
+{
+  "id": "345",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Infinitely-many-closed-geodesic-images-on-every-Riemannian-sphere-September-24-2026/paper.pdf",
+      "label": "Infinitely many closed geodesic images on every Riemannian sphere"
+    }
+  ],
+  "headline": "Claims every Riemannian metric on a sphere of any dimension has infinitely many geometrically distinct closed geodesics.",
+  "scope": "Every smooth Riemannian metric, degenerate ones included, on the standard sphere Sⁿ with n ≥ 2, and on every closed three-manifold.",
+  "plain": "A closed geodesic is a straightest path that loops back to where it began. A long-standing problem asks if every closed curved space has infinitely many of them with different shapes. For spheres, this was known in dimension two and for typical metrics in higher dimensions. This paper claims it for every metric on every sphere. It also deduces the same for every closed three-dimensional space.",
+  "doesNot": "This does not count how many closed geodesics there are up to a given length. It does not settle the problem for all closed manifolds. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1917",
+    "firstStepBy": "George Birkhoff, minimax construction of closed geodesics on spheres",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims the sphere case of a central problem on closed geodesics, including all degenerate metrics, and settles dimension three."
+  },
+  "explanation": "Take an ellipsoid with half-axes 1, 1.01 and 1.02, a slightly squashed ball. Cut it by each of its three planes of symmetry. Each cut gives an ellipse, and each ellipse is a closed geodesic. A geodesic is a straightest path, and a closed one loops back smoothly to its start. Their lengths, computed numerically, are about 6.315, 6.346 and 6.377. A round sphere of radius 1 has great circles of length 2π, about 6.283. On a nearly round ellipsoid, Morse showed that every other closed geodesic is much longer. So finding infinitely many closed geodesics means finding longer and longer ones, and checking that they are really new.\n\nA closed geodesic is prime if it goes around its loop once[2]. Two geodesics count as different only if their images, the sets of points they pass through, differ[3]. Going around an old loop twice gives nothing new. The closed-geodesic problem asks whether every closed curved space of dimension at least two has infinitely many different ones[4].\n\nOn spheres, this was hard. For many spaces, the topology of the space of all loops forces infinitely many geodesics. Spheres are too simple for that test to work[5]. The two-sphere case follows from work of Bangert with Franks or Hingston[6]. In higher dimensions, Rademacher proved it for typical, strongly bumpy metrics[7]. But a limit of typical metrics need not keep distinct images[8]. Others found an error in Klingenberg's claimed general proof. The paper points to two unsupported steps in a later claimed proof by Charles[9].\n\nThe paper claims the full sphere case. Every smooth metric on the sphere of any dimension n ≥ 2 has infinitely many prime closed geodesics with different images[1]. The same holds for every closed three-dimensional space, using Perelman's theorem and a result of Rademacher and Taimanov[10]. The proof argues by contradiction. Suppose only finitely many images exist. The obstacle is temporary classes, loop shapes that appear below some length and later disappear[11]. The paper bounds how many there can be. Then the symmetry of reflecting loops and shifting them by half a period gives a contradiction[12].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof relies on string topology and delicate filtered homology estimates. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds: it would settle the sphere case and dimension three of a central problem. The proof is technical, and the paper itself notes gaps in two earlier claimed proofs. There is no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Geodesic",
+      "meaning": "A straightest possible path on a curved space."
+    },
+    {
+      "term": "Closed geodesic",
+      "meaning": "A geodesic that returns smoothly to its starting point and direction."
+    },
+    {
+      "term": "Prime",
+      "meaning": "A closed geodesic that goes around its loop once, not several times."
+    },
+    {
+      "term": "Riemannian metric",
+      "meaning": "A rule for measuring lengths and angles at every point of a space."
+    },
+    {
+      "term": "Bumpy metric",
+      "meaning": "A typical metric whose closed geodesics are all, in a precise sense, non-degenerate."
+    },
+    {
+      "term": "Loop space",
+      "meaning": "The space of all closed loops in a given space."
+    },
+    {
+      "term": "Three-manifold",
+      "meaning": "A space that looks like ordinary three-dimensional space near every point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Infinitely many closed geodesic images on every Riemannian sphere” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Infinitely-many-closed-geodesic-images-on-every-Riemannian-sphere-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every smooth Riemannian metric on Sⁿ, n ≥ 2, has infinitely many prime closed geodesics with pairwise different images.",
+      "sourceLine": "smooth sphere $S^n$, there are infinitely many prime closed geodesics with",
+      "sourceQuote": "For every integer $n\\ge2$ and every smooth Riemannian metric on the standard smooth sphere $S^n$, there are infinitely many prime closed geodesics with pairwise different images.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A closed geodesic is prime if it traverses its periodic trajectory once.",
+      "sourceLine": "A closed geodesic is \\emph{prime} if it traverses its",
+      "sourceQuote": "A closed geodesic is \\emph{prime} if it traverses its periodic trajectory once.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Geometric distinction means distinction of images.",
+      "sourceLine": "Geometric distinction means distinction of images",
+      "sourceQuote": "Geometric distinction means distinction of images: changing the initial point, reversing orientation, or taking an iterate produces no new image.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The problem asks whether every closed Riemannian manifold of dimension at least two has infinitely many geometrically distinct closed geodesics.",
+      "sourceLine": "The closed-geodesic infinitude problem asks whether every closed Riemannian",
+      "sourceQuote": "The closed-geodesic infinitude problem asks whether every closed Riemannian manifold of dimension at least two has infinitely many geometrically distinct closed geodesics.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Spheres have one-generator cohomology and bounded loop homology, so the topological criterion does not settle their problem.",
+      "sourceLine": "Spheres have one-generator cohomology and bounded degreewise loop homology",
+      "sourceQuote": "Spheres have one-generator cohomology and bounded degreewise loop homology, so this criterion does not settle their infinitude problem.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The two-sphere case follows from Bangert's work with that of Franks or Hingston.",
+      "sourceLine": "It follows from Bangert's work together",
+      "sourceQuote": "It follows from Bangert's work together with that of Franks or Hingston~\\cite{Bangert1993,Franks1992,Hingston1993}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Rademacher proved infinitude for strongly bumpy metrics on compact simply connected manifolds.",
+      "sourceLine": "In higher dimensions, Rademacher proved infinitude for strongly bumpy",
+      "sourceQuote": "In higher dimensions, Rademacher proved infinitude for strongly bumpy metrics on compact simply connected manifolds and proved that such metrics are generic~\\cite[Theorems 1.1--1.3]{Rademacher1994}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A limiting argument from generic metrics need not preserve distinct prime images.",
+      "sourceLine": "a limiting argument from generic metrics need not preserve distinct prime images",
+      "sourceQuote": "These results do not establish infinitude for arbitrary degenerate metrics; a limiting argument from generic metrics need not preserve distinct prime images.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper identifies unsupported steps in an earlier claimed proof, after Asselle and Mazzucchelli identified an error in Klingenberg's.",
+      "sourceLine": "We identify two unsupported steps in that argument",
+      "sourceQuote": "We identify two unsupported steps in that argument: the boundary-rank equality in Equation~(53) requires maximal ranks not established there, and the constant-ball modification in Equation~(54) does not provide the nondegenerate Morse critical points used in the conclusion.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every smooth metric on a nonempty closed three-manifold has infinitely many prime closed geodesics with distinct images.",
+      "sourceLine": "Every smooth Riemannian metric on $M$ has infinitely many prime closed",
+      "sourceQuote": "Every smooth Riemannian metric on $M$ has infinitely many prime closed geodesics with pairwise distinct images.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The difficulty is that sublevel homology can contain classes that disappear at a later level.",
+      "sourceLine": "that sublevel homology can also contain classes that disappear at a later",
+      "sourceQuote": "The difficulty is that sublevel homology can also contain classes that disappear at a later level.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Temporary classes are controlled first, then the symmetry of double loops gives a contradiction.",
+      "sourceLine": "We first control these temporary classes and then use the symmetry",
+      "sourceQuote": "We first control these temporary classes and then use the symmetry of double loops to obtain a contradiction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

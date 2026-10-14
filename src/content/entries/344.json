@@ -1,0 +1,146 @@
+{
+  "id": "344",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-metric-Blaschke-theorem-September-23-2026/paper.pdf",
+      "label": "The metric Blaschke theorem"
+    }
+  ],
+  "headline": "Claims the metric Blaschke conjecture: injectivity radius equal to diameter forces a round sphere or projective space.",
+  "scope": "Connected closed smooth Riemannian manifolds of positive dimension whose global injectivity radius equals their diameter.",
+  "plain": "On a round sphere, every straightest path stays shortest until it reaches the opposite point. A few other symmetric spaces, the projective spaces and the Cayley plane, share this property. The metric Blaschke conjecture says no other closed smooth space has it. Surfaces and some other cases were settled earlier. This paper claims the full classification in every dimension.",
+  "doesNot": "This does not cover spaces that are not smooth or not closed. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1921",
+    "firstStepBy": "Wilhelm Blaschke, who asked the original question for surfaces",
+    "field": "Differential geometry",
+    "significance": "Landmark",
+    "significanceWhy": "It claims a long-standing conjecture in Riemannian geometry, studied for about a century, in every dimension."
+  },
+  "explanation": "Take a round sphere of radius 1. The farthest two points can be is π, half a great circle, so the diameter is π. Start at the north pole and walk along any straight path. It stays the shortest route until it hits the south pole, at distance exactly π. So every straightest path from every point stays shortest for exactly the diameter. Now glue each point of the sphere to its opposite point. This gives the real projective plane. Its diameter is π/2, and its closed straightest paths have length π, twice the diameter. Again every straightest path stays shortest for exactly the diameter. A flat square torus with side 1 is different. Some straight paths stop being shortest after length 1/2. But its diameter is the half-diagonal, √2/2, about 0.707. The two numbers differ.\n\nThe injectivity radius at a point is how far you can go in every direction before straight paths stop being unique. The smallest value over all points is the global injectivity radius. It is never larger than the diameter. A Blaschke manifold is one where the two are equal[2]. The round spheres, the real, complex and quaternionic projective spaces, and the Cayley plane are all Blaschke. These are the compact rank-one symmetric spaces, the most symmetric curved spaces of their kind. The metric Blaschke conjecture asks whether they are the only ones[3].\n\nGreen settled the surface case[4]. Berger, Kazdan, Weinstein and Yang settled the sphere and real projective cases[5]. Yang showed a Blaschke manifold shaped like complex projective space has the model's volume[6]. The paper claims the full result. Every Blaschke manifold is, up to scale, one of these symmetric spaces[1].\n\nThe plan has two volume bounds. First, the paper claims every Blaschke manifold has at least the volume of its model at the same diameter[7]. Equality holds only for the model itself[8]. So it is enough to prove the volume is at most the model's[9]. The lower bound uses Jacobi fields, which measure how nearby straight paths spread apart. For the quaternionic spaces, the upper bound was the main obstacle. The paper proves it with topology, using characteristic classes and the space of all closed straight paths[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof combines delicate analysis with algebraic topology. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark-level claim if the proof holds: it would settle the metric Blaschke conjecture in every dimension. The proof is long and has no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Geodesic",
+      "meaning": "A straightest possible path on a curved space."
+    },
+    {
+      "term": "Diameter",
+      "meaning": "The largest distance between any two points of the space."
+    },
+    {
+      "term": "Injectivity radius",
+      "meaning": "How far one can go from a point, in every direction, before straight paths stop being unique."
+    },
+    {
+      "term": "Blaschke manifold",
+      "meaning": "A closed space whose global injectivity radius equals its diameter."
+    },
+    {
+      "term": "Projective space",
+      "meaning": "A space of lines through the origin; the real projective plane is a sphere with opposite points glued."
+    },
+    {
+      "term": "Compact rank-one symmetric space",
+      "meaning": "A round sphere, a real, complex or quaternionic projective space, or the Cayley plane."
+    },
+    {
+      "term": "Jacobi field",
+      "meaning": "A measure of how a family of nearby straight paths spreads apart."
+    },
+    {
+      "term": "Isometric",
+      "meaning": "Matched by a map that keeps all distances."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The metric Blaschke theorem” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-metric-Blaschke-theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every connected closed smooth Riemannian manifold whose injectivity radius equals its diameter is, up to scale, a round sphere, a projective space or the Cayley plane.",
+      "sourceLine": "isometric, up to multiplication of the metric by a positive constant,",
+      "sourceQuote": "If $\\inj(M,g)=\\diam(M,g)$, then $(M,g)$ is isometric, up to multiplication of the metric by a positive constant, to a round sphere, a standard real, complex or quaternionic projective space, or the Cayley plane.",
+      "verdict": "supported"
+    },
+    {
+      "text": "M is a Blaschke manifold if it has positive dimension and injectivity radius equal to diameter.",
+      "sourceLine": "We call $M$ a\n\\emph{Blaschke manifold} if it has positive dimension and",
+      "sourceQuote": "We call $M$ a \\emph{Blaschke manifold} if it has positive dimension and $\\inj(M,g)=\\diam(M,g)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The metric Blaschke conjecture asks whether the common minimizing-distance property characterizes the compact rank-one symmetric spaces.",
+      "sourceLine": "The metric Blaschke\nconjecture asks whether this property characterizes these compact",
+      "sourceQuote": "The metric Blaschke conjecture asks whether this property characterizes these compact rank-one symmetric spaces.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Green settled the surface problem.",
+      "sourceLine": "Green settled the surface",
+      "sourceQuote": "Green settled the surface problem \\citep{Blaschke1921,Green1963}; the later geometric formulation and its development are described in \\citet{Besse1978} and in the corrected account of \\citet{McKay2016}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The sphere and real-projective cases were established through the work of Berger, Kazdan, Weinstein and Yang.",
+      "sourceLine": "The sphere and real-projective metric cases were established through",
+      "sourceQuote": "The sphere and real-projective metric cases were established through the work of Berger, Kazdan, Weinstein and Yang; see \\citet[Appendices~D--E]{Besse1978} and \\citet[Sections~11--12]{McKay2016}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Yang proved a Blaschke manifold of complex projective homotopy type has the model volume at the same prime geodesic period.",
+      "sourceLine": "Yang proved that a Blaschke manifold of complex",
+      "sourceQuote": "Yang proved that a Blaschke manifold of complex projective \\emph{homotopy type} has the model volume at the same prime geodesic period \\citep[Theorem, p.~380]{Yang1991}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every Blaschke manifold has at least the volume of its model at the same diameter.",
+      "sourceLine": "Every Blaschke manifold and its model at the same diameter satisfy",
+      "sourceQuote": "Every Blaschke manifold and its model at the same diameter satisfy \\[ \\Vol(M,g)\\ge\\Vol(M_0,g_0). \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "Equality holds only when the manifold is isometric to its model.",
+      "sourceLine": "Equality holds if and only if $(M,g)$ is isometric to $(M_0,g_0)$.",
+      "sourceQuote": "Equality holds if and only if $(M,g)$ is isometric to $(M_0,g_0)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A Blaschke manifold with volume at most that of its model is isometric to that model.",
+      "sourceLine": "If a Blaschke manifold has volume at most that of its model at the",
+      "sourceQuote": "If a Blaschke manifold has volume at most that of its model at the same diameter, then it is isometric to that model.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The quaternionic upper bound uses characteristic-class and signature theory.",
+      "sourceLine": "Characteristic-class\nand signature theory enter here",
+      "sourceQuote": "Characteristic-class and signature theory enter here in their usual integral and oriented forms \\citep{MilnorStasheff1974}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

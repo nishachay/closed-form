@@ -1,0 +1,152 @@
+{
+  "id": "341",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deforming-hypersymplectic-four-manifolds-to-hyperkahler-triples-October-7-2026/paper.pdf",
+      "label": "Deforming hypersymplectic four-manifolds to hyperkähler triples"
+    }
+  ],
+  "headline": "Claims every hypersymplectic four-manifold deforms, with its cohomology classes fixed, to a hyperkähler triple.",
+  "scope": "Smooth hypersymplectic triples of closed two-forms on closed connected oriented four-manifolds.",
+  "plain": "A hypersymplectic structure is a set of three special two-forms on a four-dimensional space. Hyperkähler triples are the most symmetric such sets. Donaldson asked if every hypersymplectic space carries a hyperkähler structure, and Fine and Yao asked for a deformation that keeps three class labels fixed. Earlier results needed symmetry or other extra conditions. This paper claims a deformation exists in every case, so the space must be a K3 surface or a four-torus.",
+  "doesNot": "This does not claim the hypersymplectic flow converges; the deformation is built another way. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2006",
+    "firstStepBy": "Simon Donaldson, Question 3 in his study of two-forms on four-manifolds",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims a conjecture of Donaldson and of Fine and Yao in four-dimensional geometry, with a strong smooth classification as a corollary."
+  },
+  "explanation": "Take the four-torus, a cube in four dimensions whose opposite faces are glued. Use coordinates x1 to x4 and write dxi dxj for a small area element in the xi, xj plane. Form three two-forms: ω1 = dx1 dx2 + dx3 dx4, ω2 = dx1 dx3 + dx4 dx2 and ω3 = dx1 dx4 + dx2 dx3. Multiplying two of them, with the wedge product, gives a multiple of the volume element. Each form times itself gives 2. Each pair of different forms gives 0. So the table of products is 2 times the identity, the same at every point. This is a hyperkähler triple, the most symmetric kind.\n\nNow tilt the third form to ω3 + ω1/2. The table becomes 2, 0, 1 in the first row, 0, 2, 0 in the second and 1, 0, 2.5 in the third. Its eigenvalues are about 3.28, 2 and 1.22, all positive. A triple of closed two-forms whose table is positive like this is hypersymplectic[2]. On a general space the table can change from point to point. A cohomology class is a kind of fixed label for each closed form. The question is whether the forms can move to a hyperkähler triple with their classes kept[2].\n\nDonaldson asked whether every compact four-manifold with such a triple carries a hyperkähler structure[3]. Fine and Yao stated the deformation version, with all three classes fixed, as a conjecture[4]. The main tool so far was the hypersymplectic flow, an equation that moves the forms over time[5]. Full convergence results needed symmetry or other extra conditions[6].\n\nThe paper claims the deformation always exists[1]. The endpoint forms are parallel, meaning constant in the right sense, and form a hyperkähler triple[7]. As a result, the space must be smoothly a K3 surface or the four-torus[8]. The obstacle was keeping the third class while deforming. The paper works with two of the forms at a time. Those two forms define an almost-complex structure J, a rule for rotating directions by a right angle. A form tames J if it is positive on each direction paired with its rotation[9]. The deformation works as long as the third class still contains a taming form. To keep one, the paper studies positive currents, which are generalized surfaces that could block the class[10]. It bounds their mass on small balls. It builds on a companion paper that shows taming implies compatibility on four-manifolds[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof is long and uses delicate estimates on currents. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds: it would settle a conjecture of Donaldson and of Fine and Yao, and classify such four-manifolds. The proof is long and has no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Two-form",
+      "meaning": "A rule that assigns a signed area to each small parallelogram in a space."
+    },
+    {
+      "term": "Wedge product",
+      "meaning": "A way to multiply two two-forms on a four-dimensional space to get a multiple of the volume element."
+    },
+    {
+      "term": "Hypersymplectic structure",
+      "meaning": "Three closed two-forms whose table of wedge products is positive definite at every point."
+    },
+    {
+      "term": "Hyperkähler triple",
+      "meaning": "Three parallel two-forms whose wedge products are 2 times the identity times a volume form."
+    },
+    {
+      "term": "Cohomology class",
+      "meaning": "A label for a closed form that stays fixed under certain allowed changes."
+    },
+    {
+      "term": "Almost-complex structure",
+      "meaning": "A rule that rotates each tangent direction by a right angle, like multiplying by i."
+    },
+    {
+      "term": "Tame",
+      "meaning": "A two-form tames J if it is positive on each nonzero direction paired with its rotation by J."
+    },
+    {
+      "term": "K3 surface",
+      "meaning": "A specific compact four-dimensional space, smoothly the same as a smooth quartic surface in complex projective space."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Deforming hypersymplectic four-manifolds to hyperkähler triples” (7 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deforming-hypersymplectic-four-manifolds-to-hyperkahler-triples-October-7-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every normalized hypersymplectic triple on a closed connected oriented four-manifold deforms, with each cohomology class fixed, to a hyperkähler triple.",
+      "sourceLine": "cohomology class fixed, to a hyperk\\\"ahler triple.",
+      "sourceQuote": "Every smooth normalized positive triple of closed two-forms on a closed connected oriented four-manifold admits a smooth deformation, with each cohomology class fixed, to a hyperk\\\"ahler triple.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A hypersymplectic structure is a triple of closed real two-forms whose span is positive definite for the wedge product; the question is whether it deforms to a hyperkähler triple keeping its classes.",
+      "sourceLine": "of closed real two-forms whose pointwise span is three-dimensional and",
+      "sourceQuote": "A \\emph{hypersymplectic structure} on an oriented four-manifold is a triple of closed real two-forms whose pointwise span is three-dimensional and positive definite for the wedge product.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Donaldson's Question 3 asks whether a compact oriented four-manifold with a positive closed triple admits a hyperkähler structure.",
+      "sourceLine": "His Question~3 in Section~5.3 asks whether a",
+      "sourceQuote": "His Question~3 in Section~5.3 asks whether a compact oriented four-manifold carrying a positive closed triple admits a hyperk\\\"ahler structure.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Fine and Yao formulate the normalized deformation problem, retaining all three classes, as a conjecture.",
+      "sourceLine": "deformation problem, retaining all three cohomology classes, as",
+      "sourceQuote": "Fine and Yao formulate the normalized deformation problem, retaining all three cohomology classes, as Conjecture~1.1 of \\cite{FineYao2017}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The main analytic approach has been the hypersymplectic flow.",
+      "sourceLine": "The main analytic approach has been the hypersymplectic flow.",
+      "sourceQuote": "The main analytic approach has been the hypersymplectic flow.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Earlier convergence results retain their stated symmetry or integrability hypotheses.",
+      "sourceLine": "These results retain their stated symmetry or integrability hypotheses.",
+      "sourceQuote": "These results retain their stated symmetry or integrability hypotheses.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The endpoint forms are parallel and self-dual for a hyperkähler metric.",
+      "sourceLine": "The endpoint forms are parallel and self-dual for a hyperk\\\"ahler metric.",
+      "sourceQuote": "The endpoint forms are parallel and self-dual for a hyperk\\\"ahler metric.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A closed four-manifold with a positive triple is diffeomorphic to the standard K3 manifold or to T⁴.",
+      "sourceLine": "the standard K3 manifold or to $T^4$.",
+      "sourceQuote": "Then $X$ is diffeomorphic to the standard K3 manifold or to $T^4$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A two-form tames J if it is positive on each nonzero vector paired with its image under J.",
+      "sourceLine": "\\emph{tames} $J$ if",
+      "sourceQuote": "Here a real two-form $\\beta$ \\emph{tames} $J$ if $\\beta(v,Jv)>0$ for every nonzero vector $v$; it is \\emph{compatible} if it is also $J$-invariant.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Separation of the cone of positive forms gives a positive current obstructing a desired closed form.",
+      "sourceLine": "Separation of the cone of positive forms gives a positive current",
+      "sourceQuote": "Separation of the cone of positive forms gives a positive current obstructing a desired closed form.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A separate article proves every tamed almost-complex structure on a closed four-manifold admits a compatible symplectic form.",
+      "sourceLine": "almost-complex structure on a closed connected real four-manifold admits a compatible",
+      "sourceQuote": "A separate article proves that every tamed smooth almost-complex structure on a closed connected real four-manifold admits a compatible symplectic form \\cite[Theorem~1.1]{OpenAITaming2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

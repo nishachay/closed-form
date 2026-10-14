@@ -1,0 +1,152 @@
+{
+  "id": "338",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniformization-of-complete-Kahler-manifolds-with-positive-bisectional-curvature-September-23-2026/paper.pdf",
+      "label": "Uniformization of complete Kähler manifolds with positive bisectional curvature"
+    }
+  ],
+  "headline": "Claims to prove Yau's uniformization conjecture: positive bisectional curvature makes a complete Kähler manifold ℂⁿ.",
+  "scope": "Connected noncompact complex manifolds of any complex dimension n ≥ 1 with a complete Kähler metric of strictly positive holomorphic bisectional curvature.",
+  "plain": "A Kähler manifold is a curved space that looks like complex n-space near each point. In 1982 Yau asked if such a space, complete, without edge and positively curved in a complex sense, must be ℂⁿ itself. Earlier proofs needed extra conditions, such as bounded curvature or fast volume growth. This paper claims to remove all of them, in every dimension. It identifies the complex structure with ℂⁿ, not the metric.",
+  "doesNot": "This does not say the given metric is flat or Euclidean; it only identifies the complex manifold with ℂⁿ. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Shing-Tung Yau, in his problem survey",
+    "field": "Differential geometry",
+    "significance": "Landmark",
+    "significanceWhy": "It claims a well-known conjecture of Yau from 1982 that many earlier results proved only under extra conditions."
+  },
+  "explanation": "Start with a bowl. Take the surface z = x² + y² in ordinary space. It goes on forever, so it is noncompact. A path along it never falls off an edge, so it is complete. Its Gaussian curvature, the amount it bends like a sphere, is 4/(1 + 4r²)² at distance r from the axis, measured flat. At r = 0 this is 4. At r = 1 it is 0.16. At r = 10 it is about 0.000025. The curvature stays positive but tends to zero. Even so, a classical theorem says this bowl has the same complex shape as the flat plane[2]. Here complex shape means the angles between curves, which a map can keep while it stretches lengths.\n\nYau asked whether the same holds in every dimension. A complex manifold of dimension n looks like ℂⁿ, the space of n complex numbers, near each point. A Kähler metric is a way to measure lengths on it that fits the complex structure. Holomorphic bisectional curvature is a complex version of the bowl's curvature. Two such spaces are biholomorphic if a map between them keeps the complex structure both ways. Yau asked this in his 1982 problem survey[3]. The paper claims a yes: every such complete noncompact space with strictly positive bisectional curvature is biholomorphic to ℂⁿ[1].\n\nBefore this, each proof added a condition. Chau and Tam needed bounded curvature and maximal volume growth[4]. Maximal volume growth means large balls hold about as much volume as flat balls. Liu removed the curvature bound but kept that growth condition[5]. For surfaces, Datar, Pingali and Seshadri needed the stronger positive sectional curvature[6]. The paper adds no volume, noncollapsing, pinching or topological condition[7]. It needs no uniform lower bound and no upper bound on curvature[8].\n\nThere were two obstacles[9]. The curvature can be unbounded, and some regions can be very thin. So standard flow theorems cannot be used directly. Also, shrinking coordinate charts may only show the space is a proper part of ℂⁿ. The paper runs the Kähler–Ricci flow, an equation that smooths the metric over time. It proves Harnack inequalities, which bound how fast curvature can change. These give charts that shrink in every direction. Polynomial maps then correct the charts so that their limit is a map from the space onto all of ℂⁿ[11]. The conclusion is about the complex structure. It does not say the metric is flat[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof is long and relies on delicate estimates for the flow. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark-level claim if the proof holds: it would settle a 1982 conjecture of Yau. The proof is long, there is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Complex manifold",
+      "meaning": "A space that looks like ℂⁿ, the space of n complex numbers, near each point."
+    },
+    {
+      "term": "Kähler metric",
+      "meaning": "A way to measure lengths on a complex manifold that fits its complex structure."
+    },
+    {
+      "term": "Complete",
+      "meaning": "Every path of finite length that keeps going stays inside the space; there is no missing edge."
+    },
+    {
+      "term": "Noncompact",
+      "meaning": "Not closed up and bounded; the space goes on forever."
+    },
+    {
+      "term": "Holomorphic bisectional curvature",
+      "meaning": "A complex version of surface curvature, measured on pairs of complex directions."
+    },
+    {
+      "term": "Biholomorphic",
+      "meaning": "Matched by a map that keeps the complex structure in both directions."
+    },
+    {
+      "term": "Kähler–Ricci flow",
+      "meaning": "An equation that changes a Kähler metric over time, smoothing out its curvature."
+    },
+    {
+      "term": "Harnack inequality",
+      "meaning": "A bound on how fast a positive quantity, here curvature, can change across space and time."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Uniformization of complete Kähler manifolds with positive bisectional curvature” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniformization-of-complete-Kahler-manifolds-with-positive-bisectional-curvature-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every connected noncompact complex manifold with a complete Kähler metric of strictly positive holomorphic bisectional curvature is biholomorphic to ℂⁿ.",
+      "sourceLine": "positive holomorphic bisectional curvature, then $M$ is biholomorphic",
+      "sourceQuote": "If $M$ admits a smooth complete K\\\"ahler metric with strictly positive holomorphic bisectional curvature, then $M$ is biholomorphic to $\\C^n$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A complete noncompact Riemann surface of positive Gaussian curvature is conformally the plane.",
+      "sourceLine": "A complete noncompact Riemann surface of positive Gaussian curvature is conformally the plane",
+      "sourceQuote": "A complete noncompact Riemann surface of positive Gaussian curvature is conformally the plane, by Cohn-Vossen's topology theorem and the parabolicity theorem of Blanc--Fiala--Huber \\cite[Satz~8]{CohnVossen}\\cite[Theorem~15]{Huber}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Yau asked the question in his 1982 problem survey.",
+      "sourceLine": "In his 1982 problem survey, Yau asked whether a complete noncompact",
+      "sourceQuote": "In his 1982 problem survey, Yau asked whether a complete noncompact K\\\"ahler manifold with positive holomorphic bisectional curvature must be biholomorphic to complex Euclidean space \\cite[\\S9(b), p.~45]{YauProblems}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Chau and Tam proved uniformization under bounded nonnegative bisectional curvature and maximal volume growth.",
+      "sourceLine": "Chau--Tam established uniformization under bounded nonnegative",
+      "sourceQuote": "Chau--Tam established uniformization under bounded nonnegative bisectional curvature and maximal volume growth \\cite{ChauTamComplex2006}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Liu proved uniformization under nonnegative bisectional curvature and maximal volume growth, without an upper curvature bound.",
+      "sourceLine": "Liu proved uniformization under nonnegative bisectional curvature and",
+      "sourceQuote": "Liu proved uniformization under nonnegative bisectional curvature and maximal volume growth, without an upper curvature bound, using a Gromov--Hausdorff approach and retracting holomorphic vector fields \\cite{LiuUniformization}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Datar, Pingali and Seshadri proved the surface case under positive real sectional curvature.",
+      "sourceLine": "K\\\"ahler surface with positive real sectional curvature is biholomorphic",
+      "sourceQuote": "Datar, Pingali, and Seshadri \\cite[Theorem~1]{DatarPingaliSeshadri} prove that every complete noncompact K\\\"ahler surface with positive real sectional curvature is biholomorphic to $\\mathbb C^2$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No volume-growth, noncollapsing, Ricci-pinching or topological hypothesis is added.",
+      "sourceLine": "No volume-growth, noncollapsing, Ricci-pinching, or topological hypothesis is added.",
+      "sourceQuote": "No volume-growth, noncollapsing, Ricci-pinching, or topological hypothesis is added.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem assumes neither a uniform positive lower bound nor a finite upper bound for the curvature.",
+      "sourceLine": "the theorem assumes neither a uniform positive lower bound nor a finite upper bound for the curvature",
+      "sourceQuote": "In particular, the theorem assumes neither a uniform positive lower bound nor a finite upper bound for the curvature.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Two issues must be addressed: unbounded curvature with collapsed regions, and charts that may only give a proper domain in ℂⁿ.",
+      "sourceLine": "Two issues must be addressed in the unrestricted problem.",
+      "sourceQuote": "Two issues must be addressed in the unrestricted problem.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The conclusion does not assert that the given metric is Euclidean.",
+      "sourceLine": "it does not assert that the given metric is Euclidean",
+      "sourceQuote": "Its conclusion identifies the entire complex manifold with $\\C^n$; it does not assert that the given metric is Euclidean.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Inverse iteration of polynomial models makes the corrected inverse charts converge to an injective holomorphic map onto all of ℂⁿ.",
+      "sourceLine": "This proves that the limiting coordinate map is onto~all~of~$\\C^n$.",
+      "sourceQuote": "This proves that the limiting coordinate map is onto~all~of~$\\C^n$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
