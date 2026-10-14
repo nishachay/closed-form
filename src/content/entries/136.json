@@ -1,0 +1,205 @@
+{
+  "id": "136",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-PCP-for-PPAD-conjecture-a-quasilinear-reduction-September-25-2026/paper.pdf",
+      "label": "The PCP-for-PPAD conjecture: a quasilinear reduction"
+    }
+  ],
+  "headline": "End-of-Line puzzles turn into number circuits only slightly bigger that tolerate many broken gates, the paper claims.",
+  "scope": "The result is a deterministic reduction from End-of-Line instances to generalized circuits. Its error and failure-fraction constants are fixed, and size is counted in exact binary length.",
+  "plain": "PPAD is a class of search problems where a solution must exist for a parity reason. Babichenko, Papadimitriou and Rubinstein conjectured that its core puzzle can be rewritten as a number circuit only slightly longer than the input. That rewriting must still give an answer when a fixed fraction of gates are broken by an adversary. This paper claims to prove that conjecture. No Lean formalization is listed.",
+  "doesNot": "This does not prove new running-time lower bounds for Nash equilibria; those still need an extra hardness assumption.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2016",
+    "firstStepBy": "Babichenko, Papadimitriou and Rubinstein, who posed the conjecture",
+    "field": "Theoretical computer science",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a stated conjecture that links robust checking with the complexity of equilibria."
+  },
+  "explanation": "Think of a huge maze of one-way corridors. Each room has at most one way in and one way out. You stand in a room with an exit but no entrance. Follow the corridors and you must reach a dead end, a room with no exit. Ends come in pairs, so another end must exist. Finding one can still take an enormous number of steps.\n\nThat puzzle is End-of-Line. The rooms are bit strings, and two small circuits name each room's next and previous room. The input length N counts the full description of both circuits[12]. PPAD is the class of search problems built on this parity argument[1]. Finding a Nash equilibrium of a game is a famous member.\n\nA generalized circuit is a second language for the same class[2]. Each wire carries a number between 0 and 1. Each gate demands a local rule, up to a small error ε[3]. Take an Add gate fed 0.3 and 0.5. Its output must sit within ε of 0.8. Fed 0.7 and 0.6, the sum caps at 1, so the output must sit within ε of 1.\n\nIn 2016, Babichenko, Papadimitriou and Rubinstein posed the PCP-for-PPAD conjecture[4]. It asks for a short rewrite of End-of-Line into such circuits. Both the numerical error and the fraction of broken gates must be fixed positive constants[4]. The broken-gate allowance is the hard part. The answer must come out even if an adversary chooses which gates fail[5]. Short means quasilinear: N times a fixed power of log N[6].\n\nPut numbers on that. Take N equal to one million bits, so log₂ N is about 19.9. If the power of the log were 2, the circuit would be about 400 million bits long. A blowup like N² would instead be a trillion. The paper fixes some power but does not name it in its main statement.\n\nOrdinary hardness proofs, even with constant error, do not give the short size[7]. In 2016 Rubinstein used encoded paths and a checkable proof system to show related hardness for two-player Nash equilibria. He left the conjecture open and flagged combining the pieces as a remaining question[8].\n\nThis paper claims to resolve the conjecture[9]. It gives fixed constants ε and δ and a deterministic rewrite into circuits of length N times a power of log N[10]. From any assignment that meets all but a δ fraction of gates, a solution to the maze can be recovered[11]. That holds whatever gates fail[11]. Such assignments always exist[13]. Neither tolerance shrinks as N grows[14].\n\nThe difficulty is needing two things at once: quasilinear total storage and robustness to a fixed fraction of failures[15]. The paper turns the maze into paths in a high-dimensional box, so an approximate fixed point lands on an endpoint. Each local step must be computable without reading the whole maze[16]. Rooms are stored as coded words, so a word with a few damaged symbols can still be decoded.\n\nThere is a limit to keep in view. Later papers derive lower bounds for computing equilibria from this conjecture. Those bounds also assume an extra exponential-time hypothesis. The paper's result concerns the rewrite itself, not those bounds[17].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. The constants ε, δ and the power of log N are fixed but not given as small numbers. Equilibrium time bounds that use it still need an extra assumption. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "PPAD",
+      "meaning": "A class of search problems whose solutions must exist by a parity argument about endpoints of paths."
+    },
+    {
+      "term": "End-of-Line",
+      "meaning": "The core PPAD puzzle: given circuits naming next and previous rooms, find an end of a path other than the start."
+    },
+    {
+      "term": "Generalized circuit",
+      "meaning": "A network of gates whose wires carry numbers in [0, 1], each gate checking a simple rule up to error ε."
+    },
+    {
+      "term": "Reduction",
+      "meaning": "An efficient way to rewrite one problem as another, so a solution to the second gives one to the first."
+    },
+    {
+      "term": "Quasilinear",
+      "meaning": "At most the input length times a fixed power of its logarithm."
+    },
+    {
+      "term": "PCP",
+      "meaning": "Probabilistically checkable proof: a format where checking a few spots reveals whether the whole is badly wrong."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "C. H. Papadimitriou, “On the Complexity of the Parity Argument and Other Inefficient Proofs of Existence”, Journal of Computer and System Sciences 48(3) (1994), 498–532",
+      "url": "https://doi.org/10.1016/S0022-0000(05)80063-7"
+    },
+    {
+      "id": 2,
+      "cite": "Y. Babichenko, C. H. Papadimitriou and A. Rubinstein, “Can Almost Everybody be Almost Happy?”, ITCS 2016, 1–9",
+      "url": "https://arxiv.org/abs/1504.02411v4"
+    },
+    {
+      "id": 3,
+      "cite": "A. Rubinstein, “Settling the Complexity of Computing Approximate Two-Player Nash Equilibria”, FOCS 2016, 258–265",
+      "url": "https://arxiv.org/abs/1606.04550v2"
+    },
+    {
+      "id": 4,
+      "cite": "A. Rubinstein, “Inapproximability of Nash Equilibrium”, SIAM Journal on Computing 47(3) (2018), 917–959",
+      "url": "https://arxiv.org/abs/1405.3322v5"
+    },
+    {
+      "id": 5,
+      "cite": "A. Deligkas, J. Fearnley, A. Hollender and T. Melissourgos, “Pure-Circuit: Tight Inapproximability for PPAD”, Journal of the ACM 71(5) (2024)",
+      "url": "https://arxiv.org/abs/2209.15149v3"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, family 136: “The PCP-for-PPAD conjecture: a quasilinear reduction” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-PCP-for-PPAD-conjecture-a-quasilinear-reduction-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "PPAD organizes total search problems based on the parity of endpoints in a directed graph.",
+      "verdict": "supported",
+      "sourceLine": "The class PPAD organizes total search problems whose existence proofs are based on the parity of endpoints in a directed graph",
+      "sourceQuote": "The class PPAD organizes total search problems whose existence proofs are based on the parity of endpoints in a directed graph~\\cite{Papadimitriou1994}."
+    },
+    {
+      "text": "Generalized circuits provide another language for PPAD.",
+      "verdict": "supported",
+      "sourceLine": "Generalized circuits provide another useful language for this class",
+      "sourceQuote": "Generalized circuits provide another useful language for this class: a solution assigns real values in $[0,1]$ to wires and approximately satisfies local arithmetic, comparison, and Boolean constraints."
+    },
+    {
+      "text": "A solution assigns values in [0,1] to wires and approximately satisfies local constraints.",
+      "verdict": "supported",
+      "sourceLine": "a solution assigns real values in $[0,1]$ to wires and approximately satisfies local arithmetic, comparison, and Boolean constraints",
+      "sourceQuote": "Generalized circuits provide another useful language for this class: a solution assigns real values in $[0,1]$ to wires and approximately satisfies local arithmetic, comparison, and Boolean constraints."
+    },
+    {
+      "text": "Babichenko, Papadimitriou and Rubinstein formulated the conjecture with constant error and constant violated fraction.",
+      "verdict": "supported",
+      "sourceLine": "both the allowed numerical error and the allowed fraction of violated gates are positive constants",
+      "sourceQuote": "Babichenko, Papadimitriou, and Rubinstein formulated the PCP-for-PPAD conjecture as a quasilinear reduction from End-of-Line to generalized circuits in which both the allowed numerical error and the allowed fraction of violated gates are positive constants~\\cite[Conjecture~2]{BPR2016}."
+    },
+    {
+      "text": "The decoder must succeed even if an adversary chooses which constraints to violate.",
+      "verdict": "supported",
+      "sourceLine": "the decoder must succeed even if an adversary chooses which constraints to violate",
+      "sourceQuote": "The failure fraction is the essential robustness requirement: the decoder must succeed even if an adversary chooses which constraints to violate."
+    },
+    {
+      "text": "The circuit has total binary length N(log N)^{O(1)}.",
+      "verdict": "supported",
+      "sourceLine": "circuit of total binary length",
+      "sourceQuote": "There are fixed positive rational constants $\\eps$ and $\\delta$ and a deterministic polynomial-time reduction that transforms an End-of-Line instance of binary length $N$ into a generalized circuit of total binary length $N(\\log N)^{O(1)}$."
+    },
+    {
+      "text": "Ordinary polynomial-time PPAD-hardness does not provide the quasilinear size.",
+      "verdict": "supported",
+      "sourceLine": "Ordinary polynomial-time PPAD-hardness, even with constant numerical error, does not provide it.",
+      "sourceQuote": "Ordinary polynomial-time PPAD-hardness, even with constant numerical error, does not provide it."
+    },
+    {
+      "text": "Rubinstein left the conjecture open and identified composition as a remaining question.",
+      "verdict": "supported",
+      "sourceLine": "while leaving the PCP-for-PPAD conjecture open and identifying composition as a remaining question",
+      "sourceQuote": "It established quasipolynomial hardness for constant-error two-player Nash under the exponential-time hypothesis for PPAD, while leaving the PCP-for-PPAD conjecture open and identifying composition as a remaining question~\\cite[Theorem~1.2 and Section~1.3]{Rubinstein2016Settling}."
+    },
+    {
+      "text": "The paper gives a positive resolution of the quasilinear PCP-for-PPAD conjecture.",
+      "verdict": "supported",
+      "sourceLine": "We give a positive resolution of the quasilinear PCP-for-PPAD conjecture.",
+      "sourceQuote": "We give a positive resolution of the quasilinear PCP-for-PPAD conjecture."
+    },
+    {
+      "text": "There are fixed constants ε, δ and a deterministic polynomial-time reduction to a quasilinear circuit.",
+      "verdict": "supported",
+      "sourceLine": "There are fixed positive rational constants",
+      "sourceQuote": "There are fixed positive rational constants $\\eps$ and $\\delta$ and a deterministic polynomial-time reduction that transforms an End-of-Line instance of binary length $N$ into a generalized circuit of total binary length $N(\\log N)^{O(1)}$."
+    },
+    {
+      "text": "From an assignment satisfying all but a δ fraction, a solution can be recovered regardless of which gates fail.",
+      "verdict": "supported",
+      "sourceLine": "a solution to the original End-of-Line instance can be recovered in polynomial time, regardless of which gates fail",
+      "sourceQuote": "From any rational assignment of polynomial encoding length that $\\eps$-satisfies all but a $\\delta$ fraction of the gates, a solution to the original End-of-Line instance can be recovered in polynomial time, regardless of which gates fail."
+    },
+    {
+      "text": "The input length N includes the complete descriptions of both circuits.",
+      "verdict": "supported",
+      "sourceLine": "The input length",
+      "sourceQuote": "The input length $N\\geq2$ includes the complete descriptions of both circuits and their input and output lists."
+    },
+    {
+      "text": "Such assignments always exist.",
+      "verdict": "supported",
+      "sourceLine": "Such assignments always exist, with one fixed polynomial bound on their encoding length.",
+      "sourceQuote": "Such assignments always exist, with one fixed polynomial bound on their encoding length."
+    },
+    {
+      "text": "Neither tolerance tends to zero with N.",
+      "verdict": "supported",
+      "sourceLine": "Neither tolerance tends to zero with",
+      "sourceQuote": "Neither tolerance tends to zero with $N$."
+    },
+    {
+      "text": "The reduction needs quasilinear storage and robustness to a fixed fraction of failed gates at once.",
+      "verdict": "supported",
+      "sourceLine": "quasilinear total storage and robustness to an arbitrary fixed fraction of failed gates",
+      "sourceQuote": "The present reduction needs two further properties simultaneously: quasilinear total storage and robustness to an arbitrary fixed fraction of failed gates."
+    },
+    {
+      "text": "The proof must provide local numerical access to the field without inspecting the entire graph.",
+      "verdict": "supported",
+      "sourceLine": "it cannot inspect the entire encoded graph when computing one coordinate of",
+      "sourceQuote": "The proof must also provide local numerical access to the field: it cannot inspect the entire encoded graph when computing one coordinate of $v$."
+    },
+    {
+      "text": "The time lower bounds retain their extra hypothesis; the result concerns the reduction itself.",
+      "verdict": "supported",
+      "sourceLine": "the result here concerns the conjectured reduction itself",
+      "sourceQuote": "These time lower bounds retain their additional exponential-time hypothesis; the result here concerns the conjectured reduction itself."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

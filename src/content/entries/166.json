@@ -1,0 +1,254 @@
+{
+  "id": "166",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-higher-dimensional-Erdos-distinct-distances-conjecture-September-23-2026/paper.pdf",
+      "label": "The higher-dimensional Erdős distinct-distances conjecture"
+    }
+  ],
+  "headline": "Any n points in d ≥ 3 dimensions span at least a constant times n^(2/d) distinct distances, the paper claims.",
+  "scope": "The result covers every finite set of distinct points in d-dimensional space, for each fixed d of at least 3. It makes no assumption on where the points sit.",
+  "plain": "Place n points in space and list all the distances between pairs. Erdős asked how few different distances there can be. In d dimensions a grid gives about n^(2/d), and the conjecture says nothing does better by more than a constant factor. This paper claims to prove that for every fixed d of at least 3. No Lean formalization is listed.",
+  "doesNot": "This does not touch the flat, two-dimensional case, which has a different conjectured answer, and it gives no numerical value for the constant.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1946",
+    "firstStepBy": "Paul Erdős, who posed the distinct-distances problem",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles the higher-dimensional form of a famous problem with the best possible power."
+  },
+  "visual": {
+    "type": "record",
+    "title": "Best proven exponent for distinct distances among n points in four dimensions",
+    "note": "Higher is better. The conjectured exponent is 2/4 = 0.5. The 2026 bound of about 0.471 also loses an o(1) in the exponent.",
+    "lowerIsBetter": false,
+    "points": [
+      {
+        "year": 2008,
+        "value": 0.4167,
+        "who": "Solymosi–Vu",
+        "source": 3
+      },
+      {
+        "year": 2026,
+        "value": 0.4706,
+        "who": "Solymosi–Vu recurrence with Tidor–Yu–Zakharov",
+        "source": 6
+      },
+      {
+        "year": 2026,
+        "value": 0.5,
+        "who": "This paper",
+        "claim": true,
+        "source": 8
+      }
+    ]
+  },
+  "explanation": "Build a cube-shaped grid of points, 10 on a side, so 1,000 points in all. Measure the distance between every pair. Squared distances are whole numbers from 1 up to 3 × 9², which is 243. A direct count finds only 144 different distances among almost half a million pairs. For comparison, 1,000 raised to the power 2/3 is 100.\n\nThat is the pattern behind the question. In d dimensions, a grid with n points spans about n^(2/d) distances, up to a constant factor[4]. Erdős introduced the distinct-distances problem in 1946[1]. The higher-dimensional conjecture says no set of n points can do better than a constant times n^(2/d)[2].\n\nThe paper claims exactly that bound[3]. For each d of at least 3, there is a constant c_d above zero. Every set of n ≥ 2 points spans at least c_d × n^(2/d) distances[3]. No assumption is made on where the points sit[5]. The constant depends only on the dimension, and the paper gives no number for it.\n\nEarlier bounds fell short in the power. In three dimensions, Aronov, Pach, Sharir and Tardos reached about n^(77/141), roughly n^0.546[6]. Solymosi and Vu built recurrences linking dimensions[7]. Their original theorem gives about n^0.5643 in three dimensions[8]. In four dimensions it gives n^(5/12), about n^0.417[8]. In 2026, Tidor, Yu and Zakharov proved n^(2/3 − o(1)) in three dimensions[9]. Fed into the recurrences, that gives n^(8/17 − o(1)) in four dimensions[10]. That is about n^0.471, still short of 0.5[11].\n\nAn earlier manuscript by Aksoy Yazici claimed the same constant-factor bound. Its author withdrew it, because the proof of its Theorem 1.2 is not correct[12].\n\nWhy does the constant factor matter in three dimensions, where the power 2/3 was nearly reached? A bound like n^(2/3 − o(1)) still allows the ratio to the target to shrink forever, just very slowly[13]. Ruling that out means excluding every slowly shrinking ratio, without first fixing a power saving[14].\n\nThe single hard part is concentration. Bounds from lower dimensions limit how many points can sit on one flat plane or line[15]. They do not stop points from crowding onto curved surfaces, and no single polynomial degree captures all such crowding[15]. The paper handles this by tracking crowding at many polynomial degree scales at once[16]. Its main step rules out a covering by thin cones [shapes swept out by lines through one point][17].\n\nThe flat, two-dimensional case is different. There a square grid gives about n divided by the square root of log n distances, so the conjectured answer has another form[18]. Guth and Katz proved a bound of n divided by log n in the plane in 2015. This paper uses that planar result as its starting input[19].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. The constant c_d is not given as a number, and an earlier claim of the same bound was withdrawn. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Distinct distances",
+      "meaning": "The number of different values among all distances between pairs of points in a set."
+    },
+    {
+      "term": "Constant factor",
+      "meaning": "A fixed multiplier that does not grow or shrink with the number of points."
+    },
+    {
+      "term": "o(1) in the exponent",
+      "meaning": "A small loss in the power that shrinks to zero as n grows, but may shrink very slowly."
+    },
+    {
+      "term": "Recurrence",
+      "meaning": "An inequality that turns a bound in one dimension into a bound in a higher dimension."
+    },
+    {
+      "term": "Polynomial degree scale",
+      "meaning": "The highest power allowed in the polynomial equations used to describe where points crowd."
+    },
+    {
+      "term": "Cone",
+      "meaning": "A shape made of straight lines all passing through one point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, “On sets of distances of n points”, American Mathematical Monthly 53(5) (1946), 248–250",
+      "url": "https://users.renyi.hu/~p_erdos/1946-03.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "B. Aronov, J. Pach, M. Sharir and G. Tardos, “Distinct distances in three and higher dimensions”, Combinatorics, Probability and Computing 13 (2004), 283–293",
+      "url": "https://doi.org/10.1017/S0963548304006091"
+    },
+    {
+      "id": 3,
+      "cite": "J. Solymosi and V. H. Vu, “Near optimal bounds for the Erdős distinct distances problem in high dimensions”, Combinatorica 28 (2008), 113–125",
+      "url": "https://doi.org/10.1007/s00493-008-2099-1"
+    },
+    {
+      "id": 4,
+      "cite": "L. Guth and N. H. Katz, “On the Erdős distinct distances problem in the plane”, Annals of Mathematics 181(1) (2015), 155–190",
+      "url": "https://doi.org/10.4007/annals.2015.181.1.2"
+    },
+    {
+      "id": 5,
+      "cite": "S. Bardwell-Evans and A. Sheffer, “A reduction for the distinct distances problem in ℝᵈ”, Journal of Combinatorial Theory Series A 166 (2019), 171–225",
+      "url": "https://arxiv.org/abs/1705.10963v2"
+    },
+    {
+      "id": 6,
+      "cite": "J. Tidor, H.-H. H. Yu and D. Zakharov, “The Erdős distinct distances problem in ℝ³”, arXiv:2608.14454 (2026)",
+      "url": "https://arxiv.org/abs/2608.14454v1"
+    },
+    {
+      "id": 7,
+      "cite": "E. Aksoy Yazici, “Erdős distance problem in ℝᵈ”, arXiv:2002.01248 (2020), withdrawn by the author",
+      "url": "https://arxiv.org/abs/2002.01248"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 166: “The higher-dimensional Erdős distinct-distances conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-higher-dimensional-Erdos-distinct-distances-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Erdős introduced the problem in 1946.",
+      "verdict": "supported",
+      "sourceLine": "introduced the problem in 1946",
+      "sourceQuote": "Erd\\H{o}s introduced the problem in 1946~\\cite{erdos1946}."
+    },
+    {
+      "text": "The higher-dimensional conjecture predicts a constant multiple of n^{2/d} distances.",
+      "verdict": "supported",
+      "sourceLine": "The higher-dimensional conjecture predicts a constant multiple of",
+      "sourceQuote": "The higher-dimensional conjecture predicts a constant multiple of \\(n^{2/d}\\) distances among any \\(n\\) points of \\(\\mathbb R^d\\), for every fixed \\(d\\ge3\\); see, for example, \\cite{BardwellEvansSheffer2019,tidoryuzakharov2026}."
+    },
+    {
+      "text": "Every set of n ≥ 2 points in ℝ^d determines at least c_d n^{2/d} distinct distances.",
+      "verdict": "supported",
+      "sourceLine": "we prove that every set of $n\\ge2$ distinct points in $\\mathbb R^d$ determines at least $c_d n^{2/d}$ distinct distances",
+      "sourceQuote": "For every fixed integer $d\\ge3$, we prove that every set of $n\\ge2$ distinct points in $\\mathbb R^d$ determines at least $c_d n^{2/d}$ distinct distances, where $c_d>0$ depends only on $d$."
+    },
+    {
+      "text": "The power of n is optimal: the integer grid has t^d points and squared distances between 1 and d(t−1)².",
+      "verdict": "supported",
+      "sourceLine": "is optimal: the integer grid",
+      "sourceQuote": "The power of \\(n\\) is optimal: the integer grid \\(\\{1,\\ldots,t\\}^d\\) has \\(t^d\\) points, and its squared distances are integers between \\(1\\) and \\(d(t-1)^2\\)."
+    },
+    {
+      "text": "No assumption is made on position, spacing or concentration.",
+      "verdict": "supported",
+      "sourceLine": "No assumption is made on the position, spacing, or concentration of the points.",
+      "sourceQuote": "No assumption is made on the position, spacing, or concentration of the points."
+    },
+    {
+      "text": "Aronov, Pach, Sharir and Tardos improved the three-dimensional bound to n^{77/141−ε}.",
+      "verdict": "supported",
+      "sourceLine": "Aronov, Pach, Sharir, and Tardos improved the three-dimensional lower bound to",
+      "sourceQuote": "Aronov, Pach, Sharir, and Tardos improved the three-dimensional lower bound to \\(\\Omega_\\varepsilon(n^{77/141-\\varepsilon})\\) for each \\(\\varepsilon>0\\) and propagated improvements to higher dimensions~\\cite{AronovPachSharirTardos2004}."
+    },
+    {
+      "text": "Solymosi and Vu developed recursive inequalities connecting dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Solymosi and Vu developed two recursive inequalities connecting distance bounds in lower and higher dimensions",
+      "sourceQuote": "Solymosi and Vu developed two recursive inequalities connecting distance bounds in lower and higher dimensions \\cite[Theorems~2.1--2.2]{SolymosiVu2008}."
+    },
+    {
+      "text": "Their original theorem gives Ω(n^{0.5643}) in dimension three and n^{2/d−2/(d(d+2))} for d ≥ 4.",
+      "verdict": "supported",
+      "sourceLine": "Their original theorem gives",
+      "sourceQuote": "Their original theorem gives \\(\\Omega(n^{0.5643})\\) distances in dimension three and \\(\\Omega_d(n^{2/d-2/(d(d+2))})\\) for every fixed \\(d\\ge4\\) \\cite[Theorem~1.1]{SolymosiVu2008}."
+    },
+    {
+      "text": "Tidor, Yu and Zakharov proved n^{2/3−o(1)} distinct distances in ℝ³.",
+      "verdict": "supported",
+      "sourceLine": "Tidor, Yu, and Zakharov proved",
+      "sourceQuote": "More recently, Tidor, Yu, and Zakharov proved \\(n^{2/3-o(1)}\\) distinct distances for arbitrary point sets in \\(\\mathbb R^3\\)~\\cite[Theorem~1.1]{tidoryuzakharov2026}."
+    },
+    {
+      "text": "Inserting their bound into the recurrences gives n^{8/17−o(1)} in dimension four.",
+      "verdict": "supported",
+      "sourceLine": "Inserting their three-dimensional distance bound into the Solymosi--Vu recurrences gives",
+      "sourceQuote": "Inserting their three-dimensional distance bound into the Solymosi--Vu recurrences gives \\(n^{8/17-o(1)}\\) in dimension four and \\(n^{3/8-o(1)}\\) in dimension five \\cite[Corollaries~2.3 and~2.6]{SolymosiVu2008}."
+    },
+    {
+      "text": "The leading exponents still fall below 2/d.",
+      "verdict": "supported",
+      "sourceLine": "The leading exponents in these two deductions still fall below the conjectured value",
+      "sourceQuote": "The leading exponents in these two deductions still fall below the conjectured value \\(2/d\\)."
+    },
+    {
+      "text": "An earlier manuscript of Aksoy Yazici was withdrawn because the proof of its Theorem 1.2 is not correct.",
+      "verdict": "supported",
+      "sourceLine": "was withdrawn by the author because the proof of its Theorem",
+      "sourceQuote": "{An earlier manuscript of Aksoy Yazici claimed the constant-factor bound in all dimensions \\(d\\ge3\\), but was withdrawn by the author because the proof of its Theorem~1.2 is not correct~\\cite{AksoyYazici2020Withdrawn}.}"
+    },
+    {
+      "text": "The ratio could still tend to zero more slowly than every negative power of n.",
+      "verdict": "supported",
+      "sourceLine": "could still tend to zero more slowly than every negative power of",
+      "sourceQuote": "The ratio \\(|\\Delta(P)|/n^{2/d}\\) could still tend to zero more slowly than every negative power of \\(n\\)."
+    },
+    {
+      "text": "The proof must exclude every such sequence without first fixing a power saving.",
+      "verdict": "supported",
+      "sourceLine": "sequence, without first fixing a power saving",
+      "sourceQuote": "To obtain a constant factor, the proof must exclude every such sequence, without first fixing a power saving."
+    },
+    {
+      "text": "Lower-dimensional bounds limit points in a flat but not concentration on varieties or at one degree.",
+      "verdict": "supported",
+      "sourceLine": "They do not prevent substantial concentration on more general varieties, nor do they identify a single polynomial degree at which all of that concentration can be studied.",
+      "sourceQuote": "They do not prevent substantial concentration on more general varieties, nor do they identify a single polynomial degree at which all of that concentration can be studied."
+    },
+    {
+      "text": "The proof keeps track of concentration at several polynomial degree scales.",
+      "verdict": "supported",
+      "sourceLine": "We use these two ideas to keep track of concentration at several polynomial degree scales.",
+      "sourceQuote": "We use these two ideas to keep track of concentration at several polynomial degree scales."
+    },
+    {
+      "text": "Theorem sc:theorem rules out sparse-cone coverage.",
+      "verdict": "supported",
+      "sourceLine": "rules out this coverage, including the choice of either endpoint for each pair",
+      "sourceQuote": "Theorem~\\ref{sc:theorem} rules out this coverage, including the choice of either endpoint for each pair."
+    },
+    {
+      "text": "In the plane the square grid gives O(n/√log n) distances, so the planar problem has a different conjectural order.",
+      "verdict": "supported",
+      "sourceLine": "the planar problem consequently has a different conjectural order",
+      "sourceQuote": "In the plane, the square-grid construction gives \\(O(n/\\sqrt{\\log n})\\) distances~\\cite{erdos1946}; the planar problem consequently has a different conjectural order."
+    },
+    {
+      "text": "The Guth–Katz planar bound supplies the two-dimensional input to the induction.",
+      "verdict": "supported",
+      "sourceLine": "That bound supplies the two-dimensional input to our induction.",
+      "sourceQuote": "That bound supplies the two-dimensional input to our induction."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

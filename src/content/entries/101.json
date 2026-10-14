@@ -1,0 +1,224 @@
+{
+  "id": "101",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Convex and metric geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-sharp-entropy-bound-and-the-simplex-inequality-for-isotropic-constants-October-5-2026/isotropic-simplex.pdf",
+      "label": "A sharp entropy bound and the simplex inequality for isotropic constants"
+    }
+  ],
+  "headline": "In every dimension, simplices alone have the largest isotropic constant among convex bodies, the paper claims.",
+  "scope": "The result covers every convex body in every dimension, and every log-concave probability density for the entropy bound.",
+  "plain": "The isotropic constant compares how spread out a random point of a solid shape is with the shape's volume. The strong isotropic constant conjecture says the simplex, such as a triangle or tetrahedron, gives the largest value. This paper claims to prove it in every dimension, with simplices as the only maximizers. It also claims a sharp lower bound on the entropy of log-concave distributions. No Lean formalization is listed.",
+  "doesNot": "This does not add anything new to the dimension-free slicing bound, which Klartag and Lehec had already proved.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Jean Bourgain, the slicing problem",
+    "field": "Convex and metric geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it finds the exact extreme shape for a central quantity in convex geometry, in every dimension."
+  },
+  "explanation": "Take three flat shapes: a square, a disk and a triangle. Drop a random point uniformly inside each. Measure how spread out that point is, using its covariance [the table of variances in each direction]. Then compare the spread with the area. The isotropic constant L packages this comparison into one number[2].\n\nHere are the values, computed exactly. The square gets the square root of 1/12, about 0.2887. The disk gets 1/(2√π), about 0.2821. The triangle gets about 0.3102. The triangle wins. Stretching, turning or sliding a shape does not change its L[3]. So every triangle gets the same 0.3102.\n\nThe paper claims the triangle pattern holds in every dimension[1]. Among all convex bodies [solid shapes with no dents], simplices have the largest isotropic constant. A simplex is the higher-dimensional triangle, such as a tetrahedron in three dimensions. The paper also claims simplices are the only maximizers[4]. The simplex value is about 0.3102 in two dimensions and about 0.3225 in three.\n\nThe question goes back to the slicing problem, from Bourgain's 1986 work[5]. It asked whether L stays below one fixed number in every dimension. Klartag proved a bound growing like the fourth root of the dimension, in 2006[6]. Later work by many authors brought this down step by step. Klartag and Lehec then proved a bound independent of dimension, using Guan's estimate[7]. But a universal bound does not name the largest value or the shape that reaches it[8].\n\nThe exact answer was known only in the plane. There Campi, Colesanti and Gronchi proved the triangle bound, and Saroglou proved the triangle is the only maximizer[9]. In higher dimensions, Rademacher showed in 2016 that a maximizer with triangular faces must be a simplex[10]. That ruled out some shapes but not all.\n\nThe paper's route goes through entropy. The differential entropy of a distribution measures how spread out and unpredictable it is. A log-concave density is one whose logarithm is concave, so it has one hump. The paper claims every such density in m dimensions has entropy at least m plus half the log of its covariance determinant[11]. Equality holds only for stretched and shifted products of one-sided exponential laws[12].\n\nCheck it in one dimension. The exponential law with mean 1 has entropy 1 and variance 1. The bound is 1 + ½ log 1 = 1, so it is met exactly. The uniform law on [0, 1] has entropy 0 and variance 1/12. Its bound is 1 + ½ log(1/12), about −0.2425, which 0 clears. The bell curve has entropy about 1.419, well above 1.\n\nMelbourne, Nayar and Roberto had proved this one-dimensional case[13]. Fradelizi and Marín Sola stated the general bound and showed it matches the simplex bound across dimensions[14]. So proving the entropy bound in every dimension gives the simplex result. The hard part is equality. The expected extreme cases have cut-off supports, so smooth approximations alone cannot capture them[15]. Part of the proof rests on explicit one-variable inequalities whose constants are exact fractions[16].\n\nThere is a further consequence. Klartag showed in 2018 that the sharp simplex bound implies a nonsymmetric Mahler inequality, on a shape's volume times its polar's volume[17]. In two dimensions that floor is 27/4 = 6.75. A square from −1 to 1 has area 4, and its polar diamond has area 2. Their product, 8, sits above the floor.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. It claims the exact extreme shape in every dimension, building on the already-proved dimension-free bound. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Convex body",
+      "meaning": "A bounded solid shape with no dents and a nonempty inside."
+    },
+    {
+      "term": "Isotropic constant",
+      "meaning": "A number comparing the spread (covariance) of a uniform random point in a shape with the shape's volume."
+    },
+    {
+      "term": "Simplex",
+      "meaning": "The higher-dimensional version of a triangle: a segment, triangle, tetrahedron, and so on."
+    },
+    {
+      "term": "Covariance",
+      "meaning": "The table of variances and joint variations of a random point's coordinates."
+    },
+    {
+      "term": "Differential entropy",
+      "meaning": "A number measuring how spread out and unpredictable a continuous distribution is."
+    },
+    {
+      "term": "Log-concave density",
+      "meaning": "A probability density whose logarithm is concave, giving a single hump."
+    },
+    {
+      "term": "Polar body",
+      "meaning": "The set of directions y with x·y at most 1 for every point x of the shape."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J. Bourgain, “On high dimensional maximal functions associated to convex bodies”, American Journal of Mathematics 108(6) (1986), 1467–1476",
+      "url": "https://doi.org/10.2307/2374532"
+    },
+    {
+      "id": 2,
+      "cite": "B. Klartag, “On convex perturbations with a bounded isotropic constant”, Geometric and Functional Analysis 16(6) (2006), 1274–1290",
+      "url": "https://doi.org/10.1007/s00039-006-0588-1"
+    },
+    {
+      "id": 3,
+      "cite": "Q. Guan, “A note on Bourgain's slicing problem”, arXiv:2412.09075 (2024)",
+      "url": "https://arxiv.org/abs/2412.09075"
+    },
+    {
+      "id": 4,
+      "cite": "B. Klartag and J. Lehec, “Affirmative resolution of Bourgain's slicing problem using Guan's bound”, Geometric and Functional Analysis 35(4) (2025), 1147–1168",
+      "url": "https://doi.org/10.1007/s00039-025-00718-w"
+    },
+    {
+      "id": 5,
+      "cite": "C. Saroglou, “Characterizations of extremals for some functionals on convex bodies”, Canadian Journal of Mathematics 62(6) (2010), 1404–1418",
+      "url": "https://doi.org/10.4153/cjm-2010-062-2"
+    },
+    {
+      "id": 6,
+      "cite": "L. Rademacher, “A simplicial polytope that maximizes the isotropic constant must be a simplex”, Mathematika 62(1) (2016), 307–320",
+      "url": "https://doi.org/10.1112/S0025579315000133"
+    },
+    {
+      "id": 7,
+      "cite": "B. Klartag, “Isotropic constants and Mahler volumes”, Advances in Mathematics 330 (2018), 74–108",
+      "url": "https://doi.org/10.1016/j.aim.2018.03.009"
+    },
+    {
+      "id": 8,
+      "cite": "J. Melbourne, P. Nayar and C. Roberto, “Minimum entropy of a log-concave variable with fixed variance”, Probability Theory and Related Fields 194 (2026), 2173–2191",
+      "url": "https://doi.org/10.1007/s00440-025-01431-3"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 101: “A sharp entropy bound and the simplex inequality for isotropic constants” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-sharp-entropy-bound-and-the-simplex-inequality-for-isotropic-constants-October-5-2026/isotropic-simplex.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Simplices are the unique maximizers of the isotropic constant among convex bodies in each dimension.",
+      "verdict": "supported",
+      "sourceLine": "We prove the strong isotropic constant conjecture: in each dimension, simplices are the unique maximizers of the isotropic constant among convex bodies.",
+      "sourceQuote": "We prove the strong isotropic constant conjecture: in each dimension, simplices are the unique maximizers of the isotropic constant among convex bodies."
+    },
+    {
+      "text": "The isotropic constant compares the covariance of a uniform distribution with the volume of its support.",
+      "verdict": "supported",
+      "sourceLine": "The isotropic constant compares the covariance of a uniform distribution with the volume of its support.",
+      "sourceQuote": "The isotropic constant compares the covariance of a uniform distribution with the volume of its support."
+    },
+    {
+      "text": "The isotropic constant is unchanged by invertible affine maps.",
+      "verdict": "supported",
+      "sourceLine": "This quantity is unchanged by invertible affine maps.",
+      "sourceQuote": "This quantity is unchanged by invertible affine maps."
+    },
+    {
+      "text": "The paper proves the sharp inequality for arbitrary convex bodies and classifies all equality cases.",
+      "verdict": "supported",
+      "sourceLine": "We prove the sharp inequality for arbitrary convex bodies and classify all equality cases.",
+      "sourceQuote": "We prove the sharp inequality for arbitrary convex bodies and classify all equality cases."
+    },
+    {
+      "text": "The slicing problem arose in Bourgain's work.",
+      "verdict": "supported",
+      "sourceLine": "The slicing problem, arising in Bourgain's work on convex bodies",
+      "sourceQuote": "The slicing problem, arising in Bourgain's work on convex bodies \\cite{Bourgain1986}, asks whether it admits an upper bound independent of dimension."
+    },
+    {
+      "text": "Klartag proved an O(n^{1/4}) bound.",
+      "verdict": "supported",
+      "sourceLine": "Klartag proved an",
+      "sourceQuote": "Klartag proved an $O(n^{1/4})$ bound \\cite{Klartag2006}."
+    },
+    {
+      "text": "Klartag and Lehec proved a dimension-independent bound using Guan's covariance estimate.",
+      "verdict": "supported",
+      "sourceLine": "to Klartag and Lehec's dimension-independent bound using Guan's covariance estimate",
+      "sourceQuote": "Subsequent progress used stochastic localization, introduced by Eldan \\cite{Eldan2013}, leading through subpolynomial and polylogarithmic estimates \\cite{Chen2021,KlartagLehec2022,Klartag2023} to Klartag and Lehec's dimension-independent bound using Guan's covariance estimate \\cite{Guan2024,KlartagLehec2025}."
+    },
+    {
+      "text": "A universal bound does not identify the extremal value or body.",
+      "verdict": "supported",
+      "sourceLine": "a universal bound does not identify the extremal value or an extremizing body",
+      "sourceQuote": "The distinction is substantial: a universal bound does not identify the extremal value or an extremizing body."
+    },
+    {
+      "text": "In the plane, Campi, Colesanti and Gronchi proved the simplex bound and Saroglou uniqueness.",
+      "verdict": "supported",
+      "sourceLine": "In the plane, Campi, Colesanti, and Gronchi proved the simplex bound, and Saroglou established uniqueness of the maximizing body",
+      "sourceQuote": "In the plane, Campi, Colesanti, and Gronchi proved the simplex bound, and Saroglou established uniqueness of the maximizing body \\cite{CampiColesantiGronchi1999,Saroglou2010}."
+    },
+    {
+      "text": "Rademacher proved that a simplicial polytope maximizer must be a simplex.",
+      "verdict": "supported",
+      "sourceLine": "Rademacher proved that a simplicial polytope maximizing the isotropic constant among all convex bodies must be a simplex",
+      "sourceQuote": "Rademacher proved that a simplicial polytope maximizing the isotropic constant among all convex bodies must be a simplex \\cite{Rademacher2016}."
+    },
+    {
+      "text": "Every log-concave density satisfies h(f) ≥ m + ½ log det Cov(f).",
+      "verdict": "supported",
+      "sourceLine": "We also prove the sharp entropy bound",
+      "sourceQuote": "We also prove the sharp entropy bound $h(f)\\ge m+\\tfrac12\\log\\det\\Cov(f)$ for every log-concave probability density on $\\R^m$, with equality precisely for invertible affine images of products of one-sided exponential laws."
+    },
+    {
+      "text": "Equality holds precisely for invertible affine images of products of one-sided exponential laws.",
+      "verdict": "supported",
+      "sourceLine": "with equality precisely for invertible affine images of products of one-sided exponential laws",
+      "sourceQuote": "We also prove the sharp entropy bound $h(f)\\ge m+\\tfrac12\\log\\det\\Cov(f)$ for every log-concave probability density on $\\R^m$, with equality precisely for invertible affine images of products of one-sided exponential laws."
+    },
+    {
+      "text": "Melbourne, Nayar and Roberto proved the sharp bound in dimension one.",
+      "verdict": "supported",
+      "sourceLine": "In dimension one, Melbourne, Nayar, and Roberto proved the sharp bound",
+      "sourceQuote": "In dimension one, Melbourne, Nayar, and Roberto proved the sharp bound, attained by a one-sided exponential distribution \\cite[Theorem~1.1]{MelbourneNayarRoberto2026}."
+    },
+    {
+      "text": "Fradelizi and Marín Sola formulated the entropy statement and proved its equivalence with the simplex bound.",
+      "verdict": "supported",
+      "sourceLine": "formulated the sharp entropy statement",
+      "sourceQuote": "Fradelizi and Mar\\'in Sola formulated the sharp entropy statement \\eqref{intro:entropy-bound} and proved its equivalence, across dimensions, with the simplex bound \\cite[Conjecture~3(iii) and Proposition~5.2]{FradeliziMarinSola2026}."
+    },
+    {
+      "text": "Expected extremizers have restricted support, so equality cannot be studied only in the smooth class.",
+      "verdict": "supported",
+      "sourceLine": "so equality cannot be studied solely within the smooth, uniformly convex class",
+      "sourceQuote": "The expected extremizers have restricted support and affine potentials, so equality cannot be studied solely within the smooth, uniformly convex class."
+    },
+    {
+      "text": "The scalar inequalities have exact rational constants, verified with polynomial bounds and tail estimates.",
+      "verdict": "supported",
+      "sourceLine": "All numerical constants in the scalar inequalities are exact rationals.",
+      "sourceQuote": "All numerical constants in the scalar inequalities are exact rationals."
+    },
+    {
+      "text": "Klartag proved that the sharp simplex bound implies the nonsymmetric Mahler inequality.",
+      "verdict": "supported",
+      "sourceLine": "Klartag proved that the sharp simplex bound implies",
+      "sourceQuote": "Using exponential measures on convex cones, Klartag proved that the sharp simplex bound implies \\begin{equation}\\label{intro:mahler} |K|\\,|K^\\circ|\\ge\\frac{(n+1)^{n+1}}{(n!)^2}, \\end{equation} the nonsymmetric Mahler inequality \\cite[Corollary~1.2]{Klartag2018}."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

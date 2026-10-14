@@ -1,0 +1,244 @@
+{
+  "id": "170",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Sharp-Logarithmic-Exponent-of-r-5-t-September-24-2026/paper.pdf",
+      "label": "The sharp logarithmic exponent of r(5,t)"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-Logarithmic-Exponents-for-Fixed-Off-Diagonal-Ramsey-Numbers-September-24-2026/paper.pdf",
+      "label": "Sharp logarithmic exponents for fixed off-diagonal Ramsey numbers"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/170.md",
+      "label": "Lean scope doc",
+      "note": "2 papers. The scope doc links 2 Comparator challenges for main results."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/RamseyFive.json",
+      "label": "Comparator challenge RamseyFive.json",
+      "note": "Names 1 theorem: OAI.SharpRamseyFive.main."
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/ComparatorChallenges/SharpLogRamsey.json",
+      "label": "Comparator challenge SharpLogRamsey.json",
+      "note": "Names 1 theorem: OAI.SharpLogRamsey.main."
+    }
+  ],
+  "headline": "For every fixed s ≥ 5, the Ramsey number r(s,t) now has its exact power of log t, up to a vanishing error.",
+  "scope": "The result covers every fixed clique size s of at least 5, as t grows. It fixes the power of log t, not the constant factor in front.",
+  "plain": "The Ramsey number r(s,t) is the fewest people at a party that guarantees s mutual friends or t mutual strangers. For fixed s, an upper bound of order t^(s−1)/(log t)^(s−2) has stood since 1980. Lower bounds matched the power of t only recently, and still lost a larger power of log t. These two papers prove the upper bound's power of log t is right, up to an error that shrinks as t grows.",
+  "doesNot": "This does not cover s = 4, and it does not find the constant factor in front of t^(s−1)/(log t)^(s−2).",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1935",
+    "firstStepBy": "Paul Erdős and George Szekeres, the first general upper bound",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It closes the logarithmic gap between lower and upper bounds for a central family of Ramsey numbers."
+  },
+  "explanation": "Six people meet at a party. Any two are either friends or strangers. However the friendships fall, some three are all friends, or some three are all strangers. With five people this can fail. Seat them in a ring, make each person friends with the two beside them, and no such trio appears. So the Ramsey number r(3,3) is 6.\n\nIn general, r(s,t) is the fewest people that forces s mutual friends or t mutual strangers. In graph terms, a clique is a set of vertices all linked to each other. An independent set has no links at all. Ramsey's theorem from 1930 says these numbers are always finite[1]. This entry is about the off-diagonal case: s stays fixed while t grows large.\n\nUpper bounds came first. Erdős and Szekeres gave one in 1935, which grows like t^(s−1). In 1980 Ajtai, Komlós and Szemerédi divided that by (log t)^(s−2)[2]. That upper bound is where the target power s − 2 comes from[3]. For s = 3, Kim showed in 1995 that this upper bound is right up to a constant[4].\n\nFor larger s, lower bounds lagged far behind. For s = 5, random constructions could not even reach the right power of t[5]. Finite geometry changed this. In 2026 Bradač built graphs that match the power t^(s−1) for every fixed s[6]. But his bound divides by (log t)^(2s−4), not (log t)^(s−2). That leftover is the gap these papers close[7].\n\nPut numbers on that gap for s = 5. The upper bound is about t⁴/(log t)³ and Bradač's lower bound is about t⁴/(log t)⁶. Take t equal to one million, so log t is about 13.8. Then (log t)³ is about 2,637 and (log t)⁶ is about 6.95 million. The two bounds differ by a factor of about 2,637.\n\nThe first paper proves that for s = 5 the true power of log t is 3[8]. For every small ε above zero, r(5,t) is at least t⁴/(log t)^(3+ε) once t is large enough. It is at most a constant times t⁴/(log t)³. The second paper proves the same pattern for every fixed s of at least 6, with power s − 2[9]. The constant factor in front stays open[10].\n\nThe papers build graphs from geometry over a finite field. Each vertex gets a random point and a random hyperplane through it. A hyperplane is a flat slice one dimension lower than the space. Links depend on which points lie on which hyperplanes. Linear algebra then rules out the forbidden clique[11]. The hard part is the other side: showing no large independent set exists. Picking out one long independent sequence can skew its statistics badly[12]. The first paper's main new tool describes pairs of point sets and hyperplane sets that meet far less often than expected[13]. The second paper gives all its own arguments, including new steps for higher dimensions[14].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both theorems, with their lower and upper bounds. No specialist review of either paper has been published.",
+  "hypeCheck": "Major. Lean checks formal versions of both theorems. The constant factor stays open, s = 4 is not covered, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ramsey number r(s,t)",
+      "meaning": "The smallest number of vertices that forces either s vertices all linked to each other or t vertices with no links among them."
+    },
+    {
+      "term": "Clique",
+      "meaning": "A set of vertices in a graph that are all linked to each other."
+    },
+    {
+      "term": "Independent set",
+      "meaning": "A set of vertices in a graph with no links among them."
+    },
+    {
+      "term": "Off-diagonal",
+      "meaning": "The case where s stays fixed while t grows, instead of both growing together."
+    },
+    {
+      "term": "Logarithmic exponent",
+      "meaning": "The power of log t in a formula like t⁴/(log t)³; here it is 3."
+    },
+    {
+      "term": "o(1)",
+      "meaning": "An error term that shrinks toward zero as t grows."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős and G. Szekeres, “A combinatorial problem in geometry”, Compositio Mathematica 2 (1935), 463–470",
+      "url": "https://www.numdam.org/item/CM_1935__2__463_0/"
+    },
+    {
+      "id": 2,
+      "cite": "M. Ajtai, J. Komlós and E. Szemerédi, “A note on Ramsey numbers”, Journal of Combinatorial Theory, Series A 29(3) (1980), 354–360",
+      "url": "https://doi.org/10.1016/0097-3165(80)90030-8"
+    },
+    {
+      "id": 3,
+      "cite": "J. H. Kim, “The Ramsey number R(3,t) has order of magnitude t²/log t”, Random Structures & Algorithms 7(3) (1995), 173–207",
+      "url": "https://doi.org/10.1002/rsa.3240070302"
+    },
+    {
+      "id": 4,
+      "cite": "T. Bohman and P. Keevash, “The early evolution of the H-free process”, Inventiones Mathematicae 181(2) (2010), 291–336",
+      "url": "https://doi.org/10.1007/s00222-010-0247-x"
+    },
+    {
+      "id": 5,
+      "cite": "S. Mattheus and J. Verstraëte, “The asymptotics of r(4,t)”, Annals of Mathematics 199(2) (2024), 919–941",
+      "url": "https://doi.org/10.4007/annals.2024.199.2.8"
+    },
+    {
+      "id": 6,
+      "cite": "D. Bradač, “Off-diagonal Ramsey numbers”, arXiv:2605.28793 (2026)",
+      "url": "https://arxiv.org/abs/2605.28793v3"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, family 170: “The sharp logarithmic exponent of r(5,t)” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Sharp-Logarithmic-Exponent-of-r-5-t-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, family 170: “Sharp logarithmic exponents for fixed off-diagonal Ramsey numbers” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-Logarithmic-Exponents-for-Fixed-Off-Diagonal-Ramsey-Numbers-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, Lean doc for family 170 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/170.md"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Ramsey's finite partition theorem guarantees the Ramsey numbers are finite.",
+      "verdict": "supported",
+      "sourceLine": "guarantees that these numbers are finite",
+      "sourceQuote": "Ramsey's finite partition theorem, developed in his work on a problem of formal logic, guarantees that these numbers are finite \\cite[Theorem~B]{Ramsey1930}.",
+      "paper": 2
+    },
+    {
+      "text": "Ajtai, Komlós and Szemerédi obtained the logarithmic improvement O(t^{s−1}/(log t)^{s−2}).",
+      "verdict": "supported",
+      "sourceLine": "logarithmic improvement",
+      "sourceQuote": "Ajtai, Koml\\'os, and Szemer\\'edi obtained the logarithmic improvement $O_s(t^{s-1}/(\\log t)^{s-2})$ \\cite{AKS1980}.",
+      "paper": 2
+    },
+    {
+      "text": "The logarithmic power s − 2 comes from the classical upper-bound side.",
+      "verdict": "supported",
+      "sourceLine": "thus comes from the classical upper-bound",
+      "sourceQuote": "The logarithmic power $s-2$ thus comes from the classical upper-bound side of the problem.",
+      "paper": 2
+    },
+    {
+      "text": "Kim established r(3,t) of order t²/log t.",
+      "verdict": "supported",
+      "sourceLine": "For $s=3$, Kim's lower bound established",
+      "sourceQuote": "For $s=3$, Kim's lower bound established $r(3,t)=\\Theta(t^2/\\log t)$ \\cite{Kim1995}.",
+      "paper": 2
+    },
+    {
+      "text": "Earlier random methods left even the power of t out of reach for s = 5.",
+      "verdict": "supported",
+      "sourceLine": "in the upper bound remained out of reach by these methods.",
+      "sourceQuote": "Thus even the power of \\(t\\) in the upper bound remained out of reach by these methods.",
+      "paper": 1
+    },
+    {
+      "text": "Bradač's projective construction determined the polynomial exponent for every fixed s.",
+      "verdict": "supported",
+      "sourceLine": "determining the polynomial exponent",
+      "sourceQuote": "Brada\\v{c}'s projective construction then established \\[ r(s,t)\\ge c_s\\frac{t^{s-1}}{(\\log t)^{2s-4}} \\qquad(s\\ge3,\\ t\\ge2) \\] \\cite[Theorem~1.1]{Bradac2026}, determining the polynomial exponent for every fixed $s$.",
+      "paper": 2
+    },
+    {
+      "text": "The remaining difference between the powers 2s − 4 and s − 2 is the logarithmic gap addressed here.",
+      "verdict": "supported",
+      "sourceLine": "is the logarithmic gap addressed here.",
+      "sourceQuote": "The remaining difference between the powers $2s-4$ and $s-2$ is the logarithmic gap addressed here.",
+      "paper": 2
+    },
+    {
+      "text": "For s = 5 there is C with t⁴/(log t)^{3+ε} ≤ r(5,t) ≤ C t⁴/(log t)³ for large t; this resolves the sharp logarithmic-exponent question.",
+      "verdict": "supported",
+      "sourceLine": "The theorem resolves the sharp logarithmic-exponent question for",
+      "sourceQuote": "The theorem resolves the sharp logarithmic-exponent question for \\(r(5,t)\\).",
+      "paper": 1
+    },
+    {
+      "text": "For every fixed s ≥ 6, t^{s−1}/(log t)^{s−2+ε} ≤ r(s,t) ≤ C_s t^{s−1}/(log t)^{s−2} for large t.",
+      "verdict": "supported",
+      "sourceLine": "The theorem determines the logarithmic exponent.",
+      "sourceQuote": "The theorem determines the logarithmic exponent.",
+      "paper": 2
+    },
+    {
+      "text": "The r(5,t) paper leaves open a constant-factor asymptotic.",
+      "verdict": "supported",
+      "sourceLine": "It leaves open a constant-factor asymptotic for",
+      "sourceQuote": "It leaves open a constant-factor asymptotic for \\(t^4/(\\log t)^3\\).",
+      "paper": 1
+    },
+    {
+      "text": "Positions get random incident point–hyperplane pairs; linear independence excludes the forbidden clique.",
+      "verdict": "supported",
+      "sourceLine": "Linear independence excludes",
+      "sourceQuote": "Linear independence excludes $K_{d+1}$.",
+      "paper": 2
+    },
+    {
+      "text": "Selecting a long independent sequence can heavily bias its distribution.",
+      "verdict": "supported",
+      "sourceLine": "can heavily bias its distribution.",
+      "sourceQuote": "Selecting such a sequence can heavily bias its distribution.",
+      "paper": 2
+    },
+    {
+      "text": "The principal additional ingredient is a description theorem for sparse point–hyperplane pairs.",
+      "verdict": "supported",
+      "sourceLine": "The principal additional ingredient is a description theorem for",
+      "sourceQuote": "The principal additional ingredient is a description theorem for sparse point--hyperplane pairs.",
+      "paper": 1
+    },
+    {
+      "text": "The general paper supplies all required arguments locally; its new parts are not inferred from the five-clique theorem.",
+      "verdict": "supported",
+      "sourceLine": "The present paper supplies all the required arguments locally.",
+      "sourceQuote": "The present paper supplies all the required arguments locally.",
+      "paper": 2
+    },
+    {
+      "text": "Lean formalizes both the r(5,t) theorem and the s ≥ 6 theorem, with the stated lower and upper bounds.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
