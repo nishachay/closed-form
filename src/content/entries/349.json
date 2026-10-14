@@ -1,0 +1,166 @@
+{
+  "id": "349",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Solomon-Yau-least-volume-theorem-September-23-2026/paper.pdf",
+      "label": "The Solomon–Yau least-volume theorem"
+    }
+  ],
+  "headline": "Claims the Solomon–Yau conjecture: after the equator, the next minimal hypersurface of a sphere is a Clifford product.",
+  "scope": "Closed connected minimal immersions of an m-dimensional manifold into the unit round sphere of dimension m + 1. It covers every m ≥ 2 and excludes equators.",
+  "plain": "A minimal hypersurface is a surface inside a sphere that is balanced, like a soap film, so small changes do not reduce its size. The equator is the smallest one. Yau and later Solomon asked which one comes next, and the guess was a product of two round spheres called a Clifford product. The paper claims this in every dimension: any minimal hypersurface other than an equator is at least as large as the smallest Clifford product. There is no Lean check.",
+  "doesNot": "This does not classify all minimal hypersurfaces, or say which ones attain the bound apart from a Clifford product. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "Shing-Tung Yau, Problem 31 in his problem collection",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims a sharp volume threshold that was known only in dimension two and in special symmetric cases."
+  },
+  "explanation": "Start with the ordinary round sphere of radius 1 in three-dimensional space. Its equator is a great circle. Now go up one dimension. Inside the round three-sphere, which sits in four-dimensional space, the equator is a round two-sphere of area 4π, about 12.57. Another surface there is the Clifford torus. It is the set of points whose first two coordinates and last two coordinates both have length 1/√2. It is a product of two circles of radius 1/√2, so its area is (2π/√2)², which is 2π², about 19.74.\n\nBoth surfaces are minimal. A minimal hypersurface is balanced like a soap film: a small push does not shrink it to first order. A hypersurface has one dimension less than the sphere around it. The equator is the smallest closed minimal hypersurface. The question is which one comes next. The natural guesses are Clifford products, which multiply two round spheres of well-chosen radii. Two dimensions higher, the smallest product is two round two-spheres of radius 1/√2. Its volume is 4π², about 39.48, against 8π²/3, about 26.32, for the equator.\n\nThe claim that the smallest Clifford product is the next level is Yau's Problem 31[1]. Ge and Li call it the Solomon–Yau conjecture[2]. The paper claims to prove it in every dimension m of at least 2[3]. Volume is counted on the original surface, so a surface that wraps twice counts twice[4]. The smallest Clifford product reaches the bound exactly[5].\n\nWhat was known before? Cheng, Li and Yau found some gap above the equator, but not the sharp one[6]. In dimension two the sharp bound of 2π² follows from Marques and Neves' proof of the Willmore conjecture[7]. Surfaces that cross themselves are easy. A point covered q times forces volume at least q times the equator[8]. Since the Clifford bound is below twice the equator, a counterexample would have no self-crossings.\n\nThe main difficulty is to take a smallest counterexample and then find an even smaller one[9]. Limits of surfaces can develop singular points, and a family of surfaces can collapse to an equator[10]. The paper first proves an average curvature bound that Perdomo had conjectured[11]. From it, a counterexample must have an extra direction in which its area can drop. It then builds a large family of surfaces using Lorentz boosts, the changes of frame from relativity[12]. A topological test stops this family from collapsing. Induction on the dimension rules out singular points below the Clifford level[13]. Nifa's recent preprint also contains the average curvature bound[14].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof combines curvature estimates, a large topological family and an induction on dimension. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds: it would settle a sharp volume threshold posed by Yau. There is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Minimal hypersurface",
+      "meaning": "A surface, one dimension lower than the space around it, that is balanced like a soap film: small pushes do not shrink it to first order."
+    },
+    {
+      "term": "Equator",
+      "meaning": "The largest round slice of a sphere through its center; here the smallest minimal hypersurface."
+    },
+    {
+      "term": "Clifford product",
+      "meaning": "A minimal hypersurface of a round sphere made by multiplying two round spheres of well-chosen radii."
+    },
+    {
+      "term": "Immersion",
+      "meaning": "A smooth placement of a surface in a space that may cross itself but has no creases."
+    },
+    {
+      "term": "Covering multiplicity",
+      "meaning": "How many times a surface passes over the same piece of space; each pass counts in the volume."
+    },
+    {
+      "term": "Lorentz boost",
+      "meaning": "A change of viewpoint from relativity that mixes space with time and keeps squared length minus squared time fixed."
+    },
+    {
+      "term": "Induction on dimension",
+      "meaning": "Proving a statement in one dimension by using it in all smaller dimensions."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Solomon–Yau least-volume theorem” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Solomon-Yau-least-volume-theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "That the smallest minimal Clifford product is the first volume level above the equator is Problem 31 in Yau's collection.",
+      "sourceLine": "is the least-volume question in Yau's collection",
+      "sourceQuote": "The assertion that \\(a_m\\) is the first volume level above the equator is the least-volume question in Yau's collection \\cite[Problem~31]{Yau1994}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ge and Li call this the Solomon–Yau conjecture.",
+      "sourceLine": "calls it the Solomon--Yau conjecture.",
+      "sourceQuote": "The modern formulation in \\cite[Conjecture~1.12(ii)]{GeLi2021} calls it the Solomon--Yau conjecture.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For every m ≥ 2, a closed connected minimal immersion into the unit sphere with non-totally-geodesic image has volume at least the smallest Clifford product.",
+      "sourceLine": "We prove this formulation with its full immersion scope.",
+      "sourceQuote": "We prove this formulation with its full immersion scope.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Volume is measured on the domain, including covering multiplicities.",
+      "sourceLine": "Volume is measured on the domain, including covering multiplicities.",
+      "sourceQuote": "Volume is measured on the domain, including covering multiplicities.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The threshold is attained by a Clifford product minimizing a_m.",
+      "sourceLine": "The threshold is attained by a Clifford product minimizing",
+      "sourceQuote": "The threshold is attained by a Clifford product minimizing \\(a_m\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Cheng, Li and Yau obtained a dimension-dependent volume gap above the equator; the sharp next level is a separate question.",
+      "sourceLine": "dimension-dependent volume gap above the equator by heat-kernel",
+      "sourceQuote": "Cheng, Li, and Yau obtained a dimension-dependent volume gap above the equator by heat-kernel comparison \\cite[Corollary~5]{ChengLiYau1984}; identifying the sharp next level is a separate question.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In dimension two, the sharp area bound 2π² follows from the Willmore theorem of Marques and Neves.",
+      "sourceLine": "from the Willmore theorem of Marques and Neves",
+      "sourceQuote": "In dimension two, the sharp area bound \\(a_2=2\\pi^2\\), together with Clifford-torus rigidity, follows from the Willmore theorem of Marques and Neves \\cite[Theorem~B and Remark~1.3]{MarquesNeves2014}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A point with q preimages forces domain volume at least q times the volume of the equator.",
+      "sourceLine": "preimages forces domain volume at least",
+      "sourceQuote": "A point with \\(q\\) preimages forces domain volume at least \\(q|S^m|\\), as proved by Nguyen \\cite[Corollary~4.8 and Remark~4.9]{Nguyen2023} and by Ge and Li \\cite[Theorem~1.2 and Corollary~1.3]{GeLi2022}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The central difficulty is to minimize area among non-equatorial counterexamples and then decrease that minimum.",
+      "sourceLine": "the central difficulty is to minimize area among",
+      "sourceQuote": "After this reduction, the central difficulty is to minimize area among non-equatorial counterexamples and then decrease that minimum.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Varifold compactness may produce singular limits, and a variational construction must avoid collapsing to an equator.",
+      "sourceLine": "Ordinary varifold compactness may produce singular limits",
+      "sourceQuote": "Ordinary varifold compactness may produce singular limits, while a variational construction must retain enough topology to avoid collapsing to an equator.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the lower-bound assertion of Perdomo's average-curvature conjecture.",
+      "sourceLine": "This proves the lower-bound assertion of Perdomo's average-curvature",
+      "sourceQuote": "This proves the lower-bound assertion of Perdomo's average-curvature conjecture \\cite[Conjecture~1.5]{GeLi2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper builds its family of surfaces with Lorentz boosts, which preserve squared spatial length minus squared time.",
+      "sourceLine": "Lorentz boosts preserve the difference",
+      "sourceQuote": "Lorentz boosts preserve the difference between squared spatial length and squared time.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The volume proof proceeds by induction on the dimension, which gives regularity for limits below the threshold.",
+      "sourceLine": "The volume proof proceeds by induction on",
+      "sourceQuote": "The volume proof proceeds by induction on \\(m\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The average-curvature inequality and the embedded index classification also appear in Nifa's recent preprint.",
+      "sourceLine": "also appear in Nifa's recent preprint",
+      "sourceQuote": "The average-curvature inequality and this embedded index classification also appear in Nifa's recent preprint \\cite[Theorem~1.1 and Corollary~7.3]{Nifa2026}, which proves a stronger Schr\\\"odinger quadratic-form inequality.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

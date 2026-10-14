@@ -1,0 +1,213 @@
+{
+  "id": "350",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-nodal-length-on-smooth-surfaces-September-23-2026/paper.pdf",
+      "label": "Sharp nodal length on smooth surfaces"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-counterexamples-to-Yaus-nodal-upper-bound-in-dimensions-three-and-four-September-23-2026/paper.pdf",
+      "label": "Smooth counterexamples to Yau's nodal upper bound in dimensions three and four"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Power-law-violations-of-Yaus-nodal-upper-bound-September-23-2026/paper.pdf",
+      "label": "Power-law violations of Yau's nodal upper bound"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/350.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves Yau's sharp nodal-length bound on smooth surfaces, and shows it fails for smooth metrics in dimensions 3 to 5.",
+  "scope": "Laplace eigenfunctions on one fixed smooth closed connected Riemannian manifold. The upper bound covers every surface; the failures use specific metrics on S³, S²×T² and S⁴×S¹.",
+  "plain": "A vibrating drum has quiet lines where it does not move, called nodal lines. Yau guessed that their total size grows like the square root of the vibration's eigenvalue, a number that measures its pitch. The first paper proves this upper bound on every fixed smooth surface. The other papers build smooth curved spaces in three, four and five dimensions where the nodal size grows faster. Lean proofs cover all three main results.",
+  "doesNot": "This does not touch the lower bound in Yau's conjecture, which Logunov proved earlier. Real-analytic metrics were already settled. The dimension-three and four examples give no power-law excess.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Shing-Tung Yau, in his problem collection",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles the upper half of Yau's nodal conjecture for smooth metrics: true on surfaces, false in dimensions three to five and above."
+  },
+  "explanation": "Start with a square drum, a flat square of side 2π whose opposite edges are glued. Gluing makes it a torus, a doughnut surface with no edge. The vibration u = sin(10x) is an eigenfunction: the Laplacian, the operator that measures how u curves, sends it to −100 times itself. The number 100 is the eigenvalue λ. The quiet lines, where u = 0, are the nodal set. Here they are the 20 vertical lines x = 0, π/10, 2π/10 and so on. Each has length 2π, so the total nodal length is 40π, about 125.7. The square root of λ is 10, so the nodal length is 4π times √λ. Replace 10 by 20 and the length doubles while √λ doubles too.\n\nYau's conjecture says this pattern always holds. On any fixed smooth closed space, the nodal size should lie between two constant multiples of √λ[1]. Closed means finite with no edge. Donnelly and Fefferman proved both bounds for real-analytic metrics, which are given by convergent power series[2]. Logunov proved the lower bound for every smooth metric[3]. On smooth surfaces the best upper bound grew like λ to the power 3/4 minus a small number[4].\n\nThe first paper proves the upper bound C√λ on every fixed smooth surface[5]. With the known lower bound, this settles Yau's conjecture for surfaces[6]. The key is an average. The paper cuts the surface into small squares of side about 1/√λ. It proves that the average growth of u from one square to a larger one stays bounded[7]. The growth can still be large on some squares.\n\nIn higher dimensions the answer is no. The second paper builds a smooth metric on the three-sphere, as close to the round one as you like. For it, the nodal size divided by √λ grows without bound[8]. A second example lives on S²×T², a four-dimensional space[8]. Each sequence uses one fixed metric[9]. The main obstacle is turning approximate vibrations into exact eigenfunctions of an ordinary metric, while keeping every sign change[10]. The third paper goes further in five dimensions, on S⁴×S¹. There the nodal size grows faster than λ to the power 1/2 + ε₀, for one fixed ε₀ above zero[11]. So even a bound with a tiny extra power fails[12]. The metric and ε₀ stay fixed[13].\n\nHow sure is this? The Lean scope note says the formalization proves the surface upper bound with a surface-dependent constant. It also covers the three-sphere and S²×T² examples, and the S⁴×S¹ example with an unbounded ratio. The note does not state the fixed power ε₀ for that example. No specialist review has been published.",
+  "hypeCheck": "Major. Lean covers the surface upper bound and the failures in dimensions three, four and five. The Lean note does not state the fixed power gain in dimension five, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Laplacian",
+      "meaning": "An operator that measures how a function curves on average around each point."
+    },
+    {
+      "term": "Eigenfunction",
+      "meaning": "A function that the Laplacian sends to a constant multiple of itself, like one pure vibration of a drum."
+    },
+    {
+      "term": "Eigenvalue",
+      "meaning": "The constant λ in that multiple; higher λ means faster vibration."
+    },
+    {
+      "term": "Nodal set",
+      "meaning": "The points where an eigenfunction equals zero, the quiet lines of the vibration."
+    },
+    {
+      "term": "Real-analytic metric",
+      "meaning": "A way to measure distance given locally by convergent power series, which is stricter than smooth."
+    },
+    {
+      "term": "Smooth metric",
+      "meaning": "A way to measure distance whose formulas can be differentiated any number of times."
+    },
+    {
+      "term": "Torus",
+      "meaning": "A doughnut-shaped surface; T² means a two-dimensional one."
+    },
+    {
+      "term": "Quasimode",
+      "meaning": "A function that almost solves the eigenfunction equation, with a small error."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Sharp nodal length on smooth surfaces” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Sharp-nodal-length-on-smooth-surfaces-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Smooth counterexamples to Yau's nodal upper bound in dimensions three and four” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-counterexamples-to-Yaus-nodal-upper-bound-in-dimensions-three-and-four-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Power-law violations of Yau's nodal upper bound” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Power-law-violations-of-Yaus-nodal-upper-bound-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 350",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/350.md",
+      "quote": "The formalization proves the upper bound on every fixed smooth closed connected Riemannian surface"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Yau's conjecture asks for upper and lower bounds of order √λ for the nodal measure on a smooth closed manifold.",
+      "sourceLine": "Yau's conjecture asks for upper and lower bounds of order",
+      "sourceQuote": "Yau's conjecture asks for upper and lower bounds of order $\\sqrt\\lambda$ for the $(n-1)$-dimensional measure of the nodal set on a smooth closed $n$-dimensional manifold \\cite{Yau1982}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Donnelly and Fefferman proved both bounds for real analytic manifolds and metrics.",
+      "sourceLine": "Donnelly and Fefferman proved both bounds for real analytic manifolds",
+      "sourceQuote": "Donnelly and Fefferman proved both bounds for real analytic manifolds and metrics \\cite[Theorem~1.2]{DonnellyFefferman1988}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Logunov proved the lower bound in every dimension.",
+      "sourceLine": "Logunov subsequently proved the lower bound",
+      "sourceQuote": "For smooth surfaces, Br\\\"uning established the lower bound \\cite[Satz~2]{Bruning1978}; Logunov subsequently proved the lower bound in every dimension \\cite[Theorem~1.1]{Logunov2018Lower}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Logunov and Malinnikova obtained an upper bound Cλ^(3/4−β) on smooth surfaces for a universal β in (0, 1/4).",
+      "sourceLine": "Logunov and Malinnikova then obtained",
+      "sourceQuote": "Logunov and Malinnikova then obtained $C\\lambda^{3/4-\\beta}$ for a universal $\\beta\\in(0,1/4)$ \\cite[Equation~(1.1)]{LogunovMalinnikova2018}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "On a fixed smooth closed connected surface, every nonzero real eigenfunction has nodal length at most C√λ.",
+      "sourceLine": "on a fixed smooth closed connected Riemannian surface has nodal length at most",
+      "sourceQuote": "We prove that a nonzero real Laplace eigenfunction with eigenvalue $\\lambda>0$ on a fixed smooth closed connected Riemannian surface has nodal length at most $C\\sqrt\\lambda$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "With the known lower bound, this resolves Yau's conjecture for smooth closed surfaces.",
+      "sourceLine": "resolves Yau's conjecture positively for smooth closed surfaces.",
+      "sourceQuote": "Together with the known lower bound, Theorem~\\ref{thm:main} resolves Yau's conjecture positively for smooth closed surfaces.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The task is to control the average growth while allowing large values on individual squares.",
+      "sourceLine": "The task is thus to control the average growth while allowing large",
+      "sourceQuote": "The task is thus to control the average growth while allowing large values on individual squares.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Smooth metrics on the three-sphere, arbitrarily close to round, and on S²×T² have eigenfunction sequences with unbounded nodal measure divided by √λ.",
+      "sourceLine": "for which sequences of exact real Laplace eigenfunctions have unbounded nodal measure divided by the square root of the eigenvalue.",
+      "sourceQuote": "We construct a smooth metric on the three-sphere, arbitrarily close to the round metric in the smooth topology, and a smooth metric on $S^2\\times\\T^2$ for which sequences of exact real Laplace eigenfunctions have unbounded nodal measure divided by the square root of the eigenvalue.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Each sequence belongs to one fixed metric.",
+      "sourceLine": "Each sequence belongs to one fixed metric.",
+      "sourceQuote": "Each sequence belongs to one fixed metric.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The obstacle is to replace each quasimode by an exact eigenfunction of an ordinary Laplace–Beltrami operator while retaining every sign.",
+      "sourceLine": "The obstacle is to replace each quasimode by an exact eigenfunction of an",
+      "sourceQuote": "The obstacle is to replace each quasimode by an exact eigenfunction of an \\emph{ordinary} Laplace--Beltrami operator while retaining every sign.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "A smooth metric on S⁴×S¹ has eigenfunctions whose nodal four-volume grows faster than λ^(1/2+ε₀) for one fixed ε₀ > 0.",
+      "sourceLine": "of real Laplace eigenfunctions whose nodal four-volume grows faster than",
+      "sourceQuote": "We construct a smooth Riemannian metric on $S^4\\times S^1$ and a sequence of real Laplace eigenfunctions whose nodal four-volume grows faster than $\\lambda^{1/2+\\epsilon_0}$ for one fixed $\\epsilon_0>0$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "This disproves the proposed bound with an arbitrarily small positive power loss.",
+      "sourceLine": "conjecture and the proposed bound with an arbitrarily small positive",
+      "sourceQuote": "This disproves the smooth upper-bound assertion in Yau's nodal-set conjecture and the proposed bound with an arbitrarily small positive power loss.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The metric and ε₀ are fixed throughout the sequence.",
+      "sourceLine": "are fixed throughout the sequence.",
+      "sourceQuote": "The metric and $\\epsilon_0$ are fixed throughout the sequence.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the surface upper bound, the S³ and S²×T² counterexamples, and the S⁴×S¹ example with unbounded nodal ratio.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

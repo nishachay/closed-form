@@ -1,0 +1,154 @@
+{
+  "id": "355",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tangent-flow-uniqueness-2026-09-24/paper.pdf",
+      "label": "Uniqueness of tangent flows at the first singular time of embedded surface mean-curvature flow"
+    }
+  ],
+  "headline": "Claims that blow-up limits of surface mean curvature flow are unique at the first singular time, in fixed coordinates.",
+  "scope": "Mean curvature flow of a smooth closed connected embedded surface in ℝ³. It covers every singular point at the first singular time, with a fixed center.",
+  "plain": "Mean curvature flow moves a surface so that it shrinks fastest where it bends most, like a soap bubble losing area. At some moment it can pinch or vanish at a point, called a singularity. Zooming in on that point gives a limiting shape, but different zoom sequences might, in principle, give different shapes or turned copies. The paper claims every zoom gives the same shape, in the same position and orientation. There is no Lean check.",
+  "doesNot": "This does not cover later singular times, flows continued through a singularity, or zooms whose center moves. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1990",
+    "firstStepBy": "Gerhard Huisken, whose monotonicity formula made self-shrinkers the models for singularities",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims tangent-flow uniqueness for all first singularities of closed embedded surfaces, without assuming the type of the limit."
+  },
+  "explanation": "Start with a round sphere of radius 1. Under mean curvature flow every point moves inward at a speed set by how much the surface bends there. For this sphere the radius squared falls by 4 per unit time, so it equals 1 − 4t. The sphere vanishes to a point at time 1/4. Now zoom in on that point. At time 0.24 the radius is 0.2, and magnifying by 10 gives radius 2. At time 0.2499 the radius is 0.02, and magnifying by 100 gives radius 2 again. Every zoom sequence sees the same sphere of radius 2, shrinking in the same way.\n\nThis limit is a tangent flow: what the flow looks like at a singularity after magnifying space and time. A singularity is where curvature becomes infinite. The limiting shapes are self-shrinkers, surfaces that shrink without changing shape[1]. Compactness gives a limit only along some zoom sequences. The question is whether all sequences give the same limit, in the same place and facing the same way[2]. For a neck pinch the limit is a cylinder, and its axis could in principle turn as the zoom changes.\n\nSeveral kinds of limit already had uniqueness theorems. Schulze handled compact limits[3]. Colding and Minicozzi handled round cylinders, including their axes[4]. Chodosh and Schulze handled limits that open out like cones[5]. A limit can have several ends, some like cones and some like cylinders, and it need not be an exact round cylinder[6]. That mixed case was open.\n\nThe paper claims uniqueness at every singular point at the first singular time, for every smooth closed embedded surface in three-dimensional space[7]. All zooms converge smoothly, with multiplicity one, to a single self-shrinker in the original coordinates, including its axes and position[8]. Multiplicity one means the limit is covered once, not several stacked times. It needs no convexity assumption and no prescribed model[9]. The main obstacle is a small change that grows along a cylindrical end and changes the type of that end[10]. The paper shows that no curve of critical points can open up such an end[11]. It uses exact algebraic certificates for this step[12].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof is very long and relies on delicate estimates for complex families of surfaces. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It is very long, there is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Mean curvature flow",
+      "meaning": "A motion of a surface in which each point moves inward at a speed set by how much the surface bends there."
+    },
+    {
+      "term": "Singularity",
+      "meaning": "A point and time at which the curvature becomes infinite and the smooth flow stops."
+    },
+    {
+      "term": "Tangent flow",
+      "meaning": "The limit seen by magnifying space and time more and more around a singularity."
+    },
+    {
+      "term": "Self-shrinker",
+      "meaning": "A surface that shrinks under the flow without changing its shape, like a sphere or a cylinder."
+    },
+    {
+      "term": "Embedded",
+      "meaning": "Placed in space without crossing itself."
+    },
+    {
+      "term": "Multiplicity one",
+      "meaning": "The limit is covered once, not by several stacked copies."
+    },
+    {
+      "term": "Jacobi field",
+      "meaning": "A small deformation that keeps a surface a solution to first order."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Uniqueness of tangent flows at the first singular time of embedded surface mean-curvature flow”",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tangent-flow-uniqueness-2026-09-24/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Huisken's monotonicity formula identifies self-shrinking solutions as the natural models for parabolic blow-ups.",
+      "sourceLine": "Huisken's monotonicity formula identifies self-shrinking solutions as",
+      "sourceQuote": "Huisken's monotonicity formula identifies self-shrinking solutions as the natural models for parabolic blowups \\cite{Huisken1990}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Uniqueness asks whether every magnification sequence gives the same limiting motion, including its placement in the fixed ambient frame.",
+      "sourceLine": "limits along subsequences; uniqueness asks whether every magnification",
+      "sourceQuote": "Compactness produces such limits along subsequences; uniqueness asks whether every magnification sequence gives the same limiting motion, including its placement in the fixed ambient frame.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Schulze treats a smooth compact embedded multiplicity-one shrinker.",
+      "sourceLine": "Schulze treats a smooth compact embedded multiplicity-one",
+      "sourceQuote": "Schulze treats a smooth compact embedded multiplicity-one shrinker, in arbitrary dimension and codimension \\cite[Corollary~1.2]{Schulze2014}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Colding and Minicozzi prove uniqueness for multiplicity-one round cylindrical tangents, including their axes.",
+      "sourceLine": "Colding--Minicozzi prove uniqueness",
+      "sourceQuote": "Colding--Minicozzi prove uniqueness for multiplicity-one round cylindrical hypersurface tangents, including their axes \\cite[Theorem~0.2]{CM2015}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Chodosh and Schulze establish uniqueness for multiplicity-one asymptotically conical tangents.",
+      "sourceLine": "Chodosh--Schulze establish",
+      "sourceQuote": "Chodosh--Schulze establish uniqueness for multiplicity-one asymptotically conical hypersurface tangents \\cite[Theorem~1.1]{CS2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A shrinker with cylindrical ends need not be an exact round cylinder.",
+      "sourceLine": "A shrinker with cylindrical ends need not have been identified as an",
+      "sourceQuote": "A shrinker with cylindrical ends need not have been identified as an exact round cylinder.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves uniqueness at the first singular time of every smooth closed embedded surface in three-dimensional space.",
+      "sourceLine": "We prove this uniqueness at the first singular time of",
+      "sourceQuote": "We prove this uniqueness at the first singular time of every smooth closed embedded surface in three-dimensional Euclidean space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "All rescalings converge to one multiplicity-one self-shrinker flow, unique in the original ambient coordinates, including its position and axes.",
+      "sourceLine": "The limit is unique in the original ambient coordinates,",
+      "sourceQuote": "The limit is unique in the original ambient coordinates, including its position and axes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is no mean-convexity assumption and no prescribed tangent model.",
+      "sourceLine": "There is no mean-convexity assumption and no prescribed tangent model.",
+      "sourceQuote": "There is no mean-convexity assumption and no prescribed tangent model.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The obstacle is a Jacobi field that grows quadratically along a cylindrical end and changes the type of the end.",
+      "sourceLine": "obstacle is a Jacobi field that grows quadratically along a cylindrical",
+      "sourceQuote": "For the present end geometry, the obstacle is a Jacobi field that grows quadratically along a cylindrical end.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The central stationary assertion is that every formal critical arc has zero opening.",
+      "sourceLine": "The central stationary assertion is that every such arc has",
+      "sourceQuote": "The central stationary assertion is that every such arc has $x(s)\\equiv0$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The required finite order is obtained by ruling out formal curves of critical points with nonzero openings and applying real-algebraic certificates.",
+      "sourceLine": "points with nonzero openings and applying real-algebraic certificates.",
+      "sourceQuote": "The argument below obtains its required finite order by ruling out formal curves of critical points with nonzero openings and applying real-algebraic certificates.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

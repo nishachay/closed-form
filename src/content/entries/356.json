@@ -1,0 +1,182 @@
+{
+  "id": "356",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Giglis-distributional-curvature-characterization-of-Alexandrov-spaces-September-24-2026/main.pdf",
+      "label": "Gigli’s distributional curvature characterization of Alexandrov spaces"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weak-Hessian-bounds-along-every-geodesic-in-RCD-spaces-September-24-2026/weak-hessian-geodesics.pdf",
+      "label": "Weak Hessian bounds along every geodesic in RCD spaces"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/356.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims Gigli's conjecture: Alexandrov curvature bounds match RCD spaces with a distributional sectional curvature bound.",
+  "scope": "Complete separable metric spaces in every integer dimension n ≥ 2, with Hausdorff measure as reference measure and Gigli's original global test classes.",
+  "plain": "There are two ways to say a rough space curves at least as much as a model surface. One compares the shapes of triangles, and the other uses calculus, through a weak version of the curvature tensor defined by Gigli. Gigli conjectured that the two agree on a well-behaved class of rough spaces called RCD spaces. The paper claims this in every dimension of at least two. A Lean proof covers only a supporting result from the companion paper.",
+  "doesNot": "This does not cover spaces whose reference measure is not exactly Hausdorff measure, or reduced versions of the RCD condition. The main equivalence has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2019",
+    "firstStepBy": "Nicola Gigli, who defined the distributional curvature tensor and posed the conjecture",
+    "field": "Differential geometry",
+    "significance": "Solid",
+    "significanceWhy": "It claims to connect the triangle and calculus views of sectional curvature on non-smooth spaces, as Gigli conjectured."
+  },
+  "explanation": "Start with a triangle on a unit sphere. Take the north pole and two points on the equator a quarter-turn apart. Each side has length π/2, about 1.571, and each angle is 90 degrees. Now draw a flat triangle with the same three side lengths. Its angles are 60 degrees. Measure from one corner to the middle of the opposite side. On the sphere this distance is π/2, about 1.571. In the flat triangle it is (√3/2) × (π/2), about 1.360. The sphere's triangle is fatter. That is what curvature at least 0 means in triangle terms.\n\nIn an Alexandrov space with curvature at least κ, small triangles are at least as fat as on a model surface of curvature κ[1]. This needs only distances, not smoothness. The other view uses calculus. An RCD space is a rough space with a lower bound on Ricci curvature, an averaged form of curvature, defined by optimal transport[2]. Optimal transport studies the cheapest way to move mass from one place to another. Gigli defined a distributional sectional curvature on such spaces, tested against smooth-like functions, and conjectured the two views agree[3]. His construction did not by itself link a lower bound on the tensor to triangle comparison[4].\n\nThe paper claims the equivalence in every dimension n of at least 2[5]. With Hausdorff measure, the Alexandrov bound κ holds exactly when the space is RCD with distributional sectional curvature at least κ[5]. Hausdorff measure is the natural n-dimensional volume. The choice of that exact measure matters, since it rules out collapsed spaces[6]. The test classes are Gigli's original global ones[7].\n\nThe hard direction goes from calculus to triangles. A weak Hessian bound is tested against volume, but a single geodesic, a shortest path, can lie in a set of zero volume[8]. The companion paper bridges this gap. It proves that a weak upper bound on the Hessian, the table of second derivatives, holds along every shortest path[9]. The main paper also needs frames along paths at every time, not only almost every time[10].\n\nHow sure is this? The Lean scope note says the formalization carries a weak Hessian upper bound to every shortest path in an RCD space of finite dimension. That is the companion paper's theorem. The main equivalence is not in that note. No specialist review has been published.",
+  "hypeCheck": "Solid if it holds. Lean covers only the companion paper's Hessian-along-geodesics theorem, not the main equivalence. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Alexandrov space",
+      "meaning": "A metric space where small triangles are at least as fat as matching triangles on a model surface of constant curvature."
+    },
+    {
+      "term": "RCD space",
+      "meaning": "A possibly rough space with a lower bound on Ricci curvature, defined by optimal transport, and with a Hilbert-space calculus."
+    },
+    {
+      "term": "Ricci curvature",
+      "meaning": "An averaged form of curvature that controls how volume spreads out."
+    },
+    {
+      "term": "Sectional curvature",
+      "meaning": "How much a space bends along one flat two-dimensional slice."
+    },
+    {
+      "term": "Distributional",
+      "meaning": "Defined by testing against nice functions instead of point by point."
+    },
+    {
+      "term": "Hausdorff measure",
+      "meaning": "A natural way to measure n-dimensional volume using only distances."
+    },
+    {
+      "term": "Geodesic",
+      "meaning": "A shortest path between two points."
+    },
+    {
+      "term": "Hessian",
+      "meaning": "The table of second derivatives of a function."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Gigli’s distributional curvature characterization of Alexandrov spaces” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Giglis-distributional-curvature-characterization-of-Alexandrov-spaces-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Weak Hessian bounds along every geodesic in RCD spaces” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weak-Hessian-bounds-along-every-geodesic-in-RCD-spaces-September-24-2026/weak-hessian-geodesics.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 356",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/356.md",
+      "quote": "The formalization transfers a weak Hessian upper bound to every prescribed minimizing geodesic"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "An Alexandrov lower curvature bound means geodesic triangles satisfy lower comparison with the constant-curvature model surface.",
+      "sourceLine": "geodesic triangles satisfy lower comparison with the simply connected",
+      "sourceQuote": "An Alexandrov lower curvature bound \\(\\CBB(\\kappa)\\) means that geodesic triangles satisfy lower comparison with the simply connected surface of constant curvature \\(\\kappa\\), at the usual model scale when \\(\\kappa>0\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Lott–Villani and Sturm developed synthetic lower Ricci bounds through entropy convexity along Wasserstein geodesics.",
+      "sourceLine": "Lott--Villani and Sturm independently developed synthetic lower",
+      "sourceQuote": "Lott--Villani and Sturm independently developed synthetic lower Ricci curvature bounds through convexity properties of entropy along Wasserstein geodesics \\cite{LottVillani2009,Sturm2006I,Sturm2006II}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Gigli defined the curvature functional and conjectured the characterization in dimensions at least two.",
+      "sourceLine": "conjectured the characterization proved here in dimensions at least two",
+      "sourceQuote": "Gigli subsequently defined \\eqref{eq:curvature-definition} and conjectured the characterization proved here in dimensions at least two \\cite[Conjecture~1.1]{Gigli2019}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Gigli's construction does not by itself relate a lower tensor bound to triangle comparison.",
+      "sourceLine": "not by itself relate a lower tensor bound to triangle comparison.",
+      "sourceQuote": "His construction gives tensor symmetries and tensoriality, but does not by itself relate a lower tensor bound to triangle comparison.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "A complete separable metric space is an n-dimensional Alexandrov space of curvature at least κ if and only if, with Hausdorff measure, it is a full-support RCD((n−1)κ,n) space with distributional sectional curvature at least κ.",
+      "sourceLine": "a complete separable metric space is an \\(n\\)-dimensional Alexandrov",
+      "sourceQuote": "For every integer \\(n\\ge2\\) and \\(\\kappa\\in\\mathbb R\\), we prove that a complete separable metric space is an \\(n\\)-dimensional Alexandrov space of curvature at least \\(\\kappa\\) if and only if, with reference measure \\(\\mathcal H^n\\), it is a full-support \\(\\RCD((n-1)\\kappa,n)\\) space whose distributional sectional curvature is at least \\(\\kappa\\) in Gigli's original global test classes.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The assumption that the reference measure is Hausdorff measure supplies noncollapsed structure.",
+      "sourceLine": "the assumption \\(m=\\mathcal H^n\\) supplies noncollapsed structure,",
+      "sourceQuote": "The exact choice of reference measure is important: the assumption \\(m=\\mathcal H^n\\) supplies noncollapsed structure, including \\(n\\)-dimensional Euclidean tangents almost everywhere \\cite{DPG2018}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The RCD condition is unreduced, and the test classes and curvature sign are exactly those defined.",
+      "sourceLine": "The \\(\\RCD\\) condition is unreduced, and the test classes and",
+      "sourceQuote": "The \\(\\RCD\\) condition is unreduced, and the test classes and curvature sign are exactly those defined above.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A weak inequality is tested against the reference measure, whereas a prescribed geodesic can lie in a set of measure zero.",
+      "sourceLine": "A weak inequality is tested against the reference measure,",
+      "sourceQuote": "A weak inequality is tested against the reference measure, whereas a prescribed geodesic can lie in a set of measure zero.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A bounded Lipschitz function with distributional Hessian bounded above satisfies the matching second-derivative inequality along every minimizing geodesic.",
+      "sourceLine": "the corresponding second-derivative inequality along every",
+      "sourceQuote": "On a full-support \\(\\RCD(K,N)\\) space with \\(1<N<\\infty\\), we prove that a bounded globally Lipschitz function whose distributional Hessian is bounded above by a bounded continuous function satisfies the corresponding second-derivative inequality along every minimizing geodesic.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Almost-everywhere spatial regularity alone does not give a frame at every time on a path.",
+      "sourceLine": "Almost-everywhere spatial regularity alone does not give a frame at",
+      "sourceQuote": "Almost-everywhere spatial regularity alone does not give a frame at every time on a path.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the companion theorem that a weak Hessian upper bound holds along every minimizing geodesic of an RCD(K,N) space with finite N > 1.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

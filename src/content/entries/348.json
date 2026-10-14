@@ -1,0 +1,213 @@
+{
+  "id": "348",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Zero-Plane-Rigidity-for-Einstein-Four-Manifolds-October-4-2026/einstein-boundary.pdf",
+      "label": "Zero-Plane Rigidity for Einstein Four-Manifolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-L2-Einstein-Gap-for-Nonnegatively-Curved-Four-Manifolds-October-5-2026/einstein-gap.pdf",
+      "label": "An L² Einstein Gap for Nonnegatively Curved Four-Manifolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positively-curved-Einstein-four-manifolds-September-23-2026/paper.pdf",
+      "label": "Positively curved Einstein four-manifolds"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/348.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Classifies positive Einstein four-manifolds with nonnegative curvature, and claims a small-energy topological gap.",
+  "scope": "Closed connected Einstein four-manifolds with positive Einstein constant and sectional curvature ≥ 0. The gap result covers closed simply connected four-manifolds with sectional curvature ≥ 0.",
+  "plain": "An Einstein space is a curved space whose Ricci curvature, an average of its bending, is the same in every direction. The papers claim that in four dimensions, positive Einstein spaces with no negative bending are only three model shapes, up to covering and scale. A Lean proof covers the case of strictly positive bending. A second paper claims that a space close to Einstein, on average, has the smooth shape of one of the models. That gap result has no Lean check.",
+  "doesNot": "This does not give a value for the gap constant ε₀, and the gap result says nothing about the metric itself, only the smooth shape. Only the strictly positive classification has a Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2000",
+    "firstStepBy": "Deane Yang, who listed the three positively curved models as a conjecture",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-known classification question for positively curved Einstein four-manifolds and extends it to the boundary case of zero-curvature planes."
+  },
+  "explanation": "Start with two round spheres of radius 1/√3, about 0.577. Each sphere bends by 1/r², which is 3. Now take their product, the four-dimensional space of pairs of points, one on each sphere. A flat piece of a plane inside it can lie along one sphere, or take one direction from each. Along one sphere the bending, called sectional curvature, is 3. Across the two spheres it is 0. Ricci curvature in a direction adds the sectional curvatures of the three planes through it. For a direction along the first sphere this gives 3 + 0 + 0 = 3. Every direction gives 3. A space where Ricci curvature is the same constant in every direction is called Einstein. The round four-sphere of radius 1 is also Einstein: each plane bends by 1, and 1 + 1 + 1 = 3.\n\nWhich closed four-dimensional Einstein spaces have no negative bending at all? Closed means finite in size with no edge. In 2000 Yang listed three models for strictly positive bending as a conjecture[1]. They are the round sphere, the round real projective space, and the complex projective plane with its Fubini–Study metric. After scaling to Ricci curvature 3, Fubini–Study bends between 0.5 and 2. Earlier proofs needed extra conditions. Gursky and LeBrun needed a condition on the topology[2]. Cheng needed an Euler characteristic of at most 3[3]. The third paper proves Yang's classification with no such condition[4]. It needs no orientability, so mirror-reversing spaces are included[5].\n\nThe main obstacle is in four dimensions only. There the curvature splits into two independent pieces called Weyl blocks. The Einstein equation does not force either block to vanish[6]. The paper shows that one block must vanish, and classical results then name the space. The first paper studies the boundary case, where some plane has zero bending, as in the two-sphere example. An estimate proved for strictly positive bending does not settle that case by itself[7]. It claims that one zero-bending plane forces the universal cover to be the product of two spheres of radius 1/√3[8]. The universal cover is the space unwrapped so that no loop is stuck. Together this gives three models up to covering: the sphere, the complex projective plane, and the product of two spheres[9].\n\nThe second paper asks about spaces that are nearly Einstein. It measures the trace-free Ricci energy, the squared gap between Ricci curvature and its average, summed over the space. In four dimensions this number does not change when the space is scaled. For spheres of radii 1 and 2, the product has energy 16π²(2 − 1/2)², about 355.3. Radii 10 and 20 give the same 355.3. The paper claims a universal number ε₀ above zero. A simply connected space with no negative bending and energy below ε₀ has the smooth shape of one of the three models[10]. It needs no bound on volume, diameter or curvature size[11]. The conclusion is about the smooth shape, not the metric[12]. The proof smooths the metric with Ricci flow, an equation that evens out curvature over time[13].\n\nHow sure is this? The Lean scope note says the formalization classifies closed Einstein four-manifolds with strictly positive sectional curvature. That covers the third paper's theorem. The zero-plane theorem and the energy gap are not in that note. No specialist review has been published.",
+  "hypeCheck": "Major if it holds. Lean covers only the strictly positive classification. The zero-plane rigidity and the energy gap have no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Sectional curvature",
+      "meaning": "How much the space bends along one flat two-dimensional slice through a point."
+    },
+    {
+      "term": "Ricci curvature",
+      "meaning": "The sum of the sectional curvatures of the planes through one direction."
+    },
+    {
+      "term": "Einstein manifold",
+      "meaning": "A curved space whose Ricci curvature is the same constant in every direction."
+    },
+    {
+      "term": "Weyl blocks",
+      "meaning": "The two independent parts of curvature in four dimensions that the Ricci curvature does not fix."
+    },
+    {
+      "term": "Fubini–Study metric",
+      "meaning": "The standard symmetric way to measure distances on the complex projective plane."
+    },
+    {
+      "term": "Trace-free Ricci energy",
+      "meaning": "The squared difference between Ricci curvature and its average, added up over the whole space."
+    },
+    {
+      "term": "Ricci flow",
+      "meaning": "An equation that changes a metric over time to even out its curvature."
+    },
+    {
+      "term": "Diffeomorphic",
+      "meaning": "Matched by a smooth map with a smooth inverse; the same smooth shape, perhaps with different distances."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Zero-Plane Rigidity for Einstein Four-Manifolds” (4 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Zero-Plane-Rigidity-for-Einstein-Four-Manifolds-October-4-2026/einstein-boundary.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “An L² Einstein Gap for Nonnegatively Curved Four-Manifolds” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-L2-Einstein-Gap-for-Nonnegatively-Curved-Four-Manifolds-October-5-2026/einstein-gap.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Positively curved Einstein four-manifolds” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positively-curved-Einstein-four-manifolds-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 348",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/348.md",
+      "quote": "The formalization classifies connected smooth closed Einstein four-manifolds with strictly positive sectional curvature."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 3,
+      "text": "Yang lists the round four-sphere, the round real projective four-space and Fubini–Study CP² as Conjecture 1 in his 2000 paper.",
+      "sourceLine": "Yang explicitly lists these three models in Conjecture~1 of~\\cite{Yang2000}.",
+      "sourceQuote": "Yang explicitly lists these three models in Conjecture~1 of~\\cite{Yang2000}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Gursky and LeBrun proved the Fubini–Study conclusion under nonnegative sectional curvature and a nonzero positive-definite intersection form.",
+      "sourceLine": "Gursky--LeBrun prove the Fubini--Study conclusion for compact oriented",
+      "sourceQuote": "Gursky--LeBrun prove the Fubini--Study conclusion for compact oriented Einstein manifolds with nonnegative sectional curvature and a nonzero positive-definite intersection form~\\cite[Theorem~A]{GurskyLeBrun1999}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Cheng proved the oriented positive-sectional classification when the Euler characteristic is at most three.",
+      "sourceLine": "Cheng proves the oriented positive-sectional classification under",
+      "sourceQuote": "Cheng proves the oriented positive-sectional classification under $\\chi\\le3$, and consequently in the presence of a nontrivial Killing field~\\cite[Theorem~1.2 and Corollary~1.4]{Cheng2026}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Every closed connected Einstein four-manifold with strictly positive sectional curvature is, after scaling, the round S⁴, Fubini–Study CP², or the round RP⁴.",
+      "sourceLine": "We prove the classification in the closed setting.",
+      "sourceQuote": "We prove the classification in the closed setting.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "No orientability assumption is needed.",
+      "sourceLine": "No orientability assumption is needed.",
+      "sourceQuote": "No orientability assumption is needed.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The Einstein equation does not force either Weyl block to vanish.",
+      "sourceLine": "The Einstein equation removes the off-diagonal Ricci block but does not force either Weyl block to vanish.",
+      "sourceQuote": "The Einstein equation removes the off-diagonal Ricci block but does not force either Weyl block to vanish.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "An estimate proved for a strictly positive metric does not by itself settle the boundary case.",
+      "sourceLine": "An estimate proved for a strictly positive metric does not by itself settle that boundary case.",
+      "sourceQuote": "An estimate proved for a strictly positive metric does not by itself settle that boundary case.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "A single zero-curvature plane forces the universal cover to be the product of two round two-spheres of radius 1/√3.",
+      "sourceLine": "plane already forces this product geometry on the universal cover.",
+      "sourceQuote": "We prove that, for a closed Einstein four-manifold with positive Einstein constant, a single zero-curvature plane already forces this product geometry on the universal cover.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Under Ric = 3g and nonnegative sectional curvature, the universal cover is the round S⁴, Fubini–Study CP², or S²(1/√3)×S²(1/√3).",
+      "sourceLine": "The argument also gives the full classification under nonnegative sectional curvature.",
+      "sourceQuote": "The argument also gives the full classification under nonnegative sectional curvature.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "If the trace-free Ricci energy is small enough, a simply connected closed four-manifold with nonnegative sectional curvature is diffeomorphic to S⁴, CP² or S²×S².",
+      "sourceLine": "If the trace-free Ricci energy is sufficiently small, the manifold is diffeomorphic to",
+      "sourceQuote": "If the trace-free Ricci energy is sufficiently small, the manifold is diffeomorphic to $S^4$, $\\CP^2$, or $S^2\\times S^2$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "No auxiliary curvature, volume, diameter, injectivity-radius or Sobolev bound is required.",
+      "sourceLine": "No auxiliary curvature, volume, diameter, injectivity-radius, or Sobolev bound is required.",
+      "sourceQuote": "No auxiliary curvature, volume, diameter, injectivity-radius, or Sobolev bound is required.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The conclusion concerns the smooth manifold, not an isometry of the original metric.",
+      "sourceLine": "The conclusion concerns the smooth manifold, not an isometry of the original metric.",
+      "sourceQuote": "The conclusion concerns the smooth manifold, not an isometry of the original metric.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Hamilton's Ricci flow supplies the regularization.",
+      "sourceLine": "Hamilton's Ricci flow \\cite{HamiltonRF} supplies the regularization.",
+      "sourceQuote": "Hamilton's Ricci flow \\cite{HamiltonRF} supplies the regularization.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the classification of closed connected Einstein four-manifolds with strictly positive sectional curvature, without orientability.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

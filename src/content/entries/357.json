@@ -1,0 +1,148 @@
+{
+  "id": "357",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bi-Lipschitz-Coordinates-at-Regular-Points-of-Noncollapsed-RCD-Spaces-September-25-2026/paper.pdf",
+      "label": "Bi-Lipschitz Coordinates at Regular Points of Noncollapsed RCD Spaces"
+    }
+  ],
+  "headline": "Claims bi-Lipschitz coordinate charts around every regular point of a noncollapsed RCD space.",
+  "scope": "Noncollapsed RCD(K,n) spaces, with reference measure exactly n-dimensional Hausdorff measure, for every real K and integer n ≥ 2, at every regular point.",
+  "plain": "An RCD space is a possibly rough space whose curvature is bounded below in an averaged sense. At a regular point, zooming in always shows flat n-dimensional space. The paper claims every such point has a neighborhood that maps onto a piece of flat space. The map stretches distances by at most a fixed factor. The factor depends only on the dimension, and there is no Lean check.",
+  "doesNot": "This does not say the metric is smooth or Hölder continuous in these charts, and it does not cover collapsed spaces. It has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1997",
+    "firstStepBy": "Jeff Cheeger and Tobias Colding, who asked about a bi-Lipschitz upgrade for Ricci limit spaces",
+    "field": "Differential geometry",
+    "significance": "Solid",
+    "significanceWhy": "It claims to settle a conjecture on coordinates at every regular point, improving bi-Hölder charts to bi-Lipschitz ones."
+  },
+  "explanation": "Start with the surface of a cube. Near a point in the middle of an edge, two faces meet. Unfold them flat and you get a piece of the plane, with distances kept exactly. A circle of radius r around that point has length 2πr, about 6.283 r. A corner is different. Three faces meet there, with total angle 3 × 90 = 270 degrees. A circle of radius r around the corner has length (3/2)πr, about 4.712 r. Zoom in on the corner and you still see a cone, never a flat plane.\n\nA point is regular if every zoom-in limit there is flat n-dimensional space[1]. The edge point is regular and the corner is not. The cube's surface is an example of an RCD space. That is a possibly rough space with Ricci curvature, an averaged form of bending, bounded below by a number K, defined through optimal transport. Noncollapsed means volume is measured by the natural n-dimensional volume, Hausdorff measure[2]. A bi-Lipschitz chart is a map onto a piece of flat space that stretches or shrinks distances by at most a fixed factor L.\n\nWhat was known? Cheeger and Colding found manifold neighborhoods with bi-Hölder charts and asked about a bi-Lipschitz upgrade[3]. Bi-Hölder charts can distort distances by a power, not just a factor. Mondino and Naber covered almost every point by measurable bi-Lipschitz pieces, but not open neighborhoods of each point[4]. Kapovitch and Mondino put the regular set inside an open region with bi-Hölder charts[5]. Honda and Zhang recalled the bi-Lipschitz conjecture[6].\n\nThe paper claims that every regular point has an open neighborhood bi-Lipschitz to an open subset of flat n-space[7]. The distortion factor depends only on the dimension[8]. It covers every regular point, not just almost every point[9]. The obstacle is that the natural harmonic coordinates can degenerate as the scale shrinks[10]. The paper compensates in the space of coordinate values. It tracks how much stretching is needed, scale by scale, and shows the total error stays small[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof controls infinitely many scales at once with delicate estimates. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. There is no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "RCD space",
+      "meaning": "A possibly rough space with Ricci curvature bounded below, defined through optimal transport, and with a Hilbert-space calculus."
+    },
+    {
+      "term": "Noncollapsed",
+      "meaning": "The reference measure is exactly n-dimensional Hausdorff measure, so the space has full dimension n."
+    },
+    {
+      "term": "Regular point",
+      "meaning": "A point where every zoom-in limit is flat n-dimensional space."
+    },
+    {
+      "term": "Bi-Lipschitz map",
+      "meaning": "A map that changes every distance by at most a fixed factor, up or down."
+    },
+    {
+      "term": "Bi-Hölder map",
+      "meaning": "A map whose distance distortion is bounded by powers of the distance, a weaker control than bi-Lipschitz."
+    },
+    {
+      "term": "Harmonic function",
+      "meaning": "A function that equals its own average around each point, like a steady temperature."
+    },
+    {
+      "term": "Hausdorff measure",
+      "meaning": "A natural way to measure n-dimensional volume using only distances."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Bi-Lipschitz Coordinates at Regular Points of Noncollapsed RCD Spaces” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bi-Lipschitz-Coordinates-at-Regular-Points-of-Noncollapsed-RCD-Spaces-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A point is n-regular if every pointed Gromov–Hausdorff tangent there is isometric to flat ℝⁿ.",
+      "sourceLine": "A point is \\emph{\\(n\\)-regular} if every pointed Gromov--Hausdorff tangent there is",
+      "sourceQuote": "A point is \\emph{\\(n\\)-regular} if every pointed Gromov--Hausdorff tangent there is pointed-isometric to \\((\\R^n,|\\cdot|,0)\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Noncollapsed means that the reference measure is exactly n-dimensional Hausdorff measure.",
+      "sourceLine": "Throughout, noncollapsed means that the reference measure is exactly",
+      "sourceQuote": "Throughout, noncollapsed means that the reference measure is exactly \\(\\mathcal H_d^n\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "Cheeger and Colding obtained manifold neighborhoods with bi-Hölder parametrizations and asked about a bi-Lipschitz upgrade.",
+      "sourceLine": "Cheeger and Colding obtained manifold neighborhoods with bi-H\\\"older",
+      "sourceQuote": "Cheeger and Colding obtained manifold neighborhoods with bi-H\\\"older parametrizations and asked about a bi-Lipschitz upgrade \\cite[Theorem~5.14 and Remark~5.15]{CC97}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mondino and Naber's bi-Lipschitz rectifiability does not give an open neighborhood of each prescribed regular point.",
+      "sourceLine": "give an ambient-open neighborhood of each prescribed regular point.",
+      "sourceQuote": "This does not give an ambient-open neighborhood of each prescribed regular point.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kapovitch and Mondino proved that the regular set lies in an open manifold region with bi-Hölder charts.",
+      "sourceLine": "Kapovitch and Mondino proved that the entire regular set is contained",
+      "sourceQuote": "Kapovitch and Mondino proved that the entire regular set is contained in an open manifold region with bi-H\\\"older charts \\cite[Theorem~3.1 and Corollary~3.2]{KM21}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Honda and Zhang explicitly recall the conjecture that every regular point in the noncollapsed setting admits a bi-Lipschitz chart.",
+      "sourceLine": "admits a bi-Lipschitz chart is explicitly recalled in the recent work",
+      "sourceQuote": "The conjecture that every regular point in the noncollapsed setting admits a bi-Lipschitz chart is explicitly recalled in the recent work of Honda and Zhang \\cite[Section~1.2]{HZ26}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every regular point of a noncollapsed RCD(K,n) space has an open neighborhood bi-Lipschitz homeomorphic to an open subset of ℝⁿ.",
+      "sourceLine": "point of a noncollapsed \\(\\RCD(K,n)\\) space has an open neighborhood",
+      "sourceQuote": "For every integer \\(n\\ge2\\) and every real \\(K\\), every regular point of a noncollapsed \\(\\RCD(K,n)\\) space has an open neighborhood bi-Lipschitz homeomorphic to an open subset of \\(\\R^n\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The bi-Lipschitz constant depends only on n.",
+      "sourceLine": "The bi-Lipschitz",
+      "sourceQuote": "The bi-Lipschitz constant depends only on \\(n\\), and the neighborhood uses the restricted ambient distance.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem concerns every prescribed regular point, not only almost every point.",
+      "sourceLine": "The theorem concerns every prescribed regular point, not only almost every point of the reference",
+      "sourceQuote": "The theorem concerns every prescribed regular point, not only almost every point of the reference measure.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The mean Gram matrices of the coordinates need not be uniformly nondegenerate as the scale tends to zero.",
+      "sourceLine": "are invertible, but they need not be uniformly nondegenerate as the",
+      "sourceQuote": "The scale-dependent mean Gram matrices of \\(u\\) are invertible, but they need not be uniformly nondegenerate as the scale tends to zero.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction uses cumulative mass to prescribe the stretching and a directional estimate to keep the metric error summable.",
+      "sourceLine": "The construction uses the cumulative mass to prescribe the stretching and",
+      "sourceQuote": "The construction uses the cumulative mass to prescribe the stretching and the directional estimate to keep its metric error summable.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}
