@@ -1,0 +1,192 @@
+{
+  "id": "193",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positivity-of-Serres-Intersection-Multiplicity-September-23-2026/paper.pdf",
+      "label": "Positivity of Serre's Intersection Multiplicity"
+    }
+  ],
+  "headline": "Serre's intersection multiplicity is claimed to be strictly positive over every regular local ring.",
+  "scope": "For two nonzero finitely generated modules whose dimensions add up to the ring's dimension and whose tensor product has finite length.",
+  "plain": "Serre defined a number that counts how many times two shapes meet at a point, with touching counted extra. He conjectured it is always positive when the shapes have complementary dimensions. Earlier work proved it is never negative, but zero was not ruled out in one hard case. This paper claims to prove it is always positive.",
+  "doesNot": "This does not give a formula for the intersection multiplicity; it only shows the number is at least 1.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Jean-Pierre Serre, Algèbre locale, multiplicités",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "It would settle a central conjecture of commutative algebra, open in ramified mixed characteristic for decades."
+  },
+  "explanation": "Draw the line y = 0 and the parabola y = x² on graph paper. They touch at the origin and nowhere else. Put y = 0 into the parabola's equation and you get x² = 0. That root x = 0 counts twice, so the curves meet twice at one point. The line y = x behaves differently. Near the origin it crosses the parabola once, with no touching.\n\nAlgebra can count these meetings in any setting. Take all power series in x and y, the formulas that describe what happens very close to the origin. This is an example of a regular local ring: the algebraic model of the neighbourhood of a smooth point. A module is an algebraic object that plays the role of a shape through that point. The line and the parabola each give one. Each shape has a dimension, here 1, while the plane has dimension 2.\n\nJean-Pierre Serre defined a number χ for two such shapes that meet only at the point. It is an alternating sum: a first term, minus a second, plus a third, and so on[1]. The first term is a length, the number of independent quantities left after imposing both shapes. For the line and parabola, setting y = 0 and y = x² leaves the series 1 and x, so the length is 2. The later terms are corrections called Tor. Here they are all zero, so χ = 2, matching the double meeting.\n\nSerre conjectured that χ is always at least 1 when the two dimensions add up to the dimension of the ring. This is the positivity conjecture. It is not automatic. The correction terms come with alternating signs and could in principle cancel the first term[2].\n\nSerre himself proved it in many cases. His argument works in equal characteristic and in the unramified case[5]. Equal characteristic means that numbers behave the same way in the ring as at the point, as with power series over the rational numbers. Mixed characteristic means they differ, as in the p-adic integers, where a prime p acts like a small quantity. Ramified means p is especially small: it lies in the square of the ideal of quantities that vanish at the point. Roberts, and separately Gillet and Soulé, proved that χ is zero when the dimensions add up to too little[6]. Gabber proved that χ is never negative in the remaining mixed-characteristic case[7]. What was missing was ruling out exactly zero[8]. Later work covered special ramified cases. Skalit handled rings built smoothly over a two-dimensional base[9]. KC and Soto Levins handled shapes that satisfy a lifting condition[10].\n\nThis paper claims to prove the conjecture in full, with no limit on characteristic or ramification[3]. It does not require either shape to come from a simpler unramified ring[4].\n\nThe obstacle is the cancellation in the alternating sum. The paper attacks it with two recent tools[11]. One is a way of measuring size called normalized length, built from very large perfectoid rings. Under that measure, certain troublesome correction terms count as zero. The other is algebraic K-theory, which compares the ordinary count with the normalized one. The comparison only works after averaging over a group of symmetries[12]. The paper shows each term of a first average is positive using a second average[13]. That rules out zero.\n\nAn earlier public post by Editan asserts a form of the same result[14]. The paper says it is credited to Editan, Copilot and Gemini[14]. It records that post as a claim, not an established theorem[14]. It also draws consequences for symbolic powers, a way of measuring how ideals grow[15].\n\nHow sure is this? The openai/math release has no Lean formalization for this result, so no computer has checked the proof. The argument relies on deep recent machinery from perfectoid methods and K-theory. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds. There is no Lean check, the proof uses heavy recent machinery, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Regular local ring",
+      "meaning": "The algebraic model of the neighbourhood of a smooth point, such as power series in a few variables."
+    },
+    {
+      "term": "Module",
+      "meaning": "An algebraic object over the ring that plays the role of a shape through the point."
+    },
+    {
+      "term": "Length",
+      "meaning": "A count of independent quantities in a module, like the dimension of a vector space."
+    },
+    {
+      "term": "Tor",
+      "meaning": "Correction terms that measure how far two shapes are from meeting cleanly."
+    },
+    {
+      "term": "Intersection multiplicity",
+      "meaning": "Serre's alternating sum of the length and the Tor terms; it counts meetings with multiplicity."
+    },
+    {
+      "term": "Mixed characteristic",
+      "meaning": "A ring where a prime number p is nonzero but vanishes at the point, as in the p-adic integers."
+    },
+    {
+      "term": "Ramified",
+      "meaning": "Here, mixed characteristic where p lies in the square of the ideal of quantities vanishing at the point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "J.-P. Serre, Local Algebra, translated by C. W. Chin, Springer Monographs in Mathematics (2000), Chapter V",
+      "url": "https://doi.org/10.1007/978-3-662-04203-8"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Positivity of Serre's Intersection Multiplicity”, openai/math release preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positivity-of-Serres-Intersection-Multiplicity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Serre's intersection multiplicity is an alternating sum of the lengths of the Tor modules.",
+      "verdict": "supported",
+      "sourceLine": "Serre's intersection multiplicity is the integer",
+      "sourceQuote": "For finite $R$-modules $M,N$ whose tensor product has finite length, Serre's intersection multiplicity is the integer \\[ \\chi^R(M,N)=\\sum_{i=0}^{d}(-1)^i \\length_R\\Tor_i^R(M,N). \\]",
+      "sourceId": 2
+    },
+    {
+      "text": "Positivity is not a formal consequence of the nonzero degree-zero term, because the higher terms enter with alternating signs.",
+      "verdict": "supported",
+      "sourceLine": "positivity is not a formal consequence of the nonzero degree-zero term:",
+      "sourceQuote": "Its positivity is not a formal consequence of the nonzero degree-zero term: the higher terms enter with alternating signs.",
+      "sourceId": 2
+    },
+    {
+      "text": "The main theorem proves Serre's positivity conjecture without a restriction on characteristic or ramification.",
+      "verdict": "supported",
+      "sourceLine": "proves Serre's positivity conjecture without a restriction",
+      "sourceQuote": "Theorem \\ref{thm:main} proves Serre's positivity conjecture without a restriction on characteristic or ramification.",
+      "sourceId": 2
+    },
+    {
+      "text": "It does not require either module to lift to an unramified regular local ring.",
+      "verdict": "supported",
+      "sourceLine": "either module to lift to an unramified regular local ring.",
+      "sourceQuote": "In particular, it does not require either module to lift to an unramified regular local ring.",
+      "sourceId": 2
+    },
+    {
+      "text": "Serre's reduction to the diagonal proves positivity in equicharacteristic and in the unramified setting.",
+      "verdict": "supported",
+      "sourceLine": "in equicharacteristic and in the unramified setting;",
+      "sourceQuote": "His reduction to the diagonal proves positivity in equicharacteristic and in the unramified setting; the same argument also treats formal power series rings over an arbitrary complete discrete valuation ring \\cite[Chapter~V]{Serre}.",
+      "sourceId": 2
+    },
+    {
+      "text": "Roberts and, independently, Gillet and Soulé proved vanishing when the dimensions add up to less than the ring dimension.",
+      "verdict": "supported",
+      "sourceLine": "Roberts and, independently, Gillet--Soul\\'e proved vanishing when the",
+      "sourceQuote": "Roberts and, independently, Gillet--Soul\\'e proved vanishing when the tensor product has finite length and the sum of dimensions is smaller than the ring dimension \\cite{Roberts,RobertsRennes,GilletSoule}.",
+      "sourceId": 2
+    },
+    {
+      "text": "Gabber proved nonnegativity in the remaining mixed-characteristic case.",
+      "verdict": "supported",
+      "sourceLine": "Gabber proved nonnegativity in the remaining",
+      "sourceQuote": "Gabber proved nonnegativity in the remaining mixed-characteristic case using alterations and an intersection calculation on a normal bundle \\cite[Section~6.1, Theorem~6.1.1]{Gabber}.",
+      "sourceId": 2
+    },
+    {
+      "text": "For complementary-dimensional pairs, strict positivity must additionally rule out zero.",
+      "verdict": "supported",
+      "sourceLine": "complementary-dimensional pairs, strict positivity must additionally",
+      "sourceQuote": "For complementary-dimensional pairs, strict positivity must additionally rule out zero.",
+      "sourceId": 2
+    },
+    {
+      "text": "Skalit proved positivity for regular local rings essentially smooth over a two-dimensional regular local base.",
+      "verdict": "supported",
+      "sourceLine": "positivity theorem for regular local rings essentially smooth over a",
+      "sourceQuote": "Further progress in ramified mixed characteristic includes Skalit's positivity theorem for regular local rings essentially smooth over a two-dimensional regular local base \\cite{Skalit}.",
+      "sourceId": 2
+    },
+    {
+      "text": "KC and Soto Levins prove positivity for modules satisfying a Serre-liftability condition.",
+      "verdict": "supported",
+      "sourceLine": "prove positivity for modules satisfying a Serre-liftability condition",
+      "sourceQuote": "KC and Soto Levins prove positivity for modules satisfying a Serre-liftability condition \\cite[Theorem~A]{KCSotoLevins}.",
+      "sourceId": 2
+    },
+    {
+      "text": "The proof combines normalized-length methods with algebraic K-theory.",
+      "verdict": "supported",
+      "sourceLine": "The proof combines normalized-length methods with algebraic $K$-theory.",
+      "sourceQuote": "The proof combines normalized-length methods with algebraic $K$-theory.",
+      "sourceId": 2
+    },
+    {
+      "text": "Rational K-theory with support at the closed point shows that ordinary and normalized Euler lengths agree after summing over all Galois conjugates.",
+      "verdict": "supported",
+      "sourceLine": "$K$-theory with support at the closed point shows that ordinary and",
+      "sourceQuote": "First, rational $K$-theory with support at the closed point shows that ordinary and normalized Euler lengths agree after summing over all Galois conjugates.",
+      "sourceId": 2
+    },
+    {
+      "text": "The second Galois average proves positivity for each value in the first average.",
+      "verdict": "supported",
+      "sourceLine": "positive. The second Galois average proves positivity for each value",
+      "sourceQuote": "The common annihilator and the positive limiting length of $M_n$ make this lower bound strictly positive. The second Galois average proves positivity for each value in the first average, completing the argument.",
+      "sourceId": 2
+    },
+    {
+      "text": "A public post by Editan, dated 9 December 2025, also asserts the prime-quotient form; the paper records it as a same-scope claim, not an established theorem.",
+      "verdict": "supported",
+      "sourceLine": "Serre's positivity conjecture. We record this as a same-scope claim,",
+      "sourceQuote": "{A public post by Editan, dated December~9, 2025 and credited to Editan, Copilot, and Gemini, also asserts the prime-quotient form of Serre's positivity conjecture. We record this as a same-scope claim, not as an established theorem; see \\href{https://note.com/editan/n/n35dec2c1ddbe}{the author's post}.}",
+      "sourceId": 2
+    },
+    {
+      "text": "The theorem also has consequences for symbolic powers.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:main} also has consequences for symbolic powers.",
+      "sourceQuote": "Theorem~\\ref{thm:main} also has consequences for symbolic powers.",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

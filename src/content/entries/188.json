@@ -1,0 +1,158 @@
+{
+  "id": "188",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Sharp-Terminal-Leave-in-Random-Triangle-Removal-September-25-2026/The-Sharp-Terminal-Leave-in-Random-Triangle-Removal-September-25-2026.pdf",
+      "label": "The sharp terminal leave in random triangle removal"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/188.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Randomly erasing triangles from a complete graph leaves about n^(3/2)/(2√2) edges at the end.",
+  "scope": "Starts from the complete graph on n vertices and removes uniformly random triangles; the statement is about large n.",
+  "plain": "Join every pair of n dots, then keep erasing a random triangle until none is left. It was known that about n^(3/2) edges survive, up to smaller factors. This paper proves the exact leading constant: the leftover is about n^(3/2)/(2√2). This settles the triangle case of a conjecture by Joos and Kühn.",
+  "doesNot": "This does not give the constant for other starting graphs or larger shapes, or describe the spread around the typical size.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It pins down the exact constant in a much-studied random process, settling a 2025 conjecture."
+  },
+  "explanation": "Take four dots and join every pair. That gives six lines, called edges, and four triangles. Pick one triangle and erase its three edges. The three edges left all meet at the fourth dot. They form no triangle, so the game stops with 3 edges left.\n\nNow do the same with n dots, all pairs joined. This is the complete graph on n vertices. At each step, choose one remaining triangle uniformly at random and erase its edges[1]. Stop when no triangle is left. The edges that survive are called the leave. How many are there?\n\nFor 1,000 dots there are 499,500 edges to start. Most get erased. The paper's answer predicts about 11,180 left, roughly 2.2%. That figure comes from the formula n^(3/2)/(2√2), where 1/(2√2) is about 0.354. The formula describes the trend as n grows, not an exact count for any one n.\n\nThe size of the leave was a long-standing question. Bollobás and Erdős conjectured in 1990 that it grows like n^(3/2)[2]. Spencer, and separately Rödl and Thoma, showed it is a vanishing share of all edges[3]. Bohman, Frieze and Lubetzky pinned down the power 3/2, up to smaller factors[4]. The leading constant stayed open. In 2025, Joos and Kühn conjectured a constant, which for triangles is 1/(2√2)[5].\n\nThis paper proves that constant[6]. Divide the leave by n^(3/2). As n grows, the result settles at 1/(2√2) in a strong sense: its average squared error shrinks to zero. This is called convergence in L². It implies the typical value and the average value both approach the same constant.\n\nThe difficulty is the end of the process. Early on, the graph looks evenly random, and earlier tools track it well. The paper uses Joos and Kühn's results for that early stretch, and nothing else from outside[7]. Near the end, few triangles remain, and each edge's fate depends on its neighbours. Rough estimates are not enough to get the constant. The paper redraws the remaining process with fresh random priorities on the triangles[9]. It then compares each edge's chance of surviving with a simple formula from Spencer's earlier work[10]. The hard part is showing these chances hold together for pairs of edges, not just single ones.\n\nThe result is about starting from all pairs joined. It does not give a constant for other starting graphs, or for removing larger shapes[8]. It also does not describe how much the leave varies around its typical size.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. The Lean scope note says it covers the convergence in L² to 1/(2√2), in probability, and for the average. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds. Lean has checked the main convergence statement; no specialist review is published, and the result covers only the complete-graph start.",
+  "glossary": [
+    {
+      "term": "Complete graph",
+      "meaning": "A set of dots with every pair joined by an edge."
+    },
+    {
+      "term": "Triangle removal process",
+      "meaning": "Repeatedly erase the three edges of a randomly chosen remaining triangle until none is left."
+    },
+    {
+      "term": "Leave",
+      "meaning": "The edges still present when no triangle remains."
+    },
+    {
+      "term": "Convergence in L²",
+      "meaning": "The average squared distance from the target value shrinks to zero."
+    },
+    {
+      "term": "With high probability",
+      "meaning": "With chance tending to one as the number of dots grows."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The sharp terminal leave in random triangle removal”, openai/math release preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Sharp-Terminal-Leave-in-Random-Triangle-Removal-September-25-2026/The-Sharp-Terminal-Leave-in-Random-Triangle-Removal-September-25-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 188 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/188.md",
+      "quote": "The formalization proves that the number of edges at termination, divided by $n^{3/2}$, converges in $L^2$ to $1/(2\\sqrt2)$."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "At each step a uniformly chosen remaining triangle is chosen and its edges deleted.",
+      "verdict": "supported",
+      "sourceLine": "the triangles whose three edges are still present, and delete those edges.",
+      "sourceQuote": "At each step, choose uniformly from the triangles whose three edges are still present, and delete those edges.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bollobás and Erdős conjectured in 1990 that the expected leave has order n^{3/2}.",
+      "verdict": "supported",
+      "sourceLine": "conjectured in 1990",
+      "sourceQuote": "Bollob\\'as and Erd\\H{o}s conjectured in 1990 that the expected leave has order $n^{3/2}$, as reported in \\cite[Introduction]{BohmanFriezeLubetzky2015}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Spencer, and Rödl and Thoma, showed the leave is o(n^2) with high probability.",
+      "verdict": "supported",
+      "sourceLine": "showed that the leave is $o(n^2)$ with high probability",
+      "sourceQuote": "Spencer's branching-process analysis and the independent nibble argument of R\\\"odl and Thoma showed that the leave is $o(n^2)$ with high probability \\cite{Spencer1995,RodlThoma1996}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bohman, Frieze and Lubetzky proved F_n = n^{3/2+o(1)} with high probability.",
+      "verdict": "supported",
+      "sourceLine": "and subsequently proved $F_n=n^{3/2+o(1)}$ with high probability",
+      "sourceQuote": "Bohman, Frieze and Lubetzky gave a short proof of the bound $O(n^{7/4}\\log^{5/4}n)$ \\cite[Theorem~1]{BohmanFriezeLubetzky2010} and subsequently proved $F_n=n^{3/2+o(1)}$ with high probability \\cite[Theorem~1]{BohmanFriezeLubetzky2015}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Joos and Kühn's conjecture predicts the constant; its triangle case is 1/(2√2).",
+      "verdict": "supported",
+      "sourceLine": "an asymptotic constant for the terminal leave; its triangle specialization",
+      "sourceQuote": "Their Conjecture~16.2 predicts an asymptotic constant for the terminal leave; its triangle specialization is $1/(2\\sqrt2)$ in probability.",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper proves this triangle case with L^2 convergence.",
+      "verdict": "supported",
+      "sourceLine": "The following theorem proves this",
+      "sourceQuote": "The following theorem proves this triangle case with $L^2$ convergence.",
+      "sourceId": 1
+    },
+    {
+      "text": "The only external proof input is early-prefix control from Joos and Kühn.",
+      "verdict": "supported",
+      "sourceLine": "The only external proof input is the early-prefix control from",
+      "sourceQuote": "The only external proof input is the early-prefix control from Joos and K\\\"uhn, specialized in Section~\\ref{sec:prefix}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The theorem does not assert a sharp constant for other starting graphs or general hypergraph removal.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert a sharp constant for arbitrary starting",
+      "sourceQuote": "The theorem concerns removal from $K_n$; it does not assert a sharp constant for arbitrary starting graphs or for general hypergraph removal, or a fluctuation law.",
+      "sourceId": 1
+    },
+    {
+      "text": "The continuation gives triangles fresh independent uniform priorities.",
+      "verdict": "supported",
+      "sourceLine": "Give the triangles of this graph fresh independent uniform priorities and",
+      "sourceQuote": "Give the triangles of this graph fresh independent uniform priorities and scan them in increasing order, accepting a triangle when all its edges remain.",
+      "sourceId": 1
+    },
+    {
+      "text": "The scalar comparison is Spencer's branching law after a time change.",
+      "verdict": "supported",
+      "sourceLine": "This is Spencer's scalar branching law after the time change $c=Dt$",
+      "sourceQuote": "This is Spencer's scalar branching law after the time change $c=Dt$ \\cite[Section~3, equation~(9)]{Spencer1995}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the L² convergence, convergence in probability and convergence of the normalized expectation.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

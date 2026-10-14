@@ -1,0 +1,190 @@
+{
+  "id": "186",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-uniform-influence-bound-for-hypergraph-properties-October-5-2026/hypergraph-influences.pdf",
+      "label": "A uniform influence bound for hypergraph properties"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Sharp-Threshold-Bound-for-Monotone-Graph-Properties-September-25-2026/paper.pdf",
+      "label": "A Sharp Threshold Bound for Monotone Graph Properties"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/186.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every symmetric increasing graph property switches on within a window of width about 1/(log n)².",
+  "scope": "For graphs on n vertices with edges drawn independently; properties must ignore labels and survive adding edges. Fixed ε between 0 and 1/2.",
+  "plain": "Draw each possible edge of a graph with probability p. A property that survives adding edges switches from rare to common as p grows. Friedgut and Kalai showed the switch happens within a window of width about 1/log n. This work proves their conjecture that the window is about 1/(log n)², and claims the hypergraph version too.",
+  "doesNot": "This does not give a small explicit constant; the stated factor 2¹⁹ makes the bound useful only for enormous graphs.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles the Friedgut–Kalai sharp-threshold conjecture from 1996, the best possible order in n."
+  },
+  "explanation": "Take four dots and the six possible lines between them. Draw each line with probability p, independently. What is the chance that at least one line appears? It is 1 − (1 − p)⁶. That chance reaches 10% when p is about 0.017. It reaches 90% when p is about 0.319. So the switch from unlikely to likely happens over a window about 0.30 wide.\n\nThis is a random graph: dots, called vertices, joined by random lines, called edges. \"Has at least one edge\" is a graph property. It does not care how the dots are labelled. It is also increasing: adding edges can never destroy it. The window where its chance climbs from ε to 1 − ε is its threshold width. Here ε is a small fixed number, such as 0.1.\n\nWith many vertices, these windows get narrow. In 1996, Friedgut and Kalai showed a universal limit. For any such property on n vertices, the width is at most a constant times log(1/(2ε))/log n[1]. They conjectured that log n could be replaced by its square, (log n)²[2]. That would mean much sharper switches. The square would be the best possible order[4]. A property like containing a group of about log n vertices all joined to each other has a window that small[5]. Bourgain and Kalai later came within any small margin of the square[6].\n\nThe graph paper proves the conjecture[3]. For every n of at least 2, the width is at most 2¹⁹ log(1/(2ε))/(log n)². The paper calls this constant a convenient explicit choice[3]. It is large. With ε = 0.1, the bound drops below 1 only once log n passes about 919. So the value lies in the order, (log n)², not in the number.\n\nThe difficulty was using symmetry well. Friedgut and Kalai used only that relabelling can move any edge onto any other. That fact alone gives one factor of log n. The paper uses relabellings more directly. It picks a random block of about √n vertices and frees every edge that touches it[7]. All other edges are fixed. Shuffling the block's vertices still leaves the property unchanged[8]. The paper builds its sharper estimate on that surviving symmetry.\n\nA companion paper extends this to hypergraphs. There an edge joins r vertices instead of two, for a fixed r of 3 or more. Friedgut and Kalai conjectured a width of order (log n) to the power −r/(r−1)[9]. The hypergraph paper claims to prove that bound[10]. Its main inequality does not need the property to be increasing[11]. For graphs, the analogous exponent would be 2, matching the square above.\n\nHow sure is this? A computer proof checker called Lean has checked the graph result. The Lean scope note states the width bound for every n of at least 2, every such property, and every ε between 0 and 1/2. The hypergraph paper is outside that check. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. Lean has checked the graph theorem; the hypergraph extension is not checked, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Random graph",
+      "meaning": "Vertices with each possible edge drawn independently with the same probability p."
+    },
+    {
+      "term": "Graph property",
+      "meaning": "A yes-or-no feature of a graph that does not depend on how vertices are labelled."
+    },
+    {
+      "term": "Increasing property",
+      "meaning": "A property that can never be destroyed by adding edges."
+    },
+    {
+      "term": "Threshold width",
+      "meaning": "How much p must rise for the property's chance to climb from ε to 1 − ε."
+    },
+    {
+      "term": "Hypergraph",
+      "meaning": "Like a graph, but each edge joins a fixed number r of vertices."
+    },
+    {
+      "term": "Influence",
+      "meaning": "How often changing one edge changes whether the property holds."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A uniform influence bound for hypergraph properties”, openai/math release preprint (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-uniform-influence-bound-for-hypergraph-properties-October-5-2026/hypergraph-influences.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Sharp Threshold Bound for Monotone Graph Properties”, openai/math release preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Sharp-Threshold-Bound-for-Monotone-Graph-Properties-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 186 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/186.md",
+      "quote": "the formalization proves that the edge-probability interval between probabilities $\\varepsilon$ and $1-\\varepsilon$ has width at most $2^{19}\\log(1/(2\\varepsilon))/(\\log n)^2$."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Friedgut and Kalai proved a universal width bound of order log(1/(2ε))/log n for graph properties.",
+      "verdict": "supported",
+      "sourceLine": "theorem gives the universal width bound",
+      "sourceQuote": "For graph properties, vertex permutations act transitively on the edge coordinates, and their theorem gives the universal width bound $C\\log(1/(2\\varepsilon))/\\log n$~\\cite[Theorem~1.1]{FK96}.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "They conjectured the denominator (log n)^2 with the same dependence on ε.",
+      "verdict": "supported",
+      "sourceLine": "They conjectured the denominator $(\\log n)^2$ with the same dependence",
+      "sourceQuote": "They conjectured the denominator $(\\log n)^2$ with the same dependence on $\\varepsilon$~\\cite[Conjecture~1.2]{FK96}.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "The graph theorem resolves that conjecture positively; its constant is only a convenient explicit choice.",
+      "verdict": "supported",
+      "sourceLine": "its numerical constant is only a convenient explicit choice.",
+      "sourceQuote": "Theorem~\\ref{thm:threshold} resolves that conjecture positively; its numerical constant is only a convenient explicit choice.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "The squared logarithm is the optimal order in n for fixed ε.",
+      "verdict": "supported",
+      "sourceLine": "The squared logarithm is the optimal order in $n$ when",
+      "sourceQuote": "The squared logarithm is the optimal order in $n$ when $\\varepsilon$ is fixed.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "A clique of order proportional to log n can have transition width of order (log n)^-2.",
+      "verdict": "supported",
+      "sourceLine": "property of containing a clique with order proportional to $\\log n$:",
+      "sourceQuote": "Friedgut and Kalai already pointed to the property of containing a clique with order proportional to $\\log n$: its transition width can be of order $(\\log n)^{-2}$ \\cite[p.~2994]{FK96}.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "Bourgain and Kalai approached the conjectured exponent arbitrarily closely.",
+      "verdict": "supported",
+      "sourceLine": "Thus their result approached the conjectured exponent arbitrarily",
+      "sourceQuote": "Thus their result approached the conjectured exponent arbitrarily closely.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "The restriction leaves free all edges touching a random block of about √n vertices.",
+      "verdict": "supported",
+      "sourceLine": "edges touching a random block $B$ of about $\\sqrt n$ vertices, while",
+      "sourceQuote": "Here the restriction is chosen through the vertices: leave free all edges touching a random block $B$ of about $\\sqrt n$ vertices, while conditioning on every other edge.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "Permutations inside the block survive every such conditioning.",
+      "verdict": "supported",
+      "sourceLine": "Permutations inside $B$ survive",
+      "sourceQuote": "Permutations inside $B$ survive every such conditioning.",
+      "sourceId": 2,
+      "paper": 2
+    },
+    {
+      "text": "Friedgut and Kalai conjectured width O((log n)^-r/(r-1)) for r-uniform hypergraph properties.",
+      "verdict": "supported",
+      "sourceLine": "Friedgut and Kalai conjectured that this width is at most",
+      "sourceQuote": "Friedgut and Kalai conjectured that this width is at most $O_{r,\\varepsilon}((\\log n)^{-r/(r-1)})$ for every increasing $r$-uniform hypergraph property~\\cite[Section~5, p.~2999]{FK96}.",
+      "sourceId": 1,
+      "paper": 1
+    },
+    {
+      "text": "The hypergraph paper proves this conjectured bound.",
+      "verdict": "supported",
+      "sourceLine": "proves this conjectured bound by",
+      "sourceQuote": "Corollary~\\ref{cor:threshold} proves this conjectured bound by integrating~\\eqref{eq:main}, with an explicit dependence on $\\varepsilon$.",
+      "sourceId": 1,
+      "paper": 1
+    },
+    {
+      "text": "No monotonicity assumption is required for the hypergraph influence bound.",
+      "verdict": "supported",
+      "sourceLine": "No monotonicity assumption is required.",
+      "sourceQuote": "No monotonicity assumption is required.",
+      "sourceId": 1,
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes the graph width bound with constant 2^19; the hypergraph paper is outside it.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

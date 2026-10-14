@@ -1,0 +1,151 @@
+{
+  "id": "192",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Unbounded-Violations-of-the-Square-Root-Degree-Bound-September-26-2026/Unbounded-Violations-of-the-Square-Root-Degree-Bound-September-26-2026.pdf",
+      "label": "Unbounded Violations of the Square-Root Degree Bound"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/192.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Boolean functions can beat the proposed square-root-of-degree bound on their linear correlations by any factor.",
+  "scope": "Applies to functions from n inputs of ±1 to outputs of ±1; the number of inputs needed is finite but not bounded usefully.",
+  "plain": "A Boolean function turns n inputs of +1 or −1 into one output of +1 or −1. Gopalan and Servedio conjectured that its total agreement with single inputs is at most a constant times the square root of its degree. This paper proves that false. For any constant, some function exceeds the proposed bound by that factor.",
+  "doesNot": "This does not say how many inputs are needed for a given violation, or what the true growth rate is.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Solid",
+    "significanceWhy": "It refutes a known conjecture in the analysis of Boolean functions by an unbounded factor."
+  },
+  "explanation": "Take three yes-or-no votes, written as +1 or −1. Let f be the majority vote: it outputs whichever sign has at least two votes. How much does f agree with each single voter? On average over all 8 vote patterns, f times voter 1 equals 1/2. The same holds for voters 2 and 3. So the three agreements add up to 3/2.\n\nA Boolean function here takes n inputs, each +1 or −1, and outputs +1 or −1. The agreement with voter i is called the i-th linear Fourier coefficient. Every such function can be written as a polynomial in its inputs. Its degree is the largest number of inputs multiplied together in any term. Majority on three votes has degree 3, because it equals (x₁ + x₂ + x₃)/2 − x₁x₂x₃/2.\n\nA simple argument bounds the sum of the linear coefficients by √n[1]. Gopalan and Servedio conjectured that √n could be replaced by the square root of the degree[2]. The conjecture is attributed to them around 2009[4]. For majority on three votes, the sum is 1.5 and √3 is about 1.73. So that example fits. A stronger guess compared every function with majority itself[5]. Kudin and Pašalić refuted that stronger guess at degree 4[6]. The square-root version stayed open.\n\nThis paper proves the square-root version false, and badly so[3]. For any number C, however large, it finds a Boolean function whose linear sum exceeds C times the square root of its degree. No fixed multiple of the proposed bound can hold. A weaker bound does survive: the sum is never more than the degree itself[7]. So the truth lies somewhere between the square root and the degree.\n\nThe difficulty is to get large agreement while keeping the degree low. The paper first builds a function that reports partial information about many independent scores. Each part of its output is a polynomial of small degree. Yet together these parts keep more information about the total than their degree would suggest. The saving comes from terms cancelling, not from ignoring some input[9]. Repeating this step pushes the ratio up without limit.\n\nThere is a limit to what this gives. The functions exist and have finitely many inputs. But the paper does not give useful bounds on how many inputs it needs[8]. So it does not say how fast the ratio can grow with the number of inputs.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main result. The Lean scope note covers every C. For each, it gives a nonconstant Boolean function whose linear sum exceeds C times the square root of its degree. It also covers the version with absolute values. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid. Lean has checked the main statement; no specialist review is published, and the size of the examples is not controlled.",
+  "glossary": [
+    {
+      "term": "Boolean function",
+      "meaning": "A rule that turns inputs of +1 or −1 into an output of +1 or −1."
+    },
+    {
+      "term": "Linear Fourier coefficient",
+      "meaning": "The average of the output times one input, measuring how much the function agrees with that input."
+    },
+    {
+      "term": "Degree",
+      "meaning": "The largest number of inputs multiplied together in any term of the function's polynomial form."
+    },
+    {
+      "term": "Majority function",
+      "meaning": "The function that outputs the sign held by most inputs."
+    },
+    {
+      "term": "Cauchy–Schwarz inequality",
+      "meaning": "A basic inequality that limits how large an average of products can be."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Unbounded Violations of the Square-Root Degree Bound”, openai/math release preprint (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Unbounded-Violations-of-the-Square-Root-Degree-Bound-September-26-2026/Unbounded-Violations-of-the-Square-Root-Degree-Bound-September-26-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 192 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/192.md",
+      "quote": "For every $C>0$, it gives a nonconstant Boolean function on a finite sign cube for which the sum of its linear Fourier coefficients exceeds $C\\sqrt{\\deg f}$, where $\\deg f$ is its real multilinear degree."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For a function with values ±1, Cauchy–Schwarz bounds the linear sum by √n.",
+      "verdict": "supported",
+      "sourceLine": "\\(\\{-1,1\\}\\), Cauchy--Schwarz gives",
+      "sourceQuote": "For Boolean \\(f\\), taking values in \\(\\{-1,1\\}\\), Cauchy--Schwarz gives \\[ \\sum_{i=1}^n\\widehat f(\\{i\\}) =\\E\\!\\left[f(X)\\sum_{i=1}^nX_i\\right]\\le\\sqrt n. \\]",
+      "sourceId": 1
+    },
+    {
+      "text": "Gopalan and Servedio conjectured that √deg(f) could replace √n.",
+      "verdict": "supported",
+      "sourceLine": "Gopalan and Servedio conjectured that \\(\\sqrt{\\deg(f)}\\) could replace",
+      "sourceQuote": "Gopalan and Servedio conjectured that \\(\\sqrt{\\deg(f)}\\) could replace \\(\\sqrt n\\); see O'Donnell's problem list~\\cite[p.~9]{ODonnell}.",
+      "sourceId": 1
+    },
+    {
+      "text": "No constant multiple of this proposed bound holds.",
+      "verdict": "supported",
+      "sourceLine": "We show that no constant multiple of this proposed bound holds.",
+      "sourceQuote": "We show that no constant multiple of this proposed bound holds.",
+      "sourceId": 1
+    },
+    {
+      "text": "The conjecture is attributed to Gopalan and Servedio, circa 2009.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture is attributed to Gopalan and Servedio, circa 2009, in",
+      "sourceQuote": "The conjecture is attributed to Gopalan and Servedio, circa 2009, in O'Donnell's problem list.",
+      "sourceId": 1
+    },
+    {
+      "text": "The majority benchmark is the signed singleton sum of majority on d bits.",
+      "verdict": "supported",
+      "sourceLine": "This is the signed singleton sum of majority on \\(d\\) bits, with either",
+      "sourceQuote": "This is the signed singleton sum of majority on \\(d\\) bits, with either fixed value at ties.",
+      "sourceId": 1
+    },
+    {
+      "text": "Kudin and Pašalić refuted the stronger majority bound at d = 4.",
+      "verdict": "supported",
+      "sourceLine": "cases \\(d=2,3\\) and refuted the majority bound at \\(d=4\\).",
+      "sourceQuote": "Kudin and Pa\\v{s}ali\\'c~\\cite{KudinPasalic} proved the cases \\(d=2,3\\) and refuted the majority bound at \\(d=4\\).",
+      "sourceId": 1
+    },
+    {
+      "text": "A linear degree bound holds for every Boolean function.",
+      "verdict": "supported",
+      "sourceLine": "A linear degree bound does hold for every Boolean function. Let",
+      "sourceQuote": "A linear degree bound does hold for every Boolean function. Let \\(\\operatorname{Inf}_i(f)\\) be the probability that flipping coordinate \\(i\\) changes its value, and let \\(I(f)=\\sum_i\\operatorname{Inf}_i(f)\\) be the total influence.",
+      "sourceId": 1
+    },
+    {
+      "text": "The dimension and copy counts are finite, but no useful bounds on their growth are obtained.",
+      "verdict": "supported",
+      "sourceLine": "construction are finite; we do not obtain useful bounds on their growth.",
+      "sourceQuote": "The dimension and all copy counts in the construction are finite; we do not obtain useful bounds on their growth.",
+      "sourceId": 1
+    },
+    {
+      "text": "The degree saving comes from cancellation, not from ignoring a coordinate.",
+      "verdict": "supported",
+      "sourceLine": "the degree saving comes from cancellation,",
+      "sourceQuote": "Such an indicator may depend on all \\(m+1\\) inputs: the degree saving comes from cancellation, not from ignoring a fixed coordinate.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the unbounded violation for every C, and the absolute-value version.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

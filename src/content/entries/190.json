@@ -1,0 +1,169 @@
+{
+  "id": "190",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-removal-fails-for-ordered-binary-matrices-September-25-2026/paper.pdf",
+      "label": "Polynomial removal fails for ordered binary matrices"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/190.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One fixed 66×66 pattern of zeros and ones has no polynomial removal bound in ordered binary matrices.",
+  "scope": "Copies keep row and column order and must match both zeros and ones; edits may change entries either way.",
+  "plain": "Removal lemmas say a grid that is far from avoiding a pattern must contain many copies of it. For ordered grids of zeros and ones, people conjectured the number of copies falls only like a power of the distance. This paper builds one 66 by 66 pattern where that fails. The copies can be far rarer than any such power predicts.",
+  "doesNot": "This does not say how bad removal can get in general; it gives one pattern and one family of examples.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Solid",
+    "significanceWhy": "It refutes a conjecture about property testing with an explicit pattern and construction."
+  },
+  "explanation": "Take a small grid of zeros and ones, two rows by two columns. Its top row reads 1, 0 and its bottom row reads 1, 1. Call it the pattern. Now take a 3 by 3 grid of ones, except a 0 in the top right corner. Where does the pattern appear inside it?\n\nA copy means choosing two rows, top to bottom, and two columns, left to right. The four cells where they cross must match the pattern exactly, zeros included[1]. The 0 must be the top right corner. Then either of the other two columns works, and either of the lower two rows. That gives 4 copies. Change that single 0 to a 1, and every copy disappears.\n\nGrids like this are called binary matrices. The row and column order matters, which is why these copies are called ordered. A matrix is ε-far from pattern-free if you must change at least a fraction ε of its cells to remove every copy. Changes may go either way, 0 to 1 or 1 to 0[2]. A removal lemma says that a matrix far from pattern-free must contain many copies.\n\nThat qualitative statement was already known for ordered matrices, from Alon, Ben-Eliezer and Fischer[7]. The open question was how many copies it guarantees. Alon, Fischer and Newman raised the ordered question[5]. Alon and Ben-Eliezer later posed the polynomial version[6]. It predicts at least c·ε^C·n^(2k) copies in an n by n matrix, for a k by k pattern[3]. Here c and C are constants that depend only on the pattern. In words, the guarantee should shrink only like a power of ε.\n\nThis paper shows that this fails[4]. It gives one fixed 66 by 66 pattern of zeros and ones. For each whole number h, it builds a square matrix n = (386h + 2)·2^h cells wide. For h = 1 that is 776. The matrix is far from pattern-free: at least one cell in (386h + 2)² must change. Yet its number of copies, divided by n^132, is at most that same fraction times 2^(−h). The fraction shrinks slowly as h grows, while 2^(−h) halves at every step. No fixed power of the fraction can keep up.\n\nThe difficulty is that removing copies can create new ones. A small set of cells can hit every existing copy. Here, all original copies pass through only 2^h cells[9]. But any repaired matrix must differ from the original in at least 4^h cells[10]. So changing those 2^h cells is never enough. The paper makes this happen by indexing rows and columns with a branching tree[11]. Avoiding the pattern pushes conflicting values down the tree until they collide at its leaves.\n\nEarlier examples of this kind of failure needed a third symbol in the big matrix. This one uses only 0 and 1[8].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main result. The Lean scope note says it covers the explicit 66 by 66 pattern and the sequence of matrices. It requires every zero and one to match, and it allows edits in both directions. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if it holds. Lean has checked the main statement for the explicit pattern; no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Binary matrix",
+      "meaning": "A grid of zeros and ones."
+    },
+    {
+      "term": "Ordered copy",
+      "meaning": "A choice of rows and columns, in their original order, whose crossing cells match the pattern exactly."
+    },
+    {
+      "term": "Pattern-free",
+      "meaning": "Containing no ordered copy of the pattern."
+    },
+    {
+      "term": "ε-far",
+      "meaning": "Needing changes to at least a fraction ε of the cells before it becomes pattern-free."
+    },
+    {
+      "term": "Removal lemma",
+      "meaning": "A rule that a grid far from pattern-free must contain many copies of the pattern."
+    },
+    {
+      "term": "Polynomial bound",
+      "meaning": "A guarantee that shrinks only like a fixed power of ε."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Polynomial removal fails for ordered binary matrices”, openai/math release preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-removal-fails-for-ordered-binary-matrices-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 190 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/190.md",
+      "quote": "The formalized result disproves a polynomial removal bound for one explicit $66\\times66$ binary pattern."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "An ordered copy matches the zeros as well as the ones.",
+      "verdict": "supported",
+      "sourceLine": "Thus a copy matches the zeros as well as the ones,",
+      "sourceQuote": "Thus a copy matches the zeros as well as the ones, and the row and column choices are independent.",
+      "sourceId": 1
+    },
+    {
+      "text": "Every cell may be changed, in either direction.",
+      "verdict": "supported",
+      "sourceLine": "changed, in either direction.",
+      "sourceQuote": "Every cell may be changed, in either direction.",
+      "sourceId": 1
+    },
+    {
+      "text": "The polynomial ordered binary matrix-removal conjecture asserts a polynomial lower bound on copies.",
+      "verdict": "supported",
+      "sourceLine": "The polynomial ordered binary matrix-removal conjecture asserts that",
+      "sourceQuote": "The polynomial ordered binary matrix-removal conjecture asserts that for each fixed $H$ there are constants $c_H,C_H>0$ such that, for every integer $n\\ge1$, every $0<\\epsilon<1$, and every binary $n\\times n$ matrix $A$, \\[ N_H(A)\\ge c_H\\epsilon^{C_H}n^{2k} \\quad\\text{whenever}\\quad \\operatorname{dist}_H(A)\\ge\\epsilon. \\]",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper disproves this conjecture with an explicit pattern of size 66.",
+      "verdict": "supported",
+      "sourceLine": "We disprove this conjecture with an explicit pattern of size $66$.",
+      "sourceQuote": "We disprove this conjecture with an explicit pattern of size $66$.",
+      "sourceId": 1
+    },
+    {
+      "text": "Alon, Fischer and Newman raised the ordered-matrix question.",
+      "verdict": "supported",
+      "sourceLine": "Alon, Fischer and Newman raised the ordered-matrix question after proving",
+      "sourceQuote": "Alon, Fischer and Newman raised the ordered-matrix question after proving polynomial-query testing for fixed finite forbidden families when row and column order is ignored~\\cite[Section~7]{AlonFischerNewman2007}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Alon and Ben-Eliezer formulated the polynomial removal question.",
+      "verdict": "supported",
+      "sourceLine": "Alon and Ben-Eliezer formulated the polynomial removal question for",
+      "sourceQuote": "Alon and Ben-Eliezer formulated the polynomial removal question for finite families of binary matrices~\\cite[Problem~1.4]{AlonBenEliezer2020}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Qualitative ordered matrix removal was established by Alon, Ben-Eliezer and Fischer.",
+      "verdict": "supported",
+      "sourceLine": "Qualitative ordered matrix removal was established by Alon,",
+      "sourceQuote": "Qualitative ordered matrix removal was established by Alon, Ben-Eliezer and Fischer~\\cite[Theorem~1.8 in the full version]{AlonBenEliezerFischer2017}: a positive copy-density bound exists for each fixed positive distance.",
+      "sourceId": 1
+    },
+    {
+      "text": "Earlier nonpolynomial examples used a third symbol; this construction uses only 0 and 1.",
+      "verdict": "supported",
+      "sourceLine": "symbol in the host matrix; our construction uses only $0$ and $1$.",
+      "sourceQuote": "These examples use a third symbol in the host matrix; our construction uses only $0$ and $1$.",
+      "sourceId": 1
+    },
+    {
+      "text": "All original copies meet a set of 2^h cells.",
+      "verdict": "supported",
+      "sourceLine": "this distinction explicit: all original copies meet a set of",
+      "sourceQuote": "Our construction makes this distinction explicit: all original copies meet a set of $2^h$ cells, while any binary repair changes at least $4^h$ cells.",
+      "sourceId": 1
+    },
+    {
+      "text": "Any binary repair changes at least 4^h cells.",
+      "verdict": "supported",
+      "sourceLine": "cells, while any binary repair changes at least",
+      "sourceQuote": "Our construction makes this distinction explicit: all original copies meet a set of $2^h$ cells, while any binary repair changes at least $4^h$ cells.",
+      "sourceId": 1
+    },
+    {
+      "text": "The host has rows and columns indexed by a binary tree.",
+      "verdict": "supported",
+      "sourceLine": "The host has rows and columns indexed by a binary tree, with a plus",
+      "sourceQuote": "The host has rows and columns indexed by a binary tree, with a plus block and a minus block at each internal node on each axis.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the failure of polynomial removal for the explicit 66×66 pattern.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "185",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-the-Infinite-Matroid-Packing-Covering-Conjecture-September-24-2026/paper.pdf",
+      "label": "A Counterexample to the Infinite Matroid Packing/Covering Conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/185.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Two self-dual infinite matroids break the infinite matroid packing/covering and intersection conjectures.",
+  "scope": "The counterexample uses two matroids on a countably infinite set, built in standard set theory; neither matroid is finitary.",
+  "plain": "A matroid is a set with a rule saying which subsets count as independent. Bowler and Carmesin conjectured that any family of infinite matroids splits its ground set into a packing part and a covering part. This paper proves that false with two self-dual matroids on a countably infinite set. The same pair also refutes the unrestricted infinite matroid intersection conjecture.",
+  "doesNot": "This does not refute Nash-Williams' original conjecture, which is about finitary matroids.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "field": "Combinatorics",
+    "significance": "Solid",
+    "significanceWhy": "It settles two general conjectures of infinite matroid theory, though not their original finitary form."
+  },
+  "explanation": "Take four letters, a, b, c and d. Call a set of letters independent if it has at most two letters. A largest independent set is called a basis. Here every pair is a basis, and there are six of them. This rule is a small example of a matroid.\n\nA matroid is a ground set plus a rule saying which subsets are independent. The rule must behave like independence of arrows in space. Every matroid has a dual, whose bases are the complements of the original bases. In the four-letter example, the complement of a pair is another pair. So the dual is the same matroid, and the matroid is called self-dual.\n\nNow use the four-letter matroid twice and ask a covering question. Can one independent set from each copy together contain every letter? Yes: take {a, b} from the first copy and {c, d} from the second. For a self-dual matroid used twice, a basis and its complement always work this way.\n\nThe ground set can also be infinite. Infinite matroids need extra care, and the standard axioms come from Bruhn, Diestel, Kriesell, Pendavingh and Wollan. A covering of a family of matroids picks one independent set per matroid, and together they contain the whole ground set[1]. A packing picks disjoint spanning sets instead. Bowler and Carmesin conjectured that every family splits the ground set into a part with a packing and a part with a covering[2]. A related conjecture, matroid intersection, predicts a common independent set with a matching property.\n\nThis paper builds two self-dual matroids on one countably infinite ground set, meaning one that can be listed as first, second, third and so on. No independent set from the first and one from the second ever cover the ground set. The pair has no packing/covering split, so the conjecture is false[3]. The paper also deduces that the unrestricted intersection conjecture is false[4]. The same pair answers a question of Attila Joó negatively[5]. All of this uses only ZFC, the standard axioms of set theory with the axiom of choice.\n\nThe main obstacle was building the basic piece. Bowler and Geschke had built countable self-dual examples, but only by assuming an extra axiom[6]. Whether one exists using ZFC alone was left open[7]. The paper builds such a matroid, called Q, on a countable set in ZFC[8]. The proof gives certain large sets a rank measured by ordinals. Ordinals are numbers with one key property: no chain of them can decrease forever. The paper places copies of Q along a path that runs forever in both directions. A covering would force the rank to drop at every step, which cannot happen[9].\n\nThe examples are unusual in one way that limits what they settle. A matroid is finitary when a set is independent as soon as all its finite parts are. These examples are neither finitary nor have finitary duals[10]. The original conjecture of Nash-Williams concerned finitary matroids. This paper does not refute that original form[11].\n\nHow sure is this? A computer proof checker called Lean has checked formal statements of the main results. The Lean scope note says they cover the two self-dual matroids with no packing/covering split and no intersection witness. They also cover the separate covering and packing consequences. The note says the construction assumes no finitary restriction. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if it holds. Lean has checked formal versions of the counterexamples; no specialist review is published, and the finitary conjecture stays open.",
+  "glossary": [
+    {
+      "term": "Matroid",
+      "meaning": "A ground set with a rule saying which subsets are independent, modelled on independence of arrows in space."
+    },
+    {
+      "term": "Basis",
+      "meaning": "A largest independent set of a matroid."
+    },
+    {
+      "term": "Dual matroid",
+      "meaning": "The matroid whose bases are the complements of the original bases."
+    },
+    {
+      "term": "Self-dual",
+      "meaning": "A matroid that equals its own dual."
+    },
+    {
+      "term": "Countably infinite",
+      "meaning": "Infinite, but able to be listed as first, second, third and so on."
+    },
+    {
+      "term": "ZFC",
+      "meaning": "The standard axioms of set theory, including the axiom of choice."
+    },
+    {
+      "term": "Ordinal",
+      "meaning": "A kind of number used to measure order, where no chain can decrease forever."
+    },
+    {
+      "term": "Finitary matroid",
+      "meaning": "A matroid where a set is independent whenever all its finite parts are."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Counterexample to the Infinite Matroid Packing/Covering Conjecture”, openai/math release preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Counterexample-to-the-Infinite-Matroid-Packing-Covering-Conjecture-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 185 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/185.md",
+      "quote": "The formalization constructs two self-dual partitional matroids on one countably infinite ground set that admit neither an independent covering nor a packing/covering partition."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A covering is a choice of independent sets, one for each matroid, whose union is the ground set.",
+      "verdict": "supported",
+      "sourceLine": "is a choice of independent sets, one for each matroid, whose union is the",
+      "sourceQuote": "A \\emph{covering} is a choice of independent sets, one for each matroid, whose union is the ground set.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bowler and Carmesin formulated the packing/covering assertion for every set-indexed family.",
+      "verdict": "supported",
+      "sourceLine": "Bowler and Carmesin formulated the assertion that every set-indexed family",
+      "sourceQuote": "Bowler and Carmesin formulated the assertion that every set-indexed family has such a partition and established its relationship with infinite matroid intersection~\\cite[Conjecture~1.3 and Corollary~3.9]{BowlerCarmesin2015}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The pair has no packing/covering partition, so the infinite packing/covering conjecture is false.",
+      "verdict": "supported",
+      "sourceLine": "infinite matroid packing/covering conjecture is false.",
+      "sourceQuote": "Consequently, the infinite matroid packing/covering conjecture is false.",
+      "sourceId": 1
+    },
+    {
+      "text": "The unrestricted infinite Matroid Intersection Conjecture is false in ZFC.",
+      "verdict": "supported",
+      "sourceLine": "Consequently, the unrestricted infinite Matroid Intersection Conjecture is",
+      "sourceQuote": "Consequently, the unrestricted infinite Matroid Intersection Conjecture is false in ZFC.",
+      "sourceId": 1
+    },
+    {
+      "text": "The pair answers Joó's question for two partitional matroids negatively.",
+      "verdict": "supported",
+      "sourceLine": "and answers Jo\\'o's question",
+      "sourceQuote": "This disproves the unrestricted infinite matroid packing/covering and intersection conjectures and answers Jo\\'o's question for two partitional matroids negatively.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bowler and Geschke built countable self-dual examples under Martin's axiom, hence under the continuum hypothesis.",
+      "verdict": "supported",
+      "sourceLine": "Martin's axiom for countable partially ordered sets, and hence under the",
+      "sourceQuote": "Bowler and Geschke~\\cite[Theorem~6 and the proof of Theorem~15]{BowlerGeschke2016} developed a basis criterion for infinite uniform matroids and constructed countable self-dual examples under Martin's axiom for countable partially ordered sets, and hence under the continuum hypothesis.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bowler and Geschke left open whether such a matroid exists in ZFC.",
+      "verdict": "supported",
+      "sourceLine": "Bowler and Geschke left open whether an infinite self-dual uniform matroid",
+      "sourceQuote": "Bowler and Geschke left open whether an infinite self-dual uniform matroid can be constructed in ZFC.",
+      "sourceId": 1
+    },
+    {
+      "text": "The local construction gives a self-dual uniform matroid Q on a countable set in ZFC.",
+      "verdict": "supported",
+      "sourceLine": "Our local construction gives a self-dual uniform matroid $Q$ on a",
+      "sourceQuote": "Our local construction gives a self-dual uniform matroid $Q$ on a countable set in ZFC, with every basis and its complement infinite.",
+      "sourceId": 1
+    },
+    {
+      "text": "Each successive copy of Q strictly decreases the ordinal rank, an impossibility.",
+      "verdict": "supported",
+      "sourceLine": "$Q$ strictly decreases the ordinal rank, an impossibility.",
+      "sourceQuote": "Each successive copy of $Q$ strictly decreases the ordinal rank, an impossibility.",
+      "sourceId": 1
+    },
+    {
+      "text": "The examples are neither finitary nor cofinitary.",
+      "verdict": "supported",
+      "sourceLine": "The examples are neither finitary nor cofinitary. Here a matroid is",
+      "sourceQuote": "The examples are neither finitary nor cofinitary. Here a matroid is \\emph{finitary} if a set is independent whenever all its finite subsets are independent, and \\emph{cofinitary} if its dual is finitary.",
+      "sourceId": 1
+    },
+    {
+      "text": "The result does not refute Nash-Williams' original finitary conjecture.",
+      "verdict": "supported",
+      "sourceLine": "infinite matroids and does not refute Nash-Williams' original finitary",
+      "sourceQuote": "Countability of the ground set is distinct from these structural hypotheses; the present result concerns unrestricted infinite matroids and does not refute Nash-Williams' original finitary conjecture.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean formalizes the two-matroid counterexample and the separate covering and packing consequences.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
