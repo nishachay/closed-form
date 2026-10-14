@@ -1,0 +1,176 @@
+{
+  "id": "268",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf",
+      "label": "The periodic spin-one Haldane gap"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf",
+      "label": "A boundary-field gap for the spin-one Heisenberg chain"
+    }
+  ],
+  "headline": "Claims the spin-one Haldane gap: the Heisenberg chain on even rings has an energy gap that stays above log(20)/784.",
+  "scope": "The pure antiferromagnetic spin-one Heisenberg chain on even periodic rings, and odd open chains with equal fields at both ends.",
+  "plain": "Haldane predicted in 1983 that chains of quantum spins behave differently for whole-number and half-number spin. For spin one, the lowest energy level should stay a fixed distance below the next, however long the chain. Numerical work strongly supports this, but no proof existed for the plain Heisenberg chain. Two papers claim to prove it with explicit numerical bounds, on rings and on open chains with end fields. There is no Lean check.",
+  "doesNot": "This does not compute the true size of the gap, about 0.41, and it does not cover other spin values or other interactions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1983",
+    "firstStepBy": "F. D. M. Haldane, prediction that integer-spin antiferromagnetic chains have a gap",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "The Haldane gap conjecture for the spin-one Heisenberg chain is a famous open problem in mathematical physics."
+  },
+  "explanation": "Take two spin-one particles, tiny quantum magnets, joined by the Heisenberg interaction S₁ · S₂. Their total spin S can be 0, 1 or 2. The energy is (S(S + 1) − 4)/2, so the levels are −2, −1 and +1. The pair prefers opposite alignment, the singlet with S = 0. The gap, the step from the lowest energy to the next, is 1. Now put L such spins on a ring, each joined to its two neighbours. Does the gap stay above a fixed size as L grows, or shrink to zero?\n\nHaldane predicted that the answer depends on the spin[1]. For half-number spins, like spin one-half, the gap closes. Lieb, Schultz and Mattis gave the rigorous half-number result for spin one-half[2]. For spin one, Haldane predicted a gap that stays positive. White and Huse estimated it numerically at 0.41050[3]. The Affleck–Kennedy–Lieb–Tasaki chain, a modified model with an extra interaction term, has a proven gap[4]. Small changes of that model keep the gap. But that does not give a gapped path to the plain Heisenberg chain[5].\n\nThe obstacle is that the plain chain is not frustration-free. That means its ground state does not minimize every neighbour interaction at once. The standard finite-size methods for gaps work for frustration-free chains[6]. The plain Heisenberg ring needs a different tool.\n\nThe first paper claims a uniform positive gap on even rings[7]. For every even L ≥ 60, the ground state is unique and the gap exceeds (4/105) log(80/79), about 0.000479[8]. For every even L ≥ 2304, the gap exceeds log(20)/784, about 0.00382. These bounds are far below the numerical 0.41, but they do not shrink with L. The paper says this resolves the conjecture in the even-periodic formulation[9].\n\nThe second paper treats open chains with 2L + 1 sites. A magnetic field of strength 3/5 acts on both end spins. The claimed gap exceeds log(10)/392, about 0.00587, for every L ≥ 960[10]. This is the setting Tasaki used to link the gap to a topological index[11]. With the gap, Tasaki's theorem gives index −1 for the limiting states[12].\n\nHow sure is this? There is no Lean formalization for these papers. The proofs combine an analytic argument with stated finite certificates for the starting lengths. They rest on two papers, and no specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. There is no Lean check; the gap bounds rest on two papers with finite certificates and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Spin one",
+      "meaning": "A quantum magnet whose spin along any axis can take three values: −1, 0 or +1."
+    },
+    {
+      "term": "Heisenberg chain",
+      "meaning": "A line or ring of spins where each neighbouring pair has energy S_j · S_(j+1), favouring opposite alignment."
+    },
+    {
+      "term": "Spectral gap",
+      "meaning": "The step from the lowest energy to the next distinct energy."
+    },
+    {
+      "term": "Haldane gap",
+      "meaning": "The predicted positive gap of integer-spin antiferromagnetic chains that does not shrink with chain length."
+    },
+    {
+      "term": "Frustration-free",
+      "meaning": "A system whose ground state minimizes every local interaction term at the same time."
+    },
+    {
+      "term": "AKLT chain",
+      "meaning": "A spin-one chain with an extra squared interaction term, built so its gap can be proved exactly."
+    },
+    {
+      "term": "Topological index",
+      "meaning": "A whole number attached to a gapped phase that cannot change without closing the gap."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The periodic spin-one Haldane gap” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A boundary-field gap for the spin-one Heisenberg chain” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Haldane predicted different low-energy behaviour for integer and half-odd-integer antiferromagnetic Heisenberg chains.",
+      "sourceLine": "Haldane predicted that antiferromagnetic Heisenberg chains have different low-energy behavior for integer and half-odd-integer spins.",
+      "sourceQuote": "Haldane predicted that antiferromagnetic Heisenberg chains have different low-energy behavior for integer and half-odd-integer spins.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The half-odd-integer side has a rigorous antecedent in the Lieb–Schultz–Mattis bound for the spin-one-half chain.",
+      "sourceLine": "The half-odd-integer side has a rigorous antecedent in the low-energy excitation bound of Lieb, Schultz and Mattis for the cyclic spin-one-half chain",
+      "sourceQuote": "The half-odd-integer side has a rigorous antecedent in the low-energy excitation bound of Lieb, Schultz and Mattis for the cyclic spin-one-half chain~\\cite[Appendix~B, Theorem~2]{LiebSchultzMattis1961}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "White and Huse's DMRG study estimated a bulk gap of 0.41050(2).",
+      "sourceLine": "White and Huse's density-matrix renormalization-group study estimated a bulk gap of $0.41050(2)$",
+      "sourceQuote": "For the pure spin-one chain, White and Huse's density-matrix renormalization-group study estimated a bulk gap of $0.41050(2)$ and exhibited effective spin-one-half degrees of freedom at open ends~\\cite{WhiteHuse1993}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The AKLT construction established a rigorous gapped spin-one chain with a biquadratic interaction.",
+      "sourceLine": "construction established a rigorous gapped spin-one chain with a biquadratic interaction",
+      "sourceQuote": "The Affleck--Kennedy--Lieb--Tasaki construction established a rigorous gapped spin-one chain with a biquadratic interaction \\cite{AKLT1987,AKLT1988}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Perturbation results near AKLT do not establish a gapped path to the pure bilinear point.",
+      "sourceLine": "it does not establish a gapped path to the pure bilinear point",
+      "sourceQuote": "This controls a neighborhood of that interaction; it does not establish a gapped path to the pure bilinear point.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Finite-volume gap criteria of Knabe and Nachtergaele are for frustration-free chains.",
+      "sourceLine": "including the criteria of Knabe and Nachtergaele for frustration-free chains, whose ground states minimize every local interaction",
+      "sourceQuote": "Finite-volume methods for uniform spectral gaps have a substantial history, including the criteria of Knabe and Nachtergaele for frustration-free chains, whose ground states minimize every local interaction \\cite{Knabe1988,Nachtergaele1996}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A uniform positive spectral gap holds for the pure spin-one Heisenberg chain on even periodic rings.",
+      "sourceLine": "We prove a uniform positive spectral gap for the pure antiferromagnetic spin-one Heisenberg chain on even periodic rings",
+      "sourceQuote": "We prove a uniform positive spectral gap for the pure antiferromagnetic spin-one Heisenberg chain on even periodic rings, establishing the positive even-periodic formulation of the spin-one Haldane conjecture.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The ground state is unique for every even L ≥ 60, with gap bounds (4/105)log(80/79) and log(20)/784.",
+      "sourceLine": "the ground state is unique for every even $L\\ge60$",
+      "sourceQuote": "For the Hamiltonians \\eqref{eq:main-H}, the ground state is unique for every even $L\\ge60$, and \\begin{align} \\gamma_L&>\\frac4{105}\\log\\frac{80}{79} &&\\text{for every even }L\\ge60,\\label{eq:gap60}\\\\ \\gamma_L&>\\frac{\\log20}{784} &&\\text{for every even }L\\ge2304.\\label{eq:gap2304} \\end{align}",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem resolves the spin-one Haldane gap conjecture in the even-periodic finite-volume formulation.",
+      "sourceLine": "resolves the spin-one Haldane gap conjecture positively in the even-periodic finite-volume formulation",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves the spin-one Haldane gap conjecture positively in the even-periodic finite-volume formulation $\\Delta_1>0$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The field h = 3/5 gives a gap greater than log(10)/392 on every chain of 2L+1 sites with L ≥ 960.",
+      "sourceLine": "The field $h=3/5$ gives a gap greater than $\\log(10)/392$ on every chain of $2L+1$ sites with $L\\ge960$.",
+      "sourceQuote": "The field $h=3/5$ gives a gap greater than $\\log(10)/392$ on every chain of $2L+1$ sites with $L\\ge960$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "This is the boundary formulation Tasaki used to connect the Haldane gap problem to a nontrivial topological index.",
+      "sourceLine": "This is the boundary formulation used by Tasaki to connect the Haldane gap problem to a nontrivial topological index",
+      "sourceQuote": "This is the boundary formulation used by Tasaki to connect the Haldane gap problem to a nontrivial topological index \\cite{Tasaki2025}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Tasaki's index theorem gives index −1 for every subsequential local limit.",
+      "sourceLine": "Tasaki's index theorem then gives index $-1$ for every subsequential local limit of these boundary-selected ground states.",
+      "sourceQuote": "Tasaki's index theorem then gives index $-1$ for every subsequential local limit of these boundary-selected ground states.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "id": "271",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Blochs-Law-for-Finite-Range-Heisenberg-Ferromagnets-in-Three-Dimensions-October-5-2026/bloch-law-heisenberg.pdf",
+      "label": "Bloch's Law for Finite-Range Heisenberg Ferromagnets in Three Dimensions"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-first-lattice-correction-to-Blochs-law-October-5-2026/first-lattice-correction-bloch-law.pdf",
+      "label": "The first lattice correction to Bloch's law"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spherical-magnetization-law-for-the-three-dimensional-quantum-Heisenberg-ferromagnet-October-5-2026/spherical-magnetization.pdf",
+      "label": "The spherical magnetization law for the three-dimensional quantum Heisenberg ferromagnet"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/paper.pdf",
+      "label": "Spontaneous magnetization in the quantum Heisenberg ferromagnet"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/271.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves 3D quantum Heisenberg ferromagnets magnetize at low temperature; claims Bloch's T^(3/2) law and its correction.",
+  "scope": "The isotropic quantum Heisenberg ferromagnet on the cubic lattice and in dimensions three and up, at every spin and low positive temperature.",
+  "plain": "A ferromagnet like iron stays magnetized with no outside field, below some temperature. For the standard quantum model of this, the Heisenberg ferromagnet, no one had proved that this ordering happens at any positive temperature. One paper shows it does in three or more dimensions, for every spin, and Lean checks this. Three more papers claim the exact low-temperature law for how magnetization falls, first found by Bloch in 1930, and its next correction.",
+  "doesNot": "This does not cover one or two dimensions, where ordering is ruled out, or find the temperature where order disappears.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1930",
+    "firstStepBy": "Felix Bloch, spin-wave prediction that magnetization falls like T^(3/2)",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "Spontaneous magnetization of the quantum Heisenberg ferromagnet at positive temperature is a long-standing open problem in mathematical physics."
+  },
+  "explanation": "Picture a cubic grid with a tiny quantum magnet, a spin, at each point. Neighbouring spins lower their energy by lining up. At zero temperature all spins point the same way. Each spin-1/2 site then contributes its full value 1/2. Heat stirs up spin waves, ripples called magnons, and the average drops a little. Bloch predicted the drop is proportional to T^(3/2), where T is temperature[1]. Take spin S = 1/2 and β = 1/T = 20, so βS = 10. The predicted drop is ζ(3/2)/(8π^(3/2)) × 10^(−3/2), about 0.00185. Here ζ is the Riemann zeta function, with ζ(3/2) about 2.612. The magnetization is then about 0.4981 instead of 0.5.\n\nThat is a prediction. A proof must show order survives at a fixed positive temperature, with no outside field. The model, the Heisenberg ferromagnet, gives a quantum mechanism for ferromagnetism[2]. Its energy does not change if all spins rotate together. So a magnetized state must pick a direction on its own. That is spontaneous magnetization. In one and two dimensions, the Mermin–Wagner theorem rules it out[3]. In three dimensions, Dyson, Lieb and Simon proved ordering for the quantum antiferromagnet at spin one and up[4]. There, neighbours prefer to point opposite ways. Their method does not give the needed bound in the ferromagnetic case[5]. That gap was the obstacle.\n\nThe fourth paper settles existence. In every dimension d ≥ 3 and for every spin S, at low enough temperature there is an equilibrium state with magnetization at least S/4[6]. Equilibrium here means the KMS condition, the standard definition for infinite quantum systems. The paper says this resolves the low-temperature ordering problem in this formulation[7].\n\nThe other three papers claim exact laws in three dimensions. The first claims Bloch's T^(3/2) law at every spin[8]. Its coefficient comes from the spin-wave energy near zero momentum. The second claims the next term, 3ζ(5/2)(βS)^(−5/2)/(128π^(3/2))[9]. Dyson had traced this term to the grid shape of independent magnons[10]. In our example, βS = 10, it adds only about 0.0000179. The third claims that, on large cubes, the zero-field magnetization settles to a uniform direction with a fixed positive size[11].\n\nHow sure is this? Lean, a computer proof checker, proves the existence result. For every d ≥ 3 and every spin, it builds the magnetized equilibrium state with magnetization at least S/4. Bloch's law, its correction and the spherical law are not in Lean. They rest on three long papers, and no specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. Spontaneous magnetization has a Lean proof; Bloch's law, its correction and the spherical law rest on unreviewed papers.",
+  "glossary": [
+    {
+      "term": "Heisenberg ferromagnet",
+      "meaning": "A grid of quantum spins where each neighbouring pair lowers its energy by pointing the same way."
+    },
+    {
+      "term": "Spin S",
+      "meaning": "The size of each quantum magnet: 1/2, 1, 3/2 and so on."
+    },
+    {
+      "term": "Spontaneous magnetization",
+      "meaning": "A net magnetization that survives with no outside magnetic field."
+    },
+    {
+      "term": "Magnon",
+      "meaning": "A spin wave: a ripple in the spin directions that carries a small unit of lost magnetization."
+    },
+    {
+      "term": "Bloch's law",
+      "meaning": "The prediction that magnetization falls below its maximum in proportion to T^(3/2) at low temperature."
+    },
+    {
+      "term": "KMS state",
+      "meaning": "The standard mathematical definition of a thermal equilibrium state for an infinite quantum system."
+    },
+    {
+      "term": "β",
+      "meaning": "Inverse temperature, 1/T; large β means low temperature."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Bloch's Law for Finite-Range Heisenberg Ferromagnets in Three Dimensions” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Blochs-Law-for-Finite-Range-Heisenberg-Ferromagnets-in-Three-Dimensions-October-5-2026/bloch-law-heisenberg.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The first lattice correction to Bloch's law” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-first-lattice-correction-to-Blochs-law-October-5-2026/first-lattice-correction-bloch-law.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “The spherical magnetization law for the three-dimensional quantum Heisenberg ferromagnet” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spherical-magnetization-law-for-the-three-dimensional-quantum-Heisenberg-ferromagnet-October-5-2026/spherical-magnetization.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Spontaneous magnetization in the quantum Heisenberg ferromagnet” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, Lean scope note for family 271",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/271.md",
+      "quote": "At every sufficiently low positive temperature, it constructs a translation-invariant equilibrium state satisfying the KMS condition for the zero-field dynamics and having magnetization at least $S/4$."
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Bloch predicted a magnetization deficit proportional to T^(3/2).",
+      "sourceLine": "The spin-wave description of a ferromagnet begins with Bloch's prediction of a magnetization deficit proportional to \\(T^{3/2}\\)",
+      "sourceQuote": "The spin-wave description of a ferromagnet begins with Bloch's prediction of a magnetization deficit proportional to \\(T^{3/2}\\), where \\(T=\\beta^{-1}\\) \\cite{Bloch1930}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Heisenberg's exchange model provided a quantum mechanism for ferromagnetism.",
+      "sourceLine": "Heisenberg's exchange model provided a quantum mechanism for ferromagnetism",
+      "sourceQuote": "Heisenberg's exchange model provided a quantum mechanism for ferromagnetism~\\cite{Heisenberg1928}.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The Mermin–Wagner theorem excludes positive-temperature ferromagnetism in one and two dimensions.",
+      "sourceLine": "The Mermin--Wagner theorem excludes positive-temperature ferromagnetism in one and two dimensions for finite-range isotropic Heisenberg models",
+      "sourceQuote": "The Mermin--Wagner theorem excludes positive-temperature ferromagnetism in one and two dimensions for finite-range isotropic Heisenberg models~\\cite{MerminWagner1966}.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Dyson, Lieb and Simon proved quantum antiferromagnetic ordering for spin at least one in dimensions at least three.",
+      "sourceLine": "Dyson, Lieb and Simon proved quantum antiferromagnetic ordering for spin at least one in those dimensions",
+      "sourceQuote": "Dyson, Lieb and Simon proved quantum antiferromagnetic ordering for spin at least one in those dimensions, and for spin one half in sufficiently large dimension~\\cite[Theorem~6.2]{DysonLiebSimon1978}.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The reflection-positivity argument does not provide the needed ferromagnetic infrared bound.",
+      "sourceLine": "the reflection-positivity argument does not provide the needed ferromagnetic Duhamel infrared bound",
+      "sourceQuote": "The corresponding ferromagnetic problem resisted this approach: the reflection-positivity argument does not provide the needed ferromagnetic Duhamel infrared bound, as explained by Dyson, Lieb and Simon~\\cite[pp.~339--340]{DysonLiebSimon1978}.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every d ≥ 3 and every spin, a translation-invariant KMS state at low temperature has magnetization at least S/4.",
+      "sourceLine": "The same state satisfies the KMS condition for the zero-field dynamics and has magnetization at least $S/4$.",
+      "sourceQuote": "The same state satisfies the KMS condition for the zero-field dynamics and has magnetization at least $S/4$.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "This resolves the low-temperature ordering problem in the spontaneous-magnetization formulation.",
+      "sourceLine": "This resolves the low-temperature ordering problem in the spontaneous-magnetization formulation.",
+      "sourceQuote": "This resolves the low-temperature ordering problem in the spontaneous-magnetization formulation.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Bloch's T^(3/2) law holds for three-dimensional quantum Heisenberg ferromagnets at every fixed positive spin.",
+      "sourceLine": "We prove Bloch's $T^{3/2}$ law for the spontaneous magnetization of three-dimensional quantum Heisenberg ferromagnets at every fixed positive quantum spin.",
+      "sourceQuote": "We prove Bloch's $T^{3/2}$ law for the spontaneous magnetization of three-dimensional quantum Heisenberg ferromagnets at every fixed positive quantum spin.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The first lattice correction is 3ζ(5/2)(βS)^(−5/2)/(128π^(3/2)).",
+      "sourceLine": "this gives the correction $3\\zeta(5/2)(\\beta S)^{-5/2}/(128\\pi^{3/2})$",
+      "sourceQuote": "In addition to the leading Bloch term, this gives the correction $3\\zeta(5/2)(\\beta S)^{-5/2}/(128\\pi^{3/2})$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "In Dyson's expansion the T^(5/2) and T^(7/2) terms arise from the lattice dispersion of independent magnons.",
+      "sourceLine": "the terms of orders \\(T^{5/2}\\) and \\(T^{7/2}\\) in the magnetization already arise from the lattice dispersion of independent magnons",
+      "sourceQuote": "In that expansion, the terms of orders \\(T^{5/2}\\) and \\(T^{7/2}\\) in the magnetization already arise from the lattice dispersion of independent magnons \\cite[Section~5, Equation~(71)]{Dyson1956b}; the leading interaction contribution is of order \\(T^4\\) \\cite[Section~8, Equation~(122)]{Dyson1956b}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The symmetric zero-field magnetization converges in moments to a uniform direction with a deterministic positive magnitude.",
+      "sourceLine": "the symmetric zero-field magnetization converges in moments to a uniform direction with a deterministic positive magnitude",
+      "sourceQuote": "As the even periodic cubes grow, the symmetric zero-field magnetization converges in moments to a uniform direction with a deterministic positive magnitude.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves spontaneous magnetization at least S/4 for the Heisenberg ferromagnet on Z^d, d ≥ 3, every spin, at low positive temperature.",
+      "verdict": "external",
+      "sourceId": 5
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}

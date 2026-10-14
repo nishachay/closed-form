@@ -1,0 +1,162 @@
+{
+  "id": "265",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf",
+      "label": "A two-dimensional area law from a global spectral gap"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf",
+      "label": "Polynomial PEPS approximation of gapped square-grid ground states"
+    }
+  ],
+  "headline": "Claims the 2D area law: gapped ground states on a square grid hold entanglement proportional to boundary, not volume.",
+  "scope": "Unique ground states of finite-range quantum spin Hamiltonians on finite square-lattice domains, with a gap for the full Hamiltonian.",
+  "plain": "Entanglement entropy measures how much a region of a quantum system shares with the rest. For gapped systems, physicists expect it to grow with the length of the region's boundary, not its area. This was proved in one dimension, but on two-dimensional grids it was open. One paper claims to prove it on the square grid, and a second claims these ground states have compact tensor-network descriptions. There is no Lean check.",
+  "doesNot": "This does not give an efficient algorithm to find the ground state or its tensors, and it does not cover three-dimensional lattices.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2007",
+    "firstStepBy": "Matthew Hastings, area law for gapped one-dimensional chains",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "The two-dimensional area law for gapped ground states is a central open conjecture in quantum many-body theory."
+  },
+  "explanation": "Picture a 1,000 × 1,000 grid of tiny magnets, quantum spins, one per square. They interact only with nearby spins. Cut out a 10 × 10 block in the middle. It holds 100 spins but only 40 edges cross its border. For a 100 × 100 block the counts are 10,000 spins and 400 border edges. The question is how much quantum information the block shares with the outside.\n\nThat shared information is the entanglement entropy. A simple count bounds it by the number of spins in the block. One shared pair of entangled spins across the border adds log 2, about 0.693. An area law says the entropy is at most a constant times the number of border edges instead. Here area means boundary size, a name from three dimensions.\n\nThe idea came from black-hole physics. Bombelli, Koul, Lee and Sorkin related entropy from hidden quantum fields to black-hole area[1]. For spin systems, the gap-to-area conjecture asks for an area law whenever the energy gap stays above a fixed size[2]. The gap is the energy jump from the lowest state, the ground state, to the next. In one dimension, Hastings proved it in 2007[3]. In higher dimensions, strict area laws were known only for restricted model classes[4]. The obstacle is that a gap gives decay of correlations, but entropy needs more. It requires control of the reduced state's full spectrum[5].\n\nThe first paper claims the answer in two dimensions[6]. For any set of sites on a finite square-grid domain, the entropy is at most a constant times the number of crossing edges[7]. The constant depends only on the spin size, the interaction range and strength, and the gap. It does not depend on the domain's size or shape. No gap is assumed for smaller pieces of the system, only for the whole[8]. So a 100 × 100 block in the middle would hold at most 400 times that constant, not something growing like 10,000.\n\nThe second paper uses this to describe the state compactly. A projected entangled-pair state, or PEPS, stores the state as small tables of numbers, one per site, linked along edges. The bond dimension is the size of each link. The paper claims a PEPS approximation with bond dimension polynomial in L and error at most 1/L[9]. For L = 100 the error is at most 0.01. It makes no claim that the tables can be found or used efficiently[10].\n\nHow sure is this? There is no Lean formalization for these papers. The claims rest on two long papers. No specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. There is no Lean check, and both the area law and the PEPS bound rest on two long papers with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Entanglement entropy",
+      "meaning": "A number measuring how much quantum information a region shares with the rest of the system."
+    },
+    {
+      "term": "Area law",
+      "meaning": "The claim that this entropy grows with the size of a region's boundary, not with the number of sites inside."
+    },
+    {
+      "term": "Ground state",
+      "meaning": "The lowest-energy state of the quantum system."
+    },
+    {
+      "term": "Spectral gap",
+      "meaning": "The energy difference between the ground state and the next state; here it must stay above a fixed size."
+    },
+    {
+      "term": "Finite-range Hamiltonian",
+      "meaning": "An energy rule where each term involves only sites within a fixed distance of each other."
+    },
+    {
+      "term": "PEPS",
+      "meaning": "Projected entangled-pair state: a way to write a grid state as small linked tables of numbers, one per site."
+    },
+    {
+      "term": "Bond dimension",
+      "meaning": "The size of each link between neighbouring tables in a PEPS; smaller means a more compact description."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A two-dimensional area law from a global spectral gap” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Polynomial PEPS approximation of gapped square-grid ground states” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Bombelli, Koul, Lee and Sorkin related entropy from tracing hidden field degrees of freedom to black-hole area.",
+      "sourceLine": "Bombelli, Koul, Lee, and Sorkin related entropy from tracing inaccessible quantum-field degrees of freedom to black-hole area",
+      "sourceQuote": "Bombelli, Koul, Lee, and Sorkin related entropy from tracing inaccessible quantum-field degrees of freedom to black-hole area~\\cite{BombelliEtAl1986}; Srednicki subsequently found area scaling numerically for a spherical region in the vacuum of a regulated free massless scalar field~\\cite{Srednicki1993}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The gap-to-area conjecture asks for an entropy bound proportional to boundary area under a size-independent gap.",
+      "sourceLine": "the gap-to-area conjecture asks whether a unique ground state has an entropy bound proportional to boundary area when local dimension, interaction range and strength are bounded and the spectral gap has a size-independent positive lower bound",
+      "sourceQuote": "For finite-dimensional lattice spins, the gap-to-area conjecture asks whether a unique ground state has an entropy bound proportional to boundary area when local dimension, interaction range and strength are bounded and the spectral gap has a size-independent positive lower bound~\\cite{Hastings2007,AradLandauVazirani2012}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In one dimension, Hastings proved a length-independent entropy bound for gapped finite-range ground states.",
+      "sourceLine": "In one dimension, Hastings proved a length-independent entropy bound for the unique ground state of a finite-range Hamiltonian with uniformly bounded interactions, fixed local dimension, and a positive spectral gap",
+      "sourceQuote": "In one dimension, Hastings proved a length-independent entropy bound for the unique ground state of a finite-range Hamiltonian with uniformly bounded interactions, fixed local dimension, and a positive spectral gap~\\cite{Hastings2007}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Strict area-law bounds in higher dimensions were known for restricted model classes.",
+      "sourceLine": "Strict area-law bounds in higher dimensions are also known for restricted model classes.",
+      "sourceQuote": "Strict area-law bounds in higher dimensions are also known for restricted model classes.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "An entropy estimate requires control of the reduced state's full spectrum.",
+      "sourceLine": "an entropy estimate requires control of the reduced state's full spectrum",
+      "sourceQuote": "More generally, the exponential clustering theorem relates a spectral gap to decay of connected correlations of separated observables~\\cite{NachtergaeleSims2006}; an entropy estimate requires control of the reduced state's full spectrum.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem gives an affirmative answer in the two-dimensional induced-domain setting.",
+      "sourceLine": "gives an affirmative answer in the stated two-dimensional induced-domain setting",
+      "sourceQuote": "Theorem~\\ref{thm:area} gives an affirmative answer in the stated two-dimensional induced-domain setting.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every set of sites, entanglement entropy is bounded by a constant times the number of crossing edges, independently of domain size and shape.",
+      "sourceLine": "For every set of sites, its entanglement entropy is bounded by a constant times the number of edges crossing its boundary, independently of the size and shape of the domain.",
+      "sourceQuote": "For every set of sites, its entanglement entropy is bounded by a constant times the number of edges crossing its boundary, independently of the size and shape of the domain.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "No gap assumption is imposed on Hamiltonians restricted to smaller regions.",
+      "sourceLine": "no gap assumption is imposed on Hamiltonians restricted to smaller regions",
+      "sourceQuote": "The spectral assumption concerns the full Hamiltonian; no gap assumption is imposed on Hamiltonians restricted to smaller regions.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The ground state admits a PEPS approximation with bond dimension polynomial in L and error at most 1/L.",
+      "sourceLine": "admits a projected entangled-pair state approximation with bond dimension polynomial in $L$ and global vector error at most $L^{-1}$ after normalization",
+      "sourceQuote": "We prove that the unique ground state of a uniformly gapped nearest-neighbor Hamiltonian on an $L\\times L$ square lattice admits a projected entangled-pair state approximation with bond dimension polynomial in $L$ and global vector error at most $L^{-1}$ after normalization.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No claim is made that the tensors can be found or contracted efficiently.",
+      "sourceLine": "The theorem makes no claim that its tensors can be found or contracted efficiently",
+      "sourceQuote": "The theorem makes no claim that its tensors can be found or contracted efficiently; their entries may depend arbitrarily on $H$ and $\\Omega$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
