@@ -1,0 +1,185 @@
+{
+  "id": "078",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bochner-Riesz-Multipliers-in-Three-Dimensions-September-24-2026/Bochner-Riesz-Multipliers-in-Three-Dimensions-September-24-2026.pdf",
+      "label": "Bochner–Riesz multipliers in three dimensions"
+    }
+  ],
+  "headline": "A claimed proof of the Bochner–Riesz conjecture in three dimensions, in its strict-order form.",
+  "scope": "The claim is for ℝ³ only, with every order strictly above the conjectured threshold. Endpoint orders are not covered.",
+  "plain": "Bochner–Riesz means rebuild a function from its frequencies while softening the cut-off at the edge of a ball. The conjecture says how little softening keeps the size of the function under control. This paper claims the three-dimensional case, starting from the hardest exponent, p = 3. There any positive amount of softening is claimed to be enough. Interpolation then gives the full conjectured range.",
+  "doesNot": "This does not cover endpoint orders, dimensions other than three, or maximal Bochner–Riesz operators.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1935",
+    "firstStepBy": "Salomon Bochner, spherical means for multiple Fourier series",
+    "field": "Real and complex analysis",
+    "significance": "Landmark",
+    "significanceWhy": "The Bochner–Riesz conjecture in three dimensions is a central open problem in harmonic analysis, and it implies the sphere restriction conjecture."
+  },
+  "explanation": "Take a function on three-dimensional space and split it into its frequencies, using the Fourier transform. Keep only frequencies of size below 1, but soften the edge. Multiply each frequency ξ inside the unit ball by (1 − |ξ|²)^δ, and drop those outside. The order δ sets how soft the edge is. With δ = 1, a frequency of size 0.9 keeps 1 − 0.81 = 0.19 of its weight. With δ = 0.1 it keeps 0.19^0.1, about 0.847. At size 0.99 it keeps 0.0199^0.1, about 0.676. So a small δ gives an edge that is almost sharp.\n\nThis operation is the Bochner–Riesz mean T_δ. The question is how much softening keeps the function's Lᵖ size under control[13]. The Lᵖ norm is the p-th root of the integral of |f|ᵖ. The conjecture says that δ > max{3|1/p − 1/2| − 1/2, 0} is enough in three dimensions. At p = 3, the first term is 3 × 1/6 − 1/2 = 0, so any δ > 0 should work. At p = 4 the threshold is 3/4 − 1/2 = 1/4. At p = 1 it is 3/2 − 1/2 = 1.\n\nRiesz and Bochner introduced such means to sum Fourier series. In 1971, Fefferman showed that the sharp edge, δ = 0, fails for every p ≠ 2 in two or more dimensions[3]. His proof used a Kakeya construction, a set packed with thin tubes pointing in many directions. Carleson and Sjölin settled the plane in 1972[4]. In three dimensions, Lee reached the conjectured range when max{p, p′} ≥ 10/3[5]. Here p′ is the dual exponent, with 1/p + 1/p′ = 1. Wu lowered the bound to 13/4[6]. Gao, Wu and Xi lowered it to 22/7[7]. Tao showed that the Bochner–Riesz conjecture implies the restriction conjecture for the sphere[8]. Zipeng Wang has also proposed a proof of the conjecture in all dimensions[9].\n\nThis paper claims that T_δ is bounded on L³ for every δ > 0[1]. Interpolation and duality then give the full conjectured range[2]. Interpolation fills in exponents between two known bounds, and duality swaps p with p′. The hard case is p = 3, where the conjectured order drops all the way to zero. For 3/2 ≤ p ≤ 3, the paper claims any mild spherical smoothing recovers the function[10].\n\nThe key geometric input is the sharp planar Furstenberg estimate of Ren and Wang[11]. A Furstenberg estimate limits how small a set can be when many lines each meet it in a large piece. Another paper in the release reaches the same range by a separate route, through local smoothing for waves[12].\n\nHow sure is this? There is no Lean scope note for this result, so no computer proof checker has tested it. The paper is long and depends on the recent Ren–Wang estimate. No specialist review has been published.",
+  "hypeCheck": "Landmark if the proof holds, since it claims a central conjecture in three dimensions. It is one long paper with no Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Fourier transform",
+      "meaning": "The split of a function into frequencies, each with its own strength."
+    },
+    {
+      "term": "Bochner–Riesz mean",
+      "meaning": "The operation that keeps frequencies inside the unit ball, weighted by (1 − |ξ|²) to the power δ."
+    },
+    {
+      "term": "Order δ",
+      "meaning": "The power that sets how softly the frequency cut-off falls to zero at the edge of the ball."
+    },
+    {
+      "term": "Lᵖ norm",
+      "meaning": "A measure of a function's size: the p-th root of the integral of its absolute value to the power p."
+    },
+    {
+      "term": "Interpolation",
+      "meaning": "A method that turns bounds at two exponents into bounds at the exponents between them."
+    },
+    {
+      "term": "Kakeya set",
+      "meaning": "A set containing a thin tube, or line segment, in many directions."
+    },
+    {
+      "term": "Furstenberg estimate",
+      "meaning": "A lower bound on the size of a set that many lines each meet in a large piece."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Bochner–Riesz multipliers in three dimensions” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Bochner-Riesz-Multipliers-in-Three-Dimensions-September-24-2026/Bochner-Riesz-Multipliers-in-Three-Dimensions-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "C. Fefferman, “The multiplier problem for the ball”, Annals of Mathematics 94 (1971), 330–336",
+      "url": "https://doi.org/10.2307/1970864"
+    },
+    {
+      "id": 4,
+      "cite": "L. Carleson and P. Sjölin, “Oscillatory integrals and multiplier problem for the disc”, Studia Mathematica 44 (1972), 287–299",
+      "url": "https://doi.org/10.4064/sm-44-3-287-299"
+    },
+    {
+      "id": 5,
+      "cite": "S. Lee, “Improved bounds for Bochner–Riesz and maximal Bochner–Riesz operators”, Duke Mathematical Journal 122 (2004), 205–232",
+      "url": "https://doi.org/10.1215/S0012-7094-04-12217-1"
+    },
+    {
+      "id": 6,
+      "cite": "K. Ren and H. Wang, “Furstenberg sets estimate in the plane” (2025)",
+      "url": "https://arxiv.org/abs/2308.08819v3"
+    },
+    {
+      "id": 7,
+      "cite": "Z. Wang, “Lᵖ-boundedness of the Bochner–Riesz operator” (2026)",
+      "url": "https://doi.org/10.48550/arXiv.2501.12742"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For every δ > 0 there is C_δ with ‖T_δ f‖_{L³(ℝ³)} ≤ C_δ‖f‖_{L³(ℝ³)}.",
+      "verdict": "supported",
+      "sourceLine": "there is a finite constant $C_\\delta$ such that",
+      "sourceQuote": "For every $\\delta>0$, there is a finite constant $C_\\delta$ such that \\begin{equation} \\norm{T_\\delta f}_{L^3(\\RR^3)} \\le C_\\delta\\norm f_{L^3(\\RR^3)} \\qquad(f\\in\\mathcal S(\\RR^3)). \\label{eq:main-bound} \\end{equation}"
+    },
+    {
+      "text": "Interpolation and duality then give the full range of exponents.",
+      "verdict": "supported",
+      "sourceLine": "interpolation and duality then give the full",
+      "sourceQuote": "The main estimate is boundedness on $L^3$ for every positive order; interpolation and duality then give the full range of exponents."
+    },
+    {
+      "text": "Fefferman proved the order-zero ball multiplier is unbounded on L^p for p ≠ 2 in dimension at least two.",
+      "verdict": "supported",
+      "sourceLine": "Fefferman proved that in dimension at least two the",
+      "sourceQuote": "Using a Kakeya construction, Fefferman proved that in dimension at least two the order-zero ball multiplier is unbounded on $L^p$ for $p\\ne2$ \\citep{Fefferman1971}, while Carleson and Sj\\\"olin established the conjectured positive-order range in the plane \\citep{CarlesonSjolin1972}."
+    },
+    {
+      "text": "Carleson and Sjölin established the conjectured positive-order range in the plane.",
+      "verdict": "supported",
+      "sourceLine": "Carleson and Sjölin established the",
+      "sourceQuote": "Using a Kakeya construction, Fefferman proved that in dimension at least two the order-zero ball multiplier is unbounded on $L^p$ for $p\\ne2$ \\citep{Fefferman1971}, while Carleson and Sj\\\"olin established the conjectured positive-order range in the plane \\citep{CarlesonSjolin1972}."
+    },
+    {
+      "text": "Lee's reduction led to sharp-order Bochner–Riesz estimates for max{p,p′} ≥ 10/3.",
+      "verdict": "supported",
+      "sourceLine": "to sharp-order Bochner--Riesz estimates for",
+      "sourceQuote": "The bilinear restriction theorems of Wolff for the cone and Tao for the paraboloid and elliptic surfaces \\citep{Wolff2001,Tao2003} led, through Lee's multiplier reduction, to sharp-order Bochner--Riesz estimates for $\\max\\{p,p'\\}\\ge10/3$ \\citep{Lee2004}; here $p'$ is the H\\\"older conjugate of $p$."
+    },
+    {
+      "text": "Wu obtained the conjectured strict-order range when max{p,p′} ≥ 13/4.",
+      "verdict": "supported",
+      "sourceLine": "Wu obtained the conjectured strict-order",
+      "sourceQuote": "For the multiplier itself, Wu obtained the conjectured strict-order range when $\\max\\{p,p'\\}\\ge13/4$ \\citep{Wu2023}."
+    },
+    {
+      "text": "Gao, Wu and Xi established the strict-order range max{p,p′} ≥ 22/7.",
+      "verdict": "supported",
+      "sourceLine": "Gao, Wu, and Xi established the strict-order multiplier",
+      "sourceQuote": "More recently, Gao, Wu, and Xi established the strict-order multiplier range $\\max\\{p,p'\\}\\ge22/7$ \\citep[Corollary~1.3]{GaoWuXi2026}."
+    },
+    {
+      "text": "Tao showed that the Bochner–Riesz conjecture implies the spherical restriction conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Tao showed that the Bochner--Riesz conjecture implies the",
+      "sourceQuote": "The connection also runs in the other direction: Tao showed that the Bochner--Riesz conjecture implies the spherical restriction conjecture \\citep{Tao1999}."
+    },
+    {
+      "text": "Zipeng Wang has also proposed a proof of the Bochner–Riesz conjecture in all dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Zipeng Wang has also proposed a proof of the Bochner--Riesz conjecture",
+      "sourceQuote": "Zipeng Wang has also proposed a proof of the Bochner--Riesz conjecture in all dimensions \\citep[version~6, Theorem~One]{ZipengWang2026}."
+    },
+    {
+      "text": "This recovers Fourier inversion by arbitrarily mild spherical smoothing at 3/2 ≤ p ≤ 3.",
+      "verdict": "supported",
+      "sourceLine": "This recovers Fourier inversion by arbitrarily mild",
+      "sourceQuote": "This recovers Fourier inversion by arbitrarily mild spherical smoothing at the central exponents $3/2\\le p\\le3$."
+    },
+    {
+      "text": "The geometric input is the sharp planar Furstenberg estimate of Ren and Wang.",
+      "verdict": "supported",
+      "sourceLine": "The geometric input here is the sharp planar Furstenberg estimate of",
+      "sourceQuote": "The geometric input here is the sharp planar Furstenberg estimate of Ren and Wang \\citep{RenWang2025}."
+    },
+    {
+      "text": "An independent route through critical local smoothing gives the same full strict fixed-radius range.",
+      "verdict": "supported",
+      "sourceLine": "An independent route through critical local smoothing gives the same",
+      "sourceQuote": "An independent route through critical local smoothing gives the same full strict fixed-radius range in \\eqref{eq:intro-full-range}, uniformly in the radius \\citep[Corollary~11.2]{OpenAILocalSmoothing2026}."
+    },
+    {
+      "text": "The question is how much smoothing is needed to preserve an L^p norm.",
+      "verdict": "supported",
+      "sourceLine": "the question is how much smoothing is needed to preserve an $L^p$ norm",
+      "sourceQuote": "The multiplier $(1-|\\xi|^2)_+^\\delta$ softens the boundary of the frequency ball; the question is how much smoothing is needed to preserve an $L^p$ norm."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

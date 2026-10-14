@@ -1,0 +1,192 @@
+{
+  "id": "069",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-quantum-geometric-Langlands-at-irrational-level-October-4-2026/quantum-langlands.pdf",
+      "label": "Global quantum geometric Langlands at irrational level"
+    }
+  ],
+  "headline": "A claimed proof of quantum geometric Langlands duality on any smooth complex curve at every irrational level.",
+  "scope": "The claim is the unramified de Rham form, for connected simple groups, at shifted levels outside the rational numbers.",
+  "plain": "Geometric Langlands matches two very different ways of studying bundles of symmetry on a curve. Its quantum form adds a complex number c, the level, and swaps a group G with its Langlands dual. This paper claims the full matching at every level c that is not a fraction. The dual side uses the level −1/(rc), where r is 1, 2 or 3. Rational levels are not covered.",
+  "doesNot": "This does not cover rational levels, ramified versions, or groups that are not simple.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2006",
+    "firstStepBy": "A. V. Stoyanovsky, inverse-parameter conjecture attributed to Drinfeld",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "It claims a central conjecture of the quantum geometric Langlands program in the whole irrational range, including non-real levels."
+  },
+  "explanation": "Start with the rule that swaps the levels. Pick a complex number c that is not a fraction, such as c = √2. For the group SL₂ of 2 × 2 matrices with determinant 1, the dual level is −1/c. That is −1/√2, about −0.7071. Some groups have roots of two different lengths. Their lacing number r is 2 or 3; otherwise r = 1[2]. The dual level is then −1/(rc). For r = 2 and c = √2, that gives −1/(2√2), about −0.3536. Doing the swap twice returns c, since −1/(r × (−1/(rc))) = c. Levels need not be real. For r = 1 the level c = i is sent to −1/i = i.\n\nWhy exclude fractions? Each level s gives a number q = e^(2πis) on the unit circle. A fraction such as s = 1/3 gives q = e^(2πi/3), and then q³ = 1. So rational levels give roots of unity, and an irrational level never does. The paper's key rank argument works away from roots of unity.\n\nNow the setting. Take X a smooth closed complex curve, such as a sphere or the surface of a doughnut. A G-bundle on X is a family of copies of the group G glued over the curve. All such bundles form one space, Bun_G(X). A D-module on it is, roughly, a system of linear differential equations on that space. The level c twists these equations by a power of a natural line bundle. The Langlands dual group G^∨ comes from G by swapping roots and coroots, the basic directions of its symmetry.\n\nThe quantum geometric Langlands conjecture predicts that twisted D-modules for G at level c match those for G^∨ at −1/(rc). Kapustin and Witten's electric–magnetic duality explains the dual group and the reciprocal level[5]. An early form of the conjecture, credited to Drinfeld, appears in Stoyanovsky's 2006 paper[6]. Gaitsgory developed the version in terms of local categories, localization and Whittaker coefficients[7]. Feigin and Frenkel matched W-algebras, algebras of symmetries in two-dimensional field theory, at inverse levels[8]. Campbell, Dhillon and Raskin proved the local equivalences at irrational level[9]. The recent proof of ordinary geometric Langlands supplies the spectral description of the tempered category[10]. Bogdanova built a quantum Langlands functor in the Betti setting, a topological variant[11].\n\nThis paper claims the equivalence for every connected simple group, every such curve and every irrational level[1]. It uses the actual global forms and all connected components[3]. It gives the unramified de Rham equivalence in the irrational range[4]. Unramified means no special behaviour is allowed at marked points.\n\nThe route goes through localization. Localization turns representations of loop algebras into twisted D-modules on the space of bundles[12]. The paper first compares the two sides on such localized objects. Two global Whittaker identities then give the inverses of the resulting functor[13]. One obstacle is a deformation step for a global kernel. The paper controls it with a new weight argument[14]. Ranks of certain maps stay constant away from roots of unity. That gives the needed vanishing at every irrational level[15].\n\nHow sure is this? There is no Lean scope note for this result, so no computer proof checker has tested it. The paper relies on the long recent proof of ordinary geometric Langlands and on many other inputs. No specialist review has been published.",
+  "hypeCheck": "Major if the proof holds. It is one long paper resting on large recent works, with no Lean scope note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "G-bundle",
+      "meaning": "A family of copies of a symmetry group G glued together over a curve."
+    },
+    {
+      "term": "D-module",
+      "meaning": "Roughly, a system of linear differential equations on a space."
+    },
+    {
+      "term": "Level",
+      "meaning": "A complex number that twists the D-modules on the space of bundles."
+    },
+    {
+      "term": "Langlands dual group",
+      "meaning": "The group obtained from G by swapping its roots and coroots."
+    },
+    {
+      "term": "Lacing number",
+      "meaning": "1, 2 or 3, the ratio of squared lengths of the long and short roots of the group."
+    },
+    {
+      "term": "Root of unity",
+      "meaning": "A complex number q with qⁿ = 1 for some whole number n ≥ 1."
+    },
+    {
+      "term": "Localization",
+      "meaning": "A way of turning representations of loop algebras into D-modules on the space of bundles."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Global quantum geometric Langlands at irrational level” (October 4, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-quantum-geometric-Langlands-at-irrational-level-October-4-2026/quantum-langlands.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "A. V. Stoyanovsky, “Quantum Langlands duality and conformal field theory” (2006)",
+      "url": "https://arxiv.org/abs/math/0610974v1"
+    },
+    {
+      "id": 4,
+      "cite": "A. Kapustin and E. Witten, “Electric-magnetic duality and the geometric Langlands program”, Communications in Number Theory and Physics 1 (2007), 1–236",
+      "url": "https://arxiv.org/abs/hep-th/0604151v3"
+    },
+    {
+      "id": 5,
+      "cite": "D. Gaitsgory, “Quantum Langlands correspondence” (2016; notes written in 2007)",
+      "url": "https://arxiv.org/abs/1601.05279v1"
+    },
+    {
+      "id": 6,
+      "cite": "D. Gaitsgory and S. Raskin, “Proof of the geometric Langlands conjecture I: construction of the functor” (2024)",
+      "url": "https://arxiv.org/abs/2405.03599v3"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For every c in ℂ outside ℚ there is an equivalence D_c(Bun_G(X)) ≃ D_{−1/(rc)}(Bun_{G^∨}(X)).",
+      "verdict": "supported",
+      "sourceLine": "there is an equivalence of",
+      "sourceQuote": "For every $c\\in\\mathbb C\\setminus\\mathbb Q$ there is an equivalence of presentable $\\mathbb C$-linear DG categories \\begin{equation}\\label{intro:equivalence} D_c(\\operatorname{Bun}_G(X)) \\simeq D_{-1/(rc)}(\\operatorname{Bun}_{G^\\vee}(X)). \\end{equation}"
+    },
+    {
+      "text": "The lacing number r is 1, 2 or 3 according to the ratio of squared root lengths.",
+      "verdict": "supported",
+      "sourceLine": "be the lacing number of $G$: it is $1$, $2$, or $3$ according to",
+      "sourceQuote": "Let $r$ be the lacing number of $G$: it is $1$, $2$, or $3$ according to the ratio of the squared root lengths."
+    },
+    {
+      "text": "The construction uses the given global forms and all connected components.",
+      "verdict": "supported",
+      "sourceLine": "The construction uses the given global forms and all connected components.",
+      "sourceQuote": "The construction uses the given global forms and all connected components."
+    },
+    {
+      "text": "The theorem gives the unramified de Rham equivalence in the irrational range.",
+      "verdict": "supported",
+      "sourceLine": "gives its unramified de Rham equivalence in the",
+      "sourceQuote": "In particular, Theorem~\\ref{thm:main} gives its unramified de Rham equivalence in the irrational range."
+    },
+    {
+      "text": "Kapustin–Witten's electric–magnetic duality explains the dual root datum and reciprocal parameter.",
+      "verdict": "supported",
+      "sourceLine": "explains the appearance of the dual root datum and reciprocal parameter",
+      "sourceQuote": "The gauge-theoretic interpretation through electric--magnetic duality, developed by Kapustin and Witten~\\cite{KapustinWitten}, explains the appearance of the dual root datum and reciprocal parameter."
+    },
+    {
+      "text": "An early formulation attributed to Drinfeld appears in Stoyanovsky's inverse-parameter conjecture.",
+      "verdict": "supported",
+      "sourceLine": "An early formulation of the quantum deformation, attributed there to Drinfeld, appears in Stoyanovsky's",
+      "sourceQuote": "An early formulation of the quantum deformation, attributed there to Drinfeld, appears in Stoyanovsky's inverse-parameter conjecture for twisted $D$-module categories~\\cite[Section~1.3, Conjecture~2]{Stoyanovsky}."
+    },
+    {
+      "text": "The formulation via local categories, localization and Whittaker coefficients is developed in Gaitsgory's program.",
+      "verdict": "supported",
+      "sourceLine": "terms of local categories, localization, and Whittaker coefficients is",
+      "sourceQuote": "The formulation in terms of local categories, localization, and Whittaker coefficients is developed in Gaitsgory's quantum Langlands program~\\cite{GaitsgoryQGL}."
+    },
+    {
+      "text": "Feigin–Frenkel duality identifies principal W-algebras at inverse shifted levels.",
+      "verdict": "supported",
+      "sourceLine": "duality identifies principal $W$-algebras at inverse",
+      "sourceQuote": "Feigin--Frenkel duality identifies principal $W$-algebras at inverse shifted levels~\\cite{FeiginFrenkel}."
+    },
+    {
+      "text": "Campbell–Dhillon–Raskin's local equivalences give the irrational-level point categories.",
+      "verdict": "supported",
+      "sourceLine": "equivalences of Campbell--Dhillon--Raskin give the required irrational-level",
+      "sourceQuote": "The fundamental local equivalences of Campbell--Dhillon--Raskin give the required irrational-level point categories for the actual global forms~\\cite{CDR}."
+    },
+    {
+      "text": "The proof of ordinary geometric Langlands provides the spectral description of the tempered category.",
+      "verdict": "supported",
+      "sourceLine": "the proof of ordinary geometric Langlands provides the",
+      "sourceQuote": "On the global side, the proof of ordinary geometric Langlands provides the spectral description of the tempered category and its enhanced Whittaker--Poincar\\'e comparison~\\cite{GLCI,GLCII,GLCIII,GLCIV,GLCV}."
+    },
+    {
+      "text": "Bogdanova constructs a quantum Langlands functor in the Betti setting.",
+      "verdict": "supported",
+      "sourceLine": "Recent work of Bogdanova constructs a quantum Langlands functor in the",
+      "sourceQuote": "Recent work of Bogdanova constructs a quantum Langlands functor in the Betti setting and specifies its central compatibility through 2-Fourier--Mukai duality~\\cite{BogdanovaBetti}."
+    },
+    {
+      "text": "Localization takes representations of loop Lie algebras to twisted D-modules and is a quotient functor.",
+      "verdict": "supported",
+      "sourceLine": "Localization takes representations of loop Lie algebras to twisted",
+      "sourceQuote": "Localization takes representations of loop Lie algebras to twisted $D$-modules on the bundle stack and is a quotient functor."
+    },
+    {
+      "text": "Two global Whittaker identities provide the left and right inverses.",
+      "verdict": "supported",
+      "sourceLine": "two global Whittaker identities provide",
+      "sourceQuote": "The quotient property then produces a functor between the bundle categories; two global Whittaker identities provide its left and right inverses."
+    },
+    {
+      "text": "A new mechanism is a weight argument controlling filtered deformation of a global kernel.",
+      "verdict": "supported",
+      "sourceLine": "weight argument controlling filtered deformation of a global kernel",
+      "sourceQuote": "The two further mechanisms developed here are a weight argument controlling filtered deformation of a global kernel, and an extension argument turning local pairings into coherent comparisons across collisions."
+    },
+    {
+      "text": "Constancy of transition ranks gives the vanishing at every non-torsion q, hence every irrational exponent.",
+      "verdict": "supported",
+      "sourceLine": "Constancy of transition ranks then gives the same vanishing at every",
+      "sourceQuote": "Constancy of transition ranks then gives the same vanishing at every non-torsion $q$, hence at every irrational exponent."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

@@ -1,0 +1,206 @@
+{
+  "id": "080",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Real and complex analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Endpoint-convergence-for-the-planar-Schrodinger-equation-September-24-2026/paper.pdf",
+      "label": "Endpoint convergence for the planar Schrodinger equation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Endpoint-pointwise-convergence-for-the-Schrodinger-equation-in-higher-dimensions-September-24-2026/paper.pdf",
+      "label": "Endpoint pointwise convergence for the Schrodinger equation in higher dimensions"
+    }
+  ],
+  "headline": "Claimed proofs that Schrödinger waves return to rough data at the exact smoothness threshold, in dimensions n ≥ 2.",
+  "scope": "The claims cover the free Schrödinger equation on ℝⁿ for n ≥ 2, at the endpoint Sobolev exponent n/(2(n + 1)).",
+  "plain": "The free Schrödinger equation describes a quantum particle moving with no forces. Carleson asked how smooth the starting data must be for the solution to return to it. The return should hold at almost every point as time goes to zero. Earlier work proved convergence for every smoothness strictly above n/(2(n + 1)), and showed nothing below works. These two papers claim convergence exactly at that threshold, in the plane and in every dimension from three up.",
+  "doesNot": "This does not prove the stronger endpoint L³ maximal estimate in the plane, and it does not cover one dimension.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Lennart Carleson, who posed the pointwise convergence problem",
+    "field": "Real and complex analysis",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle the equality case of Carleson's problem, after the strict range was proved in 2017 and 2019."
+  },
+  "explanation": "Start with a smooth bump on the plane, f(x) = e^(−|x|²/2). Run the free Schrödinger equation, the basic equation for a quantum particle with no forces. For this bump the solution has a closed form. At the centre its size is 1/√(1 + 4t²). At t = 0.1 that is 1/√1.04, about 0.981. As t shrinks to 0, it returns to 1, the starting value.\n\nRough starting data is harder. A piece of the wave with frequency N moves at speed 2N. With N = 100, it covers one unit of distance by time t = 0.005. So many fast pieces could make the solution swing wildly as t shrinks. Carleson asked how smooth f must be for the solution to return to f at almost every point. Smoothness is measured by the Sobolev space H^s, where frequency N carries a weight of about N^s.\n\nCarleson proved convergence on the line at s = 1/4[1]. Dahlberg and Kenig showed that this threshold is necessary[2]. Sjölin and Vega independently got s > 1/2 in higher dimensions[3]. In the plane, a run of results lowered the bound to 15/32, 2/5 and then 3/8[4,5]. Bourgain's counterexample showed that s ≥ n/(2(n + 1)) is needed when n ≥ 2. It did not rule out equality[6]. In the plane that number is 2/(2 × 3) = 1/3. Du, Guth and Li proved planar convergence for every s > 1/3[7]. Du and Zhang proved the strict range s > n/(2(n + 1)) for n ≥ 3[8].\n\nThe planar paper claims convergence at exactly s = 1/3[9]. The second paper claims the endpoint s = n/(2(n + 1)) for every n ≥ 3[10]. For n = 3 that is 3/8, and for n = 4 it is 2/5. Both papers say exactly how the solution is defined for rough data. They first smooth the data with a Gaussian factor and remove it, then let t go to 0[11]. One set of full measure works for every time at once[12]. Full measure means it leaves out only a set of zero volume.\n\nThe main step is a maximal estimate at the exact exponent[13]. A maximal estimate bounds the largest size of the solution over all times 0 ≤ t < 1. In the plane, the paper claims it with a weaker, local L¹ form of output. The stronger endpoint L³ maximal estimate is not claimed[14].\n\nHow sure is this? There is no Lean scope note for either paper, so no computer proof checker has tested them. Both papers are long and build on the Du–Guth–Li and Du–Zhang methods. No specialist review has been published.",
+  "hypeCheck": "Major if the papers hold. They settle an equality case after the strict range was known. There is no Lean scope note, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Free Schrödinger equation",
+      "meaning": "The basic equation for a quantum particle moving with no forces."
+    },
+    {
+      "term": "Sobolev space H^s",
+      "meaning": "Functions whose frequency-N parts, weighted by about N^s, have finite total energy."
+    },
+    {
+      "term": "Almost everywhere",
+      "meaning": "At every point except a set of zero area or volume."
+    },
+    {
+      "term": "Full measure",
+      "meaning": "A set that leaves out only a set of zero volume."
+    },
+    {
+      "term": "Maximal estimate",
+      "meaning": "A bound on the largest size a solution reaches over a range of times."
+    },
+    {
+      "term": "Endpoint",
+      "meaning": "The exact threshold value of s, as opposed to every value strictly above it."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “Endpoint convergence for the planar Schrodinger equation” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Endpoint-convergence-for-the-planar-Schrodinger-equation-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “Endpoint pointwise convergence for the Schrodinger equation in higher dimensions” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Endpoint-pointwise-convergence-for-the-Schrodinger-equation-in-higher-dimensions-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "L. Carleson, “Some analytic problems related to statistical mechanics”, in Euclidean Harmonic Analysis, Lecture Notes in Mathematics 779, Springer (1980), 5–45",
+      "url": "https://doi.org/10.1007/BFb0087666"
+    },
+    {
+      "id": 5,
+      "cite": "J. Bourgain, “A note on the Schrödinger maximal function”, Journal d'Analyse Mathématique 130 (2016), 393–396",
+      "url": "https://doi.org/10.1007/s11854-016-0042-8"
+    },
+    {
+      "id": 6,
+      "cite": "X. Du, L. Guth and X. Li, “A sharp Schrödinger maximal estimate in ℝ²”, Annals of Mathematics 186 (2017), 607–640",
+      "url": "https://doi.org/10.4007/annals.2017.186.2.5"
+    },
+    {
+      "id": 7,
+      "cite": "X. Du and R. Zhang, “Sharp L² estimates of the Schrödinger maximal function in higher dimensions”, Annals of Mathematics 189 (2019), 837–861",
+      "url": "https://doi.org/10.4007/annals.2019.189.3.4"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Carleson proved the one-dimensional positive result at regularity s = 1/4.",
+      "verdict": "supported",
+      "sourceLine": "proved its one-dimensional positive result at regularity $s=1/4$",
+      "sourceQuote": "Carleson \\cite{Carleson80} introduced the pointwise convergence problem and proved its one-dimensional positive result at regularity $s=1/4$.",
+      "paper": 1
+    },
+    {
+      "text": "Dahlberg and Kenig showed that this threshold is necessary.",
+      "verdict": "supported",
+      "sourceLine": "showed that this threshold is necessary",
+      "sourceQuote": "Dahlberg and Kenig \\cite{DahlbergKenig82} showed that this threshold is necessary.",
+      "paper": 1
+    },
+    {
+      "text": "Sjölin and Vega independently obtained convergence for s > 1/2 in higher dimensions.",
+      "verdict": "supported",
+      "sourceLine": "obtained convergence for $s>1/2$ in higher dimensions",
+      "sourceQuote": "Sj\\\"olin \\cite{Sjolin87} and Vega \\cite{Vega88} independently obtained convergence for $s>1/2$ in higher dimensions.",
+      "paper": 1
+    },
+    {
+      "text": "Tao and Vargas gave s > 15/32; Tao improved this to s > 2/5.",
+      "verdict": "supported",
+      "sourceLine": "The bilinear approach of Tao and Vargas … gave $s>15/32$; … improved this to $s>2/5$",
+      "sourceQuote": "The bilinear approach of Tao and Vargas \\cite{TV00} gave $s>15/32$; Tao's sharp bilinear restriction theorem \\cite{Tao03} improved this to $s>2/5$, and Lee \\cite{Lee06} obtained $s>3/8$.",
+      "paper": 1
+    },
+    {
+      "text": "Lee obtained s > 3/8.",
+      "verdict": "supported",
+      "sourceLine": "and Lee … obtained $s>3/8$",
+      "sourceQuote": "The bilinear approach of Tao and Vargas \\cite{TV00} gave $s>15/32$; Tao's sharp bilinear restriction theorem \\cite{Tao03} improved this to $s>2/5$, and Lee \\cite{Lee06} obtained $s>3/8$.",
+      "paper": 1
+    },
+    {
+      "text": "Bourgain's counterexample forces s ≥ n/[2(n+1)] when n ≥ 2 but does not rule out equality.",
+      "verdict": "supported",
+      "sourceLine": "forces $s\\ge n/[2(n+1)]$ when $n\\ge2$, but does not rule out equality",
+      "sourceQuote": "Bourgain's later counterexample \\cite[Proposition~1]{Bourgain16} forces $s\\ge n/[2(n+1)]$ when $n\\ge2$, but does not rule out equality.",
+      "paper": 1
+    },
+    {
+      "text": "Du, Guth and Li proved planar convergence and a local L³ maximal estimate for s > 1/3.",
+      "verdict": "supported",
+      "sourceLine": "proved planar convergence and a local $L^3$ maximal estimate for $s>1/3$",
+      "sourceQuote": "Du, Guth and Li \\cite[Theorems~1.1--1.2]{DGL17} proved planar convergence and a local $L^3$ maximal estimate for $s>1/3$.",
+      "paper": 1
+    },
+    {
+      "text": "Du and Zhang established convergence for s > n/[2(n+1)] when n ≥ 3.",
+      "verdict": "supported",
+      "sourceLine": "established convergence for $s>n/[2(n+1)]$ when $n\\ge3$",
+      "sourceQuote": "Du and Zhang \\cite[Theorem~1.1]{DZ19} established convergence for $s>n/[2(n+1)]$ when $n\\ge3$.",
+      "paper": 1
+    },
+    {
+      "text": "For every f in H^{1/3}(ℝ²) there is a full-measure set on which u_f(x,t) → f*(x) as t ↓ 0.",
+      "verdict": "supported",
+      "sourceLine": "there is a set $E_f\\subset\\R^2$ of full",
+      "sourceQuote": "For every $f\\in H^{1/3}(\\R^2)$ there is a set $E_f\\subset\\R^2$ of full Lebesgue measure such that, for each $x\\in E_f$, the finite limit \\[ u_f(x,t)=\\lim_{a\\downarrow0}U_af(x,t) \\] exists for every real $0<t<1$, and \\[ \\lim_{t\\downarrow0}u_f(x,t)=f^*(x). \\]",
+      "paper": 1
+    },
+    {
+      "text": "For every n ≥ 3 and f in H^{s_n}(ℝⁿ) the Gaussian-regularized evolution converges to f* on a full-measure set.",
+      "verdict": "supported",
+      "sourceLine": "For every fixed integer $n\\geq3$ and every complex-valued",
+      "sourceQuote": "For every fixed integer $n\\geq3$ and every complex-valued $f\\in H^{s_n}(\\R^n)$, there is a full-measure set $E_f$ of Lebesgue points of $f$ and a function $v(x,t)$, $x\\in E_f$, $0\\leq t<1$, such that $v(x,\\cdot)$ is continuous, $v(x,0)=f^*(x)$, and \\begin{equation}\\label{m:eq-uniform-Gaussian} \\lim_{a\\downarrow0}\\sup_{0<t<1}|U_af(x,t)-v(x,t)|=0 \\qquad(x\\in E_f). \\end{equation}",
+      "paper": 2
+    },
+    {
+      "text": "The Gaussian limit is taken first.",
+      "verdict": "supported",
+      "sourceLine": "The Gaussian limit is taken first.",
+      "sourceQuote": "The Gaussian limit is taken first.",
+      "paper": 2
+    },
+    {
+      "text": "The exceptional spatial set is independent of time.",
+      "verdict": "supported",
+      "sourceLine": "its exceptional spatial set is independent of time",
+      "sourceQuote": "The representative of the evolution is specified by Gaussian regularization; its exceptional spatial set is independent of time.",
+      "paper": 2
+    },
+    {
+      "text": "The main analytic conclusion is a local maximal estimate at the exact Sobolev exponent.",
+      "verdict": "supported",
+      "sourceLine": "The main analytic conclusion is a local maximal estimate at the exact",
+      "sourceQuote": "The main analytic conclusion is a local maximal estimate at the exact Sobolev exponent.",
+      "paper": 1
+    },
+    {
+      "text": "An endpoint local L³ maximal estimate is not asserted.",
+      "verdict": "supported",
+      "sourceLine": "of an endpoint local $L^3$ maximal estimate is not asserted here",
+      "sourceQuote": "The stronger question of an endpoint local $L^3$ maximal estimate is not asserted here.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
