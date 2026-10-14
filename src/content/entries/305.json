@@ -1,0 +1,211 @@
+{
+  "id": "305",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-boundary-only-obstruction-to-four-dimensional-disk-embedding-September-24-2026/paper.pdf",
+      "label": "A boundary-only obstruction to four-dimensional disk embedding"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-marked-tensor-obstruction-to-four-dimensional-disk-embedding-September-24-2026/paper.pdf",
+      "label": "A marked tensor obstruction to four-dimensional disk embedding"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-PD4-group-without-an-aspherical-manifold-model-September-24-2026/paper.pdf",
+      "label": "A PD4 group without an aspherical manifold model"
+    }
+  ],
+  "headline": "Claims the two-generator free group is not good for 4D surgery, plus a counterexample to Wall's question.",
+  "scope": "Three linked papers: two disproofs of the unrestricted disc embedding conjecture, and one finitely presented four-dimensional duality group.",
+  "plain": "In four dimensions, topologists build embedded discs from algebraic intersection data. Freedman and Quinn showed this works when the fundamental group is good. The open test case was the free group on two generators. These papers claim the disc construction fails without the good-group condition, so that free group is not good. A third paper uses this to claim a four-dimensional duality group with no aspherical manifold model.",
+  "doesNot": "This does not give a counterexample in every dimension, and it does not settle which other groups are good.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Michael Freedman, embedded discs in simply connected four-manifolds through Casson handles",
+    "field": "Topology",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle the free-group case of the disc embedding problem, a central open question in four-manifold topology."
+  },
+  "explanation": "Two surfaces in a four-dimensional space can cross at points. Each crossing gets a sign, +1 or −1. Suppose two crossings have opposite signs. Their algebraic count is +1 + (−1) = 0, but they still meet at 2 points. The Whitney trick slides one surface along a disc to remove such a pair. The disc is called a Whitney disc. In five or more dimensions this works. In four dimensions the Whitney disc can itself hit the surfaces.\n\nCasson replaced the disc by an infinite tower of discs, called a Casson handle. Freedman showed it behaves like an ordinary thickened disc. This settled simply connected four-manifolds, where every loop can shrink to a point. Freedman and Quinn extended the method to good groups. The fundamental group records the loops in a space up to deformation. A group is good if certain loops in grope models can be shrunk. A grope is a tower of surfaces glued along curves. The test models have free fundamental groups, so the free group is the central case[5]. Count words in the free group on a and b, where no letter sits next to its inverse. There are 4 × 3⁴ = 324 such words of length 5. In the grid group ℤ², only 20 elements need exactly 5 steps. Freedman and Teichner showed that groups of slow, subexponential growth are good[3]. The free group grows exponentially, and its case remained open[4].\n\nThe disc embedding conjecture says the discs always exist, with no condition on the group. The first paper claims to disprove it[1]. Its discs come with dual spheres, which meet each disc once in the algebraic count. Even with no framing or dual sphere asked for, no disjoint discs exist[6]. It concludes that the free group on two generators is not good[2]. A second paper claims a separate disproof, in which the new discs must keep the boundary framings[7]. It studies flat connections with values in the matrix group SL₂[9]. These are rules for moving data around loops without twisting. An algebraic obstruction rules out the needed data when at least five pieces are active[8].\n\nThe third paper takes up Wall's question. A Poincaré duality group has the algebra of a closed manifold's fundamental group. Wall asked whether each one is the fundamental group of a closed aspherical manifold[11]. A space is aspherical if its universal cover can shrink to a point. Davis gave examples that are not finitely presented[13]. For finitely presented groups, a 2026 survey records no known counterexample[12]. The third paper claims a finitely presented four-dimensional example with a finite classifying space. It claims no closed aspherical topological four-manifold has that group[10]. It builds on the second paper's obstruction[15]. It refutes the all-dimensions question, not each dimension[14].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The arguments combine four-manifold geometry with long algebraic and analytic steps. No specialist review of these papers has been published.",
+  "hypeCheck": "Landmark if the proofs hold, since the free-group case was a central open problem. The arguments are long, with no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Whitney trick",
+      "meaning": "A move that removes a pair of opposite-sign crossings by sliding a surface across a disc."
+    },
+    {
+      "term": "Fundamental group",
+      "meaning": "The group of loops in a space from a base point, counted up to deformation."
+    },
+    {
+      "term": "Good group",
+      "meaning": "A group for which Freedman and Quinn's disc construction is known to work."
+    },
+    {
+      "term": "Free group",
+      "meaning": "The group of words in letters and their inverses, with no rules beyond cancelling neighbours."
+    },
+    {
+      "term": "Dual sphere",
+      "meaning": "A sphere that meets one chosen disc once in the signed count and the others zero times."
+    },
+    {
+      "term": "Aspherical",
+      "meaning": "A space whose universal cover can be shrunk to a point."
+    },
+    {
+      "term": "Poincaré duality group",
+      "meaning": "A group whose algebra matches that of the fundamental group of a closed aspherical manifold."
+    },
+    {
+      "term": "Classifying space",
+      "meaning": "An aspherical space with the given group as its fundamental group."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A boundary-only obstruction to four-dimensional disk embedding” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-boundary-only-obstruction-to-four-dimensional-disk-embedding-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A marked tensor obstruction to four-dimensional disk embedding” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-marked-tensor-obstruction-to-four-dimensional-disk-embedding-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “A PD4 group without an aspherical manifold model” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-PD4-group-without-an-aspherical-manifold-model-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "The four-dimensional disc embedding conjecture is disproved without a fundamental-group hypothesis.",
+      "sourceLine": "We disprove the four-dimensional disc embedding conjecture without a fundamental-group hypothesis",
+      "sourceQuote": "We disprove the four-dimensional disc embedding conjecture without a fundamental-group hypothesis, even when no homotopy classes or output framings are prescribed.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The free group on two generators is not good in the sense of Freedman–Quinn.",
+      "sourceLine": "the free group on two generators is not good in the sense of Freedman--Quinn",
+      "sourceQuote": "Consequently, the free group on two generators is not good in the sense of Freedman--Quinn, and neither is any group containing it as a subgroup.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Freedman and Teichner extended the positive theory to groups of subexponential growth.",
+      "sourceLine": "Freedman--Teichner extended the positive theory to all groups of subexponential growth",
+      "sourceQuote": "Freedman--Teichner extended the positive theory to all groups of subexponential growth \\cite[Theorem~0.1]{FT1995}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The nonabelian free-group case remained open in the 2025 account.",
+      "sourceLine": "The nonabelian free-group case remained open in the 2025 account",
+      "sourceQuote": "The nonabelian free-group case remained open in the 2025 account \\cite{PRT2025}; see also \\cite[Chapter~23]{KOPR2021} for its place among four-manifold problems.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The test thickenings have free fundamental groups, which explains the central role of the free-group case.",
+      "sourceLine": "The thickenings used in this test have free fundamental groups, which explains the central role of the free-group case",
+      "sourceQuote": "The thickenings used in this test have free fundamental groups, which explains the central role of the free-group case \\cite[pp.~510--511]{FT1995}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The obstruction holds even when no output framing or dual sphere is required.",
+      "sourceLine": "even when no output framing or dual sphere is required",
+      "sourceQuote": "Theorem~\\ref{thm:main} disproves it by excluding every disjoint locally flat filling of the specified boundary circles, even when no output framing or dual sphere is required.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The unrestricted four-dimensional disk-embedding conjecture is disproved.",
+      "sourceLine": "We disprove the unrestricted four-dimensional disk-embedding conjecture.",
+      "sourceQuote": "We disprove the unrestricted four-dimensional disk-embedding conjecture.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "An algebraic theorem rules out the needed data when at least five edges are active.",
+      "sourceLine": "rules out precisely these algebraic data when at least five edges are active",
+      "sourceQuote": "Theorem~\\ref{thm:tensor-obstruction} rules out precisely these algebraic data when at least five edges are active.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The proof studies based flat SL₂-connections with one torus holonomy fixed.",
+      "sourceLine": "we study based flat \\(SL_2\\)-connections with one torus holonomy fixed",
+      "sourceQuote": "For each edge \\(Y_i\\), we study based flat \\(SL_2\\)-connections with one torus holonomy fixed.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "A finitely presented PD4 group has a finite classifying space but no closed aspherical topological four-manifold model.",
+      "sourceLine": "that has a finite classifying space but is not the fundamental group of any closed aspherical topological four-manifold",
+      "sourceQuote": "We construct a finitely presented integral Poincar\\'e duality group of dimension four that has a finite classifying space but is not the fundamental group of any closed aspherical topological four-manifold.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Wall asked whether every integral Poincaré duality group is the fundamental group of a closed aspherical manifold.",
+      "sourceLine": "Wall asked whether every integral Poincar\\'e duality group is the fundamental group of a closed aspherical manifold",
+      "sourceQuote": "Wall asked whether every integral Poincar\\'e duality group is the fundamental group of a closed aspherical manifold \\cite[Problem~G2]{WallProblems}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Kielak's 2026 survey records that no counterexamples to the finitely presented form were known.",
+      "sourceLine": "Kielak's 2026 survey records that no counterexamples to this formulation were known",
+      "sourceQuote": "Kielak's 2026 survey records that no counterexamples to this formulation were known \\cite[Section~4.1]{Kielak}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Davis built integral PDn groups that are not finitely presented, for every n at least 4.",
+      "sourceLine": "Davis used reflection groups to turn the finiteness examples of Bestvina and Brady into integral $\\PD_n$ groups that are not finitely presented",
+      "sourceQuote": "Davis used reflection groups to turn the finiteness examples of Bestvina and Brady into integral $\\PD_n$ groups that are not finitely presented, for every $n\\geq4$ \\cite[Theorem~C]{DavisCohomology}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The result refutes the all-dimensions assertion without asserting a counterexample in every dimension.",
+      "sourceLine": "without asserting a counterexample in every dimension",
+      "sourceQuote": "Theorem~\\ref{thm:main} refutes the assertion quantified simultaneously over all dimensions $n\\geq3$, without asserting a counterexample in every dimension.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The starting point is the marked geometric and tensor obstruction of the companion paper.",
+      "sourceLine": "Our starting point is the marked geometric and tensor obstruction",
+      "sourceQuote": "Our starting point is the marked geometric and tensor obstruction in \\emph{A marked tensor obstruction to four-dimensional disk embedding}~\\cite{TO}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

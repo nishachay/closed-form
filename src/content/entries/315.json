@@ -1,0 +1,154 @@
+{
+  "id": "315",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Singer-conjecture-in-dimension-four-September-25-2026/paper.pdf",
+      "label": "The Singer conjecture in dimension four"
+    }
+  ],
+  "headline": "Claims the Singer conjecture in dimension four: L²-Betti numbers of aspherical four-manifolds vanish off degree two.",
+  "scope": "Closed connected aspherical topological four-manifolds, and more generally finite aspherical integral Poincaré complexes of formal dimension four.",
+  "plain": "L²-Betti numbers measure holes in an infinite covering space, averaged per copy of the original space. Singer's conjecture says that for a closed aspherical manifold they vanish except in the middle dimension. In dimension four this reduces to one number, in degree one. This paper claims that number is always zero. It follows that the Euler characteristic of such a four-manifold is never negative.",
+  "doesNot": "This does not settle the Singer conjecture in dimensions other than four.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Jozef Dodziuk, recording Singer's proposal on L² harmonic forms and the sign of the Euler characteristic",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims a long-standing conjecture in its first open dimension for all topological four-manifolds, not just special families."
+  },
+  "explanation": "Take a surface with two holes, like the outline of a pretzel. Its ordinary Betti numbers, the counts of holes in each dimension, are 1, 4 and 1. Now multiply two such surfaces to get a four-dimensional space. Its Betti numbers are 1, 8, 18, 8 and 1. The Euler characteristic is the alternating sum, 1 − 8 + 18 − 8 + 1 = 4.\n\nThis space is aspherical: its universal cover can be shrunk to a point. The universal cover is the infinite space you get by unwrapping every loop. L²-Betti numbers count holes in that infinite cover, averaged per copy of the original space. For the two-holed surface they are 0, 2 and 0. For the product they are 0 in every degree except the middle one, where they equal 2 × 2 = 4. That matches the Euler characteristic. For the four-dimensional torus everything is zero, and so is its Euler characteristic, 1 − 4 + 6 − 4 + 1 = 0.\n\nSinger proposed getting the sign of the Euler characteristic from vanishing of these numbers[7]. The Singer conjecture says that for a closed aspherical manifold, L²-Betti numbers vanish outside the middle degree. In dimension four, Poincaré duality reduces this to degree one[3]. Earlier work covered special families. Davis and Okun treated certain reflection groups[5]. Okun and Schreve treated groups with a special cutting structure, called a hierarchy[6].\n\nThe paper claims the full four-dimensional case[1]. It also covers finite aspherical Poincaré complexes, spaces with the algebra of a closed manifold, including nonorientable ones[2]. It includes manifolds with no smooth structure or triangulation[8]. The conclusion forces the Euler characteristic to be nonnegative[4]. For an oriented manifold, it also gives an Euler characteristic at least the absolute signature[12]. It applies directly to the companion paper's group with no manifold model[9].\n\nThe proof argues by contradiction. Suppose the degree-one number is positive[10]. That gives a function on the group with finite energy, where energy sums squared differences across edges. Its translates build a boundary at infinity for the group. The obstacle is to control the topology of this boundary. The paper finds a piece of it with no cut points. It then shows this piece must be a dendrite, a tree-like shape with no circles. Every such shape with more than one point has a cut point, which gives the contradiction[11].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The argument is a long chain of steps in point-set topology and group actions. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It covers only dimension four. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Betti number",
+      "meaning": "The number of independent holes of a given dimension in a space."
+    },
+    {
+      "term": "Euler characteristic",
+      "meaning": "The alternating sum of the Betti numbers."
+    },
+    {
+      "term": "Aspherical",
+      "meaning": "A space whose universal cover can be shrunk to a point."
+    },
+    {
+      "term": "Universal cover",
+      "meaning": "The infinite space obtained by unwrapping every loop of a space."
+    },
+    {
+      "term": "L²-Betti number",
+      "meaning": "A count of holes in the universal cover, averaged per copy of the original space."
+    },
+    {
+      "term": "Poincaré complex",
+      "meaning": "A finite space whose algebra obeys the same duality as a closed manifold."
+    },
+    {
+      "term": "Dendrite",
+      "meaning": "A compact, connected, tree-like space that contains no circle."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Singer conjecture in dimension four” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Singer-conjecture-in-dimension-four-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The L²-Betti numbers of the universal cover of a closed connected aspherical topological four-manifold vanish outside degree two.",
+      "sourceLine": "the $L^2$-Betti numbers of the universal cover of a closed connected aspherical topological four-manifold vanish outside degree two",
+      "sourceQuote": "We prove the four-dimensional Singer conjecture: the $L^2$-Betti numbers of the universal cover of a closed connected aspherical topological four-manifold vanish outside degree two.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The same vanishing holds for finite aspherical integral Poincaré complexes of formal dimension four, including nonorientable ones.",
+      "sourceLine": "the same vanishing holds for finite connected aspherical integral Poincar\\'e complexes of formal dimension four, including nonorientable ones",
+      "sourceQuote": "More generally, the same vanishing holds for finite connected aspherical integral Poincar\\'e complexes of formal dimension four, including nonorientable ones.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In dimension four, Poincaré duality reduces the problem to vanishing in degree one.",
+      "sourceLine": "In dimension four, Poincar\\'e duality reduces the problem to vanishing in degree one.",
+      "sourceQuote": "In dimension four, Poincar\\'e duality reduces the problem to vanishing in degree one.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The conclusion forces the Euler characteristic to be nonnegative.",
+      "sourceLine": "The conclusion forces the Euler characteristic to be nonnegative.",
+      "sourceQuote": "The conclusion forces the Euler characteristic to be nonnegative.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Davis and Okun proved the vanishing for right-angled Coxeter groups with flag-triangulated three-sphere nerves.",
+      "sourceLine": "Davis and Okun proved the vanishing for right-angled Coxeter groups whose nerves are flag triangulations of the three-sphere",
+      "sourceQuote": "Davis and Okun proved the vanishing for right-angled Coxeter groups whose nerves are flag triangulations of the three-sphere \\cite[Theorem~11.1.1]{DavisOkun2001}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Okun and Schreve established the conjecture in dimensions at most four for type VF groups admitting a hierarchy.",
+      "sourceLine": "Okun and Schreve established the Singer conjecture in dimensions at most four for groups of type",
+      "sourceQuote": "Okun and Schreve established the Singer conjecture in dimensions at most four for groups of type~$\\mathrm{VF}$ admitting a hierarchy, and for Coxeter groups whose nerves are arbitrary triangulations of the three-sphere \\cite[Theorems~4.16--4.17]{OkunSchreve2016}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Dodziuk records Singer's proposal to obtain the Euler characteristic sign from vanishing of L² harmonic forms.",
+      "sourceLine": "Dodziuk records Singer's proposal to obtain the Euler-characteristic sign from vanishing of $L^2$-harmonic forms on universal covers",
+      "sourceQuote": "Dodziuk records Singer's proposal to obtain the Euler-characteristic sign from vanishing of $L^2$-harmonic forms on universal covers \\cite[p.~396]{Dodziuk1979}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The result includes manifolds that admit no smooth structure or triangulation.",
+      "sourceLine": "In particular, the corollary includes manifolds that admit no smooth structure or triangulation.",
+      "sourceQuote": "In particular, the corollary includes manifolds that admit no smooth structure or triangulation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem applies directly to the companion PD4 example.",
+      "sourceLine": "applies to that example directly",
+      "sourceQuote": "Theorem~\\ref{thm:main} applies to that example directly.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof supposes the first L²-Betti number is positive.",
+      "sourceLine": "Suppose the first $L^2$-Betti number is positive.",
+      "sourceQuote": "Suppose the first $L^2$-Betti number is positive.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every nondegenerate dendrite has a cut point, giving the contradiction.",
+      "sourceLine": "Every nondegenerate dendrite has a cut point, giving the contradiction.",
+      "sourceQuote": "Every nondegenerate dendrite has a cut point, giving the contradiction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For an oriented manifold, the Euler characteristic is at least the absolute value of the signature.",
+      "sourceLine": "the $L^2$-signature theorem also gives $\\chi(M)\\ge|\\sigma(M)|$",
+      "sourceQuote": "For an oriented manifold $M$ in Corollary~\\ref{cor:singer-manifolds}, the $L^2$-signature theorem also gives $\\chi(M)\\ge|\\sigma(M)|$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "id": "308",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Smith-Toda-Complexes-at-Varying-Primes-September-23-2026/paper.pdf",
+      "label": "Finite Smith–Toda Complexes at Varying Primes"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-Smith-Toda-complex-V4-at-the-prime-1009-September-23-2026/paper.pdf",
+      "label": "A finite Smith–Toda complex V(4) at the prime 1009"
+    }
+  ],
+  "headline": "Claims Smith–Toda complexes exist at every height if the prime may grow, with an explicit V(4) at the prime 1009.",
+  "scope": "Two linked papers: an existence result for every height at some prime depending on the height, and one explicit case.",
+  "plain": "A Smith–Toda complex V(n) is a finite building block of stable homotopy theory that kills the first n+1 chromatic numbers once each. Classical work built V(1), V(2) and V(3) at large enough primes. V(4) was recorded as open at every prime. One paper claims V(n) exists for every n at some prime chosen for that n. A second paper claims an explicit V(4) at the prime 1009.",
+  "doesNot": "This does not show that one prime works at every height, and it does not give a bound on the prime in general.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1970",
+    "firstStepBy": "Larry Smith, realizing complex bordism modules; with Adams and Toda, the first complexes V(1) to V(3)",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims a classical realization problem in stable homotopy theory at every height, where earlier constructions stopped at V(3)."
+  },
+  "explanation": "Start with the whole numbers and divide out by a prime p. The result is the numbers mod p. Topology has a version of this step for spectra, the basic objects of stable homotopy theory. At height zero the Moore spectrum kills p this way[12]. Brown–Peterson homology, written BP, assigns to each spectrum a list of algebraic data. For the sphere it is a polynomial ring in numbers v₁, v₂, v₃ and so on. The number vᵢ sits in degree 2(pⁱ − 1). At p = 1009, v₁ sits in degree 2,016. The number v₄ sits in degree 2,072,977,845,120.\n\nA Smith–Toda complex V(n) is a finite spectrum whose BP homology kills p, v₁, up to vₙ, each once. Killing the next number needs an actual map of spectra that multiplies by it. Algebra describes the result once that map exists, but it does not supply the map[3]. That is the obstacle. Adams, Smith and Toda built V(1), V(2) and V(3) when p is larger than 2, 4 and 6[13]. Hopkins and Smith could kill higher powers of these numbers at every height[8]. But the question asks for first powers. A 2023 version of a paper by Culver and Zhang recorded V(4) as open at every prime[4]. Nave proved that V((p+1)/2) does not exist for p at least 7[5]. At p = 7 that rules out V(4), since (7 + 1)/2 = 4. At p = 1009 the barrier is V(505), far above height four.\n\nThe first paper claims that V(n) exists for every n, at a prime p that depends on n[1]. It works with an ultraproduct, a way to average a statement over all primes at once. The ultraproduct is formed from ordinary p-local spectra[6]. Only finitely many maps then need to come down to one actual prime[7]. The result names no bound on the prime and no single prime for all heights[2].\n\nThe second paper claims an explicit V(4) at p = 1009[9]. It builds V(3) with a product, then shows that v₄ survives a spectral sequence, a step-by-step calculation of maps[11]. The large prime keeps the finite inequalities in the calculation comfortable[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. Both papers rely on long algebraic calculations and delicate constructions in stable homotopy theory. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if the proofs hold. The all-height result allows the prime to grow and gives no bound. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Spectrum",
+      "meaning": "The basic object of stable homotopy theory, a stabilized version of a space."
+    },
+    {
+      "term": "Brown–Peterson homology (BP)",
+      "meaning": "An invariant that turns a spectrum into algebraic data over a polynomial ring in numbers v₁, v₂ and so on."
+    },
+    {
+      "term": "Smith–Toda complex V(n)",
+      "meaning": "A finite spectrum whose BP homology kills p and v₁ up to vₙ, each to the first power."
+    },
+    {
+      "term": "Moore spectrum",
+      "meaning": "The spectrum version of the numbers mod p, which is V(0)."
+    },
+    {
+      "term": "Height",
+      "meaning": "The index n that says how many of the numbers v₁, v₂ and so on are killed."
+    },
+    {
+      "term": "Ultraproduct",
+      "meaning": "A way to combine one object for each prime into a single object that averages over all primes."
+    },
+    {
+      "term": "Spectral sequence",
+      "meaning": "A step-by-step calculation that approximates an answer page by page."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Finite Smith–Toda Complexes at Varying Primes” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Finite-Smith-Toda-Complexes-at-Varying-Primes-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A finite Smith–Toda complex V(4) at the prime 1009” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-Smith-Toda-complex-V4-at-the-prime-1009-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "For every nonnegative integer n, a Smith–Toda complex V(n) is constructed at some prime depending on n.",
+      "sourceLine": "For every nonnegative integer $n$, we construct a Smith--Toda complex $V(n)$ at some prime $p$ depending on $n$.",
+      "sourceQuote": "For every nonnegative integer $n$, we construct a Smith--Toda complex $V(n)$ at some prime $p$ depending on $n$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The result does not assert one prime for every height or an explicit bound on the prime.",
+      "sourceLine": "It does not assert that one prime works at every height, provide an explicit bound on the prime",
+      "sourceQuote": "It does not assert that one prime works at every height, provide an explicit bound on the prime, or require a multiplication on the final spectrum.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Regularity computes the homology of the cofiber once a map exists, but does not supply the map.",
+      "sourceLine": "Regularity computes the homology of the cofiber once such a map exists; it does not supply the map.",
+      "sourceQuote": "Regularity computes the homology of the cofiber once such a map exists; it does not supply the map.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The existence of V(4) was recorded as open at every prime.",
+      "sourceLine": "the existence of $V(4)$ was recorded as open at every prime",
+      "sourceQuote": "In the September 2023 version of \\cite[Remark~3.29]{CulverZhang2024}, the existence of $V(4)$ was recorded as open at every prime.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Nave proves that V((p+1)/2) does not exist for p at least 7.",
+      "sourceLine": "Nave proves that $V((p+1)/2)$ does not exist",
+      "sourceQuote": "For $p\\geq7$, Nave proves that $V((p+1)/2)$ does not exist and that $V((p-1)/2)$ cannot be a ring spectrum if it exists \\cite[Theorem~1.3]{Nave2010}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The ultraproduct is formed from ordinary p-local spectra.",
+      "sourceLine": "Here the ultraproduct is formed from ordinary $p$-local spectra.",
+      "sourceQuote": "Here the ultraproduct is formed from ordinary $p$-local spectra.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Only finitely many maps and homotopies must descend to an individual prime.",
+      "sourceLine": "Only finitely many maps and homotopies must subsequently descend to an individual prime.",
+      "sourceQuote": "Only finitely many maps and homotopies must subsequently descend to an individual prime.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Higher powers can be realized at every finite height by Hopkins–Smith periodicity methods.",
+      "sourceLine": "Suitable higher powers can be realized at every finite height by the periodicity methods of Hopkins--Smith",
+      "sourceQuote": "Suitable higher powers can be realized at every finite height by the periodicity methods of Hopkins--Smith \\cite[Theorem~9 and Proposition~5.14]{HopkinsSmith1998}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A Smith–Toda complex V(4) is constructed at the prime 1009.",
+      "sourceLine": "We construct a Smith--Toda complex $V(4)$ at the prime $1009$.",
+      "sourceQuote": "We construct a Smith--Toda complex $V(4)$ at the prime $1009$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The choice 1009 makes the finite inequalities generous.",
+      "sourceLine": "The choice $1009$ makes the finite inequalities in our calculation generous.",
+      "sourceQuote": "The choice $1009$ makes the finite inequalities in our calculation generous.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The filtration-zero class v4 survives in the Adams–Novikov spectral sequence for V(3).",
+      "sourceLine": "we prove that the filtration-zero class $v_4$ survives in the Adams--Novikov spectral sequence for $Y$",
+      "sourceQuote": "Second, we prove that the filtration-zero class $v_4$ survives in the Adams--Novikov spectral sequence for $Y$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "At height zero the Moore spectrum supplies the quotient by p.",
+      "sourceLine": "At height zero the Moore spectrum supplies the quotient by $p$.",
+      "sourceQuote": "At height zero the Moore spectrum supplies the quotient by $p$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "V(k) exists for k = 1, 2, 3 when p > 2k.",
+      "sourceLine": "exists for $k=1,2,3$ when $p>2k$, respectively",
+      "sourceQuote": "The low-height constructions are due to Adams, Smith, and Toda: $V(k)$ exists for $k=1,2,3$ when $p>2k$, respectively, as summarized in \\cite[p.~493]{Nave2010}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
