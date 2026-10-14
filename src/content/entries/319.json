@@ -1,0 +1,158 @@
+{
+  "id": "319",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Counterexamples-to-the-Hahn-Wilson-conjecture-at-height-two-September-26-2026/paper.pdf",
+      "label": "Counterexamples to the Hahn-Wilson conjecture at height two"
+    }
+  ],
+  "headline": "A paper claims to disprove the Hahn–Wilson conjecture at height two, for every large enough prime.",
+  "scope": "Connective p-complete spectra of exact fp-type two, and finite constructions from BP⟨2⟩, for sufficiently large primes p.",
+  "plain": "The Hahn–Wilson conjecture says a simple algebraic test picks out exactly which infinite spectra can be built from BP⟨n⟩ in finitely many steps. The paper claims a counterexample at height two for every large enough prime. Its spectrum passes the algebraic test but cannot be built from BP⟨2⟩ that way. It also passes two localization tests that were proposed as a possible extra condition. The paper says the problem lies in how the local pieces are glued.",
+  "doesNot": "This does not cover small primes, and it does not address the conjecture at height three or above.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2021",
+    "firstStepBy": "Jeremy Hahn and Dylan Wilson, conjecture later written down by Lee and Pstrągowski",
+    "field": "Topology",
+    "significance": "Solid",
+    "significanceWhy": "It claims to refute a recent conjecture describing which infinite spectra have finite constructions from truncated Brown–Peterson spectra."
+  },
+  "explanation": "Fix the prime p = 11. A standard spectrum called BP⟨2⟩ has homotopy built from two variables, v₁ and v₂. Their degrees are 2(p − 1) and 2(p² − 1). For p = 11 that gives degrees 20 and 240. So the coefficients form a polynomial ring in two variables, sitting in degrees 20 and 240. This spectrum is the basic building block in this story.\n\nSome background first. A spectrum is the stable version of a space, the object studied in stable homotopy theory. A thick subcategory is everything you can build from a starting object. You may take finite sums, shifts, cones of maps and retracts, a finite number of times. The question is which infinite spectra you can build from BP⟨n⟩ this way.\n\nThe Hahn–Wilson conjecture gives a cohomological answer. It says finite presentation over the Steenrod algebra, plus a height bound, should pick out exactly these spectra[1]. The Steenrod algebra is a standard ring of operations on mod-p cohomology. Finitely presented means described by finitely many generators and relations. Such a spectrum is called fp. Mahowald and Rezk proved an equivalent test. Smashing with some finite spectrum must give only finitely many nonzero homotopy groups, each finite[2]. The height is a level in chromatic homotopy theory. Lee and Pstrągowski wrote the conjecture down and report learning it from Dylan Wilson in 2021[3].\n\nSome cases were known. Lee and Pstrągowski proved the conjecture at height one[4]. A related claim, the telescope conjecture, compares two ways to localize a spectrum. Burklund, Hahn, Levy and Schlank disproved it at every prime and every height of at least two[5]. But those examples fail the fp finiteness test. So they do not give an fp counterexample[6].\n\nThe paper claims to disprove the Hahn–Wilson conjecture at height two[7]. For each large enough prime, it builds a spectrum X of exact fp-type two. Yet X cannot be built from BP⟨2⟩ in finitely many steps. The result holds for sufficiently large primes[8]. The spectrum X also passes both localization comparisons. Lee and Pstrągowski had suggested such a hypothesis might be enough. The paper says this extra hypothesis does not suffice at height two[9].\n\nWhy is X hard to catch? Its local pieces, seen one height at a time, keep strong finiteness properties. The obstruction lies in how those local pieces are joined[10]. So any local test will pass. Only the global gluing shows that X is not finitely built.\n\nThe construction uses chromatic algebraicity. At large primes, spectra can be modelled by sheaves on a stack of formal group laws. The paper uses Pstrągowski's comparison, available at height two for p > 8[11]. Its own operator needs larger primes still[12]. It builds the example by gluing a complete part to an open part, through a carefully chosen map on the overlap.\n\nHow sure is this? No Lean check covers this paper. No specialist review has been published. The proof relies on deep comparison theorems, so the counterexample remains a claim.",
+  "hypeCheck": "Solid if correct. No Lean check and no specialist review; the counterexample depends on deep comparison theorems and holds only for large primes.",
+  "glossary": [
+    {
+      "term": "Spectrum",
+      "meaning": "The stable version of a space; the basic object of stable homotopy theory."
+    },
+    {
+      "term": "BP⟨n⟩",
+      "meaning": "A truncated Brown–Peterson spectrum; its coefficients are polynomials in v₁ to vₙ over the p-adic integers."
+    },
+    {
+      "term": "Thick subcategory",
+      "meaning": "Everything you can build from given objects using finite sums, shifts, cones and retracts, finitely many times."
+    },
+    {
+      "term": "Steenrod algebra",
+      "meaning": "A standard ring of operations that acts on mod-p cohomology of every space or spectrum."
+    },
+    {
+      "term": "fp spectrum",
+      "meaning": "A spectrum whose mod-p cohomology is finitely presented over the Steenrod algebra."
+    },
+    {
+      "term": "fp-type",
+      "meaning": "A height attached to an fp spectrum, measured by which finite spectra make its homotopy finite."
+    },
+    {
+      "term": "Height",
+      "meaning": "A level in chromatic homotopy theory; higher heights see finer information."
+    },
+    {
+      "term": "Telescope conjecture",
+      "meaning": "A prediction that two ways of localizing at a height agree; it is now known to fail at heights two and above."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Counterexamples to the Hahn-Wilson conjecture at height two” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Counterexamples-to-the-Hahn-Wilson-conjecture-at-height-two-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The Hahn–Wilson conjecture proposes that finite presentation over the Steenrod algebra plus a chromatic height bound characterize these finite constructions.",
+      "sourceLine": "The Hahn--Wilson conjecture proposes a cohomological answer: finite presentation over the Steenrod algebra, together with a chromatic height bound, should characterize precisely these finite constructions.",
+      "sourceQuote": "The Hahn--Wilson conjecture proposes a cohomological answer: finite presentation over the Steenrod algebra, together with a chromatic height bound, should characterize precisely these finite constructions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mahowald and Rezk prove fp is equivalent to π*(V ∧ X) being finite in total for some nonzero finite p-local spectrum V.",
+      "sourceLine": "Mahowald and Rezk prove that this is equivalent to requiring $\\pi_*(V\\wedge X)$ to be finite in total for some nonzero finite $p$-local spectrum $V$",
+      "sourceQuote": "Mahowald and Rezk prove that this is equivalent to requiring $\\pi_*(V\\wedge X)$ to be finite in total for some nonzero finite $p$-local spectrum $V$ \\cite[Proposition~3.2]{MR1999}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lee and Pstrągowski report learning the conjecture from Dylan Wilson in 2021.",
+      "sourceLine": "who report learning it from Dylan Wilson in 2021",
+      "sourceQuote": "Its written formulation appears in Lee--Pstr\\k{a}gowski \\cite[Conjecture~1.1 and Note~1]{LP2026}, who report learning it from Dylan Wilson in 2021.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lee and Pstrągowski prove the global generation conjecture at height one.",
+      "sourceLine": "prove the global generation conjecture at height one",
+      "sourceQuote": "The cases of fp-type at most $-1$ and $0$ are classical, and Lee--Pstr\\k{a}gowski prove the global generation conjecture at height one \\cite[Theorems~1.3 and~5.4]{LP2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Burklund, Hahn, Levy and Schlank disproved the unrestricted telescope conjecture at every prime and every height at least two.",
+      "sourceLine": "Burklund, Hahn, Levy, and Schlank subsequently disproved the unrestricted telescope conjecture at every prime and every height at least two",
+      "sourceQuote": "Burklund, Hahn, Levy, and Schlank subsequently disproved the unrestricted telescope conjecture at every prime and every height at least two \\cite[Theorem~A]{BHLS2023}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Those telescope counterexamples do not supply an fp counterexample.",
+      "sourceLine": "Thus those counterexamples do not supply the fp counterexample studied here.",
+      "sourceQuote": "Thus those counterexamples do not supply the fp counterexample studied here.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper disproves the Hahn–Wilson conjecture at height two.",
+      "sourceLine": "We disprove the Hahn--Wilson conjecture at height two.",
+      "sourceQuote": "We disprove the Hahn--Wilson conjecture at height two.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The prime range of the refutation is sufficiently large primes.",
+      "sourceLine": "its prime range is sufficiently large primes.",
+      "sourceQuote": "The theorem refutes the universally quantified conjecture \\eqref{eq:hw-conjecture}; its prime range is sufficiently large primes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The telescope comparison hypothesis does not suffice at height two.",
+      "sourceLine": "shows that this additional hypothesis does not suffice at height two.",
+      "sourceQuote": "Theorem~\\ref{thm:main} shows that this additional hypothesis does not suffice at height two.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The chromatic localizations keep strong finiteness properties; the obstruction lies in how the local pieces are joined.",
+      "sourceLine": "Their chromatic localizations retain strong finiteness properties; the obstruction lies in how the local pieces are joined.",
+      "sourceQuote": "Their chromatic localizations retain strong finiteness properties; the obstruction lies in how the local pieces are joined.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Pstrągowski's comparison is available at height two for p > 8.",
+      "sourceLine": "which at height two is available for $p>8$",
+      "sourceQuote": "We choose Pstr\\k{a}gowski's homology-compatible triangulated comparison, which at height two is available for $p>8$ \\cite[Corollary~6.9]{Pstragowski2021}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The operator constructed in the paper requires larger primes.",
+      "sourceLine": "the operator constructed below requires larger primes.",
+      "sourceQuote": "This bound concerns the comparison; the operator constructed below requires larger primes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

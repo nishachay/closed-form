@@ -1,0 +1,203 @@
+{
+  "id": "325",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026/paper.pdf",
+      "label": "A direct proof of the complete Crouzeix inequality"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-complete-Crouzeix-theorem-September-23-2026/paper.pdf",
+      "label": "The complete Crouzeix theorem: optimal similarity and a common positive boundary representation"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/325.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The complete Crouzeix conjecture holds: matrix-coefficient polynomials of an operator obey the sharp factor 2.",
+  "scope": "Every square matrix and every bounded operator on a complex Hilbert space, with polynomials whose coefficients are matrices of any size.",
+  "plain": "Plug a matrix into a polynomial and you get a new matrix; its size is hard to predict when the matrix is not normal. Crouzeix conjectured in 2004 that the size is at most twice the polynomial's largest value on the matrix's numerical range. The complete version lets the polynomial's coefficients be matrices too. Two papers prove this complete version with the sharp factor 2, for matrices and for all bounded operators, and Lean checks it. The second paper also proves a structural form with one change of inner product.",
+  "doesNot": "This does not improve the factor 2, which is the best possible, and the structural result is stated only for finite matrices.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Michel Crouzeix, the constant-two numerical-range conjecture",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It settles the matrix-coefficient form of Crouzeix's conjecture with the sharp constant, after earlier complete bounds of 11.08 and 1 + √2."
+  },
+  "explanation": "Take the 2-by-2 matrix A with top row (0, 2) and bottom row (0, 0). Its only eigenvalue is 0. So looking at eigenvalues alone suggests A is tiny. But A stretches the vector (0, 1) to (2, 0), so its size, or norm, is 2. A matrix whose eigenvalues miss its true size like this is called nonnormal. Even a nonzero nilpotent matrix, one with a power equal to zero, has spectrum {0}[1].\n\nA better guide is the numerical range W(A). It collects every value u*Au, over unit vectors u. For this A, the numerical range is the disc of radius 1 around 0. Now take the polynomial p(z) = z. Its largest size on W(A) is 1. But p(A) = A has norm 2. So the ratio here is exactly 2.\n\nCrouzeix conjectured in 2004 that 2 is always enough. For any polynomial p, the norm of p(A) should be at most twice the largest value of |p| on W(A). He proved a universal complete bound of 11.08 in 2007[2]. Crouzeix and Palencia later lowered it to 1 + √2, about 2.414[3]. Badea, Crouzeix and Delyon proved the complete constant two for all 2-by-2 matrices[4]. Recent preprints give scalar proofs with constant two[5]. Åhag, Czyż and Virtanen prove the complete form for matrices of size at most 3[6].\n\nThe word complete matters. Here the polynomial's coefficients are themselves m-by-m matrices. The question asks for the factor 2 for every m, every matrix size, and every degree. The obstacle is that a scalar proof need not survive this step. Coefficient matrices need not commute, so their order of multiplication matters[7].\n\nThe first paper gives a direct proof for matrices of every size and every coefficient size. This resolves the complete Crouzeix conjecture in its matrix form, including numerical ranges that are points or line segments[8]. The constant two cannot be lowered[9]. The example above shows why. The proof places the numerical range inside a smooth convex region. It then controls the polynomial through coefficient estimates along the region's boundary.\n\nThe second paper proves the same sharp bound for every bounded operator on a complex Hilbert space[10]. A Hilbert space is a space with lengths and angles, possibly of infinite dimension. No separability assumption is needed[11]. It also proves a structural result for finite matrices. A change of inner product, distorting lengths by a factor of at most two, turns a related map into a contraction[12]. A contraction is a map that never increases lengths. One fixed boundary density then represents every matrix-valued test function. The same change and density work for every coefficient size and every function[13].\n\nHow sure is this? Lean, a computer proof checker, proves the complete inequality with constant 2 for every matrix and every coefficient size. It proves that no smaller constant works. It also covers every bounded operator on any complex Hilbert space, and the structural result for finite matrices. No specialist review has been published, but the main statements have Lean proofs.",
+  "hypeCheck": "Major. Lean proves the sharp complete inequality for matrices and Hilbert-space operators; scalar constant-two proofs had already appeared in other recent preprints.",
+  "glossary": [
+    {
+      "term": "Norm of a matrix",
+      "meaning": "The largest factor by which the matrix can stretch a vector of length 1."
+    },
+    {
+      "term": "Spectrum",
+      "meaning": "The set of eigenvalues of a matrix, or its analogue for an operator."
+    },
+    {
+      "term": "Nonnormal matrix",
+      "meaning": "A matrix that does not commute with its conjugate transpose; its eigenvalues can badly underestimate its size."
+    },
+    {
+      "term": "Nilpotent matrix",
+      "meaning": "A matrix some power of which is the zero matrix."
+    },
+    {
+      "term": "Numerical range W(A)",
+      "meaning": "The set of values u*Au over all unit vectors u; a compact convex set containing the eigenvalues."
+    },
+    {
+      "term": "Complete inequality",
+      "meaning": "A version of the inequality where the polynomial's coefficients may be matrices of any size."
+    },
+    {
+      "term": "Hilbert space",
+      "meaning": "A space with lengths and angles, like ordinary space, possibly of infinite dimension."
+    },
+    {
+      "term": "Contraction",
+      "meaning": "A linear map that never increases the length of a vector."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A direct proof of the complete Crouzeix inequality” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “The complete Crouzeix theorem: optimal similarity and a common positive boundary representation” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-complete-Crouzeix-theorem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 325",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/325.md",
+      "quote": "The formalized result proves the bound with constant $2$ for every positive matrix and coefficient size, every polynomial degree, and arbitrary complex coefficients."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Even a nonzero nilpotent matrix has spectrum {0}.",
+      "sourceLine": "even a nonzero nilpotent matrix has spectrum $\\{0\\}$",
+      "sourceQuote": "For a nonnormal matrix, the spectrum alone cannot provide the same control: even a nonzero nilpotent matrix has spectrum $\\{0\\}$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Crouzeix formulated the scalar constant-two question in 2004 and proved a universal complete bound of 11.08 in 2007.",
+      "sourceLine": "Crouzeix formulated the scalar constant-two question in 2004 and proved a universal complete bound of $11.08$ in 2007",
+      "sourceQuote": "Crouzeix formulated the scalar constant-two question in 2004 and proved a universal complete bound of $11.08$ in 2007 \\cite{Crouzeix2004,Crouzeix2007}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Crouzeix and Palencia obtained the complete bound 1 + √2.",
+      "sourceLine": "to obtain the complete bound $1+\\sqrt2$",
+      "sourceQuote": "Crouzeix and Palencia combined a positive double-layer potential with the Cauchy transform of conjugate boundary data to obtain the complete bound $1+\\sqrt2$ \\cite{CrouzeixPalencia2017}; Ransford and Schwenninger simplified its final norm argument \\cite{RansfordSchwenninger2018}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For all base matrices of order two, Badea, Crouzeix and Delyon obtained the complete constant two.",
+      "sourceLine": "For all base matrices of order two, Badea, Crouzeix, and Delyon obtained the complete constant two.",
+      "sourceQuote": "For all base matrices of order two, Badea, Crouzeix, and Delyon obtained the complete constant two.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Recent preprints by Jin, Lorist and Schwenninger, and Luo present scalar constant-two proofs.",
+      "sourceLine": "Recent preprints by Jin, Lorist and Schwenninger, and Luo present scalar constant-two proofs",
+      "sourceQuote": "Recent preprints by Jin, Lorist and Schwenninger, and Luo present scalar constant-two proofs \\cite{Jin2026,LoristSchwenninger2026,Luo2026}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Åhag, Czyż and Virtanen prove the complete inequality for base matrices of order at most three, with arbitrary coefficient dimension.",
+      "sourceLine": "prove the complete inequality for base matrices of order at most three, with arbitrary coefficient dimension",
+      "sourceQuote": "\\AA hag, Czy{\\.{z}}, and Virtanen prove the complete inequality for base matrices of order at most three, with arbitrary coefficient dimension \\cite[Theorem~1.1]{AhagCzyzVirtanen2026}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A scalar proof need not survive matrix amplification, because coefficient matrices need not commute.",
+      "sourceLine": "a scalar proof need not survive matrix amplification, because coefficient matrices need not commute.",
+      "sourceQuote": "Its complete character is the uniformity in $m$: a scalar proof need not survive matrix amplification, because coefficient matrices need not commute.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "This resolves the complete Crouzeix conjecture in its matrix formulation, including matrices whose numerical ranges are points or line segments.",
+      "sourceLine": "This resolves the complete Crouzeix conjecture in its matrix formulation, including matrices whose numerical ranges are points or line segments.",
+      "sourceQuote": "This resolves the complete Crouzeix conjecture in its matrix formulation, including matrices whose numerical ranges are points or line segments.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The constant two cannot be decreased uniformly over n, m and d.",
+      "sourceLine": "The constant two cannot be decreased uniformly over $n,m$, and $d$.",
+      "sourceQuote": "The constant two cannot be decreased uniformly over $n,m$, and $d$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The sharp constant-two inequality holds for every bounded operator on a complex Hilbert space and every matrix-valued polynomial.",
+      "sourceLine": "We resolve the complete Crouzeix conjecture by proving the sharp constant-two numerical-range inequality for every bounded operator on a complex Hilbert space and every matrix-valued polynomial.",
+      "sourceQuote": "We resolve the complete Crouzeix conjecture by proving the sharp constant-two numerical-range inequality for every bounded operator on a complex Hilbert space and every matrix-valued polynomial.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No separability assumption is needed.",
+      "sourceLine": "No separability assumption is needed.",
+      "sourceQuote": "No separability assumption is needed.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The optimal similarity making the conformal disk image contractive is attained with condition number at most two.",
+      "sourceLine": "the optimal similarity making its conformal disk image contractive is attained with condition number at most two",
+      "sourceQuote": "For a finite matrix and a bounded convex domain containing its numerical range with regular real-analytic Jordan boundary, the optimal similarity making its conformal disk image contractive is attained with condition number at most two.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The same S, Λ and κ work for all coefficient sizes m and all functions v.",
+      "sourceLine": "The same $S$, $\\Lambda$, and $\\kappa$ work for all $m$ and $v$.",
+      "sourceQuote": "The same $S$, $\\Lambda$, and $\\kappa$ work for all $m$ and $v$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the complete Crouzeix inequality with sharp constant 2 for all matrices, all bounded operators on complex Hilbert spaces, and the finite-matrix structural result.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

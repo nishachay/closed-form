@@ -1,0 +1,180 @@
+{
+  "id": "326",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-cotype-cotype-conjecture-under-the-approximation-property-September-23-2026/paper.pdf",
+      "label": "The cotype–cotype conjecture under the approximation property"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/326.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "For Banach spaces with the approximation property, K-convexity equals finite cotype of the space and its dual.",
+  "scope": "Nonzero real Banach spaces with the ordinary approximation property; the statement is false without it.",
+  "plain": "Type and cotype measure how random sums of vectors with plus-or-minus signs grow in a Banach space. K-convexity is a key property that lets type and cotype pass cleanly between a space and its dual. The cotype–cotype conjecture says K-convexity follows when both the space and its dual have finite cotype. The paper proves this for every real Banach space with the approximation property, and Lean checks it. Without that property the statement is known to fail.",
+  "doesNot": "This does not cover Banach spaces without the approximation property, where counterexamples already exist.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1981",
+    "firstStepBy": "Gilles Pisier, K-convexity under a cotype restriction, and the question of removing it",
+    "field": "Functional analysis",
+    "significance": "Solid",
+    "significanceWhy": "It settles the cotype–cotype conjecture for all finite cotype exponents under the ordinary approximation property, extending Pisier's partial results."
+  },
+  "explanation": "Take two vectors in the plane, (1, 0) and (0, 1). Flip a fair coin for each and attach a plus or minus sign. Then add them. Every one of the four outcomes has squared length 2. So the average squared length is 2. The sum of the squared lengths of the two vectors is also 2. In ordinary space, random signed sums grow exactly like this. That balance is what type 2 and cotype 2 measure.\n\nNow try a different way to measure length. In the space ℓ₁, the length of a vector is the sum of the sizes of its entries. Take 100 unit vectors, one along each axis. Any signed sum of them has ℓ₁ length 100. In ordinary 100-dimensional space the same sum has length only √100 = 10. With 10,000 vectors the gap is 10,000 against 100. So ℓ₁ behaves very differently from ordinary space.\n\nA Banach space is a vector space with a length for each vector, where good sequences always have limits. Its dual is the space of bounded linear maps from it to the real numbers. Type and cotype compare random signed sums with the sizes of the vectors. Type bounds the sum from above, cotype from below. K-convexity is a further property. It says a certain averaging projection, which keeps only the first-order part of a function of random signs, stays bounded. Classical theorems of Maurey and Pisier identify K-convexity with nontrivial type[1]. Maurey and Pisier introduced K-convexity for the question of passing between type and cotype under duality[2]. The space ℓ₁ above has no nontrivial type, so it is not K-convex.\n\nThe question is whether finite cotype on both sides is enough. For cotype two on both sides, Pisier proved more: a space with the approximation property is then a Hilbert space[3]. The approximation property says compact sets can be approximated by finite-rank maps. Pisier then proved K-convexity under a restriction on the cotype exponents. He asked whether that restriction could be removed[4]. Gupta, Misra and Ray stated a version with the bounded approximation property[5].\n\nThe paper proves the cotype–cotype conjecture under the ordinary approximation property[6]. A nonzero real Banach space with this property is K-convex exactly when it and its dual both have finite cotype. One direction holds for every real Banach space, with no approximation hypothesis[7]. Without any approximation hypothesis the full statement is false[8]. Pisier's construction starting from ℓ₁ gives a space that is not K-convex, and such examples fail the approximation property[9].\n\nThe obstacle is the approximation property itself. Enflo showed that even a separable reflexive Banach space can fail it[10]. Figiel and Johnson separated it from its bounded version[11]. So an argument using the ordinary property must handle approximating maps whose sizes have no common bound[12]. As a consequence, the paper also gets dimension-free constants for a duality of covering numbers of convex bodies[13].\n\nHow sure is this? Lean, a computer proof checker, proves the main equivalence for every nonzero real Banach space with the approximation property. No specialist review has been published, but the main statement has a Lean proof.",
+  "hypeCheck": "Solid. The main equivalence has a Lean proof; it needs the approximation property, without which the statement is known to fail.",
+  "glossary": [
+    {
+      "term": "Banach space",
+      "meaning": "A vector space with a notion of length in which every Cauchy sequence has a limit."
+    },
+    {
+      "term": "Dual space",
+      "meaning": "The space of all bounded linear maps from a Banach space to the real numbers."
+    },
+    {
+      "term": "Rademacher type",
+      "meaning": "An upper bound on random plus-or-minus sums of vectors in terms of the vectors' sizes."
+    },
+    {
+      "term": "Rademacher cotype",
+      "meaning": "A lower bound on random plus-or-minus sums of vectors in terms of the vectors' sizes."
+    },
+    {
+      "term": "K-convexity",
+      "meaning": "The property that the projection keeping the first-order part of functions of random signs stays bounded."
+    },
+    {
+      "term": "ℓ₁",
+      "meaning": "The space of sequences whose entries have a finite sum of sizes, with that sum as the length."
+    },
+    {
+      "term": "Approximation property",
+      "meaning": "Every compact set can be approximated arbitrarily well by maps of finite rank."
+    },
+    {
+      "term": "Hilbert space",
+      "meaning": "A space with lengths and angles, like ordinary space, possibly of infinite dimension."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The cotype–cotype conjecture under the approximation property” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-cotype-cotype-conjecture-under-the-approximation-property-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 326",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/326.md",
+      "quote": "The formalized result establishes this equivalence for every nonzero real Banach space with the approximation property: $X$ is $K$-convex exactly when both $X$ and $X^*$ have finite cotype."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The classical theorems of Maurey–Pisier and Pisier identify K-convexity with nontrivial type.",
+      "sourceLine": "identify \\(K\\)-convexity with nontrivial type",
+      "sourceQuote": "The classical theorems of Maurey--Pisier and Pisier \\cite{MP76,Pis82K} identify \\(K\\)-convexity with nontrivial type: \\begin{equation}\\label{eq:classical-characterization} \\begin{split} K(X)<\\infty &\\ \\Longleftrightarrow\\ X\\text{ has Rademacher type }p\\text{ for some }p>1\\\\ &\\ \\Longleftrightarrow\\ X\\text{ does not contain the }\\ell_1^s\\text{'s uniformly}. \\end{split} \\end{equation} These equivalences require no approximation hypothesis; precise formulations are \\cite[Theorem~4.40(i)]{Pis11IHP} and \\cite[Theorem~1.5]{Pis80Kseminar}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Maurey and Pisier introduced K-convexity as the setting for the type–cotype duality question.",
+      "sourceLine": "Maurey and Pisier introduced \\(K\\)-convexity as the setting for this duality question",
+      "sourceQuote": "Maurey and Pisier introduced \\(K\\)-convexity as the setting for this duality question; Pisier's holomorphic-semigroup theorem subsequently identified it with nontrivial type \\cite{MP76,Pis80Kseminar,Pis82K}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For cotype two on both sides, Pisier showed an AP space is isomorphic to a Hilbert space.",
+      "sourceLine": "For cotype two on both sides, Pisier established the stronger conclusion that an AP space is isomorphic to a Hilbert space",
+      "sourceQuote": "For cotype two on both sides, Pisier established the stronger conclusion that an AP space is isomorphic to a Hilbert space \\cite[Corollaries~2.9 and~2.16]{Pis80}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Pisier asked whether the exponent restriction could be removed.",
+      "sourceLine": "He asked whether the exponent restriction could be removed",
+      "sourceQuote": "He asked whether the exponent restriction could be removed \\cite[Remark~2(iii)]{Pis81}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gupta, Misra and Ray state the BAP formulation.",
+      "sourceLine": "Gupta, Misra, and Ray state the BAP formulation",
+      "sourceQuote": "Gupta, Misra, and Ray state the BAP formulation in \\cite[Conjecture~1.5]{GMR25}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the cotype–cotype conjecture under the ordinary approximation property.",
+      "sourceLine": "We prove the cotype--cotype conjecture under the ordinary approximation property.",
+      "sourceQuote": "We prove the cotype--cotype conjecture under the ordinary approximation property.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The forward implication holds for every real Banach space, without an approximation hypothesis.",
+      "sourceLine": "The forward implication holds for every real Banach space, without an approximation hypothesis.",
+      "sourceQuote": "The forward implication holds for every real Banach space, without an approximation hypothesis.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The assertion with no approximation hypothesis is false.",
+      "sourceLine": "The assertion with no approximation hypothesis is false.",
+      "sourceQuote": "The assertion with no approximation hypothesis is false.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Starting with ℓ₁, Pisier's construction gives a space that is not K-convex; these examples fail AP.",
+      "sourceLine": "Starting with \\(\\ell_1\\) therefore gives a space which is not \\(K\\)-convex; these examples fail AP",
+      "sourceQuote": "Starting with \\(\\ell_1\\) therefore gives a space which is not \\(K\\)-convex; these examples fail AP \\cite[Remark~3.6]{Pis83}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Enflo's counterexample showed that a separable reflexive Banach space can fail AP.",
+      "sourceLine": "Enflo's counterexample showed that a separable reflexive Banach space can fail AP",
+      "sourceQuote": "Enflo's counterexample showed that a separable reflexive Banach space can fail AP \\cite{Enf73}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Figiel and Johnson separated AP from BAP.",
+      "sourceLine": "Figiel and Johnson separated AP from BAP",
+      "sourceQuote": "A Schauder basis gives uniformly bounded finite-rank approximations, but the converse implications in the hierarchy \\[ \\text{Schauder basis}\\ \\Longrightarrow\\ \\text{BAP}\\ \\Longrightarrow\\ \\text{AP} \\] fail: Figiel and Johnson separated AP from BAP \\cite[p.~199]{FJ73}, and Szarek constructed a superreflexive space with BAP but no Schauder basis \\cite[Theorem~1.1]{Sza87}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An argument using ordinary AP must accommodate approximants whose norms have no common bound.",
+      "sourceLine": "Thus an argument using ordinary AP must accommodate approximants whose norms have no common bound.",
+      "sourceQuote": "Thus an argument using ordinary AP must accommodate approximants whose norms have no common bound.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The finite-dimensional form gives convex bodies for which metric-entropy duality has dimension-free constants.",
+      "sourceLine": "Its finite-dimensional form also supplies a class of convex bodies for which ordinary metric-entropy duality has dimension-free constants.",
+      "sourceQuote": "Its finite-dimensional form also supplies a class of convex bodies for which ordinary metric-entropy duality has dimension-free constants.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves that a nonzero real Banach space with the approximation property is K-convex exactly when it and its dual have finite cotype.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "id": "320",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Topology",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonhomeomorphic-closed-aspherical-four-manifolds-with-the-same-homotopy-type-October-4-2026/paper.pdf",
+      "label": "Nonhomeomorphic closed aspherical four-manifolds with the same homotopy type"
+    }
+  ],
+  "headline": "A paper claims two closed aspherical 4-manifolds with the same homotopy type but no homeomorphism, against Borel.",
+  "scope": "Closed connected aspherical topological four-manifolds with one word-hyperbolic fundamental group; dimension four only.",
+  "plain": "An aspherical manifold is one whose universal cover can be shrunk to a point, so its loops decide its whole shape up to homotopy. The Borel conjecture says two such closed manifolds with the same homotopy type must be homeomorphic. The paper claims a counterexample in dimension four. It builds two such four-manifolds that are homotopy equivalent but not homeomorphic. It also claims a self-map of one of them that no homeomorphism can replace.",
+  "doesNot": "This does not affect the Borel conjecture in dimensions five and up, where it is proved for large classes of groups.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1953",
+    "firstStepBy": "Armand Borel, letter to Jean-Pierre Serre",
+    "field": "Topology",
+    "significance": "Major",
+    "significanceWhy": "It claims a counterexample to the homeomorphism form of the Borel conjecture, in dimension four."
+  },
+  "explanation": "Start with a cycle of 3 points, a triangle. Try to colour each point red or blue so that neighbours get different colours. Red, blue, then the third point touches both. It fails. A cycle of 2 points works at once, red then blue. Every odd cycle fails in the same way. This tiny parity fact sits at the heart of a new topology result.\n\nFirst, the setting. A manifold is a space that looks like ordinary space near each point. A torus, the surface of a doughnut, is a two-dimensional example. Its universal cover is the flat plane, which can shrink to a point. A manifold with this property is called aspherical. For such a manifold, the fundamental group, its group of loops, decides its homotopy type. Homotopy type means its shape up to continuous deformation.\n\nThe Borel conjecture is usually stated as follows. Every homotopy equivalence between closed aspherical manifolds should be homotopic to a homeomorphism[1]. A homeomorphism is a perfect, reversible matching of points. A weaker form asks only that homotopy-equivalent closed aspherical manifolds be homeomorphic. The question already appears in Borel's letter to Serre of 2 May 1953[2]. It holds in dimensions one and two, and for closed orientable three-manifolds. Hsiang and Wall proved it for homotopy tori in dimensions five and up[3]. Farrell and Jones did so for closed negatively curved manifolds there[4]. Dimension four is the hard case. Bartels and Lück's four-dimensional result assumes the fundamental group is good in Freedman's sense[5]. Khan proves rigidity only up to a weaker relation called s-cobordism[6]. Separately, Davis, Hayden, Huang, Ruberman and Sunukjian found smooth examples that are homeomorphic but not diffeomorphic[7]. That is a different question.\n\nThe paper claims to disprove the weaker form in dimension four[8]. It builds two closed aspherical four-manifolds M and N. They are homotopy equivalent but not homeomorphic. Their common fundamental group is word-hyperbolic, a strong negative-curvature property of groups[9]. It also claims a homotopy equivalence of M to itself that no homeomorphism can match[10].\n\nHere is where parity enters. The paper starts from a four-dimensional building block and looks at its cyclic covers, unwrapped copies of degree d. The boundary of the double cover can be filled by a manifold. For odd d of at least 3, it claims no filling exists[11]. A filling would give a colouring of a cycle of d points. Neighbours could never share a colour. So the colours would have to alternate around the cycle, which is impossible when the cycle is odd[12].\n\nThe obstacle is to rule out every homeomorphism, not just one homotopy class. The paper glues the blocks in two ways, giving M and N. It proves the group of outer automorphisms, the symmetries of the fundamental group, is finite[13]. Two subgroups realized on M and N then differ. They contain different numbers of elements with finite-order lifts[14]. A homeomorphism would force them to match. The proof also uses two companion constructions from other papers[15].\n\nHow sure is this? No Lean check covers this paper. No specialist review has been published. The argument depends on two companion papers, which also lack published review. Treat the counterexample as a claim.",
+  "hypeCheck": "Major if correct. No Lean check and no specialist review, and the proof depends on two companion preprints that are also unreviewed.",
+  "glossary": [
+    {
+      "term": "Manifold",
+      "meaning": "A space that looks like ordinary flat space near every point."
+    },
+    {
+      "term": "Aspherical",
+      "meaning": "A manifold whose universal cover can be shrunk continuously to a point."
+    },
+    {
+      "term": "Fundamental group",
+      "meaning": "The group formed by loops in a space, up to deformation."
+    },
+    {
+      "term": "Homotopy equivalence",
+      "meaning": "A pair of maps between two spaces that undo each other up to continuous deformation."
+    },
+    {
+      "term": "Homeomorphism",
+      "meaning": "A continuous matching of points between two spaces, with a continuous inverse."
+    },
+    {
+      "term": "Word-hyperbolic group",
+      "meaning": "A group whose geometry behaves like a negatively curved space."
+    },
+    {
+      "term": "Outer automorphism group",
+      "meaning": "The symmetries of a group, ignoring those that come from conjugating by one of its own elements."
+    },
+    {
+      "term": "s-cobordism",
+      "meaning": "A weaker relation than homeomorphism, in which two manifolds bound a special shared manifold one dimension higher."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Nonhomeomorphic closed aspherical four-manifolds with the same homotopy type” (4 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonhomeomorphic-closed-aspherical-four-manifolds-with-the-same-homotopy-type-October-4-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The topological Borel conjecture asks whether every homotopy equivalence between closed aspherical manifolds is homotopic to a homeomorphism.",
+      "sourceLine": "The topological Borel conjecture commonly asks whether every homotopy equivalence between closed aspherical manifolds is homotopic to a homeomorphism",
+      "sourceQuote": "The topological Borel conjecture commonly asks whether every homotopy equivalence between closed aspherical manifolds is homotopic to a homeomorphism \\cite{BartelsLueck2012,Lueck2010}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The homeomorphism-existence question appears in Borel's letter to Serre of 2 May 1953.",
+      "sourceLine": "The homeomorphism-existence question already appears in Borel's letter to Serre of May~2, 1953",
+      "sourceQuote": "The homeomorphism-existence question already appears in Borel's letter to Serre of May~2, 1953, phrased for compact manifolds that are classifying spaces \\cite{Borel1953}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Hsiang and Wall proved the homeomorphism-existence statement for homotopy tori in dimensions at least five.",
+      "sourceLine": "Hsiang and Wall proved the homeomorphism-existence statement for homotopy tori in dimensions at least five",
+      "sourceQuote": "In higher dimensions, Hsiang and Wall proved the homeomorphism-existence statement for homotopy tori in dimensions at least five \\cite{HsiangWall1969}, and Farrell and Jones established it for closed negatively curved manifolds in those dimensions \\cite{FarrellJones1989}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Farrell and Jones established it for closed negatively curved manifolds in dimensions at least five.",
+      "sourceLine": "Farrell and Jones established it for closed negatively curved manifolds in those dimensions",
+      "sourceQuote": "In higher dimensions, Hsiang and Wall proved the homeomorphism-existence statement for homotopy tori in dimensions at least five \\cite{HsiangWall1969}, and Farrell and Jones established it for closed negatively curved manifolds in those dimensions \\cite{FarrellJones1989}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Bartels and Lück's four-dimensional application assumes the fundamental group is good in the sense of Freedman.",
+      "sourceLine": "four-dimensional application assumes that the fundamental group is good in the sense of Freedman",
+      "sourceQuote": "Bartels and L\\\"uck's four-dimensional application assumes that the fundamental group is good in the sense of Freedman \\cite[Proposition~0.3]{BartelsLueck2012}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Khan proves rigidity up to topological s-cobordism.",
+      "sourceLine": "Khan proves rigidity up to topological $s$-cobordism",
+      "sourceQuote": "For closed aspherical topological four-manifolds with torsion-free word-hyperbolic fundamental group, Khan proves rigidity up to topological $s$-cobordism \\cite[Theorem~1.22 and Corollary~1.23]{Khan2012}; the product theorem for five-dimensional topological $s$-cobordisms in Freedman--Quinn assumes a good fundamental group \\cite[Theorem~7.1A]{FreedmanQuinn1990}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Davis, Hayden, Huang, Ruberman and Sunukjian give closed aspherical smooth four-manifolds that are homeomorphic but not diffeomorphic.",
+      "sourceLine": "are closed aspherical smooth four-manifolds that are homeomorphic but not diffeomorphic",
+      "sourceQuote": "Recent examples of Davis, Hayden, Huang, Ruberman, and Sunukjian are closed aspherical smooth four-manifolds that are homeomorphic but not diffeomorphic \\cite[Theorem~1.1]{DHHRS2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The main result disproves the homeomorphism-existence formulation in dimension four.",
+      "sourceLine": "Our main result disproves this formulation in dimension four.",
+      "sourceQuote": "Our main result disproves this formulation in dimension four.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The common fundamental group is word-hyperbolic.",
+      "sourceLine": "Their common fundamental group is word-hyperbolic.",
+      "sourceQuote": "Their common fundamental group is word-hyperbolic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a homotopy equivalence f: M → M such that no homeomorphism M → M is homotopic to f.",
+      "sourceLine": "such that no homeomorphism $M\\to M$ is homotopic to $f$.",
+      "sourceQuote": "There exist a closed connected aspherical topological four-manifold $M$ and a homotopy equivalence $f\\colon M\\to M$ such that no homeomorphism $M\\to M$ is homotopic to $f$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The double cover S₂ has a marked filling, whereas S_d has none for odd d ≥ 3.",
+      "sourceLine": "The double cover $S_2$ has a marked filling, whereas $S_d$ has none for odd $d\\geq3$.",
+      "sourceQuote": "The double cover $S_2$ has a marked filling, whereas $S_d$ has none for odd $d\\geq3$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The colour choices would alternate around the cycle, impossible when the cycle is odd.",
+      "sourceLine": "The choices would alternate around the cycle, impossible when the cycle is odd.",
+      "sourceQuote": "The choices would alternate around the cycle, impossible when the cycle is odd.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The outer automorphism group Out(Π) is finite.",
+      "sourceLine": "We prove that $\\Out(\\Pi)$ is finite",
+      "sourceQuote": "We prove that $\\Out(\\Pi)$ is finite: a uniform bound on square grids makes the support cubulation hyperbolic, and Poincar\\'e duality with the homological Shapiro lemma excludes the virtually cyclic splittings forced by an infinite outer automorphism group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The subgroups A and B_ℓ contain different numbers of elements admitting finite-order lifts to Aut(Π).",
+      "sourceLine": "they contain different numbers of elements admitting finite-order lifts to $\\Aut(\\Pi)$.",
+      "sourceQuote": "The subgroups $\\mathsf A$ and $\\mathsf B_\\ell$ are not conjugate in $\\Out(\\Pi)$: they contain different numbers of elements admitting finite-order lifts to $\\Aut(\\Pi)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof uses two companion constructions.",
+      "sourceLine": "The proof uses two companion constructions.",
+      "sourceQuote": "The proof uses two companion constructions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

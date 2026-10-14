@@ -1,0 +1,186 @@
+{
+  "id": "323",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Relative-independence-of-the-separable-quotient-problem-September-23-2026/paper.pdf",
+      "label": "Relative independence of the separable quotient problem"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/323.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The separable quotient problem cannot be settled from the usual axioms, a paper claims; Lean checks the CH half.",
+  "scope": "Real and complex Banach spaces under the ZFC axioms, relative to a measurable cardinal; density ℵ₁ relative to ZFC alone.",
+  "plain": "The separable quotient problem asks whether every infinite-dimensional Banach space can be collapsed onto an infinite-dimensional space with a countable dense set. The paper claims the usual axioms of mathematics, ZFC, cannot decide this. It proves that the answer is no if the continuum hypothesis holds, and Lean checks this half. It also claims the answer is yes under a large-cardinal assumption. So each answer is consistent with ZFC, given that assumption.",
+  "doesNot": "This does not decide the problem outright, and the positive half needs the consistency of a measurable cardinal.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1969",
+    "firstStepBy": "Haskell Rosenthal, early written formulation of a question attributed to Banach and Mazur",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It claims to show that a long-standing question in Banach space theory cannot be decided from the usual axioms."
+  },
+  "explanation": "Start in ordinary three-dimensional space. Take the map that sends (x, y, z) to (x, y). It flattens space onto a plane. Every point on the z-axis goes to (0, 0). So the plane is a quotient of space by that axis. Its dimension is 3 − 1 = 2. A quotient is what remains after you collapse a subspace to zero.\n\nA Banach space is a vector space with a length for each vector, where limits of good sequences always exist. It may be infinite-dimensional. It is separable if a countable set of vectors comes arbitrarily close to every vector. Subspaces are easy. Every infinite-dimensional Banach space contains a separable infinite-dimensional subspace. Take the closed span of a countable list of independent vectors. Quotients are the hard direction. The separable quotient problem asks whether every infinite-dimensional Banach space has a separable infinite-dimensional quotient. It is traditionally attributed to Banach and Mazur[1]. Brech identifies Rosenthal's 1969 paper as an early written statement of it[2].\n\nMany cases were known. Johnson and Rosenthal showed every separable one has an infinite-dimensional quotient with a basis[3]. Argyros, Dodos and Kanellopoulos proved the positive answer for every dual space[4]. Saxon and Sánchez Ruiz proved it for every space of density below a set-theoretic number called 𝔟[5]. Density is the size of the smallest dense set. Dodos, Lopez-Abad and Todorcevic gave a consistent positive answer for very large densities, assuming large cardinals[6]. But no one had a counterexample, or a proof for all spaces.\n\nThe paper claims the problem is independent of ZFC, the standard axioms of mathematics[7]. Independent means ZFC can neither prove nor refute it. This rests on two implications. First, if the continuum hypothesis holds, the statement fails[8]. The continuum hypothesis, CH, says no set is strictly between the integers and the real numbers in size. Second, if the size of the continuum is real-valued measurable, the statement holds[9]. That means there is a measure on every set of real numbers with a strong additivity property. It is a large-cardinal assumption. The negative side needs only the consistency of ZFC itself[10]. For spaces of density ℵ₁, the smallest uncountable size, the paper claims independence relative to ZFC alone[11].\n\nThe key is one criterion. A separable infinite-dimensional quotient exists exactly when some infinite-dimensional subspace of functionals has a separable evaluation image[12]. A functional is a bounded linear map from the space to the scalars. For the counterexample, the paper builds a dual space with coordinates indexed by ω₁, the first uncountable ordinal. It forms paths of functionals that carry integer weights. Distinct paths share only finitely many weights[13]. On every infinite-dimensional subspace, this gives uncountably many path functionals that stay a fixed distance apart[14]. CH is then used to defeat every candidate quotient.\n\nThe obstacle on the positive side is to use a measure on all subsets of the continuum. The paper turns the measure into an unconditional basic sequence of functionals, a well-behaved infinite list. A result of Hagler and Johnson then gives the quotient.\n\nHow sure is this? Lean, a computer proof checker, proves the negative direction under CH, over both real and complex scalars. The positive direction and the full independence statement are outside that check. No specialist review has been published.",
+  "hypeCheck": "Major if correct. Lean proves the CH counterexample; the large-cardinal positive half and the full independence claim are not machine-checked or reviewed.",
+  "glossary": [
+    {
+      "term": "Banach space",
+      "meaning": "A vector space with a notion of length in which every Cauchy sequence has a limit."
+    },
+    {
+      "term": "Separable",
+      "meaning": "Having a countable set of points that comes arbitrarily close to every point."
+    },
+    {
+      "term": "Quotient",
+      "meaning": "The space left after collapsing a closed subspace to zero."
+    },
+    {
+      "term": "Density",
+      "meaning": "The size of the smallest dense subset of a space."
+    },
+    {
+      "term": "ZFC",
+      "meaning": "The standard axioms of set theory on which most mathematics rests."
+    },
+    {
+      "term": "Continuum hypothesis (CH)",
+      "meaning": "The statement that no set is strictly larger than the integers and strictly smaller than the real numbers."
+    },
+    {
+      "term": "Measurable cardinal",
+      "meaning": "A very large infinite size whose existence cannot be proved in ZFC; used as a strong extra assumption."
+    },
+    {
+      "term": "ℵ₁ and ω₁",
+      "meaning": "The smallest uncountable size, and the first uncountable ordinal used to index it."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Relative independence of the separable quotient problem” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Relative-independence-of-the-separable-quotient-problem-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 323",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/323.md",
+      "quote": "The linked formalization proves the negative direction under the continuum hypothesis"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The separable quotient problem is traditionally attributed to Banach and Mazur.",
+      "sourceLine": "traditionally attributed to Banach and Mazur",
+      "sourceQuote": "The corresponding assertion for quotients is the \\emph{separable quotient problem}, traditionally attributed to Banach and Mazur.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Brech identifies Rosenthal's 1969 paper as an early written formulation.",
+      "sourceLine": "identifies Rosenthal's 1969 paper as an early written formulation",
+      "sourceQuote": "Brech notes that the problem is not stated explicitly in Banach's 1932 book and identifies Rosenthal's 1969 paper as an early written formulation~\\cite[p.~74]{Brech2025}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Johnson and Rosenthal proved every separable infinite-dimensional Banach space has an infinite-dimensional quotient with a Schauder basis.",
+      "sourceLine": "proved that every separable infinite-dimensional Banach space has an infinite-dimensional quotient with a Schauder basis",
+      "sourceQuote": "Johnson and Rosenthal developed the weak-star basic-sequence method and proved that every separable infinite-dimensional Banach space has an infinite-dimensional quotient with a Schauder basis~\\cite{JohnsonRosenthal1972}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Argyros, Dodos and Kanellopoulos proved the positive answer for every dual Banach space.",
+      "sourceLine": "Argyros, Dodos and Kanellopoulos proved the positive answer for every dual Banach space",
+      "sourceQuote": "Argyros, Dodos and Kanellopoulos proved the positive answer for every dual Banach space~\\cite[Theorem~15]{ArgyrosDodosKanellopoulos2008}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Saxon and Sánchez Ruiz proved every infinite-dimensional Banach space of density less than 𝔟 has a separable infinite-dimensional quotient.",
+      "sourceLine": "proved that every infinite-dimensional Banach space of density less than $\\mathfrak b$ has a separable infinite-dimensional quotient",
+      "sourceQuote": "Saxon and S\\'anchez Ruiz proved that every infinite-dimensional Banach space of density less than $\\mathfrak b$ has a separable infinite-dimensional quotient \\cite{SaxonSanchezRuiz1996}; see also \\cite[Theorem~2.1]{Brech2025}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Dodos, Lopez-Abad and Todorcevic proved consistency with GCH of a positive answer for every Banach space of density at least ℵ_ω, relative to large cardinals.",
+      "sourceLine": "consistency with GCH of a positive answer for every Banach space of density at least $\\aleph_\\omega$",
+      "sourceQuote": "For large densities, Dodos, Lopez-Abad and Todor\\v{c}evi\\'c proved, relative to infinitely many strongly compact cardinals, consistency with GCH of a positive answer for every Banach space of density at least $\\aleph_\\omega$ \\cite{DodosLopezAbadTodorcevic2011}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The statement is independent of ZFC, relative to the consistency of ZFC with a measurable cardinal.",
+      "sourceLine": "We prove that this statement is independent of ZFC, relative to the consistency of ZFC with a measurable cardinal.",
+      "sourceQuote": "We prove that this statement is independent of ZFC, relative to the consistency of ZFC with a measurable cardinal.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If the continuum hypothesis holds, the separable quotient statement fails.",
+      "sourceLine": "If the continuum hypothesis holds, then $\\SQ_{\\mathbb F}$ fails.",
+      "sourceQuote": "If the continuum hypothesis holds, then $\\SQ_{\\mathbb F}$ fails.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If the continuum is real-valued measurable, the separable quotient statement holds.",
+      "sourceLine": "If $\\mathfrak c$ is real-valued measurable, then $\\SQ_{\\mathbb F}$",
+      "sourceQuote": "If $\\mathfrak c$ is real-valued measurable, then $\\SQ_{\\mathbb F}$ holds.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Consistency of its failure requires only consistency of ZFC.",
+      "sourceLine": "Consistency of its failure requires only consistency of ZFC.",
+      "sourceQuote": "Consistency of its failure requires only consistency of ZFC.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For spaces of norm density ℵ₁, independence holds relative to the consistency of ZFC alone.",
+      "sourceLine": "For spaces of norm density $\\aleph_1$, we obtain independence relative to the consistency of ZFC alone.",
+      "sourceQuote": "For spaces of norm density $\\aleph_1$, we obtain independence relative to the consistency of ZFC alone.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A separable infinite-dimensional quotient exists precisely when some infinite-dimensional closed F has norm-separable evaluation image.",
+      "sourceLine": "A separable infinite-dimensional quotient exists precisely when some infinite-dimensional closed $F$ has norm-separable evaluation image.",
+      "sourceQuote": "A separable infinite-dimensional quotient exists precisely when some infinite-dimensional closed $F$ has norm-separable evaluation image.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The coding makes distinct paths share only finitely many weights.",
+      "sourceLine": "The coding makes distinct paths share only finitely many weights",
+      "sourceQuote": "The coding makes distinct paths share only finitely many weights, yielding uniform estimates for combinations of their tails.",
+      "verdict": "supported"
+    },
+    {
+      "text": "On every infinite-dimensional subspace there are uncountably many norm-separated restrictions of path functionals.",
+      "sourceLine": "uncountably many norm-separated restrictions of path functionals",
+      "sourceQuote": "A block argument then gives, on every infinite-dimensional subspace of $E$, uncountably many norm-separated restrictions of path functionals.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves that under CH there is an infinite-dimensional Banach space, over the reals and over the complex numbers, with no infinite-dimensional separable quotient.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
