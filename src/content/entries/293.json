@@ -1,0 +1,182 @@
+{
+  "id": "293",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Invariant-projection-counterexamples-for-every-irrational-rotation-September-27-2026/paper.pdf",
+      "label": "Invariant-projection counterexamples for every irrational rotation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Backward-intertwiners-and-a-transitive-commutant-September-27-2026/paper.pdf",
+      "label": "Backward intertwiners and a transitive commutant"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/293.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that some operators on Hilbert space have no hyperinvariant subspace, a negative answer to a long-open problem.",
+  "scope": "Bounded operators on separable infinite-dimensional complex Hilbert spaces, plus weighted rotations in the hyperfinite II₁ factor for each irrational angle.",
+  "plain": "An operator is a linear map on an infinite-dimensional space. A hyperinvariant subspace is a proper closed piece of the space that every map commuting with the operator keeps inside itself. The hyperinvariant-subspace problem asked whether every non-scalar operator has one. Two companion papers build a nonzero operator that has none, and Lean checks this. The operator still has many ordinary invariant subspaces, so the related invariant-subspace problem stays open.",
+  "doesNot": "This does not settle the invariant-subspace problem: the operator built here still has many ordinary invariant subspaces.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1972",
+    "firstStepBy": "Douglas and Pearcy, who studied the link between hyperinvariant subspaces and transitive algebras",
+    "field": "Operator algebras",
+    "significance": "Landmark",
+    "significanceWhy": "It gives a negative answer, with a Lean check, to the hyperinvariant-subspace problem of operator theory."
+  },
+  "explanation": "Start in two dimensions. Let T send the vector (a, b) to (a, 2b). The vectors (a, 0) are stretched by 1, and the vectors (0, b) by 2. Suppose a map A commutes with T, so AT = TA. Take v = (1, 0), so Tv = v. Then T(Av) = A(Tv) = Av, so Av is again stretched by 1. So every map that commutes with T keeps the line of vectors (a, 0) inside itself.\n\nThat line is a hyperinvariant subspace. A subspace is a flat piece of the space through zero. It is invariant for a map if the map keeps it inside itself. It is hyperinvariant if every map that commutes with T keeps it inside itself. In finite dimensions, any non-scalar map has such a piece, built from its eigenvectors, the vectors it only stretches. A scalar map just multiplies everything by one number.\n\nIn an infinite-dimensional Hilbert space, a space of infinite sequences with a notion of length, that argument can fail. The hyperinvariant-subspace problem asks whether every bounded non-scalar operator there has a nonzero proper closed hyperinvariant subspace[3]. The hard cases are quasinilpotent operators. These are operators whose powers shrink faster than any geometric rate, and they may have no eigenvectors at all. An earlier preprint claiming the problem was equivalent to the invariant-subspace problem was withdrawn after a counterexample[9].\n\nThe second paper answers the problem negatively[1]. Its operator S shifts each basis vector one step and scales it by a positive weight. Its norm, the most it stretches any vector, is e^−10. The norm of its n-th power is at most e^−10·k, where k is the whole part of (n + 1)²/4[2]. For n = 3, k = 4, so S³ shrinks lengths by at least e^−40. The n-th root of that bound is e^−40/3, about 0.0000016. For n = 9, k = 25 and the root is e^−250/9, about 8 × 10^−13. The roots go to zero, so S is quasinilpotent.\n\nThe key obstacle is that S still has many invariant subspaces. In each piece, or fiber, they are the tails, all vectors whose first coordinates are zero. A second operator V commutes with S and moves every tail one step backward[4]. A hyperinvariant subspace would then have to step down forever, which a probability space cannot allow. So the algebra of all maps commuting with S is transitive, meaning it has no common closed invariant subspace except zero and everything[5]. That algebra is also proper and closed under pointwise limits. This answers no to whether every such transitive algebra fills out all operators[6]. Arveson's earlier theorem gave density when the algebra contains a maximal commutative piece[7]. Here that hypothesis fails. The first paper reaches the same conclusion another way. For every irrational angle, it builds a weighted rotation with no nontrivial invariant projection in a standard operator algebra[8]. This answers a question of Zhu, Fang and Shi[10].\n\nHow sure is this? Lean, a computer proof checker, has formal statements for the main results of both papers. They include the operator with a transitive commutant and the rotation counterexample for every irrational angle. So the paper proves these results, as far as the Lean statements match the paper. No specialist review is published.",
+  "hypeCheck": "Landmark-level claim with a Lean check of both main constructions. It answers the hyperinvariant-subspace problem only; the ordinary invariant-subspace problem stays open. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Operator",
+      "meaning": "A linear map on a Hilbert space that stretches every vector by at most a fixed amount."
+    },
+    {
+      "term": "Hilbert space",
+      "meaning": "A space of vectors, often infinite sequences, with lengths and angles like ordinary space."
+    },
+    {
+      "term": "Invariant subspace",
+      "meaning": "A closed flat piece of the space through zero that an operator keeps inside itself."
+    },
+    {
+      "term": "Hyperinvariant subspace",
+      "meaning": "An invariant subspace that every operator commuting with the given one also keeps inside itself."
+    },
+    {
+      "term": "Commutant",
+      "meaning": "The set of all operators A with AT = TA for the given operator T."
+    },
+    {
+      "term": "Quasinilpotent",
+      "meaning": "An operator whose n-th powers have n-th roots of their norms tending to zero."
+    },
+    {
+      "term": "Transitive algebra",
+      "meaning": "A family of operators, closed under sums and products, with no common closed invariant subspace except zero and the whole space."
+    },
+    {
+      "term": "Invariant projection",
+      "meaning": "A projection p, inside a given operator algebra, onto a subspace that the operator keeps inside itself."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Invariant-projection counterexamples for every irrational rotation” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Invariant-projection-counterexamples-for-every-irrational-rotation-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Backward intertwiners and a transitive commutant” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Backward-intertwiners-and-a-transitive-commutant-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 293",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/293.md",
+      "quote": "gives, on every separable infinite-dimensional complex Hilbert space, a nonzero quasinilpotent operator whose commutant is transitive, proper, and closed in the strong operator topology"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 2,
+      "text": "The second paper gives a negative answer to the hyperinvariant-subspace problem.",
+      "sourceLine": "We give a negative answer to the hyperinvariant-subspace problem by",
+      "sourceQuote": "We give a negative answer to the hyperinvariant-subspace problem by constructing, on every infinite-dimensional separable complex Hilbert space, a nonzero bounded norm-quasinilpotent operator with no nonzero proper closed hyperinvariant subspace.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The operator S is nonzero with norm e^−10 and satisfies an explicit bound on all its powers.",
+      "sourceLine": "The operator $S$ is nonzero, $\\|S\\|=e^{-10}$, and for every",
+      "sourceQuote": "The operator $S$ is nonzero, $\\|S\\|=e^{-10}$, and for every integer $n\\ge1$, \\begin{equation}\\label{eq:main-power-bound} \\|S^n\\|\\le \\exp\\left(-10\\left\\lfloor\\frac{(n+1)^2}{4}\\right\\rfloor\\right). \\end{equation}",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The problem asks whether every bounded nonscalar operator on an infinite-dimensional separable complex Hilbert space has a nonzero proper closed hyperinvariant subspace.",
+      "sourceLine": "The hyperinvariant-subspace problem asks whether every bounded nonscalar",
+      "sourceQuote": "The hyperinvariant-subspace problem asks whether every bounded nonscalar operator on an infinite-dimensional separable complex Hilbert space has a nonzero proper closed hyperinvariant subspace.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The invariant subspaces of each fiber are coordinate tails, and a second commuting operator moves those tails backward.",
+      "sourceLine": "a second, commuting operator moves those tails backward",
+      "sourceQuote": "Its purpose is to exhibit the mechanism explicitly: the ordinary invariant subspaces of each weighted-shift fiber are coordinate tails, and a second, commuting operator moves those tails backward.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The commutant is a proper strongly closed unital transitive complex operator algebra.",
+      "sourceLine": "Its commutant is a proper strongly closed unital transitive complex operator algebra.",
+      "sourceQuote": "Its commutant is a proper strongly closed unital transitive complex operator algebra.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The commutant also answers negatively whether every unital transitive operator algebra is strongly dense.",
+      "sourceLine": "answer to the question whether every unital transitive operator algebra",
+      "sourceQuote": "Consequently the commutant in the corollary also gives a negative answer to the question whether every unital transitive operator algebra is strongly dense in $\\B(H)$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Arveson's theorem: a transitive algebra containing a maximal abelian self-adjoint subalgebra is strongly dense.",
+      "sourceLine": "a transitive algebra on a separable Hilbert space which contains a maximal abelian self-adjoint subalgebra",
+      "sourceQuote": "A major positive result is Arveson's density theorem: a transitive algebra on a separable Hilbert space which contains a maximal abelian self-adjoint subalgebra of $\\B(H)$ is strongly dense in $\\B(H)$ \\cite[Theorem~3.3]{Arveson1967}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "For every irrational angle, a weighted rotation has no nontrivial invariant projection in the hyperfinite II₁ factor.",
+      "sourceLine": "whose weighted rotation has no nontrivial invariant projection in the associated",
+      "sourceQuote": "For every irrational angle, we construct a continuous nonnegative circle weight with exactly one zero and logarithmic integral $-\\infty$ whose weighted rotation has no nontrivial invariant projection in the associated hyperfinite type $\\mathrm{II}_1$ factor.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A preprint claiming an equivalence of the two problems was withdrawn after a counterexample to its Theorem 3.",
+      "sourceLine": "was withdrawn after a counterexample to its Theorem~3",
+      "sourceQuote": "The invariant- and hyperinvariant-subspace problems must remain distinct: the K\\'erchy--Pearcy preprint claiming an equivalence was withdrawn after a counterexample to its Theorem~3 \\cite{KerchyPearcy2025Withdrawn}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "This answers negatively the question of Zhu, Fang, and Shi, with the angle prescribed in advance.",
+      "sourceLine": "This answers negatively the question of Zhu, Fang, and Shi, with the angle prescribed in advance.",
+      "sourceQuote": "This answers negatively the question of Zhu, Fang, and Shi, with the angle prescribed in advance.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the quasinilpotent operator with a transitive, proper, strongly closed commutant, and the rotation counterexample for every irrational angle.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

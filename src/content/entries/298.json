@@ -1,0 +1,152 @@
+{
+  "id": "298",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-entropy-separation-of-microstates-and-nonmicrostates-free-entropy-September-25-2026/paper.pdf",
+      "label": "A finite-entropy separation of microstates and nonmicrostates free entropy"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/298.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves two standard notions of free entropy can differ by at least 1/2 even when both are finite.",
+  "scope": "One bounded self-adjoint tuple, with a large but fixed number of variables, in a von Neumann algebra with a faithful normal tracial state.",
+  "plain": "Free entropy measures how much room a family of noncommuting variables has, much as ordinary entropy does for random numbers. Voiculescu gave two definitions: one counts nearby matrix models, the other tracks added noise. They agree for one variable, and a known question asked if they agree whenever the first is finite. This paper builds a family where both are finite but differ by at least one half, and Lean checks it. The family uses a large number of variables.",
+  "doesNot": "This does not settle the question for small numbers of variables, and it does not address cases where the microstates entropy is minus infinity.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "Voiculescu, who defined microstates free entropy (1994) and later nonmicrostates free entropy (1998)",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It answers negatively the finite-entropy form of a question in Voiculescu's free-entropy unification problem, with a Lean check."
+  },
+  "explanation": "Start with random matrices. Fill a large d-by-d Hermitian matrix with Gaussian entries of variance 1, the GUE ensemble. In the paper's normalization, its entropy per entry is ½·log(2πe), about 1.419. Take a second, independent GUE coordinate of variance 4. Its value is ½·log(8πe), about 2.112. Independent coordinates add, so the pair has entropy about 3.531[4]. Entropy here measures spread: more variance, more room.\n\nFree probability studies variables that do not commute, like large matrices. Free entropy measures their room. Voiculescu gave two definitions. The microstates entropy χ counts the volume of matrix tuples whose trace moments match the variables. The nonmicrostates entropy χ* instead adds free semicircular noise, the noncommutative bell curve, and integrates an information measure along the way[5]. The two agree for a single variable. Whether they agree in general was part of Voiculescu's unification problem[6]. Biane, Capitaine and Guionnet proved χ ≤ χ* in general[7]. Equality was known in regular convex settings. The finite-entropy question asked: if χ is finite, must χ equal χ*?\n\nThe paper answers no[1]. It builds a bounded tuple X with χ finite and χ at most χ* − ½[2]. The gap of ½ is about a third of the one-variable value 1.419 above. The construction mixes free semicircular variables with one coordinate Y that is spread evenly over p points in [−1, 1]. With p = 3, those points are −1, 0 and 1. Y commutes with the others and splits their energy into blocks. A small dose of free noise makes χ finite while keeping that block structure[8].\n\nThe obstacle is to show the two entropies see the block structure differently. After more noise, χ* becomes close to that of plain semicircular variables. Matrix models keep detectable blocks, which costs them volume. The noise time t = p^(3/4) balances the two estimates as p grows[9]. For p = 16, that gives t = 8. The example needs a large but fixed number of variables. It says nothing about smaller numbers[3].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main theorem: a bounded tuple with χ finite and χ ≤ χ* − ½. So the paper proves this, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "A clean negative answer to a named question, with a Lean check. It needs many variables and leaves small numbers of variables open. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Free probability",
+      "meaning": "A theory of noncommuting random variables, such as large random matrices, with freeness in place of independence."
+    },
+    {
+      "term": "Self-adjoint tuple",
+      "meaning": "A list of operators each equal to its own adjoint, the analogue of real random variables."
+    },
+    {
+      "term": "Microstates free entropy χ",
+      "meaning": "A measure of the volume of matrix tuples whose trace moments approximate those of the variables."
+    },
+    {
+      "term": "Nonmicrostates free entropy χ*",
+      "meaning": "A free entropy defined by adding free semicircular noise and integrating free Fisher information."
+    },
+    {
+      "term": "Semicircular variable",
+      "meaning": "The free-probability analogue of a Gaussian; its eigenvalue density is a semicircle."
+    },
+    {
+      "term": "GUE",
+      "meaning": "Random Hermitian matrices with independent Gaussian entries, whose eigenvalues follow the semicircle law."
+    },
+    {
+      "term": "Tracial state",
+      "meaning": "A positive normalized linear functional τ with τ(xy) = τ(yx), playing the role of an expectation."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A finite-entropy separation of microstates and nonmicrostates free entropy” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finite-entropy-separation-of-microstates-and-nonmicrostates-free-entropy-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 298",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/298.md",
+      "quote": "The formalization disproves equality of microstates and nonmicrostates free entropy even when both quantities are finite."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The finite-entropy equality question for microstates and nonmicrostates free entropy has a negative answer.",
+      "sourceLine": "We answer the finite-entropy equality question for microstates and",
+      "sourceQuote": "We answer the finite-entropy equality question for microstates and nonmicrostates free entropy negatively.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a bounded self-adjoint tuple with −∞ < χ(X) ≤ χ*(X) − 1/2 < ∞.",
+      "sourceLine": "$-\\infty<\\chi(X)\\leq\\chi^*(X)-\\tfrac12<\\infty$.",
+      "sourceQuote": "We construct a bounded self-adjoint tuple $X$ in a von Neumann algebra with faithful normal tracial state such that $-\\infty<\\chi(X)\\leq\\chi^*(X)-\\tfrac12<\\infty$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction uses a large but fixed number of variables and does not address smaller numbers.",
+      "sourceLine": "It does not address equality for every smaller prescribed",
+      "sourceQuote": "It does not address equality for every smaller prescribed number of variables.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Independent GUE coordinates of variances w_i have normalized entropy ½ Σ log(2πe w_i).",
+      "sourceLine": "entropy $\\frac12\\sum_i\\log(2\\pi e w_i)$.",
+      "sourceQuote": "Thus independent GUE coordinates of variances $w_i>0$ have normalized entropy $\\frac12\\sum_i\\log(2\\pi e w_i)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Nonmicrostates entropy integrates free Fisher information along addition of free semicircular noise.",
+      "sourceLine": "free Fisher information along addition of freely independent semicircular",
+      "sourceQuote": "His nonmicrostates free entropy $\\chi^*(X)$ instead uses conjugate variables, the free analogues of classical scores, and integrates free Fisher information along addition of freely independent semicircular noise \\cite{Vstar}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Agreement for general tuples was one of the questions in Voiculescu's unification problem.",
+      "sourceLine": "agreement for general tuples was one of the questions in Voiculescu's",
+      "sourceQuote": "The two quantities agree for a single self-adjoint variable, and their agreement for general tuples was one of the questions in Voiculescu's unification problem \\cite[Sections~3.5 and~3.8]{Vsurvey}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Biane, Capitaine, and Guionnet proved χ ≤ χ* through large-deviation bounds.",
+      "sourceLine": "Biane, Capitaine, and Guionnet proved the general comparison",
+      "sourceQuote": "Biane, Capitaine, and Guionnet proved the general comparison $\\chi\\leq\\chi^*$ through large-deviation bounds for matrix Brownian motion \\cite{BCG}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A small perturbation has finite microstates entropy while its last coordinate still determines spectral blocks.",
+      "sourceLine": "entropy, while its last coordinate still determines spectral blocks",
+      "sourceQuote": "A small perturbation $X=C+\\sqrt h S$ has finite microstates entropy, while its last coordinate still determines spectral blocks containing much of the energy of the first $p$ coordinates.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The choice t = p^{3/4} satisfies both conditions as p grows.",
+      "sourceLine": "The choice $t=p^{3/4}$ satisfies",
+      "sourceQuote": "The choice $t=p^{3/4}$ satisfies both conditions as $p\\to\\infty$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes a bounded self-adjoint tuple with finite microstates entropy at least one half below its nonmicrostates entropy.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

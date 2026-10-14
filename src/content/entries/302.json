@@ -1,0 +1,166 @@
+{
+  "id": "302",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Filtered-products-and-boundary-preserving-compression-in-complex-cobordism-September-25-2026/paper.pdf",
+      "label": "Filtered products and boundary-preserving compression in complex cobordism"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Radius-of-comparison-equals-half-the-mean-dimension-September-25-2026/paper.pdf",
+      "label": "Radius of comparison equals half the mean dimension"
+    }
+  ],
+  "headline": "Claims the radius of comparison of a minimal crossed product is half the mean dimension, the Phillips–Toms conjecture.",
+  "scope": "Minimal homeomorphisms of infinite compact metrizable spaces and their crossed-product C*-algebras; the companion paper proves the topological compression input.",
+  "plain": "Mean dimension measures how many dimensions a dynamical system uses per time step. The radius of comparison measures how far the related operator algebra is from comparing elements by size alone. Phillips and Toms conjectured that the second is exactly half the first. This paper claims to prove it for every minimal homeomorphism, using a companion paper on maps into cubes. There is no Lean check.",
+  "doesNot": "This does not cover actions of groups other than the integers, which the broader form of the conjecture includes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2006",
+    "firstStepBy": "Toms, who introduced the radius of comparison (Definition 6.1)",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It would settle the integer-action case of the Phillips–Toms conjecture, listed as Problem XXXVI in a recent survey."
+  },
+  "explanation": "Cover the interval [0, 1] by two open pieces, [0, 0.6) and (0.4, 1]. At most two pieces overlap at any point. The order of the cover is one less than that, so it is 1. No cover of the interval by small pieces can do better, which is why its dimension is 1. A square needs points where three pieces meet, so its dimension is 2.\n\nNow let a map h move the points of a space X, one step per unit of time. Mean dimension asks how much dimension the system uses per step[3]. Refine a cover by following each point for N steps, take the order of that refined cover, and divide by N. Gromov introduced mean dimension, and Lindenstrauss and Weiss developed it[4]. It stays finite for some systems on infinite-dimensional spaces. A homeomorphism is minimal when every orbit comes close to every point.\n\nEach such system gives a C*-algebra, the crossed product, built from functions on X and one operator for the map. In nice algebras, one positive element sits below another whenever its size under every trace is smaller. Toms's radius of comparison measures the extra margin needed for that to work[5]. The Phillips–Toms conjecture says the radius equals half the mean dimension. The half is suggested by how complex rank relates to real dimension: one complex direction is two real ones. Phillips proved the radius is at most 1 + 36 times the mean dimension[10]. Niu proved the sharp upper bound of one half[6]. For mean dimension 2, Phillips's bound gives 73, and Niu's gives 1. The obstacle was the matching lower bound.\n\nThe paper claims the conjecture for every minimal homeomorphism of an infinite compact metrizable space[1]. This includes the case where both sides are infinite. It follows that zero mean dimension is equivalent to Jiang–Su stability and to finite nuclear dimension, two key regularity properties[2]. The proof assumes the cover rate is more than twice a comparison bound, then turns comparison into a bundle embedding. A bundle is a family of vector spaces over a space. The companion paper supplies the step that pushes maps into cubes onto cube boundaries[7]. It needs the bundle's target rank to be less than twice the source rank[8]. An example at equality shows this strict inequality cannot be removed[9]. The compressed maps give a smaller cover, which is a contradiction.\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof spans two long papers, one in stable homotopy theory. No specialist review is published.",
+  "hypeCheck": "Major if correct: it claims an exact formula conjectured by Phillips and Toms. There is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Order of a cover",
+      "meaning": "One less than the largest number of pieces of an open cover that share a common point."
+    },
+    {
+      "term": "Mean dimension",
+      "meaning": "The growth rate, per time step, of the order needed to cover a dynamical system's orbit segments."
+    },
+    {
+      "term": "Minimal homeomorphism",
+      "meaning": "A continuous invertible map whose every orbit comes arbitrarily close to every point."
+    },
+    {
+      "term": "Crossed product",
+      "meaning": "A C*-algebra built from the functions on a space and one operator implementing the map."
+    },
+    {
+      "term": "Radius of comparison",
+      "meaning": "The smallest margin r such that trace size plus r always decides when one positive element sits below another."
+    },
+    {
+      "term": "Jiang–Su stable",
+      "meaning": "An algebra A with A ⊗ Z isomorphic to A, a key regularity property in classification."
+    },
+    {
+      "term": "Nuclear dimension",
+      "meaning": "A noncommutative version of covering dimension, defined by finite-dimensional approximations."
+    },
+    {
+      "term": "Complex cobordism MU",
+      "meaning": "A tool from stable homotopy theory that detects when a map can be deformed to a constant."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Filtered products and boundary-preserving compression in complex cobordism” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Filtered-products-and-boundary-preserving-compression-in-complex-cobordism-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Radius of comparison equals half the mean dimension” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Radius-of-comparison-equals-half-the-mean-dimension-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 2,
+      "text": "For every minimal homeomorphism of an infinite compact metrizable space, the radius of comparison of its crossed product equals half its mean dimension.",
+      "sourceLine": "the radius of comparison of its crossed product equals one half of its",
+      "sourceQuote": "We prove the integer-action case of the Phillips--Toms conjecture: for every minimal homeomorphism of an infinite compact metrizable space, the radius of comparison of its crossed product equals one half of its mean dimension, including equality at infinity.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Zero mean dimension and the small boundary property are equivalent to Jiang–Su stability and finite nuclear dimension of the crossed product.",
+      "sourceLine": "mean dimension and the small boundary property are equivalent to",
+      "sourceQuote": "For these systems, zero mean dimension and the small boundary property are equivalent to Jiang--Su stability and to finite nuclear dimension of the crossed product; in this case its nuclear dimension is at most one.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Mean dimension measures the dimension needed per orbit coordinate.",
+      "sourceLine": "Mean dimension measures the dimension needed per orbit coordinate.",
+      "sourceQuote": "Mean dimension measures the dimension needed per orbit coordinate.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Mean dimension was introduced by Gromov and developed by Lindenstrauss and Weiss.",
+      "sourceLine": "Introduced by Gromov and developed by Lindenstrauss and Weiss",
+      "sourceQuote": "Introduced by Gromov and developed by Lindenstrauss and Weiss, it remains informative for compact dynamical systems whose ordinary covering dimension is infinite \\cite{Gromov1999,LindenstraussWeiss2000}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Toms introduced the radius of comparison to measure the tracial gap needed for comparison of positive elements.",
+      "sourceLine": "Toms introduced the radius of comparison to measure the tracial gap",
+      "sourceQuote": "Toms introduced the radius of comparison to measure the tracial gap needed for comparison of positive elements of a C*-algebra \\cite[Definition~6.1]{Toms2006}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Niu proved the optimal upper bound of one half the mean dimension.",
+      "sourceLine": "Niu then proved the optimal upper bound",
+      "sourceQuote": "Niu then proved the optimal upper bound \\begin{equation} \\label{eq:known-upper-bound} \\rc\\bigl(C(X)\\rtimes_h\\Z\\bigr)\\le\\tfrac12\\mdim(X,h) \\end{equation} for free minimal integer-lattice actions, including the systems considered here \\cite[Theorem~5.6]{Niu2024}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The companion compression theorem puts a positive fraction of slots on their boundaries and fixes every original boundary slot.",
+      "sourceLine": "positive fraction of the slots on their boundaries and fixes the entire",
+      "sourceQuote": "The compression theorem from the companion paper \\emph{Filtered products and boundary-preserving compression in complex cobordism} \\cite{OpenAICompression2026} supplies precisely the needed control: after passing to arbitrarily large product powers, it puts a positive fraction of the slots on their boundaries and fixes the entire vector in every original boundary slot.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Compression applies when the slot bundle embeds into a trivial bundle of rank less than twice the source rank.",
+      "sourceLine": "slot bundle embeds continuously into a trivial bundle of rank less than",
+      "sourceQuote": "When the torus slot bundle embeds continuously into a trivial bundle of rank less than twice the source rank, the compression places a positive proportion of slots on their boundaries in arbitrarily large powers and fixes every original boundary slot exactly.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "An example at equality shows that the strict rank inequality cannot be removed.",
+      "sourceLine": "An example at equality shows that the strict rank inequality cannot be removed.",
+      "sourceQuote": "An example at equality shows that the strict rank inequality cannot be removed.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Phillips proved the radius of comparison is at most 1 + 36 times the mean dimension.",
+      "sourceLine": "$\\rc(C(X)\\rtimes_h\\Z)\\le1+36\\mdim(X,h)$",
+      "sourceQuote": "Phillips proved $\\rc(C(X)\\rtimes_h\\Z)\\le1+36\\mdim(X,h)$ \\cite[Corollary~4.8]{Phillips2016}, while Elliott--Niu settled the zero-mean-dimension case \\cite[Theorem~4.7]{ElliottNiu2017}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

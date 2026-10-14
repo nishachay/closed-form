@@ -1,0 +1,156 @@
+{
+  "id": "299",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kirchberg-Rordam-character-criterion-September-25-2026/paper.pdf",
+      "label": "The Kirchberg–Rørdam character criterion"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/299.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a separable C*-algebra absorbs the Jiang–Su algebra exactly when its central-sequence algebra has no characters.",
+  "scope": "Nonzero unital separable complex C*-algebras, any free ultrafilter on the natural numbers, and infinite minimal tensor powers of characterless algebras.",
+  "plain": "The Jiang–Su algebra Z is a small building block; an algebra that absorbs it, so that A ⊗ Z looks like A, is well behaved. A character is a map to ordinary numbers that respects sums and products. Kirchberg and Rørdam asked whether absorbing Z is the same as a related algebra having no characters. This paper proves it is, for every unital separable C*-algebra, and Lean checks it. It also shows infinite tensor powers of characterless algebras absorb Z.",
+  "doesNot": "This does not show that a finite tensor power of a characterless algebra absorbs Z; the absorption result is for the infinite power.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2015",
+    "firstStepBy": "Kirchberg and Rørdam, Question 3.1 in \"When central sequence C*-algebras have characters\"",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It answers a question of Kirchberg and Rørdam, listed in a recent problem collection, for all unital separable C*-algebras, with a Lean check."
+  },
+  "explanation": "Start with 2-by-2 matrices, M₂. A character is a map χ to ordinary numbers that keeps sums and products. Write e11, e12, e21, e22 for the matrix units. Since e11·e11 = e11, χ(e11) is 0 or 1. Since e12·e21 = e11 and e21·e12 = e22, χ(e11) = χ(e22). But e11 + e22 is the identity, so χ(e11) = 1/2. That is a contradiction, so M₂ has no character. The same holds for any algebra built only from matrix blocks of size 2 or more.\n\nA C*-algebra is a family of operators closed under sums, products, adjoints and limits. The Jiang–Su algebra Z is a special C*-algebra with no characters that behaves like ordinary numbers in many ways. An algebra A is Z-stable when A ⊗ Z is again A[7]. Z-stability is a key regularity property in classifying these algebras. The central-sequence algebra F_ω(A) collects sequences in A that asymptotically commute with all of A.\n\nKirchberg and Rørdam proved A is Z-stable exactly when F_ω(A) holds a suitable characterless subalgebra[4]. Then F_ω(A) has no characters at all. They asked whether the converse holds: does no characters on F_ω(A) already give Z-stability[5]? The question also appears as Problem LXXX in a recent problem collection[6]. The obstacle is to build a characterless piece of bounded matrix size from nothing but the absence of characters.\n\nThe paper proves the converse, for every nonzero unital separable complex C*-algebra and every free ultrafilter[1]. No nuclearity, simplicity or trace hypothesis is needed[2]. The key step maps a dimension-drop algebra I(2,3) into a finite tensor power of any characterless algebra[8]. I(2,3) is a family of 6-by-6 matrices along [0, 1]. At the ends they shrink to blocks of size 2 and 3. Its irreducible pieces have size 2, 3 and 6, so by the M₂ argument it has no character[9]. Z itself is built from pieces of this kind, whose two block sizes share no factor. As a corollary, the infinite minimal tensor power of any characterless separable algebra is Z-stable[3].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main criterion: F_ω(A) has no character exactly when A is Z-stable. So the paper proves this, as far as the Lean statement matches the paper. The tensor-power corollary is not named in the Lean scope note. No specialist review is published.",
+  "hypeCheck": "A clean answer to a named question, with a Lean check of the main criterion. The tensor-power corollary rests on the paper alone. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "C*-algebra",
+      "meaning": "A family of operators on a Hilbert space closed under sums, products, adjoints and limits."
+    },
+    {
+      "term": "Character",
+      "meaning": "A nonzero map from the algebra to the complex numbers that keeps sums, products and adjoints."
+    },
+    {
+      "term": "Jiang–Su algebra Z",
+      "meaning": "A special infinite-dimensional C*-algebra with no characters that acts like the number 1 under tensor products."
+    },
+    {
+      "term": "Z-stable",
+      "meaning": "An algebra A with A ⊗ Z isomorphic to A; a regularity property used in classification."
+    },
+    {
+      "term": "Central-sequence algebra F_ω(A)",
+      "meaning": "Bounded sequences in A that asymptotically commute with every element of A, taken along an ultrafilter."
+    },
+    {
+      "term": "Free ultrafilter",
+      "meaning": "A rule for taking limits of every bounded sequence that ignores any finite set of terms."
+    },
+    {
+      "term": "Dimension-drop algebra I(2,3)",
+      "meaning": "Continuous paths of 6-by-6 matrices on [0, 1] that drop to blocks of size 2 at 0 and 3 at 1."
+    },
+    {
+      "term": "Tensor power",
+      "meaning": "The algebra D ⊗ D ⊗ … ⊗ D built from several copies of D."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Kirchberg–Rørdam character criterion” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Kirchberg-Rordam-character-criterion-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 299",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/299.md",
+      "quote": "No nuclearity, simplicity, trace, or comparison hypothesis is imposed."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For every free ultrafilter, a nonzero unital separable complex C*-algebra absorbs Z if and only if its norm central-sequence algebra has no characters.",
+      "sourceLine": "ultrafilter on $\\N$, a nonzero unital separable complex $C^*$-algebra",
+      "sourceQuote": "We prove the Kirchberg--R\\o rdam character criterion: for every free ultrafilter on $\\N$, a nonzero unital separable complex $C^*$-algebra absorbs the Jiang--Su algebra if and only if its norm central-sequence algebra has no characters.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem has no nuclearity, simplicity, trace, dimension, or comparison assumption.",
+      "sourceLine": "to all such $A$, with no nuclearity, simplicity, trace, dimension, or",
+      "sourceQuote": "The theorem applies to all such $A$, with no nuclearity, simplicity, trace, dimension, or comparison assumption.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The infinite minimal tensor power of every nonzero unital separable characterless algebra is Z-stable and contains a unital copy of Z.",
+      "sourceLine": "power of every nonzero unital separable complex $C^*$-algebra without",
+      "sourceQuote": "We also prove that the infinite minimal tensor power of every nonzero unital separable complex $C^*$-algebra without characters is $\\Z$-stable and contains a unital copy of $\\Z$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kirchberg and Rørdam proved Z-stability is equivalent to a separable subhomogeneous characterless subalgebra with the same unit.",
+      "sourceLine": "with the same unit, a separable subhomogeneous algebra without characters",
+      "sourceQuote": "In the case of $\\Z$, Kirchberg and R\\o rdam proved that a unital separable algebra is $\\Z$-stable exactly when its norm central-sequence algebra contains, with the same unit, a separable subhomogeneous algebra without characters \\cite[Theorem~2.5]{KR}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kirchberg and Rørdam asked whether absence of characters on F_ω(A) characterizes Jiang–Su absorption.",
+      "sourceLine": "Kirchberg and R\\o rdam asked whether the absence of characters on",
+      "sourceQuote": "Kirchberg and R\\o rdam asked whether the absence of characters on $F_\\omega(A)$ characterizes Jiang--Su absorption among unital separable $C^*$-algebras \\cite[Question~3.1]{KR}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The question appears as Problem LXXX in the collection of Schafhauser, Tikuisis, and White.",
+      "sourceLine": "appears as Problem~LXXX in the recent collection of",
+      "sourceQuote": "The character question also appears as Problem~LXXX in the recent collection of Schafhauser, Tikuisis, and White \\cite[Section~22]{STW}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An algebra is Z-stable if it is isomorphic to its minimal tensor product with Z.",
+      "sourceLine": "if it is isomorphic to its minimal tensor product with $\\Z$.",
+      "sourceQuote": "An algebra is \\emph{$\\Z$-stable} if it is isomorphic to its minimal tensor product with $\\Z$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For a characterless D there is a unital homomorphism from I(2,3) into a finite maximal tensor power of D.",
+      "sourceLine": "is an integer $m\\ge1$ and a unital $*$-homomorphism",
+      "sourceQuote": "There is an integer $m\\ge1$ and a unital $*$-homomorphism \\[ I(2,3)\\longrightarrow D^{\\otimes_{\\max}m}, \\] where \\[ I(2,3)=\\{f\\in C([0,1],M_2\\otimes M_3): f(0)\\in M_2\\otimes1_3,\\ f(1)\\in1_2\\otimes M_3\\}. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "The irreducible dimensions of I(2,3) are 2 at 0, 3 at 1, and 6 in the interior, so it has no characters.",
+      "sourceLine": "The resulting irreducible dimensions are $2$ at $0$, $3$ at $1$, and",
+      "sourceQuote": "The resulting irreducible dimensions are $2$ at $0$, $3$ at $1$, and $6$ in the interior.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the criterion: for every nonzero unital separable C*-algebra and free ultrafilter, F_ω(A) has no character exactly when A is Z-stable.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "id": "295",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Vanishing-of-higher-bounded-Hochschild-cohomology-September-23-2026/paper.pdf",
+      "label": "Vanishing of higher bounded Hochschild cohomology"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/295.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves bounded Hochschild cohomology of von Neumann algebras vanishes in degrees two and up, settling Kadison–Ringrose.",
+  "scope": "Bounded multilinear Hochschild cocycles of degree at least two on any complex von Neumann algebra, with values in the algebra itself.",
+  "plain": "A von Neumann algebra is a family of operators closed under sums, products and a strong kind of limit. A cocycle is a multi-input map that satisfies a fixed cancellation rule, and the easy ones come from simpler maps one level down. Kadison and Ringrose conjectured that every bounded cocycle is one of the easy ones. Degree one was settled in 1966 by Kadison and Sakai. This paper proves every higher degree, with no extra conditions on the algebra, and Lean checks it.",
+  "doesNot": "This does not reprove the degree-one inner-derivation theorem; it relies on that earlier result for degree one.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1967",
+    "firstStepBy": "The self-coefficient cohomology question, which Sinclair and Smith trace to 1967; Kadison and Ringrose developed the higher-degree theory",
+    "field": "Operator algebras",
+    "significance": "Landmark",
+    "significanceWhy": "It settles the Kadison–Ringrose cohomology conjecture for all von Neumann algebras, with a Lean check of the higher degrees."
+  },
+  "explanation": "Take 2-by-2 matrices and write e11, e12, e21 for the matrices with a single 1 in that position. Fix b = e11 and set D(a) = ab − ba. Then D(e12) = e12·e11 − e11·e12 = 0 − e12 = −e12. Also D(e21) = e21 and D(e11) = 0. Check the product rule D(xy) = xD(y) + D(x)y with x = e12 and y = e21. The left side is D(e11) = 0. The right side is e12·e21 − e12·e21 = e11 − e11 = 0. They agree.\n\nA map with that product rule is a derivation. The rule is the degree-one cocycle equation. A cocycle is a bounded map of k inputs whose Hochschild differential, a fixed alternating sum, is zero[3]. Bounded means it stretches inputs by at most a fixed factor. Cocycles of the form D(a) = ab − ba come from one element b, one degree lower. Such cocycles are called coboundaries, or inner when k = 1. Bounded Hochschild cohomology in degree k measures cocycles that are not coboundaries. When it is zero, every cocycle equation has a bounded solution one degree down.\n\nThe algebras here are von Neumann algebras: families of operators on a Hilbert space, closed under sums, products, adjoints and pointwise limits. Kadison and Sakai showed every derivation of such an algebra into itself is inner[4]. The Kadison–Ringrose conjecture asks the same in every degree[2]. Earlier work settled many cases: type I and hyperfinite algebras, algebras with a Cartan subalgebra, and factors with property Γ[5,6]. The obstacle was the general type II₁ case, with no extra structure to average over.\n\nA primitive is a map one degree lower whose differential is the cocycle. The paper proves every bounded cocycle of degree at least two has a bounded primitive[1]. It needs no separability or type restriction. The key step averages one input over a single random walk on the algebra's unitaries, the operators that preserve length[7]. Averaging gives a harmonic map, one equal to its own average. A new Liouville theorem shows such a map must have the simple form T(x) = T(1)x[8]. Together with the degree-one theorem, this settles the conjecture positively[9].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main theorem: every bounded cocycle of degree at least two has a bounded primitive. The degree-one theorem is outside that statement, but it is a 1966 result. So the paper proves the higher-degree theorem, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "Landmark-level claim with a Lean check of every degree from two up. Degree one rests on the 1966 Kadison–Sakai theorem. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Von Neumann algebra",
+      "meaning": "A family of operators on a Hilbert space closed under sums, products, adjoints and pointwise limits."
+    },
+    {
+      "term": "Derivation",
+      "meaning": "A linear map D with the product rule D(xy) = xD(y) + D(x)y."
+    },
+    {
+      "term": "Inner derivation",
+      "meaning": "A derivation of the form D(a) = ab − ba for one fixed element b."
+    },
+    {
+      "term": "Hochschild cocycle",
+      "meaning": "A map of k inputs whose Hochschild differential, a fixed alternating sum built from products, is zero."
+    },
+    {
+      "term": "Primitive",
+      "meaning": "A map g of one fewer input whose differential dg equals the given cocycle."
+    },
+    {
+      "term": "Bounded cohomology H_b^k",
+      "meaning": "The bounded degree-k cocycles modulo those with a bounded primitive; zero means every cocycle has one."
+    },
+    {
+      "term": "Type II₁",
+      "meaning": "A class of von Neumann algebras with a finite trace and no minimal projections; the hardest case here."
+    },
+    {
+      "term": "Unitary",
+      "meaning": "An operator U with U*U = UU* = 1, so it preserves lengths."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Vanishing of higher bounded Hochschild cohomology” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Vanishing-of-higher-bounded-Hochschild-cohomology-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 295",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/295.md",
+      "quote": "The degree-one inner-derivation theorem is outside this selected statement."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every bounded Hochschild cocycle of degree at least two on a complex von Neumann algebra, with values in itself, has a bounded primitive.",
+      "sourceLine": "We prove that every bounded Hochschild cocycle of degree at least two",
+      "sourceQuote": "We prove that every bounded Hochschild cocycle of degree at least two on a complex von Neumann algebra, with values in the algebra itself, has a bounded primitive.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Kadison–Ringrose conjecture asks whether H_b^k(M,M) = 0 for every complex von Neumann algebra and every positive k.",
+      "sourceLine": "The Kadison--Ringrose cohomology conjecture asks whether",
+      "sourceQuote": "The Kadison--Ringrose cohomology conjecture asks whether \\(H_b^k(M,M)=0\\) for every complex von Neumann algebra \\(M\\) and every positive integer \\(k\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The continuous Hochschild cohomology measures the obstruction to solving bounded cocycle equations.",
+      "sourceLine": "the obstruction to solving its bounded cocycle equations.",
+      "sourceQuote": "The continuous Hochschild cohomology of an operator algebra measures the obstruction to solving its bounded cocycle equations.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The degree-one equation is the derivation equation, and its vanishing is the inner-derivation theorem of Kadison and Sakai.",
+      "sourceLine": "the inner-derivation theorem of Kadison and",
+      "sourceQuote": "For a von Neumann algebra acting on itself by multiplication, the degree-one equation is the derivation equation, and its vanishing is the inner-derivation theorem of Kadison and Sakai~\\cite{Kadison1966,Sakai1966}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kadison and Ringrose proved vanishing for type I and hyperfinite von Neumann algebras.",
+      "sourceLine": "Kadison and Ringrose proved vanishing for type~I and hyperfinite von",
+      "sourceQuote": "Kadison and Ringrose proved vanishing for type~I and hyperfinite von Neumann algebras~\\cite[Theorem~4.4]{KadisonRingrose1971} \\cite[Theorem~3.1]{KadisonRingrose1971II}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Christensen, Pop, Sinclair, and Smith proved vanishing for all type II₁ factors with property Γ.",
+      "sourceLine": "Christensen, Pop, Sinclair, and Smith proved vanishing for all",
+      "sourceQuote": "Christensen, Pop, Sinclair, and Smith proved vanishing for all type~$\\mathrm{II}_1$ factors with property~$\\Gamma$, including nonseparable ones~\\cite[Theorem~7.2]{CPSS2003}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The module identity comes from averaging over a single unitary random walk.",
+      "sourceLine": "We obtain the needed module identity by averaging over a single",
+      "sourceQuote": "We obtain the needed module identity by averaging over a single unitary random walk.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A Liouville theorem makes the harmonic map commute with right multiplication.",
+      "sourceLine": "harmonic map; the main new input is a Liouville theorem that makes",
+      "sourceQuote": "Averaging one cocycle input first gives only a harmonic map; the main new input is a Liouville theorem that makes such a map commute with right multiplication.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Together with the inner-derivation theorem, the result resolves the conjecture positively.",
+      "sourceLine": "Together with the established degree-one",
+      "sourceQuote": "Together with the established degree-one inner-derivation theorem, this resolves the Kadison--Ringrose cohomology conjecture positively.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the vanishing of bounded Hochschild cohomology in every degree at least two; the degree-one inner-derivation theorem is outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
