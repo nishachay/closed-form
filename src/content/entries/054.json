@@ -1,0 +1,235 @@
+{
+  "id": "054",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Irrational-cubic-fourfolds-with-geometric-K3-categories-September-24-2026/Irrational-cubic-fourfolds-with-geometric-K3-categories-September-24-2026.pdf",
+      "label": "Irrational cubic fourfolds with geometric K3 categories"
+    }
+  ],
+  "headline": "Very general cubic fourfolds of large admissible discriminant are irrational despite a K3 derived category.",
+  "scope": "Very general smooth complex cubic fourfolds on Hassett divisors of every admissible discriminant above an ineffective threshold.",
+  "plain": "A cubic fourfold is a four-dimensional shape cut out by one cubic equation. Two well-known predictions link its rationality to K3 surfaces, through Hodge theory and through derived categories. This paper claims many cubic fourfolds have both K3 links and still are not rational. That would disprove Kuznetsov’s rationality conjecture and one direction of the associated-K3 prediction. The size threshold for the discriminant is not computed.",
+  "doesNot": "This does not compute the threshold, decide any specific discriminant, or settle stable rationality of these cubics.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2010",
+    "firstStepBy": "A. Kuznetsov, who stated the categorical rationality conjecture",
+    "significance": "Major",
+    "significanceWhy": "If correct, it disproves Kuznetsov’s conjecture and the sufficiency of the associated-K3 prediction for cubic fourfolds.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "A cubic fourfold is the set of solutions of one degree-three equation in six variables, viewed in projective space. An example is x₀³ + x₁³ + x₂³ + x₃³ + x₄³ + x₅³ = 0. A general cubic equation in six variables has 56 coefficients. Changes of coordinates use 36 numbers. So cubic fourfolds form a family with 20 free parameters. Each one is a four-dimensional complex shape.\n\nThe big question is rationality. A cubic fourfold is rational when it can be matched with ordinary four-dimensional projective space. The match is allowed to fail on smaller pieces. Algebraically, its field of rational functions is then a pure field in four variables[1]. Some cubic fourfolds are known to be rational. Beauville and Donagi proved this for sufficiently general Pfaffian cubics, a special kind[2]. Their proof linked the cubic to a K3 surface, a special type of complex surface.\n\nTwo predictions grew from such links. Hassett described special families of cubics, called Hassett divisors, labelled by a whole number d called the discriminant[3]. For admissible values of d, each such cubic has an associated K3 surface in a precise Hodge-theoretic sense. Admissible means d > 6 and d leaves remainder 0 or 2 on division by 6. A few divisibility rules must also hold. The admissible values below 100 are 14, 26, 38, 42, 62, 74, 78, 86 and 98. Kuznetsov gave a second prediction using the Kuznetsov component, a piece of the cubic’s derived category[4]. A derived category is an algebraic record of all sheaves on a space. His conjecture says the cubic is rational exactly when that piece matches the derived category of a K3 surface[4].\n\nEarlier work showed these two links agree on most of each admissible family[5]. Later work showed every cubic with an associated K3 has the K3 derived category[6]. Russo and Staglianò proved that whole divisors are rational for d = 26, 38 and 42[7]. So the predictions fit every known rational cubic.\n\nThis paper claims that both predictions fail. There is a threshold d₀ with the following property[8]. For every admissible d above it, a very general cubic in that family is not rational. Yet its Kuznetsov component matches the derived category of a K3 surface[8]. The same cubics also have an associated K3 surface in the Hodge-theoretic sense[9]. Very general means outside a countable union of smaller subfamilies[10]. The threshold d₀ is ineffective: the paper does not compute it[10].\n\nA second consequence uses the variety of lines on the cubic. Take d = 2n² + 2n + 2. Then the lines on a very general cubic form a shape matched to a K3 Hilbert square[11]. The Hilbert square parametrizes pairs of points on the surface. The first values are 14, 26, 42, 62 and 86, for n = 2 to 6. The paper claims this match also fails to force rationality once d is above the threshold[11].\n\nHow can one prove a shape is not rational? Suppose a matching map from projective space existed. The paper attaches one number to such a map. It counts certain K3 surfaces gained or lost along the way[12]. The same number is computed in two ways. Breaking the map into blowups along smooth centres gives the value 1. Breaking it into Sarkisov links, a different standard set of elementary steps, gives 0[13]. Both cannot hold, so no such map exists. The hard part is recognising the same K3 piece when it is later removed[14].\n\nThe paper also notes what this does not detect. These cubics pass the integral decomposition-of-the-diagonal test, a standard obstruction to rationality[15]. So that test cannot see their irrationality. The paper makes no claim about stable rationality, a weaker property[17]. Work by Katzarkov, Kontsevich, Pantev and Yu proved a very general cubic irrational in the full family. Their hypothesis does not cover a prescribed Hassett divisor[16].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The threshold is ineffective, so no specific irrational discriminant is named.",
+  "glossary": [
+    {
+      "term": "Cubic fourfold",
+      "meaning": "The four-dimensional set of solutions of one degree-three equation in six projective variables."
+    },
+    {
+      "term": "Rational",
+      "meaning": "Matchable with ordinary projective space of the same dimension, except on smaller pieces."
+    },
+    {
+      "term": "K3 surface",
+      "meaning": "A special type of compact complex surface that appears throughout this subject."
+    },
+    {
+      "term": "Hassett divisor",
+      "meaning": "A family of special cubic fourfolds labelled by a whole number called the discriminant."
+    },
+    {
+      "term": "Derived category",
+      "meaning": "An algebraic record of all sheaves on a space and the maps between them."
+    },
+    {
+      "term": "Kuznetsov component",
+      "meaning": "The piece of a cubic fourfold's derived category left after removing three standard line bundles."
+    },
+    {
+      "term": "Very general",
+      "meaning": "Lying outside a countable union of smaller subfamilies."
+    },
+    {
+      "term": "Ineffective",
+      "meaning": "Shown to exist without any computed value."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Irrational cubic fourfolds with geometric K3 categories”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Irrational-cubic-fourfolds-with-geometric-K3-categories-September-24-2026/Irrational-cubic-fourfolds-with-geometric-K3-categories-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "A. Beauville and R. Donagi, “La variété des droites d'une hypersurface cubique de dimension 4”, C. R. Acad. Sci. Paris 301 (1985), 703–706",
+      "url": "https://math.univ-cotedazur.fr/~beauvill/pubs/bd.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "B. Hassett, “Special cubic fourfolds”, Compositio Mathematica 120 (2000), 1–23",
+      "url": "https://doi.org/10.1023/A:1001706324425"
+    },
+    {
+      "id": 5,
+      "cite": "A. Kuznetsov, “Derived categories of cubic fourfolds”, in Cohomological and Geometric Approaches to Rationality Problems, Progress in Mathematics 282, Birkhäuser (2010), 219–243",
+      "url": "https://doi.org/10.1007/978-0-8176-4934-0_9"
+    },
+    {
+      "id": 6,
+      "cite": "N. Addington and R. P. Thomas, “Hodge theory and derived categories of cubic fourfolds”, Duke Mathematical Journal 163 (2014), 1885–1927",
+      "url": "https://doi.org/10.1215/00127094-2738639"
+    },
+    {
+      "id": 7,
+      "cite": "A. Bayer, M. Lahoz, E. Macrì, H. Nuer, A. Perry and P. Stellari, “Stability conditions in families”, Publ. Math. IHÉS 133 (2021), 157–325",
+      "url": "https://doi.org/10.1007/s10240-021-00124-6"
+    },
+    {
+      "id": 8,
+      "cite": "F. Russo and G. Staglianò, “Congruences of 5-secant conics and the rationality of some admissible cubic fourfolds”, Duke Mathematical Journal 168 (2019), 849–865",
+      "url": "https://doi.org/10.1215/00127094-2018-0053"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A cubic fourfold is rational if its function field is purely transcendental of degree four.",
+      "sourceLine": "is rational if its field of rational functions is",
+      "sourceQuote": "A smooth cubic fourfold \\(X\\subset\\mathbf P^5_{\\C}\\) is rational if its field of rational functions is a purely transcendental extension of \\(\\C\\) of transcendence degree four.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Beauville and Donagi proved sufficiently general Pfaffian cubics are rational.",
+      "sourceLine": "and proved that the cubic is rational",
+      "sourceQuote": "For sufficiently general Pfaffian cubics they identified \\(F(X)\\) with \\(S^{[2]}\\), the variety of length-two subschemes of a K3 surface \\(S\\), and proved that the cubic is rational \\cite[Propositions~1--2 and~5]{BeauvilleDonagi85}.",
+      "sourceId": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Hassett's theorems make C_d a nonempty irreducible divisor for admissible d and give associated polarized K3 surfaces.",
+      "sourceLine": "irreducible divisor for these discriminants and give its associated",
+      "sourceQuote": "Hassett's period and lattice theorems make \\(\\mathcal C_d\\) a nonempty irreducible divisor for these discriminants and give its associated polarized K3 surfaces \\cite[Theorems~1.0.1 and~1.0.2]{Hassett00}.",
+      "sourceId": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kuznetsov's conjecture: X rational iff Ku(X) is equivalent to the derived category of a projective K3 surface.",
+      "sourceLine": "Kuznetsov's rationality conjecture asserts that",
+      "sourceQuote": "Kuznetsov's rationality conjecture asserts that \\(X\\) is rational if and only if \\(\\Ku(X)\\) is equivalent to the derived category of a projective K3 surface \\cite[Conjecture~1.1]{Kuznetsov10}.",
+      "sourceId": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "Addington and Thomas proved the Hodge-theoretic and categorical associations agree on a dense open subset of each admissible divisor.",
+      "sourceLine": "proved that the Hodge-theoretic and categorical K3 associations agree on a dense open",
+      "sourceQuote": "Addington and Thomas proved that the Hodge-theoretic and categorical K3 associations agree on a dense open subset of each admissible divisor \\cite[Theorem~1.1]{AddingtonThomas14}.",
+      "sourceId": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Stability-condition work gives an ordinary K3 derived category for every cubic with an associated K3.",
+      "sourceLine": "gives an ordinary K3 derived category for every cubic having an associated K3 surface",
+      "sourceQuote": "The construction of stability conditions by Bayer, Lahoz, Macr\\`i and Stellari \\cite[Theorem~1.2]{BLMS23}, together with the theory in families of Bayer, Lahoz, Macr\\`i, Nuer, Perry and Stellari, gives an ordinary K3 derived category for every cubic having an associated K3 surface \\cite[Corollary~29.7]{BLMPNS21}.",
+      "sourceId": 7,
+      "verdict": "supported"
+    },
+    {
+      "text": "Russo and Staglianò proved rationality throughout C_26, C_38 and C_42.",
+      "sourceLine": "proved rationality throughout",
+      "sourceQuote": "Some Hassett divisors consist entirely of rational cubics: Russo and Staglian\\`o proved rationality throughout \\(\\mathcal C_{26}\\) and \\(\\mathcal C_{38}\\) using congruences of five-secant conics \\cite[Theorems~4 and~7]{RussoStagliano19}, and throughout \\(\\mathcal C_{42}\\) using trisecant flops \\cite[Theorem~5.12]{RussoStagliano23}.",
+      "sourceId": 8,
+      "verdict": "supported"
+    },
+    {
+      "text": "There is d₀ such that for admissible d > d₀ a very general cubic in C_d is irrational with Ku(X) ≃ D^b(S).",
+      "sourceLine": "There is an integer … such that, for every admissible",
+      "sourceQuote": "There is an integer \\(d_0\\) such that, for every admissible \\(d>d_0\\), a very general cubic fourfold \\(X\\) in \\(\\mathcal C_d\\) is irrational and admits an exact \\(\\C\\)-linear equivalence \\[ \\Ku(X)\\simeq D^b(\\operatorname{Coh}S) \\] for a smooth projective K3 surface \\(S\\).",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The same cubics have associated untwisted polarized K3 surfaces, so associated-K3 sufficiency fails.",
+      "sourceLine": "Thus an associated untwisted polarized K3 surface in this Hodge-theoretic sense is not sufficient for rationality.",
+      "sourceQuote": "Thus an associated untwisted polarized K3 surface in this Hodge-theoretic sense is not sufficient for rationality.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The threshold d₀ is ineffective; very general means outside a countable union of proper closed subsets.",
+      "sourceLine": "is ineffective. Some Hassett divisors consist",
+      "sourceQuote": "The threshold \\(d_0\\) is ineffective. Some Hassett divisors consist entirely of rational cubics: Russo and Staglian\\`o proved rationality throughout \\(\\mathcal C_{26}\\) and \\(\\mathcal C_{38}\\) using congruences of five-secant conics \\cite[Theorems~4 and~7]{RussoStagliano19}, and throughout \\(\\mathcal C_{42}\\) using trisecant flops \\cite[Theorem~5.12]{RussoStagliano23}.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "For d = 2n²+2n+2 > d₀, F(X) is birational to a K3 Hilbert square yet X is irrational.",
+      "sourceLine": "Thus birationality of … to a K3 Hilbert square is not sufficient for rationality of",
+      "sourceQuote": "There are infinitely many such discriminants. Thus birationality of \\(F(X)\\) to a K3 Hilbert square is not sufficient for rationality of \\(X\\).",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The invariant c_u(f) counts prime divisors acquired and lost, weighted by u.",
+      "sourceLine": "by counting the prime divisors acquired by the target with positive sign and those lost from the source with negative sign",
+      "sourceQuote": "Section~\\ref{pre:section} defines \\(c_u(f)\\) by counting the prime divisors acquired by the target with positive sign and those lost from the source with negative sign, each weighted by \\(u\\).",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The two evaluations give c_u(f) = 1 and c_u(f) = 0, a contradiction.",
+      "sourceLine": "The contradiction proves the irrationality criterion with one threshold",
+      "sourceQuote": "The contradiction proves the irrationality criterion with one threshold for all the lattice data in its statement.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The difficulty is to recognize the same summand on blowdown.",
+      "sourceLine": "The difficulty is to recognize that same summand on blowdown.",
+      "sourceQuote": "The difficulty is to recognize that same summand on blowdown.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The decomposition-of-the-diagonal obstruction does not detect these examples; no assertion about stable rationality is made.",
+      "sourceLine": "thus the decomposition-of-the-diagonal obstruction does not detect the irrationality of these examples.",
+      "sourceQuote": "The asserted identity is an integral Chow-theoretic decomposition, not merely a rational cohomological decomposition; thus the decomposition-of-the-diagonal obstruction does not detect the irrationality of these examples.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "KKPY's very-general hypothesis does not cover a prescribed Hassett divisor.",
+      "sourceLine": "Their very-general hypothesis does not cover a prescribed Hassett divisor.",
+      "sourceQuote": "Their very-general hypothesis does not cover a prescribed Hassett divisor.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "No assertion about stable rationality is made.",
+      "sourceLine": "No assertion about stable rationality is made.",
+      "sourceQuote": "No assertion about stable rationality is made.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

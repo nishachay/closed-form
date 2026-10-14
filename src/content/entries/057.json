@@ -1,0 +1,253 @@
+{
+  "id": "057",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-abelianity-conjecture-for-special-compact-Kahler-manifolds-September-23-2026/paper.pdf",
+      "label": "The abelianity conjecture for special compact Kähler manifolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Two-step-monodromy-of-special-quasi-projective-varieties-September-24-2026/paper.pdf",
+      "label": "Two-step monodromy of special quasi-projective varieties"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-conditional-abelianity-theorem-for-special-fourfold-pairs-with-a-half-weight-divisor-October-5-2026/main.pdf",
+      "label": "A conditional abelianity theorem for special fourfold pairs with a half-weight divisor"
+    }
+  ],
+  "headline": "Special compact Kähler manifolds claim virtually abelian fundamental groups in every dimension, as Campana predicted.",
+  "scope": "Special compact Kähler manifolds of any dimension; linear images for special quasi-projective varieties; one class of fourfold root orbifolds.",
+  "plain": "The fundamental group of a space records its loops. Campana predicted that special compact Kähler manifolds have fundamental groups that are abelian after a finite cover. The first paper claims to prove this in every dimension. A second paper claims that, for open special varieties, matrix images are nilpotent of class at most two. A third paper uses the first to treat certain four-dimensional orbifolds.",
+  "doesNot": "This does not bound the index of the abelian subgroup or cover orbifolds beyond the one-divisor fourfold case.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "F. Campana, who introduced special varieties and their framework",
+    "significance": "Major",
+    "significanceWhy": "If correct, it settles a central prediction of Campana’s classification program in every dimension.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Take a closed curve of genus g, with B points removed. Count 2g − 2 + B. For a smooth curve, specialness means this count is at most zero[13]. A doughnut-shaped elliptic curve has g = 1 and B = 0, so the count is 0. It is special. The sphere with two points removed gives −2 + 2 = 0, also special. The sphere with three points removed gives −2 + 3 = 1. It is not special[13].\n\nNow look at loops. The fundamental group of a space records the loops in it, up to deformation, with joining loops as the operation. For the doughnut it is pairs of whole numbers, and the order of joining does not matter. Such a group is abelian. For a curve with two or more holes, the group is far from abelian. So, among closed curves, special shapes have abelian loop groups.\n\nCampana’s abelianity conjecture predicts this pattern in every dimension. A special compact Kähler manifold should have a fundamental group that becomes abelian after passing to a finite unramified cover[1]. Such a group is called virtually abelian. Here special means, roughly, that no holomorphic forms detect a map onto a base of general type[2]. A compact Kähler manifold is a compact complex space with a compatible way to measure lengths.\n\nThe first paper claims to prove the conjecture in every dimension[3]. The claim covers the whole fundamental group. It needs no assumption of linearity, residual finiteness, projectivity or a particular Kodaira dimension[4]. The finite index may depend on the manifold[4]. One consequence covers Kodaira dimension zero, a standard class that includes Calabi–Yau manifolds. Campana had shown such manifolds are special. So their fundamental groups are virtually abelian[5].\n\nWhat was known before? Campana and Claudon proved the conjecture for compact Kähler threefolds[6]. For manifolds with zero first Chern class, Beauville’s decomposition already gave the answer[7]. Results on linear quotients were also known. But an infinite group need not have an infinite linear image[8]. A linear image means a copy of the group acting by matrices. Controlling those leftover quotients is the key obstacle for a claim about the whole group[8]. The paper’s new step gets enough positivity from holomorphic tensors with values in infinite-dimensional Hilbert spaces[9].\n\nThe second paper moves to open, non-compact varieties. There, nonabelian groups of a mild kind can appear. Take the Heisenberg group of 3 × 3 upper-triangular whole-number matrices with ones on the diagonal. Let a have a 1 in the top middle, and b a 1 at the right of the middle row. Their commutator, a b a⁻¹ b⁻¹, has a single 1 in the top-right corner. That commutator commutes with both a and b. A group where every commutator commutes with everything has nilpotency class at most two[10].\n\nThe second paper claims an independent proof about such groups. Take a smooth special quasi-projective variety. Every complex matrix image of its fundamental group is virtually of class at most two[11]. Cao, Deng, Hacon and Păun announced this conclusion first, and the paper gives them priority[12]. The bound is optimal. An earlier example has a Heisenberg-type group that is not virtually abelian[14].\n\nThe third paper treats a root orbifold. This is a fourfold X with one smooth divisor D counted with weight one half. The paper claims virtual abelianity of the full orbifold fundamental group when this orbifold is special[15]. It is conditional: it assumes the first paper’s theorem[16]. It builds a special eightfold whose fundamental group maps onto the needed group[17].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. The third paper depends on the first. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The orbifold result is conditional on the first paper, and the linear-image result was announced earlier by other authors.",
+  "glossary": [
+    {
+      "term": "Fundamental group",
+      "meaning": "The group of loops in a space, up to deformation, with joining loops as the operation."
+    },
+    {
+      "term": "Abelian",
+      "meaning": "A group in which the order of combining two elements never matters."
+    },
+    {
+      "term": "Virtually abelian",
+      "meaning": "Having an abelian subgroup of finite index, or abelian after a finite cover."
+    },
+    {
+      "term": "Special",
+      "meaning": "Having no holomorphic forms that detect a map onto a base of general type."
+    },
+    {
+      "term": "Compact Kähler manifold",
+      "meaning": "A compact complex manifold with a compatible way to measure lengths and areas."
+    },
+    {
+      "term": "Nilpotency class two",
+      "meaning": "A group property: every commutator commutes with every element."
+    },
+    {
+      "term": "Root orbifold",
+      "meaning": "A space in which a chosen divisor is counted with a fractional weight, here one half."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The abelianity conjecture for special compact Kähler manifolds”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-abelianity-conjecture-for-special-compact-Kahler-manifolds-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Two-step monodromy of special quasi-projective varieties”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Two-step-monodromy-of-special-quasi-projective-varieties-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “A conditional abelianity theorem for special fourfold pairs with a half-weight divisor”, openai/math preprint (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-conditional-abelianity-theorem-for-special-fourfold-pairs-with-a-half-weight-divisor-October-5-2026/main.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 5,
+      "cite": "F. Campana, “Orbifolds, special varieties and classification theory”, Annales de l'Institut Fourier 54 (2004), 499–630",
+      "url": "https://doi.org/10.5802/aif.2027"
+    },
+    {
+      "id": 6,
+      "cite": "B. Claudon and A. Höring, “Compact Kähler manifolds with compactifiable universal cover”, with an appendix by F. Campana, Bull. Soc. Math. France 141 (2013), 355–375",
+      "url": "https://doi.org/10.24033/bsmf.2651"
+    },
+    {
+      "id": 7,
+      "cite": "F. Campana and B. Claudon, “Abelianity conjecture for special compact Kähler 3-folds”, Proc. Edinburgh Math. Soc. 57 (2014), 55–78",
+      "url": "https://doi.org/10.1017/S0013091513000849"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The fundamental group of a special compact Kähler manifold should become abelian after a finite unramified cover.",
+      "sourceLine": "the fundamental group of a special compact K\\\"ahler manifold should become abelian",
+      "paper": 1,
+      "sourceId": 6,
+      "verdict": "supported",
+      "sourceQuote": "One of the program's central predictions is topological: the fundamental group of a special compact K\\\"ahler manifold should become abelian after passage to a finite unramified cover \\cite[Conjecture~A.1]{ClaudonHoring2013}."
+    },
+    {
+      "text": "Specialness records the absence of differential forms that would detect a base of general type.",
+      "sourceLine": "Specialness records the absence of differential forms that would detect such a base.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Specialness records the absence of differential forms that would detect such a base."
+    },
+    {
+      "text": "If X is special then π1(X) has an abelian subgroup of finite index.",
+      "sourceLine": "This is a positive resolution of the conjecture in the compact",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "This is a positive resolution of the conjecture in the compact K\\\"ahler setting."
+    },
+    {
+      "text": "The conclusion concerns the whole group and needs no linearity, residual finiteness, projectivity or Kodaira dimension; the index may depend on X.",
+      "sourceLine": "It requires no linearity, residual finiteness, projectivity, or prescribed Kodaira dimension.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "It requires no linearity, residual finiteness, projectivity, or prescribed Kodaira dimension."
+    },
+    {
+      "text": "Compact Kähler manifolds of Kodaira dimension zero are special, so their fundamental groups are virtually abelian.",
+      "sourceLine": "group … is virtually abelian.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Then its ordinary topological fundamental group \\(\\pi_1(X)\\) is virtually abelian."
+    },
+    {
+      "text": "Campana–Claudon proved the abelianity conjecture for compact Kähler threefolds.",
+      "sourceLine": "An important advance for the full group was the proof of the abelianity conjecture for compact",
+      "paper": 1,
+      "sourceId": 7,
+      "verdict": "supported",
+      "sourceQuote": "An important advance for the full group was the proof of the abelianity conjecture for compact K\\\"ahler threefolds by Campana--Claudon \\cite[Theorem~1.1]{CampanaClaudonThreefolds}, using the geometry of orbifold surfaces."
+    },
+    {
+      "text": "For c1 = 0, Beauville's decomposition gives virtual abelianity.",
+      "sourceLine": "and therefore gives virtual abelianity in that case",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "A classical predecessor is the case \\(c_1(X)=0\\) in real cohomology: Beauville's decomposition gives a finite \\'etale cover that is a product of a complex torus and simply connected factors, and therefore gives virtual abelianity in that case \\cite[Section~5, Theorem~2]{Beauville1983}."
+    },
+    {
+      "text": "An infinite group need not have an infinite linear image; controlling the remaining quotients is essential.",
+      "sourceLine": "An infinite group, however, need not have an infinite finite-dimensional complex linear image.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "An infinite group, however, need not have an infinite finite-dimensional complex linear image."
+    },
+    {
+      "text": "The task is to obtain sufficient positivity from tensors with unitary Hilbert space coefficients.",
+      "sourceLine": "from tensors with unitary Hilbert space coefficients",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The task here is to obtain sufficient \\emph{positivity} from tensors with unitary Hilbert space coefficients."
+    },
+    {
+      "text": "Nilpotency class at most two means every commutator is central.",
+      "sourceLine": "equivalently if every commutator is central",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "It has \\emph{nilpotency class at most two} if $\\gamma_3G=1$, equivalently if every commutator is central."
+    },
+    {
+      "text": "Every complex linear representation of π1 of a smooth special quasi-projective variety has virtually class-two nilpotent image.",
+      "sourceLine": "We give an independent proof that every complex linear representation",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "We give an independent proof that every complex linear representation of the ordinary fundamental group of a connected smooth special complex quasi-projective variety has virtually nilpotent image of class at most two."
+    },
+    {
+      "text": "Cao–Deng–Hacon–Păun announced the sharp class-two conclusion; priority belongs to their work.",
+      "sourceLine": "Priority for that conclusion belongs to their work.",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "Priority for that conclusion belongs to their work."
+    },
+    {
+      "text": "For a smooth curve, specialness is equivalent to 2g − 2 + #B ≤ 0; elliptic curves are special, a line with three punctures is not.",
+      "sourceLine": "Thus elliptic curves are special, whereas a projective line with",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "Thus elliptic curves are special, whereas a projective line with at least three punctures is not."
+    },
+    {
+      "text": "The bound is optimal: a special surface has a two-step nilpotent group that is not virtually abelian.",
+      "sourceLine": "The bound is optimal.",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "The bound is optimal."
+    },
+    {
+      "text": "Virtual abelianity of the orbifold fundamental group of the special order-two root orbifold of (X, D/2), X a smooth projective fourfold.",
+      "sourceLine": "We give a conditional resolution of the case consisting of a smooth projective fourfold and one smooth divisor of multiplicity two.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "We give a conditional resolution of the case consisting of a smooth projective fourfold and one smooth divisor of multiplicity two."
+    },
+    {
+      "text": "The theorem assumes the manifold abelianity theorem of the companion paper.",
+      "sourceLine": "Using the abelianity theorem for special compact",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "Using the abelianity theorem for special compact K\\\"ahler manifolds in every dimension, we prove virtual abelianity of the entire orbifold fundamental group of the special order-two root orbifold associated with a pair $(X,\\tfrac12D)$, where $X$ is a smooth projective fourfold and $D$ is a nonempty smooth connected divisor."
+    },
+    {
+      "text": "A special smooth projective eightfold has fundamental group surjecting onto the required group.",
+      "sourceLine": "We construct a special smooth projective eightfold whose fundamental group surjects onto the required group.",
+      "paper": 3,
+      "verdict": "supported",
+      "sourceId": 3,
+      "sourceQuote": "We construct a special smooth projective eightfold whose fundamental group surjects onto the required group."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

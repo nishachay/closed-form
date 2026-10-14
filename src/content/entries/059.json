@@ -1,0 +1,227 @@
+{
+  "id": "059",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ambiently-homeomorphic-isolated-hypersurfaces-of-multiplicities-two-and-three-September-24-2026/paper.pdf",
+      "label": "Ambiently homeomorphic isolated hypersurfaces of multiplicities two and three"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ambiently-homeomorphic-isolated-hypersurface-germs-in-C4-with-multiplicities-four-and-five-September-27-2026/paper.pdf",
+      "label": "Ambiently homeomorphic isolated hypersurface germs in ℂ⁴ with multiplicities four and five"
+    }
+  ],
+  "headline": "Two hypersurface germs with the same embedded topology but different multiplicities, against Zariski’s 1971 question.",
+  "scope": "Isolated hypersurface singularities: multiplicities 2 and 3 in a dimension divisible by eight; 4 and 5 in four variables.",
+  "plain": "The multiplicity of a singular point is the lowest degree of the equation there. In 1971, Zariski asked whether the shape’s topology near the point always determines that number. The first paper claims two equations with multiplicities two and three whose zero sets are topologically the same. The second claims a pair with multiplicities four and five in four complex variables. Three variables are not covered.",
+  "doesNot": "This does not settle Zariski’s question in three complex variables, and it does not address families of germs.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "O. Zariski, who posed the multiplicity question",
+    "significance": "Major",
+    "significanceWhy": "If correct, it answers a well-known 1971 question negatively, down to four variables.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Take the polynomial h = T(X − T²)(X − 2T²) in two variables. Multiply it out and you get TX² − 3XT³ + 2T⁵. The terms have total degrees 3, 4 and 5. The lowest is 3, so the multiplicity of h at the origin is 3. The multiplicity is the least total degree of a term that actually appears. It counts how many sheets of the shape h = 0 meet at the origin. Here the three factors give three smooth sheets. The second paper starts its construction from exactly this curve[2].\n\nNow look at the same shape with topology instead. A homeomorphism is a continuous deformation with a continuous inverse. It may stretch and bend, but it may not tear. A germ is a shape seen only near the origin. Two germs are ambiently homeomorphic when a deformation of the surrounding space carries one onto the other. Zariski asked in 1971 whether this embedded topology always determines the multiplicity[1].\n\nFor curves in the plane, the answer is yes[3]. In every dimension, a germ that is ambiently homeomorphic to a smooth one is itself smooth. That is the A’Campo–Lê theorem[4]. So multiplicity one can never pair with a larger multiplicity[4]. Many other partial results needed extra assumptions. Some kept a continuous family with a fixed Milnor number, a count of the holes in a nearby smooth slice[5]. Others assumed metric or contact structure, or few variables[6].\n\nThe first paper claims a negative answer. It builds two polynomial germs in N complex variables, where N is a multiple of eight and larger than 3[15]. One has multiplicity 2 and the other has multiplicity 3[7]. Both have an isolated critical point at the origin, meaning all partial derivatives vanish together only there[15]. Yet the two zero sets are ambiently homeomorphic[7]. The paper fixes N by exact arithmetic but does not try to make it small[8]. The same pair also answers Arnold’s corank question negatively for ambient topology[9]. The corank is the number of variables minus the rank of the matrix of second derivatives.\n\nThe second paper brings the dimension down to four variables. It builds two germs in four complex variables with isolated critical points[10]. One has multiplicity 4 and the other multiplicity 5. Their zero sets are again ambiently homeomorphic[10]. The paper says its argument is independent of the first, with a different dimension and equation format[11]. The case of three variables remains open in both papers[11].\n\nWhy was this hard? Topology is usually read from the Milnor fibre, a smooth nearby slice of the shape. Its holes carry an integer pairing called the Seifert form, which records how cycles link. In high dimensions this form decides the embedded topology. Multiplicity, by contrast, is read directly from the lowest-degree terms of an equation[12]. The main difficulty is to keep the two different lowest degrees while making the integer Seifert forms match exactly[13]. Matching rational spectra is not enough. The integer forms must be identified[13].\n\nFamilies cannot do this. The theorem of Fernández de Bobadilla and Pełka says multiplicity is constant along continuous families with constant Milnor number. So these germs cannot be joined by such a family[14].\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Major only if the proofs hold. No Lean formalization is listed and no specialist review is published. The three-variable case remains open.",
+  "glossary": [
+    {
+      "term": "Multiplicity",
+      "meaning": "The lowest total degree of a term in the equation of a shape at a point."
+    },
+    {
+      "term": "Germ",
+      "meaning": "A shape considered only in a small neighbourhood of a point."
+    },
+    {
+      "term": "Ambiently homeomorphic",
+      "meaning": "Related by a continuous, reversible deformation of the surrounding space that carries one shape to the other."
+    },
+    {
+      "term": "Isolated critical point",
+      "meaning": "A point where all partial derivatives vanish together, with no other such points nearby."
+    },
+    {
+      "term": "Milnor fibre",
+      "meaning": "A smooth nearby slice of a singular shape, used to study its topology."
+    },
+    {
+      "term": "Seifert form",
+      "meaning": "An integer pairing on the holes of the Milnor fibre that records how cycles link."
+    },
+    {
+      "term": "Corank",
+      "meaning": "The number of variables minus the rank of the matrix of second derivatives at the point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Ambiently homeomorphic isolated hypersurfaces of multiplicities two and three”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ambiently-homeomorphic-isolated-hypersurfaces-of-multiplicities-two-and-three-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Ambiently homeomorphic isolated hypersurface germs in ℂ⁴ with multiplicities four and five”, openai/math preprint (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Ambiently-homeomorphic-isolated-hypersurface-germs-in-C4-with-multiplicities-four-and-five-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "O. Zariski, “Some open questions in the theory of singularities”, Bulletin of the AMS 77 (1971), 481–491",
+      "url": "https://doi.org/10.1090/S0002-9904-1971-12729-5"
+    },
+    {
+      "id": 5,
+      "cite": "N. A’Campo, “Le nombre de Lefschetz d'une monodromie”, Indagationes Mathematicae 76 (1973), 113–118",
+      "url": "https://doi.org/10.1016/1385-7258(73)90044-9"
+    },
+    {
+      "id": 6,
+      "cite": "Lê Dũng Tráng, “Calcul du nombre de cycles évanouissants d'une hypersurface complexe”, Annales de l'Institut Fourier 23 (1973), 261–270",
+      "url": "https://doi.org/10.5802/aif.491"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Zariski's question asks whether embedded topological equivalence determines multiplicity.",
+      "sourceLine": "Zariski's multiplicity question asks whether this embedded topological equivalence determines",
+      "paper": 1,
+      "sourceId": 4,
+      "verdict": "supported",
+      "sourceQuote": "Zariski's multiplicity question asks whether this embedded topological equivalence determines multiplicity~\\cite{Zariski1971}."
+    },
+    {
+      "text": "The construction starts from the plane curve h(X,T) = T(X − T²)(X − 2T²).",
+      "sourceLine": "The construction starts from the plane curve",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "The construction starts from the plane curve \\[ h(X,T)=T(X-T^2)(X-2T^2) \\] and two degree-four finite maps \\(\\pi_0,\\pi_1\\) obtained by projecting smooth graph surfaces to the \\((X,T)\\)-plane."
+    },
+    {
+      "text": "For an irreducible plane curve, embedded topology determines its multiplicity.",
+      "sourceLine": "For an irreducible plane curve, the classical relation between embedded",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "For an irreducible plane curve, the classical relation between embedded topology and the characteristic data of a branch determines its multiplicity~\\cite{Zariski1932}."
+    },
+    {
+      "text": "A'Campo–Lê: a reduced germ ambiently homeomorphic to a smooth one is smooth; multiplicity one cannot occur in an unequal pair.",
+      "sourceLine": "Thus multiplicity one cannot occur in an unequal-multiplicity pair.",
+      "paper": 1,
+      "sourceId": 5,
+      "verdict": "supported",
+      "sourceQuote": "Thus multiplicity one cannot occur in an unequal-multiplicity pair."
+    },
+    {
+      "text": "Greuel and O'Shea, and Fernández de Bobadilla and Pełka, proved equimultiplicity for μ-constant families.",
+      "sourceLine": "Greuel and O'Shea proved equimultiplicity",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Greuel and O'Shea proved equimultiplicity for the corresponding deformation problem at an isolated quasihomogeneous singularity~\\cite{Greuel1986,OShea1987}."
+    },
+    {
+      "text": "Metric and low-dimensional hypotheses give further positive results.",
+      "sourceLine": "Metric and low-dimensional hypotheses give further positive results.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Metric and low-dimensional hypotheses give further positive results."
+    },
+    {
+      "text": "There is N > 3 divisible by eight and reduced weighted homogeneous f1, f2 with isolated critical points, orders 2 and 3, and ambiently homeomorphic zero sets.",
+      "sourceLine": "We construct two reduced hypersurface germs that are ambiently homeomorphic but have multiplicities two and three.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "We construct two reduced hypersurface germs that are ambiently homeomorphic but have multiplicities two and three."
+    },
+    {
+      "text": "The construction determines the dimension by exact integer arithmetic and does not minimize it.",
+      "sourceLine": "The construction determines such a dimension by exact integer arithmetic; it is not intended to minimize it.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The construction determines such a dimension by exact integer arithmetic; it is not intended to minimize it."
+    },
+    {
+      "text": "The examples answer Arnold's corank problem negatively.",
+      "sourceLine": "gives a negative answer, even for the isolated weighted homogeneous germs",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Corollary~\\ref{topo:arnold-corank} gives a negative answer, even for the isolated weighted homogeneous germs with real coefficients in Theorem~\\ref{thm:main}."
+    },
+    {
+      "text": "There are reduced convergent germs on C^4 with isolated critical points, orders 4 and 5, and ambiently homeomorphic zero sets.",
+      "sourceLine": "We answer Zariski's question negatively in four complex variables.",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "We answer Zariski's question negatively in four complex variables."
+    },
+    {
+      "text": "The two arguments are independent; the ambient three-variable case remains untreated.",
+      "sourceLine": "The ambient three-variable case remains untreated by either result.",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "The ambient three-variable case remains untreated by either result."
+    },
+    {
+      "text": "Multiplicity is read directly from the lowest-degree terms of an equation.",
+      "sourceLine": "Multiplicity, by contrast, is read directly from the lowest-degree terms of an equation.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Multiplicity, by contrast, is read directly from the lowest-degree terms of an equation."
+    },
+    {
+      "text": "The main difficulty is to preserve different orders while making the integral Seifert forms coincide; equal spectra are not enough.",
+      "sourceLine": "The main difficulty is to preserve different ordinary orders while",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "The main difficulty is to preserve different ordinary orders while making the \\emph{integral Seifert forms} coincide."
+    },
+    {
+      "text": "By the Fernández de Bobadilla–Pełka family theorem, the germs cannot be endpoints of a μ-constant path.",
+      "sourceLine": "therefore cannot be endpoints of such a path.",
+      "paper": 2,
+      "verdict": "supported",
+      "sourceId": 2,
+      "sourceQuote": "The germs of Theorem~\\ref{thm:main} therefore cannot be endpoints of such a path."
+    },
+    {
+      "text": "Both germs have isolated singularities and lie in a common complex affine space of dimension divisible by eight.",
+      "sourceLine": "Both have isolated singularities and lie in a common complex affine space of dimension divisible by eight.",
+      "paper": 1,
+      "verdict": "supported",
+      "sourceId": 1,
+      "sourceQuote": "Both have isolated singularities and lie in a common complex affine space of dimension divisible by eight."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

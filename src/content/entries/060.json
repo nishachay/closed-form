@@ -1,0 +1,217 @@
+{
+  "id": "060",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Spherical-Shells-on-Minimal-Surfaces-of-Class-VII-September-24-2026/paper.pdf",
+      "label": "Global Spherical Shells on Minimal Surfaces of Class VII"
+    }
+  ],
+  "headline": "Every minimal class VII surface with positive second Betti number contains a global spherical shell.",
+  "scope": "Connected minimal compact complex surfaces with first Betti number one, Kodaira dimension minus infinity, and positive second Betti number.",
+  "plain": "Class VII surfaces are compact complex surfaces that cannot carry a Kähler metric, and their classification has long been incomplete. A global spherical shell is a thin round piece of the punctured plane sitting inside such a surface. Nakamura’s program predicted that every minimal one with positive second Betti number contains such a shell. This paper claims to prove it. With Kato’s earlier work, that fixes these surfaces up to deformation.",
+  "doesNot": "This does not treat the case of second Betti number zero, which was already classified, or non-minimal surfaces.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1977",
+    "firstStepBy": "Ma. Kato, who introduced global spherical shells",
+    "significance": "Major",
+    "significanceWhy": "If correct, it completes the classification of minimal class VII surfaces up to deformation.",
+    "field": "Algebraic and complex geometry"
+  },
+  "explanation": "Take the complex plane of two variables with the origin removed. Shrink every point by half, z ↦ z/2, and treat a point and its half as the same point. What remains is a primary Hopf surface, a compact quotient of the punctured plane by a contraction[10]. One piece of it is the shell of points with size between 1/2 and 1. Gluing its inner sphere to its outer sphere gives the whole surface. As a smooth shape it is a circle times a three-sphere.\n\nThat surface has first Betti number 1: it has one independent loop that cannot shrink. Its second Betti number b₂ is 0. Now blow up points on it, replacing each point by a sphere of directions. Each blowup raises b₂ by one. After b blowups the Euler characteristic is b. A circle times a three-sphere has Euler characteristic 0, and each blowup adds 1.\n\nSuch surfaces belong to class VII. A compact complex surface is of class VII when it has first Betti number 1 and Kodaira dimension −∞[1]. These surfaces are never Kähler, so many standard tools do not apply. The case b₂ = 0 is classified: such minimal surfaces are Hopf or Inoue surfaces[2]. Minimal means there is no sphere of self-intersection −1 that could be blown down.\n\nA global spherical shell is a copy of a thin neighbourhood of the unit three-sphere, sitting inside the surface. Its complement must be connected[14]. Kato introduced this structure in 1977[15]. In the Hopf example the round sphere of size 1 is such a shell. Nakamura’s classification program proposed that every minimal class VII surface with b₂ > 0 contains one[3].\n\nThis paper claims to prove that conjecture[4]. Every connected minimal class VII surface with positive second Betti number contains a global spherical shell[4]. By Kato’s earlier work, this fixes the shape of such a surface up to smooth deformation. The surface deforms to a primary Hopf surface blown up b₂ times, and its fundamental group is the whole numbers[5]. As a smooth shape it is a circle times a three-sphere, with b₂ reversed projective planes attached[5].\n\nEarlier work reduced the conjecture to finding curves. Enoki’s theorem handles surfaces with a nonzero effective divisor of square zero[6]. Otherwise, Dloussky, Oeljeklaus and Toma showed that b₂ rational curves force a shell[7]. A rational curve is a curve whose smoothing is a sphere. So the task became producing enough rational curves[8]. Teleman proved the conjecture for b₂ = 1 using gauge theory[9]. He also found a cycle of curves when b₂ = 2[9].\n\nThe obstacle is that the surface may show no curves at first. The paper works on the infinite cyclic cover, which unrolls the one essential loop into an infinite chain of copies. There it builds holomorphic sections and takes their zero sets. The danger is that a zero set might have open, non-compact pieces that never close up[11]. The paper rules these out with estimates on long thin cylinders[12]. It then counts the resulting compact rational curves downstairs, and finds exactly b₂ of them[13]. The criterion of Dloussky, Oeljeklaus and Toma then gives the shell[13].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The argument is long and analytic.",
+  "glossary": [
+    {
+      "term": "Class VII surface",
+      "meaning": "A compact complex surface with first Betti number one and Kodaira dimension minus infinity."
+    },
+    {
+      "term": "Betti number",
+      "meaning": "A count of independent holes of a given dimension in a shape."
+    },
+    {
+      "term": "Global spherical shell",
+      "meaning": "A copy of a thin neighbourhood of the unit three-sphere, inside the surface, with connected complement."
+    },
+    {
+      "term": "Hopf surface",
+      "meaning": "A compact quotient of the punctured complex plane by repeated shrinking."
+    },
+    {
+      "term": "Minimal",
+      "meaning": "Having no sphere of self-intersection minus one that could be blown down."
+    },
+    {
+      "term": "Rational curve",
+      "meaning": "A curve whose smoothing is a sphere."
+    },
+    {
+      "term": "Blowup",
+      "meaning": "Replacing a point by the sphere of all directions through it."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Global Spherical Shells on Minimal Surfaces of Class VII”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-Spherical-Shells-on-Minimal-Surfaces-of-Class-VII-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "Ma. Kato, “Compact complex manifolds containing ‘global’ spherical shells”, Proceedings of the Japan Academy 53 (1977), 15–16",
+      "url": "https://doi.org/10.3792/pja/1195517920"
+    },
+    {
+      "id": 4,
+      "cite": "I. Nakamura, “Classification of non-Kähler complex surfaces” (in Japanese), Sūgaku 36 (1984), 110–124",
+      "url": "https://doi.org/10.11429/sugaku1947.36.110"
+    },
+    {
+      "id": 5,
+      "cite": "I. Enoki, “Surfaces of class VII₀ with curves”, Tohoku Mathematical Journal 33 (1981), 453–492",
+      "url": "https://doi.org/10.2748/tmj/1178229349"
+    },
+    {
+      "id": 6,
+      "cite": "G. Dloussky, K. Oeljeklaus and M. Toma, “Class VII₀ surfaces with b₂ curves”, Tohoku Mathematical Journal 55 (2003), 283–309",
+      "url": "https://doi.org/10.2748/tmj/1113246942"
+    },
+    {
+      "id": 7,
+      "cite": "A. Teleman, “Donaldson theory on non-Kählerian surfaces and class VII surfaces with b₂ = 1”, Inventiones Mathematicae 162 (2005), 493–521",
+      "url": "https://doi.org/10.1007/s00222-005-0451-2"
+    },
+    {
+      "id": 8,
+      "cite": "A. Teleman, “Instantons and curves on class VII surfaces”, Annals of Mathematics 172 (2010), 1749–1804",
+      "url": "https://doi.org/10.4007/annals.2010.172.1749"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A compact complex surface is of class VII if b1 = 1 and Kodaira dimension is −∞.",
+      "sourceLine": "A compact complex surface is of",
+      "sourceQuote": "A compact complex surface is of \\emph{class VII} if its first Betti number is one and its Kodaira dimension is $-\\infty$.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The minimal b2 = 0 case is classified by Hopf and Inoue surfaces.",
+      "sourceLine": "leads to the classification by Hopf and Inoue surfaces",
+      "sourceQuote": "In the minimal case with $b_2=0$, work of Bogomolov, Li--Yau--Zheng, and Teleman leads to the classification by Hopf and Inoue surfaces \\cite{Bogomolov1976,LiYauZheng1994,Teleman1994}.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "A global spherical shell is a holomorphically embedded neighbourhood of the unit three-sphere with connected complement; Kato introduced it; Nakamura's program conjectures every minimal class VII surface with b2 > 0 contains one.",
+      "sourceLine": "Nakamura's classification program includes the",
+      "sourceQuote": "Nakamura's classification program includes the conjecture that every minimal class VII surface with positive second Betti number contains such a shell \\cite[Working Hypothesis~5.5]{Nakamura1984}; see also \\cite{Nakamura1989,Teleman2010}.",
+      "sourceId": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every connected minimal compact class VII surface with b2 > 0 contains a global spherical shell.",
+      "sourceLine": "We prove the Global Spherical Shell conjecture: every connected minimal",
+      "sourceQuote": "We prove the Global Spherical Shell conjecture: every connected minimal compact complex surface of class VII with positive second Betti number contains a global spherical shell.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "X deforms to a primary Hopf surface blown up b times; π1 ≅ Z and X ≅ (S¹×S³) # b CP²-bar.",
+      "sourceLine": "such that every nonzero fiber is obtained from a primary Hopf surface by",
+      "sourceQuote": "There is a small one-parameter deformation $\\mathcal X\\to\\Delta$ over a disk about $0$, with $\\mathcal X_0\\simeq X$, such that every nonzero fiber is obtained from a primary Hopf surface by exactly $b$ successive point blowups.",
+      "sourceId": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Enoki's theorem handles a nonzero effective divisor of square zero.",
+      "sourceLine": "Enoki's theorem handles the",
+      "sourceQuote": "Enoki's theorem handles the presence of a nonzero effective divisor of square zero \\cite{Enoki1981}.",
+      "sourceId": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "Dloussky, Oeljeklaus and Toma prove that b2 rational curves imply a global spherical shell.",
+      "sourceLine": "rational curves imply a global spherical shell",
+      "sourceQuote": "In the remaining case, Dloussky, Oeljeklaus, and Toma prove that $b_2(X)$ rational curves imply a global spherical shell \\cite{DOT2003}.",
+      "sourceId": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "These criteria shift the burden to producing sufficiently many rational curves.",
+      "sourceLine": "These criteria shift the burden to",
+      "sourceQuote": "These criteria shift the burden to producing sufficiently many rational curves on a surface whose intersection form is negative definite.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Teleman proved the conjecture for b2 = 1 and found a cycle of curves for b2 = 2.",
+      "sourceLine": "Teleman proved the shell conjecture for",
+      "sourceQuote": "Teleman proved the shell conjecture for $b_2=1$ and proved that a minimal class VII surface with $b_2=2$ contains a cycle of curves \\cite{Teleman2005,Teleman2010}.",
+      "sourceId": 8,
+      "verdict": "supported"
+    },
+    {
+      "text": "A primary Hopf surface is a compact quotient of C²∖{0} by a holomorphic contraction.",
+      "sourceLine": "is a compact quotient of",
+      "sourceQuote": "A primary Hopf surface is a compact quotient of $\\CC^2\\setminus\\{0\\}$ by the infinite cyclic group generated by a holomorphic contraction.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The divisor components are not yet known to be compact.",
+      "sourceLine": "are not yet known to be compact.",
+      "sourceQuote": "The components of $D$ are not yet known to be compact.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The uniform cylinder bound permits both applications that rule out open components.",
+      "sourceLine": "The uniform cylinder bound is what permits both applications.",
+      "sourceQuote": "The uniform cylinder bound is what permits both applications.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "The count gives exactly b2 rational curves; Dloussky–Oeljeklaus–Toma then supplies the shell.",
+      "sourceLine": "divisor has square zero, gives exactly",
+      "sourceQuote": "The resulting lower bound, together with the curve-class upper bound when no effective divisor has square zero, gives exactly $b_2(X)$ rational curves.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "A global spherical shell is a holomorphically embedded neighbourhood of the unit three-sphere in C²∖{0} with connected complement.",
+      "sourceLine": "in a complex surface is a holomorphically",
+      "sourceQuote": "A \\emph{global spherical shell} in a complex surface is a holomorphically embedded neighborhood of the unit three-sphere in $\\CC^2\\setminus\\{0\\}$ whose complement is connected.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "Kato introduced this structure.",
+      "sourceLine": "Kato introduced this structure",
+      "sourceQuote": "Kato introduced this structure \\cite{Kato1977}.",
+      "verdict": "supported",
+      "sourceId": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
