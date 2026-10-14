@@ -1,0 +1,170 @@
+{
+  "id": "257",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-hyperbolic-group-with-no-geometric-CAT0-action-September-25-2026/paper.pdf",
+      "label": "A hyperbolic group with no geometric CAT(0) action"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/257.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A hyperbolic group that cannot act geometrically on any CAT(0) space, in any dimension.",
+  "scope": "One word-hyperbolic group, the fundamental group of a finite aspherical complex. Lean covers the main obstruction; the two-dimensional claim and the no-locally-CAT(0)-metric claim are not included.",
+  "plain": "Hyperbolic groups behave like negatively curved spaces at large scales. Gromov looked for ways to realize each one by a space curved like that at every scale. This paper proves no, with a Lean formalization listed: it builds a hyperbolic group with no proper, cocompact action on any CAT(0) space. CAT(0) spaces have triangles at least as thin as flat ones.",
+  "doesNot": "This does not give an explicit size for the complex. Lean does not cover the two-dimensional claim or the locally CAT(0) metric claim.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "Mikhail Gromov, whose foundational theory linked linear filling with hyperbolicity",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "Whether every hyperbolic group acts geometrically on a CAT(0) or CAT(−1) space was a long-standing open problem."
+  },
+  "explanation": "Draw a square loop of side n on a flat grid of unit squares. Its length is 4n. To fill it you need n² unit squares. For n = 10 that is length 40 and area 100. For n = 100 it is length 400 and area 10,000. The area grows like the square of the length. Linear filling means any loop of length ℓ bounds a disk with at most Cℓ pieces, for a fixed C. Linear filling characterizes word-hyperbolic groups among finitely presented groups[2]. The flat grid is not hyperbolic.\n\nA CAT(0) space is a space whose geodesic triangles are at least as thin as flat triangles. CAT(−1) means at least as thin as triangles in the hyperbolic plane. A geometric action is proper, cocompact and by isometries[3]. Proper means a compact region meets only finitely many of its moved copies. Cocompact means finitely many moved copies of one compact piece cover the space. The question asked whether every hyperbolic group has a geometric action on a proper CAT(0) or CAT(−1) space[4].\n\nMany groups do. Free groups act on trees, and hyperbolic manifold groups act on hyperbolic space[5]. Random groups at density below 1/6 act on CAT(0) cube complexes[6]. Brady and Crisp found hyperbolic groups with no such action on a two-dimensional CAT(0) space[7]. Their obstruction depends on the target's dimension. The obstacle was to block every dimension at once.\n\nThe paper proves the full obstruction. It builds a finite connected aspherical complex K with linear filling[1]. Aspherical means its universal cover can shrink to a point. The group of loops in K is word-hyperbolic[14]. It has no geometric action on a proper complete CAT(0) space[8]. The relations come from a modified incidence graph of the projective plane over the two-element field[9]. That plane, the Fano plane, has 7 points and 7 lines, each line holding 3 points. Its incidence graph has 7 + 7 = 14 vertices and 7 × 3 = 21 edges. The relations are random but sparse, which keeps hyperbolicity. An energy argument then shows any action on a CAT(0) space would have a fixed point[10]. A geometric action of an infinite group cannot fix a point. The proof is an existence argument and gives no effective size for K[11].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the complex and its linear filling. It also covers hyperbolicity and the missing CAT(0) actions. It also excludes locally CAT(−1) metrics on equivalent finite complexes. The two-dimensional claim and the locally CAT(0) claim are not included. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds, and the main obstruction has a Lean formalization. Some stronger claims are not in the Lean note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Word-hyperbolic group",
+      "meaning": "A finitely generated group whose distance graph has thin triangles; equivalently, loops have linear filling area."
+    },
+    {
+      "term": "Linear isoperimetric inequality",
+      "meaning": "Every loop of length ℓ bounds a disk made of at most a constant times ℓ pieces."
+    },
+    {
+      "term": "CAT(0) space",
+      "meaning": "A space whose geodesic triangles are at least as thin as triangles in a flat plane."
+    },
+    {
+      "term": "Geometric action",
+      "meaning": "An action by isometries that is proper and cocompact."
+    },
+    {
+      "term": "Aspherical",
+      "meaning": "Having a universal cover that can be shrunk to a point."
+    },
+    {
+      "term": "Fano plane",
+      "meaning": "The projective plane over the two-element field, with 7 points and 7 lines of 3 points each."
+    },
+    {
+      "term": "Fixed point",
+      "meaning": "A point that every element of the group leaves in place."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A hyperbolic group with no geometric CAT(0) action” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-hyperbolic-group-with-no-geometric-CAT0-action-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 257",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/257.md",
+      "quote": "whose fundamental group is word-hyperbolic but admits no geometric action on a nonempty proper complete $\\mathrm{CAT}(0)$ space."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every combinatorial edge loop of length ℓ in the universal cover bounds a disk diagram with at most Cℓ triangular faces.",
+      "sourceLine": "Every combinatorial edge loop of length $\\ell$ in the universal cover of $K$ bounds a disk diagram with at most $C\\ell$ triangular faces.",
+      "sourceQuote": "Every combinatorial edge loop of length $\\ell$ in the universal cover of $K$ bounds a disk diagram with at most $C\\ell$ triangular faces.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For finitely presented groups, a linear isoperimetric inequality characterizes word hyperbolicity.",
+      "sourceLine": "for finitely presented groups, it characterizes word hyperbolicity.",
+      "sourceQuote": "A linear isoperimetric inequality is a large-scale expression of negative curvature: for finitely presented groups, it characterizes word hyperbolicity.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A geometric action is a proper, cocompact action by isometries.",
+      "sourceLine": "Throughout the paper, a \\emph{geometric action} is a proper, cocompact action by isometries",
+      "sourceQuote": "Throughout the paper, a \\emph{geometric action} is a proper, cocompact action by isometries, and metric models of finite complexes carry geodesic length metrics inducing the given complex topology.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The question asks whether every hyperbolic group acts geometrically on a proper CAT(0) or CAT(−1) space.",
+      "sourceLine": "The geometric realization question asks whether every hyperbolic group admits a geometric action on a proper $\\CAT(0)$ space, or on a proper $\\CAT(-1)$ space.",
+      "sourceQuote": "The geometric realization question asks whether every hyperbolic group admits a geometric action on a proper $\\CAT(0)$ space, or on a proper $\\CAT(-1)$ space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Free groups act on trees and closed hyperbolic manifold groups act on hyperbolic space.",
+      "sourceLine": "Finitely generated free groups act on trees and closed hyperbolic manifold groups act on hyperbolic space.",
+      "sourceQuote": "Finitely generated free groups act on trees and closed hyperbolic manifold groups act on hyperbolic space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Ollivier–Wise: random groups at density below 1/6 act freely and cocompactly on CAT(0) cube complexes.",
+      "sourceLine": "Ollivier--Wise prove that random groups in the density model at density less than $1/6$ act freely and cocompactly on $\\CAT(0)$ cube complexes",
+      "sourceQuote": "For example, Ollivier--Wise prove that random groups in the density model at density less than $1/6$ act freely and cocompactly on $\\CAT(0)$ cube complexes with probability tending to one as relator length grows, with the number of generators fixed~\\cite[Theorem~10.4]{OllivierWise2011}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Brady–Crisp construct hyperbolic groups of geometric dimension two with no proper action on a proper two-dimensional CAT(0) space.",
+      "sourceLine": "torsion-free hyperbolic groups of geometric dimension two which admit no proper isometric action on a proper two-dimensional $\\CAT(0)$ space.",
+      "sourceQuote": "Brady--Crisp~\\cite[Theorem~2]{BradyCrisp2007} construct infinitely many torsion-free hyperbolic groups of geometric dimension two which admit no proper isometric action on a proper two-dimensional $\\CAT(0)$ space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "π₁K is word-hyperbolic and admits no geometric action on a proper complete CAT(0) space.",
+      "sourceLine": "The group $\\pi_1K$ admits no geometric action on a proper complete $\\CAT(0)$ space.",
+      "sourceQuote": "The group $\\pi_1K$ admits no geometric action on a proper complete $\\CAT(0)$ space.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The relations use a fixed modification of the incidence graph of the projective plane over F₂.",
+      "sourceLine": "We organize the relations using a fixed modification of the incidence graph of the projective plane over $\\mathbb F_2$.",
+      "sourceQuote": "We organize the relations using a fixed modification of the incidence graph of the projective plane over $\\mathbb F_2$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Expansion in a finite graph can force a fixed point when the target satisfies a nonlinear spectral inequality.",
+      "sourceLine": "In this framework, expansion in a finite graph can force a fixed point when the target satisfies a suitable nonlinear spectral inequality.",
+      "sourceQuote": "In this framework, expansion in a finite graph can force a fixed point when the target satisfies a suitable nonlinear spectral inequality.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof is an existence argument and does not give an effective size for K.",
+      "sourceLine": "The proof is an existence argument and does not give an effective size for $K$.",
+      "sourceQuote": "The proof is an existence argument and does not give an effective size for $K$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes a finite aspherical complex with linear filling whose hyperbolic fundamental group has no geometric CAT(0) action.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "The group of loops in K is word-hyperbolic.",
+      "sourceLine": "is word-hyperbolic, and no finite",
+      "sourceQuote": "In particular, $\\pi_1K$ is word-hyperbolic, and no finite simplicial complex homotopy equivalent to $K$ admits a locally $\\CAT(0)$ geodesic length metric inducing its given topology.",
+      "verdict": "supported"
+    }
+  ]
+}

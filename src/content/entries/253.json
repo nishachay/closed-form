@@ -1,0 +1,170 @@
+{
+  "id": "253",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Infinite-Finitely-Presented-Simple-Amenable-Group-September-23-2026/paper.pdf",
+      "label": "An infinite finitely presented simple amenable group"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/253.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "One infinite group that is simple, amenable and described by finitely many rules at once.",
+  "scope": "Existence of one infinite, finitely presented, simple, amenable group. Lean covers the existence; the paper's later general claims across families are not included.",
+  "plain": "Three traits of infinite groups matter here. Finitely many rules describe them, they cannot be broken into smaller pieces, and they allow fair averages. Groups with the last two traits were known since 2013, but none with all three. This paper proves such a group exists, with a Lean formalization listed. The group moves pieces of polygons around inside a finite set of squares.",
+  "doesNot": "This does not bound the number of generators or rules, and Lean does not cover the general claims about central kernels and enlargements.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2013",
+    "firstStepBy": "Kate Juschenko and Nicolas Monod, whose work gave infinite finitely generated simple amenable groups",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "Whether a finitely presented infinite simple amenable group exists was a recorded open question in group theory."
+  },
+  "explanation": "Take the integers and the window D = {1, 2, …, 100}. Shift the window by 1. You get {2, …, 101}. The old and new windows differ in only two numbers: 1 and 101. So the change is 2 out of 100, or 2%. A longer window makes the share smaller. This is the Følner condition: for any finite set of moves and any ε > 0, some finite set D barely changes under each move. Groups with this property are called amenable. They allow fair averages.\n\nA group is simple when its only normal subgroups are the trivial group and the whole group[1]. A normal subgroup is one that conjugation by any element leaves unchanged. It is finitely presented when finitely many generators and rules describe it[1]. The question asked whether an infinite group can have all three properties together[2].\n\nPartial answers were known. Juschenko and Monod proved in 2013 that full groups of minimal Cantor systems are amenable[14]. With earlier work of Matui, this gave infinite finitely generated simple amenable groups[3]. Finite presentation was the property left out[4]. Matui showed the groups from minimal subshifts are not finitely presented[5]. There is a deeper reason. Those groups embed locally into finite groups, so a finitely presented one would be residually finite[6]. Residually finite means every nonidentity element survives in some finite image. An infinite simple group cannot be residually finite[6]. Any nontrivial map to a finite group would have to be injective, which is impossible for an infinite group.\n\nThe paper proves there is an infinite finitely presented simple amenable group[7]. The group is an alternating subgroup of a polygon exchange group on finitely many squares[8]. A polygon exchange cuts squares into polygons and slides the pieces by translations. The polygon edges lie on lines in four directions[9]. Their levels use the golden ratio τ = (1 + √5)/2 ≈ 1.618. The obstacle was amenability in two dimensions. Elek and Monod built a two-dimensional Cantor system whose full group contains a free group, which is not amenable[10]. Here, random polygon partitions that move almost unchanged under each generator give the averages[11]. A homology argument and a relation-propagation step give finite presentation.\n\nHow sure is this? A computer proof checker called Lean has a formal proof that there is one group that is infinite, finitely presented, simple and amenable. It does not include the paper's later general claims. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds, and the existence theorem has a Lean formalization. The general claims across families are not in the Lean note. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Amenable group",
+      "meaning": "A group with finite sets that barely change under each move; equivalently, it allows fair averages."
+    },
+    {
+      "term": "Følner condition",
+      "meaning": "For every finite set of moves and every ε, some finite set changes by less than an ε share under each move."
+    },
+    {
+      "term": "Simple group",
+      "meaning": "A nontrivial group whose only normal subgroups are the trivial group and itself."
+    },
+    {
+      "term": "Finitely presented",
+      "meaning": "Described by finitely many generators and finitely many defining rules."
+    },
+    {
+      "term": "Residually finite",
+      "meaning": "Every nonidentity element stays nonidentity in some finite image of the group."
+    },
+    {
+      "term": "Cantor system",
+      "meaning": "A continuous map acting on a Cantor set, a totally disconnected space like the infinite binary sequences."
+    },
+    {
+      "term": "Polygon exchange group",
+      "meaning": "A group of maps that cut regions into polygons and move each piece by a translation."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “An infinite finitely presented simple amenable group” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-Infinite-Finitely-Presented-Simple-Amenable-Group-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 253",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/253.md",
+      "quote": "The formalized result answers the existence question affirmatively: there is one group that is infinite, finitely presented, simple, and amenable."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Amenable is defined by the Følner condition; simple and finitely presented have their usual meanings.",
+      "sourceLine": "It is \\emph{simple} if its only normal subgroups are the trivial group and $G$, and \\emph{finitely presented} if",
+      "sourceQuote": "It is \\emph{simple} if its only normal subgroups are the trivial group and $G$, and \\emph{finitely presented} if $G\\cong F(S)/\\langle\\!\\langle R\\rangle\\!\\rangle$ for finite sets of generators $S$ and relator words $R$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The existence problem asks whether these three properties can hold together in an infinite group.",
+      "sourceLine": "We address the existence problem asking whether these three properties can hold together in an infinite group.",
+      "sourceQuote": "We address the existence problem asking whether these three properties can hold together in an infinite group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Juschenko and Monod proved amenability of full groups of minimal Cantor homeomorphisms; with earlier theory this gives infinite finitely generated simple amenable groups.",
+      "sourceLine": "Combined with this earlier structure theory, their Corollary~B gives infinite finitely generated simple amenable groups.",
+      "sourceQuote": "Combined with this earlier structure theory, their Corollary~B gives infinite finitely generated simple amenable groups.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Finite presentation is the obstruction left by those examples.",
+      "sourceLine": "Finite presentation is the obstruction left by those examples.",
+      "sourceQuote": "Finite presentation is the obstruction left by those examples.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Matui proved that the derived groups from minimal subshifts are not finitely presented.",
+      "sourceLine": "Matui proved that the derived groups arising from minimal subshifts are not finitely presented",
+      "sourceQuote": "Matui proved that the derived groups arising from minimal subshifts are not finitely presented \\cite[Theorem~5.7]{Matui2006}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A finitely presented locally embeddable group is residually finite, and an infinite simple group cannot be residually finite.",
+      "sourceLine": "An infinite simple group cannot be residually finite, since a nontrivial homomorphism from it to a finite group would be injective.",
+      "sourceQuote": "An infinite simple group cannot be residually finite, since a nontrivial homomorphism from it to a finite group would be injective.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There exists an infinite finitely presented simple amenable group.",
+      "sourceLine": "There exists an infinite finitely presented simple amenable group.",
+      "sourceQuote": "There exists an infinite finitely presented simple amenable group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The group is an alternating subgroup of a polygon exchange group on finitely many squares.",
+      "sourceLine": "The group will be an alternating subgroup of a polygon exchange group on a sufficiently large finite number of squares.",
+      "sourceQuote": "The group will be an alternating subgroup of a polygon exchange group on a sufficiently large finite number of squares.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The polygons have edges on level lines of x, y, y − λx, x − λy at levels in Z[τ].",
+      "sourceLine": "The polygons have edges on level lines of",
+      "sourceQuote": "The polygons have edges on level lines of \\[ x,\\quad y,\\quad y-\\lambda x,\\quad x-\\lambda y, \\] at levels in $\\OO=\\ZZ[\\tau]$, where $\\tau=(1+\\sqrt5)/2$ and $\\lambda$ is a sufficiently large power of $\\tau$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Elek and Monod constructed a free minimal Cantor Z²-action whose full group contains a nonabelian free group.",
+      "sourceLine": "Elek and Monod constructed a free minimal Cantor $\\ZZ^2$-action whose full group contains a nonabelian free group",
+      "sourceQuote": "Amenability does not follow from the rank of the acting group: Elek and Monod constructed a free minimal Cantor $\\ZZ^2$-action whose full group contains a nonabelian free group \\cite[Theorem~1]{ElekMonod2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Correlated random fields produce polygonal partitions; matching cells of the same shape gives almost-invariant measures.",
+      "sourceLine": "Matching cells of the same shape then yields almost-invariant measures on the exchange group.",
+      "sourceQuote": "Matching cells of the same shape then yields almost-invariant measures on the exchange group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes one group that is infinite, finitely presented, simple, and amenable in the Følner sense.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "Juschenko and Monod proved amenability of the full group of every minimal homeomorphism of a Cantor space.",
+      "sourceLine": "Juschenko and Monod then proved",
+      "sourceQuote": "Juschenko and Monod then proved amenability of the full group of every minimal homeomorphism of a Cantor space \\cite[Theorem~A]{JuschenkoMonod2013}.",
+      "verdict": "supported"
+    }
+  ]
+}

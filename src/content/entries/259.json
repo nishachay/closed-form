@@ -1,0 +1,154 @@
+{
+  "id": "259",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-group-without-fixed-price-October-5-2026/unequal-costs-rank-100-amalgam.pdf",
+      "label": "A group without fixed price"
+    }
+  ],
+  "headline": "Claims a finitely generated group with two free measure-preserving actions of different costs, so fixed price fails.",
+  "scope": "One explicit finitely generated group, an amalgam built from a free group of rank 100. The paper has no Lean formalization.",
+  "plain": "Let a group shuffle points of a space while keeping total size fixed. Cost asks how many connections, on average, you need to link each point to everything the group can reach from it. A long-standing question asked whether a group's cost is the same for all its free shuffles. This paper claims a group where two such shuffles have different costs. The gap it gives is extremely small.",
+  "doesNot": "This does not have a Lean formalization, and it does not say which groups do or do not have fixed price.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1995",
+    "firstStepBy": "Gilbert Levitt, who introduced the cost of a measure-preserving action",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "The fixed-price problem is a central open question in measured group theory, studied in Gaboriau's 2000 work on cost."
+  },
+  "explanation": "Picture a cloud of points, each with a few arrows to other points. A group moves the points around and keeps total size fixed. The orbit of a point is everywhere the group can send it. A graphing is a family of measure-preserving maps whose arrows connect every point to its whole orbit[1]. Its cost is the total size of the maps' domains[1]. The cost of the action is the smallest such total. For the integers acting freely, one arrow per point, sending each point to its shift, connects everything. So the cost is 1.\n\nAn action is essentially free when each nonidentity element fixes almost no points[2]. A group has fixed price when all its essentially free probability-preserving actions have the same cost[2]. Levitt introduced cost, and Gaboriau linked it to group theory[3]. Gaboriau showed free groups have fixed price equal to their rank[4]. Products of two infinite groups have fixed price one[5]. Whether every group has fixed price stayed open.\n\nThe paper builds one group. Start with the free group A on 100 letters, a and b₁ to b₉₉. Form the word w = a b₁ a b₂ ⋯ a b₉₉ a. Count the a's: 99 + 1 = 100, so a height map χ sends w to 100[6]. The group Γ glues A to a product with a new generator t, along the subgroup J made by the b's and w[6].\n\nThe paper claims two free actions with different costs. One is the Bernoulli shift: random labels at every group element, shifted by the group. Its cost is at least 1 + η[7,12]. The other adds a height in Z/MZ, a clock with M positions. Its cost is at most 1 + 99/M[7,13]. For M = 1000 the bound is 1 + 99/1000 = 1.099. Choosing M large enough makes the second cost smaller than the first[8]. So the general fixed-price assertion is false[8].\n\nThe gap is tiny. The paper sets K = e⁹⁶·96⁹⁹/95⁹⁵, about 1.13 × 10⁵⁰. It needs α < 1/200 and Kα³ < 1/2, with η = α/100[7]. So α must be below about 1.64 × 10⁻¹⁷, and η below about 1.64 × 10⁻¹⁹. The obstacle was the lower bound. The paper reduces it to finite permutation models[9]. Expansion then forces their ranks to exceed η times their size[10].\n\nHow sure is this? The paper has no Lean formalization. No specialist review has been published. This is a claim by the paper.",
+  "hypeCheck": "Major if it holds. It has no Lean formalization and no published specialist review, and the cost gap is extremely small.",
+  "glossary": [
+    {
+      "term": "Measure-preserving action",
+      "meaning": "A group moving points of a probability space so that every region keeps its size."
+    },
+    {
+      "term": "Orbit",
+      "meaning": "All the points a group can send a given point to."
+    },
+    {
+      "term": "Graphing",
+      "meaning": "A countable family of measure-preserving maps whose arrows link each point to its whole orbit."
+    },
+    {
+      "term": "Cost",
+      "meaning": "The least total size of the domains of a graphing that links every orbit."
+    },
+    {
+      "term": "Essentially free",
+      "meaning": "Each nonidentity group element fixes only a set of measure zero."
+    },
+    {
+      "term": "Fixed price",
+      "meaning": "All essentially free probability-preserving actions of the group have the same cost."
+    },
+    {
+      "term": "Bernoulli shift",
+      "meaning": "The action that shifts independent random labels attached to the group's elements."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A group without fixed price” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-group-without-fixed-price-October-5-2026/unequal-costs-rank-100-amalgam.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A graphing generates the orbit relation if paths in its maps connect related points; its cost is the sum of its domain measures.",
+      "sourceLine": "Its cost $C(\\mathcal E)$ is the sum of its domain measures;",
+      "sourceQuote": "Its cost $C(\\mathcal E)$ is the sum of its domain measures; $\\operatorname{Cost}(\\mathcal R)$ is the infimum of these sums over generating graphings.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A group has fixed price if all its essentially free p.m.p. actions have the same cost.",
+      "sourceLine": "A group has \\emph{fixed price} if all its essentially free probability-measure-preserving (p.m.p.) actions have the same cost.",
+      "sourceQuote": "A group has \\emph{fixed price} if all its essentially free probability-measure-preserving (p.m.p.) actions have the same cost.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Levitt introduced cost; Gaboriau developed its connections with group theory and the fixed-price problem.",
+      "sourceLine": "Gaboriau developed its connections with group theory and the fixed-price problem",
+      "sourceQuote": "Gaboriau developed its connections with group theory and the fixed-price problem \\cite{gaboriau-2000}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Free groups have fixed price equal to their rank.",
+      "sourceLine": "free groups have fixed price equal to their rank",
+      "sourceQuote": "His work shows, in particular, that free groups have fixed price equal to their rank, and establishes fixed price one for many groups with commuting or amenable structure.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Products of two infinite countable groups have fixed price one.",
+      "sourceLine": "include the fixed-price-one theorem for products of two infinite countable groups",
+      "sourceQuote": "Recent results include the fixed-price-one theorem for products of two infinite countable groups \\cite{khezeli-2026-v4}, metric and infinite-measure action criteria \\cite{bevilacqua-bowen-2025-v1}, and a criterion based on small product neighborhoods of finite subsets \\cite{slutsky-2026-v1}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Γ = A ∗_J (J × ⟨t⟩) with χ(a) = 1, χ(b_i) = χ(t) = 0 and χ(w) = 100.",
+      "sourceLine": "note that $\\chi(w)=100$.",
+      "sourceQuote": "The homomorphism $\\chi:\\Gamma\\to\\mathbb Z$ given by $\\chi(a)=1$ and $\\chi(b_i)=\\chi(t)=0$ is well defined; note that $\\chi(w)=100$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "With K = e⁹⁶96⁹⁹/95⁹⁵, α < 1/200, Kα³ < 1/2, η = α/100: Bernoulli cost ≥ 1 + η and height-extension cost ≤ 1 + 99/M.",
+      "sourceLine": "Put $K=e^{96}96^{99}/95^{95}$, choose",
+      "sourceQuote": "Put $K=e^{96}96^{99}/95^{95}$, choose \\[ 0<\\alpha<1/200,\\qquad K\\alpha^3<1/2, \\qquad \\eta=\\alpha/100. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "Choosing M large gives two essentially free p.m.p. actions with strictly different costs, so the general fixed-price assertion is false.",
+      "sourceLine": "Thus the general fixed-price assertion is false.",
+      "sourceQuote": "Thus the general fixed-price assertion is false.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Local approximation of Bernoulli graphings bounds δ_X below by ranks of finite permutation models.",
+      "sourceLine": "\\emph{Pass to finite permutation models.}",
+      "sourceQuote": "\\emph{Pass to finite permutation models.}",
+      "verdict": "supported"
+    },
+    {
+      "text": "Expansion forces rk(D_V) > η|V| for large models.",
+      "sourceLine": "The expansion property forces $\\operatorname{rk}(D_V)>\\eta|V|$ for large models.",
+      "sourceQuote": "The expansion property forces $\\operatorname{rk}(D_V)>\\eta|V|$ for large models.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "The Bernoulli action has cost bounded away from one, whereas finite height extensions have costs tending to one.",
+      "sourceLine": "Bernoulli action has cost bounded",
+      "sourceQuote": "Its Bernoulli action has cost bounded away from one, whereas finite height extensions have costs tending to one.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Propagating a-edges through consecutive heights means an initial cost 99/M is enough.",
+      "sourceLine": "consecutive heights to the next height",
+      "sourceQuote": "The relation $w=ab_1\\cdots ab_{99}a$ propagates $a$-edges from any $99$ consecutive heights to the next height, so an initial cost $99/M$ is enough.",
+      "verdict": "supported"
+    }
+  ]
+}

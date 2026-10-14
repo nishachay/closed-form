@@ -1,0 +1,176 @@
+{
+  "id": "258",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Baumslag-Solitar-free-one-relator-groups-are-hyperbolic-September-25-2026/paper.pdf",
+      "label": "Baumslag-Solitar-free one-relator groups are hyperbolic"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Virtual-compact-specialness-of-hyperbolic-one-relator-groups-September-25-2026/paper.pdf",
+      "label": "Virtual compact specialness of hyperbolic one-relator groups"
+    }
+  ],
+  "headline": "Claims one-relator groups without Baumslag–Solitar subgroups are hyperbolic and virtually compact special.",
+  "scope": "Finitely generated groups with one defining relation. Two companion papers; neither has a Lean formalization.",
+  "plain": "A one-relator group is built from free generators and a single rule. Some such groups contain special pieces called Baumslag–Solitar groups, which stretch distances badly. Gersten conjectured these are the only thing stopping hyperbolicity, a large-scale negative curvature. The first paper claims to prove this. The second claims every hyperbolic one-relator group has a finite cover with a strong cube geometry.",
+  "doesNot": "This does not have a Lean formalization, and it does not cover groups with more than one defining relation.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1992",
+    "firstStepBy": "Steve Gersten, who asked whether Baumslag–Solitar subgroups are the only obstructions",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "Gersten's conjecture and the cubulation of hyperbolic one-relator groups are central open problems for one-relator groups."
+  },
+  "explanation": "Take two generators a and t with one rule: t a t⁻¹ = a². This is the Baumslag–Solitar group BS(1, 2). Apply the rule twice: t² a t⁻² = t a² t⁻¹ = a⁴. After k steps, t^k a t^−k = a^(2^k). For k = 10 that gives a¹⁰²⁴. The left side has only 10 + 1 + 10 = 21 letters. So a power of a that seems 1024 letters long has a 21-letter shortcut. Such exponential shortcuts cannot happen in a hyperbolic group.\n\nA one-relator group has finitely many generators and one defining rule. BS(m, n) is the group with rule t a^m t⁻¹ = a^n, for nonzero m and n[1]. These groups are the basic obstructions to hyperbolicity among one-relator groups[1]. A word-hyperbolic group is one whose distance graph has thin triangles. The flat grid Z² is BS(1, 1), with rule t a t⁻¹ = a, so the conjecture excludes it too[2]. Gersten asked whether Baumslag–Solitar subgroups are the only obstructions[3].\n\nPartial answers came from the hierarchy method. Magnus showed in 1930 that dropping a generator from the rule leaves a free subgroup[4]. Newman's spelling theorem gave hyperbolicity for relators that are proper powers[5]. Linton showed a one-relator group is hyperbolic and locally quasiconvex exactly when its primitivity rank is not two[6]. The obstacle was hyperbolicity alone in the primitivity-rank-two case. There the splittings need not stay geometrically controlled.\n\nThe first paper claims the full conjecture. If a one-relator group contains no BS(m, n) subgroup, then it is word-hyperbolic[7]. The proof uses Magnus splittings[13]. A combination theorem then gives hyperbolicity when annuli in a graph of groups flare out[8].\n\nThe second paper claims that every hyperbolic one-relator group is virtually compact special[9]. That means a finite-index subgroup is the loop group of a finite cube complex. That complex maps nicely to the model space of a right-angled Artin group. A right-angled Artin group has one generator per vertex of a graph, with commuting rules along edges. This structure implies residual finiteness: every nonidentity element survives in some finite quotient[10]. Combined with work of Kielak and Linton, it answers Wise's question: hyperbolic one-relator groups are virtually free-by-cyclic[11].\n\nHow sure is this? Neither paper has a Lean formalization. No specialist review of either paper has been published. These are claims by the papers, not checked results.",
+  "hypeCheck": "Major if it holds. Neither paper has a Lean formalization or a published specialist review.",
+  "glossary": [
+    {
+      "term": "One-relator group",
+      "meaning": "A group with finitely many generators and a single defining rule."
+    },
+    {
+      "term": "Baumslag–Solitar group",
+      "meaning": "The group BS(m, n) with generators a and t and the one rule t a^m t⁻¹ = a^n."
+    },
+    {
+      "term": "Word-hyperbolic group",
+      "meaning": "A finitely generated group whose distance graph has uniformly thin triangles."
+    },
+    {
+      "term": "Primitivity rank",
+      "meaning": "The least rank of a free subgroup containing the relator where the relator is not part of a free basis."
+    },
+    {
+      "term": "Virtually compact special",
+      "meaning": "A finite-index subgroup is the loop group of a finite cube complex that maps locally isometrically to a right-angled Artin model."
+    },
+    {
+      "term": "Residually finite",
+      "meaning": "Every nonidentity element stays nonidentity in some finite image of the group."
+    },
+    {
+      "term": "Free-by-cyclic",
+      "meaning": "An extension of a free group by a subgroup of the integers."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Baumslag-Solitar-free one-relator groups are hyperbolic” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Baumslag-Solitar-free-one-relator-groups-are-hyperbolic-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Virtual compact specialness of hyperbolic one-relator groups” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Virtual-compact-specialness-of-hyperbolic-one-relator-groups-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Baumslag–Solitar groups BS(m,n) = ⟨a,t | t a^m t⁻¹ = a^n⟩ are the basic obstructions to hyperbolicity among one-relator groups.",
+      "sourceLine": "are the basic obstructions to hyperbolicity among one-relator groups.",
+      "sourceQuote": "The Baumslag--Solitar groups \\[ \\operatorname{BS}(m,n) =\\langle a,t\\mid ta^mt^{-1}=a^n\\rangle, \\qquad m,n\\in\\mathbb Z\\setminus\\{0\\}, \\] are the basic obstructions to hyperbolicity among one-relator groups.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The hypothesis excludes BS(1,1) = Z².",
+      "sourceLine": "In particular, the hypothesis excludes $\\operatorname{BS}(1,1)=\\mathbb Z^2$.",
+      "sourceQuote": "In particular, the hypothesis excludes $\\operatorname{BS}(1,1)=\\mathbb Z^2$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Gersten asked whether they are the only subgroup obstructions.",
+      "sourceLine": "Gersten asked whether they are the only subgroup obstructions",
+      "sourceQuote": "Gersten asked whether they are the only subgroup obstructions \\cite[p.~228]{Gersten1992Problems}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Magnus's Freiheitssatz: omitting a generator in a cyclically reduced relator leaves a freely generated subgroup.",
+      "sourceLine": "omitting a generator that occurs in a cyclically reduced relator leaves a subgroup freely generated by the remaining generators",
+      "sourceQuote": "The inductive study of one-relator groups begins with Magnus's Freiheitssatz: omitting a generator that occurs in a cyclically reduced relator leaves a subgroup freely generated by the remaining generators \\cite{Magnus1930}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Newman's spelling theorem for proper-power relators gives a Dehn algorithm and hence hyperbolicity.",
+      "sourceLine": "Newman's spelling theorem for proper-power relators gives a Dehn algorithm and hence hyperbolicity",
+      "sourceQuote": "Newman's spelling theorem for proper-power relators gives a Dehn algorithm and hence hyperbolicity \\cite[Theorem~3]{Newman1968}; see also the proof in \\cite[Theorem~4]{McCoolSchupp1973}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Linton characterized hyperbolic and locally quasiconvex one-relator groups by primitivity rank different from two.",
+      "sourceLine": "group is both hyperbolic and locally quasiconvex precisely when its relator has primitivity rank different from two",
+      "sourceQuote": "His later characterization says that a finitely generated one-relator group is both hyperbolic and locally quasiconvex precisely when its relator has primitivity rank different from two \\cite[Theorem~1.4]{Linton2025MappingToriSubgroups}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "If a one-relator group contains no BS(m,n) subgroup, then it is word-hyperbolic.",
+      "sourceLine": "$\\operatorname{BS}(m,n)$ for any nonzero integers $m,n$, then $G$ is word-hyperbolic.",
+      "sourceQuote": "If the one-relator group $G=\\langle X\\mid r\\rangle$ contains no subgroup isomorphic to $\\operatorname{BS}(m,n)$ for any nonzero integers $m,n$, then $G$ is word-hyperbolic.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The Bestvina–Feighn combination theorem makes annular flaring sufficient for hyperbolicity under the required hypotheses.",
+      "sourceLine": "The Bestvina--Feighn combination theorem makes annular flaring a sufficient condition for hyperbolicity",
+      "sourceQuote": "The Bestvina--Feighn combination theorem makes annular flaring a sufficient condition for hyperbolicity when the vertex and edge data satisfy the required geometric hypotheses \\cite[Theorem~1.2]{BestvinaFeighn1996Addendum}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every word-hyperbolic one-relator group is virtually compact special.",
+      "sourceLine": "Then $G$ is virtually compact special.",
+      "sourceQuote": "Then $G$ is virtually compact special.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The compact-special conclusion, and hence residual finiteness, extends to every hyperbolic one-relator group.",
+      "sourceLine": "extends the compact-special conclusion, and hence residual finiteness, to every hyperbolic one-relator group.",
+      "sourceQuote": "Theorem~\\ref{thm:main} extends the compact-special conclusion, and hence residual finiteness, to every hyperbolic one-relator group.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Combined with Kielak–Linton, this answers positively whether every hyperbolic one-relator group is virtually free-by-cyclic.",
+      "sourceLine": "Combining that corollary with Theorem~\\ref{thm:main} gives a positive answer.",
+      "sourceQuote": "Combining that corollary with Theorem~\\ref{thm:main} gives a positive answer.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "A Magnus splitting has a smaller one-relator vertex group and free edge groups.",
+      "sourceLine": "Magnus splitting has a smaller",
+      "sourceQuote": "The Freiheitssatz makes an inductive approach possible: a Magnus splitting has a smaller one-relator vertex group and free edge groups.",
+      "paper": 1,
+      "verdict": "supported"
+    }
+  ]
+}

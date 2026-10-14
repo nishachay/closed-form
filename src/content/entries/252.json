@@ -1,0 +1,170 @@
+{
+  "id": "252",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/a-torsion-free-hyperbolic-group-that-is-not-residually-finite-September-23-2026/paper.pdf",
+      "label": "A torsion-free hyperbolic group that is not residually finite"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/252.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A torsion-free hyperbolic group in which some element vanishes in every finite quotient.",
+  "scope": "One finitely generated, torsion-free word-hyperbolic group built from a finite triangle complex. Lean covers non-residual-finiteness; the nonlinearity corollary is not a separate Lean conclusion.",
+  "plain": "Hyperbolic groups are groups whose geometry bends like a saddle at large scales. A long-open question asked whether every such group can be fully seen through finite snapshots, called finite quotients. This paper proves no, with a Lean formalization listed: it builds a hyperbolic group with no elements of finite order where some element always disappears. It also claims the group has no faithful matrix model over any commutative field.",
+  "doesNot": "This does not name which element always vanishes, and it does not address skew fields or infinite-dimensional representations.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "Mikhail Gromov, whose theory of hyperbolic groups started the program behind the question",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "Whether every hyperbolic group is residually finite is a central open question in geometric group theory."
+  },
+  "explanation": "Take the integers and the element 5. Reduce modulo 7, a finite group of seven clock positions. The number 5 lands on position 5, not on 0. So 5 survives in a finite image. Every nonzero integer n survives modulo |n| + 1, so the integers are residually finite. A group is residually finite when each nonidentity element has a nonidentity image in some finite group[1]. Such groups can be studied through finite snapshots.\n\nA word-hyperbolic group is a finitely generated group whose distance graph has thin triangles. Every point on one side of a geodesic triangle lies near the other two sides[2]. Free groups are the standard example, and they are residually finite. Since Gromov's work in 1987, a central question asked whether every hyperbolic group is residually finite[2].\n\nSeveral facts made this hard to test. Kapovich and Wise showed it is equivalent to every nontrivial hyperbolic group having a nontrivial finite quotient[3]. Agol showed hyperbolic groups acting nicely on cube complexes are virtually special, hence residually finite[4]. So a counterexample cannot have that cubical structure. Wise had groups that are not residually finite with nonpositive curvature, but they contain flat planes and are not hyperbolic[5].\n\nThe paper proves there is a torsion-free word-hyperbolic group that is not residually finite[6]. Torsion-free means no nonidentity element has finite order. The group comes from a finite complex of flat triangles glued along edges[7]. Hyperbolicity comes from a test on angles around each vertex. Consider equilateral triangles with 60° corners. Six around a point give 6 × 60° = 360°, which is flat. Seven give 420°, more than a full turn, which bends like a saddle. The criterion asks that every closed walk around a vertex have angle at least 2π + η, for some η > 0[8]. Then the group is torsion-free and hyperbolic[8].\n\nThe obstacle is to kill an element in all finite quotients at once. The paper uses a fixed finite family of four-edge \"rectangular words.\" If each survived somewhere, a product of finite quotients would keep them all[14]. Then a rank count in matrices gives two incompatible bounds[14,9]. So one fixed member vanishes in every finite quotient, though the proof does not say which[10]. The paper also claims that every finite matrix representation, over any commutative field, kills that element[11].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of a torsion-free hyperbolic group that is not residually finite. The Lean note says nonlinearity is not a separate conclusion there. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds, and the main theorem has a Lean formalization. The nonlinearity corollary is not a separate Lean conclusion. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Residually finite",
+      "meaning": "Every nonidentity element stays nonidentity in some finite image of the group."
+    },
+    {
+      "term": "Finite quotient",
+      "meaning": "A finite group obtained from the group by a homomorphism onto it."
+    },
+    {
+      "term": "Word-hyperbolic group",
+      "meaning": "A finitely generated group whose distance graph has uniformly thin triangles, like a tree or a saddle surface."
+    },
+    {
+      "term": "Torsion-free",
+      "meaning": "No element other than the identity has finite order."
+    },
+    {
+      "term": "Finite residual",
+      "meaning": "The set of elements that vanish in every finite quotient of the group."
+    },
+    {
+      "term": "Linear group",
+      "meaning": "A group that sits faithfully inside invertible n×n matrices over some field."
+    },
+    {
+      "term": "Cube complex",
+      "meaning": "A space built by gluing cubes of various dimensions along their faces."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A torsion-free hyperbolic group that is not residually finite” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/a-torsion-free-hyperbolic-group-that-is-not-residually-finite-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 252",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/252.md",
+      "quote": "The formalized result gives a negative answer by constructing a torsion-free word-hyperbolic group that is not residually finite."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A group is residually finite if each nonidentity element has a nonidentity image in some finite group.",
+      "sourceLine": "A group $G$ is \\emph{residually finite} if each nonidentity element has a nonidentity image under a homomorphism to some finite group.",
+      "sourceQuote": "A group $G$ is \\emph{residually finite} if each nonidentity element has a nonidentity image under a homomorphism to some finite group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Word-hyperbolic means uniformly thin geodesic triangles; the question asks whether every word-hyperbolic group is residually finite.",
+      "sourceLine": "The residual-finiteness question asks whether every word-hyperbolic group is residually finite.",
+      "sourceQuote": "The residual-finiteness question asks whether every word-hyperbolic group is residually finite.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kapovich and Wise proved all hyperbolic groups are residually finite iff every nontrivial hyperbolic group has a nontrivial finite quotient.",
+      "sourceLine": "Ilya Kapovich and Wise proved that all hyperbolic groups are residually finite if and only if every nontrivial hyperbolic group has a nontrivial finite quotient",
+      "sourceQuote": "Ilya Kapovich and Wise proved that all hyperbolic groups are residually finite if and only if every nontrivial hyperbolic group has a nontrivial finite quotient \\cite[Theorem~1.2]{KW2000}; they also proved equivalence with the assertion that every hyperbolic group is virtually torsion-free, that is, has a torsion-free subgroup of finite index \\cite[Theorem~5.1]{KW2000}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Agol proved a hyperbolic group acting properly and cocompactly on a CAT(0) cube complex is virtually special.",
+      "sourceLine": "Agol proved that a word-hyperbolic group acting properly and cocompactly on a CAT(0) cube complex is virtually special",
+      "sourceQuote": "Agol proved that a word-hyperbolic group acting properly and cocompactly on a CAT(0) cube complex is virtually special \\cite[Theorem~1.1]{Agol2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Wise's tree-product examples are not residually finite but contain Euclidean planes and are not hyperbolic.",
+      "sourceLine": "These tree products contain Euclidean planes and are not hyperbolic.",
+      "sourceQuote": "These tree products contain Euclidean planes and are not hyperbolic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There exists a torsion-free word-hyperbolic group that is not residually finite.",
+      "sourceLine": "There exists a torsion-free word-hyperbolic group that is not residually finite.",
+      "sourceQuote": "There exists a torsion-free word-hyperbolic group that is not residually finite.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The group is the fundamental group of a finite Euclidean triangle complex.",
+      "sourceLine": "The group is the fundamental group of a finite Euclidean triangle complex.",
+      "sourceQuote": "The group is the fundamental group of a finite Euclidean triangle complex.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If every cyclically reduced closed link walk has angular length at least 2π + η, then π₁(K) is torsion-free and word-hyperbolic.",
+      "sourceLine": "Then $\\pi_1(K)$ is torsion-free and word-hyperbolic.",
+      "sourceQuote": "Then $\\pi_1(K)$ is torsion-free and word-hyperbolic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Surviving rectangular words force large rank, contradicting small-rank local factorizations.",
+      "sourceLine": "The incompatible bounds rule out simultaneous finite separation.",
+      "sourceQuote": "The incompatible bounds rule out simultaneous finite separation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "One fixed member of a finite family works for all finite quotients, without identifying which member.",
+      "sourceLine": "The argument is existential: it proves that one fixed member works for all finite quotients, without identifying which member.",
+      "sourceQuote": "The argument is existential: it proves that one fixed member works for all finite quotients, without identifying which member.",
+      "verdict": "supported"
+    },
+    {
+      "text": "One fixed nonidentity element is killed by every finite-dimensional linear representation over every commutative field.",
+      "sourceLine": "In particular, $G$ is not linear over any commutative field.",
+      "sourceQuote": "In particular, $G$ is not linear over any commutative field.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes a torsion-free word-hyperbolic group that is not residually finite; nonlinearity is not a separate conclusion.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "If each rectangular word survived in some finite quotient, a product of the quotients would preserve all of them at once.",
+      "sourceLine": "If each of these finitely many rectangular words survived in some finite quotient",
+      "sourceQuote": "If each of these finitely many rectangular words survived in some finite quotient, a product of the quotients would preserve all of them at once.",
+      "verdict": "supported"
+    }
+  ]
+}

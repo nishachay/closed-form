@@ -1,0 +1,170 @@
+{
+  "id": "255",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/quasi-isometric-recognition-of-virtually-polycyclic-groups-September-24-2026/paper.pdf",
+      "label": "Quasi-isometric recognition of virtually polycyclic groups"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/255.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Any finitely generated group that looks like a virtually polycyclic group from far away is virtually polycyclic.",
+  "scope": "Finitely generated groups quasi-isometric to finitely generated virtually polycyclic groups. The recognition theorem and the lattice form have a Lean formalization.",
+  "plain": "Some groups can be built in finitely many steps, each step adding a cycle; these are polycyclic. Viewed from far away, a group's word distances form a shape. This paper proves that any group with the same far-away shape as such a group is itself built that way, up to a finite-index part. Eskin, Fisher and Whyte conjectured this. A Lean formalization is listed.",
+  "doesNot": "This does not say the new group is a lattice in the same Lie group as the original; the ambient Lie group may change.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1981",
+    "firstStepBy": "Mikhail Gromov, whose polynomial growth theorem settled the virtually nilpotent case",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "It resolves the lattice-recognition conjecture of Eskin, Fisher and Whyte for the full class of virtually polycyclic groups."
+  },
+  "explanation": "Stand at the corner (0, 0) of a city grid and walk to (3, 4). Along streets you walk 3 + 4 = 7 blocks. A bird flies √(3² + 4²) = 5 blocks. The ratio is 7/5 = 1.4. For any two grid points, the street distance is between 1 and √2 ≈ 1.414 times the bird distance. Also every point of the plane is within √2/2 ≈ 0.707 of a grid point. So the integer grid and the flat plane look the same from far away. This is a quasi-isometry: a map that distorts distances by at most a fixed factor K plus a fixed error C[1]. Every point of the target must also lie within C of the image[1].\n\nA group is polycyclic if it has a finite chain of subgroups, each normal in the next, with cyclic steps[2]. The grid group Z² is polycyclic: Z² contains Z, which contains the trivial group. Virtually polycyclic means a polycyclic subgroup has finite index[2]. Finite index means finitely many shifted copies of the subgroup cover the group.\n\nEskin, Fisher and Whyte conjectured that this property can be read from large-scale geometry[3]. Gromov's theorem on polynomial growth settled the virtually nilpotent case[4]. Shalom showed a group quasi-isometric to an infinite polycyclic group has a finite-index subgroup with infinite abelianization[5]. Eskin, Fisher and Whyte proved recognition for the three-dimensional group Sol[6], and Peng extended it to some split models[14]. The general case stayed open.\n\nThe paper proves the full statement. If a finitely generated group H is quasi-isometric to a finitely generated virtually polycyclic group, then H is virtually polycyclic[7]. H needs no algebraic assumption beyond finite generation[8]. An equivalent form uses uniform lattices, discrete subgroups with compact quotient in a solvable Lie group. A group quasi-isometric to such a lattice has a finite-index subgroup that is a lattice in some, possibly different, solvable Lie group[9].\n\nThe obstacle is exponential growth. There, distances grow fast and local pictures can twist. The key step is uniform height control. A height map projects the Lie group onto a flat space. The paper shows every self quasi-isometry moves height by one of finitely many linear symmetries, up to a bounded error[10]. With amenability, this control gives elementary amenability of the group; finiteness and duality then give virtual polycyclicity[11].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the recognition theorem and of the lattice form. It also covers the height estimate for the stated unimodular models. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds, and the recognition theorem has a Lean formalization. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Quasi-isometry",
+      "meaning": "A map between spaces that distorts distances by at most a fixed factor plus a fixed error, and nearly covers the target."
+    },
+    {
+      "term": "Polycyclic group",
+      "meaning": "A group with a finite chain of subgroups, each normal in the next, whose successive quotients are cyclic."
+    },
+    {
+      "term": "Virtually polycyclic",
+      "meaning": "Containing a polycyclic subgroup of finite index."
+    },
+    {
+      "term": "Finite index",
+      "meaning": "A subgroup whose shifted copies, finitely many of them, cover the whole group."
+    },
+    {
+      "term": "Lattice",
+      "meaning": "A discrete subgroup of a Lie group with finite covolume; uniform when the quotient is compact."
+    },
+    {
+      "term": "Solvable Lie group",
+      "meaning": "A smooth group whose repeated commutators eventually become trivial."
+    },
+    {
+      "term": "Word metric",
+      "meaning": "The distance between group elements given by the fewest generators needed to get from one to the other."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Quasi-isometric recognition of virtually polycyclic groups” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/quasi-isometric-recognition-of-virtually-polycyclic-groups-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 255",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/255.md",
+      "quote": "every finitely generated group quasi-isometric to a finitely generated virtually polycyclic group is itself virtually polycyclic"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A (K,C)-quasi-isometry distorts distances by at most a factor K plus C, and every point of Y is within C of the image.",
+      "sourceLine": "for all $x,x'\\in X$, and every point of $Y$ is within distance $C$ of $F(X)$.",
+      "sourceQuote": "A $(K,C)$-\\emph{quasi-isometry} $F:X\\to Y$, with $K\\geq1$ and $C\\geq0$, satisfies \\[ K^{-1}d_X(x,x')-C\\leq d_Y(F(x),F(x'))\\leq Kd_X(x,x')+C \\] for all $x,x'\\in X$, and every point of $Y$ is within distance $C$ of $F(X)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Polycyclic means a finite subnormal series with cyclic factors; virtually polycyclic means a polycyclic subgroup of finite index.",
+      "sourceLine": "A group is \\emph{polycyclic} if it has a finite subnormal series with cyclic factors.",
+      "sourceQuote": "A group is \\emph{polycyclic} if it has a finite subnormal series with cyclic factors.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Eskin, Fisher and Whyte formulated the lattice-recognition conjecture and its polycyclic formulation.",
+      "sourceLine": "Eskin, Fisher and Whyte formulated the lattice-recognition conjecture",
+      "sourceQuote": "Eskin, Fisher and Whyte formulated the lattice-recognition conjecture and its equivalent polycyclic formulation in \\cite[Conjecture~1.2 and Remark~(3), p.~929]{EskinFisherWhyte2007}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gromov's theorem on groups of polynomial growth settles the virtually nilpotent case.",
+      "sourceLine": "Gromov's theorem on groups of polynomial growth settles the virtually nilpotent case",
+      "sourceQuote": "Gromov's theorem on groups of polynomial growth settles the virtually nilpotent case \\cite{Gromov1981}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Shalom proved a group quasi-isometric to an infinite polycyclic group has a finite-index subgroup with infinite abelianization.",
+      "sourceLine": "Shalom proved that a finitely generated group quasi-isometric to an infinite polycyclic group has a finite-index subgroup with infinite abelianization",
+      "sourceQuote": "For the full class, Shalom proved that a finitely generated group quasi-isometric to an infinite polycyclic group has a finite-index subgroup with infinite abelianization \\cite[Theorem~1.3]{Shalom2004}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Eskin, Fisher and Whyte established recognition for Sol; Peng extended this to nondegenerate unimodular split abelian-by-abelian Lie groups.",
+      "sourceLine": "Eskin, Fisher and Whyte established recognition for $\\mathrm{Sol}$ by coarse differentiation",
+      "sourceQuote": "Eskin, Fisher and Whyte established recognition for $\\mathrm{Sol}$ by coarse differentiation \\cite[Theorem~1.1]{EskinFisherWhyte2013}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "If H and a finitely generated virtually polycyclic P are quasi-isometric, then H is virtually polycyclic.",
+      "sourceLine": "If $H$ and $P$ are quasi-isometric, then $H$ is virtually polycyclic.",
+      "sourceQuote": "If $H$ and $P$ are quasi-isometric, then $H$ is virtually polycyclic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "H is subject to no algebraic hypothesis beyond finite generation.",
+      "sourceLine": "The group $H$ in Theorem~\\ref{thm:recognition} is subject to no algebraic hypothesis beyond finite generation.",
+      "sourceQuote": "The group $H$ in Theorem~\\ref{thm:recognition} is subject to no algebraic hypothesis beyond finite generation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A group quasi-isometric to a lattice in a simply connected solvable Lie group is virtually a uniform lattice in some such group.",
+      "sourceLine": "then a finite-index subgroup of $H$ is a uniform lattice in some connected simply connected solvable Lie group.",
+      "sourceQuote": "If a finitely generated group $H$ is quasi-isometric to a lattice in a connected simply connected solvable Lie group, then a finite-index subgroup of $H$ is a uniform lattice in some connected simply connected solvable Lie group.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every self quasi-isometry moves the exponential height by one of finitely many linear symmetries, up to bounded error.",
+      "sourceLine": "There is a finite subgroup $\\A_G\\leq\\GL(W)$ such that",
+      "sourceQuote": "There is a finite subgroup $\\A_G\\leq\\GL(W)$ such that, for every $K\\geq1$ and $C\\geq0$, there is a constant $B=B(G,K,C)$ with the following property.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Height control with amenability yields elementary amenability; finiteness and duality then yield virtual polycyclicity.",
+      "sourceLine": "Combined with amenability, this control yields elementary amenability of the comparison group; finiteness and duality then yield virtual polycyclicity.",
+      "sourceQuote": "Combined with amenability, this control yields elementary amenability of the comparison group; finiteness and duality then yield virtual polycyclicity.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the quasi-isometric recognition of virtually polycyclic groups and the uniform lattice form.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "Peng extended the Sol analysis to nondegenerate unimodular split abelian-by-abelian Lie groups.",
+      "sourceLine": "Peng extended this analysis",
+      "sourceQuote": "Peng extended this analysis to nondegenerate unimodular split abelian-by-abelian Lie groups \\cite{Peng2011I,Peng2011II}.",
+      "verdict": "supported"
+    }
+  ]
+}
