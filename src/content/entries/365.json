@@ -1,0 +1,188 @@
+{
+  "id": "365",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf",
+      "label": "Determination of a metric and a unitary connection from one boundary patch"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-Anisotropic-Uniqueness-in-the-Calderon-Problem-from-One-Boundary-Patch-September-24-2026/paper.pdf",
+      "label": "Smooth anisotropic uniqueness in the Calderón problem from one boundary patch"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-for-Bounded-Measurable-Scalar-Conductivities-in-Three-Dimensions-September-23-2026/paper.pdf",
+      "label": "Nonuniqueness for bounded measurable scalar conductivities in three dimensions"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/365.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims one boundary patch determines a smooth metric; proves rough 3D conductivities can share all boundary data.",
+  "scope": "Smooth metrics, and unitary rank-two connections, on compact manifolds of dimension at least three, measured on one boundary patch. Also rough scalar conductivities on a ball in ℝ³.",
+  "plain": "Calderón's problem asks whether electrical measurements at the surface of a body determine what is inside. Two papers claim that, for smooth unknowns in dimension three or more, measurements on any small patch of the surface suffice, up to unavoidable relabelling. One handles a curved metric alone, the other a metric and a connection together. A third paper proves the opposite for rough conductivities: two different ones on a three-dimensional ball give exactly the same surface data. Lean, a computer proof checker, has a formal statement of this third result only.",
+  "doesNot": "This does not give a way to reconstruct the interior from data, or a stability estimate. The smooth uniqueness results are not in the Lean scope, and the rough counterexample is in dimension three only.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Alberto Calderón, the inverse conductivity problem",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle smooth anisotropic Calderón uniqueness from one patch, and gives a Lean-checked rough counterexample in three dimensions."
+  },
+  "explanation": "Start with a rod of length 1 that conducts electricity. Its conductivity γ may vary along it. The resistance from end to end is the integral of 1/γ. If γ = 1 everywhere, the resistance is 1. Now let γ = 2 on the first half and 2/3 on the second half. The resistance is (1/2)(1/2) + (1/2)(3/2) = 0.25 + 0.75 = 1 again. The two rods look the same from the ends. In one dimension, end measurements cannot see inside. The question is whether surface measurements can in three dimensions or more.\n\nCalderón's problem asks whether the boundary response to every applied voltage determines the conductivity inside[2]. For smooth scalar conductivities in dimension at least three, Sylvester and Uhlmann proved uniqueness[3]. In the anisotropic version the unknown is a metric, a rule for lengths that can differ by direction. Then a change of interior coordinates that fixes the boundary cannot be detected. That ambiguity is unavoidable[4].\n\nThe second paper claims that this is the only ambiguity. A smooth metric in dimension at least three is determined, up to such a change of coordinates, from one boundary patch[5]. Voltages are applied and currents read on the same patch. It claims to resolve the smooth anisotropic problem with these same-patch measurements[6]. The first paper claims the same with a second unknown, a unitary connection on a rank-two bundle. A connection is a rule for carrying two-component complex values from point to point. The metric and connection are determined up to a coordinate change and a gauge change that fix the patch[1].\n\nThe third paper goes the other way for rough data. It builds two scalar conductivities on a ball of radius 3 in ℝ³. Both are bounded above and below by positive constants, and both equal 1 near the boundary. They differ on a set of positive volume, yet give the same full boundary response[7]. So uniqueness fails when only bounded measurability is assumed, already in dimension three[8]. Earlier results needed derivatives: Caro and Rogers proved uniqueness for Lipschitz conductivities in every dimension from three up[9]. The construction nests scaled copies of a small block with boundary tori[10]. This design hides an interior change from every boundary voltage.\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the rough three-dimensional counterexample. So that result is proved, as far as the Lean statement matches the paper. The two smooth uniqueness results are not in the Lean scope and remain claims. No specialist review is published.",
+  "hypeCheck": "Major if the smooth uniqueness proofs hold: they would settle a central inverse problem with one-patch data. Only the rough counterexample has a Lean statement. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Conductivity",
+      "meaning": "How easily electric current flows through a material at each point."
+    },
+    {
+      "term": "Dirichlet-to-Neumann map",
+      "meaning": "The rule that takes voltages applied on the boundary to the currents that flow out there."
+    },
+    {
+      "term": "Anisotropic",
+      "meaning": "Behaving differently in different directions, so the unknown is a metric rather than one number per point."
+    },
+    {
+      "term": "Boundary patch",
+      "meaning": "An open piece of the surface, possibly small, where voltages are applied and currents read."
+    },
+    {
+      "term": "Connection",
+      "meaning": "A rule for carrying vector values from one point to a nearby point."
+    },
+    {
+      "term": "Gauge",
+      "meaning": "A change of reference frame at each point that does not change anything measurable."
+    },
+    {
+      "term": "Bounded measurable",
+      "meaning": "Allowed to jump wildly, with no smoothness, but staying between two fixed limits."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Determination of a metric and a unitary connection from one boundary patch” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Smooth anisotropic uniqueness in the Calderón problem from one boundary patch” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-Anisotropic-Uniqueness-in-the-Calderon-Problem-from-One-Boundary-Patch-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Nonuniqueness for bounded measurable scalar conductivities in three dimensions” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-for-Bounded-Measurable-Scalar-Conductivities-in-Three-Dimensions-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 365",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/365.md",
+      "quote": "The formalized result gives nonuniqueness for bounded measurable scalar conductivities on the ball $B(0,3)\\subset\\mathbb R^3$: two uniformly positive conductivities differ on a set of positive volume, equal $1$ near the boundary, and have the same full weak Dirichlet-to-Neumann operator."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "Zero-frequency measurements on any open boundary patch determine a smooth metric and unitary connection, up to a diffeomorphism and gauge fixing the patch.",
+      "sourceLine": "The metric and connection are determined up to a diffeomorphism and a unitary gauge",
+      "sourceQuote": "The metric and connection are determined up to a diffeomorphism and a unitary gauge that restrict to the identity on the measured patch.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The inverse problem asks whether the boundary response to every applied voltage determines the interior conductivity.",
+      "sourceLine": "The inverse problem asks whether the boundary response to every applied",
+      "sourceQuote": "The inverse problem asks whether the boundary response to every applied voltage determines the conductivity inside the domain.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "For smooth isotropic conductivities in dimension at least three, Sylvester and Uhlmann established global uniqueness.",
+      "sourceLine": "For smooth isotropic conductivities in dimension",
+      "sourceQuote": "For smooth isotropic conductivities in dimension at least three, global uniqueness was established by Sylvester and Uhlmann \\cite{SylvesterUhlmann1987}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The diffeomorphism ambiguity is unavoidable.",
+      "sourceLine": "The diffeomorphism ambiguity is unavoidable.",
+      "sourceQuote": "The diffeomorphism ambiguity is unavoidable.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "A smooth metric in dimension at least three is determined up to a diffeomorphism fixing the patch by same-patch Dirichlet-to-Neumann data.",
+      "sourceLine": "A smooth Riemannian metric on a compact connected manifold of dimension at least three is determined",
+      "sourceQuote": "A smooth Riemannian metric on a compact connected manifold of dimension at least three is determined, up to a diffeomorphism fixing the measured patch, by its zero-frequency Dirichlet-to-Neumann energy form with both input and observation on any nonempty open boundary patch.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The theorem resolves positively the smooth anisotropic Calderón uniqueness problem with arbitrary same-patch measurements.",
+      "sourceLine": "Calder\\'on uniqueness problem with arbitrary same-patch measurements.",
+      "sourceQuote": "We resolve the smooth anisotropic Calder\\'on uniqueness problem with arbitrary same-patch measurements.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "There are two uniformly positive bounded measurable scalar conductivities on a ball in ℝ³, equal to one near the boundary, with the same Dirichlet-to-Neumann operator.",
+      "sourceLine": "We construct two distinct uniformly positive bounded measurable scalar",
+      "sourceQuote": "We construct two distinct uniformly positive bounded measurable scalar conductivities on a ball in $\\R^3$ with the same full Dirichlet-to-Neumann operator.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Scalar Calderón uniqueness with only bounded measurability and uniform positivity fails already in dimension three.",
+      "sourceLine": "measurability and uniform positivity has a negative resolution",
+      "sourceQuote": "Thus the scalar Calder\\'on uniqueness assertion with only bounded measurability and uniform positivity has a negative resolution, already in dimension three.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "Caro and Rogers prove uniqueness for positive Lipschitz conductivities in every dimension at least three.",
+      "sourceLine": "Caro and Rogers prove it for positive",
+      "sourceQuote": "Haberman proves uniqueness for uniformly elliptic $W^{1,n}$ conductivities in dimensions three and four \\cite[Theorem~1.1]{Haberman}; Caro and Rogers prove it for positive Lipschitz conductivities in every dimension at least three \\cite[Theorem~1.1]{CaroRogers}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 3,
+      "text": "The construction nests scaled copies of a scalar block with one parent and two child boundary tori.",
+      "sourceLine": "nests scaled copies of a scalar block with one",
+      "sourceQuote": "The construction in Section~\\ref{sec:nonuniqueness} takes $\\Omega=B(0,3)$ and nests scaled copies of a scalar block with one parent and two child boundary tori.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the scalar nonuniqueness result: two uniformly positive bounded measurable conductivities on a ball in ℝ³ with the same full boundary operator.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

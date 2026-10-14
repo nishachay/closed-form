@@ -1,0 +1,178 @@
+{
+  "id": "363",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-with-local-conservation-for-the-hard-sphere-Boltzmann-equation-October-5-2026/paper.pdf",
+      "label": "Nonuniqueness with local conservation for the hard-sphere Boltzmann equation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-for-the-periodic-hard-sphere-Boltzmann-equation-September-23-2026/paper.pdf",
+      "label": "Nonuniqueness for the periodic hard-sphere Boltzmann equation"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/363.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves the periodic hard-sphere Boltzmann equation can have two different solutions from the same initial gas.",
+  "scope": "The hard-sphere Boltzmann equation on the three-dimensional torus, with one initial density of bounded velocities and finite mass, energy and entropy.",
+  "plain": "The Boltzmann equation describes a thin gas whose molecules fly freely and bounce off each other like billiard balls. DiPerna and Lions showed that solutions exist for very rough starting data, but not that they are unique. One paper builds a starting gas that leads to two different solutions, and Lean, a computer proof checker, has a formal statement of it. A second paper claims the same with exact local conservation of mass, momentum and energy.",
+  "doesNot": "This does not show nonuniqueness for smooth or nearly uniform starting gases, where uniqueness is known. The exact local conservation version is not in the Lean scope.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1989",
+    "firstStepBy": "Ronald DiPerna and Pierre-Louis Lions, global renormalized solutions of the Boltzmann equation",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It shows that the standard rough-data solution theory for the Boltzmann equation does not fix the future, with a Lean statement."
+  },
+  "explanation": "Picture two hard balls of equal mass. One moves with velocity (1, 0, 0) and one sits still. They touch along the direction ω = (1/√2, 1/√2, 0). The collision rule swaps the part of their relative velocity along ω[2]. That part has size a = 1/√2, about 0.707. After the bounce, the first ball moves with (1/2, −1/2, 0) and the second with (1/2, 1/2, 0). Total momentum is still (1, 0, 0). The sum of squared speeds, which measures kinetic energy, is still 1. Each collision keeps mass, momentum and energy.\n\nThe Boltzmann equation tracks a density F of molecules at each place and velocity. They fly freely and collide in this way. DiPerna and Lions proved that solutions exist for any start with finite mass, energy and entropy. Entropy measures how spread out the gas is. They used renormalized solutions, a weak sense of solving the equation, because the collision term may not even be integrable[3]. Existence and stability do not give uniqueness[4]. Uniqueness is known under stronger control, such as bounds by a Gaussian velocity profile[5].\n\nThe second paper proves nonuniqueness on the three-dimensional torus, a box with opposite faces joined. It builds one starting density with bounded velocities and finite mass, energy and entropy. That start gives two different global renormalized solutions[6]. The start has unbounded heights packed into ever smaller regions[7]. The idea uses thin cold jets of gas. A jet at scale s can have density about 1/s, but total mass about s²[8]. With s = 1/2, 1/4, 1/8 and so on, densities reach 2, 4, 8, without limit. Yet total mass stays below 1/4 + 1/16 + 1/64 + …, which is 1/3.\n\nThe first paper claims more: both solutions keep exact local conservation of mass, momentum and kinetic energy at every point[1]. Earlier weak theories allowed a defect in the momentum and energy balance[9]. The obstacles are that thin jets meet their periodic copies and that entropy alone is too weak[10]. The paper gives each jet a finite lifetime, aims it in an irrational direction, and adds a nearly uniform background gas.\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the second paper's result. It keeps local mass and total momentum, with energy and entropy inequalities. So that result is proved, as far as the Lean statement matches the paper. The exact local conservation version is not in the Lean scope and remains a claim. No specialist review is published.",
+  "hypeCheck": "Major, with a Lean statement of the basic nonuniqueness result. The stronger version with exact local conservation is a claim without a Lean check. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Boltzmann equation",
+      "meaning": "An equation for a thin gas whose molecules fly freely and collide in pairs."
+    },
+    {
+      "term": "Hard spheres",
+      "meaning": "Molecules modelled as billiard balls that bounce elastically when they touch."
+    },
+    {
+      "term": "Entropy",
+      "meaning": "A number that measures how spread out the gas is; collisions push it one way only."
+    },
+    {
+      "term": "Renormalized solution",
+      "meaning": "A weak sense of solving the equation, tested through bounded functions of the density."
+    },
+    {
+      "term": "Torus",
+      "meaning": "A box whose opposite faces are joined, so leaving one face brings you back through the other."
+    },
+    {
+      "term": "Local conservation",
+      "meaning": "Mass, momentum and energy balance exactly at each point, not only in total."
+    },
+    {
+      "term": "Maxwellian",
+      "meaning": "The bell-shaped, Gaussian velocity profile of a gas at rest in equilibrium."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Nonuniqueness with local conservation for the hard-sphere Boltzmann equation” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-with-local-conservation-for-the-hard-sphere-Boltzmann-equation-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Nonuniqueness for the periodic hard-sphere Boltzmann equation” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nonuniqueness-for-the-periodic-hard-sphere-Boltzmann-equation-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 363",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/363.md",
+      "quote": "The formalization proves nonuniqueness for the periodic hard-sphere Boltzmann equation by constructing two distinct global renormalized solutions on $\\mathbb T^3\\times\\mathbb R^3$ with the same nonnegative initial density."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "There is one initial density giving two distinct global entropy solutions with exact local conservation of mass, momentum and kinetic energy.",
+      "sourceLine": "We construct one nonnegative initial density with bounded velocity support and finite mass, energy, and absolute entropy that gives rise to two distinct such solutions.",
+      "sourceQuote": "We construct one nonnegative initial density with bounded velocity support and finite mass, energy, and absolute entropy that gives rise to two distinct such solutions.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "An elastic collision with normal ω sends v to v − aω and v* to v* + aω, with a = (v − v*)·ω.",
+      "sourceLine": "For incoming velocities \\(v,v_*\\) and a collision normal",
+      "sourceQuote": "For incoming velocities \\(v,v_*\\) and a collision normal \\(\\omega\\in S^2\\), put \\[ a=(v-v_*)\\cdot\\omega,\\qquad v'=v-a\\omega,\\qquad v_*'=v_*+a\\omega. \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Renormalization is needed because the stated bounds do not make the quadratic collision term locally integrable.",
+      "sourceLine": "The need for renormalization is substantive",
+      "sourceQuote": "The need for renormalization is substantive: the stated bounds do not themselves make the quadratic collision term locally integrable.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Existence and weak stability do not supply uniqueness.",
+      "sourceLine": "Existence and weak stability do not supply uniqueness.",
+      "sourceQuote": "Existence and weak stability do not supply uniqueness.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Classical uniqueness theorems impose additional control, such as Maxwellian upper bounds.",
+      "sourceLine": "Classical uniqueness theorems impose additional control",
+      "sourceQuote": "Classical uniqueness theorems impose additional control, such as Maxwellian upper bounds \\cite{KanielShinbrot1978}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "There is a nonnegative density with bounded velocity support and finite mass, energy and entropy that gives two distinct global admissible solutions.",
+      "sourceLine": "for which the hard-sphere Boltzmann equation has two distinct global",
+      "sourceQuote": "There is a nonnegative density \\(F_0\\) on \\(\\T^3\\times\\R^3\\), with bounded velocity support and \\[ \\int_{\\T^3\\times\\R^3} F_0(1+|v|^2+|\\log F_0|)\\dd x\\dd v<\\infty, \\] for which the hard-sphere Boltzmann equation has two distinct global admissible solutions, in the sense of Definition~\\ref{def:admissible}, with initial datum \\(F_0\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The common datum has bounded velocities but unbounded amplitudes concentrated at smaller and smaller spatial scales.",
+      "sourceLine": "bounded velocities but unbounded amplitudes concentrated at successively",
+      "sourceQuote": "Their common datum has bounded velocities but unbounded amplitudes concentrated at successively smaller spatial scales.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "A cold jet at scale s has velocity-integrated density of order 1/s but total mass of order s².",
+      "sourceLine": "Its velocity-integrated density can be of order \\(1/s\\), but its total",
+      "sourceQuote": "Its velocity-integrated density can be of order \\(1/s\\), but its total mass is of order \\(s^2\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The Levermore–Masmoudi formulation allows a nonnegative defect in the momentum balance and in total energy.",
+      "sourceLine": "but allows a nonnegative matrix-valued defect in the momentum balance",
+      "sourceQuote": "The periodic formulation in \\cite[Theorem~4.1]{LevermoreMasmoudi2010} gives local mass conservation, but allows a nonnegative matrix-valued defect in the momentum balance and a corresponding defect in total energy.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Thin jets eventually meet their periodic copies, and an entropy bound alone does not give the needed integrability.",
+      "sourceLine": "First, thin jets eventually meet their periodic",
+      "sourceQuote": "First, thin jets eventually meet their periodic copies.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the periodic nonuniqueness result: two distinct global renormalized solutions from the same initial density, conserving local mass and total momentum.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "id": "359",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-negatively-pinched-Kahler-threefold-without-bounded-holomorphic-coordinates-September-25-2026/paper.pdf",
+      "label": "A negatively pinched Kähler threefold without bounded holomorphic coordinates"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/One-sided-negative-sectional-curvature-and-the-holomorphic-Liouville-property-September-25-2026/paper.pdf",
+      "label": "One-sided negative sectional curvature and the holomorphic Liouville property"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/359.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a complete Kähler threefold with pinched negative curvature can lack bounded holomorphic coordinates.",
+  "scope": "A contractible domain in ℂ³ whose complete Kähler metric has curvatures between two negative constants. The companion works in some large fixed dimension.",
+  "plain": "In one complex dimension, a complete, simply connected surface with curvature below a negative constant is the disc. In higher dimensions, experts asked if two-sided negative curvature forces bounded holomorphic coordinates, as on a bounded domain. The main paper builds a three-dimensional example where this fails, and Lean, a computer proof checker, has a formal statement of it. A companion paper claims a stronger failure when only an upper curvature bound is kept: no nonconstant bounded holomorphic function at all.",
+  "doesNot": "This does not settle whether two-sided pinching forces at least one nonconstant bounded holomorphic function; the main example has two. The companion's curvature is unbounded below, and it has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1967",
+    "firstStepBy": "Hung-Hsi Wu, question (1) in his work on normal families",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It answers a uniformization question of Wu and of Wu and Yau with a Lean-checked construction, and the companion claims Yau's one-sided problem."
+  },
+  "explanation": "Take the unit disc, the complex numbers z with |z| < 1. Give it the Poincaré metric, which has constant curvature −1. The distance from the centre to the point r is 2 artanh r, which equals log((1 + r)/(1 − r)). At r = 0.9 this is log 19, about 2.944. At r = 0.99 it is log 199, about 5.293. As r nears 1 the distance grows without limit, so the metric is complete: the edge is infinitely far away. Yet the coordinate z itself stays smaller than 1. So the disc has a bounded holomorphic coordinate, a bounded function given by a complex power series.\n\nIn complex dimension one, a complete simply connected surface with curvature below a negative constant is the disc[2]. In higher dimensions, Wu asked a similar question. Wu and Yau stated a two-sided version[3]. Suppose a complete simply connected Kähler manifold has every curvature between two negative constants. Must it be a bounded domain, so that it has bounded holomorphic coordinates? A Kähler manifold is a complex space with a metric that fits its complex structure. Mostow and Siu found examples not covered by the ball, but those did not rule out some other bounded domain[4].\n\nThe first paper proves the answer is no. It builds a contractible domain in ℂ³ with a complete Kähler metric whose curvatures lie between −B and −A, both negative. No bounded holomorphic map to ℂ³ has a nowhere-zero Jacobian, so the domain is not a bounded domain[1]. The space is a family of discs over the unit ball in ℂ². The disc above z has radius e^(−φ(z)/2) for a chosen function φ[5]. The obstacle is to pick φ smooth enough for curvature control, yet rough enough to block every bounded holomorphic coordinate. The example still has two nonconstant bounded holomorphic functions, its base coordinates[6].\n\nThe second paper drops the lower curvature bound. In some large fixed complex dimension, it claims a domain with curvature at most −1 and only constant bounded holomorphic functions[7]. This answers the one-sided question, which Wu and Yau trace to Yau's Problem 38 from 1982[8]. Its curvature is unbounded below[9]. The two constructions and their proofs are independent[10].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the first paper's main result. So that paper proves its construction, as far as the Lean statement matches the paper. The companion's one-sided result is not in the Lean scope and remains a claim. No specialist review of either paper is published.",
+  "hypeCheck": "Major for the first result, which has a Lean statement and answers a stated uniformization question. The one-sided companion is a claim without a Lean check. Neither paper has a published specialist review.",
+  "glossary": [
+    {
+      "term": "Holomorphic",
+      "meaning": "Given near each point by a convergent power series in complex variables."
+    },
+    {
+      "term": "Kähler manifold",
+      "meaning": "A complex space with a metric that fits its complex structure."
+    },
+    {
+      "term": "Complete metric",
+      "meaning": "A metric in which no path of finite length runs off the edge of the space."
+    },
+    {
+      "term": "Bounded domain",
+      "meaning": "An open connected region inside a finite ball in complex space."
+    },
+    {
+      "term": "Jacobian",
+      "meaning": "The determinant that tests whether a map is locally one-to-one at a point."
+    },
+    {
+      "term": "Negatively pinched",
+      "meaning": "Having every sectional curvature between two fixed negative constants."
+    },
+    {
+      "term": "Contractible",
+      "meaning": "Able to be shrunk continuously to a single point."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A negatively pinched Kähler threefold without bounded holomorphic coordinates” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-negatively-pinched-Kahler-threefold-without-bounded-holomorphic-coordinates-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “One-sided negative sectional curvature and the holomorphic Liouville property” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/One-sided-negative-sectional-curvature-and-the-holomorphic-Liouville-property-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 359",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/359.md",
+      "quote": "Nevertheless, it has no system of bounded holomorphic coordinates and is not biholomorphic to a bounded domain."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "No bounded holomorphic map from the domain to ℂ³ has a nowhere-vanishing Jacobian, so it is not biholomorphic to a bounded domain.",
+      "sourceLine": "No bounded holomorphic map $F:M\\to\\C^3$ has a nowhere-vanishing Jacobian determinant.",
+      "sourceQuote": "No bounded holomorphic map $F:M\\to\\C^3$ has a nowhere-vanishing Jacobian determinant.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "In complex dimension one, a complete simply connected surface with curvature bounded above by a negative constant is biholomorphic to the disk.",
+      "sourceLine": "bounded above by a negative constant is biholomorphic to the disk.",
+      "sourceQuote": "In complex dimension one, a complete simply connected surface whose curvature is bounded above by a negative constant is biholomorphic to the disk.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Wu and Yau state the two-sided real-sectional version of the question with a bounded pseudoconvex domain as conclusion.",
+      "sourceLine": "Wu and Yau state the two-sided real-sectional version",
+      "sourceQuote": "Wu and Yau state the two-sided real-sectional version with a bounded pseudoconvex domain as conclusion \\cite[Conjecture~4.3, p.~18]{WuYauSurvey2019}: if a simply connected complete K\\\"ahler manifold has every real sectional curvature between two negative constants, must it be biholomorphic to a bounded domain in its complex dimension?",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The non-ball results of Mostow and Siu do not exclude a biholomorphism to some other bounded domain.",
+      "sourceLine": "These non-ball results, however, do not exclude a biholomorphism to some other bounded domain",
+      "sourceQuote": "These non-ball results, however, do not exclude a biholomorphism to some other bounded domain; that is the stronger obstruction sought here.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The disc above z has radius e^(−φ(z)/2).",
+      "sourceLine": "Thus the disc above $z$ has radius $e^{-\\phi(z)/2}$.",
+      "sourceQuote": "Thus the disc above $z$ has radius $e^{-\\phi(z)/2}$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The example has two bounded nonconstant holomorphic functions, supplied by its base coordinates.",
+      "sourceLine": "The example has two bounded nonconstant holomorphic functions, supplied by its base coordinates.",
+      "sourceQuote": "The example has two bounded nonconstant holomorphic functions, supplied by its base coordinates.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "In some large fixed dimension there is a domain with a complete Kähler metric of sectional curvature at most −1 and only constant bounded holomorphic functions.",
+      "sourceLine": "For some finite integer $m\\ge2$ there is a domain",
+      "sourceQuote": "For some finite integer $m\\ge2$ there is a domain $\\mathcal T\\subset\\mathbb C^m$, diffeomorphic to $\\mathbb R^{2m}$, with a complete K\\\"ahler metric $g$ such that \\[ \\operatorname{Sec}_g\\le-1, \\qquad H^\\infty(\\mathcal T)=\\mathbb C. \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Wu and Yau's survey traces the one-sided question to Yau's 1982 Problem 38.",
+      "sourceLine": "traces it to Yau's 1982 Problem~38.",
+      "sourceQuote": "We use the public formulation recorded by Wu and Yau \\citep[p.~103]{WuYau2020}; their survey \\citep[Section~3, p.~9]{WuYauSurvey2019} traces it to Yau's 1982 Problem~38.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The sectional curvatures of the companion's metric are unbounded below.",
+      "sourceLine": "The sectional curvatures of $g$ are unbounded below.",
+      "sourceQuote": "The sectional curvatures of $g$ are unbounded below.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The two constructions and their proofs are independent.",
+      "sourceLine": "The two constructions and their proofs are independent.",
+      "sourceQuote": "The two constructions and their proofs are independent.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the negatively pinched construction: a contractible complex threefold with a complete pinched Kähler metric and no bounded holomorphic coordinates.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

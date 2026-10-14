@@ -1,0 +1,158 @@
+{
+  "id": "362",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/paper.pdf",
+      "label": "Global classical solutions of the three-dimensional relativistic Vlasov–Maxwell system"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/362.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves the 3D relativistic Vlasov–Maxwell plasma equations have smooth solutions for all time, from any admissible data.",
+  "scope": "The one-species relativistic Vlasov–Maxwell system in three space and three momentum dimensions, with compactly supported smooth particle data and finite-energy smooth fields.",
+  "plain": "The relativistic Vlasov–Maxwell system describes a hot, thin plasma, where charged particles move only under the electric and magnetic fields they create together. A long-standing problem asked if smooth solutions can break down in finite time for large data. Earlier results needed small data, symmetry or fewer dimensions. This paper proves that every smooth admissible start gives a unique solution that stays smooth for all time. Lean, a computer proof checker, has a formal statement of this result.",
+  "doesNot": "This does not cover two or more species of particles, or particle data without compact support. It gives no bound on how the solution behaves as time goes to infinity; the momentum bound may grow with time.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Robert Glassey and Walter Strauss, the bounded-momentum continuation criterion",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It settles the large-data global regularity problem for a central plasma model, with no size or symmetry limits, and has a Lean statement."
+  },
+  "explanation": "In relativity, a particle's speed is u = v / √(1 + |v|²), where v is its momentum and light has speed 1[2]. With momentum 1, the speed is about 0.707. With momentum 10, it is about 0.995. With momentum 100, it is about 0.99995. So speed never reaches 1, however hard the particle is pushed. But momentum itself can grow. The worry is that the fields push some particles harder and harder, until their momentum becomes infinite in finite time.\n\nThe relativistic Vlasov–Maxwell system models a collisionless plasma. A density f tracks how many particles sit at each position and momentum. The particles move under the electric and magnetic fields they create together, and those fields obey Maxwell's equations[3]. Wollman proved that smooth solutions exist for a short time[4]. Glassey and Strauss showed that a smooth solution continues as long as particle momenta stay bounded[5]. Since then, global results needed small data, fewer dimensions, symmetry or a nearby known solution[6].\n\nThis paper proves the general case in three dimensions. Every smooth admissible start gives a unique solution for all time. It stays smooth on every finite time interval[1]. Admissible means the particle density is smooth and zero outside a bounded region, and the fields are smooth with finite energy. The data may be as large as you like, with no symmetry[7].\n\nThe key estimate is on the signed change of a particle's momentum over time. The norm is taken only after adding up the pushes, so opposite pushes can cancel[8]. This gives a lower bound on the time needed to double the largest momentum. These lower bounds have a sum that never ends, so momentum cannot become infinite in finite time[9]. As an illustration only, suppose step j took at least 1/j time units. Then 10 doublings take at least 2.93 units, and 100 take at least 5.19. The obstacle is a narrow range of angles where simple force bounds lose a factor √w at energy w[10]. There the paper integrates the force along a source path first, and a cancellation recovers the loss.\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main result. It covers existence, uniqueness and smoothness, with no smallness, symmetry or neutrality assumption. So the paper proves this result, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "Major, with a Lean statement of the main theorem: it settles a large-data problem for a central plasma model. It covers one species and compactly supported particle data. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Plasma",
+      "meaning": "A gas of charged particles, such as electrons, that respond to electric and magnetic fields."
+    },
+    {
+      "term": "Collisionless",
+      "meaning": "Particles interact only through the shared fields, not by bumping into each other."
+    },
+    {
+      "term": "Momentum",
+      "meaning": "Mass times velocity, adjusted for relativity; it can grow without limit even though speed cannot."
+    },
+    {
+      "term": "Maxwell's equations",
+      "meaning": "The laws that say how electric and magnetic fields change and how charges create them."
+    },
+    {
+      "term": "Classical solution",
+      "meaning": "A solution with enough derivatives that the equations hold at every point."
+    },
+    {
+      "term": "Compactly supported",
+      "meaning": "Equal to zero outside some bounded region."
+    },
+    {
+      "term": "Continuation criterion",
+      "meaning": "A condition that, while it holds, lets a solution be extended further in time."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Global classical solutions of the three-dimensional relativistic Vlasov–Maxwell system” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 362",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/362.md",
+      "quote": "No smallness, symmetry, or neutrality assumption is imposed."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every smooth admissible datum generates a unique global classical solution, smooth on every finite time interval.",
+      "sourceLine": "Every smooth admissible datum \\eqref{eq:data} generates a unique global",
+      "sourceQuote": "Every smooth admissible datum \\eqref{eq:data} generates a unique global classical solution of \\eqref{eq:rvm}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The particle speed is u(v) = v/q(v) with q(v) = √(1+|v|²).",
+      "sourceLine": "q(v)=\\sqrt{1+|v|^2},\\qquad u(v)=\\frac{v}{q(v)}.",
+      "sourceQuote": "For momentum $v\\in\\R^3$, write \\[ q(v)=\\sqrt{1+|v|^2},\\qquad u(v)=\\frac{v}{q(v)}. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "The system describes a collisionless plasma whose particles move under their self-consistent electromagnetic field.",
+      "sourceLine": "system describes a collisionless plasma",
+      "sourceQuote": "The relativistic Vlasov--Maxwell system describes a collisionless plasma whose particles move under their self-consistent electromagnetic field.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Wollman established local existence and uniqueness for classical solutions.",
+      "sourceLine": "Wollman established local existence and uniqueness for classical solutions",
+      "sourceQuote": "Wollman established local existence and uniqueness for classical solutions~\\cite{Wollman1984}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Glassey and Strauss identified bounded momentum support as a continuation condition.",
+      "sourceLine": "Glassey and Strauss identified bounded momentum support as a continuation condition",
+      "sourceQuote": "For classical solutions, Glassey and Strauss identified bounded momentum support as a continuation condition~\\cite{GlasseyStrauss1986} and proved global existence for initially dilute plasmas~\\cite{GlasseyStrauss1987}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Earlier global results use restrictions on size, dimension, or the reference configuration.",
+      "sourceLine": "These results use restrictions on size, dimension, or the reference configuration.",
+      "sourceQuote": "These results use restrictions on size, dimension, or the reference configuration.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The data have no size or symmetry restriction.",
+      "sourceLine": "The data have no size or symmetry restriction.",
+      "sourceQuote": "The data have no size or symmetry restriction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The central estimate concerns the signed change of a particle's momentum, with the norm taken after integration.",
+      "sourceLine": "We take the norm after integration.",
+      "sourceQuote": "We take the norm after integration.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The lower bounds on doubling times have a divergent sum, which rules out unbounded momentum support in finite time.",
+      "sourceLine": "These lower bounds have a divergent sum, which rules out unbounded momentum support in finite time",
+      "sourceQuote": "These lower bounds have a divergent sum, which rules out unbounded momentum support in finite time and allows the continuation criterion to apply.",
+      "verdict": "supported"
+    },
+    {
+      "text": "At receiver energy w the absolute-force bound has an extra factor √w compared with the needed signed estimate.",
+      "sourceLine": "At receiver energy comparable to $w$, the absolute-force bound has an",
+      "sourceQuote": "At receiver energy comparable to $w$, the absolute-force bound has an extra factor $\\sqrt w$ compared with the signed estimate we need.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes global existence, smoothness on finite time intervals and uniqueness for the three-dimensional one-species relativistic Vlasov–Maxwell system.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

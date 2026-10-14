@@ -1,0 +1,164 @@
+{
+  "id": "358",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Three-Manifold-Without-Conjugate-Points-and-Without-a-Nonpositively-Curved-Metric-September-24-2026/paper.pdf",
+      "label": "A Three-Manifold Without Conjugate Points and Without a Nonpositively Curved Metric"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/358.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that a closed three-manifold can carry a metric without conjugate points yet no metric of nonpositive curvature.",
+  "scope": "One explicit closed connected orientable smooth three-manifold, built by gluing two copies of a punctured torus times a circle.",
+  "plain": "On a curved space, geodesics are the straightest paths. Two geodesics leaving one point can meet again, as lines of longitude meet at the poles; the meeting point is called a conjugate point. Nonpositive curvature rules out conjugate points, and experts asked if the reverse holds for whole spaces. This paper builds a closed three-dimensional space with a metric that has no conjugate points but that allows no metric of nonpositive curvature. Lean, a computer proof checker, has a formal statement of this result.",
+  "doesNot": "This does not show that every metric without conjugate points fails to be nonpositively curved. It gives one example, not a classification, and the Lean scope leaves out the focal-point and CAT(0) consequences.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2014",
+    "firstStepBy": "Sergei Ivanov and Vitali Kapovitch, Questions 1.1 and 8.1 on manifolds without conjugate points",
+    "field": "Differential geometry",
+    "significance": "Solid",
+    "significanceWhy": "It answers a question of Ivanov and Kapovitch, and of Burns and Matveev, in dimension three, with a Lean statement."
+  },
+  "explanation": "Start on a round sphere of radius 1. Two great circles leave the north pole at a small angle. Their gap grows like sin t, where t is the distance travelled. At t = π, about 3.1416, sin t is 0 again, so they meet at the south pole. On a flat plane the gap grows like t and never returns to 0. On a saddle-shaped surface of curvature −1 it grows like sinh t, faster still. At t = 2, sin t is about 0.909, t is 2, and sinh t is about 3.627. A Jacobi field measures this gap between nearby geodesics. A metric has no conjugate points if no nonzero Jacobi field vanishes at two different times[2].\n\nNonpositive curvature, meaning curvature at most zero in every direction, rules out conjugate points[3]. Gulliver showed the reverse fails for a single metric. He added positive curvature in small regions and kept the absence of conjugate points[4]. But his spaces still carry some other metric of negative curvature. So the real question is about the space itself. If a closed space carries a metric without conjugate points, must it carry some metric of nonpositive curvature? Ivanov and Kapovitch asked this, and so did a survey by Burns and Matveev[5]. For closed surfaces the answer is yes, so the problem starts in dimension three[6].\n\nThe paper proves the answer is no in dimension three[1]. The space is built from two copies of a punctured torus times a circle. Their boundary tori are glued by the rule h₂ = h₁ + f₁ and f₂ = h₁[13]. Here h is a loop around the surface boundary and f is a loop around the circle. As a whole-number matrix this rule is (1, 1; 1, 0), with determinant −1. A known argument of Leeb shows this gluing allows no metric of nonpositive curvature. Under such a metric, two pairs of loops would need perpendicular directions, and the gluing makes that impossible[8].\n\nThe hard part is the metric. Each piece is nonpositively curved. Between them sits a neck, a torus times an interval[9]. Its metric comes from a carefully bent path of matrices. The obstacle is a geodesic that enters the neck, turns and comes back out. The paper bounds every such excursion uniformly in its angle and duration. This lets one metric handle every complete geodesic[10].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main result. It covers all geodesics, including constant ones and unbounded time. So the paper proves this result, as far as the Lean statement matches the paper. The extra focal-point and CAT(0) consequences are not in the Lean scope. No specialist review is published.",
+  "hypeCheck": "Solid, with a Lean statement of the main theorem. It gives one example in dimension three, not a general theory. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Geodesic",
+      "meaning": "A straightest possible path on a curved space."
+    },
+    {
+      "term": "Jacobi field",
+      "meaning": "A measure of the gap between a geodesic and nearby geodesics as they travel."
+    },
+    {
+      "term": "Conjugate points",
+      "meaning": "Two points on a geodesic where a nonzero Jacobi field is zero, so nearby geodesics meet again."
+    },
+    {
+      "term": "Sectional curvature",
+      "meaning": "The curvature of a space measured along one two-dimensional slice through a point."
+    },
+    {
+      "term": "Three-manifold",
+      "meaning": "A space that looks like ordinary three-dimensional space near every point."
+    },
+    {
+      "term": "Punctured torus",
+      "meaning": "The surface of a doughnut with one small disc removed."
+    },
+    {
+      "term": "Graph manifold",
+      "meaning": "A three-manifold glued from pieces that are surfaces times a circle."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Three-Manifold Without Conjugate Points and Without a Nonpositively Curved Metric” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Three-Manifold-Without-Conjugate-Points-and-Without-a-Nonpositively-Curved-Metric-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 358",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/358.md",
+      "quote": "It constructs a closed connected orientable smooth three-manifold with a smooth Riemannian metric having no conjugate points, while the same manifold admits no smooth metric of everywhere nonpositive sectional curvature."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "There is a closed connected orientable three-manifold with a smooth metric without conjugate points that admits no smooth metric of nonpositive sectional curvature.",
+      "sourceLine": "There exists a closed connected orientable smooth three-manifold $M$ with a $C^\\infty$ Riemannian metric without conjugate points",
+      "sourceQuote": "There exists a closed connected orientable smooth three-manifold $M$ with a $C^\\infty$ Riemannian metric without conjugate points, such that $M$ admits no $C^\\infty$ Riemannian metric whose sectional curvature is everywhere at most zero.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A metric has no conjugate points if no nonzero Jacobi field along a geodesic vanishes at two distinct times.",
+      "sourceLine": "A Riemannian metric has \\emph{no conjugate points} if no nonzero Jacobi field along a geodesic vanishes at two distinct times.",
+      "sourceQuote": "A Riemannian metric has \\emph{no conjugate points} if no nonzero Jacobi field along a geodesic vanishes at two distinct times.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Nonpositive sectional curvature implies the absence of conjugate points.",
+      "sourceLine": "Nonpositive sectional curvature implies this condition.",
+      "sourceQuote": "Nonpositive sectional curvature implies this condition.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gulliver showed that local changes of negatively curved metrics can create positive curvature while keeping no conjugate points.",
+      "sourceLine": "Gulliver showed that the converse fails for an individual metric",
+      "sourceQuote": "Gulliver showed that the converse fails for an individual metric: local modifications of negatively curved metrics can produce regions of positive curvature while preserving the absence of conjugate points \\cite[Section~3]{Gulliver1975}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The question appears in Ivanov and Kapovitch and in the survey of Burns and Matveev, which includes dimension three.",
+      "sourceLine": "This question appears in Ivanov and Kapovitch",
+      "sourceQuote": "This question appears in Ivanov and Kapovitch \\cite[Questions~1.1 and~8.1]{IvanovKapovitch2014} and in the survey of Burns and Matveev \\cite[Question~4.1.2]{BurnsMatveev2021}, which explicitly includes dimension three.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For closed surfaces uniformization supplies a flat or negatively curved metric, so the problem begins in dimension three.",
+      "sourceLine": "then supplies a flat or negatively curved metric, so the existence problem begins in dimension three.",
+      "sourceQuote": "Uniformization then supplies a flat or negatively curved metric, so the existence problem begins in dimension three.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The manifold glues two copies of a punctured torus times a circle by h₂ = h₁ + f₁, f₂ = h₁.",
+      "sourceLine": "The manifold is obtained by gluing two copies of $\\Sigma\\times S^1$",
+      "sourceQuote": "The manifold is obtained by gluing two copies of $\\Sigma\\times S^1$, where $\\Sigma$ is a compact oriented surface of genus one with one boundary component.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Two orthogonality conditions from a hypothetical nonpositively curved metric are incompatible with the gluing.",
+      "sourceLine": "These two orthogonality conditions are incompatible with the gluing.",
+      "sourceQuote": "These two orthogonality conditions are incompatible with the gluing.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Each product piece is nonpositively curved and a neck [0,1] × T² is inserted between them.",
+      "sourceLine": "Each product piece has nonpositive sectional curvature. Between them we insert a neck",
+      "sourceQuote": "Each product piece has nonpositive sectional curvature. Between them we insert a neck $[0,1]\\times T^2$ with metric \\[ g=dt^2+dx^{\\mathsf T}P(t)^{-1}\\,dx, \\] where $P(t)$ is a smooth path of positive definite matrices.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A timing margin makes the excursion estimate uniform, which lets one metric handle every complete geodesic.",
+      "sourceLine": "This is what permits one metric to handle every complete geodesic.",
+      "sourceQuote": "This is what permits one metric to handle every complete geodesic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the main construction: a closed connected orientable three-manifold with a metric without conjugate points that admits no metric of nonpositive sectional curvature.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "The gluing of the two boundary tori is h2 = h1 + f1 and f2 = h1.",
+      "sourceLine": "The gluing is",
+      "sourceQuote": "The gluing is \\[ h_2=h_1+f_1,\\qquad f_2=h_1. \\]",
+      "verdict": "supported"
+    }
+  ]
+}

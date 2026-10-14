@@ -1,0 +1,142 @@
+{
+  "id": "366",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Interior-regularity-of-planar-Mumford-Shah-minimizers-September-24-2026/Interior-regularity-of-planar-Mumford-Shah-minimizers-September-24-2026.pdf",
+      "label": "Interior regularity of planar Mumford–Shah minimizers"
+    }
+  ],
+  "headline": "Claims interior Mumford–Shah regularity in the plane: edges are smooth arcs, crack tips or 120-degree triple junctions.",
+  "scope": "Reduced absolute minimizers of the planar Mumford–Shah energy in a bounded Lipschitz domain, with bounded measurable data, away from the domain's boundary.",
+  "plain": "The Mumford–Shah problem cleans up a picture by finding a smooth image plus a set of edges where it may jump. Long edges cost energy, so the best edge set should be simple. Mumford and Shah conjectured that, inside the picture, it is made of smooth curves, curve ends and three-way junctions at 120 degrees. This paper claims to prove that interior statement in the plane. It also claims only finitely many separate pieces of the edge set meet any region away from the boundary.",
+  "doesNot": "This does not cover what happens at the boundary of the domain, or dimensions above two. It has no Lean check, and a separate recent preprint by Deangelis claims a proof by another route.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1989",
+    "firstStepBy": "David Mumford and Jayant Shah, a variational model for image segmentation",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It claims the interior regularity part of a well-known conjecture in the calculus of variations, with a new compact-piece argument."
+  },
+  "explanation": "Draw a crack along the negative x-axis in the plane, ending at the origin. Away from the crack, let u = √r sin(θ/2), where r is the distance to the origin and θ is the angle. This function jumps across the crack and is smooth elsewhere. Its slope has size 1/(2√r), which blows up at the tip. The slope is bigger than t only where r < 1/(4t²). For t = 10 that is r < 0.0025, a disc of area about 0.0000196. In general that area is π/(16t⁴), so it shrinks like t⁻⁴. Mathematicians call this weak L⁴. This crack tip is one of the shapes the theory expects.\n\nThe Mumford–Shah energy scores a pair: a function u and a closed set K where u may jump. It adds the squared slope of u off K, the length of K, and the squared distance from given data g[2]. Mumford and Shah proposed it to split an image into regions[3]. Their conjecture predicts that, inside the domain, K is made of smooth arcs with only free ends and triple junctions[4]. Bonnet, David, Ambrosio, Fusco and Pallara built most of the regularity theory. After their classification results, one obstacle remained for blow-up limits: a possible bounded piece of the limiting edge set[5].\n\nThe paper claims the interior part of the conjecture for reduced absolute minimizers with bounded data. Near every point of K, the set is a smooth arc through the point, an arc ending there, or three arcs meeting at 120 degrees[1]. Only finitely many connected pieces of K meet any region kept away from the boundary[6]. It also deduces that the slope of u is weak L⁴ near each interior point, matching the crack tip above[7].\n\nThe key step rules out the bounded piece. Moving that piece sideways keeps its length the same[8]. An interaction energy then depends on the shift in a harmonic way, and minimality forces it to be constant. This makes the remaining fields zero, so deleting the piece saves length, a contradiction[9]. A recent preprint by Deangelis also claims the classification and the interior structure, by a different argument[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of it. The proof relies on a large body of earlier regularity theory, used as stated in the literature. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds: it would settle the interior part of the planar Mumford–Shah conjecture. Another recent preprint claims the same by a different route. There is no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Mumford–Shah energy",
+      "meaning": "A score for an image and its edges: slope off the edges, plus edge length, plus distance from the data."
+    },
+    {
+      "term": "Absolute minimizer",
+      "meaning": "A pair whose energy cannot be lowered by any change confined to a compact region inside the domain."
+    },
+    {
+      "term": "Reduced",
+      "meaning": "With no useless bits of zero length added to the edge set."
+    },
+    {
+      "term": "Crack tip",
+      "meaning": "A point where an edge curve simply stops."
+    },
+    {
+      "term": "Triple junction",
+      "meaning": "A point where three edge curves meet, here at equal 120-degree angles."
+    },
+    {
+      "term": "Weak L⁴",
+      "meaning": "A size condition: the area where the slope exceeds t is at most a constant times t⁻⁴."
+    },
+    {
+      "term": "Blow-up limit",
+      "meaning": "The shape seen by zooming in on a point more and more closely."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Interior regularity of planar Mumford–Shah minimizers” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Interior-regularity-of-planar-Mumford-Shah-minimizers-September-24-2026/Interior-regularity-of-planar-Mumford-Shah-minimizers-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Near every point of K the set is a C^{1,α} arc through the point, an arc ending there, or three arcs meeting at 120 degrees.",
+      "sourceLine": "Every interior point of the closed discontinuity set has a neighborhood",
+      "sourceQuote": "Every interior point of the closed discontinuity set has a neighborhood consisting of a $C^{1,\\alpha}$ arc, an arc ending at that point, or three such arcs meeting at $120$ degrees.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The planar Mumford–Shah problem balances smoothness of a function against the length of a set across which it may jump.",
+      "sourceLine": "problem balances smoothness of a function against",
+      "sourceQuote": "The planar Mumford--Shah problem balances smoothness of a function against the length of a set across which it may jump.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mumford and Shah introduced their functional as a model for image segmentation.",
+      "sourceLine": "Mumford and Shah introduced their functional as a model for image",
+      "sourceQuote": "Mumford and Shah introduced their functional as a model for image segmentation \\cite{mumford_shah1989}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The conjecture predicts that in the interior the set consists of regular arcs with only free endpoints and triple junctions.",
+      "sourceLine": "Its regularity conjecture predicts that, in the interior, this set consists of regular arcs",
+      "sourceQuote": "Its regularity conjecture predicts that, in the interior, this set consists of regular arcs with only free endpoints and triple junctions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The classification results leave possible bounded components of a limiting crack as the remaining obstruction.",
+      "sourceLine": "results leave the possible bounded components of a limiting crack as the",
+      "sourceQuote": "In the generalized-limit formulation recalled below, these classification results leave the possible bounded components of a limiting crack as the remaining obstruction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Only finitely many global connected components meet any relatively compact open set.",
+      "sourceLine": "Only finitely many global connected components meet any relatively compact open set.",
+      "sourceQuote": "Only finitely many global connected components meet any relatively compact open set.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The gradient is locally weak L⁴; the exponent reflects the inverse-square-root gradient at a crack tip.",
+      "sourceLine": "The exponent reflects the inverse-square-root",
+      "sourceQuote": "The exponent reflects the inverse-square-root gradient at a crack tip.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Translating the compact piece leaves its length unchanged.",
+      "sourceLine": "Translating $A$ leaves its length unchanged.",
+      "sourceQuote": "Translating $A$ leaves its length unchanged.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Removing the compact piece saves positive length, a contradiction.",
+      "sourceLine": "Removing $A$ saves positive length, a contradiction.",
+      "sourceQuote": "Removing $A$ saves positive length, a contradiction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Deangelis's recent preprint gives a proof of the global classification and the interior arc, endpoint and triple-junction structure.",
+      "sourceLine": "Deangelis's recent preprint gives a proof of the global classification",
+      "sourceQuote": "Deangelis's recent preprint gives a proof of the global classification and the resulting interior arc, endpoint, and triple-junction structure \\cite[Theorems~1.1 and~3.4]{deangelis2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

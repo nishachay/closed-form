@@ -1,0 +1,174 @@
+{
+  "id": "361",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-integer-degree-harmonic-dimension-comparison-September-25-2026/paper.pdf",
+      "label": "A counterexample to integer-degree harmonic dimension comparison"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Three-Dimensional-Counterexample-to-Integer-Degree-Harmonic-Dimension-Comparison-September-26-2026/paper.pdf",
+      "label": "A Three-Dimensional Counterexample to Integer-Degree Harmonic Dimension Comparison"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/361.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves Yau's Euclidean bound on polynomial-growth harmonic functions fails under nonnegative Ricci curvature.",
+  "scope": "Complete metrics with nonnegative Ricci curvature on ℝⁿ for one even n ≥ 8, with n = 16 and k = 50000 in Lean. A companion treats ℝ³ for all large k.",
+  "plain": "A harmonic function is a smooth function that equals its own average around every small sphere. On flat three-dimensional space, there are exactly (k + 1)² independent ones that grow no faster than distance to the power k. Yau asked if nonnegative Ricci curvature always keeps this count at or below the flat one. The first paper builds a counterexample in dimension 16, and Lean, a computer proof checker, has a formal statement of it. A companion paper claims counterexamples on three-dimensional space for every large k.",
+  "doesNot": "This does not give one fixed metric that beats the count for every k; the metric depends on k. It does not overturn the known finite-dimensionality bounds, and the three-dimensional companion has no Lean check.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1989",
+    "firstStepBy": "Peter Li and Luen-Fai Tam, the sharp bound for linear-growth harmonic functions",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It answers the integer-degree form of Yau's comparison question negatively, with a Lean statement in one dimension."
+  },
+  "explanation": "On flat three-dimensional space, list the harmonic polynomials of degree at most 2. A harmonic function equals its own average around every small sphere. There is 1 constant. There are 3 linear ones: x, y and z. There are 5 independent quadratic ones, such as xy and x² − y². That makes 1 + 3 + 5 = 9. In general, degree at most k gives 1 + 3 + … + (2k + 1) = (k + 1)²[2]. On flat space, a harmonic function that grows no faster than distance to the power k is such a polynomial.\n\nRicci curvature is a kind of average curvature. Nonnegative Ricci curvature means space does not spread out faster than flat space. The comparison problem asks whether nonnegative Ricci curvature always keeps the count at or below the flat count, for every whole-number k[3]. Li and Tam proved the sharp bound for linear growth, k = 1. Colding and Minicozzi proved the count is finite for every degree[4]. Donnelly found failures at fractional degrees between one and two. Those do not decide the whole-number case[5].\n\nThe first paper answers no. It builds a complete metric with nonnegative Ricci curvature in some even dimension n ≥ 8. This metric has more harmonic functions of growth at most k than flat space[1]. It allows the choices n = 16 and k = 50000[6]. The flat count there is about 4.68 × 10⁵⁸. The key idea is a cone whose cross-section slowly changes shape. On a cone, each angular direction carries one growth rate d, set by d(d + m − 1) = λ, where λ is an eigenvalue[7]. On a round two-sphere, λ = l(l + 1) gives d = l. A moving cross-section lets one function use several rates in turn. The obstacle is that a tiny part in a faster direction can take over after a long stretch[8].\n\nThe second paper claims the same failure on three-dimensional space. For large k it builds metrics with at least c(k + 1)² harmonic functions, for any c below 9v/4[9]. Here v, between 4/9 and 1, measures volume growth relative to flat space. With c = 2 and k = 10, that is at least 242 functions instead of 121. The metric is chosen after k and may depend on it[10].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the first paper's result in dimension 16 at degree 50000. So that counterexample is proved, as far as the Lean statement matches the paper. The three-dimensional companion and the tangent-cone claims are not in the Lean scope. No specialist review is published.",
+  "hypeCheck": "Major, with a Lean statement of one counterexample. The metric depends on the degree, and the three-dimensional result is a claim without a Lean check. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Harmonic function",
+      "meaning": "A smooth function equal to its own average around every small sphere."
+    },
+    {
+      "term": "Polynomial growth",
+      "meaning": "Growing no faster than a fixed power of the distance from a base point."
+    },
+    {
+      "term": "Ricci curvature",
+      "meaning": "An average of curvature over directions; nonnegative means volume grows no faster than in flat space."
+    },
+    {
+      "term": "Asymptotic volume ratio",
+      "meaning": "How the volume of huge balls compares with flat balls of the same radius."
+    },
+    {
+      "term": "Tangent cone at infinity",
+      "meaning": "The cone a space looks like when viewed from very far away."
+    },
+    {
+      "term": "Eigenvalue",
+      "meaning": "A number λ for which some nonzero function is turned into λ times itself."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A counterexample to integer-degree harmonic dimension comparison” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-counterexample-to-integer-degree-harmonic-dimension-comparison-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Three-Dimensional Counterexample to Integer-Degree Harmonic Dimension Comparison” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Three-Dimensional-Counterexample-to-Integer-Degree-Harmonic-Dimension-Comparison-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 361",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/361.md",
+      "quote": "The construction uses dimension $16$ and degree $50000$."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "paper": 1,
+      "text": "There are an even n ≥ 8, an integer k ≥ 2 and a complete metric on ℝⁿ with nonnegative Ricci curvature and more harmonic functions of growth at most k than Euclidean space.",
+      "sourceLine": "There are an even integer $n\\geq8$, an integer $k\\geq2$, and a complete",
+      "sourceQuote": "There are an even integer $n\\geq8$, an integer $k\\geq2$, and a complete smooth metric $g$ on $\\mathbb R^n$ such that $\\operatorname{Ric}_g\\geq0$ and \\[ h_k(\\mathbb R^n,g)>h_k(\\mathbb R^n,g_{\\mathrm E}). \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The Euclidean count in dimension three is (k+1)².",
+      "sourceLine": "h_k(\\mathbb R^3,g_{\\mathrm E})=\\sum_{l=0}^k(2l+1)=(k+1)^2.",
+      "sourceQuote": "For an integer $k\\geq0$, $\\mathcal H_k(\\mathbb R^3,g_{\\mathrm E})$ consists of harmonic polynomials of degree at most $k$; summing their homogeneous dimensions gives \\begin{equation}\\label{n:euclidean-count} h_k(\\mathbb R^3,g_{\\mathrm E})=\\sum_{l=0}^k(2l+1)=(k+1)^2. \\end{equation}",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The integer-degree comparison problem asks whether nonnegative Ricci curvature forces the Euclidean bound for every integer k ≥ 1.",
+      "sourceLine": "The integer-degree comparison problem asks whether",
+      "sourceQuote": "The integer-degree comparison problem asks whether $\\operatorname{Ric}_g \\geq0$ forces $h_k(M,g)\\leq h_k(\\mathbb R^n,g_{\\mathrm E})$ for every integer $k\\geq1$.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "Colding and Minicozzi proved finite dimensionality at every fixed degree.",
+      "sourceLine": "Colding and Minicozzi proved finite dimensionality at every fixed degree",
+      "sourceQuote": "Colding and Minicozzi proved finite dimensionality at every fixed degree and later obtained bounds of the optimal order $d^{n-1}$ as $d$ grows~\\cite{CM97,CM98}.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "Donnelly's subquadratic excess does not by itself establish an integer-degree violation.",
+      "sourceLine": "This subquadratic excess does not by itself establish an integer-degree violation.",
+      "sourceQuote": "This subquadratic excess does not by itself establish an integer-degree violation.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "The finite spectral selection permits the choices n = 16 and k = 50000.",
+      "sourceLine": "permits the choices \\(n=16\\) and \\(k=50000\\).",
+      "sourceQuote": "The exact finite spectral selection in Appendix~\\ref{sec:finite-selection} permits the choices \\(n=16\\) and \\(k=50000\\).",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "On a metric cone, an angular eigenfunction with eigenvalue λ gives a growing mode with d(d + m − 1) = λ.",
+      "sourceLine": "an angular eigenfunction of the nonnegative Laplacian with eigenvalue",
+      "sourceQuote": "On the metric cone $dr^2+r^2h$ over an $m$-dimensional link, an angular eigenfunction of the nonnegative Laplacian with eigenvalue $\\lambda$ has a growing homogeneous harmonic mode $r^d\\phi$, where \\[ d(d+m-1)=\\lambda,\\qquad d\\geq0. \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 1,
+      "text": "An arbitrarily small component in an unwanted faster direction can dominate after a long interval.",
+      "sourceLine": "an arbitrarily small component in an unwanted faster direction can dominate",
+      "sourceQuote": "The challenge is to arrange that succession exactly: an arbitrarily small component in an unwanted faster direction can dominate after a sufficiently long interval.",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "For v in (4/9, 1) and c in (1, 9v/4), all large k admit a metric on ℝ³ with nonnegative Ricci curvature and at least c(k+1)² harmonic functions.",
+      "sourceLine": "For every \\(v\\in(4/9,1)\\) and \\(c\\in(1,9v/4)\\), there is an integer",
+      "sourceQuote": "For every \\(v\\in(4/9,1)\\) and \\(c\\in(1,9v/4)\\), there is an integer \\(k_0(v,c)\\) such that for every integer \\(k\\geq k_0(v,c)\\) there is a complete smooth metric \\(g_k\\) on \\(\\mathbb R^3\\), Euclidean near the origin, with \\(\\operatorname{Ric}_{g_k}\\geq0\\), \\(\\operatorname{AVR}(g_k)=v\\), and \\[ h_k(\\mathbb R^3,g_k)\\geq c(k+1)^2>(k+1)^2 =h_k(\\mathbb R^3,g_{\\mathrm E}). \\]",
+      "verdict": "supported"
+    },
+    {
+      "paper": 2,
+      "text": "The metric is chosen after k and may depend on it.",
+      "sourceLine": "The metric is chosen after \\(k\\) and may depend on it.",
+      "sourceQuote": "The metric is chosen after \\(k\\) and may depend on it.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes one counterexample: a complete metric with nonnegative Ricci curvature on ℝ¹⁶ with more harmonic functions of growth degree 50000 than the Euclidean count.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

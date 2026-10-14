@@ -1,0 +1,158 @@
+{
+  "id": "367",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Partial differential equations",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-dimension-for-one-phase-Bernoulli-minimizers-September-24-2026/The-critical-dimension-for-one-phase-Bernoulli-minimizers-September-24-2026.pdf",
+      "label": "The critical dimension for one-phase Bernoulli minimizers"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/367.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims seven is the critical dimension for one-phase Bernoulli minimizers, so free boundaries are smooth through six.",
+  "scope": "Nonnegative global and local minimizers of the one-phase Bernoulli energy in Euclidean space of any dimension, with interior free boundaries.",
+  "plain": "The one-phase Bernoulli problem models a fluid region whose edge, the free boundary, is not fixed in advance. Minimizers can have corner-like singular points, which first appear in some critical dimension. De Silva and Jerison found a singular example in dimension seven, and Jerison and Savin ruled them out up to dimension four. This paper claims to rule them out in dimensions five and six, so seven is the critical dimension. Lean, a computer proof checker, has a formal statement only of the dimension-seven existence part.",
+  "doesNot": "This does not cover the two-phase problem or nonminimizing stable solutions. The Lean scope leaves out the new flatness result in dimensions up to six and the regularity consequences.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1981",
+    "firstStepBy": "Hans Wilhelm Alt and Luis Caffarelli, existence and regularity for the one-phase problem",
+    "field": "Partial differential equations",
+    "significance": "Major",
+    "significanceWhy": "It claims the exact critical dimension for a central free-boundary problem, closing the gap between five and seven."
+  },
+  "explanation": "Take the interval from −1 to 1. A nonnegative function u must equal 0 at −1 and 1 at 1. Its energy is the integral of its squared slope, plus the length where u is positive. Try u = 0 up to some point, then a straight ramp of length ℓ up to 1 at x = 1. The slope is 1/ℓ, so the energy is ℓ × (1/ℓ)² + ℓ = 1/ℓ + ℓ. With ℓ = 0.5 it is 2.5. With ℓ = 1 it is 2. With ℓ = 2 it is 2.5 again. The best choice is ℓ = 1, where the slope is exactly 1. The point where u becomes positive is the free boundary. Its position is not given; minimizing chooses it.\n\nIn space, the one-phase Bernoulli energy is the same: squared gradient plus the volume where u is positive[2]. The simplest minimizers are flat, u = (x · e)₊, a single ramp in one direction[3]. Weiss's dimension reduction links singular points of minimizers to nonflat cones, minimizers that scale like u(rx) = r u(x)[4]. So the key number is d*, the first dimension with a nonflat minimizing cone. Jerison and Savin showed d* ≥ 5. De Silva and Jerison built a nonflat minimizer in dimension seven, so d* ≤ 7[5].\n\nThe paper claims d* = 7. Every nonzero one-homogeneous global minimizer in dimensions one to six is flat[1]. It follows that free boundaries of minimizers are smooth up to dimension six. In dimension n ≥ 7, the singular set has dimension at most n − 7, and this is sharp[6].\n\nThe obstacle is a stability test. Jerison and Savin explained why a simple power of the Hessian, the matrix of second derivatives, fails in dimensions four to six[7]. The paper builds a test function and a vector field together from the normalized Hessian[8]. A suspected cone in dimension five or six is reduced to a domain on the five-dimensional sphere[9]. The needed inequalities are then checked by weighted sums of squares with exact rational bounds[10]. Coefficient tables are listed in an appendix.\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of only one part. That part says a nonflat minimizer exists in dimension seven, as De Silva and Jerison showed. The new flatness result in dimensions five and six is not in the Lean scope. It remains a claim. No specialist review is published.",
+  "hypeCheck": "Major if the flatness proof holds: it would fix the critical dimension at seven. Lean covers only the dimension-seven existence part, which was already known. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Free boundary",
+      "meaning": "The edge of the region where the solution is positive; its position is part of the unknown."
+    },
+    {
+      "term": "One-phase Bernoulli energy",
+      "meaning": "The integral of squared gradient plus the volume where the function is positive."
+    },
+    {
+      "term": "Global minimizer",
+      "meaning": "A function whose energy cannot be lowered by changing it inside any ball."
+    },
+    {
+      "term": "One-homogeneous",
+      "meaning": "Scaling like u(rx) = r u(x), so the function is a cone."
+    },
+    {
+      "term": "Flat solution",
+      "meaning": "A single ramp, u = (x · e)₊, whose free boundary is a plane."
+    },
+    {
+      "term": "Singular set",
+      "meaning": "Free-boundary points where no zoom-in looks like a flat solution."
+    },
+    {
+      "term": "Hessian",
+      "meaning": "The matrix of second derivatives of a function."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The critical dimension for one-phase Bernoulli minimizers” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-critical-dimension-for-one-phase-Bernoulli-minimizers-September-24-2026/The-critical-dimension-for-one-phase-Bernoulli-minimizers-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 367",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/367.md",
+      "quote": "The linked formalization proves the existence side: in dimension seven there is a nonzero one-homogeneous global minimizer that is not a half-space solution."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every nonzero one-homogeneous global minimizer in dimensions at most six is flat.",
+      "sourceLine": "in \\(\\R^d\\), \\(1\\leq d\\leq6\\), is flat.",
+      "sourceQuote": "Every nonzero one-homogeneous global minimizer of \\eqref{eq:energy} in \\(\\R^d\\), \\(1\\leq d\\leq6\\), is flat.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The one-phase Bernoulli energy is the integral of |∇v|² plus the indicator of {v > 0}.",
+      "sourceLine": "the one-phase Bernoulli energy is",
+      "sourceQuote": "For a nonnegative function \\(v\\in H^1(B)\\), where \\(B\\subset\\R^d\\) is a ball, the one-phase Bernoulli energy is \\begin{equation}\\label{eq:energy} J(v;B)=\\int_B\\bigl(|\\nabla v|^2+\\mathbf 1_{\\{v>0\\}}\\bigr)\\,dx. \\end{equation}",
+      "verdict": "supported"
+    },
+    {
+      "text": "The nonzero flat solutions are u(x) = (x·e)₊ with |e| = 1.",
+      "sourceLine": "The nonzero flat solutions are",
+      "sourceQuote": "The nonzero flat solutions are \\[ u(x)=(x\\cdot e)_+,\\qquad |e|=1. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "Weiss's monotonicity formula and dimension reduction connect singularities of minimizers to homogeneous global minimizers.",
+      "sourceLine": "Weiss's monotonicity formula and dimension",
+      "sourceQuote": "Weiss's monotonicity formula and dimension reduction \\cite{Weiss1999} connect the singularities of general minimizers to homogeneous global minimizers; see also \\cite[Theorem~1.4 and Chapters~9--10]{Velichkov2023}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "De Silva and Jerison constructed a nonflat homogeneous global minimizer in dimension seven, proving d* ≤ 7.",
+      "sourceLine": "De Silva and Jerison constructed a nonflat homogeneous",
+      "sourceQuote": "In the other direction, De Silva and Jerison constructed a nonflat homogeneous global minimizer in dimension seven \\cite[Theorem~1.1]{DeSilvaJerison2009}, proving $d_*\\leq7$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "In dimension n ≥ 7 the singular set has Hausdorff dimension at most n − 7, and this bound is sharp.",
+      "sourceLine": "singular set has Hausdorff dimension at most $n-7$, and this bound is sharp.",
+      "sourceQuote": "In dimension $n\\ge7$, its singular set has Hausdorff dimension at most $n-7$, and this bound is sharp.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Jerison and Savin explain why an unweighted power of the Hessian norm does not work in dimensions four through six.",
+      "sourceLine": "Jerison and Savin explain why",
+      "sourceQuote": "Jerison and Savin explain why this unweighted choice does not give a uniform instability criterion in dimensions four through six: the interior and boundary estimates impose different restrictions on the power, and their sharp configurations need not agree \\cite[Section~3.2]{JerisonSavin2015}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof uses the normalized shape of the Hessian to build both a scalar test and a vector field.",
+      "sourceLine": "Our proof uses the normalized shape of the Hessian to construct both",
+      "sourceQuote": "Our proof uses the normalized shape of the Hessian to construct both a scalar test and a separate vector field whose divergence controls the test's energy.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Both possible dimensions lead to a domain in S⁵ with smooth regular boundary and possibly two tips.",
+      "sourceLine": "Thus both possible dimensions lead to a domain",
+      "sourceQuote": "Thus both possible dimensions lead to a domain $\\Omega\\subset S^5$ with a smooth regular boundary and, possibly, these two tips (Section~\\ref{sec:reductions}).",
+      "verdict": "supported"
+    },
+    {
+      "text": "The remaining inequalities are proved by weighted sums of tensor squares and exact rational remainder bounds.",
+      "sourceLine": "We prove them by weighted sums of tensor squares and exact rational remainder bounds",
+      "sourceQuote": "We prove them by weighted sums of tensor squares and exact rational remainder bounds, with all coefficients and contraction conventions supplied in Appendix~\\ref{app:tables}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes only the existence side: a nonzero, nonflat one-homogeneous global minimizer in dimension seven.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
