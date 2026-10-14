@@ -1,0 +1,209 @@
+{
+  "id": "291",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equivariant-Jiang-Su-Stability-for-Amenable-Actions-in-the-Unital-Stably-Finite-Case-October-5-2026/paper.pdf",
+      "label": "Equivariant Jiang–Su Stability for Amenable Actions in the Unital Stably Finite Case"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cuntz-comparison-and-Jiang-Su-absorption-September-23-2026/paper.pdf",
+      "label": "Cuntz comparison and Jiang–Su absorption"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nuclear-dimension-and-Jiang-Su-stability-without-elementary-subquotients-September-23-2026/paper.pdf",
+      "label": "Nuclear dimension and Jiang–Su stability without elementary subquotients"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tracial-projection-methods-and-uniform-property-Gamma-September-23-2026/paper.pdf",
+      "label": "Tracial projection methods and uniform property Gamma"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/291.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims amenable actions on Jiang–Su-stable algebras absorb the Jiang–Su algebra, plus three regularity theorems.",
+  "scope": "Simple and nonsimple separable nuclear C*-algebras: Jiang–Su absorption, strict comparison, nuclear dimension, uniform property Γ, and amenable group actions.",
+  "plain": "The Jiang–Su algebra is a small, infinite-dimensional operator algebra that behaves like a neutral element under tensoring. Algebras that absorb it are the well-behaved ones in the classification of nuclear C*-algebras. Four companion papers claim several regularity results, including the strict-comparison half of the Toms–Winter conjecture. The headline paper claims every amenable group action on a unital, stably finite, Jiang–Su-stable algebra also absorbs it. Lean checks the unital strict-comparison result and a uniform property Γ theorem.",
+  "doesNot": "This does not cover nonunital algebras in the equivariant theorem, and Lean does not check the equivariant result or the nuclear-dimension theorem.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1999",
+    "firstStepBy": "Xinhui Jiang and Hongbing Su, construction of the Jiang–Su algebra",
+    "field": "Operator algebras",
+    "significance": "Major",
+    "significanceWhy": "It claims to settle Szabó's Conjecture A in the unital stably finite case and parts of the Toms–Winter regularity problem."
+  },
+  "explanation": "Start with 2-by-2 matrices. Put a 2-by-2 matrix inside a 4-by-4 one as a block repeated twice. Repeat to reach 8-by-8, 16-by-16, and so on. The limit of this chain is an infinite-dimensional algebra. Tensoring it with one more 2-by-2 factor just shifts the chain by one step, giving the same algebra back. That is absorption: A ⊗ D looks exactly like A.\n\nThe Jiang–Su algebra, written Z, is the gentlest algebra with this property. Jiang and Su built it as a simple, infinite-dimensional, unital algebra with the same invariant as the complex numbers[5]. It has no projections other than 0 and 1. A C*-algebra is Z-stable if A ⊗ Z is isomorphic to A. Finite matrices fail this: a matrix algebra has nuclear dimension zero but does not absorb Z[8]. Nuclear dimension measures how many simple pieces finite approximations need.\n\nZ-stability links to comparison. In 3-by-3 matrices, a projection of rank one has normalized trace 1/3 and one of rank two has 2/3. Smaller trace means the first fits under the second. Strict comparison asks that trace sizes decide this order in general. Rørdam showed that Z-absorption forces a weak form of comparison[6]. The Toms–Winter conjecture asks for the reverse. The obstacle is to build Z inside an algebra knowing only how its pieces compare.\n\nThe second paper claims strict comparison implies Z-absorption for separable simple nuclear algebras that are not just compact operators[7]. This includes algebras with no unit. The fourth paper treats the unital case separately and completes the unital Toms–Winter equivalence[11]. It also answers Problem XXI of Schafhauser, Tikuisis and White[10]. The third paper claims to prove Robert and Tikuisis's Conjecture C1: finite nuclear dimension implies absorption, with no elementary pieces[9].\n\nThe headline paper adds a group action. Szabó conjectured that amenable actions on Z-stable algebras should also absorb Z[1]. Amenable groups are those with nearly invariant finite sets, like the integers. The paper claims the unital, stably finite case[2]. It assumes no outerness, Rokhlin or UCT condition[3]. Nonunital algebras lie beyond its scope[4].\n\nHow sure is this? A computer proof checker called Lean has formal proofs for parts of the fourth paper. It covers uniform property Γ from tracial real rank zero, and Z-absorption from strict comparison for unital algebras. It also covers one stably projectionless case. The equivariant theorem, the nonunital comparison theorem and the nuclear-dimension theorem are outside Lean. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if it holds. Lean checks the unital strict-comparison and uniform Γ results, but not the equivariant headline theorem; no specialist review is published.",
+  "glossary": [
+    {
+      "term": "C*-algebra",
+      "meaning": "An algebra of operators on a Hilbert space, closed under adjoints and norm limits."
+    },
+    {
+      "term": "Jiang–Su algebra Z",
+      "meaning": "A simple, infinite-dimensional algebra with no projections except 0 and 1 that acts like a neutral element under tensoring."
+    },
+    {
+      "term": "Z-stable",
+      "meaning": "An algebra A with A ⊗ Z isomorphic to A; it absorbs the Jiang–Su algebra."
+    },
+    {
+      "term": "Nuclear",
+      "meaning": "Well approximated by finite matrix algebras, in a precise sense."
+    },
+    {
+      "term": "Nuclear dimension",
+      "meaning": "How many simple pieces the finite matrix approximations of a nuclear algebra need."
+    },
+    {
+      "term": "Strict comparison",
+      "meaning": "When trace sizes decide which positive element fits under another."
+    },
+    {
+      "term": "Amenable group",
+      "meaning": "A group with finite sets that are almost unchanged by translation, like intervals of integers."
+    },
+    {
+      "term": "Uniform property Γ",
+      "meaning": "A way to split the identity into central pieces that cut every trace evenly."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Equivariant Jiang–Su Stability for Amenable Actions in the Unital Stably Finite Case” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Equivariant-Jiang-Su-Stability-for-Amenable-Actions-in-the-Unital-Stably-Finite-Case-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Cuntz comparison and Jiang–Su absorption” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cuntz-comparison-and-Jiang-Su-absorption-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Nuclear dimension and Jiang–Su stability without elementary subquotients” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Nuclear-dimension-and-Jiang-Su-stability-without-elementary-subquotients-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Tracial projection methods and uniform property Gamma” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tracial-projection-methods-and-uniform-property-Gamma-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, Lean scope note for family 291",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/291.md",
+      "quote": "The linked comparison results also prove Jiang–Su absorption and uniform property $\\Gamma$ for simple separable unital infinite-dimensional nuclear algebras with strict comparison"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Szabó formulated automatic equivariant Jiang–Su stability for amenable actions as Conjecture A.",
+      "sourceLine": "formulated automatic equivariant Jiang--Su stability for amenable actions on separable simple nuclear Jiang--Su-stable algebras as Conjecture~A of",
+      "sourceQuote": "Szab\\'o formulated automatic equivariant Jiang--Su stability for amenable actions on separable simple nuclear Jiang--Su-stable algebras as Conjecture~A of \\cite{SzaboSI2021}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The main theorem resolves the unital, stably finite case of Conjecture A.",
+      "sourceLine": "resolves its unital, stably finite case.",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves its unital, stably finite case.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem imposes no outerness, Rokhlin, or UCT assumption.",
+      "sourceLine": "imposes no outerness, Rokhlin, or UCT assumption",
+      "sourceQuote": "Theorem~\\ref{thm:main} imposes no outerness, Rokhlin, or UCT assumption, and no condition on the extreme tracial boundary or on trace orbits.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Nonunital algebras lie beyond the scope of the present theorem.",
+      "sourceLine": "The original formulation also includes nonunital algebras, which lie beyond the scope of the present theorem.",
+      "sourceQuote": "The original formulation also includes nonunital algebras, which lie beyond the scope of the present theorem.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Jiang and Su constructed Z as a simple infinite-dimensional unital algebra with the Elliott invariant of the complex numbers.",
+      "sourceLine": "Jiang and Su constructed $\\Z$ as a simple infinite-dimensional unital algebra with the Elliott invariant of the complex numbers",
+      "sourceQuote": "Jiang and Su constructed $\\Z$ as a simple infinite-dimensional unital algebra with the Elliott invariant of the complex numbers \\cite{JS1999}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Rørdam proved that Z-absorption forces almost unperforation of the Cuntz semigroup.",
+      "sourceLine": "proved that $\\Z$-absorption forces almost unperforation of the finite-matrix Cuntz semigroup",
+      "sourceQuote": "R\\o rdam proved that $\\Z$-absorption forces almost unperforation of the finite-matrix Cuntz semigroup and, in the simple exact unital setting, the corresponding trace comparison theorem \\cite[Theorem~4.5 and Corollary~4.6]{Rordam2004}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Strict comparison in the extended-functional sense implies Jiang–Su absorption for separable simple nuclear non-elementary C*-algebras.",
+      "sourceLine": "We prove that strict comparison in the extended-functional sense implies Jiang--Su absorption for separable simple nuclear non-elementary",
+      "sourceQuote": "We prove that strict comparison in the extended-functional sense implies Jiang--Su absorption for separable simple nuclear non-elementary $C^*$-algebras.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A matrix algebra has nuclear dimension zero but does not absorb Z.",
+      "sourceLine": "it has nuclear dimension zero but does not absorb $\\Z$",
+      "sourceQuote": "The obstruction to passing from finite dimension to absorption is already visible in a matrix algebra: it has nuclear dimension zero but does not absorb $\\Z$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The implication from finite nuclear dimension to absorption proves Conjecture (C1) of Robert and Tikuisis.",
+      "sourceLine": "The implication from finite nuclear dimension to absorption proves Conjecture (C1) of Robert and Tikuisis",
+      "sourceQuote": "The implication from finite nuclear dimension to absorption proves Conjecture (C1) of Robert and Tikuisis \\cite{RT}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The real-rank-zero theorem gives a positive resolution of Problem XXI of Schafhauser, Tikuisis and White.",
+      "sourceLine": "This gives a positive resolution of Problem~XXI of Schafhauser, Tikuisis and White",
+      "sourceQuote": "This gives a positive resolution of Problem~XXI of Schafhauser, Tikuisis and White \\cite[Section~6]{STW}.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The second route derives Jiang–Su absorption from strict comparison in the unital setting, completing the unital Toms–Winter equivalence.",
+      "sourceLine": "The second derives Jiang--Su absorption from strict comparison in the unital setting, completing the unital Toms--Winter equivalence.",
+      "sourceQuote": "The second derives Jiang--Su absorption from strict comparison in the unital setting, completing the unital Toms--Winter equivalence.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes uniform property Γ from tracial real rank zero, and Jiang–Su absorption from strict comparison for unital algebras and one stably projectionless class; the equivariant theorem is outside it.",
+      "verdict": "external",
+      "sourceId": 5
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}

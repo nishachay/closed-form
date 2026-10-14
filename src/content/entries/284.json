@@ -1,0 +1,108 @@
+{
+  "id": "284",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Nearly-Quartic-Separation-Between-Randomized-and-Quantum-Query-Complexity-October-5-2026/quartic-query-separation.pdf",
+      "label": "A Nearly Quartic Separation Between Randomized and Quantum Query Complexity"
+    }
+  ],
+  "headline": "Claims functions where randomized queries need nearly the fourth power of quantum queries, refuting a cubic conjecture.",
+  "scope": "Total Boolean functions, comparing bounded-error randomized and quantum query complexity with error at most 1/3 on every input.",
+  "plain": "A query algorithm learns about a hidden input string by reading its bits one at a time. For some tasks a quantum algorithm needs far fewer reads than a randomized one. It was known that the randomized count is at most the fourth power of the quantum count, and experts conjectured the third power. This paper claims functions where the gap comes as close to the fourth power as you like. That would make the known bound optimal and the cubic conjecture false.",
+  "doesNot": "This does not remove the logarithmic factors in the separation, and it does not reach the fourth power exactly.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2016",
+    "firstStepBy": "Scott Aaronson, Shalev Ben-David and Robin Kothari, cheat-sheet framework with a power 5/2 separation",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "It settles the optimal power relating randomized and quantum query complexity for total functions."
+  },
+  "explanation": "Hide a string of one million bits and ask whether any bit is a 1. A randomized algorithm must read nearly all of them to be fairly sure. A quantum algorithm can do it with about a thousand reads, the square root of a million. This is Grover's search, and it is the basic quadratic speedup for this task[1]. A read is called a query. The fewest queries needed, allowing error at most 1/3 on every input, is the query complexity. Write R for the randomized count and Q for the quantum count.\n\nThe task above is a total function: it has an answer for every possible string. For partial functions, defined only on some inputs, quantum speedups can be exponential. For total functions they cannot. The randomized count is at most a fixed power of the quantum count. Since 2021 that power was known to be at most four, building on Huang's sensitivity theorem. Those authors conjectured that the right power is three[2]. Separations had climbed from power 5/2 to 3, up to logarithmic factors. The obstacle was to go beyond 3. Known constructions put certificates in an array, with the correct address found by solving smaller problems.\n\nThis paper claims the optimal power is exactly 4[3]. For each whole number k of at least 2, it builds functions on about m bits. Their quantum count is near √m and their randomized count near m^(2 − 1/k), ignoring constants and logarithmic factors[4]. Then R is near Q to the power 4 − 2/k. For k = 2 that power is 3. For k = 10 it is 3.8, and for k = 100 it is 3.98. Take m = 4¹⁰ = 1,048,576 and k = 10, still ignoring those factors. Then Q is near 1,024, and R is near m^1.9, about 2.7 × 10¹¹. That is far above Q³, about 1.1 × 10⁹, and below Q⁴, about 1.1 × 10¹². The family rules out every smaller power, including the conjectured cubic relation[5].\n\nThe construction extends the cheat-sheet idea. A winning column of the hidden array holds pointers out to a zero in every other column. Those zeros disqualify each rival. The quantum algorithm compares candidate witnesses, using tools like quantum minimum finding.\n\nHow sure is this? There is no Lean check; a computer proof checker has not looked at it. The upper bound of power 4 was already known. The new claim is the lower-bound family, whose randomized analysis is the hard part. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. It closes the gap between the known quartic bound and the cubic conjecture, but there is no Lean check and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Query",
+      "meaning": "One read of one bit of the hidden input string."
+    },
+    {
+      "term": "Query complexity",
+      "meaning": "The fewest reads an algorithm needs in the worst case to compute the answer with error at most 1/3."
+    },
+    {
+      "term": "Total Boolean function",
+      "meaning": "A rule giving an answer 0 or 1 for every possible input string of bits."
+    },
+    {
+      "term": "Randomized algorithm",
+      "meaning": "An ordinary algorithm that may flip coins to decide which bit to read next."
+    },
+    {
+      "term": "Separation",
+      "meaning": "An example showing one measure can be much larger than another."
+    },
+    {
+      "term": "Logarithmic factor",
+      "meaning": "A slowly growing extra factor such as log m, which changes the count but not the power."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Nearly Quartic Separation Between Randomized and Quantum Query Complexity” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Nearly-Quartic-Separation-Between-Randomized-and-Quantum-Query-Complexity-October-5-2026/quartic-query-separation.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Grover's search algorithm gives the basic quadratic speedup for the OR function.",
+      "sourceLine": "Grover's search algorithm~\\cite{Grover96} gives the basic quadratic speedup for the OR function",
+      "sourceQuote": "Grover's search algorithm~\\cite{Grover96} gives the basic quadratic speedup for the OR function, with a matching quantum lower bound \\cite{BBBV97}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Aaronson, Ben-David, Kothari, Rao and Tal conjectured that randomized complexity satisfies R(f) = O(Q(f)^3).",
+      "sourceLine": "They conjectured that randomized complexity satisfies the stronger relation $\\R(f)=O(\\Q(f)^3)$",
+      "sourceQuote": "They conjectured that randomized complexity satisfies the stronger relation $\\R(f)=O(\\Q(f)^3)$ \\cite[Conjecture~2]{ABKRT21}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The optimal power is 4.",
+      "sourceLine": "The optimal power is $\\alpha_{\\mathrm{tot}}=4$.",
+      "sourceQuote": "The optimal power is $\\alpha_{\\mathrm{tot}}=4$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For each fixed k ≥ 2 there are total functions with Q ≤ C√m (log m)^b and R ≥ c m^(2−1/k)/(log m)^2.",
+      "sourceLine": "and total Boolean functions $F_{k,m}$, for all sufficiently large powers of four $m$, such that",
+      "sourceQuote": "For each fixed integer $k\\ge2$, there are positive constants $c_k,C_k,b_k$ and total Boolean functions $F_{k,m}$, for all sufficiently large powers of four $m$, such that \\begin{equation}\\label{eq:main-family} \\Q(F_{k,m})\\le C_k\\sqrt m\\,(\\log m)^{b_k}, \\qquad \\R(F_{k,m})\\ge c_k\\frac{m^{2-1/k}}{(\\log m)^2}. \\end{equation}",
+      "verdict": "supported"
+    },
+    {
+      "text": "The family rules out every smaller power, including the conjectured cubic relation.",
+      "sourceLine": "which rules out every smaller power, including the conjectured cubic relation.",
+      "sourceQuote": "The contribution is the family in \\eqref{eq:main-family}, which rules out every smaller power, including the conjectured cubic relation.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

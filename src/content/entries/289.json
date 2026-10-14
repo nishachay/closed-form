@@ -1,0 +1,178 @@
+{
+  "id": "289",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Operator algebras",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026/paper.pdf",
+      "label": "Universal strong Kadison–Kastler stability"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Near-Inclusions-of-von-Neumann-Algebras-Without-Small-Spatial-Embeddings-October-5-2026/near-inclusions.pdf",
+      "label": "Near Inclusions of von Neumann Algebras Without Small Spatial Embeddings"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Close-Separable-Cstar-Algebras-Without-Spatial-Conjugacy-October-5-2026/paper.pdf",
+      "label": "Close Separable C*-Algebras Without Spatial Conjugacy"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/289.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves, with a Lean check, that close von Neumann algebras are conjugate by a unitary near the identity, uniformly.",
+  "scope": "Unital von Neumann algebras on any complex Hilbert space, plus two companion counterexamples for one-sided near inclusions and separable C*-algebras.",
+  "plain": "Two operator algebras on the same space are close if every element of one is near some element of the other. Kadison and Kastler asked in 1972 whether close von Neumann algebras must be rotated copies of each other by a nearly trivial unitary. This paper proves yes, with a tolerance that works for every algebra at once, and Lean checks it. Two companion papers claim the answer fails for one-sided near inclusions and for separable C*-algebras.",
+  "doesNot": "This does not extend to C*-algebras, where a companion paper claims close separable algebras need not be conjugate at all.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1972",
+    "firstStepBy": "Richard Kadison and Daniel Kastler, perturbation problem for operator algebras",
+    "field": "Operator algebras",
+    "significance": "Landmark",
+    "significanceWhy": "It settles the strong Kadison–Kastler conjecture, a central perturbation problem open for over fifty years."
+  },
+  "explanation": "Take the 2-by-2 matrices that are zero off the diagonal. Call this algebra M. Rotate the plane by an angle of 0.1 radians, using a rotation matrix u. The rotated algebra N = uMu* is a tilted copy of M. The rotation moves vectors only a little: the distance from u to the identity is 2 sin(0.05), about 0.09996. The projection diag(1, 0) in M and its rotated copy in N differ by sin(0.1), about 0.0998. Every unit-size element of M has a partner in N within twice 0.09996. So a small unitary makes nearby algebras.\n\nThe Kadison–Kastler question runs the other way. Measure how far apart two algebras are by comparing their unit balls, the elements of size at most one. This Kadison–Kastler distance was introduced in 1972[1]. If two von Neumann algebras on one space are very close, must one be a slightly rotated copy of the other? A von Neumann algebra is an algebra of operators closed under adjoints and under weak limits. Early results covered type I algebras and then amenable algebras[2]. Some non-amenable factors were later shown to be stable too. The obstacle was the general case: algebras of every type, with no structure to lean on.\n\nThis paper proves the uniform answer. For every ε > 0 there is a δ > 0 that works for every Hilbert space and every pair of algebras. If their distance is below δ, some unitary u with ‖u − I‖ < ε carries one onto the other[3]. The tolerance does not depend on the algebras, their type or their representations[4].\n\nTwo companion papers mark the edges. The second looks at one-sided near inclusions, where M is only nearly inside N. It answers negatively the unrestricted question of whether small near inclusions come from small unitaries[5]. Its examples do have unitary embeddings, but every one stays a fixed distance from the identity[6]. The third turns to C*-algebras, which need only be closed in norm. It claims arbitrarily close separable C*-algebras that no unitary can conjugate at all[7]. Those two algebras have the same von Neumann closure[7]. It gives no counterexample for von Neumann algebras[8].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main theorem. It covers all unital von Neumann algebras on any complex Hilbert space, with δ depending only on ε. The two companion counterexamples are not part of that Lean statement. No specialist review of the papers has been published.",
+  "hypeCheck": "Landmark: it settles the strong Kadison–Kastler conjecture, and Lean formally checks the main theorem. The two companion counterexamples have no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Von Neumann algebra",
+      "meaning": "An algebra of operators on a Hilbert space, closed under adjoints and under weak limits."
+    },
+    {
+      "term": "C*-algebra",
+      "meaning": "An algebra of operators closed under adjoints and under limits in the operator norm, a stronger kind of limit."
+    },
+    {
+      "term": "Unitary",
+      "meaning": "An operator that preserves lengths and angles, like a rotation; it is invertible with inverse equal to its adjoint."
+    },
+    {
+      "term": "Kadison–Kastler distance",
+      "meaning": "How far apart two operator algebras are, measured by how well each unit ball approximates the other."
+    },
+    {
+      "term": "Unit ball",
+      "meaning": "The elements of an algebra whose operator norm is at most one."
+    },
+    {
+      "term": "Near inclusion",
+      "meaning": "A one-sided closeness: every unit-size element of M is near some element of N."
+    },
+    {
+      "term": "Amenable",
+      "meaning": "A property of algebras that allows averaging arguments; it fails for many large algebras."
+    },
+    {
+      "term": "Separable",
+      "meaning": "Having a countable dense subset, a mild size limit."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Universal strong Kadison–Kastler stability” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Near Inclusions of von Neumann Algebras Without Small Spatial Embeddings” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Near-Inclusions-of-von-Neumann-Algebras-Without-Small-Spatial-Embeddings-October-5-2026/near-inclusions.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Close Separable C*-Algebras Without Spatial Conjugacy” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Close-Separable-Cstar-Algebras-Without-Spatial-Conjugacy-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 289",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/289.md",
+      "quote": "The formalization proves the strong Kadison–Kastler conjecture uniformly."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Kadison and Kastler introduced this metric in 1972.",
+      "sourceLine": "Kadison and Kastler introduced this metric in 1972",
+      "sourceQuote": "Kadison and Kastler introduced this metric in 1972 \\cite{KadisonKastler1972}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The work of Christensen, Johnson, and Raeburn–Taylor established the amenable case.",
+      "sourceLine": "The work of Christensen, Johnson, and Raeburn--Taylor established the amenable case",
+      "sourceQuote": "The work of Christensen, Johnson, and Raeburn--Taylor established the amenable case \\cite{Christensen1977,Johnson1977,RaeburnTaylor1977}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every ε > 0 there is δ(ε) > 0 such that unital von Neumann algebras at distance below δ are conjugate by a unitary u with ‖u − I‖ < ε.",
+      "sourceLine": "For every $\\eps>0$ there is $\\delta=\\delta(\\eps)>0$ such that the following holds.",
+      "sourceQuote": "For every $\\eps>0$ there is $\\delta=\\delta(\\eps)>0$ such that the following holds.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The tolerance is independent of the algebras, their type, their representations, and the sizes of their spaces.",
+      "sourceLine": "The tolerance is independent of the algebras, their type, their representations, and the cardinalities of their preduals and Hilbert spaces.",
+      "sourceQuote": "The tolerance is independent of the algebras, their type, their representations, and the cardinalities of their preduals and Hilbert spaces.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper gives a negative answer to the unrestricted small-spatial-embedding problem for one-sided near inclusions.",
+      "sourceLine": "We give a negative answer to the unrestricted small-spatial-embedding problem for one-sided near inclusions of von Neumann algebras.",
+      "sourceQuote": "We give a negative answer to the unrestricted small-spatial-embedding problem for one-sided near inclusions of von Neumann algebras.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Spatial embeddings exist, but every implementing unitary stays a fixed positive distance from the identity.",
+      "sourceLine": "Spatial embeddings of the source into the target exist, but every implementing unitary stays a fixed positive distance from the identity.",
+      "sourceQuote": "Spatial embeddings of the source into the target exist, but every implementing unitary stays a fixed positive distance from the identity.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "For every ε > 0 there are unital norm-separable C*-algebras at Kadison–Kastler distance below ε, with the same von Neumann closure, not conjugate by any unitary.",
+      "sourceLine": "The two algebras have the same von Neumann closure.",
+      "sourceQuote": "The two algebras have the same von Neumann closure.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The C*-algebra theorem does not give a counterexample for von Neumann algebras.",
+      "sourceLine": "It makes no assertion of abstract nonisomorphism and does not give a counterexample for von Neumann algebras.",
+      "sourceQuote": "It makes no assertion of abstract nonisomorphism and does not give a counterexample for von Neumann algebras.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the uniform strong Kadison–Kastler theorem: δ depends only on ε, for any two unital von Neumann algebras on the same complex Hilbert space.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}
