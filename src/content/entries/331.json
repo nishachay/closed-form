@@ -1,0 +1,221 @@
+{
+  "id": "331",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Asymptotic-midpoint-uniform-convexity-and-unbounded-diamond-distortion-in-a-reflexive-tree-space-September-27-2026/manuscript.pdf",
+      "label": "Asymptotic midpoint uniform convexity and unbounded diamond distortion in a reflexive tree space"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Midpoint-lenses-in-segment-spaces-September-27-2026/manuscript.pdf",
+      "label": "Midpoint lenses in segment spaces"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Diamond-distortion-from-midpoint-and-tree-energies-September-27-2026/manuscript.pdf",
+      "label": "Distortion of countably branching diamonds from midpoint and tree energies"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-asymptotic-moduli-in-a-Daugavet-subspace-of-L1-September-27-2026/manuscript.pdf",
+      "label": "Exact asymptotic moduli in a Daugavet subspace of L1"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Midpoint-convexity-from-bounded-tree-potentials-and-path-costs-September-27-2026/manuscript.pdf",
+      "label": "Midpoint convexity from bounded tree potentials and path costs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Independent-products-in-real-L1-asymptotic-midpoint-convexity-without-AUC-renormings-September-27-2026/manuscript.pdf",
+      "label": "Independent products in real L1: asymptotic midpoint convexity without AUC renormings"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Midpoint-convexity-from-two-recursive-potentials-September-27-2026/manuscript.pdf",
+      "label": "Midpoint convexity from two recursive potentials"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/331.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a reflexive Banach space can be midpoint convex far out yet admit no asymptotically uniformly convex norm.",
+  "scope": "One separable reflexive real Banach space built from a tree, plus six companion papers on related tree spaces and a subspace of L1.",
+  "plain": "Asymptotic convexity asks whether the unit ball keeps bulging once finitely many directions are ignored. A weaker, two-sided version tests opposite directions together. Earlier work separated the two notions, but only in a space that is not reflexive. The main paper builds a reflexive example and shows that diamond graphs cannot sit in it with bounded distortion. Lean checks the main results of all seven papers.",
+  "doesNot": "This does not change the known positive results for reflexive spaces with unconditional asymptotic structure; the example lies outside that class.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2016",
+    "firstStepBy": "Dilworth, Kutzarova, Randrianarivony, Revalski and Zhivkov, who introduced asymptotic midpoint uniform convexity",
+    "field": "Functional analysis",
+    "significance": "Solid",
+    "significanceWhy": "It settles a recorded problem on diamond embeddings in reflexive spaces, with Lean checks, in a specialist corner of Banach space geometry."
+  },
+  "explanation": "Take the unit vectors x = (1, 0) and y = (0, 1) in the plane with ordinary length. The vectors x + y and x − y both have length √2, about 1.414. Their average length exceeds 1 by about 0.414. That gain is a sign the unit ball is round. Now use the max length, the larger of the two coordinates. Then x + y = (1, 1) has length exactly 1. There is no gain, because the unit ball is a square with flat sides.\n\nA Banach space is a space of vectors with a length rule, a norm, where limits behave well. In infinite dimensions, asymptotic convexity asks for such gains when y is pushed far out. Far out means y avoids any finite set of directions you name. The norm is asymptotically uniformly convex, or AUC, if x + ty always gains length. It is asymptotically midpoint uniformly convex, or AMUC, if the average of x + ty and x − ty gains. AMUC was introduced in 2016, with a norm on the sequence space ℓ2 that is AMUC but not AUC[3]. Baudier then showed that a space can have an AMUC norm but no equivalent AUC norm[4]. An equivalent norm changes lengths by at most fixed factors. His example was not reflexive. Reflexive means the space equals its double dual, the space of linear measurements of its linear measurements.\n\nThe question also has a metric side. A countably branching diamond starts as one edge. At each step, every edge becomes countably many two-edge paths. Distortion measures how much an embedding must stretch some distances relative to others. An AMUC norm stops diamonds from embedding with one bound on distortion[5]. For reflexive spaces with extra structure, failing to be AUC renormable gives such embeddings. The open problem was whether that holds for every reflexive space[6].\n\nThe main paper says no. It builds a separable reflexive space from norms on segments of a tree. The space has no equivalent AUC norm[1]. Its midpoint gain at step t is at least √(1 + t²/12) − 1. At t = 1, that is about 0.0408. Every embedding of the depth-k diamond has distortion at least √(1 + k/12)[2]. For k = 12, that is √2, about 1.414. For k = 96, it is 3. For k = 1,200, it is about 10.05. So no single bound works for all depths. The obstacle was controlling test functions that cross between a finite set of tree vertices and the rest. The paper adds one correction term at the exit vertices[7].\n\nThe six companion papers build related examples. One proves the sharper bound D² ≥ 1 + k/4 for a closely related space[8]. Another computes the exact moduli for a special subspace of L1, the space of integrable functions. They are max{t/2, t − 1} and max{0, t − 2}[9].\n\nHow sure is this? Lean, a computer proof checker, has formal statements of the main results of all seven papers. For the main space, Lean covers reflexivity, the midpoint bound, the absence of AUC norms and the diamond bound. Some auxiliary deductions in the diamond paper assume companion inputs. So the papers prove their main results, as far as the Lean statements match. No specialist review is published.",
+  "hypeCheck": "Lean-checked answers to a recorded problem in a specialist area. The main space is a single constructed example; its numerical constants depend on the given norm. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Banach space",
+      "meaning": "A space of vectors with a length rule, called a norm, in which limits of sequences behave well."
+    },
+    {
+      "term": "Reflexive",
+      "meaning": "A Banach space that equals its double dual, the space of linear measurements of its linear measurements."
+    },
+    {
+      "term": "Equivalent norm",
+      "meaning": "A new length rule that differs from the old one by at most fixed factors."
+    },
+    {
+      "term": "AUC",
+      "meaning": "Asymptotically uniformly convex: x + ty gains length whenever y points far enough out."
+    },
+    {
+      "term": "AMUC",
+      "meaning": "Asymptotically midpoint uniformly convex: the average length of x + ty and x − ty gains when y points far out."
+    },
+    {
+      "term": "Countably branching diamond",
+      "meaning": "A graph built by repeatedly replacing each edge with countably many two-edge paths."
+    },
+    {
+      "term": "Distortion",
+      "meaning": "The most an embedding stretches some distances relative to others, as a ratio."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Asymptotic midpoint uniform convexity and unbounded diamond distortion in a reflexive tree space” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Asymptotic-midpoint-uniform-convexity-and-unbounded-diamond-distortion-in-a-reflexive-tree-space-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Midpoint lenses in segment spaces” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Midpoint-lenses-in-segment-spaces-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Distortion of countably branching diamonds from midpoint and tree energies” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Diamond-distortion-from-midpoint-and-tree-energies-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Exact asymptotic moduli in a Daugavet subspace of L1” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-asymptotic-moduli-in-a-Daugavet-subspace-of-L1-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Midpoint convexity from bounded tree potentials and path costs” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Midpoint-convexity-from-bounded-tree-potentials-and-path-costs-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Independent products in real L1: asymptotic midpoint convexity without AUC renormings” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Independent-products-in-real-L1-asymptotic-midpoint-convexity-without-AUC-renormings-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “Midpoint convexity from two recursive potentials” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Midpoint-convexity-from-two-recursive-potentials-September-27-2026/manuscript.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 331",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/331.md",
+      "quote": "The paper constructs a Banach space whose midpoint geometry is asymptotically uniformly convex even though no equivalent norm is asymptotically uniformly convex in the usual one-sided sense."
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The space is separable and reflexive, its given norm is AMUC, and it admits no AUC equivalent norm.",
+      "sourceLine": "is asymptotically midpoint uniformly convex but which admits no",
+      "sourceQuote": "We construct a separable reflexive real Banach space whose given norm is asymptotically midpoint uniformly convex but which admits no asymptotically uniformly convex equivalent norm.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The averaged midpoint modulus is at least sqrt(1+t^2/12)-1 and the depth-k diamond has distortion at least sqrt(1+k/12).",
+      "sourceLine": "diamond of depth $k$ has distortion at least $\\sqrt{1+k/12}$ in this",
+      "sourceQuote": "Its averaged midpoint modulus is at least $\\sqrt{1+t^2/12}-1$, and the countably branching diamond of depth $k$ has distortion at least $\\sqrt{1+k/12}$ in this space.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Dilworth, Kutzarova, Randrianarivony, Revalski and Zhivkov introduced AMUC and constructed an AMUC norm on ℓ2 which is not AUC.",
+      "sourceLine": "AMUC and constructed an AMUC norm on $\\ell_2$ which is not AUC",
+      "sourceQuote": "Dilworth, Kutzarova, Randrianarivony, Revalski, and Zhivkov introduced AMUC and constructed an AMUC norm on $\\ell_2$ which is not AUC \\cite[Definition~2.2 and Theorem~2.4]{DKRRZ2016}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The renorming question was answered negatively by Baudier.",
+      "sourceLine": "been answered negatively by Baudier \\cite[Theorem~1 and Corollary~1]{Baudier2026},",
+      "sourceQuote": "Their question about equivalence up to renorming \\cite[Section~5]{DKRRZ2016} has already been answered negatively by Baudier \\cite[Theorem~1 and Corollary~1]{Baudier2026}, using the Kadets--Werner modification of the Bourgain--Rosenthal space \\cite[Theorem~2.5]{KW2004}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "An equivalent AMUC norm prevents uniform embeddings of the countably branching diamonds.",
+      "sourceLine": "and Zhang proved that an equivalent AMUC norm prevents uniform",
+      "sourceQuote": "Baudier, Causey, Dilworth, Kutzarova, Randrianarivony, Schlumprecht, and Zhang proved that an equivalent AMUC norm prevents uniform embeddings of the countably branching diamonds \\cite[Theorem~4.1]{BaudierEtAl2017}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The example gives a negative answer to the reflexive diamond question recorded as Problem 39.",
+      "sourceLine": "as Problem~39 in \\cite[author manuscript p.~388]{BaudierLancien2025}. The metric obstruction is",
+      "sourceQuote": "This gives a negative answer to the reflexive diamond question recorded as Problem~39 in \\cite[author manuscript p.~388]{BaudierLancien2025}. The metric obstruction is unchanged by equivalent renorming, although the numerical constants refer to the specified dual norm.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The midpoint argument adds one correction at the first exit vertices.",
+      "sourceLine": "We add one correction at their first exit vertices.",
+      "sourceQuote": "We add one correction at their first exit vertices.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In the dual of a finite-height segment forest every distortion-D embedding of the depth-k diamond satisfies D^2 >= 1+k/4.",
+      "sourceLine": "depth-$k$ diamond satisfies $D^2\\ge1+k/4$. The same bound holds in the",
+      "sourceQuote": "In the dual of a finite-height segment forest, every distortion-$D$ embedding of the depth-$k$ diamond satisfies $D^2\\ge1+k/4$. The same bound holds in the infinite-height coordinate predual.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The averaged midpoint and one-sided asymptotic moduli are max{t/2,t-1} and max{0,t-2}.",
+      "sourceLine": "every unit center. They are $\\max\\{t/2,t-1\\}$ and $\\max\\{0,t-2\\}$,",
+      "sourceQuote": "For an infinite-dimensional real subspace of $L^1$ whose unit ball is totally bounded in measure and whose norm has the Daugavet property, we compute the averaged midpoint and one-sided asymptotic moduli at every unit center. They are $\\max\\{t/2,t-1\\}$ and $\\max\\{0,t-2\\}$, respectively.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the main results of the seven papers, including reflexivity, the midpoint bound, the absence of an AUC renorming and the diamond distortion bound for the main space.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 9
+    }
+  ]
+}

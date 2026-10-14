@@ -1,0 +1,172 @@
+{
+  "id": "335",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-integral-scalar-curvature-bound-for-real-simplicial-volume-October-5-2026/v126-proof.pdf",
+      "label": "An integral scalar curvature bound for real simplicial volume"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-scalar-curvature-forces-rational-inessentiality-September-23-2026/paper.pdf",
+      "label": "Positive scalar curvature forces rational inessentiality"
+    }
+  ],
+  "headline": "Claims Gromov's integral scalar-curvature bound for simplicial volume and the Gromov–Lawson aspherical conjecture.",
+  "scope": "Closed oriented smooth manifolds of dimension at least 3 for the integral bound. The positive scalar curvature results start in dimension 2.",
+  "plain": "Scalar curvature measures, at each point, how the volume of small balls differs from flat space. Simplicial volume measures how complicated a shape is, by the least weight of simple pieces needed to build it. The first paper claims that the total amount of negative scalar curvature always bounds simplicial volume, as Gromov proposed in 1986. It relies on a second paper, which claims the Gromov–Lawson conjecture: closed aspherical manifolds never have positive scalar curvature. There is no Lean check.",
+  "doesNot": "This does not cover manifolds with boundary or open manifolds; every result here is about closed manifolds.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Mikhail Gromov, who proposed the integral scalar-curvature bound for simplicial volume",
+    "field": "Differential geometry",
+    "significance": "Landmark",
+    "significanceWhy": "If correct, it settles the Gromov–Lawson aspherical conjecture in every dimension and Gromov's 1986 integral bound."
+  },
+  "explanation": "Take a closed hyperbolic three-dimensional shape, a finite space that curves like a saddle everywhere. Its scalar curvature is −6 at every point. Scalar curvature measures how small balls differ in volume from flat ones; negative means they are larger. Raise 6 to the power 3/2 to get about 14.70. So the total of the negative curvature, to that power, is 14.70 times the volume. A classical theorem of Gromov and Thurston says its simplicial volume is its volume divided by about 1.015. Simplicial volume measures the least total weight of simple building blocks, called simplices, needed to build the shape. So here the curvature total is about 14.92 times the simplicial volume.\n\nIn 1986 Gromov proposed that this always happens[3]. Take any closed shape of dimension n ≥ 3 and any smooth metric. Raise the negative part of scalar curvature to the power n/2 and add it up over the shape. This total should be at least a_n times the simplicial volume. Here a_n is a positive number that depends only on n. A metric is a smooth rule for lengths and angles. Earlier results proved it under extra conditions, such as on closed Kähler surfaces[4].\n\nThe first paper claims to prove Gromov's bound in every dimension n ≥ 3[1]. The constant does not depend on the shape or the metric. It even allows the negative curvature to sit in a small region[5]. The proof starts by changing the metric by a pointwise scaling to one with scalar curvature exactly −1[6]. It then needs a key input from the second paper.\n\nThat second paper is about positive scalar curvature. A manifold is aspherical if its universal cover, the unwrapped version of it, has no holes of any dimension. The torus is aspherical, and the sphere is not. Gromov and Lawson conjectured that no closed aspherical manifold has a metric of positive scalar curvature. Schoen and Yau proved such obstructions without extra conditions in dimensions up to seven[11]. Chodosh and Li handled aspherical manifolds in dimensions four and five[12]. The second paper claims a stronger statement in every dimension. A manifold with positive scalar curvature is rationally inessential: its basic homology class disappears in the space built from its loops[2]. So no closed aspherical manifold has positive scalar curvature[7]. Every metric with scalar curvature at least zero on such a manifold must be flat[8]. And every closed manifold with scalar curvature at least zero has simplicial volume zero[9]. The obstacle in the first paper is the step from that yes-or-no fact to a uniform bound with a fixed constant[10].\n\nHow sure is this? There is no Lean check. A computer proof checker has not looked at any part of these papers. Both are long and use heavy geometric analysis. The first paper depends on the second. No specialist review of either paper has been published.",
+  "hypeCheck": "Landmark-level claims if correct, including the Gromov–Lawson aspherical conjecture in every dimension. There is no Lean check, the first paper depends on the second, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Manifold",
+      "meaning": "A space that looks like ordinary n-dimensional space near every point."
+    },
+    {
+      "term": "Scalar curvature",
+      "meaning": "A number at each point saying how the volume of small balls differs from flat space."
+    },
+    {
+      "term": "Simplicial volume",
+      "meaning": "The least total weight of simplices, the higher-dimensional triangles, needed to build the manifold's fundamental class."
+    },
+    {
+      "term": "Aspherical",
+      "meaning": "A manifold whose universal cover, the fully unwrapped version, has no holes of any dimension."
+    },
+    {
+      "term": "Rationally inessential",
+      "meaning": "The manifold's basic homology class becomes zero when mapped into the space built from its loops."
+    },
+    {
+      "term": "Flat metric",
+      "meaning": "A metric with zero curvature everywhere, like a torus made by gluing edges of a square."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “An integral scalar curvature bound for real simplicial volume” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-integral-scalar-curvature-bound-for-real-simplicial-volume-October-5-2026/v126-proof.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Positive scalar curvature forces rational inessentiality” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Positive-scalar-curvature-forces-rational-inessentiality-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For every n ≥ 3 there is a_n > 0 such that the integral of (Scal^-)^{n/2} is at least a_n times the simplicial volume.",
+      "sourceLine": "We prove the integral scalar-curvature inequality proposed by Gromov.",
+      "sourceQuote": "We prove the integral scalar-curvature inequality proposed by Gromov.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every closed connected oriented smooth manifold admitting positive scalar curvature is rationally inessential.",
+      "sourceLine": "We prove that every closed connected oriented smooth manifold admitting",
+      "sourceQuote": "We prove that every closed connected oriented smooth manifold admitting strictly positive scalar curvature is rationally inessential: its rational fundamental class maps to zero under the classifying map.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "In 1986 Gromov proposed the integral estimate.",
+      "sourceLine": "In 1986, Gromov proposed precisely the integral estimate considered",
+      "sourceQuote": "In 1986, Gromov proposed precisely the integral estimate considered here: Conjecture 3.A, Remark (B), Equation (8\\('\\)) of \\cite{Gromov1986} asks for a dimension-dependent upper bound on simplicial volume by the integral of the \\(n/2\\)-power of the negative part of scalar curvature.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Min, Zheng and Zhu prove the integral estimate for every metric on every closed Kähler surface.",
+      "sourceLine": "estimate for every Riemannian metric on every closed K\\\"ahler surface,",
+      "sourceQuote": "Min, Zheng, and Zhu prove the integral estimate for every Riemannian metric on every closed K\\\"ahler surface, with coefficient \\(27/2\\) in the upper bound for \\(\\|M\\|\\), and also treat an infinite family of non-K\\\"ahler symplectic four-manifolds \\cite[Theorem 1.2 and Section 4]{MinZhengZhu2026}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The estimate permits the negative scalar curvature to be concentrated in a small region.",
+      "sourceLine": "metrics. In particular, \\eqref{eq:main} permits the negative scalar",
+      "sourceQuote": "The constant is uniform over the topology of \\(M\\) and over all its metrics. In particular, \\eqref{eq:main} permits the negative scalar curvature to be concentrated in a small region.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The first step is a conformal reduction to scalar curvature -1.",
+      "sourceLine": "The first step is a conformal reduction. If \\(\\|M\\|>0\\), the vanishing",
+      "sourceQuote": "The first step is a conformal reduction. If \\(\\|M\\|>0\\), the vanishing input forces the Yamabe minimizer in every conformal class to have negative scalar curvature.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "No closed smooth aspherical manifold admits a metric of strictly positive scalar curvature.",
+      "sourceLine": "No closed smooth aspherical manifold, whether orientable or not, admits a",
+      "sourceQuote": "No closed smooth aspherical manifold, whether orientable or not, admits a Riemannian metric of strictly positive scalar curvature.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A metric of nonnegative scalar curvature on a closed aspherical manifold is flat.",
+      "sourceLine": "smooth aspherical manifold $M$, not necessarily oriented. Then $g$ is flat.",
+      "sourceQuote": "Let $g$ be a Riemannian metric of nonnegative scalar curvature on a closed smooth aspherical manifold $M$, not necessarily oriented. Then $g$ is flat.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every closed oriented manifold admitting nonnegative scalar curvature has zero real simplicial volume.",
+      "sourceLine": "Every closed oriented smooth manifold of positive dimension",
+      "sourceQuote": "Every closed oriented smooth manifold of positive dimension admitting a Riemannian metric of nonnegative scalar curvature has zero real simplicial volume.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The work of the first paper is the passage from qualitative vanishing to a uniform quantitative estimate.",
+      "sourceLine": "Theorem~\\ref{thm:vanishing-input}. The work of this paper is the passage from",
+      "sourceQuote": "We state the exact input in Theorem~\\ref{thm:vanishing-input}. The work of this paper is the passage from that qualitative vanishing result to a uniform quantitative estimate.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Schoen and Yau's obstructions requiring no spin assumption apply in dimensions at most seven.",
+      "sourceLine": "obstructions requiring no spin assumption apply in dimensions at most seven,",
+      "sourceQuote": "Their original obstructions requiring no spin assumption apply in dimensions at most seven, including to manifolds mapping with nonzero degree to tori.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Chodosh and Li established the aspherical obstruction in dimensions four and five.",
+      "sourceLine": "More recently, Chodosh and Li established the aspherical obstruction in",
+      "sourceQuote": "More recently, Chodosh and Li established the aspherical obstruction in dimensions four and five using generalized soap bubbles \\cite{ChodoshLi2024}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

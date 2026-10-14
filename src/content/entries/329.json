@@ -1,0 +1,146 @@
+{
+  "id": "329",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Functional analysis",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Counterexamples-to-the-duality-conjecture-for-metric-entropy-September-24-2026/main.pdf",
+      "label": "Counterexamples to the duality conjecture for metric entropy"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/329.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that the duality conjecture for metric entropy is false, already when the covering body is a cube.",
+  "scope": "Origin-symmetric convex bodies in finite dimensions, with the dimension allowed to grow; the covering body is the cube [−1, 1]^n.",
+  "plain": "Metric entropy counts how many shifted copies of one shape are needed to cover another. Every symmetric convex shape has a dual shape, called its polar. A 1972 conjecture said that covering counts for a pair and for their polars agree up to fixed constants in every dimension. This paper builds shapes where the counts drift apart for any proposed constants. Lean checks the main counterexample.",
+  "doesNot": "This does not say that duality fails in a fixed dimension; the counterexamples need the dimension to grow with the constants.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1972",
+    "firstStepBy": "Albrecht Pietsch, whose operator-theory work posed the duality problem for entropy numbers",
+    "field": "Functional analysis",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-known conjecture in convex geometry in the negative, with a Lean check of the counterexample."
+  },
+  "explanation": "Take a square of side 4 centred at the origin. How many squares of side 2 cover it? Four, one in each corner. That count is a covering number. Its logarithm, log 4 ≈ 1.386, is called metric entropy. Now pass to polars. The polar of a symmetric convex shape K is the set of points y with x·y ≤ 1 for every x in K. The polar of the side-2 square is the diamond |x| + |y| ≤ 1. The polar of the side-4 square is the smaller diamond |x| + |y| ≤ 1/2. A diamond is just a turned square, and this one is half as wide. So four small diamonds cover the big one, and the count is again 4.\n\nThe duality conjecture asks whether this match always holds roughly. It dates from Pietsch's work in 1972[2]. It proposes fixed constants a and b, the same in every dimension. The log covering number of K by L should then sit within a factor b of the polar count, after scaling by a. Here K and L are origin-symmetric convex bodies: bounded, solid shapes that equal their own reflection through the origin. Artstein, Milman and Szarek proved the conjecture when one body is a round ball[3]. Emanuel Milman proved a version with logarithmic losses for all symmetric bodies[4]. The obstacle was to find shapes where any loss must grow without limit.\n\nThe paper disproves the full conjecture[1]. For every a and b, it finds a dimension n and a body K with L the cube [−1, 1]^n. The log count of cubes needed to cover K is more than b times the polar count. The dimension grows with a and b. No claim is made in a fixed dimension[5].\n\nThe proof starts from a table of numbers between 0 and 1. Its rows are far apart, which makes K hard to cover. Its columns are easy to approximate together, which makes the polar easy to cover[6]. The rows come from symmetric multilinear forms over a finite field, a number system modulo a prime p. There are p^D_h rows but at most p^D_(h−1) labels, where D_j is the binomial number (r + j − 1 choose j)[7]. Take h = 2 and r = 101. Then D_1 = 101 and D_2 = 5,151. The ratio 101/5,151 is about 0.0196, which matches h/(r + h − 1) = 2/102. As r grows, this ratio goes to zero, so labels become far fewer than rows. The result also separates ordinary covering from a related count called convexified packing[8].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the counterexample. It says that for every a, b ≥ 1 there is a body that breaks the inequality. So the paper proves this, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "A clean negative answer with a Lean check. It needs the dimension to grow with the constants, and it says nothing about a fixed dimension. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Convex body",
+      "meaning": "A bounded solid shape that contains the straight segment between any two of its points."
+    },
+    {
+      "term": "Origin-symmetric",
+      "meaning": "Equal to its own reflection through the origin."
+    },
+    {
+      "term": "Covering number",
+      "meaning": "The fewest shifted copies of one shape needed to cover another."
+    },
+    {
+      "term": "Metric entropy",
+      "meaning": "The logarithm of a covering number."
+    },
+    {
+      "term": "Polar",
+      "meaning": "The set of points y with x·y at most 1 for every point x of the given shape."
+    },
+    {
+      "term": "Finite field",
+      "meaning": "A number system with finitely many elements, such as whole numbers modulo a prime."
+    },
+    {
+      "term": "Multilinear form",
+      "meaning": "A function of several vectors that is linear in each one separately."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Counterexamples to the duality conjecture for metric entropy” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Counterexamples-to-the-duality-conjecture-for-metric-entropy-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 329",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/329.md",
+      "quote": "Metric-entropy duality predicts a universal comparison between covering numbers of convex bodies and their polars."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "We disprove the full duality conjecture for metric entropy.",
+      "sourceLine": "We disprove the full conjecture.",
+      "sourceQuote": "We disprove the full conjecture.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The duality conjecture originates in Pietsch's operator-theoretic work in 1972.",
+      "sourceLine": "The duality conjecture for metric entropy, originating in Pietsch's",
+      "sourceQuote": "The duality conjecture for metric entropy, originating in Pietsch's operator-theoretic work in 1972, asks whether there are absolute constants $a,b\\ge1$ such that \\begin{equation}\\label{eq:duality-conjecture} \\frac1b\\log N(L^\\circ,aK^\\circ) \\le \\log N(K,L) \\le b\\log N(L^\\circ,a^{-1}K^\\circ) \\end{equation} for every dimension and every pair of origin-symmetric convex bodies $K,L$; see \\cite[Conjecture~1]{AMSTJ2004}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Artstein, Milman and Szarek proved the dimension-free conjecture when one body is a Euclidean ball.",
+      "sourceLine": "one body is a Euclidean ball, and hence when either body is an ellipsoid",
+      "sourceQuote": "Artstein, Milman and Szarek proved the dimension-free conjecture when one body is a Euclidean ball, and hence when either body is an ellipsoid \\cite[Theorem~1]{AMS2004}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Emanuel Milman obtained a comparison with logarithmic losses for arbitrary symmetric convex bodies.",
+      "sourceLine": "comparison with logarithmic losses in both the scale and the entropy",
+      "sourceQuote": "For arbitrary symmetric convex bodies, Emanuel Milman obtained a comparison with logarithmic losses in both the scale and the entropy factor \\cite[Corollary~1.2]{Milman2007}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The dimensions grow with the parameters; no assertion about a fixed dimension is intended.",
+      "sourceLine": "dimension. Their dimensions grow with the parameters; no assertion",
+      "sourceQuote": "The bodies in Theorem~\\ref{thm:main} have nonempty interior in the full ambient dimension. Their dimensions grow with the parameters; no assertion about a fixed dimension is intended.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction uses a matrix with well separated rows whose columns admit a small uniform approximation list.",
+      "sourceLine": "Its rows are pairwise separated by one in the sup norm, while the",
+      "sourceQuote": "Its rows are pairwise separated by one in the sup norm, while the absolutely convex hull of its columns admits a small uniform approximation list.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There are p^{D_h} rows but at most p^{D_{h-1}} labels in each partition.",
+      "sourceLine": "There are $p^{D_h}$ rows but at most $p^{D_{h-1}}$ labels in each",
+      "sourceQuote": "There are $p^{D_h}$ rows but at most $p^{D_{h-1}}$ labels in each partition, where $D_j=\\binom{r+j-1}{j}$ for $j\\ge0$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem also separates ordinary covering entropy from convexified-packing entropy.",
+      "sourceLine": "Theorem~\\ref{thm:main} also separates ordinary covering entropy from",
+      "sourceQuote": "Theorem~\\ref{thm:main} also separates ordinary covering entropy from convexified-packing entropy, even after a fixed change of scale; Corollary~\\ref{cor:convexified-separation} states and proves this consequence after the construction.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes that for every a, b ≥ 1 some origin-symmetric convex body breaks the metric-entropy duality inequality with the cube.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

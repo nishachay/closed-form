@@ -1,0 +1,148 @@
+{
+  "id": "333",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Differential geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-isometric-immersions-of-closed-surfaces-into-Euclidean-four-space-September-23-2026/paper.pdf",
+      "label": "Smooth isometric immersions of closed surfaces into Euclidean four-space"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/333.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that every closed smooth curved surface can be placed in four-dimensional space with all its distances kept.",
+  "scope": "Every closed smooth Riemannian surface, orientable or not, mapped smoothly into Euclidean four-space; self-intersections are allowed.",
+  "plain": "A curved surface carries its own rule for measuring lengths, called a metric. An isometric immersion places the surface in flat space so that every length along it is kept, though the surface may pass through itself. Nash's general theorem needs 17 dimensions for surfaces, and Gromov reached five for closed ones. This paper proves that four dimensions always suffice for closed surfaces, and Lean checks the theorem.",
+  "doesNot": "This does not give an embedding without self-intersections, and it does not cover three-dimensional space.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2000",
+    "firstStepBy": "Mikhail Gromov, who explicitly recorded the question of smooth isometric immersion of surfaces into four-space",
+    "field": "Differential geometry",
+    "significance": "Major",
+    "significanceWhy": "It lowers the known dimension for smooth isometric immersions of closed surfaces from five to four, with a Lean check."
+  },
+  "explanation": "Take a flat torus, the surface you get by gluing opposite edges of a square without stretching. Give each side length 2π, about 6.283. The map that sends (x, y) to (cos x, sin x, cos y, sin y) places it in four-dimensional space. Moving in x traces a circle of radius 1 in the first two coordinates, at unit speed. Moving in y does the same in the last two. The two directions stay at right angles. So every length on the square is kept exactly. In ordinary three-dimensional space this is impossible for a flat closed surface. Any closed surface there has a point that curves like a sphere.\n\nA closed surface is a finite surface with no edge, like a sphere or a torus. A Riemannian metric is a smooth rule for measuring lengths and angles on it. An isometric immersion is a smooth map into flat space that keeps every such length. Unlike an embedding, it may let the surface pass through itself[4]. The question is which dimension is always enough. Gromov recorded the four-dimensional question for surfaces[5]. He later traced it back to Chern around 1950. Nash's theorem works in dimension 17 for surfaces, since 2 × (3 × 2 + 11)/2 = 17[6]. Gromov later reached five dimensions for closed surfaces. Poznyak handled four dimensions, but only on flat planar regions[7].\n\nThe paper proves that four dimensions suffice[1]. Every closed smooth Riemannian surface has a smooth isometric immersion into four-space. No curvature limit is assumed, and surfaces with no consistent sides, like the Klein bottle, are included[2]. This lowers the known dimension for closed surfaces from five to four[3].\n\nThe proof has four stages[8]. It starts with a small map into a round three-dimensional sphere inside four-space, with lengths a bit too short. The missing length is split into finitely many simple pieces on small disks. Each piece is added by a fast circular wiggle in a direction at right angles to the surface. Small further corrections then make the lengths exact. The obstacle is keeping the bending of the surface usable for the next disk. The bending could vanish after one wiggle. The paper tracks it carefully through each step. Its exact correction needs no global inverse of the linearised equation[9].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main theorem. It covers every closed smooth Riemannian surface, with no orientability assumption. So the paper proves this, as far as the Lean statement matches the paper. No specialist review is published.",
+  "hypeCheck": "A classical question settled for closed surfaces, with a Lean check. It allows self-intersections and says nothing about three-dimensional space. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Closed surface",
+      "meaning": "A finite two-dimensional surface with no edge, such as a sphere or a torus."
+    },
+    {
+      "term": "Riemannian metric",
+      "meaning": "A smooth rule for measuring lengths and angles on a surface."
+    },
+    {
+      "term": "Isometric immersion",
+      "meaning": "A smooth map into flat space that keeps every length on the surface; it may pass through itself."
+    },
+    {
+      "term": "Embedding",
+      "meaning": "A placement in space with no self-intersections."
+    },
+    {
+      "term": "Nonorientable",
+      "meaning": "A surface with no consistent choice of two sides, such as the Klein bottle."
+    },
+    {
+      "term": "Flat torus",
+      "meaning": "The surface made by gluing opposite edges of a square with no stretching."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Smooth isometric immersions of closed surfaces into Euclidean four-space” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Smooth-isometric-immersions-of-closed-surfaces-into-Euclidean-four-space-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 333",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/333.md",
+      "quote": "The formalization proves that every closed smooth Riemannian surface admits a smooth isometric immersion into $\\mathbb R^4$."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every closed smooth Riemannian surface admits a smooth isometric immersion into Euclidean four-space, without an orientability assumption.",
+      "sourceLine": "Euclidean four-space, without an orientability assumption. This resolves the",
+      "sourceQuote": "Every closed smooth Riemannian surface admits a smooth isometric immersion into Euclidean four-space, without an orientability assumption. This resolves the closed-surface form of the classical four-dimensional isometric-immersion problem.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction applies directly to nonorientable surfaces.",
+      "sourceLine": "In particular, the construction applies directly to nonorientable surfaces.",
+      "sourceQuote": "In particular, the construction applies directly to nonorientable surfaces.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem lowers the immersion dimension for closed surfaces from Gromov's five to four.",
+      "sourceLine": "Theorem~\\ref{thm:main} lowers this immersion dimension to four.",
+      "sourceQuote": "Theorem~\\ref{thm:main} lowers this immersion dimension to four.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The result concerns immersion; self-intersections are allowed.",
+      "sourceLine": "The result concerns immersion; self-intersections are allowed. There is no",
+      "sourceQuote": "The result concerns immersion; self-intersections are allowed. There is no restriction on Gaussian curvature or on the topology of the closed surface.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gromov explicitly recorded the question of smooth isometric immersion of arbitrary surfaces into R^4.",
+      "sourceLine": "Gromov explicitly recorded the question of smooth isometric immersion of",
+      "sourceQuote": "Gromov explicitly recorded the question of smooth isometric immersion of arbitrary smooth Riemannian surfaces into $\\R^4$ \\cite[\\S I, Remark~(d), p.~3 of the author version]{Gromov2000}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Nash's theorem gives dimension n(3n+11)/2, which is 17 for surfaces.",
+      "sourceLine": "$n$-dimensional Riemannian manifold in dimension $n(3n+11)/2$, which is $17$",
+      "sourceQuote": "Nash's smooth embedding theorem gives a global realization of a compact $n$-dimensional Riemannian manifold in dimension $n(3n+11)/2$, which is $17$ for surfaces \\cite[Theorem~2, p.~59]{Nash1956}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Poznyak proved isometric immersions into R^4 on compact portions of simply connected planar domains.",
+      "sourceLine": "Poznyak proved that $C^{3,\\alpha}$ data admit $C^{2,\\alpha}$ isometric",
+      "sourceQuote": "Poznyak proved that $C^{3,\\alpha}$ data admit $C^{2,\\alpha}$ isometric immersions into $\\R^4$ on compact portions of a simply connected planar domain with regular boundary \\cite[Theorem~4, p.~67]{Poznyak1973}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof has four stages.",
+      "sourceLine": "The proof has four stages. First prepare a smooth immersion into a small round",
+      "sourceQuote": "The proof has four stages. First prepare a smooth immersion into a small round three-sphere in $\\R^4$ together with a finite decomposition of its metric deficit.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No global inverse of the linearized metric map is required.",
+      "sourceLine": "No global inverse of the linearized metric map is required.",
+      "sourceQuote": "No global inverse of the linearized metric map is required.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes that every closed smooth Riemannian surface admits a smooth isometric immersion into four-space, with no orientability assumption.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
