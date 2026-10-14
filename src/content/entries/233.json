@@ -1,0 +1,180 @@
+{
+  "id": "233",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-joint-scaling-limit-of-critical-Ashkin-Teller-currents-October-6-2026/main.pdf",
+      "label": "The joint scaling limit of critical Ashkin-Teller currents"
+    }
+  ],
+  "headline": "Heights and current clusters of the critical Ashkin–Teller model converge together to a free field and its local sets.",
+  "scope": "It covers every point of the critical Ashkin–Teller line, in bounded domains with simple closed boundaries. Extra Ising-point fields are not included.",
+  "plain": "The Ashkin–Teller model is two layers of grid magnets coupled together. At its critical point it can be drawn as a random landscape and as random networks of clusters. The paper claims that, as the grid gets finer, the landscape and clusters converge together. The limits are a known random surface and sets cut from it. This proves a 2026 conjecture along the whole critical line.",
+  "doesNot": "This does not include the extra fields and measures studied at the Ising point.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1943",
+    "firstStepBy": "Julius Ashkin and Edward Teller, the four-component lattice model",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It extends a joint height-and-cluster limit from one point to the whole critical Ashkin–Teller line."
+  },
+  "explanation": "Put two layers of tiny magnets on a square grid. Each magnet points up or down. In each layer, neighbors like to agree, with strength J. A second strength, U, couples the layers through the product of four magnets. This is the Ashkin–Teller model, which goes back to Ashkin and Teller in 1943[1].\n\nThe model has a critical line, where it sits exactly at a phase change. On that line sinh(2J) = e^(−2U). Take U = 0. Then the layers ignore each other, and J = ½ × asinh(1), about 0.4407. That is the critical point of the ordinary Ising model. Take U = J instead. Then e^(4J) = 3, so J is about 0.2747. That end point is the four-state Potts model, where each site has four options.\n\nAlong the line, one number g sets the large-scale picture. Put c = √(1 + e^(4U)). Then g = (8/π) × arcsin(c/2). At U = 0, c = √2 and g = 2. At the Potts end, c = 2 and g = 4. As U becomes very negative, c falls toward 1 and g falls toward 4/3. At U = −1, g is already about 1.35.\n\nThe model can be redrawn in two ways. One is a height function, a random landscape over the grid. The other is a pair of currents, random networks of edges. Their connected pieces are called current clusters, one family for the grid and one for its dual grid. The question is what all of these look like together when the grid spacing shrinks to zero. Alcalde López, Heeney and Lis stated a precise conjecture for this[2].\n\nAt U = 0 the currents are double random currents, and g = 2[7]. There, Duminil-Copin, Lis and Qian proved limits for the height and the cluster boundaries[8]. The conjecture asks for the same picture along the whole critical line, with √2 replaced by √g[9]. For part of the line, Duminil-Copin, Kozlowski, Lammers and Manolescu proved that a related height has a limit[10].\n\nThe paper claims the full conjecture at every point of the critical line, including the Potts end[3]. The height converges to a Gaussian free field with the predicted strength[4]. A Gaussian free field is a random surface, a two-dimensional cousin of Brownian motion. The clusters converge to sets cut out of that same surface by a fixed recursive rule[5]. Roughly, the rule stops exploring the surface when it first reaches one of two set heights. The limit keeps every level of nesting, clusters inside holes inside clusters, all at once[6]. It holds in every bounded domain with a simple closed boundary.\n\nThe proof first identifies the height, then recovers the clusters from it[12]. For the height, the paper looks at its correlations in several reflected frames. In frames turned by 45 degrees, certain fourth-order wiggles cancel exactly[13]. That pins down the covariance of a free field. The harder step is new to this coupling. The paper must decide which small holes belong to the same current cluster[14]. It must also rule out large pieces that no hole can see.\n\nSome related questions stay outside the result. A stronger joint picture at the Ising point includes extra fields and measures. Those extra limits are not part of this theorem[11].\n\nHow sure is this? No Lean formalization is listed for this result. The paper relies on several earlier results, including the six-vertex work above, and proves the remaining steps. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. No Lean formalization is listed and no specialist review is published; the proof builds on several recent preprints.",
+  "glossary": [
+    {
+      "term": "Ashkin–Teller model",
+      "meaning": "Two layers of up/down magnets on a grid, coupled by a four-magnet interaction."
+    },
+    {
+      "term": "Critical line",
+      "meaning": "The set of parameter values where the model sits exactly at a phase change."
+    },
+    {
+      "term": "Height function",
+      "meaning": "A random landscape over the grid that encodes the model's configuration."
+    },
+    {
+      "term": "Current cluster",
+      "meaning": "A connected piece of the random edge network used to redraw the model."
+    },
+    {
+      "term": "Gaussian free field",
+      "meaning": "A random surface that is the two-dimensional cousin of Brownian motion."
+    },
+    {
+      "term": "Two-valued local set",
+      "meaning": "A random set cut out of a Gaussian free field where the field first reaches one of two set heights."
+    },
+    {
+      "term": "Scaling limit",
+      "meaning": "What a lattice model looks like as the grid spacing shrinks to zero."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The joint scaling limit of critical Ashkin-Teller currents” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-joint-scaling-limit-of-critical-Ashkin-Teller-currents-October-6-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Ashkin–Teller model originates in the four-component lattice model of Ashkin and Teller.",
+      "verdict": "supported",
+      "sourceLine": "The Ashkin--Teller model originates in the four-component lattice model",
+      "sourceQuote": "The Ashkin--Teller model originates in the four-component lattice model of Ashkin and Teller \\cite{AshkinTeller1943}.",
+      "paper": 1
+    },
+    {
+      "text": "This is the height and current-cluster assertion formulated by Alcalde López, Heeney and Lis.",
+      "verdict": "supported",
+      "sourceLine": "current-cluster assertion formulated by Alcalde",
+      "sourceQuote": "This is the height and current-cluster assertion formulated by Alcalde L\\'opez, Heeney, and Lis \\cite[Conjecture~1.2]{AlcaldeLopezHeeneyLis2026}.",
+      "paper": 1
+    },
+    {
+      "text": "For each point on the critical line, including the Potts endpoint, the paper proves the conjectured joint scaling limit.",
+      "verdict": "supported",
+      "sourceLine": "we prove the conjectured joint scaling limit",
+      "sourceQuote": "For each fixed point on the critical Ashkin--Teller line, including the four-state Potts endpoint, we prove the conjectured joint scaling limit of the height and both current-cluster collections in every bounded Jordan domain, for every admissible polygonal approximation.",
+      "paper": 1
+    },
+    {
+      "text": "The height converges to a Gaussian free field with the predicted coupling constant.",
+      "verdict": "supported",
+      "sourceLine": "converges to a Gaussian free field with the predicted coupling constant,",
+      "sourceQuote": "The height converges to a Gaussian free field with the predicted coupling constant, and the clusters converge to canonical recursive two-valued local sets of that same field.",
+      "paper": 1
+    },
+    {
+      "text": "The clusters converge to canonical recursive two-valued local sets of the same field.",
+      "verdict": "supported",
+      "sourceLine": "and the clusters converge to canonical recursive two-valued local sets",
+      "sourceQuote": "The height converges to a Gaussian free field with the predicted coupling constant, and the clusters converge to canonical recursive two-valued local sets of that same field.",
+      "paper": 1
+    },
+    {
+      "text": "The joint limit includes all nesting depths and the wired boundary cluster.",
+      "verdict": "supported",
+      "sourceLine": "The joint limit includes all nesting depths and the",
+      "sourceQuote": "The joint limit includes all nesting depths and the distinguished wired boundary cluster.",
+      "paper": 1
+    },
+    {
+      "text": "At U = 0 the currents are double random currents and g = 2.",
+      "verdict": "supported",
+      "sourceLine": "the currents are double random currents and",
+      "sourceQuote": "At $U=0$, the currents are double random currents and $g=2$.",
+      "paper": 1
+    },
+    {
+      "text": "Duminil-Copin, Lis and Qian established conformally invariant limits for the nesting field and cluster-boundary families.",
+      "verdict": "supported",
+      "sourceLine": "invariant limits for the nesting field and recursive cluster-boundary",
+      "sourceQuote": "Duminil-Copin, Lis, and Qian \\cite{DRC2025} established conformally invariant limits for the nesting field and recursive cluster-boundary families.",
+      "paper": 1
+    },
+    {
+      "text": "Conjecture 1.2 asks for the critical-line extension replacing √2 by √g.",
+      "verdict": "supported",
+      "sourceLine": "asks for the critical-line extension obtained by replacing",
+      "sourceQuote": "Their Conjecture~1.2 asks for the critical-line extension obtained by replacing $\\sqrt2$ with $\\sqrt g$.",
+      "paper": 1
+    },
+    {
+      "text": "Duminil-Copin, Kozlowski, Lammers and Manolescu prove a height scaling limit for √3 ≤ c ≤ 2.",
+      "verdict": "supported",
+      "sourceLine": "prove a height scaling limit for",
+      "sourceQuote": "Duminil-Copin, Kozlowski, Lammers, and Manolescu \\cite{DKLM2026} prove a height scaling limit for $\\sqrt3\\le c\\le2$ and establish several inputs on the larger interval $1\\le c\\le2$: logarithmic bounds for even increment moments, one-parity spin-percolation circuits, a specified flat-exhaustion plane law, and a free-energy identification of the normalization conditional on a Gaussian plane limit.",
+      "paper": 1
+    },
+    {
+      "text": "The additional Ising-point field and measure limits are outside the statement.",
+      "verdict": "supported",
+      "sourceLine": "outside our statement.",
+      "sourceQuote": "Those additional field and measure limits are outside our statement.",
+      "paper": 1
+    },
+    {
+      "text": "The proof first identifies the height field and then recovers the current supports.",
+      "verdict": "supported",
+      "sourceLine": "The proof first identifies the height field and then recovers the complete",
+      "sourceQuote": "The proof first identifies the height field and then recovers the complete current supports from the geometry coupled to that field.",
+      "paper": 1
+    },
+    {
+      "text": "Fourth angular harmonics in frames 45 degrees apart cancel pointwise.",
+      "verdict": "supported",
+      "sourceLine": "Fourth angular harmonics in frames differing",
+      "sourceQuote": "Fourth angular harmonics in frames differing by \\(45\\) degrees cancel pointwise, making this defect integrable against the mixing measure.",
+      "paper": 1
+    },
+    {
+      "text": "The coupling requires identifying which discrete odd holes belong to one current cluster.",
+      "verdict": "supported",
+      "sourceLine": "identify which discrete odd holes belong to a single current cluster,",
+      "sourceQuote": "In the present coupling, we must additionally identify which discrete odd holes belong to a single current cluster, exclude macroscopic pieces invisible to those holes, and compare passage tests after a second coupled random exploration.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

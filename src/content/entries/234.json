@@ -1,0 +1,215 @@
+{
+  "id": "234",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/All-temperature-pressure-for-orthogonally-invariant-Ising-spin-glasses-September-25-2026/paper.pdf",
+      "label": "All-temperature pressure for orthogonally invariant Ising spin glasses"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/234.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A formula for the pressure of orthogonally invariant Ising spin glasses holds at every temperature.",
+  "scope": "It covers Ising spin glasses with randomly rotated eigenvectors and an eigenvalue spread that settles to a bounded shape, with no outliers.",
+  "plain": "A spin glass is a model of many tiny magnets with random, conflicting pulls between pairs. Here the pulls come from a matrix with fixed eigenvalues and random directions. The paper proves a formula for the system's key summary number, the pressure, at every temperature. Earlier formulas only worked when the temperature was high.",
+  "doesNot": "This does not cover eigenvalue spreads with outliers outside the limiting range.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1979",
+    "firstStepBy": "Giorgio Parisi, hierarchical order parameter for spin glasses",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It extends rigorous pressure formulas for invariant spin glasses from high temperature to every temperature."
+  },
+  "explanation": "Take two tiny magnets, called spins, each pointing up (+1) or down (−1). Give the pair an energy reward of 1 when they agree and a penalty of 1 when they disagree. There are four ways to set the two spins. Two agree and two disagree. Weight each setting by e raised to its reward, so agreeing settings count e and disagreeing ones count 1/e. Average these four weights, take the log, and divide by the number of spins. The result is the pressure. Here it is ½ × log(cosh 1), about 0.217.\n\nA spin glass does the same with N spins and random rewards between every pair. The pressure is the key number. It sums up the system's behavior at one temperature, and its limit as N grows is what physicists want. For the classic Sherrington–Kirkpatrick model, Parisi introduced a layered order parameter in 1979[11]. Guerra proved one half of it, and Talagrand proved the full formula in 2006[12,13].\n\nThe rewards form a matrix. A matrix has eigenvalues, which say how strongly it acts in certain directions, the eigenvectors. This paper studies orthogonally invariant spin glasses. You fix the eigenvalues and spin the eigenvectors to a completely random direction. The question is whether the eigenvalues alone fix the limiting pressure.\n\nThe obstacle is a mismatch. The eigenvalues describe the matrix on all of space. But spins only take the values ±1, the corners of a cube, so the matrix is only ever tested there[1]. Earlier rigorous formulas for these models needed high temperature[2]. Bhattacharya and Sen proved one such formula with no outside field[14]. At high temperature the spins behave simply and the hard structure never appears.\n\nThe paper proves a formula for the limiting pressure at every fixed temperature[3]. It assumes the spread of eigenvalues settles to a fixed shape on a bounded range. It also assumes the largest and smallest eigenvalues do not stray outside that range. The pressure converges on average, and also for almost every random draw, to a variational formula[4,5]. A variational formula is one given as the best value over a family of trial choices. The eigenvalue spread need not have a density or any minimum variance[7].\n\nThe formula keeps the layered overlap structure known from the Sherrington–Kirkpatrick model[6]. Overlaps measure how alike two random samples of the spins are. The paper also handles outside fields acting on each spin[8]. By letting the temperature go to zero, it gets the lowest possible energy with no field[9]. One example is a Hopfield model built from a random Gaussian matrix. There the formula also gives the matrix's largest and smallest stretch over ±1 vectors[10].\n\nThe proof uses a tree-like overlap structure to describe all the overlaps at once[15]. The order of the minimum and maximum in the formula matters, and the proof never swaps them[16].\n\nHow sure is this? Lean, a computer proof checker, has formal versions of the main limits. They cover the pressure in expectation and almost surely, every positive temperature and the ground-state limit. They also cover outside fields, random spectra and the Gaussian-pattern case. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. Lean has formal versions of the main limits; no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Spin glass",
+      "meaning": "A model of many ±1 magnets with random, conflicting pairwise rewards."
+    },
+    {
+      "term": "Pressure",
+      "meaning": "The log of the averaged weight of all spin settings, divided by the number of spins."
+    },
+    {
+      "term": "Eigenvalues",
+      "meaning": "Numbers saying how strongly a matrix stretches along its special directions, the eigenvectors."
+    },
+    {
+      "term": "Orthogonally invariant",
+      "meaning": "Built by fixing eigenvalues and turning the eigenvectors to a uniformly random direction."
+    },
+    {
+      "term": "Overlap",
+      "meaning": "The average agreement between two random samples of the spins."
+    },
+    {
+      "term": "Variational formula",
+      "meaning": "A value written as the best result over a family of trial choices."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “All-temperature pressure for orthogonally invariant Ising spin glasses” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/All-temperature-pressure-for-orthogonally-invariant-Ising-spin-glasses-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 234 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/234.md"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "cite": "G. Parisi, “Infinite number of order parameters for spin-glasses”, Physical Review Letters 43 (1979), 1754–1756",
+      "url": "https://doi.org/10.1103/PhysRevLett.43.1754",
+      "id": 4
+    },
+    {
+      "cite": "M. Talagrand, “The Parisi formula”, Annals of Mathematics 163(1) (2006), 221–263",
+      "url": "https://doi.org/10.4007/annals.2006.163.221",
+      "id": 5
+    }
+  ],
+  "claims": [
+    {
+      "text": "An Ising system samples the matrix's quadratic form only on cube vertices; eigenvectors are randomized by Haar orthogonal conjugation.",
+      "verdict": "supported",
+      "sourceLine": "but an Ising spin system samples that form only on the",
+      "sourceQuote": "The eigenvalues of an interaction matrix describe its quadratic form on Euclidean space, but an Ising spin system samples that form only on the vertices of a cube.",
+      "paper": 1
+    },
+    {
+      "text": "Earlier rigorous pressure formulas impose high-temperature conditions.",
+      "verdict": "supported",
+      "sourceLine": "impose high-temperature conditions.",
+      "sourceQuote": "The rigorous pressure formulas in \\cite{BhattacharyaSen,FanWu,Fan2026} impose high-temperature conditions.",
+      "paper": 1
+    },
+    {
+      "text": "The paper determines the limiting pressure at every fixed temperature.",
+      "verdict": "supported",
+      "sourceLine": "We determine the limiting pressure of an Ising spin glass with Haar",
+      "sourceQuote": "We determine the limiting pressure of an Ising spin glass with Haar orthogonal eigenvectors, a compact limiting spectral law, and no asymptotic outliers, at every fixed temperature.",
+      "paper": 1
+    },
+    {
+      "text": "The pressure converges in expectation and almost surely to a variational formula.",
+      "verdict": "supported",
+      "sourceLine": "in expectation and almost surely to a variational formula.",
+      "sourceQuote": "The pressure converges in expectation and almost surely to a variational formula.",
+      "paper": 1
+    },
+    {
+      "text": "The second limit holds almost surely.",
+      "verdict": "supported",
+      "sourceLine": "where the second limit holds almost surely.",
+      "sourceQuote": "With $S$ and $G_1$ as in Equations~\\eqref{eq:S}--\\eqref{eq:G}, \\begin{equation} \\lim_{N\\to\\infty}\\E P_N =\\lim_{N\\to\\infty}P_N =\\mathcal F(\\mu) :=\\inf_{p\\in\\cP}\\{S(p)+G_1(p)\\}, \\label{eq:variational} \\end{equation} where the second limit holds almost surely.",
+      "paper": 1
+    },
+    {
+      "text": "The formula retains the hierarchy of replica overlaps from the SK model.",
+      "verdict": "supported",
+      "sourceLine": "retains the hierarchy of replica overlaps familiar from the",
+      "sourceQuote": "The formula retains the hierarchy of replica overlaps familiar from the Sherrington--Kirkpatrick model, while the spectral law enters through its edge-extended $R$-transform.",
+      "paper": 1
+    },
+    {
+      "text": "No density or nonzero-variance assumption is imposed on μ.",
+      "verdict": "supported",
+      "sourceLine": "No density or nonzero-variance assumption is",
+      "sourceQuote": "No density or nonzero-variance assumption is imposed on $\\mu$.",
+      "paper": 1
+    },
+    {
+      "text": "The paper gives the limiting pressure with deterministic external fields.",
+      "verdict": "supported",
+      "sourceLine": "the limiting pressure with deterministic external fields whose empirical",
+      "sourceQuote": "We also give the limiting pressure with deterministic external fields whose empirical laws converge in first-moment transport distance, and derive a formula for the zero-field ground-state energy by taking temperature to zero.",
+      "paper": 1
+    },
+    {
+      "text": "A zero-field ground-state energy formula follows by taking temperature to zero.",
+      "verdict": "supported",
+      "sourceLine": "for the zero-field ground-state energy by taking temperature to zero.",
+      "sourceQuote": "We also give the limiting pressure with deterministic external fields whose empirical laws converge in first-moment transport distance, and derive a formula for the zero-field ground-state energy by taking temperature to zero.",
+      "paper": 1
+    },
+    {
+      "text": "The formula determines a Gaussian operator norm and the minimum length of a signed sum of Gaussian columns.",
+      "verdict": "supported",
+      "sourceLine": "Thus the pressure formula also determines a Gaussian operator norm and",
+      "sourceQuote": "Thus the pressure formula also determines a Gaussian operator norm and the minimum length of a signed sum of Gaussian columns; see Corollary~\\ref{gen:wishart}.",
+      "paper": 1
+    },
+    {
+      "text": "Parisi introduced a hierarchical order parameter.",
+      "verdict": "supported",
+      "sourceLine": "Parisi introduced a hierarchical order parameter",
+      "sourceQuote": "For the Sherrington--Kirkpatrick model \\cite{SherringtonKirkpatrick}, Parisi introduced a hierarchical order parameter \\cite{Parisi1979}.",
+      "paper": 1
+    },
+    {
+      "text": "Guerra established the variational upper bound.",
+      "verdict": "supported",
+      "sourceLine": "Guerra established the associated variational upper bound for the pressure",
+      "sourceQuote": "Guerra established the associated variational upper bound for the pressure \\cite{Guerra2003}, and Talagrand proved the matching formula \\cite{Talagrand2006}.",
+      "paper": 1
+    },
+    {
+      "text": "Talagrand proved the matching formula.",
+      "verdict": "supported",
+      "sourceLine": "and Talagrand proved the matching formula",
+      "sourceQuote": "Guerra established the associated variational upper bound for the pressure \\cite{Guerra2003}, and Talagrand proved the matching formula \\cite{Talagrand2006}.",
+      "paper": 1
+    },
+    {
+      "text": "Bhattacharya and Sen proved the zero-field formula at high temperature.",
+      "verdict": "supported",
+      "sourceLine": "Bhattacharya and Sen proved the zero-field pressure formula in a",
+      "sourceQuote": "Bhattacharya and Sen proved the zero-field pressure formula in a high-temperature regime \\cite[Theorem~1.2]{BhattacharyaSen}.",
+      "paper": 1
+    },
+    {
+      "text": "Ultrametricity and synchronization express all spectral overlaps through common quantiles.",
+      "verdict": "supported",
+      "sourceLine": "Ultrametricity and synchronization",
+      "sourceQuote": "Ultrametricity and synchronization \\cite{PanchenkoUltra,PanchenkoMulti} then express all the spectral overlaps through simultaneous nondecreasing quantiles.",
+      "paper": 1
+    },
+    {
+      "text": "The order of infimum and supremum is essential and the proof does not exchange them.",
+      "verdict": "supported",
+      "sourceLine": "is essential; our proof does not exchange",
+      "sourceQuote": "The order of the infimum and supremum in Equation~\\eqref{eq:variational} is essential; our proof does not exchange them.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes the pressure limits in expectation and almost surely, all temperatures, the ground state, external fields, random spectra and Gaussian patterns.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

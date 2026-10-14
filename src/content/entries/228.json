@@ -1,0 +1,227 @@
+{
+  "id": "228",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-continuum-temperature-singularity-for-a-radial-pair-potential-September-24-2026/paper.pdf",
+      "label": "A continuum temperature singularity for a radial pair potential"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-radial-continuum-phase-transition-with-algebraic-decay-September-24-2026/paper.pdf",
+      "label": "A radial continuum phase transition with algebraic decay"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/228.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Two built pair potentials give particles in space a first-order phase transition across a range of densities.",
+  "scope": "It covers single-species particles in three dimensions with engineered radial pair potentials. It says nothing about Lennard-Jones or real fluids.",
+  "plain": "A phase transition, like water boiling, shows up as a sudden jump in energy at one temperature. The papers build two simple distance-based force rules between identical particles in space that produce such a jump. The same critical temperature works over a whole range of densities. One rule is bounded everywhere and its pull fades at a fixed power rate.",
+  "doesNot": "This does not show a phase transition for the Lennard-Jones potential or any real substance.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1971",
+    "firstStepBy": "David Ruelle, two-species continuum transition",
+    "field": "Probability and statistical mechanics",
+    "significance": "Solid",
+    "significanceWhy": "It gives single-species radial pair potentials with a proved temperature jump, one with a power-law tail."
+  },
+  "explanation": "Heat a pot of water at sea level. At 100 °C the temperature stops rising for a while. The added heat goes into turning liquid into steam. The energy of the water jumps while the temperature stays put. Physicists call this a first-order phase transition.\n\nMathematicians want to prove such a jump from first principles. Start with many identical particles in space. Each pair of particles has an energy that depends only on their distance r. That rule is called a radial pair potential, φ(r). The free energy is a number that sums up how the whole system behaves at a given temperature and density. Density is the number of particles per unit volume. A jump in its slope with respect to inverse temperature, written β, is the sign of a transition. The slope here is the average energy, so a jump means the energy leaps at one temperature, like the boiling water.\n\nCan one simple pair rule produce such a jump for particles moving freely in space[1]? Barry Simon highlighted this question in his list of problems in mathematical physics[16]. Earlier proofs needed extra structure. Ruelle used two kinds of particles[7]. Lebowitz, Mazel and Presutti added a repulsive four-body force on top of pair forces[8]. A recent model by He, Jauslin, Lebowitz and Peled depends on a fixed grid of cubes[17].\n\nThe tail of the potential matters. The total pull from far-away particles adds up like the sum of r² × φ(r) over distances. If φ(r) falls like 1/r³, that sum from 1 to R equals the natural log of R. At R = 1,000 it is about 6.9, and at R = 10^12 about 27.6. It keeps growing without end. If φ(r) falls like r^(−3−1/32), the same sum stays below 32. It is about 6.2 at R = 1,000 and about 18.5 at R = 10^12.\n\nThe first paper builds a stable radial pair potential in three dimensions[2]. Stable means the total energy is never lower than a fixed constant times the number of particles. The potential blows up at very short range, attracts at a middle range, and has a tail that fades faster than 1/r³[3]. Its free energy has a slope jump at one inverse temperature. That one temperature works for every density in an open interval[2]. The paper does not prove that the tail fades faster by any fixed power[4].\n\nThe second paper builds a different potential that stays bounded and continuous everywhere[12]. Its tail is at most a constant times r^(−3−1/32), so the far-field sum above stays finite. It again has a slope jump at one common inverse temperature across a range of densities[13].\n\nThe obstacle is that a jump in density alone is not enough[9]. The proof needs two different energies at the same density and the same temperature. The usual tool lets the attraction's range go to infinity. But the jump must belong to one fixed potential, not a limit[14]. And smoothing an approximation can erase a corner[11]. The first paper uses a geometric fact. At most four particles can all be within one tiny range of distances from each other in space[10]. Four such points form a nearly regular tetrahedron, and a fifth cannot fit. This keeps the energy under control. In the second paper, the fixed power bound limits how strong each far attraction can be[15].\n\nThese are built potentials, not real ones. The first paper makes no claim about the standard Lennard-Jones potential used for real gases[5]. It does not identify the phases as liquid, gas or solid[6].\n\nHow sure is this? Lean, a computer proof checker, has formal versions of both main theorems. They cover the core potential with its fast-fading tail, and the bounded potential with the r^(−3−1/32) bound. Each has a slope jump at one inverse temperature across an open density interval. No specialist review of either paper has been published.",
+  "hypeCheck": "Solid if the proofs hold. Lean has formal versions of both theorems; no specialist review is published, and the potentials are engineered rather than physical.",
+  "glossary": [
+    {
+      "term": "Radial pair potential",
+      "meaning": "A rule giving the energy of two particles from their distance alone."
+    },
+    {
+      "term": "Stable",
+      "meaning": "The total energy of N particles is never below a fixed constant times −N."
+    },
+    {
+      "term": "Free energy",
+      "meaning": "A single number that summarizes a large system's behavior at a given temperature and density."
+    },
+    {
+      "term": "Inverse temperature β",
+      "meaning": "One divided by temperature, in suitable units."
+    },
+    {
+      "term": "First-order phase transition",
+      "meaning": "A sudden jump in energy or density at one temperature, as in boiling."
+    },
+    {
+      "term": "Tail",
+      "meaning": "How the potential behaves at large distances."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “A continuum temperature singularity for a radial pair potential” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-continuum-temperature-singularity-for-a-radial-pair-potential-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, “A radial continuum phase transition with algebraic decay” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-radial-continuum-phase-transition-with-algebraic-decay-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 228 (scope of the formalization and Comparator links)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/228.md"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "cite": "D. Ruelle, “Existence of a phase transition in a continuous classical system”, Physical Review Letters 27 (1971), 1040–1041",
+      "url": "https://doi.org/10.1103/PhysRevLett.27.1040",
+      "id": 5
+    }
+  ],
+  "claims": [
+    {
+      "text": "The problem asks whether a single species with a stable radial pair potential has a temperature singularity.",
+      "verdict": "supported",
+      "sourceLine": "interacting through a stable radial",
+      "sourceQuote": "We consider an existence problem: can a single species of particles in $\\R^3$, interacting through a stable radial pair potential, have a temperature singularity at one fixed density, and can the same critical inverse temperature work throughout an open interval of densities?",
+      "paper": 1
+    },
+    {
+      "text": "The canonical free energy has a strict downward derivative jump at one common inverse temperature throughout an open density interval.",
+      "verdict": "supported",
+      "sourceLine": "free energy has a strict downward derivative jump at one common finite positive",
+      "sourceQuote": "We construct a stable radial pair potential in three dimensions whose canonical free energy has a strict downward derivative jump at one common finite positive inverse temperature throughout an open interval of positive densities.",
+      "paper": 1
+    },
+    {
+      "text": "The potential has a divergent core, an attractive interval and an o(r^−3) tail.",
+      "verdict": "supported",
+      "sourceLine": "The potential has a divergent repulsive core, a nontrivial attractive interval,",
+      "sourceQuote": "The potential has a divergent repulsive core, a nontrivial attractive interval, and an integrable tail satisfying $\\phi(r)=o(r^{-3})$.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem does not claim to resolve formulations requiring a power-law margin.",
+      "verdict": "supported",
+      "sourceLine": "Accordingly, the theorem does not claim to resolve formulations of the",
+      "sourceQuote": "Accordingly, the theorem does not claim to resolve formulations of the historical problem that require such a power-law margin.",
+      "paper": 1
+    },
+    {
+      "text": "It does not assert a transition for the 12–6 Lennard-Jones potential.",
+      "verdict": "supported",
+      "sourceLine": "It does not assert a transition for the ordinary",
+      "sourceQuote": "It does not assert a transition for the ordinary $12$--$6$ Lennard--Jones potential, and it makes no identification of the coexisting states as conventional liquid, vapor, or solid phases.",
+      "paper": 1
+    },
+    {
+      "text": "It does not identify the coexisting states as liquid, vapor or solid.",
+      "verdict": "supported",
+      "sourceLine": "coexisting states as conventional liquid, vapor, or solid phases.",
+      "sourceQuote": "It does not assert a transition for the ordinary $12$--$6$ Lennard--Jones potential, and it makes no identification of the coexisting states as conventional liquid, vapor, or solid phases.",
+      "paper": 1
+    },
+    {
+      "text": "Earlier continuum transitions include Ruelle's two-species Widom–Rowlinson model.",
+      "verdict": "supported",
+      "sourceLine": "Earlier rigorous continuum transitions include Ruelle's result for the",
+      "sourceQuote": "Earlier rigorous continuum transitions include Ruelle's result for the two-species Widom--Rowlinson model~\\cite{Ruelle1971}.",
+      "paper": 1
+    },
+    {
+      "text": "Lebowitz, Mazel and Presutti used attractive pair and repulsive four-body interactions.",
+      "verdict": "supported",
+      "sourceLine": "attractive pair and repulsive four-body interactions",
+      "sourceQuote": "Lebowitz, Mazel, and Presutti later proved a transition for a model with attractive pair and repulsive four-body interactions \\cite{LebowitzMazelPresutti1998,LebowitzMazelPresutti1999}.",
+      "paper": 1
+    },
+    {
+      "text": "Density coexistence alone does not imply a temperature corner at fixed density.",
+      "verdict": "supported",
+      "sourceLine": "alone does not imply a temperature corner at a fixed density.",
+      "sourceQuote": "Moreover, density coexistence alone does not imply a temperature corner at a fixed density.",
+      "paper": 1
+    },
+    {
+      "text": "At most four particles can have all pair distances in the low-energy shell.",
+      "verdict": "supported",
+      "sourceLine": "At most four particles can have all their pair distances in that shell",
+      "sourceQuote": "At most four particles can have all their pair distances in that shell in $\\R^3$.",
+      "paper": 1
+    },
+    {
+      "text": "Uniform approximation alone can smooth a corner.",
+      "verdict": "supported",
+      "sourceLine": "Uniform approximation alone can smooth a corner.",
+      "sourceQuote": "Uniform approximation alone can smooth a corner.",
+      "paper": 1
+    },
+    {
+      "text": "A bounded, continuous, stable radial potential with |φ(r)| ≤ C r^(−3−1/32) is constructed.",
+      "verdict": "supported",
+      "sourceLine": "We construct a bounded, continuous, stable radial pair potential in three",
+      "sourceQuote": "We construct a bounded, continuous, stable radial pair potential in three dimensions with \\(|\\phi(r)|\\le Cr^{-3-1/32}\\) for \\(r\\ge1\\).",
+      "paper": 2
+    },
+    {
+      "text": "Its free energy has a strict downward derivative jump at one common inverse temperature throughout a density interval.",
+      "verdict": "supported",
+      "sourceLine": "derivative jump at one common finite positive inverse temperature.",
+      "sourceQuote": "Throughout an open interval of positive densities, its canonical thermodynamic free energy is finite at every positive inverse temperature and has a strict downward derivative jump at one common finite positive inverse temperature.",
+      "paper": 2
+    },
+    {
+      "text": "The singularity must belong to one fixed pair potential.",
+      "verdict": "supported",
+      "sourceLine": "the required singularity must belong to one fixed pair",
+      "sourceQuote": "In the present problem, the limit of an interaction as its range tends to infinity is only an intermediate object: the required singularity must belong to one fixed pair potential.",
+      "paper": 2
+    },
+    {
+      "text": "A pointwise power bound constrains the masses of the successive attractions.",
+      "verdict": "supported",
+      "sourceLine": "a pointwise power bound constrains how the masses",
+      "sourceQuote": "Moreover, a pointwise power bound constrains how the masses of its successive attractions may depend on their ranges.",
+      "paper": 2
+    },
+    {
+      "text": "The question belongs to the program highlighted by Simon's problems.",
+      "verdict": "supported",
+      "sourceLine": "highlighted by Simon's problems in mathematical physics",
+      "sourceQuote": "The continuum phase-transition existence question belongs to the program highlighted by Simon's problems in mathematical physics~\\cite{Simon1984}.",
+      "paper": 1
+    },
+    {
+      "text": "The He–Jauslin–Lebowitz–Peled model depends on a fixed partition into cubes.",
+      "verdict": "supported",
+      "sourceLine": "It depends on a fixed partition into cubes",
+      "sourceQuote": "It depends on a fixed partition into cubes, and the reference interaction acts only within each cube.",
+      "paper": 1
+    },
+    {
+      "text": "Lean formalizes both constructions and their common-temperature derivative jumps on open density intervals.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
