@@ -1,0 +1,180 @@
+{
+  "id": "203",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Donovans-Conjecture-over-Algebraic-Closures-of-Prime-Fields-September-24-2026/main.pdf",
+      "label": "Donovan's Conjecture over Algebraically Closed Fields"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integral-Donovan-Finiteness-over-Witt-Vectors-September-25-2026/main.pdf",
+      "label": "Integral Donovan Finiteness over Witt Vectors"
+    }
+  ],
+  "headline": "Two papers claim Donovan's conjecture: blocks with bounded defect fall into finitely many types, for every prime.",
+  "scope": "The claims fix the coefficient field, or a complete coefficient ring, before the groups vary. They cover every prime, including 2, and nonabelian defect groups.",
+  "plain": "A finite group's representations in characteristic p split into pieces called blocks. Each block has a defect group, a small subgroup that measures how complicated it is. Donovan's conjecture says that, once the defect group is fixed, only finitely many kinds of block occur. Here two blocks are the same kind when their categories of modules match. These papers claim to prove this over every algebraically closed field, and in an integral form.",
+  "doesNot": "This does not give an explicit list of the possible blocks or a usable bound on how many there are.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Jonathan Alperin's problem list, “Local representation theory” (Conjecture M)",
+    "field": "Algebra",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle a central finiteness conjecture of modular representation theory for every prime."
+  },
+  "explanation": "Take the six symmetries of a triangle, the group S₃. Its group algebra is a six-dimensional space where group elements can be added and multiplied. Over a field where 5 = 0, this algebra splits into three blocks of dimensions 1, 1 and 4. The 4-dimensional block is all two-by-two matrices. Since 1 + 1 + 4 = 6, nothing is left over.\n\nOver a field where 2 = 0, the same algebra splits differently, as 2 + 4. The 4 is again two-by-two matrices. The 2 is like numbers a + bx with x² = 0, which cannot be split further. That small piece carries the complication that the prime 2 brings, since 2 divides 6.\n\nEach block has a defect group: a subgroup of prime-power size, determined up to conjugacy, that measures how complicated the block is. Matrix blocks have the trivial defect group. Two blocks count as the same kind, Morita equivalent, when their categories of modules match. Every matrix block is Morita equivalent to the plain field. So among blocks with trivial defect group, infinitely many groups give only one kind.\n\nDonovan's conjecture asks whether this always happens. Fix a finite p-group. Can it be the defect group of only finitely many kinds of block, across all finite groups[1]? The conjecture is credited to Peter Donovan and appears as Conjecture M in Alperin's 1980 problem list[3]. It was known for symmetric groups, by Scopes[4]. Eaton and Livesey proved it for abelian 2-groups[5]. A recent preprint handled quaternion defect groups[6].\n\nThe first paper claims the full conjecture over every algebraically closed field of characteristic p[2]. That includes nonabelian defect groups and the prime 2. The second paper claims the stronger integral form[11]. There the coefficients are p-adic-style numbers, Witt vectors, which remember more than the field does[12]. It also extends to any fixed complete coefficient ring with algebraically closed residue field[14].\n\nFiniteness needs two kinds of control[7]. Blocks must have bounded size, and their multiplication tables must be definable over one finite field. If both hold, only finitely many tables can occur[8]. The paper first bounds the sizes, through Cartan numbers, for blocks of quasisimple groups[10,13]. Then it handles general groups by building up extensions.\n\nThe one obstacle is uniformity. In groups of Lie type, such as matrix groups over finite fields, some ingredients can grow without bound while the defect stays small[9]. The rank of the matrix group can grow too. The paper uses geometric tools to count the basic projective pieces of a block. A separate step reduces matrix groups of large rank to bounded cases.\n\nHow sure is this? No Lean formalization is listed for either paper. The claims rest on very long arguments that draw on deep geometric methods. No specialist review of these papers has been published.",
+  "hypeCheck": "Landmark if the proofs hold, but they are very long, have no Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Group algebra",
+      "meaning": "Formal sums of group elements with field coefficients, multiplied using the group's rule."
+    },
+    {
+      "term": "Block",
+      "meaning": "One of the indecomposable pieces into which a group algebra splits."
+    },
+    {
+      "term": "Defect group",
+      "meaning": "A prime-power subgroup attached to a block that measures how far it is from plain matrices."
+    },
+    {
+      "term": "Morita equivalence",
+      "meaning": "Two algebras are Morita equivalent when their categories of modules match exactly."
+    },
+    {
+      "term": "Cartan numbers",
+      "meaning": "Counts of how often each simple module appears inside each basic projective module of a block."
+    },
+    {
+      "term": "Witt vectors",
+      "meaning": "A ring of p-adic-style numbers whose remainders modulo p form a given field."
+    },
+    {
+      "term": "Group of Lie type",
+      "meaning": "A finite group built like a matrix group, such as invertible matrices over a finite field."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Donovan's Conjecture over Algebraically Closed Fields”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Donovans-Conjecture-over-Algebraic-Closures-of-Prime-Fields-September-24-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Integral Donovan Finiteness over Witt Vectors”, openai/math preprint (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integral-Donovan-Finiteness-over-Witt-Vectors-September-25-2026/main.pdf"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Donovan's conjecture asks whether a fixed finite p-group can be the defect group of only finitely many blocks up to Morita equivalence.",
+      "verdict": "supported",
+      "sourceLine": "asks whether a fixed finite \\(p\\)-group can occur as the defect",
+      "sourceQuote": "Donovan's conjecture asks whether a fixed finite \\(p\\)-group can occur as the defect group of only finitely many blocks up to this equivalence.",
+      "paper": 1
+    },
+    {
+      "text": "Over each fixed algebraically closed field K, Donovan's conjecture holds for every finite p-group.",
+      "verdict": "supported",
+      "sourceLine": "In particular, over this field \\(K\\), Donovan's conjecture holds for every finite",
+      "sourceQuote": "In particular, over this field \\(K\\), Donovan's conjecture holds for every finite \\(p\\)-group, including nonabelian groups.",
+      "paper": 1
+    },
+    {
+      "text": "The conjecture is attributed to Peter Donovan and appears as Conjecture M in Alperin's account.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture is attributed to Peter Donovan and appears as",
+      "sourceQuote": "The conjecture is attributed to Peter Donovan and appears as Conjecture~M in Alperin's account of problems in group representation theory \\cite{Alperin1980}.",
+      "paper": 1
+    },
+    {
+      "text": "Scopes proved finiteness for symmetric-group blocks.",
+      "verdict": "supported",
+      "sourceLine": "Scopes proved finiteness for symmetric-group blocks, and Kessar",
+      "sourceQuote": "Scopes proved finiteness for symmetric-group blocks, and Kessar treated their double-cover families \\cite{Scopes,KessarSymmetric}.",
+      "paper": 1
+    },
+    {
+      "text": "Eaton–Livesey proved the field-valued conjecture for abelian 2-groups.",
+      "verdict": "supported",
+      "sourceLine": "Eaton--Livesey proved the field-valued conjecture for abelian",
+      "sourceQuote": "Eaton--Livesey proved the field-valued conjecture for abelian \\(2\\)-groups \\cite{EatonLivesey}.",
+      "paper": 1
+    },
+    {
+      "text": "An August 2026 preprint proves integral finiteness for quaternion defect groups.",
+      "verdict": "supported",
+      "sourceLine": "integral finiteness for quaternion defect groups and deduces",
+      "sourceQuote": "The August 2026 preprint \\cite[Theorem~1.1 and Corollary~1.2]{Quaternion2026} proves integral finiteness for quaternion defect groups and deduces finiteness for all tame blocks over \\(k\\).",
+      "paper": 1
+    },
+    {
+      "text": "The general theorem requires both multiplicity control and control of field of definition.",
+      "verdict": "supported",
+      "sourceLine": "The general theorem requires both multiplicity control and control",
+      "sourceQuote": "The general theorem requires both multiplicity control and control of field of definition.",
+      "paper": 1
+    },
+    {
+      "text": "If dimension and field of definition are bounded, only finitely many multiplication tables occur.",
+      "verdict": "supported",
+      "sourceLine": "and the size of a finite field of definition are bounded, only finitely many",
+      "sourceQuote": "If both the dimension and the size of a finite field of definition are bounded, only finitely many multiplication tables can occur.",
+      "paper": 1
+    },
+    {
+      "text": "In a group of Lie type, finite tori can grow even when the block has small defect.",
+      "verdict": "supported",
+      "sourceLine": "In a group of Lie type, finite tori can",
+      "sourceQuote": "In a group of Lie type, finite tori can grow even when the chosen block has small defect; a bound for a principal block with small Sylow subgroup does not address this case.",
+      "paper": 1
+    },
+    {
+      "text": "The proof first establishes a uniform Cartan bound for quasisimple blocks of bounded defect.",
+      "verdict": "supported",
+      "sourceLine": "The proof first establishes a uniform Cartan bound for quasisimple",
+      "sourceQuote": "The proof first establishes a uniform Cartan bound for quasisimple blocks of bounded defect.",
+      "paper": 1
+    },
+    {
+      "text": "Over O = W(F̄p), blocks with defect groups of order at most M lie in finitely many O-linear Morita classes.",
+      "verdict": "supported",
+      "sourceLine": "finitely many $\\cO$-linear Morita equivalence classes.",
+      "sourceQuote": "As $G$ ranges over all finite groups and $b$ ranges over all blocks of $\\cO G$ whose defect groups have order at most $M$, the algebras $\\cO G b$ belong to only finitely many $\\cO$-linear Morita equivalence classes.",
+      "paper": 2
+    },
+    {
+      "text": "The integral assertion is stronger than the residue-field one.",
+      "verdict": "supported",
+      "sourceLine": "and hence is stronger than the corresponding assertion",
+      "sourceQuote": "Over $\\cO$ it concerns integral module categories, including their lattice structure, and hence is stronger than the corresponding assertion over the residue field.",
+      "paper": 2
+    },
+    {
+      "text": "The Cartan estimate bounds the sizes of the basic algebras.",
+      "verdict": "supported",
+      "sourceLine": "The Cartan estimate bounds the sizes of the basic algebras;",
+      "sourceQuote": "The Cartan estimate bounds the sizes of the basic algebras; the comparison controls their multiplication and descent data.",
+      "paper": 1
+    },
+    {
+      "text": "The finiteness passes to a fixed complete coefficient ring with algebraically closed residue field.",
+      "verdict": "supported",
+      "sourceLine": "The finiteness conclusion also passes to a fixed complete coefficient",
+      "sourceQuote": "The finiteness conclusion also passes to a fixed complete coefficient ring with algebraically closed residue field.",
+      "paper": 2
+    }
+  ],
+  "sourceHash": "bb94be27bd4b62a2fc265c4ddd0ae026a5dd6bf2d0b6abbea26ba045e3b3e119",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

@@ -1,0 +1,168 @@
+{
+  "id": "202",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Blockwise-Alperin-Weight-Conjecture-September-23-2026/paper.pdf",
+      "label": "The Blockwise Alperin Weight Conjecture"
+    }
+  ],
+  "headline": "A paper claims to prove Alperin's weight conjecture, block by block, for every finite group and every prime.",
+  "scope": "The claim is the numerical form: two counts are equal. It does not give a natural matching between the things counted.",
+  "plain": "Alperin's weight conjecture, from 1986, predicts that a hard count about a finite group equals a count read off from smaller, local pieces. The hard count is of simple modular representations, block by block. The local count uses subgroups of prime-power size and their normalizers. This paper claims to prove the equality for every prime and every finite group. Unusually, its proof goes through curves in algebraic geometry rather than the classification of finite simple groups.",
+  "doesNot": "This does not give a natural one-to-one matching between simple modules and weights, only equal counts.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1986",
+    "firstStepBy": "Jonathan Alperin, “Weights for finite groups” (Arcata conference)",
+    "field": "Algebra",
+    "significance": "Landmark",
+    "significanceWhy": "If the proof holds, it settles one of the central conjectures of modular representation theory, open since 1986."
+  },
+  "explanation": "Take the six symmetries of a triangle, the group S₃, and the prime 3. Count its simple representations over a field where 3 = 0. They match the classes of elements whose order is not divisible by 3: the identity and the three flips. So the count is 2.\n\nNow count something local. Look at subgroups whose size is a power of 3: the trivial one, and the three rotations, of size 3. For each, take the larger group that keeps it in place, divided by the subgroup itself. For the trivial subgroup this is all of S₃. Its ordinary characters have degrees 1, 1 and 2, and none is divisible by 3. So it contributes nothing. For the rotations, the quotient has size 2, and both of its two characters count. The local count is 2, matching the first.\n\nTry the prime 2 instead. Here S₃ splits into two blocks, pieces that can be studied separately. One block contains just the two-dimensional representation. The other contains a single simple representation, because the trivial and sign representations become the same when 2 = 0. Each block has count 1. On the local side, the trivial subgroup gives the degree-2 character, matched to the first block. A flip subgroup of size 2 gives one more, matched to the second. The counts agree block by block.\n\nThis is Alperin's weight conjecture. It predicts an exact local-to-global count, block by block[1]. A weight is a pair: a subgroup of prime-power size, and a character of its local quotient. That character must have defect zero, meaning its degree carries the full power of the prime. Alperin stated it at the 1986 Arcata conference[2]. Early cases included symmetric groups and general linear groups, by Alperin and Fong[8]. Later work reduced it to questions about finite simple groups[5]. Feng, Li and Zhang then proved it for several families[6].\n\nThis paper claims the full blockwise conjecture, for every prime and every finite group[3]. It proves equality of the two counts, not a natural matching between them[4]. The proof does not use the classification of finite simple groups or an inductive condition[7]. Established consequences, such as inequalities between local and global counts, follow at once[9].\n\nThe route is unusual. First, algebra turns the equality into a statement about alternating sums over chains of subgroups[13]. This leaves a counting problem about tuples of group elements that satisfy one equation[11]. The equation is the one that describes loops on a doughnut-shaped surface with punctures. The paper must show these counts are divisible by ever higher powers of the prime.\n\nThe one obstacle is uniformity. The divisibility must hold however many punctures there are, with one threshold for all of them[10]. Only then do the error terms in the trace sums shrink to zero[12]. The paper gets this from geometry. It builds special genus-one curves with marked points, over arithmetic where p equals zero. Their covers obey a genus bound that becomes exact for large powers of p. That forces the needed divisibility.\n\nHow sure is this? No Lean formalization is listed for this paper. The claim rests on the paper's own long argument, which combines group algebra with the geometry of curves. No specialist review of the paper has been published.",
+  "hypeCheck": "Landmark if the proof holds, but it is long, novel in method, and has no Lean check or published specialist review.",
+  "glossary": [
+    {
+      "term": "Modular representation",
+      "meaning": "A way of writing group elements as matrices over a field where some prime p equals 0."
+    },
+    {
+      "term": "Block",
+      "meaning": "One of the independent pieces into which a group's modular representations split."
+    },
+    {
+      "term": "Brauer character",
+      "meaning": "A number-valued summary of a modular representation; their count equals the count of simple modules."
+    },
+    {
+      "term": "Weight",
+      "meaning": "A pair: a subgroup of prime-power size and a defect-zero character of its local quotient."
+    },
+    {
+      "term": "Defect zero",
+      "meaning": "A character whose degree is divisible by the full power of p in the group's size."
+    },
+    {
+      "term": "Normalizer",
+      "meaning": "The largest subgroup that maps a given subgroup onto itself by conjugation."
+    },
+    {
+      "term": "Genus-one curve",
+      "meaning": "A curve shaped, over the complex numbers, like the surface of a doughnut."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Blockwise Alperin Weight Conjecture”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Blockwise-Alperin-Weight-Conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "J. L. Alperin, “Weights for finite groups”, The Arcata Conference on Representations of Finite Groups, Proc. Sympos. Pure Math. 47, Part 1 (1987), 369–379",
+      "url": "https://doi.org/10.1090/pspum/047.1/933373"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Alperin's weight conjecture predicts an exact numerical local–global principle, block by block.",
+      "verdict": "supported",
+      "sourceLine": "Alperin's weight conjecture predicts an exact numerical form",
+      "sourceQuote": "Alperin's weight conjecture predicts an exact numerical form of this principle, block by block: simple modules are counted by defect-zero ordinary characters of normalizer quotients.",
+      "sourceId": 1
+    },
+    {
+      "text": "Alperin formulated the conjecture at the 1986 Arcata conference.",
+      "verdict": "supported",
+      "sourceLine": "conjecture at the 1986 Arcata conference; the original account appeared in",
+      "sourceQuote": "Alperin formulated the conjecture at the 1986 Arcata conference; the original account appeared in the proceedings in 1987 \\cite{Alperin1987,FLZ2023}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The theorem resolves the numerical blockwise conjecture with no restriction on defect groups, prime, or group.",
+      "verdict": "supported",
+      "sourceLine": "positively, with no restriction on the defect groups, the prime, or the",
+      "sourceQuote": "\\Cref{thm:main} resolves the numerical blockwise Alperin weight conjecture positively, with no restriction on the defect groups, the prime, or the finite group.",
+      "sourceId": 1
+    },
+    {
+      "text": "The conclusion is an equality of cardinalities, not a canonical correspondence.",
+      "verdict": "supported",
+      "sourceLine": "an equality of cardinalities; a canonical or equivariant correspondence",
+      "sourceQuote": "The conclusion is an equality of cardinalities; a canonical or equivariant correspondence is not required for this numerical statement.",
+      "sourceId": 1
+    },
+    {
+      "text": "Navarro–Tiep and Späth reduced the conjecture to conditions on finite simple groups.",
+      "verdict": "supported",
+      "sourceLine": "and Sp\\\"ath obtained a blockwise reduction",
+      "sourceQuote": "Navarro and Tiep reduced the non-blockwise conjecture to conditions on finite simple groups \\cite{NavarroTiep2011}, and Sp\\\"ath obtained a blockwise reduction \\cite{Spath2013}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Feng, Li and Zhang proved the blockwise conjecture for several families.",
+      "verdict": "supported",
+      "sourceLine": "Among the resulting advances, Feng, Li, and Zhang proved the",
+      "sourceQuote": "Among the resulting advances, Feng, Li, and Zhang proved the blockwise conjecture for finite special linear and special unitary groups and for finite groups with abelian Sylow $3$-subgroups \\cite{FLZ2023}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The proof does not use the classification of finite simple groups or an inductive weight condition.",
+      "verdict": "supported",
+      "sourceLine": "classification of finite simple groups or an inductive weight condition.",
+      "sourceQuote": "Our proof instead passes from a direct block-algebra calculation to covers of curves; it does not use a classification of finite simple groups or an inductive weight condition.",
+      "sourceId": 1
+    },
+    {
+      "text": "Early cases include Alperin and Fong's work on symmetric and general linear groups.",
+      "verdict": "supported",
+      "sourceLine": "Early large-family cases include Alperin and Fong's work on symmetric",
+      "sourceQuote": "Early large-family cases include Alperin and Fong's work on symmetric groups and on finite general linear groups in odd modular characteristic \\cite{AlperinFong1990}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The numerical equality gives established consequences of the conjecture.",
+      "verdict": "supported",
+      "sourceLine": "The numerical equality also gives the following established consequences",
+      "sourceQuote": "The numerical equality also gives the following established consequences of the weight conjecture.",
+      "sourceId": 1
+    },
+    {
+      "text": "The further assertion needed is uniform divisibility as the number of punctures increases.",
+      "verdict": "supported",
+      "sourceLine": "The further assertion is uniform divisibility as the number of punctures",
+      "sourceQuote": "The further assertion is uniform divisibility as the number of punctures increases, not merely a character formula for a fixed surface.",
+      "sourceId": 1
+    },
+    {
+      "text": "A tuple-counting problem remains after the algebraic reduction.",
+      "verdict": "supported",
+      "sourceLine": "Here is the counting problem that remains.",
+      "sourceQuote": "Here is the counting problem that remains.",
+      "sourceId": 1
+    },
+    {
+      "text": "Uniformity makes each weighted trace sum tend to zero.",
+      "verdict": "supported",
+      "sourceLine": "This uniformity makes each weighted trace sum",
+      "sourceQuote": "This uniformity makes each weighted trace sum tend to zero even though the number of multisets grows with $s$.",
+      "sourceId": 1
+    },
+    {
+      "text": "Chain inversion reduces the weight equality to an identity with alternating sums.",
+      "verdict": "supported",
+      "sourceLine": "Chain inversion first reduces the weight equality to an identity between",
+      "sourceQuote": "Chain inversion first reduces the weight equality to an identity between a defect-zero character count and an alternating sum of simple-module counts in subgroup normalizers.",
+      "sourceId": 1
+    }
+  ],
+  "sourceHash": "c0e2c6536ec0d0019a987f4868aa9b3db62572fe0ff215815007d9a070ab86cf",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

@@ -1,0 +1,200 @@
+{
+  "id": "195",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Complete-Local-Domain-Without-a-Small-Cohen-Macaulay-Module-September-23-2026/paper.pdf",
+      "label": "A Complete Local Domain without a Small Cohen–Macaulay Module"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/195.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A three-dimensional complete local domain over the complex numbers has no small Cohen–Macaulay module.",
+  "scope": "The example is one ring in dimension three, built over the complex numbers. It answers the domain form of the question, not every related form.",
+  "plain": "In algebra, a local ring is a number system that zooms in on one point of a shape. Melvin Hochster asked in the early 1970s whether every complete local domain has a small Cohen–Macaulay module, a finite and very well-behaved module. This paper claims to build a three-dimensional example that has none. The ring comes from a cone over one carefully chosen curved surface.",
+  "doesNot": "This does not rule out the infinite (big) Cohen–Macaulay modules, which are known to exist.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1973",
+    "firstStepBy": "Melvin Hochster, “Cohen–Macaulay modules”",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "If the proof holds, it settles a question from Hochster's early work that later homological work kept returning to."
+  },
+  "explanation": "Start with a test that uses only multiplication. The paper builds one curved surface for each prime n of 3 or more. Each surface comes with two whole numbers. The first is 5n³. The second is n³(n² − 10). The paper's test asks whether the second number is at most six times the first.\n\nTry n = 3. The numbers are 135 and −27, and −27 is far below 6 × 135 = 810. The test passes. Try n = 5. The numbers are 625 and 1,875, and 1,875 is below 3,750. It passes again. Now try n = 7. The numbers are 1,715 and 13,377, while six times 1,715 is 10,290. The test fails, and that failure is the whole counterexample.\n\nTo see why, some words are needed. A ring is a number system where you can add and multiply. A local ring zooms in on a single point of a shape, the way power series zoom in on zero. Complete means infinite power series are allowed. A domain is a ring where two nonzero things never multiply to zero. A module over a ring is like a vector space whose scalars come from that ring.\n\nDepth measures how well a module behaves. Pick elements of the ring one by one, so that multiplying by each one never sends a nonzero part of the module to zero. Depth is the longest such run. A small Cohen–Macaulay module is a nonzero module built from finitely many generators whose depth equals the dimension of the ring. The domain form of the conjecture asks whether every complete local domain has one[1].\n\nMelvin Hochster raised this question in his early work[2]. His first paper on it appeared in 1973. In dimension one or two the answer is yes[3]. If infinitely many generators are allowed, so-called big Cohen–Macaulay modules exist, by work running from Hochster in 1975 to André in 2018. In 2014, Bhargav Bhatt found rings with no finite Cohen–Macaulay extension ring[4]. That ruled out one route, but not general modules. Hochster later wrote that he had come to expect counterexamples[5].\n\nThis paper claims a counterexample in dimension three[6]. The ring R is built from a cone over a surface. Take all polynomial-like functions on the surface, graded by degree, and zoom in on the tip of the cone. The paper claims R has no nonzero finite module of depth three. It also gives an uncompleted version, essentially defined by finitely many polynomial equations, with the same property[7].\n\nThe engine is an inequality[8]. If the cone ring over a surface has a small Cohen–Macaulay module, the surface must pass the test. The surfaces come from six lines through four points of the plane, followed by a branched covering[9]. For n = 7 the test fails, so the cone ring has no such module[10].\n\nThe one obstacle is that a module over the completed ring need not respect degrees[12]. Earlier inequalities of this kind worked only for graded modules or special sheaves on the surface. The paper keeps the module's actual geometry near the tip instead. It compares two ways of extending that geometry across the surface sitting at the tip. Then Bogomolov's classical inequality supplies the upper bound that clashes with the test[13].\n\nThe work also overlaps with two recent preprints. One excludes graded modules over the same rings. Another, by Chen, proposes a similar completed counterexample by a different bound. The paper says its existence claim overlaps with that work[14].\n\nHow sure is this? A computer proof checker called Lean has checked only part of it. Lean confirms that a ring with the stated basic properties exists. Lean does not check that the ring lacks a small Cohen–Macaulay module. So the main claim rests on the paper's own argument. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean checks only the basic properties of the ring, not the missing module. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Local ring",
+      "meaning": "A number system that zooms in on one point, with a single maximal ideal."
+    },
+    {
+      "term": "Complete",
+      "meaning": "Here, a local ring in which infinite power series in its elements make sense."
+    },
+    {
+      "term": "Domain",
+      "meaning": "A ring where two nonzero elements never multiply to zero."
+    },
+    {
+      "term": "Module",
+      "meaning": "Something like a vector space, but with scalars taken from a ring."
+    },
+    {
+      "term": "Depth",
+      "meaning": "The longest run of ring elements that each act on the module without killing any nonzero part."
+    },
+    {
+      "term": "Small Cohen–Macaulay module",
+      "meaning": "A nonzero, finitely generated module whose depth equals the ring's dimension."
+    },
+    {
+      "term": "Bogomolov's inequality",
+      "meaning": "A classical bound on the numbers attached to well-balanced vector bundles on a surface."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A Complete Local Domain without a Small Cohen–Macaulay Module”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Complete-Local-Domain-Without-a-Small-Cohen-Macaulay-Module-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 195 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/195.md"
+    },
+    {
+      "id": 3,
+      "cite": "M. Hochster, “Cohen–Macaulay modules”, Conference on Commutative Algebra (Lawrence, 1972), Lecture Notes in Mathematics 311 (1973), 120–152",
+      "url": "https://doi.org/10.1007/BFb0068925"
+    },
+    {
+      "id": 4,
+      "cite": "M. Hochster, “Homological conjectures and lim Cohen–Macaulay sequences”, Springer INdAM Series 20 (2017), 173–197",
+      "url": "https://doi.org/10.1007/978-3-319-61943-9_11"
+    },
+    {
+      "id": 5,
+      "cite": "B. Bhatt, “On the non-existence of small Cohen–Macaulay algebras”, Journal of Algebra 411 (2014), 1–11",
+      "url": "https://doi.org/10.1016/j.jalgebra.2014.03.038"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The domain form of the conjecture asks whether every complete Noetherian local domain has a small Cohen–Macaulay module.",
+      "verdict": "supported",
+      "sourceLine": "The domain form of the small Cohen--Macaulay module conjecture asks",
+      "sourceQuote": "The domain form of the small Cohen--Macaulay module conjecture asks whether every complete Noetherian local domain has one.",
+      "sourceId": 1
+    },
+    {
+      "text": "Hochster formulated the finite-module existence problem in his early work.",
+      "verdict": "supported",
+      "sourceLine": "Hochster formulated the finite-module existence problem in his early",
+      "sourceQuote": "Hochster formulated the finite-module existence problem in his early work on Cohen--Macaulay modules and homological conjectures \\cite{Hochster1973,Hochster1975}.",
+      "sourceId": 1
+    },
+    {
+      "text": "In dimensions at most two, a complete local domain has a small Cohen–Macaulay module.",
+      "verdict": "supported",
+      "sourceLine": "local domain has a small Cohen--Macaulay module: its finite normalization",
+      "sourceQuote": "In dimensions at most two, a complete local domain has a small Cohen--Macaulay module: its finite normalization is Cohen--Macaulay \\cite[Section~2]{Hochster2017}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bhatt constructed positive-characteristic complete normal local domains with no finite Cohen–Macaulay extension.",
+      "verdict": "supported",
+      "sourceLine": "local domains with no finite Cohen--Macaulay extension, using a Witt-vector",
+      "sourceQuote": "Bhatt constructed positive-characteristic complete normal local domains with no finite Cohen--Macaulay extension, using a Witt-vector cohomological obstruction \\cite{Bhatt2014}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Hochster's later account records his early conjecture and his later expectation of counterexamples.",
+      "verdict": "supported",
+      "sourceLine": "early existence conjecture and his subsequent expectation of counterexamples",
+      "sourceQuote": "Hochster's later account explicitly records both his early existence conjecture and his subsequent expectation of counterexamples \\cite[Section~2, Conjectures~2.1 and 2.2]{Hochster2017}.",
+      "sourceId": 1
+    },
+    {
+      "text": "There is a three-dimensional complete Noetherian normal local domain over C with no nonzero finite module of depth three.",
+      "verdict": "supported",
+      "sourceLine": "There exists a three-dimensional complete Noetherian normal local domain",
+      "sourceQuote": "There exists a three-dimensional complete Noetherian normal local domain $R$ containing $\\C$, with residue field $\\C$, such that no nonzero finitely generated $R$-module has depth three.",
+      "sourceId": 1
+    },
+    {
+      "text": "The uncompleted vertex localization, essentially of finite type, is also a counterexample.",
+      "verdict": "supported",
+      "sourceLine": "this supplies a counterexample in the affine-local class just described.",
+      "sourceQuote": "It is a three-dimensional local domain essentially of finite type over $\\C$, so this supplies a counterexample in the affine-local class just described.",
+      "sourceId": 1
+    },
+    {
+      "text": "The main intermediate result is a numerical obstruction: a small CM module forces K_X^2 − 2c_2(X) ≤ 6H^2.",
+      "verdict": "supported",
+      "sourceLine": "Our main intermediate result is the following obstruction.",
+      "sourceQuote": "Our main intermediate result is the following obstruction.",
+      "sourceId": 1
+    },
+    {
+      "text": "The surfaces use the six lines joining four points of the plane, followed by a root cover.",
+      "verdict": "supported",
+      "sourceLine": "The construction uses the six lines joining",
+      "sourceQuote": "The construction uses the six lines joining four points of the plane, followed by a cover obtained by taking roots of their ratios.",
+      "sourceId": 1
+    },
+    {
+      "text": "For n = 7 the obstruction gives the opposite inequality, so the ring has no such module.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:obstruction} would give the opposite numerical",
+      "sourceQuote": "If it had a nonzero finite module of depth three, Theorem~\\ref{thm:obstruction} would give the opposite numerical inequality.",
+      "sourceId": 1
+    },
+    {
+      "text": "For n = 7, H^2 = 1715 and K_X^2 − 2c_2(X) = 13377 > 10290 = 6H^2.",
+      "verdict": "supported",
+      "sourceLine": "K_X^2-2c_2(X)=39\\cdot7^3=13377>10290=6H^2.",
+      "sourceQuote": "Their invariants are \\[ H^2=5\\cdot7^3=1715,\\qquad K_X^2-2c_2(X)=39\\cdot7^3=13377>10290=6H^2. \\]",
+      "sourceId": 1
+    },
+    {
+      "text": "A module over the completed local ring need not carry a grading.",
+      "verdict": "supported",
+      "sourceLine": "A module over the completed local ring need not carry a grading.",
+      "sourceQuote": "A module over the completed local ring need not carry a grading.",
+      "sourceId": 1
+    },
+    {
+      "text": "Bogomolov's inequality for the semistable factors bounds the same expression from above.",
+      "verdict": "supported",
+      "sourceLine": "Bogomolov's inequality for the semistable factors bounds the same",
+      "sourceQuote": "Bogomolov's inequality for the semistable factors bounds the same normalized Chern expression above.",
+      "sourceId": 1
+    },
+    {
+      "text": "The existential completed-module claim overlaps with Chen's preprint.",
+      "verdict": "supported",
+      "sourceLine": "Thus the existential completed-module claim overlaps with that work.",
+      "sourceQuote": "Thus the existential completed-module claim overlaps with that work.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean checks only that a three-dimensional complete Noetherian integrally closed local domain over C with residue field C exists, not the missing module.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "2ea8f51ac80c1eb8624f36cb1ebd97e1be884e983b368f8b4ddd904496c18764",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

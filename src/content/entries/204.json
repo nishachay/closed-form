@@ -1,0 +1,176 @@
+{
+  "id": "204",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tensor-Saturation-for-Even-Spin-Groups-September-24-2026/Tensor-Saturation-for-Even-Spin-Groups-September-24-2026.pdf",
+      "label": "Tensor saturation for even spin groups"
+    }
+  ],
+  "headline": "For even spin groups, an invariant after stretching the weights implies one before, if the weights pass a parity test.",
+  "scope": "The claim covers Spin(2n) for every n of 2 or more, the type D case. Other simply laced types, E6, E7 and E8, are not covered.",
+  "plain": "Combining three symmetry patterns of a group sometimes leaves something unchanged, called an invariant. The saturation question asks whether, if stretched versions of the patterns combine to an invariant, the originals do too. A simple parity test is needed, and Knutson and Tao settled the question for one family in 1999. This paper claims to settle it for the even spin groups, called type D.",
+  "doesNot": "This does not cover the exceptional simply laced groups E6, E7 and E8.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2006",
+    "firstStepBy": "Misha Kapovich and John Millson, “Structure of the tensor product semigroup”",
+    "field": "Algebra",
+    "significance": "Solid",
+    "significanceWhy": "If the proof holds, it settles the type D part of a conjecture whose type A case was a celebrated 1999 theorem."
+  },
+  "explanation": "Start with the simplest symmetry group in this story, SL(2). Its basic representations are labelled by whole numbers 0, 1, 2, and so on. Combining labels a and b gives the labels from |a − b| up to a + b, in steps of 2. Three representations a, b, c combine to leave something unchanged when c appears in a combined with b.\n\nTry 1, 1, 1. Combining 1 and 1 gives 0 and 2, but not 1. So there is no invariant. Now stretch everything by 2, to get 2, 2, 2. Combining 2 and 2 gives 0, 2 and 4, which includes 2. Now there is an invariant. Stretching created one where none existed. The reason is parity: 1 + 1 + 1 is odd, while 2 + 2 + 2 is even.\n\nSo any honest version of the question needs a parity test. In general this test asks that the three labels add up to an element of the root lattice[2]. The root lattice is the set of labels that the group's basic directions, its roots, can reach. Without it, the group's center acts and kills any invariant[2]. For SL(2), the test is that a + b + c is even.\n\nThe saturation problem asks this. If stretched labels give a tensor invariant, do the original labels give one too[1]? A tensor invariant here is a vector in the combined representation that the whole group leaves fixed. The question links to the geometry of eigenvalues, through work of Klyachko[14]. Knutson and Tao answered it for type A, the groups SL(n), with their honeycomb theorem in 1999[3]. Kapovich and Millson then conjectured the same, with the parity test, for all simply laced groups[4].\n\nBefore this paper, type D was known only in small cases. Kapovich, Kumar and Millson did Spin(8)[8]. Kiers did Spin(10) and Spin(12). Other work showed that a stretch by four always suffices for these groups. Those results do not give the factor-one statement under the parity test[9].\n\nThis paper claims the type D case[5]. For Spin(2n) with n at least 2, three labels that pass the parity test give an invariant whenever some stretch of them does[6]. The claim includes the half-integer spin labels[7]. For n = 2, Spin(4) is two copies of SL(2), so the opening example is a piece of it.\n\nThe proof turns the question into one about paths through the space of labels. Real-number paths exist by a geometric argument. The one obstacle is making them integral. The directions used may span the space without reaching every lattice point[10]. In type D the paper shows only one obstruction remains, a parity mismatch between two pieces[11]. It moves the path to fix that mismatch, while keeping the path admissible throughout[13]. A separate construction then turns integral paths into actual invariants[12].\n\nHow sure is this? No Lean formalization is listed for this paper. The claim rests on the paper's own long argument. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid if the proof holds. No Lean check is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Representation",
+      "meaning": "A way for a group to act on a vector space by linear maps."
+    },
+    {
+      "term": "Highest weight",
+      "meaning": "The label that picks out one irreducible representation of the group."
+    },
+    {
+      "term": "Tensor invariant",
+      "meaning": "A vector in a combined (tensor product) representation that every group element leaves fixed."
+    },
+    {
+      "term": "Root lattice",
+      "meaning": "The set of labels reachable by whole-number combinations of the group's roots."
+    },
+    {
+      "term": "Saturation",
+      "meaning": "The property that an invariant after stretching the labels implies one before."
+    },
+    {
+      "term": "Spin group",
+      "meaning": "A group that double-covers the rotations of a space; Spin(2n) is type D."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Tensor saturation for even spin groups”, openai/math preprint (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Tensor-Saturation-for-Even-Spin-Groups-September-24-2026/Tensor-Saturation-for-Even-Spin-Groups-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "M. Kapovich and J. J. Millson, “Structure of the tensor product semigroup”, Asian Journal of Mathematics 10 (2006), 493–540",
+      "url": "https://arxiv.org/abs/math/0508186"
+    },
+    {
+      "id": 3,
+      "cite": "A. Knutson and T. Tao, “The honeycomb model of GL_n(C) tensor products I: Proof of the saturation conjecture”, Journal of the AMS 12 (1999), 1055–1090",
+      "url": "https://doi.org/10.1090/S0894-0347-99-00299-4"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The saturation problem asks whether a tensor invariant at dilated weights forces one at the original weights.",
+      "verdict": "supported",
+      "sourceLine": "The saturation problem asks whether occurrence of a tensor",
+      "sourceQuote": "The saturation problem asks whether occurrence of a tensor invariant at dilated highest weights forces occurrence at the original weights.",
+      "sourceId": 1
+    },
+    {
+      "text": "A necessary congruence is that the sum of the weights lie in the root lattice, else the center acts nontrivially.",
+      "verdict": "supported",
+      "sourceLine": "A necessary congruence is that the sum of the original weights",
+      "sourceQuote": "A necessary congruence is that the sum of the original weights belong to the root lattice: otherwise the center acts nontrivially on the tensor product.",
+      "sourceId": 1
+    },
+    {
+      "text": "Knutson and Tao's honeycomb theorem answered the question in type A.",
+      "verdict": "supported",
+      "sourceLine": "Knutson and Tao's honeycomb theorem answered this question in type $A$",
+      "sourceQuote": "Knutson and Tao's honeycomb theorem answered this question in type $A$ \\cite{KT99}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Kapovich and Millson formulated the root-lattice assertion for simply laced groups.",
+      "verdict": "supported",
+      "sourceLine": "Kapovich and Millson formulated the analogous root-lattice",
+      "sourceQuote": "Kapovich and Millson formulated the analogous root-lattice assertion for simply laced groups \\cite[Conjecture~1.4(1)]{KM06}; see also \\cite[Conjecture~1.5]{KKM09}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper proves the type-D case.",
+      "verdict": "supported",
+      "sourceLine": "We prove its type-$D$ case.",
+      "sourceQuote": "We prove its type-$D$ case.",
+      "sourceId": 1
+    },
+    {
+      "text": "For Spin(2n), n ≥ 2, and weights summing into the root lattice, an invariant at Nλ, Nμ, Nν implies one at λ, μ, ν.",
+      "verdict": "supported",
+      "sourceLine": "Let $G=\\Spin(2n)$, $n\\ge2$, and let $\\lambda,\\mu,\\nu$ be dominant",
+      "sourceQuote": "Let $G=\\Spin(2n)$, $n\\ge2$, and let $\\lambda,\\mu,\\nu$ be dominant integral weights such that $\\lambda+\\mu+\\nu\\in Q(D_n)$.",
+      "sourceId": 1
+    },
+    {
+      "text": "The theorem includes the half-integral spin weights.",
+      "verdict": "supported",
+      "sourceLine": "The theorem includes the half-integral spin weights.",
+      "sourceQuote": "The theorem includes the half-integral spin weights.",
+      "sourceId": 1
+    },
+    {
+      "text": "Kapovich, Kumar and Millson proved saturation for Spin(8).",
+      "verdict": "supported",
+      "sourceLine": "Kapovich, Kumar, and Millson proved saturation",
+      "sourceQuote": "Kapovich, Kumar, and Millson proved saturation for $\\Spin(8)$ \\cite[Theorem~5.3]{KKM09}, and Kiers proved it for $\\Spin(10)$ and $\\Spin(12)$ \\cite[Theorem~1.3]{Kiers19}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The general saturation factors do not give the scale-one conclusion.",
+      "verdict": "supported",
+      "sourceLine": "the scale-one conclusion under the root-lattice hypothesis.",
+      "sourceQuote": "These factors do not give the scale-one conclusion under the root-lattice hypothesis.",
+      "sourceId": 1
+    },
+    {
+      "text": "A real root basis need not generate the full root lattice.",
+      "verdict": "supported",
+      "sourceLine": "A real root basis need not",
+      "sourceQuote": "A real root basis need not generate the full root lattice, and this is where integrality can fail.",
+      "sourceId": 1
+    },
+    {
+      "text": "In type D, rank reduction leaves only one obstruction.",
+      "verdict": "supported",
+      "sourceLine": "In type $D$, rank reduction leaves only one obstruction: the signed",
+      "sourceQuote": "In type $D$, rank reduction leaves only one obstruction: the signed root graph has two unbalanced components, each with an odd coordinate sum in its assigned label difference.",
+      "sourceId": 1
+    },
+    {
+      "text": "A separate construction with exterior and spin columns supplies tensor occurrence.",
+      "verdict": "supported",
+      "sourceLine": "A separate construction with exterior and",
+      "sourceQuote": "A separate construction with exterior and spin columns supplies tensor occurrence.",
+      "sourceId": 1
+    },
+    {
+      "text": "Reaching integral coefficients does not yet give a path; admissibility must be kept.",
+      "verdict": "supported",
+      "sourceLine": "Reaching those coefficients arithmetically does not yet give a path:",
+      "sourceQuote": "Reaching those coefficients arithmetically does not yet give a path: the switch times and signs must remain admissible throughout the motion.",
+      "sourceId": 1
+    },
+    {
+      "text": "Klyachko connected the Hermitian eigenvalue problem with tensor occurrence after dilation.",
+      "verdict": "supported",
+      "sourceLine": "Klyachko connected the Hermitian eigenvalue problem with tensor",
+      "sourceQuote": "Klyachko connected the Hermitian eigenvalue problem with tensor occurrence after dilation \\cite{Kly98}.",
+      "sourceId": 1
+    }
+  ],
+  "sourceHash": "d3d9d7b87bf86280de2572004904a9519f76ed921e6ef09959d6500ba076da7d",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

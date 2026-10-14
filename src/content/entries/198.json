@@ -1,0 +1,191 @@
+{
+  "id": "198",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-13T00:30:00+05:30",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebra",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-algebra-of-infinite-little-finitistic-dimension-September-23-2026/paper.pdf",
+      "label": "An algebra of infinite little finitistic dimension"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/198.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "An algebra with finite resolutions of every length refutes the little finitistic-dimension conjecture.",
+  "scope": "The counterexample is one algebra over the complex numbers. It concerns modules whose resolutions stop; modules whose resolutions never stop are not counted.",
+  "plain": "Over a fixed finite-dimensional algebra, many modules can be rebuilt from free pieces in finitely many steps. The little finitistic-dimension conjecture said the number of steps needed is bounded for each algebra. This paper proves that false. It builds one complex algebra with modules needing at least 2m − 2 steps, for every m, yet always finitely many.",
+  "doesNot": "This does not say anything about modules whose resolutions never stop, which were already allowed.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1960",
+    "firstStepBy": "Hyman Bass, “Finitistic dimension and a homological generalization of semi-primary rings”",
+    "field": "Algebra",
+    "significance": "Major",
+    "significanceWhy": "It settles a conjecture publicized by Bass in 1960, with a Lean check of the main statement."
+  },
+  "explanation": "Start with a small algebra: numbers a + bx, where x² = 0. It is a two-dimensional space with a multiplication. Take the one-dimensional module k, where x acts as zero. Try to rebuild k from free pieces, which are copies of the algebra itself. Map the algebra onto k by sending a + bx to a. The part that is lost, all the bx, is one-dimensional. It is again a copy of k. So the next step faces the same problem, and the process never stops.\n\nSuch a sequence of steps is called a projective resolution. A free piece is the simplest kind of projective module. The projective dimension of a module is the number of steps its resolution needs, when that number is finite. For k above it is infinite. In this small algebra, every module with finite projective dimension turns out to be free already, so the bound is 0.\n\nThe little finitistic dimension of an algebra collects only the modules whose resolutions stop. It is the largest projective dimension among finite-dimensional modules where that dimension is finite. Modules like k, with endless resolutions, are left out. The little finitistic-dimension conjecture asserts that this number is finite for every finite-dimensional algebra[1]. Hyman Bass publicized these questions in 1960[2].\n\nMuch was known in favour. The conjecture held for monomial algebras and for algebras whose radical cubed is zero[7]. Igusa and Todorov proved it for algebras of representation dimension at most three. Huisgen-Zimmermann had shown that the little and big versions of the dimension can differ[6]. But each of her examples had a finite bound.\n\nThis paper gives a negative answer[3]. It builds one finite-dimensional algebra over the complex numbers[4]. For every whole number m, it has a module whose projective dimension is at least 2m − 2 and still finite[4]. So m = 1, 2, 3, 4 give lower bounds 0, 2, 4, 6, and the bounds keep growing. The algebra is chosen once, before m varies[5].\n\nThe idea is a countdown. The paper first builds an infinite algebra, the group algebra of a specially chosen group[11]. On it a fixed operation acts on modules. For each m there is a module that survives exactly m − 1 rounds of this operation and vanishes on round m[10]. The paper then copies this countdown into a finite-dimensional algebra. There each round adds steps to a resolution. Vanishing means the resolution stops, and survival keeps it going[13].\n\nThe one obstacle is making the copy work the same way for every module at once[12]. The paper builds a single fixed piece of machinery, a complex of bimodules, that imitates the operation uniformly. Relations that first hold only approximately are corrected by an extra layer of data. Then a bound on how long resolutions get over a helper algebra makes the result split cleanly.\n\nThere are side results. For this algebra, injective modules fail to generate a certain large category of modules, by a theorem of Rickard[8]. A related algebra has these dimensions infinite on the left and zero on the right[9]. A companion paper gives a separate example in characteristic 2, using another method[14].\n\nHow sure is this? A computer proof checker called Lean has checked a formal statement of the main result. It gives a finite-dimensional complex algebra with modules of finite projective dimension at least 2m − 2, for every m. Lean also checks the left–right lopsided example. No specialist review of the paper has been published.",
+  "hypeCheck": "Major. Lean checks the main counterexample and the left–right example; no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Module",
+      "meaning": "Something like a vector space, but with scalars taken from an algebra."
+    },
+    {
+      "term": "Projective resolution",
+      "meaning": "A step-by-step way of rebuilding a module from the simplest building blocks, projective modules."
+    },
+    {
+      "term": "Projective dimension",
+      "meaning": "The number of steps a module's shortest projective resolution needs."
+    },
+    {
+      "term": "Little finitistic dimension",
+      "meaning": "The largest finite projective dimension among the finite-dimensional modules of an algebra."
+    },
+    {
+      "term": "Finite-dimensional algebra",
+      "meaning": "A finite-dimensional vector space with a compatible multiplication, such as square matrices."
+    },
+    {
+      "term": "Bimodule",
+      "meaning": "A module with the algebra acting on both the left and the right."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “An algebra of infinite little finitistic dimension”, openai/math preprint (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/An-algebra-of-infinite-little-finitistic-dimension-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 198 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/198.md"
+    },
+    {
+      "id": 3,
+      "cite": "H. Bass, “Finitistic dimension and a homological generalization of semi-primary rings”, Transactions of the AMS 95 (1960), 466–488",
+      "url": "https://doi.org/10.1090/S0002-9947-1960-0157984-8"
+    },
+    {
+      "id": 4,
+      "cite": "B. Huisgen-Zimmermann, “Homological domino effects and the first Finitistic Dimension Conjecture”, Inventiones Mathematicae 108 (1992), 369–383",
+      "url": "https://doi.org/10.1007/BF02100610"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The little finitistic-dimension conjecture asserts that this number is finite for every finite-dimensional algebra.",
+      "verdict": "supported",
+      "sourceLine": "The little finitistic-dimension conjecture asserts that this number",
+      "sourceQuote": "The little finitistic-dimension conjecture asserts that this number is finite for every such algebra.",
+      "sourceId": 1
+    },
+    {
+      "text": "The finitistic-dimension questions were publicized by Bass in 1960.",
+      "verdict": "supported",
+      "sourceLine": "The finitistic-dimension questions were publicized by Bass in",
+      "sourceQuote": "The finitistic-dimension questions were publicized by Bass in 1960 \\cite{Bass1960}.",
+      "sourceId": 1
+    },
+    {
+      "text": "The paper gives a negative resolution of the little finitistic-dimension conjecture.",
+      "verdict": "supported",
+      "sourceLine": "This paper gives a negative resolution of the little",
+      "sourceQuote": "This paper gives a negative resolution of the little finitistic-dimension conjecture.",
+      "sourceId": 1
+    },
+    {
+      "text": "There is a finite-dimensional complex algebra A with modules N_m of 2m − 2 ≤ pd < ∞ for every m ≥ 1.",
+      "verdict": "supported",
+      "sourceLine": "There is a finite-dimensional unital complex algebra \\(A\\) such that,",
+      "sourceQuote": "There is a finite-dimensional unital complex algebra \\(A\\) such that, for every integer \\(m\\ge1\\), there is a finite-dimensional left \\(A\\)-module \\(N_m\\) with \\[ 2m-2\\le\\pd_A N_m<\\infty. \\]",
+      "sourceId": 1
+    },
+    {
+      "text": "The algebra is fixed before m varies.",
+      "verdict": "supported",
+      "sourceLine": "The algebra in \\Cref{thm:main} is fixed before \\(m\\) varies.",
+      "sourceQuote": "The algebra in \\Cref{thm:main} is fixed before \\(m\\) varies.",
+      "sourceId": 1
+    },
+    {
+      "text": "Huisgen-Zimmermann disproved equality of the little and big finitistic dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Huisgen-Zimmermann disproved that equality:",
+      "sourceQuote": "Huisgen-Zimmermann disproved that equality: for every integer \\(n\\ge2\\), she constructed a finite-dimensional monomial algebra with little finitistic dimension \\(n\\) and big finitistic dimension \\(n+1\\) \\cite{HuisgenZimmermann1992}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Positive cases include monomial algebras and Artin algebras with radical cube zero.",
+      "verdict": "supported",
+      "sourceLine": "Important positive cases for little finitistic finiteness include",
+      "sourceQuote": "Important positive cases for little finitistic finiteness include finite-dimensional monomial algebras, by Green, Kirkman, and Kuzmanovich \\cite{GreenKirkmanKuzmanovich1991}, and Artin algebras with radical cube zero, by Green and Huisgen-Zimmermann \\cite{GreenHuisgenZimmermann1991}.",
+      "sourceId": 1
+    },
+    {
+      "text": "Injective left A-modules do not generate.",
+      "verdict": "supported",
+      "sourceLine": "Thus injective left \\(A\\)-modules do not",
+      "sourceQuote": "Thus injective left \\(A\\)-modules do not generate for the algebra of \\Cref{thm:main}: its big left finitistic dimension is infinite.",
+      "sourceId": 1
+    },
+    {
+      "text": "An auxiliary algebra has little and big finitistic dimensions infinite on the left and zero on the right.",
+      "verdict": "supported",
+      "sourceLine": "finitistic dimensions of \\(\\Lambda\\) are infinite on the left and zero",
+      "sourceQuote": "Thus the little and big finitistic dimensions of \\(\\Lambda\\) are infinite on the left and zero on the right.",
+      "sourceId": 1
+    },
+    {
+      "text": "Modules Y_m survive exactly m − 1 iterations and vanish on the m-th.",
+      "verdict": "supported",
+      "sourceLine": "survive exactly \\(m-1\\) iterations and vanish on the \\(m\\)th.",
+      "sourceQuote": "It admits finite-dimensional modules \\(Y_m\\) that survive exactly \\(m-1\\) iterations and vanish on the \\(m\\)th.",
+      "sourceId": 1
+    },
+    {
+      "text": "The algebra R is a group algebra.",
+      "verdict": "supported",
+      "sourceLine": "The algebra \\(R\\) is a group algebra.",
+      "sourceQuote": "The algebra \\(R\\) is a group algebra.",
+      "sourceId": 1
+    },
+    {
+      "text": "The principal obstacle is to make the realization uniform in Y.",
+      "verdict": "supported",
+      "sourceLine": "The principal obstacle is to make this realization uniform in \\(Y\\).",
+      "sourceQuote": "The principal obstacle is to make this realization uniform in \\(Y\\).",
+      "sourceId": 1
+    },
+    {
+      "text": "Eventual vanishing yields finite projective dimension; a nonzero r-th iterate forces dimension at least r.",
+      "verdict": "supported",
+      "sourceLine": "Eventual vanishing of \\(F^rN\\) yields finite projective dimension,",
+      "sourceQuote": "Eventual vanishing of \\(F^rN\\) yields finite projective dimension, while a nonzero \\(r\\)th iterate forces projective dimension at least \\(r\\).",
+      "sourceId": 1
+    },
+    {
+      "text": "A companion gives a distinct characteristic-two example.",
+      "verdict": "supported",
+      "sourceLine": "characteristic-two example; the algebra in Theorem~\\ref{thm:main}",
+      "sourceQuote": "This is a distinct characteristic-two example; the algebra in Theorem~\\ref{thm:main} remains the complex example constructed here.",
+      "sourceId": 1
+    },
+    {
+      "text": "Lean has formal statements of the main counterexample and the left–right asymmetry example.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ],
+  "sourceHash": "38ad9c2151c4e65e27b437ca58e2a65a059afb9ded5641291f244954a21b07e5",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
