@@ -1,0 +1,204 @@
+{
+  "id": "178",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-nonbipartite-Ramanujan-graphs-in-every-fixed-degree-September-23-2026/paper.pdf",
+      "label": "Deterministic nonbipartite Ramanujan graphs in every fixed degree"
+    }
+  ],
+  "headline": "A fixed recipe builds networks with best-possible mixing, in every degree and every large even size.",
+  "scope": "The result covers every fixed degree of at least 3 and every large enough even number of points. The running time is polynomial in the size, with a power that may depend on the degree.",
+  "plain": "A Ramanujan graph is a network whose mixing is as good as a large network can get. Earlier recipes built them only for special degrees, or only in the two-team bipartite form, or with a small error. This paper claims an algorithm that builds non-bipartite ones for every degree and every large even size. There is no Lean formalization.",
+  "doesNot": "This does not give a running time that stays polynomial as the degree grows.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Lubotzky, Phillips and Sarnak, and Margulis, with arithmetic constructions",
+    "significance": "Solid",
+    "significanceWhy": "It removes the last error term from explicit constructions of a central object in network design.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Take the Petersen graph: ten points, each joined to exactly three others, fifteen links in all. Write its links as a 10-by-10 table of 0s and 1s. That table has ten special numbers called eigenvalues. Roughly, they describe how a signal spreads through the network. The largest is always 3, the number of links at each point. For Petersen the other nine are 1, five times, and −2, four times.\n\nThose other nine numbers measure mixing. When all of them are small, links spread out evenly, with no hidden bottleneck or clump[1]. How small can they be? For networks with d links at each point, the best possible cutoff for large networks is 2√(d − 1)[2]. For d = 3 that is about 2.83. Networks whose other eigenvalues all stay inside −2.83 to 2.83 are called Ramanujan graphs. Petersen qualifies, since 1 and −2 both fit.\n\nThe negative side matters too. A cube's corners and edges form another network with three links per point. Its eigenvalues are 3, then 1 and −1 three times each, then −3. The −3 shows that the cube is bipartite: its points split into two teams, and every link joins the two teams. Bipartite networks always break the negative side. A network that meets both sides of the cutoff is connected and not bipartite[3].\n\nBuilding large Ramanujan graphs on purpose has been hard. In the 1980s, Lubotzky, Phillips and Sarnak, and separately Margulis, used number theory to build them[4]. Those methods work only for special degrees. Morgenstern extended them to every degree one more than a prime power, including non-bipartite ones[5]. But they never covered every degree and every large size at once[6]. In 2015, Marcus, Spielman and Srivastava built bipartite Ramanujan graphs in every degree[7]. Bipartite graphs get the negative side for free by symmetry. Other fast constructions in every degree allowed a small extra error above the cutoff[8].\n\nRandom networks almost work. A random network with d links per point nearly meets the cutoff, with probability tending to one[10]. It meets the exact cutoff about 69 percent of the time in the limit[11]. So such graphs exist. But a random draw needs a check, and the method gives no fixed recipe.\n\nThis paper claims a fixed recipe[12]. For every degree d of at least 3, an algorithm takes any large enough even number n. It outputs a network with n points and d links per point. Every eigenvalue other than d lies strictly inside the cutoff on both sides. The running time grows like a power of n, but that power may depend on d. The result covers only large even sizes, and it does not claim a speed that is also polynomial in d[13].\n\nThe single difficulty is precision. Getting within a small error of the cutoff was already possible. Removing that error means controlling eigenvalues on a far finer scale, near both ends of the range at once[9]. The main tool is an edge switch[14]. It deletes two links and adds two new ones on the same four points, so every point keeps its d links. But knowing only the overall size of the eigenvalues does not tell how one switch moves them[15]. So the construction tracks extra local information at each point, and makes only switches whose effect it can predict.\n\nThe paper also says what it does not do. A related question, the Bilu–Linial conjecture, asks about doubling any network with a sign on each link. This construction does not settle it[16].\n\nHow sure is this? The paper has no Lean formalization listed. The theorem is a claim in a long preprint, and no specialist review of it has been published.",
+  "hypeCheck": "Solid if the proof holds. The claim rests on a long preprint with no Lean formalization and no published specialist review.",
+  "glossary": [
+    {
+      "term": "Regular graph",
+      "meaning": "A network where every point has the same number of links, called the degree."
+    },
+    {
+      "term": "Eigenvalue",
+      "meaning": "One of the special numbers of the network's table of links; together they describe how signals spread through it."
+    },
+    {
+      "term": "Ramanujan graph",
+      "meaning": "A regular network whose eigenvalues, other than the degree, all lie within 2√(d − 1) of zero."
+    },
+    {
+      "term": "Bipartite",
+      "meaning": "Split into two teams so that every link joins opposite teams."
+    },
+    {
+      "term": "Edge switch",
+      "meaning": "Deleting two links and adding two new ones on the same four points, so every degree stays the same."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "A running time that grows like a fixed power of the input size."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "A. Lubotzky, R. Phillips and P. Sarnak, “Ramanujan graphs”, Combinatorica 8(3) (1988), 261–277",
+      "url": "https://doi.org/10.1007/BF02126799"
+    },
+    {
+      "id": 2,
+      "cite": "A. W. Marcus, D. A. Spielman and N. Srivastava, “Interlacing families I: Bipartite Ramanujan graphs of all degrees”, Annals of Mathematics 182(1) (2015), 307–325",
+      "url": "https://doi.org/10.4007/annals.2015.182.1.7"
+    },
+    {
+      "id": 3,
+      "cite": "S. Mohanty, R. O'Donnell and P. Paredes, “Explicit near-Ramanujan graphs of every degree”, SIAM Journal on Computing 51(3) (2022)",
+      "url": "https://doi.org/10.1137/20M1342112"
+    },
+    {
+      "id": 4,
+      "cite": "J. Friedman, “A Proof of Alon's Second Eigenvalue Conjecture and Related Problems”, Memoirs of the AMS 195(910) (2008)",
+      "url": "https://doi.org/10.1090/memo/0910"
+    },
+    {
+      "id": 5,
+      "cite": "J. Huang, T. McKenzie and H.-T. Yau, “Ramanujan property and edge universality of random regular graphs”, arXiv:2412.20263 (2024)",
+      "url": "https://arxiv.org/abs/2412.20263v2"
+    },
+    {
+      "id": 6,
+      "cite": "N. Alon, “Explicit expanders of every degree and size”, Combinatorica 41(4) (2021), 447–463",
+      "url": "https://doi.org/10.1007/s00493-020-4429-x"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “Deterministic nonbipartite Ramanujan graphs in every fixed degree” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Deterministic-nonbipartite-Ramanujan-graphs-in-every-fixed-degree-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Small nonconstant eigenvalues make the edges of a regular graph spread close to uniformly.",
+      "verdict": "supported",
+      "sourceLine": "regular graph close to the uniform-density prediction, and thus connect",
+      "sourceQuote": "Nonconstant adjacency eigenvalues that are small in absolute value make the edge distribution of a regular graph close to the uniform-density prediction, and thus connect spectral estimates to expansion \\cite{Alon1986}."
+    },
+    {
+      "text": "The Alon–Boppana bound makes 2√(d−1) asymptotically optimal.",
+      "verdict": "supported",
+      "sourceLine": "tree; the Alon--Boppana bound makes it asymptotically optimal",
+      "sourceQuote": "Here $2\\sqrt{d-1}$ is the spectral radius of the infinite $d$-regular tree; the Alon--Boppana bound makes it asymptotically optimal \\cite{Alon1986,Nilli1991}."
+    },
+    {
+      "text": "The bound forces the graph to be connected and nonbipartite.",
+      "verdict": "supported",
+      "sourceLine": "also forces $G$ to be connected and nonbipartite.",
+      "sourceQuote": "Since $d>2\\sqrt{d-1}$ for $d\\ge3$, this bound also forces $G$ to be connected and nonbipartite."
+    },
+    {
+      "text": "Lubotzky, Phillips and Sarnak and Margulis gave arithmetic constructions in restricted degrees.",
+      "verdict": "supported",
+      "sourceLine": "Lubotzky, Phillips and Sarnak and Margulis established arithmetic",
+      "sourceQuote": "Lubotzky, Phillips and Sarnak and Margulis established arithmetic constructions attaining the tree threshold in restricted degrees \\cite{LPS1988,Margulis1988}."
+    },
+    {
+      "text": "Morgenstern extended the degrees to q + 1 for every prime power q, including nonbipartite families.",
+      "verdict": "supported",
+      "sourceLine": "for every prime power $q$, including nonbipartite families",
+      "sourceQuote": "Morgenstern extended the available degrees to $q+1$ for every prime power $q$, including nonbipartite families \\cite{Morgenstern1994}."
+    },
+    {
+      "text": "These exact constructions do not cover every fixed degree and every large order at once.",
+      "verdict": "supported",
+      "sourceLine": "fixed degree and every prescribed large order simultaneously.",
+      "sourceQuote": "These exact constructions do not cover every fixed degree and every prescribed large order simultaneously."
+    },
+    {
+      "text": "Marcus, Spielman and Srivastava obtained simple bipartite Ramanujan families in every degree.",
+      "verdict": "supported",
+      "sourceLine": "yielding simple bipartite Ramanujan families in every degree",
+      "sourceQuote": "For bipartite graphs, spectral symmetry also controls the negative edge, yielding simple bipartite Ramanujan families in every degree \\cite[Theorems~5.3 and~5.5]{MSS2015}."
+    },
+    {
+      "text": "Earlier deterministic constructions in every degree leave a positive spectral error.",
+      "verdict": "supported",
+      "sourceLine": "These constructions leave a positive spectral error.",
+      "sourceQuote": "These constructions leave a positive spectral error."
+    },
+    {
+      "text": "Removing that error requires control on the much finer scale of distances from both tree edges.",
+      "verdict": "supported",
+      "sourceLine": "much finer scale of their distances from both tree edges.",
+      "sourceQuote": "Removing that error requires controlling the eigenvalues on the much finer scale of their distances from both tree edges."
+    },
+    {
+      "text": "A uniformly random regular graph is near-Ramanujan with probability tending to one (Friedman).",
+      "verdict": "supported",
+      "sourceLine": "regular graph is near-Ramanujan with probability tending to one.",
+      "sourceQuote": "For every fixed degree and positive error, a uniformly random simple regular graph is near-Ramanujan with probability tending to one."
+    },
+    {
+      "text": "The probability of the exact two-sided Ramanujan event tends to about 0.69.",
+      "verdict": "supported",
+      "sourceLine": "Ramanujan event tends to approximately $0.69$",
+      "sourceQuote": "The probability of the exact two-sided Ramanujan event tends to approximately $0.69$ \\cite[Corollary~1.3]{HMY2024}."
+    },
+    {
+      "text": "The paper supplies a deterministic polynomial-time construction at the exact threshold and prescribed even order.",
+      "verdict": "supported",
+      "sourceLine": "polynomial-time construction at the exact threshold and prescribed",
+      "sourceQuote": "Theorem~\\ref{thm:main} supplies a deterministic polynomial-time construction at the exact threshold and prescribed even order."
+    },
+    {
+      "text": "The statement covers sufficiently large even sizes and asserts no running time polynomial jointly in n and d.",
+      "verdict": "supported",
+      "sourceLine": "concerns all sufficiently large even sizes; it does not assert a",
+      "sourceQuote": "The statement concerns all sufficiently large even sizes; it does not assert a running-time bound polynomial jointly in $n$ and $d$, or a local adjacency-query algorithm."
+    },
+    {
+      "text": "An edge switch deletes two edges and inserts two others on the same four endpoints.",
+      "verdict": "supported",
+      "sourceLine": "An edge switch deletes $\\{u,v\\}$ and $\\{x,y\\}$",
+      "sourceQuote": "An edge switch deletes $\\{u,v\\}$ and $\\{x,y\\}$ and inserts $\\{u,y\\}$ and $\\{x,v\\}$."
+    },
+    {
+      "text": "A norm bound alone does not determine how a switch affects an eigenvector concentrated near an endpoint.",
+      "verdict": "supported",
+      "sourceLine": "A norm bound alone does not determine how",
+      "sourceQuote": "A norm bound alone does not determine how a switch affects an eigenvector concentrated near one of its endpoints."
+    },
+    {
+      "text": "The construction does not resolve the Bilu–Linial signing problem.",
+      "verdict": "supported",
+      "sourceLine": "switches, and does not resolve that signing problem.",
+      "sourceQuote": "Our prescribed-order construction uses partial pairings and edge switches, and does not resolve that signing problem."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

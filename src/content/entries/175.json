@@ -1,0 +1,254 @@
+{
+  "id": "175",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Graph-Decompositions-at-the-Integral-Expectation-Threshold-October-5-2026/graph-threshold-decompositions.pdf",
+      "label": "Graph Decompositions at the Integral Expectation Threshold"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integral-and-fractional-expectation-thresholds-are-equivalent-September-23-2026/paper.pdf",
+      "label": "Integral and fractional expectation thresholds are equivalent"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Talagrands-discrete-convexity-conjecture-September-23-2026/paper.pdf",
+      "label": "Talagrand’s discrete-convexity conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/175.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Spreading credit fractionally beats whole-set covers by at most a fixed factor in Talagrand's threshold theory.",
+  "scope": "The comparison and discrete-convexity results cover every finite family of sets, with very large fixed constants. The graph decomposition holds piece by piece; the pieces' copies need not line up.",
+  "plain": "Expectation thresholds give cheap lower estimates for when a random set first has a property. Talagrand asked whether allowing fractional covers changes them by more than a fixed factor. One paper proves it does not, and a second proves his discrete-convexity conjecture. A third paper uses these to claim a graph-decomposition conjecture about random graphs.",
+  "doesNot": "This does not give constants of practical size, and the graph pieces need not fit together on shared points.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2010",
+    "firstStepBy": "Michel Talagrand, who posed both conjectures",
+    "significance": "Major",
+    "significanceWhy": "It settles two of Talagrand's conjectures on thresholds and applies them to a recent graph conjecture.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Take ten lights. Each one turns on by itself with chance p, independently. Ask when at least five are on with probability one half. An exact count of the cases gives p of about 0.452. That number is the threshold for the event \"at least five on\".\n\nThere is a cheaper estimate, built from covers. Any five lights that are on form one of 252 possible groups. Each group is fully on with chance p⁵. Add these up: 252p⁵. While that sum is at most one half, the event cannot happen half the time. The sum reaches one half at p of about 0.288. So 0.288 is a safe lower estimate. Such a list of small sets, one inside every outcome of the event, is an integral cover. The best p a cover can certify, with total cost at most one half, is the integral expectation threshold.\n\nTalagrand also allowed fractional covers. Instead of picking whole sets, you spread credit. Each outcome of the event must collect total credit of at least 1 from the sets inside it. Put credit 1/5 on each single light. Any five lights then collect exactly 1. The cost is 10 × 1/5 × p, which is 2p. That works up to p of 0.25, so this particular fractional cover does worse. In general, fractional covers have more freedom. So the fractional threshold is at least the integral one[1].\n\nMichel Talagrand conjectured around 2010 that the extra freedom gains at most a fixed factor[2]. This mattered because of a related result. Park and Pham proved the Kahn–Kalai conjecture with integral covers[3]. Earlier work had compared fractional and integral covers only in special cases. Talagrand handled covers made of single elements[4]. Later work reached a loss of order log log of the number of elements[5]. Park then removed that dependence, but his factor still grew as the threshold got small[6].\n\nOne paper proves Talagrand's conjecture, removing both kinds of growth[7]. The fractional threshold is at most 25 × 512⁴ times the integral one. That is about 1.7 trillion. The number is huge, but it is the same for every family of sets, however large[8].\n\nA second paper proves a related conjecture of Talagrand, about discrete convexity[9]. Take a family of sets that a random set lands in very often. Talagrand predicted that unions of a fixed number of its members contain almost everything[10]. The sets left over should have a cheap integral cover. The paper proves this with the fixed number 2⁷⁵, for any family at all[11].\n\nA third paper applies these ideas to random graphs. It claims the graph-decomposition conjecture of Ascoli, He, Park and Talagrand[12]. Any target graph splits into a fixed number of pieces. Each piece appears in a random graph at a density within a fixed factor of the integral threshold[13]. Without splitting, the known bound loses a logarithmic factor[14]. There is a catch. Each piece appears somewhere, but the copies need not fit together on shared points[15]. That proof uses the discrete-convexity theorem as its main input[16]. The hard part was the links between points with many neighbors and points with few[17]. Knowing that a class of graphs is typical was not enough for that step[18].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the first two results. They cover the comparison with the constant 25 × 512⁴, and discrete convexity with 2⁷⁵. The graph-decomposition paper is not in the Lean scope note, so its result remains a claim. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has checked formal versions of the comparison and discrete-convexity results. The graph decomposition is outside the Lean note, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Threshold",
+      "meaning": "The probability p at which a random set has a given property half the time."
+    },
+    {
+      "term": "Integral cover",
+      "meaning": "A list of small sets such that every outcome of the event contains at least one of them."
+    },
+    {
+      "term": "Fractional cover",
+      "meaning": "An assignment of credit to small sets so that every outcome of the event collects total credit at least 1."
+    },
+    {
+      "term": "Expectation threshold",
+      "meaning": "The largest p at which some cover has total cost at most one half."
+    },
+    {
+      "term": "Discrete convexity",
+      "meaning": "Talagrand's prediction that unions of a few members of a likely family contain almost every set."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "M. Talagrand, “Are many small sets explicitly small?”, Proceedings of the 42nd ACM Symposium on Theory of Computing (2010), 13–36",
+      "url": "https://doi.org/10.1145/1806689.1806693"
+    },
+    {
+      "id": 2,
+      "cite": "J. Park and H. T. Pham, “A proof of the Kahn–Kalai conjecture”, Journal of the American Mathematical Society 37(1) (2024), 235–243, arXiv:2203.17207",
+      "url": "https://arxiv.org/abs/2203.17207"
+    },
+    {
+      "id": 3,
+      "cite": "J. Kahn and G. Kalai, “Thresholds and expectation thresholds”, Combinatorics, Probability and Computing 16(3) (2007), 495–502, arXiv:math/0603218",
+      "url": "https://arxiv.org/abs/math/0603218"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “Graph Decompositions at the Integral Expectation Threshold” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Graph-Decompositions-at-the-Integral-Expectation-Threshold-October-5-2026/graph-threshold-decompositions.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “Integral and fractional expectation thresholds are equivalent” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Integral-and-fractional-expectation-thresholds-are-equivalent-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, “Talagrand's discrete-convexity conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Talagrands-discrete-convexity-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for family 175 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/175.md"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The integral expectation threshold is at most the fractional one.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "In particular, $q(\\F)\\le q_f(\\F)$, by taking $g$ to be the indicator",
+      "sourceQuote": "In particular, $q(\\F)\\le q_f(\\F)$, by taking $g$ to be the indicator of an integral cover."
+    },
+    {
+      "text": "Talagrand conjectured that the fractional relaxation changes the expectation threshold by at most a universal factor.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "among its subsets. Talagrand conjectured that this relaxation changes",
+      "sourceQuote": "Their fractional relaxation allows a member to be covered by a total weight of one, distributed among its subsets. Talagrand conjectured that this relaxation changes the expectation threshold by at most a universal factor \\cite[Conjecture~6.3]{Talagrand2010}."
+    },
+    {
+      "text": "Park and Pham resolved the Kahn–Kalai conjecture.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "bound with $q$ in place of $q_f$, resolving the Kahn--Kalai conjecture.",
+      "sourceQuote": "Park and Pham~\\cite{ParkPham2024threshold} proved the corresponding bound with $q$ in place of $q_f$, resolving the Kahn--Kalai conjecture."
+    },
+    {
+      "text": "Talagrand settled the case of singleton sets.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "of singleton sets~\\cite[Section~6]{Talagrand2010}; DeMarco and",
+      "sourceQuote": "Talagrand settled the case of singleton sets~\\cite[Section~6]{Talagrand2010}; DeMarco and Kahn~\\cite{DeMarcoKahn2015} treated clique-counting certificates, and Frankston, Kahn, and Park~\\cite{FrankstonKahnPark2022} treated arbitrary weights on pairs."
+    },
+    {
+      "text": "Combining earlier results gives a loss of order log log(4|X|).",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "rounding bound, gives a loss of order $\\log\\log(4|X|)$. This consequence",
+      "sourceQuote": "Fischer and Person's sampling argument for sufficiently large sets \\cite[Theorem~10]{FischerPerson2025}, combined with Pham's logarithmic rounding bound, gives a loss of order $\\log\\log(4|X|)$. This consequence is recorded in the expanded version of Pham's paper \\cite[Corollary~1.8]{Pham2026}."
+    },
+    {
+      "text": "Park's dimension-independent bound still has a factor that grows as q tends to zero.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "for a universal $K$. The factor here still grows as $q(\\F)$ tends to",
+      "sourceQuote": "More recently, Park \\cite[Theorem~1.2]{Park2026} obtained the dimension-independent bound \\[ q_f(\\F)\\le Kq(\\F)\\max\\{1,\\log\\log(1/q(\\F))\\} \\] for a universal $K$. The factor here still grows as $q(\\F)$ tends to zero."
+    },
+    {
+      "text": "The main theorem removes both kinds of dependence.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "zero. Theorem~\\ref{thm:main} removes both kinds of dependence.",
+      "sourceQuote": "The factor here still grows as $q(\\F)$ tends to zero. Theorem~\\ref{thm:main} removes both kinds of dependence."
+    },
+    {
+      "text": "The constant is independent of the ground set size, the minimal member sizes, and the cover's support.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "$|X|$, the sizes of the minimal members of $\\F$, and the support of",
+      "sourceQuote": "The constant is independent of $|X|$, the sizes of the minimal members of $\\F$, and the support of the fractional cover."
+    },
+    {
+      "text": "Talagrand formulated the discrete-convexity conjecture.",
+      "verdict": "supported",
+      "paper": 3,
+      "sourceLine": "Talagrand formulated the discrete-convexity conjecture in",
+      "sourceQuote": "Talagrand formulated the discrete-convexity conjecture in \\cite[Conjecture~7.1]{Talagrand10}: a fixed number of members of a sufficiently likely family should cover every set outside a $p$-small exceptional family."
+    },
+    {
+      "text": "A fixed number of members of a likely family should cover every set outside a p-small exceptional family.",
+      "verdict": "supported",
+      "paper": 3,
+      "sourceLine": "sufficiently likely family should cover every set outside a $p$-small",
+      "sourceQuote": "Talagrand formulated the discrete-convexity conjecture in \\cite[Conjecture~7.1]{Talagrand10}: a fixed number of members of a sufficiently likely family should cover every set outside a $p$-small exceptional family."
+    },
+    {
+      "text": "The family is arbitrary; no monotonicity is assumed.",
+      "verdict": "supported",
+      "paper": 3,
+      "sourceLine": "The family $\\mathcal D$ is arbitrary; no monotonicity is assumed.",
+      "sourceQuote": "The family $\\mathcal D$ is arbitrary; no monotonicity is assumed."
+    },
+    {
+      "text": "The paper proves the graph-decomposition conjecture of Ascoli, He, Park and Talagrand.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "We prove the graph-decomposition conjecture of Ascoli, He, Park,",
+      "sourceQuote": "We prove the graph-decomposition conjecture of Ascoli, He, Park, and Talagrand."
+    },
+    {
+      "text": "The pieces are bounded in number and each has containment threshold at most a constant times the integral expectation threshold.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "bounded number of fixed edge pieces, each having ordinary containment",
+      "sourceQuote": "Every graph admits a partition into a universally bounded number of fixed edge pieces, each having ordinary containment threshold at most a universal constant times the original graph's integral expectation threshold."
+    },
+    {
+      "text": "The theorem removes the logarithmic loss after partitioning into a bounded number of pieces.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "this logarithmic loss after partitioning the target into a bounded",
+      "sourceQuote": "Theorem~\\ref{thm:main} removes this logarithmic loss after partitioning the target into a bounded number of pieces."
+    },
+    {
+      "text": "The pieces' embeddings need not agree on shared vertices.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "ordinary threshold; their embeddings need not agree on shared",
+      "sourceQuote": "The assertion concerns each fixed piece's ordinary threshold; their embeddings need not agree on shared vertices."
+    },
+    {
+      "text": "The decomposition proof uses the integral covering theorem from the discrete-convexity paper.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "We use the same-parameter integral covering theorem from",
+      "sourceQuote": "We use the same-parameter integral covering theorem from \\emph{Talagrand's discrete-convexity conjecture} \\cite[Theorem~1.1]{OpenAI26DC}, which proves the discrete conjecture formulated in \\cite[Conjecture~7.1]{Talagrand10}."
+    },
+    {
+      "text": "Ascoli, He, Park and Talagrand isolated edges between high- and low-degree vertices as a principal remaining difficulty.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "low-degree vertices as a principal remaining difficulty.",
+      "sourceQuote": "Their Section~8 isolates the bipartite edges between high- and low-degree vertices as a principal remaining difficulty."
+    },
+    {
+      "text": "Membership in a typical class alone does not ensure the needed matching condition.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "Membership in a typical class alone does not ensure this; the",
+      "sourceQuote": "Membership in a typical class alone does not ensure this; the class must control unions of arbitrarily many such conditions."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 8
+    },
+    {
+      "text": "Lean formalizes the integral–fractional comparison with constant 25·512⁴ and discrete convexity with k = 2⁷⁵; the decomposition paper is not in the scope note.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

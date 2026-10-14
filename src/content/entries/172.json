@@ -1,0 +1,213 @@
+{
+  "id": "172",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-classification-of-finite-Euclidean-Ramsey-configurations-September-23-2026/paper.pdf",
+      "label": "A classification of finite Euclidean Ramsey configurations"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/172.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "An exact algebraic test tells which finite point sets must appear in one color in any coloring of space.",
+  "scope": "The result covers every finite set of points in Euclidean space, with arbitrary finite colorings and copies at the original scale. The test needs exact coordinates.",
+  "plain": "A finite set of points is Ramsey if every coloring of a high-dimensional space with finitely many colors contains a one-color copy of it. This paper proves an exact algebraic test for which sets are Ramsey. The test shows that every set of at most five points on a circle is Ramsey. That disproves a 2012 conjecture of Leader, Russell and Walters.",
+  "doesNot": "This does not give a way to run the test from rounded decimal coordinates.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1973",
+    "firstStepBy": "Erdős, Graham, Montgomery, Rothschild, Spencer and Straus",
+    "significance": "Major",
+    "significanceWhy": "It answers the central classification question of Euclidean Ramsey theory, open since 1973.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Color every point of space with one of three colors. Must some pair of points exactly one unit apart share a color? In ordinary three-dimensional space, yes. Take the four corners of a regular tetrahedron with all six edges one unit long. Four corners and three colors means two corners match, and they are one unit apart. With more colors, you just move to more dimensions, where larger such shapes fit.\n\nA finite set of points is called Ramsey when this always works. For any number of colors, some high enough dimension forces a copy of the set in a single color[1]. The copy must be congruent: every distance stays exactly the same, at the original scale. The coloring can be completely arbitrary, with no smoothness of any kind[2]. So the two-point set above is Ramsey.\n\nNot every set is. Three points evenly spaced on a line are not Ramsey. In 1973, Erdős, Graham, Montgomery, Rothschild, Spencer and Straus started this subject. They proved that every Ramsey set must lie on a sphere[3]. Three points on a line lie on no sphere. Graham later conjectured that lying on a sphere is enough[4]. Frankl and Rödl proved that every simplex is Ramsey, a simplex being a triangle, tetrahedron or higher version[5].\n\nA second guess came from Leader, Russell and Walters in 2012. A set is transitive when its symmetries can move any of its points to any other, like a regular polygon's corners. They conjectured that a set is Ramsey exactly when it fits inside some finite transitive set[6]. Then, recently, Pálvölgyi found seven points on a circle that are not Ramsey[7]. That disproved Graham's conjecture.\n\nThis paper proves an exact test for every finite set[8]. The test is an algebraic condition on the coordinates of the points. Lying on a sphere means the points satisfy one equation. The paper’s condition asks for a stronger form of that equation, one that keeps two copies of the coordinates apart. That stronger form is exactly what separates spheres from Ramsey sets[15]. The test works with exact algebra. It is not a recipe for deciding from rounded decimal coordinates[9].\n\nThe test settles concrete cases. Every set that fits inside a finite transitive set passes[10]. So does every set of at most five points on a circle[11]. That includes every four-sided shape whose corners lie on a circle. In 2011, Leader, Russell and Walters had found such kite shapes that fit in no finite transitive set. Those kites are Ramsey, so their 2012 conjecture fails[12].\n\nThe single difficulty was getting an exact copy from an arbitrary coloring. One direction is easier. When the condition fails, algebra builds a coloring that avoids the set in every dimension[13]. The other direction is hard. A wild coloring has no continuity, so a copy that is almost right is worth nothing[14]. The proof turns the algebra into two lists of numbers with matching distances. Then it uses tools from infinite combinatorics to land a copy at exactly the right scale.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the main results. They include the exact test, the fact that every Ramsey set lies on a sphere, and the transitive and five-point cases. They also include two sets that fail: a twelve-point set and a nine-point set on a circle. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean has checked formal versions of the classification and its main consequences. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ramsey set",
+      "meaning": "A finite point set that appears in one color, at its original size, in every finite coloring of some high-dimensional space."
+    },
+    {
+      "term": "Congruent copy",
+      "meaning": "A copy of a shape with every distance exactly the same."
+    },
+    {
+      "term": "Spherical",
+      "meaning": "Lying on the surface of some sphere."
+    },
+    {
+      "term": "Transitive set",
+      "meaning": "A finite point set whose symmetries can move any point to any other."
+    },
+    {
+      "term": "Simplex",
+      "meaning": "A triangle, a tetrahedron, or the same shape in higher dimensions."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, R. L. Graham, P. Montgomery, B. L. Rothschild, J. Spencer and E. G. Straus, “Euclidean Ramsey theorems. I”, Journal of Combinatorial Theory, Series A 14(3) (1973), 341–363",
+      "url": "https://doi.org/10.1016/0097-3165(73)90011-3"
+    },
+    {
+      "id": 2,
+      "cite": "R. L. Graham, “Recent trends in Euclidean Ramsey theory”, Discrete Mathematics 136 (1994), 119–127",
+      "url": "https://doi.org/10.1016/0012-365X(94)00110-5"
+    },
+    {
+      "id": 3,
+      "cite": "P. Frankl and V. Rödl, “A partition property of simplices in Euclidean space”, Journal of the AMS 3(1) (1990), 1–7",
+      "url": "https://doi.org/10.1090/S0894-0347-1990-1020148-2"
+    },
+    {
+      "id": 4,
+      "cite": "I. Leader, P. A. Russell and M. Walters, “Transitive sets in Euclidean Ramsey theory”, Journal of Combinatorial Theory, Series A 119(2) (2012), 382–396",
+      "url": "https://arxiv.org/abs/1012.1350"
+    },
+    {
+      "id": 5,
+      "cite": "I. Leader, P. A. Russell and M. Walters, “Transitive sets and cyclic quadrilaterals”, Journal of Combinatorics 2(3) (2011), 457–462",
+      "url": "https://arxiv.org/abs/1012.5468"
+    },
+    {
+      "id": 6,
+      "cite": "D. Pálvölgyi, “A cyclic non-Ramsey heptagon”, arXiv:2609.23327 (2026)",
+      "url": "https://arxiv.org/abs/2609.23327v1"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, “A classification of finite Euclidean Ramsey configurations” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-classification-of-finite-Euclidean-Ramsey-configurations-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "openai/math, Lean scope note for family 172 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/172.md"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A finite set is Ramsey if, for every number of colors, some dimension forces a one-color congruent copy.",
+      "verdict": "supported",
+      "sourceLine": "$c:\\R^D\\to\\{1,\\ldots,r\\}$ is constant on a congruent copy of $A$.",
+      "sourceQuote": "A finite nonempty set $A$ in a Euclidean space is \\emph{Ramsey} if, for every integer $r\\ge2$, there is an integer $D\\ge1$ such that every map $c:\\R^D\\to\\{1,\\ldots,r\\}$ is constant on a congruent copy of $A$."
+    },
+    {
+      "text": "The coloring is an arbitrary function, with no regularity assumed.",
+      "verdict": "supported",
+      "sourceLine": "The coloring is an arbitrary function.",
+      "sourceQuote": "The coloring is an arbitrary function."
+    },
+    {
+      "text": "Erdős, Graham, Montgomery, Rothschild, Spencer and Straus introduced the theory and proved every finite Ramsey set is spherical.",
+      "verdict": "supported",
+      "sourceLine": "Euclidean Ramsey theory and proved that every finite Ramsey set is",
+      "sourceQuote": "Erd\\H{o}s, Graham, Montgomery, Rothschild, Spencer and Straus introduced Euclidean Ramsey theory and proved that every finite Ramsey set is spherical~\\cite[Theorem~13]{egm-rss}."
+    },
+    {
+      "text": "Graham later conjectured that sphericity is also sufficient.",
+      "verdict": "supported",
+      "sourceLine": "spherical~\\cite[Theorem~13]{egm-rss}. Graham later conjectured that",
+      "sourceQuote": "Erd\\H{o}s, Graham, Montgomery, Rothschild, Spencer and Straus introduced Euclidean Ramsey theory and proved that every finite Ramsey set is spherical~\\cite[Theorem~13]{egm-rss}. Graham later conjectured that sphericity is also sufficient~\\cite{graham-survey}."
+    },
+    {
+      "text": "Frankl and Rödl proved the Ramsey property for all nondegenerate simplices.",
+      "verdict": "supported",
+      "sourceLine": "and then all nondegenerate simplices, by Frankl and",
+      "sourceQuote": "Major positive results established the Ramsey property for nondegenerate triangles and then all nondegenerate simplices, by Frankl and R\\\"odl~\\cite{frankl-rodl-triangles,frankl-rodl-simplices}; finite sets with a soluble transitive isometry group and cyclic trapezoids, by K\\v{r}\\'i\\v{z}~\\cite{kriz-permutation,kriz-trapezoids}; and vertex sets of regular polytopes, by Cantwell~\\cite{cantwell-polytopes}."
+    },
+    {
+      "text": "Leader, Russell and Walters conjectured that a set is Ramsey exactly when it embeds in a finite transitive set.",
+      "verdict": "supported",
+      "sourceLine": "a finite set is Ramsey exactly when it embeds in a finite transitive",
+      "sourceQuote": "Leader, Russell and Walters proposed a different characterization: a finite set is Ramsey exactly when it embeds in a finite transitive Euclidean set~\\cite[Conjecture~A]{lrw-transitive}."
+    },
+    {
+      "text": "Pálvölgyi gave a seven-point circle configuration that is not Ramsey, disproving the spherical conjecture.",
+      "verdict": "supported",
+      "sourceLine": "that is not Ramsey, disproving the spherical",
+      "sourceQuote": "P\\'alv\\\"olgyi has recently given a seven-point circle configuration that is not Ramsey, disproving the spherical conjecture~\\cite[Theorem~1]{palvolgyi-heptagon}."
+    },
+    {
+      "text": "The main theorem gives a necessary and sufficient algebraic condition for every finite configuration.",
+      "verdict": "supported",
+      "sourceLine": "Our main theorem gives a necessary and sufficient algebraic condition",
+      "sourceQuote": "Our main theorem gives a necessary and sufficient algebraic condition for an arbitrary finite Euclidean configuration."
+    },
+    {
+      "text": "The condition is not a procedure for recovering exact relations from numerical approximations.",
+      "verdict": "supported",
+      "sourceLine": "not a procedure for recovering those relations from numerical",
+      "sourceQuote": "It is not a procedure for recovering those relations from numerical approximations to arbitrary real coordinates."
+    },
+    {
+      "text": "Every subtransitive set satisfies the tensor condition.",
+      "verdict": "supported",
+      "sourceLine": "Every subtransitive set satisfies the tensor condition. Another",
+      "sourceQuote": "Every subtransitive set satisfies the tensor condition. Another sufficient condition is that evaluation at the points of a spherical set gives independent functionals on the space of quadratic polynomials."
+    },
+    {
+      "text": "The criterion applies to every set of at most five points on a circle, hence every cyclic quadrilateral.",
+      "verdict": "supported",
+      "sourceLine": "on a circle, and hence to every cyclic quadrilateral. In",
+      "sourceQuote": "It applies to every nonempty set of at most five points on a circle, and hence to every cyclic quadrilateral. In Corollary~\\ref{cons:kites}, we combine this result with the non-subtransitive cyclic kites of Leader, Russell and Walters~\\cite[Corollary~2]{lrw-kites}."
+    },
+    {
+      "text": "The non-subtransitive cyclic kites of Leader, Russell and Walters are Ramsey, disproving the necessity direction of their characterization.",
+      "verdict": "supported",
+      "sourceLine": "Walters~\\cite[Corollary~2]{lrw-kites}. Those kites are Ramsey, disproving",
+      "sourceQuote": "In Corollary~\\ref{cons:kites}, we combine this result with the non-subtransitive cyclic kites of Leader, Russell and Walters~\\cite[Corollary~2]{lrw-kites}. Those kites are Ramsey, disproving the necessity direction of their proposed characterization and their non-Ramseyness conjecture for the same family~\\cite[Conjecture~3]{lrw-kites}."
+    },
+    {
+      "text": "Without the tensor, algebraic separation produces a finite coloring avoiding the set in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "If no such tensor exists, algebraic separation produces a finite",
+      "sourceQuote": "If no such tensor exists, algebraic separation produces a finite coloring that avoids $A$ in every dimension."
+    },
+    {
+      "text": "For sufficiency, arbitrary colorings provide no continuity to absorb approximation errors.",
+      "verdict": "supported",
+      "sourceLine": "continuity with which to absorb approximation errors. The proof has",
+      "sourceQuote": "For sufficiency, the difficulty is to convert the tensor cancellations into a congruent copy at scale one: arbitrary colorings provide no continuity with which to absorb approximation errors. The proof has three stages."
+    },
+    {
+      "text": "The tensor condition is what separates sphericity from the Ramsey property.",
+      "verdict": "supported",
+      "sourceLine": "distinction between sphericity and the Ramsey property that the",
+      "sourceQuote": "This is the distinction between sphericity and the Ramsey property that the classification detects."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 9
+    },
+    {
+      "text": "Lean formalizes the classification, cosphericity, the transitive and five-circle-point cases, and the twelve- and nine-point non-Ramsey examples.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

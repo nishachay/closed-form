@@ -1,0 +1,318 @@
+{
+  "id": "182",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-intersective-polynomial-differences-with-an-exponent-depending-only-on-the-degree-October-5-2026/power-saving-intersective-polynomial-differences.pdf",
+      "label": "A power saving for intersective polynomial differences with an exponent depending only on the degree"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Power-Saving-for-Polynomial-Differences-at-Prime-Arguments-October-5-2026/prime-argument-polynomial-differences.pdf",
+      "label": "A Power Saving for Polynomial Differences at Prime Arguments"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-square-difference-free-sets-September-24-2026/paper.pdf",
+      "label": "A power saving for square-difference-free sets"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/182.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Sets of whole numbers with no square difference are smaller than N by a fixed power of N.",
+  "scope": "The square result covers every N and every set in 1 to N. The polynomial and prime results cover fixed polynomials of degree at least 2, with constants depending on the polynomial.",
+  "plain": "Pick numbers from 1 to N so that no two differ by a perfect square. Such a set must be a vanishing share of the numbers, but earlier bounds shrank that share only slowly. One paper proves the size is at most a constant times N to the power 1 − c, for a fixed tiny c. Two more papers claim similar savings for other polynomial differences and for prime inputs.",
+  "doesNot": "This does not give a usable value for the exponent c, or close the gap with the best known constructions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1977",
+    "firstStepBy": "Hillel Furstenberg and András Sárközy, independently",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It answers the fixed-power question of Green and Sawhney on a classical problem in additive combinatorics."
+  },
+  "explanation": "Pick numbers from 1 to 20, but no two may differ by a perfect square: 1, 4, 9 or 16. How many can you take? One good choice is 1, 3, 6, 8, 11, 13, 16 and 18. These are the numbers that leave remainder 1 or 3 when divided by 5. Any difference between two of them leaves remainder 0, 2 or 3. A square never leaves remainder 2 or 3. A difference with remainder 0 would need to be at least 25 to be a square. So no difference is a square. A computer check confirms that 8 numbers is the most possible here.\n\nThe trick breaks at 26, because 26 − 1 = 25. Is there always some way to keep a fixed share of the numbers? No. In 1977 and 1978, Hillel Furstenberg and András Sárközy proved independently that the best share shrinks toward zero as the range grows[1]. A set with no square difference is called square-difference-free. The open question was how fast its share must shrink.\n\nSárközy's bound saved a small power of the logarithm of N, the top of the range[2]. A logarithm grows very slowly: the natural log of a billion is about 21. Later work sharpened this, including Bloom and Maynard in 2022[3]. In 2025, Ben Green and Mehtaab Sawhney proved a much stronger saving factor, about e to the power c√(log N)[4]. They asked whether a power saving holds. That means a bound of the form C times N to the power 1 − c, for fixed numbers c above zero and C[5].\n\nFrom below, the record is far smaller. In 1984, Imre Ruzsa built square-difference-free sets of size about N to the power 0.733[6]. In 2026, Dmitry Krachun pushed the exponent just past 0.75[7]. A large gap remains between that and any upper bound[8].\n\nThis family has three papers. The first proves the power saving for squares[9,5]. The exponent c is a fixed number above zero, but extremely small[10]. The proof gives no useful value for it[11]. Even so, the shape matters. If c were 0.01, N to the power 0.99 would be ten times smaller than N once N has 100 digits. The gap keeps growing after that.\n\nThe second paper replaces squares with the values of other polynomials, h(1), h(2), h(3) and so on. Some polynomials can be dodged by a large set. Take h(x) = x² + 1. Its values 2, 5, 10, 17, 26 are never multiples of 3. So the multiples of 3 avoid every such difference, keeping a third of all numbers[12]. A polynomial is called intersective when, for every whole number q, some value of it is a multiple of q. This is exactly the condition needed for the share to shrink[13]. The value for each q may come from a different factor of h, and no whole-number root is needed[14].\n\nFor every intersective h of degree k at least 2, with a positive leading term, the second paper claims a power saving. The exponent depends only on the degree k[15]. The constant C may depend on every coefficient of h[16]. Before this, the best general saving was of the form e to the power (log N) to some fixed power below 1/2[17].\n\nThe third paper allows only prime inputs, so the forbidden differences are h(2), h(3), h(5), h(7) and so on. Here the needed condition is a little stronger. For each q, h must hit a multiple of q at an input sharing no factor with q. Under that condition, the paper claims a power saving[18]. One example is h(x) = (x − 1)². Forbidding only the differences (p − 1)², for primes p, already forces a power saving[19]. The best earlier bound, by Rice, saved only a power of log N[20]. In this paper the exponent may depend on h[21]. The proof also uses a result about the zeros of Dirichlet L-functions, functions that track primes in remainder classes. That result comes from a companion paper in the same release[22].\n\nThe main obstacle was that classical methods gain only slowly at each step. The new proof builds a quantity that is never negative. It is at least a fixed power of the density, the share of numbers in the set. It then shows this quantity shrinks by a power of N[23]. A key move zooms in on numbers spaced D² apart and relabels them as 1, 2, 3 and so on. A square difference in the relabeled set would give one in the original set[24]. For general polynomials, this zoom changes the polynomial, so the paper tracks a whole family of related polynomials[25].\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the square result. It states that fixed constants c above zero and C work for every N. The polynomial and prime papers are not in the Lean scope note, so they remain claims. The prime paper also depends on the companion zero-free result. No specialist review of these papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has checked a formal version of the square result. The polynomial and prime results are outside the Lean note. The prime result relies on a companion zero-free theorem, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Square-difference-free",
+      "meaning": "A set of whole numbers where no two members differ by a perfect square such as 1, 4 or 9."
+    },
+    {
+      "term": "Power saving",
+      "meaning": "A bound of the form C times N to the power 1 − c, smaller than N by the growing factor N to the c."
+    },
+    {
+      "term": "Intersective polynomial",
+      "meaning": "A polynomial that, for every whole number q, takes some value that is a multiple of q."
+    },
+    {
+      "term": "Density",
+      "meaning": "The share of the numbers from 1 to N that belong to the set."
+    },
+    {
+      "term": "Dirichlet L-function",
+      "meaning": "A function from number theory whose zeros control how primes spread among remainder classes."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "H. Furstenberg, “Ergodic behavior of diagonal measures and a theorem of Szemerédi on arithmetic progressions”, Journal d’Analyse Mathématique 31 (1977), 204–256",
+      "url": "https://doi.org/10.1007/BF02813304"
+    },
+    {
+      "id": 2,
+      "cite": "A. Sárközy, “On difference sets of sequences of integers. I”, Acta Mathematica Academiae Scientiarum Hungaricae 31 (1978), 125–149",
+      "url": "https://doi.org/10.1007/BF01896079"
+    },
+    {
+      "id": 3,
+      "cite": "T. F. Bloom and J. Maynard, “A new upper bound for sets with no square differences”, Compositio Mathematica 158(8) (2022), 1777–1798",
+      "url": "https://doi.org/10.1112/S0010437X22007679"
+    },
+    {
+      "id": 4,
+      "cite": "B. Green and M. Sawhney, “New bounds for the Furstenberg–Sárközy theorem”, arXiv:2411.17448 (2025)",
+      "url": "https://arxiv.org/abs/2411.17448v2"
+    },
+    {
+      "id": 5,
+      "cite": "I. Z. Ruzsa, “Difference sets without squares”, Periodica Mathematica Hungarica 15(3) (1984), 205–209",
+      "url": "https://doi.org/10.1007/BF02454169"
+    },
+    {
+      "id": 6,
+      "cite": "D. Krachun, “Square-Difference-Free Sets beyond the Three-Quarter Barrier”, arXiv:2608.01325 (2026)",
+      "url": "https://arxiv.org/abs/2608.01325v1"
+    },
+    {
+      "id": 7,
+      "cite": "C. F. E. Adajar et al., “Extensions of the Furstenberg–Sárközy theorem via the arithmetic level-d inequality”, arXiv:2605.16216 (2026)",
+      "url": "https://arxiv.org/abs/2605.16216v2"
+    },
+    {
+      "id": 8,
+      "cite": "A. Rice, “Sárközy’s theorem for P-intersective polynomials”, Acta Arithmetica 157(1) (2013), 69–89",
+      "url": "https://doi.org/10.4064/aa157-1-4"
+    },
+    {
+      "id": 9,
+      "cite": "openai/math, family 182: “A power saving for square-difference-free sets”, “A power saving for intersective polynomial differences with an exponent depending only on the degree” and “A Power Saving for Polynomial Differences at Prime Arguments” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-power-saving-for-square-difference-free-sets-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "openai/math, Lean scope note for family 182 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/182.md"
+    },
+    {
+      "id": 11,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Furstenberg and Sárközy proved independently that square-difference-free sets have density tending to zero.",
+      "verdict": "supported",
+      "sourceLine": "proved independently that $s(N)=o(N)$, using ergodic theory and the",
+      "sourceQuote": "Furstenberg~\\cite[Theorem~1.2]{Furstenberg1977} and S\\'ark\\\"ozy~\\cite{Sarkozy1978I} proved independently that $s(N)=o(N)$, using ergodic theory and the circle method, respectively.",
+      "paper": 3
+    },
+    {
+      "text": "Sárközy's quantitative estimate saved a fractional power of log N.",
+      "verdict": "supported",
+      "sourceLine": "S\\'ark\\\"ozy's quantitative estimate has the form",
+      "sourceQuote": "S\\'ark\\\"ozy's quantitative estimate has the form $s(N)\\le N/(\\log N)^{1/3+o(1)}$; see also the historical account in~\\cite{BloomMaynard2022}.",
+      "paper": 3
+    },
+    {
+      "text": "Bloom and Maynard improved the bound using additive energy of rationals with small denominators.",
+      "verdict": "supported",
+      "sourceLine": "using bounds for the additive energy of",
+      "sourceQuote": "Bloom and Maynard~\\cite{BloomMaynard2022} subsequently obtained \\[ s(N)\\ll \\frac{N}{(\\log N)^{c_{\\rm BM}\\log\\log\\log N}} \\] for an absolute $c_{\\rm BM}>0$, using bounds for the additive energy of rational numbers with small denominators to improve the density-increment argument.",
+      "paper": 3
+    },
+    {
+      "text": "Green and Sawhney transferred product-space hypercontractive estimates to rational Fourier coefficients.",
+      "verdict": "supported",
+      "sourceLine": "Their arithmetic level-$d$ inequality transfers",
+      "sourceQuote": "Their arithmetic level-$d$ inequality transfers product-space hypercontractive estimates to rational Fourier coefficients.",
+      "paper": 3
+    },
+    {
+      "text": "The main theorem answers the fixed-power question posed by Green and Sawhney.",
+      "verdict": "supported",
+      "sourceLine": "answers affirmatively the fixed-power question",
+      "sourceQuote": "Theorem~\\ref{thm:main} answers affirmatively the fixed-power question posed in~\\cite[Section~1.1]{GreenSawhney2025}.",
+      "paper": 3
+    },
+    {
+      "text": "Ruzsa constructed square-difference-free sets of size at least a constant times N^0.733.",
+      "verdict": "supported",
+      "sourceLine": "constructed square-difference-free sets of size",
+      "sourceQuote": "In the opposite direction, Ruzsa~\\cite[Theorems~1 and~2]{Ruzsa1984} constructed square-difference-free sets of size $\\gg N^{\\gamma_0}$, where \\[ \\gamma_0=\\frac12\\left(1+\\frac{\\log 7}{\\log 65}\\right) =0.733077\\ldots. \\]",
+      "paper": 3
+    },
+    {
+      "text": "Krachun's construction passes the three-quarter threshold.",
+      "verdict": "supported",
+      "sourceLine": "three-quarter threshold and gives",
+      "sourceQuote": "Krachun's construction~\\cite[Theorem~1]{Krachun2026} passes the three-quarter threshold and gives \\[ \\liminf_{N\\to\\infty}\\frac{\\log s(N)}{\\log N} \\ge 0.752796455874514\\ldots. \\]",
+      "paper": 3
+    },
+    {
+      "text": "A substantial gap remains between the lower and upper exponents.",
+      "verdict": "supported",
+      "sourceLine": "A substantial gap remains between this lower exponent and the upper",
+      "sourceQuote": "A substantial gap remains between this lower exponent and the upper exponent $1-c$ in Theorem~\\ref{thm:main}.",
+      "paper": 3
+    },
+    {
+      "text": "The main result is a fixed power saving: |A| ≤ C N^(1−c) with absolute constants.",
+      "verdict": "supported",
+      "sourceLine": "Our main result is a fixed power saving in this extremal problem.",
+      "sourceQuote": "Our main result is a fixed power saving in this extremal problem.",
+      "paper": 3
+    },
+    {
+      "text": "The exponent is positive and absolute but extremely small.",
+      "verdict": "supported",
+      "sourceLine": "The exponent obtained here is positive and absolute, but extremely small.",
+      "sourceQuote": "The exponent obtained here is positive and absolute, but extremely small.",
+      "paper": 3
+    },
+    {
+      "text": "The argument gives no useful numerical value or optimal exponent.",
+      "verdict": "supported",
+      "sourceLine": "The argument does not yield a useful numerical value or an optimal exponent.",
+      "sourceQuote": "The argument does not yield a useful numerical value or an optimal exponent.",
+      "paper": 3
+    },
+    {
+      "text": "If h has no root modulo q, the multiples of q contain no difference in h(N+).",
+      "verdict": "supported",
+      "sourceLine": "if $h$ has no root modulo $q$, the multiples of",
+      "sourceQuote": "This is the necessary local condition for polynomial differences in every set of positive density: if $h$ has no root modulo $q$, the multiples of $q$ contain no difference in $h(\\N_+)$.",
+      "paper": 1
+    },
+    {
+      "text": "Intersectivity is the necessary local condition for polynomial differences in every dense set.",
+      "verdict": "supported",
+      "sourceLine": "This is the necessary local condition for polynomial differences in every",
+      "sourceQuote": "This is the necessary local condition for polynomial differences in every set of positive density: if $h$ has no root modulo $q$, the multiples of $q$ contain no difference in $h(\\N_+)$.",
+      "paper": 1
+    },
+    {
+      "text": "Roots at different moduli may come from different factors; a rational root is not required.",
+      "verdict": "supported",
+      "sourceLine": "The condition allows the roots at",
+      "sourceQuote": "The condition allows the roots at different moduli to arise from different factors of $h$; a rational root is not required.",
+      "paper": 1
+    },
+    {
+      "text": "The exponent is common to all polynomials of a fixed degree.",
+      "verdict": "supported",
+      "sourceLine": "The exponent is common to all polynomials of a fixed degree.",
+      "sourceQuote": "The exponent is common to all polynomials of a fixed degree.",
+      "paper": 1
+    },
+    {
+      "text": "The constants C_h and N_h may depend on every coefficient of h.",
+      "verdict": "supported",
+      "sourceLine": "may depend on every coefficient of $h$, and $h$ remains fixed as",
+      "sourceQuote": "The constants $C_h,N_h$ may depend on every coefficient of $h$, and $h$ remains fixed as $N$ grows.",
+      "paper": 1
+    },
+    {
+      "text": "Adajar et al. obtained a saving exp(−c(log N)^μ) for every fixed μ < 1/2.",
+      "verdict": "supported",
+      "sourceLine": "for every fixed intersective $h$ of degree at least two and every fixed",
+      "sourceQuote": "Their arithmetic level-$d$ inequality and random sparsification also underpin the recent general-polynomial result of Adajar et al.~\\cite[Theorem~1.1]{AdajarEtAl2026}: for every fixed intersective $h$ of degree at least two and every fixed $0<\\mu<1/2$, \\[ |A|\\le N\\exp\\bigl(-c_{h,\\mu}(\\log N)^\\mu\\bigr) \\] for sufficiently large $N$.",
+      "paper": 1
+    },
+    {
+      "text": "The prime paper proves a power-saving bound when the local conditions hold at every modulus.",
+      "verdict": "supported",
+      "sourceLine": "We prove a power-saving bound when these local conditions hold at every modulus.",
+      "sourceQuote": "We prove a power-saving bound when these local conditions hold at every modulus.",
+      "paper": 2
+    },
+    {
+      "text": "h(x) = (x−1)² gives a power saving when only differences (p−1)² are forbidden, which implies the square case.",
+      "verdict": "supported",
+      "sourceLine": "The example $h(x)=(x-1)^2$ gives a power saving when",
+      "sourceQuote": "The example $h(x)=(x-1)^2$ gives a power saving when only the differences $(p-1)^2$ are forbidden; it therefore implies a power saving for sets avoiding all nonzero square differences as well.",
+      "paper": 2
+    },
+    {
+      "text": "Rice's theorem covers every prime-intersective polynomial of degree at least two, with a log-power saving.",
+      "verdict": "supported",
+      "sourceLine": "Rice's theorem covers every",
+      "sourceQuote": "Rice's theorem covers every prime-intersective polynomial of degree $k\\ge2$, with \\[ |A|\\ll_{h,c}N(\\log N)^{-c} \\qquad\\text{for every }c<\\frac{1}{2k-2}, \\] and gives a stronger bound for quadratics \\cite[Theorems~1 and~2]{Rice2013}.",
+      "paper": 2
+    },
+    {
+      "text": "All constants in the prime theorem depend only on the fixed polynomial.",
+      "verdict": "supported",
+      "sourceLine": "All constants in the theorem depend only",
+      "sourceQuote": "All constants in the theorem depend only on the fixed polynomial.",
+      "paper": 2
+    },
+    {
+      "text": "The fixed zero-free half-plane is a theorem input from a companion paper.",
+      "verdict": "supported",
+      "sourceLine": "This fixed half-plane is a theorem input",
+      "sourceQuote": "This fixed half-plane is a theorem input from that companion, stronger than the classical zero-free regions near $\\Re s=1$.",
+      "paper": 2
+    },
+    {
+      "text": "The proof constructs a nonnegative quantity dominating a power of the density and shows it decreases by a power of the length.",
+      "verdict": "supported",
+      "sourceLine": "The proof constructs a nonnegative quantity that dominates a fixed",
+      "sourceQuote": "The proof constructs a nonnegative quantity that dominates a fixed power of the density, and then proves that this quantity decreases by a power of the interval length.",
+      "paper": 3
+    },
+    {
+      "text": "Rescaling progressions of step D² preserves square-difference avoidance.",
+      "verdict": "supported",
+      "sourceLine": "rescaling preserves square-difference avoidance: a square difference",
+      "sourceQuote": "Splitting that class into progressions of common difference $D^2$ and rescaling preserves square-difference avoidance: a square difference in a rescaled set would give a square difference in $A$.",
+      "paper": 3
+    },
+    {
+      "text": "For polynomials, the polynomial changes on passing to a progression.",
+      "verdict": "supported",
+      "sourceLine": "values require two additional compatibilities: the polynomial changes when",
+      "sourceQuote": "We retain this organization, but polynomial values require two additional compatibilities: the polynomial changes when one passes to a progression, and the local distribution supplied by the multilinear construction need not be the natural distribution of polynomial values.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 11
+    },
+    {
+      "text": "Lean formalizes the square-difference power saving with absolute constants c > 0 and C for every N ≥ 1; the polynomial and prime papers are not in the scope note.",
+      "verdict": "external",
+      "sourceId": 10
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

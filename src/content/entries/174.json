@@ -1,0 +1,216 @@
+{
+  "id": "174",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-strong-thin-tree-conjecture-September-23-2026/paper.pdf",
+      "label": "The strong thin tree conjecture"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-construction-of-strong-thin-trees-September-23-2026/paper.pdf",
+      "label": "A polynomial-time construction of strong thin trees"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/174.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every k-connected network has a spanning tree that uses at most a fixed multiple of 1/k of every cut.",
+  "scope": "The result covers every finite k-edge-connected multigraph without loops and with at least two points. The constant C is fixed but has no stated value.",
+  "plain": "A spanning tree connects all points of a network with as few links as possible. The strong thin tree conjecture says that a highly connected network has one using only a small share of every cut. This paper proves that share can be C/k for one fixed C. A companion paper gives a polynomial-time method to find the tree.",
+  "doesNot": "This does not give a numerical value for the constant C.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2004",
+    "firstStepBy": "Luis Goddyn, Problem 4 of his open problem list",
+    "significance": "Major",
+    "significanceWhy": "It settles the strong thin tree conjecture, a central question linking graph structure to route-planning algorithms.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Take two points joined by five parallel links. To connect them you need just one link. That one link is 1/5 of the links between the two points. Now use k parallel links instead of five. The single connecting link is then 1/k of them, and you can't do better[6].\n\nThat is the idea of a thin tree. A tree is a set of links that connects every point with no loops. A tree that reaches every point is a spanning tree, and it uses one fewer link than there are points[1]. A cut splits the points into two sides. The links crossing between the sides form the cut. A spanning tree is thin when it uses only a small fraction of every cut, all at once.\n\nA network is k-edge-connected when every cut has at least k links. More connectivity should allow thinner trees. Small cases show why the question is subtle. The corners and edges of a cube give eight points and twelve links, with at least three links in every cut. A check of all 384 spanning trees shows something striking. Each one uses every link of some cut. So at this low connectivity, no tree is thin at all.\n\nLuis Goddyn asked whether high connectivity alone forces thin trees, however large the network is[2,3]. The strong form of his question asks for thinness C/k, for one fixed number C[4]. The question matters for route planning. It is tied to approximation methods for the traveling salesman problem with one-way costs[7]. In 2015, Anari and Oveis Gharan came close. They found trees with thinness about (log log n)/k, up to a power, where n is the number of points[8]. That factor grows, very slowly, as networks get bigger.\n\nThis paper proves the strong conjecture[5]. Every k-edge-connected network with at least two points has a spanning tree using at most C/k of every cut. The number C is fixed, and it does not depend on the size of the network[9]. The two-point example shows the 1/k rate cannot be improved[6]. A companion paper gives a step-by-step method that finds such a tree in polynomial time[13]. That means the work grows like a fixed power of the input size. It still works when huge numbers of parallel links are written compactly as numbers[14]. Neither paper gives a value for C.\n\nThe obstacle is serving every cut at once. High connectivity gives many spanning trees that share no links. For any one cut, these trees use few of its links on average. But averaging does not pick out one tree that is small on every cut[10]. The proof keeps a large family of separate trees while it thins the network over and over. Each round cuts the cut sizes and the number of trees by almost the same factor[11]. The losses stay bounded across all rounds, until a single thin tree remains.\n\nThe traveling salesman link has a twist. Constant-factor approximation for that one-way problem was already found by other methods[12]. So this result settles the tree question itself, not that application.\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of both results. One states that such a tree exists for one fixed C. The other states that a deterministic polynomial-time method finds it. Neither formal statement gives a numerical value for C. No specialist review of the papers has been published.",
+  "hypeCheck": "Major if the proofs hold. Lean has checked formal versions of the existence result and the polynomial-time construction. C has no stated value, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Spanning tree",
+      "meaning": "A set of links that connects every point of a network with no loops."
+    },
+    {
+      "term": "Cut",
+      "meaning": "The links crossing between two sides of a split of the points."
+    },
+    {
+      "term": "k-edge-connected",
+      "meaning": "Every cut has at least k links."
+    },
+    {
+      "term": "Thin tree",
+      "meaning": "A spanning tree that uses only a small fraction of the links in every cut."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "A running time that grows like a fixed power of the input size."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "L. A. Goddyn, “Some Open Problems I Like”, online problem list, Problem 4 (2004), archived copy",
+      "url": "https://web.archive.org/web/20211025204852/https://www.sfu.ca/~goddyn/Problems/problems.html"
+    },
+    {
+      "id": 2,
+      "cite": "A. Asadpour, M. X. Goemans, A. Mądry, S. Oveis Gharan and A. Saberi, “An O(log n/log log n)-Approximation Algorithm for the Asymmetric Traveling Salesman Problem”, Operations Research 65(4) (2017), 1043–1061",
+      "url": "https://doi.org/10.1287/opre.2017.1603"
+    },
+    {
+      "id": 3,
+      "cite": "N. Anari and S. Oveis Gharan, “Effective-Resistance-Reducing Flows, Spectrally Thin Trees, and Asymmetric TSP”, FOCS 2015, 20–39",
+      "url": "https://arxiv.org/abs/1411.4613v4"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, “The strong thin tree conjecture” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-strong-thin-tree-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “A polynomial-time construction of strong thin trees” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-polynomial-time-construction-of-strong-thin-trees-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 174 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/174.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "A spanning tree keeps connectivity with only |V| − 1 edges.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "A spanning tree retains connectivity using only \\(|V|-1\\) edges.",
+      "sourceQuote": "A spanning tree retains connectivity using only \\(|V|-1\\) edges."
+    },
+    {
+      "text": "The question is whether high edge connectivity alone forces a thin tree, independent of the number of vertices.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "simultaneously. The question is whether high edge connectivity alone",
+      "sourceQuote": "Thinness asks that these edges occupy a small fraction of every cut simultaneously. The question is whether high edge connectivity alone forces such a tree, with a bound independent of the number of vertices."
+    },
+    {
+      "text": "Goddyn's thin tree conjecture asks whether high enough connectivity guarantees an ε-thin spanning tree for every ε.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "Goddyn's thin tree conjecture asks whether, for every",
+      "sourceQuote": "Goddyn's thin tree conjecture asks whether, for every \\(\\varepsilon>0\\), a sufficiently high edge connectivity guarantees an \\(\\varepsilon\\)-thin spanning tree~\\cite{Goddyn}."
+    },
+    {
+      "text": "The strong thin tree conjecture asks for the rate C/k.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "The strong thin tree conjecture asks for the quantitative rate \\(C/k\\).",
+      "sourceQuote": "The strong thin tree conjecture asks for the quantitative rate \\(C/k\\)."
+    },
+    {
+      "text": "The main theorem resolves the strong conjecture.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "Theorem~\\ref{thm:main} resolves this stronger conjecture positively.",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves this stronger conjecture positively."
+    },
+    {
+      "text": "The order 1/k is necessary, as two vertices joined by k parallel edges show.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "The order \\(1/k\\) is necessary: with two vertices and \\(k\\) parallel",
+      "sourceQuote": "The order \\(1/k\\) is necessary: with two vertices and \\(k\\) parallel edges, every spanning tree uses exactly one of the \\(k\\) edges of the only cut."
+    },
+    {
+      "text": "Thin trees connect to approximation algorithms for the asymmetric traveling salesman problem.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "Thin trees connect this graph-theoretic question with approximation",
+      "sourceQuote": "Thin trees connect this graph-theoretic question with approximation algorithms."
+    },
+    {
+      "text": "Anari and Oveis Gharan proved a spanning tree with thinness poly(log log n)/k exists.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "with thinness \\(\\operatorname{poly}(\\log\\log n)/k\\)",
+      "sourceQuote": "They proved the existence of a spanning tree with thinness \\(\\operatorname{poly}(\\log\\log n)/k\\) \\cite[Corollary~1.8]{AOG}."
+    },
+    {
+      "text": "The theorem controls all cuts at once and removes the dependence on n.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "Theorem~\\ref{thm:main} controls all cuts simultaneously and removes",
+      "sourceQuote": "Theorem~\\ref{thm:main} controls all cuts simultaneously and removes the dependence on \\(n\\)."
+    },
+    {
+      "text": "Averaging over a packing of trees does not select one tree that is small on every cut.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "such a packing is small. This averaging does not select one tree",
+      "sourceQuote": "For any fixed cut, the average number of edges used by the trees in such a packing is small. This averaging does not select one tree that is small on every cut."
+    },
+    {
+      "text": "Each sparsification step reduces cut sizes and packing size by almost the same factor.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "a sequence of sparsifications: each step reduces cut sizes and the",
+      "sourceQuote": "We maintain a large packing throughout a sequence of sparsifications: each step reduces cut sizes and the packing size by almost the same factor, and the accumulated relative loss remains bounded."
+    },
+    {
+      "text": "Constant-factor approximation for asymmetric TSP was already obtained by other methods.",
+      "verdict": "supported",
+      "paper": 1,
+      "sourceLine": "problem has already been obtained by other methods. Svensson,",
+      "sourceQuote": "The thin-tree approach to asymmetric traveling salesman remains structurally useful, although constant-factor approximation for that problem has already been obtained by other methods. Svensson, Tarnawski, and V\\'egh proved the first such guarantee \\cite{SvenssonTarnawskiVegh2020}; Traub and Vygen subsequently improved it~\\cite{TraubVygen2022}."
+    },
+    {
+      "text": "The companion paper gives a deterministic polynomial-bit construction.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "simultaneously. We give a deterministic polynomial-bit",
+      "sourceQuote": "A thin spanning tree must also use a small fraction of every cut, with the same tree serving all cuts simultaneously. We give a deterministic polynomial-bit construction at the inverse-connectivity scale."
+    },
+    {
+      "text": "With binary multiplicities, the number of edge copies may be exponential in the input length.",
+      "verdict": "supported",
+      "paper": 2,
+      "sourceLine": "number of edge copies may be exponential in the input length.",
+      "sourceQuote": "In the second representation, the number of edge copies may be exponential in the input length."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes the existence of a C/k-thin tree and a deterministic polynomial-time algorithm; no numerical value of C is asserted.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

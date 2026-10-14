@@ -1,0 +1,197 @@
+{
+  "id": "181",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026/main.pdf",
+      "label": "A linear cycle-and-edge decomposition of every graph"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/181.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every network on n points splits into at most a fixed multiple of n loops and single links.",
+  "scope": "The result covers every finite simple undirected graph. It gives a linear bound with some fixed constant, but not the constant's value.",
+  "plain": "Erdős and Gallai asked how few pieces can hold all the links of a network, when each piece is a loop or a single link. Trees show that about n pieces can be needed for n points. Earlier bounds were slightly larger than linear. This paper proves that a fixed multiple of n pieces always suffices.",
+  "doesNot": "This does not give the best value of the constant.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1966",
+    "firstStepBy": "Paul Erdős and Tibor Gallai, recorded by Erdős, Goodman and Pósa",
+    "significance": "Major",
+    "significanceWhy": "It settles a well-known conjecture of Erdős and Gallai, open since at least 1966.",
+    "field": "Combinatorics"
+  },
+  "explanation": "Draw four points and join every pair: six links in all. Try to split the links into pieces of two kinds. A piece can be a cycle, a closed loop that visits each of its points once. Or a piece can be a single link. Every link must land in exactly one piece. One way uses a loop around all four points, plus the two diagonal links left over. That is three pieces. A check of every option shows that three is the fewest possible.\n\nWhy can't it be done with fewer? Each point has three links, an odd number. A cycle uses two links at each point it passes through. So at every point at least one link must be a single piece. Each single link serves two points, so at least two are needed.\n\nSingle links can't be avoided in general. A tree is a network with no loops at all, so it has no cycles[2]. A tree on n points has n − 1 links, and every one must be its own piece[6]. Paul Erdős and Tibor Gallai conjectured that this is about the worst case. Their conjecture says some fixed number C works for every network: at most C times n pieces always suffice[1].\n\nProgress came in slow steps. The question appears in a 1966 paper of Erdős, Goodman and Pósa, which gave a bound of order n times log n[3]. A logarithm grows slowly, but it still grows without limit. In 2014, Conlon, Fox and Sudakov improved this to n times log log n[4]. Then Bucić and Montgomery reached n times log* n, published in 2024[5]. Here log* n counts how many times you take a base-2 logarithm before reaching 1. For 10⁸⁰, about the number of atoms in the universe, that count is only 5. Still, it is not a fixed number.\n\nThe rule that pieces share no links is the heart of the problem. If pieces may overlap, Pyber showed in 1985 that n − 1 pieces always cover a network[8]. But an overlapping cover does not give a split[9]. Removing the repeated links can break its loops into many open paths.\n\nThis paper proves the conjecture[10]. Every finite network on n points splits into at most Cn cycles and single links, for one fixed C. The order n cannot be improved, because of trees[6]. Some complete two-sided networks even need about 1.5n pieces[7]. The paper does not say how small C can be.\n\nThe obstacle was cost that grows with scale. The proof works on the network at many sizes, from coarse to fine. Paying a cost that matches the whole network at every size piles up an extra factor[11]. The paper instead charges the work to one well-connected layer. Then it merges pairs of points in that layer, which saves a fixed share of its points[12]. The smaller merged network is split by the same argument, one size down. Spare paths inside the layer then rejoin each merged pair. So each loop in the merged network becomes one true loop[13].\n\nThere is a clean consequence. Call a network even if every point has an even number of links. Then single links are no longer needed. Every even network on n points splits into at most Cn cycles alone[14]. For example, join every pair among five points. Each point then has four links. The ten links split into two loops of five: a pentagon and a five-pointed star.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It states that one fixed constant C works for every finite network, including empty and small ones. It does not pin down the best value of C. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if the proof holds. Lean has checked a formal version of the main theorem. The best constant is unknown, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Graph",
+      "meaning": "A set of points, some pairs of which are joined by links."
+    },
+    {
+      "term": "Cycle",
+      "meaning": "A closed loop of links that visits each of its points once and has at least three points."
+    },
+    {
+      "term": "Tree",
+      "meaning": "A connected network with no loops."
+    },
+    {
+      "term": "Edge partition",
+      "meaning": "A split of the links into pieces so that every link lands in exactly one piece."
+    },
+    {
+      "term": "Logarithm",
+      "meaning": "How many times you multiply a base by itself to reach a number; log base 2 of 1,024 is 10."
+    },
+    {
+      "term": "Lean",
+      "meaning": "A computer program that checks each step of a formally written proof."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "P. Erdős, A. W. Goodman and L. Pósa, “The representation of a graph by set intersections”, Canadian Journal of Mathematics 18 (1966), 106–112",
+      "url": "https://doi.org/10.4153/CJM-1966-014-3"
+    },
+    {
+      "id": 2,
+      "cite": "D. Conlon, J. Fox and B. Sudakov, “Cycle packing”, Random Structures & Algorithms 45(4) (2014), 608–626",
+      "url": "https://doi.org/10.1002/rsa.20574"
+    },
+    {
+      "id": 3,
+      "cite": "M. Bucić and R. Montgomery, “Towards the Erdős–Gallai cycle decomposition conjecture”, Advances in Mathematics 437 (2024), 109434",
+      "url": "https://doi.org/10.1016/j.aim.2023.109434"
+    },
+    {
+      "id": 4,
+      "cite": "L. Pyber, “An Erdős–Gallai conjecture”, Combinatorica 5(1) (1985), 67–79",
+      "url": "https://doi.org/10.1007/BF02579444"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, “A linear cycle-and-edge decomposition of every graph” (2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-linear-cycle-and-edge-decomposition-of-every-graph-September-24-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math, Lean scope note for family 181 (2026)",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/181.md"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The Erdős–Gallai conjecture asserts that cycles and single edges suffice for a universal linear bound.",
+      "verdict": "supported",
+      "sourceLine": "The Erd\\H{o}s--Gallai cycle decomposition conjecture asserts that this",
+      "sourceQuote": "The Erd\\H{o}s--Gallai cycle decomposition conjecture asserts that this necessary allowance suffices for a universal linear bound."
+    },
+    {
+      "text": "Single edges must be allowed because a forest contains no cycle.",
+      "verdict": "supported",
+      "sourceLine": "Single edges must also be allowed: a forest contains no cycle.",
+      "sourceQuote": "Single edges must also be allowed: a forest contains no cycle."
+    },
+    {
+      "text": "The conjecture appears in the 1966 paper of Erdős, Goodman and Pósa, which records an O(n log n) bound.",
+      "verdict": "supported",
+      "sourceLine": "The conjecture appears in the 1966 paper of Erd\\H{o}s, Goodman and",
+      "sourceQuote": "The conjecture appears in the 1966 paper of Erd\\H{o}s, Goodman and P\\'osa~\\cite[Section~5]{EGP1966}, which explicitly distinguishes unrestricted covers from edge-disjoint covers and records an \\(O(n\\log n)\\) upper bound."
+    },
+    {
+      "text": "Conlon, Fox and Sudakov improved the bound to O(n log log n) in 2014.",
+      "verdict": "supported",
+      "sourceLine": "\\(O(n\\log\\log n)\\) in 2014. Buci\\'c and",
+      "sourceQuote": "Conlon, Fox and Sudakov~\\cite{CFS2014} improved the general bound to \\(O(n\\log\\log n)\\) in 2014. Buci\\'c and Montgomery~\\cite{BM2024} subsequently proved the bound \\(O(n\\log^*n)\\); their paper appeared in journal form in 2024."
+    },
+    {
+      "text": "Bucić and Montgomery proved O(n log* n); their paper appeared in journal form in 2024.",
+      "verdict": "supported",
+      "sourceLine": "\\(O(n\\log^*n)\\); their paper appeared in journal form in 2024.",
+      "sourceQuote": "Buci\\'c and Montgomery~\\cite{BM2024} subsequently proved the bound \\(O(n\\log^*n)\\); their paper appeared in journal form in 2024."
+    },
+    {
+      "text": "The linear order is optimal, since a tree on n vertices needs n − 1 single-edge parts.",
+      "verdict": "supported",
+      "sourceLine": "linear bound. Its order is optimal, since a tree on \\(n\\) vertices",
+      "sourceQuote": "\\Cref{thm:main} establishes the conjectured linear bound. Its order is optimal, since a tree on \\(n\\) vertices requires \\(n-1\\) single-edge parts."
+    },
+    {
+      "text": "Complete bipartite examples need (3/2 − o(1))n parts.",
+      "verdict": "supported",
+      "sourceLine": "examples require \\((3/2-o(1))n\\) parts; see",
+      "sourceQuote": "More sharply, complete bipartite examples require \\((3/2-o(1))n\\) parts; see \\cite[Section~6]{BM2024} for this lower bound and its history."
+    },
+    {
+      "text": "If parts may overlap, Pyber proved that n − 1 parts cover every graph.",
+      "verdict": "supported",
+      "sourceLine": "and edges may overlap, Pyber~\\cite{Pyber1985} proved that \\(n-1\\)",
+      "sourceQuote": "If cycles and edges may overlap, Pyber~\\cite{Pyber1985} proved that \\(n-1\\) parts suffice to cover every graph of positive order."
+    },
+    {
+      "text": "A cover does not supply a partition.",
+      "verdict": "supported",
+      "sourceLine": "A cover of that kind does not supply a partition: deleting repeated",
+      "sourceQuote": "A cover of that kind does not supply a partition: deleting repeated edges may break its cycles into many paths."
+    },
+    {
+      "text": "Every finite simple graph on n vertices has an edge partition into at most Cn cycles and single edges.",
+      "verdict": "supported",
+      "sourceLine": "We prove that every finite simple undirected graph on \\(n\\) vertices",
+      "sourceQuote": "We prove that every finite simple undirected graph on \\(n\\) vertices has an edge partition into at most \\(Cn\\) simple cycles and single edges, for an absolute constant \\(C\\)."
+    },
+    {
+      "text": "Paying a cost proportional to the full graph at every scale can accumulate an extra factor.",
+      "verdict": "supported",
+      "sourceLine": "a cost proportional to the full graph order can accumulate a factor",
+      "sourceQuote": "A decomposition that repeatedly pays a cost proportional to the full graph order can accumulate a factor from the number of scales."
+    },
+    {
+      "text": "Work is charged to one expanding layer, and pair identifications save a fixed fraction of its order.",
+      "verdict": "supported",
+      "sourceLine": "charged to one expanding layer, and pair identifications save a fixed",
+      "sourceQuote": "Here the work over a suitable prefix is charged to one expanding layer, and pair identifications save a fixed fraction of that layer's order."
+    },
+    {
+      "text": "Each quotient cycle lifts to one simple cycle.",
+      "verdict": "supported",
+      "sourceLine": "quotient cycle lifts to one simple cycle. The degree bound is imposed",
+      "sourceQuote": "Consequently each quotient cycle lifts to one simple cycle. The degree bound is imposed on the union of the batch graphs within each earlier box, so the routing load does not grow with the number of batches."
+    },
+    {
+      "text": "Every Eulerian graph on n vertices splits into at most Cn cycles.",
+      "verdict": "supported",
+      "sourceLine": "Every finite simple undirected Eulerian graph on \\(n\\) vertices has an",
+      "sourceQuote": "Every finite simple undirected Eulerian graph on \\(n\\) vertices has an edge partition into at most \\(Cn\\) cycles, with \\(C\\) from \\Cref{thm:main}."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "Lean formalizes the existence of one absolute constant C; the optimal C is not determined.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
