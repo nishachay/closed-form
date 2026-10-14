@@ -1,0 +1,212 @@
+{
+  "id": "220",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-directional-zero-one-law-for-finite-range-dependent-random-environments-October-5-2026/directional-zero-one-finite-range.pdf",
+      "label": "A directional zero–one law for finite-range-dependent random environments"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-directional-zero-one-law-under-strict-ellipticity-September-23-2026/paper.pdf",
+      "label": "A directional zero–one law under strict ellipticity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Directional-transience-implies-ballisticity-September-23-2026/paper.pdf",
+      "label": "Directional transience implies ballisticity"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/220.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "A walk in a random environment escapes in a given direction with probability 0 or 1, and escape forces positive speed.",
+  "scope": "Nearest-neighbour walks on the integer grid; the zero–one laws need dimension 3 or more, the speed result dimension 2 or more.",
+  "plain": "Picture a walker on a grid whose step odds are set at random, once, at every site. One question asks whether the chance of drifting off in a fixed direction must be 0 or 1. Another asks whether drifting off forces a positive average speed. These papers answer yes in key cases. Lean has checked the iid zero–one law and the speed result; the dependent-environment extension is not checked.",
+  "doesNot": "This does not give the zero–one law in dimension 2 beyond earlier work, or for environments with long-range dependence.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1981",
+    "firstStepBy": "Kalikow, the first directional transience results",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It settles two central problems for random walks in iid random environments, with the main statements checked in Lean."
+  },
+  "explanation": "Start on a line of sites. At each site, flip a fair coin once and keep the result forever. Heads makes that site push right with chance 0.9. Tails makes it push right with chance only 0.3. A walker then steps left or right using the odds at its current site. Does it drift off to the right? A classical test by Solomon looks at the ratio of left to right odds. The ratios here are 1/9 and 7/3. The average of their logarithms is about −0.675, which is negative. So the walker escapes to the right. But the plain average of the ratios is about 1.22, at least 1. That makes its long-run speed zero. Traps of left-pushing sites slow it so much that it covers distance more slowly than any fixed rate.\n\nThis is a random walk in a random environment. The environment is the list of step odds at every site, drawn once and then held fixed. Directional transience means the walker eventually leaves every half-space behind it in a chosen direction[1]. Ballisticity asks for more: steady progress at a positive speed. The line example shows the two can differ, already in one dimension[2].\n\nTwo old questions sit here for higher dimensions. First, can the chance of escaping in one direction lie strictly between 0 and 1? Kalikow, with Sznitman and Zerner, showed only that escape in one of the two opposite directions has chance 0 or 1[3]. In two dimensions, Zerner and Merkl proved the full zero–one law. Their argument uses crossings of paths in the plane[4]. Second, does escape in one direction force positive speed? Fribergh and Kious stated this as a conjecture in 2016[5].\n\nThe second paper takes the first question. Averaging over the environment makes the walk remember. Returning to a site reveals more about its odds[6]. The paper proves the zero–one law in every dimension from 3 up[7]. The environment must be iid, meaning each site's odds are drawn independently from one fixed recipe. Every step must have positive chance, but no common lower bound is needed[8].\n\nThe third paper takes the second question. Here the odds must be uniformly elliptic: every step has chance at least some fixed κ above 0. It proves that escape in one direction gives a fixed limiting velocity, pointing into that direction[9]. This holds in every dimension from 2 up. The obstacle was that walks split into independent pieces only gives finite pieces. It does not show their average length is finite. The proof first controls how far a piece wanders and only later how long it lasts[10].\n\nThe first paper extends the zero–one law beyond independence. Sites may depend on each other, but only within a fixed distance[11]. Correlations that merely fade are not enough. Bramson, Zeitouni and Zerner built environments with slowly fading correlations where escape in each of two opposite directions has positive chance[12].\n\nHow sure is this? A computer proof checker called Lean has checked formal versions of the iid zero–one law under strict ellipticity, for dimension 3 and up. It has also checked that escape implies a positive velocity in dimension 2 and up, under uniform ellipticity. The finite-range dependent extension is not formalized. No specialist review has been published.",
+  "hypeCheck": "Major. The iid zero–one law and the speed result have Lean checks; the finite-range extension does not, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Random environment",
+      "meaning": "Step odds placed at every site of a grid by a random draw, then held fixed while the walker moves."
+    },
+    {
+      "term": "Directional transience",
+      "meaning": "The walker eventually moves off forever in a chosen direction, leaving every half-space behind it."
+    },
+    {
+      "term": "Ballisticity",
+      "meaning": "Moving off in a direction at a positive average speed, not just eventually."
+    },
+    {
+      "term": "Zero–one law",
+      "meaning": "A result saying an event has probability exactly 0 or exactly 1, never anything in between."
+    },
+    {
+      "term": "Ellipticity",
+      "meaning": "Every allowed step has positive chance; uniform ellipticity adds a common lower bound for those chances."
+    },
+    {
+      "term": "iid",
+      "meaning": "Independent and identically distributed: each site's odds are drawn separately from the same recipe."
+    },
+    {
+      "term": "Finite-range dependence",
+      "meaning": "Sites far enough apart have independent odds; nearby sites may be linked."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A directional zero–one law for finite-range-dependent random environments” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-directional-zero-one-law-for-finite-range-dependent-random-environments-October-5-2026/directional-zero-one-finite-range.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A directional zero–one law under strict ellipticity” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-directional-zero-one-law-under-strict-ellipticity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Directional transience implies ballisticity” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Directional-transience-implies-ballisticity-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math, Lean scope note for family 220",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/220.md",
+      "quote": "For an i.i.d. uniformly elliptic nearest-neighbor random environment on $\\mathbb Z^d$, the formalization proves that almost-sure directional transience implies convergence of $X_n/n$ to a deterministic velocity with positive projection in that direction for every $d\\ge2$."
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 6,
+      "cite": "F. Solomon, “Random walks in a random environment”, The Annals of Probability 3 (1975), 1–31",
+      "url": "https://doi.org/10.1214/aop/1176996444"
+    },
+    {
+      "id": 7,
+      "cite": "A. Fribergh and D. Kious, “Local trapping for elliptic random walks in random environments in ℤ^d”, Probability Theory and Related Fields 165 (2016), 795–834",
+      "url": "https://doi.org/10.1007/s00440-015-0646-4"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Directional transience says the walk eventually leaves every backward half-space.",
+      "sourceLine": "Directional transience says that a random walk eventually leaves every backward half-space.",
+      "sourceQuote": "Directional transience says that a random walk eventually leaves every backward half-space.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "In one dimension, uniformly elliptic iid environments can give a transient walk with zero speed.",
+      "sourceLine": "already in one dimension, uniformly elliptic iid environments can give a transient walk with zero speed;",
+      "sourceQuote": "The distinction between escape and speed is essential: already in one dimension, uniformly elliptic iid environments can give a transient walk with zero speed; see Solomon~\\cite{Solomon1975} and the discussion in \\cite[p.~510]{Sznitman2002}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Kalikow with Sznitman and Zerner established the sign-union law.",
+      "sourceLine": "established the sign-union law for uniformly elliptic iid environments,",
+      "sourceQuote": "Kalikow's work \\cite{Kalikow1981}, together with the regeneration formulation of Sznitman and Zerner \\cite[Lemma~1.1]{SznitmanZerner1999}, established the sign-union law for uniformly elliptic iid environments, \\[ P_0(A_\\ell\\cup A_{-\\ell})\\in\\{0,1\\}. \\]",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In two dimensions Zerner and Merkl proved the full directional zero–one law.",
+      "sourceLine": "The planar arguments exploit intersections of paths.",
+      "sourceQuote": "The planar arguments exploit intersections of paths.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Fribergh and Kious formulated the ballisticity conjecture with the one-direction transience assumption.",
+      "sourceLine": "formulate it with precisely the one-direction transience assumption used here.",
+      "sourceQuote": "Fribergh and Kious~\\cite[Conjecture~1.1]{FriberghKious2016} formulate it with precisely the one-direction transience assumption used here.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Revisiting a site revisits information about its transition probabilities.",
+      "sourceLine": "revisiting a site also revisits information about its transition probabilities.",
+      "sourceQuote": "Averaging over an independent environment at every lattice site creates a different process: revisiting a site also revisits information about its transition probabilities.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The directional zero–one problem is resolved in every dimension d ≥ 3 for iid environments with positive transition probabilities.",
+      "sourceLine": "We resolve this problem positively in every dimension $d\\ge3$ for iid nearest-neighbor environments with strictly positive transition probabilities.",
+      "sourceQuote": "We resolve this problem positively in every dimension $d\\ge3$ for iid nearest-neighbor environments with strictly positive transition probabilities.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No common positive lower bound on the probabilities is assumed.",
+      "sourceLine": "No common positive lower bound on those probabilities is assumed.",
+      "sourceQuote": "No common positive lower bound on those probabilities is assumed.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Transience and ballisticity coincide for iid uniformly elliptic environments in every dimension at least two.",
+      "sourceLine": "We prove that they coincide for nearest-neighbor walks in iid uniformly elliptic environments in every dimension at least two.",
+      "sourceQuote": "We prove that they coincide for nearest-neighbor walks in iid uniformly elliptic environments in every dimension at least two.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof controls a piece's spatial radius before its duration.",
+      "sourceLine": "The proof here first controls a piece's spatial radius",
+      "sourceQuote": "The proof here first controls a piece's spatial radius---its greatest distance from its starting point--- and only later its duration.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The finite-range paper extends the uniformly elliptic case to finite-range dependence.",
+      "sourceLine": "Here we extend the uniformly elliptic case to finite-range dependence.",
+      "sourceQuote": "Here we extend the uniformly elliptic case to finite-range dependence.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Bramson, Zeitouni and Zerner built polynomially mixing environments with positive escape probability in two opposite directions.",
+      "sourceLine": "constructed stationary, uniformly elliptic, polynomially mixing environments in dimension at least three with positive probability of escape in each of two opposite directions.",
+      "sourceQuote": "Exact finite-range independence is also stronger than decay of local correlations: Bramson, Zeitouni, and Zerner \\cite[Theorem~3]{BramsonZeitouniZerner2006} constructed stationary, uniformly elliptic, polynomially mixing environments in dimension at least three with positive probability of escape in each of two opposite directions.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the iid strictly elliptic zero–one law for d ≥ 3 and that transience implies ballisticity for d ≥ 2; the finite-range paper is outside it.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 5
+    }
+  ]
+}

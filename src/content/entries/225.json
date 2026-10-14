@@ -1,0 +1,164 @@
+{
+  "id": "225",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Gaussian-free-field-limit-of-the-balanced-six-vertex-model-with-variance-multiplier-1-over-arcsin-c-over-2-September-23-2026/The-Gaussian-free-field-limit-of-the-balanced-six-vertex-model-with-variance-multiplier-1-over-arcsin-c-over-2-September-23-2026.pdf",
+      "label": "The Gaussian free field limit of the balanced six-vertex model with variance multiplier 1/arcsin(c/2)"
+    }
+  ],
+  "headline": "The balanced six-vertex height surface tends to a Gaussian free field for all c up to 2, with variance 1/arcsin(c/2).",
+  "scope": "Weights a = b = 1 and 0 < c ≤ 2, in one zero-slope plane state built from balanced tori. Uniqueness is not claimed.",
+  "plain": "The six-vertex model puts an arrow on every edge of a square grid, with two arrows in and two out at each corner. These arrows define a random height surface. Physicists predicted that, zoomed out, this surface looks like a Gaussian free field, a standard random landscape. This paper claims to prove that across the whole range 0 < c ≤ 2, with the exact strength 1/arcsin(c/2). No computer proof checker has checked it.",
+  "doesNot": "This does not show the plane state is unique, or cover other slopes or the range c above 2.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1987",
+    "firstStepBy": "Di Francesco, Saleur and Zuber, the Coulomb-gas Gaussian prediction",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "If it holds, it covers the whole critical range, including the endpoint c = 2, where earlier proofs covered only parts."
+  },
+  "explanation": "Draw a square grid and put an arrow on every edge. At each corner, insist that exactly two arrows point in and two point out. That is the ice rule[1]. There are exactly six ways to satisfy it at one corner, hence the name six-vertex model. Water ice obeys the same rule for its hydrogen atoms. With every corner type weighted equally, Lieb computed the exact count in 1967. The number of grid configurations grows like about 1.540 to the power of the number of corners.\n\nThe arrows define a height. Cross an arrow, and the height on its left is one more than on its right[2]. The ice rule makes this consistent all the way round each corner. So a random arrow pattern is a random surface. The model has a weight c for the two corner types whose horizontal arrows both point in or both point out. The other four types get weight one[3].\n\nZoom out, and the surface should look like the Gaussian free field. That is the natural random landscape in two dimensions, where heights at two points are correlated like minus the log of their distance. The open question is its strength. The paper's answer for the squared multiplier is 1/arcsin(c/2). For c = 1 that is about 1.910. For c = √2 it is about 1.273. For c = 2 it is about 0.637. So larger c gives a flatter surface. For 1 < c < 2, a physics prediction by Di Francesco, Saleur and Zuber agrees with this formula[4].\n\nEarlier proofs covered pieces of the range. At c = √2, the model maps to domino tilings, and Kenyon proved Gaussian free field limits there[5]. Duminil-Copin, Karrila, Manolescu and Oulamara proved logarithmic delocalization for 1 ≤ c ≤ 2. That fixes the size of fluctuations but not their joint law[6]. Duminil-Copin, Kozlowski, Lammers and Manolescu gave a Gaussian free field theorem for √3 ≤ c ≤ 2. It relies on a rotational-invariance input listed as in preparation[7].\n\nThis paper claims the limit for every c in the whole range 0 < c ≤ 2[8]. The surface comes from a plane state built from balanced tori. A torus is a grid wrapped around in both directions. Balanced means each column holds equal numbers of left and right arrows. The paper takes the width to infinity first, then the height. It says that existence of this state in the previously untreated range is part of the theorem[9].\n\nThe obstacle is getting the exact law, not just the fluctuation size. The paper builds two Gaussian currents from exact row identities of the transfer matrix, which adds one row of the grid at a time[10]. At the endpoint c = 2, it supplies the needed rotation invariance through a loop representation[11].\n\nThe claim has limits. It is about this one zero-slope plane state. It makes no uniqueness claim among all states or slopes, and nothing uniform as c shrinks to 0[12].\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. No specialist review has been published.",
+  "hypeCheck": "Major if it holds. It completes the critical range, but no Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Six-vertex model",
+      "meaning": "Arrows on the edges of a square grid with two in and two out at every corner, weighted by corner type."
+    },
+    {
+      "term": "Ice rule",
+      "meaning": "The rule that exactly two arrows enter and two leave each corner."
+    },
+    {
+      "term": "Height function",
+      "meaning": "A number on each face of the grid, going up by one when you cross an arrow from right to left."
+    },
+    {
+      "term": "Gaussian free field",
+      "meaning": "The standard random landscape in two dimensions, with heights correlated like minus the log of distance."
+    },
+    {
+      "term": "Delocalization",
+      "meaning": "The height surface's fluctuations grow without bound, here like the log of the system size."
+    },
+    {
+      "term": "Transfer matrix",
+      "meaning": "A matrix that builds a grid model one row at a time, so its properties give the whole model."
+    },
+    {
+      "term": "Torus",
+      "meaning": "A grid wrapped around in both directions, so it has no edges."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Gaussian free field limit of the balanced six-vertex model with variance multiplier 1/arcsin(c/2)” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Gaussian-free-field-limit-of-the-balanced-six-vertex-model-with-variance-multiplier-1-over-arcsin-c-over-2-September-23-2026/The-Gaussian-free-field-limit-of-the-balanced-six-vertex-model-with-variance-multiplier-1-over-arcsin-c-over-2-September-23-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 3,
+      "cite": "E. H. Lieb, “Residual entropy of square ice”, Physical Review 162 (1967), 162–172",
+      "url": "https://doi.org/10.1103/PhysRev.162.162"
+    },
+    {
+      "id": 4,
+      "cite": "P. Di Francesco, H. Saleur and J.-B. Zuber, “Relations between the Coulomb gas picture and conformal invariance of two-dimensional critical models”, Journal of Statistical Physics 49 (1987), 57–79",
+      "url": "https://doi.org/10.1007/BF01009954"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Two arrows enter and two leave each vertex.",
+      "sourceLine": "subject to the rule that two arrows enter and two arrows leave each vertex.",
+      "sourceQuote": "The six-vertex model assigns an arrow to each edge of the square lattice, subject to the rule that two arrows enter and two arrows leave each vertex.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The face on the left of an arrow has height one more than the face on its right.",
+      "sourceLine": "Give the face on the left of an arrow height one more than the face on its right.",
+      "sourceQuote": "Give the face on the left of an arrow height one more than the face on its right.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The two vertices with both horizontal arrows in or both out have weight c; the others weight one.",
+      "sourceLine": "the other four vertices have weight one.",
+      "sourceQuote": "The two vertices having both horizontal arrows directed inward, or both directed outward, have weight \\(c\\); the other four vertices have weight one.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Di Francesco–Saleur–Zuber Gaussian prediction agrees with the multiplier.",
+      "sourceLine": "give a Gaussian-action prediction which, after converting their height steps of \\(\\pi/2\\) to unit steps, agrees with \\eqref{eq:multiplier}.",
+      "sourceQuote": "In the F-model regime \\(1<c<2\\), Di Francesco, Saleur and Zuber~\\cite[Section~2.3]{DFSZ1987} give a Gaussian-action prediction which, after converting their height steps of \\(\\pi/2\\) to unit steps, agrees with \\eqref{eq:multiplier}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kenyon proved conformal-invariance and GFF theorems for domino tilings at the free-fermion point.",
+      "sourceLine": "Kenyon's conformal-invariance and GFF theorems for domino tilings",
+      "sourceQuote": "Kenyon's conformal-invariance and GFF theorems for domino tilings~\\cite{Kenyon2000,Kenyon2001} are foundational scaling-limit results in this setting.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Delocalization results establish the fluctuation scale but not the joint law.",
+      "sourceLine": "These results establish the scale of fluctuations; identifying their joint law requires additional information.",
+      "sourceQuote": "These results establish the scale of fluctuations; identifying their joint law requires additional information.",
+      "verdict": "supported"
+    },
+    {
+      "text": "DKLM give a GFF theorem on root 3 ≤ c ≤ 2; the rotational input is in preparation.",
+      "sourceLine": "The rotational-invariance input is listed as in preparation in the cited version.",
+      "sourceQuote": "The rotational-invariance input is listed as in preparation in the cited version.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the GFF limit throughout 0 < c ≤ 2.",
+      "sourceLine": "We prove the Gaussian free field limit of this surface throughout the critical range",
+      "sourceQuote": "We prove the Gaussian free field limit of this surface throughout the critical range \\(a=b=1\\), \\(0<c\\le2\\), for the plane state specified below.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Existence of the plane law in the previously untreated range is part of the theorem.",
+      "sourceLine": "Existence in the previously untreated range is part of the theorem.",
+      "sourceQuote": "Existence in the previously untreated range is part of the theorem.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper constructs two Gaussian currents from finite row identities.",
+      "sourceLine": "construct the two Gaussian currents from finite row identities and uniform thermodynamic estimates.",
+      "sourceQuote": "We retain the use of transfer spectra and reflection, but for \\(0<c<2\\) construct the two Gaussian currents from finite row identities and uniform thermodynamic estimates.",
+      "verdict": "supported"
+    },
+    {
+      "text": "At c = 2, an appendix supplies rotational invariance via FK loops.",
+      "sourceLine": "supplies the needed rotational-invariance statement from the independent fair orientations of FK loops,",
+      "sourceQuote": "At \\(c=2\\), Appendix~\\ref{sec:endpoint-rotation} supplies the needed rotational-invariance statement from the independent fair orientations of FK loops, the plane loop correspondence of~\\cite{Lis2021}, and the homotopy coupling underlying the FK rotation theorem of~\\cite{DCKKMO2026Rotation}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No uniqueness among Gibbs states or slopes, and no estimate uniform as c tends to 0.",
+      "sourceLine": "It makes no uniqueness assertion among all Gibbs states or all slopes, and no estimate uniform as \\(c\\downarrow0\\).",
+      "sourceQuote": "It makes no uniqueness assertion among all Gibbs states or all slopes, and no estimate uniform as \\(c\\downarrow0\\).",
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 2
+    }
+  ]
+}

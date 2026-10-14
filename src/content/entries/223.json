@@ -1,0 +1,214 @@
+{
+  "id": "223",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Square-lattice-FK-interfaces-and-nested-loops-for-1-leq-q-lt-4-September-23-2026/paper.pdf",
+      "label": "Square-lattice FK interfaces and nested loops for 1 <= q < 4"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Self-dual-random-cluster-interfaces-below-one-September-23-2026/paper.pdf",
+      "label": "Self-dual random-cluster interfaces below one"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quenched-SLE-Universality-for-Weakly-Disordered-FK-Ising-Interfaces-October-5-2026/quenched-fk-ising.pdf",
+      "label": "Quenched SLE Universality for Weakly Disordered FK–Ising Interfaces"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Thermal-FK-Ising-interfaces-and-massive-SLE-October-5-2026/paper.pdf",
+      "label": "Thermal FK–Ising interfaces and massive SLE"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Natural-Occupation-Measures-for-Critical-Square-Lattice-FK-Interfaces-October-5-2026/natural-occupation-measures-critical-square-lattice-fk-interfaces.pdf",
+      "label": "Natural Occupation Measures for Critical Square-Lattice FK Interfaces"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conformal-Limits-of-Critical-Square-Lattice-Random-Cluster-Interfaces-October-5-2026/paper.pdf",
+      "label": "Conformal Limits of Critical Square-Lattice Random-Cluster Interfaces"
+    }
+  ],
+  "headline": "Critical random-cluster interfaces on the square grid converge to SLE curves for every cluster weight up to 4.",
+  "scope": "The critical square lattice with Dobrushin boundaries. Below q = 1 the domain must be smooth; loop results cover q from 1 to 4.",
+  "plain": "The random-cluster model opens each edge of a grid at random, with an extra reward or penalty for each cluster formed. At its critical point, the boundary between clusters is expected to become a random fractal curve called SLE. These six papers claim that limit on the square grid for every cluster weight q from just above 0 up to 4. They also claim limits for all loops, a disordered case, a near-critical case, and the curve's length. No computer proof checker has checked them.",
+  "doesNot": "This does not cover cluster weights above 4, or other lattices for general q.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2005",
+    "firstStepBy": "Rohde and Schramm, the predicted SLE parameter for random-cluster interfaces",
+    "field": "Probability and statistical mechanics",
+    "significance": "Landmark",
+    "significanceWhy": "If they hold, they settle the long-standing conformal-invariance prediction for square-lattice random-cluster interfaces across 0 < q ≤ 4."
+  },
+  "explanation": "Take a square grid and open each edge with some chance p. Open edges join points into clusters. The random-cluster model adds a twist. Each configuration also gets a factor q for every cluster[1]. With q = 1 this is plain bond percolation. With q = 2 it is tied to the Ising magnet. The critical edge chance is √q / (1 + √q). That is 0.5 for q = 1, and about 0.586 for q = 2.\n\nNow force a boundary condition. Wire one arc of the border into a single cluster and leave the other arc free. A curve then runs between the two points where the arcs meet. It traces the outer edge of the wired cluster. This is the Dobrushin interface. At the critical point it wiggles at every scale.\n\nThe prediction is that this curve tends to chordal SLE_κ as the grid shrinks. SLE_κ is a random fractal curve driven by √κ times a Brownian motion[2]. The predicted parameter is κ = 4π / arccos(−√q / 2). It gives κ = 6 for q = 1, 16/3 for q = 2, 4.8 for q = 3, and 4 for q = 4. Earlier proofs covered special cases. Smirnov proved Cardy's crossing formula for site percolation on the triangular lattice[3]. Chelkak, Duminil-Copin, Hongler, Kemppainen and Smirnov proved the q = 2 interface limit.\n\nThe papers here claim to close that range. One claims SLE_κ limits for every q from 1 up to, but not including, 4. It allows every bounded Jordan domain. A Jordan domain is a region bounded by one simple closed curve. The same paper claims the full nested family of loops in the plane tends to the conformal loop ensemble CLE_κ[4]. At q = 1 this gives Cardy's formula for square-lattice bond percolation[5]. A second paper covers 0 < q < 1, where κ lies between 6 and 8, but needs a smooth boundary[6]. A further paper covers q = 4 as well[7].\n\nThree more papers go sideways. One adds weak random bond strengths to the q = 2 case, held fixed as the grid shrinks. It claims the SLE_16/3 limit survives, in probability over the environment[8]. Another moves slightly off the critical point, with a fixed mass of either sign. Its limit is a massive SLE_16/3 curve[9]. The last counts the curve's steps. It claims the rescaled count tends to the natural length measure of the SLE limit[10].\n\nThe obstacle is that one interface limit is not the whole story. A limit for one curve does not fix how it is coupled to the others. Loop limits on compact sets can also lose multiplicities, nesting or full traversals[11]. The papers track these features explicitly, through local winding identities first studied by Smirnov, Riva and Cardy.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Landmark only if all six papers hold. No Lean formalization is listed and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Random-cluster model",
+      "meaning": "A model that opens grid edges at random, weighting each configuration by a factor q per cluster."
+    },
+    {
+      "term": "Cluster weight q",
+      "meaning": "The factor given for each connected cluster; q = 1 is percolation and q = 2 is linked to the Ising magnet."
+    },
+    {
+      "term": "Dobrushin interface",
+      "meaning": "The curve forced between two boundary points when one arc of the border is wired together and the other is free."
+    },
+    {
+      "term": "SLE_κ",
+      "meaning": "Schramm–Loewner evolution: a random fractal curve driven by √κ times a Brownian motion."
+    },
+    {
+      "term": "CLE_κ",
+      "meaning": "Conformal loop ensemble: the random family of nested loops matching SLE_κ."
+    },
+    {
+      "term": "Jordan domain",
+      "meaning": "A region in the plane bounded by one simple closed curve."
+    },
+    {
+      "term": "Cardy's formula",
+      "meaning": "An exact formula for the chance that a critical percolation cluster crosses between two arcs of a shape."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Square-lattice FK interfaces and nested loops for 1 <= q < 4” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Square-lattice-FK-interfaces-and-nested-loops-for-1-leq-q-lt-4-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Self-dual random-cluster interfaces below one” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Self-dual-random-cluster-interfaces-below-one-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Quenched SLE Universality for Weakly Disordered FK–Ising Interfaces” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quenched-SLE-Universality-for-Weakly-Disordered-FK-Ising-Interfaces-October-5-2026/quenched-fk-ising.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Thermal FK–Ising interfaces and massive SLE” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Thermal-FK-Ising-interfaces-and-massive-SLE-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Natural Occupation Measures for Critical Square-Lattice FK Interfaces” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Natural-Occupation-Measures-for-Critical-Square-Lattice-FK-Interfaces-October-5-2026/natural-occupation-measures-critical-square-lattice-fk-interfaces.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Conformal Limits of Critical Square-Lattice Random-Cluster Interfaces” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conformal-Limits-of-Critical-Square-Lattice-Random-Cluster-Interfaces-October-5-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 8,
+      "cite": "S. Rohde and O. Schramm, “Basic properties of SLE”, Annals of Mathematics 161 (2005), 883–924",
+      "url": "https://doi.org/10.4007/annals.2005.161.883"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The random-cluster law weights edges by p and counts components with weight q.",
+      "sourceLine": "let $k_\\xi(A)$ be the number of components of $(V,A)$",
+      "sourceQuote": "For $A\\subseteq E$, let $k_\\xi(A)$ be the number of components of $(V,A)$ after identification within each block of $\\xi$, including isolated vertices.",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Chordal SLE is the Loewner trace driven by root kappa times Brownian motion.",
+      "sourceLine": "is the conformal image of the upper-half-plane Loewner trace driven by",
+      "sourceQuote": "Chordal $\\SLE_\\kappa$ in $(D;a,b)$ is the conformal image of the upper-half-plane Loewner trace driven by $\\sqrt\\kappa B_t$ from $0$ to $\\infty$, with $B$ a standard Brownian motion.",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Smirnov proved Cardy's prediction for site percolation on the triangular lattice.",
+      "sourceLine": "was proved by Smirnov for site percolation on the triangular lattice",
+      "sourceQuote": "Cardy's prediction for critical percolation crossings \\citep{Cardy1992} was proved by Smirnov for site percolation on the triangular lattice \\citep{Smirnov2001}.",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "For 1 ≤ q < 4, interfaces converge to SLE and nested loops to whole-plane CLE.",
+      "sourceLine": "confirming the Rohde--Schramm prediction in this parameter range.",
+      "sourceQuote": "For every fixed $1\\le q<4$, critical square-lattice random-cluster Dobrushin interfaces converge as ordered curves to chordal $\\SLE_{\\kappa(q)}$, where $\\kappa(q)=4\\pi/\\arccos(-\\sqrt q/2)$, confirming the Rohde--Schramm prediction in this parameter range.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "At q = 1 the paper obtains Cardy's formula for square-lattice bond percolation.",
+      "sourceLine": "At $q=1$ we obtain Cardy's formula for square-lattice bond percolation with free boundary edges.",
+      "sourceQuote": "At $q=1$ we obtain Cardy's formula for square-lattice bond percolation with free boundary edges.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For 0 < q < 1, the interface converges to SLE with kappa in (6,8) in smooth Jordan domains.",
+      "sourceLine": "Thus $\\pi/3<\\lambda<\\pi/2$, $1/3<\\rho<1/2$, and $6<\\kappa<8$.",
+      "sourceQuote": "Thus $\\pi/3<\\lambda<\\pi/2$, $1/3<\\rho<1/2$, and $6<\\kappa<8$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The conformal-limits paper covers 1 ≤ q ≤ 4.",
+      "sourceLine": "Fix a real number $q\\in[1,4]$ and put",
+      "sourceQuote": "Fix a real number $q\\in[1,4]$ and put \\begin{equation}\\label{intro:parameters} p_q=\\frac{\\sqrt q}{1+\\sqrt q}, \\qquad \\kappa(q)=\\frac{4\\pi}{\\arccos(-\\sqrt q/2)}. \\end{equation}",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Weakly disordered FK–Ising interfaces converge to SLE 16/3 with disorder fixed.",
+      "sourceLine": "The disorder strength is fixed as the mesh tends to zero, and convergence of the conditional curve laws holds in probability over the environment.",
+      "sourceQuote": "The disorder strength is fixed as the mesh tends to zero, and convergence of the conditional curve laws holds in probability over the environment.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Thermal FK–Ising interfaces converge for every fixed nonzero mass to massive SLE 16/3.",
+      "sourceLine": "For positive mass it is the unique massive SLE$_{16/3}$ law",
+      "sourceQuote": "For positive mass it is the unique massive SLE$_{16/3}$ law with locally finite-energy drift prescribed by a massive boundary value problem; negative mass follows by duality and reversal.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The rescaled counting measure converges to the Minkowski-content measure of the SLE limit.",
+      "sourceLine": "giving the scaling limit of the interface's total number of steps.",
+      "sourceQuote": "Convergence is joint with the ordered curve and includes the total mass, giving the scaling limit of the interface's total number of steps.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "A limit for one interface does not identify its coupling with others.",
+      "sourceLine": "a limit for one interface does not by itself identify its coupling with other interfaces,",
+      "sourceQuote": "These are distinct conclusions: a limit for one interface does not by itself identify its coupling with other interfaces, and convergence of loop traces on compact sets does not by itself retain multiplicities, nesting, or complete traversals.",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

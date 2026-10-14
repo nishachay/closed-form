@@ -1,0 +1,215 @@
+{
+  "id": "222",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-free-energy-of-the-Ising-random-perceptron-September-24-2026/The-free-energy-of-the-Ising-random-perceptron-September-24-2026.pdf",
+      "label": "The free energy of the Ising random perceptron"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026.pdf",
+      "label": "Microscopic jamming in the negative spherical perceptron"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026.pdf",
+      "label": "The spherical perceptron with bi-orthogonally invariant disorder"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-free-energy-of-the-spherical-random-perceptron-September-24-2026/The-free-energy-of-the-spherical-random-perceptron-September-24-2026.pdf",
+      "label": "The free energy of the spherical random perceptron"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/222.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Exact free energies for Ising and spherical perceptrons at every density, and the gap and force exponents at jamming.",
+  "scope": "Bounded log-potentials at positive temperature; the jamming result is for margin −1 with a quadratic penalty and limits taken in a set order.",
+  "plain": "A perceptron is a simple model of random constraints, first studied as a model of memory in neural networks. These four papers claim exact formulas for its free energy, for yes-or-no spins and for spins on a sphere, at every pattern density. One paper also claims the exact way small gaps and weak forces behave at jamming, where solutions run out. Lean has checked the spherical formula and a finiteness fact for the Ising one.",
+  "doesNot": "This does not cover hard yes-or-no constraints in the Ising papers, or the jamming laws in any other order of limits.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Gardner, and Gardner and Derrida, replica calculations for random-pattern storage",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "If they hold, they give the free energy at every density with no smallness condition, plus proven jamming exponents."
+  },
+  "explanation": "Take two switches, each set to +1 or −1. Draw a random pattern, say (0.5, −1.2). For each setting, multiply and add, then divide by √2. Setting (1, 1) scores about −0.495. Setting (1, −1) scores about 1.202. Setting (−1, 1) scores about −1.202, and (−1, −1) about 0.495. If the rule is score at least zero, two of the four settings pass. Add more random patterns, and fewer settings pass all of them. That is a perceptron: a vector of variables facing random linear constraints.\n\nWith N switches and about αN patterns, the question is how big the passing set is, on a log scale per switch. Gardner and Derrida set up this storage problem with replica calculations in 1988[1]. At positive temperature, each constraint becomes soft. A log-potential f rewards or penalises each pattern's score, and the pressure is the log of the average total weight, divided by N[2].\n\nRigorous results needed small density. Talagrand and later Bolthausen, Nakajima, Sun and Xu handled only small α[3]. The obstacle is that a sum of nonlinear terms of Gaussian patterns is not itself Gaussian. So the Parisi formula for standard spin glasses does not apply directly[4].\n\nThe first paper claims an exact formula for the Ising perceptron at every positive density. Ising means each variable is ±1. It allows any bounded log-potential and imposes no symmetry, concavity or smallness condition[5]. The fourth paper does the same for the spherical perceptron. There the variables form a vector of fixed length, and the potential must be bounded and continuous[6]. The third paper replaces the Gaussian patterns by a rotation-invariant matrix. Its singular values may follow any compact limiting law, provided none stray far from the rest[7].\n\nThe second paper studies jamming. Jamming is where a system of random constraints just stops having solutions, like grains locking into a pile. Franz and Parisi tied the negative-margin spherical perceptron to the jamming class of high-dimensional spheres[8]. Margin −1 means each score must be at least −1. Near jamming, many constraints are almost tight. Gaps are how far a score sits above its limit. Forces are how hard a tight constraint pushes back.\n\nThe paper claims a sharp threshold, with power laws for small gaps and weak forces[9]. The fraction of gaps below u grows like u to the power 1 − γ. The force law has exponent 1 + θ, with γ = 1/(2 + θ). It places γ between 0.4126930 and 0.4126934, and θ between 0.4231063 and 0.4231088, with a numerical certificate[10]. Take u = 0.01. Then 0.01 to the power 1 − γ is about 0.067, nearly seven times larger than 0.01. So tiny gaps are far more common than a straight-line law suggests. Earlier rigorous bounds did not give a sharp threshold at margin −1 or these laws[11].\n\nHow sure is this? A computer proof checker called Lean has checked the spherical perceptron's variational formula, for bounded continuous potentials. For the Ising perceptron, Lean has checked only that the formula's value is a finite number. The Ising convergence, the rotation-invariant extension and the jamming laws are not formalized. No specialist review has been published.",
+  "hypeCheck": "Major if the papers hold. Lean checks the spherical formula and an Ising finiteness fact only; the jamming result is unchecked and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Perceptron",
+      "meaning": "A model where a vector of variables must satisfy many random linear constraints, first used to study memory in neural networks."
+    },
+    {
+      "term": "Pattern density",
+      "meaning": "The number of random constraints divided by the number of variables, written α."
+    },
+    {
+      "term": "Log-potential",
+      "meaning": "A function that turns each constraint's score into a reward or penalty in the weight of a configuration."
+    },
+    {
+      "term": "Pressure",
+      "meaning": "The log of the average total weight, divided by the number of variables."
+    },
+    {
+      "term": "Spherical perceptron",
+      "meaning": "A perceptron whose variables are real numbers forming a vector of fixed length."
+    },
+    {
+      "term": "Jamming",
+      "meaning": "The point where random constraints just stop having any solution, with many constraints nearly tight."
+    },
+    {
+      "term": "Gap and force",
+      "meaning": "How far a constraint's score sits above its limit, and how hard a tight constraint pushes back."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The free energy of the Ising random perceptron” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-free-energy-of-the-Ising-random-perceptron-September-24-2026/The-free-energy-of-the-Ising-random-perceptron-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Microscopic jamming in the negative spherical perceptron” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “The spherical perceptron with bi-orthogonally invariant disorder” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “The free energy of the spherical random perceptron” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-free-energy-of-the-spherical-random-perceptron-September-24-2026/The-free-energy-of-the-spherical-random-perceptron-September-24-2026.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math, Lean scope note for family 222",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/222.md",
+      "quote": "This is a supporting well-definedness result. It does not assert convergence of the finite-system pressure or the paper's extension to all bounded Borel log-potentials."
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 7,
+      "cite": "E. Gardner and B. Derrida, “Optimal storage properties of neural network models”, Journal of Physics A 21 (1988), 271–284",
+      "url": "https://doi.org/10.1088/0305-4470/21/1/031"
+    },
+    {
+      "id": 8,
+      "cite": "S. Franz and G. Parisi, “The simplest model of jamming”, Journal of Physics A 49 (2016), 145001",
+      "url": "https://doi.org/10.1088/1751-8113/49/14/145001"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Gardner and Gardner–Derrida developed the statistical physics of random-pattern storage.",
+      "sourceLine": "The statistical-physics study of random-pattern storage was developed by",
+      "sourceQuote": "The statistical-physics study of random-pattern storage was developed by Gardner~\\cite{gardner1988} and Gardner and Derrida~\\cite{gardnerderrida1988}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The pressure is the normalized log of the uniform average of the pattern weights.",
+      "sourceLine": "We use the uniform probability prior on the cube and call this normalized log partition function the pressure.",
+      "sourceQuote": "We use the uniform probability prior on the cube and call this normalized log partition function the pressure.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The density restrictions in earlier work are substantive and absent here.",
+      "sourceLine": "The density restrictions in these predecessors are substantive and are absent from Theorem~\\ref{thm:main}.",
+      "sourceQuote": "The density restrictions in these predecessors are substantive and are absent from Theorem~\\ref{thm:main}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The pattern sum is not Gaussian, so the Parisi formula does not directly apply.",
+      "sourceLine": "Thus the Parisi formula for Gaussian mixed $p$-spin Hamiltonians does not directly evaluate this pressure.",
+      "sourceQuote": "Thus the Parisi formula for Gaussian mixed $p$-spin Hamiltonians does not directly evaluate this pressure.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "No symmetry, concavity or smallness condition is imposed on the activation.",
+      "sourceLine": "No symmetry, concavity, or smallness condition is imposed on the activation.",
+      "sourceQuote": "No symmetry, concavity, or smallness condition is imposed on the activation.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The spherical paper proves an exact variational formula for bounded continuous potentials.",
+      "sourceLine": "We prove an exact variational formula for the limiting pressure of the spherical random perceptron with an arbitrary bounded continuous single-pattern potential.",
+      "sourceQuote": "We prove an exact variational formula for the limiting pressure of the spherical random perceptron with an arbitrary bounded continuous single-pattern potential.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "Singular values may have any compact limiting distribution without outliers.",
+      "sourceLine": "singular values may have any compact limiting distribution, provided there are no outliers.",
+      "sourceQuote": "The singular values may have any compact limiting distribution, provided there are no outliers.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Franz and Parisi identified the model with the jamming class of high-dimensional spheres.",
+      "sourceLine": "identified this model with the jamming universality class of high-dimensional spheres.",
+      "sourceQuote": "Franz and Parisi~\\cite{FranzParisi2016} identified this model with the jamming universality class of high-dimensional spheres.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves a sharp feasibility threshold and limiting gap and force laws.",
+      "sourceLine": "We prove a sharp feasibility threshold and limiting gap and force laws for the spherical perceptron with margin $-1$ and quadratic penalty.",
+      "sourceQuote": "We prove a sharp feasibility threshold and limiting gap and force laws for the spherical perceptron with margin $-1$ and quadratic penalty.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A finite numerical certificate encloses the exponents.",
+      "sourceLine": "A finite numerical certificate for these exponent intervals, together with its mathematical error bounds, is included.",
+      "sourceQuote": "A finite numerical certificate for these exponent intervals, together with its mathematical error bounds, is included.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Earlier bounds did not give a sharp threshold at margin −1 or the gap and force laws.",
+      "sourceLine": "These bounds do not establish a sharp threshold at margin $-1$ or determine the microscopic gap and force laws studied here.",
+      "sourceQuote": "These bounds do not establish a sharp threshold at margin $-1$ or determine the microscopic gap and force laws studied here.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the spherical perceptron's variational formula and the finiteness of the Ising variational value; Ising convergence and jamming are outside it.",
+      "verdict": "external",
+      "sourceId": 5
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ]
+}

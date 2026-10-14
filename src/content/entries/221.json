@@ -1,0 +1,162 @@
+{
+  "id": "221",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/paper.pdf",
+      "label": "The Mézard–Parisi formula for diluted spin glasses"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/221.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "The Mézard–Parisi cavity formula gives the exact free energy of sparse spin glasses in the Panchenko–Talagrand class.",
+  "scope": "Poisson-diluted Ising models with even-size interactions, under Panchenko and Talagrand's factorization and positivity conditions.",
+  "plain": "A diluted spin glass is a large set of tiny magnets where each one interacts with only a few random others. Physicists Mézard and Parisi proposed a formula for its free energy, built from layered guesses. Panchenko and Talagrand proved each such guess gives an upper bound. This paper proves the best of these bounds is exact, for their class of models. Lean has checked a formal version of this main result.",
+  "doesNot": "This does not cover odd-size interactions, or models outside the stated factorization and positivity conditions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2001",
+    "firstStepBy": "Mézard and Parisi, the hierarchical cavity picture",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "It resolves the Panchenko–Talagrand equality conjecture for its class, with a Lean check of the main theorem."
+  },
+  "explanation": "Take 1000 tiny magnets, each pointing up (+1) or down (−1). Draw about 1500 random pairs among them. Give each pair a coupling of +1 or −1 by a coin flip. A +1 coupling rewards the pair for agreeing, and −1 for disagreeing. Each magnet then has on average 3 partners, not 999. This is a diluted spin glass: a finite mean number of interactions per spin, however large the system[1].\n\nPhysicists want the pressure, the expected log of the partition function, per spin[2]. The partition function adds a weight for every one of the 2^1000 states. A quick upper bound comes from averaging before taking the log. At inverse temperature 1 it gives log 2 + 1.5 × log cosh 1, about 1.344. That bound ignores the frustration of competing couplings, which can make the true value smaller.\n\nThe cavity method does better. Remove one spin, look at the fields its few partners exert, and put it back. When many competing states matter, the order parameter is a hierarchy of distributions of these fields[3]. Mézard and Parisi built this picture for sparse spin glasses in 2001. Franz and Leone then turned some of it into rigorous bounds. Panchenko and Talagrand proved that every finite level of the hierarchy gives an upper bound[4]. Whether the best such bound is exact was left as a conjecture.\n\nThis paper proves that the infimum of these bounds is the limiting pressure[5]. The infimum is the lowest value the bounds approach. The result needs only first moments of the interactions and external field, meaning their averages must be finite[6]. It covers the Viana–Bray model, diluted even-spin models with symmetric couplings, and soft random even-K satisfiability at every positive temperature[7]. Satisfiability here means a random logic puzzle, softened so each broken clause costs energy rather than being forbidden.\n\nThe main obstacle is how several samples from the same system share spins. Call each sample a replica. The chance of a joint pattern depends on products over every subset of replica spins. Their spatial averages are multioverlaps, and pair overlaps alone do not fix them[8]. The proof controls all of these at once, but only on average over the depths of a branching tree[9]. That averaged control is enough, because the cavity step itself averages over finite trees.\n\nThe result has limits. Every interaction must involve an even number of spins. The couplings must satisfy Panchenko and Talagrand's factorization and positivity conditions. The formula is an infimum over trial laws, so it gives no closed form for any specific model.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of the main theorem. It covers even arity from 2 up, positive interaction density, and the class's stated assumptions. The paper's consequences for named models and their ground states are not listed in that check. No specialist review has been published.",
+  "hypeCheck": "Major. It settles a stated equality conjecture for its class, the main theorem has a Lean check, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Spin glass",
+      "meaning": "A system of tiny magnets whose pairwise couplings are random and conflict, so no state pleases every pair."
+    },
+    {
+      "term": "Diluted",
+      "meaning": "Each spin interacts with only a few others on average, however large the system grows."
+    },
+    {
+      "term": "Pressure",
+      "meaning": "The expected logarithm of the partition function per spin; the free energy is its negative divided by β."
+    },
+    {
+      "term": "Cavity method",
+      "meaning": "A physics technique that removes one spin, studies the fields its neighbours exert, then adds it back."
+    },
+    {
+      "term": "Replica",
+      "meaning": "An independent sample drawn from the same random system with the same couplings."
+    },
+    {
+      "term": "Multioverlap",
+      "meaning": "The average over sites of a product of spins taken from several replicas."
+    },
+    {
+      "term": "Infimum",
+      "meaning": "The greatest number that is below or equal to every value in a set; the lowest value the bounds approach."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Mézard–Parisi formula for diluted spin glasses” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 221",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/221.md",
+      "quote": "Under the class's factorization, independence, integrability, and positivity assumptions, the finite-system pressure converges to the infimum of the trial functional over all finite hierarchy depths and trial laws."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 4,
+      "cite": "M. Mézard and G. Parisi, “The Bethe lattice spin glass revisited”, European Physical Journal B 20 (2001), 217–233",
+      "url": "https://doi.org/10.1007/PL00011099"
+    },
+    {
+      "id": 5,
+      "cite": "D. Panchenko and M. Talagrand, “Bounds for diluted mean-fields spin glass models”, Probability Theory and Related Fields 130 (2004), 319–336",
+      "url": "https://doi.org/10.1007/s00440-004-0342-2"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A diluted spin glass has a finite mean number of interactions per spin.",
+      "sourceLine": "A diluted spin glass has a finite mean number of interactions per spin.",
+      "sourceQuote": "A diluted spin glass has a finite mean number of interactions per spin.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Pressure is the limiting expected log partition function per spin.",
+      "sourceLine": "limiting expected log partition function per spin.",
+      "sourceQuote": "The thermodynamic question is whether this hierarchy determines the limiting expected log partition function per spin.",
+      "verdict": "supported"
+    },
+    {
+      "text": "With many competing states, the order parameter is a hierarchy of distributions of fields.",
+      "sourceLine": "the proposed order parameter is a hierarchy of distributions of these fields.",
+      "sourceQuote": "When many competing states contribute to the partition function, the proposed order parameter is a hierarchy of distributions of these fields.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Panchenko and Talagrand proved the finite-level hierarchical upper bounds.",
+      "sourceLine": "Talagrand~\\cite{PT04} then proved the arbitrary finite-level hierarchical upper bounds considered here.",
+      "sourceQuote": "Panchenko and Talagrand~\\cite{PT04} then proved the arbitrary finite-level hierarchical upper bounds considered here.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The infimum of these bounds is the limiting pressure.",
+      "sourceLine": "We prove that the infimum of these bounds is the limiting pressure.",
+      "sourceQuote": "We prove that the infimum of these bounds is the limiting pressure.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Only first moments of the interaction and external field are required.",
+      "sourceLine": "Only first moments of the interaction and external field are required.",
+      "sourceQuote": "Only first moments of the interaction and external field are required.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The result includes Viana–Bray, diluted even-spin models, and soft random even-K SAT.",
+      "sourceLine": "The result includes the Viana--Bray model, diluted even-spin models with symmetric couplings, and soft random even-$K$ SAT at every positive temperature.",
+      "sourceQuote": "The result includes the Viana--Bray model, diluted even-spin models with symmetric couplings, and soft random even-$K$ SAT at every positive temperature.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Pair overlaps alone do not determine the replica-spin patterns.",
+      "sourceLine": "pair overlaps alone do not determine all these patterns.",
+      "sourceQuote": "The spatial average of such a product is a \\emph{multioverlap}; pair overlaps alone do not determine all these patterns.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Multioverlaps are concentrated on average over branching depths.",
+      "sourceLine": "Delaying each branching depth by one level permits an induction that concentrates multioverlaps",
+      "sourceQuote": "Delaying each branching depth by one level permits an induction that concentrates multioverlaps \\emph{on average over branching depths}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean proves the Mézard–Parisi variational equality for diluted even-arity models in the Panchenko–Talagrand class.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

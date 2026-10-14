@@ -1,0 +1,182 @@
+{
+  "id": "224",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/From-critical-crossings-to-quenched-near-critical-universality-in-Voronoi-percolation-October-5-2026/critical-crossings-quenched-near-critical-universality-voronoi-percolation.pdf",
+      "label": "From critical crossings to quenched near-critical universality in Voronoi percolation"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Pivotal-Amplitude-for-Voronoi-Percolation-from-Cardys-Formula-October-5-2026/voronoi-pivotal-amplitude.pdf",
+      "label": "A Pivotal Amplitude for Voronoi Percolation from Cardy's Formula"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cardys-formula-for-critical-Poisson-Voronoi-percolation-September-23-2026/paper.pdf",
+      "label": "Cardy’s formula for critical Poisson–Voronoi percolation"
+    }
+  ],
+  "headline": "Cardy's formula holds for Poisson–Voronoi percolation, and near-critical thresholds match the triangular lattice.",
+  "scope": "Cardy's formula is annealed, averaged over points and colours; the near-critical result fixes the points and covers rational polygonal shapes.",
+  "plain": "Scatter random points in the plane, give each its own cell of nearest territory, and colour each cell black or white by a fair coin. Cardy's formula predicts the chance that black cells cross a shape between two arcs. These three papers claim to prove that formula for this random-cell model. They also claim that, as the colour bias moves near one half, crossing thresholds behave as on the triangular lattice. No computer proof checker has checked them.",
+  "doesNot": "This does not prove convergence of the full interface curves, or a quenched Cardy formula in every Jordan domain.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1992",
+    "firstStepBy": "Cardy, the conformal crossing formula",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "If they hold, they answer the crossing part of Schramm's Voronoi problem and add quenched near-critical universality."
+  },
+  "explanation": "Scatter random points over a square, about ten thousand per unit of area. Give every point the patch of plane closer to it than to any other point. These patches are Voronoi cells[1]. Now flip a fair coin for each cell, colouring it black or white. Can you walk from the left side to the right side on black cells only? For a square, symmetry says the chance tends to one half.\n\nCardy's formula gives the answer for any shape. Mark four points a, b, c, d on its boundary. Map the shape onto the upper half-plane, sending a, c, d to 0, 1 and infinity. The point b lands at some x between 0 and 1. The crossing chance from arc ab to arc cd then tends to F(x), a fixed integral[2]. For x = 1/2, F is exactly 1/2. For x = 0.25, F is about 0.374. For x = 0.1, F is about 0.267.\n\nSmirnov proved the formula for site percolation on the triangular lattice[3]. Schramm's Problem 2.12 asked for the same conformal invariance for Voronoi percolation[4]. Bollobás and Riordan had shown that one half is the critical colour chance for this model. Tassion had given crossing estimates at every scale.\n\nThe third paper claims Cardy's formula for Poisson–Voronoi percolation, in every bounded Jordan domain[5]. A Jordan domain is a region bounded by one simple closed curve. The result is annealed: the chance is averaged over both the points and the colours[6]. It does not claim the full interface curves converge. For a fixed rectangle, known concentration results also give a version with the points held fixed[7].\n\nThe other two papers move slightly off the critical point. Picture raising the black chance from one half step by step. Each crossing first appears at some threshold. The window where this happens shrinks as the cells shrink. A pivotal cell is one whose colour decides whether a crossing happens. The second paper, taking Cardy's formula as input, counts these cells. The expected number for a unit-square crossing grows like a constant times ε to the −3/4, where the point density is ε to the −2[8]. With ten thousand points per unit area, ε is 0.01 and ε to the −3/4 is about 31.6.\n\nThe first paper uses that count to set the scale. It fixes one random tessellation and averages only the colours. That is called quenched. It claims the joint crossing thresholds for rational polygonal shapes tend to the same law as on the triangular lattice[9]. The obstacle is that a fixed random geometry could, in principle, bend the answer. The paper shows that a typical geometry does not.\n\nThese two near-critical results rest on the Cardy formula as an input[10]. So they inherit any gap in it.\n\nHow sure is this? No Lean formalization is listed for these papers in the openai/math release. So no computer proof checker has checked them. No specialist review has been published.",
+  "hypeCheck": "Major if all three papers hold. They build on each other, no Lean formalization is listed, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Voronoi cell",
+      "meaning": "The patch of plane that is closer to one given point than to any other point."
+    },
+    {
+      "term": "Percolation",
+      "meaning": "Colouring sites or cells at random and asking whether connected paths of one colour cross a region."
+    },
+    {
+      "term": "Cardy's formula",
+      "meaning": "An exact formula for the chance that a critical percolation cluster crosses between two arcs of a shape."
+    },
+    {
+      "term": "Annealed",
+      "meaning": "Averaged over all the randomness at once, here both the points and the colours."
+    },
+    {
+      "term": "Quenched",
+      "meaning": "With the random geometry fixed first, averaging only over the colours."
+    },
+    {
+      "term": "Pivotal cell",
+      "meaning": "A cell whose colour decides whether a given crossing happens."
+    },
+    {
+      "term": "Near-critical",
+      "meaning": "Slightly away from the critical colour chance, on the scale where large crossings start to change."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “From critical crossings to quenched near-critical universality in Voronoi percolation” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/From-critical-crossings-to-quenched-near-critical-universality-in-Voronoi-percolation-October-5-2026/critical-crossings-quenched-near-critical-universality-voronoi-percolation.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “A Pivotal Amplitude for Voronoi Percolation from Cardy's Formula” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-Pivotal-Amplitude-for-Voronoi-Percolation-from-Cardys-Formula-October-5-2026/voronoi-pivotal-amplitude.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Cardy’s formula for critical Poisson–Voronoi percolation” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cardys-formula-for-critical-Poisson-Voronoi-percolation-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 5,
+      "cite": "J. L. Cardy, “Critical percolation in finite geometries”, Journal of Physics A 25 (1992), L201–L206",
+      "url": "https://doi.org/10.1088/0305-4470/25/4/009"
+    },
+    {
+      "id": 6,
+      "cite": "S. Smirnov, “Critical percolation in the plane: conformal invariance, Cardy's formula, scaling limits”, Comptes Rendus de l'Académie des Sciences 333 (2001), 239–244",
+      "url": "https://doi.org/10.1016/S0764-4442(01)01991-7"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A Voronoi cell is the set of points closer to v than to any other point of the process.",
+      "sourceLine": "its Voronoi cell is the closed set",
+      "sourceQuote": "For $v\\in\\eta$ its Voronoi cell is the closed set \\[ \\mathcal V_v=\\{z\\in\\C:|z-v|\\le |z-u|\\text{ for every }u\\in\\eta\\}. \\]",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The crossing probability tends to F(x), Cardy's function of the conformal parameter.",
+      "sourceLine": "Its value at $b$ is a uniquely determined number $x\\in(0,1)$.",
+      "sourceQuote": "Its value at $b$ is a uniquely determined number $x\\in(0,1)$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Smirnov proved the formula for triangular-lattice site percolation.",
+      "sourceLine": "Smirnov proved the formula for site percolation on the triangular lattice \\cite{Smirnov2001}.",
+      "sourceQuote": "Smirnov proved the formula for site percolation on the triangular lattice \\cite{Smirnov2001}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "Schramm's Problem 2.12 asks for conformal invariance for Voronoi percolation.",
+      "sourceLine": "Schramm's Problem~2.12 asks for the corresponding conformal-invariance theorem for Voronoi percolation",
+      "sourceQuote": "Schramm's Problem~2.12 asks for the corresponding conformal-invariance theorem for Voronoi percolation \\cite{Schramm2006}.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves the annealed Cardy-crossing conjecture for the Poisson model in Jordan domains.",
+      "sourceLine": "We prove the annealed Cardy-crossing aspect of this conjecture for the Poisson model, with no regularity assumption on the boundary beyond the Jordan property.",
+      "sourceQuote": "We prove the annealed Cardy-crossing aspect of this conjecture for the Poisson model, with no regularity assumption on the boundary beyond the Jordan property.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The result is annealed and does not assert interface convergence.",
+      "sourceLine": "The statement does not assert convergence of the full interface law or a quenched crossing limit for arbitrary Jordan domains.",
+      "sourceQuote": "The statement does not assert convergence of the full interface law or a quenched crossing limit for arbitrary Jordan domains.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "For a fixed rectangle, concentration gives a quenched L2 limit.",
+      "sourceLine": "For a fixed rectangle, the established concentration of conditional crossing probabilities also gives a quenched $L^2$ limit;",
+      "sourceQuote": "For a fixed rectangle, the established concentration of conditional crossing probabilities also gives a quenched $L^2$ limit; see Corollary~\\ref{cor:quenched-rectangles} below.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The expected pivotal count for a unit-square crossing is asymptotic to a constant times epsilon^(-3/4).",
+      "sourceLine": "we prove that the expected number of color-pivotal cells for a unit-square crossing is asymptotic to a positive constant times",
+      "sourceQuote": "Taking Cardy's conformal crossing formula for critical planar Poisson--Voronoi percolation in every bounded Jordan quadrilateral as an input, we prove that the expected number of color-pivotal cells for a unit-square crossing is asymptotic to a positive constant times $\\eps^{-3/4}$, where the point intensity is $\\eps^{-2}$.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Conditional on the tessellation, the threshold law converges to the triangular-lattice law.",
+      "sourceLine": "Conditional on the Poisson tessellation, the threshold law converges in probability over tessellations to the same law as on the triangular lattice.",
+      "sourceQuote": "Conditional on the Poisson tessellation, the threshold law converges in probability over tessellations to the same law as on the triangular lattice.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The near-critical result takes Cardy's formula as an explicit input.",
+      "sourceLine": "We prove such a transfer for Poisson--Voronoi percolation, taking its scalar critical Cardy formula as an explicit input.",
+      "sourceQuote": "We prove such a transfer for Poisson--Voronoi percolation, taking its scalar critical Cardy formula as an explicit input.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

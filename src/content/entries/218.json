@@ -1,0 +1,244 @@
+{
+  "id": "218",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quenched-SLE3-limits-for-general-weak-random-bond-Ising-models-October-5-2026/general-weak-random-bond-ising.pdf",
+      "label": "Quenched SLE₃ limits for general weak random-bond Ising models"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quenched-SLE3-Universality-for-the-Weak-Random-Bond-Ising-Model-October-5-2026/quenched-sle3-weak-random-bond-ising.pdf",
+      "label": "Quenched SLE₃ Universality for the Weak Random-Bond Ising Model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Logarithmic-Relative-Fluctuations-in-the-Weakly-Disordered-Planar-Ising-Model-October-5-2026/critical-relative-second-moment-weak-random-bond-ising.pdf",
+      "label": "Logarithmic Relative Fluctuations in the Weakly Disordered Planar Ising Model"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conformal-universality-of-bulk-Ising-correlations-under-weak-interactions-September-23-2026/paper.pdf",
+      "label": "Conformal universality of bulk Ising correlations under weak interactions"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/SLE3-universality-for-weak-finite-range-Ising-interactions-September-23-2026/paper.pdf",
+      "label": "SLE3 universality for weak finite-range Ising interactions"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Buffered-comparison-and-stopping-band-resolution-in-critical-Ising-September-23-2026/paper.pdf",
+      "label": "Buffered comparison and stopping-band resolution in critical Ising"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/218.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Weak extra interactions or weak random bonds leave the critical Ising interface's conformal limit, SLE₃, unchanged.",
+  "scope": "Square-lattice Ising models with small, square-symmetric finite-range changes, or small iid bond disorder, at their own critical temperature.",
+  "plain": "The Ising model is a grid of tiny magnets that each point up or down. At its critical temperature, the boundary between up and down regions has a known random shape in the limit, called SLE₃. These six papers claim that the shape survives small changes to the model. The changes are weak extra interactions, or weak random bond strengths held fixed. Lean has checked only one finite comparison lemma from one paper.",
+  "doesNot": "This does not cover strong perturbations, or disorder strong enough to change the critical behaviour.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2014",
+    "firstStepBy": "Chelkak, Duminil-Copin, Hongler, Kemppainen and Smirnov, SLE₃ for the pure model",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "If they hold, they extend the exact conformal picture of critical Ising to non-solvable and disordered versions."
+  },
+  "explanation": "Colour each square of a fine grid black or white. Make the left half of the border black and the right half white. Somewhere inside, a curve must separate black from white. In the Ising model, each square holds a spin, a tiny magnet pointing up or down. Neighbouring spins prefer to agree. The coupling, the strength of that preference times the inverse temperature, decides how strongly. At one special coupling, ½ log(1 + √2), about 0.4407, the model is critical. There the curve wiggles at every scale.\n\nAt that point the curve has an exact limit as the squares shrink. It is chordal SLE₃, a random curve driven by √3 times a Brownian motion[1]. Chelkak, Duminil-Copin, Hongler, Kemppainen and Smirnov proved this convergence for the plain square grid[2]. Their proof leans on the model being exactly solvable. Exactly solvable means special formulas, built from fermionic observables, describe it perfectly.\n\nPhysicists expect the limit to be universal. Universal means small changes to the microscopic rules should not change the large-scale shape. Earlier rigorous work showed this for some correlation numbers under weak interactions. It did not reach the whole curve. Greenblatt and Peltola set up one route to the curve but did not prove convergence[3].\n\nThe first family of papers changes the energy. It adds small extra interactions of finite range, among any even number of spins, of either sign. They must respect the square's symmetries. One paper claims that, at a suitably shifted critical temperature, the interface still converges to SLE₃[4]. Another claims the same universality for bulk spin and energy correlations, which measure how distant spins and bonds move together[5].\n\nThe second family makes the bonds random. Each bond gets strength 1 + εξ, where ξ is an independent random number with mean zero, bounded by 1[6]. With ε = 0.1, a fair coin would give bonds of 1.1 or 0.9. The environment is drawn once and then held fixed. That is called quenched. One paper claims SLE₃ convergence for fair two-valued bonds[7]. Another extends it to every bounded, mean-zero law, for ε small enough[8]. It also places the critical coupling within a constant times ε² of the clean value[9].\n\nThe obstacle is that two-dimensional disorder is marginal. Weak disorder shrinks under zooming out, but only logarithmically. So a proof needs a decay estimate scale by scale, not one uniform contraction[10]. A further paper measures how slowly the disorder fades. It finds that a relative second moment of spin correlations grows like (log r)^(1/4)[11]. At distance r of one million, (log r)^(1/4) is only about 1.93. That paper is conditional. It assumes certain stated estimates for the clean critical model[12].\n\nThe last paper supplies tools. It compares Ising probabilities when some spins are pinned and the boundary changes[13]. That finite comparison is the piece a computer has checked.\n\nHow sure is this? A computer proof checker called Lean has checked a formal version of one finite-graph comparison. It bounds the likelihood ratio between two pinned Ising laws. The same paper's stopping-band approximation is outside that check. The SLE₃ limits, the bulk universality and the disorder results are not formalized. No specialist review has been published.",
+  "hypeCheck": "Major if the chain of six papers holds. Lean checks one finite comparison lemma only, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ising model",
+      "meaning": "A grid of spins, tiny magnets pointing up or down, where neighbours prefer to agree."
+    },
+    {
+      "term": "Critical temperature",
+      "meaning": "The single temperature where the model switches between ordered and disordered, and patterns appear at every scale."
+    },
+    {
+      "term": "Interface",
+      "meaning": "The curve separating the region of up spins from the region of down spins, forced by opposite boundary signs."
+    },
+    {
+      "term": "SLE₃",
+      "meaning": "Schramm–Loewner evolution with parameter 3: a random fractal curve that is the known limit of the critical Ising interface."
+    },
+    {
+      "term": "Universality",
+      "meaning": "The idea that small changes to the microscopic rules leave the large-scale random shapes unchanged."
+    },
+    {
+      "term": "Quenched disorder",
+      "meaning": "Random bond strengths drawn once and then held fixed while the spins fluctuate."
+    },
+    {
+      "term": "Marginal",
+      "meaning": "Borderline: disorder that neither clearly grows nor clearly dies out when you zoom out, but fades very slowly."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Quenched SLE₃ limits for general weak random-bond Ising models” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quenched-SLE3-limits-for-general-weak-random-bond-Ising-models-October-5-2026/general-weak-random-bond-ising.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Quenched SLE₃ Universality for the Weak Random-Bond Ising Model” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quenched-SLE3-Universality-for-the-Weak-Random-Bond-Ising-Model-October-5-2026/quenched-sle3-weak-random-bond-ising.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Logarithmic Relative Fluctuations in the Weakly Disordered Planar Ising Model” (5 October 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Logarithmic-Relative-Fluctuations-in-the-Weakly-Disordered-Planar-Ising-Model-October-5-2026/critical-relative-second-moment-weak-random-bond-ising.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Conformal universality of bulk Ising correlations under weak interactions” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conformal-universality-of-bulk-Ising-correlations-under-weak-interactions-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “SLE3 universality for weak finite-range Ising interactions” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/SLE3-universality-for-weak-finite-range-Ising-interactions-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Buffered comparison and stopping-band resolution in critical Ising” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Buffered-comparison-and-stopping-band-resolution-in-critical-Ising-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math, Lean scope note for family 218",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/218.md",
+      "quote": "The paper's finite stopping-band approximation theorem is outside this selected statement."
+    },
+    {
+      "id": 8,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    },
+    {
+      "id": 9,
+      "cite": "D. Chelkak, H. Duminil-Copin, C. Hongler, A. Kemppainen and S. Smirnov, “Convergence of Ising interfaces to Schramm's SLE curves”, Comptes Rendus Mathématique 352 (2014), 157–161",
+      "url": "https://doi.org/10.1016/j.crma.2013.12.002"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Chordal SLE3 is the Loewner trace driven by root 3 times Brownian motion.",
+      "sourceLine": "where \\(B\\) is standard real Brownian motion; the conformal map sends",
+      "sourceQuote": "For a bounded Jordan domain \\(D\\) and distinct \\(a,b\\in\\partial D\\), chordal \\(\\SLE_3\\) from \\(a\\) to \\(b\\) is the conformal image of the upper-half-plane Loewner trace with \\[ \\partial_t g_t(z)=\\frac{2}{g_t(z)-\\sqrt3 B_t}, \\qquad g_0(z)=z, \\] where \\(B\\) is standard real Brownian motion; the conformal map sends \\(0\\) to \\(a\\) and \\(\\infty\\) to \\(b\\).",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "CDHKS proved the critical square-lattice spin interface converges to SLE3.",
+      "sourceLine": "Kemppainen, and Smirnov proved that the critical square-lattice spin interface with Dobrushin boundary conditions converges to chordal $\\mathrm{SLE}_3$",
+      "sourceQuote": "Chelkak, Duminil-Copin, Hongler, Kemppainen, and Smirnov proved that the critical square-lattice spin interface with Dobrushin boundary conditions converges to chordal $\\mathrm{SLE}_3$ in uniform distance modulo increasing reparametrization~\\cite[Theorem~1 and Equation~(1)]{CDHKS}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Greenblatt and Peltola's paper does not prove interface convergence.",
+      "sourceLine": "Their paper does not prove interface convergence.",
+      "sourceQuote": "Their paper does not prove interface convergence.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Every small square-symmetric finite-range perturbation of the contour energy keeps the SLE3 interface limit.",
+      "sourceLine": "We prove that this conclusion persists under every sufficiently small finite-range perturbation of the contour energy that preserves the symmetries of the square lattice.",
+      "sourceQuote": "We prove that this conclusion persists under every sufficiently small finite-range perturbation of the contour energy that preserves the symmetries of the square lattice.",
+      "paper": 5,
+      "verdict": "supported"
+    },
+    {
+      "text": "Mixed bulk spin and energy universality holds for small signed finite-range perturbations.",
+      "sourceLine": "We establish mixed bulk spin and energy universality for small signed finite-range perturbations of the critical square-lattice Ising model.",
+      "sourceQuote": "We establish mixed bulk spin and energy universality for small signed finite-range perturbations of the critical square-lattice Ising model.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The bonds are 1 plus epsilon times an iid mean-zero variable on [-1,1].",
+      "sourceLine": "Let $\\rho$ be a probability measure supported on $[-1,1]$ such that",
+      "sourceQuote": "Let $\\rho$ be a probability measure supported on $[-1,1]$ such that \\begin{equation}\\label{eq:law-assumptions} \\int x\\,\\rho(\\dd x)=0, \\qquad \\sigma_\\rho^2:=\\int x^2\\,\\rho(\\dd x)>0. \\end{equation}",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Quenched SLE3 convergence holds for weak symmetric two-valued bonds.",
+      "sourceLine": "We prove quenched chordal $\\mathrm{SLE}_3$ convergence for the planar Ising model with sufficiently weak independent symmetric two-valued ferromagnetic bonds.",
+      "sourceQuote": "We prove quenched chordal $\\mathrm{SLE}_3$ convergence for the planar Ising model with sufficiently weak independent symmetric two-valued ferromagnetic bonds.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The result is extended to general bounded iid bond laws.",
+      "sourceLine": "We extend the weak symmetric two-valued result of~\\cite{R} to general bounded iid bond laws.",
+      "sourceQuote": "We extend the weak symmetric two-valued result of~\\cite{R} to general bounded iid bond laws.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The disordered critical temperature is the clean value plus O(epsilon squared).",
+      "sourceLine": "$\\beta_c^\\rho(\\varepsilon)=\\tfrac12\\log(1+\\sqrt2)+O_\\rho(\\varepsilon^2)$.",
+      "sourceQuote": "Moreover, $\\beta_c^\\rho(\\varepsilon)=\\tfrac12\\log(1+\\sqrt2)+O_\\rho(\\varepsilon^2)$.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "In two dimensions disorder is marginal, so a scale-by-scale decay estimate is needed.",
+      "sourceLine": "In two dimensions the disorder is marginal, so a scale-by-scale decay estimate is needed in place of a uniform contraction.",
+      "sourceQuote": "In two dimensions the disorder is marginal, so a scale-by-scale decay estimate is needed in place of a uniform contraction.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The relative second moment of the quenched critical spin correlation grows as (log r)^(1/4+o(1)).",
+      "sourceLine": "grows as $(\\log r)^{1/4+o(1)}$ for each sufficiently small fixed $\\eps>0$.",
+      "sourceQuote": "Assuming the stated deterministic critical-reference estimates, we prove that the relative second moment of the quenched critical spin correlation in the square-lattice Ising model with independent fair bonds $1\\pm\\eps$ grows as $(\\log r)^{1/4+o(1)}$ for each sufficiently small fixed $\\eps>0$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The logarithmic fluctuation result assumes stated deterministic critical-reference estimates.",
+      "sourceLine": "Assuming the stated deterministic critical-reference estimates, we prove",
+      "sourceQuote": "Assuming the stated deterministic critical-reference estimates, we prove that the relative second moment of the quenched critical spin correlation in the square-lattice Ising model with independent fair bonds $1\\pm\\eps$ grows as $(\\log r)^{1/4+o(1)}$ for each sufficiently small fixed $\\eps>0$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The comparison allows arbitrary common pinned spins.",
+      "sourceLine": "Arbitrary common pinned spins are allowed in the comparison:",
+      "sourceQuote": "Arbitrary common pinned spins are allowed in the comparison: the likelihood ratio is controlled by a zero-field FK connection probability on the graph with those vertices deleted.",
+      "paper": 6,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean checks the finite-graph buffered likelihood comparison; the stopping-band theorem and the SLE₃ results are outside it.",
+      "verdict": "external",
+      "sourceId": 7
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 8
+    }
+  ]
+}
