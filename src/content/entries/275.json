@@ -1,0 +1,182 @@
+{
+  "id": "275",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Continuum-Coulomb-hardness-with-binary-nuclear-charges-September-24-2026/Continuum-Coulomb-hardness-with-binary-nuclear-charges-September-24-2026.pdf",
+      "label": "Continuum Coulomb hardness with binary nuclear charges"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/QMA-hardness-of-continuum-Coulomb-energy-with-unit-nuclear-charges-September-24-2026/QMA-hardness-of-continuum-Coulomb-energy-with-unit-nuclear-charges-September-24-2026.pdf",
+      "label": "QMA-hardness of continuum Coulomb energy with unit nuclear charges"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/275.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that estimating a molecule's exact electronic ground energy, from nuclear positions alone, is QMA-hard.",
+  "scope": "Clamped nuclei at rational positions, Coulomb forces only, full spinful continuum of electron states; binary-coded charges, or all charges equal to one.",
+  "plain": "Chemists want the lowest energy of the electrons in a molecule with fixed nuclei. Earlier hardness results needed a supplied set of orbitals or designed magnetic fields. These two papers prove the exact problem stays hard with only point nuclei as input, even when every nucleus has charge one. Lean checks both hardness statements; it says nothing about how good specific chemistry methods are.",
+  "doesNot": "This does not show the problem belongs to QMA, that typical real molecules are hard, or that any particular chemistry method fails.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2022",
+    "firstStepBy": "O'Gorman, Irani, Whitfield and Fefferman, QMA-completeness of electronic structure in a supplied finite basis",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It removes the supplied-basis and designed-potential assumptions from hardness results for the electronic structure problem."
+  },
+  "explanation": "Start with one proton and one electron, a hydrogen atom. Its lowest electronic energy is −1/2 in atomic units, the hartree. Now pose a yes-or-no question with two thresholds, a = −0.4 and b = 0.6. Is the lowest energy at most a, or at least b? For hydrogen the answer is clearly yes, since −0.5 is below −0.4.\n\nThe general problem lists nuclei at fixed points with their charges, and a number of electrons. The electrons feel only Coulomb forces: attraction to the nuclei and repulsion from each other. The lowest energy E₀ is taken over every allowed electron state in ordinary three-dimensional space, with spin. A YES instance has E₀ ≤ a; a NO instance has E₀ ≥ b. The thresholds are promised to be far enough apart.\n\nQMA is the quantum version of NP. A problem is in QMA when a quantum computer can check a proposed quantum state as evidence. A problem is QMA-hard when every QMA problem converts to it by an efficient classical recipe. So a fast general method for a QMA-hard problem would give fast methods for all of QMA.\n\nEarlier results changed the question. O'Gorman, Irani, Whitfield and Fefferman proved QMA-completeness in a supplied finite basis of orbitals[3]. Schuch and Verstraete used designed potentials and local magnetic fields[4]. The obstacle is the continuum. Restricting to orbitals gives an upper bound on the energy. A NO answer needs a lower bound over every state outside those orbitals as well[5].\n\nThe first paper proves hardness when positive integer charges are written in binary[1]. The charges may then be exponentially large, but every output has polynomial length[8]. The second paper proves hardness when every nucleus has charge one[2]. Its recipe outputs polynomially many nuclei and electrons, with thresholds at least one hartree apart[9]. No orbital basis, magnetic field or extra potential is given[10]. The papers do not claim the problem lies in QMA[6].\n\nThe hardness is worst case. It says some carefully built arrangements of nuclei are hard. It does not say typical molecules are hard. The gap between thresholds is a precision promise, not an energy gap in the molecule[7].\n\nHow sure is this? Lean, a computer proof checker, has formal proofs of both hardness statements as given in the papers. They cover binary charges and unit charges, both over the full spinful continuum. These statements rely on a standard QMA-hard spin problem as their starting point. No specialist review of the papers has been published.",
+  "hypeCheck": "Solid. Lean covers both hardness statements; the result is worst-case and makes no claim about typical molecules or QMA membership. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Ground energy",
+      "meaning": "The lowest possible energy of the electrons for fixed positions of the nuclei."
+    },
+    {
+      "term": "Clamped nuclei",
+      "meaning": "Nuclei held fixed at given points, so only the electrons move."
+    },
+    {
+      "term": "Hartree",
+      "meaning": "The atomic unit of energy; a hydrogen atom's ground energy is −1/2 hartree."
+    },
+    {
+      "term": "Continuum",
+      "meaning": "All electron wave functions in ordinary space, not only those built from a chosen list of orbitals."
+    },
+    {
+      "term": "Orbital basis",
+      "meaning": "A fixed, finite list of one-electron shapes used to approximate the electrons' state."
+    },
+    {
+      "term": "QMA",
+      "meaning": "Quantum Merlin-Arthur: problems whose YES answers a quantum computer can check from a quantum proof state."
+    },
+    {
+      "term": "QMA-hard",
+      "meaning": "At least as hard as every QMA problem, under an efficient classical conversion."
+    },
+    {
+      "term": "Promise problem",
+      "meaning": "A yes-or-no question where inputs are guaranteed to fall clearly on one side of a gap."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Continuum Coulomb hardness with binary nuclear charges” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Continuum-Coulomb-hardness-with-binary-nuclear-charges-September-24-2026/Continuum-Coulomb-hardness-with-binary-nuclear-charges-September-24-2026.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “QMA-hardness of continuum Coulomb energy with unit nuclear charges” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/QMA-hardness-of-continuum-Coulomb-energy-with-unit-nuclear-charges-September-24-2026/QMA-hardness-of-continuum-Coulomb-energy-with-unit-nuclear-charges-September-24-2026.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 275",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/275.md",
+      "quote": "The formalization proves QMA-hardness of approximating the electronic ground-energy infimum for clamped unit-charge nuclei in the full spinful fermionic continuum."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Approximating the electronic Coulomb spectral infimum in three-dimensional space is QMA-hard when positive integer nuclear charges are encoded in binary.",
+      "sourceLine": "is QMA-hard when positive integer nuclear charges are encoded in binary",
+      "sourceQuote": "We prove that approximating the electronic Coulomb spectral infimum in three-dimensional space is QMA-hard when positive integer nuclear charges are encoded in binary.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Approximating the electronic ground-energy infimum for clamped unit-charge nuclei is QMA-hard on the full spinful fermionic continuum.",
+      "sourceLine": "We prove that approximating the electronic ground-energy infimum for clamped unit-charge nuclei is QMA-hard",
+      "sourceQuote": "We prove that approximating the electronic ground-energy infimum for clamped unit-charge nuclei is QMA-hard on the full spinful fermionic continuum space.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "O'Gorman, Irani, Whitfield and Fefferman proved QMA-completeness for electronic structure in a supplied finite basis.",
+      "sourceLine": "proved QMA-completeness for electronic structure in a supplied finite basis",
+      "sourceQuote": "O'Gorman, Irani, Whitfield, and Fefferman proved QMA-completeness for electronic structure in a supplied finite basis~\\cite[Theorem~1]{OGorman2022}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Schuch and Verstraete proved QMA-completeness for a Hubbard model with local magnetic fields using designed potentials.",
+      "sourceLine": "Schuch and Verstraete proved QMA-completeness for a Hubbard model with local magnetic fields",
+      "sourceQuote": "Schuch and Verstraete proved QMA-completeness for a Hubbard model with local magnetic fields and developed a continuum realization using designed scalar and spin-dependent potentials~\\cite{SchuchVerstraete2009}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A continuum hardness proof must exclude lower states outside the orbital projection.",
+      "sourceLine": "A continuum hardness proof must exclude lower states outside that projection.",
+      "sourceQuote": "A continuum hardness proof must exclude lower states outside that projection.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem makes no claim of membership in QMA.",
+      "sourceLine": "The theorem makes no claim of membership in QMA",
+      "sourceQuote": "The theorem makes no claim of membership in QMA, or of hardness under an additional bound on nuclear charges.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The threshold gap is a precision requirement, not a molecular spectral gap.",
+      "sourceLine": "the threshold gap is a precision requirement; it does not assert a molecular spectral gap",
+      "sourceQuote": "In particular, the threshold gap is a precision requirement; it does not assert a molecular spectral gap, a discrete eigenvalue at the infimum, or an efficiently preparable ground state.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The nuclear charges may be exponentially large, but every output has polynomial bit length.",
+      "sourceLine": "The nuclear charges may be exponentially large, but every output has polynomial bit length.",
+      "sourceQuote": "The nuclear charges may be exponentially large, but every output has polynomial bit length.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The unit-charge reduction produces polynomially many nuclei and electrons and threshold separation at least one.",
+      "sourceLine": "The reduction produces polynomially many nuclei and electrons, polynomial rational bit lengths, and threshold separation at least one.",
+      "sourceQuote": "The reduction produces polynomially many nuclei and electrons, polynomial rational bit lengths, and threshold separation at least one.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No orbital basis, magnetic field or additional external potential is supplied.",
+      "sourceLine": "No orbital basis, magnetic field, or additional external potential is supplied, and no binding assumption is imposed.",
+      "sourceQuote": "No orbital basis, magnetic field, or additional external potential is supplied, and no binding assumption is imposed.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes QMA-hardness of the continuum Coulomb ground-energy problem with binary-encoded charges and with unit charges.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

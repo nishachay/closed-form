@@ -1,0 +1,156 @@
+{
+  "id": "273",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-entropy-photon-number-inequality-September-24-2026/paper.pdf",
+      "label": "The entropy photon-number inequality"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/273.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves the entropy photon-number inequality for two independent finite-energy light inputs mixed on a beam splitter.",
+  "scope": "Two independent bosonic inputs with finite mean energy, any finite number of modes, any beam-splitter transmissivity; entanglement inside each input allowed.",
+  "plain": "When two beams of light mix on a half-silvered mirror, the output is at least as disordered as a weighted blend of the inputs. A 2007 conjecture said exactly how much disorder, measured in thermal photons per mode. This paper proves that conjecture for any two independent inputs with finite energy. Lean checks the main inequality; the communication consequences are proved only on paper.",
+  "doesNot": "This does not cover inputs with infinite mean energy, amplifiers or additive-noise channels, or attenuators that differ from mode to mode.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2007",
+    "firstStepBy": "Guha, Erkmen and Shapiro, the entropy photon-number conjecture",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "The inequality was the missing piece for several exact capacity results for optical communication channels."
+  },
+  "explanation": "Send two beams of light into a beam splitter, a partly silvered mirror. With transmissivity one half, each output mode is an equal blend of the two inputs. Let beam A be thermal light averaging one photon per mode. Let beam B be the vacuum, with no photons at all. Their mixture is thermal light averaging half a photon.\n\nEntropy measures the disorder of a quantum state, here in natural units. A thermal mode with mean photon number t has entropy g(t) = (t + 1) log(t + 1) − t log t. So beam A has entropy g(1) = 2 log 2, about 1.386. Beam B has entropy 0. The output has entropy g(0.5), about 0.955.\n\nCan a cleverer, non-thermal input with the same entropies give a less disordered output? Earlier bounds allow it. König and Smith proved a quantum entropy power inequality[5]. One form says output entropy is at least the weighted average, here 0.693. De Palma, Mari and Giovannetti proved an exponential version. Here it gives at least log 2.5, about 0.916. Neither reaches the thermal value 0.955. For unequal entropy levels, the exponential bound misses the exact thermal answer[4].\n\nGuha, Erkmen and Shapiro conjectured a sharper rule in 2007[2]. Convert each entropy back into an equivalent photon number using the inverse of g, per mode. Call this the entropy photon number. The conjecture says the output's entropy photon number is at least the beam-splitter blend of the two input values. In the example the blend is half of 1 plus half of 0, which is 0.5. That gives the thermal value 0.955 exactly. Thermal inputs give equality, even when the two ports have different means[3]. The case of Gaussian inputs, a well-studied family of light states, was already known[6].\n\nThe paper proves the inequality for two independent inputs with finite mean energy, in any finite number of modes[1]. Modes inside one input may be entangled. The hard part is comparing two freely varying inputs with thermal states at their own entropy levels. The proof assumes a violating pair and studies a penalized minimum. It then shows the minimizing inputs must be thermal, which gives a contradiction.\n\nTwo consequences follow. The paper finds the exact minimum output entropy, at fixed input entropy, for repeated identical thermal attenuators[9]. A thermal attenuator is a lossy optical line that also adds thermal noise. It also finds the exact classical capacity region of a degraded pure-loss broadcast channel with a mean photon limit[7]. A broadcast channel sends light to two receivers at once. The attenuator result claims that a minimum is reached, not that it is unique[8].\n\nHow sure is this? Lean, a computer proof checker, has a formal proof of the inequality as stated. That covers finite energy, any finite number of modes, and entanglement within each input. The attenuator and broadcast consequences are outside the Lean statement. They rest on the paper's arguments, which have no published specialist review.",
+  "hypeCheck": "Major. Lean covers the main inequality as stated for finite-energy inputs; the capacity and attenuator consequences rest on the paper, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Bosonic mode",
+      "meaning": "One independent pattern of a light field; its state can hold any number of photons."
+    },
+    {
+      "term": "Beam splitter",
+      "meaning": "A partly reflecting mirror that blends two light inputs; transmissivity η is the share passed straight through."
+    },
+    {
+      "term": "Entropy",
+      "meaning": "A measure of disorder or uncertainty in a quantum state, here in natural units."
+    },
+    {
+      "term": "Thermal state",
+      "meaning": "The light state of highest entropy for a given mean photon number, like light from a hot body."
+    },
+    {
+      "term": "Entropy photon number",
+      "meaning": "The mean photon number a thermal state per mode would need to have the same total entropy."
+    },
+    {
+      "term": "Finite mean energy",
+      "meaning": "The average total photon count of the input is finite."
+    },
+    {
+      "term": "Gaussian state",
+      "meaning": "A light state whose field statistics follow a bell-curve law; thermal light and laser light are examples."
+    },
+    {
+      "term": "Classical capacity region",
+      "meaning": "The set of message rates that can be sent reliably to each receiver at the same time."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The entropy photon-number inequality” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-entropy-photon-number-inequality-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 273",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/273.md",
+      "quote": "The formalization proves the entropy photon-number inequality for two independent bosonic inputs with finite mean energy and any finite positive number $n$ of modes."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper proves the entropy photon-number inequality for two independent finite-energy bosonic inputs in every finite number of modes.",
+      "sourceLine": "We prove the entropy photon-number inequality for two independent bosonic inputs with finite mean energy, for every finite number of modes.",
+      "sourceQuote": "We prove the entropy photon-number inequality for two independent bosonic inputs with finite mean energy, for every finite number of modes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Guha, Erkmen and Shapiro conjectured the concavity inequality under beam-splitter mixing.",
+      "sourceLine": "Guha, Erkmen, and Shapiro conjectured that this quantity obeys a concavity inequality under beam-splitter mixing of independent inputs",
+      "sourceQuote": "Guha, Erkmen, and Shapiro conjectured that this quantity obeys a concavity inequality under beam-splitter mixing of independent inputs \\cite{GES2007}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Thermal inputs with a common mean within each port give equality.",
+      "sourceLine": "Thermal inputs with a common mean photon number within each port give equality, even when the means at the two ports differ.",
+      "sourceQuote": "Thermal inputs with a common mean photon number within each port give equality, even when the means at the two ports differ.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For unequal entropy levels, the exponential bound does not recover the exact thermal output entropy.",
+      "sourceLine": "For unequal entropy levels, thermal inputs attain EPnI, whereas the exponential bound does not recover their exact output entropy.",
+      "sourceQuote": "For unequal entropy levels, thermal inputs attain EPnI, whereas the exponential bound does not recover their exact output entropy.",
+      "verdict": "supported"
+    },
+    {
+      "text": "König and Smith established a quantum entropy power inequality.",
+      "sourceLine": "established a quantum entropy power inequality using quantum Fisher information and a heat evolution.",
+      "sourceQuote": "K\\\"onig and Smith \\cite{KS2014} established a quantum entropy power inequality using quantum Fisher information and a heat evolution.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The inequality was known for two independent Gaussian inputs in any finite number of modes.",
+      "sourceLine": "The EPnI itself was also known for two independent Gaussian inputs in any finite number of modes",
+      "sourceQuote": "The EPnI itself was also known for two independent Gaussian inputs in any finite number of modes, including Gaussian correlations within either input; De Palma proves this case using symplectic eigenvalue comparisons \\cite[Appendix~A.8]{DePalmaThesis2017}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper obtains the exact classical capacity region of the degraded two-receiver pure-loss bosonic broadcast channel.",
+      "sourceLine": "We also obtain the exact classical capacity region of the degraded two-receiver pure-loss bosonic broadcast channel under a mean photon constraint.",
+      "sourceQuote": "We also obtain the exact classical capacity region of the degraded two-receiver pure-loss bosonic broadcast channel under a mean photon constraint.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The attenuator corollary asserts attainment, not uniqueness.",
+      "sourceLine": "It asserts attainment, not uniqueness, and makes no claim for mode-dependent attenuations, amplifiers, or additive-noise channels.",
+      "sourceQuote": "It asserts attainment, not uniqueness, and makes no claim for mode-dependent attenuations, amplifiers, or additive-noise channels.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper determines the exact minimum output entropy at fixed input entropy for every finite tensor power of an identical thermal attenuator.",
+      "sourceLine": "we determine the exact minimum output entropy at fixed input entropy for every finite tensor power of an identical thermal attenuator",
+      "sourceQuote": "As a consequence, we determine the exact minimum output entropy at fixed input entropy for every finite tensor power of an identical thermal attenuator, over finite-energy inputs that may be entangled across modes.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the entropy photon-number inequality for two independent finite-energy bosonic inputs in any finite number of modes; the attenuator and broadcast consequences are outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

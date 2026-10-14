@@ -1,0 +1,174 @@
+{
+  "id": "272",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf",
+      "label": "Entanglement with zero distillable secret key in local dimension ten"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/272.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims an entangled state in local dimension ten that yields no secret key, answering a 2005 open problem.",
+  "scope": "One explicit two-party state on C^10 ⊗ C^10, the local-instrument protocols the paper defines, and two related PPT-composition counterexamples.",
+  "plain": "Entanglement is a quantum link between two labs that no shared list of local settings can mimic. A long-standing question asked whether every entangled state lets the labs make a secret key. This paper claims an explicit entangled state, ten levels on each side, that yields no secret key at all. Lean checks the two map constructions behind it, but not the zero-key theorem itself.",
+  "doesNot": "This does not show the dimension ten is the smallest possible, and it does not cover protocols outside the paper's admitted model.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2005",
+    "firstStepBy": "Problem 24, \"Secret key from all entangled states\", in Krüger and Werner's open-problem collection",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "It gives a negative answer to a named open problem in quantum cryptography and to the two-map PPT-composition conjecture."
+  },
+  "explanation": "Picture Alice and Bob in two labs, sharing many copies of a quantum state. They want a secret key: random bits that agree at both ends and that an eavesdropper, Eve, cannot predict. The ideal one-bit key is 00 with chance one half and 11 with chance one half, with Eve learning nothing. They may measure locally, talk over a public line as long as they like, and process all copies together. Eve hears every public message and holds the rest of the quantum system.\n\nThe state is the resource. If it is separable, meaning it could be built from ordinary shared randomness, no key is possible[4]. A state that is not separable is called entangled. Some weakly entangled states, of the kind called PPT, still give a positive key rate[5]. So a natural guess was that every entangled state gives some key. Krüger and Werner's 2005 list of open problems posed this as Problem 24[6]. The obstacle is that a no-key proof must defeat every possible protocol, of any length.\n\nThe paper claims an explicit entangled state on two ten-level systems with zero distillable secret key[1]. Distillable key is the best rate of nearly perfect key bits per copy. The claim is stronger than a zero rate. For any number of copies and any admitted protocol, the output bit stays at trace distance at least 1/10 from a perfect bit[2]. Trace distance measures how well any test can tell two states apart. There is no limit on the rounds of talk inside the model[10].\n\nThe core is a short inequality. Let e be the chance that the two bits differ. Let f measure how alike Eve's views are when the key is 00 and when it is 11. For states built in the paper's way, f is at most √(e(1 − e)) + e. A near-perfect key needs small e and f close to one half. Try a protocol whose output sits at trace-norm distance 0.2. Then e is at most 0.1, so f is at most √0.09 + 0.1 = 0.4. Secrecy needs f to be at least 0.4. Anything closer than 0.2 makes the two demands clash[7].\n\nTo make the state entangled, the paper checks that its range holds no product vector. The proof uses twenty special directions in four dimensions. A quadratic in four variables has ten coefficients, so nine points can always be fitted. The paper shows no nonzero quadratic vanishes at ten of them. Two quadratics then cover at most nine directions each, and 9 + 9 < 20[8].\n\nThe same construction gives two PPT maps whose composition is not entanglement breaking. This is a negative answer to the two-map PPT-composition conjecture of Christandl, Müller-Hermes and Wolf[3]. A separate channel on 21-level systems has a square that is not entanglement breaking[11]. Earlier work settled the composition question for two maps on three-level systems[12]. The authors do not claim either dimension is minimal[9].\n\nHow sure is this? Lean, a computer proof checker, has formal statements for the dimension-ten pair of maps and for the 21-level channel. These cover the missing product vectors and the failure of entanglement breaking. The zero-key theorem itself is outside the Lean statements. It rests on the paper's long protocol analysis, which has no published specialist review.",
+  "hypeCheck": "Major if correct. Lean covers the two map counterexamples; the zero-key theorem rests on the paper's own protocol analysis, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Secret key",
+      "meaning": "Random bits that two parties share exactly and that an eavesdropper cannot predict."
+    },
+    {
+      "term": "Entangled state",
+      "meaning": "A two-part quantum state that cannot be built by mixing independent states of each part."
+    },
+    {
+      "term": "Separable state",
+      "meaning": "A state that is a mixture of independent product states; it carries no entanglement."
+    },
+    {
+      "term": "PPT",
+      "meaning": "Positive partial transpose: a test that weakly entangled states and certain maps pass; PPT entanglement cannot be turned into pure entangled pairs."
+    },
+    {
+      "term": "Distillable secret key",
+      "meaning": "The best rate, per copy of the state, of nearly perfect key bits that local operations and public talk can produce."
+    },
+    {
+      "term": "Trace distance",
+      "meaning": "A number from 0 to 1 saying how well the best possible test can tell two quantum states apart."
+    },
+    {
+      "term": "Entanglement breaking",
+      "meaning": "A map that destroys all entanglement with any other system when applied to one part."
+    },
+    {
+      "term": "Product vector",
+      "meaning": "A vector of the form x ⊗ y, one factor per side; a separable state always has one in its range."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Entanglement with zero distillable secret key in local dimension ten” (27 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 272",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/272.md",
+      "quote": "The paper's zero-distillable-secret-key statement is outside these two selected Comparator statements."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper constructs an entangled state on C^10 ⊗ C^10 with zero distillable secret key for the protocols it specifies.",
+      "sourceLine": "We construct an entangled state on $\\C^{10}\\otimes\\C^{10}$ with zero distillable secret key for the local-instrument protocols specified here.",
+      "sourceQuote": "We construct an entangled state on $\\C^{10}\\otimes\\C^{10}$ with zero distillable secret key for the local-instrument protocols specified here.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The output trace distance from an ideal bit is at least 1/10.",
+      "sourceLine": "Thus the corresponding trace distance, with its conventional factor $1/2$, is at least $1/10$.",
+      "sourceQuote": "Thus the corresponding trace distance, with its conventional factor $1/2$, is at least $1/10$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The pair answers the unrestricted two-map PPT-composition conjecture negatively.",
+      "sourceLine": "gives a negative answer to the unrestricted two-map PPT-composition conjecture of Christandl, M\\\"uller-Hermes, and Wolf",
+      "sourceQuote": "The pair in Theorem~\\ref{thm:main-pair} gives a negative answer to the unrestricted two-map PPT-composition conjecture of Christandl, M\\\"uller-Hermes, and Wolf \\cite[Conjecture IV.1]{CMHW2019}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Separable states have zero key against a purifying Eve.",
+      "sourceLine": "Separable states have zero key against a purifying Eve",
+      "sourceQuote": "Separable states have zero key against a purifying Eve \\cite{CurtyLewensteinLutkenhaus04,keyBoundEntanglement}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Some PPT entangled states have positive distillable secret key.",
+      "sourceLine": "Some PPT entangled states nevertheless have positive distillable secret key",
+      "sourceQuote": "Some PPT entangled states nevertheless have positive distillable secret key \\cite{keyBoundEntanglement}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The converse was posed as Problem 24 in Krüger and Werner's open-problem collection.",
+      "sourceLine": "The converse was posed explicitly as Problem 24, ``Secret key from all entangled states,'' in Kr\\\"uger and Werner's open-problem collection",
+      "sourceQuote": "The converse was posed explicitly as Problem 24, ``Secret key from all entangled states,'' in Kr\\\"uger and Werner's open-problem collection: the entry is dated 15 March 2005 and lists P.~Horodecki as contact \\cite{KrugerWerner05}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For trace-norm error below 1/5 the correctness and secrecy bounds contradict each other.",
+      "sourceLine": "For $\\eta<1/5$, the right side of the first display is less than $2/5$, whereas the second display requires more than $2/5$.",
+      "sourceQuote": "For $\\eta<1/5$, the right side of the first display is less than $2/5$, whereas the second display requires more than $2/5$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Each quadratic covers at most nine of the twenty directions, and 9+9<20.",
+      "sourceLine": "Each can cover at most nine, and $9+9<20$.",
+      "sourceQuote": "Each can cover at most nine, and $9+9<20$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper does not claim either dimension is minimal.",
+      "sourceLine": "We do not claim that either dimension is minimal.",
+      "sourceQuote": "We do not claim that either dimension is minimal.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is no uniform bound on communication or steps in the admitted model.",
+      "sourceLine": "There is no uniform bound on the amount of communication or the number of steps within the admitted model.",
+      "sourceQuote": "There is no uniform bound on the amount of communication or the number of steps within the admitted model.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A trace-preserving PPT channel on 21-by-21 matrices has a square that is not entanglement breaking.",
+      "sourceLine": "A separate trace-preserving PPT channel on $\\Mat{21}$ has a square that is not entanglement breaking.",
+      "sourceQuote": "A separate trace-preserving PPT channel on $\\Mat{21}$ has a square that is not entanglement breaking.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Affirmative cases include two maps on 3-by-3 matrices.",
+      "sourceLine": "The PPT-composition problem has important affirmative cases, including two maps on $\\Mat3$",
+      "sourceQuote": "The PPT-composition problem has important affirmative cases, including two maps on $\\Mat3$ \\cite[Corollary III.1]{CMHW2019}; see also \\cite{ChenYangTang2019}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the dimension-ten PPT pair whose composition is not entanglement breaking, and the dimension-21 channel whose square is not; the zero-key statement is outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

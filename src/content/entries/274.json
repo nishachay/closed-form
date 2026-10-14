@@ -1,0 +1,182 @@
+{
+  "id": "274",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf",
+      "label": "Product-projection localization and the QAC0 parity lower bound"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Regular-trajectories-pruning-and-quantum-parity-September-24-2026/paper.pdf",
+      "label": "Regular trajectories, pruning and quantum parity"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/274.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves constant-depth quantum circuits with polynomially many qubits cannot compute parity, settling Moore's conjecture.",
+  "scope": "QAC0: constant-depth circuits of one-qubit gates and unbounded Toffoli gates, polynomially many qubits, zero ancillas, one measured output.",
+  "plain": "Parity asks whether a string of bits holds an odd number of ones. Classical shallow circuits of AND, OR and NOT gates cannot compute it, a 1980s result. Moore conjectured in 1999 that shallow quantum circuits of a certain kind cannot either. Two companion papers prove this, even allowing errors and leftover junk qubits, and Lean checks the main bound.",
+  "doesNot": "This does not cover circuits with fanout gates, intermediate measurements or postselection, and it gives no bound for small input sizes.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1999",
+    "firstStepBy": "Moore, who introduced the quantum circuit classes and conjectured parity is not in QAC0",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "It settles a central open question in quantum circuit complexity that had stood since 1999."
+  },
+  "explanation": "Take the bit string 1011. Its parity is 1, because it holds an odd number of ones. Flip any single bit and the parity flips too. So a parity circuit must combine information from every input bit.\n\nA circuit's depth is its number of layers of gates. Shallow classical circuits of AND, OR and NOT gates cannot compute parity. Furst, Saxe and Sipser, and separately Ajtai, proved this in the early 1980s[10]. Moore introduced the matching quantum circuit classes and linked parity to fanout[9]. Fanout copies one bit onto many others at once.\n\nThe quantum class is called QAC0. Its circuits have constant depth and polynomially many qubits. For 100 input bits, a polynomial bound might allow 100² = 10,000 qubits in total. The gates are any one-qubit gates plus Toffoli gates. A Toffoli gate flips a target qubit when all of its control qubits are 1. It may have any number of controls. Gates in one layer must not share qubits. So one qubit cannot control many gates at once.\n\nThe new theorem covers every fixed depth and every polynomial bound on qubits. For large enough n, no such circuit computes parity with any fixed positive worst-case advantage[1]. Worst-case advantage ε means the answer is right with chance at least 1/2 + ε on every input. A coin toss already gets 1/2. Taking ε = 1/6 gives the usual threshold of 2/3[2]. Extra qubits start at zero, only one qubit is measured, and the rest may end in any state[1]. The result resolves Moore's parity conjecture in this measured-output model[3]. It also rules out coherent fanout in constant depth[6].\n\nEarlier work needed limits. Some bounds required exact answers, at most a few layers, or few extra qubits. Anshu, Dong, Ou and Yao allowed a little more than n extra qubits at each fixed depth[4]. The new theorem drops all of these restrictions.\n\nThe main obstacle is the unbounded Toffoli gate. One such gate can touch every input, so counting wires gives no bound[5]. The first paper uses product projections, which fix one chosen state on each of some qubits. It shows a shallow circuit almost never moves a state from zero mismatches to many mismatches with such a fixed pattern. The second paper reaches the same theorem another way, through pruning along regular trajectories[7]. Neither structural theorem is used to prove the other[7]. The theorem holds only eventually: it allows exceptions at small input sizes[8].\n\nHow sure is this? Lean, a computer proof checker, has a formal proof of the parity bound. It covers every fixed depth, polynomial qubit bound and advantage. It also covers the 2/3 specialization and the product-projection estimate. The regular-trajectory and pruning steps of the second paper are not separate Lean statements. No specialist review has been published.",
+  "hypeCheck": "Major. Lean covers the parity lower bound and its localization estimate; no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Parity",
+      "meaning": "Whether a bit string has an odd (1) or even (0) number of ones."
+    },
+    {
+      "term": "Depth",
+      "meaning": "The number of layers of gates in a circuit; constant depth means it does not grow with the input size."
+    },
+    {
+      "term": "QAC0",
+      "meaning": "Constant-depth quantum circuits of one-qubit gates and Toffoli gates of any size, with polynomially many qubits."
+    },
+    {
+      "term": "Toffoli gate",
+      "meaning": "A gate that flips a target qubit when all of its control qubits are 1; here it may have any number of controls."
+    },
+    {
+      "term": "Ancilla",
+      "meaning": "An extra working qubit that starts in the zero state."
+    },
+    {
+      "term": "Worst-case advantage",
+      "meaning": "How far above a coin toss, one half, the success chance stays on every input."
+    },
+    {
+      "term": "Fanout",
+      "meaning": "An operation that copies one bit onto many target bits at the same time."
+    },
+    {
+      "term": "Product projection",
+      "meaning": "A test that checks one chosen state on each qubit of a set and leaves the other qubits alone."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Product-projection localization and the QAC0 parity lower bound” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Regular trajectories, pruning and quantum parity” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Regular-trajectories-pruning-and-quantum-parity-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 274",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/274.md",
+      "quote": "The formalization rules out bounded-error parity computation by constant-depth quantum circuits with polynomially many zero-initialized ancillary qubits."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Constant-depth circuits with one-qubit and unbounded Toffoli gates cannot compute parity with any fixed positive worst-case advantage using polynomially many qubits.",
+      "sourceLine": "cannot compute parity with any fixed positive worst-case advantage using polynomially many qubits",
+      "sourceQuote": "We prove that constant-depth quantum circuits with arbitrary one-qubit and unbounded-arity Toffoli gates cannot compute parity with any fixed positive worst-case advantage using polynomially many qubits.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Taking ε = 1/6 gives the usual success threshold 2/3.",
+      "sourceLine": "Taking \\(\\varepsilon=1/6\\) gives the usual success threshold \\(2/3\\).",
+      "sourceQuote": "Taking \\(\\varepsilon=1/6\\) gives the usual success threshold \\(2/3\\).",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "This resolves Moore's parity conjecture in the measured-output model.",
+      "sourceLine": "This resolves Moore's parity conjecture in the measured-output model.",
+      "sourceQuote": "This resolves Moore's parity conjecture in the measured-output model.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Anshu, Dong, Ou and Yao ruled out a fixed positive parity advantage with about n^(1+3^(−d)) ancillas.",
+      "sourceLine": "ruled out a fixed positive parity advantage with $\\widetilde O(n^{1+3^{-d}})$ ancillas",
+      "sourceQuote": "Anshu, Dong, Ou, and Yao ruled out a fixed positive parity advantage with $\\widetilde O(n^{1+3^{-d}})$ ancillas at every fixed entangling depth $d\\ge1$~\\cite[Corollary 4.4 and Theorem 4.6]{ADOY2025}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A single Toffoli gate can involve every input, so light-cone wire counts give no useful restriction.",
+      "sourceLine": "A single Toffoli gate can involve every input",
+      "sourceQuote": "A single Toffoli gate can involve every input, so the number of wires in an output's backward light cone gives no useful restriction.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The result also excludes coherent fanout.",
+      "sourceLine": "We prove Moore's parity conjecture in the measured-output model and therefore also exclude coherent fanout.",
+      "sourceQuote": "We prove Moore's parity conjecture in the measured-output model and therefore also exclude coherent fanout.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The second paper proves state-dependent propagation, projection insertion and pruning for regular trajectories; neither structural theorem is used to prove the other.",
+      "sourceLine": "proves state-dependent propagation, projection insertion, and pruning for regular trajectories",
+      "sourceQuote": "The present article instead proves state-dependent propagation, projection insertion, and pruning for regular trajectories.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem is eventual and permits finite exceptions at small input lengths.",
+      "sourceLine": "it permits arbitrary finite exceptions at small input lengths.",
+      "sourceQuote": "The theorem is eventual for each fixed depth, polynomial bound, and advantage; it permits arbitrary finite exceptions at small input lengths.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Moore introduced the quantum circuit classes and related coherent parity to fanout.",
+      "sourceLine": "Moore introduced the corresponding quantum circuit classes and related coherent parity to unbounded fanout",
+      "sourceQuote": "Moore introduced the corresponding quantum circuit classes and related coherent parity to unbounded fanout~\\cite{Moore1999}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Furst, Saxe and Sipser, and independently Ajtai, proved superpolynomial constant-depth lower bounds for parity.",
+      "sourceLine": "The superpolynomial constant-depth lower bounds for parity of Furst, Saxe, and Sipser",
+      "sourceQuote": "The superpolynomial constant-depth lower bounds for parity of Furst, Saxe, and Sipser~\\cite{FurstSaxeSipser1984} and, independently, Ajtai~\\cite{Ajtai1983}, were fundamental explicit circuit lower bounds.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the constant-depth parity lower bound, its 2/3 specialization and the product-projection localization estimate; regular-trajectory propagation and pruning are not separate statements.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

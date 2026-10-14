@@ -1,0 +1,154 @@
+{
+  "id": "277",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Threshold-parallel-repetition-for-finite-dimensional-entangled-games-September-25-2026/paper.pdf",
+      "label": "Threshold parallel repetition for finite-dimensional entangled games"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/277.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves that winning well above the entangled value in many repeated two-player games is exponentially unlikely.",
+  "scope": "Every finite two-player one-round game with entangled value below one, any correlated question law, all finite-dimensional entangled strategies.",
+  "plain": "In a two-player game, a referee asks Alice and Bob separate questions, and they answer without talking. Even with shared quantum entanglement, they win at most a fraction v of the time. This paper shows that, over many independent rounds, winning a fraction noticeably above v is exponentially unlikely. Lean checks a version with a weaker rate; the paper's sharper rates are claims.",
+  "doesNot": "This does not cover infinite-dimensional strategies, games with more than two players, or Lean-checked versions of the δ⁵ and cubic rates.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1998",
+    "firstStepBy": "Raz, parallel repetition theorem for classical two-player games",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It gives threshold amplification for all finite entangled two-player games, without restrictions on the questions or answers."
+  },
+  "explanation": "In the CHSH game, a referee sends Alice one random bit and Bob another. Each answers with one bit. They win when their answers differ exactly when both questions are 1. With shared entanglement, the best winning chance per round is cos²(π/8), about 0.854. Entanglement is a quantum link between their particles that lets their answers be more correlated than any shared classical plan allows.\n\nNow play 100 independent rounds. Suppose Alice and Bob need at least 96 wins. If each round were won independently with chance 0.854, the chance of 96 or more wins is about 0.0006. But players may coordinate across rounds. Their answers can depend on all questions they receive, and their wins need not be independent[5]. Threshold parallel repetition asks whether beating the single-game value by a fixed margin is still exponentially rare[5].\n\nFor classical players, Raz proved that winning every round decays exponentially[6]. Rao later proved exponential concentration above the classical value[7]. For entangled players, results came first for special games, such as XOR games, unique games, projection games and free games. Those results restrict either the winning rule or the question distribution[8]. Yuen proved polynomial decay for winning all rounds of any finite entangled game[9]. The obstacle is that entangled strategies across many rounds can correlate wins in complicated ways.\n\nThe paper proves a bound for every finite two-player game with entangled value v below one[1]. Fix any margin δ between 0 and 1 − v. The chance of winning at least a fraction v + δ of k rounds decays exponentially in k[1]. The question pairs may be correlated, and the rate involves only δ and the answer sizes. The claimed rate is proportional to δ⁵ divided by 1 + log(|A||B|)[2]. Here |A| and |B| are the numbers of possible answers. For CHSH, |A||B| = 4, and 1 + log 4 is about 2.39.\n\nThe universal constant in that rate is not stated as a number. A second, cubic bound has an explicit constant for each question distribution[3]. For CHSH it gives a rate of δ³ divided by about 3.8 million. With δ = 0.1, that is about 2.6 × 10⁻¹⁰ per round. So it bites only after billions of rounds. The paper builds on an all-wins result in a 2026 book chapter and on a conditioning lemma of Song[4].\n\nHow sure is this? Lean, a computer proof checker, has a formal proof of a weaker version, with rate proportional to δ¹³. The paper notes that this weaker rate follows from its main theorem[10]. The Lean statement covers every finite-dimensional strategy and their supremum. The δ⁵ rate as stated and the cubic bound are outside the Lean statement. They rest on the paper and on cited work, with no published specialist review.",
+  "hypeCheck": "Solid. Lean covers the threshold bound with a weaker δ^13 rate. The δ^5 and cubic rates rest on the paper and cited work, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Two-player game",
+      "meaning": "A referee sends each player a question; they answer without talking, and a fixed rule decides whether they win."
+    },
+    {
+      "term": "Entangled value",
+      "meaning": "The best winning chance per round when players share quantum entanglement of any finite dimension."
+    },
+    {
+      "term": "Parallel repetition",
+      "meaning": "Playing many independent copies of a game at once, with each player seeing all of their questions together."
+    },
+    {
+      "term": "Threshold",
+      "meaning": "A required fraction of rounds won, here v + δ, a fixed margin above the single-game value."
+    },
+    {
+      "term": "CHSH game",
+      "meaning": "A standard one-bit game where entangled players win about 85.4% of the time, against 75% for classical players."
+    },
+    {
+      "term": "Exponential decay",
+      "meaning": "A probability that shrinks like e^(−ck) as the number of rounds k grows, for some fixed c > 0."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Threshold parallel repetition for finite-dimensional entangled games” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Threshold-parallel-repetition-for-finite-dimensional-entangled-games-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 277",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/277.md",
+      "quote": "The separate distribution-dependent cubic bound is outside this scope."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "For every finite two-player game with entangled value v<1, winning at least a v+δ fraction of k repetitions decays exponentially, uniformly over finite-dimensional strategies.",
+      "sourceLine": "we prove exponential decay for the probability of winning at least a $v+\\delta$ fraction of $k$ independent repetitions, uniformly over all finite-dimensional joint strategies.",
+      "sourceQuote": "For every finite two-player game with entangled value $v<1$, we prove exponential decay for the probability of winning at least a $v+\\delta$ fraction of $k$ independent repetitions, uniformly over all finite-dimensional joint strategies.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The universal rate is proportional to δ^5/(1+log(|A||B|)).",
+      "sourceLine": "Its universal rate is proportional to $\\delta^5/(1+\\log(|\\mathcal A||\\mathcal B|))$",
+      "sourceQuote": "Its universal rate is proportional to $\\delta^5/(1+\\log(|\\mathcal A||\\mathcal B|))$, where $\\mathcal A,\\mathcal B$ are the answer alphabets.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For each fixed question distribution there is an explicit cubic rate in δ.",
+      "sourceLine": "For each fixed question distribution, we also obtain an explicit cubic rate in $\\delta$.",
+      "sourceQuote": "For each fixed question distribution, we also obtain an explicit cubic rate in $\\delta$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem combines a transfer from conditioning bounds to threshold bounds with Song's conditioning estimate.",
+      "sourceLine": "We obtain this theorem by combining a transfer from conditioning bounds to threshold bounds with Song's conditioning estimate",
+      "sourceQuote": "We obtain this theorem by combining a transfer from conditioning bounds to threshold bounds with Song's conditioning estimate~\\cite[Lemma~4.4]{song2026}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Threshold parallel repetition asks whether exceeding the single-game value by a fixed amount is exponentially unlikely, since wins need not be independent.",
+      "sourceLine": "the wins in a joint strategy need not be independent",
+      "sourceQuote": "Even when their success in a single game is bounded away from one, the wins in a joint strategy need not be independent.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Raz proved exponential all-wins decay for classical value less than one.",
+      "sourceLine": "Raz proved that, when this value is less than one, the probability of winning every coordinate decays exponentially under repetition",
+      "sourceQuote": "Raz proved that, when this value is less than one, the probability of winning every coordinate decays exponentially under repetition~\\cite{raz1998}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Rao proved exponential concentration above the classical value for general games.",
+      "sourceLine": "Rao then proved exponential concentration above the classical value for general games",
+      "sourceQuote": "Rao then proved exponential concentration above the classical value for general games~\\cite[Theorem~7]{rao2011}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Earlier entangled results require restrictions on the predicate or the question distribution.",
+      "sourceLine": "These results require restrictions on either the predicate or the question distribution.",
+      "sourceQuote": "These results require restrictions on either the predicate or the question distribution.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Yuen proved polynomial all-wins decay for arbitrary finite two-player entangled games.",
+      "sourceLine": "Yuen proved polynomial all-wins decay for arbitrary finite two-player entangled games",
+      "sourceQuote": "Yuen proved polynomial all-wins decay for arbitrary finite two-player entangled games~\\cite[Theorem~1]{yuen2016}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The weaker rate κ0 δ^13/(1+log d) follows from the main theorem.",
+      "sourceLine": "already follows from Theorem~\\ref{thm:main}.",
+      "sourceQuote": "Since $0<\\delta<1$, the weaker rate $\\kappa_0\\delta^{13}/(1+\\log d)$ already follows from Theorem~\\ref{thm:main}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes threshold parallel repetition for every finite two-player game with rate proportional to δ^13/(1+log(|A||B|)); the cubic bound is outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "id": "279",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-quantum-factoring-over-a-fixed-finite-gate-set-September-25-2026/main.pdf",
+      "label": "Exact quantum factoring over a fixed finite gate set"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/279.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves polynomial-size quantum circuits over a fixed gate set factor every integer with probability exactly one.",
+  "scope": "Uniform quantum circuits over one fixed finite gate set (NOT, CNOT, Toffoli, Hadamard, diag(1,i), inverses, singly controlled versions), for every integer N ≥ 2.",
+  "plain": "Shor's 1994 quantum algorithm factors whole numbers quickly, but it can fail and must sometimes be rerun. This paper builds quantum circuits that output the full prime factorization of every number with probability exactly one. They use one fixed, small set of gates and stay polynomial in size. Lean checks the main theorem; the circuits are far too large to be practical.",
+  "doesNot": "This does not give a practical speed-up, a classical factoring method, or circuits small enough for any foreseeable quantum computer.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1994",
+    "firstStepBy": "Shor, polynomial-time quantum factoring with bounded error",
+    "field": "Mathematical physics",
+    "significance": "Solid",
+    "significanceWhy": "It removes the failure probability from quantum factoring while keeping one fixed finite gate set and polynomial worst-case size."
+  },
+  "explanation": "Factor N = 15 the quantum way. Pick a = 7 and look at its powers modulo 15. They run 7, 4, 13, 1, so the order of 7 is r = 4. The order is the least power that gives 1. Half the order gives 7² ≡ 4, a square root of 1 that is not ±1. Then gcd(4 − 1, 15) = 3 and gcd(4 + 1, 15) = 5. So 15 = 3 × 5.\n\nShor's algorithm finds orders quickly with a quantum computer. It factors in polynomial time with bounded error[10]. Bounded error means each run can fail with some small chance. Checking a proposed answer makes reruns reliable. But a procedure that retries until success need not have a polynomial worst-case running time[2]. Exact versions existed only in stronger models. Mosca's exact algorithm allowed gate settings computed during the run[3]. The obstacle with a fixed gate set is that rotations by arbitrary angles cannot be built exactly. Approximating them ever more finely does not give probability-one answers[11].\n\nThe paper proves a uniform family of polynomial-size quantum circuits[1]. Uniform means an ordinary computer can write out each circuit in polynomial time. The circuits output the complete prime factorization of every N ≥ 2 with probability one[1]. One fixed finite gate set suffices: NOT, CNOT, Toffoli, Hadamard, diag(1, i), their inverses and singly controlled versions[8]. The gate and qubit counts are bounded by a fixed polynomial in the bit length of N[9].\n\nThe key trick ends with amplitude amplification, a step that boosts the chance of a good outcome. Suppose a good outcome has probability exactly 1/4. Write this as sin²θ = 1/4, so θ = 30°. One amplification step turns the probability into sin²(3θ) = sin²(90°) = 1. So the whole difficulty is making the success probability exactly 1/4[4]. The paper does this with dyadic numbers, fractions whose denominators are powers of two. Its order trial hits the true order with an exact dyadic probability[5]. Along the way, each run also factors p − 1 for its primes p, recursively. A deterministic primality test, adapted from Agrawal, Kayal and Saxena, checks the prime labels[6].\n\nThe constructions are not meant to save resources. Their large polynomial sizes are not offered as practical improvements[7]. The paper makes no claim of a classical polynomial-time factoring algorithm[12].\n\nHow sure is this? Lean, a computer proof checker, has a formal proof of the main theorem. It covers the uniform polynomial-size circuit family, the fixed gate set and the exact probability one. No specialist review of the paper has been published.",
+  "hypeCheck": "Solid. Lean covers the main theorem; the circuits are polynomial but very large and are not a practical improvement. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Order",
+      "meaning": "For a modulo m, the least positive r with a^r ≡ 1 (mod m)."
+    },
+    {
+      "term": "Bounded error",
+      "meaning": "Each run is right with probability at least some fixed amount, such as 2/3, but may fail."
+    },
+    {
+      "term": "Gate set",
+      "meaning": "The fixed list of basic operations a quantum circuit is allowed to use."
+    },
+    {
+      "term": "Uniform circuit family",
+      "meaning": "One circuit for each input length, all written out by a single efficient ordinary program."
+    },
+    {
+      "term": "Amplitude amplification",
+      "meaning": "A quantum step that raises the probability of a marked outcome, generalizing Grover's search."
+    },
+    {
+      "term": "Dyadic rational",
+      "meaning": "A fraction whose denominator is a power of two, such as 3/8."
+    },
+    {
+      "term": "Polynomial size",
+      "meaning": "The number of gates and qubits grows at most like a fixed power of the number of input digits."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Exact quantum factoring over a fixed finite gate set” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Exact-quantum-factoring-over-a-fixed-finite-gate-set-September-25-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 279",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/279.md",
+      "quote": "The probability-one conclusion is exact, rather than an asymptotic or bounded-error guarantee."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "There is a polynomial-time uniform family of polynomial-size quantum circuits that outputs the complete prime factorization of every N≥2 with probability one, over NOT, CNOT, Toffoli, Hadamard, diag(1,i), inverses and controlled versions.",
+      "sourceLine": "There is a polynomial-time uniform family of polynomial-size quantum circuits that outputs the complete prime factorization of every input integer $N\\ge2$ with probability one.",
+      "sourceQuote": "There is a polynomial-time uniform family of polynomial-size quantum circuits that outputs the complete prime factorization of every input integer $N\\ge2$ with probability one.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A retry-until-success procedure need not have polynomial worst-case time, and fine rotation approximation does not give probability-one correctness over a fixed finite gate set.",
+      "sourceLine": "Verifying a proposed factorization makes repetition reliable, but a procedure that retries until success need not have a polynomial worst-case running time.",
+      "sourceQuote": "Verifying a proposed factorization makes repetition reliable, but a procedure that retries until success need not have a polynomial worst-case running time.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Mosca's exact factoring algorithm was in a generalized model permitting gate parameters obtained during the computation.",
+      "sourceLine": "Their discussion also reports Mosca's exact factoring algorithm in a generalized model permitting gate parameters obtained during the computation",
+      "sourceQuote": "Their discussion also reports Mosca's exact factoring algorithm in a generalized model permitting gate parameters obtained during the computation~\\cite[Section~5.2]{MZ}; see also \\cite[Section~1]{Imran}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction makes the success probability exactly 1/4, so the established pair of sign reflections suffices.",
+      "sourceLine": "Here the preceding construction makes that probability exactly $1/4$ using dyadic arithmetic and the fixed gates, so the established pair of sign reflections suffices.",
+      "sourceQuote": "Here the preceding construction makes that probability exactly $1/4$ using dyadic arithmetic and the fixed gates, so the established pair of sign reflections suffices.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof constructs an order trial whose mass on the true order is a prescribed dyadic rational.",
+      "sourceLine": "First, it constructs an order trial whose mass on the true order is a prescribed dyadic rational",
+      "sourceQuote": "First, it constructs an order trial whose mass on the true order is a prescribed dyadic rational, meaning a rational with a power-of-two denominator.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Prime labels are checked by a deterministic primality test adapted from Agrawal, Kayal and Saxena.",
+      "sourceLine": "The appendix adapts the polynomial-congruence method of Agrawal, Kayal, and Saxena",
+      "sourceQuote": "The appendix adapts the polynomial-congruence method of Agrawal, Kayal, and Saxena~\\cite{AKS}, with its constants and auxiliary-prime choice established directly.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Its large polynomial parameters are not intended as practical improvements; no classical polynomial-time factoring algorithm is claimed.",
+      "sourceLine": "Its large polynomial parameters are not intended as practical resource improvements.",
+      "sourceQuote": "Its large polynomial parameters are not intended as practical resource improvements.",
+      "verdict": "supported"
+    },
+    {
+      "text": "One fixed finite gate set suffices: NOT, CNOT, Toffoli, Hadamard, diag(1,i), their inverses and singly controlled versions.",
+      "sourceLine": "One fixed finite gate set suffices: NOT, CNOT, Toffoli, Hadamard, $\\operatorname{diag}(1,i)$, their inverses, and their singly controlled versions.",
+      "sourceQuote": "One fixed finite gate set suffices: NOT, CNOT, Toffoli, Hadamard, $\\operatorname{diag}(1,i)$, their inverses, and their singly controlled versions.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The number of gates and qubits is bounded by a fixed polynomial in the bit length of N.",
+      "sourceLine": "The number of gates and qubits is bounded by a fixed polynomial in the bit length of $N$.",
+      "sourceQuote": "The number of gates and qubits is bounded by a fixed polynomial in the bit length of $N$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Shor's algorithms established polynomial-time factorization with bounded error.",
+      "sourceLine": "Shor's quantum algorithms established polynomial-time factorization and discrete logarithms with bounded error",
+      "sourceQuote": "Shor's quantum algorithms established polynomial-time factorization and discrete logarithms with bounded error~\\cite{Shor}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Approximating arbitrary-angle rotations ever more precisely does not yield probability-one correctness over a fixed finite gate set.",
+      "sourceLine": "Approximating an arbitrary-angle rotation to increasingly high precision likewise does not by itself yield probability-one correctness over a fixed finite gate set.",
+      "sourceQuote": "Approximating an arbitrary-angle rotation to increasingly high precision likewise does not by itself yield probability-one correctness over a fixed finite gate set.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper makes no claim of a classical polynomial-time factoring algorithm.",
+      "sourceLine": "It makes no claim of a classical deterministic or randomized polynomial-time factoring algorithm.",
+      "sourceQuote": "It makes no claim of a classical deterministic or randomized polynomial-time factoring algorithm.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes a polynomial-time uniform quantum circuit family over one fixed finite gate set that outputs the full prime factorization of every N ≥ 2 with probability exactly one.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "id": "280",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical physics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strongly-rational-unitary-vertex-operator-algebras-and-conformal-nets-September-25-2026/paper.pdf",
+      "label": "Strongly rational unitary vertex operator algebras and conformal nets"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/280.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves strongly rational unitary vertex operator algebras give conformal nets; claims their representations match.",
+  "scope": "Simple unitary strongly rational complex vertex operator algebras, their grading-restricted modules, and the conformal nets built from their smeared fields.",
+  "plain": "Physicists have two rigorous languages for two-dimensional conformal field theories: vertex operator algebras and conformal nets. It was expected that they describe the same theories, but this was proved only family by family. This paper claims the match for every strongly rational unitary vertex operator algebra, including their modules, fusion and braiding. Lean checks the first step, building the net, but not the full equivalence.",
+  "doesNot": "This does not cover vertex operator algebras that are not strongly rational or not unitary, and Lean does not check the tensor equivalence.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStepBy": "Carpi, Kawahigashi, Longo and Weiner, who built nets from strongly local VOAs and conjectured strong locality for every simple unitary VOA",
+    "field": "Mathematical physics",
+    "significance": "Major",
+    "significanceWhy": "It settles, for the whole strongly rational unitary class, a correspondence that earlier work proved only for specific families."
+  },
+  "explanation": "Take the Ising model at its critical point, a standard example from statistical physics. Its chiral part has three basic sectors, with conformal weights 0, 1/16 and 1/2. Each sector has a quantum dimension, here 1, √2 and 1. Two copies of the 1/16 sector fuse into the other two sectors together. That matches √2 × √2 = 1 + 1 = 2. A net-side invariant called the μ-index is the sum of the squared dimensions, 1 + 2 + 1 = 4. Two different theories should agree on all of this data.\n\nVertex operator algebras and conformal nets are two mathematical formulations of chiral conformal field theory[2]. A vertex operator algebra, or VOA, records fields and their algebraic identities. A conformal net assigns algebras of bounded observables to intervals of a circle[9]. Unitary means the theory has a positive inner product, as quantum physics needs. Strongly rational is a set of finiteness conditions. One of them says every suitable module splits into simple pieces.\n\nCarpi, Kawahigashi, Longo and Weiner made strong locality the condition for building a net from a VOA[10]. Strong locality means fields on disjoint intervals give commuting bounded observables. They conjectured it for every simple unitary VOA[3]. The obstacle is analytic. Fields that commute formally on a common domain need not give commuting algebras[11]. The full match was known for several families, such as affine VOAs at positive integer levels and even lattice VOAs[4].\n\nThe paper claims the correspondence for every simple unitary strongly rational VOA[1]. The first step is proved in Lean. The VOA has polynomial energy bounds and is strongly local, and its smeared fields form an irreducible conformal net[5]. Energy bounds limit how fast each field grows with energy. Second, every simple module can be given a positive inner product, and the fusion forms are positive[6]. Third, the net is completely rational, a finiteness condition on the net side[1]. Last, a functor of Carpi, Weiner and Xu matches the two module categories, with their fusion and braiding[12]. Through Gui's theorems, finite-index local extensions of the nets also match conformal extensions of the VOAs[7].\n\nA key step bounds field growth. A finite generating family and two contraction inequalities give polynomial growth[8]. A sharper estimate then gives the order needed for locality[8].\n\nHow sure is this? Lean, a computer proof checker, has a formal proof of the first step. It covers polynomial energy bounds, strong locality and the irreducible conformal net. Complete rationality, unitarity of all modules, the tensor equivalence and the extension classification are outside it. Those parts rest on the paper's long argument and much cited work. No specialist review has been published.",
+  "hypeCheck": "Major if it holds. Lean covers energy bounds, strong locality and the net construction; the representation-theory equivalence rests on the paper and cited work, with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Vertex operator algebra (VOA)",
+      "meaning": "An algebraic structure that encodes the fields of a two-dimensional conformal field theory and how they combine."
+    },
+    {
+      "term": "Conformal net",
+      "meaning": "An assignment of operator algebras of observables to intervals of a circle, compatible with conformal symmetry."
+    },
+    {
+      "term": "Unitary",
+      "meaning": "Having a positive inner product compatible with the structure, as quantum physics requires."
+    },
+    {
+      "term": "Strongly rational",
+      "meaning": "A finiteness condition: CFT type, self-dual, all suitable modules split into simple pieces, and a finite-dimensional quotient V/C₂(V)."
+    },
+    {
+      "term": "Strong locality",
+      "meaning": "Fields smeared on disjoint intervals generate operator algebras that commute."
+    },
+    {
+      "term": "Energy bounds",
+      "meaning": "Estimates that limit how large a field's modes can make a state, in terms of its energy."
+    },
+    {
+      "term": "Fusion and braiding",
+      "meaning": "Rules for combining two sectors into a third, and for swapping their order."
+    },
+    {
+      "term": "Completely rational",
+      "meaning": "A net-side finiteness condition: irreducible, split, strongly additive, with finite μ-index."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Strongly rational unitary vertex operator algebras and conformal nets” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Strongly-rational-unitary-vertex-operator-algebras-and-conformal-nets-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 280",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/280.md",
+      "quote": "The selected statement does not include complete rationality of the net, unitarizability of all simple modules, the braided tensor equivalence, or the classification of local extensions described in the paper."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Every simple unitary strongly rational VOA generates a completely rational conformal net.",
+      "sourceLine": "Every simple unitary strongly rational vertex operator algebra generates a completely rational conformal net.",
+      "sourceQuote": "Every simple unitary strongly rational vertex operator algebra generates a completely rational conformal net.",
+      "verdict": "supported"
+    },
+    {
+      "text": "VOAs and conformal nets are two mathematical formulations of chiral conformal field theory.",
+      "sourceLine": "Vertex operator algebras and conformal nets are two mathematical formulations of chiral conformal field theory.",
+      "sourceQuote": "Vertex operator algebras and conformal nets are two mathematical formulations of chiral conformal field theory.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Carpi, Kawahigashi, Longo and Weiner conjectured strong locality for every simple unitary VOA.",
+      "sourceLine": "They conjectured strong locality for every simple unitary VOA",
+      "sourceQuote": "They conjectured strong locality for every simple unitary VOA \\cite[Conjecture~8.18]{CKLW}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The full correspondence was already known for affine VOAs at positive integral levels, even lattice VOAs, parafermions and ADE discrete-series W-algebras.",
+      "sourceLine": "Complete unitarity, full braided equivalence and complete rationality are already known for affine VOAs at positive integral levels, even positive-definite lattice VOAs",
+      "sourceQuote": "Complete unitarity, full braided equivalence and complete rationality are already known for affine VOAs at positive integral levels, even positive-definite lattice VOAs, parafermion VOAs at positive integral levels, and type $ADE$ discrete-series $W$-algebras.",
+      "verdict": "supported"
+    },
+    {
+      "text": "V has polynomial energy bounds and is CKLW-strongly local, and the algebras form an irreducible conformal net.",
+      "sourceLine": "$V$ has polynomial energy bounds and is CKLW-strongly local.",
+      "sourceQuote": "$V$ has polynomial energy bounds and is CKLW-strongly local.",
+      "verdict": "supported"
+    },
+    {
+      "text": "All simple grading-restricted modules are unitarizable and canonical fusion forms are positive.",
+      "sourceLine": "All its simple grading-restricted modules are unitarizable, its canonical fusion forms are positive",
+      "sourceQuote": "All its simple grading-restricted modules are unitarizable, its canonical fusion forms are positive, and the Carpi--Weiner--Xu functor gives a braided unitary tensor equivalence from its grading-restricted finite-length module category onto the finite-index sectors of the net.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Gui's extension theorems identify finite-index local extensions of the nets with conformal extensions of the VOAs.",
+      "sourceLine": "Gui's extension theorems then identify normalized irreducible finite-index local extensions of these nets with simple CFT-type conformal extensions of the vertex operator algebras.",
+      "sourceQuote": "Gui's extension theorems then identify normalized irreducible finite-index local extensions of these nets with simple CFT-type conformal extensions of the vertex operator algebras.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Two contraction inequalities give polynomial growth and then the energy order needed for locality.",
+      "sourceLine": "Two contraction inequalities first give polynomial growth and then, for Hermitian quasi-primary fields of weight $d\\geq2$, the energy order $d-1$ needed for locality.",
+      "sourceQuote": "Two contraction inequalities first give polynomial growth and then, for Hermitian quasi-primary fields of weight $d\\geq2$, the energy order $d-1$ needed for locality.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A conformal net assigns von Neumann algebras of bounded observables to intervals of the circle.",
+      "sourceLine": "A conformal net assigns von Neumann algebras of bounded observables to intervals of the circle.",
+      "sourceQuote": "A conformal net assigns von Neumann algebras of bounded observables to intervals of the circle.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Carpi, Kawahigashi, Longo and Weiner made strong locality the analytic condition for constructing a conformal net from a simple unitary VOA.",
+      "sourceLine": "Carpi, Kawahigashi, Longo and Weiner made strong locality the analytic condition for constructing a conformal net from a simple unitary VOA",
+      "sourceQuote": "Carpi, Kawahigashi, Longo and Weiner made strong locality the analytic condition for constructing a conformal net from a simple unitary VOA \\cite[Theorems~6.8 and~8.1]{CKLW}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Commuting unbounded fields on a common domain need not generate commuting von Neumann algebras.",
+      "sourceLine": "commuting unbounded fields on a common domain need not generate commuting von Neumann algebras.",
+      "sourceQuote": "The locality issue is substantial: commuting unbounded fields on a common domain need not generate commuting von Neumann algebras.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Carpi–Weiner–Xu functor gives a braided unitary tensor equivalence onto the finite-index sectors of the net.",
+      "sourceLine": "the Carpi--Weiner--Xu functor gives a braided unitary tensor equivalence from its grading-restricted finite-length module category onto the finite-index sectors of the net.",
+      "sourceQuote": "All its simple grading-restricted modules are unitarizable, its canonical fusion forms are positive, and the Carpi--Weiner--Xu functor gives a braided unitary tensor equivalence from its grading-restricted finite-length module category onto the finite-index sectors of the net.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes polynomial energy bounds, strong locality and construction of an irreducible conformal net for a simple unitary strongly rational VOA; the rest is outside.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
