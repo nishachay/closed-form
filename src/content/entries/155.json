@@ -1,0 +1,170 @@
+{
+  "id": "155",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-translational-tile-with-no-fully-periodic-tiling-in-dimension-three-September-23-2026/paper.pdf",
+      "label": "A translational tile with no fully periodic tiling in dimension three"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/155.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves a finite tile in three dimensions can tile space, yet never in a fully repeating pattern.",
+  "scope": "One finite set of integer points in ℤ³, and its thickening by unit cubes in ℝ³. Dimension three is the lowest where this can happen on the integer grid.",
+  "plain": "A tile here is a finite set of grid points whose shifted copies cover the grid with no overlaps. The periodic tiling conjecture said that any such tile can also tile in a pattern that repeats in every direction. It held in one and two dimensions but failed in some very large dimension. The paper builds a tile in three dimensions that tiles but never periodically, and a computer proof checker has a formal version. The same holds for its unit-cube version in ordinary space, even with any real shifts.",
+  "doesNot": "This does not give a small or connected tile; the construction is huge, and the paper does not claim the tile is in one piece. It also does not say the tilings have no repeating direction at all, only that none repeats in every direction.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1996",
+    "firstStepBy": "Jeffrey Lagarias and Yang Wang, explicit Euclidean formulation of the periodic tiling question",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles the periodic tiling conjecture in dimension three, the lowest dimension where it can fail on the grid."
+  },
+  "explanation": "Start on the number line. Take the tile F = {0, 2}, two points. Place copies of it at the shifts 0, 1, 4, 5, 8, 9, and so on, and the matching negative ones. The copy at 0 covers 0 and 2. The copy at 1 covers 1 and 3. The copies at 4 and 5 cover 4 to 7. Every whole number is covered exactly once. A tiling is this kind of exact cover by shifted copies of one tile. This tiling repeats with period 4, so it is periodic.\n\nIn the paper's sense, a tiling is fully periodic when its set of shifts repeats under a full grid of translations. The periodic tiling conjecture asks whether every tile that tiles at all also has a fully periodic tiling. Lagarias and Wang wrote down an explicit version for ordinary space[1]. On the line, every tiling by a finite tile is periodic, by an argument of Newman[2]. Bhattacharya proved that every finite tile of the plane grid ℤ² has a periodic tiling[3]. Greenfeld and Tao later disproved the conjecture in some sufficiently large dimension[4]. That left the gap between dimension three and their very large one.\n\nThe paper builds a finite tile T in ℤ³, the grid of integer triples. T tiles ℤ³, but no tiling by T is fully periodic[5]. The same holds for T thickened by unit cubes in ordinary space ℝ³, even with any real shifts[6]. Since the cases of dimensions one and two are settled positively, three is the smallest possible dimension for this on the grid[7].\n\nThe proof follows Greenfeld and Tao's plan. It starts from a puzzle rule, like a Sudoku on an infinite strip of columns. The rule has a solution with every column nonconstant, but no such solution repeats vertically[8]. The puzzle rules are then turned into tiling equations on the plane grid times a finite group. The obstacle is that finite group. A general finite group needs several generators, but a cyclic group fits into one extra integer coordinate[9]. So the paper encodes the rules while keeping the finite part cyclic[10]. The plane grid times a finite cyclic group is a quotient of ℤ³, which lets the tile move into three dimensions[11].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the counterexample. It also covers the claim that three is the least grid dimension. So the paper proves its main result, as far as the Lean statement matches the paper. The paper gives no practical bound on the tile's size[12]. No specialist review of the paper is published.",
+  "hypeCheck": "Major: it settles a named conjecture in its lowest open dimension, and Lean has a formal statement of the result. The tile is enormous and not claimed to be connected. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Translational tile",
+      "meaning": "A finite set whose shifted copies, with no turns, cover the whole space exactly once."
+    },
+    {
+      "term": "Tiling",
+      "meaning": "A choice of shifts so that the shifted copies of the tile cover every point exactly once."
+    },
+    {
+      "term": "Fully periodic",
+      "meaning": "Repeating under a full grid of translations, so the pattern repeats in every direction."
+    },
+    {
+      "term": "ℤ³",
+      "meaning": "The grid of all points in space whose three coordinates are whole numbers."
+    },
+    {
+      "term": "Cyclic group",
+      "meaning": "A finite group made by repeatedly adding one element, like the hours on a clock."
+    },
+    {
+      "term": "Quotient",
+      "meaning": "A simpler space made by treating certain points of a larger space as the same."
+    },
+    {
+      "term": "Unit-cube thickening",
+      "meaning": "The shape made by placing a 1 by 1 by 1 cube at each point of the tile."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A translational tile with no fully periodic tiling in dimension three” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-translational-tile-with-no-fully-periodic-tiling-in-dimension-three-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 155",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/155.md",
+      "quote": "The formalized counterexample is a finite tile in $\\mathbb Z^3$ that tiles but has no complement invariant under a finite-index subgroup."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "An explicit Euclidean formulation of the periodic tiling conjecture appears in Lagarias and Wang.",
+      "sourceLine": "An explicit Euclidean formulation appears in",
+      "sourceQuote": "An explicit Euclidean formulation appears in \\citet[p.~346]{LagariasWang}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Newman's finite-state argument shows that every tiling of ℤ by a finite tile is periodic.",
+      "sourceLine": "Newman's finite-state argument shows that the translation set of every tiling of $\\Z$ by a finite tile is periodic",
+      "sourceQuote": "Newman's finite-state argument shows that the translation set of every tiling of $\\Z$ by a finite tile is periodic \\citep[proof of Theorem~2]{Newman}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Bhattacharya proved that every finite tile of ℤ² admits a periodic tiling.",
+      "sourceLine": "Bhattacharya proved that every finite tile of $\\Z^2$ admits a periodic tiling",
+      "sourceQuote": "Bhattacharya proved that every finite tile of $\\Z^2$ admits a periodic tiling \\citep[Theorem~1.1]{Bhattacharya}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Greenfeld and Tao disproved the periodic tiling conjecture in sufficiently large dimension.",
+      "sourceLine": "disproved the periodic tiling conjecture in sufficiently large dimension.",
+      "sourceQuote": "\\citet{GTPeriodic} disproved the periodic tiling conjecture in sufficiently large dimension.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a finite translational tile in ℤ³ that admits tilings but no fully periodic tiling.",
+      "sourceLine": "We construct a finite translational tile in $\\Z^3$ that admits tilings but no fully periodic tiling.",
+      "sourceQuote": "We construct a finite translational tile in $\\Z^3$ that admits tilings but no fully periodic tiling.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Its unit-cube thickening has the same property in ℝ³, even with arbitrary real translations.",
+      "sourceLine": "Its unit-cube thickening has the same property in $\\R^3$, even when arbitrary real translations are allowed.",
+      "sourceQuote": "Its unit-cube thickening has the same property in $\\R^3$, even when arbitrary real translations are allowed.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For lattice tilings, dimension three is the smallest possible dimension for this conclusion.",
+      "sourceLine": "For lattice tilings, dimension three is the smallest possible dimension for this conclusion.",
+      "sourceQuote": "For lattice tilings, dimension three is the smallest possible dimension for this conclusion.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The word rule has an array with every column nonconstant, but no such array has a vertical period.",
+      "sourceLine": "one such array exists with every column nonconstant, but no array with those properties has a vertical period.",
+      "sourceQuote": "The arithmetic word rule has two features: one such array exists with every column nonconstant, but no array with those properties has a vertical period.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A general finite abelian group needs several generators, whereas a cyclic group fits in the third integer coordinate.",
+      "sourceLine": "a general finite abelian group needs several generators, whereas a cyclic group can be represented by just the third integer coordinate.",
+      "sourceQuote": "The finite group matters as well: a general finite abelian group needs several generators, whereas a cyclic group can be represented by just the third integer coordinate.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The central construction encodes the Sudoku constraints while keeping the finite factor cyclic.",
+      "sourceLine": "The central construction here encodes the Sudoku constraints while keeping that finite factor cyclic.",
+      "sourceQuote": "The central construction here encodes the Sudoku constraints while keeping that finite factor cyclic.",
+      "verdict": "supported"
+    },
+    {
+      "text": "ℤ² times a finite cyclic group is a quotient of ℤ³.",
+      "sourceLine": "$\\Z^2$ times a finite cyclic group is a quotient of $\\Z^3$.",
+      "sourceQuote": "The quotient-to-lattice reduction of \\citet[Theorem~1.1 and Corollary~1.2]{MSSReduction} explains the relevance of controlling the finite factor: $\\Z^2$ times a finite cyclic group is a quotient of $\\Z^3$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No practical bound on the size of the finite construction is required.",
+      "sourceLine": "No practical bound on the size of the finite construction is required.",
+      "sourceQuote": "No practical bound on the size of the finite construction is required.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the counterexample in ℤ³, its unit-cube version in ℝ³, and that three is the least grid dimension where this happens.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "160",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Combinatorics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantitative-Superexponential-Bounds-for-van-der-Waerden-Numbers-September-23-2026/paper.pdf",
+      "label": "Quantitative Superexponential Bounds for van der Waerden Numbers"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/160.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Proves van der Waerden numbers grow faster than any exponential, answering a question of Erdős for two colors.",
+  "scope": "Lower bounds on van der Waerden numbers W_r(k) for all long progression lengths k and every number of colors r ≥ 2.",
+  "plain": "If you color the numbers 1 to N with a few colors and N is large, some long evenly spaced run gets one color. The van der Waerden number is the smallest such N. Erdős asked whether, for two colors, this number grows faster than any fixed number raised to the power k. The paper proves that it does, with an explicit bound valid for every number of colors. A computer proof checker has a formal version of this bound.",
+  "doesNot": "This does not give useful numbers for small progressions: the constant is 1/100,000, so the bound beats 2^k only for astronomically long progressions. It also does not find exact van der Waerden numbers.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1980",
+    "firstStepBy": "Paul Erdős, question on the superexponential growth of W_2(k)",
+    "field": "Combinatorics",
+    "significance": "Major",
+    "significanceWhy": "It settles Erdős's superexponential-growth question for two colors with an explicit, Lean-checked bound."
+  },
+  "explanation": "Color the numbers 1 to 8 as red, red, blue, blue, red, red, blue, blue. Look for three numbers in a row with equal gaps, like 2, 5, 8, all the same color. There are none. A run with equal gaps is an arithmetic progression. Now try 1 to 9. A computer search over all 512 two-colorings finds that every one has a three-term progression in one color. So 9 is the least length that forces one. This least length is the van der Waerden number W_2(3), with 2 colors and progressions of length 3.\n\nIn general, W_r(k) is the least N where every coloring of 1 to N with r colors has a one-color progression of length k. Van der Waerden proved in 1927 that these numbers are finite[1]. How fast they grow is a separate question. Kozik and Shabanov showed W_r(k) is at least a constant times r^(k−1)[2]. For two colors that is roughly 2^k, an exponential. Erdős asked whether W_2(k)^(1/k) tends to infinity, so that no fixed exponential keeps up[3]. Recent work pushed past 2^k by a factor of about k/2 for two colors[4].\n\nThe paper answers Erdős's question. For every k above a fixed threshold and every r ≥ 2, W_r(k) exceeds k^(ck⌊log₂ r⌋) with c = 10^(−5)[5]. For two colors the exponent is ck. Taking the k-th root leaves k^c, which grows without limit[6]. The constant is tiny, though. The bound beats 2^k only once log₂ k exceeds 100,000.\n\nThe proof builds a two-coloring of a large cyclic group, then adds independent random flips[7,8]. A heavily repeated label pattern along a progression creates a short period. The obstacle is to control these repeats when the number of coordinates grows with k[9]. The paper handles this with a counting estimate whose constant does not depend on the coordinates[10].\n\nHow sure is this? Lean, a computer proof checker, has a formal statement of the main bound with the same constant. So the paper proves it, as far as the Lean statement matches the paper. Its sharper intermediate estimates are outside the Lean scope. No specialist review of the paper is published.",
+  "hypeCheck": "Major: it settles a stated Erdős question with a Lean-checked bound. The constant is very small, so the bound says nothing for practical progression lengths. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Arithmetic progression",
+      "meaning": "Numbers with equal gaps, such as 2, 5, 8."
+    },
+    {
+      "term": "Van der Waerden number",
+      "meaning": "The least length that forces a one-color arithmetic progression of a given length in every coloring."
+    },
+    {
+      "term": "Exponential growth",
+      "meaning": "Growth like 2^k, where adding one to k multiplies the value by a fixed amount."
+    },
+    {
+      "term": "Superexponential",
+      "meaning": "Growing faster than every fixed exponential such as 2^k or 100^k."
+    },
+    {
+      "term": "Cyclic group",
+      "meaning": "Numbers that wrap around after a fixed size, like hours on a clock."
+    },
+    {
+      "term": "Floor ⌊x⌋",
+      "meaning": "The largest whole number not above x."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Quantitative Superexponential Bounds for van der Waerden Numbers” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Quantitative-Superexponential-Bounds-for-van-der-Waerden-Numbers-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 160",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/160.md",
+      "quote": "The formalized result gives an absolute threshold $K$ such that $W(r,k)>k^{k\\lfloor\\log_2 r\\rfloor/100000}$ for all $k\\ge K$ and $r\\ge2$."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The finiteness of van der Waerden numbers is van der Waerden's theorem.",
+      "sourceLine": "The finiteness of these numbers is van der Waerden's theorem",
+      "sourceQuote": "The finiteness of these numbers is van der Waerden's theorem \\cite{vanDerWaerden1927}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Kozik and Shabanov obtained an absolute β > 0 with W_r(k) ≥ β r^(k−1) for all r ≥ 2 and k ≥ 3.",
+      "sourceLine": "subsequently obtained an absolute $\\beta>0$ such that",
+      "sourceQuote": "Kozik and Shabanov~\\cite[Theorem~2]{kozikShabanov2016} subsequently obtained an absolute $\\beta>0$ such that $W_r(k)\\ge\\beta r^{k-1}$ for all $r\\ge2$ and $k\\ge3$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Erdős explicitly asked for the full limit W_2(k)^(1/k) → ∞ in the two-color case.",
+      "sourceLine": "Erd\\H{o}s explicitly asked for this full limit in the two-color case",
+      "sourceQuote": "Erd\\H{o}s explicitly asked for this full limit in the two-color case \\cite[p.~90, (2)]{erdos1980}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Campos, Fox, and Schildkraut proved W_2(k) ≥ (1 − o(1))k2^(k−1).",
+      "sourceLine": "W_2(k)\\ge(1-o(1))k2^{k-1}.",
+      "sourceQuote": "Campos, Fox, and Schildkraut \\cite[Theorem~1]{camposFoxSchildkraut2026} proved \\[ W_2(k)\\ge(1-o(1))k2^{k-1}. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is an absolute K_0 such that W_r(k) > k^(ck⌊log₂ r⌋) with c = 10^(−5) for every k ≥ K_0 and r ≥ 2.",
+      "sourceLine": "There is an absolute integer $K_0$ such that, for every integer",
+      "sourceQuote": "There is an absolute integer $K_0$ such that, for every integer $k\\ge K_0$ and every integer $r\\ge2$, \\[ W_r(k)>k^{c k\\lfloor\\log_2r\\rfloor}, \\qquad c=10^{-5}. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "For each fixed r ≥ 2, W_r(k)^(1/k) → ∞, a quantitative positive resolution of Erdős's question.",
+      "sourceLine": "Thus Theorem~\\ref{main:intro} gives a quantitative positive resolution",
+      "sourceQuote": "Thus Theorem~\\ref{main:intro} gives a quantitative positive resolution of his superexponential-growth question.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction starts from a two-coloring of a cyclic group.",
+      "sourceLine": "We first construct a two-coloring of a cyclic group $\\Z/q^D\\Z$ with",
+      "sourceQuote": "We first construct a two-coloring of a cyclic group $\\Z/q^D\\Z$ with $q^D\\ge k^{ck}$, where $q$ is a power of a prime exceeding $k$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "An independent Bernoulli(p) flip is attached to each key.",
+      "sourceLine": "We attach an independent Bernoulli$(p)$ flip to each key consisting",
+      "sourceQuote": "We attach an independent Bernoulli$(p)$ flip to each key consisting of a $y$-box and $\\lfloor\\|q\\widetilde y\\|_2^2\\rfloor$, where $p=k^{-1/20}$ and $\\widetilde y\\in[-1/2,1/2)^D$ is the centered representative.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The quantitative obstacle is to control returns of a short period when the dimension grows with k.",
+      "sourceLine": "The quantitative obstacle is to control such returns when the dimension",
+      "sourceQuote": "The quantitative obstacle is to control such returns when the dimension grows with $k$: constants depending arbitrarily on the dimension would not suffice.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A key estimate counts patterns through one label by (CDh)^(6D), with an absolute C.",
+      "sourceLine": "A key estimate counts the patterns through one specified label by",
+      "sourceQuote": "A key estimate counts the patterns through one specified label by $(CDh)^{6D}$, with an absolute $C$ independent of $q$, $\\lambda$, and the width of the anchor interval.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes W(r,k) > k^(k⌊log₂ r⌋/100000) for all k above an absolute threshold and all r ≥ 2.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
