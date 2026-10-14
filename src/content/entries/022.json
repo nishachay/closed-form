@@ -1,0 +1,234 @@
+{
+  "id": "022",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-weak-inhomogeneous-Duffin-Schaeffer-conjecture-September-25-2026/paper.pdf",
+      "label": "The Weak Inhomogeneous Duffin–Schaeffer Conjecture"
+    }
+  ],
+  "headline": "For any fixed shift, a weighted sum decides whether almost every number is well approximated.",
+  "scope": "The result holds for every fixed real shift and every list of tolerances, with any whole-number numerator allowed.",
+  "plain": "Take a number x and ask how close its multiples can come to a fixed target, up to whole numbers. You set a tolerance for each multiplier. The paper claims a simple test: if a certain weighted sum of the tolerances is infinite, almost every x hits infinitely often. This was conjectured as the weak inhomogeneous Duffin–Schaeffer conjecture. The claim has no Lean formalization and no published specialist review.",
+  "doesNot": "This does not say what happens when the weighted sum is finite, and it does not cover the version that demands reduced fractions.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1941",
+    "firstStepBy": "R. J. Duffin and A. C. Schaeffer, who proposed the weighted test for the unshifted problem",
+    "significance": "Major",
+    "significanceWhy": "It settles a fixed-shift question asked by Yu and named a conjecture by Chow and Technau, if the proof holds.",
+    "field": "Number theory"
+  },
+  "explanation": "Take x = 0.3 and a target of 0.5. Multiply x by q = 1, 2, 3, and so on. Then measure how far q × x lands from 0.5 plus some whole number. For q = 1 the gap is 0.2. For q = 2 it is 0.1. For q = 4 it is 0.3, since 1.2 sits 0.3 from 1.5. For q = 5 the gap is exactly 0. The fixed target 0.5 is called the shift. Asking for small gaps of this kind is called inhomogeneous approximation (approximation aimed at a shifted target, not at whole numbers).\n\nNow choose a tolerance ψ(q) for every q, any list of sizes you like. Call q a hit when the gap is smaller than ψ(q). The question is whether a typical x gets infinitely many hits. Here typical means almost every x: the exceptions take up zero total length on the number line. The paper lets that exceptional set depend on both the shift and the tolerances[16].\n\nWhen the tolerances shrink steadily, the answer was known long ago. Khintchine’s 1924 theorem covers the unshifted case. Szüsz extended this steady case to each fixed shift in 1958[4]. Without steady shrinking, the problem changes, because many values of q can aim at almost the same spots[5]. For an unshifted target, the fractions with bottom 6 show this. Of 0/6 to 5/6, only 1/6 and 5/6 are new. The other four already appear with bottoms 1, 2 or 3. The count of new ones, 2 here, is Euler’s totient φ(6) (how many numbers below 6 share no factor with it).\n\nDuffin and Schaeffer found this overlap problem in 1941. They proposed weighting each tolerance by φ(q)/q[6]. Their conjecture says that if the sum of φ(q)ψ(q)/q is infinite, almost every x has infinitely many hits. Koukoulopoulos and Maynard proved it in 2020[7]. A shift makes things harder. Ramírez built counterexamples in 2017 where the plain sum of tolerances is infinite but hits fail[8]. His examples have a finite weighted sum, so the weighted question stayed open[9].\n\nThat weighted question with a fixed shift was asked by Yu and later named the weak inhomogeneous Duffin–Schaeffer conjecture[10]. Weak means any whole number may be used to reach the target. A stronger form asks for reduced fractions, and recent papers show that stronger form is false in general[11]. Beresnevich, Hauke and Velani proved the weak form for every rational shift[12]. What remained was an arbitrary irrational shift with tolerances that may be sparse and uneven[13].\n\nThe paper claims the full weak form[1]. For every fixed real shift and every list of tolerances, an infinite weighted sum gives infinitely many hits for almost every x[2]. In the example, the shift 0.5 is allowed, and so is any irrational shift. The tolerances need not shrink steadily. The paper also claims a finer version measured with Hausdorff measure (a way to size sets of zero length)[15].\n\nThe hard part is overlap. Two values of q that share large prime factors can aim at nearly the same points again and again. The paper says these repeated alignments are one of two separate obstacles it must control[14]. It handles them by revealing prime factors step by step and cancelling the most tightly linked overlaps.\n\nThe theorem has limits. It is a one-way test: it says nothing when the weighted sum is finite[3]. It does not count how many hits come before a given point[3]. It also does not require reduced fractions.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. The argument is long and new. No specialist review has been published.",
+  "hypeCheck": "Major only if the long overlap argument holds. No Lean formalization is listed and no specialist review is published. It is a one-way test and does not cover the reduced-fraction version.",
+  "glossary": [
+    {
+      "term": "Shift",
+      "meaning": "The fixed target, such as 0.5, that the multiples of x try to land near, up to whole numbers."
+    },
+    {
+      "term": "Inhomogeneous approximation",
+      "meaning": "Approximation aimed at a shifted target rather than at whole numbers."
+    },
+    {
+      "term": "Almost every",
+      "meaning": "True for all numbers except a set of zero total length on the number line."
+    },
+    {
+      "term": "Euler’s totient",
+      "meaning": "φ(q), the count of numbers from 1 to q that share no factor with q."
+    },
+    {
+      "term": "Tolerance",
+      "meaning": "The allowed gap ψ(q) for the multiplier q."
+    },
+    {
+      "term": "Hausdorff measure",
+      "meaning": "A way to give a size to sets so thin that their ordinary length is zero."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “The Weak Inhomogeneous Duffin–Schaeffer Conjecture”, openai/math release preprint (September 25, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-weak-inhomogeneous-Duffin-Schaeffer-conjecture-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "A. Khintchine, “Einige Sätze über Kettenbrüche, mit Anwendungen auf die Theorie der Diophantischen Approximationen”, Mathematische Annalen 92 (1924), 115–125",
+      "url": "https://doi.org/10.1007/BF01448437"
+    },
+    {
+      "id": 3,
+      "cite": "P. Szüsz, “Über die metrische Theorie der diophantischen Approximation”, Acta Mathematica Academiae Scientiarum Hungaricae 9 (1958), 177–193",
+      "url": "https://doi.org/10.1007/BF02023871"
+    },
+    {
+      "id": 4,
+      "cite": "R. J. Duffin and A. C. Schaeffer, “Khintchine's problem in metric Diophantine approximation”, Duke Mathematical Journal 8 (1941), 243–255",
+      "url": "https://doi.org/10.1215/S0012-7094-41-00818-9"
+    },
+    {
+      "id": 5,
+      "cite": "D. Koukoulopoulos and J. Maynard, “On the Duffin–Schaeffer conjecture”, Annals of Mathematics 192 (2020), 251–307",
+      "url": "https://doi.org/10.4007/annals.2020.192.1.5"
+    },
+    {
+      "id": 6,
+      "cite": "F. A. Ramírez, “Counterexamples, covering systems, and zero-one laws for inhomogeneous approximation”, International Journal of Number Theory 13 (2017), 633–654",
+      "url": "https://doi.org/10.1142/S1793042117500324"
+    },
+    {
+      "id": 7,
+      "cite": "H. Yu, “On the metric theory of inhomogeneous Diophantine approximation: An Erdős–Vaaler type result”, Journal of Number Theory 224 (2021), 243–273",
+      "url": "https://doi.org/10.1016/j.jnt.2021.01.012"
+    },
+    {
+      "id": 8,
+      "cite": "S. Chow and N. Technau, “Littlewood and Duffin–Schaeffer-type problems in Diophantine approximation”, Memoirs of the AMS 296 (2024), no. 1475",
+      "url": "https://doi.org/10.1090/memo/1475"
+    },
+    {
+      "id": 9,
+      "cite": "V. Beresnevich, M. Hauke and S. Velani, “Borel–Cantelli, zero-one laws and inhomogeneous Duffin–Schaeffer”, arXiv:2406.19198 (2024)",
+      "url": "https://arxiv.org/abs/2406.19198v1"
+    },
+    {
+      "id": 10,
+      "cite": "M. Hauke-Treuer, J. Maynard and A. Pollington, “Counterexamples to the inhomogeneous Duffin–Schaeffer Conjecture”, arXiv:2609.30921 (2026)",
+      "url": "https://arxiv.org/abs/2609.30921v1"
+    },
+    {
+      "id": 11,
+      "cite": "Y. He and L. Liao, “Counterexamples to the inhomogeneous Duffin–Schaeffer conjecture for a residual set of shifts”, arXiv:2609.30870 (2026)",
+      "url": "https://arxiv.org/abs/2609.30870v1"
+    },
+    {
+      "id": 12,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "The theorem resolves the weak inhomogeneous Duffin–Schaeffer conjecture positively, including every prescribed irrational shift.",
+      "verdict": "supported",
+      "sourceLine": "conjecture positively, including every prescribed irrational shift.",
+      "sourceQuote": "Theorem~\\ref{thm:main} resolves the weak inhomogeneous Duffin--Schaeffer conjecture positively, including every prescribed irrational shift."
+    },
+    {
+      "text": "For fixed γ and finite-valued ψ, divergence of the totient-weighted sum gives ‖qx−γ‖<ψ(q) infinitely often for almost every x.",
+      "verdict": "supported",
+      "sourceLine": "fixed $\\gamma\\in\\mathbb R$ and finite-valued",
+      "sourceQuote": "For every fixed $\\gamma\\in\\mathbb R$ and finite-valued $\\psi:\\mathbb N\\to[0,\\infty)$, divergence of $\\sum_{q\\ge1}\\phi(q)\\psi(q)/q$ implies $\\|qx-\\gamma\\|<\\psi(q)$ for infinitely many $q$, for almost every $x$."
+    },
+    {
+      "text": "The conclusion is a divergence statement, not a convergence converse or a quantitative asymptotic.",
+      "verdict": "supported",
+      "sourceLine": "The conclusion is a divergence statement, not a convergence converse or a quantitative asymptotic.",
+      "sourceQuote": "The conclusion is a divergence statement, not a convergence converse or a quantitative asymptotic."
+    },
+    {
+      "text": "Szüsz extended the monotone theory to each fixed inhomogeneous shift.",
+      "verdict": "supported",
+      "sourceLine": "Szüsz extended the monotone theory to each fixed inhomogeneous shift",
+      "sourceQuote": "Szüsz extended the monotone theory to each fixed inhomogeneous shift~\\cite{Szusz1958}; see also the precise modern formulation in~\\cite{Yu2021}."
+    },
+    {
+      "text": "Removing monotonicity matters because many denominators can describe overlapping intervals.",
+      "verdict": "supported",
+      "sourceLine": "Removing monotonicity changes the problem because many denominators can describe strongly overlapping approximation intervals.",
+      "sourceQuote": "Removing monotonicity changes the problem because many denominators can describe strongly overlapping approximation intervals."
+    },
+    {
+      "text": "Duffin and Schaeffer exhibited the obstruction and proposed reduced fractions with the weighted sum.",
+      "verdict": "supported",
+      "sourceLine": "exhibited this obstruction in the homogeneous setting and proposed using reduced fractions with the",
+      "sourceQuote": "Duffin and Schaeffer~\\cite{DS1941} exhibited this obstruction in the homogeneous setting and proposed using reduced fractions with the weighted sum $\\sum_q\\phi(q)\\psi(q)/q$."
+    },
+    {
+      "text": "Koukoulopoulos and Maynard proved the Duffin–Schaeffer conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Maynard~\\cite{KM2020} proved their conjecture.",
+      "sourceQuote": "Koukoulopoulos and Maynard~\\cite{KM2020} proved their conjecture."
+    },
+    {
+      "text": "Ramírez constructed nonmonotone counterexamples for every countable collection of shifts.",
+      "verdict": "supported",
+      "sourceLine": "constructed nonmonotone counterexamples for every prescribed countable",
+      "sourceQuote": "Ramírez~\\cite[Theorem~1]{Ramirez2017} constructed nonmonotone counterexamples for every prescribed countable collection of shifts."
+    },
+    {
+      "text": "Ramírez's constructions have finite totient-weighted sum and leave the weighted question open.",
+      "verdict": "supported",
+      "sourceLine": "His constructions have finite totient-weighted sum, as noted in that paper, and thus leave the weighted question open.",
+      "sourceQuote": "His constructions have finite totient-weighted sum, as noted in that paper, and thus leave the weighted question open."
+    },
+    {
+      "text": "The fixed-shift weighted question appears in Yu and, by name, in Chow and Technau; it is also a conjecture of Beresnevich, Hauke and Velani.",
+      "verdict": "supported",
+      "sourceLine": "The fixed-shift weighted question appears explicitly in",
+      "sourceQuote": "The fixed-shift weighted question appears explicitly in Yu~\\cite[Question~1.2]{Yu2021} and under the name \\emph{weak inhomogeneous Duffin--Schaeffer conjecture} in Chow and Technau~\\cite[Conjecture~1.22]{ChowTechnau2024}."
+    },
+    {
+      "text": "The coprime-numerator assertion is false in general.",
+      "verdict": "supported",
+      "sourceLine": "The coprime-numerator assertion is false in general",
+      "sourceQuote": "The coprime-numerator assertion is false in general: Hauke-Treuer, Maynard and Pollington~\\cite[Theorem~1]{HMP2026} construct counterexamples for every nonzero rational shift and certain Liouville shifts."
+    },
+    {
+      "text": "Beresnevich, Hauke and Velani establish the weak conjecture for every rational shift.",
+      "verdict": "supported",
+      "sourceLine": "the weak conjecture for every rational shift.",
+      "sourceQuote": "Beresnevich, Hauke and Velani~\\cite[Theorem~14]{BHV2024} establish the weak conjecture for every rational shift."
+    },
+    {
+      "text": "The remaining task was an arbitrary fixed irrational shift with arbitrarily sparse nonmonotone functions.",
+      "verdict": "supported",
+      "sourceLine": "irrational shift together with arbitrarily sparse, nonmonotone",
+      "sourceQuote": "The remaining task addressed by Theorem~\\ref{thm:main} is to retain a completely arbitrary fixed irrational shift together with arbitrarily sparse, nonmonotone approximation functions."
+    },
+    {
+      "text": "Large common primes can create correlated alignments repeatedly; this is one of two obstructions.",
+      "verdict": "supported",
+      "sourceLine": "Second, large common primes can create correlated alignments repeatedly",
+      "sourceQuote": "Second, large common primes can create correlated alignments repeatedly as different collections of rows begin to interact."
+    },
+    {
+      "text": "The mass transference principle gives a Hausdorff-measure consequence.",
+      "verdict": "supported",
+      "sourceLine": "The mass transference principle of Beresnevich and Velani gives the",
+      "sourceQuote": "The mass transference principle of Beresnevich and Velani gives the following Hausdorff-measure consequence."
+    },
+    {
+      "text": "The exceptional null set may depend on the shift and the tolerances.",
+      "verdict": "supported",
+      "sourceLine": "The exceptional null set in the result below is allowed to depend on both of these data.",
+      "sourceQuote": "The exceptional null set in the result below is allowed to depend on both of these data."
+    },
+    {
+      "text": "Khintchine's 1924 theorem covers the monotone unshifted case.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "Ramírez's paper is from 2017; Koukoulopoulos–Maynard from 2020; Duffin–Schaeffer from 1941.",
+      "verdict": "external",
+      "sourceId": 4
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 12
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}

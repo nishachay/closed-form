@@ -1,0 +1,170 @@
+{
+  "id": "031",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Number theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Open-Homomorphisms-of-Global-Solvably-Closed-Galois-Groups-October-5-2026/open-homomorphisms-solvably-closed-galois-groups.pdf",
+      "label": "Open Homomorphisms of Global Solvably Closed Galois Groups"
+    }
+  ],
+  "headline": "Every open map between these Galois groups is claimed to come from a unique map between the fields.",
+  "scope": "The fields are solvably closed Galois extensions of number fields, possibly infinite, and the group maps are continuous with open image.",
+  "plain": "A Galois group records the symmetries of a field of numbers. Neukirch and Uchida showed that, for very large fields, the group pins down the field. Uchida conjectured in 1981 that maps between such groups, not just matches, also come from maps between fields. The paper claims to prove that conjecture with no condition on what the map sends to the identity. The field map is unique and runs in the opposite direction.",
+  "doesNot": "This does not cover fields that still have abelian extensions, such as the rational numbers on their own.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1981",
+    "firstStepBy": "K. Uchida, who posed the conjecture and proved the case where the source field is the rationals",
+    "significance": "Major",
+    "significanceWhy": "It settles a 1981 conjecture in anabelian number theory without the extra compatibility condition that earlier work needed, if the proof holds.",
+    "field": "Number theory"
+  },
+  "explanation": "Start with the field made by adding √2 and √3 to the fractions. A symmetry of this field is a way to reshuffle it that respects addition and multiplication and fixes every fraction. Each one sends √2 to √2 or −√2, and √3 to √3 or −√3. That gives 2 × 2 = 4 symmetries. Together they form the field’s Galois group (its group of symmetries). The smaller field built from √2 alone has just 2 symmetries.\n\nThe smaller field sits inside the bigger one. So every symmetry of the big field restricts to a symmetry of the small one. This gives a map from the group of 4 onto the group of 2, with two symmetries landing on each. The field map goes one way, small into big. The group map goes the other way, big onto small. That reversal is the pattern Uchida’s conjecture is about.\n\nThe question is whether every such group map comes from fields. The paper studies very large fields called solvably closed: fields with no further abelian extension (no extension whose symmetries all commute)[1]. The field of all algebraic numbers is one example. Neukirch began reconstructing number fields from their Galois groups in 1969[3]. Uchida proved in 1979 that two solvably closed fields with matching groups are themselves matched[4]. That is a statement about matches, not about general maps.\n\nIn 1981 Uchida conjectured that every continuous homomorphism with open image comes from a field embedding[2]. A homomorphism is a map between groups that respects how symmetries combine. Open image means, roughly, that the image is a large part of the target group. Uchida proved the conjecture when the source field is the rationals, and proved uniqueness in general[5]. In 2025 Hoshi showed exactly what was missing. Such a map comes from fields if and only if it preserves the full cyclotomic character[6]. That character records how a symmetry acts on roots of unity, the solutions of zⁿ = 1.\n\nThe paper claims the conjecture in full[7]. Every continuous open homomorphism between these Galois groups comes from a unique field embedding in the opposite direction[7]. What the map sends to the identity, its kernel, is unrestricted[8]. The paper derives the needed arithmetic match from openness itself[8]. The √2 and √3 example only shows the pattern. Its fields are far too small for the theorem, which needs solvably closed fields.\n\nThe obstacle is to get Hoshi’s cyclotomic condition from local information about primes. Uchida’s local method pairs primes on the two sides using an auxiliary prime ℓ. But which primes get paired, and which are missed, depends on ℓ[9]. The paper bounds the number of missed primes without depending on ℓ[10]. It also claims a tool of wider use. A certain kind of character on the Galois group is fixed by its values on any infinite set of primes of a special kind[11].\n\nThe result is about solvably closed fields only. It does not say that smaller fields, such as the rationals on their own, are recovered from maps of their groups.\n\nHow sure is this? No Lean formalization is listed for this paper in the openai/math release. So no computer proof checker has checked it. The proof also uses a special case of a transcendence theorem, with its own proof given in the paper[12]. No specialist review has been published.",
+  "hypeCheck": "Major only if the proof holds. No Lean formalization is listed and no specialist review is published. The theorem applies to solvably closed fields only.",
+  "glossary": [
+    {
+      "term": "Galois group",
+      "meaning": "The group of all symmetries of a field that fix the fractions and respect addition and multiplication."
+    },
+    {
+      "term": "Solvably closed",
+      "meaning": "A field with no further extension whose symmetries all commute with each other."
+    },
+    {
+      "term": "Homomorphism",
+      "meaning": "A map between groups that respects how their elements combine."
+    },
+    {
+      "term": "Open image",
+      "meaning": "For these groups, a map whose image is a large part of the target, of finite index."
+    },
+    {
+      "term": "Field embedding",
+      "meaning": "A way to place one field inside another, keeping addition and multiplication."
+    },
+    {
+      "term": "Cyclotomic character",
+      "meaning": "A record of how each symmetry acts on roots of unity, the solutions of zⁿ = 1."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Open Homomorphisms of Global Solvably Closed Galois Groups”, openai/math release preprint (October 5, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Open-Homomorphisms-of-Global-Solvably-Closed-Galois-Groups-October-5-2026/open-homomorphisms-solvably-closed-galois-groups.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "K. Uchida, “Homomorphisms of Galois groups of solvably closed Galois extensions”, Journal of the Mathematical Society of Japan 33 (1981), 595–604",
+      "url": "https://doi.org/10.2969/jmsj/03340595"
+    },
+    {
+      "id": 3,
+      "cite": "K. Uchida, “Isomorphisms of Galois groups of solvably closed Galois extensions”, Tohoku Mathematical Journal 31 (1979), 359–362",
+      "url": "https://doi.org/10.2748/tmj/1178229803"
+    },
+    {
+      "id": 4,
+      "cite": "J. Neukirch, “Kennzeichnung der p-adischen und der endlichen algebraischen Zahlkörper”, Inventiones Mathematicae 6 (1969), 296–314",
+      "url": "https://doi.org/10.1007/BF01425420"
+    },
+    {
+      "id": 5,
+      "cite": "Y. Hoshi, “Homomorphisms of global solvably closed Galois groups compatible with cyclotomic characters”, Tohoku Mathematical Journal 77 (2025), 17–32",
+      "url": "https://doi.org/10.2748/tmj.20230414"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "Solvably closed means no nontrivial abelian algebraic extension; algebraic closures are examples.",
+      "verdict": "supported",
+      "sourceLine": "is \\emph{solvably closed} if it has no nontrivial abelian algebraic extension.",
+      "sourceQuote": "An algebraic extension of a number field is \\emph{solvably closed} if it has no nontrivial abelian algebraic extension."
+    },
+    {
+      "text": "Uchida conjectured that every continuous homomorphism with open image arises from a field embedding.",
+      "verdict": "supported",
+      "sourceLine": "Uchida conjectured that every continuous homomorphism with open image arises in this way",
+      "sourceQuote": "Uchida conjectured that every continuous homomorphism with open image arises in this way \\cite[p.~595]{uchida1981}."
+    },
+    {
+      "text": "The reconstruction begins with Neukirch's work on normal number fields and decomposition groups.",
+      "verdict": "supported",
+      "sourceLine": "The reconstruction of number fields from their Galois groups begins with Neukirch's work",
+      "sourceQuote": "The reconstruction of number fields from their Galois groups begins with Neukirch's work on normal number fields and decomposition groups \\cite{neukirch1969a,neukirch1969b}."
+    },
+    {
+      "text": "Uchida established the isomorphism theorem for arbitrary solvably closed Galois extensions.",
+      "verdict": "supported",
+      "sourceLine": "Uchida subsequently established the isomorphism theorem for arbitrary solvably closed Galois extensions of number fields",
+      "sourceQuote": "Uchida subsequently established the isomorphism theorem for arbitrary solvably closed Galois extensions of number fields \\cite{uchida1979}."
+    },
+    {
+      "text": "Uchida proved it when the source field is Q, proved uniqueness, and existence under a local condition.",
+      "verdict": "supported",
+      "sourceLine": "In the paper formulating the homomorphism conjecture, Uchida proved it when the source number field is",
+      "sourceQuote": "In the paper formulating the homomorphism conjecture, Uchida proved it when the source number field is $\\Q$, proved uniqueness in general, and established existence under a suitable local condition on decomposition groups \\cite[Theorem~1, Proposition~2, and Theorem~2]{uchida1981}."
+    },
+    {
+      "text": "Hoshi: an open homomorphism is induced by a field embedding iff it preserves the full cyclotomic character.",
+      "verdict": "supported",
+      "sourceLine": "an open homomorphism is induced by a field embedding if and only if it preserves the full cyclotomic character",
+      "sourceQuote": "A later reduction of Hoshi identifies an exact arithmetic condition for existence: an open homomorphism is induced by a field embedding if and only if it preserves the full cyclotomic character \\cite[Theorem~3.4]{hoshi2025}."
+    },
+    {
+      "text": "Every continuous open homomorphism is induced by a unique field embedding; the paper proves the conjecture in full.",
+      "verdict": "supported",
+      "sourceLine": "We prove the conjecture in its full form.",
+      "sourceQuote": "We prove the conjecture in its full form."
+    },
+    {
+      "text": "The kernel is unrestricted; compatibility is established from openness itself.",
+      "verdict": "supported",
+      "sourceLine": "The kernel is unrestricted. The proof establishes the necessary arithmetic compatibility from openness itself.",
+      "sourceQuote": "The kernel is unrestricted. The proof establishes the necessary arithmetic compatibility from openness itself."
+    },
+    {
+      "text": "The partial local correspondences have domains and exceptional sets that depend on ℓ.",
+      "verdict": "supported",
+      "sourceLine": "even though their domains and exceptional sets initially depend on",
+      "sourceQuote": "The main task is to derive that criterion from the partial local correspondences, even though their domains and exceptional sets initially depend on $\\ell$."
+    },
+    {
+      "text": "The number of target primes missed can be bounded independently of ℓ.",
+      "verdict": "supported",
+      "sourceLine": "the number of target primes missed by the partial correspondence can be bounded independently of",
+      "sourceQuote": "After logarithmic cyclotomic compatibility has been established, the number of target primes missed by the partial correspondence can be bounded independently of $\\ell$."
+    },
+    {
+      "text": "An additive ℓ-adic character is determined by its values on any infinite set of primes of absolute residue degree one.",
+      "verdict": "supported",
+      "sourceLine": "is determined by its values on any infinite set of primes of absolute residue degree one.",
+      "sourceQuote": "First, an additive $\\ell$-adic character of the absolute Galois group of a number field is determined by its values on any infinite set of primes of absolute residue degree one."
+    },
+    {
+      "text": "The logarithmic-rank input is a special case of the ℓ-adic Waldschmidt–Masser theorem, given a complete proof.",
+      "verdict": "supported",
+      "sourceLine": "We give a complete proof using Laurent's interpolation-determinant method",
+      "sourceQuote": "We give a complete proof using Laurent's interpolation-determinant method \\cite{laurent1991} and a translate-and-degree zero estimate on a torus."
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 6
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+}
