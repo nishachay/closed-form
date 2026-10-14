@@ -1,0 +1,224 @@
+{
+  "id": "046",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-projective-fourfold-with-large-fundamental-group-and-non-Stein-universal-cover-October-5-2026/large-fundamental-group-non-stein.pdf",
+      "label": "A projective fourfold with large fundamental group and non-Stein universal cover"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-surface-counterexample-to-Shafarevich-holomorphic-convexity-September-23-2026/paper.pdf",
+      "label": "A surface counterexample to Shafarevich holomorphic convexity"
+    }
+  ],
+  "headline": "Two claimed counterexamples to Shafarevich's conjecture: a surface and a fourfold whose universal covers fail convexity.",
+  "scope": "The surface fails holomorphic convexity; the fourfold has large fundamental group and a cover that is not Stein.",
+  "plain": "Shafarevich asked whether the universal cover of every smooth projective variety is holomorphically convex. That property says holomorphic functions can separate a compact set from far-away points. The first paper claims a surface where this fails. The second claims a fourfold where it fails even though the cover contains no compact curves. No computer has checked either construction.",
+  "doesNot": "This does not affect the linear case, where the fundamental group has a faithful matrix picture.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "Shafarevich, Basic Algebraic Geometry",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the constructions hold, they settle a well-known conjecture on universal covers, in the negative."
+  },
+  "explanation": "Draw the unit circle in the complex plane. Ask which points z satisfy |g(z)| ≤ the largest value of |g| on the circle, for every polynomial g. Take g(z) = z³. On the circle |g| is always 1, so any point with |z| > 1 fails. Inside the circle, every point passes, by the maximum principle. The set of passing points is called the holomorphic hull of the circle. Here it is the closed unit disc, a bounded closed set. A complex space is holomorphically convex when every such hull of a compact set is compact[2]. The complex plane passes this test.\n\nEvery curved space has a universal cover. It unrolls every loop that cannot be shrunk. An elliptic curve, the surface of a doughnut, unrolls to the whole complex plane. A curve with two or more holes unrolls to the open disc. Both covers are holomorphically convex. Shafarevich asked whether this always happens, for every smooth projective variety[1]. A projective variety is a shape cut out by polynomial equations. This is the Shafarevich conjecture on holomorphic convexity.\n\nThe conjecture held in many cases. Gurjar and Shastri proved it for elliptic surfaces in 1985, and Katzarkov for virtually nilpotent fundamental groups, an especially tame kind[3]. In 2012, Eyssidieux, Katzarkov, Pantev and Ramachandran proved the linear case[4]. There the loop group of the variety, its fundamental group, can be faithfully written with complex matrices.\n\nA known trap shows how it could fail. Take a connected chain of compact curves, where the loops through the whole chain cannot be shrunk. Lift it to the universal cover. It becomes an endless chain of compact pieces. Every holomorphic function is constant on each compact piece[6]. Neighbours share a point, so the constants all agree. The hull of one point then contains the whole endless chain, which is not compact[5]. In 1998, Bogomolov and Katzarkov suggested surfaces built this way. Their key step, that a certain group stays infinite, remained a conjecture[7].\n\nThis family of two papers claims two counterexamples. The surface paper claims a smooth projective surface whose universal cover is not holomorphically convex[8]. Its chain is made of spheres, glued at single points. It starts from a family of spheres with 48 moving punctures[9]. The hard part is keeping the group infinite after all missing fibers are filled in[10]. The paper uses a counting method for groups, in the style of Golod and Shafarevich. By the linear case above, the surface's fundamental group then admits no faithful matrix picture[11].\n\nThe fourfold paper targets a stronger form. Say a variety has large fundamental group when its universal cover contains no compact complex subvariety of positive dimension. The stronger form asks that this cover then be Stein[12]. Stein spaces are the most flexible kind, with enough holomorphic functions to embed in some ℂᴺ. The paper claims a smooth projective fourfold with large fundamental group whose universal cover is not Stein[13]. A fourfold has four complex dimensions. Inside it sits a surface A whose own loop group is ℤ⁴. Only a copy of ℤ survives in the fourfold's group, so 4 − 1 = 3 loop directions die there. In the universal cover, one direction of A unrolls into a line and three stay closed loops. The lifted surface is a line times a three-dimensional torus, with a three-dimensional hole[14]. A Stein surface can have holes of real dimension at most two[15]. The method needs no matrix picture of the group[16].\n\nHow sure is this? No Lean formalization is listed for either paper. Each rests on delicate claims that certain groups stay infinite. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. Both claims rest on long group-theoretic arguments, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Universal cover",
+      "meaning": "A space that unrolls every loop of a shape that cannot be shrunk."
+    },
+    {
+      "term": "Holomorphic hull",
+      "meaning": "The points where every holomorphic function is no larger than its maximum on a given set."
+    },
+    {
+      "term": "Holomorphically convex",
+      "meaning": "Every holomorphic hull of a compact set is compact."
+    },
+    {
+      "term": "Fundamental group",
+      "meaning": "The group of loops in a space, up to continuous deformation."
+    },
+    {
+      "term": "Stein space",
+      "meaning": "A complex space with enough holomorphic functions to embed in some ℂᴺ."
+    },
+    {
+      "term": "Large fundamental group",
+      "meaning": "No compact curve or higher subvariety lifts to a compact set in the universal cover."
+    },
+    {
+      "term": "Projective variety",
+      "meaning": "A shape cut out by polynomial equations in projective space."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "I. R. Shafarevich, Basic Algebraic Geometry, Springer (1974)",
+      "url": "https://doi.org/10.1007/978-3-642-96200-4"
+    },
+    {
+      "id": 2,
+      "cite": "R. V. Gurjar and A. R. Shastri, “Covering spaces of an elliptic surface”, Compositio Mathematica 54 (1985), 95–104",
+      "url": "https://www.numdam.org/item/CM_1985__54_1_95_0/"
+    },
+    {
+      "id": 3,
+      "cite": "L. Katzarkov, “Nilpotent groups and universal coverings of smooth projective varieties”, Journal of Differential Geometry 45 (1997), 336–348",
+      "url": "https://doi.org/10.4310/jdg/1214459801"
+    },
+    {
+      "id": 4,
+      "cite": "P. Eyssidieux, L. Katzarkov, T. Pantev and M. Ramachandran, “Linear Shafarevich conjecture”, Annals of Mathematics 176 (2012), 1545–1581",
+      "url": "https://doi.org/10.4007/annals.2012.176.3.4"
+    },
+    {
+      "id": 5,
+      "cite": "F. Bogomolov and L. Katzarkov, “Complex projective surfaces and infinite groups”, Geometric and Functional Analysis 8 (1998), 243–272",
+      "url": "https://doi.org/10.1007/s000390050055"
+    },
+    {
+      "id": 6,
+      "cite": "B. Lasell and M. Ramachandran, “Observations on harmonic maps and singular varieties”, Annales scientifiques de l'ÉNS 29 (1996), 135–148",
+      "url": "https://doi.org/10.24033/asens.1737"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Shafarevich asked whether the universal cover of a complete algebraic variety is holomorphically convex.",
+      "verdict": "supported",
+      "sourceLine": "Shafarevich asked whether the universal cover of a complete algebraic",
+      "sourceQuote": "Shafarevich asked whether the universal cover of a complete algebraic variety is holomorphically convex \\citep{Shafarevich1974}.",
+      "paper": 2
+    },
+    {
+      "text": "Holomorphic convexity means every holomorphic hull is compact.",
+      "verdict": "supported",
+      "sourceLine": "Holomorphic convexity means that every such hull is compact.",
+      "sourceQuote": "Holomorphic convexity means that every such hull is compact.",
+      "paper": 2
+    },
+    {
+      "text": "Gurjar and Shastri proved it for elliptic surfaces and Katzarkov for virtually nilpotent fundamental groups.",
+      "verdict": "supported",
+      "sourceLine": "Gurjar and Shastri proved it for smooth projective",
+      "sourceQuote": "Gurjar and Shastri proved it for smooth projective elliptic surfaces \\citep[Theorem~2(ii)]{GurjarShastri1985}, and Katzarkov proved it for smooth projective varieties with virtually nilpotent fundamental group \\citep{Katzarkov1997}.",
+      "paper": 2
+    },
+    {
+      "text": "Eyssidieux, Katzarkov, Pantev and Ramachandran established it when the fundamental group has a faithful linear representation.",
+      "verdict": "supported",
+      "sourceLine": "and Ramachandran then established the universal-cover conclusion for",
+      "sourceQuote": "Eyssidieux, Katzarkov, Pantev and Ramachandran then established the universal-cover conclusion for smooth projective varieties whose fundamental groups admit faithful finite-dimensional complex representations \\citep{EyssidieuxKatzarkovPantevRamachandran2012}.",
+      "paper": 2
+    },
+    {
+      "text": "A connected curve whose components have finite image but whose whole has infinite image obstructs convexity.",
+      "verdict": "supported",
+      "sourceLine": "connected curve can obstruct holomorphic convexity when its normalized",
+      "sourceQuote": "Lasell and Ramachandran \\citep[pp.~136--137]{LasellRamachandran1996} and Katzarkov and Ramachandran \\citep[pp.~527--528]{KatzarkovRamachandran1998} explain why a connected curve can obstruct holomorphic convexity when its normalized components have finite fundamental-group image but the curve itself has infinite image.",
+      "paper": 2
+    },
+    {
+      "text": "Every holomorphic function is constant on each compact component.",
+      "verdict": "supported",
+      "sourceLine": "Every holomorphic function is constant on each compact component,",
+      "sourceQuote": "Every holomorphic function is constant on each compact component, and connectedness makes these constants agree.",
+      "paper": 2
+    },
+    {
+      "text": "Bogomolov and Katzarkov's infinitude assertion remained conditional.",
+      "verdict": "supported",
+      "sourceLine": "That infinitude assertion remained conditional.",
+      "sourceQuote": "That infinitude assertion remained conditional.",
+      "paper": 2
+    },
+    {
+      "text": "The surface paper claims a smooth projective surface whose universal cover is not holomorphically convex.",
+      "verdict": "supported",
+      "sourceLine": "We construct a smooth connected projective complex surface whose universal",
+      "sourceQuote": "We construct a smooth connected projective complex surface whose universal cover is not holomorphically convex.",
+      "paper": 2
+    },
+    {
+      "text": "The construction begins with a family of spheres with 48 moving punctures.",
+      "verdict": "supported",
+      "sourceLine": "We begin with a family of spheres with $48$ moving punctures.",
+      "sourceQuote": "We begin with a family of spheres with $48$ moving punctures.",
+      "paper": 2
+    },
+    {
+      "text": "The main task is retaining an infinite fundamental-group image after filling in fibers.",
+      "verdict": "supported",
+      "sourceLine": "The main task is to retain an infinite fundamental-group image after filling in this fiber and all other missing fibers.",
+      "sourceQuote": "The main task is to retain an infinite fundamental-group image after filling in this fiber and all other missing fibers.",
+      "paper": 2
+    },
+    {
+      "text": "The surface's fundamental group has no faithful finite-dimensional complex representation.",
+      "verdict": "supported",
+      "sourceLine": "has no faithful finite-dimensional complex",
+      "sourceQuote": "By the linear Shafarevich theorem, the fundamental group of the surface in \\Cref{thm:main} has no faithful finite-dimensional complex representation.",
+      "paper": 2
+    },
+    {
+      "text": "The large form asks whether the cover is Stein when it contains no positive-dimensional compact subvariety.",
+      "verdict": "supported",
+      "sourceLine": "Its particularly direct form for varieties with",
+      "sourceQuote": "Its particularly direct form for varieties with large fundamental group asks whether $\\widetilde X$ is Stein when it contains no positive-dimensional compact complex analytic subvariety.",
+      "paper": 1
+    },
+    {
+      "text": "The fourfold paper claims a fourfold with large fundamental group whose universal cover is not Stein.",
+      "verdict": "supported",
+      "sourceLine": "We construct a smooth projective complex fourfold with large fundamental group",
+      "sourceQuote": "We construct a smooth projective complex fourfold with large fundamental group whose universal cover is not Stein.",
+      "paper": 1
+    },
+    {
+      "text": "The kernel has rank three, so the cover of A has nonzero third homology.",
+      "verdict": "supported",
+      "sourceLine": "and has nonzero third homology.",
+      "sourceQuote": "The corresponding cover of $A$ is therefore diffeomorphic to $\\R\\times(S^1)^3$ and has nonzero third homology.",
+      "paper": 1
+    },
+    {
+      "text": "A Stein surface has the homotopy type of a CW complex of real dimension at most two.",
+      "verdict": "supported",
+      "sourceLine": "A Stein surface has",
+      "sourceQuote": "A Stein surface has the homotopy type of a CW complex of real dimension at most two.",
+      "paper": 1
+    },
+    {
+      "text": "The infinite-order argument does not require a faithful linear representation.",
+      "verdict": "supported",
+      "sourceLine": "so it does not require a faithful",
+      "sourceQuote": "Its infinite-order argument uses compatible local covers of an arrangement, so it does not require a faithful linear representation of that group.",
+      "paper": 1
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}

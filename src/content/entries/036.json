@@ -1,0 +1,211 @@
+{
+  "id": "036",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Numerical-semiampleness-of-nef-adjoint-classes-on-compact-Kahler-manifolds-October-6-2026/numerical-generalized-abundance.pdf",
+      "label": "Numerical semiampleness of nef adjoint classes on compact Kähler manifolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Numerical-Semiampleness-of-Nef-Adjoint-Divisors-October-3-2026/paper.pdf",
+      "label": "Numerical Semiampleness of Nef Adjoint Divisors"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Minimal-models-and-Mori-fibre-spaces-for-generalized-log-canonical-Q-pairs-September-24-2026/paper.pdf",
+      "label": "Minimal models and Mori fibre spaces for generalized log canonical Q-pairs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Minimal-models-in-numerical-dimension-one-September-24-2026/paper.pdf",
+      "label": "Minimal models in numerical dimension one"
+    }
+  ],
+  "headline": "Nef adjoint divisors with an extra nef part are claimed to be numerically semiample; minimal models are claimed too.",
+  "scope": "It covers projective klt pairs in characteristic zero and smooth compact Kähler klt pairs, plus generalized log canonical minimal models.",
+  "plain": "Abundance predicts that certain positive divisors come from maps. Adding an extra nef divisor forces a weaker, numerical version, already on an elliptic curve. These papers claim that numerical version for projective and Kähler cases. They also claim minimal models exist for generalized log canonical pairs. No computer has checked the proofs.",
+  "doesNot": "This does not make the original divisor K_X + B + M semiample, only one with the same degrees.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2018",
+    "firstStepBy": "Lazić and Peternell, the Generalised Abundance Conjecture",
+    "field": "Algebraic and complex geometry",
+    "significance": "Major",
+    "significanceWhy": "If the proofs hold, they settle central conjectures of the minimal model program in characteristic zero."
+  },
+  "explanation": "Take a doughnut-shaped complex curve, an elliptic curve. A line bundle of degree 0 on it corresponds to a point of the curve. Call a point torsion if adding it to itself n times gives zero, for some n. Exactly n² points become zero when multiplied by n. That gives 4 for n = 2 and 9 for n = 3. Only countably many points are torsion, so most are not. A line bundle from a non-torsion point never has a section, in any power. Yet its degree on every curve is 0, so it is nef. It looks numerically like the trivial bundle, which has sections everywhere[1].\n\nThat example is why this family speaks of numerical semiampleness. A divisor, or line bundle, is semiample when some multiple has enough sections to define a map. It is numerically semiample when it has the same degrees as a semiample one. In the example, the line bundle is numerically semiample but not semiample. So any general statement must allow such a swap, even on a curve[2,3].\n\nAbundance asks that the adjoint divisor K_X + B be semiample when it is nef. Here K_X is the canonical divisor and B a boundary. Lazić and Peternell asked about K_X + B + M, where M is any extra nef divisor[4]. Their generalized abundance conjecture predicts numerical semiampleness. They proved it for surfaces and some threefolds[5]. The hard case is a shape with trivial canonical class, where M alone must supply the positivity[6].\n\nThe second paper claims the Generalised Abundance Conjecture for projective klt pairs in characteristic zero[4]. Klt is a broad class of mild singular pairs. The proof leans on two companion OpenAI preprints: one claiming log abundance, the other claiming minimal models[7]. Neither has had a specialist review. Its own key step is about nef divisors that meet every curve through a general point positively. It shows such a divisor on a klt Calabi–Yau pair must be big, meaning it has many sections[8]. The gap between those two conditions was the obstacle.\n\nThe first paper claims a version on compact Kähler manifolds. These are smooth complex spaces with a compatible metric, but they may have no nonconstant meromorphic functions[11]. It claims the class of K_X + B + M equals that of a semiample line bundle, in Bott–Chern cohomology[9]. That allows a flat change of line bundle, as in the elliptic curve[10].\n\nThe other two papers concern minimal models. A minimal model is a simpler birational version of a shape whose canonical divisor is nef. The third paper claims these exist for projective generalized log canonical pairs in characteristic zero[12]. When the adjoint is not pseudo-effective, it claims a Mori fibre space instead[12]. It keeps the extra nef data fixed. It does not claim that every run of the program stops[13]. It also does not claim semiampleness or sections[14]. The fourth paper claims minimal models for smooth complex varieties of dimension at least three[15]. It needs canonical divisors of numerical dimension one, measured by section growth.\n\nHow sure is this? No Lean formalization is listed for any of the four papers. The proofs depend on each other and on other unreviewed OpenAI preprints. No specialist review has been published.",
+  "hypeCheck": "No Lean check is listed. The results rest on other unreviewed OpenAI preprints, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Semiample",
+      "meaning": "Having a multiple with enough sections to define a map with no base points."
+    },
+    {
+      "term": "Numerically semiample",
+      "meaning": "Having the same degree on every curve as some semiample divisor."
+    },
+    {
+      "term": "Nef",
+      "meaning": "Having nonnegative degree on every curve."
+    },
+    {
+      "term": "Adjoint divisor",
+      "meaning": "The canonical divisor plus a boundary, K_X + B, possibly plus an extra nef part M."
+    },
+    {
+      "term": "Klt pair",
+      "meaning": "A shape with a boundary whose singularities are mild in a precise sense."
+    },
+    {
+      "term": "Minimal model",
+      "meaning": "A simpler birational version of a shape whose canonical divisor is nef."
+    },
+    {
+      "term": "Mori fibre space",
+      "meaning": "A map whose fibres are positively curved, the alternative outcome when no minimal model exists."
+    },
+    {
+      "term": "Big",
+      "meaning": "Having enough sections that their number grows as fast as the dimension allows."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "V. Lazić and Th. Peternell, “On Generalised Abundance, I”, Publications of RIMS 56 (2020), 353–389; arXiv:1808.00438 (2018)",
+      "url": "https://doi.org/10.4171/PRIMS/56-2-3"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Log abundance in characteristic zero” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Log-abundance-in-characteristic-zero-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A nontorsion degree-zero line bundle on an elliptic curve is nef but no positive power has a nonzero section.",
+      "verdict": "supported",
+      "sourceLine": "a nontorsion degree-zero line bundle on a complex elliptic curve",
+      "paper": 2,
+      "sourceQuote": "Indeed, a nontorsion degree-zero line bundle on a complex elliptic curve is nef and numerically trivial, but none of its positive powers has a nonzero section."
+    },
+    {
+      "text": "Numerical equivalence is necessary even in dimension one.",
+      "verdict": "supported",
+      "sourceLine": "Numerical equivalence is necessary even in dimension one.",
+      "paper": 2,
+      "sourceQuote": "Numerical equivalence is necessary even in dimension one."
+    },
+    {
+      "text": "Adding an arbitrary nef divisor requires allowing a numerically equivalent replacement.",
+      "verdict": "supported",
+      "sourceLine": "one must allow replacement by a numerically equivalent",
+      "paper": 2,
+      "sourceQuote": "Adding an arbitrary nef divisor changes the natural conclusion: one must allow replacement by a numerically equivalent divisor."
+    },
+    {
+      "text": "The theorem contains the Generalised Abundance Conjecture of Lazić and Peternell.",
+      "verdict": "supported",
+      "sourceLine": "contains the Generalised Abundance Conjecture",
+      "paper": 2,
+      "sourceQuote": "Theorem~\\ref{thm:main} contains the Generalised Abundance Conjecture formulated by Lazi\\'c--Peternell \\cite{LP}, where the nef summand is Cartier."
+    },
+    {
+      "text": "Lazić and Peternell gave unconditional results for surfaces and some threefolds.",
+      "verdict": "supported",
+      "sourceLine": "Their Corollaries~C and~D give unconditional",
+      "paper": 2,
+      "sourceQuote": "Their Corollaries~C and~D give unconditional results for surfaces and for threefolds with ordinary adjoint of positive numerical dimension."
+    },
+    {
+      "text": "An arbitrary nef summand on a variety with trivial canonical class need not supply sections directly.",
+      "verdict": "supported",
+      "sourceLine": "an arbitrary nef summand on a variety with trivial",
+      "paper": 2,
+      "sourceQuote": "These results identify the main remaining positivity issue: an arbitrary nef summand on a variety with trivial canonical class need not supply sections directly."
+    },
+    {
+      "text": "The proof uses the log-abundance theorem and terminating minimal-model programs from companion papers.",
+      "verdict": "supported",
+      "sourceLine": "The proof uses the log-abundance theorem of",
+      "paper": 2,
+      "sourceQuote": "The proof uses the log-abundance theorem of \\cite[Theorem~1.1]{LA} and the terminating minimal-model programs of \\cite[Theorem~1.1 and Section~3.3]{MM}."
+    },
+    {
+      "text": "The new ingredient is that a nef divisor of full nef dimension on a klt Calabi–Yau pair is big.",
+      "verdict": "supported",
+      "sourceLine": "The further ingredient proved here is that a nef divisor",
+      "paper": 2,
+      "sourceQuote": "The further ingredient proved here is that a nef divisor of full nef dimension on a klt Calabi--Yau pair is big."
+    },
+    {
+      "text": "The Kähler paper proves the class is represented by a semiample rational line bundle in Bott–Chern cohomology.",
+      "verdict": "supported",
+      "sourceLine": "we prove that its first Chern class in real Bott",
+      "paper": 1,
+      "sourceQuote": "If \\(K_X+B\\) is pseudo-effective and \\(K_X+B+M\\) is nef, we prove that its first Chern class in real Bott--Chern cohomology is represented by a semiample rational line bundle."
+    },
+    {
+      "text": "The Kähler statement allows a flat change of line bundle and does not assert semiampleness of the original adjoint.",
+      "verdict": "supported",
+      "sourceLine": "This numerical statement allows a flat change of line bundle",
+      "paper": 1,
+      "sourceQuote": "This numerical statement allows a flat change of line bundle; it does not assert semiampleness of the original adjoint."
+    },
+    {
+      "text": "A Kähler manifold may have no nonconstant meromorphic functions.",
+      "verdict": "supported",
+      "sourceLine": "need not be represented by a divisor and a manifold may have no",
+      "paper": 1,
+      "sourceQuote": "Our task is to pass from that projective statement to the analytic setting, where the nef summand need not be represented by a divisor and a manifold may have no nonconstant meromorphic functions."
+    },
+    {
+      "text": "The minimal-model paper resolves the existence form for generalized log canonical pairs.",
+      "verdict": "supported",
+      "sourceLine": "divisor is pseudo-effective, and a Mori fibre space otherwise, while keeping",
+      "paper": 3,
+      "sourceQuote": "Such a pair admits a minimal model when its adjoint divisor is pseudo-effective, and a Mori fibre space otherwise, while keeping the nef $\\Q$-Cartier b-divisor fixed."
+    },
+    {
+      "text": "It makes no assertion that every arbitrary MMP terminates.",
+      "verdict": "supported",
+      "sourceLine": "it makes no assertion that every arbitrary MMP terminates.",
+      "paper": 3,
+      "sourceQuote": "It gives a terminating choice of birational program; it makes no assertion that every arbitrary MMP terminates."
+    },
+    {
+      "text": "The nef conclusion does not include semiampleness or a nonzero pluricanonical section.",
+      "verdict": "supported",
+      "sourceLine": "does not itself include semiampleness or the",
+      "paper": 3,
+      "sourceQuote": "The nef conclusion of Theorem~\\ref{thm:main} does not itself include semiampleness or the existence of a nonzero pluricanonical section."
+    },
+    {
+      "text": "The fourth paper resolves the numerical-dimension-one case for smooth varieties of dimension at least three.",
+      "verdict": "supported",
+      "sourceLine": "We resolve the numerical-dimension-one case of the minimal-model conjecture",
+      "paper": 4,
+      "sourceQuote": "We resolve the numerical-dimension-one case of the minimal-model conjecture for smooth connected complex projective varieties of dimension at least three."
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

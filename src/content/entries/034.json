@@ -1,0 +1,270 @@
+{
+  "id": "034",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Algebraic and complex geometry",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Log-abundance-for-compact-Kahler-spaces-under-logarithmic-Iitaka-subadditivity-October-6-2026/main.pdf",
+      "label": "Log abundance for compact Kähler spaces under logarithmic Iitaka subadditivity"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-indices-for-semi-log-canonical-log-Calabi-Yau-pairs-October-5-2026/uniform-slc-index.pdf",
+      "label": "Uniform indices for semi-log-canonical log Calabi–Yau pairs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Conditional-good-minimal-models-for-compact-Kahler-fourfolds-October-6-2026/paper.pdf",
+      "label": "Conditional good minimal models for compact Kähler fourfolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Log-abundance-in-characteristic-zero-September-24-2026/paper.pdf",
+      "label": "Log abundance in characteristic zero"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Minimal-metrics-and-interior-injectivity-for-nef-adjoints-September-27-2026/paper.pdf",
+      "label": "Minimal metrics and interior injectivity for nef adjoints"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Fourfold-nonvanishing-by-minimal-metrics-and-moving-jets-September-27-2026/paper.pdf",
+      "label": "Fourfold nonvanishing by minimal metrics and moving jets"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Lifting-sections-from-the-reduced-support-of-an-adjoint-September-27-2026/paper.pdf",
+      "label": "Lifting sections from the reduced support of an adjoint"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Schnell-fiber-spaces-and-good-canonical-models-September-24-2026/paper.pdf",
+      "label": "Schnell fiber spaces and good canonical models"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-log-Iitaka-fibrations-and-bounded-moduli-denominators-October-4-2026/uniform-log-iitaka.pdf",
+      "label": "Uniform log Iitaka fibrations and bounded moduli denominators"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-Pluricanonical-Iitaka-Fibrations-October-3-2026/paper.pdf",
+      "label": "Uniform Pluricanonical Iitaka Fibrations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Relative-denominators-and-effective-systems-for-log-Calabi-Yau-fibrations-September-27-2026/paper.pdf",
+      "label": "Relative denominators and effective systems for log Calabi-Yau fibrations"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Arithmetic-Stein-degree-bounds-for-log-Calabi-Yau-pairs-September-25-2026/paper.pdf",
+      "label": "Arithmetic Stein-degree bounds for log Calabi–Yau pairs"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-effective-log-Iitaka-fibrations-for-fourfolds-September-26-2026/paper.pdf",
+      "label": "Uniform effective log Iitaka fibrations for fourfolds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Abundance-after-nonvanishing-for-compact-Kahler-fourfolds-September-27-2026/paper.pdf",
+      "label": "Abundance after nonvanishing for compact Kähler fourfolds"
+    }
+  ],
+  "headline": "A family of 14 papers claims log abundance in characteristic zero and the effective Iitaka fibration conjecture.",
+  "scope": "It covers log canonical pairs with rational boundary over algebraically closed fields of characteristic zero; the Kähler result is conditional.",
+  "plain": "Abundance predicts that a certain nonnegative divisor on a shape always comes from a map. It was known for threefolds but open in higher dimensions. These papers claim it in every dimension in characteristic zero. They also claim one uniform degree defines every variety's Iitaka fibration. The compact Kähler version assumes a separate, unreviewed result.",
+  "doesNot": "This does not cover positive characteristic, and its Kähler result assumes logarithmic Iitaka subadditivity.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1988",
+    "firstStepBy": "Miyaoka, threefolds of numerical dimension one",
+    "field": "Algebraic and complex geometry",
+    "significance": "Landmark",
+    "significanceWhy": "If the proofs hold, they settle a central conjecture of the minimal model program in every dimension."
+  },
+  "explanation": "Take a curve of genus 2, a surface with two holes, and multiply it by a doughnut-shaped elliptic curve. The result is a complex surface S. Its canonical divisor K is pulled back from the genus-2 curve, where it has degree 2g − 2 = 2. Count sections of the multiple 3K, which act like functions with allowed poles. On S there are (2·3 − 1)(2 − 1) = 5 of them, the same as on the curve. Those 5 sections define a map from S onto a copy of the genus-2 curve. Every fiber of the map is a copy of the doughnut.\n\nThat map is what abundance predicts in general. A divisor is nef if its degree on every curve is at least zero. It is semiample if some multiple has enough sections to define a map with no base points. The log abundance conjecture asks whether every nef log canonical divisor K_X + B is semiample[1]. Here B is a boundary, a weighted sum of hypersurfaces, and log canonical names the mildest allowed singularities. Semiampleness turns a numerical sign into an actual fibration[2]. On S, the fibration is the projection to the genus-2 curve.\n\nFor threefolds, the conjecture was settled in the 1980s and 1990s. Miyaoka proved one key case in 1988[3]. Kawamata finished the minimal case, and Keel, Matsuki and McKernan proved the log version in 1994[4]. In higher dimensions, Birkar, Cascini, Hacon and McKernan built minimal models in the log-general-type range in 2010[5]. The general case stayed open. Nonvanishing, having at least one section, was a key missing step. Even sections alone do not make a nef divisor semiample[6].\n\nThis family of 14 papers makes several linked claims. The central paper claims log abundance for rational boundaries in every dimension, in characteristic zero[7]. Its proof is an induction on dimension over the complex numbers[8]. Each step first shows that smooth varieties have pluricanonical sections, then upgrades minimal models to good ones.\n\nA second paper moves to compact Kähler spaces. These carry a compatible metric but need not be cut out by polynomials. There, nefness is a statement about a cohomology class, while semiampleness needs an actual line bundle[10]. The paper claims log abundance there, but only assuming logarithmic Iitaka subadditivity[9]. That assumption is a separate claimed theorem in another OpenAI family, also unreviewed.\n\nA third paper claims the effective Iitaka fibration conjecture. For each dimension d, one number m(d) should work for every smooth projective variety of that dimension with sections. The multiple m(d) times K then defines that variety's Iitaka fibration, the map that records how its sections grow. Hacon and McKernan, Takayama and Tsuji had proved this for varieties of general type[11]. The paper claims the full statement, using the log abundance paper as input[12]. It gives no practical size for m(d)[13]. A fourth paper claims a uniform index for semi-log-canonical log Calabi–Yau pairs. That index is a single multiple that makes the divisor trivial, independent of the number of components[14]. The other ten papers supply inputs: nonvanishing for fourfolds, metric tools, lifting of sections, and bounds for related fibrations.\n\nThe papers lean heavily on each other. A gap in the central log abundance paper would affect most of the rest.\n\nHow sure is this? No Lean formalization is listed for any paper in this family. The arguments are long and interlocking. No specialist review has been published.",
+  "hypeCheck": "Landmark only if the long interlocking proofs hold. No Lean check is listed, one result is conditional, and no specialist review is published.",
+  "glossary": [
+    {
+      "term": "Divisor",
+      "meaning": "A weighted sum of hypersurfaces inside a shape."
+    },
+    {
+      "term": "Log canonical divisor",
+      "meaning": "The canonical divisor plus a boundary, K_X + B, for a pair with mild singularities."
+    },
+    {
+      "term": "Nef",
+      "meaning": "Having degree at least zero on every curve."
+    },
+    {
+      "term": "Semiample",
+      "meaning": "Having a multiple with enough sections to define a map with no base points."
+    },
+    {
+      "term": "Iitaka fibration",
+      "meaning": "The map that records how the sections of multiples of the canonical divisor grow."
+    },
+    {
+      "term": "Compact Kähler space",
+      "meaning": "A compact complex space with a compatible metric; it need not be cut out by polynomials."
+    },
+    {
+      "term": "Characteristic zero",
+      "meaning": "Ordinary arithmetic in which no positive whole number equals zero."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "Y. Miyaoka, “Abundance conjecture for 3-folds: case ν=1”, Compositio Mathematica 68 (1988), 203–220",
+      "url": "https://www.numdam.org/item/CM_1988__68_2_203_0/"
+    },
+    {
+      "id": 2,
+      "cite": "S. Keel, K. Matsuki and J. McKernan, “Log abundance theorem for threefolds”, Duke Mathematical Journal 75 (1994), 99–119",
+      "url": "https://doi.org/10.1215/S0012-7094-94-07504-2"
+    },
+    {
+      "id": 3,
+      "cite": "C. Birkar, P. Cascini, C. D. Hacon and J. McKernan, “Existence of minimal models for varieties of log general type”, Journal of the AMS 23 (2010), 405–468",
+      "url": "https://doi.org/10.1090/S0894-0347-09-00649-3"
+    },
+    {
+      "id": 4,
+      "cite": "C. Birkar and D.-Q. Zhang, “Effectivity of Iitaka fibrations and pluricanonical systems of polarized pairs”, Publications mathématiques de l'IHÉS 123 (2016), 283–331",
+      "url": "https://doi.org/10.1007/s10240-016-0080-x"
+    },
+    {
+      "id": 5,
+      "cite": "C. D. Hacon and J. McKernan, “Boundedness of pluricanonical maps of varieties of general type”, Inventiones Mathematicae 166 (2006), 1–25",
+      "url": "https://doi.org/10.1007/s00222-006-0504-1"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Orbifold and logarithmic Iitaka subadditivity” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Orbifold-and-logarithmic-Iitaka-subadditivity-September-26-2026/paper.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The log abundance conjecture asks whether a nef log canonical divisor is semiample.",
+      "verdict": "supported",
+      "sourceLine": "The log abundance conjecture asks whether a nef log canonical",
+      "sourceQuote": "The log abundance conjecture asks whether a nef log canonical divisor is semiample.",
+      "paper": 4
+    },
+    {
+      "text": "Semiampleness turns numerical positivity into a fibration described by sections.",
+      "verdict": "supported",
+      "sourceLine": "so semiampleness turns numerical positivity into a fibration described by",
+      "sourceQuote": "Such a multiple defines a morphism, so semiampleness turns numerical positivity into a fibration described by sections.",
+      "paper": 4
+    },
+    {
+      "text": "Miyaoka proved the numerical-dimension-one case for threefolds.",
+      "verdict": "supported",
+      "sourceLine": "Miyaoka proved the numerical-dimension-one case",
+      "sourceQuote": "Miyaoka proved the numerical-dimension-one case by studying an effective pluricanonical divisor and its infinitesimal neighborhoods after suitable coverings \\cite{Miyaoka1988}.",
+      "paper": 4
+    },
+    {
+      "text": "Keel, Matsuki and McKernan established the logarithmic theorem for threefolds.",
+      "verdict": "supported",
+      "sourceLine": "McKernan established the logarithmic theorem",
+      "sourceQuote": "Keel, Matsuki and McKernan established the logarithmic theorem \\cite{KeelMatsukiMcKernan1994,Matsuki2003Correction, KeelMatsukiMcKernan2004Correction}.",
+      "paper": 4
+    },
+    {
+      "text": "Birkar, Cascini, Hacon and McKernan established minimal models in the big-boundary or log-general-type range.",
+      "verdict": "supported",
+      "sourceLine": "minimal models for klt pairs in the big-boundary or log-general-type range",
+      "sourceQuote": "In higher dimensions, Birkar, Cascini, Hacon and McKernan established minimal models for klt pairs in the big-boundary or log-general-type range \\cite{BCHM2010}.",
+      "paper": 4
+    },
+    {
+      "text": "Nonvanishing produces sections but does not by itself make a nef adjoint semiample.",
+      "verdict": "supported",
+      "sourceLine": "First, nonvanishing produces sections but does not",
+      "sourceQuote": "First, nonvanishing produces sections but does not by itself assert that a nef adjoint is semiample.",
+      "paper": 4
+    },
+    {
+      "text": "The paper claims log abundance in every dimension over algebraically closed fields of characteristic zero.",
+      "verdict": "supported",
+      "sourceLine": "We prove the rational-boundary log abundance conjecture in every dimension",
+      "sourceQuote": "We prove the rational-boundary log abundance conjecture in every dimension over algebraically closed fields of characteristic zero: every nef \\(\\Q\\)-Cartier log canonical divisor on a projective log canonical pair with effective rational boundary is semiample.",
+      "paper": 4
+    },
+    {
+      "text": "The proof proceeds by dimension induction over the complex numbers.",
+      "verdict": "supported",
+      "sourceLine": "The proof proceeds by dimension induction over",
+      "sourceQuote": "The proof proceeds by dimension induction over $\\C$.",
+      "paper": 4
+    },
+    {
+      "text": "The Kähler paper proves log abundance for compact Kähler spaces under logarithmic Iitaka subadditivity.",
+      "verdict": "supported",
+      "sourceLine": "We prove log abundance for compact Kähler spaces under logarithmic Iitaka",
+      "sourceQuote": "We prove log abundance for compact Kähler spaces under logarithmic Iitaka subadditivity for smooth projective varieties with reduced boundary.",
+      "paper": 1
+    },
+    {
+      "text": "On a compact Kähler space nefness is analytic, while generation concerns an actual line bundle.",
+      "verdict": "supported",
+      "sourceLine": "On a compact Kähler space,",
+      "sourceQuote": "On a compact Kähler space, nefness is an analytic condition on a cohomology class, whereas generation is a statement about an actual holomorphic line bundle.",
+      "paper": 1
+    },
+    {
+      "text": "The general-type case was established by Hacon–McKernan, Takayama and Tsuji.",
+      "verdict": "supported",
+      "sourceLine": "degree and was established by Hacon--McKernan, Takayama, and Tsuji",
+      "sourceQuote": "The general-type case asks for a uniform birational degree and was established by Hacon--McKernan, Takayama, and Tsuji \\cite{HaconMcKernan2006,Takayama2006,Tsuji2007}.",
+      "paper": 10
+    },
+    {
+      "text": "Using the log-abundance input, this resolves the effective Iitaka fibration conjecture.",
+      "verdict": "supported",
+      "sourceLine": "Using the log-abundance input from",
+      "sourceQuote": "Using the log-abundance input from \\cite{LA}, this gives an affirmative resolution of the effective Iitaka fibration conjecture \\cite[Conjecture~1.1]{BirkarZhang2016}.",
+      "paper": 10
+    },
+    {
+      "text": "No small or practical value of m(d) is asserted.",
+      "verdict": "supported",
+      "sourceLine": "The theorem is existential; no small or practical numerical value of",
+      "sourceQuote": "The theorem is existential; no small or practical numerical value of $m(d)$ is asserted.",
+      "paper": 10
+    },
+    {
+      "text": "The index paper resolves the finite-rational-coefficient semi-log-canonical index conjecture.",
+      "verdict": "supported",
+      "sourceLine": "not on the number of irreducible components.",
+      "sourceQuote": "The multiple depends only on the dimension and coefficient set, not on the number of irreducible components.",
+      "paper": 2
+    },
+    {
+      "text": "The manuscripts were produced by an internal OpenAI model.",
+      "verdict": "external",
+      "sourceId": 7
+    }
+  ]
+}
