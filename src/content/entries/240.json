@@ -1,0 +1,177 @@
+{
+  "id": "240",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical logic",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-CH-Obstruction-to-a-Prescribed-Categoricity-Threshold-September-24-2026/paper.pdf",
+      "label": "A CH obstruction to a prescribed categoricity threshold"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Eventual-Categoricity-for-Abstract-Elementary-Classes-September-24-2026/paper.pdf",
+      "label": "Eventual categoricity for abstract elementary classes"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/240.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims Shelah's eventual categoricity conjecture in ZFC, and shows under CH that its proposed exact threshold fails.",
+  "scope": "Abstract elementary classes with a given bound on the Löwenheim–Skolem number; the counterexample assumes the continuum hypothesis.",
+  "plain": "A class of structures is categorical in a size when all its members of that size look alike. Shelah conjectured that being categorical in one huge size forces it in all larger sizes. One paper claims to prove this. A second paper builds, under an extra set-theory axiom, a class where a proposed exact size bound fails. Lean checks only that second construction.",
+  "doesNot": "This does not give a numerical threshold in the eventual categoricity theorem, and the Lean check does not cover that theorem.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1965",
+    "firstStepBy": "Michael Morley, categoricity transfer for first-order theories",
+    "field": "Mathematical logic",
+    "significance": "Major",
+    "significanceWhy": "Shelah's eventual categoricity conjecture is a central open problem of model theory."
+  },
+  "explanation": "Look at vector spaces over the rational numbers. A countable one can have dimension 1, 2, 3 and so on, or a countably infinite dimension. So there are infinitely many different countable ones. Now take any uncountable size, such as the size of the real numbers. A space of that size must have that same dimension, since each finite-dimensional piece is only countable. So all spaces of that size are isomorphic, which means they are copies of one another. A class with exactly one model of a given size, up to isomorphism, is categorical in that size.\n\nMorley proved in 1965 that, for a complete first-order theory in a countable language, categoricity in one uncountable size gives it in all uncountable sizes[2]. Shelah introduced abstract elementary classes, a much wider framework. They keep a notion of strong substructure and closure under unions, but need no first-order axioms[3]. Each class has a Löwenheim–Skolem number, roughly the smallest size its pieces can be cut down to. Shelah's eventual categoricity conjecture says that above some threshold, categoricity in one size gives it in all larger sizes. The obstacle is that the bare axioms give no amalgamation, tameness or other tools that earlier transfer proofs used.\n\nThe first paper claims the conjecture in ZFC, the usual axioms of set theory[4]. For each bound on the Löwenheim–Skolem number there is one threshold. Categoricity in any size at or above it gives categoricity in every size at or above it[5]. No amalgamation, joint embedding, tameness or similar hypothesis is assumed[6]. But the threshold is only shown to exist. No numerical bound is given[7].\n\nA sharper form names the threshold. It uses beth numbers, the sizes you get by taking power sets again and again, starting from the size of the whole numbers. The proposed bound is beth indexed by the successor of 2 to the power ℵ₀. The continuum hypothesis, CH, says 2 to the power ℵ₀ is ℵ₁. Then the successor is ℵ₂, so the bound becomes beth sub ω₂. The second paper assumes CH and builds a class with a countable language and Löwenheim–Skolem number ℵ₀. It has two non-isomorphic models at that bound, yet is categorical in every large enough size[8]. So categoricity does not transfer down to the proposed bound[9]. The paper notes that an earlier paper claimed such a transfer, and reaches the opposite conclusion[10].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the CH counterexample. It covers the two models at the bound and categoricity from beth sub (2^ℵ₁)⁺ upward. The eventual categoricity theorem is not part of that check. It rests on the long paper alone. No specialist review of either paper has been published.",
+  "hypeCheck": "Major if it holds. The CH counterexample has a Lean proof. The positive answer to Shelah's conjecture is a long unformalized argument with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Categorical in a size",
+      "meaning": "The class has a model of that size, and all its models of that size are copies of one another."
+    },
+    {
+      "term": "Isomorphic",
+      "meaning": "Two structures are isomorphic when a one-to-one matching carries every relation of one onto the other."
+    },
+    {
+      "term": "Abstract elementary class",
+      "meaning": "A class of structures with a strong-substructure order, closed under unions of chains, defined by axioms rather than a first-order theory."
+    },
+    {
+      "term": "Löwenheim–Skolem number",
+      "meaning": "The least size such that any part of a model sits inside a strong submodel not much bigger than that part plus this size."
+    },
+    {
+      "term": "Beth numbers",
+      "meaning": "Infinite sizes built by starting from the size of the whole numbers and taking power sets repeatedly."
+    },
+    {
+      "term": "Continuum hypothesis (CH)",
+      "meaning": "The statement that no size lies strictly between the whole numbers and the real numbers."
+    },
+    {
+      "term": "ZFC",
+      "meaning": "The standard axioms of set theory, including the axiom of choice."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A CH obstruction to a prescribed categoricity threshold” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-CH-Obstruction-to-a-Prescribed-Categoricity-Threshold-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Eventual categoricity for abstract elementary classes” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Eventual-Categoricity-for-Abstract-Elementary-Classes-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 240",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/240.md",
+      "quote": "Under the continuum hypothesis, the formalized result refutes the proposed transfer of categoricity down to the Hanf threshold."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Categoricity asks whether a class has exactly one model of a given cardinality up to isomorphism.",
+      "sourceLine": "Categoricity asks whether a class has exactly one model of a given cardinality, up to isomorphism.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Morley's theorem transfers categoricity between uncountable cardinals for complete first-order theories in a countable language.",
+      "sourceLine": "categoricity theorem transfers categoricity from one uncountable cardinal to every uncountable cardinal",
+      "sourceQuote": "For complete first-order theories in a countable language, Morley's categoricity theorem transfers categoricity from one uncountable cardinal to every uncountable cardinal \\cite{Morley1965}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Abstract elementary classes keep strong substructure and closure under unions without first-order axiomatization.",
+      "sourceLine": "substructure and closure under increasing unions while allowing classes that are not axiomatized by a first-order theory.",
+      "sourceQuote": "Abstract elementary classes retain a coherent notion of strong substructure and closure under increasing unions while allowing classes that are not axiomatized by a first-order theory.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper proves Shelah's eventual categoricity conjecture in ZFC.",
+      "sourceLine": "We prove Shelah's eventual categoricity conjecture for abstract elementary classes in ZFC.",
+      "sourceQuote": "We prove Shelah's eventual categoricity conjecture for abstract elementary classes in ZFC.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "For each bound on the Löwenheim–Skolem number there is a uniform threshold for categoricity transfer.",
+      "sourceLine": "there is a uniform threshold such that categoricity in any one cardinal at or above that threshold implies categoricity in every cardinal at or above the same threshold.",
+      "sourceQuote": "For each infinite bound on the L\\\"owenheim--Skolem number there is a uniform threshold such that categoricity in any one cardinal at or above that threshold implies categoricity in every cardinal at or above the same threshold.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "No amalgamation, joint embedding, tameness or similar hypothesis is assumed.",
+      "sourceLine": "No amalgamation, joint embedding, tameness, no-maximal-models, or arbitrarily-large-models hypothesis is assumed.",
+      "sourceQuote": "No amalgamation, joint embedding, tameness, no-maximal-models, or arbitrarily-large-models hypothesis is assumed.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem asserts existence of a threshold without a numerical bound.",
+      "sourceLine": "The theorem asserts the existence of a threshold, without prescribing a numerical bound for it.",
+      "sourceQuote": "The theorem asserts the existence of a threshold, without prescribing a numerical bound for it.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Under CH there is an AEC categorical in every sufficiently large cardinal but with two nonisomorphic models of cardinality beth omega-2.",
+      "sourceLine": "class with L\\\"owenheim--Skolem number \\(\\aleph_0\\) that is categorical in every sufficiently large cardinal but has at least two nonisomorphic models of cardinality \\(\\beth_{\\omega_2}\\).",
+      "sourceQuote": "Assuming the continuum hypothesis, we construct an abstract elementary class with L\\\"owenheim--Skolem number \\(\\aleph_0\\) that is categorical in every sufficiently large cardinal but has at least two nonisomorphic models of cardinality \\(\\beth_{\\omega_2}\\).",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Categoricity does not transfer down to the proposed bound.",
+      "sourceLine": "Thus categoricity does not transfer down to the proposed bound",
+      "sourceQuote": "Thus categoricity does not transfer down to the proposed bound \\(\\beth_{(2^{\\aleph_0})^+}\\), which equals \\(\\beth_{\\omega_2}\\) under CH. Consequently, if ZFC is consistent, the prescribed-threshold form of Shelah's categoricity conjecture is not provable in ZFC.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A transfer at the prescribed bound was claimed by Espíndola; the CH construction has the opposite conclusion.",
+      "sourceLine": "The CH construction below has the opposite conclusion at that bound.",
+      "sourceQuote": "The CH construction below has the opposite conclusion at that bound.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the CH counterexample; the separate eventual-categoricity theorem is not included.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

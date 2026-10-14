@@ -1,0 +1,146 @@
+{
+  "id": "245",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical logic",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weak-and-strong-normalization-in-pure-type-systems-September-25-2026/paper.pdf",
+      "label": "Weak and strong normalization in pure type systems"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/245.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims that in every pure type system, if every legal term can finish computing, then every way of computing finishes.",
+  "scope": "All pure type systems, with any sorts and possibly nonfunctional axioms and rules, under beta reduction including inside type annotations.",
+  "plain": "Pure type systems are a family of typed programming languages that also serve as logics. A program is weakly normalizing if some way of running it stops, and strongly normalizing if every way stops. The paper claims that when every legal program in a system has some stopping run, every run of every legal program stops. This settles the beta form of a conjecture from the early 1990s. A Lean proof checks the main theorem.",
+  "doesNot": "This does not say that one single term with a normal form always terminates, and it says nothing about adding eta reduction.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1993",
+    "firstStepBy": "Herman Geuvers, statement of the conjecture in his thesis",
+    "field": "Mathematical logic",
+    "significance": "Solid",
+    "significanceWhy": "It settles a well-known open question in type theory, which underlies proof assistants."
+  },
+  "explanation": "Start with a small program in the lambda calculus, the core language behind functional programming. Let K be the function that takes x and always returns y. Let Ω be the term (λx.xx)(λx.xx), which applies a function to itself. Running Ω one step gives back Ω exactly, so it never stops. Now look at K applied to Ω. Run the outer call first, and you get y in one step. Run the inner Ω first, and you loop forever. So this term can finish, but it does not have to.\n\nA term is weakly normalizing if some sequence of beta steps reaches a normal form, a term with nothing left to compute. It is strongly normalizing if every such sequence is finite. A beta step is the basic computing move: plug an argument into a function body. Type systems rule out terms like Ω. A pure type system fixes a set of sorts, such as \"type\" and \"kind\", and rules for building function types. Related type systems underlie proof assistants such as Coq and Lean.\n\nBarendregt, Geuvers and Klop conjectured that for these systems the two notions agree at the level of the whole system. Geuvers stated it in his 1993 thesis[1]. Earlier work proved it for restricted families. For example, Sørensen used program translations for some systems without dependent types[2]. Those translations need particular rules to be present, so they do not reach every system[3]. That is the obstacle: a general system may have no hierarchy of sorts and no tidy rules.\n\nThe paper claims the full beta version. In any pure type system, if every legal term in every valid context is weakly normalizing, then every such term is strongly normalizing[4]. Steps inside type annotations count too[5]. No functionality assumption on the axioms or rules is needed. The claim is about the whole system. It does not say that one term with a normal form must always stop[6]. So K applied to Ω is no counterexample. In a weakly normalizing system it cannot be legal, because Ω has no normal form. The proof first cuts the system down to finitely many sorts and rules[7]. It then adapts the Tait–Girard method of reducibility candidates[8]. That method attaches to each type a set of terms that are known to terminate.\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main theorem. It covers any specification, arbitrary sorts, nonfunctional axioms and rules, and reduction inside annotations. No specialist review of the paper has been published.",
+  "hypeCheck": "The main theorem has a Lean proof and settles the beta form of a known conjecture. The eta form is not addressed. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Lambda calculus",
+      "meaning": "A minimal programming language where everything is a function and computing means plugging arguments into function bodies."
+    },
+    {
+      "term": "Beta reduction",
+      "meaning": "One computing step: replace a function applied to an argument by the function body with the argument plugged in."
+    },
+    {
+      "term": "Normal form",
+      "meaning": "A term with no beta step left to take."
+    },
+    {
+      "term": "Weakly normalizing",
+      "meaning": "Some sequence of beta steps reaches a normal form."
+    },
+    {
+      "term": "Strongly normalizing",
+      "meaning": "Every sequence of beta steps is finite."
+    },
+    {
+      "term": "Pure type system",
+      "meaning": "A family of typed lambda calculi given by a set of sorts, axioms between sorts, and rules for which function types may be formed."
+    },
+    {
+      "term": "Legal expression",
+      "meaning": "A term that appears in some derivable typing judgment of the system."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Weak and strong normalization in pure type systems” (25 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Weak-and-strong-normalization-in-pure-type-systems-September-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 245",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/245.md",
+      "quote": "if every legal expression in every valid context has some terminating $\\beta$-reduction sequence, then every $\\beta$-reduction sequence from every such expression terminates"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Geuvers formulates the system-wide conjecture in his thesis.",
+      "sourceLine": "Geuvers formulates the system-wide conjecture, for both $\\beta$ and $\\beta\\eta$ reduction, in his thesis",
+      "sourceQuote": "Geuvers formulates the system-wide conjecture, for both $\\beta$ and $\\beta\\eta$ reduction, in his thesis \\cite[Conjecture~8.1.2]{Geuvers1993}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Sørensen's continuation-passing construction proves the implication for generalized nondependent, clean, negatable systems.",
+      "sourceLine": "continuation-passing construction proves the implication for generalized nondependent, clean, negatable systems",
+      "sourceQuote": "S{\\o}rensen's continuation-passing construction proves the implication for generalized nondependent, clean, negatable systems \\cite[Theorem~3.5.20]{Sorensen1997}; the uniform nondependent result of Barthe, Hatcliff and S{\\o}rensen develops this approach \\cite{BartheHatcliffSorensen2001}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A general specification need not have the products required by these translations.",
+      "sourceLine": "or the products required by any of these translations.",
+      "sourceQuote": "The general specification considered here need not have a hierarchy of sorts, functional axiom or product relations, or the products required by any of these translations.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every weakly beta-normalizing pure type system is strongly beta-normalizing.",
+      "sourceLine": "We prove that every weakly $\\beta$-normalizing pure type system is strongly $\\beta$-normalizing.",
+      "sourceQuote": "We prove that every weakly $\\beta$-normalizing pure type system is strongly $\\beta$-normalizing.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Both properties quantify over all legal expressions in all valid contexts, and reduction acts inside type annotations.",
+      "sourceLine": "in all valid contexts, and reduction acts inside type annotations.",
+      "sourceQuote": "Both properties quantify over all legal expressions in all valid contexts, and reduction acts inside type annotations.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem does not assert that an individual term with a normal form is strongly normalizing.",
+      "sourceLine": "The theorem does not assert that an individual term with a normal form is strongly normalizing.",
+      "sourceQuote": "The theorem does not assert that an individual term with a normal form is strongly normalizing.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The proof first reduces to finite sort and rule sets.",
+      "sourceLine": "specification, so the proof first reduces to finite sort and rule sets.",
+      "sourceQuote": "A finite derivation of a counterexample uses only a finite part of the specification, so the proof first reduces to finite sort and rule sets.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The candidate argument follows the Tait–Girard reducibility tradition.",
+      "sourceLine": "The candidate argument follows the Tait--Girard reducibility tradition",
+      "sourceQuote": "The candidate argument follows the Tait--Girard reducibility tradition \\cite[Chapters~6 and~14]{Girard1989}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the beta Barendregt–Geuvers–Klop conjecture for every pure type system, with reduction inside annotations.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

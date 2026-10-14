@@ -1,0 +1,157 @@
+{
+  "id": "249",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Group theory",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finitely-generated-counterexample-to-the-Eilenberg-Ganea-conjecture-September-23-2026/paper.pdf",
+      "label": "A finitely generated counterexample to the Eilenberg–Ganea conjecture"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/249.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims a group of cohomological dimension two with no two-dimensional classifying space, refuting Eilenberg–Ganea.",
+  "scope": "Discrete groups; ordinary cohomological and geometric dimension. The example is a Bestvina–Brady kernel of a right-angled Artin group.",
+  "plain": "Two numbers measure a group: an algebraic one, cohomological dimension, and a geometric one, the smallest dimension of a space modelling it. In 1957 Eilenberg and Ganea showed they agree from three upward, and conjectured they agree at two. The paper builds a group where the algebra says two but the geometry needs three. A Lean proof checks this counterexample.",
+  "doesNot": "This does not settle Whitehead's asphericity conjecture, and the group it builds is not finitely presented.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1957",
+    "firstStepBy": "Samuel Eilenberg and Tudor Ganea, dimensions agree from three upward",
+    "field": "Group theory",
+    "significance": "Major",
+    "significanceWhy": "The Eilenberg–Ganea conjecture is a long-standing open problem in group theory and topology."
+  },
+  "explanation": "The construction starts from a small group with two generators, x and y, and two rules: x² = y⁵ and x² = (xy⁻¹)³. First, a quick check. Make the group commutative and write it additively. The rules become 2x − 5y = 0 and −x + 3y = 0. The matrix of these equations has determinant 2·3 − (−5)(−1) = 1. So the commutative version is trivial: the group has no abelian shadow at all.\n\nA group can be modelled by a space. A classifying space for a group is a connected space whose loops form that group. Its universal cover must also be contractible, meaning it can shrink to a point. The geometric dimension is the least dimension of such a space. The cohomological dimension is an algebraic count. It is the length of the shortest resolution, a chain of algebraic building blocks, needed to describe the integers over the group. Algebra never exceeds geometry: the cohomological dimension is at most the geometric one[2].\n\nEilenberg and Ganea showed in 1957 that the two agree when the cohomological dimension is at least 3[3]. Stallings and Swan settled dimension one. The Eilenberg–Ganea conjecture asked whether dimension two also matches. In 1997, Bestvina and Brady showed that either this conjecture or Whitehead's asphericity conjecture must fail[4]. They did not say which.\n\nThe paper claims a finitely generated residually finite group G with cohomological dimension 2 and geometric dimension 3[5]. Residually finite means every non-identity element survives in some finite image. G is the kernel of a height map on a right-angled Artin group. That group has one generator per vertex of a triangulated space, with commuting rules along edges. The obstacle is that a two-dimensional model with no holes in homology need not be contractible[6]. So ruling out one model does not rule out all of them. The paper instead tests every possible two-dimensional model at once. It uses labels in SU(2), the unit quaternions, attached to edges. Any two-dimensional model would force small labels that are flat on triangles to have trivial loop products[7]. The paper then builds small labels that are flat on every triangle but have a non-trivial product around some loop[8]. A key estimate is that commutators of labels near 1 are tiny[9]. Take the unit quaternions a = cos 0.1 + i sin 0.1 and b = cos 0.1 + j sin 0.1. Each is about 0.0999 from 1. Their commutator gap ab − ba is about 0.0199, under the bound 2·0.0999·0.0999 ≈ 0.0200. The group is not finitely presented[10].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the counterexample. It covers a finitely generated residually finite group of cohomological dimension two with a three-dimensional classifying space and no two-dimensional one. No specialist review of the paper has been published.",
+  "hypeCheck": "Major if it holds, and the counterexample has a Lean proof. It leaves Whitehead's conjecture open. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Classifying space",
+      "meaning": "A connected space whose loops form the given group and whose universal cover can be shrunk to a point."
+    },
+    {
+      "term": "Geometric dimension",
+      "meaning": "The smallest dimension of a classifying space for the group."
+    },
+    {
+      "term": "Cohomological dimension",
+      "meaning": "The length of the shortest projective resolution of the integers over the group; an algebraic measure of size."
+    },
+    {
+      "term": "Contractible",
+      "meaning": "Able to be shrunk continuously to a single point."
+    },
+    {
+      "term": "Residually finite",
+      "meaning": "Every non-identity element stays non-identity in some finite image of the group."
+    },
+    {
+      "term": "Right-angled Artin group",
+      "meaning": "A group with one generator per vertex of a graph, where two generators commute exactly when their vertices are joined."
+    },
+    {
+      "term": "SU(2)",
+      "meaning": "The group of unit quaternions, which describes rotations in three dimensions."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “A finitely generated counterexample to the Eilenberg–Ganea conjecture” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/A-finitely-generated-counterexample-to-the-Eilenberg-Ganea-conjecture-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 249",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/249.md",
+      "quote": "The formalization constructs a finitely generated residually finite group of cohomological dimension two that has a three-dimensional classifying space but no two-dimensional one."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "Geometric dimension is the least dimension of a connected CW complex with fundamental group Γ and contractible universal cover.",
+      "sourceLine": "Its geometric dimension $\\gdim\\Gamma$ is the least dimension of a connected CW complex with fundamental group $\\Gamma$ and contractible universal cover.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The cellular chains of a contractible universal cover give a free resolution, so cohomological dimension is at most geometric dimension.",
+      "sourceLine": "The cellular chains of a contractible universal cover give a free resolution, so $\\cdim\\Gamma\\le\\gdim\\Gamma$.",
+      "sourceQuote": "The cellular chains of a contractible universal cover give a free resolution, so $\\cdim\\Gamma\\le\\gdim\\Gamma$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The Eilenberg–Ganea theorem identifies the dimensions when cohomological dimension is at least 3; the dimension-two conjecture remained.",
+      "sourceLine": "The Eilenberg--Ganea theorem of 1957 identifies these dimensions when $\\cdim\\Gamma\\ge3$.",
+      "sourceQuote": "The Eilenberg--Ganea theorem of 1957 identifies these dimensions when $\\cdim\\Gamma\\ge3$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Bestvina and Brady proved that at least one of the Eilenberg–Ganea and Whitehead conjectures fails.",
+      "sourceLine": "they proved that at least one of the Eilenberg--Ganea and Whitehead conjectures fails",
+      "sourceQuote": "For suitable flag triangulations of a spine of the Poincar\\'e homology sphere, they proved that at least one of the Eilenberg--Ganea and Whitehead conjectures fails \\cite[Theorem~8.7]{BB1997}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "There is a finitely generated residually finite group with cohomological dimension 2 and geometric dimension 3, built from the seed presentation.",
+      "sourceLine": "There is a finitely generated residually finite group $G$ such that",
+      "sourceQuote": "There is a finitely generated residually finite group $G$ such that \\[ \\cdim G=2,\\qquad \\gdim G=3. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "An acyclic complex need not be contractible, so one noncontractible model leaves open another two-dimensional classifying space.",
+      "sourceLine": "An acyclic complex need not be contractible.",
+      "sourceQuote": "An acyclic complex need not be contractible.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A hypothetical two-dimensional K(G,1) would force small labelings flat on the words to have trivial product along every closed path.",
+      "sourceLine": "would force every sufficiently small labeling, flat on all translates of the words in $\\mathcal D$, to have trivial product along every closed path.",
+      "sourceQuote": "Theorem~\\ref{thm:presentation} shows that a hypothetical two-dimensional $K(G,1)$ would force every sufficiently small labeling, flat on all translates of the words in $\\mathcal D$, to have trivial product along every closed path.",
+      "verdict": "supported"
+    },
+    {
+      "text": "For every ε there are small labels flat on every triangle with nontrivial product along some closed path.",
+      "sourceLine": "that are flat on every triangle of $X$ and have nontrivial product along some closed path.",
+      "sourceQuote": "Proposition~\\ref{prop:small-labels} constructs, for every $\\epsilon>0$, labels of distance less than $\\epsilon$ from $1$ that are flat on every triangle of $X$ and have nontrivial product along some closed path.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Commutators of elements close to 1 contribute only a quadratic error.",
+      "sourceLine": "Commutators of elements close to $1$ contribute only a quadratic error.",
+      "sourceQuote": "Commutators of elements close to $1$ contribute only a quadratic error.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The group is not finitely presented.",
+      "sourceLine": "The group is not finitely presented:",
+      "sourceQuote": "The group is not finitely presented: $L$ has nontrivial fundamental group by Lemma~\\ref{lem:geometric-seed}, and the Bestvina--Brady finite-presentability criterion applies \\cite[Main Theorem, part~(3)]{BB1997}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the finitely generated residually finite group of cohomological dimension two and geometric dimension three.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

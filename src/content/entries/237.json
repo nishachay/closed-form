@@ -1,0 +1,277 @@
+{
+  "id": "237",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Probability and statistical mechanics",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Radial-transfer-estimates-and-polygon-length-laws-for-honeycomb-walks-September-26-2026/main.pdf",
+      "label": "Radial transfer estimates and polygon length laws for honeycomb walks"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-honeycomb-chords-with-prescribed-boundary-endpoints-September-26-2026/main.pdf",
+      "label": "Critical honeycomb chords with prescribed boundary endpoints"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cylinder-loop-weights-and-planar-nesting-September-26-2026/main.pdf",
+      "label": "Cylinder loop weights and planar nesting"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Mass-and-covering-exponents-for-fixed-length-honeycomb-walks-September-26-2026/main.pdf",
+      "label": "Mass and covering exponents for fixed-length honeycomb walks"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Signed-cylinder-propagation-and-marked-polygons-on-the-honeycomb-lattice-September-26-2026/main.pdf",
+      "label": "Signed cylinder propagation and marked polygons on the honeycomb lattice"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cylinder-amplitudes-and-logarithmic-bridge-length-windows-on-the-honeycomb-lattice-September-26-2026/main.pdf",
+      "label": "Cylinder amplitudes and logarithmic bridge-length windows on the honeycomb lattice"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Marked-polygon-correlations-and-one-arc-bounds-September-26-2026/main.pdf",
+      "label": "Marked polygon correlations and one-arc bounds"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Disk-transfer-representations-and-confined-bridge-mass-September-26-2026/main.pdf",
+      "label": "Disk transfer representations and confined bridge mass"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-vacuum-representations-and-bridge-mass-for-honeycomb-walks-September-26-2026/main.pdf",
+      "label": "Polynomial vacuum representations and bridge mass for honeycomb walks"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Renewal-and-changes-of-law-for-critical-honeycomb-walks-September-26-2026/main.pdf",
+      "label": "Renewal and changes of law for critical honeycomb walks"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-strip-crossing-mass-on-the-honeycomb-lattice-September-26-2026/main.pdf",
+      "label": "Critical strip-crossing mass on the honeycomb lattice"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-marked-polygon-estimates-and-sharp-finite-bridge-moments-September-26-2026/main.pdf",
+      "label": "Uniform marked-polygon estimates and sharp finite bridge moments"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cap-selected-amplitudes-and-triangle-chords-for-honeycomb-walks-September-26-2026/main.pdf",
+      "label": "Cap-selected amplitudes and triangle chords for honeycomb walks"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/237.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims random self-avoiding walks of length n on the honeycomb lattice span about n^(3/4), the long-predicted exponent.",
+  "scope": "Self-avoiding walks, bridges, chords and polygons on the regular honeycomb lattice, at the critical weight or uniform at fixed length.",
+  "plain": "A self-avoiding walk is a path on a grid that never visits the same point twice. Physicists predicted decades ago that in two dimensions a typical walk of n steps spreads over a distance near n to the power 3/4. Thirteen companion papers claim to prove this exponent and related laws on the honeycomb lattice. Lean checks several supporting estimates, such as the strip-crossing mass, but not the 3/4 laws themselves.",
+  "doesNot": "This does not prove convergence to a continuum random curve, a universal result on other lattices, or that the walk's two endpoints are far apart.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1982",
+    "firstStepBy": "Bernard Nienhuis, prediction of the exponent 3/4 from the dilute O(n) model",
+    "field": "Probability and statistical mechanics",
+    "significance": "Major",
+    "significanceWhy": "The 3/4 size exponent of planar self-avoiding walk is a central open problem in probability and statistical physics."
+  },
+  "explanation": "Walk on the honeycomb lattice, the pattern of a beehive, where every point has three neighbours. A self-avoiding walk never steps on a point it has already visited. From a fixed start there are 3 walks of one step, 6 of two, 12 of three, then 24 and 48. At six steps the count is 90, not 96, because a walk can close a hexagon and hit its own start. A computer count gives 1,218 walks of ten steps and 2,479,692 of twenty-two. Each extra step multiplies the count by roughly 1.87 at that length. Duminil-Copin and Smirnov proved the true growth factor is √(2 + √2), about 1.848[1].\n\nCounting is one question; shape is another. How far does a typical walk of n steps spread? A simple random walk, allowed to cross itself, spreads about √n. Self-avoidance pushes the walk outward. Nienhuis predicted in 1982 that in two dimensions the size grows like n to the power 3/4[2]. For n = 10,000 steps that means a diameter near 1,000. The obstacle is that self-avoidance is a global rule. Each step depends on the whole past, so standard random-walk tools do not apply.\n\nThe papers claim this exponent for the honeycomb lattice. Pick a walk of large length n uniformly at random. With very high probability, its diameter lies between n^(3/4 − δ) and n^(3/4 + δ), for any small δ[3]. The walk's local mass has exponent 4/3, the reciprocal of 3/4[3]. The statements are about lattice paths; they do not include convergence to a continuum curve[4]. Bridges, walks that cross a strip of height h, have mean length h^(4/3 + o(1))[5]. Here o(1) is a correction that shrinks as h grows. Polygons, closed self-avoiding loops, conditioned to have length at least n have diameter n^(3/4 + o(1))[6].\n\nMuch of the work goes through a critical weight. Each path gets weight x raised to its length, with x = (2 + √2)^(−1/2), about 0.5412[1]. The total weight of paths crossing a strip of height N is comparable to N^(−1/4)[7]. Other papers handle walks on cylinders. At loop fugacity two, polygons separating two marks have exponent 1/6[8]. The spatial exponent 3/4 is also claimed for bridges of every large compatible even length[9].\n\nHow sure is this? A computer proof checker called Lean has formal proofs of several supporting results. These include the strip mass of order N^(−1/4), a displacement moment of order N^(3/4), and existence of the free-energy limit. The 4/3 mean-length laws and the fixed-length 3/4 exponents are outside those statements. They rest on thirteen long papers. No specialist review of them has been published.",
+  "hypeCheck": "Major if it holds. Lean covers supporting strip and bridge estimates, not the 3/4 and 4/3 laws themselves, which rest on thirteen interlocking papers with no published specialist review.",
+  "glossary": [
+    {
+      "term": "Self-avoiding walk",
+      "meaning": "A path on a lattice that moves between neighbouring points and never visits a point twice."
+    },
+    {
+      "term": "Honeycomb lattice",
+      "meaning": "The beehive pattern of hexagons; each point has exactly three neighbours."
+    },
+    {
+      "term": "Critical weight",
+      "meaning": "The weight per step, here (2 + √2)^(−1/2), at which sums over walks of all lengths sit at the edge of blowing up."
+    },
+    {
+      "term": "Bridge",
+      "meaning": "A self-avoiding walk that crosses a strip from one side to the other without touching either side elsewhere."
+    },
+    {
+      "term": "Exponent 3/4",
+      "meaning": "The claim that size grows like length to the power 3/4: ten thousand steps give a span near a thousand."
+    },
+    {
+      "term": "o(1)",
+      "meaning": "A correction in the exponent that shrinks to zero as the size grows."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Radial transfer estimates and polygon length laws for honeycomb walks” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Radial-transfer-estimates-and-polygon-length-laws-for-honeycomb-walks-September-26-2026/main.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Critical honeycomb chords with prescribed boundary endpoints” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-honeycomb-chords-with-prescribed-boundary-endpoints-September-26-2026/main.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "OpenAI, “Cylinder loop weights and planar nesting” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cylinder-loop-weights-and-planar-nesting-September-26-2026/main.pdf"
+    },
+    {
+      "id": 4,
+      "cite": "OpenAI, “Mass and covering exponents for fixed-length honeycomb walks” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Mass-and-covering-exponents-for-fixed-length-honeycomb-walks-September-26-2026/main.pdf"
+    },
+    {
+      "id": 5,
+      "cite": "OpenAI, “Signed cylinder propagation and marked polygons on the honeycomb lattice” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Signed-cylinder-propagation-and-marked-polygons-on-the-honeycomb-lattice-September-26-2026/main.pdf"
+    },
+    {
+      "id": 6,
+      "cite": "OpenAI, “Cylinder amplitudes and logarithmic bridge-length windows on the honeycomb lattice” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cylinder-amplitudes-and-logarithmic-bridge-length-windows-on-the-honeycomb-lattice-September-26-2026/main.pdf"
+    },
+    {
+      "id": 7,
+      "cite": "OpenAI, “Marked polygon correlations and one-arc bounds” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Marked-polygon-correlations-and-one-arc-bounds-September-26-2026/main.pdf"
+    },
+    {
+      "id": 8,
+      "cite": "OpenAI, “Disk transfer representations and confined bridge mass” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Disk-transfer-representations-and-confined-bridge-mass-September-26-2026/main.pdf"
+    },
+    {
+      "id": 9,
+      "cite": "OpenAI, “Polynomial vacuum representations and bridge mass for honeycomb walks” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Polynomial-vacuum-representations-and-bridge-mass-for-honeycomb-walks-September-26-2026/main.pdf"
+    },
+    {
+      "id": 10,
+      "cite": "OpenAI, “Renewal and changes of law for critical honeycomb walks” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Renewal-and-changes-of-law-for-critical-honeycomb-walks-September-26-2026/main.pdf"
+    },
+    {
+      "id": 11,
+      "cite": "OpenAI, “Critical strip-crossing mass on the honeycomb lattice” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-strip-crossing-mass-on-the-honeycomb-lattice-September-26-2026/main.pdf"
+    },
+    {
+      "id": 12,
+      "cite": "OpenAI, “Uniform marked-polygon estimates and sharp finite bridge moments” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Uniform-marked-polygon-estimates-and-sharp-finite-bridge-moments-September-26-2026/main.pdf"
+    },
+    {
+      "id": 13,
+      "cite": "OpenAI, “Cap-selected amplitudes and triangle chords for honeycomb walks” (26 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Cap-selected-amplitudes-and-triangle-chords-for-honeycomb-walks-September-26-2026/main.pdf"
+    },
+    {
+      "id": 14,
+      "cite": "openai/math, Lean scope note for family 237",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/237.md",
+      "quote": "These are supporting summability statements. The paper's $h^{4/3+o(1)}$ mean-length law and its central-visit and hexagonal-chord exponents are outside them."
+    },
+    {
+      "id": 15,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The critical weight x* = (2+√2)^(−1/2) is the inverse honeycomb connective constant proved by Duminil-Copin and Smirnov.",
+      "sourceLine": "The value of $x_*$ is the inverse honeycomb connective constant proved by Duminil-Copin and Smirnov",
+      "sourceQuote": "The value of $x_*$ is the inverse honeycomb connective constant proved by Duminil-Copin and Smirnov~\\cite{DuminilCopinSmirnov2012}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Nienhuis's analysis of the dilute O(n) model predicted planar self-avoiding-walk exponents, including size exponent 3/4.",
+      "sourceLine": "Nienhuis's analysis of the dilute $O(n)$ model predicted the critical point and planar self-avoiding-walk exponents, including the size exponent $3/4$",
+      "sourceQuote": "Nienhuis's analysis of the dilute $O(n)$ model predicted the critical point and planar self-avoiding-walk exponents, including the size exponent $3/4$~\\cite{Nienhuis1982}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "For uniform walks of every large length, the diameter exponent is 3/4 and the local-mass and covering exponent is 4/3.",
+      "sourceLine": "we prove diameter exponent $3/4$ and simultaneous local-mass and covering exponent $4/3$",
+      "sourceQuote": "For uniform self-avoiding walks of every sufficiently large integer length on the honeycomb lattice, we prove diameter exponent $3/4$ and simultaneous local-mass and covering exponent $4/3$, with arbitrary positive exponent slack and arbitrary polynomial failure probability.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "The assertions do not include convergence to a continuum curve or a universality theorem on changing lattice.",
+      "sourceLine": "The assertions do not include convergence to a continuum curve",
+      "sourceQuote": "The assertions do not include convergence to a continuum curve, a continuum Hausdorff dimension, a universality theorem on changing lattice, or a fixed-length lower bound on $|\\gamma_n-o|$.",
+      "paper": 4,
+      "verdict": "supported"
+    },
+    {
+      "text": "A bridge crossing a strip of h layers has mean length h^(4/3+o(1)) under the all-length critical measure.",
+      "sourceLine": "has mean length $h^{4/3+o(1)}$.",
+      "sourceQuote": "We prove that, under the all-length critical measure, a honeycomb bridge crossing a strip of $h$ layers, with its initial port fixed and its terminal port free, has mean length $h^{4/3+o(1)}$.",
+      "paper": 9,
+      "verdict": "supported"
+    },
+    {
+      "text": "Polygons conditioned to have length at least n have diameter n^(3/4+o(1)).",
+      "sourceLine": "Consequently, polygons conditioned to have length at least $n$ have diameter $n^{3/4+o(1)}$ in probability under either weight.",
+      "sourceQuote": "Consequently, polygons conditioned to have length at least $n$ have diameter $n^{3/4+o(1)}$ in probability under either weight.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The total weight of self-avoiding paths crossing a strip of height N is comparable to N^(−1/4).",
+      "sourceLine": "the total weight of self-avoiding paths crossing a strip of height $N$ is comparable to $N^{-1/4}$.",
+      "sourceQuote": "At the critical weight of the regular honeycomb lattice, the total weight of self-avoiding paths crossing a strip of height $N$ is comparable to $N^{-1/4}$.",
+      "paper": 11,
+      "verdict": "supported"
+    },
+    {
+      "text": "At fugacity two the cylinder exponent is 1/6.",
+      "sourceLine": "At fugacity two the cylinder exponent is $1/6$",
+      "sourceQuote": "At fugacity two the cylinder exponent is $1/6$; the corresponding planar nesting exponent and middle-strip nesting exponent are $1/12$.",
+      "paper": 3,
+      "verdict": "supported"
+    },
+    {
+      "text": "The spatial exponent 3/4 holds for the infinite irreducible-bridge law and for bridges of every large compatible even length.",
+      "sourceLine": "we prove spatial exponent $3/4$ for the infinite irreducible-bridge law and for bridges of every sufficiently large compatible even length.",
+      "sourceQuote": "For critical honeycomb self-avoiding walk, we prove spatial exponent $3/4$ for the infinite irreducible-bridge law and for bridges of every sufficiently large compatible even length.",
+      "paper": 10,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes supporting results: bridge-mass finiteness, the free-energy limit, strip mass of order N^(−1/4) and bridge mass of order (1+h)^(−1/4); the 3/4 and 4/3 laws are outside.",
+      "verdict": "external",
+      "sourceId": 14
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 15
+    }
+  ]
+}

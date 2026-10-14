@@ -1,0 +1,169 @@
+{
+  "id": "242",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical logic",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Single-fold-Diophantine-representations-September-24-2026/paper.pdf",
+      "label": "Single-fold Diophantine representations"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/242.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Every computably listable set gets a whole-number polynomial test with exactly one solution per member.",
+  "scope": "Recursively enumerable sets of tuples of natural numbers, with all auxiliary unknowns ranging over natural numbers.",
+  "plain": "A polynomial test for a set says: a number is in the set exactly when some whole numbers make the polynomial zero. Such tests exist for every set a computer can list, but they may have many solutions. The paper shows a test with exactly one solution for each member always exists. This settles Matiyasevich's single-fold conjecture. A Lean proof checks the main theorem.",
+  "doesNot": "This does not give the polynomial's actual coefficients, and the Lean check does not cover the undecidability corollary.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1974",
+    "firstStepBy": "Yuri Matiyasevich, single-fold exponential representations",
+    "field": "Mathematical logic",
+    "significance": "Major",
+    "significanceWhy": "It settles a conjecture open for about fifty years about the strongest form of Hilbert's tenth problem."
+  },
+  "explanation": "Start with a small test. A number a is composite when a = (w₁ + 2)(w₂ + 2) has a solution in whole numbers w₁ and w₂. Try a = 7. No pair works, so 7 is not composite. Try a = 12. Four pairs work: (0, 4), (1, 2), (2, 1) and (4, 0). For a = 36 there are seven. The test is correct, but the witnesses, the extra unknowns that make it work, are far from unique.\n\nA Diophantine representation of a set is a polynomial with integer coefficients that works like this. A tuple of numbers is in the set exactly when some whole-number witnesses make the polynomial zero. A set is recursively enumerable when a computer program can accept exactly its members. It may run forever on other inputs. In 1970, building on Davis, Putnam and Robinson, Matiyasevich completed the proof that every such set has a representation[3]. That answered Hilbert's tenth problem: no algorithm decides whether a polynomial equation has whole-number solutions. But the result does not bound how many witnesses there are[4].\n\nA representation is single-fold when the witness tuple is unique whenever it exists. In 1974, Matiyasevich got this uniqueness for formulas that may also use exponentiation, like bⁿ[6]. Whether plain polynomials suffice became the single-fold conjecture[7]. The obstacle is that every step of turning a computation into equations must keep uniqueness. That includes helper variables for quotients, remainders and cases that are switched off[8].\n\nThe paper claims every recursively enumerable set has a single-fold polynomial representation[9]. The key new step builds powers bⁿ with a unique witness. For that, it uses rational points on the elliptic curve y² = x³ − 25x. One such point is (−4, 6), since 6² = 36 and (−4)³ + 100 = 36. The sizes of these points grow in a precise quadratic way. That gives a cutoff that picks out exactly one index[10]. Then it encodes a machine's whole run as digits of a few huge numbers[11]. The paper also claims a consequence. Deciding solvability stays impossible even when each equation is promised at most one solution[12]. The polynomial's existence is shown, but its coefficients are not displayed[13].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main theorem. It covers every recursively enumerable set of tuples, with exactly one witness tuple for members and none for others. The undecidability corollary is not separately formalized. No specialist review of the paper has been published.",
+  "hypeCheck": "The main theorem has a Lean proof and settles a known conjecture. The polynomial is shown to exist but is not written down. The undecidability corollary is outside the Lean check. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Diophantine representation",
+      "meaning": "A polynomial with integer coefficients that is zero for some whole-number witnesses exactly when the input is in the set."
+    },
+    {
+      "term": "Witness",
+      "meaning": "The extra unknowns whose values make the polynomial equal zero for a member."
+    },
+    {
+      "term": "Recursively enumerable",
+      "meaning": "A set whose members a computer program accepts; the program may run forever on non-members."
+    },
+    {
+      "term": "Single-fold",
+      "meaning": "Each member has exactly one witness tuple."
+    },
+    {
+      "term": "Hilbert's tenth problem",
+      "meaning": "The 1900 question asking for an algorithm that decides whether a polynomial equation has whole-number solutions."
+    },
+    {
+      "term": "Elliptic curve",
+      "meaning": "A curve given by an equation like y² = x³ + ax + b, whose rational points can be added to each other."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Single-fold Diophantine representations” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Single-fold-Diophantine-representations-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 242",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/242.md",
+      "quote": "The formalization establishes this for every recursively enumerable subset of $\\mathbb N^n$, $n\\ge1$: an integer polynomial has exactly one complete natural-number witness tuple for members and none for nonmembers."
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A Diophantine representation of S is an integer polynomial such that a is in S iff P(a,w)=0 for some natural-number tuple w.",
+      "sourceLine": "such that $a\\in S$ if and only if $P(a,w)=0$ for some $w\\in\\NN^m$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "S is recursively enumerable if a deterministic computation accepts exactly its members, possibly running forever on other inputs.",
+      "sourceLine": "its members; it may run forever on other inputs.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Matiyasevich's 1970 construction completed the route to polynomial representations.",
+      "sourceLine": "Matiyasevich's 1970 construction of an exponentially growing Diophantine relation completed this route to polynomial representations",
+      "sourceQuote": "Matiyasevich's 1970 construction of an exponentially growing Diophantine relation completed this route to polynomial representations \\cite[Sections~1 and~3]{mati1970}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The classical representation theorem does not bound the number of witnesses.",
+      "sourceLine": "It does not bound the number of witnesses.",
+      "sourceQuote": "It does not bound the number of witnesses.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A representation is single-fold if the complete witness tuple is unique whenever it exists.",
+      "sourceLine": "The representation is \\emph{single-fold} if this complete tuple $w$ is unique whenever it exists.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Matiyasevich in 1974 gave exponential representations with a unique complete auxiliary tuple.",
+      "sourceLine": "enumerable relation has an exponential representation with a unique complete auxiliary tuple",
+      "sourceQuote": "Matiyasevich obtained a different strengthening in 1974: every recursively enumerable relation has an exponential representation with a unique complete auxiliary tuple \\cite[Section~2, Main Theorem]{mati1974}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Polynomial representations with this uniqueness is the single-fold conjecture.",
+      "sourceLine": "This is the single-fold conjecture; allowing finitely many witnesses gives the finite-fold conjecture",
+      "sourceQuote": "This is the single-fold conjecture; allowing finitely many witnesses gives the finite-fold conjecture \\cite{mati2010}.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Uniqueness must include rational coordinates, quotients, slacks and variables of inactive cases.",
+      "sourceLine": "uniqueness must include reduced rational coordinates, arithmetic quotients and slacks, and the variables of inactive cases.",
+      "sourceQuote": "Throughout both constructions, uniqueness must include reduced rational coordinates, arithmetic quotients and slacks, and the variables of inactive cases.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Every recursively enumerable set of natural-number tuples has a polynomial representation with exactly one complete auxiliary tuple per member.",
+      "sourceLine": "Every recursively enumerable set of natural-number tuples has a polynomial Diophantine representation with exactly one complete auxiliary tuple for each member.",
+      "sourceQuote": "Every recursively enumerable set of natural-number tuples has a polynomial Diophantine representation with exactly one complete auxiliary tuple for each member.",
+      "verdict": "supported"
+    },
+    {
+      "text": "A discrete difference of the quadratic height term makes exact index selection possible.",
+      "sourceLine": "A discrete difference of the quadratic main term makes exact index selection possible.",
+      "sourceQuote": "A discrete difference of the quadratic main term makes exact index selection possible.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The construction packs a counter machine's states and counter values into digits of finitely many integers.",
+      "sourceLine": "machine's states and counter values into digits of finitely many integers.",
+      "sourceQuote": "Finally, Section~\\ref{sec:computation} packs a deterministic counter machine's states and counter values into digits of finitely many integers.",
+      "verdict": "supported"
+    },
+    {
+      "text": "No algorithm decides solvability for bounded-degree polynomials promised to have at most one solution.",
+      "sourceLine": "There exist integers $m,D\\ge1$ for which no algorithm has the following property",
+      "sourceQuote": "There exist integers $m,D\\ge1$ for which no algorithm has the following property: on every input polynomial $F\\in\\ZZ[W_1,\\ldots,W_m]$ of total degree at most $D$ satisfying the promise \\[ \\#\\{w\\in\\NN^m:F(w)=0\\}\\le1, \\] the algorithm halts and correctly decides whether this set is nonempty.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem gives existence of the polynomial without displaying its coefficients.",
+      "sourceLine": "therefore gives existence of an integer polynomial without displaying its coefficients",
+      "sourceQuote": "The theorem therefore gives existence of an integer polynomial without displaying its coefficients or a procedure for numerically choosing those constants.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes the single-fold representation for every recursively enumerable set; the at-most-one-solution undecidability corollary is not separately formalized.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}

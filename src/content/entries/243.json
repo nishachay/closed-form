@@ -1,0 +1,192 @@
+{
+  "id": "243",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical logic",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Choiceless-polynomial-time-with-counting-does-not-capture-polynomial-time-September-23-2026/paper.pdf",
+      "label": "Choiceless polynomial time with counting does not capture polynomial time"
+    },
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Witnessed-symmetric-choice-is-strictly-stronger-than-choiceless-polynomial-time-with-counting-September-24-2026/paper.pdf",
+      "label": "Witnessed symmetric choice is strictly stronger than choiceless polynomial time with counting"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/243.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims a polynomial-time query that choiceless polynomial time with counting cannot express.",
+  "scope": "Isomorphism-invariant queries on unordered finite relational structures; the counting version of choiceless polynomial time.",
+  "plain": "Some logics try to describe every fast computation on data that comes without a built-in order. Choiceless polynomial time with counting was a leading candidate. The first paper gives a question about linear equations mod 3 that a fast algorithm answers but this logic cannot. The second shows that adding one certified choice step makes the logic strictly stronger. Lean proofs check both main theorems.",
+  "doesNot": "This does not find a logic that captures polynomial time, or settle how nested witnessed-choice operators behave.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "1999",
+    "firstStepBy": "Andreas Blass, Yuri Gurevich and Saharon Shelah, choiceless polynomial time",
+    "field": "Mathematical logic",
+    "significance": "Major",
+    "significanceWhy": "It settles a long-standing candidate in the search for a logic of polynomial time."
+  },
+  "explanation": "Here is the kind of equation system at the centre of the first paper. Work with numbers modulo 3, so 3 counts as 0. Draw a triangle with corners A, B and C. Put an unknown flow on each side: x from A to B, y from B to C, z from C to A. At each corner, outflow minus inflow must equal a given charge. So x − z = c_A, y − x = c_B and z − y = c_C. Add the three equations. The left side cancels to 0. So the charges must add up to 0 for a solution to exist. With charges 0, 0, 0, setting x = y = z works. With charges 1, 0, 0, the sum is 1 and there is no solution.\n\nA query is a yes-or-no property of finite structures that does not change when you rename the elements. Gaussian elimination, the school method for solving linear equations, decides systems like this quickly. But it needs an order on the unknowns. Descriptive complexity asks which logics can express every polynomial-time query without first choosing an order. Choiceless polynomial time with counting, CPT, works with nested finite sets built from the input. It may count, but it never picks an element arbitrarily. Blass, Gurevich and Shelah conjectured in 1997 that CPT still misses some polynomial-time queries[4]. Shelah's early work also claimed this, and later accounts still called the question open. The paper gives a separate proof that does not rely on Shelah's claim[5].\n\nThe first paper claims that CPT does not capture polynomial time, confirming that conjecture[6]. Its query asks whether a linear system modulo 3 is consistent. It is decidable in polynomial time but not in CPT[7]. For each grid size L, the paper builds two three-dimensional grid structures. One has all charges zero and one has a single charge equal to one, so the query answers differ[8]. The obstacle is that CPT may build sets of any nesting depth. The paper shows every symmetric enough set it builds is pinned down by a short list of atoms. That bound does not depend on the nesting depth[9]. Then any fixed CPT program gives the same answer on both grids once L is large enough[10].\n\nThe second paper adds witnessed symmetric choice. That operation picks an element of a set only while building symmetries that prove the choice cannot matter[11]. The paper claims one such choice, used once in a fixed sentence, defines a query that no CPT sentence defines[12]. This answers a question posed by Lichter and Schweitzer[13].\n\nHow sure is this? A computer proof checker called Lean has formal proofs of both main theorems. One covers the explicit query with eight relations that is decidable in polynomial time but not definable in CPT. The other covers the fixed sentence with one witnessed-choice step. The first paper's corollary about two linear-algebra logics is not listed in the Lean scope. No specialist review of either paper has been published.",
+  "hypeCheck": "Both main theorems have Lean proofs. They answer open questions in descriptive complexity, but they do not find a logic for polynomial time. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Query",
+      "meaning": "A yes-or-no property of finite structures that stays the same when elements are renamed."
+    },
+    {
+      "term": "Polynomial time",
+      "meaning": "Solvable by an algorithm whose running time grows at most like a fixed power of the input size."
+    },
+    {
+      "term": "Choiceless polynomial time with counting (CPT)",
+      "meaning": "A logic that computes with nested finite sets over the input, can count, but never picks an element arbitrarily."
+    },
+    {
+      "term": "Captures polynomial time",
+      "meaning": "Every isomorphism-invariant polynomial-time query can be written in the logic."
+    },
+    {
+      "term": "Witnessed symmetric choice",
+      "meaning": "An operation that may pick one element of a set, but only while building symmetries showing the pick does not change the answer."
+    },
+    {
+      "term": "Modulo 3",
+      "meaning": "Arithmetic where only remainders after division by 3 count, so 3 equals 0."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Choiceless polynomial time with counting does not capture polynomial time” (23 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Choiceless-polynomial-time-with-counting-does-not-capture-polynomial-time-September-23-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "OpenAI, “Witnessed symmetric choice is strictly stronger than choiceless polynomial time with counting” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Witnessed-symmetric-choice-is-strictly-stronger-than-choiceless-polynomial-time-with-counting-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math, Lean scope note for family 243",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/243.md",
+      "quote": "The formalized result separates polynomial time from choiceless polynomial time with counting."
+    },
+    {
+      "id": 4,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "A query on finite relational structures is a property unchanged by isomorphism.",
+      "sourceLine": "A query on finite relational structures is a property unchanged by isomorphism.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Descriptive complexity asks which formalisms express every polynomial-time query without choosing an order.",
+      "sourceLine": "complexity asks which formalisms can express every polynomial-time query without first choosing an order.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "CPT operations commute with input automorphisms and provide no arbitrary choice of ordering.",
+      "sourceLine": "input automorphisms and do not provide an arbitrary choice of an ordering.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Blass, Gurevich and Shelah's 1997 preprint conjectured the counting extension is still a proper fragment of polynomial time.",
+      "sourceLine": "Their original 1997 preprint explicitly conjectured that the extension by counting is still a proper fragment of polynomial time",
+      "sourceQuote": "Their original 1997 preprint explicitly conjectured that the extension by counting is still a proper fragment of polynomial time~\\cite[1997 version, Introduction, p.~3]{bgs1999}.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The paper gives a separate proof; Shelah's claim is not a theorem input.",
+      "sourceLine": "Shelah's claim is not a theorem input to this argument.",
+      "sourceQuote": "We give a separate proof for the explicit query above; Shelah's claim is not a theorem input to this argument.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "CPT does not capture polynomial time on unordered finite structures, confirming the Blass–Gurevich–Shelah noncapture conjecture.",
+      "sourceLine": "We prove that choiceless polynomial time with counting does not capture polynomial time on unordered finite structures, confirming the noncapture conjecture of Blass, Gurevich and Shelah.",
+      "sourceQuote": "We prove that choiceless polynomial time with counting does not capture polynomial time on unordered finite structures, confirming the noncapture conjecture of Blass, Gurevich and Shelah.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "A linear-consistency query over F3 is decidable in polynomial time but not in the full counting formalism.",
+      "sourceLine": "is decidable in polynomial time but not in the full counting formalism.",
+      "sourceQuote": "A linear-consistency query over $\\mathbb F_3$ in a fixed binary vocabulary is decidable in polynomial time but not in the full counting formalism.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "The two grid structures have all charges zero or one charge equal to one, and the query has opposite answers on them.",
+      "sourceLine": "so the query has opposite answers on the pair.",
+      "sourceQuote": "The all-zero configurations give a solution in the zero-charge structure, so the query has opposite answers on the pair.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Small-orbit hereditarily finite objects have short supports, with a bound independent of rank.",
+      "sourceLine": "The bound does not depend on the object's rank.",
+      "sourceQuote": "The bound does not depend on the object's rank.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Counting equivalence forces the same halt stage and output on the two structures.",
+      "sourceLine": "Counting equivalence forces the same halt stage and output on the two structures",
+      "sourceQuote": "Counting equivalence forces the same halt stage and output on the two structures, contradicting their opposite query answers.",
+      "paper": 1,
+      "verdict": "supported"
+    },
+    {
+      "text": "Witnessed symmetric choice selects an element of an orbit while constructing automorphisms that certify the symmetry.",
+      "sourceLine": "select an element of an orbit while constructing automorphisms that certify the permitted symmetry.",
+      "sourceQuote": "Witnessed symmetric choice allows a more specific operation: select an element of an orbit while constructing automorphisms that certify the permitted symmetry.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "A fixed sentence with one witnessed-choice occurrence defines a Boolean query not definable in CPT.",
+      "sourceLine": "A fixed sentence with one witnessed-choice occurrence defines a Boolean query on every finite input that is not definable in the original counting formalism.",
+      "sourceQuote": "A fixed sentence with one witnessed-choice occurrence defines a Boolean query on every finite input that is not definable in the original counting formalism.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "This answers the expressiveness question posed in Section 7 of Lichter and Schweitzer.",
+      "sourceLine": "this answers affirmatively the expressiveness question posed in Section~7 of~\\cite{ls2023}.",
+      "sourceQuote": "In the true-model sense above, this answers affirmatively the expressiveness question posed in Section~7 of~\\cite{ls2023}.",
+      "paper": 2,
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes both the separation of polynomial time from CPT and the strict gain from one witnessed symmetric choice.",
+      "verdict": "external",
+      "sourceId": 3
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscripts.",
+      "verdict": "external",
+      "sourceId": 4
+    }
+  ]
+}

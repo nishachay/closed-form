@@ -1,0 +1,142 @@
+{
+  "id": "241",
+  "status": "ai-draft",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Mathematical logic",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rigidity-of-the-Turing-degrees-September-24-2026/paper.pdf",
+      "label": "Rigidity of the Turing degrees"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/241.md",
+      "label": "Lean scope note"
+    }
+  ],
+  "headline": "Claims every symmetry of the Turing degrees is trivial, settling the rigidity question.",
+  "scope": "All order automorphisms of the full partial order of Turing degrees of sets of natural numbers, in ZFC.",
+  "plain": "Turing degrees group sets of whole numbers by how hard they are to compute. They are ordered by which ones can compute which. The rigidity question asked whether this order could be shuffled without changing its shape. The paper says no: every such shuffle leaves each degree where it was. A Lean proof checks this main theorem.",
+  "doesNot": "This does not cover the paper's extra representation corollaries in the Lean check, or say anything about other degree structures.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2005",
+    "firstStepBy": "Theodore Slaman and W. Hugh Woodin, the fixed cone above 0'' and the arithmetic representation",
+    "field": "Mathematical logic",
+    "significance": "Major",
+    "significanceWhy": "It answers a long-standing central question about the structure of relative computability."
+  },
+  "explanation": "Here is the counting trick at the heart of the paper. Pick a hidden number t between 0 and 1, say t = √2 − 1, about 0.41421. Start a running total at 0. At each step, add δt or δ(t − 1), with δ = 1/2. Record a 0 for the first choice and a 1 for the second. A simple rule keeps the total near zero: take the downward step whenever the total is positive. After N steps, the total equals δ(Nt − number of 1s)[4]. If the total stays between −1 and 1, the share of 1s is within 1/(Nδ) of t[5]. With N = 1000 the rule gives 414 ones, so the guess is 0.414. The bound promises an error under 1/500, and the real error is about 0.0002. So a list of yes-or-no choices can recover a number.\n\nNow the setting. Take two sets of whole numbers, A and B. A is Turing reducible to B when a program that may ask questions about B can compute A. Sets that compute each other have the same Turing degree. The degrees, ordered by this relation, form a partial order: some pairs are comparable and some are not. An automorphism is a one-to-one relabelling of all degrees that keeps the order exactly. The identity, which moves nothing, is one such map. The rigidity conjecture asks whether it is the only one.\n\nA lot was known before. Every automorphism keeps the Turing jump, which sends a degree to its own halting problem[2]. Slaman and Woodin showed every automorphism fixes all degrees above 0'', the second jump of the computable degree[3]. Below that cone, the question stayed open. The obstacle is that an automorphism is any map at all. It need not be computable, continuous or even definable.\n\nThe paper claims that every automorphism is the identity, with no extra assumptions on it[1]. An outside input from Slaman and Woodin represents each automorphism by a well-behaved Borel function on sets of numbers. A Borel function is one built from continuous pieces by countable limits. The paper uses that function to run the counting trick. Four values of the function, at shifted copies of t, let a program rebuild t[6]. Two extra helper numbers enter, but typical helpers carry no useful information, so they drop out[7]. This shows each degree sits above its own preimage. Running the same argument in both directions forces equality. The paper also states a consequence: Slaman and Woodin's biinterpretability conjecture follows[8].\n\nHow sure is this? A computer proof checker called Lean has a formal proof of the main theorem. It covers every order automorphism of the full Turing degrees, with no definability assumption. The paper's extra representation corollaries are not part of that check. No specialist review of the paper has been published.",
+  "hypeCheck": "The main theorem has a Lean proof. Its weight in computability theory is large. The corollaries outside the Lean statement rest on the paper alone. No specialist review is published.",
+  "glossary": [
+    {
+      "term": "Turing reducible",
+      "meaning": "A is reducible to B when a program allowed to ask questions about B can compute A."
+    },
+    {
+      "term": "Turing degree",
+      "meaning": "A class of sets of whole numbers that can each compute the others."
+    },
+    {
+      "term": "Automorphism",
+      "meaning": "A one-to-one relabelling of a structure that keeps all its relations exactly."
+    },
+    {
+      "term": "Turing jump",
+      "meaning": "The halting problem relative to a given set: which programs that ask about the set eventually stop."
+    },
+    {
+      "term": "Borel function",
+      "meaning": "A function built from continuous pieces by repeated countable limits; a broad class of well-behaved functions."
+    },
+    {
+      "term": "Comeager",
+      "meaning": "Large in the sense of category: everything except a countable union of nowhere-dense sets."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "OpenAI, “Rigidity of the Turing degrees” (24 September 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Rigidity-of-the-Turing-degrees-September-24-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "openai/math, Lean scope note for family 241",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/241.md",
+      "quote": "every order automorphism of the full Turing degrees of subsets of $\\mathbb N$ fixes every degree, with no definability or genericity assumption"
+    },
+    {
+      "id": 3,
+      "cite": "openai/math release notes (2026): model provenance and review status",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "sourceHash": "TBD",
+  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb",
+  "claims": [
+    {
+      "text": "The paper states that every order automorphism of the full Turing-degree structure is the identity.",
+      "sourceLine": "Every order automorphism of the full Turing-degree structure is the identity:",
+      "sourceQuote": "Every order automorphism of the full Turing-degree structure is the identity: \\[ \\forall\\pi\\in\\Aut(\\DT,\\leT)\\ \\forall\\mathbf a\\in\\DT \\qquad \\pi(\\mathbf a)=\\mathbf a. \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "Shore and Slaman proved the jump is definable from the ordering, so every order automorphism preserves it.",
+      "sourceLine": "so every order automorphism preserves it.",
+      "sourceQuote": "Using Slaman and Woodin's definability of the double jump, Shore and Slaman proved that the jump is definable from the ordering \\cite{ShoreSlaman1999}, so every order automorphism preserves it.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Slaman and Woodin showed every automorphism fixes all degrees above the second jump of the computable degree.",
+      "sourceLine": "automorphisms: every automorphism fixes all degrees above $\\mathbf0''$, the second jump of the computable degree.",
+      "sourceQuote": "Slaman and Woodin obtained a fixed cone common to all automorphisms: every automorphism fixes all degrees above $\\mathbf0''$, the second jump of the computable degree.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Summing the increments gives the stated formula for the state after N steps.",
+      "sourceLine": "Summing these increments gives",
+      "sourceQuote": "Summing these increments gives \\[ s_N=\\delta\\left(Nt-\\sum_{n<N}r_n\\right). \\]",
+      "verdict": "supported"
+    },
+    {
+      "text": "If the states stay in (−1,1), the proportion of choices equal to 1 approximates t with error less than 1/(Nδ).",
+      "sourceLine": "If the states remain in $(-1,1)$, the proportion of choices with $r_n=1$ approximates $t$ with error less than $1/(N\\delta)$.",
+      "sourceQuote": "If the states remain in $(-1,1)$, the proportion of choices with $r_n=1$ approximates $t$ with error less than $1/(N\\delta)$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The recovery theorem recovers any prescribed irrational t from four values of F at rational affine combinations of t and two auxiliary reals.",
+      "sourceLine": "we recover any prescribed irrational $t\\in(0,1)$ from four values of $F$ at rational affine combinations of $t$ and two auxiliary reals $u,v$.",
+      "sourceQuote": "For a Borel map $F:\\R\\to2^\\N$ with countable fibers satisfying \\[ F(x+y)\\leT F(x)\\oplus F(y), \\] we recover any prescribed irrational $t\\in(0,1)$ from four values of $F$ at rational affine combinations of $t$ and two auxiliary reals $u,v$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Since recovery holds on a comeager set, a category lemma removes the auxiliary degrees.",
+      "sourceLine": "Since recovery holds on a comeager set, Lemma~\\ref{lem:avoidance} removes the auxiliary degrees",
+      "sourceQuote": "Since recovery holds on a comeager set, Lemma~\\ref{lem:avoidance} removes the auxiliary degrees and yields $\\pi^{-1}(\\mathbf a)\\leT\\mathbf a$ for every degree $\\mathbf a$.",
+      "verdict": "supported"
+    },
+    {
+      "text": "The theorem settles Slaman and Woodin's biinterpretability conjecture.",
+      "sourceLine": "also settles the biinterpretability conjecture of Slaman and Woodin.",
+      "sourceQuote": "Theorem~\\ref{thm:rigidity} also settles the biinterpretability conjecture of Slaman and Woodin.",
+      "verdict": "supported"
+    },
+    {
+      "text": "Lean formalizes that every order automorphism of the full Turing degrees fixes every degree; the representation corollaries are not included.",
+      "verdict": "external",
+      "sourceId": 2
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 3
+    }
+  ]
+}
