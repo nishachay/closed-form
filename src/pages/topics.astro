@@ -2,17 +2,12 @@
 /** Index of every way to browse: topics, eras, trust labels, significance and fields. */
 import Base from '../layouts/Base.astro';
 import { absoluteUrl, appUrl, catalog, fieldUrl, loadExplained } from '../lib/site.js';
-import { buildHubs, HUB_KIND_LABEL, type HubKind } from '../lib/seo.js';
+import { buildHubs, HUB_KIND_LABEL } from '../lib/seo.js';
+import { TOPIC_GROUPS as groups, TOPICS_TITLE, topicsDescription } from '../lib/pagemeta.js';
 import { breadcrumbs, collectionPage } from '../lib/jsonld.js';
 
 const explained = await loadExplained();
 const hubs = buildHubs(catalog, explained);
-const groups: Array<{ kind: HubKind; title: string }> = [
-  { kind: 'topic', title: 'Topics and problem families' },
-  { kind: 'era', title: 'How long the question was open' },
-  { kind: 'significance', title: 'Significance' },
-  { kind: 'trust', title: 'Trust label' },
-];
 const fields = catalog.subjects
   .map((s) => ({ s, n: catalog.families.filter((f) => f.subject === s).length }))
   .sort((a, b) => b.n - a.n);
@@ -35,8 +30,8 @@ const jsonLd = [
 ];
 ---
 <Base
-  title="Browse AI math results by topic"
-  description={`Browse ${catalog.families.length} AI-made math results by topic, problem family, decade, field and trust label, each explained in plain English.`}
+  title={TOPICS_TITLE}
+  description={topicsDescription(catalog.families.length)}
   jsonLd={jsonLd}
 >
   <section class="wrap arch-head">

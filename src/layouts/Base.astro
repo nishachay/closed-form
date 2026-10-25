@@ -2,6 +2,7 @@
 import { absoluteUrl, appUrl } from '../lib/site.js';
 import { clipDescription, fitTitle } from '../lib/seo.js';
 import { breadcrumbs, serializeJsonLd, type JsonLd } from '../lib/jsonld.js';
+import { markdownHref } from '../lib/md/load.js';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/closed-form.css';
@@ -18,6 +19,8 @@ interface Props {
   jsonLd?: JsonLd[];
   ogType?: 'website' | 'article';
   noindex?: boolean;
+  /** <meta name="ai-summary">; defaults to the meta description. */
+  aiSummary?: string;
 }
 const {
   title,
@@ -28,9 +31,12 @@ const {
   jsonLd = [],
   ogType = 'website',
   noindex = false,
+  aiSummary,
 } = Astro.props;
 const pageTitle = fullTitle ?? fitTitle(title);
 const metaDescription = clipDescription(description);
+// Markdown twin of this page (src/lib/md/registry.ts), when it has one; noindex pages never do.
+const markdown = noindex ? null : await markdownHref(Astro.url.pathname);
 // Every page carries a BreadcrumbList; pages without their own get Home › <page>.
 const hasCrumbs = jsonLd.some((d) => d['@type'] === 'BreadcrumbList');
 const homeUrl = absoluteUrl('/');
@@ -60,6 +66,7 @@ const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{pageTitle}</title>
     <meta name="description" content={metaDescription} />
+    <meta name="ai-summary" content={aiSummary ?? metaDescription} />
     {noindex && <meta name="robots" content="noindex" />}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={metaDescription} />
@@ -72,6 +79,7 @@ const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogAbsolute} />
     <link rel="alternate" type="application/rss+xml" title="Closed Form — newly explained entries" href={rss} />
+    {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
     <link rel="icon" href={favicon} />
     {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="sitemap" href={appUrl('/sitemap.xml')} />

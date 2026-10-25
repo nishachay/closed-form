@@ -7,6 +7,7 @@ import TrustLabel from '../components/TrustLabel.astro';
 import { absoluteUrl, catalog, computeStats, entryUrl, appUrl, familiesById, loadExplained } from '../lib/site.js';
 import { organizationLd, website } from '../lib/jsonld.js';
 import { collectionRange } from '../lib/dates.js';
+import { HOME_FULL_TITLE, HOME_TITLE, homeDescription } from '../lib/pagemeta.js';
 
 const stats = computeStats();
 const explainedById = await loadExplained();
@@ -19,9 +20,9 @@ const latest = [...explained]
 const range = collectionRange(catalog.families);
 ---
 <Base
-  title="AI mathematics, explained"
-  fullTitle="Closed Form: AI math results, explained in plain English"
-  description={`All ${stats.results} results an OpenAI model produced on open math problems, from Erdős problems to number theory, explained in plain words with honest trust labels.`}
+  title={HOME_TITLE}
+  fullTitle={HOME_FULL_TITLE}
+  description={homeDescription(stats)}
   current="home"
   jsonLd={[
     website(absoluteUrl('/').replace(/\/$/, ''), 'Plain-English explanations of every AI-made mathematics result, with honest trust labels.'),

@@ -4,6 +4,7 @@ import FieldCards from '../../components/FieldCards.astro';
 import MapLegend from '../../components/MapLegend.astro';
 import ArchiveBrowser from '../../components/ArchiveBrowser.astro';
 import { appUrl, catalog, collectionName, computeStats, families, labName, scienceName } from '../../lib/site.js';
+import { collectionDescription } from '../../lib/pagemeta.js';
 
 export function getStaticPaths() {
   return [{ params: { collection: catalog.collection } }];
@@ -14,7 +15,7 @@ const name = collectionName();
 ---
 <Base
   title={name}
-  description={`${stats.results} results, ${stats.papers} papers, honest trust labels.`}
+  description={collectionDescription(stats)}
   ogImage={`/og/collection-${catalog.collection}.png`}
 >
   <div class="wrap">
