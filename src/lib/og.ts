@@ -43,6 +43,16 @@ const TRUST_CELL: Record<string, string> = {
 };
 const FONT = "'Schibsted Grotesk', 'DejaVu Sans', sans-serif";
 
+/**
+ * The cut Schibsted Grotesk instances lack the Hungarian double acute (ő, ű), and
+ * resvg then renders the whole line in a serif fallback. Map them to the closest
+ * glyph the font has (Erdős → Erdös, a standard spelling) for share cards only.
+ */
+const OG_GLYPHS: Record<string, string> = { ő: 'ö', Ő: 'Ö', ű: 'ü', Ű: 'Ü' };
+export function ogSafe(s: string): string {
+  return s.replace(/[őŐűŰ]/g, (c) => OG_GLYPHS[c] ?? c);
+}
+
 export function escapeXml(s: string): string {
   return s
     .replace(/&/g, '&amp;')
@@ -125,7 +135,7 @@ export function ogSvg(card: OgCard): string {
   const rendered = lines
     .map(
       (l, i) =>
-        `<text x="72" y="${startY + i * lineH}" font-family="${FONT}" font-size="${size}" font-weight="600" fill="${INK}" letter-spacing="-1.5">${escapeXml(l)}</text>`,
+        `<text x="72" y="${startY + i * lineH}" font-family="${FONT}" font-size="${size}" font-weight="600" fill="${INK}" letter-spacing="-1.5">${escapeXml(ogSafe(l))}</text>`,
     )
     .join('\n');
   const kickerY = startY - size - 18;
@@ -135,12 +145,12 @@ export function ogSvg(card: OgCard): string {
 <text x="72" y="98" font-family="${FONT}" font-size="30" font-weight="600" fill="${INK}" letter-spacing="-0.5">Closed Form</text>
 <rect x="${(72 + wordmarkWidth() + 9).toFixed(1)}" y="80" width="15" height="18.6" fill="${ACCENT}"/>
 ${card.tag ? `<text x="1128" y="100" text-anchor="end" font-family="${FONT}" font-size="24" font-weight="500" fill="${TERTIARY}">${escapeXml(card.tag)}</text>` : ''}
-<text x="72" y="${kickerY}" font-family="${FONT}" font-size="22" font-weight="500" letter-spacing="2.5" fill="${ACCENT}">${escapeXml(card.kicker.toUpperCase())}</text>
+<text x="72" y="${kickerY}" font-family="${FONT}" font-size="22" font-weight="500" letter-spacing="2.5" fill="${ACCENT}">${escapeXml(ogSafe(card.kicker.toUpperCase()))}</text>
 ${rendered}
 ${hasMosaic ? mosaic(card.cells!, 760, 170, 368, 300) : ''}
 <line x1="72" y1="516" x2="1128" y2="516" stroke="${BORDER}" stroke-width="2"/>
 ${dot ? `<circle cx="84" cy="555" r="9" fill="${dot}"/>` : ''}
-<text x="${dot ? '104' : '72'}" y="564" font-family="${FONT}" font-size="25" font-weight="500" fill="${SECONDARY}">${escapeXml(card.footer)}</text>
+<text x="${dot ? '104' : '72'}" y="564" font-family="${FONT}" font-size="25" font-weight="500" fill="${SECONDARY}">${escapeXml(ogSafe(card.footer))}</text>
 <text x="1128" y="564" text-anchor="end" font-family="${FONT}" font-size="22" fill="${TERTIARY}">AI mathematics, explained</text>
 </svg>`;
 }

@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { appUrl, computeStats } from '../lib/site.js';
 const stats = computeStats();
 ---
-<Base title="Page not found" description="This page does not exist on Closed Form.">
+<Base title="Page not found" description="This page does not exist on Closed Form." noindex>
   <section class="nf wrap">
     <div class="label">404</div>
     <h1>This page doesn't exist.</h1>

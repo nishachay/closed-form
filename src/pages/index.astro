@@ -4,7 +4,8 @@ import Base from '../layouts/Base.astro';
 import FieldCards from '../components/FieldCards.astro';
 import MapLegend from '../components/MapLegend.astro';
 import TrustLabel from '../components/TrustLabel.astro';
-import { catalog, computeStats, entryUrl, appUrl, familiesById, loadExplained } from '../lib/site.js';
+import { absoluteUrl, catalog, computeStats, entryUrl, appUrl, familiesById, loadExplained } from '../lib/site.js';
+import { organizationLd, website } from '../lib/jsonld.js';
 import { collectionRange } from '../lib/dates.js';
 
 const stats = computeStats();
@@ -17,7 +18,16 @@ const latest = [...explained]
   .slice(0, 2);
 const range = collectionRange(catalog.families);
 ---
-<Base title="AI mathematics, explained" description={`Every problem an OpenAI model solved, explained in plain words with honest trust labels. ${stats.results} results from ${stats.papers} papers.`} current="home">
+<Base
+  title="AI mathematics, explained"
+  fullTitle="Closed Form: AI math results, explained in plain English"
+  description={`All ${stats.results} results an OpenAI model produced on open math problems, from Erdős problems to number theory, explained in plain words with honest trust labels.`}
+  current="home"
+  jsonLd={[
+    website(absoluteUrl('/').replace(/\/$/, ''), 'Plain-English explanations of every AI-made mathematics result, with honest trust labels.'),
+    organizationLd(absoluteUrl('/').replace(/\/$/, '')),
+  ]}
+>
   <section class="mast wrap">
       <div class="stage">
         <div class="label">The OpenAI collection · {range}</div>

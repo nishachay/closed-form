@@ -85,7 +85,7 @@ describe('share links (§13, §0 urls)', () => {
 
 describe('production domain defaults (§20 fix)', () => {
   it('absoluteUrl falls back to the production site, never the placeholder', () => {
-    expect(absoluteUrl('/og/home.png')).toBe('https://nishachay.github.io/og/home.png');
+    expect(absoluteUrl('/og/home.png')).toBe('https://closedform.nishachay.tech/og/home.png');
     expect(absoluteUrl('/og/home.png')).not.toContain('example.');
   });
 

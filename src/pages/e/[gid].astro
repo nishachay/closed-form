@@ -1,5 +1,5 @@
 ---
-import { clip, toPlain } from '../../lib/plain.js';
+import { toPlain } from '../../lib/plain.js';
 import { formatLongDay } from '../../lib/dates.js';
 import Base from '../../layouts/Base.astro';
 import Scorecard from '../../components/Scorecard.astro';
@@ -12,6 +12,8 @@ import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, fieldUrl, loadExp
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
 import { renderMath, renderQuote } from '../../lib/katex.js';
 import { citationOrder, renderCitations } from '../../lib/cite.js';
+import { buildHubs, entryDescription, entryTitle, HUB_KIND_LABEL, hubsForId, plainTitle, relatedIds } from '../../lib/seo.js';
+import { breadcrumbs, entryArticle } from '../../lib/jsonld.js';
 
 export async function getStaticPaths() {
   return catalog.families.map((f) => ({
@@ -112,8 +114,35 @@ const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 const anyUnchecked = !!entry && entry.status !== 'reviewed' && otherSources.some((x) => /†\s*$/.test(x.cite));
 const firstDate = family.papers.map((p) => p.date).filter(Boolean).sort()[0] ?? null;
 const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
+
+// SEO: data-driven title/description, related results, hub links and JSON-LD.
+const seoTitle = entryTitle(family);
+const seoDescription = entryDescription(family, entry);
+const hubs = buildHubs(catalog, explained);
+const myHubs = hubsForId(hubs, family.id);
+const related = relatedIds(catalog, explained, family.id, 5, 3)
+  .map((id) => familiesById.get(id))
+  .filter((f): f is NonNullable<typeof f> => !!f);
+const site = absoluteUrl('/').replace(/\/$/, '');
+const pageUrl = absoluteUrl(entryUrl(family));
+const jsonLd = [
+  entryArticle({
+    site,
+    url: pageUrl,
+    headline: entry ? `${plainTitle(family)}: ${toPlain(entry.headline)}` : plainTitle(family),
+    description: seoDescription,
+    image: absoluteUrl(ogImage),
+    family,
+    keywords: [family.subject, ...myHubs.filter((h) => h.kind === 'topic').map((h) => h.name), 'AI mathematics', 'OpenAI'],
+  }),
+  breadcrumbs([
+    { name: 'Archive', url: absoluteUrl('/archive/') },
+    { name: family.subject, url: absoluteUrl(fieldUrl(family.subject)) },
+    { name: `Entry ${family.id}`, url: pageUrl },
+  ]),
+];
 ---
-<Base title={title} description={clip(toPlain(entry?.headline ?? family.summary), 200)} ogImage={ogImage}>
+<Base title={title} fullTitle={seoTitle} description={seoDescription} ogImage={ogImage} ogType="article" jsonLd={jsonLd}>
   <div class="entry-wrap">
     <article class="entry">
       <nav class="crumbs" aria-label="Breadcrumb">
@@ -233,6 +262,21 @@ const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
           <Notice text="The plain-language explainer for this entry is still coming." />
           <OriginalPapers family={family} />
         </>
+      )}
+      {related.length > 0 && (
+        <section class="e-rel" aria-labelledby="related-results">
+          <h2 id="related-results">Related results</h2>
+          <ul class="rel-list">
+            {related.map((r) => (
+              <li><a href={entryUrl(r)}><span class="num">{r.id}</span><span class="rel-t">{plainTitle(r)}</span></a><span class="rel-f">{r.subject}</span></li>
+            ))}
+          </ul>
+          <p class="rel-hubs">
+            <span class="label">Browse</span>
+            <a href={fieldUrl(family.subject)}>{family.subject}</a>
+            {myHubs.map((h) => <a href={appUrl(h.path)} title={HUB_KIND_LABEL[h.kind]}>{h.name}</a>)}
+          </p>
+        </section>
       )}
       <nav class="pn" aria-label="Previous and next entries">
         {prev ? <a class="pn-prev" href={entryUrl(prev)}><span class="label">← Previous · <span class="num">{prev.id}</span></span><span class="t">{toPlain(prev.title)}</span></a> : <span />}

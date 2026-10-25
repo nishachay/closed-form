@@ -93,12 +93,12 @@ test('about documents trust labels', async ({ page }) => {
 
 test('production domain on feed and og:image', async ({ page, request }) => {
   const feed = await (await request.get('feed.xml')).text();
-  expect(feed).toContain('<link>https://nishachay.github.io/closed-form/</link>');
+  expect(feed).toContain('<link>https://closedform.nishachay.tech/</link>');
   await page.goto('e/openai-math-2026-017/');
   const og = await page.locator('meta[property="og:image"]').getAttribute('content');
-  expect(og?.startsWith('https://nishachay.github.io/closed-form/')).toBe(true);
+  expect(og?.startsWith('https://closedform.nishachay.tech/')).toBe(true);
   const share = await page.locator('.side a[href*="x.com/intent"]').getAttribute('href');
-  expect(share).toContain(encodeURIComponent('https://nishachay.github.io/closed-form/e/openai-math-2026-017/'));
+  expect(share).toContain(encodeURIComponent('https://closedform.nishachay.tech/e/openai-math-2026-017/'));
 });
 
 test('no horizontal scroll at 390x844 and 320x640', async ({ page }) => {

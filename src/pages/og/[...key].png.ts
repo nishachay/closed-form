@@ -7,9 +7,13 @@ import { trustLevel } from '../../lib/trust.js';
 import { OG_HEIGHT, OG_WIDTH, ogPng, ogSvg, wrapHeadline } from '../../lib/og.js';
 import { toPlain } from '../../lib/plain.js';
 import type { Entry } from '../../lib/entry.js';
+import { buildHubs, hubKey, HUB_KIND_LABEL } from '../../lib/seo.js';
 
 export async function getStaticPaths() {
+  const raw: Array<{ data: Entry }> = await getCollection('entries');
+  const hubs = buildHubs(catalog, new Map(raw.map((i) => [i.data.id, i.data])));
   const keys = [
+    ...hubs.map((h) => `hub-${hubKey(h)}`),
     'home',
     `collection-${catalog.collection}`,
     `lab-${catalog.lab}`,
@@ -71,6 +75,16 @@ export const GET: APIRoute = async ({ params }) => {
       headlineLines: wrapHeadline(`${subject}.`, 22),
       footer: `${n} results · ${catalog.families.filter((f) => f.subject === subject && f.trust === 'formal').length} with a formal proof`,
       cells: sortedCells(catalog.families.filter((f) => f.subject === subject)),
+    };
+  } else if (key.startsWith('hub-')) {
+    const hub = buildHubs(catalog, explained).find((h) => `hub-${hubKey(h)}` === key);
+    if (!hub) return new Response('Unknown hub', { status: 404 });
+    const fams = hub.ids.map((id) => familiesById.get(id)!).filter(Boolean);
+    card = {
+      kicker: HUB_KIND_LABEL[hub.kind],
+      headlineLines: wrapHeadline(`${hub.heading}.`, 22),
+      footer: `${fams.length} results · ${fams.filter((f) => f.trust === 'formal').length} with a formal proof`,
+      cells: sortedCells(fams),
     };
   } else if (key.startsWith('entry-')) {
     const gid = key.slice('entry-'.length);
