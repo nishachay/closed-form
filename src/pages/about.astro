@@ -2,14 +2,9 @@
 import Base from '../layouts/Base.astro';
 import { appUrl, families } from '../lib/site.js';
 import { TRUST_LADDER } from '../lib/trust.js';
+import { ABOUT_DESCRIPTION, TRUST_MEANING as meaning } from '../lib/pagemeta.js';
 
 const count = (k: string) => families.filter((f) => f.trust === k).length;
-const meaning: Record<string, string> = {
-  formal:
-    'At least one paper in the result is listed in the repository’s Lean catalogue, or its Lean notes link a Comparator challenge for a main result: a computer-checkable proof. A listing is not the same as an independent check.',
-  partial: 'The result links to Lean notes, but no listed proof or Comparator challenge for a main result.',
-  claimed: 'Only the written paper exists. No computer has checked it, and it could contain errors.',
-};
 const toc = [
   { href: '#how-we-explain', label: 'How we explain' },
   { href: '#trust-labels', label: 'Trust labels' },
@@ -17,7 +12,7 @@ const toc = [
   { href: '#how-entries-are-made', label: 'How entries are made' },
 ];
 ---
-<Base title="About" description="Why Closed Form exists, what the trust labels mean, and how entries are made." current="about">
+<Base title="About" description={ABOUT_DESCRIPTION} current="about">
   <div class="entry-wrap">
     <article class="entry">
       <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl('/')}>Home</a><span aria-hidden="true">/</span><span aria-current="page">About</span></nav>

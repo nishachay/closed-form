@@ -2,8 +2,9 @@
 import Base from '../layouts/Base.astro';
 import ArchiveBrowser from '../components/ArchiveBrowser.astro';
 import { families } from '../lib/site.js';
+import { ARCHIVE_FULL_TITLE, archiveDescription } from '../lib/pagemeta.js';
 ---
-<Base title="Archive" fullTitle="All AI math results: searchable archive — Closed Form" description={`Search and filter all ${families.length} AI-made math results by field and trust label. Every result is explained in plain English, with sources.`} current="archive">
+<Base title="Archive" fullTitle={ARCHIVE_FULL_TITLE} description={archiveDescription(families.length)} current="archive">
     <section class="wrap arch-head">
       <div class="label">The archive</div>
       <h1>All results</h1>

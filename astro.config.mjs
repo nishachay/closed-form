@@ -18,8 +18,11 @@ export default defineConfig({
   base: '/',
   integrations: [
     sitemap({
-      // Machine-readable data and the 404 page stay out of the sitemap.
-      filter: (page) => !/^\/(404|data)\b/.test(new URL(page).pathname),
+      // Machine-readable data, the .md page versions and the 404 page stay out of the sitemap.
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return !/^\/(404|data)\b/.test(path) && !/\.(md|txt)$/.test(path);
+      },
       serialize(item) {
         const d = lastmod.get(new URL(item.url).pathname);
         return d ? { ...item, lastmod: new Date(d).toISOString() } : item;

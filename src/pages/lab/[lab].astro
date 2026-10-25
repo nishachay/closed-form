@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import FieldCards from '../../components/FieldCards.astro';
 import { appUrl, catalog, collectionName, computeStats, labName, scienceName } from '../../lib/site.js';
+import { labDescription } from '../../lib/pagemeta.js';
 
 export function getStaticPaths() {
   return [{ params: { lab: catalog.lab } }];
@@ -12,7 +13,7 @@ const name = labName();
 ---
 <Base
   title={name}
-  description={`AI-made mathematics from ${labName()}, explained in plain words with honest trust labels.`}
+  description={labDescription(labName())}
   ogImage={`/og/lab-${catalog.lab}.png`}
 >
   <div class="wrap">

@@ -11,7 +11,8 @@ import TrustLabel from '../../components/TrustLabel.astro';
 import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, fieldUrl, loadExplained, neighbors } from '../../lib/site.js';
 import { globalIdFor, parseGlobalId } from '../../lib/ids.js';
 import { renderMath, renderQuote } from '../../lib/katex.js';
-import { citationOrder, renderCitations } from '../../lib/cite.js';
+import { renderCitations } from '../../lib/cite.js';
+import { cleanCite, entryView } from '../../lib/entryview.js';
 import { buildHubs, entryDescription, entryTitle, HUB_KIND_LABEL, hubsForId, plainTitle, relatedIds } from '../../lib/seo.js';
 import { breadcrumbs, entryArticle } from '../../lib/jsonld.js';
 
@@ -30,9 +31,6 @@ const explained = await loadExplained();
 const entry = explained.get(family.id) ?? null;
 const { prev, next } = neighbors(family.id);
 
-const reviewNote =
-  entry && entry.status !== 'reviewed' ? 'Drafted by one AI model and checked sentence by sentence against the paper by a different one. Spot a mistake? Report an error.' : null;
-
 const shareText = entry
   ? `${entry.scorecard.firstStep ? `Open since ${entry.scorecard.firstStep}. ` : ''}${entry.headline} ∎ ${absoluteUrl(entryUrl(family))}`
   : `${toPlain(family.title)} ∎ ${absoluteUrl(entryUrl(family))}`;
@@ -41,55 +39,10 @@ const reportHref =
   `https://github.com/nishachay/closed-form/issues/new?template=report-error.yml` +
   `&labels=entry-error&title=${encodeURIComponent(`[entry ${family.id}] `)}`;
 
-/** Prose body (entry.explanation): paragraphs split on blank lines. Replaces the four sections. */
-const paragraphs = entry?.explanation
-  ? entry.explanation.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
-  : [];
-const sections = entry?.explanation ? [] : (entry?.sections ?? []);
-/** Inline citations: [n] in the explanation → a raised numeral, numbered in reading order. */
-const citeOrder = citationOrder(paragraphs);
+const { reviewNote, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate } = entryView(family, entry);
 const citeSeen = new Set<number>();
 const paragraphHtml = paragraphs.map((p) => renderCitations(p, citeOrder, renderMath, citeSeen));
-const paperName = (c: { paper?: number; sourceId?: number }) => {
-  // Which paper the line is quoted from: the claim's `paper` index, the only paper, or a
-  // sourceId that points at one of this result's papers. Never an outside work it discusses.
-  const viaSource = c.sourceId ? entry?.sources.find((x) => x.id === c.sourceId)?.url : undefined;
-  const p = c.paper
-    ? family.papers[c.paper - 1]
-    : family.papers.length === 1
-      ? family.papers[0]
-      : family.papers.find((x) => viaSource && viaSource === x.pdf);
-  return p ? { name: toPlain(p.title), href: p.pdf } : { name: 'The paper', href: undefined };
-};
-const cited = [...citeOrder.entries()]
-  .sort((a, b) => a[1] - b[1])
-  .map(([claimNo, n]) => {
-    const c = entry!.claims![claimNo - 1];
-    // The full sentence(s) from the paper when we have them; the single LaTeX line otherwise.
-    return { n, quote: c.sourceQuote ?? c.sourceLine ?? '', paper: paperName(c) };
-  });
-const aiSection = (entry?.sections ?? []).find((s) => s.title === 'What it says about AI') ?? null;
 const title = `${family.id} · ${toPlain(family.title)}`;
-/** Source citations: strip the internal † "check me" marker and link arXiv ids. */
-const cleanCite = (cite: string) => {
-  const unchecked = /†\s*$/.test(cite);
-  const text = cite.replace(/\s*†\s*$/, '');
-  const arxiv = /arXiv:(\d{4}\.\d{4,5})/.exec(text);
-  return { text, unchecked, href: arxiv ? `https://arxiv.org/abs/${arxiv[1]}` : undefined };
-};
-/**
- * Sources other than the result's own papers: those are already listed, with dates and Lean
- * status, under "The original", so they are not repeated here. The JSON keeps every source.
- */
-const ownLinks = new Set(
-  [...family.papers.map((p) => p.pdf), family.trace, family.leanDoc && (family.leanDoc.startsWith('http') ? family.leanDoc : `https://github.com/openai/math/blob/main/${family.leanDoc}`)]
-    .filter((u): u is string => !!u)
-    .map((u) => u.replace(/\/$/, '')),
-);
-const otherSources = (entry?.sources ?? []).filter((s) => {
-  const href = s.url ?? cleanCite(s.cite).href;
-  return !(href && ownLinks.has(href.replace(/\/$/, '')) && !s.quote);
-});
 const toc = entry
   ? [
       ...(paragraphs.length > 0
@@ -111,8 +64,6 @@ const toc = entry
 const withdrawnCount = family.withdrawn?.length ?? 0;
 const withdrawnOn = family.withdrawn?.[0]?.withdrawnOn ?? null;
 const slug = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-const anyUnchecked = !!entry && entry.status !== 'reviewed' && otherSources.some((x) => /†\s*$/.test(x.cite));
-const firstDate = family.papers.map((p) => p.date).filter(Boolean).sort()[0] ?? null;
 const ogImage = `/og/entry-${globalIdFor(catalog.collection, family.id)}.png`;
 
 // SEO: data-driven title/description, related results, hub links and JSON-LD.
