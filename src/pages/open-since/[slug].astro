@@ -1,0 +1,17 @@
+---
+import HubPage from '../../components/HubPage.astro';
+import { catalog } from '../../lib/site.js';
+import { getCollection } from 'astro:content';
+import { buildHubs } from '../../lib/seo.js';
+import type { Entry } from '../../lib/entry.js';
+
+export async function getStaticPaths() {
+  const raw: Array<{ data: Entry }> = await getCollection('entries');
+  const explained = new Map(raw.map((i) => [i.data.id, i.data]));
+  return buildHubs(catalog, explained)
+    .filter((h) => h.kind === 'era')
+    .map((h) => ({ params: { slug: h.slug } }));
+}
+const { slug } = Astro.params;
+---
+<HubPage kind="era" slug={slug!} />

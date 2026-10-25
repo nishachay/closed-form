@@ -3,7 +3,7 @@
  * BASE_URL/SITE come from Astro at build time; production fallbacks apply.
  */
 
-export const PRODUCTION_SITE = 'https://nishachay.github.io';
+export const PRODUCTION_SITE = 'https://closedform.nishachay.tech';
 
 /** Base prefix without trailing slash ('' when hosted at root). */
 export function basePrefix(): string {

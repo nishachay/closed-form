@@ -11,7 +11,7 @@ text and the published `/data/*.json` files derived from them) are under
 https://creativecommons.org/licenses/by/4.0/
 
 You may share and adapt them for any purpose, including commercially, if you
-credit "Closed Form (https://nishachay.github.io/closed-form/)" and link to the
+credit "Closed Form (https://closedform.nishachay.tech/)" and link to the
 license.
 
 **Source papers, Lean proofs and reasoning traces** come from

@@ -1,0 +1,102 @@
+---
+/**
+ * Programmatic hub page (topic, era, trust, significance): data-generated intro,
+ * the existing archive list for its results, and links to related hubs.
+ */
+import Base from '../layouts/Base.astro';
+import ArchiveBrowser from './ArchiveBrowser.astro';
+import { absoluteUrl, appUrl, catalog, entryUrl, familiesById, fieldUrl, loadExplained } from '../lib/site.js';
+import { buildHubs, hubIntro, hubKey, HUB_KIND_LABEL, introText, plainTitle, fitTitle, type HubKind } from '../lib/seo.js';
+import { breadcrumbs, collectionPage } from '../lib/jsonld.js';
+
+interface Props {
+  kind: HubKind;
+  slug: string;
+}
+const { kind, slug } = Astro.props;
+const explained = await loadExplained();
+const hubs = buildHubs(catalog, explained);
+const hub = hubs.find((h) => h.kind === kind && h.slug === slug);
+if (!hub) throw new Error(`Unknown hub: ${kind}/${slug}`);
+const list = hub.ids.map((id) => familiesById.get(id)!).filter(Boolean);
+const PROPER = ['Erdős', 'Ramsey'];
+const lowerName = hub.name.replace(/^\S+/, (w) => (PROPER.includes(w) ? w : w.toLowerCase()));
+const parts = hubIntro(list, explained, { scope: kind === 'era' ? `on questions first raised ${hub.name.replace(/^Open since /, '')}` : kind === 'topic' ? `on ${lowerName}` : kind === 'trust' ? 'with this trust label' : `rated ${hub.name.replace(/ results$/, '')}`, showFields: true });
+const intro = introText(parts);
+
+// Related hubs: siblings of the same kind, then the other hubs that share the most results, then fields.
+const mine = new Set(hub.ids);
+const overlap = (ids: string[]) => ids.filter((id) => mine.has(id)).length;
+const siblings = hubs.filter((h) => h.kind === kind && h !== hub).slice(0, 6);
+const cross = hubs
+  .filter((h) => h.kind !== kind)
+  .map((h) => ({ h, o: overlap(h.ids) }))
+  .filter((x) => x.o >= 2)
+  .sort((a, b) => b.o - a.o)
+  .slice(0, 4)
+  .map((x) => x.h);
+const fieldCounts = new Map<string, number>();
+for (const f of list) fieldCounts.set(f.subject, (fieldCounts.get(f.subject) ?? 0) + 1);
+const topFields = [...fieldCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+const pageUrl = absoluteUrl(hub.path);
+const site = absoluteUrl('/').replace(/\/$/, '');
+const titleName = kind === 'topic' ? `${hub.name}: AI results explained` : kind === 'era' ? `${hub.heading}, explained` : `${hub.name}: AI math`;
+const lead =
+  kind === 'topic'
+    ? `${list.length} AI-made results on ${lowerName}`
+    : kind === 'era'
+      ? `${list.length} AI-made results on questions first raised ${hub.name.replace(/^Open since /, '')}`
+      : kind === 'trust'
+        ? `${list.length} AI-made math results: ${lowerName}`
+        : `${list.length} AI-made math results rated ${hub.name.replace(/ results$/, '')}`;
+const description = `${lead}, each explained in plain English. ${hub.blurb}`;
+const jsonLd = [
+  collectionPage({
+    site,
+    url: pageUrl,
+    name: hub.heading,
+    description: intro,
+    items: list.map((f) => ({ name: plainTitle(f), url: absoluteUrl(entryUrl(f)) })),
+  }),
+  breadcrumbs([
+    { name: 'Topics', url: absoluteUrl('/topics/') },
+    { name: hub.heading, url: pageUrl },
+  ]),
+];
+---
+<Base title={titleName} fullTitle={fitTitle(titleName)} description={description} ogImage={`/og/hub-${hubKey(hub)}.png`} jsonLd={jsonLd}>
+  <section class="wrap arch-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl('/topics/')}>Topics</a><span aria-hidden="true">/</span><span aria-current="page">{HUB_KIND_LABEL[kind]}</span></nav>
+    <h1>{hub.heading}</h1>
+    <p class="lede">{hub.blurb}</p>
+    <p class="hub-intro">
+      {parts.map((p) => (p.id ? <a href={entryUrl(familiesById.get(p.id)!)}>{p.text}</a> : p.text))}
+    </p>
+  </section>
+  <ArchiveBrowser families={list} />
+  <div class="wrap hub-more">
+    <h2 class="label hub-h">Related</h2>
+    <div class="hub-grid">
+      {[...cross, ...siblings].map((h) => (
+        <a class="hub-card" href={appUrl(h.path)}>
+          <span class="hub-t">{h.name}</span>
+          <span class="hub-m">{HUB_KIND_LABEL[h.kind]} · <span class="num">{h.ids.length}</span> results</span>
+          <span class="hub-go" aria-hidden="true">→</span>
+        </a>
+      ))}
+      {topFields.map(([s, n]) => (
+        <a class="hub-card" href={fieldUrl(s)}>
+          <span class="hub-t">{s}</span>
+          <span class="hub-m">Field · <span class="num">{n}</span> here</span>
+          <span class="hub-go" aria-hidden="true">→</span>
+        </a>
+      ))}
+      <a class="hub-card" href={appUrl('/topics/')}>
+        <span class="hub-t">All topics</span>
+        <span class="hub-m">Every way to browse</span>
+        <span class="hub-go" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</Base>

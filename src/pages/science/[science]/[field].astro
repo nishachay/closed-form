@@ -1,8 +1,10 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import ArchiveBrowser from '../../../components/ArchiveBrowser.astro';
-import { appUrl, catalog, collectionName, scienceName } from '../../../lib/site.js';
+import { absoluteUrl, appUrl, catalog, collectionName, entryUrl, familiesById, fieldUrl, loadExplained, scienceName } from '../../../lib/site.js';
 import { slugify } from '../../../lib/slug.js';
+import { buildHubs, fitTitle, HUB_KIND_LABEL, hubIntro, introText, plainTitle } from '../../../lib/seo.js';
+import { breadcrumbs, collectionPage } from '../../../lib/jsonld.js';
 
 export function getStaticPaths() {
   return catalog.subjects.map((s) => ({
@@ -14,16 +16,77 @@ const { field } = Astro.params;
 const subject = catalog.subjects.find((s) => slugify(s) === field);
 if (!subject) throw new Error(`Unknown field: ${field}`);
 const list = catalog.families.filter((f) => f.subject === subject);
+
+// SEO: data-generated intro, related hubs and fields, JSON-LD.
+const explained = await loadExplained();
+const parts = hubIntro(list, explained, { scope: `in ${subject.toLowerCase()}` });
+const ids = new Set(list.map((f) => f.id));
+const related = buildHubs(catalog, explained)
+  .map((h) => ({ h, o: h.ids.filter((id) => ids.has(id)).length }))
+  .filter((x) => x.o >= 2)
+  .sort((a, b) => b.o - a.o)
+  .slice(0, 6);
+const otherFields = catalog.subjects
+  .filter((s) => s !== subject)
+  .map((s) => ({ s, n: catalog.families.filter((f) => f.subject === s).length }))
+  .sort((a, b) => b.n - a.n)
+  .slice(0, 3);
+const pageUrl = absoluteUrl(fieldUrl(subject));
+const site = absoluteUrl('/').replace(/\/$/, '');
+const jsonLd = [
+  collectionPage({
+    site,
+    url: pageUrl,
+    name: `${subject}: AI-made results`,
+    description: introText(parts),
+    items: list.map((f) => ({ name: plainTitle(f), url: absoluteUrl(entryUrl(f)) })),
+  }),
+  breadcrumbs([
+    { name: 'Archive', url: absoluteUrl('/archive/') },
+    { name: scienceName(), url: absoluteUrl(`/science/${catalog.science}/`) },
+    { name: subject, url: pageUrl },
+  ]),
+];
+const titleName = `${subject}: AI results explained`;
 ---
 <Base
   title={subject}
-  description={`${list.length} AI-made results in ${subject}, explained in plain words.`}
+  fullTitle={fitTitle(titleName)}
+  description={`${list.length} AI-made results in ${subject.toLowerCase()}, each explained in plain English with its trust label, Lean status and sources.`}
   ogImage={`/og/field-${field}.png`}
+  jsonLd={jsonLd}
 >
     <section class="wrap arch-head">
       <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl('/archive/')}>Archive</a><span aria-hidden="true">/</span><a href={appUrl(`/science/${catalog.science}/`)}>{scienceName()}</a><span aria-hidden="true">/</span><span aria-current="page">Field</span></nav>
       <h1>{subject}</h1>
       <p class="lede"><span class="num">{list.length}</span> results in {collectionName()}.</p>
+      <p class="hub-intro">
+        {parts.map((p) => (p.id ? <a href={entryUrl(familiesById.get(p.id)!)}>{p.text}</a> : p.text))}
+      </p>
     </section>
     <ArchiveBrowser families={list} lockField={slugify(subject)} />
+    <div class="wrap hub-more">
+      <h2 class="label hub-h">Related</h2>
+      <div class="hub-grid">
+        {related.map(({ h, o }) => (
+          <a class="hub-card" href={appUrl(h.path)}>
+            <span class="hub-t">{h.name}</span>
+            <span class="hub-m">{HUB_KIND_LABEL[h.kind]} · <span class="num">{o}</span> here</span>
+            <span class="hub-go" aria-hidden="true">→</span>
+          </a>
+        ))}
+        {otherFields.map((f) => (
+          <a class="hub-card" href={fieldUrl(f.s)}>
+            <span class="hub-t">{f.s}</span>
+            <span class="hub-m">Field · <span class="num">{f.n}</span> results</span>
+            <span class="hub-go" aria-hidden="true">→</span>
+          </a>
+        ))}
+        <a class="hub-card" href={appUrl('/topics/')}>
+          <span class="hub-t">All topics</span>
+          <span class="hub-m">Every way to browse</span>
+          <span class="hub-go" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
 </Base>

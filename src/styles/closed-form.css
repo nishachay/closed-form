@@ -1120,3 +1120,19 @@ footer.site-footer .ft-by a{color:var(--color-text-secondary);font-weight:500}
 .top .logo,.top-search,.top-gh{flex:none}
 @media (max-width:20rem){.top .top-in{gap:.25rem}.top .top-nav a{padding-inline:.375rem}.top .logo{font-size:.9375rem}.top-r{gap:0}}
 .entry .gl{grid-template-columns:repeat(auto-fill,minmax(min(14rem,100%),1fr))}
+/* Related results + hub links on entry pages (SEO internal linking; same tokens as .e-hype/.refs). */
+.e-rel{margin-block-start:3.5rem}
+.entry .e-rel h2{display:flex;align-items:center;gap:.5rem;font-size:.75rem;line-height:1.3;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);margin:0 0 1rem;padding:0;border:0}
+.rel-list{list-style:none;margin:0;padding:0;border-block-start:1px solid var(--color-rule)}
+.rel-list li{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1rem;padding-block:.75rem;border-block-end:1px solid var(--color-rule)}
+.rel-list a{display:flex;gap:.75rem;align-items:baseline;text-decoration:none;color:var(--color-text);min-inline-size:0}
+.rel-list .num{font-size:.8125rem;color:var(--color-text-tertiary)}
+.rel-f{font-size:.8125rem;color:var(--color-text-tertiary)}
+@media (hover:hover){.rel-list a:hover .rel-t{text-decoration-line:underline}}
+.rel-hubs{display:flex;flex-wrap:wrap;align-items:baseline;gap:.375rem .875rem;margin:1.25rem 0 0;font-size:.875rem}
+.rel-hubs .label{margin-inline-end:.25rem}
+/* Hub pages: intro paragraph and related hubs grid. */
+.hub-intro{font-size:1rem;line-height:1.6;max-inline-size:40rem;color:var(--color-text-secondary);margin:.75rem 0 0}
+.hub-intro a{color:var(--color-text);text-decoration-line:underline;text-underline-offset:.18em;text-decoration-color:var(--color-border-control)}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:.75rem}
+.hub-more{padding-block-end:4rem}

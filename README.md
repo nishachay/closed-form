@@ -4,7 +4,7 @@
 [![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 [![Content: CC BY 4.0](https://img.shields.io/badge/content-CC%20BY%204.0-lightgrey.svg)](LICENSE-CONTENT.md)
 
-**Live site: https://nishachay.github.io/closed-form/**
+**Live site: https://closedform.nishachay.tech/**
 
 Every maths problem AI has solved, explained for everyone, with honest trust
 labels. Each entry starts from a concrete example, says what was known before,

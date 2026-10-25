@@ -1,0 +1,78 @@
+---
+/** Index of every way to browse: topics, eras, trust labels, significance and fields. */
+import Base from '../layouts/Base.astro';
+import { absoluteUrl, appUrl, catalog, fieldUrl, loadExplained } from '../lib/site.js';
+import { buildHubs, HUB_KIND_LABEL, type HubKind } from '../lib/seo.js';
+import { breadcrumbs, collectionPage } from '../lib/jsonld.js';
+
+const explained = await loadExplained();
+const hubs = buildHubs(catalog, explained);
+const groups: Array<{ kind: HubKind; title: string }> = [
+  { kind: 'topic', title: 'Topics and problem families' },
+  { kind: 'era', title: 'How long the question was open' },
+  { kind: 'significance', title: 'Significance' },
+  { kind: 'trust', title: 'Trust label' },
+];
+const fields = catalog.subjects
+  .map((s) => ({ s, n: catalog.families.filter((f) => f.subject === s).length }))
+  .sort((a, b) => b.n - a.n);
+const site = absoluteUrl('/').replace(/\/$/, '');
+const jsonLd = [
+  collectionPage({
+    site,
+    url: absoluteUrl('/topics/'),
+    name: 'Browse AI math results by topic',
+    description: 'Every topic, era, trust label and field on Closed Form.',
+    items: [
+      ...hubs.map((h) => ({ name: h.name, url: absoluteUrl(h.path) })),
+      ...fields.map((f) => ({ name: f.s, url: absoluteUrl(fieldUrl(f.s)) })),
+    ],
+  }),
+  breadcrumbs([
+    { name: 'Home', url: absoluteUrl('/') },
+    { name: 'Topics', url: absoluteUrl('/topics/') },
+  ]),
+];
+---
+<Base
+  title="Browse AI math results by topic"
+  description={`Browse ${catalog.families.length} AI-made math results by topic, problem family, decade, field and trust label, each explained in plain English.`}
+  jsonLd={jsonLd}
+>
+  <section class="wrap arch-head">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href={appUrl('/')}>Home</a><span aria-hidden="true">/</span><span aria-current="page">Topics</span></nav>
+    <h1>Browse by topic</h1>
+    <p class="lede">
+      <span class="num">{catalog.families.length}</span> results, grouped by what they are about, how long the question was open, how important they are and how far you can trust them.
+    </p>
+  </section>
+  <div class="wrap hub-more">
+    {groups.map((g) => {
+      const items = hubs.filter((h) => h.kind === g.kind);
+      return items.length > 0 && (
+        <>
+          <h2 class="label hub-h">{g.title}</h2>
+          <div class="hub-grid">
+            {items.map((h) => (
+              <a class="hub-card" href={appUrl(h.path)}>
+                <span class="hub-t">{h.name}</span>
+                <span class="hub-m">{HUB_KIND_LABEL[h.kind]} · <span class="num">{h.ids.length}</span> results</span>
+                <span class="hub-go" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </>
+      );
+    })}
+    <h2 class="label hub-h">Fields of mathematics</h2>
+    <div class="hub-grid">
+      {fields.map((f) => (
+        <a class="hub-card" href={fieldUrl(f.s)}>
+          <span class="hub-t">{f.s}</span>
+          <span class="hub-m">Field · <span class="num">{f.n}</span> results</span>
+          <span class="hub-go" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

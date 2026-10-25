@@ -1,5 +1,7 @@
 ---
 import { absoluteUrl, appUrl } from '../lib/site.js';
+import { clipDescription, fitTitle } from '../lib/seo.js';
+import { breadcrumbs, serializeJsonLd, type JsonLd } from '../lib/jsonld.js';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/closed-form.css';
@@ -10,11 +12,45 @@ interface Props {
   description?: string;
   ogImage?: string;
   current?: 'home' | 'archive' | 'about';
+  /** Full <title> when the page wants its own suffix (entries); otherwise "<title> — Closed Form", fitted to 60 chars. */
+  fullTitle?: string;
+  /** schema.org blocks for this page. */
+  jsonLd?: JsonLd[];
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
 }
-const { title, description = 'AI mathematics, explained. Honest trust labels, plain words.', ogImage = '/og/home.png', current } = Astro.props;
+const {
+  title,
+  description = 'AI mathematics, explained. Honest trust labels, plain words.',
+  ogImage = '/og/home.png',
+  current,
+  fullTitle,
+  jsonLd = [],
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
+const pageTitle = fullTitle ?? fitTitle(title);
+const metaDescription = clipDescription(description);
+// Every page carries a BreadcrumbList; pages without their own get Home › <page>.
+const hasCrumbs = jsonLd.some((d) => d['@type'] === 'BreadcrumbList');
+const homeUrl = absoluteUrl('/');
+const pageLd = hasCrumbs || noindex
+  ? jsonLd
+  : [
+      ...jsonLd,
+      breadcrumbs(
+        Astro.url.pathname === '/' || Astro.url.pathname === ''
+          ? [{ name: 'Closed Form', url: homeUrl }]
+          : [
+              { name: 'Home', url: homeUrl },
+              { name: title, url: new URL(Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`, Astro.site ?? homeUrl).href },
+            ],
+      ),
+    ];
 const rss = appUrl('/feed.xml');
 const ogAbsolute = absoluteUrl(ogImage);
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://nishachay.github.io').href;
+const canonicalPath = Astro.url.pathname.endsWith('/') || /\.[a-z0-9]+$/i.test(Astro.url.pathname) ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(canonicalPath, Astro.site ?? 'https://closedform.nishachay.tech').href;
 const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22><rect x=%222%22 y=%222%22 width=%226%22 height=%226%22 fill=%22%23cd391b%22/></svg>';
 ---
 <!doctype html>
@@ -22,25 +58,28 @@ const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>{title} — Closed Form</title>
-    <meta name="description" content={description} />
-    <meta property="og:title" content={`${title} — Closed Form`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:image" content={ogAbsolute} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} — Closed Form`} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogAbsolute} />
     <link rel="alternate" type="application/rss+xml" title="Closed Form — newly explained entries" href={rss} />
     <link rel="icon" href={favicon} />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <link rel="sitemap" href={appUrl('/sitemap.xml')} />
     <meta name="theme-color" content="#f7f5f1" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f0e0b" media="(prefers-color-scheme: dark)" />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Closed Form" />
+    {pageLd.map((d) => <script type="application/ld+json" is:inline set:html={serializeJsonLd(d)} />)}
     <script is:inline data-goatcounter="https://closedform.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
   </head>
   <body>
