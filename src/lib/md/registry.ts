@@ -403,6 +403,7 @@ export function entryDoc(ctx: MdContext, f: Family): MdDoc {
     `**Trust:** ${trustLevel(f.trust).label}`,
     `**Papers:** ${n}`,
     v.firstDate && `**First paper:** ${formatLongDay(v.firstDate)}`,
+    v.latestDate && v.latestDate !== v.firstDate && `**Latest paper:** ${formatLongDay(v.latestDate)}`,
     `**Field:** ${f.subject}`,
     `**Entry:** ${f.id}`,
   ].filter(Boolean);

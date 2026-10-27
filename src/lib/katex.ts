@@ -44,6 +44,9 @@ const QUOTE_MACROS: Record<string, string> = {
   '\\softO': '\\tilde{O}',
   '\\Lip': '\\operatorname{Lip}',
   '\\htop': 'h_{\\mathrm{top}}',
+  '\\RR': '\\mathbb{R}',
+  '\\pc': 'p_c',
+  '\\norm': '\\left\\|#1\\right\\|',
 };
 
 const DISPLAY_ENV = /^(equation|align|gather|multline|eqnarray|displaymath|flalign|alignat|math|dmath)\*?$/;
