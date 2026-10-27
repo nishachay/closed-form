@@ -73,6 +73,8 @@ export function entryView(family: Family, entry: Entry | null) {
     return !(href && ownLinks.has(href.replace(/\/$/, '')) && !s.quote);
   });
   const anyUnchecked = !!entry && entry.status !== 'reviewed' && otherSources.some((x) => /†\s*$/.test(x.cite));
-  const firstDate = family.papers.map((p) => p.date).filter(Boolean).sort()[0] ?? null;
-  return { reviewNote, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate };
+  const paperDates = family.papers.map((p) => p.date).filter(Boolean).sort();
+  const firstDate = paperDates[0] ?? null;
+  const latestDate = paperDates[paperDates.length - 1] ?? null;
+  return { reviewNote, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate, latestDate };
 }
