@@ -1,10 +1,10 @@
 name: upstream-watch
 
-# Once a day, check whether OpenAI changed openai/math since our catalog was built.
+# Every 3 hours, check whether OpenAI changed openai/math since our catalog was built.
 # If it did, open (or update) one issue with what changed, so nothing on the site goes stale quietly.
 on:
   schedule:
-    - cron: '30 3 * * *' # 09:00 IST
+    - cron: '30 */3 * * *' # every 3 hours (09:00, 12:00, 15:00 IST ...)
   workflow_dispatch:
 
 permissions:
