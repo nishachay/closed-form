@@ -12,36 +12,38 @@ import {
 } from '../ingest/openai-math.js';
 import type { Family } from '../ingest/types.js';
 
-// Ingest counts at openai/math fd4aeeb (Oct 8, 2026 update): 372 / 719 / 172 / 17 and 242 / 0 / 130.
+// Ingest counts at openai/math 7ef5c0c (Oct 26, 2026 update): 373 / 721 / 175 / 17 and 245 / 0 / 128.
+// The Oct 26 update added family 378 (ETH) and a second paper to 079, and Lean docs for 032, 079 and 378.
+// Before it (fd4aeeb, Oct 8): 372 / 719 / 172 / 17 and 242 / 0 / 130.
 // Trust was 135 / 107 / 130 before Lean docs + Comparator challenges counted as formal (all 107 'partial'
 // families have a Lean doc linking a main-result Comparator challenge).
 // The Oct 7 withdrawals removed 3 papers (722 → 719); they live on in family 032's `withdrawn` list.
 describe('catalog counts (§9, §18)', () => {
-  it('has 372 families', () => {
-    expect(catalog.families).toHaveLength(372);
+  it('has 373 families', () => {
+    expect(catalog.families).toHaveLength(373);
   });
 
-  it('has 719 papers', () => {
+  it('has 721 papers', () => {
     const n = catalog.families.reduce((acc: number, f: { papers: unknown[] }) => acc + f.papers.length, 0);
-    expect(n).toBe(719);
+    expect(n).toBe(721);
   });
 
-  it('has 172 Lean-listed papers', () => {
+  it('has 175 Lean-listed papers', () => {
     const n = catalog.families
       .flatMap((f: { papers: { lean: boolean }[] }) => f.papers)
       .filter((p) => p.lean).length;
-    expect(n).toBe(172);
+    expect(n).toBe(175);
   });
 
   it('has 17 subjects', () => {
     expect(catalog.subjects).toHaveLength(17);
   });
 
-  it('trust split is 242 / 0 / 130', () => {
+  it('trust split is 245 / 0 / 128', () => {
     const count = (t: string) => catalog.families.filter((f: { trust: string }) => f.trust === t).length;
-    expect(count('formal')).toBe(242);
+    expect(count('formal')).toBe(245);
     expect(count('partial')).toBe(0);
-    expect(count('claimed')).toBe(130);
+    expect(count('claimed')).toBe(128);
   });
 
   it('carries collection identity + source version', () => {

@@ -11,7 +11,7 @@
 
 This section is model-agnostic. opencode, Gemini CLI, Codex, Claude Code and Cursor all read this file. Nothing here depends on one provider.
 
-Closed Form explains each of the 372 openai/math (2026) results in plain English, with honest trust labels.
+Closed Form explains each of the 373 openai/math (2026) result families in plain English, with honest trust labels.
 
 ### Sources
 Read from openai/math at commit `fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb`:

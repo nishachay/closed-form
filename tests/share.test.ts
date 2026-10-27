@@ -135,9 +135,9 @@ describe('rss feed (§13)', () => {
 describe('public data files (§13)', () => {
   it('catalog.json ships all families', () => {
     const fams = (catalog as { families: { id: string; papers: unknown[] }[] }).families;
-    expect(fams).toHaveLength(372);
+    expect(fams).toHaveLength(373);
     const papers = fams.reduce((n, f) => n + f.papers.length, 0);
-    expect(papers).toBe(719);
+    expect(papers).toBe(721);
     expect((catalog as { subjects: unknown[] }).subjects).toHaveLength(17);
   });
 
@@ -145,9 +145,9 @@ describe('public data files (§13)', () => {
     const rows = buildFieldsJson(catalog as never);
     expect(rows).toHaveLength(17);
     const total = rows.reduce((n, r) => n + r.results, 0);
-    expect(total).toBe(372);
+    expect(total).toBe(373);
     const papers = rows.reduce((n, r) => n + r.papers, 0);
-    expect(papers).toBe(719);
+    expect(papers).toBe(721);
     for (const r of rows) {
       expect(r.collection).toBe('openai-math-2026');
       expect(r.lab).toBe('openai');
