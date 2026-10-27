@@ -11,7 +11,7 @@ labels. Each entry starts from a concrete example, says what was known before,
 names the obstacle the paper removed, and is plain about how certain the result is.
 
 The site is built from the [`openai/math`](https://github.com/openai/math)
-release (Vol. 1: 372 result families, 722 papers). Explanations are written by
+release (Vol. 1: 373 result families, 721 papers). Explanations are written by
 an AI pipeline and checked by a second AI pass against the source papers. They are not
 peer-reviewed. Found a mistake? Every entry has a "Report an error" link.
 `CLOSED_FORM.md` is the full spec.
@@ -55,7 +55,7 @@ merging publishes them.
 
 ## Public data
 
-- `/data/catalog.json` — all 372 families with papers, subjects, trust.
+- `/data/catalog.json` — all 373 families with papers, subjects, trust.
 - `/data/entries.json` — explained entries in full.
 - `/data/fields.json` — the 17 fields with counts and trust split.
 - `/feed.xml` — newly explained entries, newest first.

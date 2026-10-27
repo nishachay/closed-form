@@ -9,24 +9,35 @@
   "evidence": [
     {
       "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf",
+      "label": "Local smoothing for the Euclidean wave equation"
+    },
+    {
+      "kind": "paper",
       "url": "https://github.com/openai/math/blob/main/preprints/Critical-local-smoothing-for-the-three-dimensional-wave-equation-September-24-2026/paper.pdf",
       "label": "Critical local smoothing for the three-dimensional wave equation"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/079.md",
+      "label": "Lean doc (main estimate and five consequences formalized)",
+      "note": "Lean proofs of local smoothing for all n ≥ 2 and 2 ≤ p < ∞, Bochner–Riesz, spherical extension, Stein square function, the Kakeya maximal estimate and full Kakeya dimension. The paraboloid, cone, Schrödinger and Nikodym results are not in the scope note."
     }
   ],
-  "headline": "A claimed proof of Sogge's local smoothing conjecture for waves in 3D space, including the critical case p = 3.",
-  "scope": "The claim is for the Euclidean wave equation in three space dimensions, with every positive loss at p = 3. The lossless endpoint is not covered.",
-  "plain": "A wave can briefly pile up its energy in small regions, so its size at one instant can be worse than its start. Averaging over a short stretch of time is conjectured to win back most of that loss. Sogge's conjecture says exactly how much is won back in each Lᵖ size measure. This paper claims the three-dimensional case, at the critical exponent p = 3 and then all p above 2. Consequences for Bochner–Riesz means and pointwise convergence follow.",
-  "doesNot": "This does not prove the lossless estimate at p = 3, or local smoothing on curved manifolds.",
+  "headline": "A claimed proof of Sogge's local smoothing conjecture in every dimension, implying full-dimensional Kakeya sets.",
+  "scope": "The claim covers the Euclidean half-wave for every n ≥ 2 and 2 ≤ p < ∞. It allows every positive loss above the sharp order. The lossless estimate is claimed only at p = 2.",
+  "plain": "A wave can briefly pile up its energy where its rays meet. So its size at one instant can be worse than its start. Averaging over a short stretch of time is conjectured to win back most of that loss. Sogge's conjecture says exactly how much is won back in each Lᵖ size measure. This paper claims the conjecture in every space dimension, with Bochner–Riesz, Fourier restriction and Kakeya results as consequences.",
+  "doesNot": "This does not prove the lossless estimate for p > 2, or local smoothing on curved manifolds.",
   "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
   "scorecard": {
     "firstStep": "1991",
     "firstStepBy": "Christopher Sogge, who introduced local smoothing",
     "field": "Real and complex analysis",
     "significance": "Landmark",
-    "significanceWhy": "Local smoothing in three dimensions is a central open problem, and it implies Bochner–Riesz and other estimates in harmonic analysis."
+    "significanceWhy": "It settles local smoothing in every dimension and implies the Bochner–Riesz and Kakeya conjectures."
   },
-  "explanation": "Take an initial wave f(x) = sin(Nx) with frequency N = 1000. Its derivative has size about N. A fractional derivative of order α scales it by about N^α. That is how Sobolev size measures smoothness. At one fixed time, a wave in three dimensions can lose 2(1/2 − 1/p) derivatives in Lᵖ size[2]. The Lᵖ norm is the p-th root of the integral of |f|ᵖ. At p = 3 the loss is 2 × 1/6 = 1/3. For N = 1000 that costs a factor of about 1000^(1/3) = 10.\n\nLocal smoothing asks what happens when you also average over a short time interval. Sogge's conjecture says the loss drops to just above max{0, 1 − 3/p}[3]. At p = 3 that is 0, so only an arbitrarily small loss should remain. A loss of 0.01 costs about 1000^0.01 ≈ 1.07, instead of 10. At p = 4, the loss should fall from 1/2 to 1/4. At p = 6 it should fall from 2/3 to 1/2. In each case the gain is 1/p, as the conjecture predicts for p ≥ 3[4].\n\nSogge introduced local smoothing in his work on circular maximal operators[15]. Wolff, Łaba and Garrigós–Seeger built wave-packet methods for large p. A wave packet is a piece of the wave that travels along a thin tube. Bourgain and Demeter's decoupling theorem gave the conjectured gain for p ≥ 4 in three dimensions[7]. In two dimensions, Guth, Wang and Zhang reached the critical exponent p = 4 with a sharp square-function estimate[10]. In three dimensions at p = 3, Gao, Liu, Miao and Xi reached every loss above 1/9[8]. Gan, He, Li and Wu's work gives losses above 1/12 there[9]. The remaining small fixed loss is the gap this paper addresses.\n\nThe paper claims the estimate at p = 3 with every positive loss ε[1]. Interpolation with easier bounds then gives the full range 2 < p < ∞. Together these claim to resolve Sogge's conjecture in three space dimensions[5]. The lossless case ε = 0 is not addressed[6]. The word Euclidean matters. On some curved manifolds, focusing geodesics force p ≥ 10/3 for the full gain[16].\n\nThe main obstacle is controlling how packets crowd together across many scales. The paper's central quantity is the entropy of a finite phase-space record[11]. Phase space tracks both the position and the direction of each packet. Entropy here measures how spread out those records are. The proof uses two outside inputs[12]. They are Ren and Wang's planar Furstenberg theorem and Guth, Wang and Zhang's wave-envelope theorem.\n\nThe paper also claims consequences. Maximal Bochner–Riesz means converge almost everywhere for 3 ≤ p < ∞ when δ > 1 − 3/p[14]. A maximal bound for the wave itself needs s > 1/3 at p = 3[13].\n\nHow sure is this? There is no Lean scope note for this result, so no computer proof checker has tested it. The paper is very long and relies on two recent outside theorems. No specialist review has been published.",
-  "hypeCheck": "Landmark if the proof holds, since it claims a central conjecture in three dimensions. It is one very long paper with no Lean scope note. No specialist review is published.",
+  "explanation": "Take an initial wave f(x) = sin(Nx) with frequency N = 1000. Its derivative has size about N. A fractional derivative of order α scales it by about N^α. That is how Sobolev size measures smoothness. The Lᵖ norm is the p-th root of the integral of |f|ᵖ. At one fixed time, a wave in n space dimensions can need (n − 1)(1/2 − 1/p) extra derivatives in Lᵖ size[3]. In three dimensions at p = 3 that is 2 × 1/6 = 1/3. For N = 1000 that costs a factor of about 1000^(1/3) = 10.\n\nA wave from a thin spherical shell can pile up where its rays meet. Sogge asked how many derivatives you need when you also average over a short time interval[6]. His conjecture says the order drops to just above s₊(p) = max{0, (n − 1)/2 − n/p}. At n = 3 and p = 3, that is max{0, 1 − 1} = 0. So only an arbitrarily small loss should remain. A loss of 0.01 costs about 1000^0.01 ≈ 1.07, instead of 10. At n = 4 and p = 4, the fixed-time order is 3/4 and s₊ is 1/2. The gain is 1/4, which is 1/p. For p at or above 2n/(n − 1), the conjecture asks for every gain below 1/p[4].\n\nEarlier work reached parts of this. Wolff got every gain below 1/p for p > 74 in the plane[7]. Bourgain and Demeter's decoupling theorem gave it for p ≥ 2(n + 1)/(n − 1) in every dimension[8]. In the plane, Guth, Wang and Zhang reached the critical exponent p = 4[9]. At n = p = 3, Gao, Liu, Miao and Xi got every gain below 2/9, against the conjectured 1/3[10]. Gan, He, Li and Wu proved nearly the full gain for p ≥ 10/3[21]. That gives every gain below 1/4 at p = 3[11]. A September 2026 paper in this family claimed the three-dimensional case[19].\n\nThe October paper claims the estimate for every n ≥ 2 and 2 ≤ p < ∞, with any loss ε > 0 above s₊(p)[1]. At p = 2 no loss is needed[2]. A focusing wave shows that s₊(p) cannot be lowered[5]. The proof rests on one estimate at the critical exponent p = 2n/(n − 1)[17]. The word Euclidean matters. Some curved three-dimensional spaces need p ≥ 10/3 for gains close to 1/p[18].\n\nSeveral old problems follow. Bochner–Riesz means rebuild a function from its frequencies with a softened cut-off. They are bounded in the conjectured range for 1 ≤ p ≤ ∞[12]. Fourier extension estimates from the sphere hold in the whole interior of their conjectured range[13]. The Kakeya maximal conjecture follows, with loss δ^(−ε) for tubes of radius δ[14]. So every set in ℝⁿ with a unit line segment in each direction has full Hausdorff dimension n[15]. Before this, Davies had proved it in the plane, and Wang and Zahl in three dimensions[16].\n\nHow sure is this? A computer proof checker called Lean has checked the main estimate for every n ≥ 2 and 2 ≤ p < ∞. It has also checked the Bochner–Riesz bounds, spherical extension, the Stein square-function bound, the Kakeya maximal estimate and full Kakeya dimension. The Lean scope note links each of these to a fixed reference statement. The paraboloid, cone, Schrödinger and Nikodym results are not in the Lean scope note. No independent review of the proof has been published.",
+  "hypeCheck": "Landmark if the proof holds, since it settles local smoothing in every dimension and full Kakeya dimension. Lean checks the main estimate and five consequences. No independent review is published.",
   "glossary": [
     {
       "term": "Local smoothing",
@@ -49,25 +60,28 @@
       "meaning": "An inequality that bounds a sum of wave pieces using their separate sizes."
     },
     {
-      "term": "Phase space",
-      "meaning": "The joint record of where a wave piece is and which direction it moves."
-    },
-    {
       "term": "Bochner–Riesz means",
       "meaning": "Ways to rebuild a function from its frequencies with a softened cut-off at the edge of a ball."
+    },
+    {
+      "term": "Kakeya set",
+      "meaning": "A set that contains a unit line segment pointing in every direction."
+    },
+    {
+      "term": "Hausdorff dimension",
+      "meaning": "A measure of how much space a set fills, which can be a fraction for rough sets."
     }
   ],
   "sources": [
     {
       "id": 1,
-      "cite": "openai/math, “Critical local smoothing for the three-dimensional wave equation” (September 24, 2026)",
-      "url": "https://github.com/openai/math/blob/main/preprints/Critical-local-smoothing-for-the-three-dimensional-wave-equation-September-24-2026/paper.pdf"
+      "cite": "openai/math, “Local smoothing for the Euclidean wave equation” (October 25, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf"
     },
     {
       "id": 2,
-      "cite": "openai/math release notes (2026): model provenance",
-      "url": "https://github.com/openai/math/blob/main/README.md",
-      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+      "cite": "openai/math, “Critical local smoothing for the three-dimensional wave equation” (September 24, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/Critical-local-smoothing-for-the-three-dimensional-wave-equation-September-24-2026/paper.pdf"
     },
     {
       "id": 3,
@@ -83,111 +97,161 @@
       "id": 5,
       "cite": "L. Guth, H. Wang and R. Zhang, “A sharp square function estimate for the cone in ℝ³”, Annals of Mathematics 192 (2020)",
       "url": "https://doi.org/10.4007/annals.2020.192.2.6"
+    },
+    {
+      "id": 6,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
     }
   ],
   "claims": [
     {
-      "text": "For every ε > 0, ‖Uf‖_{L³(ℝ³×[1,2])} ≤ C_ε‖J^ε f‖_{L³(ℝ³)}.",
+      "text": "For n ≥ 2, 2 ≤ p < ∞ and ε > 0, the half-wave obeys the local smoothing bound with Sobolev order s₊(p) + ε.",
       "verdict": "supported",
-      "sourceLine": "there exists $C_\\eps<\\infty$ such that",
-      "sourceQuote": "For every $\\eps>0$ there exists $C_\\eps<\\infty$ such that \\begin{equation}\\label{eq:intro-main} \\norm{Uf}_{L^3(\\R^3\\times[1,2])} \\le C_\\eps\\norm{J^\\eps f}_{L^3(\\R^3)} \\qquad (f\\in\\mathcal S(\\R^3)). \\end{equation}"
+      "sourceLine": "For \\(n\\ge2\\), \\(2\\le p<\\infty\\) and \\(\\varepsilon>0\\),",
+      "sourceQuote": "For \\(n\\ge2\\), \\(2\\le p<\\infty\\) and \\(\\varepsilon>0\\), \\begin{equation}\\label{eq:sogge} \\|U(T)f\\|_{L^p(\\RR^n\\times I)} \\le C_{n,p,\\varepsilon}\\|J^{s_+(p)+\\varepsilon} f\\|_{L^p(\\RR^n)} . \\end{equation}",
+      "paper": 1
     },
     {
-      "text": "For p > 2 the sharp fixed-time L^p estimate has Sobolev loss 2(1/2 − 1/p) in three dimensions.",
+      "text": "At p = 2 one can take ε = 0.",
       "verdict": "supported",
-      "sourceLine": "the sharp fixed-time $L^p$ estimate has Sobolev loss",
-      "sourceQuote": "For $p>2$, the sharp fixed-time $L^p$ estimate has Sobolev loss $2(1/2-1/p)$ in three dimensions \\cite{Peral1980,Miyachi1980}."
+      "sourceLine": "At \\(p=2\\) one can take \\(\\varepsilon=0\\).",
+      "sourceQuote": "At \\(p=2\\) one can take \\(\\varepsilon=0\\).",
+      "paper": 1
     },
     {
-      "text": "Sogge's conjecture predicts the strict range α > max{0, 1 − 3/p}, with critical exponent p = 3.",
+      "text": "At a fixed nonzero time the sharp Sobolev order is (n−1)(1/2 − 1/p).",
       "verdict": "supported",
-      "sourceLine": "the strict range $\\alpha>\\max\\{0,1-3/p\\}$; its critical exponent is",
-      "sourceQuote": "Sogge's Euclidean local smoothing conjecture \\cite{Sogge1991} predicts, for $2<p<\\infty$, the strict range $\\alpha>\\max\\{0,1-3/p\\}$; its critical exponent is $p=3$."
+      "sourceLine": "At a fixed nonzero time the sharp Sobolev order is",
+      "sourceQuote": "At a fixed nonzero time the sharp Sobolev order is \\((n-1)(1/2-1/p)\\) \\cite{Peral1980,Miyachi1980,SSS1991}.",
+      "paper": 1
     },
     {
-      "text": "In three dimensions it asks to recover almost 1/p derivatives when p ≥ 3.",
+      "text": "For p ≥ 2n/(n−1), averaging in time gains every amount less than 1/p.",
       "verdict": "supported",
-      "sourceLine": "In three dimensions it asks to",
-      "sourceQuote": "In three dimensions it asks to recover almost $1/p$ derivatives when $p\\ge3$; at $p=3$, time averaging should remove all but an arbitrarily small part of the fixed-time loss of $1/3$."
+      "sourceLine": "Thus for \\(p\\ge\\pc=2n/(n-1)\\), averaging in time gains every amount",
+      "sourceQuote": "Thus for \\(p\\ge\\pc=2n/(n-1)\\), averaging in time gains every amount less than \\(1/p\\) over the fixed-time estimate.",
+      "paper": 1
     },
     {
-      "text": "These estimates resolve Sogge's Euclidean local smoothing conjecture in three spatial dimensions.",
+      "text": "A focusing wave shows that s₊(p) is the smallest possible threshold.",
+      "verdict": "supported",
+      "sourceLine": "that \\(s_+(p)\\) is the smallest possible threshold",
+      "sourceQuote": "A focusing wave shows that \\(s_+(p)\\) is the smallest possible threshold (Proposition~\\ref{prop:sharpness}).",
+      "paper": 1
+    },
+    {
+      "text": "Sogge asked how many derivatives are needed to control the norm averaged over a time interval.",
+      "verdict": "supported",
+      "sourceLine": "many derivatives of the initial data are needed to control the norm",
+      "sourceQuote": "Sogge asked how many derivatives of the initial data are needed to control the norm averaged over a time interval \\cite[Section~4, Equation~(4.5)]{Sogge1991}.",
+      "paper": 1
+    },
+    {
+      "text": "Wolff obtained every gain below 1/p for p > 74 in the plane.",
+      "verdict": "supported",
+      "sourceLine": "gave every gain below \\(1/p\\) for \\(p>74\\) in the plane",
+      "sourceQuote": "This gave every gain below \\(1/p\\) for \\(p>74\\) in the plane \\cite{Wolff2000}; {\\L}aba and Wolff extended the argument to higher dimensions \\cite{LabaWolff2002}.",
+      "paper": 1
+    },
+    {
+      "text": "Bourgain and Demeter's cone decoupling gives this gain for p ≥ 2(n+1)/(n−1) in every dimension.",
+      "verdict": "supported",
+      "sourceLine": "theorem gives this gain for \\(p\\ge 2(n+1)/(n-1)\\) in every dimension",
+      "sourceQuote": "Bourgain and Demeter's cone decoupling theorem gives this gain for \\(p\\ge 2(n+1)/(n-1)\\) in every dimension \\cite[Theorem~1.2]{BourgainDemeter2015}.",
+      "paper": 1
+    },
+    {
+      "text": "In the plane, Guth, Wang and Zhang reached the critical exponent p = 4.",
+      "verdict": "supported",
+      "sourceLine": "and Zhang reached the critical exponent \\(p=4\\) by controlling the",
+      "sourceQuote": "In the plane, Guth, Wang and Zhang reached the critical exponent \\(p=4\\) by controlling the \\(L^4\\) norm of a wave by the spacetime square function of its angular pieces \\cite[Theorems~1.1 and~1.2]{GWZ2020}.",
+      "paper": 1
+    },
+    {
+      "text": "At n = p = 3, Gao, Liu, Miao and Xi obtained every gain below 2/9.",
+      "verdict": "supported",
+      "sourceLine": "Miao and Xi obtained every gain below \\(2/9\\) by broad Fourier",
+      "sourceQuote": "At \\(n=p=3\\), Gao, Liu, Miao and Xi obtained every gain below \\(2/9\\) by broad Fourier restriction estimates, compared with the conjectured \\(1/3\\) \\cite[Corollary~1.3]{GaoLiuMiaoXi2023}.",
+      "paper": 1
+    },
+    {
+      "text": "Interpolating the p = 10/3 estimate with the L² identity gives every gain below 1/4 at p = 3.",
+      "verdict": "supported",
+      "sourceLine": "the \\(L^2\\) identity gives every gain below \\(1/4\\) at \\(p=3\\).",
+      "sourceQuote": "Interpolating the \\(p=10/3\\) estimate with the \\(L^2\\) identity gives every gain below \\(1/4\\) at \\(p=3\\).",
+      "paper": 1
+    },
+    {
+      "text": "Bochner–Riesz means are uniformly bounded on Lᵖ for 1 ≤ p ≤ ∞ in the conjectured range.",
+      "verdict": "supported",
+      "sourceLine": "are uniformly bounded on \\(L^p\\) for \\(1\\le p\\le\\infty\\) and every",
+      "sourceQuote": "The Bochner--Riesz means \\(B_R^\\alpha=(1-|D|^2/R^2)_+^\\alpha\\) are uniformly bounded on \\(L^p\\) for \\(1\\le p\\le\\infty\\) and every \\(\\alpha>\\max\\{0,n|1/p-1/2|-1/2\\}\\), as conjectured.",
+      "paper": 1
+    },
+    {
+      "text": "The paper obtains the full interior range of global Fourier extension estimates for the sphere.",
+      "verdict": "supported",
+      "sourceLine": "of global Fourier extension estimates \\(L^a\\to L^b\\): for",
+      "sourceQuote": "We obtain the full interior range of global Fourier extension estimates \\(L^a\\to L^b\\): for \\(1<a\\le\\infty\\), \\(b<\\infty\\), it is given by \\[ b>\\frac{2n}{n-1},\\qquad b>\\frac{n+1}{n-1}\\,a', \\qquad \\frac1a+\\frac1{a'}=1 . \\]",
+      "paper": 1
+    },
+    {
+      "text": "The Kakeya maximal operator has norm O_ε(δ^(−ε)) from Lⁿ to Lⁿ(Sⁿ⁻¹).",
+      "verdict": "supported",
+      "sourceLine": "conjecture: the operator that takes \\(f\\) to the largest average of",
+      "sourceQuote": "This proves the Kakeya maximal conjecture: the operator that takes \\(f\\) to the largest average of \\(|f|\\) on a unit \\(\\delta\\)-tube in each direction has norm \\(O_\\varepsilon(\\delta^{-\\varepsilon})\\) from \\(L^n(\\RR^n)\\) to \\(L^n(S^{n-1})\\) for every \\(\\varepsilon>0\\).",
+      "paper": 1
+    },
+    {
+      "text": "Every subset of ℝⁿ containing a unit line segment in each direction has Hausdorff dimension n.",
+      "verdict": "supported",
+      "sourceLine": "a unit line segment in each direction has Hausdorff dimension \\(n\\)",
+      "sourceQuote": "In particular, every subset of \\(\\RR^n\\) containing a unit line segment in each direction has Hausdorff dimension \\(n\\) (Corollary~\\ref{cor:quant-kakeya}).",
+      "paper": 1
+    },
+    {
+      "text": "Davies proved full dimension in the plane, and Wang and Zahl proved it in three dimensions.",
+      "verdict": "supported",
+      "sourceLine": "Zahl proved it in three dimensions \\cite[Theorem~1.1]{WangZahl2025};",
+      "sourceQuote": "Davies proved full Hausdorff dimension in the plane \\cite{Davies1971}, and Wang and Zahl proved it in three dimensions \\cite[Theorem~1.1]{WangZahl2025}; see also \\cite{GuthWangZahl2026Kakeya}.",
+      "paper": 1
+    },
+    {
+      "text": "The proof is built around a single estimate at the critical exponent.",
+      "verdict": "supported",
+      "sourceLine": "The proof is built around a single estimate at \\(p=\\pc\\).",
+      "sourceQuote": "The proof is built around a single estimate at \\(p=\\pc\\).",
+      "paper": 1
+    },
+    {
+      "text": "Some three-dimensional metrics require p ≥ 10/3 for gains close to 1/p.",
+      "verdict": "supported",
+      "sourceLine": "\\(p\\ge10/3\\) for gains arbitrarily close to \\(1/p\\)",
+      "sourceQuote": "Some three-dimensional metrics require \\(p\\ge10/3\\) for gains arbitrarily close to \\(1/p\\) \\cite{MinicozziSogge1997}, whereas the Euclidean exponent is \\(3\\).",
+      "paper": 1
+    },
+    {
+      "text": "The September paper's estimates resolve Sogge's conjecture in three spatial dimensions.",
       "verdict": "supported",
       "sourceLine": "Together, these estimates resolve Sogge's Euclidean local smoothing",
-      "sourceQuote": "Together, these estimates resolve Sogge's Euclidean local smoothing conjecture in three spatial dimensions."
+      "sourceQuote": "Together, these estimates resolve Sogge's Euclidean local smoothing conjecture in three spatial dimensions.",
+      "paper": 2
     },
     {
-      "text": "The lossless estimate ε = 0 is not addressed.",
-      "verdict": "supported",
-      "sourceLine": "the lossless estimate $\\eps=0$ is not addressed",
-      "sourceQuote": "At $p=3$, the estimate holds with every positive Sobolev loss; the lossless estimate $\\eps=0$ is not addressed."
-    },
-    {
-      "text": "Bourgain–Demeter's cone decoupling gives the conjectured gain for p ≥ 4 in three dimensions.",
-      "verdict": "supported",
-      "sourceLine": "gives the conjectured gain for $p\\ge4$ in three spatial dimensions",
-      "sourceQuote": "Its local-smoothing consequence gives the conjectured gain for $p\\ge4$ in three spatial dimensions, leaving the critical $p=3$ estimate beyond that range."
-    },
-    {
-      "text": "Gao–Liu–Miao–Xi obtain at p = 3 every Sobolev exponent α > 1/9.",
-      "verdict": "supported",
-      "sourceLine": "obtain, at $p=3$, every Sobolev exponent $\\alpha>1/9$",
-      "sourceQuote": "In three spatial dimensions they obtain, at $p=3$, every Sobolev exponent $\\alpha>1/9$, or equivalently a smoothing gain below $2/9$ \\cite[Corollary~1.3]{GaoLiuMiaoXi2023}."
-    },
-    {
-      "text": "Interpolating Gan–He–Li–Wu's p = 10/3 estimate gives α > 1/12 at p = 3.",
-      "verdict": "supported",
-      "sourceLine": "with the $L^2$ energy bound gives $\\alpha>1/12$",
-      "sourceQuote": "Interpolation of the $p=10/3$ estimate with the $L^2$ energy bound gives $\\alpha>1/12$ at $p=3$, improving the preceding $1/9$ threshold."
-    },
-    {
-      "text": "Guth–Wang–Zhang reached the critical exponent p = 4 in two dimensions.",
-      "verdict": "supported",
-      "sourceLine": "Guth--Wang--Zhang reached the",
-      "sourceQuote": "There Bourgain--Demeter's theorem gives the full smoothing gain for $p\\ge6$; Guth--Wang--Zhang reached the critical exponent $p=4$ through a sharp cone square-function estimate \\cite{GuthWangZhang2020}."
-    },
-    {
-      "text": "The central quantity is the entropy of a finite phase-space record.",
-      "verdict": "supported",
-      "sourceLine": "its central quantity is the entropy of a finite phase-space record",
-      "sourceQuote": "Our proof also studies packet concentration across scales, but its central quantity is the entropy of a finite phase-space record."
-    },
-    {
-      "text": "The proof uses two external quantitative inputs.",
-      "verdict": "supported",
-      "sourceLine": "The proof uses two external quantitative inputs",
-      "sourceQuote": "The proof uses two external quantitative inputs: the planar Furstenberg theorem of Ren--Wang \\cite[Theorem~4.1]{RenWang2025} and the cone wave-envelope theorem of Guth--Wang--Zhang \\cite[Theorem~1.3]{GuthWangZhang2020}."
-    },
-    {
-      "text": "The maximal wave conclusion requires s > 1/3 at p = 3.",
-      "verdict": "supported",
-      "sourceLine": "whereas this maximal conclusion requires $s>1/3$",
-      "sourceQuote": "Its extra cost explains the stronger regularity hypothesis: at $p=3$, spacetime smoothing allows every positive loss, whereas this maximal conclusion requires $s>1/3$."
-    },
-    {
-      "text": "Maximal Bochner–Riesz means are bounded and converge almost everywhere for 3 ≤ p < ∞ and δ > 1 − 3/p.",
-      "verdict": "supported",
-      "sourceLine": "strongly on $L^p$ and gives $B_R^\\delta f\\to f$ almost everywhere for",
-      "sourceQuote": "Section~\\ref{sec:bochner-riesz} applies them to \\eqref{eq:intro-full}: Theorem~\\ref{thm:br-maximal} bounds $B_*^\\delta$ strongly on $L^p$ and gives $B_R^\\delta f\\to f$ almost everywhere for $3\\le p<\\infty$ and $\\delta>1-3/p$."
-    },
-    {
-      "text": "Sogge introduced local smoothing in his study of circular maximal operators.",
-      "verdict": "supported",
-      "sourceLine": "Sogge introduced local smoothing in his study of circular maximal",
-      "sourceQuote": "Sogge introduced local smoothing in his study of circular maximal operators and their variable-coefficient analogues \\cite{Sogge1991}."
-    },
-    {
-      "text": "Minicozzi–Sogge examples require p ≥ 10/3 for the full gain on general manifolds.",
-      "verdict": "supported",
-      "sourceLine": "these examples require $p\\ge10/3$ for the",
-      "sourceQuote": "Minicozzi--Sogge constructed metrics with concentrating families of geodesics \\cite{MinicozziSogge1997}; in spatial dimension three these examples require $p\\ge10/3$ for the full smoothing gain on general manifolds \\cite[Section~1.1]{BeltranHickmanSogge2020}."
-    },
-    {
-      "text": "An internal OpenAI model produced the manuscript.",
+      "text": "An internal OpenAI model produced the manuscripts.",
       "verdict": "external",
-      "sourceId": 2
+      "sourceId": 6
+    },
+    {
+      "text": "Gan, He, Li and Wu proved the full gain up to an arbitrarily small loss for p ≥ 10/3 in ℝ³.",
+      "verdict": "supported",
+      "sourceLine": "Gan, He, Li and Wu proved the",
+      "sourceQuote": "Gan, He, Li and Wu proved the full gain up to an arbitrarily small loss for \\(p\\ge10/3\\) in \\(\\RR^3\\) and on compact Riemannian three-manifolds \\cite[Theorem~1.3]{GHLW2026}; see also Wang's study of wave packet density \\cite{Wang2026v4}.",
+      "paper": 1
     }
   ],
-  "sourceHash": "TBD",
-  "sourceCommit": "fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb"
+  "sourceHash": "bbce5eb78774e6190e8dd9854652a6a96f1053bb12a0a1474ab97837ac9e16d5",
+  "sourceCommit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a"
 }

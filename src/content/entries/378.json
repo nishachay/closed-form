@@ -1,0 +1,237 @@
+{
+  "id": "378",
+  "status": "ai-draft",
+  "publishedAt": "2026-10-27T01:30:00Z",
+  "collection": "openai-math-2026",
+  "lab": "openai",
+  "science": "mathematics",
+  "field": "Theoretical computer science",
+  "aiRole": "autonomous",
+  "evidence": [
+    {
+      "kind": "paper",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf",
+      "label": "The Exponential Time Hypothesis is False"
+    },
+    {
+      "kind": "lean",
+      "url": "https://github.com/openai/math/blob/main/lean/docs/378.md",
+      "label": "Lean doc (weaker counting bound formalized)",
+      "note": "Lean proves exact counting for canonically encoded k-CNF in time (L+1)^{O_k(1)}2^{O_k(n(log log n)²/√log n)} with polynomial space, matched to one Comparator statement. The paper's sharper bound and corollaries are not in the scope note."
+    }
+  ],
+  "headline": "A claimed algorithm that solves 3-SAT in subexponential time, which would make the Exponential Time Hypothesis false.",
+  "scope": "The claim is a deterministic exact-counting algorithm for k-CNF with fixed k. It runs in time 2^(n/(log n)^(1/2+o(1))) up to polynomial factors.",
+  "plain": "A SAT formula is a list of rules on true-or-false switches. Since 2001, many results assumed the Exponential Time Hypothesis: 3-SAT needs time that grows exponentially in the number of switches. This paper claims a method that counts every satisfying setting faster than that. If it holds, ETH and its stronger forms are false.",
+  "doesNot": "This does not give subexponential algorithms for every NP problem, and it is not a practical fast SAT solver.",
+  "origin": "This result comes from an unreleased OpenAI model, published in the openai/math release on 6 October 2026.",
+  "scorecard": {
+    "firstStep": "2001",
+    "firstStepBy": "Russell Impagliazzo and Ramamohan Paturi, who stated ETH",
+    "field": "Theoretical computer science",
+    "significance": "Landmark",
+    "significanceWhy": "If it holds, it overturns a hypothesis behind many hardness results in algorithms and complexity."
+  },
+  "explanation": "Start with a small puzzle. A 3-CNF formula is a list of rules on true-or-false switches. Each rule is an OR of three conditions, such as \"x₁ is true or x₂ is false or x₅ is true\". An assignment sets every switch. It satisfies the formula if every rule holds. With n switches there are 2ⁿ assignments, so checking them all takes about 2ⁿ steps. For n = 100 that is about 1.27 × 10³⁰.\n\nThe Exponential Time Hypothesis, or ETH, said that 3-SAT needs 2^Ω(n) deterministic time in the worst case[4]. In plain words, the exponent must grow in proportion to n. Faster methods existed, but they only shrank the constant in the exponent. Schöning's method is a random search[20]. It runs in about (4/3)ⁿ time for 3-SAT[8]. That is about 2^(0.415n). Liu's deterministic method runs in O(1.32793ⁿ) time[9]. Exact counting was harder still. Earlier counting methods took 2^(n − Ω(n/k)) time for fixed k ≥ 3[10]. Impagliazzo and Paturi stated ETH in 2001, and many hardness results in algorithms then assumed it.\n\nThe paper claims a deterministic method that counts the satisfying assignments of any k-CNF exactly, for each fixed k ≥ 2[1]. Here m is the number of rules. Its time is (n + m)^O(1) × 2^O(n log log n / √log n), with constants that depend on k. It uses only polynomial memory[2]. When m ≤ Dn for a fixed D, the bound improves to a polynomial times 2^O(n / √log n)[3]. A count above zero means the formula is satisfiable[6]. So the method also decides 3-SAT in 2^o(n) time, which ETH ruled out[5].\n\nHow large is the saving? Take n = 1,000,000. The natural log of n is about 13.8, and its square root is about 3.72. In the fixed-density case the exponent is n / √log n, about 269,000. Ignoring the hidden constants, that is about a quarter of n. The general bound has an extra log log n factor, about 2.6 here. The constants depend on k and are not stated, so this is a statement about growth, not a fast program. As n grows, the ratio to n keeps shrinking. That is what subexponential means.\n\nThe proof first treats a 3-CNF in which each switch appears in at most three rules. Each rule becomes a polynomial, and their product has degree at most 3n. Interpolation then recovers the exact count from sums over small groups of switches[14]. A splitting step called sparsification, plus copying of switches, extends this to every k-CNF[15].\n\nThe paper lists consequences. It also refutes the strong and gap forms of ETH and the nondeterministic form NSETH[5]. It refutes the counting form #ETH[11]. It gives subexponential near-optimal methods for Max-k-SAT[16], and subexponential counting of independent sets and colourings[13]. It gives a circuit lower bound for the class E^NP[12]. It does not give subexponential time for every NP problem, because such run times do not carry through general reductions[7]. The circuit bound is not a superpolynomial bound for NP[18]. It does not conflict with known exponential lower bounds for restricted proof systems such as regular resolution[17].\n\nHow sure is this? A computer proof checker called Lean has checked exact counting for k-CNF formulas in a fixed input format. Its time bound is slightly weaker, with (log log n)² in place of log log n. That still refutes ETH. One Comparator statement fixes what Lean had to prove. The sharper bound in the paper and the corollaries are not in the Lean scope note. No independent review of the proof has been published.",
+  "hypeCheck": "Landmark if the proof holds, since it overturns ETH. Lean checks a slightly weaker bound on a fixed input format, which still refutes ETH. No independent review is published.",
+  "glossary": [
+    {
+      "term": "k-CNF",
+      "meaning": "A formula made of rules, each an OR of at most k conditions on true-or-false variables."
+    },
+    {
+      "term": "Satisfying assignment",
+      "meaning": "A setting of all the variables that makes every rule true."
+    },
+    {
+      "term": "Exponential Time Hypothesis (ETH)",
+      "meaning": "The conjecture that 3-SAT needs time 2 to the power of a constant times n."
+    },
+    {
+      "term": "Subexponential time",
+      "meaning": "Running time whose exponent grows slower than any constant times n."
+    },
+    {
+      "term": "Polynomial space",
+      "meaning": "Memory that grows at most like a fixed power of the input size."
+    },
+    {
+      "term": "Sparsification",
+      "meaning": "Splitting a formula into many formulas with few rules per variable, without losing solutions."
+    },
+    {
+      "term": "Interpolation",
+      "meaning": "Recovering a polynomial's value from its values at other points."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "cite": "openai/math, “The Exponential Time Hypothesis is False” (October 25, 2026)",
+      "url": "https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf"
+    },
+    {
+      "id": 2,
+      "cite": "R. Impagliazzo and R. Paturi, “On the Complexity of k-SAT”, Journal of Computer and System Sciences 62 (2001)",
+      "url": "https://doi.org/10.1006/jcss.2000.1727"
+    },
+    {
+      "id": 3,
+      "cite": "R. Impagliazzo, R. Paturi and F. Zane, “Which Problems Have Strongly Exponential Complexity?”, Journal of Computer and System Sciences 63 (2001)",
+      "url": "https://doi.org/10.1006/jcss.2001.1774"
+    },
+    {
+      "id": 4,
+      "cite": "U. Schöning, “A Probabilistic Algorithm for k-SAT and Constraint Satisfaction Problems”, FOCS (1999)",
+      "url": "https://doi.org/10.1109/SFFCS.1999.814612"
+    },
+    {
+      "id": 5,
+      "cite": "openai/math release notes (2026): model provenance",
+      "url": "https://github.com/openai/math/blob/main/README.md",
+      "quote": "manuscripts and supporting proof artifacts produced by an internal OpenAI model"
+    }
+  ],
+  "claims": [
+    {
+      "text": "For each fixed k ≥ 2, a deterministic algorithm computes the number of satisfying assignments of a k-CNF on n ≥ 20 variables in (n+m)^{O_k(1)}2^{O_k(n log log n/√log n)} bit operations.",
+      "verdict": "supported",
+      "sourceLine": "For each fixed $k\\ge2$, there exists a deterministic algorithm that,",
+      "sourceQuote": "For each fixed $k\\ge2$, there exists a deterministic algorithm that, given a $k$-CNF $F$ on $n\\ge20$ declared variables with $m$ clauses, computes $\\#F$ as defined in \\eqref{eq:solution-count} in \\[ (n+m)^{O_k(1)}2^{O_k(n\\log\\log n/\\sqrt{\\log n})} \\] bit operations and $(n+m)^{O_k(1)}$ bits of space.",
+      "paper": 1
+    },
+    {
+      "text": "The algorithm uses (n+m)^{O_k(1)} bits of space.",
+      "verdict": "supported",
+      "sourceLine": "bit operations and $(n+m)^{O_k(1)}$ bits of space.",
+      "sourceQuote": "For each fixed $k\\ge2$, there exists a deterministic algorithm that, given a $k$-CNF $F$ on $n\\ge20$ declared variables with $m$ clauses, computes $\\#F$ as defined in \\eqref{eq:solution-count} in \\[ (n+m)^{O_k(1)}2^{O_k(n\\log\\log n/\\sqrt{\\log n})} \\] bit operations and $(n+m)^{O_k(1)}$ bits of space.",
+      "paper": 1
+    },
+    {
+      "text": "For m ≤ Dn the running time improves to (n+m)^{O_{k,D}(1)}2^{O_{k,D}(n/√log n)}.",
+      "verdict": "supported",
+      "sourceLine": "For each fixed $D>0$, its running time on inputs with $m\\le Dn$ is",
+      "sourceQuote": "For each fixed $D>0$, its running time on inputs with $m\\le Dn$ is \\[ (n+m)^{O_{k,D}(1)}2^{O_{k,D}(n/\\sqrt{\\log n})}. \\]",
+      "paper": 1
+    },
+    {
+      "text": "ETH asserted that 3-SAT requires 2^{Ω(n)} deterministic time in the worst case.",
+      "verdict": "supported",
+      "sourceLine": "The Exponential Time Hypothesis (ETH) asserted that $3$-SAT requires",
+      "sourceQuote": "The Exponential Time Hypothesis (ETH) asserted that $3$-SAT requires $2^{\\Omega(n)}$ deterministic time in the worst case, and hence so does $k$-SAT for every fixed $k\\ge3$~\\cite[Theorem~1]{IP01}.",
+      "paper": 1
+    },
+    {
+      "text": "The main theorem refutes ETH, SETH, Gap-ETH and NSETH.",
+      "verdict": "supported",
+      "sourceLine": "Theorem~\\ref{thm:main} refutes ETH, SETH, Gap-ETH, and NSETH.",
+      "sourceQuote": "Theorem~\\ref{thm:main} refutes ETH, SETH, Gap-ETH, and NSETH.",
+      "paper": 1
+    },
+    {
+      "text": "Testing whether the count is positive also decides satisfiability.",
+      "verdict": "supported",
+      "sourceLine": "Testing $\\#F>0$ also decides satisfiability.",
+      "sourceQuote": "Testing $\\#F>0$ also decides satisfiability.",
+      "paper": 1
+    },
+    {
+      "text": "The result does not imply that general NP problems admit subexponential-time algorithms.",
+      "verdict": "supported",
+      "sourceLine": "our result does not imply that general NP problems admit subexponential time algorithms",
+      "sourceQuote": "Note that runtime bounds of the form $2^{o(n)}$ do not transfer under general polynomial-time reductions ($2^{n^{o(1)}}$ would be needed for this), so our result does not imply that general NP problems admit subexponential time algorithms.",
+      "paper": 1
+    },
+    {
+      "text": "Schöning's algorithm gives (n+m)^{O(1)}(4/3)^n time for 3-SAT.",
+      "verdict": "supported",
+      "sourceLine": "In particular, this gives $(n+m)^{O(1)}(4/3)^n$ time for $3$-SAT.",
+      "sourceQuote": "In particular, this gives $(n+m)^{O(1)}(4/3)^n$ time for $3$-SAT.",
+      "paper": 1
+    },
+    {
+      "text": "Liu's deterministic algorithm solves 3-SAT in O(1.32793^n) time.",
+      "verdict": "supported",
+      "sourceLine": "$3$-SAT in $O(1.32793^n)$ time~\\cite[Theorem~21]{Liu18}.",
+      "sourceQuote": "Liu's deterministic algorithm combines branching with derandomized local search and solves $3$-SAT in $O(1.32793^n)$ time~\\cite[Theorem~21]{Liu18}.",
+      "paper": 1
+    },
+    {
+      "text": "For fixed k ≥ 3, previous exact-counting algorithms achieve poly(n,m)2^{n−Ω(n/k)} time.",
+      "verdict": "supported",
+      "sourceLine": "For fixed $k\\ge3$, previous exact-counting algorithms achieve",
+      "sourceQuote": "For fixed $k\\ge3$, previous exact-counting algorithms achieve $\\poly_k(n,m)2^{n-\\Omega(n/k)}$ time, with a Las Vegas expected-time bound in~\\cite[Lemma~3.5]{IMP12} and a deterministic bound in~\\cite[Theorem~1.6]{CW21}.",
+      "paper": 1
+    },
+    {
+      "text": "The algorithm solves #3-SAT in 2^{o(n)}poly(n,m) time and refutes #ETH.",
+      "verdict": "supported",
+      "sourceLine": "in $2^{o(n)}\\poly(n,m)$ time and therefore refutes $\\#\\mathrm{ETH}$.",
+      "sourceQuote": "Our algorithm (Theorem~\\ref{thm:main}) solves $\\#3$-SAT deterministically in $2^{o(n)}\\poly(n,m)$ time and therefore refutes $\\#\\mathrm{ETH}$.",
+      "paper": 1
+    },
+    {
+      "text": "The fixed-density case gives a circuit lower bound for E^NP.",
+      "verdict": "supported",
+      "sourceLine": "The fixed-density case of Theorem~\\ref{thm:main} gives a circuit lower",
+      "sourceQuote": "The fixed-density case of Theorem~\\ref{thm:main} gives a circuit lower bound for $\\mathrm E^{\\mathrm{NP}}$, the class of languages decidable in deterministic time $2^{O(n)}$ with an NP oracle.",
+      "paper": 1
+    },
+    {
+      "text": "Independent sets and proper q-colorings can be counted deterministically in 2^{o(v)} time.",
+      "verdict": "supported",
+      "sourceLine": "independent sets and, for each fixed $q\\ge2$, the number of proper",
+      "sourceQuote": "On simple graphs with $v$ vertices and $e$ edges, the number of independent sets and, for each fixed $q\\ge2$, the number of proper $q$-colorings can be computed deterministically in $2^{o(v)}$ time and $\\poly_q(v,e)$ space.",
+      "paper": 1
+    },
+    {
+      "text": "For a 3-CNF with each variable in at most three clauses, the product of clause polynomials has degree at most 3n, so interpolation recovers the count from sums over small groups.",
+      "verdict": "supported",
+      "sourceLine": "variable occurs in at most three clauses. The product of its clause",
+      "sourceQuote": "We first count satisfying assignments of a $3$-CNF in which each variable occurs in at most three clauses. The product of its clause polynomials has degree at most $3n$, so we can use interpolation to recover the exact count from sums over small groups of variables.",
+      "paper": 1
+    },
+    {
+      "text": "Disjoint sparsification and variable copying extend the count to arbitrary k-CNF in (n+m)^{O_k(1)}2^{o(n)} time.",
+      "verdict": "supported",
+      "sourceLine": "sparsification and variable copying to count the satisfying assignments",
+      "sourceQuote": "Section~\\ref{subsec:preview-general-sat} then uses disjoint sparsification and variable copying to count the satisfying assignments of an arbitrary $k$-CNF in $(n+m)^{O_k(1)}2^{o(n)}$ time for every fixed $k\\ge2$.",
+      "paper": 1
+    },
+    {
+      "text": "The theorem yields arbitrarily accurate subexponential-time approximation algorithms for Max-k-SAT.",
+      "verdict": "supported",
+      "sourceLine": "approximation algorithms for Max-$k$-SAT.",
+      "sourceQuote": "The theorem also yields arbitrarily accurate subexponential-time approximation algorithms for Max-$k$-SAT.",
+      "paper": 1
+    },
+    {
+      "text": "The result does not conflict with exponential lower bounds for restricted proof systems such as regular resolution.",
+      "verdict": "supported",
+      "sourceLine": "It does not conflict with unconditional exponential lower bounds for",
+      "sourceQuote": "It does not conflict with unconditional exponential lower bounds for restricted proof systems such as regular resolution~\\cite{BeckImp13}.",
+      "paper": 1
+    },
+    {
+      "text": "The circuit lower bound does not assert a superpolynomial circuit lower bound for NP.",
+      "verdict": "supported",
+      "sourceLine": "it does not assert a superpolynomial circuit lower bound for NP",
+      "sourceQuote": "The corollary gives a language in $\\mathrm E^{\\mathrm{NP}}$ without a linear-size circuit family; it does not assert a superpolynomial circuit lower bound for NP.",
+      "paper": 1
+    },
+    {
+      "text": "An internal OpenAI model produced the manuscript.",
+      "verdict": "external",
+      "sourceId": 5
+    },
+    {
+      "text": "Schöning's randomized algorithm starts from a random assignment and flips variables in unsatisfied clauses.",
+      "verdict": "supported",
+      "sourceLine": "Sch\\\"oning's randomized algorithm starts from a random assignment",
+      "sourceQuote": "Sch\\\"oning's randomized algorithm starts from a random assignment and repeatedly flips a uniformly chosen variable in an unsatisfied clause.",
+      "paper": 1
+    }
+  ],
+  "sourceHash": "0820a1de4935255f1cecec278ae86da0a7ca3a265b18f7e3f3d1fc8896fef5f4",
+  "sourceCommit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a"
+}
