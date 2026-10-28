@@ -5,33 +5,10 @@
  * Rows are moved, never re-rendered: grouped sections for "by field",
  * one flat list otherwise. KaTeX set at build time survives untouched.
  */
-const GREEK: Record<string, string> = {
-  π: 'pi',
-  ζ: 'zeta',
-  ε: 'epsilon',
-  λ: 'lambda',
-  μ: 'mu',
-  σ: 'sigma',
-  τ: 'tau',
-  φ: 'phi',
-  ψ: 'psi',
-  ω: 'omega',
-  χ: 'chi',
-  θ: 'theta',
-  α: 'alpha',
-  β: 'beta',
-  γ: 'gamma',
-  δ: 'delta',
-};
-
-function fold(s: string): string {
-  let out = s.toLowerCase();
-  for (const [g, name] of Object.entries(GREEK)) out = out.split(g).join(' ' + name + ' ');
-  return out;
-}
+import { normalizeSearchText } from '../lib/search.js';
 
 function words(s: string): string[] {
-  return fold(s)
+  return normalizeSearchText(s)
     .split(/[^a-z0-9]+/)
     .filter(Boolean);
 }

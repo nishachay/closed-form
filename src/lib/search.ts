@@ -24,7 +24,12 @@ const GREEK: Record<string, string> = {
 };
 
 export function normalizeSearchText(s: string): string {
-  let out = s.toLowerCase();
+  // Fold accents (Erdős -> erdos) so plain-ASCII typing finds accented names,
+  // then spell out Greek letters so `pi` matches `π` in both directions.
+  let out = s
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase();
   for (const [glyph, name] of Object.entries(GREEK)) {
     out = out.split(glyph).join(` ${name} `);
   }
