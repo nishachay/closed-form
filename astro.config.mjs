@@ -1,4 +1,5 @@
-import { copyFileSync, existsSync, readFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
@@ -35,6 +36,39 @@ export default defineConfig({
         'astro:build:done': ({ dir }) => {
           const index = new URL('sitemap-index.xml', dir);
           if (existsSync(index)) copyFileSync(index, new URL('sitemap.xml', dir));
+        },
+      },
+    },
+    {
+      // Old links from the github.io/closed-form era sometimes land as /closed-form/<page> on the
+      // custom domain and 404. Write a tiny redirect page for every built page under /closed-form/.
+      name: 'legacy-closed-form-redirects',
+      hooks: {
+        'astro:build:done': ({ dir }) => {
+          const out = fileURLToPath(dir);
+          const site = 'https://closedform.nishachay.tech';
+          const pages = [];
+          const walk = (d) => {
+            for (const name of readdirSync(d)) {
+              const full = join(d, name);
+              if (statSync(full).isDirectory()) {
+                if (!['closed-form', 'og', 'data', '_astro', '404'].includes(name) || d !== out) walk(full);
+              } else if (name === 'index.html') pages.push(relative(out, d));
+            }
+          };
+          walk(out);
+          for (const rel of pages) {
+            const path = rel ? `/${rel.split('\\').join('/')}/` : '/';
+            const target = site + path;
+            const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Moved</title>` +
+              `<link rel="canonical" href="${target}"><meta name="robots" content="noindex,follow">` +
+              `<meta http-equiv="refresh" content="0; url=${target}">` +
+              `<script>location.replace(${JSON.stringify(path)}+location.search+location.hash)</script>` +
+              `</head><body><a href="${target}">This page moved here.</a></body></html>`;
+            const dest = join(out, 'closed-form', rel);
+            mkdirSync(dest, { recursive: true });
+            writeFileSync(join(dest, 'index.html'), html);
+          }
         },
       },
     },

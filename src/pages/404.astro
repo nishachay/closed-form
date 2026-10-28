@@ -18,4 +18,10 @@ const stats = computeStats();
     </form>
     <p class="nf-links"><a href={appUrl('/')}>Home</a><a href={appUrl('/archive/')}>Archive</a><a href={appUrl('/about/')}>About</a></p>
   </section>
+  <script is:inline>
+    // Safety net for old /closed-form/... links the build has no page for.
+    if (location.pathname.indexOf('/closed-form/') === 0) {
+      location.replace(location.pathname.slice('/closed-form'.length) + location.search + location.hash);
+    }
+  </script>
 </Base>
