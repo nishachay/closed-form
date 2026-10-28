@@ -114,5 +114,5 @@ export const TRUST_MEANING: Record<string, string> = {
   formal:
     'At least one paper in the result is listed in the repository’s Lean catalogue, or its Lean notes link a Comparator challenge for a main result: a computer-checkable proof. A listing is not the same as an independent check.',
   partial: 'The result links to Lean notes, but no listed proof or Comparator challenge for a main result.',
-  claimed: 'Only the written paper exists. No computer has checked it, and it could contain errors.',
+  claimed: 'Only the written paper is listed in this release: no formal proof is listed, so the claim rests on the written argument and could contain errors.',
 };

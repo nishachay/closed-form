@@ -8,8 +8,28 @@ import type { Entry } from './entry.js';
 import { citationOrder } from './cite.js';
 import { toPlain } from './plain.js';
 
-export const REVIEW_NOTE =
+/** Review notice per entry status (CLOSED_FORM.md §6.2). Only ai-checked entries may claim a second-model check. */
+export const REVIEW_NOTE_CHECKED =
   'Drafted by one AI model and checked sentence by sentence against the paper by a different one. Spot a mistake? Report an error.';
+export const REVIEW_NOTE_DRAFT =
+  'Drafted by an AI model. It has not been checked against the paper yet. Spot a mistake? Report an error.';
+export const REVIEW_NOTE_SAMPLE =
+  'Sample entry, written by hand. Spot a mistake? Report an error.';
+
+const REVIEW_NOTES: Record<Entry['status'], string | null> = {
+  sample: REVIEW_NOTE_SAMPLE,
+  'ai-draft': REVIEW_NOTE_DRAFT,
+  'ai-checked': REVIEW_NOTE_CHECKED,
+  reviewed: null,
+};
+
+/** Pill label next to the notice: AI-made entries say so; the hand-written sample says what it is. */
+const REVIEW_PILLS: Record<Entry['status'], string | null> = {
+  sample: 'Sample entry',
+  'ai-draft': 'Explained by AI',
+  'ai-checked': 'Explained by AI',
+  reviewed: null,
+};
 
 /** Source citations: strip the internal † "check me" marker and link arXiv ids. */
 export const cleanCite = (cite: string) => {
@@ -32,7 +52,8 @@ export const shortReason = (r: string) => {
 };
 
 export function entryView(family: Family, entry: Entry | null) {
-  const reviewNote = entry && entry.status !== 'reviewed' ? REVIEW_NOTE : null;
+  const reviewNote = entry ? REVIEW_NOTES[entry.status] : null;
+  const reviewPill = entry ? REVIEW_PILLS[entry.status] : null;
   /** Prose body (entry.explanation): paragraphs split on blank lines. Replaces the four sections. */
   const paragraphs = entry?.explanation
     ? entry.explanation.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
@@ -76,5 +97,5 @@ export function entryView(family: Family, entry: Entry | null) {
   const paperDates = family.papers.map((p) => p.date).filter(Boolean).sort();
   const firstDate = paperDates[0] ?? null;
   const latestDate = paperDates[paperDates.length - 1] ?? null;
-  return { reviewNote, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate, latestDate };
+  return { reviewNote, reviewPill, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate, latestDate };
 }

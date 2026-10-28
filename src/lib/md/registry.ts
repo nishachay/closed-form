@@ -485,7 +485,7 @@ export function entryDoc(ctx: MdContext, f: Family): MdDoc {
     body = blocks(
       `**${e.headline}**`,
       meta.join(' · '),
-      v.reviewNote && `*Explained by AI.* ${v.reviewNote}`,
+      v.reviewNote && `*${v.reviewPill}.* ${v.reviewNote}`,
       withdrawnNote,
       e.plain,
       section('At a glance', glance),
