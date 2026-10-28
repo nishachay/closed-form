@@ -104,22 +104,25 @@ describe('rss feed (§13)', () => {
     expect(items[0].headline).toBe((entry017 as { headline: string }).headline);
   });
 
-  it('sorts reviewedAt desc, else id desc', () => {
-    const a = { ...(entry017 as object), id: '003' } as unknown as Entry;
-    const b = {
-      ...(entry017 as object),
-      id: '017',
-      reviewedAt: '2026-10-08',
-    } as unknown as Entry;
-    const items = buildFeedItems(catalog as never, [a, b], SITE, BASE);
-    expect(items[0].id).toBe('017');
-    const plain = buildFeedItems(
-      catalog as never,
-      [entry017 as unknown as Entry, a],
-      SITE,
-      BASE,
-    );
+  it('sorts publishedAt desc, then reviewedAt desc, else id desc', () => {
+    const baseEntry = entry017 as object;
+    const older = { ...baseEntry, id: '003', publishedAt: '2026-10-01' } as unknown as Entry;
+    const newer = { ...baseEntry, id: '017', publishedAt: '2026-10-09' } as unknown as Entry;
+    expect(buildFeedItems(catalog as never, [older, newer], SITE, BASE)[0].id).toBe('017');
+
+    // Same publication date: a review event breaks the tie, then the numeric id.
+    const a = { ...baseEntry, id: '003', publishedAt: '2026-10-09' } as unknown as Entry;
+    const b = { ...baseEntry, id: '017', publishedAt: '2026-10-09', reviewedAt: '2026-10-08' } as unknown as Entry;
+    expect(buildFeedItems(catalog as never, [a, b], SITE, BASE)[0].id).toBe('017');
+    const plain = buildFeedItems(catalog as never, [b, a], SITE, BASE);
     expect(plain[0].id).toBe('017');
+  });
+
+  it('uses the preserved publication date, never the catalogue refresh time', () => {
+    const e = { ...(entry017 as object), publishedAt: '2026-10-07T13:48:55Z' } as unknown as Entry;
+    const items = buildFeedItems(catalog as never, [e], SITE, BASE);
+    expect(items[0].pubDate).toBe('2026-10-07T13:48:55Z');
+    expect(items[0].pubDate).not.toBe((catalog as { source: { fetchedAt: string } }).source.fetchedAt);
   });
 
   it('emits rss xml with one item per entry', () => {

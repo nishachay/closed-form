@@ -27,28 +27,39 @@ export interface FeedItem {
   pubDate: string;
 }
 
-/** Newest first: reviewedAt desc when present, else numeric id desc (§13). */
+/**
+ * Newest first by first-publication date (§13): publishedAt, which is preserved
+ * per entry, never a catalogue-refresh timestamp that would re-date old entries.
+ * reviewedAt is a review event, not publication; it only breaks ties for entries
+ * missing publishedAt.
+ */
 export function buildFeedItems(
   catalog: Catalog,
   explained: Entry[],
   site: string,
   base: string,
 ): FeedItem[] {
-  const fallback = catalog.source.fetchedAt;
+  const published = (e: Entry) => (e as { publishedAt?: string }).publishedAt ?? '';
+  const reviewed = (e: Entry) => (e as { reviewedAt?: string }).reviewedAt ?? '';
   return [...explained]
     .sort((a, b) => {
-      const da = (a as { reviewedAt?: string }).reviewedAt ?? '';
-      const db = (b as { reviewedAt?: string }).reviewedAt ?? '';
-      if (da && db && da !== db) return db.localeCompare(da);
-      if (da && !db) return -1;
-      if (!da && db) return 1;
+      const pa = published(a);
+      const pb = published(b);
+      if (pa && pb && pa !== pb) return pb.localeCompare(pa);
+      if (pa && !pb) return -1;
+      if (!pa && pb) return 1;
+      const ra = reviewed(a);
+      const rb = reviewed(b);
+      if (ra && rb && ra !== rb) return rb.localeCompare(ra);
+      if (ra && !rb) return -1;
+      if (!ra && rb) return 1;
       return b.id.localeCompare(a.id);
     })
     .map((e) => ({
       id: e.id,
       headline: e.headline,
       url: entryAbsoluteUrl(site, base, catalog.collection, e.id),
-      pubDate: (e as { reviewedAt?: string }).reviewedAt ?? fallback,
+      pubDate: published(e) || reviewed(e) || catalog.source.fetchedAt,
     }));
 }
 
