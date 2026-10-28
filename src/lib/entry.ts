@@ -75,9 +75,16 @@ function noHypeAndSentenceLength(fieldName: string) {
   });
 }
 
+/** Entry links open in the reader's browser: http(s) only, never javascript: or data:. */
+const httpUrl = (field: string) =>
+  z
+    .string()
+    .url()
+    .refine((u) => /^https?:\/\//i.test(u), { message: `${field} must be an http(s) URL` });
+
 export const evidenceSchema = z.object({
   kind: z.enum(EVIDENCE_KINDS),
-  url: z.string().url(),
+  url: httpUrl('evidence url'),
   label: z.string().min(1).max(200).optional(),
   note: z.string().max(500).optional(),
 });
@@ -123,7 +130,7 @@ export const glossarySchema = z.object({
 export const sourceSchema = z.object({
   id: z.number().int(),
   cite: z.string().min(1),
-  url: z.string().url().optional(),
+  url: httpUrl('source url').optional(),
   quote: z.string().optional(),
   /** Explicit marker that no online copy exists (lint-ste fails a url-less source without it or "no online copy" in cite). */
   noUrl: z.literal(true).optional(),

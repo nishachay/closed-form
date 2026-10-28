@@ -2,17 +2,20 @@
 import katex from 'katex';
 
 /**
- * Render `$…$` inline math segments. Non-math parts pass through unchanged
- * (ingest already strips all but sup/sub/i/em). Unknown macros render as
- * red-on-error text, never throwing the build.
+ * Render `$…$` inline math segments. Non-math parts are HTML-escaped, keeping
+ * only the sup/sub/i/em tags ingest allows: entry text is inserted with
+ * set:html, so anything else (event handlers, tags with attributes) must never
+ * reach the page. Unknown macros render as red-on-error text, never throwing
+ * the build.
  */
 export function renderMath(text: string): string {
   const parts = text.split('$');
-  // Odd count of `$` means unbalanced input: return as-is.
-  if (parts.length % 2 === 0) return text;
+  // Odd count of `$` means unbalanced input: show the text, escaped.
+  if (parts.length % 2 === 0) return escapeInline(text);
   return parts
     .map((part, i) => {
-      if (i % 2 === 0 || part.trim() === '') return part;
+      if (part.trim() === '') return part;
+      if (i % 2 === 0) return escapeInline(part);
       try {
         return katex.renderToString(part, {
           throwOnError: false,
@@ -20,11 +23,15 @@ export function renderMath(text: string): string {
           strict: false,
         });
       } catch {
-        return part;
+        return escapeInline(part);
       }
     })
     .join('');
 }
+
+/** Escape HTML, then restore exactly the bare sup/sub/i/em tags ingest allows (no attributes). */
+const escapeInline = (s: string): string =>
+  escapeHtml(s).replace(/&lt;(\/?)(sup|sub|i|em)&gt;/g, '<$1$2>');
 
 const escapeHtml = (s: string): string =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
