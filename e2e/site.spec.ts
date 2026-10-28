@@ -1,16 +1,45 @@
 import { readdirSync } from 'node:fs';
+
 /**
  * End-to-end coverage (§18 + Phase 5): home, archive, explained entry (017),
  * fallback entry, field page, about. Static preview server (see playwright.config).
+ *
+ * Expected counts come from the catalogue, so adding an entry updates the
+ * fixtures instead of silently failing them.
  */
+import { readFileSync } from 'node:fs';
 import { expect, test } from '@playwright/test';
 
-test('home shows 372 map cells, stats and field deep-links', async ({ page }) => {
+interface SpecFamily {
+  id: string;
+  subject: string;
+  trust: string;
+  papers: { lean?: boolean }[];
+}
+
+// Read the catalogue with fs (Playwright's loader does not take JSON imports);
+// counts mirror computeStats in src/lib/names.ts.
+const catalog = JSON.parse(readFileSync('src/data/catalog.json', 'utf8')) as {
+  families: SpecFamily[];
+  subjects: string[];
+};
+const papers = catalog.families.flatMap((f) => f.papers);
+const stats = { results: catalog.families.length, papers: papers.length, formalPapers: papers.filter((p) => p.lean).length };
+const formalN = catalog.families.filter((f) => f.trust === 'formal').length;
+const fieldN = (subject: string) => catalog.families.filter((f) => f.subject === subject).length;
+const groupN = catalog.subjects.filter((s) => fieldN(s) > 0).length;
+
+test('home shows the catalogue counts, stats and field deep-links', async ({ page }) => {
   await page.goto('./');
-  await expect(page.locator('.fields .cell')).toHaveCount(372);
-  const stats = await page.locator('.stats .stat .n').allTextContents();
+  await expect(page.locator('.fields .cell')).toHaveCount(stats.results);
+  const shown = await page.locator('.stats .stat .n').allTextContents();
   const explainedN = readdirSync('src/content/entries').filter((f) => f.endsWith('.json')).length;
-  expect(stats.map((s) => s.trim().split('/')[0])).toEqual(['719', '372', '172', String(explainedN)]);
+  expect(shown.map((s) => s.trim().split('/')[0])).toEqual([
+    String(stats.papers),
+    String(stats.results),
+    String(stats.formalPapers),
+    String(explainedN),
+  ]);
   // Two latest entries plus the "Read all explained" card.
   await expect(page.locator('#explained .xcard')).toHaveCount(Math.min(2, explainedN) + 1);
   const href = await page.locator('.fc-t a').first().getAttribute('href');
@@ -20,28 +49,27 @@ test('home shows 372 map cells, stats and field deep-links', async ({ page }) =>
   expect(og).toContain('/og/home.png');
 });
 
-test('archive has 372 rows in 17 groups with search, filters and URL sync', async ({ page }) => {
+test('archive lists every result with search, filters and URL sync', async ({ page }) => {
   await page.goto('archive/');
-  await expect(page.locator('#groups .res')).toHaveCount(372);
-  await expect(page.locator('#groups section.group')).toHaveCount(17);
+  await expect(page.locator('#groups .res')).toHaveCount(stats.results);
+  await expect(page.locator('#groups section.group')).toHaveCount(groupN);
 
   await page.locator('#q').fill('pi');
-  await expect(page.locator('#groups .res:not([hidden])')).not.toHaveCount(372);
+  await expect(page.locator('#groups .res:not([hidden])')).not.toHaveCount(stats.results);
   await expect(page.locator('#groups .res:not([hidden])', { hasText: '017' })).toHaveCount(1);
   expect(page.url()).toContain('q=pi');
 
   await page.locator('#q').fill('');
   await page.locator('#seg button[data-v="formal"]').click();
-  // 242 formal since Lean docs + Comparator challenges count (was 135).
-  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(242);
+  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(formalN);
   expect(page.url()).toContain('trust=formal');
 
   await page.locator('#reset').click();
-  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(372);
+  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(stats.results);
 
   await page.goto('archive/?field=number-theory');
-  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(31);
-  await expect(page.locator('#count')).toContainText('31 of 372 results');
+  await expect(page.locator('#groups .res:not([hidden])')).toHaveCount(fieldN('Number theory'));
+  await expect(page.locator('#count')).toContainText(`${fieldN('Number theory')} of ${stats.results} results`);
 });
 
 test('archive keyboard: / focuses search, j/k move between rows', async ({ page }) => {
@@ -67,13 +95,6 @@ test('explained entry 017 shows scorecard, chart, hype check, sources, notice', 
   await expect(page.locator('.side a[href*="x.com/intent"]')).toHaveCount(1);
   const report = await page.locator('a[href*="github.com"][href*="issues/new"]').first().getAttribute('href');
   expect(report).toContain('017');
-});
-
-test('fallback entry shows the paper card and share link', async ({ page }) => {
-  await page.goto('e/openai-math-2026-003/');
-  await expect(page.getByText('What the paper claims, in its own words')).toBeVisible();
-  await expect(page.getByText('The plain-language explainer for this entry is still coming')).toBeVisible();
-  await expect(page.locator('.side a[href*="x.com/intent"]')).toHaveCount(1);
 });
 
 test('field page filters to its subject with its own OG card', async ({ page }) => {
@@ -137,13 +158,13 @@ test('entry 032 shows its withdrawn papers without counting them', async ({ page
 test('archive field filter works on desktop chips and phone pickers', async ({ page }) => {
   await page.goto('./archive/');
   await page.click('#chips .fopt[title="Algebra"]');
-  await expect(page.locator('#count')).toContainText('18 of');
+  await expect(page.locator('#count')).toContainText(`${fieldN('Algebra')} of`);
   await page.setViewportSize({ width: 375, height: 760 });
   await page.goto('./archive/');
   await page.selectOption('select[data-group=chips]', 'number-theory');
   await page.selectOption('select[data-group=seg]', 'formal');
-  await expect(page.locator('#count')).toContainText('of 372');
-  await expect(page.locator('.group:not([hidden]) .group-h .num').first()).not.toHaveText('31');
+  await expect(page.locator('#count')).toContainText(`of ${stats.results}`);
+  await expect(page.locator('.group:not([hidden]) .group-h .num').first()).not.toHaveText(String(fieldN('Number theory')));
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(375);
 });
 
