@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { normalizePublishedAt } from './stamp.js';
 import { detachedCitations, parseCitations, stripCitations } from './cite.js';
 
 /**
@@ -156,8 +157,18 @@ export const entrySchema = z
     status: z.enum(['sample', 'ai-draft', 'ai-checked', 'reviewed']),
     reviewedBy: z.string().optional(),
     reviewedAt: z.string().optional(),
-    /** When the entry went live, ISO 8601 (date or date-time). Orders "Latest explained" on the home page. */
-    publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}(T[\d:.]+(Z|[+-]\d{2}:\d{2}))?$/).optional(),
+    /** When the entry went live, ISO 8601 (date or date-time); the text form "Wed 2026-10-07 7:18 PM IST" is accepted and stored as UTC ISO. Orders "Latest explained" on the home page. */
+    publishedAt: z
+      .string()
+      .transform((v, ctx) => {
+        const n = normalizePublishedAt(v);
+        if (n === null) {
+          ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'publishedAt must be ISO 8601 or "Wed 2026-10-07 7:18 PM IST"' });
+          return z.NEVER;
+        }
+        return n;
+      })
+      .optional(),
     // Multi-collection identity (Phase-1 extension).
     collection: z.string().min(1),
     lab: z.string().min(1),

@@ -4,11 +4,13 @@
  * Pure functions over catalog + explained entries so vitest can cover them
  * without a running Astro build.
  */
-import type { Catalog } from './catalog.js';
-import type { Entry } from './entry.js';
-import { globalIdFor } from './ids.js';
-import { slugify } from './slug.js';
-import { trustLevel } from './trust.js';
+import { parseStamp } from "./stamp.js";
+export { parseStamp };
+import type { Catalog } from "./catalog.js";
+import type { Entry } from "./entry.js";
+import { globalIdFor } from "./ids.js";
+import { slugify } from "./slug.js";
+import { trustLevel } from "./trust.js";
 
 export function entryAbsoluteUrl(
   site: string,
@@ -16,8 +18,13 @@ export function entryAbsoluteUrl(
   collection: string,
   id: string,
 ): string {
-  const b = base.endsWith('/') && base !== '/' ? base.slice(0, -1) : base === '/' ? '' : base;
-  return `${site.replace(/\/$/, '')}${b}/e/${globalIdFor(collection, id)}/`;
+  const b =
+    base.endsWith("/") && base !== "/"
+      ? base.slice(0, -1)
+      : base === "/"
+        ? ""
+        : base;
+  return `${site.replace(/\/$/, "")}${b}/e/${globalIdFor(collection, id)}/`;
 }
 
 export interface FeedItem {
@@ -27,36 +34,67 @@ export interface FeedItem {
   pubDate: string;
 }
 
-/** Newest first: reviewedAt desc when present, else numeric id desc (§13). */
+/**
+ * Newest first by first-publication date (§13): publishedAt, which is preserved
+ * per entry, never a catalogue-refresh timestamp that would re-date old entries.
+ * reviewedAt is a review event, not publication; it only breaks ties for entries
+ * missing publishedAt. Dates are parsed to real instants before comparing.
+ */
 export function buildFeedItems(
   catalog: Catalog,
   explained: Entry[],
   site: string,
   base: string,
 ): FeedItem[] {
-  const fallback = catalog.source.fetchedAt;
+  const published = (e: Entry) =>
+    parseStamp((e as { publishedAt?: string }).publishedAt);
+  const reviewed = (e: Entry) =>
+    parseStamp((e as { reviewedAt?: string }).reviewedAt);
+  const fallback = parseStamp(catalog.source.fetchedAt);
+  const when = (e: Entry) => {
+    const p = published(e);
+    if (!Number.isNaN(p)) return p;
+    const r = reviewed(e);
+    return Number.isNaN(r) ? fallback : r;
+  };
+  const cmp = (x: number, y: number) =>
+    Number.isNaN(x) ? 0 : Number.isNaN(y) ? 0 : y - x;
   return [...explained]
     .sort((a, b) => {
-      const da = (a as { reviewedAt?: string }).reviewedAt ?? '';
-      const db = (b as { reviewedAt?: string }).reviewedAt ?? '';
-      if (da && db && da !== db) return db.localeCompare(da);
-      if (da && !db) return -1;
-      if (!da && db) return 1;
+      const pa = published(a);
+      const pb = published(b);
+      if (!Number.isNaN(pa) && Number.isNaN(pb)) return -1;
+      if (Number.isNaN(pa) && !Number.isNaN(pb)) return 1;
+      if (cmp(pa, pb)) return cmp(pa, pb);
+      const ra = reviewed(a);
+      const rb = reviewed(b);
+      if (!Number.isNaN(ra) && Number.isNaN(rb)) return -1;
+      if (Number.isNaN(ra) && !Number.isNaN(rb)) return 1;
+      if (cmp(ra, rb)) return cmp(ra, rb);
       return b.id.localeCompare(a.id);
     })
     .map((e) => ({
       id: e.id,
       headline: e.headline,
       url: entryAbsoluteUrl(site, base, catalog.collection, e.id),
-      pubDate: (e as { reviewedAt?: string }).reviewedAt ?? fallback,
+      pubDate: new Date(when(e)).toISOString(),
     }));
 }
 
-export function buildFeedXml(items: FeedItem[], site: string, base: string): string {
-  const b = base.endsWith('/') && base !== '/' ? base.slice(0, -1) : base === '/' ? '' : base;
+export function buildFeedXml(
+  items: FeedItem[],
+  site: string,
+  base: string,
+): string {
+  const b =
+    base.endsWith("/") && base !== "/"
+      ? base.slice(0, -1)
+      : base === "/"
+        ? ""
+        : base;
   const esc = (s: string) =>
-    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  const channelLink = `${site.replace(/\/$/, '')}${b}/`;
+    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const channelLink = `${site.replace(/\/$/, "")}${b}/`;
   const rows = items
     .map(
       (i) => `    <item>
@@ -66,7 +104,7 @@ export function buildFeedXml(items: FeedItem[], site: string, base: string): str
       <pubDate>${esc(new Date(i.pubDate).toUTCString())}</pubDate>
     </item>`,
     )
-    .join('\n');
+    .join("\n");
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
@@ -102,9 +140,9 @@ export function buildFieldsJson(catalog: Catalog): FieldRow[] {
       results: fams.length,
       papers: fams.reduce((n, f) => n + f.papers.length, 0),
       trust: {
-        formal: fams.filter((f) => f.trust === 'formal').length,
-        partial: fams.filter((f) => f.trust === 'partial').length,
-        claimed: fams.filter((f) => f.trust === 'claimed').length,
+        formal: fams.filter((f) => f.trust === "formal").length,
+        partial: fams.filter((f) => f.trust === "partial").length,
+        claimed: fams.filter((f) => f.trust === "claimed").length,
       },
     };
   });
@@ -116,7 +154,7 @@ export function shareTextFor(
   firstStep: string | undefined,
   url: string,
 ): string {
-  return `${firstStep ? `Open since ${firstStep}. ` : ''}${headlineOrTitle} ∎ ${url}`;
+  return `${firstStep ? `Open since ${firstStep}. ` : ""}${headlineOrTitle} ∎ ${url}`;
 }
 
 export function trustLongLabel(key: string): string {

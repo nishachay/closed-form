@@ -1,63 +1,80 @@
-import { describe, expect, it } from 'vitest';
-import catalog from '../src/data/catalog.json';
-import entry017 from '../src/content/entries/017.json';
-import { escapeXml, OG_HEIGHT, OG_WIDTH, ogPng, ogSvg, wrapHeadline } from '../src/lib/og.js';
+import { describe, expect, it } from "vitest";
+import catalog from "../src/data/catalog.json";
+import entry017 from "../src/content/entries/017.json";
 import {
+  escapeXml,
+  OG_HEIGHT,
+  OG_WIDTH,
+  ogPng,
+  ogSvg,
+  wrapHeadline,
+} from "../src/lib/og.js";
+import {
+  parseStamp,
   buildFeedItems,
   buildFeedXml,
   buildFieldsJson,
   entryAbsoluteUrl,
   shareTextFor,
-} from '../src/lib/share.js';
-import { absoluteUrl, appUrl } from '../src/lib/urls.js';
-import type { Entry } from '../src/lib/entry.js';
+} from "../src/lib/share.js";
+import { absoluteUrl, appUrl } from "../src/lib/urls.js";
+import { entrySchema } from "../src/lib/entry.js";
+import { readdirSync, readFileSync } from "node:fs";
+import { normalizePublishedAt, parseStamp as ps } from "../src/lib/stamp.js";
+import type { Entry } from "../src/lib/entry.js";
 
-const SITE = 'https://example.github.io';
-const BASE = '/closed-form';
+const SITE = "https://example.github.io";
+const BASE = "/closed-form";
 
-describe('og cards (§14.6)', () => {
-  it('is 1200x630', () => {
-    const svg = ogSvg({ kicker: 'K', headlineLines: ['Hi'], footer: 'F' });
+describe("og cards (§14.6)", () => {
+  it("is 1200x630", () => {
+    const svg = ogSvg({ kicker: "K", headlineLines: ["Hi"], footer: "F" });
     expect(svg).toContain('width="1200"');
     expect(svg).toContain('height="630"');
     expect(OG_WIDTH).toBe(1200);
     expect(OG_HEIGHT).toBe(630);
   });
 
-  it('wraps headlines to max 3 lines', () => {
+  it("wraps headlines to max 3 lines", () => {
     const long =
-      'Fractions can never get unusually close to pi no matter how hard anyone tries ever again truly';
+      "Fractions can never get unusually close to pi no matter how hard anyone tries ever again truly";
     const lines = wrapHeadline(long);
     expect(lines.length).toBeLessThanOrEqual(3);
-    expect(lines.join(' ').length).toBeLessThanOrEqual(long.length + 1);
+    expect(lines.join(" ").length).toBeLessThanOrEqual(long.length + 1);
   });
 
-  it('escapes xml in all slots', () => {
-    expect(escapeXml('a<b>&"\'c')).toBe('a&lt;b&gt;&amp;&quot;&#39;c');
-    const svg = ogSvg({ kicker: 'A&B', headlineLines: ['x<y'], footer: 'f"oo' });
-    expect(svg).not.toContain('A&B');
-    expect(svg).toContain('A&amp;B');
+  it("escapes xml in all slots", () => {
+    expect(escapeXml("a<b>&\"'c")).toBe("a&lt;b&gt;&amp;&quot;&#39;c");
+    const svg = ogSvg({
+      kicker: "A&B",
+      headlineLines: ["x<y"],
+      footer: 'f"oo',
+    });
+    expect(svg).not.toContain("A&B");
+    expect(svg).toContain("A&amp;B");
   });
 
-  it('shows a trust dot for entries, none for the lab-neutral home card', () => {
+  it("shows a trust dot for entries, none for the lab-neutral home card", () => {
     const entry = ogSvg({
-      kicker: 'Open since 1953',
-      headlineLines: ['Fractions can never get unusually close.'],
-      footer: 'Partly formalized · Number theory',
-      trust: 'partial',
+      kicker: "Open since 1953",
+      headlineLines: ["Fractions can never get unusually close."],
+      footer: "Partly formalized · Number theory",
+      trust: "partial",
     });
-    expect(entry).toContain('<circle');
+    expect(entry).toContain("<circle");
     const home = ogSvg({
-      kicker: 'AI mathematics, explained',
-      headlineLines: ['Every discovery AI makes,'],
-      footer: '372 results · 722 papers · honest trust labels',
+      kicker: "AI mathematics, explained",
+      headlineLines: ["Every discovery AI makes,"],
+      footer: "372 results · 722 papers · honest trust labels",
     });
-    expect(home).not.toContain('<circle>');
-    expect(home).not.toContain('openai');
+    expect(home).not.toContain("<circle>");
+    expect(home).not.toContain("openai");
   });
 
-  it('renders a valid PNG via resvg', () => {
-    const png = ogPng(ogSvg({ kicker: 'K', headlineLines: ['Hi'], footer: 'F' }));
+  it("renders a valid PNG via resvg", () => {
+    const png = ogPng(
+      ogSvg({ kicker: "K", headlineLines: ["Hi"], footer: "F" }),
+    );
     expect(png[0]).toBe(0x89);
     expect(png[1]).toBe(0x50);
     expect(png[2]).toBe(0x4e);
@@ -66,82 +83,230 @@ describe('og cards (§14.6)', () => {
   });
 });
 
-describe('share links (§13, §0 urls)', () => {
-  it('uses /e/<global-id>/ urls', () => {
-    expect(entryAbsoluteUrl(SITE, BASE, 'openai-math-2026', '017')).toBe(
-      'https://example.github.io/closed-form/e/openai-math-2026-017/',
+describe("share links (§13, §0 urls)", () => {
+  it("uses /e/<global-id>/ urls", () => {
+    expect(entryAbsoluteUrl(SITE, BASE, "openai-math-2026", "017")).toBe(
+      "https://example.github.io/closed-form/e/openai-math-2026-017/",
     );
   });
 
-  it('formats share text per §13', () => {
-    expect(shareTextFor('Headline here.', '1953', 'https://x/e/')).toBe(
-      'Open since 1953. Headline here. ∎ https://x/e/',
+  it("formats share text per §13", () => {
+    expect(shareTextFor("Headline here.", "1953", "https://x/e/")).toBe(
+      "Open since 1953. Headline here. ∎ https://x/e/",
     );
-    expect(shareTextFor('Headline here.', undefined, 'https://x/e/')).toBe(
-      'Headline here. ∎ https://x/e/',
+    expect(shareTextFor("Headline here.", undefined, "https://x/e/")).toBe(
+      "Headline here. ∎ https://x/e/",
     );
   });
 });
 
-describe('production domain defaults (§20 fix)', () => {
-  it('absoluteUrl falls back to the production site, never the placeholder', () => {
-    expect(absoluteUrl('/og/home.png')).toBe('https://closedform.nishachay.tech/og/home.png');
-    expect(absoluteUrl('/og/home.png')).not.toContain('example.');
+describe("production domain defaults (§20 fix)", () => {
+  it("absoluteUrl falls back to the production site, never the placeholder", () => {
+    expect(absoluteUrl("/og/home.png")).toBe(
+      "https://closedform.nishachay.tech/og/home.png",
+    );
+    expect(absoluteUrl("/og/home.png")).not.toContain("example.");
   });
 
-  it('appUrl prefixes the configured base once', () => {
-    expect(appUrl('/archive/').split('/').filter(Boolean)[0]).toBe('archive');
+  it("appUrl prefixes the configured base once", () => {
+    expect(appUrl("/archive/").split("/").filter(Boolean)[0]).toBe("archive");
   });
 });
 
-describe('rss feed (§13)', () => {
+describe("rss feed (§13)", () => {
   const entries = [entry017 as unknown as Entry];
 
-  it('builds newest-first items with /e/ urls', () => {
+  it("builds newest-first items with /e/ urls", () => {
     const items = buildFeedItems(catalog as never, entries, SITE, BASE);
     expect(items).toHaveLength(1);
-    expect(items[0].url).toBe('https://example.github.io/closed-form/e/openai-math-2026-017/');
+    expect(items[0].url).toBe(
+      "https://example.github.io/closed-form/e/openai-math-2026-017/",
+    );
     expect(items[0].headline).toBe((entry017 as { headline: string }).headline);
   });
 
-  it('sorts reviewedAt desc, else id desc', () => {
-    const a = { ...(entry017 as object), id: '003' } as unknown as Entry;
-    const b = {
-      ...(entry017 as object),
-      id: '017',
-      reviewedAt: '2026-10-08',
+  it("sorts publishedAt desc, then reviewedAt desc, else id desc", () => {
+    const baseEntry = entry017 as object;
+    const older = {
+      ...baseEntry,
+      id: "003",
+      publishedAt: "2026-10-01",
     } as unknown as Entry;
-    const items = buildFeedItems(catalog as never, [a, b], SITE, BASE);
-    expect(items[0].id).toBe('017');
-    const plain = buildFeedItems(
+    const newer = {
+      ...baseEntry,
+      id: "017",
+      publishedAt: "2026-10-09",
+    } as unknown as Entry;
+    expect(
+      buildFeedItems(catalog as never, [older, newer], SITE, BASE)[0].id,
+    ).toBe("017");
+
+    // Same publication date: a review event breaks the tie, then the numeric id.
+    const a = {
+      ...baseEntry,
+      id: "003",
+      publishedAt: "2026-10-09",
+    } as unknown as Entry;
+    const b = {
+      ...baseEntry,
+      id: "017",
+      publishedAt: "2026-10-09",
+      reviewedAt: "2026-10-08",
+    } as unknown as Entry;
+    expect(buildFeedItems(catalog as never, [a, b], SITE, BASE)[0].id).toBe(
+      "017",
+    );
+    const plain = buildFeedItems(catalog as never, [b, a], SITE, BASE);
+    expect(plain[0].id).toBe("017");
+  });
+
+  it("uses the preserved publication date, never the catalogue refresh time", () => {
+    const e = {
+      ...(entry017 as object),
+      publishedAt: "2026-10-07T13:48:55Z",
+    } as unknown as Entry;
+    const items = buildFeedItems(catalog as never, [e], SITE, BASE);
+    expect(items[0].pubDate).toBe("2026-10-07T13:48:55.000Z");
+    expect(items[0].pubDate).not.toBe(
+      (catalog as { source: { fetchedAt: string } }).source.fetchedAt,
+    );
+  });
+
+  it("parses real stored date text and orders by instant, not by string", () => {
+    const baseEntry = entry017 as object;
+    const e1 = {
+      ...baseEntry,
+      id: "001",
+      publishedAt: "Wed 2026-10-07 7:18 PM IST",
+    } as unknown as Entry;
+    const e2 = {
+      ...baseEntry,
+      id: "002",
+      publishedAt: "Tue 2026-10-13 1:05 AM IST",
+    } as unknown as Entry;
+    const e3 = {
+      ...baseEntry,
+      id: "003",
+      publishedAt: "2026-10-10T03:29:58+05:30",
+    } as unknown as Entry;
+    const e4 = {
+      ...baseEntry,
+      id: "004",
+      publishedAt: "2026-10-09T13:20:52Z",
+    } as unknown as Entry;
+    const items = buildFeedItems(
       catalog as never,
-      [entry017 as unknown as Entry, a],
+      [e1, e2, e3, e4],
       SITE,
       BASE,
     );
-    expect(plain[0].id).toBe('017');
+    expect(items.map((i) => i.id)).toEqual(["002", "003", "004", "001"]);
+    expect(items.find((i) => i.id === "001")!.pubDate).toBe(
+      "2026-10-07T13:48:00.000Z",
+    );
+    const xml = buildFeedXml(items, SITE, BASE);
+    expect(xml).not.toContain("Invalid Date");
+    expect(xml).toContain("<pubDate>Wed, 07 Oct 2026 13:48:00 GMT</pubDate>");
+    expect(Number.isNaN(parseStamp("garbage"))).toBe(true);
   });
 
-  it('emits rss xml with one item per entry', () => {
+  it("real entry through the schema to RSS: text and ISO publishedAt both work", () => {
+    const parse = (id: string, publishedAt: string) => {
+      const r = entrySchema.safeParse({
+        ...(entry017 as object),
+        id,
+        publishedAt,
+      });
+      expect(r.success).toBe(true);
+      return (r as { data: Entry }).data;
+    };
+    const text = parse("001", "Wed 2026-10-07 7:18 PM IST");
+    const iso = parse("002", "2026-10-09T13:20:52Z");
+    const offset = parse("003", "2026-10-10T03:29:58+05:30");
+    expect((text as { publishedAt?: string }).publishedAt).toBe(
+      "2026-10-07T13:48:00Z",
+    );
+    expect((iso as { publishedAt?: string }).publishedAt).toBe(
+      "2026-10-09T13:20:52Z",
+    );
+    const items = buildFeedItems(
+      catalog as never,
+      [text, iso, offset],
+      SITE,
+      BASE,
+    );
+    expect(items.map((i) => i.id)).toEqual(["003", "002", "001"]);
+    const xml = buildFeedXml(items, SITE, BASE);
+    expect(xml).not.toContain("Invalid Date");
+    expect(xml).toContain("<pubDate>Wed, 07 Oct 2026 13:48:00 GMT</pubDate>");
+    for (const bad of [
+      "Mon 2026-02-30 7:18 PM IST",
+      "Wed 2026-10-07 7:18 PM EST",
+      "yesterday",
+    ])
+      expect(
+        entrySchema.safeParse({ ...(entry017 as object), publishedAt: bad })
+          .success,
+      ).toBe(false);
+  });
+  it("parses the exact stored form with a UTC offset suffix", () => {
+    expect(ps("Sat 2026-10-10 8:59 AM IST (UTC+05:30)")).toBe(
+      Date.parse("2026-10-10T03:29:00Z"),
+    );
+    expect(normalizePublishedAt("Sat 2026-10-10 8:59 AM IST (UTC+05:30)")).toBe(
+      "2026-10-10T03:29:00Z",
+    );
+    expect(ps("Sat 2026-10-10 8:59 AM (UTC+05:30)")).toBe(
+      Date.parse("2026-10-10T03:29:00Z"),
+    );
+    expect(Number.isNaN(ps("Sat 2026-10-10 8:59 AM IST (UTC+01:00)"))).toBe(
+      true,
+    );
+  });
+
+  it("every real entry file validates and its feed pubDate comes from publishedAt", () => {
+    const dir = "src/content/entries";
+    const raws = readdirSync(dir)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => JSON.parse(readFileSync(`${dir}/${f}`, "utf-8")));
+    const parsed = raws.map((raw) => {
+      const r = entrySchema.safeParse(raw);
+      expect(r.success, raw.id).toBe(true);
+      return (r as { data: Entry }).data;
+    });
+    const items = buildFeedItems(catalog as never, parsed, SITE, BASE);
+    expect(items.length).toBe(parsed.length);
+    for (const e of parsed) {
+      const p = (e as { publishedAt?: string }).publishedAt;
+      expect(p, e.id).toBeTruthy();
+      expect(Number.isNaN(ps(p)), e.id).toBe(false);
+      expect(items.find((x) => x.id === e.id)!.pubDate, e.id).toBe(
+        new Date(ps(p)).toISOString(),
+      );
+    }
+  });
+
+  it("emits rss xml with one item per entry", () => {
     const items = buildFeedItems(catalog as never, entries, SITE, BASE);
     const xml = buildFeedXml(items, SITE, BASE);
     expect(xml).toContain('<rss version="2.0">');
-    expect(xml).toContain('<channel>');
-    expect(xml).toContain('openai-math-2026-017');
-    expect(xml).toContain('<pubDate>');
+    expect(xml).toContain("<channel>");
+    expect(xml).toContain("openai-math-2026-017");
+    expect(xml).toContain("<pubDate>");
   });
 });
 
-describe('public data files (§13)', () => {
-  it('catalog.json ships all families', () => {
-    const fams = (catalog as { families: { id: string; papers: unknown[] }[] }).families;
+describe("public data files (§13)", () => {
+  it("catalog.json ships all families", () => {
+    const fams = (catalog as { families: { id: string; papers: unknown[] }[] })
+      .families;
     expect(fams).toHaveLength(373);
     const papers = fams.reduce((n, f) => n + f.papers.length, 0);
     expect(papers).toBe(721);
     expect((catalog as { subjects: unknown[] }).subjects).toHaveLength(17);
   });
 
-  it('fields.json has 17 fields with collection/lab/science + counts', () => {
+  it("fields.json has 17 fields with collection/lab/science + counts", () => {
     const rows = buildFieldsJson(catalog as never);
     expect(rows).toHaveLength(17);
     const total = rows.reduce((n, r) => n + r.results, 0);
@@ -149,19 +314,28 @@ describe('public data files (§13)', () => {
     const papers = rows.reduce((n, r) => n + r.papers, 0);
     expect(papers).toBe(721);
     for (const r of rows) {
-      expect(r.collection).toBe('openai-math-2026');
-      expect(r.lab).toBe('openai');
-      expect(r.science).toBe('mathematics');
+      expect(r.collection).toBe("openai-math-2026");
+      expect(r.lab).toBe("openai");
+      expect(r.science).toBe("mathematics");
       expect(r.slug).toMatch(/^[a-z0-9-]+$/);
-      expect(r.trust.formal + r.trust.partial + r.trust.claimed).toBe(r.results);
+      expect(r.trust.formal + r.trust.partial + r.trust.claimed).toBe(
+        r.results,
+      );
     }
-    const nt = rows.find((r) => r.field === 'Number theory');
+    const nt = rows.find((r) => r.field === "Number theory");
     expect(nt).toBeDefined();
   });
 
-  it('entries carry the schema collection fields', () => {
+  it("entries carry the schema collection fields", () => {
     const e = entry017 as unknown as Record<string, unknown>;
-    for (const k of ['collection', 'lab', 'science', 'field', 'aiRole', 'evidence']) {
+    for (const k of [
+      "collection",
+      "lab",
+      "science",
+      "field",
+      "aiRole",
+      "evidence",
+    ]) {
       expect(e[k]).toBeDefined();
     }
   });
