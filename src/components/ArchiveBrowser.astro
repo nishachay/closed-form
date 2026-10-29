@@ -45,6 +45,7 @@ const explainedCount = list.filter((f) => explainedIds.has(f.id)).length;
         <select class="fsel-s" data-group="seg" aria-label="Filter by trust">
           <option value="all">All · {list.length}</option>
           {TRUST_LADDER.map((t) => (<option value={t.key}>{t.label} · {trustCounts[t.key] ?? 0}</option>))}
+          <option value="explained">Explained · {explainedCount}</option>
         </select>
         <svg class="sm-chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 4.5 3 3 3-3" /></svg>
       </label>

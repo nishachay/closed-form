@@ -284,7 +284,16 @@ const jsonLd = [
       if (d && !d.open) d.open = true;
     };
     const openForHash = () => {
-      if (location.hash.length > 1) openFold(document.getElementById(decodeURIComponent(location.hash.slice(1))));
+      // A malformed percent-encoded fragment (e.g. "#%") throws in decodeURIComponent;
+      // ignore the invalid hash instead of aborting citation setup.
+      if (location.hash.length <= 1) return;
+      let id: string;
+      try {
+        id = decodeURIComponent(location.hash.slice(1));
+      } catch {
+        return;
+      }
+      openFold(document.getElementById(id));
     };
     openForHash();
     window.addEventListener('hashchange', openForHash);
