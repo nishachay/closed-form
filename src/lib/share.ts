@@ -32,17 +32,12 @@ export interface FeedItem {
   pubDate: string;
 }
 
+/** Project zones only: IST here is India Standard Time (+05:30). Anything else is rejected, not guessed. */
 const TZ_OFFSET_MIN: Record<string, number> = {
   UTC: 0,
   GMT: 0,
   Z: 0,
   IST: 330,
-  PST: -480,
-  PDT: -420,
-  EST: -300,
-  EDT: -240,
-  CET: 60,
-  CEST: 120,
 };
 
 /**
