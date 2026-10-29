@@ -4,6 +4,8 @@
  * Pure functions over catalog + explained entries so vitest can cover them
  * without a running Astro build.
  */
+import { parseStamp } from "./stamp.js";
+export { parseStamp };
 import type { Catalog } from "./catalog.js";
 import type { Entry } from "./entry.js";
 import { globalIdFor } from "./ids.js";
@@ -30,60 +32,6 @@ export interface FeedItem {
   headline: string;
   url: string;
   pubDate: string;
-}
-
-/** Project zones only: IST here is India Standard Time (+05:30). Anything else is rejected, not guessed. */
-const TZ_OFFSET_MIN: Record<string, number> = {
-  UTC: 0,
-  GMT: 0,
-  Z: 0,
-  IST: 330,
-};
-
-/**
- * Epoch ms for a stored timestamp, or NaN. Accepts ISO 8601 (with Z or +hh:mm
- * offset, or date only) and the display text form "Wed 2026-10-07 7:18 PM IST".
- * Never compare these strings lexically: offsets and weekday names break the order.
- */
-export function parseStamp(raw: string | undefined): number {
-  if (!raw) return NaN;
-  const iso = Date.parse(raw);
-  if (!Number.isNaN(iso) && /^\d{4}-\d{2}-\d{2}(T|$)/.test(raw)) return iso;
-  const m = raw
-    .trim()
-    .match(
-      /^(?:[A-Za-z]{3,9},?\s+)?(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*([AaPp][Mm])?\s*([A-Za-z]{1,4}|[+-]\d{2}:?\d{2})?$/,
-    );
-  if (!m) return NaN;
-  let h = Number(m[4]);
-  if (m[7]) {
-    const pm = m[7].toLowerCase() === "pm";
-    if (h < 1 || h > 12) return NaN;
-    h = (h % 12) + (pm ? 12 : 0);
-  }
-  let off = 0;
-  const z = m[8];
-  if (z) {
-    if (/^[+-]/.test(z)) {
-      const d = z.replace(":", "");
-      off =
-        (z[0] === "-" ? -1 : 1) *
-        (Number(d.slice(1, 3)) * 60 + Number(d.slice(3, 5)));
-    } else if (z.toUpperCase() in TZ_OFFSET_MIN)
-      off = TZ_OFFSET_MIN[z.toUpperCase()];
-    else return NaN;
-  }
-  return (
-    Date.UTC(
-      Number(m[1]),
-      Number(m[2]) - 1,
-      Number(m[3]),
-      h,
-      Number(m[5]),
-      Number(m[6] ?? 0),
-    ) -
-    off * 60000
-  );
 }
 
 /**
