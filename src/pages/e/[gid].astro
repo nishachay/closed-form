@@ -39,7 +39,7 @@ const reportHref =
   `https://github.com/nishachay/closed-form/issues/new?template=report-error.yml` +
   `&labels=entry-error&title=${encodeURIComponent(`[entry ${family.id}] `)}`;
 
-const { reviewNote, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate, latestDate } = entryView(family, entry);
+const { reviewNote, reviewPill, paragraphs, sections, citeOrder, cited, aiSection, otherSources, anyUnchecked, firstDate, latestDate } = entryView(family, entry);
 const citeSeen = new Set<number>();
 const paragraphHtml = paragraphs.map((p) => renderCitations(p, citeOrder, renderMath, citeSeen));
 const title = `${family.id} · ${toPlain(family.title)}`;
@@ -107,7 +107,7 @@ const jsonLd = [
         {!entry && <TrustLabel trust={family.trust} />}
         <span>{family.papers.length} paper{family.papers.length === 1 ? '' : 's'}</span>
         {latestDate && <span>{formatLongDay(latestDate)}</span>}
-        {reviewNote && <span class="e-pill" title={reviewNote}>Explained by AI</span>}
+        {reviewNote && <span class="e-pill" title={reviewNote}>{reviewPill}</span>}
       </div>
       {withdrawnCount > 0 && (
         <p class="wd-note" role="note">

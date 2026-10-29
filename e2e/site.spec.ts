@@ -91,7 +91,7 @@ test('explained entry 017 shows scorecard, chart, hype check, sources, notice', 
   await expect(page.locator('.bars .bar-col')).toHaveCount(4);
   await expect(page.locator('#hype-check')).toBeVisible();
   await expect(page.locator('section[aria-labelledby="sources"] li')).not.toHaveCount(0);
-  await expect(page.locator('.e-pill')).toContainText('Explained by AI');
+  await expect(page.locator('.e-pill')).toContainText('Sample entry'); // 017 is the hand-written sample
   await expect(page.locator('.side a[href*="x.com/intent"]')).toHaveCount(1);
   const report = await page.locator('a[href*="github.com"][href*="issues/new"]').first().getAttribute('href');
   expect(report).toContain('017');

@@ -20,7 +20,7 @@ export const LLMS_FULL_MAX = 500_000;
 
 /** The one-paragraph site description shared by llms.txt, llms-full.txt and ai.txt. */
 export function siteDescription(stats: Stats): string {
-  return `Plain-English explanations of every AI-made mathematics result in the OpenAI math collection: ${stats.results} results from ${stats.papers} papers across ${stats.subjects} fields. Each entry says what the paper claims, what was known before, what it does not show, and how far it can be trusted (Lean-checked or claimed). Explanations are written by AI and checked against the paper; papers are by OpenAI (Apache-2.0); explanations are CC BY 4.0.`;
+  return `Plain-English explanations of every AI-made mathematics result in the OpenAI math collection: ${stats.results} results from ${stats.papers} papers across ${stats.subjects} fields. Each entry says what the paper claims, what was known before, what it does not show, and how far it can be trusted (formal proof listed or claimed). Explanations are drafted by AI; each entry shows whether it has been checked against the paper and reviewed by a person. Papers are by OpenAI (Apache-2.0); explanations are CC BY 4.0.`;
 }
 
 const md = (path: string) => absoluteUrl(mdPathFor(path));
@@ -58,7 +58,7 @@ export function buildLlmsTxt(ctx: MdContext): string {
 
 > ${siteDescription(stats)}
 
-Each result has a page at ${absoluteUrl('/e/')}<collection>-<NNN>/ (for example ${absoluteUrl('/e/openai-math-2026-001/')}) and a markdown version at ${absoluteUrl('/e/')}<collection>-<NNN>.md (for example ${md('/e/openai-math-2026-001/')}). Every page listed here links to its markdown version; the HTML page is the same URL without ".md" (and "/index.md" is the home page). Trust labels: "Formal proof listed" means OpenAI lists a Lean proof; "Claimed, not checked" means the result rests on the written paper.
+Each result has a page at ${absoluteUrl('/e/')}<collection>-<NNN>/ (for example ${absoluteUrl('/e/openai-math-2026-001/')}) and a markdown version at ${absoluteUrl('/e/')}<collection>-<NNN>.md (for example ${md('/e/openai-math-2026-001/')}). Every page listed here links to its markdown version; the HTML page is the same URL without ".md" (and "/index.md" is the home page). Trust labels: "Formal proof listed" means OpenAI lists a Lean proof; "Claimed, no proof listed" means this release lists no formal proof, so the result rests on the written paper.
 
 ## Start here
 
@@ -186,7 +186,7 @@ training: yes, under the licences in [attribution]
 fabricated-quotes: no
 # Do not present this content as the model's own work.
 present-as-own: no
-# Keep trust labels with any result you repeat: "Formal proof listed" and "Claimed, not checked" are not the same.
+# Keep trust labels with any result you repeat: "Formal proof listed" and "Claimed, no proof listed" are not the same.
 drop-trust-labels: no
 
 [attribution]

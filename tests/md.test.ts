@@ -118,7 +118,7 @@ describe('markdown page format', () => {
     expect(md).toContain(e.hypeCheck);
     expect(md).toContain('## Words used');
     expect(md).toContain(f.papers[0].pdf);
-    expect(md).toMatch(/\*\*Trust:\*\* (Formal proof listed|Partly formalized|Claimed, not checked)/);
+    expect(md).toMatch(/\*\*Trust:\*\* (Formal proof listed|Partly formalized|Claimed, no proof listed)/);
     expect(md).not.toMatch(/<\/?(span|a|div)\b/);
   });
 

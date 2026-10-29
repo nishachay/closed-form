@@ -125,9 +125,9 @@ export function eraName(slug: string): string {
 }
 
 export const TRUST_HUBS: Record<string, { slug: string; name: string; blurb: string }> = {
-  formal: { slug: 'lean-checked', name: 'Lean-checked results', blurb: 'OpenAI lists a formal proof for these results: a proof written in the Lean language and checked by a computer, step by step. What exactly Lean checked is stated on each entry.' },
-  partial: { slug: 'partly-formalized', name: 'Partly formalized results', blurb: 'Part of the argument has been checked by a computer in Lean; the rest rests on the paper.' },
-  claimed: { slug: 'claimed', name: 'Claimed, not yet checked', blurb: 'These results are claimed in a paper but no formal proof is listed, so they rest on the written argument until experts or a proof checker confirm them.' },
+  formal: { slug: 'lean-checked', name: 'Formal proof listed', blurb: 'OpenAI lists a formal proof for these results: a proof written in the Lean language, which the listing says a computer checked step by step. Closed Form records the listing and does not re-run the checker; what exactly Lean checked is stated on each entry.' },
+  partial: { slug: 'partly-formalized', name: 'Partly formalized results', blurb: 'Part of the argument is listed as formalized in Lean; the rest rests on the paper.' },
+  claimed: { slug: 'claimed', name: 'Claimed, no proof listed', blurb: 'These results are claimed in a paper but no formal proof is listed in this release, so they rest on the written argument until experts or a proof checker confirm them.' },
 };
 
 export const SIGNIFICANCE_HUBS: Record<string, { slug: string; blurb: string }> = {
@@ -249,7 +249,7 @@ export function hubIntro(
   const papers = families.reduce((k, f) => k + f.papers.length, 0);
   const parts: IntroLink[] = [];
   parts.push({ text: `${plural(n, 'AI-made result')} ${opts.scope}, from ${plural(papers, 'paper')} in the OpenAI math collection, each explained in plain English. ` });
-  if (formal && claimed) parts.push({ text: `${formal} ${formal === 1 ? 'has' : 'have'} a formal Lean proof listed; ${claimed} ${claimed === 1 ? 'is' : 'are'} claimed in a paper and not yet machine-checked. ` });
+  if (formal && claimed) parts.push({ text: `${formal} ${formal === 1 ? 'has' : 'have'} a formal Lean proof listed; ${claimed} ${claimed === 1 ? 'is' : 'are'} claimed in a paper with no formal proof listed in this release. ` });
   else if (formal) parts.push({ text: `All of them have a formal Lean proof listed. ` });
   else if (claimed) parts.push({ text: `None has a formal proof listed yet; all are claimed in a paper. ` });
 

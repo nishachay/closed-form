@@ -17,7 +17,7 @@ export interface TrustLevel {
 export const TRUST_LADDER: TrustLevel[] = [
   { key: 'formal', label: 'Formal proof listed', short: 'Formal proof' },
   { key: 'partial', label: 'Partly formalized', short: 'Partly' },
-  { key: 'claimed', label: 'Claimed, not checked', short: 'Not checked' },
+  { key: 'claimed', label: 'Claimed, no proof listed', short: 'No proof listed' },
 ];
 
 export function trustLevel(key: string): TrustLevel {
