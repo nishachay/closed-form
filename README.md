@@ -50,8 +50,9 @@ runs it. Never commit a key. No key is needed for ingest, tests or the site buil
 ## Deploy
 
 Push to `main` deploys to GitHub Pages via `.github/workflows/deploy.yml`
-(`actions/deploy-pages`, base `/closed-form`). New entries arrive as PRs, and
-merging publishes them.
+(`actions/deploy-pages`). The site is served from the custom domain
+<https://closedform.nishachay.tech/> at the root path (base `/`). New entries
+arrive as PRs, and merging publishes them.
 
 ## Public data
 
