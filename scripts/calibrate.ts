@@ -9,7 +9,12 @@
  * targets cannot rank anything sensibly (a single entry would rewrite the
  * hand-written 017 gold standard to Solid).
  *
- * Usage: pnpm calibrate [--apply]
+ * Usage: pnpm calibrate [--apply --reviewed]
+ *
+ * The plan is a review prompt, not a verdict: quota moves do not check the
+ * mathematics and must not be applied mechanically. --apply writes only with
+ * --reviewed, recording that a person reviewed the moves, and the label and
+ * its significanceWhy reason must be edited together afterwards.
  */
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -111,6 +116,14 @@ export function formatPlan(p: CalibratePlan): string {
 
 async function main(): Promise<void> {
   const apply = process.argv.includes('--apply');
+  if (apply && !process.argv.includes('--reviewed')) {
+    console.log(
+      'calibrate: refusing to apply quota moves without human review.\n' +
+        'Read the dry-run plan as a review prompt, check each move against the paper,\n' +
+        'then re-run with --apply --reviewed and edit significanceWhy to match each label.',
+    );
+    process.exit(1);
+  }
   const files = (await readdir(entriesDir)).filter((f) => f.endsWith('.json'));
   const rows: { id: string; significance: string; file: string }[] = [];
   for (const file of files) {

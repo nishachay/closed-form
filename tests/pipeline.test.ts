@@ -153,7 +153,7 @@ describe('007 dry run (§11, offline)', () => {
     const g = await gatherFamily(sourceDir, fam, fam.summary);
     expect(g.texFiles.length, missingSource).toBeGreaterThan(0);
     expect(g.texChars).toBeGreaterThan(1000);
-    expect(g.sourceHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(g.sourceHash).toMatch(/^v2:[0-9a-f]{64}$/);
     expect(g.evidence.some((e) => e.kind === 'trace')).toBe(true);
     expect(g.evidence.some((e) => e.kind === 'paper')).toBe(true);
   });
@@ -167,9 +167,11 @@ describe('007 dry run (§11, offline)', () => {
     expect(r.trust).toBe('formal');
     expect(r.texFiles, missingSource).toBeGreaterThan(0);
     expect(r.readerPromptChars).toBeGreaterThan(5000);
-    expect(r.sourceHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(r.sourceHash).toMatch(/^v2:[0-9a-f]{64}$/);
     expect(r.existing).toBe(true);
-    expect(r.wouldSkip).toBe(true);
+    // Stored v1 hashes predate the v2 contract, so entries report as
+    // source-changed until a reviewed re-baseline (scripts/explain.ts).
+    expect(r.wouldSkip).toBe(false);
     expect(r.writePath).toBe('src/content/entries/007.json');
   });
 });
