@@ -19,6 +19,8 @@ import {
 } from "../src/lib/share.js";
 import { absoluteUrl, appUrl } from "../src/lib/urls.js";
 import { entrySchema } from "../src/lib/entry.js";
+import { readdirSync, readFileSync } from "node:fs";
+import { normalizePublishedAt, parseStamp as ps } from "../src/lib/stamp.js";
 import type { Entry } from "../src/lib/entry.js";
 
 const SITE = "https://example.github.io";
@@ -208,27 +210,83 @@ describe("rss feed (§13)", () => {
     expect(Number.isNaN(parseStamp("garbage"))).toBe(true);
   });
 
-  it('real entry through the schema to RSS: text and ISO publishedAt both work', () => {
-  const parse = (id: string, publishedAt: string) => {
-    const r = entrySchema.safeParse({ ...(entry017 as object), id, publishedAt });
-    expect(r.success).toBe(true);
-    return (r as { data: Entry }).data;
-  };
-  const text = parse('001', 'Wed 2026-10-07 7:18 PM IST');
-  const iso = parse('002', '2026-10-09T13:20:52Z');
-  const offset = parse('003', '2026-10-10T03:29:58+05:30');
-  expect((text as { publishedAt?: string }).publishedAt).toBe('2026-10-07T13:48:00Z');
-  expect((iso as { publishedAt?: string }).publishedAt).toBe('2026-10-09T13:20:52Z');
-  const items = buildFeedItems(catalog as never, [text, iso, offset], SITE, BASE);
-  expect(items.map((i) => i.id)).toEqual(['003', '002', '001']);
-  const xml = buildFeedXml(items, SITE, BASE);
-  expect(xml).not.toContain('Invalid Date');
-  expect(xml).toContain('<pubDate>Wed, 07 Oct 2026 13:48:00 GMT</pubDate>');
-  for (const bad of ['Mon 2026-02-30 7:18 PM IST', 'Wed 2026-10-07 7:18 PM EST', 'yesterday'])
-    expect(entrySchema.safeParse({ ...(entry017 as object), publishedAt: bad }).success).toBe(false);
-});
+  it("real entry through the schema to RSS: text and ISO publishedAt both work", () => {
+    const parse = (id: string, publishedAt: string) => {
+      const r = entrySchema.safeParse({
+        ...(entry017 as object),
+        id,
+        publishedAt,
+      });
+      expect(r.success).toBe(true);
+      return (r as { data: Entry }).data;
+    };
+    const text = parse("001", "Wed 2026-10-07 7:18 PM IST");
+    const iso = parse("002", "2026-10-09T13:20:52Z");
+    const offset = parse("003", "2026-10-10T03:29:58+05:30");
+    expect((text as { publishedAt?: string }).publishedAt).toBe(
+      "2026-10-07T13:48:00Z",
+    );
+    expect((iso as { publishedAt?: string }).publishedAt).toBe(
+      "2026-10-09T13:20:52Z",
+    );
+    const items = buildFeedItems(
+      catalog as never,
+      [text, iso, offset],
+      SITE,
+      BASE,
+    );
+    expect(items.map((i) => i.id)).toEqual(["003", "002", "001"]);
+    const xml = buildFeedXml(items, SITE, BASE);
+    expect(xml).not.toContain("Invalid Date");
+    expect(xml).toContain("<pubDate>Wed, 07 Oct 2026 13:48:00 GMT</pubDate>");
+    for (const bad of [
+      "Mon 2026-02-30 7:18 PM IST",
+      "Wed 2026-10-07 7:18 PM EST",
+      "yesterday",
+    ])
+      expect(
+        entrySchema.safeParse({ ...(entry017 as object), publishedAt: bad })
+          .success,
+      ).toBe(false);
+  });
+  it("parses the exact stored form with a UTC offset suffix", () => {
+    expect(ps("Sat 2026-10-10 8:59 AM IST (UTC+05:30)")).toBe(
+      Date.parse("2026-10-10T03:29:00Z"),
+    );
+    expect(normalizePublishedAt("Sat 2026-10-10 8:59 AM IST (UTC+05:30)")).toBe(
+      "2026-10-10T03:29:00Z",
+    );
+    expect(ps("Sat 2026-10-10 8:59 AM (UTC+05:30)")).toBe(
+      Date.parse("2026-10-10T03:29:00Z"),
+    );
+    expect(Number.isNaN(ps("Sat 2026-10-10 8:59 AM IST (UTC+01:00)"))).toBe(
+      true,
+    );
+  });
 
-it("emits rss xml with one item per entry", () => {
+  it("every real entry file validates and its feed pubDate comes from publishedAt", () => {
+    const dir = "src/content/entries";
+    const raws = readdirSync(dir)
+      .filter((f) => f.endsWith(".json"))
+      .map((f) => JSON.parse(readFileSync(`${dir}/${f}`, "utf-8")));
+    const parsed = raws.map((raw) => {
+      const r = entrySchema.safeParse(raw);
+      expect(r.success, raw.id).toBe(true);
+      return (r as { data: Entry }).data;
+    });
+    const items = buildFeedItems(catalog as never, parsed, SITE, BASE);
+    expect(items.length).toBe(parsed.length);
+    for (const e of parsed) {
+      const p = (e as { publishedAt?: string }).publishedAt;
+      expect(p, e.id).toBeTruthy();
+      expect(Number.isNaN(ps(p)), e.id).toBe(false);
+      expect(items.find((x) => x.id === e.id)!.pubDate, e.id).toBe(
+        new Date(ps(p)).toISOString(),
+      );
+    }
+  });
+
+  it("emits rss xml with one item per entry", () => {
     const items = buildFeedItems(catalog as never, entries, SITE, BASE);
     const xml = buildFeedXml(items, SITE, BASE);
     expect(xml).toContain('<rss version="2.0">');

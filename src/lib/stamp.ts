@@ -15,13 +15,17 @@ export function parseStamp(raw: string | undefined): number {
   if (!raw) return NaN;
   const iso = Date.parse(raw);
   if (/^\d{4}-\d{2}-\d{2}(T|$)/.test(raw)) {
-    const [Y, M, D] = [Number(raw.slice(0, 4)), Number(raw.slice(5, 7)), Number(raw.slice(8, 10))];
+    const [Y, M, D] = [
+      Number(raw.slice(0, 4)),
+      Number(raw.slice(5, 7)),
+      Number(raw.slice(8, 10)),
+    ];
     return !Number.isNaN(iso) && validCalendar(Y, M, D) ? iso : NaN;
   }
   const m = raw
     .trim()
     .match(
-      /^(?:[A-Za-z]{3,9},?\s+)?(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*([AaPp][Mm])?\s*([A-Za-z]{1,4}|[+-]\d{2}:?\d{2})?$/,
+      /^(?:[A-Za-z]{3,9},?\s+)?(\d{4})-(\d{2})-(\d{2})\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*([AaPp][Mm])?\s*([A-Za-z]{1,4}|[+-]\d{2}:?\d{2})?(?:\s*\(UTC([+-]\d{2}:?\d{2})\))?$/,
     );
   if (!m) return NaN;
   let h = Number(m[4]);
@@ -32,6 +36,11 @@ export function parseStamp(raw: string | undefined): number {
   }
   let off = 0;
   const z = m[8];
+  const paren = m[9];
+  const toMin = (x: string) =>
+    (x[0] === "-" ? -1 : 1) *
+    (Number(x.replace(":", "").slice(1, 3)) * 60 +
+      Number(x.replace(":", "").slice(3, 5)));
   if (z) {
     if (/^[+-]/.test(z)) {
       const d = z.replace(":", "");
@@ -42,7 +51,19 @@ export function parseStamp(raw: string | undefined): number {
       off = TZ_OFFSET_MIN[z.toUpperCase()];
     else return NaN;
   }
-  const [Y, M, D, mi, se] = [Number(m[1]), Number(m[2]), Number(m[3]), Number(m[5]), Number(m[6] ?? 0)];
+  if (paren !== undefined) {
+    const p = toMin(paren);
+    // A trailing (UTC+hh:mm) must agree with the zone abbreviation when both are present.
+    if (z && off !== p) return NaN;
+    off = p;
+  }
+  const [Y, M, D, mi, se] = [
+    Number(m[1]),
+    Number(m[2]),
+    Number(m[3]),
+    Number(m[5]),
+    Number(m[6] ?? 0),
+  ];
   if (!validCalendar(Y, M, D) || h > 23 || mi > 59 || se > 59) return NaN;
   return Date.UTC(Y, M - 1, D, h, mi, se) - off * 60000;
 }
@@ -50,7 +71,11 @@ export function parseStamp(raw: string | undefined): number {
 /** Reject impossible calendar days (Feb 30, month 13) instead of letting them roll over. */
 function validCalendar(Y: number, M: number, D: number): boolean {
   const c = new Date(Date.UTC(Y, M - 1, D));
-  return c.getUTCFullYear() === Y && c.getUTCMonth() === M - 1 && c.getUTCDate() === D;
+  return (
+    c.getUTCFullYear() === Y &&
+    c.getUTCMonth() === M - 1 &&
+    c.getUTCDate() === D
+  );
 }
 
 /** ISO date or date-time with an explicit zone (the canonical stored form). */
