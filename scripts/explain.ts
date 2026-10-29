@@ -75,6 +75,18 @@ const pipelineDir = join(root, 'pipeline');
 /** Cap on LaTeX fed to the reader; the rest is noted, not silently used. */
 export const MAX_TEX_CHARS = 60000;
 
+/**
+ * Provenance hash contract, version 2: sha256 over the family id, its paper
+ * URLs and the FULL gathered source text. Version 1 hashed the text AFTER the
+ * MAX_TEX_CHARS cap, so edits past the cap never changed the hash. Stored v1
+ * hashes stay valid history until a reviewed re-baseline; the first real run
+ * after this change reports every entry as source-changed, which is the
+ * re-baseline decision point (see docs/decisions.md). Do not regenerate
+ * entries just to silence it.
+ */
+export const SOURCE_HASH_VERSION = 2;
+export const SOURCE_HASH_PREFIX = `v${SOURCE_HASH_VERSION}:`;
+
 export interface ExplainArgs {
   ids: string[];
   batch: number | null;
@@ -96,7 +108,11 @@ export function parseExplainArgs(argv: string[]): ExplainArgs {
     batch: batchRaw !== null ? Number(batchRaw) : null,
     traces: argv.includes('--traces'),
     all: argv.includes('--all'),
-    concurrency: Number(get('--concurrency') ?? '5'),
+    concurrency: (() => {
+      const n = Number(get('--concurrency') ?? '5');
+      if (!Number.isInteger(n) || n < 1 || n > 50) throw new Error('--concurrency needs an integer between 1 and 50');
+      return n;
+    })(),
     dryRun: argv.includes('--dry-run'),
   };
 }
@@ -117,6 +133,9 @@ export interface LlmConfig {
 }
 
 const DEFAULT_BASE_URL = 'https://api.openai.com/v1';
+
+/** Per-request ceiling; LLM_TIMEOUT_MS overrides for slow reasoning models. */
+export const DEFAULT_TIMEOUT_MS = 300_000;
 
 /** Reads credentials from env only. Throws a clear error naming what is missing. */
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): LlmConfig {
@@ -144,6 +163,25 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): LlmConfig {
     readerModel: env.READER_MODEL as string,
     checkerModel: env.CHECK_MODEL as string,
   };
+}
+
+/**
+ * Zero-spend guard: a real run only calls ':free' models unless CF_ALLOW_PAID=1
+ * is set. Endpoint defaults are not free services, so this fails closed.
+ */
+export function assertZeroSpend(cfg: LlmConfig, env: NodeJS.ProcessEnv = process.env): void {
+  if (env.CF_ALLOW_PAID === '1') return;
+  for (const [role, model] of [
+    ['reader', cfg.readerModel],
+    ['checker', cfg.checkerModel],
+  ] as const) {
+    if (!model.includes(':free')) {
+      throw new Error(
+        `Refusing a real run against a possibly paid model (${role}: ${model}). ` +
+          `Use a ':free' model, or set CF_ALLOW_PAID=1 if you really mean to pay.`,
+      );
+    }
+  }
 }
 
 /** Endpoint for a role. */
@@ -273,9 +311,9 @@ async function readTexTree(dir: string): Promise<string[]> {
  * family summary, trust, reasoning trace. sourceHash = sha256 of the exact
  * gathered source text (tex joined, or abstracts+summary on fallback).
  *
- * NOTE: the 017 seed's stored sourceHash predates this definition and will
- * not match a fresh gather — a real run treats 017 as source-changed and
- * reprocesses it. Safe direction; noted in docs/decisions.md.
+ * NOTE: stored hashes predate SOURCE_HASH_VERSION 2 and will not match a
+ * fresh gather — a real run treats those entries as source-changed. Safe
+ * direction; re-baseline only after review (docs/decisions.md).
  */
 export async function gatherFamily(
   sourceDir: string,
@@ -299,9 +337,11 @@ export async function gatherFamily(
   } else {
     sourceText = family.papers.map((p) => p.abstract).join('\n\n') + '\n\n' + summary;
   }
-  const truncated = sourceText.length > MAX_TEX_CHARS;
-  if (truncated) sourceText = sourceText.slice(0, MAX_TEX_CHARS);
-  const sourceHash = createHash('sha256').update(sourceText).digest('hex');
+  const fullText = sourceText;
+  const truncated = fullText.length > MAX_TEX_CHARS;
+  if (truncated) sourceText = fullText.slice(0, MAX_TEX_CHARS);
+  const hashInput = [family.id, ...family.papers.map((p) => p.pdf), fullText].join('\n');
+  const sourceHash = SOURCE_HASH_PREFIX + createHash('sha256').update(hashInput).digest('hex');
 
   const evidence: Gathered['evidence'] = family.papers.map((p) => ({
     kind: 'paper',
@@ -315,7 +355,7 @@ export async function gatherFamily(
   return {
     id: family.id,
     texFiles: texFiles.map((f) => f.replace(sourceDir + '/', '')),
-    texChars: sourceText.length,
+    texChars: fullText.length,
     truncated,
     sourceText,
     sourceHash,
@@ -544,6 +584,7 @@ export async function chatComplete(
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${endpoint.apiKey}` },
         body: JSON.stringify(chatBody(model, messages, jsonMode)),
+        signal: AbortSignal.timeout(Number(process.env.LLM_TIMEOUT_MS ?? DEFAULT_TIMEOUT_MS)),
       });
     } catch (e) {
       lastError = `network: ${String(e)}`.slice(0, 300);
@@ -903,7 +944,7 @@ async function processFamily(
   // statements are deleted by the checker, never listed), so nothing to count.
   // Readers see the full sentence around each cited sourceLine (scripts/source-quote.ts):
   // copied deterministically from the LaTeX, never written by a model.
-  const texByPaper = await loadTexByPaper(family.papers.map((p) => ({ pdf: p.pdf })), join(root, 'source/openai-math'));
+  const texByPaper = await loadTexByPaper(family.papers.map((p) => ({ pdf: p.pdf })), sourceDirFromEnv());
   const out = { ...final } as unknown as Record<string, unknown>;
   fillSourceQuotes(out, texByPaper);
   await writeFile(join(entriesDir, `${family.id}.json`), JSON.stringify(orderClaimKeys(out), null, 2) + '\n', 'utf-8');
@@ -938,6 +979,7 @@ async function main(): Promise<void> {
   }
 
   const cfg = loadConfig();
+  assertZeroSpend(cfg);
   const catalog = await loadCatalog();
   const existing = await loadExisting();
   const sourceDir = sourceDirFromEnv();
