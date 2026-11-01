@@ -81,6 +81,9 @@ const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 
     <link rel="alternate" type="application/rss+xml" title="Closed Form — newly explained entries" href={rss} />
     {markdown && <link rel="alternate" type="text/markdown" href={markdown} />}
     <link rel="icon" href={favicon} />
+    <link rel="icon" href={appUrl('/favicon.ico')} sizes="any" />
+    <link rel="icon" type="image/svg+xml" href={appUrl('/favicon.svg')} />
+    <link rel="icon" type="image/png" sizes="48x48" href={appUrl('/favicon-48.png')} />
     {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="sitemap" href={appUrl('/sitemap.xml')} />
     <meta name="theme-color" content="#f7f5f1" media="(prefers-color-scheme: light)" />
@@ -88,7 +91,8 @@ const favicon = 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Closed Form" />
     {pageLd.map((d) => <script type="application/ld+json" is:inline set:html={serializeJsonLd(d)} />)}
-    <script is:inline data-goatcounter="https://closedform.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+    {!noindex && <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-K6S42E0TXH"></script>}
+    {!noindex && <script is:inline>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K6S42E0TXH');</script>}
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
