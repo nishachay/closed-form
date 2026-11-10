@@ -24,7 +24,7 @@ export function organization(site: string): JsonLd {
     '@id': `${site}/#org`,
     name: 'Closed Form',
     url: `${site}/`,
-    founder: { '@type': 'Person', name: 'Nishachay', url: 'https://x.com/ni5hachay', sameAs: ['https://github.com/nishachay', 'https://x.com/ni5hachay'] },
+    founder: { '@type': 'Person', name: 'Nishachay', url: 'https://x.com/nishachayy', sameAs: ['https://github.com/nishachay', 'https://x.com/nishachayy'] },
     sameAs: ['https://github.com/nishachay/closed-form'],
   };
 }
